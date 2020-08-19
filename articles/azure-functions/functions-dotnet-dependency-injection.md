@@ -4,15 +4,15 @@ description: Naučte se používat vkládání závislostí k registraci a použ
 author: craigshoemaker
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 09/05/2019
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206099"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603859"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -226,10 +226,10 @@ V rámci `Startup.Configure` metody můžete extrahovat hodnoty z `IConfiguratio
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 Volání `Bind` kopíruje hodnoty, které mají odpovídající názvy vlastností z konfigurace do vlastní instance. Instance Options je teď k dispozici v kontejneru IoC pro vkládání do funkce.
@@ -253,8 +253,57 @@ public class HttpTrigger
 
 Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options) .
 
-> [!WARNING]
-> Vyhněte se pokusům o čtení hodnot ze souborů, jako *local.settings.jsna* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože tato aplikace se škáluje, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci, protože řadič škálování vytváří nové instance aplikace.
+### <a name="customizing-configuration-sources"></a>Přizpůsobení zdrojů konfigurace
+
+> [!NOTE]
+> Přizpůsobení zdroje konfigurace je k dispozici počínaje verzí Azure Functions hostitele 2.0.14192.0 a 3.0.14191.0.
+
+Chcete-li určit další zdroje konfigurace, přepište `ConfigureAppConfiguration` metodu ve třídě aplikace Function App `StartUp` .
+
+Následující ukázka přidá konfigurační hodnoty ze základní a volitelné soubory nastavení aplikace specifické pro konkrétní prostředí.
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+Přidejte poskytovatele konfigurace do `ConfigurationBuilder` vlastnosti `IFunctionsConfigurationBuilder` . Další informace o použití zprostředkovatelů konfigurace najdete [v tématu Konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+
+`FunctionsHostBuilderContext`Je získán z `IFunctionsConfigurationBuilder.GetContext()` . Pomocí tohoto kontextu načtěte aktuální název prostředí a vyřešte umístění konfiguračních souborů ve složce Function App.
+
+Ve výchozím nastavení se konfigurační soubory, jako je například *appsettings.js* , nekopírují automaticky do výstupní složky aplikace Function App. Aktualizujte soubor *. csproj* tak, aby odpovídal následující ukázce, aby bylo zajištěno, že budou soubory zkopírovány.
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> Pro aplikace Function App spuštěné v plánech spotřeby nebo Premium můžou úpravy hodnot konfigurace používaných v aktivačních událostech způsobit chyby škálování. Jakékoli změny těchto vlastností `FunctionsStartup` třídou způsobí chybu při spuštění aplikace Function App.
 
 ## <a name="next-steps"></a>Další kroky
 

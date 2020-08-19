@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a015f7dd58bae328a8c18e3de3202c0ca615c9cf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034803"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605583"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizika uživatele
 
@@ -29,11 +29,11 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
-1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
+1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard. Další informace najdete v [Nastavení standardů pojmenovávání zásad](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies).
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**.
 1. V části **podmínky**  >  **rizika uživatele**nastavte **Konfigurovat** na **Ano**. V části **konfigurovat úrovně rizika uživatele potřebné pro vymáhání zásady** vyberte **Vysoká**a potom vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat změnu hesla**a vyberte **Vybrat**.
@@ -42,13 +42,13 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 ## <a name="enable-through-identity-protection"></a>Povolit prostřednictvím Identity Protection
 
-1. Přihlaste se k **portálu Azure Portal**.
+1. Přihlaste se k webu **Azure Portal**.
 1. Vyberte **všechny služby**a pak vyhledejte **Azure AD Identity Protection**.
 1. Vyberte **zásady rizik uživatelů**.
 1. V části **přiřazení**vyberte **Uživatelé**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Vybrat vyloučené uživatele**, zvolte nouzový přístup nebo účty pro přerušení vaší organizace a vyberte **Vybrat**.
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **podmínky**vyberte **riziko pro uživatele**a pak zvolte **Vysoká**.
    1. Vyberte **Vybrat**a pak **Hotovo**.
 1. V části **ovládací prvky**  >  **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat změnu hesla**.
@@ -60,7 +60,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
-[Podmíněný přístup na základě rizik přihlašování](howto-conditional-access-policy-risk.md)
+[Podmíněný přístup podle rizika přihlašování](howto-conditional-access-policy-risk.md)
 
 [Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 

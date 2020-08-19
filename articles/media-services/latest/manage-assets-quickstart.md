@@ -3,12 +3,15 @@ title: Použití portálu k nahrávání, kódování a streamování obsahu –
 description: V tomto rychlém startu se dozvíte, jak pomocí portálu nahrávat, kódovat a streamovat obsah pomocí Azure Media Services.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053361"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605660"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -28,7 +31,6 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 
   * [Nahrávání do cloudu a úložiště](storage-account-concept.md)
   * [Koncept prostředků](assets-concept.md)
-  * [Správa prostředků](manage-asset-concept.md)
 * Po nahrání vysoce kvalitního digitálního mediálního souboru do assetu (vstupní Asset) ho můžete zpracovat (kódovat nebo analyzovat). Zpracovaný obsah přechází do jiného prostředku (výstupní prostředek). 
     * [Zakódovat](encoding-concept.md) nahraný soubor do formátů, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních.
     * [Analyzujte](analyzing-video-audio-files-concept.md) nahraný soubor. 

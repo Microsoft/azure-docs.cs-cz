@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88d795d0e05c62f07ff415364ced651ad8f4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034608"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605009"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -33,22 +34,26 @@ Tady je video, které poskytuje rychlý přehled kontrol přístupu:
 
 ## <a name="why-are-access-reviews-important"></a>Proč jsou recenze přístupů důležité?
 
-Azure AD umožňuje interně spolupracovat v rámci vaší organizace a s uživateli z externích organizací, jako jsou partneři. Uživatelé můžou připojit skupiny, pozvat hosty, připojit se ke cloudovým aplikacím a vzdáleně pracovat ze svých pracovních nebo osobních zařízení. Pohodlí využívání možnosti samoobslužné služby vedlo k nutnosti lepšího řízení přístupu.
+Azure AD umožňuje spolupracovat s uživateli ve vaší organizaci a s externími uživateli. Uživatelé můžou připojit skupiny, pozvat hosty, připojit se ke cloudovým aplikacím a vzdáleně pracovat ze svých pracovních nebo osobních zařízení. Pohodlí používání samoobslužné služby vedlo k nutnosti lepších funkcí správy přístupu.
 
-- Když se noví zaměstnanci připojí, jak zajistit, že mají správný přístup k produktivitě?
-- Když lidé přesunou týmy nebo odejdou ze společnosti, jak si zaručíte, že jejich starý přístup se odebere, obzvláště když zahrnuje hosty?
-- Nadměrně přístupná práva můžou vést k tomu, že auditují zjištění a ohrožení bezpečnosti, protože označují nedostatečné řízení přístupu.
+- Jak se noví zaměstnanci připojí, jak zajistit, aby měli přístup, který musí být produktivní?
+- Když lidé přesunou týmy nebo odejdou ze společnosti, jak se stará přístup odeberou?
+- Nadměrné oprávnění k přístupu může vést k ohrožení zabezpečení.
+- Nenadměrný přístup může také vést k tomu, že se výsledky auditu označují jako nedostatečné řízení přístupu.
 - Je nutné proaktivně zapojit vlastníky prostředků, aby bylo zajištěno, že budou pravidelně kontrolovat, kdo má přístup ke svým prostředkům.
 
-## <a name="when-to-use-access-reviews"></a>Kdy použít recenze přístupu?
+## <a name="when-should-you-use-access-reviews"></a>Kdy byste měli používat recenze přístupu?
 
 - **Příliš mnoho uživatelů v privilegovaných rolích:** Je vhodné zjistit, kolik uživatelů má přístup pro správu, kolik z nich je globálních správců, a pokud existují pozvaní hostů nebo partneři, kteří se po přiřazení k úloze správy neodebrali. V [rolích Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , jako jsou globální správci nebo [role prostředků Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , jako je například správce přístupu uživatele, můžete znovu certifikovat přiřazení rolí uživatelům v prostředí [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) .
-- **Pokud je automatizace neproveditelná:** Můžete vytvořit pravidla pro dynamické členství ve skupinách zabezpečení nebo skupinách Office 365, ale co když data o PERSONÁLNÍm oddělení nejsou ve službě Azure AD, nebo pokud uživatelé stále potřebují přístup, když opustí skupinu a vyškolí jejich náhradu? Pak můžete vytvořit revizi této skupiny, abyste měli jistotu, že budou mít přístup i nadále potřebují mít přístup.
+- **Když Automation není možné:** Můžete vytvořit pravidla pro dynamické členství ve skupinách zabezpečení nebo skupinách Office 365, ale co když data o PERSONÁLNÍm oddělení nejsou ve službě Azure AD, nebo pokud uživatelé stále potřebují přístup, když opustí skupinu a vyškolí jejich náhradu? Pak můžete vytvořit revizi této skupiny, abyste měli jistotu, že budou mít přístup i nadále potřebují mít přístup.
 - **Když se skupina používá pro nový účel:** Pokud máte skupinu, která bude synchronizovaná s Azure AD, nebo pokud chcete povolit službu Salesforce pro všechny uživatele ve skupině prodejního týmu, je vhodné požádat vlastníka skupiny, aby zkontroloval členství ve skupině před tím, než se skupina používá v jiném rizikovém obsahu.
 - **Přístup k důležitým podnikovým datům:** u určitých prostředků se může vyžadovat, aby uživatelé mimo ni požádali, aby se pravidelně odhlásili a měli odůvodněné důvody k tomu, proč potřebují přístup pro účely auditování.
 - **Chcete-li zachovat seznam výjimek zásad:** V ideálním světě by všichni uživatelé za účelem zabezpečení přístupu k prostředkům vaší organizace dodržovali zásady přístupu. Někdy ale existují obchodní případy, které vyžadují, abyste měli výjimky. Jako správce IT můžete spravovat tuto úlohu, vyhnout se nedohledu nad výjimkami zásad a poskytovat auditorům kontrolu nad tím, že se tyto výjimky pravidelně kontrolují.
-- **Požádejte vlastníky skupiny, abyste potvrdili, že stále potřebují hosty ve svých skupinách:** Přístup zaměstnanců může být automatizovaný s některými místními nástroji IAM, ale nezvanými hosty. Pokud skupina poskytuje přístup hostů k firemnímu citlivému obsahu, pak je zodpovědností vlastníka skupiny na potvrzení, že hosté mají k dispozici legitimní obchodní nutnost přístupu.
+- **Požádejte vlastníky skupiny, abyste potvrdili, že stále potřebují hosty ve svých skupinách:** Přístup zaměstnanců může být automatizovaný s některými místními identitami a správou přístupu (IAM), ale ne s pozvanými hosty. Pokud skupina poskytuje přístup hostů k firemnímu citlivému obsahu, pak je zodpovědností vlastníka skupiny na potvrzení, že hosté mají k dispozici legitimní obchodní nutnost přístupu.
 - **Pravidelně opakují se recenze:** Můžete nastavit opakované kontroly přístupu uživatelů při nastavených frekvencích, jako je týdenní, měsíční, čtvrtletní nebo roční a kontroloři se budou informovat na začátku každé recenze. Recenzenti mohou schvalovat nebo odmítat přístup pomocí popisného rozhraní a s využitím inteligentních doporučení.
+
+>[!NOTE]
+>Pokud jste připraveni vyzkoušet kontroly přístupu, přečtěte si [téma Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md) .
 
 ## <a name="where-do-you-create-reviews"></a>Kde můžete vytvářet recenze?
 
@@ -58,42 +63,8 @@ V závislosti na tom, co chcete zkontrolovat, vytvoříte kontrolu přístupu v 
 | --- | --- | --- | --- |
 | Členové skupiny zabezpečení</br>Členové skupiny Office | Určení kontroloři</br>Vlastníci skupiny</br>Samoobslužné kontroly | Kontroly přístupu Azure AD</br>Skupiny Azure AD | Přístupový panel |
 | Přiřazeno k připojené aplikaci | Určení kontroloři</br>Samoobslužné kontroly | Kontroly přístupu Azure AD</br>Aplikace Azure AD Enterprise (ve verzi Preview) | Přístupový panel |
-| Role Azure AD | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portál Azure Portal |
-| Role prostředku Azure | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portál Azure Portal |
-
-
-## <a name="create-access-reviews"></a>Vytvořit kontroly přístupu
-
-Chcete-li vytvořit kontroly přístupu, postupujte podle následujících kroků:
-
-1. Přejděte na [Azure Portal](https://portal.azure.com) a spravujte kontroly přístupu a přihlaste se jako globální správce nebo Správce uživatelů.
-
-1. Vyhledejte a vyberte **Azure Active Directory**.
-
-      ![Azure Portal hledání Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
-
-1. Vyberte zásady **správného řízení identity**.
-
-1. Na úvodní stránce klikněte na tlačítko **vytvořit kontrolu přístupu** .
-
-   ![Úvodní stránka kontroly přístupu](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
-
-### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Vytváření kontroly přístupu u skupiny, kterou je možné přiřadit k roli Azure AD
-Pokud pracujete na nejnovější verzi kontrol přístupu (ve výchozím nastavení jsou vaši kontroloři přesměrováni na **můj přístup** ), pak jenom globální správce může vytvořit kontrolu přístupu pro skupiny, které umožňují přiřazení role. Pokud ale používáte starší verzi kontrol přístupu (ve výchozím nastavení jsou vaši kontroloři přesměrováni na **přístupový panel** ), pak globální správce i Správce uživatelů můžou zkontrolovat přístup pro skupiny s přiřazením rolí.  
-
-Nové prostředí bude zavedeno pro všechny zákazníky od 1. srpna 2020, ale pokud byste chtěli provést upgrade dřív, uveďte prosím požadavek v tématu kontroly [přístupu Azure AD – aktualizované možnosti kontrolora v registraci přístupu](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
-
-[Přečtěte si další informace o přiřazování skupin k rolím Azure AD](https://go.microsoft.com/fwlink/?linkid=2103037).
-
-## <a name="learn-about-access-reviews"></a>Další informace o kontrolách přístupu
-
-Pokud chcete získat další informace o vytváření a provádění kontrol přístupu, podívejte se do této krátké ukázky:
-
->[!VIDEO https://www.youtube.com/embed/6KB3TZ8Wi40]
-
-Pokud jste připraveni nasadit kontroly přístupu ve vaší organizaci, postupujte podle těchto kroků ve videu, Projděte si správce a vytvořte svou první kontrolu přístupu.
-
->[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
+| Role Azure AD | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
+| Role prostředku Azure | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
@@ -101,16 +72,14 @@ Pokud jste připraveni nasadit kontroly přístupu ve vaší organizaci, postupu
 
 ### <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
 
-Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
+Váš adresář potřebuje aspoň tolik licencí Azure AD Premium P2 jako počet zaměstnanců, kteří budou provádět následující úlohy:
 
 - Členové a uživatelé typu Host, kteří jsou přiřazeni jako kontroloři
 - Členové a uživatelé typu Host, kteří provádějí samy si kontrolu
 - Vlastníci skupiny, kteří provádějí kontrolu přístupu
 - Vlastníci aplikace, kteří provádějí kontrolu přístupu
 
-Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
-
-- Pro uživatele s rolemi globálního správce nebo Správce uživatelů nejsou vyžadovány žádné licence, které nastavují kontroly přístupu, konfigurují nastavení nebo používají rozhodnutí z recenzí.
+Licence Azure AD Premium P2 nejsou **vyžadovány** pro uživatele s rolemi globální správce nebo Správce uživatelů, kteří nastavili kontroly přístupu, nakonfigurují nastavení nebo použijí rozhodnutí z recenzí.
 
 Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
 

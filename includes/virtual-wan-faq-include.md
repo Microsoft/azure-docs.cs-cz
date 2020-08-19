@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88602428"
+ms.locfileid: "88604676"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -215,7 +215,7 @@ Provoz se řídí vzorem: síťová zařízení – >poskytovatel internetových
 
 Ano. Připojení k Internetu a fyzické zařízení, které podporuje protokol IPsec, nejlépe z našich integrovaných [virtuálních partnerů WAN](../articles/virtual-wan/virtual-wan-locations-partners.md). Volitelně můžete ručně spravovat konfiguraci a připojení k Azure z preferovaného zařízení.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Návody povolit výchozí trasu (0.0.0.0/0) v připojení (VPN, ExpressRoute nebo Virtual Network):
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Návody povolit výchozí trasu (0.0.0.0/0) v připojení (VPN, ExpressRoute nebo Virtual Network)?
 
 Virtuální rozbočovač může rozšířit získanou výchozí trasu na připojení VPN/ExpressRoute typu Site-to-site k síti VPN/, pokud je příznak povoleno u připojení. Tento příznak se zobrazí, když uživatel upraví připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Ve výchozím nastavení je tento příznak zakázán, pokud je lokalita nebo okruh ExpressRoute připojen k rozbočovači. Ve výchozím nastavení je povolená, když se přidá připojení k virtuální síti, které virtuální síť připojí k virtuálnímu rozbočovači. Výchozí trasa nepochází do virtuálního centra WAN. Výchozí trasa je šířena v případě, že ji již služba Virtual WAN hub vyvolala v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru.
 
@@ -239,26 +239,27 @@ Pokud je k virtuálnímu rozbočovači připojeno více okruhů ExpressRoute, v�
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Preferuje virtuální síť WAN ExpressRoute přes VPN pro výstup provozu Azure
 
-Yes 
+Ano.
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Pokud má virtuální síť WAN okruh ExpressRoute a připojenou lokalitu VPN, co by mohlo způsobit, že bude trasa připojení VPN upřednostňovaná i přes ExpressRoute?
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Pokud má virtuální síť WAN okruh ExpressRoute a připojenou lokalitu VPN, co by mohlo způsobit, že bude trasa připojení VPN preferována nad ExpressRoute?
 
-Když je okruh ExpressRoute připojený k virtuálnímu rozbočovači, jsou směrovače Microsoft Edge prvním uzlem pro komunikaci mezi místním prostředím a Azure. Tyto hraniční směrovače komunikují s branami Virtual WAN ExpressRoute, které dále zjišťují trasy od směrovače virtuálního rozbočovače, který řídí všechny trasy mezi všemi branami ve virtuální síti WAN. Směrovače Microsoft Edge zpracovávají virtuální rozbočovač ExpressRoute trasy s vyšší prioritou přes směrování cest z místního prostředí. Vzhledem k jakýmkoli důvodům, kdy se připojení VPN stane primárním médiem pro virtuální rozbočovač, aby se zjistily trasy od (například scénáře převzetí služeb při selhání mezi ExpressRoute a VPN), pokud lokalita VPN nemá delší dobu jako délku cesty, bude virtuální rozbočovač dál sdílet trasy k síti VPN s bránou ExpressRoute, což způsobí, že směrovače Microsoft Edge upřednostňují trasy VPN v místních trasách. 
+Když je okruh ExpressRoute připojený k virtuálnímu rozbočovači, jsou směrovače Microsoft Edge prvním uzlem pro komunikaci mezi místním prostředím a Azure. Tyto hraniční směrovače komunikují s branami Virtual WAN ExpressRoute, které pak zjišťují trasy od směrovače virtuálního rozbočovače, které řídí všechny trasy mezi všemi branami ve virtuální síti WAN. Směrovače Microsoft Edge zpracovávají ExpressRoute trasy virtuální rozbočovače s vyšší prioritou než trasy zjištěné z místního prostředí. Z nějakého důvodu se v případě, že se připojení VPN stane primárním médiem, aby se zjistily trasy od (například scénáře převzetí služeb při selhání mezi ExpressRoute a VPN), pokud lokalita VPN nemá delší dobu jako délku cesty, bude virtuální rozbočovač dál sdílet sítě VPN s bránou ExpressRoute, což způsobí, že směrovače Microsoft Edge upřednostňují trasy VPN v místních trasách.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Když jsou připojená dvě centra (centrum 1 a 2) a okruh ExpressRoute je připojený k oběma centrům jako motýlek, jaká je cesta k virtuální síti připojené k centru 1, aby se mohla připojit k virtuální síti připojené v centru 2?
 
-Aktuální chování je preferovat cestu k okruhu ExpressRoute přes rozbočovač a hub pro připojení VNet-to-VNet. Nedoporučuje se to ale v instalaci virtuální sítě WAN. Tým virtuální sítě WAN pracuje na opravě, aby umožnil předvolbu centra pro prostředení v cestě ExpressRoute. Doporučení je pro více okruhů ExpressRoute (různých zprostředkovatelů) pro připojení k jednomu rozbočovači a připojení k rozbočovači, které poskytuje služba Virtual WAN, pro přenos toků mezi oblastmi.
+Aktuální chování je preferovat cestu k okruhu ExpressRoute přes rozbočovač a rozbočovač pro připojení VNet-to-VNet. Nedoporučuje se to ale v instalaci virtuální sítě WAN. Virtuální tým sítě WAN pracuje na opravě, aby umožnil předvolbu centra pro prostředení v cestě ExpressRoute. Doporučení je pro více okruhů ExpressRoute (různých zprostředkovatelů) pro připojení k jednomu rozbočovači a připojení k rozbočovači, které poskytuje služba Virtual WAN, pro přenos toků mezi oblastmi.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Je podpora protokolu IPv6 ve virtuální síti WAN podporovaná?
 
 Protokol IPv6 není podporován ve virtuálním centru sítě WAN a jeho branách. Pokud máte virtuální síť, která má podporu protokolu IPv6, a chcete připojit virtuální síť k virtuální síti WAN, tento scénář se momentálně nepodporuje.
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Jaká je doporučená verze rozhraní API, kterou používají skripty, které automatizují různé funkce virtuálních sítí WAN?
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Jaká je doporučená verze rozhraní API, kterou budou používat skripty, které automatizují různé funkce virtuálních sítí WAN?
 
 Vyžaduje se minimálně verze 05-01-2020 (květen 1 2020). 
 
-### <a name="any-virtual-wan-limits"></a>Všechna omezení virtuální sítě WAN?
-Omezení virtuální sítě WAN: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
+### <a name="are-there-any-virtual-wan-limits"></a>Existují nějaká omezení virtuální sítě WAN?
+
+Viz část [omezení virtuální sítě WAN](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits) na stránce omezení pro předplatné a službu.
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Jaké jsou rozdíly mezi typy virtuálních sítí WAN (Basic a Standard)?
 

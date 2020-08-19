@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166684"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606173"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -103,7 +103,7 @@ Další informace o požadavcích na publikování pro každý plán aplikace na
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 >[!NOTE]
->Po publikování nabídky se provedené úpravy v partnerském centru nezobrazí v prodejní místa, dokud tuto nabídku znovu nepublikujete. Nezapomeňte vždy znovu publikovat nabízenou nabídku po provedení změn.
+>Po publikování nabídky se v online obchodech s úpravami, které provedete v partnerském centru, nezobrazí, dokud tuto nabídku znovu nepublikujete. Nezapomeňte vždy znovu publikovat nabízenou nabídku po provedení změn.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 
@@ -188,7 +188,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
 7. Shrnutí
-8. Description
+8. Popis
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
@@ -214,7 +214,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -555,7 +555,7 @@ Chcete-li povolit testovací jednotku, zaškrtněte políčko **Povolit testovac
 Pokud chcete, aby se testovací jednotka nasadila vaším jménem, vytvořte a poskytněte samostatné jedinečné předplatné Azure (nevyžadují se pro Power BI testovací jednotky).
 
 * **ID předplatného Azure** (vyžadované pro Azure Resource Manager a Logic Apps) – zadejte ID předplatného, které vám umožní udělit přístup ke službám účtů Azure za účelem vytváření sestav a fakturace využívání prostředků. Doporučujeme zvážit [vytvoření samostatného předplatného Azure](../../billing/billing-create-subscription.md) , které se použije pro testovací jednotky, pokud ho ještě nemáte. ID vašeho předplatného Azure můžete najít tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/) a přejdete na kartu **předplatná** v nabídce na levé straně. Výběrem karty zobrazíte ID předplatného (například a83645ac-1234-5ab6-6789-1h234g764ghty).
-* **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti**a vyhledejte číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL vašeho názvu domény na adrese: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+* **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti**a vyhledejte číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL vašeho názvu domény na adrese:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Název tenanta Azure AD** (vyžadováno pro dynamickou 365) – zadejte název Azure Active Directory (AD). Pokud chcete najít tento název, přihlaste se k [Azure Portal](https://portal.azure.com/)v pravém horním rohu bude název vašeho tenanta uvedený pod názvem vašeho účtu.
 * **ID aplikace Azure AD** (požadováno) – zadejte [ID aplikace](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v nabídce vlevo na navigaci vyberte kartu Active Directory, vyberte možnost **Registrace aplikací**a vyhledejte uvedené číslo **ID aplikace** (například 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure Active Directory tajný klíč klienta aplikace** (povinné) – zadejte svůj [tajný kód klienta](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací**a pak vyberte svoji aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče**, vyberte **nový tajný klíč klienta**, zadejte popis, v části **platnost**vyberte **nikdy** a pak zvolte **Přidat**. Před ukončením této stránky nezapomeňte tuto hodnotu zkopírovat.

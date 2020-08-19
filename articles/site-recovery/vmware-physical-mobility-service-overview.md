@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131800"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604735"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -33,10 +33,11 @@ Pokud počítače, které chcete replikovat, používají antivirový software, 
 
 Nabízená instalace je nedílnou součástí úlohy, která se spouští z Azure Portal pro [Povolení replikace](vmware-azure-enable-replication.md#enable-replication). Po výběru sady virtuálních počítačů, které chcete chránit a povolit replikaci, konfigurační server vloží agenta služby mobility na servery, nainstaluje agenta a dokončí registraci agenta s konfiguračním serverem.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jsou splněné všechny [požadavky](vmware-azure-install-mobility-service.md) na nabízenou instalaci.
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
+- Od [verze 9,36](https://support.microsoft.com/help/4578241/) a vyšší, pro SUSE Linux Enterprise Server 11 SP4 zkontrolujte, že je [k dispozici nejnovější instalační program na konfiguračním serveru a procesovém serveru se škálováním na více](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) instancí.
 
 Pracovní postup nabízené instalace je popsaný v následujících částech:
 
@@ -68,7 +69,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-ui"></a>Instalace služby mobility pomocí uživatelského rozhraní
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.
@@ -96,7 +97,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Instalace služby mobility pomocí příkazového řádku
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.
@@ -129,7 +130,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `/InstallLocation`| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
@@ -140,9 +141,9 @@ Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.lo
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
-`/CSEndPoint` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
+`/CSEndPoint` | Povinný parametr. `<CSIP>` Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `/PassphraseFilePath` |  Povinné. Umístění přístupového hesla Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
 
 ### <a name="linux-machine"></a>Počítač se systémem Linux
@@ -170,7 +171,7 @@ Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfig
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `-d` | Volitelný parametr. Určuje umístění instalace služby mobility: `/usr/local/ASR` .
 `-v` | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. <br/> **VMware** pro virtuální počítače VMware nebo fyzické servery. <br/> **Azure** pro virtuální počítače Azure.
@@ -180,14 +181,14 @@ Syntaxe | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
-`-i` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+`-i` | Povinný parametr. `<CSIP>` Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `-P` |  Povinné. Úplná cesta k souboru, ve kterém se heslo ukládá Použijte libovolnou platnou složku.
 
 ## <a name="azure-virtual-machine-agent"></a>Agent virtuálního počítače Azure
 
 - **Virtuální počítače s Windows**: od verze 9.7.0.0 služby mobility se [Agent virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
-- **Virtuální počítače se systémem Linux**: [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
+- **Virtuální počítače se systémem Linux**:  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
 
 ## <a name="locate-installer-files"></a>Vyhledání instalačních souborů
 
@@ -204,13 +205,27 @@ Instalační soubor | Operační systém (pouze 64 bitů)
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> Zahrnuje aktualizace SP2 a SP3.
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+[Pro stažení a umístění do této složky ručně](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Server Ubuntu Linux 16,04 LTS
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>Stáhnout nejnovější instalační program agenta mobility pro SUSE 11 SP3 Server
+
+**K aktualizaci nebo ochraně počítačů SUSE Linux Enterprise Server 11 SP3** z [verze 9,36](https://support.microsoft.com/help/4578241/) a vyšší je potřeba:
+
+1. Zajistěte stažení nejnovějšího instalačního programu agenta mobility z webu Microsoft Download Center a umístění do úložiště nabízeného instalátoru na konfiguračním serveru a všech procesových serverech se škálováním
+2. [Stáhněte](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) instalační program agenta SUSE Linux Enterprise Server 11 SP3.
+3. Přejděte na konfigurační server, zkopírujte instalační program agenta SUSE Linux Enterprise Server 11 SP3 na následující cesty
+    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+    1.  INSTALL_DIR složky \home\svsystems\admin\web\sw
+4. Teď přejděte na související procesové servery se škálováním na více instancí & zkopírujte instalační program v obou cestách uvedených v 3 krocích.
+5. **Například**Pokud cesta instalace je C:\Program Files (x86) \Microsoft Azure Site Recovery, pak výše uvedené adresáře budou
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+    1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\admin\web\sw cesta
 
 ## <a name="next-steps"></a>Další kroky
 

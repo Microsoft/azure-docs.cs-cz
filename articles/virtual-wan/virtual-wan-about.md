@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 451e1581350bb1d38580d00ffd24c781bc30242d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507568"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604700"
 ---
-# <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
+# <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
 Azure Virtual WAN je síťová služba, která přináší více funkcí směrování, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Mezi tyto funkce patří připojení větví (prostřednictvím automatizace připojení z virtuálních zařízení WAN, jako je SD-WAN nebo VPN CPE). připojení VPN typu Site-to-site, VPN vzdáleného uživatele (Point-to-site), konektivita privátního uživatele (ExpressRoute), připojení mezi cloudem (přenosné připojení k virtuálním sítím), připojení VPN ExpressRoute, směrování, Azure Firewall a šifrování pro privátní připojení. Nemusíte mít všechny tyto případy použití, abyste mohli začít používat virtuální síť WAN. Můžete jednoduše začít jenom s jedním případem použití a pak upravit síť tak, jak se vyvíjí.
 
@@ -102,11 +102,11 @@ Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Tranzitní připojení mezi VPN a ExpressRoute
 
-Virtuální síť WAN umožňuje přenosové připojení mezi VPN a ExpressRoute. To znamená, že weby připojené k síti VPN nebo vzdálení uživatelé můžou komunikovat s ExpressRoute lokalitami. K dispozici je také implicitní předpoklad, že je povolen **příznak větvení na větve** . Tento příznak může být umístěný v nastavení Azure Virtual WAN v Azure Portal. Veškerou správu tras poskytuje směrovač virtuálního rozbočovače, který taky umožňuje přenosové připojení mezi virtuálními sítěmi.
+Virtuální síť WAN umožňuje přenosové připojení mezi VPN a ExpressRoute. To znamená, že weby připojené k síti VPN nebo vzdálení uživatelé můžou komunikovat s ExpressRoute lokalitami. Implicitně se předpokládá, že **příznak větvení na větev** je povolený a že je v připojeních VPN a ExpressRoute podporovaná podpora protokolu BGP. Tento příznak může být umístěný v nastavení Azure Virtual WAN v Azure Portal. Veškerou správu tras poskytuje směrovač virtuálního rozbočovače, který taky umožňuje přenosové připojení mezi virtuálními sítěmi.
 
 ### <a name="custom-routing"></a><a name="routing"></a>Vlastní směrování
 
-Virtual WAN nabízí pokročilá vylepšení směrování. Možnost nastavení vlastních směrovacích tabulek, optimalizaci směrování virtuální sítě pomocí přiřazování a šíření tras, logických skupin směrování tabulek s popisky a zjednodušením různých scénářů směrování síťových virtuálních zařízení nebo sdílených služeb.
+Virtual WAN nabízí pokročilá vylepšení směrování. Možnost nastavení vlastních směrovacích tabulek, optimalizaci směrování virtuální sítě pomocí přiřazování a šíření tras, logických skupin směrování tabulek s popisky a zjednodušením scénářů směrování síťových virtuálních zařízení (síťové virtuální zařízení) nebo sdílených služeb.
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Globální partnerský vztah virtuální sítě
 
@@ -120,17 +120,21 @@ Azure Virtual WAN poskytuje možnost šifrovat ExpressRoute provoz. Technika pos
 
 Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) .
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Směrovací tabulky v základních a standardních virtuálních sítích WAN
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>Směrovací tabulky pro virtuální sítě WAN úrovně Basic a Standard
 
 Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující trasy ve směrování centra a chcete používat nové funkce, vezměte v úvahu následující skutečnosti:
 
-* **Standardní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete využívat nové funkce směrovací tabulky, počkejte prosím, než se dokončí 17 v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
+* **Standardní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete využívat nové funkce směrovací tabulky, počkejte prosím, než se dokončí zavedení v Azure, do dne 17 do týdne. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
 
-* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí 17 v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí zavedení v Azure, do týdne od srpna 17. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>Zobrazit nejnovější aktualizace funkcí
+
+Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější aktualizace funkcí Virtual WAN na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) .
 
 ## <a name="next-steps"></a>Další kroky
 

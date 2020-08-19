@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030744"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604627"
 ---
-# <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikace Power BI
+# <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikací Power BI
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku aplikace Power BI do Microsoft [AppSource](https://appsource.microsoft.com/).
 
@@ -29,7 +29,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
+> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v online obchodech po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
 > [!IMPORTANT]
 > Pokud se **aplikace Power BI služby** nezobrazí nebo není povolená, váš účet nemá oprávnění k vytvoření tohoto typu nabídky. Zkontrolujte prosím, že jste splnili všechny [požadavky](create-power-bi-app-overview.md) na tento typ nabídky, včetně registrace pro vývojářský účet.
@@ -142,11 +142,11 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Podmínky použití
 7. Zásady ochrany osobních údajů
 8. Název nabídky
-9. Souhrn
+9. Shrnutí
 10. Popis
 11. Snímky obrazovky a videa
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 

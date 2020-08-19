@@ -1,27 +1,25 @@
 ---
-title: Jednotky a propustnost žádostí v Azure Cosmos DB
+title: Jednotky žádostí jako propustnost a výkonnostní měna v Azure Cosmos DB
 description: Přečtěte si, jak zadat a odhadnout požadavky na jednotky požadavků v Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2020
-ms.openlocfilehash: f1f203d17de9fb0fc9fe8bb0f6de80fe2b93ba8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/19/2020
+ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327799"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604833"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 
-V případě služby Azure Cosmos DB platíte po hodinách za zřízenou propustnost a spotřebované úložiště. Propustnost je potřeba zřídit, aby se zajistilo, že databáze Azure Cosmos bude mít vždy k dispozici dostatek systémových prostředků. K uspokojení nebo překročení [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)potřebujete dostatek prostředků.
-
 Azure Cosmos DB podporuje mnoho rozhraní API, například SQL, MongoDB, Cassandra, Gremlin a Table. Každé rozhraní API má svou vlastní sadu databázových operací. Tyto operace jsou v rozsahu od jednoduchých čtení a zápisů do složitých dotazů. Každá databázová operace spotřebovává systémové prostředky na základě složitosti operace.
 
-Náklady na všechny databázové operace jsou normalizovány Azure Cosmos DB a jsou vyjádřeny *jednotkami žádostí* (nebo ru, pro krátké). Jednotky RU za sekundu si můžete představit jako měnu pro propustnost. Jednotky RU za sekundu představují měnu založenou na rychlosti. Abstrahuje systémové prostředky, jako jsou procesor, IOPS nebo paměť, potřebné k provedení databázových operací podporovaných službou Azure Cosmos DB. Pro uložení každého 1 GB dat se vyžaduje minimálně 10 RU/s.
+Náklady na všechny databázové operace jsou normalizovány Azure Cosmos DB a jsou vyjádřeny *jednotkami žádostí* (nebo ru, pro krátké). Ru si můžete představit jako měnu výkonu pro abstrakci systémových prostředků, jako jsou například CPU, IOPS a paměť, které jsou potřeba k provádění databázových operací, které Azure Cosmos DB podporuje.
 
-Náklady na čtení bodu pro položku 1 KB jsou 1 jednotka požadavku (nebo 1 RU). Podobně jsou náklady v RU přiřazené ke všem ostatním databázovým operacím. Bez ohledu na to, jaké rozhraní API používáte k interakci s kontejnerem Azure Cosmos, se náklady vždy měří v jednotkách RU. Bez ohledu na to, jestli je databázová operace zápis, čtení z bodu nebo dotazování, se náklady vždycky měří v ru.
+Náklady na čtení bodu (tj. načtení jedné položky podle jejího ID a hodnoty klíče oddílu) pro položku 1 KB je 1 jednotka žádosti (nebo 1 RU). Podobně jsou náklady v RU přiřazené ke všem ostatním databázovým operacím. Bez ohledu na to, jaké rozhraní API používáte k interakci s kontejnerem Azure Cosmos, se náklady vždy měří v jednotkách RU. Bez ohledu na to, jestli je databázová operace zápis, čtení z bodu nebo dotazování, se náklady vždycky měří v ru.
 
 Následující obrázek znázorňuje základní myšlenku jednotek RU:
 
@@ -29,16 +27,16 @@ Následující obrázek znázorňuje základní myšlenku jednotek RU:
 
 Aby bylo možné spravovat a plánovat kapacitu, Azure Cosmos DB zajišťuje, že je počet RU pro konkrétní databázovou operaci nad danou datovou sadou deterministický. Pokud chcete sledovat počet RU spotřebovaných jakoukoli databázovou operací, můžete prozkoumat hlavičku odpovědi. Když rozumíte [faktorům, které mají vliv na poplatky za ru](request-units.md#request-unit-considerations) a požadavky na propustnost vaší aplikace, můžete efektivně spouštět náklady na aplikace.
 
-Počet RU pro aplikaci se zřizuje po sekundách v přírůstcích pro 100 RU za sekundu. Pokud chcete škálovat zřízenou propustnost pro vaši aplikaci, můžete počet RU kdykoli zvýšit nebo snížit. Škálovat můžete v přírůstcích po 100 RU. Změny můžete naprogramovat nebo můžete použít Azure Portal. Účtování probíhá po hodinách.
+Typ účtu Azure Cosmos, který používáte, určuje způsob, jakým se účtují spotřebované Ruy:
 
-Propustnost můžete zřídit ve dvou různých rozlišeních:
-
-* **Kontejnery**: Další informace najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
-* **Databáze**: Další informace najdete v tématu [zřízení propustnosti databáze Azure Cosmos](how-to-provision-database-throughput.md).
+- V režimu [zřízené propustnosti](set-throughput.md) zřizujete počet ru pro vaši aplikaci za sekundu v přírůstcích po 100 ru za sekundu. Pro škálování zřízené propustnosti aplikace můžete zvýšit nebo snížit počet ru v jakémkoli okamžiku v přírůstcích nebo snižování 100 ru. Změny můžete naprogramovat nebo můžete použít Azure Portal. Poplatky se účtují po hodinách po dobu ru za sekundu, kterou jste zřídili. Propustnost můžete zřídit ve dvou různých rozlišeních:
+  - **Kontejnery**: Další informace najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+  - **Databáze**: Další informace najdete v tématu [zřízení propustnosti databáze Azure Cosmos](how-to-provision-database-throughput.md).
+- V režimu bez [serveru](serverless.md) nemusíte při vytváření prostředků v účtu Azure Cosmos zřizovat žádné propustnosti. Na konci fakturačního období se vám bude účtovat množství jednotek požadavků, které vaše databázové operace spotřebují.
 
 ## <a name="request-unit-considerations"></a>Co ovlivňuje jednotky žádosti
 
-Při plánování počtu jednotek žádosti za sekundu, které budete zřizovat, vezměte v úvahu tyto faktory:
+Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následující faktory:
 
 * **Velikost položky**: Se vzrůstající velikostí položky se také zvyšuje počet jednotek žádosti spotřebovaných pro čtení a zápis.
 
@@ -50,7 +48,7 @@ Při plánování počtu jednotek žádosti za sekundu, které budete zřizovat,
 
 * **Konzistence dat**: silná a ohraničená úroveň konzistence odolná proti chybám spotřebovává během operací čtení ve srovnání s jinými uvolněnými úrovněmi konzistence přibližně dvojnásobek více ru.
 
-* **Typ čtení**: bod čte náklady významně méně než dotazy.
+* **Typ čtení**: Point čte náklady významně méně ru než dotazy.
 
 * **Struktura dotazů**: Složitost dotazu má vliv na počet jednotek žádosti spotřebovaných operací. Mezi faktory ovlivňující náklady na operace dotazování patří: 
     
@@ -69,6 +67,7 @@ Při plánování počtu jednotek žádosti za sekundu, které budete zřizovat,
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
+* Přečtěte si další informace o [Azure Cosmos DB bez serveru](serverless.md).
 * Přečtěte si další informace o [logických oddílech](partition-data.md).
 * Přečtěte si další informace o [globálním škálování zřízené propustnosti](scaling-throughput.md).
 * Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).

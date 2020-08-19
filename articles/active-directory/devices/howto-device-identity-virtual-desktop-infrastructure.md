@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903149"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604395"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -33,7 +33,12 @@ Existují dva hlavní typy virtuálních ploch:
 
 Trvalé verze používají pro každého uživatele nebo fond uživatelů jedinečnou image plochy. Tyto jedinečné plochy je možné přizpůsobit a uložit pro budoucí použití. 
 
-Netrvalé verze používají kolekci ploch, ke kterým mají uživatelé přístup podle potřeby. Po odhlášení uživatele se tyto netrvalé plochy vrátí do původního stavu.
+Netrvalé verze používají kolekci ploch, ke kterým mají uživatelé přístup podle potřeby. Tyto netrvalé pracovní plochy se vrátí do původního stavu, v případě Windows aktuální<sup>1</sup> k tomu dojde, když virtuální počítač projde procesem obnovení vypnutí/RESTARTOVÁNÍ/OS a v případě Windows nižší úrovně<sup>2</sup> to nastane, když se uživatel odhlásí.
+
+Došlo ke zvýšení netrvalého nasazení VDI, protože vzdálená práce bude i nadále novou normou. Když zákazníci nasadí netrvalou infrastrukturu virtuálních počítačů, je důležité zajistit, aby bylo možné spravovat změny zařízení, které by mohly způsobovat kvůli časté registraci zařízení, aniž by museli mít správnou strategii pro správu životního cyklu zařízení.
+
+> [!IMPORTANT]
+> Nepovedlo se spravovat změny zařízení. může vést k nárůstu využití kvóty vašeho tenanta a potenciálního rizika přerušení služby, Pokud vyčerpáte kvótu tenanta. Při nasazování netrvalých prostředí VDI byste měli postupovat podle pokynů uvedených níže, abyste se vyhnuli této situaci.
 
 Tento článek pokryje správcům Microsoftu informace o podpoře identity zařízení a VDI. Další informace o identitě zařízení najdete v článku [co je identita zařízení](overview.md).
 
@@ -43,28 +48,30 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
-|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-|   | Spravované | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-| Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | Neuvedeno |
-|   |   |   | Bez trvalého přihlášení | Neuvedeno |
-|   | Spravované | Aktuální Windows | Trvalý | Neuvedeno |
-|   |   |   | Bez trvalého přihlášení | Neuvedeno |
+| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ano<sup>5</sup> |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
+|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+|   | Spravované | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+| Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
-\***Federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
+<sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 a Windows Server 2019.
 
-\*\***Spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného s použitím [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) s [bezproblémovém jednotným přihlašováním](../hybrid/how-to-connect-sso.md).
+<sup>2</sup> zařízení **nižší úrovně Windows** reprezentují Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Informace o podpoře na Windows serveru 2008 R2 najdete v článku [Příprava pro Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
-\*\*\***Aktuální zařízení Windows** jsou Windows 10, windows Server 2016 a windows server 2019.
+<sup>3</sup> **federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
 
-\*\*\*\*Zařízení **nižší úrovně Windows** reprezentují Windows 7, Windows 8.1, windows Server 2008 R2, windows Server 2012 a windows Server 2012 R2. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Informace o podpoře na Windows serveru 2008 R2 najdete v článku [Příprava pro Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
+<sup>4</sup> **spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného s použitím [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md).
+
+<sup>5</sup> **Podpora nestálosti systému Windows** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
+
+<sup>6</sup> **Podpora nestálosti Windows na nižší úrovni** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
+
 
 ## <a name="microsofts-guidance"></a>Doprovodné materiály Microsoftu
 
@@ -73,17 +80,19 @@ Správci by měli na základě infrastruktury identit odkazovat na následujíc�
 - [Konfigurace služby Hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
 - [Konfigurace hybridního Azure Active Directory JOIN pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
 
-Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud pro instalaci používáte image starší než Windows 10 1809, ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
+Při nasazení trvalé infrastruktury virtuálních počítačů (VDI) Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých hybridních zařízení připojených k Azure AD, která byla zaregistrovaná z vaší netrvalé platformy VDI, což má za následek vyšší tlak na vaši kvótu tenanta a riziko přerušení služby kvůli vyřazení kvóty tenanta.
 
-Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
-
-V současných verzích Windows není podporováno hybridní připojení k Azure AD pro netrvalou infrastrukturu virtuálních počítačů. Při nasazování netrvalé infrastruktury virtuálních počítačů (VDI) pro Windows na nižší úrovni by správci IT měli věnovat velkou pozornost správě zastaralých zařízení v Azure AD. Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých zařízení připojených k hybridní službě Azure AD, která byla zaregistrována z vaší netrvalé platformy VDI.
-
-- Vytvořte a použijte předponu pro zobrazované jméno počítače, který označuje plochu jako na bázi VDI.
-- Jako součást skriptu pro odhlášení implementujte následující příkaz. Tento příkaz aktivuje nejlepší úsilí ve službě Azure AD za účelem odstranění tohoto zařízení.
-   - Zařízení Windows nižší úrovně – autoworkplace.exe/Leave
+- Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud pro instalaci používáte image starší než Windows 10 1809, ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
+- Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
+- Vytvořte a použijte předponu pro zobrazované jméno (např. NPVDI-) počítače, který označuje plochu jako netrvalou bázi VDI.
+- Pro Windows nižší úrovně:
+   - Implementuje příkaz **autoworkplacejoin/Leave** jako součást skriptu pro odhlášení. Tento příkaz by měl být aktivován v kontextu uživatele a měl by být proveden před úplným odhlášením uživatele a v případě, že je stále k dispozici připojení k síti.
+- Pro Windows Current ve federovaném prostředí (např. AD FS):
+   - Implementujte **dsregcmd/JOIN** jako součást sekvence spouštění virtuálního počítače.
+   - V rámci procesu vypnutí nebo restartování virtuálního počítače **nespouštějte dsregcmd** /Leave.
 - Definujte a implementujte proces pro [správu zastaralých zařízení](manage-stale-devices.md).
-   - Jakmile budete mít strategii, jak identifikovat netrvalá hybridní zařízení připojená k Azure AD, můžete být více agresivní na vyčištění těchto zařízení, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.
+   - Jakmile budete mít strategii pro identifikaci netrvalých hybridních zařízení připojených k Azure AD (například pomocí předpony zobrazovaného názvu počítače), měli byste být na vyčištění těchto zařízení spolehlivější, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.
+   - Pro netrvalá nasazení VDI ve Windows aktuální a nižší úrovni byste měli odstranit zařízení, která mají **ApproximateLastLogonTimestamp** starší než 15 dní.
  
 ## <a name="next-steps"></a>Další kroky
 

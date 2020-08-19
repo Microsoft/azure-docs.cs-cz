@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032590"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606165"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -38,7 +38,7 @@ Výhody publikování na komerčním webu Marketplace:
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
+>Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v online obchodech po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
 ## <a name="new-offer"></a>Nová nabídka
 
@@ -140,7 +140,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Oblasti řešení
 4. Obory
 5. Název nabídky
-6. Souhrn
+6. Shrnutí
 7. Popis
 8. Snímky obrazovky a videa
 
@@ -155,12 +155,12 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Produkty
 4. Obory
 5. Název nabídky
-6. Souhrn
+6. Shrnutí
 7. Popis
 8. Snímky obrazovky a videa
 9. Dokumenty
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 

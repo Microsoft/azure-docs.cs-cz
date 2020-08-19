@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 757f729caa7ea8a038a29f8e0a56465848b774ad
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035106"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604410"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
@@ -50,8 +50,8 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 | 1 | Název nabídky |<ul><li>Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování se název nedá změnit.</li><li>Popisuje nabídku řešení.</li><li>Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
 | 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma*, *bezplatná zkušební verze*nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
 | 3 | Testovací jednotka | Vyberte *Ano* nebo *Ne*. | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit pro ověření koncepce, posouzení nebo přehled.</li></ol> |
-| 4 | Prezentace podrobnosti: Souhrn nabídky | Zobrazí se na stránce vyhledávání vaší aplikace a může mít maximálně 100 znaků. | |
-| 5 | Prezentace podrobnosti: odvětví | Obory (max. 2): Vyberte odvětví, pro které je vaše aplikace nejlépe zarovnaná a platí pro. | |
+| 4 | Podrobnosti o online obchodu: Souhrn nabídky | Zobrazí se na stránce vyhledávání vaší aplikace a může mít maximálně 100 znaků. | |
+| 5 | Podrobnosti o online obchodu: odvětví | Obory (max. 2): Vyberte odvětví, pro které je vaše aplikace nejlépe zarovnaná a platí pro. | |
 | 6 | Popis nabídky | <ul><li>K disřádku je možné použít jednoduché HTML, včetně značek,,,, \<p> \<em> \<ul> \<li> \<ol> a. Max. 3000 znaků.</li><li>Obsahuje 2-3 odstavců.</li><li>Nabídku řešení je snadné chápat na první pohled.</li><li>Popis je komplexní a zachycuje cílovou cílovou skupinu, typ uživatele a důvody, proč je to cenné (hodnota jejich umístění).</li><li>Je v podobě mluveného komentáře s krátkými větami, které je snadné pochopit. | <ul><li>Cílový obor je popsaný (Pokud je relevantní).</li><li>Dobré formátování stylu s každým nadpisem odstavce obsahujícím jednu větu nebo frázi, která shrnuje obsah, který následuje, a pomocí odrážek, pokud je to vhodné, pro zdůraznění klíčových výhod. Cílem je, aby čtenář pochopil nabídku na první pohled ve snadno čitelném formátu a nemusel číst odstavce.</li><li>Mezi jednotlivými odstavci je mezera. Přečte se jako brožura na automobilu. To znamená, že je komplexní a popisuje nabídku jednoduše a bez technických žargonu. | 
 | 7 | Marketingové artefakty | Loga se zobrazují správně. | <ul><li>Log: malá (48 x 48 pixelů), střední (90 × 90 pixelů) a velká (mezi 216 x 216 a 350 x 350 pixelů) jsou povinná.</li><li>Snímek obrazovky (max. 5): vyžaduje. Obrázek PNG s rozlišením 1280 × 720 pixelů |
 | 8 | Kategorie a odvětví | <ul><li>Kategorie odpovídají možnostem nabídky řešení.</li><li>V automaticky otevíraném okně vyberte alespoň jednu položku.</li><li>Nevybírejte kategorie, které řešení nevyhovuje.</li><li>Optimální obor nebo všechny vybrané obory (pokud nejsou optimálními průmyslovými odvětvími). | Max. Pokud je to možné, vyberte 3 kategorie. |

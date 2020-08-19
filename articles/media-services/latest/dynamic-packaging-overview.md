@@ -2,7 +2,7 @@
 title: Dynamické balení v Azure Media Services V3
 titleSuffix: Azure Media Services
 description: Tento článek obsahuje přehled dynamického balení v Azure Media Services.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/13/2020
-ms.author: juliako
-ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224063"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604580"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -80,7 +80,7 @@ Váš klient streamování může určit následující formáty Smooth Streamin
 
 Následující kroky ukazují běžný pracovní postup streamování Media Services, kde se používá dynamické balení spolu se standardním kodérem v Azure Media Services.
 
-1. [Nahrajte vstupní soubor](manage-asset-concept.md) , jako je MP4, QuickTime nebo MOV, nebo jiný podporovaný formát souboru. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
+1. [Nahrajte vstupní soubor](job-input-from-http-how-to.md) , jako je MP4, QuickTime nebo MOV, nebo jiný podporovaný formát souboru. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
 1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí.
 
     Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).

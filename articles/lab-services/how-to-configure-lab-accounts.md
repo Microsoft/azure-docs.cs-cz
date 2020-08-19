@@ -3,12 +3,12 @@ title: Konfigurace automatického vypnutí virtuálních počítačů v Azure La
 description: Tento článek popisuje, jak nakonfigurovat automatické vypínání virtuálních počítačů v účtu testovacího prostředí.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589791"
+ms.locfileid: "88603888"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Konfigurace automatického vypnutí virtuálních počítačů pro účet testovacího prostředí
 
@@ -35,4 +35,4 @@ Přečtěte si další podrobnosti o funkcích automatického vypnutí v části
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak vlastník testovacího prostředí může nakonfigurovat nebo přepsat toto nastavení na úrovni testovacího prostředí, najdete v tématu [Povolení automatického vypnutí virtuálních počítačů při odpojení](how-to-enable-shutdown-disconnect.md) .
+Další informace o tom, jak vlastník testovacího prostředí může nakonfigurovat nebo přepsat toto nastavení na úrovni testovacího prostředí, najdete v tématu [Konfigurace automatického vypnutí virtuálních počítačů pro testovací prostředí](how-to-enable-shutdown-disconnect.md) .

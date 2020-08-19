@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166718"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604745"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nabídky SaaS na komerčním webu Marketplace
 
@@ -30,7 +30,7 @@ Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerč
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-saas.png)
 
 > [!NOTE]
-> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
+> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v online obchodech po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
 ## <a name="new-offer"></a>Nová nabídka
 
@@ -134,7 +134,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Shrnutí
-9. Description
+9. Popis
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -185,7 +185,7 @@ Vaše nabídka bude publikována do AppSource nebo Azure Marketplace v závislos
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
 - Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
 
-V [nabídce Doporučené postupy](../gtm-offer-listing-best-practices.md)najdete úplný seznam kategorií a podkategorií, které platí pro jednotlivé prezentace.
+Seznamte se s [osvědčenými postupy](../gtm-offer-listing-best-practices.md)pro každý online obchod v nabídce, kde najdete úplný seznam kategorií a podkategorií platných pro každý online obchod.
 
 ### <a name="industries"></a>Obory
 
@@ -257,7 +257,7 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Hledaná klíčová slova** – zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné) – Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 Toto pole je vyžadováno.
 
@@ -269,11 +269,11 @@ Toto pole je vyžadováno.
 
 - **Zásady ochrany osobních údajů** (povinné) – odkaz na zásady ochrany osobních údajů vaší organizace. Zodpovídáte za to, že vaše aplikace vyhovuje předpisům a zákonům o ochraně osobních údajů a poskytuje platné zásady ochrany osobních údajů.
 - **Marketingové materiály programu CSP** (volitelné) – Poskytněte odkaz na marketingové materiály, pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](../cloud-solution-providers.md) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
-- **Užitečné odkazy** (volitelné) – volitelné doplňkové online dokumenty týkající se vaší aplikace nebo související služby uvedené zadáním **názvu** a **adresy URL**. Přidejte další užitečné odkazy kliknutím na **+ Přidat adresu URL**.
+- **Užitečné odkazy** (volitelné) – volitelné doplňkové online dokumenty týkající se vaší aplikace nebo související služby uvedené zadáním **názvu**  a  **adresy URL**. Přidejte další užitečné odkazy kliknutím na  **+ Přidat adresu URL**.
 
 #### <a name="contact-information"></a>Kontaktní informace
 
-- **Kontakty** – pro každého kontaktního zákazníka zadejte **jméno**zaměstnance, **telefonní číslo**a **e-mailovou** adresu ( *nebudou* veřejně zobrazeni). Pro skupinu **kontaktů podpory** se vyžaduje **Adresa URL podpory** (ta *se* zobrazí veřejně).
+- **Kontakty** – pro každého kontaktního zákazníka zadejte  **jméno**zaměstnance,  **telefonní číslo**a **e-mailovou** adresu ( *nebudou* veřejně zobrazeni). Pro skupinu **kontaktů podpory** se vyžaduje **Adresa URL podpory** (ta *se* zobrazí veřejně).
 
   - **Kontakt podpory** (povinné) – pro obecné dotazy týkající se podpory.
   - Technický **kontakt** (povinný) – pro technické dotazy.
@@ -282,14 +282,14 @@ Toto pole je vyžadováno.
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné) – přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF aspoň jeden a až tři dokumenty na nabídku.
-- **Obrázky** – nahrajte obrázky loga ve formátu PNG:
+- **Obrázky**  – nahrajte obrázky loga ve formátu PNG:
 
   - **Malý** (48 x 48 pixelů, požadováno)
   - **Střední** (90 × 90 pixelů, požadováno)
   - **Velký** (216 x 216 pixelů, požadováno)
   - **Roztažitelné** (255 x 115 pixelů) (volitelné)
 
-   Tyto tři velikosti loga se používají na různých místech v prodejní místa:
+   Tyto tři velikosti loga se používají na různých místech v online obchodech:
 
    -   Malé logo (48 x 48 pixelů) se zobrazí ve výsledcích hledání Azure Marketplace a na stránce Microsoft AppSource hlavní stránka a výsledky hledání. 
    -   Při vytváření nového prostředku v Microsoft Azure se zobrazí logo střední (90 x 90 pixelů).

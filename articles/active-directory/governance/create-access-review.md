@@ -11,24 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056186"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605080"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
 Přístup k skupinám a aplikacím pro zaměstnance a hosty se v průběhu času mění. Aby se snížilo riziko spojené s nezastaralým přiřazením přístupu, můžou správci pomocí služby Azure Active Directory (Azure AD) vytvářet kontroly přístupu pro členy skupiny nebo přístup k aplikacím. Pokud potřebujete rutinní kontrolu přístupu, můžete také vytvořit opakované recenze přístupu. Další informace o těchto scénářích najdete v tématech [Správa přístupu uživatelů](manage-user-access-with-access-reviews.md) a [Správa přístupu hostů](manage-guest-access-with-access-reviews.md).
 
+Můžete se podívat na rychlé video s přehledem o povolení kontrol přístupu:
+
+>[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
+
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
@@ -55,7 +59,12 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
 1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně**, **částečně ročně**nebo **ročně**. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
 
-1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Série může končit třemi způsoby: průběžně spouští recenze na neomezenou dobu, až do konkrétního data nebo po dokončení definovaného počtu výskytů. Vy, jiný správce nebo jiný globální správce může série po vytvoření zastavit změnou data v **Nastavení**, takže skončí k tomuto datu.
+1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Řada může končit třemi způsoby: 
+    1. Průběžně spouští recenze na neomezenou dobu.
+    1. Až do konkrétního data,
+    1. Až po dokončení definovaného počtu výskytů. 
+  
+    Vy, jiný správce nebo jiný globální správce může série po vytvoření zastavit změnou data v **Nastavení**, takže skončí k tomuto datu.
 
 1. V části **Uživatelé** Určete uživatele, pro které platí tato kontrola přístupu. Kontroly přístupu mohou být pro členy skupiny nebo pro uživatele, kteří byli přiřazeni k aplikaci. Můžete dále určit rozsah kontroly přístupu a zkontrolovat pouze uživatele typu Host, kteří jsou členy (nebo jsou přiřazeni k aplikaci), a ne kontrolovat všechny uživatele, kteří jsou členy nebo kteří mají k aplikaci přístup.
 
@@ -83,9 +92,9 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
     ![Vytvoření kontroly přístupu – programy](./media/create-access-review/programs.png)
 
-    Můžete zjednodušit sledování a shromažďování kontrol přístupu pro různé účely jejich uspořádáním do programů. Každou kontrolu přístupu můžete propojit s programem. Po přípravě sestav pro auditora se můžete soustředit na kontroly přístupu v oboru pro konkrétní iniciativu. Programy a výsledky kontroly přístupu jsou viditelné uživatelům v roli globální správce, správce uživatele, správce zabezpečení nebo čtenáře zabezpečení.
+    Můžete zjednodušit shromažďování a sledování kontrol přístupu jejich uspořádáním do programů. Každou kontrolu přístupu můžete propojit s programem. Po přípravě sestav pro auditora se můžete soustředit na kontroly přístupu v oboru pro konkrétní iniciativu. Programy a výsledky kontroly přístupu jsou viditelné uživatelům v roli globální správce, správce uživatele, správce zabezpečení nebo čtenáře zabezpečení.
 
-    Chcete-li zobrazit seznam programů, přejděte na stránku kontroly přístupu a vyberte **programy**. Pokud se nacházíte v roli globálního správce nebo Správce uživatelů, můžete vytvořit další programy. Můžete například zvolit, aby měl jeden program pro každou iniciativu dodržování předpisů nebo obchodní cíl. Pokud už program nepotřebujete a k němu nejsou připojené žádné ovládací prvky, můžete ho odstranit.
+    Chcete-li zobrazit seznam programů, přejděte na stránku kontroly přístupu a vyberte **programy**. Pokud se nacházíte v roli globálního správce nebo Správce uživatelů, můžete vytvořit další programy. Můžete například zvolit, aby měl jeden program pro každou iniciativu dodržování předpisů nebo obchodní cíl. Když už nepotřebujete nějaký program a k němu nejsou připojené žádné ovládací prvky, můžete ho odstranit.
 
 ### <a name="upon-completion-settings"></a>Nastavení po dokončení
 
@@ -93,7 +102,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
     ![Vytvoření kontroly přístupu s nastavením při dokončování](./media/create-access-review/upon-completion-settings.png)
 
-1. Pokud chcete automaticky odebrat přístup pro uživatele, kterým bylo odepřeno, nastavte **automatické použití výsledků na prostředek** , aby **bylo možné povolit**. Pokud chcete výsledky použít ručně po dokončení kontroly, nastavte přepínač na **Zakázat**.
+1. Pokud chcete automaticky odebrat přístup pro zamítnuté uživatele, nastavte **automatické použití výsledků na prostředek** , aby **bylo možné povolit**. Pokud chcete výsledky použít ručně po dokončení kontroly, nastavte přepínač na **Zakázat**.
 
 1. Seznam **by měl kontrolor bez odpovědi** použít k určení toho, co se stane pro uživatele, kteří kontrolor v rámci období revize nekontroloval. Toto nastavení nemá vliv na uživatele, kteří byli zkontrolováni ručně. Pokud je posledním rozhodnutím kontrolora zamítnutí, bude přístup uživatele odebrán.
 
@@ -119,7 +128,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
     >[!NOTE]
     > Ve výchozím nastavení Azure AD automaticky pošle připomenutí kontrolorům, kteří ještě neodpověděli, do koncového data.
 
-1. Tisk Obsah e-mailu odeslaného revidujícím se automaticky generuje na základě podrobností o kontrole, jako je například název revize, název prostředku, datum splatnosti atd. Pokud potřebujete způsob, jak sdělit další informace, jako jsou například další pokyny nebo kontaktní údaje, můžete tyto podrobnosti zadat v dalším obsahu pro e-mail kontrolora, který bude zahrnut v e-mailech pozvánky a připomenutí odeslaných přiřazeným kontrolorům. Zvýrazněná část je místo, kde se tyto informace zobrazí.
+1. Tisk Obsah e-mailu odeslaného revidujícím se automaticky vygeneruje na základě podrobností o kontrole, jako je například název revize, název prostředku, datum splatnosti atd. Pokud potřebujete způsob, jak sdělit další informace, jako jsou například další pokyny nebo kontaktní údaje, můžete tyto podrobnosti zadat v **dalším obsahu pro e-mail kontrolora** , který bude zahrnut v e-mailech pozvánky a připomenutí odeslaných přiřazeným kontrolorům. Zvýrazněná část je místo, kde se tyto informace zobrazí.
 
     ![Kontrola přístupu uživatelů ke skupině](./media/create-access-review/review-users-access-group.png)
 
@@ -142,8 +151,8 @@ Pokud jste přidělili hosty jako kontroloři a nepřijali pozvánku, neobdrží
 |Spouštění | Probíhá spuštění kontroly. Pokud jsou povolená e-mailová oznámení, posílá recenzentům e-maily. |
 |InProgress | Kontrola byla spuštěna. Pokud se e-mailová oznámení povolí recenzentům, pošlou jim e-mail. Recenzenti mohou odesílat rozhodnutí do data splatnosti. |
 |Absolv | Kontrola je dokončena a e-maily jsou odesílány vlastníkovi revize. |
-|Autorevize | Revize je ve fázi kontroly systému. Systém zaznamenává rozhodnutí pro uživatele, kteří nebyli prověřeni na základě doporučení nebo předem nakonfigurovaných rozhodnutí. |
-|Přezkoumat | Systém zaznamenal rozhodnutí pro všechny uživatele, kteří nebyli zkontrolováni. Kontrola je připravena pokračovat v **použití** , pokud je povoleno automatické použití. |
+|Automatické přezkoumání | Revize je ve fázi kontroly systému. Systém zaznamenává rozhodnutí pro uživatele, kteří nebyli prověřeni na základě doporučení nebo předem nakonfigurovaných rozhodnutí. |
+|Automaticky zkontrolované | Systém zaznamenal rozhodnutí pro všechny uživatele, kteří nebyli zkontrolováni. Kontrola je připravena pokračovat v **použití** , pokud je povoleno automatické použití. |
 |Použije | Pro uživatele, kteří se schválili, nebude přístup nijak změněn. |
 |Použito | Zamítnutí uživatelé (pokud existují) byly odebrány z prostředku nebo adresáře. |
 
