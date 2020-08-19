@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: a23623112b44edc0bd32f0382ed382193d999394
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563479"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243662"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 

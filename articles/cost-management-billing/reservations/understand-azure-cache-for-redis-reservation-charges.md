@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529615"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213275"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Jak se uplatňuje sleva za rezervaci ve službě Azure Cache for Redis
 
-Když si koupíte rezervovanou kapacitu služby Azure Cache for Redis, na instance mezipaměti, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá jenom náklady na výpočetní prostředky Azure Cache for Redis. Poplatky za úložiště a sítě se vám budou účtovat za použití normálních sazeb. Rezervovaná kapacita je dostupná jenom pro mezipaměti [úrovně Premium](/azure/azure-cache-for-redis/cache-premium-tier-intro).
+Když si koupíte rezervovanou kapacitu služby Azure Cache for Redis, na instance mezipaměti, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá jenom náklady na výpočetní prostředky Azure Cache for Redis. Poplatky za úložiště a sítě se vám budou účtovat za použití normálních sazeb. Rezervovaná kapacita je dostupná jenom pro mezipaměti [úrovně Premium](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis).
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
