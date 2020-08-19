@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505801"
+ms.locfileid: "88525917"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505801"
 
 * **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard**. AriaNeural může při čtení zpráv newscaster zvuk, jako je. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
 
-* **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení**. Po nahrání dat prohlíží schopnost kontroly dat různé aspekty zvukového záznamu a přepisu a automaticky opravuje nebo filtruje data, aby se zlepšila kvalita vyškolené hlasového modelu. To pokrývá objem zvuku, hladinu hluku, přesnosti výslovnosti řeči, zarovnání řeči s normalizovaným textem, tichá zvuk, kromě formátu zvuku a skriptu. 
+* **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení**. Když nahráváte data, systém bude kontrolovat různé aspekty zvukových a přepisových dat a automaticky opravovat nebo filtrovat problémy pro zlepšení kvality hlasového modelu. To zahrnuje i objem zvuku, hladinu hluku, přesnost výslovnosti řeči, zarovnání řeči s normalizovaným textem, tiché ve zvukovém prostředí a také formát zvuku a skriptu. 
 
 * **Vytvoření zvukového obsahu: sada nových funkcí pro zajištění výkonnějšího ladění hlasu a možností správy zvuku**.
 
     * Výslovnost: funkce optimalizace výslovnosti se aktualizuje na nejnovější foném sadu. Můžete vybrat správný prvek foném z knihovny a zpřesnit výslovnost slov, která jste vybrali. 
 
-    * Stažení: zvuk "stažení"/"Export" je vylepšený, aby podporoval generování zvuků každým odstavcem. Při generování několika zvukových výstupů můžete snadno upravovat různý obsah ve stejném souboru nebo SSML. Struktura souborů "Download" je také revidována. Teď můžete snadno získat všechny zvuky v jedné složce. 
+    * Stažení: zvuk "stažení"/"Export" je vylepšený, aby podporoval generování zvuku podle odstavce. Při generování více výstupů zvuku můžete upravovat obsah ve stejném souboru nebo v SSML. Struktura souborů "Download" je také revidována. Teď můžete snadno získat všechny zvuky v jedné složce. 
 
     * Stav úlohy: vylepšené možnosti exportu z více souborů. Pokud exportujete více souborů v minulosti, v případě selhání jednoho ze souborů dojde k selhání celé úlohy. Všechny ostatní soubory ale teď budou úspěšně exportovány. Sestava úkolu je obohacena o podrobnější a strukturované informace. V protokolech můžete zkontrolovat všechny neúspěšné soubory a věty teď se sestavou. 
 
@@ -42,7 +42,7 @@ ms.locfileid: "88505801"
 
 ### <a name="general-tts-voice-quality-improvements"></a>Obecná vylepšení kvality hlasu TTS
 
-* Snížená chyba výslovnosti na úrovni aplikace% pro `ru-RU` (chyba snížená o 56%) a `sv-SE` (chyba se snížila o 49%)
+* Snížená chyba výslovnosti na úrovni aplikace% pro `ru-RU` (chyby snížené o 56%) a `sv-SE` (chyby snížené o 49%)
 
 * Vylepšené polyphonyé čtení slov na `en-US` neuronové hlasy o 40%. Příklady slov Polyphony zahrnují "Read", "Live", "content", "Record", "Object" atd. 
 
@@ -62,9 +62,9 @@ ms.locfileid: "88505801"
 ### <a name="bug-fixes"></a>Opravy chyb
 
 * Opravili jsme několik chyb pomocí nástroje pro tvorbu zvukového obsahu. 
-    * Opravili jsme problém při automatické aktualizaci. 
-    * Opravené problémy s hlasy stylu v zh-CN v oblasti jih Východní Asie
-    * Opravili jsme problém v stabilitě, včetně chyby exportu se značkou Break, chyb v interpunkčních znaménekch.    
+    * Opravili jsme problém s automatickou aktualizací. 
+    * Opravili jsme problémy se styly hlasu zh-CN v oblasti jih Východní Asie.
+    * Pevný problém se stabilitou, včetně chyby exportu se značkou ' break ' a chyb v interpunkčních znamének.    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nové národní prostředí pro převod řeči na text: 2020 – srpen Release
 Převod řeči na text vydaný 26 nových národních prostředí v srpnu: 2 Evropské jazyky `cs-CZ` a `hu-HU` , 5 anglické národní prostředí a 19 Španělská národní prostředí, která se týkají většiny zemí jihovýchodní Ameriky. Níže je uveden seznam nových národních prostředí. Seznam kompletních jazyků najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
