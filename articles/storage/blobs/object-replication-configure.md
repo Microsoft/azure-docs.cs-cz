@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540592"
+ms.locfileid: "88566059"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurace replikace objektů pro objekty blob bloku (Preview)
 
@@ -45,7 +45,7 @@ Chcete-li vytvořit zásadu replikace v Azure Portal, postupujte podle následuj
 
 1. V Azure Portal přejděte do zdrojového účtu úložiště.
 1. V části **BLOB Service**vyberte **replikace objektů**.
-1. Vyberte **nastavit replikaci**.
+1. Vyberte **nastavit pravidla replikace**.
 1. Vyberte cílové předplatné a účet úložiště.
 1. V části **páry kontejnerů** vyberte zdrojový kontejner ze zdrojového účtu a cílový kontejner z cílového účtu. Na jednu zásadu replikace můžete vytvořit až 10 párů kontejnerů.
 

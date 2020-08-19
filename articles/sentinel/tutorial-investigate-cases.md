@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565241"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566331"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
@@ -40,7 +40,9 @@ Tento článek popisuje:
 Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. Incident se vytvoří na základě analytických pravidel, která jste vytvořili na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte a jak se mají najít, můžete monitorovat zjištěné hrozby zkoumáním incidentů.
 
 ## <a name="prerequisites"></a>Požadavky
-Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+- Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+
+- Pokud máte uživatele typu Host, který potřebuje přiřadit incidenty, musí být uživateli přiřazena role [čtečky adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) v TENANTOVI Azure AD. Ve výchozím nastavení mají tuto roli přiřazený běžný uživatel (bez hosta).
 
 ## <a name="how-to-investigate-incidents"></a>Postup při vyšetřování incidentů
 
@@ -81,7 +83,7 @@ Použití grafu šetření:
 1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
 
    > [!IMPORTANT] 
-   > Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   > Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
    ![Zobrazení mapy](media/tutorial-investigate-cases/map1.png)
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0d1845c06c1f0373ffd4be43c104889a7327c3ac
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035769"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586211"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "88035769"
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
+> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -143,10 +144,10 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * Přejmenováno `preferredLocations`  &  `multipleWriteLocations` rozhraní API na `preferredRegions`  &  `multipleWriteRegions` . 
 * Aktualizováno `reactor-core` na 3.3.5. Release, `reactor-netty` na 0.9.7. Release & `netty` do 4.1.49. finální verze. 
 * Přidání podpory pro `analyticalStoreTimeToLive` sadu SDK.     
-* `CosmosClientException`rozšiřuje `AzureException` . 
+* `CosmosClientException` rozšiřuje `AzureException` . 
 * Rozhraní API ze systému se odebrala `maxItemCount`  &  `requestContinuationToken` `FeedOptions` místo toho `byPage()` `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * Zavedená `CosmosPermissionProperties` na veřejné ploše pro `Permission` rozhraní API.
-* Odebraný `SqlParameterList` typ & nahrazen`List`
+* Odebraný `SqlParameterList` typ & nahrazen `List`
 * V přímém klientovi TCP byla vyřešena nevracení více paměti. 
 * Byla přidána podpora pro `DISTINCT` dotazy. 
 * Odstraněné externí závislosti `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
@@ -154,14 +155,14 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * V 4.1.45 se aktualizovala síťovina. konečné & reaktoru projektu na verzi 3.3.3.
 * Veřejné smlouvy Rest se aktualizovaly na `Final` třídy.
 * Přidání podpory pro pokročilou diagnostiku pro operace Point.
-* Aktualizovaný balíček na`com.azure.cosmos`
+* Aktualizovaný balíček na `com.azure.cosmos`
 * Přidal se `models` balíček pro kontrakty modelu/REST.
 * Byl přidán `utils` balíček pro `CosmosPagedFlux`  &  `CosmosPagedIterable` typy. 
 * Byla aktualizována veřejná rozhraní API pro použití `Duration` v rámci sady SDK.
 * Do balíčku se přidaly všechny smlouvy REST `models` .
-* `RetryOptions`přejmenování na `ThrottlingRetryOptions` .
+* `RetryOptions` přejmenování na `ThrottlingRetryOptions` .
 * Přidání `CosmosPagedFlux`  &  `CosmosPagedIterable` typů stránkování pro rozhraní API pro dotazy. 
-* Přidání podpory pro sdílení TransportClient napříč několika instancemi CosmosClients pomocí nového rozhraní API v`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Přidání podpory pro sdílení TransportClient napříč několika instancemi CosmosClients pomocí nového rozhraní API v `CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
 * Optimalizace dotazu odebráním dvojité serializace/deserializace. 
 * Optimalizace hlaviček odpovědí odebráním zbytečného kopírování znovu a zpátky. 
 * Optimalizované `ByteBuffer` serializace/deserializace odebráním zprostředkujících instancí řetězců.
@@ -171,11 +172,11 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * Opravili jsme problém s analýzou výsledků dotazu v případě dotazů na hodnotu ORDER by. 
 * Pevné problémy s nevracením paměti s přímým klientem TCP.
 * Opraveno `orderByQuery` s chybou tokenu pokračování.
-* `ChangeFeedProcessor`Oprava chyby pro zpracování děleného oddílu &, když se oddíl nenašel
-* `ChangeFeedProcessor`Oprava chyby při synchronizaci aktualizací zapůjčení napříč různými vlákny.
+* `ChangeFeedProcessor` Oprava chyby pro zpracování děleného oddílu &, když se oddíl nenašel
+* `ChangeFeedProcessor` Oprava chyby při synchronizaci aktualizací zapůjčení napříč různými vlákny.
 * Pevná podmínka časování způsobila `ArrayIndexOutOfBound` výjimku v StoreReader
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

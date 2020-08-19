@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s VDRem Firmex | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Firmex VDR.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 670ff192-c23e-49e4-8fd1-516e02d8856c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdfb857d3a68081fda84aef33e6b5a4b4d1bce28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76761235"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s VDRem Firmex
 
@@ -86,7 +82,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://login.firmex.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://login.firmex.com`
 
 1. Klikněte na **Uložit**.
 
@@ -96,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace Firmex VDR očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | e-mail | uživatel. pošta |
 
@@ -116,9 +112,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -172,7 +168,7 @@ Upozornění: dokud správce lokality nekonfiguruje deklarované domény, nebudo
 
 1. Přihlaste se k Firmex jako správce lokality.
 1. V levém horním rohu klikněte na logo vaší společnosti.
-1. Vyberte kartu **jednotného přihlašování** . Pak vyberte **Konfigurace jednotného přihlašování**. Klikněte na doménu, kterou chcete nakonfigurovat.
+1. Vyberte kartu  **jednotného přihlašování**  . Pak vyberte  **Konfigurace jednotného přihlašování**. Klikněte na doménu, kterou chcete nakonfigurovat.
 
     ![Deklarované domény](./media/firmex-vdr-tutorial/edit-sso.png)  
 
@@ -184,7 +180,7 @@ Upozornění: dokud správce lokality nekonfiguruje deklarované domény, nebudo
 
     b. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. **Certifikát veřejného klíče** – pro účely ověřování může být zpráva SAML digitálně podepsaná vystavitelem. Chcete-li ověřit podpis zprávy, příjemce zprávy používá veřejný klíč známý jako patřící k vystaviteli. Podobně pro šifrování zprávy musí být pro vystavitele znám veřejný šifrovací klíč patřící k konečnému přijímači. V obou situacích – podepisování a šifrování – důvěryhodné veřejné klíče musí být sdíleny předem.  Toto je **certifikátu x509** z **FEDERAČNÍch metadat XML** .
+    c. **Certifikát veřejného klíče**  – pro účely ověřování může být zpráva SAML digitálně podepsaná vystavitelem. Chcete-li ověřit podpis zprávy, příjemce zprávy používá veřejný klíč známý jako patřící k vystaviteli. Podobně pro šifrování zprávy musí být pro vystavitele znám veřejný šifrovací klíč patřící k konečnému přijímači. V obou situacích – podepisování a šifrování – důvěryhodné veřejné klíče musí být sdíleny předem.  Toto je **certifikátu x509** z **FEDERAČNÍch metadat XML** .
 
     d. Kliknutím na **Uložit** dokončete konfiguraci jednotného přihlašování. Změny se projeví okamžitě.
 
@@ -200,11 +196,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Firmex VDR, měli byste být automaticky přihlášeni k Firmex VDR, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

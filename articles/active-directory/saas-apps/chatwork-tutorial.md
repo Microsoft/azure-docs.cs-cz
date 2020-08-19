@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 9f43498ec6a80776f31cd45e80be6d786c2ae863
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529334"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586235"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ChatWork
 
@@ -83,7 +83,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta ChatWork](mailto:info@support.chatwork.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu adresou URL privátního přihlášení, kterou jste nastavili po **CHATWORK SSO konfigurace**.
+
+1. Aplikace ChatWork očekává, že hodnota **jedinečného atributu identifikátoru uživatele** odpovídá e-mailové adrese zaregistrované v ChatWork. Atribut je ve výchozím nastavení namapován na **User. Principal** . Pokud se hlavní hodnota liší od e-mailové adresy, namapujte  **jedinečný identifikátor uživatele** na **User. mail**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -125,11 +127,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-chatwork-sso"></a>Konfigurace jednotného přihlašování ChatWork
 
-Ke konfiguraci jednotného přihlašování na straně **ChatWork** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory ChatWork](mailto:info@support.chatwork.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **ChatWork** , přečtěte si [příručku pro správce ChatWork](https://download.chatwork.com/Chatwork_AdminGuide.pdf) a nakonfigurujte nastavení ChatWork.
 
 ### <a name="create-chatwork-test-user"></a>Vytvořit testovacího uživatele ChatWork
 
-V této části vytvoříte uživatele s názvem B. Simon v ChatWork. Pokud chcete přidat uživatele na platformě ChatWork, pracujte s [týmem podpory ChatWork](mailto:info@support.chatwork.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v ChatWork. Přihlaste se k [příručce pro správu ChatWork](https://download.chatwork.com/Chatwork_AdminGuide.pdf) a přidejte uživatele na platformě ChatWork.
 
 ## <a name="test-sso"></a>Test SSO 
 

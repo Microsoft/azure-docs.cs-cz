@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro BitBucket | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EasySSO pro BitBucket.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ed96e97-b590-4dca-8d00-36288444c641
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946785f02461706d1d3675d089c19d68816fb8ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077095"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555555"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro BitBucket
 
@@ -84,13 +80,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor:`https://<server-base-url>/plugins/servlet/easysso/saml`
+    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor: `https://<server-base-url>/plugins/servlet/easysso/saml`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor:`https://<server-base-url>/plugins/servlet/easysso/saml`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://<server-base-url>/plugins/servlet/easysso/saml`
 
 1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
-    - Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor:`https://<server-base-url>/login.jsp`
+    - Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor: `https://<server-base-url>/login.jsp`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Obraťte se na [tým podpory EasySSO](mailto:support@techtime.co.nz) a získejte tyto hodnoty, pokud jsou nejisté. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

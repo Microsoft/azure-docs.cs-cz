@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2e741b0501f5e5cc37a6fea781dc1a5ede4fb1c2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207159"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585011"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Nastavte svoji aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -57,6 +57,9 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 1. Jako **klíč**zadejte *TestApp: Settings: Sentinel*. Jako **hodnotu**zadejte 1. Ponechte **popisek** a **typ obsahu** prázdné.
 
 1. Vyberte **Použít**.
+
+    > [!NOTE]
+    > Pokud nepoužíváte klíč Sentinel, budete muset ručně zaregistrovat každý klíč, který chcete sledovat.
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
@@ -159,6 +162,9 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     }
     ```
     ---
+
+    > [!TIP]
+    > Další informace o vzoru možností při čtení hodnot konfigurace najdete v tématu [vzory možností v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Aktualizujte `Configure` metodu přidáním `UseAzureAppConfiguration` middlewaru, který umožní aktualizaci nastavení konfigurace zaregistrovaných pro aktualizaci, když ASP.NET Core webová aplikace nadále přijímá požadavky.
 
@@ -324,7 +330,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     ![Místní spuštění aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 

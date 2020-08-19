@@ -6,14 +6,14 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494685"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585827"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -67,7 +67,7 @@ Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte mo
 
 Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se k webu Azure Portal. 
+1. Přihlaste se k portálu Azure. 
 1. Na panelu hledání zadejte "trezory klíčů".
 1. V seznamu vyberte Trezor klíčů, do kterého chcete přidat privátní koncový bod.
 1. V části nastavení vyberte kartu "sítě".
@@ -156,9 +156,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Description |
+| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
@@ -238,7 +238,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 * Zkontrolujte, zda je privátní koncový bod ve stavu schváleno. 
-    1. Tuto možnost můžete ověřit a opravit v Azure Portal. Otevřete prostředek Key Vault a klikněte na možnost sítě. 
+    1. Zkontrolovat a napravit to můžete na webu Azure Portal. Otevřete prostředek služby Key Vault a klikněte na možnost Sítě. 
     2. Pak vyberte kartu připojení privátního koncového bodu. 
     3. Ujistěte se, že stav připojení je schváleno a že je stav zřizování úspěšné. 
     4. Můžete také přejít na prostředek privátního koncového bodu a zkontrolovat stejné vlastnosti, a pak dvakrát zkontrolovat, jestli virtuální síť odpovídá používanému typu.
@@ -247,7 +247,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
     1. Musíte mít prostředek zóny Privátní DNS s přesným názvem: privatelink.vaultcore.azure.net. 
     2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
     
-* Ověřte, zda Privátní DNS zóna není propojena s Virtual Network. To může být problém, pokud se vám stále vrátí veřejná IP adresa. 
+* Zkontrolujte, jestli zóna privátního DNS není propojená s virtuální sítí. To může být problém, pokud se vám stále vrátí veřejná IP adresa. 
     1. Pokud DNS privátní zóny není propojena s virtuální sítí, dotaz DNS pocházející z virtuální sítě vrátí veřejnou IP adresu trezoru klíčů. 
     2. Přejděte do prostředku zóny Privátní DNS v Azure Portal a klikněte na možnost odkazy virtuální sítě. 
     4. Musí být uvedena virtuální síť, která provede volání do trezoru klíčů. 
@@ -256,13 +256,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Ověřte, že v zóně Privátní DNS chybí záznam A pro Trezor klíčů. 
     1. Přejděte na stránku Privátní DNS zóna. 
-    2. Klikněte na přehled a podívejte se, jestli existuje záznam A s jednoduchým názvem trezoru klíčů (tj. fabrikam). Nezadávejte žádné přípony.
-    3. Ujistěte se, že jste kontrolovali pravopis a buď záznam a vytvoříte nebo opravíte. Můžete použít hodnotu TTL 3600 (1 hodina). 
+    2. Klikněte na Přehled a zkontrolujte, jestli existuje záznam A s jednoduchým názvem vašeho trezoru klíčů (tj. fabrikam). Nezadávejte žádnou příponu.
+    3. Nezapomeňte zkontrolovat pravopis a vytvořte nebo upravte záznam A. Jako hodnotu TTL můžete použít 3600 (1 hodina). 
     4. Ujistěte se, že jste zadali správnou privátní IP adresu. 
     
 * Ověřte, že záznam A má správnou IP adresu. 
-    1. IP adresu můžete potvrdit otevřením prostředku privátního koncového bodu v Azure Portal 
-    2. V Azure Portal (ne prostředku Key Vault) přejděte do prostředku Microsoft. Network/privateEndpoints.
+    1. IP adresu můžete ověřit otevřením prostředku privátního koncového bodu na webu Azure Portal. 
+    2. Na webu Azure Portal přejděte k prostředku Microsoft.Network/privateEndpoints (ne k prostředku služby Key Vault).
     3. Na stránce Přehled vyhledejte síťové rozhraní a klikněte na něj. 
     4. Odkaz zobrazí přehled prostředku síťové karty, který obsahuje privátní IP adresu vlastnosti. 
     5. Ověřte, zda se jedná o správnou IP adresu, která je zadána v záznamu A.

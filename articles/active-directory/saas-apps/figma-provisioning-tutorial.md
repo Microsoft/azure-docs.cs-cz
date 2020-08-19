@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace automatického zřizování uživatelů Figma pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Figma.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: a50f1c81f5eda78ee6834aba3085f685c197b4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057941"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555117"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro Automatické zřizování uživatelů
 
@@ -71,7 +67,7 @@ Před konfigurací Figma pro Automatické zřizování uživatelů se službou A
 
     ![Figma vytvořit token](media/Figma-provisioning-tutorial/token.png)
 
-5. Zkopírujte hodnotu **tokenu rozhraní API** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Figma ve Azure Portal. 
+5. Zkopírujte hodnotu  **tokenu rozhraní API** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Figma ve Azure Portal. 
 
     ![Figma vytvořit token](media/Figma-provisioning-tutorial/figma04.png)
 
@@ -104,7 +100,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Figma ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

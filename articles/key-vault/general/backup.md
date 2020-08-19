@@ -7,15 +7,15 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386261"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585929"
 ---
 # <a name="azure-key-vault-backup"></a>Zálohování Azure Key Vault
 
@@ -43,7 +43,7 @@ Vezměte v úvahu také následující důsledky:
 
 Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo certifikát, bude operace zálohování stahovat objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB není možné dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zálohovat objekt trezoru klíčů, musíte mít: 
 

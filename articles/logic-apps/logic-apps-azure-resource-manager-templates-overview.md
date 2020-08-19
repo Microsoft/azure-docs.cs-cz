@@ -3,15 +3,15 @@ title: Přehled – automatizace nasazení pro Azure Logic Apps
 description: Další informace o Azure Resource Manager šablonách pro automatizaci nasazení pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520965"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565549"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -175,7 +175,7 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
   * [Předání zabezpečených hodnot parametrů pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít například názvy parametrů popisné šablony, například:`TemplateFabrikamPassword`
+* Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít například názvy parametrů popisné šablony, například: `TemplateFabrikamPassword`
 
 Další doporučené postupy pro šablonu najdete v tématu [osvědčené postupy pro parametry šablon](../azure-resource-manager/templates/template-best-practices.md#parameters).
 
@@ -237,7 +237,7 @@ Tento příklad souboru parametrů určuje hodnoty pro parametry šablony deklar
 
 ## <a name="template-resources"></a>Prostředky šablon
 
-Vaše šablona má `resources` objekt, což je pole, které obsahuje definice pro každý prostředek pro vytvoření a nasazení v Azure, jako je [definice prostředků vaší aplikace logiky](#logic-app-resource-definition), všechny [definice prostředků připojení](#connection-resource-definitions)a všechny další prostředky, které vaše aplikace logiky potřebuje k nasazení.
+Vaše šablona má `resources` objekt, což je pole, které obsahuje definice jednotlivých prostředků pro vytvoření a nasazení v Azure, jako je [definice prostředků vaší aplikace logiky](#logic-app-resource-definition), [definice prostředků připojení](#connection-resource-definitions)a všechny další prostředky, které vaše aplikace logiky potřebuje k nasazení.
 
 ```json
 {
@@ -264,6 +264,22 @@ Vaše šablona má `resources` objekt, což je pole, které obsahuje definice pr
 
 > [!NOTE]
 > Šablony můžou zahrnovat definice prostředků pro několik aplikací logiky, takže se ujistěte, že všechny prostředky aplikace logiky určují stejnou skupinu prostředků Azure. Když nasadíte šablonu do skupiny prostředků Azure pomocí sady Visual Studio, zobrazí se výzva k zadání aplikace logiky, kterou chcete otevřít. Projekt skupiny prostředků Azure taky může obsahovat víc než jednu šablonu, takže po zobrazení výzvy vyberte správný soubor parametrů.
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>Zobrazit definice prostředků
+
+Pokud chcete zkontrolovat definice prostředků pro všechny prostředky ve skupině prostředků Azure, [Stáhněte si aplikaci logiky z Azure do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md), což je nejjednodušší způsob, jak vytvořit platnou šablonu parametrizované aplikace logiky, která je většinou připravená pro nasazení, nebo postupujte podle těchto kroků Azure Portal:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
+
+1. Najděte skupinu prostředků Azure, která obsahuje vaši aplikaci logiky, připojení a další prostředky.
+
+1. Na panelu nástrojů skupina prostředků vyberte **Přehled**a pak vyberte všechny prostředky ve skupině prostředků.
+
+1. Na panelu nástrojů skupiny prostředků v části **Nastavení**vyberte **Exportovat šablonu**.
+
+   Portál zobrazí definice pro prostředky, které jste vybrali. Další informace najdete v tématu [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md).
 
 Obecné informace o prostředcích šablon a jejich atributech najdete v těchto tématech:
 
@@ -323,7 +339,7 @@ Tady jsou atributy, které jsou specifické pro vaši definici prostředků apli
 |-----------|----------|------|-------------|
 | `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, kde je vaše aplikace logiky `Enabled` živá a `Disabled` to znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby vaše aplikace logiky přešla do provozu, ale chcete nasadit koncept verze, můžete použít `Disabled` možnost. |
 | `integrationAccount` | No | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
-| `definition` | Ano | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
+| `definition` | Yes | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
 | `parameters` | No | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje `$connections` objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
 | `accessControl` | No | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||

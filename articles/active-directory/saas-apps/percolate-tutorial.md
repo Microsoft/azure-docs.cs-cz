@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s percolate | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a percolate.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 355f9659-b378-44c9-aa88-236e9b529a53
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094600"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Kurz: Azure Active Directory integrace s percolate
 
@@ -57,7 +53,7 @@ Pokud chcete nakonfigurovat integraci percolate do služby Azure AD, musíte př
 
     ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-2. Přejít k **podnikovým aplikacím** > **všechny aplikace**:
+2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -105,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí percolat
 
     ![Informace o jednotném přihlašování v doméně percolate a adresách URL](common/preintegrated.png)
 
-5. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL** a v poli **Adresa URL pro přihlášení** zadejte **https://percolate.com/app/login**:
+5. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL** a v poli **Adresa URL pro přihlášení** zadejte **https://percolate.com/app/login** :
 
    ![Informace o jednotném přihlašování v doméně percolate a adresách URL](common/metadata-upload-additional-signon.png)
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte ikonu **kopírování** a zkopírujte **adresu URL federačních metadat aplikace**. Uložte tuto adresu URL.
@@ -168,7 +164,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@\<\< yourcompanydomain>.>rozšíření **. (Například BrittaSimon@contoso.com.)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
 
     1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
@@ -228,7 +224,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici percolate, měli byste se automaticky přihlásit k instanci percolate, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

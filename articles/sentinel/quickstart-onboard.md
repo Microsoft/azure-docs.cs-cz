@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564547"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566246"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -39,7 +39,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 - K připojení konkrétních zdrojů dat se můžou potřebovat další oprávnění.
 - Služba Azure Sentinel je placená služba. Informace o cenách najdete v tématu informace [o službě Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).
  
-## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel<a name="enable"></a>
+## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel <a name="enable"></a>
 
 1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
 
@@ -58,7 +58,10 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
    > - U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů) se ukládají v Evropě (pro pracovní prostory v Evropě), v Austrálii (pro pracovní prostory v Austrálii) nebo v Východní USA (pro pracovní prostory v jiné oblasti).
 
    >[!IMPORTANT]
-   > - Po povolení Azure Sentinel v pracovním prostoru se přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných nepodporuje. Pokud potřebujete pracovní prostor přesunout, kontaktujte [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
+   >
+   > - Po nasazení v pracovním prostoru Azure Sentinel v **současné době nepodporuje** přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných. 
+   >
+   >   Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. Tato činnost by se měla projevit ve většině případů, ale při opakování iterace není podporovaná a je prováděná na vlastním riziku.
 
 1. Vyberte **Přidat Sentinel Azure**.
   

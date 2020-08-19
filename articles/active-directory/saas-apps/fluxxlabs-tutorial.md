@@ -2,24 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Fluxx Labs | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Fluxx Labs.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 198e93fe03c78313dfd64da9b58f2aa9098343f2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799268"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Fluxx Labs
 
@@ -85,14 +82,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     | Prostředí | Vzor adresy URL|
     |-------------|------------|
-    | Produkce | `https://<subdomain>.fluxx.io` |
+    | Výroba | `https://<subdomain>.fluxx.io` |
     | Předběžná produkce | `https://<subdomain>.preprod.fluxxlabs.com`|
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
     | Prostředí | Vzor adresy URL|
     |-------------|------------|
-    | Produkce | `https://<subdomain>.fluxx.io/auth/saml/callback` |
+    | Výroba | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Předběžná produkce | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
 
     > [!NOTE]
@@ -116,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -164,7 +161,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Do textového pole **Adresa URL cíle jednotného přihlašování zprostředkovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    g. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity** .
+    například Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity** .
 
     h. Do textového pole **Formát identifikátoru názvu** zadejte hodnotu `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
 
@@ -205,9 +202,9 @@ Když kliknete na dlaždici Fluxx Labs na přístupovém panelu, měli byste se 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

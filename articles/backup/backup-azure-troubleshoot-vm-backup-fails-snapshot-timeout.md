@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262853"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585556"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -65,7 +65,7 @@ Azure Backup používá rozšíření snímku virtuálního počítače k poří
 
 - **Zajistěte, aby služba zapisovače VSS byla v**provozu: [při řešení potíží s modulem pro zápis VSS](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)postupujte podle těchto kroků.
 - **Postupujte podle pokynů pro osvědčené postupy zálohování**: Projděte si [osvědčené postupy pro povolení zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md#best-practices).
-- **Přečtěte si pokyny pro šifrované disky**: Pokud povolujete zálohování pro virtuální počítače s šifrovaným diskem, ujistěte se, že jste zadali všechna požadovaná oprávnění. Další informace najdete v tématu [zálohování a obnovení šifrovaného virtuálního počítače Azure](backup-azure-vms-encryption.md#encryption-support).
+- **Přečtěte si pokyny pro šifrované disky**: Pokud povolujete zálohování pro virtuální počítače s šifrovaným diskem, ujistěte se, že jste zadali všechna požadovaná oprávnění. Další informace najdete v tématu [zálohování a obnovení šifrovaného virtuálního počítače Azure](backup-azure-vms-encryption.md).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable – Agent virtuálního počítače nemůže komunikovat se službou Azure Backup
 

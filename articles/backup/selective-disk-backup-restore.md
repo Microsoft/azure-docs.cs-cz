@@ -3,16 +3,20 @@ title: Selektivní zálohování a obnovení disku pro virtuální počítače A
 description: V tomto článku se dozvíte o selektivním zálohování a obnovení disku pomocí řešení zálohování virtuálních počítačů Azure.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535366"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566229"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
 Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s použitím řešení zálohování virtuálních počítačů. Teď můžete pomocí funkce zálohování a obnovení selektivních disků zálohovat podmnožinu datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje pouze disky, které jsou součástí operace zálohování. Tím umožníte, aby se v průběhu operace obnovení obnovila podmnožina disků z daného bodu obnovení. To platí pro obnovení ze snímků i z trezoru.
+
+>[!NOTE]
+>Selektivní zálohování disku a obnovení pro virtuální počítače Azure je ve verzi Public Preview ve všech oblastech.
 
 ## <a name="scenarios"></a>Scénáře
 

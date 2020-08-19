@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s dokumentací | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování pro Azure Active Directory a dokumentaci.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7a5fec92-9c01-4ced-99b2-a10e28fc028e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 8b9e65ed634243e60808e91d621cfe8c912b914e
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ef57db315fa29a70a604f180671091a5b372f316
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Kurz: Azure Active Directory integrace s dokumentací
 
@@ -32,7 +28,7 @@ Integrace dokumentace k Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
     https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
     ```
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`Dossier/<CLIENTNAME>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `Dossier/<CLIENTNAME>`
 
     > [!NOTE]
     > Hodnota identifikátoru by měla být ve formátu `Dossier/<CLIENTNAME>` nebo libovolné uživatelem přizpůsobené hodnotě.
@@ -168,7 +164,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -206,7 +202,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici dokumentace na přístupovém panelu, měli byste se automaticky přihlásit k dokumentaci, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

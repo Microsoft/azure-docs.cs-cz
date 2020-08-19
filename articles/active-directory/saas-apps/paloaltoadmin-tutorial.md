@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto Networks – uživatelské rozhraní pro správu.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297253"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu
 
@@ -32,7 +28,7 @@ Integrace Palo Alto Networks – uživatelské rozhraní pro správu s Azure AD 
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -93,11 +89,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Palo Alt
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<Customer Firewall FQDN>/php/login.php`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall FQDN>/php/login.php`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<Customer Firewall FQDN>:443/SAML20/SP`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall FQDN>:443/SAML20/SP`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL služby assertion Consumer Service (ACS) v následujícím formátu:`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL služby assertion Consumer Service (ACS) v následujícím formátu: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Chcete-li získat tyto hodnoty, kontaktujte [Palo Alto Networks – tým podpory klientů pro správu uživatelského rozhraní](https://support.paloaltonetworks.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -117,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Palo Alt
 
     | Name |  Zdrojový atribut|
     | --- | --- |
-    | uživatelské jméno | User. userPrincipalName |
+    | username | User. userPrincipalName |
     | adminrole | customadmin |
     | | |
 
@@ -150,7 +146,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -204,7 +200,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Okno profil serveru zprostředkovatele identity SAML](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. V poli **Adresa URL pro objekt slo zprostředkovatele identity** nahraďte dříve IMPORTOVANOU adresu URL objektu slo následující adresou URL:`https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+    a. V poli **Adresa URL pro objekt slo zprostředkovatele identity** nahraďte dříve IMPORTOVANOU adresu URL objektu slo následující adresou URL: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
     b. Vyberte **OK**.
 
@@ -265,7 +261,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici uživatelského rozhraní Palo Alto Networks – správce na přístupovém panelu byste měli být automaticky přihlášeni k uživatelskému rozhraní správce Palo Alto Networks – admin, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

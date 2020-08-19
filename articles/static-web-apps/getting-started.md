@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089494"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565906"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rychlý Start: Vytvoření první statické webové aplikace
 
@@ -20,7 +20,7 @@ Služba Azure Static Web Apps publikuje weby do produkčního prostředí po ses
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -98,7 +98,7 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Tlačítko Další sestavení":::
 
 > [!NOTE]
->  Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure**a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
+>  Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte na [domovskou stránku GitHubu](https://github.com) a kliknutím na obrázek účtu otevřete rozevírací nabídku. Klikněte na **Nastavení**, **aplikace > autorizovaných aplikací OAuth > Azure static Web Apps**a nakonec vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
 
 ### <a name="build"></a>Sestavení
 

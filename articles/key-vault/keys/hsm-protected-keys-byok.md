@@ -7,15 +7,15 @@ manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4df934f38a8fb657fa4a8de5922d96197a3d02cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061113"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585470"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Import klíčů chráněných HSM do Key Vault (BYOK)
 
@@ -43,7 +43,7 @@ Tady je přehled tohoto procesu. Konkrétní kroky k dokončení jsou popsány d
 * KEK musí být ve stejném trezoru klíčů, kam se bude cílový klíč importovat.
 * Po nahrání souboru BYOK do Key Vault Key Vault HSM používá privátní klíč KEK k dešifrování cílového klíčového materiálu a naimportuje ho jako klíč HSM. Tato operace probíhá zcela v rámci Key Vault HSM. Cílový klíč vždy zůstává na hranici ochrany HSM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azure Key Vault:
 
@@ -89,7 +89,7 @@ KEK je klíč RSA generovaný v modulu Key Vault HSM. KEK se používá k zašif
 KEK musí být:
 - Klíč RSA-HSM (2 048-bit; 3 072-bit; nebo 4 096-bit)
 - Vygenerováno ve stejném trezoru klíčů, do kterého chcete importovat cílový klíč.
-- Vytvořeno s povolenou operací Key nastavenou na`import`
+- Vytvořeno s povolenou operací Key nastavenou na `import`
 
 > [!NOTE]
 > KEK musí mít ' import ' jako jedinou povolenou operaci klíče. Import se vzájemně vylučuje se všemi ostatními klíčovými operacemi.

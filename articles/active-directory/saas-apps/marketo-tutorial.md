@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace se službou Marketo | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Marketo.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b88c45f5-d288-4717-835c-ca965add8735
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0488fd1e9bc10d61d6660745acfc8c39becf3a89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1b8874d8813d6200c915778841c26e77b02e434
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159472"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Kurz: Azure Active Directory integrace se službou Marketo
 
@@ -32,7 +28,7 @@ Integrování Marketo se službou Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     ![Informace o jednotném přihlašování k doméně Marketo a adresám URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://saml.marketo.com/sp`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://saml.marketo.com/sp`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pro získání těchto hodnot kontaktujte [tým podpory Marketo pro klienty](https://investors.marketo.com/contactus.cfm) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -164,7 +160,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
    
     f. Do textového pole **ID vystavitele** vložte **identifikátor Azure AD**.
    
-    g. Do textového pole **ID entity** zadejte adresu URL `http://saml.marketo.com/sp`.
+    například Do textového pole **ID entity** zadejte adresu URL `http://saml.marketo.com/sp` .
    
     h. Vyberte umístění ID uživatele jako **element identifikátoru názvu**.
    
@@ -219,12 +215,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -278,7 +274,7 @@ V této části vytvoříte uživatele s názvem Britta Simon ve Marketo. pomoc�
    
     b. Zadejte **jméno** do textového pole.
    
-    c. Zadejte **příjmení** do textového pole.
+    c. Zadejte **příjmení**  do textového pole.
    
     d. Klikněte na **Další** .
 
@@ -297,7 +293,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Marketo na přístupovém panelu, měli byste se automaticky přihlásit ke službě Marketo, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

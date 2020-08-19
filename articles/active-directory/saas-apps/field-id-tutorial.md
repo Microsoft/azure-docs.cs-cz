@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s iD pole | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iD pole.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cb778239-dda9-4c5d-ba82-37d2a798978d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90674ccbbbece59efe34986f320d0a18080399b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: a9ace754a75d63bc24bea91dd6c88a3d004fd0eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764105"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555085"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s iD pole
 
@@ -82,9 +78,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-   a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor:`https://<tenantname>.fieldid.com/fieldid`
+   a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor: `https://<tenantname>.fieldid.com/fieldid`
 
-   b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor:`https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
+   b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory ID pole](mailto:support@ecompliance.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -141,7 +137,7 @@ Když vyberete dlaždici iD pole na přístupovém panelu, měli byste se automa
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

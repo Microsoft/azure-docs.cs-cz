@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835778"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565702"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?
 
@@ -32,10 +32,10 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 - **Webové hostování** pro statický obsah, jako jsou HTML, CSS, JavaScript a obrázky.
 - **Integrovaná podpora rozhraní API** poskytovaná Azure Functions.
-- **Integrace GitHubu první strany** , kde změny úložiště spustí sestavení a nasazení.
+- **Špičková integrace GitHubu** , kde změny úložiště spustí sestavení a nasazení.
 - **Globálně distribuovaný** statický obsah, který zapisuje obsah blíž k uživatelům.
 - **Bezplatné certifikáty SSL**, které se automaticky Obnovují.
-- **Vlastní domény** \* pro zajištění vlastního přizpůsobení aplikace.
+- **Vlastní domény** , které poskytují vlastní přizpůsobení vaší aplikaci.
 - **Bezproblémový model zabezpečení** s reverzním proxy serverem při volání rozhraní API, který nevyžaduje žádnou konfiguraci CORS
 - **Integrace zprostředkovatele ověřování** pomocí Azure Active Directory, Facebooku, Google, GitHubu a Twitteru.
 - **Přizpůsobitelná definice role autorizace** a přiřazení.
@@ -44,11 +44,9 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Co se dá dělat se statickými Web Apps
 
-- **Vytvářejte moderní aplikace JavaScriptu** pomocí architektur a knihoven, jako je například [úhlová](getting-started.md#tabpanel_CeZOj-G++Q_angular), [reakce](getting-started.md#tabpanel_CeZOj-G++Q_react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) s back-endu [Azure Functions](apis.md) .
+- **Vytvářejte moderní aplikace JavaScriptu** pomocí architektur a knihoven, jako je například [úhlová](getting-started.md?tabs=angular), [reakce](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) s back-endu [Azure Functions](apis.md) .
 - **Publikování statických webů** pomocí platforem, jako je [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Nasaďte webové aplikace** s rozhraními, jako jsou [Next.js](deploy-nextjs.md) a [Nuxt.js](deploy-nuxtjs.md).
-
-\*Registrace ve vrcholu domény nejsou ve verzi Preview podporované.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 832bf1dd06d550f82090a336bc4cceac8cd8a9be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038184"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565583"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -33,7 +33,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
     - naslouchání zpráv syslog z řešení zabezpečení na portu TCP 514
     - předávání pouze zpráv, které identifikuje jako CEF agenta Log Analytics na localhost pomocí portu TCP 25226
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Na určeném počítači se systémem Linux musíte mít zvýšená oprávnění (sudo).
 - Je nutné, aby byl v počítači se systémem Linux nainstalován Python.<br>Použijte `python -version` příkaz pro kontrolu.
@@ -48,6 +48,16 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
      `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
 
 1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
+
+> [!NOTE]
+> **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
+>
+> Pokud máte v úmyslu použít tento počítač pro překládání protokolů k přeposílání [zpráv SYSLOG](connect-syslog.md) a také CEF, abyste se vyhnuli duplicitě událostí v tabulkách syslog a CommonSecurityLog:
+>
+> 1. Na každém zdrojovém počítači, který odesílá protokoly do služby pro přeposílání ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+>
+> 1. Pokud chcete zakázat synchronizaci agenta s konfigurací syslog v Azure Sentinel, musíte na těchto počítačích spustit následující příkaz. Tím se zajistí, že se změna konfigurace, kterou jste provedli v předchozím kroku, nepřepíše.<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 Pokračujte [krokem 2: konfigurace řešení zabezpečení pro přeposílání zpráv CEF](connect-cef-solution-config.md) .
 

@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 54408b20ebba60de2e1a696e5bd9b06f55e860ba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513116"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584875"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ tabular_dataset = MNIST.get_tabular_dataset()
 file_dataset = MNIST.get_file_dataset()
 ```
 
-V tomto příkladu `opendatasets` je třída diabetes dostupná jenom jako `TabularDataset` , takže použití `get_tabular_dataset()`
+V tomto příkladu `opendatasets` je třída diabetes k dispozici pouze jako `TabularDataset` , a proto použití `get_tabular_dataset()` .
 
 ```python
 
@@ -98,7 +98,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-with-the-studio"></a>Vytváření datových sad pomocí studia
 
-Datové sady můžete také vytvořit z otevřených datových sad pomocí [Azure Machine Learning studia](https://ml.azure.com), konsolidovaného webového rozhraní, které zahrnuje nástroje strojového učení, k provádění scénářů pro datové vědy u všech úrovní dovedností.
+Můžete také vytvořit Azure Machine Learning datové sady z Azure Open DataSets pomocí [Azure Machine Learning studia](https://ml.azure.com), konsolidovaného webového rozhraní, které zahrnuje nástroje strojového učení, k provádění scénářů pro datové vědy u všech úrovní dovedností.
 
 > [!Note]
 > Datové sady vytvořené prostřednictvím Azure Machine Learning studia se automaticky zaregistrují do pracovního prostoru.
@@ -111,7 +111,7 @@ Datové sady můžete také vytvořit z otevřených datových sad pomocí [Azur
 
     ![Zvolit datovou sadu](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu **veřejných svátků** filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Vyberte **Vytvořit**.
+1. Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu **veřejných svátků** filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Podrobnosti o datech najdete v [katalogu Open DataSets v Azure](https://azure.microsoft.com/services/op[en-datasets/catalog/) , jako jsou popisy polí a rozsahy dat. Vyberte **Vytvořit**.
 
     ![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

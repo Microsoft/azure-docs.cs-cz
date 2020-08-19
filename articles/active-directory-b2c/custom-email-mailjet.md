@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230872"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584960"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Vlastní ověření e-mailu pomocí Mailjet
 
@@ -38,19 +38,19 @@ Pokud ho ještě nemáte, začněte tím, že nastavíte účet Mailjet (zákazn
 
 V dalším kroku uložte klíč rozhraní API Mailjet do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce **Přehled** vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
 1. V případě **možností**vyberte možnost **ručně**.
-1. Zadejte **název** klíče zásad. Například `MailjetApiKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+1. Zadejte **název** klíče zásad. Například, `MailjetApiKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do **tajného**klíče zadejte svůj **klíč rozhraní API** Mailjet, který jste předtím nahráli.
 1. V případě **použití klíče**vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. V případě **možností**vyberte možnost **ručně**.
-1. Zadejte **název** klíče zásad. Například `MailjetSecretKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+1. Zadejte **název** klíče zásad. Například, `MailjetSecretKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do **tajného**klíče zadejte svůj **tajný klíč** Mailjet, který jste předtím nahráli.
 1. V případě **použití klíče**vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
@@ -235,6 +235,9 @@ Pod transformací deklarací identity v rámci `<BuildingBlocks>` přidejte nás
  <ContentDefinition Id="api.localaccountsignup">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
   </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+  </ContentDefinition>
 </ContentDefinitions>
 ```
 
@@ -360,7 +363,7 @@ Stejně jako u technických profilů jednorázového hesla přidejte do elementu
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Vytvořit odkaz na ovládací prvek zobrazit
 
-V posledním kroku přidejte odkaz na ovládací prvek, který jste vytvořili. `LocalAccountSignUpWithLogonEmail`Pokud jste použili starší verzi Azure AD B2C zásad, nahraďte stávající technický profil svým držitelem pomocí následujících pokynů. Tento technický profil používá `DisplayClaims` s odkazem na ovládací prvek.
+V posledním kroku přidejte odkaz na ovládací prvek, který jste vytvořili. Stávající `LocalAccountSignUpWithLogonEmail` a `LocalAccountDiscoveryUsingEmailAddress` vlastní kontrolní profily nahraďte následujícími. Pokud jste použili starší verzi Azure AD B2C zásad. Tyto technické profily využívají `DisplayClaims` odkaz na ovládací prvek zobrazit.
 
 Další informace najdete v tématu [technický profil s vlastním kontrolním](restful-technical-profile.md) výrazem a [Zobrazit](display-controls.md).
 
@@ -369,22 +372,13 @@ Další informace najdete v tématu [technický profil s vlastním kontrolním](
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <DisplayName>Email signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-        <Item Key="language.button_continue">Create</Item>
-        
         <!--OTP validation error messages-->
         <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
         <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" />
-      </InputClaims>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -393,17 +387,18 @@ Další informace najdete v tématu [technický profil s vlastním kontrolním](
         <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
         <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
       </DisplayClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="email" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-        <OutputClaim ClaimTypeReferenceId="newUser" />
-      </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-      </ValidationTechnicalProfiles>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
+      <Metadata>
+        <!--OTP validation error messages-->
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
+        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
+      </Metadata>
+      <DisplayClaims>
+        <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+      </DisplayClaims>
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -459,7 +454,7 @@ Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do Mailj
         <SupportedLanguage>en</SupportedLanguage>
         <SupportedLanguage>es</SupportedLanguage>
       </SupportedLanguages>
-      <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedResources Id="api.custom-email.en">
         <LocalizedStrings>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for validating the account</LocalizedString>
@@ -468,7 +463,7 @@ Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do Mailj
         </LocalizedStrings>
         </LocalizedStrings>
       </LocalizedResources>
-      <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedResources Id="api.custom-email.es">
         <LocalizedStrings>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
@@ -482,16 +477,25 @@ Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do Mailj
 1. Přidejte odkazy na prvky LocalizedResources aktualizací elementu [ContentDefinitions](contentdefinitions.md) .
 
     ```xml
-    <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.localaccountsignup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+    </ContentDefinitions>
     ```
 
-1. Nakonec přidejte následující vstupní transformaci deklarací identity do LocalAccountSignUpWithLogonEmail Technical Profile.
+1. Nakonec přidejte následující transformaci vstupních deklarací identity do `LocalAccountSignUpWithLogonEmail` `LocalAccountDiscoveryUsingEmailAddress` technických profilů a.
 
     ```xml
     <InputClaimsTransformations>

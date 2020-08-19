@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Picturepark | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Picturepark.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: bb12b666315f6d30df64b33b6a87d6ce831fd225
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801491"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Azure Active Directory integrace s Picturepark
 
@@ -32,7 +28,7 @@ Integrace Picturepark s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
     ![Informace o jednotném přihlašování v doméně Picturepark a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.picturepark.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.picturepark.com`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -126,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
     ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-7. V části **Nastavení Picturepark** zkopírujte příslušné adresy URL podle vašich požadavků. Pro **přihlašovací adresu URL**použijte hodnotu s následujícím vzorem:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. V části **Nastavení Picturepark** zkopírujte příslušné adresy URL podle vašich požadavků. Pro **přihlašovací adresu URL**použijte hodnotu s následujícím vzorem: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ je ID tenanta předplatného služby Azure AD.
@@ -147,13 +143,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
 3. Klikněte na **ověřování**a potom klikněte na **Zprostředkovatelé identity**.
    
-    ![Ověřování](./media/picturepark-tutorial/ic795063.png "Ověřování")
+    ![Authentication](./media/picturepark-tutorial/ic795063.png "Authentication")
 
 4. V části **Konfigurace zprostředkovatele identity** proveďte následující kroky:
    
     ![Konfigurace zprostředkovatele identity](./media/picturepark-tutorial/ic795064.png "Konfigurace zprostředkovatele identity")
    
-    a. Klikněte na tlačítko **Add** (Přidat).
+    a. Klikněte na **Přidat**.
   
     b. Zadejte název konfigurace.
    
@@ -191,7 +187,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -257,7 +253,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Picturepark, musí se zřídit
 
     i. Vyberte **jazyk**.
    
-    j. Klikněte na **Vytvořit**.
+    j. Klikněte na možnost **Vytvořit**.
 
 >[!NOTE]
 >K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů Picturepark nebo rozhraní API poskytovaná Picturepark.
@@ -269,7 +265,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Picturepark, měli byste se automaticky přihlásit k Picturepark, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

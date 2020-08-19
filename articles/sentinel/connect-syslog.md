@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566144"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
@@ -86,6 +86,8 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/log-query/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
 
 > [!NOTE]
+> **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
+>
 >
 > Existující [počítač pro přeposílání protokolů CEF](connect-cef-agent.md) můžete použít ke shromažďování a posílání protokolů z jednoduchých zdrojů syslog. K tomu, abyste se vyhnuli posílání událostí v obou formátech do služby Azure Sentinel, je nutné provést následující kroky, protože výsledkem bude duplikace událostí.
 >
@@ -111,7 +113,7 @@ Azure Sentinel může použít Machine Learning (ML) na data syslog k identifika
  
 Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog: 
 
-1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Například:
+1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)
