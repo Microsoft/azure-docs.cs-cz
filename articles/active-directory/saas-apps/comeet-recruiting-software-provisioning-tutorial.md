@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace předvyhovujícího náborového softwaru pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
 description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro spoluuspokojení náborového softwaru.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058327"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536877"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace předvyhovujícího náborového softwaru pro Automatické zřizování uživatelů
 
@@ -84,7 +80,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro vyhovující náborový software v Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -102,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho účtu náborového softwaru, jak je popsáno v kroku 6.
 
-6. V konzole pro správu nástroje pro naplnění se [doplněním](https://app.comeet.co/)Nástroje přejděte do pole **> nastavení > ověřování > Microsoft Azure**a zkopírujte **tajný token pro hodnotu vaší společnosti** do pole **tajného tokenu** v Azure AD.
+6. V konzole pro správu nástroje pro naplnění se [doplněním](https://app.comeet.co/)Nástroje přejděte do pole  **> nastavení > ověřování > Microsoft Azure**a zkopírujte **tajný token pro hodnotu vaší společnosti** do pole **tajného tokenu** v Azure AD.
 
     ![Vyhovující zřizování náborového softwaru](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 

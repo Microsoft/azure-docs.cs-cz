@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s dmarcian | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dmarcian.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a04b9383-3a60-4d54-9412-123daaddff3b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ad669f092fac0cc2e737d93ccc9d225ef57adf
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 8868b17766513ba1e93b25bf2aeff6553c62ba62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799543"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536151"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Kurz: integrace dmarcian s Azure Active Directory
 
@@ -146,7 +141,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     * V části **nastavit ověřování** v poli **metadata poskytovatele identity** vložte **adresu URL federačních metadat aplikace**, kterou jste zkopírovali z Azure Portal.
 
-    * V části **nastavit ověřování** v textovém poli pro **Příkazy atributu** vložte adresu URL.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * V části **nastavit ověřování** v textovém poli pro **Příkazy atributu** vložte adresu URL. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     * V části **nastavit adresu URL pro přihlášení** ZKOPÍRUJTE **přihlašovací adresu** pro vaši instanci a vložte ji do textového pole **přihlašovací adresa URL** v **základní části Konfigurace SAML** na Azure Portal.
 
@@ -165,7 +160,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -217,11 +212,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici dmarcian, měli byste se automaticky přihlásit k dmarcian, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

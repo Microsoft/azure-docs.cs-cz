@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s inplayem | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a aktérem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: b739b4e3-1a37-4e3c-be89-c3945487f4c1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536253"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: integrace inplay s Azure Active Directory
 
@@ -80,7 +75,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující krok:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURDOMAIN>.displayr.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YOURDOMAIN>.displayr.com`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<YOURDOMAIN>.displayr.com`
 
@@ -153,7 +148,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. **Mapování skupin** jsou volitelná.
 
-    g. Klikněte na **Uložit**.  
+    například Klikněte na **Uložit**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -163,9 +158,9 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -207,7 +202,7 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
     a. Do textového pole **název** zadejte jméno uživatele, jako je **Brittasimon**.
 
-    b. Do textového pole **e-mailu** zadejte e-maily uživatele jako `Brittasimon@contoso.com`.
+    b. Do textového pole **e-mailu** zadejte e-maily uživatele jako `Brittasimon@contoso.com` .
 
     c. Vyberte příslušné **členství ve skupině**.
 
@@ -217,7 +212,7 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
 Když na přístupovém panelu kliknete na dlaždici vylektoru, měli byste být automaticky přihlášeni k inlektoru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

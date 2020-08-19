@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Replicon | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Replicon.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8394191820226a0d4fdcfe1a078e85e1caafa37f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058192"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534275"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Kurz: integrace Replicon s Azure Active Directory
 
@@ -33,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Replicon s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -83,11 +78,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
+    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
 
-    1. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://global.replicon.com/!/saml2/<client name>`
+    1. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://global.replicon.com/!/saml2/<client name>`
 
-    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://global.replicon.com/!/saml2/<client name>/sso/post`
+    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://global.replicon.com/!/saml2/<client name>/sso/post`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Replicon](https://www.replicon.com/customerzone/contact-support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -112,9 +107,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Povolit ověřování SAML](./media/replicon-tutorial/ic777805.png "Povolit ověřování SAML")
 
-    a. Chcete-li zobrazit dialogové okno **EnableSAML Authentication2** , přidejte následující adresu URL za klíč vaší společnosti:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. Chcete-li zobrazit dialogové okno **EnableSAML Authentication2** , přidejte následující adresu URL za klíč vaší společnosti: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Následuje příklad schématu pro úplnou adresu URL:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Následuje příklad schématu pro úplnou adresu URL: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. Kliknutím na **+** rozbalte část **v20Configuration** .
 
@@ -134,7 +129,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -168,7 +163,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
 3. Klikněte na **+ Přidat uživatele**.
 
-    ![Přidání uživatele](./media/replicon-tutorial/ic777807.png "Přidání uživatele")
+    ![Přidat uživatele](./media/replicon-tutorial/ic777807.png "Přidání uživatele")
 
 4. V části **Profil uživatele** proveďte následující kroky:
 

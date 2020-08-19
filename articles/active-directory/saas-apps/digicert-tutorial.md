@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s DigiCert | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DigiCert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: df68c9289caed0c857434bf4a1f9a5eb28e71ab4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c9b85709ae37f1b3b6f4b4b562b7e96531f51b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157331"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Kurz: Azure Active Directory integrace s DigiCert
 
@@ -33,7 +28,7 @@ Integrace DigiCert s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí DigiCert
 
     ![Informace o jednotném přihlašování v doméně DigiCert a adresách URL](common/idp-identifier.png)
 
-    Do textového pole **identifikátor** zadejte adresu URL:`https://www.digicert.com/sso`
+    Do textového pole **identifikátor** zadejte adresu URL:  `https://www.digicert.com/sso`
 
 5. DigiCert aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
 
@@ -114,7 +109,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí DigiCert
 
 6. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky: 
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------| --------------- |
     | nameidentifier | User. userPrincipalName |
     | company | < companycode > |
@@ -139,7 +134,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí DigiCert
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -177,12 +172,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -220,7 +215,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici DigiCert, měli byste se automaticky přihlásit k DigiCert, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s IntelligenceBank | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IntelligenceBank.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7479c06a-e1fb-4f1d-81f8-9f255ff1b9fc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170169"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s IntelligenceBank
 
@@ -84,7 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.intelligencebank.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.intelligencebank.com`
 
     b. V textovém poli **identifikátor (ID entity)** použijte libovolnou z následujících možností:
 
@@ -92,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     - `IntelligenceBank`
     - `https://<SUBDOMAIN>.intelligencebank.com`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.intelligencebank.com/auth`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.intelligencebank.com/auth`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta IntelligenceBank](mailto:helpdesk@intelligencebank.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -115,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -143,7 +139,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/authenticator.PNG)
 
-1. Proveďte následující kroky:
+1. Proveďte tyto kroky:
 
     ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/urls.PNG)
 
@@ -183,9 +179,9 @@ Když na přístupovém panelu kliknete na dlaždici IntelligenceBank, měli bys
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

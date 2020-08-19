@@ -2,26 +2,21 @@
 title: 'Kurz: integrace s jednotným přihlašováním v Azure AD s F5 | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a F5.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39382eab-05fe-4dc2-8792-62d742dfb4e1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -33,7 +28,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -150,13 +145,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory F5 pro klienty](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -179,7 +174,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -223,7 +218,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)**. Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **importovat**.
 
     >[!NOTE]
-    >V příkladu našeho názvu aplikace `Kerbapp.superdemo.live` používáme certifikát se zástupnými kartami. naše KeyName je`WildCard-SuperDemo.live`
+    >V příkladu našeho názvu aplikace `Kerbapp.superdemo.live` používáme certifikát se zástupnými kartami. naše KeyName je `WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure02.png) 
  
@@ -252,7 +247,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
  
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure08.png)
 
-1. Na obrazovce nastavení jednotného přihlašování vyberte **Povolit jednotné přihlašování**. V části **vybraný typ jednotného přihlašování** vyberte **Kerberos**. Nahraďte **Session. SAML. Last. identity** pomocí **Session. SAML. Last. attr. Name. identity** v rámci **zdroje uživatelského jména** (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). Vyberte **Zobrazit upřesňující nastavení**. V části **sféra protokolu Kerberos** zadejte název domény. V části **název účtu/heslo účtu** zadejte účet delegování APM a heslo. Zadejte IP adresu řadiče domény v poli **KDC** . Klikněte na **uložit & další**.
+1. Na obrazovce nastavení jednotného přihlašování vyberte **Povolit jednotné přihlašování**. V části **vybraný typ jednotného přihlašování** vyberte **Kerberos**. Nahraďte **Session. SAML. Last. identity**  pomocí **Session. SAML. Last. attr. Name. identity** v rámci **zdroje uživatelského jména** (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). Vyberte **Zobrazit upřesňující nastavení**. V části **sféra protokolu Kerberos** zadejte název domény. V části **název účtu/heslo účtu** zadejte účet delegování APM a heslo. Zadejte IP adresu řadiče domény v poli **KDC** . Klikněte na **uložit & další**.
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure09.png)   
 
@@ -284,7 +279,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 1. Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
 
-2. Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
+2. Klikněte na možnost **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
 
 3. Do pole **název** zadejte jedinečný název pro Server ověřování.
 
@@ -347,7 +342,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 1. Pokud chcete nastavit službu SAML SP, přejděte k části **přístup > federaci > poskytovatele služby saml > místní služby SP** a klikněte na **vytvořit**. Vyplňte následující informace a klikněte na tlačítko **OK**.
 
     * Název typu: KerbApp200SAML
-    * ID entity *:https://kerb-app.com.cutestat.com
+    * ID entity *: https://kerb-app.com.cutestat.com
     * Nastavení názvu SP
     * Schéma: https
     * Host: kerbapp200. demo. Live
@@ -456,7 +451,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 *  **Krok 1:** Vytvoření účtu delegování
 
-    **Případě**
+    **Příklad:**
     * Název domény: **Ukázka. Live**
 
     * Název účtu SAM: **Big-ipuser**
@@ -465,7 +460,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 * **Krok 2:** Nastavit hlavní název služby (SPN) (na účtu delegování APM)
 
-    **Případě**
+    **Příklad:**
     * setspn – A **Host/Big-ipuser. demo. Live** Big-ipuser
 
 * **Krok 3:** Delegování hlavního názvu služby (pro účet App Service) nastaví příslušné delegování pro účet delegace F5.
@@ -485,11 +480,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

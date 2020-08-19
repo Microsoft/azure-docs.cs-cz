@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace konektoru meta Networks pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů k konektoru meta Networks.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 6e34e540-7761-4bdf-a2f9-8c12becc119d
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17ec8c04e3313155bdd00f119dc2f75882f51f33
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061352"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534995"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru meta Networks Connector pro Automatické zřizování uživatelů
 
@@ -123,7 +119,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konektory meta Networks ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

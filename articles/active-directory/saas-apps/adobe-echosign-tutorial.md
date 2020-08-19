@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s podpisem Adobe | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a symbolem Adobe.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154020"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrací pomocí Adobe Sign
 
@@ -33,7 +28,7 @@ Integrace společnosti Adobe Sign with Azure AD poskytuje následující výhody
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
     ![Informace o jednotném přihlašování v doméně a adresách URL společnosti Adobe](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.echosign.com/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.echosign.com/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.echosign.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.echosign.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory společnosti Adobe Signer support](https://helpx.adobe.com/in/contact/support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -150,7 +145,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
 1. V jiném okně webového prohlížeče se přihlaste k webu společnosti Adobe Signing Company jako správce.
 
-1. V nabídce SAML vyberte **Nastavení** > účtu**Nastavení SAML**.
+1. V nabídce SAML vyberte **Nastavení účtu**  >  **Nastavení SAML**.
    
     ![Snímek obrazovky se stránkou nastavení pro Adobe – podepsání SAML](./media/adobe-echosign-tutorial/ic789520.png "Účet")
 
@@ -172,7 +167,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
    
    f. Vložte **adresu URL pro odhlášení**, kterou jste zkopírovali z Azure Portal do textového pole **Adresa URL pro odhlášení IDP** .
 
-   g. Otevřete stažený soubor **certifikátu (Base64)** v programu Poznámkový blok. Zkopírujte obsah této složky do schránky a vložte ji do textového pole **certifikát IDP** .
+   například Otevřete stažený soubor **certifikátu (Base64)** v programu Poznámkový blok. Zkopírujte obsah této složky do schránky a vložte ji do textového pole **certifikát IDP** .
 
    h. Vyberte **Uložit změny**.
 
@@ -194,12 +189,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -236,7 +231,7 @@ Aby se uživatelé Azure AD mohli přihlásit k přihlašování do Adobe, musí
 
 1. Přihlaste se k webu společnosti **Adobe Sign** společnosti jako správce.
 
-2. V nabídce v horní části vyberte **účet**. Pak v levém podokně vyberte **Uživatelé & skupiny** > **vytvořit nového uživatele**.
+2. V nabídce v horní části vyberte **účet**. Pak v levém podokně vyberte **Uživatelé & skupiny**  >  **vytvořit nového uživatele**.
    
     ![Snímek obrazovky společnosti Adobe podepsat firemní web, s účtem, uživateli &skupin a vytvořit nově zvýrazněného uživatele](./media/adobe-echosign-tutorial/ic789524.png "Účet")
    
@@ -257,7 +252,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici symbol Adobe na přístupovém panelu, měli byste se automaticky přihlásit k přihlašovacímu znaku Adobe, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

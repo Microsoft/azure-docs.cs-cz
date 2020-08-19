@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s společnost Sage Intacct | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a společnost Sage Intacct.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 92518e02-a62c-4b1b-a8e9-2803eb2b49ac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535818"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Kurz: integrace společnost Sage Intacct s Azure Active Directory
 
@@ -82,7 +78,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://www.intacct.com/ia/acct/sso_response.phtml`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL:  `https://www.intacct.com/ia/acct/sso_response.phtml`
 
 1. Aplikace společnost Sage Intacct očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na možnost **Upravit** ikonu otevřete dialogové okno atributy uživatele..
 
@@ -221,9 +217,9 @@ Když na přístupovém panelu kliknete na dlaždici společnost Sage Intacct, m
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

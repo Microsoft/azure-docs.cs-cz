@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Dialpad.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86fedfc75d95ef8d864a50d2425e329cec3ec84f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058336"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536521"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů
 
@@ -113,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Dialpad ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

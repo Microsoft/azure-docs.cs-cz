@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s adaptivními přehledy | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a adaptivními přehledy.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537733"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Kurz: integrace adaptivních přehledů s Azure Active Directory
 
@@ -83,9 +78,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
     > Na stránce **nastavení jednotného přihlašování SAML** pro adaptivní přehledy můžete získat identifikátor (ID entity) a adresu URL odpovědi.
@@ -104,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 2. Přejít na **Správa**.
 
-    ![Správce](./media/adaptivesuite-tutorial/ic805644.png "Správce")
+    ![Správce](./media/adaptivesuite-tutorial/ic805644.png "správce")
 
 3. V části **Uživatelé a role** klikněte na **Nastavení SAML SSO**.
 
@@ -134,7 +129,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
      * **Povolte SAML**, vyberte možnost **Povolit jednotné přihlašování SAML a přímé přihlašování s adaptivním přehledem**.
 
-    g. Zkopírujte **adresu URL jednotného Insights SSO** a vložte ji do pole **identifikátor (ID entity)** a text **adresy URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
+    například Zkopírujte **adresu URL jednotného Insights SSO** a vložte ji do pole **identifikátor (ID entity)** a text **adresy URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
     h. Klikněte na **Uložit**.
 
@@ -146,9 +141,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -178,11 +173,11 @@ Aby se uživatelé Azure AD mohli přihlašovat do adaptivních přehledů, mus�
 
 2. Přejít na **Správa**.
 
-   ![Správce](./media/adaptivesuite-tutorial/IC805644.png "Správce")
+   ![Správce](./media/adaptivesuite-tutorial/IC805644.png "správce")
 
 3. V části **Uživatelé a role** klikněte na **Uživatelé**.
 
-   ![Přidání uživatele](./media/adaptivesuite-tutorial/IC805648.png "Přidání uživatele")
+   ![Přidat uživatele](./media/adaptivesuite-tutorial/IC805648.png "Přidání uživatele")
 
 4. V části **Nový uživatel** proveďte následující kroky:
 
@@ -203,11 +198,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici adaptivní přehledy na přístupovém panelu byste měli být automaticky přihlášení do adaptivních přehledů, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
