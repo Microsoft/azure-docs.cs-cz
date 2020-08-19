@@ -58,10 +58,10 @@
               href: connect-azure-security-center.md
             - name: Azure Security Center for IoT
               href: connect-asc-iot.md
+            - name: Firewall webových aplikací Azure (WAF)
+              href: connect-azure-waf.md
             - name: Server DNS
               href: connect-dns.md
-            - name: Firewall webových aplikací Azure
-              href: connect-azure-waf.md
             - name: Brána Windows Firewall
               href: connect-windows-firewall.md
             - name: Události zabezpečení systému Windows
