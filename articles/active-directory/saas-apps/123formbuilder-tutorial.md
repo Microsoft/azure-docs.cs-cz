@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s 123FormBuilder SSO | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 123FormBuilder SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 947a9d632089b18f6b950c5eecbcb74d061f32eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274211"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539262"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s 123FormBuilder SSO
 
@@ -83,14 +79,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/metadata`
 
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/acs`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/sso`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečných adres URL a identifikátorů, které jsou vysvětleny dále v tomto kurzu.
@@ -111,9 +107,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -135,11 +131,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-123formbuilder-sso"></a>Konfigurace jednotného přihlašování 123FormBuilder
 
-1. Pokud chcete nakonfigurovat jednotné přihlašování na **123FORMBUILDER SSO** , použijte následující postup [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) a proveďte následující kroky:
+1. Pokud chcete nakonfigurovat jednotné přihlašování na **123FORMBUILDER SSO** , použijte [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) následující postup a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/123formbuilder-tutorial/submit.png) 
 
-    a. Do textového pole **e-mail** zadejte e-maily uživatele, jako `B.Simon@Contoso.com`je.
+    a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `B.Simon@Contoso.com` .
 
     b. Klikněte na **nahrát** a vyhledejte stažený soubor XML s metadaty, který jste stáhli z Azure Portal.
 
@@ -167,9 +163,9 @@ Když kliknete na dlaždici 123FormBuilder SSO na přístupovém panelu, měli b
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

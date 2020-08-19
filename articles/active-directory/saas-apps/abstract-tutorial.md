@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory Integration s abstraktním | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a abstrakcí.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb167ab-d769-4661-a8cb-ae371cb63d2a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f19733f01cf601c1145d5e2bb5deb58db828dc4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68302591"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538327"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Kurz: integrace abstrakce s Azure Active Directory
 
@@ -85,7 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.abstract.com/signin`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.abstract.com/signin`
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -93,12 +88,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 ### <a name="configure-abstract-sso"></a>Konfigurace abstraktního jednotného přihlašování
 
-Ujistěte se, že jste `App Federation Metadata Url` načetli své a `Azure AD Identifier` z Azure Portal, jak je budete potřebovat ke konfiguraci jednotného přihlašování pro abstrakt.
+Ujistěte se, že jste načetli své `App Federation Metadata Url` a `Azure AD Identifier` z Azure Portal, jak je budete potřebovat ke konfiguraci jednotného přihlašování pro abstrakt.
 
 Tyto informace najdete na stránce **nastavit jednotné přihlašování pomocí SAML** :
 
-* `App Federation Metadata Url` Je umístěn v části **podpisový certifikát SAML** .
-* `Azure AD Identifier` Je umístěn v části **set abstract** .
+* `App Federation Metadata Url`Je umístěn v části **podpisový certifikát SAML** .
+* `Azure AD Identifier`Je umístěn v části **set abstract** .
 
 
 Nyní jste připraveni nakonfigurovat jednotné přihlašování pro abstraktní:
@@ -123,9 +118,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -163,7 +158,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici abstraktu na přístupovém panelu byste měli být automaticky přihlášeni k abstrakci, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
