@@ -3,12 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032846"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586694"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -47,6 +47,9 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
     - [Přečtěte si další informace](backup-instant-restore-capability.md) o funkci okamžitého obnovení.
 
       ![Výchozí zásady zálohování](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE a PMK jsou výchozími metodami šifrování](backup-encryption.md) pro virtuální počítače Azure. Azure Backup podporuje zálohování a obnovení těchto virtuálních počítačů Azure.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup skupiny prostředků pro Virtual Machines
 

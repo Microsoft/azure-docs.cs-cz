@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242759"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589296"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -94,7 +94,7 @@ Volitelný připojovací řetězec účtu úložiště pro ukládání protokol�
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`znamená zakázat výchozí cílovou stránku, která se zobrazí pro kořenovou adresu URL aplikace Function App. Výchozí je `false`.
+`true` znamená zakázat výchozí cílovou stránku, která se zobrazí pro kořenovou adresu URL aplikace Function App. Výchozí je `false`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -106,7 +106,7 @@ Pokud je toto nastavení aplikace vynecháno nebo nastaveno na `false` , zobraz�
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`znamená použití režimu vydání při kompilování kódu .NET; `false`znamená použít režim ladění. Výchozí je `true`.
+`true` znamená použití režimu vydání při kompilování kódu .NET; `false` znamená použít režim ladění. Výchozí je `true`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -234,8 +234,8 @@ Pro spotřebu & jenom plánů Premium. Cesta k souboru s kódem a konfigurací a
 
 Maximální počet instancí, na které může aplikace Function App navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
 
-> [!NOTE]
-> Toto nastavení je funkce ve verzi Preview a je spolehlivá, jenom pokud je nastavená hodnota <= 5.
+> [!IMPORTANT]
+> Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./functions-scale.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
 
 |Klíč|Ukázková hodnota|
 |---|------------|

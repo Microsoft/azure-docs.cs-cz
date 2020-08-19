@@ -1,18 +1,18 @@
 ---
 title: Reakce na události klíč-hodnota konfigurace aplikace Azure
-description: Použijte Azure Event Grid k přihlášení k odběru událostí konfigurace aplikace.
+description: Použijte Azure Event Grid k přihlášení k odběru událostí konfigurace aplikace, které umožňují aplikacím reagovat na změny klíčových hodnot bez nutnosti složitosti kódu.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523794"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590026"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikace Azure
 
@@ -29,7 +29,7 @@ Podívejte se na stručný příklad [Směrování událostí konfigurace aplika
 ## <a name="available-azure-app-configuration-events"></a>Dostupné události konfigurace aplikace Azure
 Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Odběry událostí konfigurace aplikace Azure můžou zahrnovat dva typy událostí:  
 
-> |Název události|Description|
+> |Název události|Popis|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Je aktivována, když je vytvořena nebo nahrazena klíčová hodnota.|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Je aktivována, když se odstraní klíčová hodnota.|
@@ -37,16 +37,16 @@ Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subsc
 ## <a name="event-schema"></a>Schéma událostí
 Události konfigurace aplikace Azure obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost konfigurace aplikace, protože vlastnost eventType začíná na Microsoft. AppConfiguration. Další informace o použití vlastností události Event Grid najdete v části [Event Grid schéma událostí](../event-grid/event-schema.md).  
 
-> |Vlastnost|Typ|Description|
+> |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |téma|řetězec|Úplné Azure Resource Manager ID konfigurace aplikace, která událost emituje.|
-> |závislosti|řetězec|Identifikátor URI klíč-hodnota, která je předmětem události.|
+> |subject|řetězec|Identifikátor URI klíč-hodnota, která je předmětem události.|
 > |eventTime|řetězec|Datum a čas generování události ve formátu ISO 8601.|
-> |Typ|řetězec|"Microsoft. AppConfiguration. KeyValueModified" nebo "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |ID|řetězec|Jedinečný identifikátor této události.|
+> |eventType|řetězec|"Microsoft. AppConfiguration. KeyValueModified" nebo "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |Id|řetězec|Jedinečný identifikátor této události.|
 > |dataVersion|řetězec|Verze schématu datového objektu.|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
-> |data|odkazy objektů|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
+> |data|object|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
 > |data. Key|řetězec|Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
 > |data. Label|řetězec|Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
 > |data. ETag|řetězec|Pro `KeyValueModified` ETag nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna.|

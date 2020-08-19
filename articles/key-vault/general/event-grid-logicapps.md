@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 340fcd723442a53ca72d3af0461226be737eb7a5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844197"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588870"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Pomocí Logic Apps dostávat e-maily o změnách stavu tajných kódů trezoru klíčů
 
@@ -26,7 +26,7 @@ Přehled Integrace Azure Key Vault/Azure Event Grid najdete v tématu [monitorov
 ## <a name="prerequisites"></a>Požadavky
 
 - E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps (například Office 365 Outlook). Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](/connectors).
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
 - Registrované Event Grid jako poskytovatel prostředků, viz [registrace poskytovatelé prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)
 

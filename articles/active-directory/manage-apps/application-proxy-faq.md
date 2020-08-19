@@ -2,25 +2,21 @@
 title: Nejčastější dotazy k Azure Proxy aplikací služby AD | Microsoft Docs
 description: Přečtěte si odpovědi na nejčastější dotazy k používání služby Azure Proxy aplikací služby AD k publikování interních místních aplikací pro vzdálené uživatele.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042101"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589159"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -90,6 +86,15 @@ Proxy aplikací vyžaduje systém Windows Server 2012 R2 nebo novější. V sou�
 
 
 ## <a name="application-configuration"></a>Konfigurace aplikací
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Zobrazuje se chyba s neplatným certifikátem nebo se může jednat o chybné heslo.
+
+Po nahrání certifikátu SSL obdržíte na portálu zprávu "Neplatný certifikát, možná chybné heslo".
+
+Zde jsou některé tipy pro řešení této chyby:
+- Vyhledejte problémy s certifikátem. Nainstalujte ji do místního počítače. Pokud nebudete mít žádné problémy, je certifikát dobrý.
+- Ujistěte se, že heslo neobsahuje žádné speciální znaky. Pro testování by heslo mělo obsahovat pouze znaky 0-9, A-Z a a-Z.
+- Pokud byl certifikát vytvořen pomocí poskytovatele úložiště klíčů od společnosti Microsoft, musí být použit algoritmus RSA.
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Jaká je délka výchozího a "dlouhého" back-endu časového limitu? Může být časový limit prodloužen?
 

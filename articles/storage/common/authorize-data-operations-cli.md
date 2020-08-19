@@ -1,24 +1,24 @@
 ---
-title: Spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue
+title: Volba způsobu autorizace přístupu k datům objektů BLOB nebo front pomocí Azure CLI
 titleSuffix: Azure Storage
 description: Určete, jak autorizovat datové operace s daty objektů BLOB a front pomocí Azure CLI. Datové operace můžete autorizovat pomocí přihlašovacích údajů Azure AD, pomocí přístupového klíče účtu nebo pomocí tokenu sdíleného přístupového podpisu (SAS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183390"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589058"
 ---
-# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k datům objektů BLOB nebo front pomocí Azure CLI
 
 Azure Storage poskytuje rozšíření pro rozhraní příkazového řádku Azure, které vám umožní určit, jak chcete autorizovat operace s daty objektů BLOB nebo front. Datové operace můžete autorizovat následujícími způsoby:
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055195"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590060"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,15 +53,15 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Ano |
-| Integrovaná instance a monitorování databáze a metriky | Ano |
-| Automatické opravy softwaru | Ano |
-| Nejnovější funkce databázového stroje | Ano |
+| Spravované automatizované zálohy | Yes |
+| Integrovaná instance a monitorování databáze a metriky | Yes |
+| Automatické opravy softwaru | Yes |
+| Nejnovější funkce databázového stroje | Yes |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | Ne |
-| Podpora portálu | Ano|
+| Nasazení VNet-Azure Resource Manager | Yes |
+| Model nasazení sítě VNet – klasický | No |
+| Podpora portálu | Yes|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
@@ -73,8 +73,8 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 
 V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 
-- Logické procesory **COMPUTE GEN4 –** jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4, Attached SSD, fyzických jader, 7-GB RAM na jádro a na výpočetních velikostech mezi 8 a 24 virtuální jádra.
-- Logické procesory **Gen5** jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 a Intel SP-8160 (Skylake), Fast NVMe SSD, logických jader vláken a výpočetních velikostí mezi 4 a 80 jádry.
+- Logické procesory **COMPUTE GEN4 –** jsou založené na procesorech Intel® E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD, fyzické jádra, 7 GB RAM na jádro a výpočetních velikostí mezi 8 a 24 virtuální jádra.
+- **Gen5** logické procesory jsou založené na Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) a Intel® 8272CL (Cascade Lake) 2,5 GHz, rychlé NVMe SSD, logické jádro a výpočetní velikosti mezi 4 a 80 jádry.
 
 Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezeních prostředků spravované instance SQL](resource-limits.md#hardware-generation-characteristics).
 
@@ -161,7 +161,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Služba SQL Managed instance umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../database/authentication-aad-overview.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje službu [Multi-Factor Authentication](../database/authentication-mfa-ssms-configure.md) pro zvýšení zabezpečení dat a aplikací při podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování spravované instance SQL odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. Spravovaná instance SQL podporuje dva typy ověřování:  
 

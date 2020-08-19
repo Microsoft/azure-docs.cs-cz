@@ -1,6 +1,6 @@
 ---
 title: Rychlý Start pro konfiguraci aplikací Azure s .NET Core | Microsoft Docs
-description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi .NET Core
+description: V tomto rychlém startu vytvoříte aplikaci .NET Core s konfigurací aplikace Azure, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: b5b5097baecc2ef95dc528278764f87a1ca258bd
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5925d80f23052324e5512908241ed573c681d835
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209741"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590247"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 

@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525893"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586677"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 
@@ -136,7 +136,7 @@ Omezení přístupu ke veřejnému koncovému bodu nejdřív vyžaduje, abyste z
 
 #### <a name="disable-access-to-the-public-endpoint"></a>Zakázat přístup k veřejnému koncovému bodu
 
-Když je zakázaný přístup k veřejnému koncovému bodu, je možné, že k účtu úložiště budete mít přístup prostřednictvím svých privátních koncových bodů. Jinak budou požadavky na veřejný koncový bod účtu úložiště odmítnuty. 
+Když je zakázaný přístup k veřejnému koncovému bodu, je možné, že k účtu úložiště budete mít přístup prostřednictvím svých privátních koncových bodů. Jinak budou platné požadavky na veřejný koncový bod účtu úložiště odmítnuty, pokud nejsou z konkrétního [povoleného zdroje](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks). 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]

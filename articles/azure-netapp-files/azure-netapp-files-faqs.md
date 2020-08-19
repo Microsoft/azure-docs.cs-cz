@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134492"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590366"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -54,7 +54,9 @@ Ne. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Je možné šifrovat síťový provoz mezi virtuálním počítačem Azure a úložištěm?
 
-Přenosy dat (přenosy z klienta NFSv3, NFSv 4.1 nebo SMBv3 do Azure NetApp Files) nejsou šifrované. Provoz z virtuálního počítače Azure (s operačním systémem souborů NFS nebo klienta SMB) ale Azure NetApp Files je tak bezpečný jako jakýkoli jiný provoz Azure-VM-to-VM. Tento provoz je místní pro síť Azure Data Center. 
+Přenos dat mezi klienty NFSv 4.1 a Azure NetApp Files svazky se dá šifrovat pomocí protokolu Kerberos s šifrováním AES-256. Podrobnosti najdete v tématu [Konfigurace šifrování protokolu Kerberos nfsv 4.1 pro Azure NetApp Files](configure-kerberos-encryption.md) .   
+
+Přenos dat mezi klienty NFSv3 nebo SMBv3 do Azure NetApp Files svazků není šifrovaný. Provoz z virtuálního počítače Azure (s operačním systémem souborů NFS nebo klienta SMB) ale Azure NetApp Files je tak bezpečný jako jakýkoli jiný provoz Azure-VM-to-VM. Tento provoz je místní pro síť Azure Data Center. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Je možné úložiště v klidovém stavu zašifrovat?
 
@@ -125,7 +127,7 @@ Azure NetApp Files podporuje NFSv3 a NFSv 4.1. Svazek můžete [vytvořit](azure
 
 ### <a name="how-do-i-enable-root-squashing"></a>Návody povolit root vtěsnání?
 
-Kořenová vtěsnání se v tuto chvíli nepodporuje.
+Můžete určit, jestli má kořenový účet ke svazku přístup, nebo ne pomocí zásad exportu svazku. Podrobnosti najdete v tématu [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md) .
 
 ## <a name="smb-faqs"></a>Nejčastější dotazy k protokolu SMB
 

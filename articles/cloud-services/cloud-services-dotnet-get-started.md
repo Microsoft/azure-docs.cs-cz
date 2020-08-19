@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255224"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590349"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -37,7 +37,7 @@ Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure.
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
 * Vytvoření projektu cloudových služeb sady Visual Studio s webovou rolí a rolí pracovního procesu technologie ASP.NET MVC.
-* Postup místního testování projektu cloudových služeb pomocí emulátoru úložiště Azure.
+* Postup testování projektu cloudové služby místně pomocí emulátoru Azure Storage.
 * Postup publikování cloudového projektu do cloudové služby Azure a testování pomocí účtu úložiště Azure.
 * Odeslání souborů a jejich uložení do služby Azure Blob service.
 * Používání služby front Azure pro komunikaci mezi vrstvami.
@@ -100,7 +100,7 @@ Aplikace běží výhradně na místním počítači bez připojení ke cloudu. 
 
 V následující části budete konfigurovat řešení tak, aby při spuštění v cloudu používalo cloudové prostředky Azure pro fronty a objekty blob a také databázi aplikace. Pokud chcete aplikaci i nadále spouštět místně, ale používat cloudové úložiště a databázové prostředky, tak můžete. Stačí nastavit připojovací řetězce a my vám ukážeme, jak na to.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 Pokud chcete aplikaci spustit v cloudu, proveďte následující kroky:
 
 * Vytvoření cloudové služby Azure
@@ -124,7 +124,7 @@ Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
 5. Vyberte oblast, ve které chcete aplikaci nasadit.
 
     Toto pole určuje datové centrum, které bude hostovat vaše cloudové služby. V případě produkční aplikace vyberte oblast, která je nejblíž k vašim zákazníkům. V tomto kurzu vyberte oblast, která je nejblíž k vám.
-5. Klikněte na **Vytvořit**.
+5. Klikněte na možnost **Vytvořit**.
 
     Na následujícím obrázku vidíte vytvoření cloudové služby s adresou URL CSvccontosoads.cloudapp.net.
 
@@ -153,7 +153,7 @@ Když aplikace běží v cloudu, používá cloudovou databázi.
 9. Klikněte na možnost **Vybrat** u nového serveru.
 
     ![Nový server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klikněte na **Vytvořit**.
+10. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 Účet úložiště Azure poskytuje prostředky pro ukládání dat front a objektů blob v cloudu.
@@ -176,7 +176,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
     Když jsou cloudové služby a účet úložiště v různých datacentrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
 
     Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 
     ![Nový účet úložiště](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -212,7 +212,7 @@ Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního
     ![Připojovací řetězce](./media/cloud-services-dotnet-get-started/connstrings.png)
 3. V transformačním souboru *Web.Release.config* odstraňte text `{connectionstring}` a na jeho místo vložte připojovací řetězec ADO.NET z portálu Azure Portal.
 4. V připojovacím řetězci, který jste vložili do transformačního souboru*Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
-5. Uložte soubor.  
+5. Soubor uložte.  
 6. Vyberte a zkopírujte připojovací řetězec (bez okolních uvozovek), abyste ho mohli použít v následujících krocích konfigurace projektu role pracovního procesu.
 7. V **Průzkumníku řešení** v části **Role** v projektu cloudové služby klikněte pravým tlačítkem na **ContosoAdsWorker** a potom klikněte na **Vlastnosti**.
 
@@ -396,7 +396,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
-### <a name="add-code-files"></a>Přidání souborů s kódy
+### <a name="add-code-files"></a>Přidání souborů kódu
 V této části zkopírujete soubory s kódy ze staženého řešení do nového řešení. Následující části vám ukáží a vysvětlí klíčová místa tohoto kódu.
 
 Chcete-li přidat soubory do projektu nebo složky, klikněte pravým tlačítkem myši na projekt nebo složku a klikněte na položku **Přidat**  -  **existující položku**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
@@ -771,7 +771,7 @@ Obecné informace o vývoji pro cloud najdete v článku o [vytváření reáln�
 
 Video úvod do osvědčených postupů a vzorů služby Azure Storage najdete v článku [Služba Microsoft Azure Storage – novinky, osvědčené postupy a vzory](https://channel9.msdn.com/Events/Build/2014/3-628).
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Cloudové služby Azure Cloud Services část 1: Úvod](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)

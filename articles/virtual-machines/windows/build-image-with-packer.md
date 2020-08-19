@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003842"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587085"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: jak používat balíček k vytváření imagí virtuálních počítačů v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
@@ -67,8 +67,8 @@ Vytvořte soubor s názvem *windows.js* a vložte následující obsah. Zadejte 
 
 | Parametr                           | Kde získat |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Zobrazit ID instančního objektu s`$sp.applicationId` |
-| *client_secret*                     | Zobrazit automaticky generované heslo pomocí`$plainPassword` |
+| *client_id*                         | Zobrazit ID instančního objektu s `$sp.applicationId` |
+| *client_secret*                     | Zobrazit automaticky generované heslo pomocí `$plainPassword` |
 | *tenant_id*                         | Výstup z `$sub.TenantId` příkazu |
 | *subscription_id*                   | Výstup z `$sub.SubscriptionId` příkazu |
 | *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku |
@@ -84,7 +84,7 @@ Vytvořte soubor s názvem *windows.js* a vložte následující obsah. Zadejte 
     "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
     "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",

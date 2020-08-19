@@ -6,23 +6,23 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206365"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586830"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
 
 Azure Load Balancer má dva typy nebo SKU.
 
-## <a name="sku-comparison"></a><a name="skus"></a>Porovnání skladové položky
+## <a name="sku-comparison"></a><a name="skus"></a> Porovnání skladové položky
 
 Nástroj pro vyrovnávání zatížení podporuje skladové položky Basic i Standard. Tyto SKU se liší ve scénáři škálování, funkce a ceny. Pomocí nástroje Load Balancer úrovně Basic lze vytvořit libovolný scénář, který je možné použít pro nástroj pro vyrovnávání zatížení.
 
@@ -46,7 +46,7 @@ Samostatné virtuální počítače, skupiny dostupnosti a škálovací sady vir
 | **Resetování protokolu TCP při nečinnosti** | [K dispozici u libovolného pravidla](./load-balancer-tcp-reset.md) | Není k dispozici |
 | **[Více front-endy](./load-balancer-multivip-overview.md)** | Příchozí a [odchozí](./load-balancer-outbound-connections.md) | Pouze příchozí |
 | **Operace správy** | Většina operací < 30 sekund | typických 60 až 90 sekund |
-| **SLA** | [99,99 %](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici | 
+| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici | 
 
 Další informace najdete v tématu [omezení nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Podrobnosti o Load Balanceru úrovně Standard najdete v [přehledu](load-balancer-standard-overview.md), na stránce s [cenami](https://aka.ms/lbpricing) a ve [smlouvě SLA](https://aka.ms/lbsla).
 

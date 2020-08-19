@@ -4,18 +4,18 @@ description: Naučte se nasadit cluster Service Fabric s Linuxem do existující
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260222"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586916"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
 V tomto článku se dozvíte, jak nasadit cluster se systémem Linux Service Fabric do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) pomocí rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -41,7 +41,12 @@ Pro Ubuntu 18,04 LTS:
 * [AzureDeploy.json][template2]
 * [AzureDeploy.Parameters.jsna][parameters2]
 
-Rozdíl mezi těmito dvěma šablonami je atribut **vmImageSku** nastaven na hodnotu "18,04-LTS" a **typeHandlerVersion** každého uzlu je nastavena na 1,1.
+V případě Ubuntu 18,04 LTS je rozdíl mezi těmito dvěma šablonami 
+* atribut **vmImageSku** nastaven na hodnotu "18,04-LTS"
+* **typeHandlerVersion** všech uzlů je nastavené na 1,1.
+* Microsoft. ServiceFabric/Clusters – prostředek
+   - **apiVersion** je nastavená na "2019-03-01" nebo vyšší
+   - vlastnost **vmImage** je nastavena na hodnotu "Ubuntu18_04".
 
 Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Šablona [AzureDeploy.json][template] nasadí řadu prostředků včetně následujících.
 

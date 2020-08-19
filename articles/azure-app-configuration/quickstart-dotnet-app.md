@@ -1,6 +1,6 @@
 ---
 title: Rychlý Start pro konfiguraci aplikací Azure s .NET Framework | Microsoft Docs
-description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi .NET Framework
+description: V tomto článku vytvoříte aplikaci .NET Framework s využitím konfigurace aplikací Azure k centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 63b7f8b28e339abde326bf3dca34d9ee6d816a31
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209916"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590264"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace založené na .NET Framework pro centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)

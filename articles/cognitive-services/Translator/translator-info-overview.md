@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992670"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589447"
 ---
 # <a name="what-is-the-translator"></a>Co je to Překladatel?
 
-Překladatel je možné snadno integrovat do aplikací, webů, nástrojů a řešení. Umožní vám přidat vícejazyčná uživatelská prostředí ve [více než 60 jazycích](languages.md) a můžete ji použít k překladu jazyka z textu do textu na jakékoli hardwarové platformě s jakýmkoli operačním systémem.
+Překladatel je možné snadno integrovat do aplikací, webů, nástrojů a řešení. Umožňuje přidat vícejazyčné uživatelské prostředí ve [více než 70 jazycích](languages.md)a můžete ho použít na libovolné hardwarové platformě s jakýmkoli operačním systémem pro převod textu na text.
 
 Překladatel je součástí kolekce [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) v rámci služby Machine Learning a algoritmů AI v cloudu a je ve vašich vývojových projektech snadno spotřební.
 
@@ -54,6 +54,6 @@ Další informace o [přizpůsobení jazyka](customization.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zaregistrujte se](translator-text-how-to-signup.md) a získejte přístupový klíč.
+- [Zaregistrujte](translator-text-how-to-signup.md) si přístupový klíč.
 - [Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) poskytuje technickou dokumentaci k rozhraním API.
 - [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

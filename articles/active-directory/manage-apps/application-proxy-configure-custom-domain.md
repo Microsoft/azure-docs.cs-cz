@@ -1,27 +1,22 @@
 ---
-title: Vlastní domény v Azure Proxy aplikací služby AD | Microsoft Docs
+title: Vlastní domény v Azure Proxy aplikací služby AD
 description: Konfigurace a Správa vlastních domén v Azure Proxy aplikací služby AD.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764906"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587765"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
@@ -87,15 +82,15 @@ Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
    
 4. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
    
-5. Vyberte možnost **Přidat**.
+5. Vyberte **Přidat**.
    
    ![Vybrat vlastní doménu](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** . 
+6. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** .
    
    ![Kliknutím Nahrajte certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) .
+7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) . Pokud certifikát není platný nebo došlo k potížím s heslem, zobrazí se chybová zpráva. [Nejčastější dotazy k proxy aplikacím](application-proxy-faq.md#application-configuration) obsahují některé kroky pro řešení potíží, které můžete vyzkoušet.
    
    ![Nahrát certifikát](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Certifikát vytvoří zabezpečené připojení TLS pro vaši vlastní doménu.
 
 Abyste měli jistotu, že jsou zahrnuté všechny požadované zprostředkující certifikáty, musíte použít certifikát PFX. Certifikát musí obsahovat privátní klíč.
 
-Neexistuje žádné omezení metod podpisu certifikátu. Podporuje se typ ECC (Cryptography Curve Cryptography), alternativní název předmětu (SAN) a další typy běžných certifikátů. 
+Jsou podporovány nejběžnější metody signatur certifikátů, například alternativní název subjektu (SAN). 
 
 Můžete použít certifikáty se zástupnými znaky, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými znaky](application-proxy-wildcard.md)musíte použít certifikáty se zástupnými znaky. Chcete-li použít certifikát k přístupu k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětu do stejného certifikátu. Například certifikát pro * \* . Adventure-Works.com* nebude fungovat pro * \* . Apps.Adventure-Works.com* , pokud nepřidáte * \* . Apps.Adventure-Works.com* jako alternativní název subjektu. 
 

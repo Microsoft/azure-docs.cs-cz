@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261867"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587748"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -32,10 +32,19 @@ Recovery Services trezor je entita, která ukládá zálohy a body obnovení vyt
 
 - Další informace o redundanci úložiště najdete v těchto článcích o [geografické](../storage/common/storage-redundancy.md) a [místní](../storage/common/storage-redundancy.md) redundanci.
 
-### <a name="additional-resources"></a>Další zdroje
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Nastavení šifrování v trezoru Recovery Services
 
-- [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
-- [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)
+Tato část popisuje možnosti, které jsou k dispozici pro šifrování zálohovaných dat uložených v úložišti Recovery Services.
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných platformou
+
+Ve výchozím nastavení se všechna vaše data šifrují pomocí klíčů spravovaných platformou. Pro povolení tohoto šifrování není nutné provádět žádnou explicitní akci z vašeho konce. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
+
+Data můžete šifrovat pomocí šifrovacích klíčů vlastněných a spravovaných vámi. Azure Backup umožňuje používat klíče RSA uložené v Azure Key Vault k šifrování záloh. Šifrovací klíč, který se používá k šifrování záloh, může být jiný než ten, který se používá pro zdroj. Data jsou chráněná pomocí šifrovacího klíče založeného na standardu AES 256 (klíč DEK), který je zase chráněn pomocí vašich klíčů. Díky tomu máte plnou kontrolu nad daty a klíči. Aby bylo šifrování povoleno, musí mít Recovery Services trezoru udělen přístup k šifrovacímu klíči v Azure Key Vault. Kdykoli je to potřeba, můžete klíč zakázat nebo odvolat přístup. Před tím, než se pokusíte ochránit jakékoli položky do trezoru, je však nutné povolit šifrování pomocí vašich klíčů.
+
+Přečtěte si další informace o šifrování zálohovaných dat [pomocí klíčů spravovaných zákazníkem](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -45,9 +54,15 @@ Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availab
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>Další zdroje
+
+- [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
+- [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>Další kroky
 
-Následující články použijte k následujícím akcím:</br>
-[Zálohování virtuálního počítače s IaaS](backup-azure-arm-vms-prepare.md)</br>
-[Zálohování Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Zálohování Windows serveru](backup-windows-with-mars-agent.md)
+Následující články použijte k následujícím akcím:
+
+- [Zálohování virtuálního počítače s IaaS](backup-azure-arm-vms-prepare.md)
+- [Zálohování Azure Backup Server](backup-azure-microsoft-azure-backup.md)
+- [Zálohování Windows serveru](backup-windows-with-mars-agent.md)

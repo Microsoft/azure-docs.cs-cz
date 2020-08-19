@@ -3,20 +3,20 @@ title: Průvodce správou nákladů pro Azure Lab Services
 description: Seznamte se s různými způsoby, jak zobrazit náklady na služby testovacího prostředí.
 author: rbest
 ms.author: rbest
-ms.date: 06/26/2020
+ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: fbbaf4a3646260fc09467e214b82fd0213415635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445300"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589848"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Správa nákladů pro Azure Lab Services
 
 Nákladová Správa se dá rozdělit do dvou různých oblastí: odhad nákladů a analýza nákladů.  Odhad nákladů nastane při nastavování testovacího prostředí, aby se zajistilo, že počáteční struktura testovacího prostředí se bude vejít do očekávaného rozpočtu.  Analýza nákladů obvykle probíhá na konci měsíce za účelem analýzy nákladů a určení akcí nezbytných pro příští měsíc.
 
-## <a name="estimating-the-lab-costs"></a>Odhad nákladů testovacího prostředí
+## <a name="estimate-the-lab-costs"></a>Odhad nákladů na testovací prostředí
 
 V každém řídicím panelu testovacího prostředí se účtuje **náklady & fakturace** , která obsahuje hrubý odhad toho, co bude testovací prostředí platit za měsíc.  Odhad nákladů shrnuje využití hodin s maximálním počtem uživatelů podle odhadovaných nákladů na hodiny.  Pokud chcete získat nejpřesnější odhad nastavení testovacího prostředí, včetně [plánu](how-to-create-schedules.md), a na řídicím panelu se budou zobrazovat odhadované náklady.  
 
@@ -25,7 +25,7 @@ Tento odhad nemusí být všechny možné náklady, ale existuje několik prost�
 > [!div class="mx-imgBorder"]
 > ![Odhad nákladů na řídicí panel](./media/cost-management-guide/dashboard-cost-estimation.png)
 
-## <a name="analyzing-previous-months-usage"></a>Analýza využití předchozích měsíců
+## <a name="analyze-previous-months-usage"></a>Analyzovat využití předchozích měsíců
 
 Analýza nákladů je určena k revizi využití předchozích měsíců a pomůže vám určit případné úpravy testovacího prostředí.  Rozpis nákladů v minulosti najdete v části [Analýza nákladů na předplatné](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).  V Azure Portal můžete do pole horní hledání zadat "Subscriptions" (odběry) a pak vybrat možnost předplatná.  
 
@@ -39,14 +39,14 @@ Vyberte konkrétní předplatné, které se má zkontrolovat.
 
  V levém podokně v části **cost management**vyberte analýza nákladů.
 
- > [!div class="mx-imgBorder"]
+> [!div class="mx-imgBorder"]
 > ![Analýza nákladů na předplatné](./media/cost-management-guide/subscription-cost-analysis.png)
 
 Tento řídicí panel umožní detailní analýzu nákladů, včetně možnosti exportu do různých typů souborů podle plánu.  Cost Management má mnoho možností, jak získat další informace najdete v tématu [Přehled fakturace cost management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)
 
 Filtrování podle typu prostředku: zobrazí `microsoft.labservices/labaccounts` jenom náklady spojené se službou Lab Services.
 
-## <a name="understanding-the-usage"></a>Porozumění využití
+## <a name="understand-the-usage"></a>Pochopení využití
 
 Níže je ukázka analýzy nákladů.
 
@@ -68,9 +68,69 @@ Některé univerzity používaly účet testovacího prostředí a skupinu prost
 
 V závislosti na typu třídy existují způsoby, jak spravovat náklady, abyste snížili, že virtuální počítače jsou spuštěné bez studenta, který tento počítač používá.
 
-### <a name="auto-shutdown-on-disconnect"></a>Automatické vypnutí při odpojení
+### <a name="maximize-cost-control-with-auto-shutdown-settings"></a>Maximalizace řízení nákladů pomocí nastavení automatického vypnutí
 
-Při vytváření testovacího prostředí může vlastník testovacího prostředí nastavit virtuální počítače v testovacím prostředí tak, aby se [ukončily, když je připojení RDP k virtuálnímu počítači odpojené](how-to-enable-shutdown-disconnect.md).  Toto nastavení snižuje scénář, ve kterém se student odpojí, ale zabrání zastavení virtuálního počítače.
+Funkce kontroly nákladů automatického vypnutí proaktivně umožňují zabránit úniku hodin využití virtuálních počítačů v laboratořích. Kombinace následujících tří funkcí automatického vypnutí a odpojení zachytává většinu případů, kdy uživatelé omylem odejdou z virtuálních počítačů, na kterých běží:
+
+> [!div class="mx-imgBorder"]
+> ![Analýza nákladů na předplatné](./media/cost-management-guide/auto-shutdown-disconnect.png)
+
+Tato nastavení se dají nakonfigurovat na úrovni účtu testovacího prostředí i na úrovni testovacího prostředí. Pokud jsou nastavení povolená na úrovni účtu testovacího prostředí, aplikují se na všechny laboratoře v rámci účtu testovacího prostředí. U všech nových účtů testovacího prostředí je tato nastavení ve výchozím nastavení zapnutá. 
+
+#### <a name="details-about-auto-shutdown-settings"></a>Podrobnosti o nastavení automatického vypnutí
+
+* Automaticky odpojí uživatele z virtuálních počítačů, které operační systém považuje za nečinné (pouze Windows).
+
+    > [!NOTE]
+    > Toto nastavení je dostupné jenom pro virtuální počítače s Windows.
+
+    Když je nastavení zapnuté, bude uživatel odpojen od všech počítačů v testovacím prostředí, když operační systém Windows považuje relaci za nečinné (včetně virtuálních počítačů šablony). [Definice operačního systému Windows pro nečinnost](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) používá dvě kritéria: 
+
+    * Absence uživatele – bez zadání klávesnice nebo myši.
+    * Nedostatek spotřeby prostředků – všechny procesory a všechny disky byly po určitou dobu nečinné.
+
+    Uživatelům se zobrazí zpráva podobná této jako u virtuálního počítače před odpojením: 
+
+    > [!div class="mx-imgBorder"]
+    > ![Analýza nákladů na předplatné](./media/cost-management-guide/idle-timer-expired.png)
+    
+    Virtuální počítač je stále spuštěný, když je uživatel odpojen. Pokud se uživatel znovu připojí k virtuálnímu počítači, přihlaste se, Windows nebo otevřené soubory nebo neuložená práce, která se nachází v předchozí části odpojení. V tomto stavu, protože virtuální počítač je spuštěný, se pořád počítá jako aktivní a účtuje náklady. 
+    
+    Pro automatické vypnutí nečinných virtuálních počítačů s Windows, které jsou odpojené, použijte kombinaci **uživatelů odpojit, pokud jsou virtuální počítače nečinné** , a **vypněte virtuální počítače, když uživatelé odpojí** nastavení.
+
+    Pokud například nakonfigurujete nastavení následujícím způsobem:
+    
+    * Odpojit uživatele, když jsou virtuální počítače neaktivní – 15 minut po nečinném stavu.
+    * Vypněte virtuální počítače, když se uživatelé odpojí – 5 minut po odpojení uživatele.
+    
+    Virtuální počítače s Windows se automaticky vypíná 20 minut poté, co je uživatel přestane používat. 
+    
+    > [!div class="mx-imgBorder"]
+    > ![Analýza nákladů na předplatné](./media/cost-management-guide/vm-idle-diagram.png)
+* Automaticky vypne virtuální počítače, když se uživatelé odpojí (Windows & Linux).
+    
+    Toto nastavení podporuje virtuální počítače se systémem Windows i Linux. Pokud je toto nastavení zapnuté, k automatickému vypnutí dojde v těchto případech:
+    
+    * Pro Windows se připojení vzdálené plochy (RDP) odpojí.
+    * Pro Linux je připojení SSH odpojeno.
+    
+    > [!NOTE]
+    > Jsou podporovány pouze [konkrétní distribuce a verze systému Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) .
+    
+    Můžete určit, jak dlouho by měly virtuální počítače čekat na opětovné připojení uživatele, než se automaticky vypíná. 
+* Automaticky vypne virtuální počítače, které jsou spuštěné, ale uživatelé se nepřipojí.
+     
+    V testovacím prostředí může uživatel spustit virtuální počítač, ale nikdy se k němu nepřipojí. Příklad:
+    
+    * Plán v testovacím prostředí spustí všechny virtuální počítače pro relaci třídy, ale někteří studenti se neobjeví ani se nepřipojí ke svým počítačům.  
+    * Uživatel spustí virtuální počítač, ale zapomenout se připojit. 
+    
+    Nastavení "vypnout virtuální počítače, když se uživatelé nepřipojují" zachytí tyto případy a automaticky vypne virtuální počítače.  
+    
+Informace o tom, jak nakonfigurovat a povolit automatické vypnutí virtuálních počítačů při odpojení, najdete v těchto článcích:
+
+* [Konfigurace automatického vypnutí virtuálních počítačů při nastavení odpojení pro účet testovacího prostředí](how-to-configure-lab-accounts.md)
+* [Povolit automatické vypnutí virtuálních počítačů při odpojení](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>Kvóta vs naplánovaný čas
 

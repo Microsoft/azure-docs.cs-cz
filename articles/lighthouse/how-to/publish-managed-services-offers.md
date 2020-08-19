@@ -1,14 +1,14 @@
 ---
 title: Publikování nabídky spravované služby pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí do Azure Lighthouse.
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167212"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589720"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby pro Azure Marketplace
 
@@ -22,8 +22,19 @@ Aby bylo možné publikovat nabídku spravované služby podle [spravované slu�
 
 Vaše ID Microsoft Partner Network (MPN) se [automaticky přidruží](../../cost-management-billing/manage/link-partner-id.md) k nabídkám, které publikujete, abyste mohli sledovat svůj dopad na zapojení zákazníků.
 
-> [!NOTE]
-> Pokud nechcete publikovat nabídku Azure Marketplace, můžete zákazníky připojit ručně pomocí Azure Resource Manager šablon. Další informace najdete v tématu [zprovoznění zákazníka do Azure Lighthouse](onboard-customer.md).
+Pokud nechcete publikovat nabídku Azure Marketplace nebo nesplňujete všechny požadavky, můžete zákazníky připojit ručně pomocí Azure Resource Manager šablon. Další informace najdete v tématu [zprovoznění zákazníka do Azure Lighthouse](onboard-customer.md).
+
+Následující tabulka vám pomůže určit, jestli se zákazníci mají připojit, publikováním nabídky spravované služby nebo pomocí Azure Resource Manager šablon.
+
+|**Aspekty**  |**Nabídka spravované služby**  |**Šablony ARM**  |
+|---------|---------|---------|
+|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Ano         |No        |
+|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Ano         |No         |
+|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Ano     |No       |
+|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Yes         |
+|Vyžaduje přijetí zákazníkem v Azure Portal     |Ano     |No   |
+|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |No     |Yes    |
+|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Yes         |
 
 ## <a name="create-your-offer"></a>Vytvoření nabídky
 

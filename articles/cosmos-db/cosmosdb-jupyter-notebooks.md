@@ -6,16 +6,16 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118445"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588151"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB (Preview)
 
-Jupyter Poznámkový blok je open-source webová aplikace, která umožňuje vytvářet a sdílet dokumenty, které obsahují živý kód, rovnice, vizualizace a mluvený text. 
+Jupyter Notebook je webová aplikace open source, která vám umožňuje vytvářet a sdílet dokumenty, které obsahují živý kód, rovnice, vizualizace a doprovodný text. 
 
 Azure Cosmos DB integrovaných notebooků Jupyter se přímo integrují do Azure Portal a účtů Azure Cosmos DB, takže jsou praktické a snadno použitelné. Vývojáři, odborníci na data, technici a analytiké můžou pomocí známých prostředí Jupyter poznámkových bloků provádět zkoumání dat, čištění dat, transformaci dat, numerické simulace, statistické modelování, vizualizaci dat a strojové učení.
 
@@ -31,9 +31,9 @@ Poznámkové bloky Jupyter byly původně vyvinuty pro aplikace pro datové věd
 
 **Vizualizace dat:** Jupyter poznámkové bloky umožňují vizualizovat data ve formě sdíleného poznámkového bloku, který vykresluje datovou sadu jako grafiku. Můžete vytvářet vizualizace, provádět interaktivní změny sdíleného kódu a sady dat a sdílet výsledky.
 
-**Sdílení kódu:** Služby, jako je GitHub, poskytují způsob, jak sdílet kód, ale jsou převážně neinteraktivní. Pomocí poznámkového bloku Jupyter můžete zobrazit kód, spustit ho a výsledky zobrazit přímo v Azure Portal.
+**Sdílení kódu:** Služby, jako je GitHub, poskytují způsob, jak sdílet kód, ale jsou převážně neinteraktivní. Pomocí Jupyter Notebook můžete zobrazit kód, spustit ho a zobrazit výsledky přímo v Azure Portal.
 
-**Živé interakce s kódem:** Kód v poznámkovém bloku Jupyter je dynamický; můžete ho upravovat a spouštět aktualizace postupně v reálném čase. Můžete také vložit uživatelské ovládací prvky (například posuvníky nebo textová pole), které se používají jako vstupní zdroje pro kód, ukázky nebo zkušební hodnoty konceptů (POCs).
+**Živé interakce s kódem:** Kód v Jupyter Notebook je dynamický; můžete ho upravovat a spouštět aktualizace postupně v reálném čase. Můžete také vložit uživatelské ovládací prvky (například posuvníky nebo textová pole), které se používají jako vstupní zdroje pro kód, ukázky nebo zkušební hodnoty konceptů (POCs).
 
 **Dokumentace k ukázkám kódu a výsledkům průzkumu dat:** Pokud máte část kódu a chcete vysvětlit řádek po řádku, který funguje, můžete ho vložit do Jupyter Notebook. Současně můžete přidat interaktivitu spolu s dokumentací.
 
@@ -41,7 +41,7 @@ Poznámkové bloky Jupyter byly původně vyvinuty pro aplikace pro datové věd
 
 **Vše v jednom místě prostředí:** Jupyter poznámkové bloky kombinují kód, bohatou text, obrázky, videa, animace, matematické rovnice, vykresluje, Maps, interaktivní obrázky, widgety a grafická uživatelská rozhraní do jednoho dokumentu.
 
-## <a name="components-of-a-jupyter-notebook"></a>Součásti Jupyter poznámkového bloku
+## <a name="components-of-a-jupyter-notebook"></a>Součásti Jupyter Notebook
 
 Jupyter poznámkové bloky můžou zahrnovat několik typů komponent, které jsou uspořádané do diskrétních bloků nebo buněk:
 
@@ -53,7 +53,7 @@ Jupyter poznámkové bloky můžou zahrnovat několik typů komponent, které js
 
 **Multimédia:** Vzhledem k tomu, že poznámkové bloky Jupyter jsou postaveny na webové technologii, mohou zobrazit všechny typy multimédií podporované webovou stránkou. Můžete je zahrnout do poznámkového bloku jako prvky HTML, nebo je můžete vygenerovat programově pomocí `IPython.display` modulu.
 
-**Data:** Data z kontejnerů Azure Cosmos nebo výsledky dotazů můžete naimportovat do poznámkového bloku Jupyter programově. K nahrávání nebo dotazování dat v Azure Cosmos DB použijte integrované příkazy Magic. 
+**Data:** Data z kontejnerů Azure Cosmos nebo výsledky dotazů můžete importovat do Jupyter Notebook programově. K nahrávání nebo dotazování dat v Azure Cosmos DB použijte integrované příkazy Magic. 
 
 ## <a name="next-steps"></a>Další kroky
 

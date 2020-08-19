@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191198"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589499"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -126,9 +126,12 @@ Před zahájením převzetí služeb při selhání bude výstup označovat aktu
 
 Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno výše pro BC. Je to proto, že úroveň služby GP je založená jenom na jednom uzlu. Výstup dotazu T-SQL pro úroveň služby GP zobrazí pouze jeden uzel před a po převzetí služeb při selhání. Ztráta připojení z klienta během převzetí služeb při selhání, obvykle trvalá za minutu, bude znamenat provedení převzetí služeb při selhání.
 
+> [!NOTE]
+> Dokončení procesu převzetí služeb při selhání (nejedná se o skutečnou krátkou nedostupnost) může v případě úloh s **vysokou mírou svítivosti** trvat v čase několik minut. Důvodem je to, že instance Engine se stará o všechny aktuální transakce na primárním a zachytit v sekundárním uzlu před převzetím služeb při selhání.
+
 > [!IMPORTANT]
 > Funkční omezení uživatelsky iniciované ruční převzetí služeb při selhání:
-> - Každých 30 minut může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
+> - Každých **30 minut**může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
 

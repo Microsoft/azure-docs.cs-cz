@@ -1,21 +1,21 @@
 ---
-title: Kurz – vytvoření a spuštění poznámkového bloku Jupyter-Azure Notebooks Preview
-description: Naučte se, jak vytvořit a spustit Poznámkový blok Jupyter v Azure Notebooks Preview, který ukazuje proces lineární regrese v oblasti datové vědy.
+title: Kurz – vytvoření a spuštění Jupyter Notebook-Azure Notebooks Preview
+description: Naučte se, jak vytvořit a spustit Jupyter Notebook v Azure Notebooks Preview, které demonstrují proces lineární regrese v oblasti datové vědy.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846908"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589247"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění Jupyter Notebook pomocí Pythonu
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Tento kurz vás provede procesem použití Azure Notebooks k vytvoření kompletního poznámkového bloku Jupyter, který ukazuje jednoduchou lineární regresi. V průběhu tohoto kurzu se seznámíte s uživatelským rozhraním poznámkového bloku Jupyter, které zahrnuje vytváření různých buněk, spouštění buněk a prezentování poznámkového bloku jako prezentace.
+Tento kurz vás provede procesem použití Azure Notebooks k vytvoření kompletní Jupyter Notebook, která ukazuje jednoduchou lineární regresi. V průběhu tohoto kurzu se seznámíte s uživatelským rozhraním Jupyter Notebook, které zahrnuje vytváření různých buněk, spouštění buněk a prezentování poznámkového bloku jako prezentace.
 
 Dokončený Poznámkový blok najdete na [ukázkách Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Tento kurz ale začíná novým projektem a prázdným poznámkovým blokem, abyste se mohli setkat s jeho vytvořením krok za krokem.
 
@@ -417,7 +417,7 @@ Pokud se buňky kódu v poznámkovém bloku nechovají očekávaným způsobem, 
 
 Naštěstí si můžete stáhnout soubor *. ipynb* poznámkového bloku a pak ho otevřít v Visual Studio Code pomocí rozšíření Python. Rozšíření přímo importuje Poznámkový blok jako jeden soubor kódu a zachovává vaše Markdownu buňky v komentářích. Po importu poznámkového bloku můžete pomocí ladicího programu Visual Studio Code krokovat kód, nastavit zarážky, kontrolovat stav a tak dále. Po provedení oprav kódu pak exportujte soubor *. ipynb* z Visual Studio Code a nahrajte ho zpátky do Azure Notebooks.
 
-Další informace najdete v tématu [ladění Jupyter poznámkového bloku](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) v dokumentaci k Visual Studio Code.
+Další informace naleznete v tématu [ladění Jupyter notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) v dokumentaci k Visual Studio Code.
 
 Další funkce Visual Studio Code pro notebooky Jupyter také najdete v tématu [podpora Visual Studio Code-Jupyter](https://code.visualstudio.com/docs/python/jupyter-support) .
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850643"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589346"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scénář: Azure Firewall-vlastní
 
@@ -40,6 +40,8 @@ V předchozí tabulce představuje "X" přímé připojení mezi dvěma připoje
   * Přidružená tabulka směrování: **výchozí**
   * Rozšiřování do směrovacích tabulek: **výchozí**
 
+> [!NOTE]
+> V každé oblasti můžete vytvořit samostatnou virtuální instanci sítě WAN s jedním zabezpečeným virtuálním rozbočovačem a pak můžete každou virtuální síť WAN připojit k sobě mezi sebou prostřednictvím sítě Site-to-Site VPN.
 
 Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 

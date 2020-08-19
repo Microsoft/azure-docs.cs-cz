@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS má v rámci služby nejrůznější funkce. Ne všechny funkce jsou ve stejné jazykové paritě. Ujistěte se, že funkce, které vás zajímá, jsou podporované v jazykové verzi, kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
+description: Služba LUIS obsahuje celou řadu funkcí. Ne všechny funkce jsou dostupné ve stejných jazycích. Ujistěte se, že funkce, o které máte zájem, jsou podporované v jazykové verzi, na kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340194"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588018"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
-LUIS má v rámci služby nejrůznější funkce. Ne všechny funkce jsou ve stejné jazykové paritě. Ujistěte se, že funkce, které vás zajímá, jsou podporované v jazykové verzi, kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
+Služba LUIS obsahuje celou řadu funkcí. Ne všechny funkce jsou dostupné ve stejných jazycích. Ujistěte se, že funkce, o které máte zájem, jsou podporované v jazykové verzi, na kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
 
 ## <a name="multi-language-luis-apps"></a>Aplikace LUIS pro více jazyků
 
@@ -115,8 +115,8 @@ Následující jazykové verze mají vlastní verze provádějících tokenizaci
 |--|--|--|
 |Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen` . Povolení označení `kranken` a `wagen` nezávislého označování jako různých entit.|
 |Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto `krankenwagen` je označen jako jediná entita. |
-|Nizozemština<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, je zapnutý `Ik ga naar de kleuter school` . Povolení označení `kleuter` a `school` nezávislého označování jako různých entit.|
-|Nizozemština<br>`de-de`|1.0.1|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, zůstane jeden token. Proto `kleuterschool` je označen jako jediná entita. |
+|Nizozemština<br>`nl-nl`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, je zapnutý `Ik ga naar de kleuter school` . Povolení označení `kleuter` a `school` nezávislého označování jako různých entit.|
+|Nizozemština<br>`nl-nl`|1.0.1|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, zůstane jeden token. Proto `kleuterschool` je označen jako jediná entita. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi provádějících tokenizaci

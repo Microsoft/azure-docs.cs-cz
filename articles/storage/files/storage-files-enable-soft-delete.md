@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528379"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590111"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
@@ -22,6 +22,8 @@ Azure Storage nabízí obnovitelné odstranění sdílených složek (Preview), 
 V následujících částech se dozvíte, jak povolit a použít obnovitelné odstranění pro sdílené složky Azure v existujícím účtu úložiště:
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>Začínáme
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Přejděte do svého účtu úložiště a v části **Souborová služba**vyberte možnost **obnovitelné odstranění** .
@@ -33,7 +35,13 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.1-Preview modulu AZ. Storage. Chcete-li povolit obnovitelné odstranění, je nutné aktualizovat vlastnosti služby klienta souboru. Následující příklad povoluje obnovitelné odstranění pro všechny sdílené složky v účtu úložiště:
+## <a name="prerequisite"></a>Požadavek
+
+Rutiny obnovitelného odstranění jsou aktuálně k dispozici pouze ve verzích [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) a [2.3.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) modulu AZ. Storage. 
+
+## <a name="getting-started"></a>Začínáme
+
+Chcete-li povolit obnovitelné odstranění, je nutné aktualizovat vlastnosti služby klienta souboru. Následující příklad povoluje obnovitelné odstranění pro všechny sdílené složky v účtu úložiště:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"

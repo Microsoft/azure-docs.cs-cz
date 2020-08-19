@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319299"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589380"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -48,9 +48,9 @@ Pomocí [privátních koncových bodů](../private-link/private-endpoint-overvie
 
 * V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem [chráněná protokolem HTTPS](backup-support-matrix.md#network-traffic-to-azure). Tato data zůstávají v páteřní síti Azure.
 
-* Zálohovaná data se automaticky šifrují pomocí [klíčů spravovaných Microsoftem](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)a vy nemusíte provádět žádnou explicitní akci, abyste ji mohli povolit. Zálohovaná data můžete také šifrovat pomocí [zákaznických spravovaných klíčů](encryption-at-rest-with-cmk.md) uložených v Azure Key Vault. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
+* Zálohovaná data se automaticky šifrují pomocí [klíčů spravovaných platformou](backup-encryption.md)a vy nemusíte provádět žádnou explicitní akci, abyste ji mohli povolit. Zálohovaná data můžete také šifrovat pomocí [zákaznických spravovaných klíčů](encryption-at-rest-with-cmk.md) uložených v Azure Key Vault. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
 
-* Azure Backup podporuje zálohování a obnovení virtuálních počítačů Azure, které mají svoje disky s operačním systémem nebo daty zašifrované pomocí [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) a [virtuálních počítačů s CMK šifrovanými disky](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). Další informace najdete v informacích [o šifrovaných virtuálních počítačích Azure a Azure Backup](./backup-azure-vms-encryption.md).
+* Azure Backup podporuje zálohování a obnovení virtuálních počítačů Azure, které mají svoje disky s operačním systémem nebo daty zašifrované pomocí [Azure Disk Encryption (ADE)](backup-azure-vms-encryption.md#encryption-support-using-ade) a [virtuálních počítačů s CMK šifrovanými disky](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys). Další informace najdete v informacích [o šifrovaných virtuálních počítačích Azure a Azure Backup](./backup-azure-vms-encryption.md).
 
 * Když se data zálohují z místních serverů s agentem MARS, data se před odesláním do Azure Backup a dešifrují až po stažení z Azure Backup pomocí hesla. Přečtěte si další informace o [funkcích zabezpečení, které vám pomůžou chránit hybridní zálohy](#security-features-to-help-protect-hybrid-backups).
 
@@ -64,7 +64,7 @@ Azure Backup poskytuje [integrované možnosti monitorování a upozorňování]
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy
 
-Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Patří k nim:
+Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Mezi tyto funkce patří:
 
 * Další úroveň ověřování se přidá vždy, když se provede kritická operace, jako je změna hesla. Ověření je zajištěno, že tyto operace mohou provádět pouze uživatelé, kteří mají platné přihlašovací údaje Azure. [Přečtěte si další informace o funkcích, které zabraňují útokům](./backup-azure-security-feature.md#prevent-attacks).
 

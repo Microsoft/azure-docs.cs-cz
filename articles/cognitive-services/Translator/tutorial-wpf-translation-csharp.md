@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995730"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589652"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
@@ -37,10 +37,10 @@ V tomto kurzu se naučíte:
 
 Tento seznam obsahuje Cognitive Services používané v tomto kurzu. Postupujte podle odkazu a procházejte Reference k rozhraní API pro jednotlivé funkce.
 
-| Služba | Funkce | Description |
+| Služba | Funkce | Popis |
 |---------|---------|-------------|
 | Translator | [Získat jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Načte Úplný seznam podporovaných jazyků pro překlad textu. |
-| Translator | [Posunut](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Přeloží text na více než 60 jazyků. |
+| Translator | [Posunut](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Přeloží text na více než 70 jazyků. |
 | Translator | [Zjišťování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
 | Kontrola pravopisu Bingu | [Kontrola pravopisu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Opravte chyby pravopisu, aby se zlepšila přesnost překladu. |
 
@@ -72,7 +72,7 @@ V další části budeme do našeho projektu přidávat sestavení a balíček N
 
 ## <a name="add-references-and-nuget-packages-to-your-project"></a>Přidání odkazů a balíčků NuGet do projektu
 
-Náš projekt vyžaduje několik .NET Framework sestavení a NewtonSoft. JSON, které nainstalujeme pomocí Správce balíčků NuGet.
+Náš projekt vyžaduje několik .NET Framework sestavení a NewtonSoft.Js, které nainstalujeme pomocí Správce balíčků NuGet.
 
 ### <a name="add-net-framework-assemblies"></a>Přidat .NET Framework sestavení
 
@@ -91,15 +91,15 @@ Pojďme do našeho projektu přidat sestavení k serializaci a deserializaci obj
 > [!NOTE]
 > Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
-### <a name="install-newtonsoftjson"></a>Nainstalovat NewtonSoft. JSON
+### <a name="install-newtonsoftjson"></a>Nainstalovat NewtonSoft.Jsna
 
-Naše aplikace použije NewtonSoft. JSON k deserializaci objektů JSON. Postupujte podle těchto pokynů a nainstalujte balíček.
+Naše aplikace použije NewtonSoft.Jsk deserializaci objektů JSON. Postupujte podle těchto pokynů a nainstalujte balíček.
 
 1. Vyhledejte projekt v aplikaci Visual Studio Průzkumník řešení a klikněte pravým tlačítkem na projekt. Vyberte **Spravovat balíčky NuGet**.
 1. Vyhledejte kartu **Procházet** a vyberte ji.
-1. Do vyhledávacího panelu zadejte [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) .
+1. Do vyhledávacího panelu zadejte [NewtonSoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) .
 
-    ![Vyhledejte a nainstalujte NewtonSoft. JSON.](media/nuget-package-manager.png)
+    ![Vyhledat a nainstalovat NewtonSoft.Js](media/nuget-package-manager.png)
 
 1. Vyberte balíček a klikněte na **nainstalovat**.
 1. Po dokončení instalace zavřete kartu.
@@ -114,7 +114,7 @@ Pojďme se podívat na to, co vytváříme.
 
 Uživatelské rozhraní zahrnuje tyto komponenty:
 
-| Name | Typ | Description |
+| Název | Typ | Popis |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Zobrazí seznam jazyků, které Microsoft Translator podporuje pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
 | `ToLanguageComboBox` | ComboBox | Zobrazí stejný seznam jazyků jako `FromComboBox` , ale používá se k výběru jazyka, do kterého se uživatel překládá. |
@@ -173,7 +173,7 @@ To je, váš formulář je připravený. Nyní napíšeme kód pro použití př
 
 ## <a name="create-your-app"></a>Vytvoření aplikace
 
-`MainWindow.xaml.cs`obsahuje kód, který řídí naši aplikaci. V následujících částech budeme přidávat kód pro naplnění našich rozevíracích nabídek a volání několik rozhraní API vystaveného překladatelem a Kontrola pravopisu Bingu.
+`MainWindow.xaml.cs` obsahuje kód, který řídí naši aplikaci. V následujících částech budeme přidávat kód pro naplnění našich rozevíracích nabídek a volání několik rozhraní API vystaveného překladatelem a Kontrola pravopisu Bingu.
 
 * Při spuštění a `MainWindow` vytvoření instance programu `Languages` je volána metoda překladatele k načtení a naplnění rozevíracích seznamu pro výběr jazyka. K tomu dojde jednou na začátku každé relace.
 * Po kliknutí na tlačítko **přeložit** se načtou výběr jazyka a text, kontrola pravopisu se u vstupu provede a pro uživatele se zobrazí překlad a zjištěný jazyk.
@@ -250,7 +250,7 @@ Všechny projekty jsou zapouzdřeny ve `MainWindow : Window` třídě. Pojďme z
 
 V tomto bloku kódu jsme deklarovali dvě členské proměnné, které obsahují informace o dostupných jazycích pro překlad:
 
-| Proměnná | Typ | Description |
+| Proměnná | Typ | Popis |
 |----------|------|-------------|
 |`languageCodes` | Pole řetězců |Uchovává kódy jazyků. Služba Translator používá k identifikaci jazyků krátké kódy, například `en` pro angličtinu. |
 |`languageCodesAndTitles` | Seřazený slovník | Mapuje popisné názvy z uživatelského rozhraní na krátké kódy používané v rozhraní API. Používá abecední řazení, velká a malá písmena se nerozlišují. |
@@ -263,7 +263,7 @@ Nakonec jsme přidali kód pro volání metod pro načtení jazyků pro překlad
 
 ## <a name="get-supported-languages"></a>Zjištění podporovaných jazyků
 
-Překladatel aktuálně podporuje více než 60 jazyků. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
+Překladatel aktuálně podporuje více než 70 jazyků. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
 
 V této části vytvoříme `GET` požadavek na prostředek jazyků a určíme, že chceme seznam jazyků dostupných pro překlad.
 
@@ -289,7 +289,7 @@ Než budeme pokračovat, Pojďme se podívat na ukázkový výstup pro volání 
 }
 ```
 
-Z tohoto výstupu můžete extrahovat kód jazyka a `name` konkrétní jazyk. Naše aplikace používá NewtonSoft. JSON k deserializaci objektu JSON ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
+Z tohoto výstupu můžete extrahovat kód jazyka a `name` konkrétní jazyk. Naše aplikace používá NewtonSoft.Jsk deserializaci objektu JSON ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
 
 Vyzvednutím místa, kde jsme v poslední části opustili, můžeme přidat metodu, která pro naši aplikaci získá podporované jazyky.
 
@@ -358,7 +358,7 @@ Tato metoda provede iteraci ve `languageCodesAndTitles` slovníku a přidá kaž
 > [!TIP]
 > Pokud by se nevybraly výchozí hodnoty pro nabídky, mohlo by se stát, že uživatel klikne na **Translate** (Přeložit), aniž by napřed zvolil zdrojový a cílový jazyk. Výchozí hodnoty eliminují nutnost zabývat se tímto problémem.
 
-Nyní, které `MainWindow` bylo inicializováno a uživatelské rozhraní vytvořeno, nebude tento kód spuštěn, dokud není kliknuto na tlačítko **přeložit** .
+Nyní, které `MainWindow` bylo inicializováno a uživatelské rozhraní vytvořeno, nebude tento kód spuštěn, dokud není kliknuto na tlačítko **přeložit**  .
 
 ## <a name="detect-language-of-source-text"></a>Zjistit jazyk zdrojového textu
 

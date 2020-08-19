@@ -1,21 +1,21 @@
 ---
-title: Vytvoření a sdílení poznámkového bloku Jupyter v Azure Notebooks Preview
-description: Rychle vytvořte a spusťte Poznámkový blok Jupyter Azure Notebooks ve verzi Preview a potom tento poznámkový blok sdílejte s ostatními.
+title: Vytvoření a sdílení Jupyter Notebook v Azure Notebooks Preview
+description: V Azure Notebooks Preview můžete rychle vytvořit a spustit Jupyter Notebook a pak tento poznámkový blok sdílet s ostatními.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849395"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589329"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku v Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový blok Jupyter a potom tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci.
+V tomto rychlém startu vytvoříte a spustíte Jupyter Notebook v Azure Notebooks a pak tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostované služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu bez instalace.
 
 ## <a name="prerequisites"></a>Požadavky
 Žádné
@@ -91,7 +91,7 @@ V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový 
 
 1. Kliknutím na ikonu Uložit uložte svou práci:
 
-    ![Ikona uložit na panelu nástrojů Jupyter Poznámkový blok](media/quickstarts/hello-results-save-icon.png)
+    ![Ikona uložit na panelu nástrojů Jupyter Notebook](media/quickstarts/hello-results-save-icon.png)
 
 1. Výběrem **File**  >  příkazu nabídky**Zavřít a zastavit** soubor zastavte Server a zavřete okno prohlížeče.
 
@@ -106,4 +106,4 @@ Na stránce projekt můžete také pomocí nabídky **sdílet** získat odkaz, v
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a spuštění poznámkového bloku Jupyter pro lineární regresi](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření a spuštění Jupyter Notebook k provedení lineární regrese](tutorial-create-run-jupyter-notebook.md)
