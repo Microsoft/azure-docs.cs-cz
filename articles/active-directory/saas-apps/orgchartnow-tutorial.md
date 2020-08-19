@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s organizačním diagramem nyní | Microsoft Docs'
 description: Naučte se, jak můžete nakonfigurovat jednotné přihlašování mezi Azure Active Directory a organizačním diagramem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095437"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Kurz: Azure Active Directory integraci s organizačním diagramem
 
@@ -32,7 +28,7 @@ Integrace organizačního diagramu nyní s Azure AD poskytuje následující vý
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,16 +101,16 @@ Pokud teď chcete nakonfigurovat jednotné přihlašování pomocí služby Azur
 
     ![Informace o jednotném přihlašování v doménovém diagramu a adresách URL](common/idp-identifier.png)
 
-    Do textového pole **identifikátor** zadejte adresu URL:`https://sso2.orgchartnow.com`
+    Do textového pole **identifikátor** zadejte adresu URL:  `https://sso2.orgchartnow.com`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![image](common/both-preintegrated-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>`je **identifikátor Azure AD** zkopírovaný z oddílu **nastavit organizační diagram nyní** , popsaný dále v kurzu.
+    > `<YourEntityID>` je **identifikátor Azure AD** zkopírovaný z oddílu **nastavit organizační diagram nyní** , popsaný dále v kurzu.
 
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -157,7 +153,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -219,11 +215,11 @@ Aby se uživatelé Azure AD mohli teď přihlašovat k organizačnímu diagramu,
 
     ![Správa organizačního diagramu](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * Do textového pole **ID uživatele** zadejte ID uživatele, například **brittasimon\@contoso.com**.
+    * Do textového pole **ID uživatele** zadejte ID uživatele, například **brittasimon \@ contoso.com**.
 
-    * Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
+    * Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
 
-    * Klikněte na tlačítko **Add** (Přidat).
+    * Klikněte na **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -231,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici organizační diagram nyní na přístupovém panelu, měli byste být automaticky přihlášeni k organizačnímu diagramu nyní, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

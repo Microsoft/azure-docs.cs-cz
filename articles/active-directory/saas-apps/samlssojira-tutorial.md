@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace se službou SAML SSO pro JIRA podle rezoluce GmbH | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAML SSO pro JIRA pomocí rezoluce GmbH.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146569"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro JIRA podle rezoluce GmbH
 
@@ -33,7 +28,7 @@ Integrace jednotného přihlašování SAML pro JIRA podle rezoluce GmbH s Azure
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud předplatné Azure ještě nemáte, nejdříve si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,15 +101,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
 
     ![Jednotné přihlašování SAML pro JIRA podle rozlišení domény a adres URL v protokolu GmbH](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/samlsso`
 
     c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![Jednotné přihlašování SAML pro JIRA podle rozlišení domény a adres URL v protokolu GmbH](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
     > Pro identifikátor, adresu URL odpovědi a adresu URL pro přihlášení nahraďte **\<server-base-url>** základní adresou URL vaší instance JIRA. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. Pokud máte nějaký problém, kontaktujte nás na [webu SAML SSO pro JIRA od týmu podpory pro řešení GmbH](https://www.resolution.de/go/support).
@@ -223,7 +218,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -275,7 +270,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k JEDNOTNÉmu přihlašování S
 
     ![Přidat zaměstnance](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele: <b>BrittaSimon@contoso.com</b> .
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele:  <b>BrittaSimon@contoso.com</b> .
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele: **Britta Simon**.
 

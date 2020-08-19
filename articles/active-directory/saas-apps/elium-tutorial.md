@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Elium | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Elium.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0900f730c287586725722f0b8baaeb0c22f850c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 756b8e8e06d393736b330c3ae3e9128de76bf5a0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72791229"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544209"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Elium
 
@@ -83,16 +78,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<platform-domain>.elium.com/login/saml2/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<platform-domain>.elium.com/login/saml2/acs`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<platform-domain>.elium.com/login/saml2/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<platform-domain>.elium.com/login/saml2/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Tyto hodnoty se zobrazí ze **souboru metadat SP** ke stažení v `https://<platform-domain>.elium.com/login/saml2/metadata`, což je vysvětleno dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Tyto hodnoty se zobrazí ze **souboru metadat SP** ke stažení v `https://<platform-domain>.elium.com/login/saml2/metadata` , což je vysvětleno dále v tomto kurzu.
 
 1. Elium aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -100,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Elium několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| ----------------|
     | e-mail   |uživatel. pošta |
     | first_name| User. křestní jméno |
@@ -127,9 +122,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -176,7 +171,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     a. Zkopírujte hodnotu **ověřit, jestli typu Saml2 ověřování funguje pro váš účet** , a vložte ho do textového pole **přihlašovací adresa URL** v základní části **Konfigurace SAML** v Azure Portal.
 
     > [!NOTE]
-    > Po konfiguraci jednotného přihlašování (SSO) máte vždycky přístup k výchozí stránce vzdáleného přihlášení na následující adrese URL:`https://<platform_domain>/login/regular/login` 
+    > Po konfiguraci jednotného přihlašování (SSO) máte vždycky přístup k výchozí stránce vzdáleného přihlášení na následující adrese URL: `https://<platform_domain>/login/regular/login` 
 
     b. Zaškrtněte políčko **Povolit federaci typu Saml2** .
 
@@ -192,7 +187,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/elium-tutorial/user5.png)
 
-    g. Otevřete stažený soubor metadat z Azure Portal do programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **metadat IDP** .
+    například Otevřete stažený soubor metadat z Azure Portal do programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **metadat IDP** .
 
     h. Klikněte na **Uložit**.
 
@@ -209,11 +204,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Elium, měli byste se automaticky přihlásit k Elium, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

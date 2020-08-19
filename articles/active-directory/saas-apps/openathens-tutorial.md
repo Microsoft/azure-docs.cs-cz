@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s OpenAthens | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OpenAthens.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fc2272a81672ea613bdcbe17c5381e99cafbff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73053203"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543937"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OpenAthens
 
@@ -111,9 +106,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,17 +150,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     a. V **mapování zobrazovaný název**vyberte **použít atribut**.
 
-    b. Do textového pole **atribut zobrazovaného názvu** zadejte hodnotu `http://schema.microsoft.com/identity/claims/displayname`.
+    b. Do textového pole **atribut zobrazovaného názvu** zadejte hodnotu `http://schema.microsoft.com/identity/claims/displayname` .
 
     c. V **mapování jedinečného uživatele**vyberte **použít atribut**.
 
-    d. Do textového pole **jedinečný atribut uživatele** zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    d. Do textového pole **jedinečný atribut uživatele** zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     e. V části **stav**zaškrtněte políčko všechna tři zaškrtávací políčka.
 
     f. V nástroji **vytvořit místní účty**vyberte možnost **automaticky**.
 
-    g. Vyberte **Uložit změny**.
+    například Vyberte **Uložit změny**.
 
     h. Na kartě **</> předávající strana** zkopírujte **adresu URL metadat** a otevřete ji v prohlížeči a Stáhněte si soubor **XML s metadaty SP** . Nahrajte tento soubor metadat SP v části **základní konfigurační oddíl SAML** ve službě Azure AD.
 
@@ -181,11 +176,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici OpenAthens, měli byste se automaticky přihlásit k OpenAthens, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

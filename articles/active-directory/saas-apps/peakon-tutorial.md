@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Peakon | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Peakon.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a944c397-ed3f-4d45-b9b2-6d4bcb6b0a09
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 94f8e80c7c5cb13646fbd284f2a2d7b2f6308614
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7e385b40911e1adf4e5142de4fb627334baee4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017115"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Kurz: Azure Active Directory integrace s Peakon
 
@@ -34,7 +30,7 @@ Integrace Peakon s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Peakon potřebujete následující položky:
 
@@ -108,15 +104,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Peakon, 
 
     ![Informace o jednotném přihlašování v doméně Peakon a adresách URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://app.peakon.com/saml/<companyid>/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://app.peakon.com/saml/<companyid>/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.peakon.com/saml/<companyid>/assert`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://app.peakon.com/saml/<companyid>/assert`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![Informace o jednotném přihlašování v doméně Peakon a adresách URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.peakon.com/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.peakon.com/login`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi, která je vysvětlena dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -190,7 +186,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

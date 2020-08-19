@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s nástrojem OnTrack | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OnTrack.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2cafba2-3b4a-4471-ba34-80f6a96ff2b9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944043"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Kurz: Azure Active Directory integrace s nástrojem OnTrack
 
@@ -32,7 +28,7 @@ Integrování nástroje OnTrack s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,15 +103,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     a. Do textového pole **identifikátor** :
 
-    Pro testovací prostředí zadejte adresu URL:`https://staging.insigniagroup.com/sso`
+    Pro testovací prostředí zadejte adresu URL: `https://staging.insigniagroup.com/sso`
 
-    V produkčním prostředí zadejte adresu URL:`https://oeaccessories.com/sso`
+    V produkčním prostředí zadejte adresu URL: `https://oeaccessories.com/sso`
 
     b. Do textového pole **Adresa URL odpovědi** :
 
-    Pro testovací prostředí zadejte adresu URL:`https://indie.staging.insigniagroup.com/sso/autonation.aspx`
+    Pro testovací prostředí zadejte adresu URL: `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    V produkčním prostředí zadejte adresu URL:`https://igaccessories.com/sso/autonation.aspx`
+    V produkčním prostředí zadejte adresu URL: `https://igaccessories.com/sso/autonation.aspx`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta společnosti Ontrack](mailto:CustomerService@insigniagroup.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -126,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 6. Kromě výše očekává aplikace OnTrack několik atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -------------- | ----------------|    
     | Role uživatele      | "42F432" |
     | Hyperion-Code  | "12345" |
@@ -150,7 +146,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -193,7 +189,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -231,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici OnTrack na přístupovém panelu byste měli být automaticky přihlášení do nástroje OnTrack, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

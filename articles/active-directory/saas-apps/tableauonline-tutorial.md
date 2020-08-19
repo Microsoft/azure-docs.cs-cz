@@ -2,24 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Tableau online | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau online.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76985566"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Tableau online
 
@@ -92,12 +89,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Tableau 
 
     ![Tableau online domény a adresy URL jednotného přihlašování](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
-    > Tuto `<entityid>` hodnotu získáte v tomto kurzu v části **nastavení online Tableau** . Hodnota ID entity bude hodnota **identifikátoru Azure AD** v **nastavení online** oddílu pro Tableau.
+    > `<entityid>`Tuto hodnotu získáte v tomto kurzu v části **nastavení online Tableau** . Hodnota ID entity bude hodnota **identifikátoru Azure AD** v **nastavení online** oddílu pro Tableau.
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -131,12 +128,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
-    Například BrittaSimon\@contoso.com
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
+    Například BrittaSimon \@ contoso.com
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -198,7 +195,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     f. Pokud chcete zkopírovat hodnoty oboru názvů pro e-mail a příjmení, opakujte výše uvedené kroky.
 
-    g. Přepněte do online aplikace Tableau a pak nastavte **atributy uživatele & deklarace identity** následujícím způsobem:
+    například Přepněte do online aplikace Tableau a pak nastavte **atributy uživatele & deklarace identity** následujícím způsobem:
 
     * E-mail: **mail** nebo **userPrincipalName**
 
@@ -216,7 +213,7 @@ V této části vytvoříte uživatele s názvem Britta Simon v Tableau online.
   
     ![Vytvoření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Vyberte možnost **Přidat uživatele pro ověřování SAML**. Do textového pole **Zadejte e-mailové adresy** přidejte\@Britta. Simon contoso.com
+2. Vyberte možnost **Přidat uživatele pro ověřování SAML**. Do textového pole **Zadejte e-mailové adresy** přidejte Britta. Simon \@ contoso.com
   
     ![Vytvoření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
@@ -228,7 +225,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Tableau online, měli byste se automaticky přihlásit k Tableau online, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

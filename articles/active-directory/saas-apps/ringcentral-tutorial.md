@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s RingCentral | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RingCentral.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5848c875-5185-4f91-8279-1a030e67c510
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 15dc4ee8a5c1021587bb5c37e634070a76b3f05d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058238"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542577"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Kurz: integrace RingCentral s Azure Active Directory
 
@@ -32,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -121,7 +117,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -173,7 +169,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     b. Po nahrání metadat se hodnoty získají automaticky vyplněné v části **Obecné informace jednotného přihlašování** .
 
-    c. V části **mapování atributů** vyberte **mapovat atribut e-mailu na** jako`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. V části **mapování atributů** vyberte **mapovat atribut e-mailu na** jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. Klikněte na **Uložit**.
 

@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Salesforce | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Salesforce.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7228f4fbf348b8112654ece91aa5e9e831ac1201
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849157"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
 
@@ -90,21 +86,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte hodnotu pomocí následujícího vzoru:
 
-    Podnikový účet:`https://<subdomain>.my.salesforce.com`
+    Podnikový účet: `https://<subdomain>.my.salesforce.com`
 
-    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     b. Do textového pole **Adresa URL odpovědi** zadejte hodnotu pomocí následujícího vzoru:
 
-    Podnikový účet:`https://<subdomain>.my.salesforce.com`
+    Podnikový účet: `https://<subdomain>.my.salesforce.com`
 
-    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     c. Do textového pole **identifikátor** zadejte hodnotu pomocí následujícího vzoru:
 
-    Podnikový účet:`https://<subdomain>.my.salesforce.com`
+    Podnikový účet: `https://<subdomain>.my.salesforce.com`
 
-    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Salesforce](https://help.salesforce.com/support) .
@@ -127,7 +123,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

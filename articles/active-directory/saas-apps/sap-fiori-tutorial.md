@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP Fiori.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78897765"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori
 
@@ -123,14 +118,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Konfigurace SAML 2,0 pro stránku ABAP System T01/122 v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. V poli **název poskytovatele** nahraďte **T01122** řetězcem **http:\//T01122**a pak vyberte **Uložit**.
+1. V poli **název poskytovatele** nahraďte **T01122** řetězcem **http: \/ /T01122**a pak vyberte **Uložit**.
 
     > [!NOTE]
-    > Ve výchozím nastavení je název poskytovatele ve formátu \<sid>\<> klienta. Azure AD očekává název ve formátu \<protokolu>://\<název>. Doporučujeme, abyste název poskytovatele zachovali jako>>\://\< \<klienta protokolu HTTPS, abyste mohli ve službě Azure AD nakonfigurovat více ABAPových modulů SAP Fiori.
+    > Ve výchozím nastavení je název poskytovatele ve formátu \<sid> \<client> . Azure AD očekává název ve formátu \<protocol> :// \<name> . Doporučujeme, abyste název poskytovatele zachovali jako https \: // \<sid> \<client> , abyste mohli ve službě Azure AD nakonfigurovat víc Fiorich ABAP SAP.
 
     ![Název aktualizovaného zprostředkovatele v konfiguraci SAML 2,0 na stránce ABAP System T01/122 v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
-1. Vyberte > **metadata** **karty místního zprostředkovatele**.
+1. Vyberte **metadata karty místního zprostředkovatele**  >  **Metadata**.
 
 1. V dialogovém okně **metadata SAML 2,0** Stáhněte vygenerovaný soubor XML s metadaty a uložte ho do svého počítače.
 
@@ -152,7 +147,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
-    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi vyplní automaticky v PODOKNĚ **Konfigurace základní konfigurace SAML** . Do pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https:\//\<your company instance of SAP Fiori\>`.
+    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi vyplní automaticky v PODOKNĚ **Konfigurace základní konfigurace SAML** . Do pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https:\//\<your company instance of SAP Fiori\>` .
 
     > [!NOTE]
     > Několik zákazníků hlásí chyby související s nesprávně nakonfigurovanými hodnotami **adresy URL odpovědi** . Pokud se zobrazí tato chyba, můžete k nastavení správné adresy URL odpovědi pro vaši instanci použít následující skript prostředí PowerShell:
@@ -161,7 +156,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
     > ``` 
     > 
-    > Můžete nastavit ID `ServicePrincipal` objektu sami před spuštěním skriptu, nebo ho můžete předat sem.
+    > Můžete nastavit `ServicePrincipal` ID objektu sami před spuštěním skriptu, nebo ho můžete předat sem.
 
 1. Aplikace SAP Fiori očekává, že kontrolní výrazy SAML budou v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Chcete-li spravovat tyto hodnoty atributů, vyberte v podokně **nastavit jednotné přihlašování pomocí SAML** možnost **Upravit**.
 
@@ -197,9 +192,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -259,7 +254,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Možnosti požadavků na ověření a možnost Dokončit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. Vyberte**federace identity** **důvěryhodných zprostředkovatelů** > (ve spodní části stránky). Vyberte **Upravit**.
+1. Vyberte federace identity **důvěryhodných zprostředkovatelů**  >  **Identity Federation** (ve spodní části stránky). Vyberte **Upravit**.
 
     ![Karty důvěryhodných zprostředkovatelů a federace identit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
@@ -309,8 +304,8 @@ V této části vytvoříte uživatele s názvem Britta Simon v SAP Fiori. Pokud
 
 1. Po aktivaci poskytovatele identity Azure AD v SAP Fiori se pokuste získat přístup k jedné z následujících adres URL pro testování jednotného přihlašování (nemůžete být vyzváni k zadání uživatelského jména a hesla):
 
-    * https:\//\<sapurl\>/SAP/BC/BSP/SAP/it00/default.htm
-    * https:\//\<sapurl\>/SAP/BC/BSP/SAP/it00/default.htm
+    * https: \/ / \<sapurl\> /SAP/BC/BSP/SAP/it00/default.htm
+    * https: \/ / \<sapurl\> /SAP/BC/BSP/SAP/it00/default.htm
 
     > [!NOTE]
     > Nahraďte *sapurl* skutečným názvem hostitele SAP.
@@ -319,13 +314,13 @@ V této části vytvoříte uživatele s názvem Britta Simon v SAP Fiori. Pokud
 
     ![Stránka standardní testovací aplikace v SAP](./media/sapfiori-tutorial/testingsso.png)
 
-1. Pokud se zobrazí výzva k zadání uživatelského jména a hesla, povolte trasování, které vám pomůžou problém diagnostikovat. Pro trasování použijte následující adresu\//\<URL: https: sapurl\>/SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122&SAP-Language = en #.
+1. Pokud se zobrazí výzva k zadání uživatelského jména a hesla, povolte trasování, které vám pomůžou problém diagnostikovat. Pro trasování použijte následující adresu URL: https: \/ / \<sapurl\> /SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122&SAP-Language = en #.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

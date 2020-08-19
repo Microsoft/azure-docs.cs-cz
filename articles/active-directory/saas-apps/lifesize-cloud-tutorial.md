@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s cloudem Lifesize | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lifesize cloudem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a41fe75975537a54ae142034f74a613731736525
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051262"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Kurz: Azure Active Directory integrace s cloudem Lifesize
 
@@ -35,7 +30,7 @@ Integrace Lifesize cloudu s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Lifesize cloudem potřebujete následující položky:
 
@@ -111,13 +106,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu L
 
     ![Lifesize informace o jednotném přihlašování v cloudové doméně a adresách URL](common/sp-identifier-relay.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://login.lifesizecloud.com/ls/?acs`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://login.lifesizecloud.com/<companyname>`
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://login.lifesizecloud.com/<companyname>`
 
     c. Klikněte na **nastavit další adresy URL**.
 
-    d. Do textového pole **stav přenosu** zadejte adresu URL pomocí následujícího vzoru:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    d. Do textového pole **stav přenosu** zadejte adresu URL pomocí následujícího vzoru: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a stavu přenosu. Obraťte se na [tým podpory Lifesize cloudového klienta](https://www.lifesize.com/en/support) , aby získal přihlašovací adresu URL, a hodnoty identifikátoru a můžete získat stav přenosu z konfigurace jednotného přihlašování, která je vysvětlena dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -158,11 +153,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu L
 
     c. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64 stažený z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát X. 509** .
   
-    d. V poli mapování atributů SAML pro textové pole jméno zadejte hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    d. V poli mapování atributů SAML pro textové pole jméno zadejte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    e. V poli mapování atributů SAML pro textové pole **příjmení** zadejte hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    e. V poli mapování atributů SAML pro textové pole **příjmení** zadejte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    f. V poli mapování atributů SAML pro textové pole **e-mail** zadejte hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    f. V poli mapování atributů SAML pro textové pole **e-mail** zadejte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
 5. Chcete-li zkontrolovat konfiguraci, můžete kliknout na tlačítko **test** .
 
@@ -196,7 +191,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

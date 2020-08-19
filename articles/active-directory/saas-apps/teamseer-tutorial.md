@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s TeamSeer | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TeamSeer.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6ec4806f-fe0f-4ed7-8cfa-32d1c840433f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e505e4823db8c9f42bbff216f30326081110dcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088966"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Kurz: Azure Active Directory integrace s TeamSeer
 
@@ -32,7 +28,7 @@ Integrace TeamSeer s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
     ![Informace o jednotném přihlašování v doméně TeamSeer a adresách URL](common/sp-signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.teamseer.com/<companyid>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta TeamSeer](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -134,7 +130,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Klikněte na tlačítko **nastavit**.
 
-    ![Instalace a nastavení](./media/teamseer-tutorial/ic789635.png "Nastavení")
+    ![Nastavení](./media/teamseer-tutorial/ic789635.png "Nastavení")
 
 1. Klikněte na **nastavení podrobnosti o poskytovateli SAML**.
 
@@ -181,7 +177,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -217,7 +213,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TeamSeer, musí se zřídit v 
 
 1. Přihlaste se k webu **TeamSeer** společnosti jako správce.
 
-1. Přejděte na **správce \> řízení uživatelských zdrojů** a potom klikněte na **Spustit Průvodce vytvořením nového uživatele**.
+1. Přejděte na **správce řízení \> uživatelských zdrojů** a potom klikněte na **Spustit Průvodce vytvořením nového uživatele**.
 
     ![Správce lidských zdrojů](./media/teamseer-tutorial/ic789640.png "Správce lidských zdrojů")
 
@@ -240,7 +236,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TeamSeer, měli byste se automaticky přihlásit k TeamSeer, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

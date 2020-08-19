@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s ServiceNow | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceNow.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507705"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540209"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -32,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -98,9 +94,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do pole **přihlašovací adresa URL**zadejte adresu URL, která používá následující vzor:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. Do pole **přihlašovací adresa URL**zadejte adresu URL, která používá následující vzor: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. Do pole **identifikátor (ID entity)** zadejte adresu URL, která používá následující vzor:`https://<instance-name>.service-now.com`
+    b. Do pole **identifikátor (ID entity)** zadejte adresu URL, která používá následující vzor: `https://<instance-name>.service-now.com`
 
     c. V poli **Adresa URL odpovědi**zadejte jednu z těchto adres URL:
 
@@ -132,7 +128,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Jako **název**zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -170,9 +166,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. V poli **Adresa URL pro přihlášení**zadejte adresu URL, která používá následující vzor:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. V poli **Adresa URL pro přihlášení**zadejte adresu URL, která používá následující vzor: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. V poli **identifikátor (ID entity)** zadejte adresu URL, která používá následující vzor:`https://<instance-name>.service-now.com`
+    b. V poli **identifikátor (ID entity)** zadejte adresu URL, která používá následující vzor: `https://<instance-name>.service-now.com`
 
     c. V poli **Adresa URL odpovědi**zadejte jednu z těchto adres URL:
 
@@ -250,7 +246,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     1. Přihlaste se k aplikaci ServiceNow jako správce.
 
-       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte takto:
+       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte následovně:
 
          1. V levém podokně vyhledejte v poli hledání oddíl **jednotného přihlašování k více poskytovatelům** a vyberte **Zprostředkovatelé identity**.
 
@@ -296,7 +292,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
              > ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
         
-          1. Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte **aktivovat**.
+          1. Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte  **aktivovat**.
 
              ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
   
@@ -353,7 +349,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
           > ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
 
-        * Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte **aktivovat**.
+        * Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte  **aktivovat**.
 
           ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
 

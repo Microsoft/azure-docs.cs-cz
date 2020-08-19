@@ -2,25 +2,21 @@
 title: 'Kurz: integrace s Azure Active Directory s optimalizací | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a optimalizuje.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28ef03e1-9aad-4301-af97-d94e853edc74
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943956"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: integrace s Azure Active Directory s optimalizací
 
@@ -32,7 +28,7 @@ Integrace s Azure AD nabízí následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,9 +101,9 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
 
     ![Optimalizuje informace jednotného přihlašování v doménových a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.optimizely.net/<instance name>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://app.optimizely.net/<instance name>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`urn:auth0:optimizely:contoso`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `urn:auth0:optimizely:contoso`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tuto hodnotu aktualizujete skutečnou přihlašovací adresou URL a identifikátorem, který je vysvětlen později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -118,7 +114,7 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
 
 6. Kromě toho aplikace optimalizované pro optimalizaci očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------------- |
     | e-mail | uživatel. pošta |
     
@@ -138,7 +134,7 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -174,7 +170,7 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
   
     ![Jednotné přihlašování Azure AD](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
-6. Klikněte na **Uložit** .
+6. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -199,7 +195,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -249,7 +245,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici optimalizované k optimalizaci, měli byste být automaticky přihlášeni k optimalizaci, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

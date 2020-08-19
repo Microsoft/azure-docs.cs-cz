@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s sansan | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a sansan.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea824cfd5e80ce3aff06774a2e1525cf97d15f65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65c3e3df9fe62614eff15585373360ebcaa158cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091857"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543325"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Kurz: integrace sansan s Azure Active Directory
 
@@ -82,7 +77,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Do textového pole **Adresa URL pro přihlášení** zadejte jednu z adres URL pomocí následujícího vzoru:
     
-    | Prostředí | zprostředkovatele identity |
+    | Prostředí | URL |
     |:--- |:--- |
     | POČÍTAČová webová |`https://ap.sansan.com/v/saml2/<company name>/acs` |
     | Nativní mobilní aplikace |`https://internal.api.sansan.com/saml2/<company name>/acs` |
@@ -113,9 +108,9 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -146,7 +141,7 @@ V této části vytvoříte uživatele s názvem Britta Simon v sansan. Aplikace
 
 Když na přístupovém panelu vyberete dlaždici sansan, měli byste se automaticky přihlásit k sansan, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a020163347babfc68ac9aab0514352a35f5831c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931750"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542934"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Střední s vlastními seznamy obrázků v C #
 
@@ -34,7 +34,7 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 
 Konzolová aplikace pro tuto příručku simuluje některé úlohy, které můžete provádět s rozhraním API pro seznam imagí.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte `AzureEndpoint` pole `CMSubscriptionKey` a hodnotami adresy URL koncového bodu a klíče předplatného. Můžete je najít na kartě **rychlý Start** prostředku v Azure Portal.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru. Aktualizujte `AzureEndpoint` `CMSubscriptionKey` pole a hodnotami adresy URL koncového bodu a klíče předplatného. Můžete je najít na kartě **rychlý Start** prostředku v Azure Portal.
 
 ```csharp
 /// <summary>

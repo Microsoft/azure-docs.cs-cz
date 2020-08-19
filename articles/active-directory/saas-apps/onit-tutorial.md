@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Onit | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Onit.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70164241"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544005"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Onit
 
@@ -82,9 +77,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<sub-domain>.onit.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<sub-domain>.onit.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<sub-domain>.onit.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<sub-domain>.onit.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Onit](https://www.onit.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -109,9 +104,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,9 +150,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     
     b. Do textového pole **cílová adresa URL IDP** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **Adresa URL pro odhlášení IDP** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Adresa URL pro odhlášení IDP** vložte hodnotu  **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
-    d. Do textového pole **SHA1 (IDP CERT otisk)** vložte hodnotu **kryptografického otisku** certifikátu, kterou jste zkopírovali z Azure Portal.
+    d. Do textového pole **SHA1 (IDP CERT otisk)** vložte hodnotu  **kryptografického otisku** certifikátu, kterou jste zkopírovali z Azure Portal.
 
 ### <a name="create-onit-test-user"></a>Vytvořit testovacího uživatele Onit
 
@@ -173,11 +168,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Onit, musí se zřídit v Onit
 
 3. Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
 
-    ![Přidání uživatele](./media/onit-tutorial/IC791181.png "Přidání uživatele")
+    ![Přidat uživatele](./media/onit-tutorial/IC791181.png "Přidání uživatele")
 
     a. Zadejte **jméno** a **e-mailovou adresu** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
 
-    b. Klikněte na **Vytvořit**.
+    b. Klikněte na možnost **Vytvořit**.
 
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz k potvrzení jeho účtu předtím, než se aktivuje.
@@ -188,11 +183,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Onit, měli byste se automaticky přihlásit k Onit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

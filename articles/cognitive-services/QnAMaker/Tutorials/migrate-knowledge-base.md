@@ -3,12 +3,12 @@ title: Migrace základů znalostní báze – QnA Maker
 description: Migrace znalostní báze vyžaduje export z jedné znalostní báze a pak se importuje do jiného.
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343084"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542917"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu a importu
 
@@ -22,7 +22,7 @@ Migrace znalostní báze vyžaduje export z existující znalostní báze a nás
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) .
 * Nastavení nové [služby QnA maker](../How-To/set-up-qnamaker-service-azure.md)
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrace znalostní báze z QnA Maker

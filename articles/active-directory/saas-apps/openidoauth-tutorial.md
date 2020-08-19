@@ -2,27 +2,22 @@
 title: Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD | Microsoft Docs
 description: Postup konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610985"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543920"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 
@@ -32,7 +27,7 @@ ms.locfileid: "82610985"
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png))
 
-2. Přejít k **podnikovým aplikacím** > **všechny aplikace**.
+2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -72,7 +67,7 @@ Uživatel nebo správce pak mohou aplikaci udělit souhlas. Souhlas poskytne apl
 > [!NOTE]
 > Pokud aplikaci zpřístupníte uživatelům ve více adresářích, budete potřebovat mechanismus, který určí, na kterém tenantovi se nachází. Jedna aplikace pro jednoho tenanta potřebuje, aby pro uživatele vypadala jenom ve svém vlastním adresáři. Víceklientská aplikace potřebuje identifikovat konkrétního uživatele ze všech adresářů ve službě Azure AD.
 >
-> K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může kterákoli klientská aplikace směrovat požadavky na přihlášení místo koncového bodu specifického pro tenanta. Tento koncový bod `https://login.microsoftonline.com/common` je pro všechny adresáře ve službě Azure AD. Může být `https://login.microsoftonline.com/contoso.onmicrosoft.com`koncový bod pro konkrétního tenanta.
+> K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může kterákoli klientská aplikace směrovat požadavky na přihlášení místo koncového bodu specifického pro tenanta. Tento koncový bod je `https://login.microsoftonline.com/common` pro všechny adresáře ve službě Azure AD. Může být koncový bod pro konkrétního tenanta `https://login.microsoftonline.com/contoso.onmicrosoft.com` .
 >
 > Běžný koncový bod je důležité vzít v úvahu při vývoji aplikace. Budete potřebovat potřebnou logiku pro zpracování více tenantů během přihlašování, odhlašování a ověřování tokenu.
 
@@ -126,7 +121,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací a u
 
 3. Pokud uživatel ještě není ověřený, koncový bod Azure AD/Authorize vyzve k přihlášení.
 
-    ![Ověřování](./media/openidoauth-tutorial/authentication.png)
+    ![Authentication](./media/openidoauth-tutorial/authentication.png)
 
 4. Až se uživatel přihlásí, Azure AD určí, jestli se uživatel musí zobrazit na stránce souhlasu. Toto rozhodnutí je založené na tom, jestli uživatel (nebo správce organizace) už udělil souhlas s aplikací.
 
@@ -138,12 +133,12 @@ Běžný uživatel může vyjádřit souhlas s některými oprávněními. Dalš
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Rozdíl mezi souhlasem správce a souhlasem uživatele
 
-Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazovalo dialogové okno souhlasu. Uživatelé, kteří mají roli správce, mohou poskytnout souhlas v Azure Portal. Na stránce **Nastavení** aplikace vyberte **požadovaná oprávnění** > **udělení souhlasu správce**.
+Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazovalo dialogové okno souhlasu. Uživatelé, kteří mají roli správce, mohou poskytnout souhlas v Azure Portal. Na stránce **Nastavení** aplikace vyberte **požadovaná oprávnění**  >  **udělení souhlasu správce**.
 
 ![Tlačítko udělit oprávnění](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Udělení výslovného souhlasu pomocí tlačítka **udělit souhlas správce** se teď vyžaduje pro jednostránkové aplikace (jednostránkové), které používají ADAL. js. V opačném případě dojde k chybě aplikace po vyžádání přístupového tokenu.
+> Udělení výslovného souhlasu pomocí tlačítka **udělení souhlasu správce** se teď vyžaduje pro jednostránkové aplikace (jednostránkové), které používají ADAL.js. V opačném případě dojde k chybě aplikace po vyžádání přístupového tokenu.
 
 Oprávnění pouze pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje oprávnění pouze pro přístup k aplikacím a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva. Zpráva říká uživateli, že není možné vyjádřit souhlas.
 

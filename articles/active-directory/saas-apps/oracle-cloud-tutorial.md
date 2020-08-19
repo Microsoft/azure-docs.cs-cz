@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s konzolou infrastruktura cloudu Oracle | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a konzolou cloudové infrastruktury Oracle.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: f045fe19-11f8-4ccf-a3eb-8495fdc8716f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64cae5812a380725d612d27190042797542ee255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76289097"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543835"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Kurz: Integrujte konzolu cloudové infrastruktury Oracle pomocí Azure Active Directory
 
@@ -94,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       > [!NOTE]
       > Pokud hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají auto polulated, pak hodnoty ručně vyplníte podle vašich požadavků.
 
-      Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://console.<REGIONNAME>.oraclecloud.com/`
+      Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
       > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro klienta podpory Oracle Cloud Infrastructure](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -129,7 +125,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    1. Do textového pole **název** zadejte příkaz **název_skupiny**.
 
-   1. Do textového pole **obor názvů (volitelné)** zadejte `https://auth.oraclecloud.com/saml/claims`.
+   1. Do textového pole **obor názvů (volitelné)** zadejte `https://auth.oraclecloud.com/saml/claims` .
 
    1. Klikněte na **Uložit**.
 
@@ -149,9 +145,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B. Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -215,7 +211,7 @@ Když vyberete dlaždici konzoly cloudové infrastruktury Oracle na přístupov�
 
 ![Konfigurace](./media/oracle-cloud-tutorial/config10.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

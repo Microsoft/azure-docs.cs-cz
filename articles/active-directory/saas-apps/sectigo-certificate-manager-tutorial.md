@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace se správcem certifikátů Sectigo | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Sectigo správcem certifikátů.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62cd6987-3373-4b58-b1ff-589f4a3d70a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67588241"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Kurz: Azure Active Directory integrace se správcem certifikátů Sectigo
 
@@ -61,7 +56,7 @@ Pokud chcete integrovat správce certifikátů Sectigo s Azure AD, musíte přid
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -107,26 +102,26 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Spr�
 1. V podokně **základní konfigurace SAML** nakonfigurujte *režim iniciované IDP*a proveďte následující kroky:
 
     1. Do pole **identifikátor** zadejte jednu z těchto adres URL:
-       * https:\//CERT-Manager.com/Shibboleth
-       * https:\//Hard.CERT-Manager.com/Shibboleth
+       * https: \/ /CERT-Manager.com/Shibboleth
+       * https: \/ /Hard.CERT-Manager.com/Shibboleth
 
     1. Do pole **Adresa URL odpovědi** zadejte jednu z těchto adres URL:
-        * https:\//CERT-Manager.com/Shibboleth.SSO/Saml2/post
-        * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/Saml2/post
+        * https: \/ /CERT-Manager.com/Shibboleth.SSO/Saml2/post
+        * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/Saml2/post
 
     1. Vyberte **nastavit další adresy URL**.
 
     1. Do pole **stav přenosu** zadejte jednu z těchto adres URL:
-       * https:\//CERT-Manager.com/Customer/SSLSupport/IDP
-       * https:\//Hard.CERT-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /CERT-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /Hard.CERT-Manager.com/Customer/SSLSupport/IDP
 
     ![Sectigo informace o jednotném přihlašování domén správce certifikátů a adres URL](common/idp-relay.png)
 
 1.  Chcete-li nakonfigurovat aplikaci v *režimu iniciované v režimu SP*, proveďte následující kroky:
 
     * Do pole **přihlašovací adresa URL** zadejte jednu z těchto adres URL:
-      * https:\//CERT-Manager.com/Shibboleth.SSO/Login
-      * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/Login
+      * https: \/ /CERT-Manager.com/Shibboleth.SSO/Login
+      * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/Login
 
       ![Sectigo informace o jednotném přihlašování domén správce certifikátů a adres URL](common/both-signonurl.png)
 
@@ -150,7 +145,7 @@ Ke konfiguraci jednotného přihlašování na straně správce certifikátů Se
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -162,7 +157,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **brittasimon\@\<Your a Company-Domain>.\< Přípona\>**. Například **brittasimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon \@ \<your-company-domain> . \<extension\> **. Například **brittasimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -174,7 +169,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části udělíte Britta Simon přístup k Sectigo Správci certifikátů, aby mohli používat jednotné přihlašování Azure.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Sectigo Certificate Manager**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Sectigo Certificate Manager**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -186,7 +181,7 @@ V této části udělíte Britta Simon přístup k Sectigo Správci certifikát�
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 

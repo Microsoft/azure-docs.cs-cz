@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s SAP cloudem pro zákazníky | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudem pro zákazníky.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 90154dab-eba2-4563-bcf0-f2acc797ea97
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9fd458ea19fa0dad2f630f94a67d5e1db96cee3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72264073"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543308"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s SAP cloudem pro zákazníky
 
@@ -82,9 +77,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server name>.crm.ondemand.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<server name>.crm.ondemand.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<server name>.crm.ondemand.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<server name>.crm.ondemand.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory zákaznických klientů SAP](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -126,9 +121,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -152,7 +147,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se ke svému cloudu SAP pro zákazníky společnosti jako správce.
 
-2. V levé části nabídky klikněte na **poskytovatelé** > **podnikové identity** > **Přidat** a v automaticky otevíraném okně Přidat název zprostředkovatele identity, jako je **Azure AD**, klikněte na **Uložit** a pak klikněte na **Konfigurace SAML 2,0**.
+2. V levé části nabídky klikněte na **poskytovatelé identit**   >  **podnikové identity**  >  **Přidat** a v automaticky otevíraném okně Přidat název zprostředkovatele identity, jako je **Azure AD**, klikněte na **Uložit** a pak klikněte na **Konfigurace SAML 2,0**.
 
     ![Konfigurace SAP](./media/sap-customer-cloud-tutorial/configure01.png)
 
@@ -172,7 +167,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě SAP Cloud pro zákaz
 
 1. Přihlaste se ke službě SAP Cloud pro zákazníka jako správce zabezpečení.
 
-2. Na levé straně nabídky klikněte na **uživatele & autorizaci** > **Správa** > uživatelů**Přidat uživatele**.
+2. Na levé straně nabídky klikněte na **uživatele & autorizaci**   >  **Správa uživatelů**  >  **Přidat uživatele**.
 
     ![Konfigurace SAP](./media/sap-customer-cloud-tutorial/configure03.png)
 
@@ -184,7 +179,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě SAP Cloud pro zákaz
 
     b. Do textového pole **poslední jméno** zadejte jméno uživatele, jako je **Simon**.
 
-    c. Do textového pole **e-mail** zadejte e-maily uživatele, `B.Simon@contoso.com`jako je například.
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je například `B.Simon@contoso.com` .
 
     d. Do textového pole **přihlašovací jméno** zadejte jméno uživatele jako **B. Simon**.
 
@@ -198,11 +193,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici SAP Cloud for Customer na přístupovém panelu byste měli být automaticky přihlášení ke cloudu SAP pro zákazníka, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

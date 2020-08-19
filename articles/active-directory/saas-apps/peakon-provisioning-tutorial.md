@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace automatického zřizování uživatelů Peakon pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Peakon.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063369"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543665"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Peakon pro Automatické zřizování uživatelů
 
@@ -99,7 +95,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Peakon ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -133,7 +129,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Atributy uživatele Peakon](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 
-12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v       [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
     
     ![Rozsah zřizování](common/provisioning-scope.png)
 

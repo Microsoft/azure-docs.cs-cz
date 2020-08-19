@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování na základě hlaviček) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) mezi Azure Active Directory a Citrix NetScaler pomocí ověřování založeného na hlavičkách.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b0adc7bf-696d-44c9-a57a-f9e9471b8710
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80477955"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování na základě hlaviček)
 
@@ -100,13 +95,13 @@ Pokud chcete povolit jednotné přihlašování Azure AD pomocí Azure Portal, p
 
 1. V části **základní konfigurace SAML** nakonfigurujte aplikaci v režimu **iniciované IDP** :
 
-    1. Do textového pole **identifikátor** zadejte adresu URL, která má následující vzor:`https://<Your FQDN>`
+    1. Do textového pole **identifikátor** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>`
 
-    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která má následující vzor:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
 1. Chcete-li nakonfigurovat aplikaci v režimu **iniciované SP** , vyberte možnost **nastavit další adresy URL** a proveďte následující krok:
 
-    * Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    * Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
     > * Adresy URL použité v této části nejsou reálné hodnoty. Aktualizujte tyto hodnoty skutečnými hodnotami pro identifikátor, adresu URL odpovědi a přihlašovací adresu URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Citrix NetScaler](https://www.citrix.com/contact/technical-support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -122,7 +117,7 @@ Pokud chcete povolit jednotné přihlašování Azure AD pomocí Azure Portal, p
 
 1. Aplikace Citrix NetScaler také očekává několik dalších atributů, které se mají zpětně předat v odpovědi SAML. V dialogovém okně **atributy uživatele** v části **deklarace identity uživatelů**proveďte následující kroky a přidejte tak atributy tokenu SAML, jak je znázorněno v tabulce:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | mySecretID  | User. userPrincipalName |
     
@@ -154,9 +149,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 1. V nastavení vlastnosti **uživatele** proveďte tyto kroky:
 
-   1. Jako **název**zadejte `B.Simon`.  
+   1. Jako **název**zadejte `B.Simon` .  
 
-   1. Jako **uživatelské jméno**zadejte _username@companydomain.extension_. Například, `B.Simon@contoso.com`.
+   1. Jako **uživatelské jméno**zadejte _username@companydomain.extension_ . Například, `B.Simon@contoso.com`.
 
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište nebo zkopírujte hodnotu zobrazenou v **hesle**.
 
@@ -174,7 +169,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -196,7 +191,7 @@ Vyberte odkaz pro kroky pro druh ověřování, které chcete konfigurovat:
 
 Vytvoření virtuálního serveru:
 
-1. Vyberte > **služby** > **Vyrovnávání zatížení** **správy provozu**.
+1. Vyberte **Traffic Management**  >  **služby Vyrovnávání zatížení**správy provozu  >  **Services**.
     
 1. Vyberte **Přidat**.
 
@@ -207,7 +202,7 @@ Vytvoření virtuálního serveru:
    * **Název služby**
    * **Server IP/existující server**
    * **Protokol**
-   * **Přístavní**
+   * **Port**
 
      ![Podokno konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
 
@@ -215,7 +210,7 @@ Vytvoření virtuálního serveru:
 
 Konfigurace nástroje pro vyrovnávání zatížení:
 
-1. Přejít na**virtuální servery** > **Vyrovnávání** > zatížení pro **správu provozu**.
+1. Přejít na **Traffic Management**  >  virtuální servery**Vyrovnávání zatížení**pro správu provozu  >  **Virtual Servers**.
 
 1. Vyberte **Přidat**.
 
@@ -224,7 +219,7 @@ Konfigurace nástroje pro vyrovnávání zatížení:
     * **Název**
     * **Protokol**
     * **IP adresa**
-    * **Přístavní**
+    * **Port**
 
 1. Vyberte **OK**.
 
@@ -262,7 +257,7 @@ Pokud chcete nakonfigurovat profil SAML ADC pro Citrix ADC, proveďte následuj�
 
 Postup vytvoření zásad ověřování:
 
-1. Přejít na **Security** > **AAA – zásady provozu** > **Policies** > **Authentication** > ověřování zásady**ověřování**.
+1. Přejít na **Security**  >  **AAA – zásady provozu**ověřování zásady  >  **Policies**  >  **Authentication**  >  **ověřování**.
 
 1. Vyberte **Přidat**.
 
@@ -298,7 +293,7 @@ Pokud chcete vytvořit server SAML ověřování, klikněte na podokno **vytvoř
 
 Vytvoření virtuálního serveru pro ověřování:
 
-1.  Přejít na **Security** > **AAA –** > **zásady** >  > provozu aplikací**ověřování****virtuální servery**.
+1.  Přejít na **Security**  >  **AAA – zásady provozu aplikací**ověřování  >  **Policies**  >  **Authentication**  >  **virtuální servery**.
 
 1.  Vyberte **Přidat**a pak proveďte následující kroky:
 
@@ -351,7 +346,7 @@ Pokud chcete nakonfigurovat Citrix ADC pro ověřování založené na hlavičk�
 
 #### <a name="create-a-rewrite-action"></a>Vytvoření akce opětovného zápisu
 
-1. Přejít na **AppExpert** > **Rewrite** > **Akce přepisu**přepsání AppExpert
+1. Přejít na **AppExpert**  >  **Rewrite**  >  **Akce přepisu**přepsání AppExpert
  
     ![Konfigurace Citrix NetScaler – podokno akcí přepisu](./media/header-citrix-netscaler-tutorial/header01.png)
 
@@ -371,7 +366,7 @@ Pokud chcete nakonfigurovat Citrix ADC pro ověřování založené na hlavičk�
  
 #### <a name="create-a-rewrite-policy"></a>Vytvoření zásady přepisování
 
-1.  Přejít na**zásady přepisování****přepisu** >  **AppExpert** > .
+1.  Přejít na **AppExpert**  >  **Rewrite**  >  **zásady přepisování**přepisu AppExpert.
  
     ![Konfigurace Citrix NetScaler – podokno zásady přepisování](./media/header-citrix-netscaler-tutorial/header03.png)
 
@@ -391,7 +386,7 @@ Pokud chcete nakonfigurovat Citrix ADC pro ověřování založené na hlavičk�
 
 Vytvoření vazby zásad přepisování na virtuální server pomocí grafického uživatelského rozhraní:
 
-1. Přejít na**virtuální servery** > **Vyrovnávání** > zatížení pro **správu provozu**.
+1. Přejít na **Traffic Management**  >  virtuální servery**Vyrovnávání zatížení**pro správu provozu  >  **Virtual Servers**.
 
 1. V seznamu virtuálních serverů vyberte virtuální server, na který chcete vytvořit zásadu přepisování, a pak vyberte **otevřít**.
 
@@ -417,13 +412,13 @@ Vytvoření vazby zásad přepisování na virtuální server pomocí grafickéh
 
 ### <a name="modify-the-saml-server-to-extract-attributes-from-a-claim"></a>Úprava serveru SAML pro extrakci atributů z deklarace
 
-1.  Přejít na **Security** > **AAA –** > **zásady** > přenosů aplikací**ověřování** > **Upřesnit zásady** > **Akce** > **servery**.
+1.  Přejít na **Security**  >  **AAA – zásady přenosů aplikací**  >  **Policies**  >  **ověřování**  >  **Upřesnit zásady**  >  **Akce**  >  **servery**.
 
 1.  Vyberte příslušný server SAML pro ověřování pro aplikaci.
  
     ![Konfigurace Citrix NetScaler – konfigurace ověřování – podokno serveru SAML](./media/header-citrix-netscaler-tutorial/header09.png)
 
-1. V části **atributy** bolesti zadejte atributy SAML, které chcete extrahovat, a oddělte je čárkami. V našem příkladu zadáme atribut `mySecretID`.
+1. V části **atributy** bolesti zadejte atributy SAML, které chcete extrahovat, a oddělte je čárkami. V našem příkladu zadáme atribut `mySecretID` .
  
     ![Konfigurace Citrix NetScaler – podokno atributů](./media/header-citrix-netscaler-tutorial/header10.png)
 
@@ -444,7 +439,7 @@ V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupov�
 
 Když vyberete dlaždici Citrix NetScaler na přístupovém panelu, měli byste se automaticky přihlásit k NetScaler Citrix, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

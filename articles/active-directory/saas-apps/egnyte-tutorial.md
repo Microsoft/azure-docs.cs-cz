@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Egnyte | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Egnyte.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76983665"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Egnyte
 
@@ -95,7 +91,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Egnyte, 
 
     ![Informace o jednotném přihlašování v doméně Egnyte a adresách URL](common/sp-signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.egnyte.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<companyname>.egnyte.com`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Egnyte](https://www.egnyte.com/corp/contact_egnyte.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -132,12 +128,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -169,7 +165,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Egnyte společnosti jako správce.
 
-2. Klikněte na příkaz **Nastavení**.
+2. Klikněte na **Nastavení**.
    
     ![Nastavení](./media/egnyte-tutorial/ic787819.png "Nastavení")
 
@@ -197,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
    
     f. Jako **výchozí mapování uživatelů**vyberte **e-mailová adresa**.
    
-    g. Jako **hodnotu vystavitele v doméně použijte**možnost **zakázáno**.
+    například Jako **hodnotu vystavitele v doméně použijte**možnost **zakázáno**.
    
     h. Klikněte na **Uložit**.
 
@@ -209,7 +205,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Egnyte, musí se zřídit v Eg
 
 1. Přihlaste se k webu **Egnyte** společnosti jako správce.
 
-2. Přejít na **nastavení \> uživatelé & skupiny**.
+2. Přejít na **nastavení \> Uživatelé & skupiny**.
 
 3. Klikněte na tlačítko **Přidat nového uživatele**a potom vyberte typ uživatele, který chcete přidat.
    
@@ -219,7 +215,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Egnyte, musí se zřídit v Eg
     
     ![Nový standardní uživatel](./media/egnyte-tutorial/ic787825.png "Nový standardní uživatel")   
 
-    a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **Brittasimon\@contoso.com**.
+    a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **Brittasimon \@ contoso.com**.
 
     b. Do textového pole **uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 
@@ -241,7 +237,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Egnyte, měli byste se automaticky přihlásit k Egnyte, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

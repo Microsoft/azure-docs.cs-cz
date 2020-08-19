@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Skillport | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Skillport.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cceb0a98cc35a41d1d46b798c9caf08fae2e3748
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680674"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Azure Active Directory integrace s Skillport
 
@@ -32,7 +28,7 @@ Integrace Skillport s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,21 +103,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Skillpor
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:
 
-    Datacenter Evropské unie:`https://adfs.skillport.eu`
+    Datacenter Evropské unie: `https://adfs.skillport.eu`
 
-    Datacenter USA:`https://sso.skillport.com`
+    Datacenter USA: `https://sso.skillport.com`
 
     b. Do pole **identifikátor** zadejte adresu URL:
 
-    Datacenter Evropské unie:`http://adfs.skillport.eu/adfs/services/trust`
+    Datacenter Evropské unie: `http://adfs.skillport.eu/adfs/services/trust`
 
-    Datacenter USA:`https://sso.skillport.com`
+    Datacenter USA: `https://sso.skillport.com`
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
 
-    Datacenter Evropské unie:`https://adfs.skillport.eu/adfs/ls/`
+    Datacenter Evropské unie: `https://adfs.skillport.eu/adfs/ls/`
 
-      Datacenter USA:`https://sso.skillport.com/sp/ACS.saml2`
+      Datacenter USA: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -164,7 +160,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -202,7 +198,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Skillport, měli byste se automaticky přihlásit k Skillport, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

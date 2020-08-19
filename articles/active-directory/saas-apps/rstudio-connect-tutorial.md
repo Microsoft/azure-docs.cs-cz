@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s RStudio Connect | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RStudio Connect.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9bc78022-6d38-4476-8f03-e3ca2551e72e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81407098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Kurz: Azure Active Directory integrace s RStudio Connect
 
@@ -33,7 +28,7 @@ Integrace RStudio Connect s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,22 +99,22 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RStudio 
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud chcete nakonfigurovat aplikaci v režimu spuštěném v **IDP** , proveďte následující kroky, které nahradíte `<example.com>` adresou a portem serveru RStudio Connect v základní části **Konfigurace SAML** :
+4. Pokud chcete nakonfigurovat aplikaci v režimu spuštěném v **IDP** , proveďte následující kroky, které nahradíte adresou a portem serveru RStudio Connect v **základní části Konfigurace SAML** `<example.com>` :
 
     ![RStudio připojit informace o jednotném přihlašování k doméně a adresám URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<example.com>/__login__/saml`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<example.com>/__login__/saml`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<example.com>/__login__/saml/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<example.com>/__login__/saml/acs`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![RStudio připojit informace o jednotném přihlašování k doméně a adresám URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<example.com>/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<example.com>/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Jsou určeny z adresy serveru RStudio Connect (`https://example.com` v předchozích příkladech). Pokud máte problémy, obraťte se na [tým podpory RStudio Connect](mailto:support@rstudio.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Jsou určeny z adresy serveru RStudio Connect ( `https://example.com` v předchozích příkladech). Pokud máte problémy, obraťte se na [tým podpory RStudio Connect](mailto:support@rstudio.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 6. Vaše aplikace RStudio Connect očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace RStudio Connect očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
@@ -131,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RStudio 
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>Konfigurace jednotného přihlašování RStudio Connect
 
-Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio Connect**, musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v konfiguračním souboru RStudio Connect na adrese `/etc/rstudio-connect.rstudio-connect.gcfg`.
+Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio Connect**, musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v konfiguračním souboru RStudio Connect na adrese `/etc/rstudio-connect.rstudio-connect.gcfg` .
 
 Toto je ukázkový konfigurační soubor:
 
@@ -180,11 +175,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -222,7 +217,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici RStudio Connect na přístupovém panelu, měli byste se automaticky přihlásit k RStudio připojení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

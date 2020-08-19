@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s pomocníkem pomocníka | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pomocníkem pomocníka.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5f42e4d7-4d92-4096-a0d5-02fa438a5dfd
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101290"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540075"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Kurz: integrace pomocné pomocné rutiny s Azure Active Directory
 
@@ -81,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Pokud v **základním oddílu konfigurace SAML** máte **soubor metadat Service Provider** a chcete ho nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
 
     >[!NOTE]
-    >Chcete-li získat `https://sso.helperhelper.com/saml/<customer_id>` soubor metadat poskytovatele služby, přejít na adresu URL. Obraťte se na [tým podpory](mailto:info@helperhelper.com) pomocníka `<customer_id>`pro klienty pro.
+    >Chcete-li `https://sso.helperhelper.com/saml/<customer_id>` získat soubor metadat poskytovatele služby, přejít na adresu URL. Obraťte se na [tým podpory](mailto:info@helperhelper.com) pomocníka pro klienty pro `<customer_id>` .
 
     a. Klikněte na **nahrát soubor metadat**.
 
@@ -94,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://sso.helperhelper.com/saml/<customer_id>/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://sso.helperhelper.com/saml/<customer_id>/login`
 
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory pomocníka klienta podpory](mailto:info@helperhelper.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. l.
@@ -119,9 +114,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -149,7 +144,7 @@ V této části se v pomocné pomocné rutině vytvoří uživatel s názvem Bri
 
 Když vyberete dlaždici pomocníka pomocníka na přístupovém panelu, měli byste být automaticky přihlášeni k pomocné rutině, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

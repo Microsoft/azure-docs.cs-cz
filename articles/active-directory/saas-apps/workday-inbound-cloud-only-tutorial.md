@@ -3,23 +3,19 @@ title: 'Kurz: Konfigurace příchozího zřizování Workday v Azure Active Dire
 description: Přečtěte si, jak nakonfigurovat příchozí zřizování z Workday do Azure AD.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041810"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540962"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při zřizování pracovních dat z Workday do Azure Active Directory. 
@@ -95,7 +91,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 **Konfigurace pracovního dne pro Azure Active Directory zřizování jenom pro cloudové uživatele:**
 
-1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
+1. Přejděte na <https://portal.azure.com>.
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
@@ -111,7 +107,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
-   * **Workday username** – zadejte uživatelské jméno účtu Integration System v Workday s názvem domény tenanta, který je připojený. By měl vypadat nějak takto:username@contoso4
+   * **Workday username** – zadejte uživatelské jméno účtu Integration System v Workday s názvem domény tenanta, který je připojený. By měl vypadat nějak takto: username@contoso4
 
    * **Heslo pracovního dne –** Zadejte heslo účtu systému pro integraci Workday.
 
@@ -156,7 +152,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
       * Operátor: není NULL
 
-3. V poli **Akce cílového objektu** můžete globálně filtrovat akce prováděné v Azure AD. **Vytváření** a **aktualizace** jsou nejběžnější.
+3. V poli **Akce cílového objektu** můžete globálně filtrovat akce prováděné v Azure AD. **Vytváření**  a **aktualizace** jsou nejběžnější.
 
 4. V části **mapování atributů** můžete definovat, jak se mají jednotlivé atributy Workday mapovat na atributy služby Active Directory.
 

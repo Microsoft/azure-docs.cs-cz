@@ -2,26 +2,21 @@
 title: 'Kurz: Integrace Azure Active Directory se sledováním Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a sledováním.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74231994"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542815"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Kurz: integrace programu pro sledování ve službě Azure Active Directory
 
@@ -80,9 +75,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
-    1. Do textového pole **identifikátor (ID entity)** zadejte hodnotu jako:`AirWatch`
+    1. Do textového pole **identifikátor (ID entity)** zadejte hodnotu jako: `AirWatch`
 
     > [!NOTE]
     > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory](https://www.air-watch.com/company/contact-us/) pro služby sledování. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -93,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     |---------------|----------------|
     | UID | User. userPrincipalName |
     | | |
@@ -110,7 +105,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte si metadata XML a uložte je do počítače.
 
@@ -146,7 +141,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **SAML 2,0** nahrajte stažený certifikát kliknutím na **Odeslat**.
 
-    ![Nahrát](./media/airwatch-tutorial/ic791932.png "Odeslat")
+    ![Nahrát](./media/airwatch-tutorial/ic791932.png "Nahrávání")
 
 1. V části **žádost** proveďte následující kroky:
 
@@ -170,19 +165,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Atribut](./media/airwatch-tutorial/ic791927.png "Atribut")
 
-    a. Do textového pole **identifikátor objektu** zadejte `http://schemas.microsoft.com/identity/claims/objectidentifier`.
+    a. Do textového pole **identifikátor objektu** zadejte `http://schemas.microsoft.com/identity/claims/objectidentifier` .
 
-    b. Do textového pole **uživatelské jméno** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. Do textového pole **uživatelské jméno** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    c. Do textového pole **Zobrazovaný název** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. Do textového pole **Zobrazovaný název** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    d. Do textového pole **jméno v prvním názvu** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Do textového pole **jméno v prvním názvu** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    e. Do textového pole **příjmení** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Do textového pole **příjmení** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    f. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -192,9 +187,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -228,11 +223,11 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě vzdálení, musí se
 
 3. V nabídce **Uživatelé** klikněte na **zobrazení seznamu**a potom klikněte na **Přidat > přidat uživatele**.
   
-   ![Přidání uživatele](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
+   ![Přidat uživatele](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
 
 4. V dialogu **Přidat/upravit uživatele** proveďte následující kroky:
 
-   ![Přidání uživatele](./media/airwatch-tutorial/ic791931.png "Přidání uživatele")
+   ![Přidat uživatele](./media/airwatch-tutorial/ic791931.png "Přidání uživatele")
 
    a. Zadejte **uživatelské jméno**, **heslo**, **Potvrdit heslo**, jméno, **příjmení**, **e-mailovou adresu** platného Azure Active Directory **účtu, který**chcete zřídit do souvisejících textových polí.
 
@@ -245,7 +240,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě vzdálení, musí se
 
 Když na přístupovém panelu kliknete na dlaždici kolektoru, měli byste být automaticky přihlášení ke sledování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

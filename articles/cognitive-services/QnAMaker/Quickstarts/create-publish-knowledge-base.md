@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření, výuka a publikování znalostní báze Know
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Tento článek obsahuje příklad vytvoření QnA Maker znalostní báze z jednoduché webové stránky s nejčastějšími dotazy pro odpovědi na otázky QnA Maker.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340585"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540750"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -17,7 +17,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+> * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) před tím, než začnete.
 > * QnA Maker [prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) vytvořený v Azure Portal. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Vytvoření prvního QnA Maker znalostní báze Knowledge Base
@@ -42,10 +42,10 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
     |Nastavení|Hodnota|
     |--|--|
-    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuté|
+    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Výchozí text odpovědi**| `Quickstart - default answer not found.`|
     |**+ Přidat adresu URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**CHITEST – chat**|Vybrat **Professional**|
+    |**Povídání**|Vybrat **Professional**|
 
 1. V **kroku 5**vyberte **vytvořit znalostní báze**.
 

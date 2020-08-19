@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace se systémem jednotného přihlašování (GTNexus) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directorym a GTNexusm systémem jednotného přihlašování.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e677a161-1662-4eb3-b48a-b2835470b59e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99f9ad340ea3119d9d08eebef3102af8ba2c014e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157939"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Kurz: Azure Active Directory integrace se systémem jednotného přihlašování GTNexus
 
@@ -33,7 +28,7 @@ Integrace systému GTNexus SSO do Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -145,12 +140,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -180,7 +175,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-gtnexus-sso-system-test-user"></a>Vytvořit uživatele testu systému GTNexus SSO
 
-V této části vytvoříte uživatele s názvem Britta Simon v systému GTNexus SSO. Pokud chcete přidat uživatele na systémovou platformu jednotného přihlašování GTNexus, pracujte s  [týmem podpory systému GTNexus SSO](mailto:support@gtnexus.com). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v systému GTNexus SSO. Pokud chcete přidat uživatele na systémovou platformu jednotného přihlašování GTNexus, pracujte s [týmem podpory systému GTNEXUS SSO](mailto:support@gtnexus.com)   . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -188,7 +183,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici systém GTNexus SSO na přístupovém panelu, měli byste se automaticky přihlásit k systému GTNexus SSO, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

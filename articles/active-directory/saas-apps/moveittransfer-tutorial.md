@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s přenosem MOVEit – integrace služby Azure AD | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a přenosem MOVEit – integraci Azure AD.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Azure Active Directory integrace s přenosem MOVEit – Integrace Azure AD
 
@@ -32,7 +28,7 @@ Integrace MOVEit transferu – integrace služby Azure AD s Azure AD poskytuje n
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -115,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s integrací slu
 
     ![MOVEit Transfer – informace o jednotném přihlašování v doméně Integrace Azure AD a adresách URL](common/sp-identifier-reply.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://contoso.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://contoso.com`
 
     > [!NOTE]
     > Hodnota **přihlašovací adresy URL** není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Kontaktujte [MOVEit Transfer – tým podpory klienta Azure AD Integration](https://community.ipswitch.com/s/support) pro získání hodnoty. **Soubor metadat poskytovatele služby** si můžete stáhnout z **adresy URL metadat poskytovatele služby** , která je vysvětlená dále v části **Konfigurace MOVEit přenosu – jednotné přihlašování Azure AD** v kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -173,9 +169,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s integrací slu
     
     a. Jako **přihlašovací jméno**vyberte **SAML NameId** .
     
-    b. Vyberte možnost **jiný** jako **úplný název** a do textového pole **název atributu** zadejte hodnotu: `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. Vyberte možnost **jiný** jako **úplný název** a do textového pole **název atributu** zadejte hodnotu: `http://schemas.microsoft.com/identity/claims/displayname` .
     
-    c. Vyberte možnost **jiné** jako **e-mail** a v textovém poli **název atributu** zadejte hodnotu: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Vyberte možnost **jiné** jako **e-mail** a v textovém poli **název atributu** zadejte hodnotu: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
     
     d. V jednotného vyberte **Ano** jako **automaticky vytvořit účet**.
     
@@ -199,12 +195,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -245,7 +241,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici MOVEit Transfer – integrace služby Azure AD na přístupovém panelu byste měli být automaticky přihlášeni k integraci MOVEit přenosu – Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

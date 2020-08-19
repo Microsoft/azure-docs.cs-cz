@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ContractSafe typu Saml2 SSO | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ContractSafe typu Saml2 SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9d8c9eba-6a90-4c8f-b387-a6ead4af00af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77185620"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544378"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) pomocí jednotného přihlašování ContractSafe typu Saml2
 
@@ -80,9 +76,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte do odpovídajících polí následující hodnoty:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího formátu:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího formátu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího formátu:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího formátu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory ContractSafe typu Saml2 SSO Client support](mailto:support@contractsafe.com) . Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
@@ -93,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výchozích atributů očekává aplikace ContractSafe typu Saml2 SSO několik dalších atributů, které se vrátí zpátky v odpovědi SAML. Tyto atributy jsou předem vyplněné, ale můžete je zkontrolovat podle svých požadavků. Následující seznam obsahuje další atributy.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | e-mailová adresa | User. userPrincipalName |
     | e-mail | User. onpremisesuserprincipalname |
@@ -148,9 +144,9 @@ Vytvořte uživatele s názvem B. Simon v rámci ContractSafeu typu Saml2 SSO. S
 
 Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu. Když vyberete dlaždici SSO ContractSafe typu Saml2 SSO na přístupovém panelu, měli byste se automaticky přihlásit k rozhraní ContractSafe typu Saml2 SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

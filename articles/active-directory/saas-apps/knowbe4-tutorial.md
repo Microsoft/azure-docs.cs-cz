@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s výukou ke sledování povědomí o zabezpečení KnowBe4 | Microsoft Docs'
 description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a KnowBe4 a školením týkajícím se zabezpečení.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6e70268dcc252964a0b046488c399f474660ca5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159672"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Kurz: Azure Active Directory integrace s výukou ke sledování povědomí o zabezpečení KnowBe4
 
@@ -33,7 +28,7 @@ Integrace KnowBe4ch školení k zabezpečení pomocí Azure AD poskytuje násled
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,12 +103,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí školen�
 
     ![KnowBe4 zabezpečení – informace o jednotném přihlašování v doméně a v adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
     > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte tuto hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat tuto hodnotu, kontaktujte [tým podpory pro školení k KnowBe4 zabezpečení](mailto:support@KnowBe4.com) . Můžete se také podívat na vzor uvedený v části **základní konfigurace SAML** v Azure Portal.
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu řetězce:`KnowBe4`
+    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu řetězce: `KnowBe4`
 
     > [!NOTE]
     > Rozlišují se malá a velká písmena.
@@ -154,12 +149,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -202,7 +197,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici školení pro KnowBe4 na zabezpečení, měli byste se automaticky přihlásit ke školení KnowBe4 na zabezpečení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

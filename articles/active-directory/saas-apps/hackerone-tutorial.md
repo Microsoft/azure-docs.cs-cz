@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s HackerOne | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HackerOne.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Azure Active Directory integrace s HackerOne
 
@@ -33,7 +28,7 @@ Integrace HackerOne s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,9 +102,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
     ![Informace o jednotném přihlašování v doméně HackerOne a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte toto:`https://hackerone.com/users/saml/sign_in?email=<configured domain>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte toto: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte následující:`hackerone.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte následující: `hackerone.com`
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -143,9 +138,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
     a. Do textového pole **doména e-mailu** zadejte registrovanou doménu.
 
-    b. Do textových polí **adresy URL jednotného přihlašování** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    b. Do textových polí  **adresy URL jednotného přihlašování** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. Otevřete stažený **soubor certifikátu** z Azure Portal do programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu x509** .
+    c. Otevřete stažený **soubor certifikátu** z Azure Portal do programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu x509**  .
 
     d. Klikněte na **Uložit**.
 
@@ -181,12 +176,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
 
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -224,7 +219,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici HackerOne, měli byste se automaticky přihlásit k HackerOne, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
