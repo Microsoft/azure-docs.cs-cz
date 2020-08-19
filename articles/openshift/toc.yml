@@ -79,6 +79,8 @@
   items:
     - name: Sítě v clusterech Azure Red Hat OpenShift 4
       href: concepts-networking.md
+    - name: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
+      href: migration.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift

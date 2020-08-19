@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: Export doporučení
           href: continuous-export.md
+    - name: Správa prostředků s využitím inventáře prostředků
+      href: asset-inventory.md
     - name: Integrace s ostatními nástroji a službami
       items:
         - name: Integrace s řešením Windows Admin Center

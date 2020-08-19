@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Personalizace
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
-  ms.openlocfilehash: 0c8e99ab2817cd9aaa2de60b9996b3d47b10a1ff
-  ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84717913"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88506544"
 landingContent:
 - title: Informace o službě Personalizace
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: Použití Personalizace ve webové aplikaci .NET
       url: tutorial-use-personalizer-web-app.md
-    - text: Použití Personalizace s poznámkovým blokem Azure
+    - text: Použití Personalizace se souborem Azure Notebooks
       url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:

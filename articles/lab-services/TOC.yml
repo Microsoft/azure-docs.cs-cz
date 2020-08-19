@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: Omezení kapacity
       href: capacity-limits.md
+    - name: Správa nákladů pro testovací prostředí
+      href: cost-management-guide.md
     - name: Scénáře
       items:
         - name: Využití Lab Services pro výuku
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: Správa testovacích prostředí v účtu testovacího prostředí
           href: manage-labs.md
-        - name: Konfigurace automatického vypnutí virtuálních počítačů
+        - name: Konfigurace automatického vypínání virtuálních počítačů pro účet testovacího prostředí
           href: how-to-configure-lab-accounts.md
         - name: Přidání autora testovacího prostředí
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: Zadání informací o podpoře (vlastník účtu testovacího prostředí).
           href: lab-account-owner-support-information.md
-        - name: Správa nákladů pro testovací prostředí
-          href: cost-management-guide.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (vyučující)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Povolení připojení ke vzdálené ploše pro Linux
           href: how-to-enable-remote-desktop-linux.md
-        - name: Povolení automatického vypnutí při odpojení
+        - name: Konfigurace automatického vypínání virtuálních počítačů pro testovací prostředí
           href: how-to-enable-shutdown-disconnect.md
         - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
           items:

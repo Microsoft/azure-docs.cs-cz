@@ -28,6 +28,12 @@
               href: connect-nodejs.md
             - name: Java
               href: connect-java.md
+            - name: Java s JDBC služby Spring Data
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java s JPA služby Spring Data
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java s R2DBC služby Spring Data
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
             - name: Ruby
               href: connect-ruby.md
             - name: PHP
@@ -38,7 +44,7 @@
               href: connect-go.md
     - name: Hyperscale (Citus)
       items:
-        - name: Vytvoření databáze – portál
+        - name: Vytvoření skupiny serverů – portál
           href: quickstart-create-hyperscale-portal.md
 - name: Kurzy
   items:
@@ -46,7 +52,7 @@
       items:
         - name: 1. Návrh databáze
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
@@ -153,10 +159,14 @@
               href: concepts-aks.md
             - name: Java
               items:
+                - name: Použití Javy a JDBC
+                  href: connect-java.md
                 - name: Konfigurace JDBC služby Spring Data
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Konfigurace JPA služby Spring Data
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                - name: Konfigurace R2DBC služby Spring Data
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
         - name: Replikace
           items:
             - name: Čtení replik
@@ -229,13 +239,13 @@
               href: howto-optimize-query-time-with-toast-table-storage-strategy.md
         - name: Správa brány firewall
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-manage-firewall-using-portal.md
             - name: Azure CLI
               href: howto-manage-firewall-using-cli.md
         - name: Obnovení serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
@@ -257,7 +267,7 @@
               href: howto-connection-string-powershell.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
@@ -265,7 +275,7 @@
               href: howto-configure-server-parameters-using-powershell.md
         - name: Automatické zvětšení úložiště
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
@@ -273,7 +283,7 @@
               href: howto-auto-grow-storage-powershell.md
         - name: Protokoly přístupu
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-logs-in-portal.md
             - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
@@ -293,19 +303,19 @@
               href: howto-database-threat-protection-portal.md
         - name: Virtual Network
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
         - name: Privátní propojení
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-privatelink-portal.md
             - name: Azure CLI
               href: howto-configure-privatelink-cli.md
         - name: Šifrování dat
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
@@ -317,7 +327,7 @@
               href: howto-double-encryption.md
         - name: Restartování serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md

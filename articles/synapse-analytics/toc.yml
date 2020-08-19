@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Odborník na datové vědy
       items:
-        - name: Predikce spropitného v newyorských taxících
+        - name: Spuštění regresního experimentu s využitím Azure AutoML
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Vytvoření modelu klasifikace s využitím knihovny Apache Spark MLlib
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: Rozšiřování Apache Sparku o další knihovny
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: Datový analytik
       items:
         - name: Analýza s využitím SQL na vyžádání a vizualizace s využitím funkce Synapse Studio
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: Koncepty Apache Sparku
               href: ./spark/apache-spark-concepts.md
-            - name: Podpora jazyků a knihoven v modulu runtime
-              href: ./spark/apache-spark-version-support.md
             - name: Co je Delta Lake
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Výkon Apache Sparku
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: Vývoj
           items:
+            - name: Knihovny
+              items:
+                - name: Přidání a správa knihoven
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: Podpora jazyků a knihoven v modulu runtime
+                  href: ./spark/apache-spark-version-support.md
             - name: Poznámkové bloky Azure Synapse Studio
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: .NET pro Apache Spark

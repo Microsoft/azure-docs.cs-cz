@@ -65,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Pravidla posouzení ohrožení zabezpečení
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Ukládání kontrol ohrožení zabezpečení v úložišti
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Přihlášení, uživatelské účty, role a oprávnění'
               href: database/logins-create-manage.md
             - name: Ověřování Azure AD
@@ -80,6 +82,8 @@
                   href: database/conditional-access-configure.md
                 - name: Instanční objekty (aplikace)
                   href: database/authentication-aad-service-principal.md
+                - name: Role Čtenáři adresářů
+                  href: database/authentication-aad-directory-readers-role.md
             - name: Transparentní šifrování dat (TDE)
               items:
                 - name: Přehled
@@ -143,12 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: Zabezpečení
           items:
-            - name: Vytvoření uživatelů Azure AD typu host a nastavení jako správce Azure AD
-              href: database/authentication-aad-guest-users.md
+            - name: Ověřování Azure AD
+              items:
+                - name: Vytvoření uživatelů Azure AD typu host a nastavení jako správce Azure AD
+                  href: database/authentication-aad-guest-users.md
+                - name: Přiřazení role Čtenáři adresářů ke skupinám
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: Transparentní šifrování dat s využitím služby BYOK
               href: database/transparent-data-encryption-byok-configure.md
-            - name: Ukládání kontrol ohrožení zabezpečení v úložišti
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Funkce Always Encrypted
               items:
                 - name: Použití trezoru klíčů Azure
@@ -207,12 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: Použití Javy a JDBC
+                  href: database/connect-query-java.md
                 - name: Použití JDBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Použití JPA služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Použití R2DBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: Dokumentace
@@ -402,11 +410,11 @@
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java s JDBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java s JPA služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java s R2DBC služby Spring Data
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP

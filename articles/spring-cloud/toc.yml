@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Koncepty
   items:
+    - name: Principy aplikací a nasazení
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Principy kvót a omezení
       href: spring-cloud-quotas.md
     - name: Principy metrik

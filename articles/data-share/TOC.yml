@@ -6,6 +6,11 @@
       href: overview.md
     - name: Podporované zdroje dat
       href: supported-data-stores.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření sdílené datové složky – šablona ARM
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: Kurzy
   expanded: true
   items:

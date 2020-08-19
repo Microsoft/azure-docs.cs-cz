@@ -1,4 +1,4 @@
-- name: Velikost virtuálních počítačů
+- name: Velikosti serverů
   href: vm-sizes.md
 - name: Mapování materiálu pro formáty modelů
   href: material-mapping.md

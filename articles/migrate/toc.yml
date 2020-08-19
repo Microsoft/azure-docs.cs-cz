@@ -86,9 +86,9 @@
       href: hyper-v-migration-architecture.md
     - name: Architektura migrace založené na agentech pro VMware
       href: agent-based-migration-architecture.md
-    - name: Přehled hodnocení virtuálních počítačů Azure
+    - name: Přehled posouzení (migrace na virtuální počítače Azure)
       href: concepts-assessment-calculation.md
-    - name: Přehled hodnocení AWS
+    - name: Přehled posouzení (migrace na AVS)
       href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: Osvědčené postupy pro vyhodnocení
       href: best-practices-assessment.md

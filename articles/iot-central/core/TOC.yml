@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: Vizualizace dat v Power BI
           href: howto-connect-powerbi.md
+        - name: Konfigurace a využití nahrávání souborů
+          href: howto-configure-file-uploads.md
     - name: Správa
       items:
         - name: Správa vaší aplikace

@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: Offline instalace agenta virtuálního počítače s Windows
       href: install-vm-agent-offline.md
+    - name: Řešení potíží s agentem virtuálního počítače s Windows
+      href: windows-azure-guest-agent.md
 - name: Zálohování a obnovení
   items:
     - name: Řešení potíží se zálohováním u virtuálních počítačů Azure

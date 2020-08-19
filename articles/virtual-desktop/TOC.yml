@@ -116,6 +116,14 @@
       href: faq.md
     - name: Nejčastější dotazy k Windows 10 Enterprise pro více relací
       href: windows-10-multisession-faq.md
+    - name: Připojení aplikace MSIX
+      items:
+        - name: Co je připojení aplikace MSIX?
+          href: what-is-app-attach.md
+        - name: Glosář
+          href: app-attach-glossary.md
+        - name: Nejčastější dotazy
+          href: app-attach-faq.md
     - name: Umístění dat
       href: data-locations.md
 - name: Řešení potíží
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Rozhraní příkazového řádku Azure (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Ukázkové scénáře Azure
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: Zdroje a prostředky
   items:
     - name: PowerShell

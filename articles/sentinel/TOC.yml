@@ -60,8 +60,8 @@
               href: connect-asc-iot.md
             - name: Server DNS
               href: connect-dns.md
-            - name: Firewall webových aplikací Microsoft
-              href: connect-microsoft-waf.md
+            - name: Firewall webových aplikací Azure
+              href: connect-azure-waf.md
             - name: Brána Windows Firewall
               href: connect-windows-firewall.md
             - name: Události zabezpečení systému Windows
