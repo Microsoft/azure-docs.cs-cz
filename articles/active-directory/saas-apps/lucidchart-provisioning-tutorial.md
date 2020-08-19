@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po Lucidchart.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 25fe315e7d1af2e301e761c755470d2e3c24db1c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 88c14ef916847b84f881e8da2deda7835df37ffb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927007"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550278"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
 
@@ -82,7 +78,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Lucidchart ve službě Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -98,7 +94,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte hodnotu **tokenu nosiče** , která byla dříve načtena v poli **tajného tokenu** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Lucidchart. Pokud se připojení nepovede, ujistěte se, že má váš účet Lucidchart oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte hodnotu **tokenu nosiče**  , která byla dříve načtena v poli **tajného tokenu** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Lucidchart. Pokud se připojení nepovede, ujistěte se, že má váš účet Lucidchart oprávnění správce, a zkuste to znovu.
 
       ![zřizování](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 

@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834452"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549543"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý Start: vytvoření objektu detektoru pomocí Custom Vision
 
 V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřednictvím webu Custom Vision. Jakmile sestavíte model detektoru, můžete použít službu Custom Vision pro detekci objektů.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 

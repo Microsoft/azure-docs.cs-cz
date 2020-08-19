@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro úložiště, šifrování
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562834"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551791"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes (AKS)
 
@@ -34,9 +34,9 @@ Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 
 | Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
-| Data strukturovaných aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
-| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | Ne |
+| Sdílená konfigurace       | Soubory Azure   | Yes | Yes | Yes | Yes |
+| Data strukturovaných aplikací        | Disky Azure   | Ano | No  | No  | Yes |
+| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Yes | Yes | Ano | No |
 
 Dva primární typy úložiště poskytované pro svazky v AKS se zálohují na disky Azure nebo soubory Azure. Pro zvýšení zabezpečení oba typy úložiště ve výchozím nastavení používají šifrování služby Azure Storage (SSE), které šifruje neaktivní neaktivní data. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 
@@ -88,7 +88,7 @@ Další informace o možnostech třídy úložiště najdete v tématu [zásady 
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpečení a zálohování dat
 
-**Doprovodné materiály k osvědčeným postupům** – zálohujte data pomocí vhodného nástroje pro typ úložiště, například Velero nebo Azure Site Recovery. Ověřte integritu a zabezpečení těchto záloh.
+**Doprovodné materiály k osvědčeným postupům** – zálohujte data pomocí vhodného nástroje pro typ úložiště, například Velero nebo Azure Backup. Ověřte integritu a zabezpečení těchto záloh.
 
 Pokud vaše aplikace ukládají a spotřebovávají data trvalá na discích nebo v souborech, je třeba provést pravidelná zálohování nebo snímky těchto dat. Disky Azure můžou používat integrované technologie snímků. Před provedením operace snímku možná budete muset vyhledat své aplikace a vyprázdnit zápisy na disk. [Velero][velero] může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. Pokud nemůžete [Odebrat stav z vašich aplikací][remove-state], zálohujte data z trvalých svazků a pravidelně otestujte operace obnovení, abyste ověřili integritu dat a požadované procesy.
 

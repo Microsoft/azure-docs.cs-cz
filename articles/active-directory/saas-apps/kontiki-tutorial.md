@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Kontiki | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kontiki.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5e5413-da4c-40d8-b1d0-f03ecfef030b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098490"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Azure Active Directory integrace s Kontiki
 
@@ -61,7 +56,7 @@ Pokud chcete integrovat Kontiki s Azure AD, musíte přidat Kontiki do seznamu s
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -104,7 +99,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Kont
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V podokně **základní konfigurace SAML** v textovém poli **Adresa URL pro přihlášení** zadejte adresu URL, která má následující vzor:`https://<companyname>.mc.eval.kontiki.com`
+1. V podokně **základní konfigurace SAML** v textovém poli **Adresa URL pro přihlášení** zadejte adresu URL, která má následující vzor: `https://<companyname>.mc.eval.kontiki.com`
 
     ![Informace o jednotném přihlašování v doméně Kontiki a adresách URL](common/sp-signonurl.png)
 
@@ -131,7 +126,7 @@ Ke konfiguraci jednotného přihlašování na straně Kontiki odešlete stažen
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -143,7 +138,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **brittasimon\@\<Your a Company-Domain>.\<>rozšíření **. Například **brittasimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon \@ \<your-company-domain> . \<extension> **. Například **brittasimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -155,7 +150,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části udělíte Britta Simon přístup k Kontiki, aby mohli používat jednotné přihlašování Azure.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Kontiki**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Kontiki**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -167,7 +162,7 @@ V této části udělíte Britta Simon přístup k Kontiki, aby mohli používat
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 

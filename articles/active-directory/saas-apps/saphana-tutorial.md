@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s SAP HANA | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP HANA.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161185"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Kurz: Azure Active Directory integrace s SAP HANA
 
@@ -33,7 +28,7 @@ Integrace SAP HANA se službou Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -117,9 +112,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP HANA
 
     ![Informace o jednotném přihlašování k doméně a adresám URL SAP HANA](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte následující text:`HA100`
+    a. Do textového pole **identifikátor** zadejte následující text: `HA100`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory SAP HANA klientů](https://cloudplatform.sap.com/contact.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -148,7 +143,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP HANA
 
 ### <a name="configure-sap-hana-single-sign-on"></a>Konfigurace SAP HANA jednotného přihlašování
 
-1. Pokud chcete nakonfigurovat jednotné přihlašování na straně SAP HANA, přihlaste se k **webové konzole Hana XSA** tak, že nasadíte na příslušný koncový bod HTTPS.
+1. Pokud chcete nakonfigurovat jednotné přihlašování na straně SAP HANA, přihlaste se k **webové konzole Hana XSA**  tak, že nasadíte na příslušný koncový bod HTTPS.
 
     > [!NOTE]
     > Ve výchozí konfiguraci adresa URL přesměruje požadavek na přihlašovací obrazovku, která vyžaduje přihlašovací údaje uživatele ověřené databáze SAP HANA. Uživatel, který se přihlásí, musí mít oprávnění k provádění úloh správy SAML.
@@ -196,12 +191,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -250,7 +245,7 @@ Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:
 4. Přidejte **externí identitu** (v tomto případě BrittaSimon) nebo vyberte **libovolnou**. Pak vyberte **OK**.
 
    > [!Note]
-   > Pokud políčko **není zaškrtnuté** , musí se uživatelské jméno v Hana přesně shodovat s názvem uživatele v hlavní název uživatele (UPN) před příponou domény. (Například se v BrittaSimon@contoso.com Hana stávají BrittaSimon.)
+   > Pokud políčko **není zaškrtnuté** , musí se uživatelské jméno v Hana přesně shodovat s názvem uživatele v hlavní název uživatele (UPN) před příponou domény. (Například se BrittaSimon@contoso.com v Hana stávají BrittaSimon.)
 
 5. Pro účely testování přiřaďte uživateli všechny role typu **xs** .
 
@@ -267,7 +262,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici SAP HANA na přístupovém panelu byste měli být automaticky přihlášení do SAP HANA, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

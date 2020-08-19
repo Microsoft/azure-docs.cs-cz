@@ -2,24 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Mitel Connect | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mitel Connect.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 60e81bed348289f560b6341398bf4fe9bdaff0eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054619"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Kurz: Integrace Azure Active Directory s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink
 
@@ -127,8 +124,8 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
 7. Do textového pole **přihlašovací adresa URL** zadejte jednu z těchto adres URL:
 
-    1. **https://portal.shoretelsky.com**– použití portálu účtu Mitel jako výchozí aplikace Mitel
-    1. **https://teamwork.shoretel.com**– použití týmové práce jako výchozí aplikace Mitel
+    1. **https://portal.shoretelsky.com** – použití portálu účtu Mitel jako výchozí aplikace Mitel
+    1. **https://teamwork.shoretel.com** – použití týmové práce jako výchozí aplikace Mitel
 
     > [!NOTE]
     > Výchozí aplikace Mitel je aplikace, ke které se přistupuje, když uživatel vybere dlaždici Mitel připojit na přístupovém panelu. To je také aplikace, ke které se přistupoval při instalaci testu z Azure AD.

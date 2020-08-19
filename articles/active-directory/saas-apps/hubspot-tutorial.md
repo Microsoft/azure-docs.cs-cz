@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s HubSpot | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HubSpot.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944451"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Kurz: Azure Active Directory integrace s HubSpot
 
@@ -61,7 +56,7 @@ Pokud chcete integrovat HubSpot s Azure AD, musíte přidat HubSpot do seznamu s
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -106,9 +101,9 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí HubS
 
 1. V podokně **základní konfigurace SAML** nakonfigurujte *režim iniciované IDP*a proveďte následující kroky:
 
-    1. Do pole **identifikátor** zadejte adresu URL, která má následující vzor: https:\//API.HubSpot.com/login-API/v1/SAML/Login?portalId =\<ID\>zákazníka.
+    1. Do pole **identifikátor** zadejte adresu URL, která má následující vzor: https: \/ /API.HubSpot.com/login-API/v1/SAML/Login?portalId = \<CUSTOMER ID\> .
 
-    1. Do pole **Adresa URL odpovědi** zadejte adresu URL, která má následující vzor: https:\//API.HubSpot.com/login-API/v1/SAML/ACS?portalId =\<ID\>zákazníka.
+    1. Do pole **Adresa URL odpovědi** zadejte adresu URL, která má následující vzor: https: \/ /API.HubSpot.com/login-API/v1/SAML/ACS?portalId = \<CUSTOMER ID\> .
 
     ![Informace o jednotném přihlašování v doméně HubSpot a adresách URL](common/idp-intiated.png)
 
@@ -119,7 +114,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí HubS
 
     1. Vyberte **nastavit další adresy URL**.
 
-    1. Do pole **Adresa URL pro přihlášení** zadejte **https:\//App.HubSpot.com/login**.
+    1. Do pole **Adresa URL pro přihlášení** zadejte **https: \/ /App.HubSpot.com/login**.
 
     ![Možnost nastavit další adresy URL](common/metadata-upload-additional-signon.png)
 
@@ -163,7 +158,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí HubS
 
     1. V programu Poznámkový blok otevřete soubor certifikátu (Base64), který jste stáhli. Vyberte a zkopírujte obsah souboru. Pak v HubSpot vložte do pole **certifikát X. 509** .
 
-    1. Vyberte možnost **ověření**.
+    1. Vyberte **Ověřit**.
 
         ![Část nastavení jednotného přihlašování v HubSpot](./media/hubspot-tutorial/config4.png)
 
@@ -171,7 +166,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí HubS
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -183,7 +178,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **brittasimon\@\<Your a Company-Domain>.\< Přípona\>**. Například **brittasimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon \@ \<your-company-domain> . \<extension\> **. Například **brittasimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -195,7 +190,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části udělíte Britta Simon přístup k HubSpot, aby mohli používat jednotné přihlašování Azure.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **HubSpot**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **HubSpot**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -207,7 +202,7 @@ V této části udělíte Britta Simon přístup k HubSpot, aby mohli používat
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -237,7 +232,7 @@ Zřízení uživatelského účtu v HubSpot:
 
     ![Možnost vytvořit uživatele v HubSpot](./media/hubspot-tutorial/user2.png)
 
-1. Do pole **Přidat e-mailové addessy** zadejte e-mailovou adresu uživatele ve formátu brittasimon\@contoso.com a pak vyberte **Další**.
+1. Do pole **Přidat e-mailové addessy** zadejte e-mailovou adresu uživatele ve formátu brittasimon \@ contoso.com a pak vyberte **Další**.
 
     ![Pole přidat e-mailové adresy v části Vytvoření uživatelů v HubSpot](./media/hubspot-tutorial/user3.png)
 

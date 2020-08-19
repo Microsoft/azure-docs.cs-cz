@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224437"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553103"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -147,7 +148,7 @@ Podporovány jsou pouze svazky NTFS. ReFS, FAT, FAT32 a jiné systémy souborů 
 
 V následující tabulce je uveden stav spolupráce funkcí systému souborů NTFS: 
 
-| Příznak | Stav podpory | Poznámky |
+| Funkce | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
@@ -314,7 +315,7 @@ Azure File Sync je k dispozici v následujících oblastech:
 | Veřejný | Evropa | West Europe | `westeurope` |
 | Veřejný | Francie | Francie – střed | `francecentral` |
 | Veřejný | Francie | Francie – jih * | `francesouth` |
-| Veřejný | Indie | Central India | `centralindia` |
+| Veřejný | Indie | Indie – střed | `centralindia` |
 | Veřejný | Indie | Indie – jih | `southindia` |
 | Veřejný | Japonsko | Japan East | `japaneast` |
 | Veřejný | Japonsko | Japonsko – západ | `japanwest` |

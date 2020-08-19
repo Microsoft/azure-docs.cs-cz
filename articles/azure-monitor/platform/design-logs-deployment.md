@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185175"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551318"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -127,11 +127,11 @@ Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí Po
 
 ## <a name="ingestion-volume-rate-limit"></a>Omezení přenosové rychlosti pro přijímání
 
-Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu chránit Azure Monitor zákazníky před náhlými špičkami příjmu ve víceklientském prostředí. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů.
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu izolovat Azure Monitor zákazníky od náhlých špičky příjmu v prostředí s více architekturami. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) je definovaná v pracovních prostorech. Tato hodnota se přeloží na přibližně **6 GB/min** nekomprimovaná – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Limit přenosové rychlosti se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů.
 
-Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost přijímání dat i nadále překračuje prahovou hodnotu nebo jste se k tomu již neočekávali, můžete požádat o jeho zvýšení v pracovním prostoru otevřením žádosti o podporu. 
+Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly, zkušebního období 5 minut a frekvence 5 minut.
+Chcete-li být upozorněni na approching nebo dosažení limitu přenosové rychlosti pro příjem dat ve vašem pracovním prostoru, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků od 0, zkušebního období 5 minut a frekvence 5 minut.
 
 Počet dosažených objemů příjmu 80% prahové hodnoty:
 ```Kusto

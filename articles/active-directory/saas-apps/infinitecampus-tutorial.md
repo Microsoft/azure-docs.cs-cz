@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s nekonečným areálem | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a nekonečné areály.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3995b544-e751-4e0f-ab8b-c9a3862da6ba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca154caf67d8dd715ad1341e9fe3c6cfde20fde0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100356"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Azure Active Directory integrace s nekonečným areálem
 
@@ -32,7 +28,7 @@ Integrování nekonečné školních areálů pomocí Azure AD poskytuje násled
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,11 +100,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nekoneč
 
 4. V části základní konfigurační oddíl SAML proveďte následující kroky (Všimněte si, že se doména bude lišit v případě hostujícího modelu, ale hodnota **plně kvalifikované domény** musí odpovídat vaší nekonečné instalaci areálu):
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
 
     ![Nekonečná doména školního areálu a adresy URL jednotného přihlašování](common/sp-identifier-reply.png)
 
@@ -124,7 +120,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nekoneč
 
     ![Správce](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. Přejděte na **zabezpečení** > uživatele**Konfigurace poskytovatele služeb pro jednotné přihlašování**v**nástroji** > SAML.
+3. Přejděte na **zabezpečení uživatele**  >  **SAML Management**  >  **Konfigurace poskytovatele služeb pro jednotné přihlašování**v nástroji SAML.
 
     ![SAML](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
@@ -160,11 +156,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například, BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -205,7 +201,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici nekonečné Campy na přístupovém panelu, měli byste se automaticky přihlásit k nekonečnému areálu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

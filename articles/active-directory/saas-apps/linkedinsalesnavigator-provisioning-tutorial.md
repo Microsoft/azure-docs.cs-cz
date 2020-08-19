@@ -2,25 +2,20 @@
 title: 'Kurz: zřizování uživatelů – LinkedIn Sales Navigator, Azure AD'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro LinkedIn Sales Navigator.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869745"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549700"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Sales Navigator pro Automatické zřizování uživatelů
 
@@ -87,7 +82,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 6. Před zavřením stránky uložte váš přístupový token do schránky nebo počítače.
 
-7. Potom se přihlaste k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace** .
+7. Potom se přihlaste k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace**  .
 
 8. Pokud jste již nakonfigurovali obchodní navigátor LinkedIn pro jednotné přihlašování, vyhledejte vaši instanci aplikace LinkedIn Sales Navigator pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a hledat pro **LinkedIn Sales Navigator** v galerii aplikací. Ve výsledcích hledání vyberte LinkedIn Sales Navigator a přidejte ho do seznamu aplikací.
 
@@ -121,7 +116,7 @@ Tím se spustí počáteční synchronizace všech uživatelů nebo skupin při�
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

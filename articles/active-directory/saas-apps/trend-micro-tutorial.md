@@ -2,25 +2,21 @@
 title: 'Kurz: integrace služby pro jednotné přihlašování Azure AD s využitím Trend Micro Web Security (TMWS)'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Trend Micro Web Security (TMWS).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 827285d3-8e65-43cd-8453-baeda32ef174
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09af492439beb931b4ab1cd08ccb9e1d82fc3f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583150"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551887"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Trend Micro Web Security (TMWS)
 
@@ -99,7 +95,7 @@ Provedením těchto kroků povolíte jednotné přihlašování služby Azure AD
 
 1. Kromě atributů na předchozím snímku obrazovky očekává TMWS dva další atributy, které mají být zpět v odpovědi SAML. Tyto atributy jsou uvedeny v následující tabulce. Atributy jsou předem vyplněné, ale můžete je změnit tak, aby splňovaly vaše požadavky.
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | Názvu | User. userPrincipalName |
@@ -119,8 +115,8 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte ***UserName*@* doménaspolečnosti *.* Přípona***. Například, `B.Simon@contoso.com`.
+   1. Do pole **název** zadejte `B.Simon` .  
+   1. Do pole **uživatelské jméno** zadejte ***UserName *@* doménaspolečnosti *.* Přípona***. Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -179,7 +175,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Provedením těchto kroků nakonfigurujete jednotné přihlašování TMWS na straně aplikace.
 
-1. Přihlaste se ke konzole pro správu TMWS a pokračujte na **správu** > **Uživatelé & ověřování** > **adresářové služby**.
+1. Přihlaste se ke konzole pro správu TMWS a pokračujte na **správu**  >  **Uživatelé & ověřování**  >  **adresářové služby**.
 
 1. V horní části **obrazovky vyberte.**
 
@@ -220,7 +216,7 @@ Provedením těchto kroků nakonfigurujete jednotné přihlašování TMWS na st
 Až nakonfigurujete službu Azure AD a jako metodu ověření uživatele zadáte Azure AD, můžete se přihlásit k proxy server TMWS a ověřit instalaci. Když přihlášení Azure AD ověří váš účet, můžete navštívit Internet.
 
 > [!NOTE]
-> TMWS nepodporuje testování jednotného přihlašování z portálu Azure AD. v části **Přehled** > **jednotného přihlašování** > **se nastavuje jednotné přihlašování s** > **testem** SAML vaší nové podnikové aplikace.
+> TMWS nepodporuje testování jednotného přihlašování z portálu Azure AD. v části **Přehled**  >  **jednotného přihlašování**  >  **se nastavuje jednotné přihlašování s**  >  **testem** SAML vaší nové podnikové aplikace.
 
 1. Zrušte zaškrtnutí políček prohlížeče všech souborů cookie a pak restartujte prohlížeč. 
 
@@ -228,15 +224,15 @@ Až nakonfigurujete službu Azure AD a jako metodu ověření uživatele zadáte
 
 1. Navštivte libovolný internetový web. TMWS vás přesměruje na portál TMWS pro všechny uživatele.
 
-1. Zadejte účet Active Directory (formát: *doména*\\*sAMAccountName* nebo doména *sAMAccountName*@*domain*), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit**se. TMWS vám pošle přihlašovací okno služby Azure AD.
+1. Zadejte účet Active Directory (formát: *doména* \\ *sAMAccountName* nebo doména *sAMAccountName* @ *domain*), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit**se. TMWS vám pošle přihlašovací okno služby Azure AD.
 
 1. V okně přihlášení k Azure AD zadejte svoje přihlašovací údaje k účtu Azure AD. Nyní byste měli být přihlášeni do TMWS.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy k integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

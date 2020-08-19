@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s iQualify LMS | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iQualify LMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8a3caaff-dd8d-4afd-badf-a0fd60db3d2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf74994a07d69bbe53ec9a7e18f08b4232298bd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Kurz: Azure Active Directory integrace s iQualify LMS
 
@@ -32,7 +28,7 @@ Integrování iQualify LMS s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,14 +105,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí iQualify
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     | |
     |--|--|
-    | Provozní prostředí:`https://<yourorg>.iqualify.com/`|
-    | Testovací prostředí:`https://<yourorg>.iqualify.io`|
+    | Provozní prostředí: `https://<yourorg>.iqualify.com/`|
+    | Testovací prostředí: `https://<yourorg>.iqualify.io`|
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     | |
     |--|--|
-    | Provozní prostředí:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Testovací prostředí:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Provozní prostředí: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Testovací prostředí: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -125,8 +121,8 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí iQualify
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
     | |
     |--|--|
-    | Provozní prostředí:`https://<yourorg>.iqualify.com/login` |
-    | Testovací prostředí:`https://<yourorg>.iqualify.io/login` |
+    | Provozní prostředí: `https://<yourorg>.iqualify.com/login` |
+    | Testovací prostředí: `https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta IQUALIFY LMS](https://www.iqualify.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -137,7 +133,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí iQualify
 
 7. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --- | --- |
     | e-mail | User. userPrincipalName |
     | first_name | User. křestní jméno |
@@ -160,7 +156,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí iQualify
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
     > [!Note]
     > Atribut **person_id** je **nepovinný** .
@@ -234,7 +230,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -278,7 +274,7 @@ Klikněte na tlačítko **Přihlásit se pomocí Azure AD** a měli byste se aut
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

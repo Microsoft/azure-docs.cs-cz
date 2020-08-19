@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ITRP | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ITRP.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Azure Active Directory integrace s ITRP
 
@@ -33,7 +29,7 @@ Tato integrace poskytuje tyto výhody:
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +52,7 @@ K nastavení integrace ITRP do služby Azure AD je nutné přidat ITRP z Galerie
 
     ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-2. Přejít k **podnikovým aplikacím** > **všechny aplikace**:
+2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -179,7 +175,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@\<\< yourcompanydomain>.>rozšíření **. (Například BrittaSimon@contoso.com.)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
 
     1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
@@ -227,7 +223,7 @@ Chcete-li vytvořit uživatelský účet, proveďte následující kroky:
 
     ![Vybrat lidi](./media/itrp-tutorial/ic775587.png "Vybrat lidi")
 
-1. Vyberte znaménko plus (**+**) a přidejte novou osobu:
+1. Vyberte znaménko plus ( **+** ) a přidejte novou osobu:
 
     ![Vyberte znaménko plus.](./media/itrp-tutorial/ic775576.png "Vyberte znaménko plus.")
 
@@ -248,7 +244,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici ITRP, měli byste se automaticky přihlásit k instanci ITRP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

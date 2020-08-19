@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s prohlížečem instavování | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a prohlížečem instavování.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de94f83c260a86f313a2dd04cdd5a7ae8fc1cda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73155309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Kurz: Azure Active Directory integrace s prohlížečem instavů
 
@@ -33,7 +28,7 @@ Integrace instav Vieweru s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,12 +102,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí prohlí�
 
     ![Informace o jednotném přihlašování k doméně a adresám URL prohlížeče pro instavování](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
 
     > [!NOTE]
     > Neexistuje žádný pevný vzor pro přihlašovací adresu URL. Je generována, když zákazník instavování provede webové sbalení. Je jedinečný pro každého zákazníka a balíček. Pro získání přesného přihlašovacího adresy URL musíte se přihlásit ke své instanci prohlížeče pro instavování a provádět webové balíčky.
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
 
     > [!NOTE]
     > Hodnota identifikátoru není reálné číslo. Aktualizujte tuto hodnotu skutečnou hodnotou identifikátoru, která je vysvětlena dále v tomto kurzu.
@@ -173,12 +168,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -218,7 +213,7 @@ V této části se v prohlížeči instavů vytvoří uživatel s názvem Britta
 
     ![Konfigurace prohlížeče pro instavování](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
-3. Vyberte **Download** (Stáhnout).
+3. Vyberte **Stáhnout**.
 
     ![Konfigurace prohlížeče pro instavování](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
@@ -228,7 +223,7 @@ V této části se v prohlížeči instavů vytvoří uživatel s názvem Britta
 
 5. Zadejte svoje přihlašovací údaje Azure AD pro úspěšné přihlášení k Azure AD prostřednictvím jednotného přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

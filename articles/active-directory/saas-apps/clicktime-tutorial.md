@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ClickTime | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ClickTime.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256079"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
@@ -106,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
 
     ![Informace o jednotném přihlašování v doméně ClickTime a adresách URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL:`https://app.clicktime.com/sp/`
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://app.clicktime.com/sp/`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
@@ -145,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
    
     c.  Otevřete v **programu Poznámkový blok** **certifikát s kódováním Base-64** stažený z Azure Portal, zkopírujte ho a vložte ho do textového pole **certifikát X. 509** .
    
-    d.  Klikněte na **Save** (Uložit).
+    d.  Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -170,7 +165,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -229,7 +224,7 @@ V případě ClickTime je zřizování ručním úkolem.
     > [!NOTE]
     > Pokud chcete, můžete nastavit další vlastnosti objektu New Person.
    
-    c.  Klikněte na **Save** (Uložit).
+    c.  Klikněte na **Uložit**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

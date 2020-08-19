@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů pro zamyšlence | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory nástrojů a nástroji pro zobrazení názorů.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0c1cab94a6b83ca429fd640759bed8af0ae881
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124852"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů
 
@@ -130,7 +126,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    ![Oddíl Manage se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
    ![Okno Uživatelé a skupiny se zvýrazněnou možností přidat uživatele](common/add-assign-user.png)
 
@@ -154,7 +150,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na portálu moje aplikace vyberete dlaždici sady nástrojů pro dodávání, budete automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

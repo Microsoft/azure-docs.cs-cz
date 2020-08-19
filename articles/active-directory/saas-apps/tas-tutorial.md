@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ú | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ú.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 129b6e69-e3b4-41d7-9ab5-a2ddd0068f76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943280"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Kurz: Azure Active Directory integrace s ú
 
@@ -32,7 +28,7 @@ Integrace ú se službou Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,15 +101,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, prov
 
     ![Informace jednotného přihlašování k doménám a adresám URL ú](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<DOMAIN>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://taseu.combtas.com/<DOMAIN>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![Informace jednotného přihlašování k doménám a adresám URL ú](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://taseu.combtas.com/<DOMAIN>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujete je pomocí skutečného identifikátoru, adresy URL odpovědi a adresy URL pro přihlášení, které jsou vysvětleny dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -159,7 +155,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, prov
 
     f. Zkopírujte adresu URL **jednotného přihlašování** a vložte ji do **identifikátoru (ID entity)** a pole pro **přihlášení k adrese url** **základní konfigurace SAML** v Azure Portal. Upozorňujeme, že adresa URL rozlišuje velká a malá písmena a musí končit lomítkem (/).
 
-    g. Zkopírujte adresu URL **služby kontrolního výrazu** na stránce nastavení a vložte ji do textového pole **Adresa URL odpovědi** **základní konfigurace SAML** v Azure Portal.
+    například Zkopírujte adresu URL **služby kontrolního výrazu** na stránce nastavení a vložte ji do textového pole **Adresa URL odpovědi**  **základní konfigurace SAML** v Azure Portal.
 
     h. Klikněte na **Vložit řádek jednotného přihlašování**.
 
@@ -186,7 +182,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -224,7 +220,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici ú na přístupovém panelu, měli byste se automaticky přihlásit k ú, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

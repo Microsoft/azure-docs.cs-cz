@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664897"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553160"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Nastavení připojení indexeru ke zdroji dat pomocí spravované identity (Preview)
 
 > [!IMPORTANT] 
-> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně v ověřované veřejné verzi Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
-> Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/mi-preview-request)můžete požádat o přístup k verzi Preview.
+> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 
 [Indexer](search-indexer-overview.md) v Azure kognitivní hledání je prohledávací modul, který poskytuje způsob, jak načíst data ze zdroje dat do Azure kognitivní hledání. Indexer získá připojení ke zdroji dat z objektu zdroje dat, který vytvoříte. Objekt zdroje dat obvykle obsahuje přihlašovací údaje pro cílový zdroj dat. Objekt zdroje dat může například zahrnovat klíč účtu Azure Storage, pokud chcete indexovat data z kontejneru úložiště objektů BLOB.
 

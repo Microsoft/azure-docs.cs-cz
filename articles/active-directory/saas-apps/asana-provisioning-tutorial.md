@@ -2,26 +2,21 @@
 title: 'Kurz: zřizování uživatelů pro Asana – Azure AD'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Asana.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: celested
+ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058903"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549462"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro Automatické zřizování uživatelů
 
@@ -69,7 +64,7 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
     ![Zřizování Asana](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-1. V části **přihlašovací údaje správce** postupujte podle těchto pokynů a vygenerujte token a zadejte ho v **tajném tokenu**:
+1. V části **přihlašovací údaje správce** postupujte podle těchto pokynů a vygenerujte token a zadejte ho v  **tajném tokenu**:
 
     a. Přihlaste se k [Asana](https://app.asana.com) pomocí účtu správce.
 
@@ -83,7 +78,7 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
 1. V Azure Portal vyberte **Test připojení** , aby se služba Azure AD mohla připojit k vaší aplikaci Asana. Pokud se připojení nepovede, ujistěte se, že má váš účet Asana oprávnění správce, a zkuste krok **test Connection** znovu.
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, které chcete dostávat oznámení o chybách zřizování v **oznamovacím e-mailu**. Zaškrtněte políčko pod položkou.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které chcete dostávat oznámení o chybách zřizování v  **oznamovacím e-mailu**. Zaškrtněte políčko pod položkou.
 
 1. Vyberte **Uložit**.
 

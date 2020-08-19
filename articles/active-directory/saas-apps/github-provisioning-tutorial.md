@@ -2,25 +2,20 @@
 title: 'Kurz: zřizování uživatelů pro GitHub – Azure AD'
 description: Naučte se konfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů na GitHubu.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057647"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550666"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
@@ -61,7 +56,7 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na GitHubu ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace**  .
 
 2. Pokud jste již nakonfigurovali GitHub pro jednotné přihlašování, vyhledejte vaši instanci GitHubu pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **GitHub** v galerii aplikací. Z výsledků hledání vyberte GitHub a přidejte ho do seznamu aplikací.
 

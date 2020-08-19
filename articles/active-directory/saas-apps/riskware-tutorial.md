@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s riskware | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a riskware.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72027114"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Azure Active Directory integrace s riskware
 
@@ -32,7 +28,7 @@ Integrace riskware s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -168,7 +164,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí riskware
 
     f. Do textového **pole po pole formuláře** zadejte název pole obsažený v odpovědi post, který obsahuje SAML jako SAMLResponse
 
-    g. Do textového pole **název značky identity XML** zadejte atribut Type, který obsahuje jedinečný identifikátor v odpovědi SAML, jako je NameId.
+    například Do textového pole **název značky identity XML** zadejte atribut Type, který obsahuje jedinečný identifikátor v odpovědi SAML, jako je NameId.
 
     h. Otevřete stažený soubor **XML metadat** z Azure Portal v programu Poznámkový blok, zkopírujte certifikát ze souboru metadat a vložte ho do textového pole **certifikátu** .
 
@@ -208,7 +204,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -268,7 +264,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k riskware, musí se zřídit v 
 
     a. V části **ověřování** vyberte režim **ověřování** , který jste nastavili jako konfigurace Azure pro jednotné přihlašování.
 
-    b. V části **Podrobnosti přihlášení** zadejte do TEXTOVÉHO pole **ID uživatele** e-mail jako `brittasimon@contoso.com`uživatel.
+    b. V části **Podrobnosti přihlášení** zadejte do TEXTOVÉHO pole **ID uživatele** e-mail jako uživatel `brittasimon@contoso.com` .
 
     c. Do textového pole **heslo** zadejte heslo uživatele.
 
@@ -290,7 +286,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici riskware, měli byste se automaticky přihlásit k riskware, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

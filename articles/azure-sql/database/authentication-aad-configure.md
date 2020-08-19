@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499173"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551836"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -71,7 +71,9 @@ Při použití Azure Active Directory s geografickou replikací musí být sprá
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Zřízení správce Azure AD (spravovaná instance SQL)
 
 > [!IMPORTANT]
-> Postupovat pouze v případě, že zřizujete spravovanou instanci Azure SQL. Tuto operaci může provést jenom globální správce nebo správce společnosti nebo správce privilegované role v Azure AD. Následující kroky popisují proces udělení oprávnění pro uživatele s různými oprávněními v adresáři.
+> Postupovat pouze v případě, že zřizujete spravovanou instanci Azure SQL. Tuto operaci může provést jenom globální správce nebo správce společnosti nebo správce privilegované role v Azure AD.
+>
+> Ve **verzi Public Preview**můžete přiřadit roli **čtenáři adresáře** ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat identitu spravované instance jako člena této skupiny, což vám umožní zřídit správce Azure AD pro spravovanou instanci SQL. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
 Vaše spravovaná instance SQL potřebuje oprávnění ke čtení služby Azure AD, aby bylo možné úspěšně provádět úlohy, jako je například ověřování uživatelů prostřednictvím členství ve skupině zabezpečení nebo vytváření nových uživatelů. Aby to fungovalo, musíte pro čtení Azure AD udělit oprávnění ke spravované instanci SQL. Můžete to provést pomocí Azure Portal nebo PowerShellu.
 
@@ -519,7 +521,7 @@ Další informace najdete v [blogu o SQL Server zabezpečení](https://blogs.msd
 Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, který je k dispozici na [webu Download Center](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
-> `sqlcmd`pomocí `-G` příkazu nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.
+> `sqlcmd` pomocí `-G` příkazu nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Řešení potíží s ověřováním Azure AD
 
-Pokyny k řešení problémů s ověřováním Azure AD najdete na následujícím blogu:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+Pokyny k řešení problémů s ověřováním Azure AD najdete na následujícím blogu: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Další kroky
 

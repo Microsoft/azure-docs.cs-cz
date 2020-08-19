@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím vzdálené podpory BeyondTrust | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BeyondTrust vzdálenou podporou.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 193b163f-bdee-4974-b16d-777c51b991df
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74082078"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549284"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím vzdálené podpory BeyondTrust
 
@@ -83,11 +78,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<HOSTNAME>.bomgar.com/saml`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com/saml`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<HOSTNAME>.bomgar.com`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<HOSTNAME>.bomgar.com/saml/sso`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Tyto hodnoty se zobrazí později v tomto kurzu.
@@ -98,11 +93,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace BeyondTrust Remote support kromě výše očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------| ----------|
     | GivenName | User. křestní jméno |
     | EmailAddress | uživatel. pošta |
-    | Název | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Uživatelské jméno | User. userPrincipalName |
     | Skupiny | User. Groups |
     | Jedinečný identifikátor uživatele | User. userPrincipalName |
@@ -132,9 +127,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -162,9 +157,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace vzdálené podpory BeyondTrust](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-1. Přejděte na rozhraní BeyondTrust Remote support/login na `https://support.example.com/login` místě, kde **support.example.com** je primárním názvem hostitele vašeho zařízení a ověřte ho pomocí přihlašovacích údajů pro správu.
+1. Přejděte na rozhraní BeyondTrust Remote support/login na místě `https://support.example.com/login` , kde **support.example.com** je primárním názvem hostitele vašeho zařízení a ověřte ho pomocí přihlašovacích údajů pro správu.
 
-1. Přejděte na **uživatele & Security** > **Security Providers**.
+1. Přejděte na **uživatele & Security**  >  **Security Providers**.
 
 1. V rozevírací nabídce vyberte **SAML** a klikněte na tlačítko **vytvořit poskytovatele** .
 
@@ -186,7 +181,7 @@ Tady budeme konfigurovat nastavení zřizování uživatelů. Hodnoty použité 
 ![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
-> Případně můžete nastavit výchozí zásady skupiny u poskytovatele zabezpečení typu Saml2. Definováním této možnosti přiřadíte všem uživatelům, kteří se ověřují prostřednictvím SAML, oprávnění zadaná v rámci zásad skupiny. Obecné zásady členů jsou součástí BeyondTrust Remote support/Privileged Remote Access s omezenými oprávněními, která se dají použít k otestování ověřování a přiřazení uživatelů ke správným zásadám. Uživatelé neplní seznam typu Saml2 Users prostřednictvím/Login > uživatelé & zabezpečení až do prvního úspěšného pokusu o ověření. Další informace o zásadách skupiny najdete na následujícím odkazu:`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
+> Případně můžete nastavit výchozí zásady skupiny u poskytovatele zabezpečení typu Saml2. Definováním této možnosti přiřadíte všem uživatelům, kteří se ověřují prostřednictvím SAML, oprávnění zadaná v rámci zásad skupiny. Obecné zásady členů jsou součástí BeyondTrust Remote support/Privileged Remote Access s omezenými oprávněními, která se dají použít k otestování ověřování a přiřazení uživatelů ke správným zásadám. Uživatelé neplní seznam typu Saml2 Users prostřednictvím/Login > uživatelé & zabezpečení až do prvního úspěšného pokusu o ověření. Další informace o zásadách skupiny najdete na následujícím odkazu: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -194,11 +189,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici vzdálená podpora BeyondTrust na přístupovém panelu, měli byste se automaticky přihlásit ke vzdálené podpoře BeyondTrust, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Costpoint | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Costpoint.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 9ecc5f58-4462-4ade-ab73-0a4f61027504
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71840102"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549241"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Kurz: integrace Costpoint s Azure Active Directory
 
@@ -46,7 +41,7 @@ V tomto kurzu budete konfigurovat a testovat jednotné přihlašování Azure AD
 
 ## <a name="generate-costpoint-metadata"></a>Generovat metadata Costpoint
 
-Costpoint konfigurace jednotného přihlašování SAML se vysvětluje v průvodci **DeltekCostpoint711Security. PDF** . Tento průvodce si můžete stáhnout z webu podpory Deltek Costpoint a přečtěte si téma >  **instalace jednotného přihlašování SAML****Konfigurace jednotného přihlašování SAML mezi Costpoint a Microsoft Azure** . Postupujte podle pokynů a vygenerujte soubor **XML federačních metadat pro COSTPOINT SP** . 
+Costpoint konfigurace jednotného přihlašování SAML se vysvětluje v příručce pro **DeltekCostpoint711Security.pdf** . Tento průvodce si můžete stáhnout z webu podpory Deltek Costpoint a přečtěte si téma **instalace jednotného přihlašování SAML**  >  **Konfigurace jednotného přihlašování SAML mezi Costpoint a Microsoft Azure** . Postupujte podle pokynů a vygenerujte soubor **XML federačních metadat pro COSTPOINT SP** . 
 
 ![Nástroj pro konfiguraci Costpoint](./media/costpoint-tutorial/config-utility.png)
 
@@ -60,7 +55,7 @@ Pro integraci Costpoint s Azure AD nejdřív přidejte Costpoint do seznamu spra
 
    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -109,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       > [!NOTE]
       > Pokud hodnoty **adresy URL** **identifikátoru** a odpovědi nejsou automaticky polulated, zadejte hodnoty ručně podle vašich požadavků. Ověřte, že je správně nastavený **identifikátor (ID entity)** a **Adresa URL odpovědi (adresa URL služby pro příjemce kontrolního výrazu)** a že **Adresa URL služby ACS** je platná adresa URL Costpoint, která končí na **/LoginServlet.CPS**.
 
-   1. Vyberte **nastavit další adresy URL**. Do pole **stav přenosu**zadejte hodnotu pomocí následujícího vzoru:`system=[your system]` (například **System = DELTEKCP**).
+   1. Vyberte **nastavit další adresy URL**. Do pole **stav přenosu**zadejte hodnotu pomocí následujícího vzoru: `system=[your system]` (například **System = DELTEKCP**).
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte ikonu **kopírování** a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do poznámkového bloku.
 
@@ -121,13 +116,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Nástroj pro konfiguraci Costpoint](./media/costpoint-tutorial/config-utility-idp.png)
 
-1. Pokračujte v pokynech v průvodci **DeltekCostpoint711Security. PDF** a dokončete instalaci Costpoint SAML.
+1. Pokračujte v pokynech průvodce **DeltekCostpoint711Security.pdf** a dokončete instalaci Costpoint SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -141,7 +136,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
    1. Do pole **název** zadejte **B. Simon**.
    
-   1. Do pole **uživatelské jméno** zadejte `b.simon\@yourcompanydomain.extension` (například B.Simon@contoso.com).
+   1. Do pole **uživatelské jméno** zadejte `b.simon\@yourcompanydomain.extension` (například B.Simon@contoso.com ).
    
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    
@@ -151,7 +146,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte B. Simon přístup k Costpoint.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
 1. V seznamu aplikace vyberte **Costpoint**.
 
@@ -159,7 +154,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -181,7 +176,7 @@ Po vytvoření uživatele musí být výběr **metody ověřování** uživatele
 
 Když na přístupovém panelu vyberete dlaždici Costpoint, měli byste být automaticky přihlášeni k aplikaci Costpoint, protože jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

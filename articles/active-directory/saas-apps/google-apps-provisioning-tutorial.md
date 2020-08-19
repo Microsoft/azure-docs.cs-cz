@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD do G Suite.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e9006a19825059096b81b9c174d16a270775f1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 27e34a66bb6dfa642b84bd8997b2b02c4981788e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551547"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -125,7 +121,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro G Suite ve službě Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**. Uživatelé se budou muset přihlásit k portal.azure.com a nebudou moct používat aad.portal.azure.com.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**. Uživatelé se budou muset přihlásit k portal.azure.com a nebudou moct používat aad.portal.azure.com.
 
     ![Okno podnikových aplikací](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 

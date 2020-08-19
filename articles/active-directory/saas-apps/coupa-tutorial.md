@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Coupa | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Coupa.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a116dff0eba7e5469ab0c352c30bca506ee18238
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227652"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Azure Active Directory integrace s Coupa
 
@@ -33,7 +28,7 @@ Integrace Coupa s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,14 +101,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Coupa, p
 
     ![Informace o jednotném přihlašování v doméně Coupa a adresách URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.coupahost.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.coupahost.com`
 
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Coupa](https://success.coupa.com/Support/Contact_Us?) .
 
     b. Do pole **identifikátor** zadejte adresu URL:
 
-    | Prostředí  | zprostředkovatele identity |
+    | Prostředí  | URL |
     |:-------------|----|
     | Sandbox | `sso-stg1.coupahost.com`|
     | Výroba | `sso-prd1.coupahost.com`|
@@ -121,7 +116,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Coupa, p
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
 
-    | Prostředí | zprostředkovatele identity |
+    | Prostředí | URL |
     |------------- |----|
     | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
     | Výroba | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
@@ -145,9 +140,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Coupa, p
 
 1. Přihlaste se k webu Coupa společnosti jako správce.
 
-2. Přejít k **ovládacímu prvku zabezpečení instalace \> **.
+2. Přejít k ** \> ovládacímu prvku zabezpečení instalace**.
 
-    ![Zabezpečovací mechanismy](./media/coupa-tutorial/ic791900.png "Zabezpečovací mechanismy")
+    ![Ovládací prvky zabezpečení](./media/coupa-tutorial/ic791900.png "Zabezpečovací mechanismy")
 
 3. V části **přihlášení pomocí přihlašovacích údajů Coupa** proveďte následující kroky:
 
@@ -177,12 +172,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -224,9 +219,9 @@ Aby se uživatelé Azure AD mohli přihlašovat k Coupa, musí se zřídit v Cou
 
     ![Uživatelé](./media/coupa-tutorial/ic791908.png "Uživatelé")
 
-3. Klikněte na **Vytvořit**.
+3. Klikněte na možnost **Vytvořit**.
 
-    ![Vytváření uživatelů](./media/coupa-tutorial/ic791909.png "Vytváření uživatelů")
+    ![Vytvoření uživatelů](./media/coupa-tutorial/ic791909.png "Vytváření uživatelů")
 
 4. V části **Vytvoření uživatele** proveďte následující kroky:
 
@@ -234,7 +229,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Coupa, musí se zřídit v Cou
 
     a. Do příslušných textových polí zadejte **přihlašovací**jméno, **křestní jméno**, **příjmení**, **ID jednotného přihlašování**, **e-mailové** atributy platného Azure Active Directory účtu, který chcete zřídit.
 
-    b. Klikněte na **Vytvořit**.
+    b. Klikněte na možnost **Vytvořit**.
 
     >[!NOTE]
     >Držitel účtu Azure Active Directory získá e-mail s odkazem na potvrzení účtu před jeho aktivním použitím.
@@ -249,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Coupa, měli byste se automaticky přihlásit k Coupa, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

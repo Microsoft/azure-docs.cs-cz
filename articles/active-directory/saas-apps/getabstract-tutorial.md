@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s getabstract | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a getabstract.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7de0dfadd7af4f5baca30a037651b4201278cba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Azure Active Directory integrace s getabstract
 
@@ -113,15 +109,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí getabstr
 
     a. Do textového pole **identifikátor** zadejte adresu URL:
 
-    Pro fázi/pre_production:`https://int.getabstract.com`
+    Pro fázi/pre_production: `https://int.getabstract.com`
 
-    V produkčním prostředí:`https://www.getabstract.com`
+    V produkčním prostředí: `https://www.getabstract.com`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
     
-    Pro fázi/pre_production:`https://int.getabstract.com/ACS.do`
+    Pro fázi/pre_production: `https://int.getabstract.com/ACS.do`
     
-    V produkčním prostředí:`https://www.getabstract.com/ACS.do`
+    V produkčním prostředí: `https://www.getabstract.com/ACS.do`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -129,9 +125,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí getabstr
     
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    Pro fázi/pre_production:`https://int.getabstract.com/portal/<org_username>`
+    Pro fázi/pre_production: `https://int.getabstract.com/portal/<org_username>`
     
-    V produkčním prostředí:`https://www.getabstract.com/portal/<org_username>`
+    V produkčním prostředí: `https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
     > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory getabstract Client support](https://www.getabstract.com/en/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -177,7 +173,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s využitím kabelů | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednoduchým způsobem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 82367f62-173e-4e14-bf84-d8f611706086
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026959"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím
 
@@ -82,11 +77,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.harness.io/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.harness.io/`
 
     > [!NOTE]
     > Hodnota adresy URL odpovědi není reálné číslo. V části Konfigurace nástroje pro **jednotné přihlašování** se zobrazí skutečná adresa URL odpovědi, která se vysvětluje později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -107,9 +102,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,11 +136,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Pokud chcete nastavit vlastní nastavení ručně, otevřete nové okno webového prohlížeče a přihlaste se k webovému serveru společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky klikněte na > **nastavení ověřování**pro správu **nepřetržitého** > **přístupu**zabezpečení.
+4. V pravém horním rohu stránky klikněte na **Continuous Security**  >  **Access Management**  >  **nastavení ověřování**pro správu nepřetržitého přístupu zabezpečení.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure01.png)
 
-5. V části **Zprostředkovatelé jednotného přihlašování** klikněte na >  **+ Přidat poskytovatele jednotného přihlašování****SAML**.
+5. V části **Zprostředkovatelé jednotného přihlašování** klikněte na **+ Přidat poskytovatele jednotného přihlašování**  >  **SAML**.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +164,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
 1. Přihlaste se ke službě jako správce.
 
-1. V pravém horním rohu stránky klikněte na **nepřetržitý** > **uživatel****pro správu** > zabezpečení přístupu.
+1. V pravém horním rohu stránky klikněte na **nepřetržitý**  >  Uživatel**pro správu zabezpečení přístupu**  >  **Users**.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure04.png)
 
@@ -181,7 +176,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
     ![Konfigurace svazku](./media/harness-tutorial/configure06.png)
 
-    a. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, `B.simon@contoso.com`jako je.
+    a. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je `B.simon@contoso.com` .
 
     b. Vyberte **skupiny uživatelů**.
 
@@ -193,11 +188,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici se předepsanou na přístupovém panelu byste měli být automaticky přihlášení ke svazku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

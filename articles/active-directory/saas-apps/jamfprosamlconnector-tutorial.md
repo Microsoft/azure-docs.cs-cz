@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jamf pro.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77373194"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552658"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro
 
@@ -83,11 +78,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu **iniciované IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzorec:`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzorec: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzorec:`https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzorec: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-1. Vyberte **nastavit další adresy URL**. Chcete-li nakonfigurovat aplikaci v režimu **iniciované SP** , zadejte do textového pole **Adresa URL pro přihlášení** adresu URL, která používá následující vzorec:`https://<subdomain>.jamfcloud.com`
+1. Vyberte **nastavit další adresy URL**. Chcete-li nakonfigurovat aplikaci v režimu **iniciované SP** , zadejte do textového pole **Adresa URL pro přihlášení** adresu URL, která používá následující vzorec: `https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Aktuální hodnotu identifikátoru získáte z oddílu **jednotného přihlašování** na portálu Jamf pro, který je vysvětlen dále v tomto kurzu. Z hodnoty identifikátoru můžete extrahovat skutečnou hodnotu subdomény a použít ji jako přihlašovací adresu URL a adresu URL odpovědi. Můžete se také podívat na vzorce zobrazené v části **základní konfigurace SAML** v Azure Portal.
@@ -195,7 +190,7 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     ![Ikona skupin & uživatelských účtů pro Jamf pro v nastavení Jamf pro](./media/jamfprosamlconnector-tutorial/user1.png)
 
-4. Vyberte **Nový**.
+4. Vyberte **Nové**.
 
     ![Uživatelské účty Jamf pro – stránka nastavení systému skupin &](./media/jamfprosamlconnector-tutorial/user2.png)
 
@@ -207,11 +202,11 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     ![Možnosti nastavení nového účtu v nastavení systému Jamf pro](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. Do pole **uživatelské jméno** zadejte `Britta Simon`jméno a příjmení testovacího uživatele.
+    a. Do pole **uživatelské jméno** zadejte jméno `Britta Simon` a příjmení testovacího uživatele.
 
     b. Vyberte možnosti pro **úroveň přístupu**, **sadu oprávnění**a **stav přístupu** , které jsou v souladu s vaší organizací.
 
-    c. Do pole **jméno a příjmení** zadejte `Britta Simon`.
+    c. Do pole **jméno a příjmení** zadejte `Britta Simon` .
 
     d. Do pole **e-mailová adresa** zadejte e-mailovou adresu účtu Britta Simon.
 
@@ -219,7 +214,7 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     f. Do pole **ověřit heslo** zadejte heslo uživatele znovu.
 
-    g. Vyberte **Uložit**.
+    například Vyberte **Uložit**.
 
 ## <a name="test-the-sso-configuration"></a>Test konfigurace jednotného přihlašování
 
@@ -227,9 +222,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici Jamf pro, měli byste se automaticky přihlásit k účtu Jamf pro, pro který jste nakonfigurovali jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
