@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263261"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612652"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -97,7 +97,7 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
 3. V **Nastavení**vyberte **vlastnosti**.
 
@@ -182,4 +182,4 @@ Zajistěte, aby byl soubor s přihlašovacími údaji úložiště k dispozici v
 Pokud narazíte na neplatnou chybu přihlašovacích údajů trezoru (například zadali jste neplatné přihlašovací údaje trezoru), soubor je buď poškozený, nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení.
 
 - Po stažení nového souboru přihlašovacích údajů k úložišti z portálu zkuste operaci zopakovat.
-- K této chybě obvykle dochází, když vyberete možnost **Stáhnout přihlašovací údaje trezoru** v Azure Portal dvakrát v rychlém úspěchu. V tomto případě je platný jenom druhý soubor přihlašovacích údajů k trezoru.
+- K této chybě obvykle dochází v případě, že jste v Azure Portal vybrali možnost **Stáhnout přihlašovací údaje trezoru** , a to dvakrát v rychlém úspěchu. V tomto případě je platný jenom druhý soubor přihlašovacích údajů k trezoru.

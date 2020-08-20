@@ -3,12 +3,12 @@ title: 'Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítač
 description: V tomto kurzu Azure VMware Solution (AVS) vytvoříte knihovnu obsahu pro nasazení virtuálního počítače v privátním cloudu služby AVS.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d5f0f26293af9eb146cfb4b2f3adf47fe8cce94f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079379"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612788"
 ---
 # <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware (AVS)
 

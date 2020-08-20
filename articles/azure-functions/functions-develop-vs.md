@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 81de0af335e0a233ac568921b298c9bb168eb174
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209972"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612805"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj služby Azure Functions pomocí sady Visual Studio  
 
@@ -88,7 +88,7 @@ Váš kód může také číst hodnoty nastavení aplikace Function App jako pro
 
 ## <a name="configure-the-project-for-local-development"></a>Konfigurace projektu pro místní vývoj
 
-Modul runtime Functions používá interní účet Azure Storage. Pro všechny typy triggerů jiné než HTTP a Webhooky nastavte `Values.AzureWebJobsStorage` klíč na platný připojovací řetězec účtu Azure Storage. Aplikace Function App může také použít [emulátor úložiště Azure](../storage/common/storage-use-emulator.md) pro `AzureWebJobsStorage` nastavení připojení, které je vyžadováno projektem. Chcete-li použít emulátor, nastavte hodnotu `AzureWebJobsStorage` na `UseDevelopmentStorage=true` . Před nasazením toto nastavení změňte na skutečný připojovací řetězec účtu úložiště.
+Modul runtime Functions používá interní účet Azure Storage. Pro všechny typy triggerů jiné než HTTP a Webhooky nastavte `Values.AzureWebJobsStorage` klíč na platný připojovací řetězec účtu Azure Storage. Aplikace Function App může použít také [emulátor Azure Storage](../storage/common/storage-use-emulator.md) pro `AzureWebJobsStorage` nastavení připojení, které je vyžadováno projektem. Chcete-li použít emulátor, nastavte hodnotu `AzureWebJobsStorage` na `UseDevelopmentStorage=true` . Před nasazením toto nastavení změňte na skutečný připojovací řetězec účtu úložiště.
 
 Nastavení připojovacího řetězce účtu úložiště:
 

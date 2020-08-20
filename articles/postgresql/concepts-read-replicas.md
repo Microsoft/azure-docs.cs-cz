@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276647"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611122"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -126,7 +126,7 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 ## <a name="failover"></a>Převzetí služeb při selhání
 Mezi hlavním serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
 
-Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi hlavním serverem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak těžké zatížení na hlavním serveru jsou a latence mezi datovými centry. Ve většině případů se prodlevy replikují mezi několik sekund až na několik minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky*metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi hlavním serverem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak těžké zatížení na hlavním serveru jsou a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky*metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
 > [!Tip]
 > Pokud dojde k převzetí služeb při selhání repliky, prodleva v době odpojování repliky z hlavní větve indikuje, kolik dat se ztratilo.
@@ -142,7 +142,7 @@ Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky,
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 V této části najdete přehled informací o funkci Replika čtení.
 
@@ -163,18 +163,21 @@ Replika pro čtení je vytvořená jako nový server Azure Database for PostgreS
 ### <a name="replica-configuration"></a>Konfigurace repliky
 Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky je možné změnit několik nastavení včetně doby uchování úložiště a zálohy.
 
-Virtuální jádra a cenová úroveň se dá v replice změnit taky za následujících podmínek:
-* PostgreSQL vyžaduje, `max_connections` aby hodnota parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. `max_connections`Hodnota parametru je v Azure Database for PostgreSQL založena na skladové jednotce (virtuální jádra a cenové úrovni). Další informace najdete v tématu [omezení v Azure Database for PostgreSQL](concepts-limits.md). 
-* Škálování na cenové úrovni Basic nebo ze se nepodporuje.
-
-> [!IMPORTANT]
-> Před aktualizací hlavního nastavení na novou hodnotu aktualizujte konfiguraci repliky na hodnotu rovná se nebo větší. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
-
-Pokud se pokusíte aktualizovat výše popsané hodnoty serveru, ale nedodržují omezení, dojde k chybě.
-
 Pravidla brány firewall, pravidla virtuální sítě a nastavení parametrů nejsou děděna z hlavního serveru do repliky, když je replika vytvořena nebo následně.
 
-### <a name="basic-tier"></a>Úroveň Basic
+### <a name="scaling"></a>Škálování
+Škálování virtuální jádra nebo mezi Pro obecné účely a paměťově optimalizované:
+* PostgreSQL vyžaduje `max_connections` , aby nastavení na sekundárním serveru bylo [větší nebo rovno nastavení na primárním](https://www.postgresql.org/docs/current/hot-standby.html)serveru, jinak se sekundární nespustí.
+* V Azure Database for PostgreSQL je maximální povolená připojení pro každý server opravena na skladovou skladovou položku, protože připojení vybírají paměť. Můžete se dozvědět víc o [mapování mezi MAX_CONNECTIONS a sklady COMPUTE](concepts-limits.md).
+* Horizontální **navýšení**kapacity: napřed navýšení kapacity a navýšení kapacity primárního objektu. Tato objednávka zabrání chybám v porušení `max_connections` požadavku.
+* Horizontální navýšení **kapacity: nejdřív**navýšete kapacitu na výpočetní úrovni a pak proveďte horizontální navýšení kapacity repliky. Pokud se pokusíte škálovat repliku nižší než primární, dojde k chybě, protože tato akce je v rozporu s `max_connections` požadavkem.
+
+Škálování úložiště:
+* Všechny repliky mají povolený Automatický růst úložiště, aby nedocházelo k problémům s replikací z úložiště – úplná replika. Toto nastavení nelze zakázat.
+* Můžete také ručně škálovat úložiště, stejně jako na jakémkoli jiném serveru.
+
+
+### <a name="basic-tier"></a>Základní úroveň
 Servery základní vrstvy podporují jenom replikaci stejné oblasti.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions

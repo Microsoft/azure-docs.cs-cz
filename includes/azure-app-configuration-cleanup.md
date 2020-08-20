@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116984"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88638897"
 ---
 Pokud nechcete dál používat prostředky vytvořené v tomto článku, odstraňte skupinu prostředků, kterou jste tady vytvořili, abyste předešli poplatkům.
 
@@ -22,7 +22,7 @@ Pokud nechcete dál používat prostředky vytvořené v tomto článku, odstra�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte **skupiny prostředků**.
 1. Do pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. 
-1. V seznamu výsledků vyberte skupinu prostředků a buď klikněte pravým tlačítkem myši na řádek nebo použijte tlačítko se **třemi tečkami** (**...**) a otevřete místní nabídku.
+1. V seznamu výsledků vyberte název skupiny prostředků, aby se zobrazil přehled.
 1. Vyberte **Odstranit skupinu prostředků**.
 1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
 

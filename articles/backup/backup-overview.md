@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da4f9b4814e93a964105a7ed3ea4addaecd43864
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513519"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611224"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -36,7 +36,7 @@ Azure Backup přináší tyto klíčové výhody:
 - **Snadné škálování** – Azure Backup využívá základní výkon a neomezené škálování cloudu Azure pro zajištění vysoké dostupnosti bez režie údržby a monitorování.
 - **Získání neomezeného přenosu dat**: Azure Backup neomezuje množství příchozích a odchozích dat, která přenášíte, nebo poplatky za přenášená data.
   - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
-  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Přečtěte si další informace](backup-azure-backup-import-export.md).
+  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**: Azure Backup poskytuje řešení pro zabezpečení dat [při přenosu](backup-azure-security-feature.md) a [v klidovém](backup-azure-security-feature-cloud.md)provozu.
 - **Centralizované monitorování a Správa**: Azure Backup poskytují [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav [pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 - **Získání záloh konzistentních vzhledem**k aplikacím: záloha konzistentní vzhledem k aplikacím znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikacemi, které zajistí, že se pro obnovení dat nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.

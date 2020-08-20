@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810203"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611819"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -47,7 +47,7 @@ Pro všechny operace vyžaduje databáze SAP HANA běžící na virtuálním po�
 
 V následující tabulce jsou uvedeny různé alternativy, které můžete použít při navazování připojení:
 
-| **Parametr**                        | **Výhody**                                               | **Nevýhody**                                            |
+| **Možnost**                        | **Výhody**                                               | **Nevýhody**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
 | Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
@@ -71,7 +71,7 @@ Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *
 
 1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
-1. Kliknutím na **Přidat** uložte nově vytvořené odchozí pravidlo zabezpečení.
+1. Kliknutím na **Přidat**  uložte nově vytvořené odchozí pravidlo zabezpečení.
 
 Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](../virtual-network/service-tags-overview.md).
 
@@ -111,8 +111,8 @@ Spuštění předregistračního skriptu provede následující funkce:
 * Skript přidá klíč do **hdbuserstore** pro AZUREWLBACKUPHANAUSER pro modul plug-in pro zálohování Hana pro zpracování všech operací (databázové dotazy, operace obnovení, konfigurace a spuštění zálohování).
 
 >[!NOTE]
-> Klíč uživatele, který je uveden jako součást [požadavků](#prerequisites) , můžete explicitně předat jako parametr do skriptu před registrací:`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
->Pokud chcete zjistit, jaké další parametry skript akceptuje, použijte příkaz.`bash msawb-plugin-config-com-sap-hana.sh --help`
+> Klíč uživatele, který je uveden jako součást [požadavků](#prerequisites) , můžete explicitně předat jako parametr do skriptu před registrací: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
+>Pokud chcete zjistit, jaké další parametry skript akceptuje, použijte příkaz. `bash msawb-plugin-config-com-sap-hana.sh --help`
 
 Pro potvrzení vytvoření klíče spusťte na počítači HANA příkaz HDBSQL s přihlašovacími údaji SIDADM:
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262666"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611836"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -87,7 +87,7 @@ Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat n�
 V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
 
 > [!NOTE]
-> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. V případě, že je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a při jejich použití může selhat, protože zdrojové úložiště, tj., nemusí mít cílový server iSCSI k dispozici. Vymazáním připojení dojde k odstranění těchto jednotek a svazků, takže nebudou během zálohování k dispozici.
+> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. V případě, že je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a při jejich použití může selhat, protože zdrojové úložiště, tj., nemusí mít cílový server iSCSI k dispozici. Vymazáním připojení dojde k odebrání těchto jednotek nebo svazků, takže nebudou během zálohování k dispozici.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Výběr správného počítače ke spuštění skriptu
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> Nepoužívejte příkaz "Mount-a". Tento příkaz připojí všechna zařízení popsaná v '/etc/fstab '. To může znamenat, že se může připojit k duplicitním zařízením. Data je možné přesměrovat na zařízení vytvořená skriptem, která data neuchovávají, a proto by mohlo dojít ke ztrátě dat.
+> Nepoužívejte příkaz "Mount-a". Tento příkaz připojí všechna zařízení popsaná v '/etc/fstab '. To může znamenat, že se může připojit k duplicitním zařízením. Data je možné přesměrovat na zařízení vytvořená skriptem, která data neuchovávají, takže by mohlo dojít ke ztrátě dat.
 
 #### <a name="for-raid-arrays"></a>Pro pole RAID
 

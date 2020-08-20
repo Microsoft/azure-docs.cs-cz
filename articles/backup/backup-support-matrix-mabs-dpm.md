@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810424"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612771"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -146,7 +146,7 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](..
 
 Aby zálohování fungovalo správně, je potřeba připojení ke službě Azure Backup a předplatné Azure by mělo být aktivní. Následující tabulka ukazuje chování, pokud k těmto dvěma akcím nedochází.
 
-**MABS do Azure** | **Předplatné** | **Zálohování a obnovení**
+**MABS do Azure** | **Předplatné** | **Zálohování/obnovení**
 --- | --- | ---
 Připojeno | Aktivní | Zálohujte na disk DPM/MABS.<br/><br/> Zálohování do Azure.<br/><br/> Obnovte z disku.<br/><br/> Obnovte z Azure.
 Připojeno | Vypršela/bylo zrušeno zřízení | Žádná záloha na disk nebo Azure.<br/><br/> Pokud vypršela platnost předplatného, můžete ho obnovit z disku nebo Azure.<br/><br/> Pokud je odběr vyřazený z provozu, nemůžete ho obnovit z disku nebo Azure. Body obnovení Azure se odstraní.

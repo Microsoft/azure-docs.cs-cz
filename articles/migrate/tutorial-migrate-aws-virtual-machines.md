@@ -2,21 +2,21 @@
 title: Zjišťování, vyhodnocení a migrace Amazon Web Services (AWS) EC2 virtuálních počítačů do Azure
 description: Tento článek popisuje, jak migrovat virtuální počítače s AWS do Azure pomocí Azure Migrate.
 ms.topic: tutorial
-ms.date: 06/16/2020
+ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066640"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611428"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
-V tomto kurzu se dozvíte, jak zjišťovat, hodnotit a migrovat virtuální počítače s Amazon Web Services (AWS) na virtuální počítače Azure pomocí Azure Migrate: nástroje pro vyhodnocení serveru a migrace serveru.
+V tomto kurzu se dozvíte, jak zjišťovat, hodnotit a migrovat virtuální počítače s Amazon Web Services (AWS) do virtuálních počítačů Azure pomocí Azure Migrate: posouzení serveru a Azure Migrate: nástroje pro migraci serveru.
 
 > [!NOTE]
-> Při migraci virtuálních počítačů s AWS do Azure se virtuální počítače považují za takové, jako by se jednalo o fyzické servery. Pro migraci fyzických počítačů použijete tok migrace serveru, abyste mohli migrovat virtuální počítače s AWS do Azure.
+> Virtuální počítače s AWS migrujete do Azure tím, že je považujete jako fyzické servery.
 
 V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
@@ -31,22 +31,31 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="discover-and-assess-aws-vms"></a>Zjišťování a posouzení virtuálních počítačů s AWS  
+## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
 Před migrací na Azure doporučujeme provést vyhodnocení pro zjišťování a migraci virtuálních počítačů. Toto posouzení pomáhá zajistit správnou velikost virtuálních počítačů s AWS pro migraci do Azure a odhad potenciálních nákladů na běh Azure.
 
 Proveďte vyhodnocení následujícím způsobem:
 
-1. Posouzení se dá udělat tak, že se virtuální počítače s AWS považují za účely provedení posouzení pomocí nástroje Azure Migrate: Server Assessment Tool. Postupujte podle [kurzu](./tutorial-prepare-physical.md) a nastavte Azure a připravte si virtuální počítače s AWS pro posouzení.
+1. Postupujte podle [kurzu](./tutorial-prepare-physical.md) a nastavte Azure a připravte si virtuální počítače s AWS pro posouzení. Poznámky:
+
+    - Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
+        - U počítačů s Windows povolte port WinRM 5986 (HTTPS) a 5985 (HTTP). To umožňuje vzdálené volání rozhraní WMI. Pokud nastavíte 
+        - Pro počítače se systémem Linux:
+            1. Přihlaste se ke každému počítači se systémem Linux.
+            2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
+            3. V souboru vyhledejte řádek **PasswordAuthentication** a změňte hodnotu na **Ano**.
+            4. Uložte soubor a zavřete ho. Restartujte službu SSH.
+
 2. Pak postupujte podle tohoto [kurzu](./tutorial-assess-physical.md) a nastavte Azure Migrate projekt a zařízení pro zjišťování a vyhodnocení vašich virtuálních počítačů s AWS.
 
 I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení není povinným krokem, aby bylo možné migrovat virtuální počítače.
 
-## <a name="migrate-aws-vms"></a>Migrace virtuálních počítačů s AWS   
 
-## <a name="1-prerequisites-for-migration"></a>1. předpoklady pro migraci
+
+## <a name="prerequisites"></a>Předpoklady 
 
 - Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Projděte si [podporované operační systémy](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
 - Zajistěte, aby virtuální počítače s AWS splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
@@ -56,7 +65,7 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
     - Před zahájením migrace je důležité tyto změny provést. Pokud před provedením změny migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machines) a [Linux](prepare-for-migration.md#linux-machines) , které je třeba provést.
 
-## <a name="2-prepare-azure-resources-for-migration"></a>2. Příprava prostředků Azure pro migraci
+### <a name="prepare-azure-resources-for-migration"></a>Příprava prostředků Azure pro migraci
 
 Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
@@ -85,7 +94,7 @@ Přiřaďte roli Přispěvatel virtuálních počítačů k účtu Azure. To pos
 
 [Nastavte](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure Virtual Network (VNET). Při replikaci do Azure se virtuální počítače Azure, které jsou vytvořeny, připojí k virtuální síti Azure, kterou určíte při nastavování migrace.
 
-## <a name="3-prepare-aws-instances-for-migration"></a>3. Příprava instancí AWS na migraci
+## <a name="prepare-aws-instances-for-migration"></a>Příprava instancí AWS na migraci
 
 K přípravě na migraci AWS do Azure je potřeba připravit a nasadit replikační zařízení pro migraci.
 
@@ -111,7 +120,7 @@ Připravte se na nasazení zařízení následujícím způsobem:
 - Zařízení replikace používá MySQL. Projděte si [Možnosti](migrate-replication-appliance.md#mysql-installation) instalace MySQL na zařízení.
 - Zkontrolujte adresy URL Azure vyžadované pro zařízení replikace pro přístup k [veřejným](migrate-replication-appliance.md#url-access) a [státním](migrate-replication-appliance.md#azure-government-url-access) cloudům.
 
-## <a name="4-add-the-server-migration-tool"></a>4. Přidejte Nástroj pro migraci serveru.
+## <a name="add-the-server-migration-tool"></a>Přidání nástroje pro migraci serveru
 
 Nastavte projekt Azure Migrate a potom do něj přidejte Nástroj pro migraci serveru.
 
@@ -135,7 +144,7 @@ Nastavte projekt Azure Migrate a potom do něj přidejte Nástroj pro migraci se
 10. V části **Zkontrolovat a přidat nástroje** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
 11. Po přidání je nástroj zobrazen v nástroji Azure Migrate Project > servery pro **Servers**  >  **migraci**.
 
-## <a name="5-set-up-the-replication-appliance"></a>5. nastavení zařízení replikace
+## <a name="set-up-the-replication-appliance"></a>Nastavení zařízení replikace
 
 Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavit zařízení pro migraci virtuálních počítačů s AWS, musíte si stáhnout instalační soubor pro dané zařízení a pak ho spustit na [virtuálním počítači, který jste připravili](#prepare-a-machine-for-the-replication-appliance).
 
@@ -177,7 +186,7 @@ Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavi
 
     ![Dokončit registraci](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-## <a name="6-install-the-mobility-service"></a>6. Nainstalujte službu mobility.
+## <a name="install-the-mobility-service"></a>Instalace služby Mobility
 
 Na zdrojovém virtuálním počítači AWS musí být nainstalovaný agent služby mobility, který se má migrovat. Instalační programy agentů jsou k dispozici na zařízení replikace. Najdete správný instalační program a nainstalujete agenta na každý počítač, který chcete migrovat. Postupujte takto:
 
@@ -229,7 +238,7 @@ Na zdrojovém virtuálním počítači AWS musí být nainstalovaný agent služ
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <replication appliance IP address> -P <Passphrase File Path>
     ```
 
-## <a name="7-enable-replication-for-aws-vms"></a>7. povolení replikace pro virtuální počítače s AWS
+## <a name="enable-replication-for-aws-vms"></a>Povolení replikace pro virtuální počítače s AWS
 
 > [!NOTE]
 > Prostřednictvím portálu můžete přidat až 10 virtuálních počítačů pro replikaci najednou. Pokud chcete replikovat víc virtuálních počítačů najednou, můžete je přidat v dávkách po 10.
@@ -276,7 +285,7 @@ Na zdrojovém virtuálním počítači AWS musí být nainstalovaný agent služ
 > [!NOTE]
 > Nastavení replikace můžete aktualizovat kdykoli před spuštěním replikace, **Spravovat**  >  **replikační počítače**. Po spuštění replikace není možné nastavení změnit.
 
-## <a name="8-track-and-monitor-replication-status"></a>8. sledování a sledování stavu replikace
+## <a name="track-and-monitor-replication-status"></a>Sledovat a monitorovat stav replikace
 
 - Po kliknutí na **replikace** se spustí úloha spustit replikaci.
 - Po úspěšném dokončení úlohy spuštění replikace začnou virtuální počítače svoji počáteční replikaci do Azure.
@@ -288,7 +297,7 @@ Stav replikace můžete sledovat kliknutím na **servery replikace** v **Azure M
 
 ![Monitorování replikace](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
-## <a name="9-run-a-test-migration"></a>9. spuštění testovací migrace
+## <a name="run-a-test-migration"></a>Spuštění testu migrace
 
 Po zahájení rozdílové replikace můžete spustit testovací migraci pro virtuální počítače před spuštěním úplné migrace do Azure. Testovací migrace se důrazně doporučuje a poskytuje možnost zjistit případné problémy a opravit je před tím, než budete pokračovat ve skutečné migraci. Doporučuje se to pro každý virtuální počítač udělat aspoň jednou, než ho migrujete.
 
@@ -314,7 +323,7 @@ Proveďte migraci testu následujícím způsobem:
     ![Vyčištění migrace](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
 
-## <a name="10-migrate-aws-vms"></a>10. migrace virtuálních počítačů s AWS
+## <a name="migrate-aws-vms"></a>Migrace virtuálních počítačů s AWS
 
 Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat virtuální počítače AWS.
 
@@ -340,6 +349,9 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure
 6. Aktualizujte veškerou interní dokumentaci tak, aby obsahovala nová umístění a IP adresy virtuálních počítačů Azure. 
 
+
+
+
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
@@ -353,9 +365,7 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 - Pro monitorování a správu:
     - Zvažte nasazení služby [Azure Cost Management](../cost-management-billing/cloudyn/overview.md), která bude monitorovat využití prostředků a útratu.
 
-## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.
 
 ## <a name="troubleshooting--tips"></a>Řešení potíží a tipy
 
@@ -376,3 +386,7 @@ Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/gett
 
 **Otázka:** Nedaří se mi zjistit AWS instance pomocí Azure Migrate z důvodu stavového kódu HTTP 504 ze vzdálené služby pro správu systému Windows.    
 **Odpověď:** Nezapomeňte si projít požadavky na zařízení migrace do Azure a potřeby přístupu URL. Zajistěte, aby se registrace zařízení neblokovala nastavením proxy.   
+
+## <a name="next-steps"></a>Další kroky
+
+Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.

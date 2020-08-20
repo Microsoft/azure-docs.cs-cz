@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 08/19/2020
 ms.author: victorh
-ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267694"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612587"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Firewall vynucené tunelování
 
-Když nakonfigurujete novou Azure Firewall, můžete směrovat veškerý provoz vázaný na Internet na určený další segment směrování, a nemusíte jít přímo na Internet. Můžete mít například místní hraniční bránu firewall nebo jiné síťové virtuální zařízení (síťové virtuální zařízení) pro zpracování síťového provozu před předáním na Internet. Pro vynucené tunelování ale nemůžete nakonfigurovat existující bránu firewall.
+Při konfiguraci nové služby Azure Firewall můžete nastavit směrování veškerého provozu směřujícího na internet do vyhrazeného dalšího segmentu směrování místo toho, aby se přenášel přímo na internet. Můžete mít například místní hraniční bránu firewall nebo jiné síťové virtuální zařízení (síťové virtuální zařízení) pro zpracování síťového provozu před předáním na Internet. Pro vynucené tunelování ale nemůžete nakonfigurovat existující bránu firewall.
 
 Ve výchozím nastavení se na Azure Firewall vynucené tunelování nepovoluje, aby se zajistilo splnění všech odchozích závislostí Azure. Konfigurace trasy definované uživatelem (UDR) na *AzureFirewallSubnet* , které mají výchozí trasu nepřímou na Internet, jsou zakázané.
 
@@ -24,13 +24,13 @@ Ve výchozím nastavení se na Azure Firewall vynucené tunelování nepovoluje,
 
 V případě podpory vynuceného tunelování je provoz správy služeb oddělený od provozu zákazníků. Pro vlastní přidruženou veřejnou IP adresu se vyžaduje další vyhrazená podsíť s názvem *AzureFirewallManagementSubnet* (minimální velikost podsítě/26). Jediná trasa povolená v této podsíti je výchozí trasa k Internetu a šíření trasy protokolu BGP musí být zakázané.
 
-Pokud máte výchozí trasu inzerovanou přes protokol BGP, abyste vynutili provoz do místního prostředí, musíte před nasazením brány firewall vytvořit *AzureFirewallSubnet* a *AZUREFIREWALLMANAGEMENTSUBNET* a mít udr s výchozí trasou k Internetu a **šíření trasy brány virtuální sítě** je zakázané.
+Pokud máte výchozí trasu inzerovanou přes protokol BGP, abyste vynutili provoz do místního prostředí, musíte před nasazením brány firewall vytvořit *AzureFirewallSubnet* a *AZUREFIREWALLMANAGEMENTSUBNET* a nastavit udr s výchozí trasou na Internet a **rozšířit trasy brány** jako zakázané.
 
-V rámci této konfigurace může *AzureFirewallSubnet* nyní zahrnovat trasy k jakékoli místní bráně firewall nebo síťové virtuální zařízení ke zpracování provozu před předáním na Internet. Tyto trasy můžete také publikovat prostřednictvím protokolu BGP do *AzureFirewallSubnet* , pokud je v této podsíti povolená **šíření tras brány virtuální sítě** .
+V rámci této konfigurace může *AzureFirewallSubnet* nyní zahrnovat trasy k jakékoli místní bráně firewall nebo síťové virtuální zařízení ke zpracování provozu před předáním na Internet. Tyto trasy můžete také publikovat prostřednictvím protokolu BGP do *AzureFirewallSubnet* , pokud jsou v této podsíti povoleny **trasy rozšíření brány** .
 
-Můžete například vytvořit výchozí trasu v *AzureFirewallSubnet* s bránou VPN jako další segment směrování, který se dostane na vaše místní zařízení. Nebo můžete povolit **šíření tras brány virtuální sítě** , abyste získali vhodné trasy k místní síti.
+Můžete například vytvořit výchozí trasu v *AzureFirewallSubnet* s bránou VPN jako další segment směrování, který se dostane na vaše místní zařízení. Nebo můžete povolit **směrování brány** , abyste získali vhodné trasy k místní síti.
 
-![Šíření tras brány virtuální sítě](media/forced-tunneling/route-propagation.png)
+:::image type="content" source="media/forced-tunneling/route-propagation.png" alt-text="Šíření tras brány virtuální sítě":::
 
 Pokud povolíte vynucené tunelování, před jejich vstupem se internetový provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet a skryje se zdroj z místní brány firewall.
 

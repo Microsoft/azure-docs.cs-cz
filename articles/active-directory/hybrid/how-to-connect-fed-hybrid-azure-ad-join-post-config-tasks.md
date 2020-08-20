@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807583"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612465"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
@@ -63,7 +63,7 @@ Pokud vaše organizace používá pro přihlášení ke službě Azure AD služb
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. povolení služby Azure AD bezproblémové jednotné přihlašování pro zařízení se systémem Windows nižší úrovně
 
-Pokud vaše organizace používá synchronizaci hodnot hash hesel nebo předávací ověřování pro přihlášení ke službě Azure AD, povolte Azure AD bez problémů pomocí jednotného přihlašování s touto metodou přihlášení k ověření zařízení se systémem Windows nižší úrovně: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
+Pokud vaše organizace používá synchronizaci hodnot hash hesel nebo předávací ověřování pro přihlášení ke službě Azure AD, povolte Azure AD bez problémů pomocí jednotného přihlašování s touto metodou přihlášení k ověření zařízení se systémem Windows nižší úrovně:  https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. nastavení zásad Azure AD pro zařízení nižší úrovně Windows
 
@@ -76,9 +76,9 @@ Pokud chcete zaregistrovat zařízení Windows na nižší úrovni, musíte zaji
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Přidání koncového bodu Azure AD do zařízení se škálováním na Windows nižší úrovně
 
-Přidejte koncový bod ověřování zařízení Azure AD do zón místního intranetu na zařízeních nižší úrovně Windows, abyste se vyhnuli zobrazování výzev k certifikátu při ověřování zařízení:`https://device.login.microsoftonline.com` 
+Přidejte koncový bod ověřování zařízení Azure AD do zón místního intranetu na zařízeních nižší úrovně Windows, abyste se vyhnuli zobrazování výzev k certifikátu při ověřování zařízení: `https://device.login.microsoftonline.com` 
 
-Pokud používáte [bezproblémové přihlašování (SSO](how-to-connect-sso.md)), povolte taky možnost povolit aktualizace stavového řádku prostřednictvím skriptu v této zóně a přidat následující koncový bod:`https://autologon.microsoftazuread-sso.com` 
+Pokud používáte [bezproblémové přihlašování (SSO](how-to-connect-sso.md)), povolte taky možnost povolit aktualizace stavového řádku prostřednictvím skriptu v této zóně a přidat následující koncový bod: `https://autologon.microsoftazuread-sso.com` 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. instalace aplikace Microsoft Workplace Join na zařízeních nižší úrovně Windows
 
@@ -87,9 +87,6 @@ Tento instalační program vytvoří v systému zařízení naplánovanou úlohu
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurace zásad skupiny pro povolení registrace zařízení
 
 Informace o tom, jak pro jednotlivá zařízení dovolit hybridní připojení ke službě Azure AD, najdete v tématu [řízené ověřování hybridního připojení k Azure AD](../devices/hybrid-azuread-join-control.md).
-
-> [!NOTE]
-> Nastavení zásad pro 2012 R2 jsou v **konfiguraci počítačů > zásady > Šablony pro správu > součásti Windows > Workplace Join > automatické připojení klientských počítačů k síti na pracovišti**.
 
 ## <a name="next-steps"></a>Další kroky
 [Konfigurace zpětného zápisu zařízení](how-to-connect-device-writeback.md)

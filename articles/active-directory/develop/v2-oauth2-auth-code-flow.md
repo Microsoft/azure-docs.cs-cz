@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258578"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612312"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -233,6 +233,7 @@ Chybové odpovědi budou vypadat takto:
 | `interaction_required` | Nestandardní, protože specifikace OIDC volá pouze pro tento `/authorize` koncový bod. Požadavek vyžaduje zásah uživatele. Například je vyžadován další krok ověřování. | Opakujte `/authorize` požadavek se stejnými obory. |
 | `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek po krátké prodlevě. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 |`consent_required` | Požadavek vyžaduje souhlas uživatele. Tato chyba je nestandardní, protože se obvykle vrací jenom pro `/authorize` specifikace Endpoint na OIDC Specification. Vrátí se, když se `scope` v toku pro uplatnění kódu použil parametr, ke kterému klientská aplikace nemá oprávnění pro vyžádání.  | Klient by měl poslat uživateli zpátky do `/authorize` koncového bodu se správným oborem, aby mohl aktivovat souhlas. |
+|`invalid_scope` | Rozsah požadovaný aplikací je neplatný.  | Aktualizujte hodnotu parametru scope v požadavku na ověření na platnou hodnotu. |
 
 > [!NOTE]
 > U jednostránkovéch aplikací se může zobrazit `invalid_request` Chyba s oznámením, že je povolená možnost uplatnění tokenu mezi zdroji jenom pro typ klienta s jednou stránkou.  To znamená, že identifikátor URI přesměrování použitý k vyžádání tokenu nebyl označen jako `spa` identifikátor URI přesměrování.  Projděte si [Postup registrace aplikace](#redirect-uri-setup-required-for-single-page-apps) , jak povolit tento tok.

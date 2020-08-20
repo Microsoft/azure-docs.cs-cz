@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Mi
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022714"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612108"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -34,7 +34,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 Konkrétní podpora nástrojů je shrnuta v tabulce.
 
-**Nástroj** | **Posouzení** | **Migrate** 
+**Nástroj** | **Posouzení** | **Migrace** 
 --- | --- | ---
 Vyhodnocování serveru Azure Migrate | Posouzení [virtuálních počítačů VMware](tutorial-prepare-vmware.md), [virtuálních počítačů Hyper-V](tutorial-prepare-hyper-v.md)a [fyzických serverů](tutorial-prepare-physical.md). |  Není k dispozici (NA)
 Migrace serverů Azure Migrate | Není k dispozici | Migrujte [virtuální počítače VMware](tutorial-migrate-vmware.md), [virtuální počítače Hyper-V](tutorial-migrate-hyper-v.md)a [fyzické servery](tutorial-migrate-physical-virtual-machines.md).
@@ -45,7 +45,7 @@ Migrace serverů Azure Migrate | Není k dispozici | Migrujte [virtuální poč�
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | Vyhodnotit SQL Serveré databáze. | Není k dispozici
 [DMS](../dms/dms-overview.md) | Není k dispozici | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení infrastruktury virtuálních klientských počítačů (VDI) | Není k dispozici
-[Movere](https://www.movere.io/) | Posouzení virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů, virtuálních počítačů, pracovních stanic (včetně infrastruktury VDI), úloh veřejných cloudů | Není k dispozici
+[Movere](https://www.movere.io/) | Posouzení virtuálních počítačů VMware, virtuálních počítačů Hyper-V, virtuálních počítačů, virtuálních počítačů, pracovních stanic (včetně infrastruktury VDI), úloh veřejných cloudů | Není k dispozici
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Není k dispozici | Migrace virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů Xen, KVM virtuálních počítačů, fyzických počítačů, úloh veřejných cloudů 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. | Není k dispozici
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, úlohy veřejného cloudu a SQL Server databáze. | Není k dispozici
@@ -119,7 +119,7 @@ Cílová replikace | USA | Cílové oblasti: US DoD – střed, US DoD – vých
 
 Existují dvě verze služby Azure Migrate:
 
-- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Přečtěte si další informace](whats-new.md).
+- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md).
 - **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="next-steps"></a>Další kroky

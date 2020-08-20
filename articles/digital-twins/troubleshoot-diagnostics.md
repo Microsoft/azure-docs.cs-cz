@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003584"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612397"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -88,7 +88,7 @@ Tady je vyčerpávající seznam operací a odpovídajících [digitálních vl�
 | ADTEventRoutesOperation | Microsoft. DigitalTwins/eventroutes/Write | Směrování událostí – přidat rozhraní API |
 |  | Microsoft. DigitalTwins/eventroutes/Read | Rozhraní API pro směrování událostí Get podle ID a seznamu |
 |  | Microsoft. DigitalTwins/eventroutes/DELETE | Rozhraní API pro odstranění tras událostí |
-|  | Microsoft. DigitalTwins/eventroutes/Action | Výstup události do služby koncového bodu (nikoli volání rozhraní API) |
+|  | Microsoft. DigitalTwins/eventroutes/Action | Při pokusu o publikování událostí do služby koncového bodu došlo k chybě (ne volání rozhraní API). |
 | ADTDigitalTwinsOperation | Microsoft. DigitalTwins/DigitalTwins/Write | Digitální vlákna přidat, přidat vztah, aktualizovat, aktualizovat komponentu |
 |  | Microsoft. DigitalTwins/DigitalTwins/Read | Digitální vlákna získá podle ID, získá komponentu, získá relaci podle ID, vypíše příchozí vztahy, vypíše relace. |
 |  | Microsoft. DigitalTwins/DigitalTwins/DELETE | Digitální vlákna odstranit, odstranit relaci |

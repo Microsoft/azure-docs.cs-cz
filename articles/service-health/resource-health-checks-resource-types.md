@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272650"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611938"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -46,7 +46,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Provedené kontroly|
 |---|
-|<ul><li>Je hostovaný a běžící název cloudové služby?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
 |Provedené kontroly|

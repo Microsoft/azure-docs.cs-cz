@@ -3,18 +3,18 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514216"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612669"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
 Jednou z klíčových zodpovědností správce zálohování nebo dodržování předpisů v organizaci je zajistit, aby všechny důležité podnikové počítače byly zálohovány s odpovídajícím uchováváním.
 
-V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azure Policy), které se dají přiřadit ke **všem virtuálním počítačům Azure v zadaném umístění v rámci předplatného nebo skupiny prostředků**. Když se tato zásada přiřadí k danému oboru, všechny nové virtuální počítače vytvořené v tomto oboru se automaticky nakonfigurují pro zálohování do **existujícího trezoru ve stejném umístění a předplatném**. Uživatel může zadat trezor a zásady uchovávání, ke kterým by se měly připojené virtuální počítače přidružit.
+V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azure Policy), které se dají přiřadit ke **všem virtuálním počítačům Azure v zadaném umístění v rámci předplatného nebo skupiny prostředků**. Když se tato zásada přiřadí k danému oboru, všechny nové virtuální počítače vytvořené v tomto oboru se automaticky nakonfigurují pro zálohování do **existujícího trezoru ve stejném umístění a předplatném**. Uživatel může zadat trezor a zásady uchovávání, ke kterým by měly být připojené záložní virtuální počítače.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -32,19 +32,19 @@ V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azur
 
 Chcete-li přiřadit zásadu k požadovanému oboru, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu Azure Portal a přejděte na řídicí panel **zásad** .
-2. V nabídce vlevo vyberte **definice** a získejte seznam všech předdefinovaných zásad napříč prostředky Azure.
-3. Vyfiltrujte seznam pro **kategorii = zálohování**. Zobrazí se seznam filtrovaný podle jedné zásady s názvem konfigurace zálohování na virtuálních počítačích umístění do existujícího centrálního trezoru ve stejném umístění.
+1. Přihlaste se k Azure Portal a přejděte na řídicí panel **zásad** .
+1. V nabídce vlevo vyberte **definice** a získejte seznam všech předdefinovaných zásad napříč prostředky Azure.
+1. Vyfiltrujte seznam pro **kategorii = zálohování**. Zobrazí se seznam filtrovaný podle jedné zásady s názvem konfigurace zálohování na virtuálních počítačích umístění do existujícího centrálního trezoru ve stejném umístění.
 ![Řídicí panel zásad](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-4. Klikněte na název zásady. Budete přesměrováni na podrobnou definici této zásady.
-![Okno Definice zásad](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-5. Klikněte na tlačítko **přiřadit** v horní části okna. Tím vás přesměruje na okno **přiřadit zásadu** .
-6. V části **základy**klikněte na tři tečky vedle pole **obor** . Otevře se okno správného kontextu, kde můžete vybrat předplatné, na které se má zásada použít. Volitelně můžete také vybrat skupinu prostředků, aby se zásady používaly jenom pro virtuální počítače v určité skupině prostředků.
+1. Vyberte název zásady. Budete přesměrováni na podrobnou definici této zásady.
+![Podokno definice zásad](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
+1. V horní části podokna vyberte tlačítko **přiřadit** . Tím vás přesměruje do podokna **zásady přiřazení** .
+1. V části **základy**vyberte tři tečky vedle pole **obor** . Otevře se pravé podokno kontextu, kde můžete vybrat předplatné, na které se má zásada použít. Volitelně můžete také vybrat skupinu prostředků, aby se zásady používaly jenom pro virtuální počítače v určité skupině prostředků.
 ![Základy přiřazení zásad](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-7. Na kartě **parametry** zvolte umístění z rozevíracího seznamu a vyberte trezor a zásady zálohování, ke kterým musí být přidružené virtuální počítače v daném oboru.
+1. Na kartě **parametry** zvolte umístění z rozevíracího seznamu a vyberte trezor a zásady zálohování, ke kterým musí být přidružené virtuální počítače v daném oboru.
 ![Parametry přiřazení zásad](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-8. Ujistěte se, že je **efekt** nastavený na deployIfNotExists.
-9. Přejděte na **zkontrolovat + vytvořit** a klikněte na **vytvořit**.
+1. Ujistěte se, že je **efekt** nastavený na deployIfNotExists.
+1. Přejděte na **Revize + vytvořit** a vyberte **vytvořit**.
 
 > [!NOTE]
 >

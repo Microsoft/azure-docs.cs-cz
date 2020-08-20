@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fd50e649257ba8849f49cd3aae85e3228b9eb94c
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206701"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612210"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -100,7 +100,7 @@ public class TableStorage
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
-using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Threading.Tasks;
 
@@ -228,8 +228,8 @@ Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#input---configuration)
 Kód skriptu jazyka C# přidá odkaz na sadu Azure Storage SDK, takže typ entity může odvozovat z `TableEntity` :
 
 ```csharp
-#r "Microsoft.WindowsAzure.Storage"
-using Microsoft.WindowsAzure.Storage.Table;
+#r "Microsoft.Azure.Cosmos"
+using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Extensions.Logging;
 
 public static void Run(string myQueueItem, IQueryable<Person> tableBinding, ILogger log)
@@ -273,8 +273,8 @@ public class Person : TableEntity
 ```
 
 ```csharp
-#r "Microsoft.WindowsAzure.Storage"
-using Microsoft.WindowsAzure.Storage.Table;
+#r "Microsoft.Azure.Cosmos"
+using Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185804"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612703"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -74,12 +74,12 @@ Následující tabulka popisuje typy clusterů a verze, které jsou kompatibiln�
 
 | Verze | Spark | Hive | LLAP | HBase | Kafka | Bouře | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
 
-\*Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
+\* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -258,6 +258,26 @@ Spuštěné úlohy budou pokračovat. Čekající úlohy budou čekat na plánov
 ### <a name="minimum-cluster-size"></a>Minimální velikost clusteru
 
 Nezmenšujte svůj cluster dolů na méně než tři uzly. Škálování clusteru na méně než tři uzly může vést k zablokování v bezpečném režimu z důvodu nedostatečné replikace souborů.  Další informace najdete v tématu [získání zablokování v bezpečném režimu](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="llap-daemons-count"></a>Počet LLAP démonů
+
+V případě LLAP clusterů s povoleným automatickém škálováním událost automatického navýšení nebo snížení kapacity také navýší počet LLAP démonů na počet aktivních pracovních uzlů. Tato změna v počtu procesů démonů ale není trvalá v **num_llap_nodes** konfiguraci v Ambari. Pokud se služby pro podregistr restartují ručně, pak se počet LLAP démonů resetuje podle konfigurace v Ambari.
+
+Podíváme se na následující scénář:
+1. Cluster s podporou automatického škálování LLAP se vytvoří se 3 uzly pracovního procesu a automatické škálování na základě zatížení je povolené s minimálními pracovními uzly jako 3 a maximálními pracovními uzly 10.
+2. Konfigurace počtu démonů LLAP v závislosti na konfiguraci LLAP a Ambari je 3, protože cluster byl vytvořen se 3 pracovními uzly.
+3. Pak se aktivuje automatické horizontální navýšení kapacity z důvodu zatížení clusteru, cluster se teď škáluje na 10 uzlů.
+4. Při kontrole automatického škálování běží v pravidelných intervalech oznámení o tom, že počet démonů LLAP je 3, ale počet aktivních pracovních uzlů je 10, proces automatického škálování teď zvýší počet LLAP démona na hodnotu 10, ale tato změna se v Ambari config-num_llap_nodes neuloží.
+5. Automatické škálování je teď zakázané.
+6. Cluster má teď 10 uzlů pracovních procesů a 10 LLAP démonů.
+7. Služba LLAP se restartuje ručně.
+8. Během restartování zkontroluje num_llap_nodes config v konfiguraci LLAP a vyhodnotí hodnotu 3, takže se postará o 3 instance démonů, ale počet pracovních uzlů je 10. Došlo k současnému neshodě mezi těmito dvěma hodnotami.
+
+Pokud k tomu dojde, musíme ručně změnit **konfiguraci num_llap_node (počet uzlů na spuštění procesu démona llap) v části pokročilý podregistr-Interactive-ENV** tak, aby odpovídala aktuálnímu počtu aktivních pracovních uzlů.
+
+**Poznámka**
+
+Události automatického škálování nemění **maximální počet souběžných dotazů** konfigurace podregistru v Ambari. To znamená, že interaktivní služba pro podregistr Server 2 **může v jakémkoli časovém okamžiku zpracovávat pouze daný počet souběžných dotazů, a to i v případě, že je počet procesů démona LLAP škálovat nahoru a dolů na základě zatížení nebo plánu**. Obecně doporučujeme, abyste tuto konfiguraci nastavili pro scénář použití ve špičce, aby se mohl ruční zásah vyhnout. Je však třeba mít na paměti, že **nastavení vysoké hodnoty pro maximální celkový počet souběžných dotazů může selhat, pokud minimální počet pracovních uzlů nemůže odpovídat zadanému počtu tez AMS (je rovno maximálnímu počtu souběžných dotazů konfigurace)** .
 
 ## <a name="next-steps"></a>Další kroky
 

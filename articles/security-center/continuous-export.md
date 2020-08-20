@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192372"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612380"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -36,7 +36,7 @@ Pomocí těchto nástrojů můžete:
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Free|
 |Požadované role a oprávnění:|**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -57,7 +57,29 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
 
 1. V oblasti exportovat cíl vyberte, kam chcete ukládat data. Data je možné uložit v cíli v jiném předplatném (například v centrální instanci centra událostí nebo v centrálním Log Analyticsm pracovním prostoru).
 
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>Nastavení průběžného exportu prostřednictvím REST API
+
+Funkci průběžného exportu lze nakonfigurovat a spravovat prostřednictvím [rozhraní API pro automatizaci](https://docs.microsoft.com/rest/api/securitycenter/automations)Azure Security Center. Pomocí tohoto rozhraní API můžete vytvářet nebo aktualizovat automatizace pro export do libovolného z následujících možných cílů:
+
+- Azure Event Hub
+- Pracovní prostor služby Log Analytics
+- Azure Logic Apps 
+
+Rozhraní API poskytuje další funkce, které nejsou z Azure Portal k dispozici, například:
+
+* **Větší objem** – rozhraní API umožňuje vytvořit více konfigurací exportu v rámci jednoho předplatného. Stránka **průběžného exportu** v uživatelském rozhraní portálu Security Center podporuje pouze jednu konfiguraci exportu pro každé předplatné.
+
+* **Další funkce** – rozhraní API nabízí další parametry, které nejsou zobrazené v uživatelském rozhraní. Můžete například přidat značky do prostředku automatizace a také definovat svůj export na základě širší škály vlastností výstrah a doporučení než ty, které jsou nabízeny na stránce **průběžného exportu** v uživatelském rozhraní portálu Security Center.
+
+* **Lépe zaměřený rozsah** – rozhraní API poskytuje podrobnější úroveň pro rozsah konfigurací exportu. Při definování exportu pomocí rozhraní API můžete to udělat na úrovni skupiny prostředků. Pokud používáte stránku **průběžného exportu** v uživatelském rozhraní portálu Security Center, je nutné ji definovat na úrovni předplatného.
+
+    > [!TIP]
+    > Pokud jste nastavili více konfigurací exportu pomocí rozhraní API nebo pokud jste použili parametry pouze rozhraní API, tyto funkce navíc nebudou zobrazeny v uživatelském rozhraní Security Center. Místo toho se zobrazí banner s tím, že existují další konfigurace.
+
+Další informace o rozhraní API pro automatizaci najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/securitycenter/automations).
 
 
 
@@ -109,7 +131,7 @@ Azure Monitor poskytuje jednotné prostředí pro upozorňování na nejrůzněj
 
 Chcete-li zobrazit výstrahy a doporučení z Security Center v Azure Monitor, nakonfigurujte pravidlo výstrahy založené na Log Analyticsch dotazech (výstraha protokolu):
 
-1. Na stránce **výstrahy** Azure Monitor klikněte na **nové pravidlo výstrahy**.
+1. Na stránce **výstrahy** Azure Monitor vyberte **nové pravidlo výstrahy**.
 
     ![Stránka s výstrahami Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -126,12 +148,25 @@ V závislosti na konfiguraci se teď v Azure Monitor výstrahy zobrazí nové v�
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Ruční export výstrah zabezpečení v jednorázovém čase
 
-Chcete-li stáhnout sestavu CSV pro výstrahy nebo doporučení, otevřete stránku **výstrahy zabezpečení** nebo **doporučení** a klikněte na tlačítko **Stáhnout sestavu CSV** .
+Chcete-li stáhnout sestavu CSV pro výstrahy nebo doporučení, otevřete stránku **výstrahy zabezpečení** nebo **doporučení** a vyberte tlačítko **Stáhnout sestavu CSV** .
 
 [![Stáhnout data výstrah jako soubor CSV](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > Tyto sestavy obsahují výstrahy a doporučení pro prostředky z aktuálně vybraných předplatných.
+
+
+
+## <a name="faq---continuous-export"></a>Nejčastější dotazy – průběžný export
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>Jaké jsou náklady spojené s exportem dat?
+
+Pro povolení průběžného exportu se neúčtují žádné náklady. Náklady mohou být vynaloženy na příjem a uchovávání dat v pracovním prostoru Log Analytics v závislosti na vaší konfiguraci. 
+
+Přečtěte si další informace o [cenách Log Analytics pracovního prostoru](https://azure.microsoft.com/pricing/details/monitor/).
+
+Přečtěte si další informace o [cenách služby Azure Event hub](https://azure.microsoft.com/pricing/details/event-hubs/).
+
 
 ## <a name="next-steps"></a>Další kroky
 

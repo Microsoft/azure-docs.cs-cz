@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 76f212875c7f48d9436295f523660b7a298ce7f0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263312"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612329"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -95,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -156,7 +156,7 @@ Po stažení všech souborů vyberte **MicrosoftAzureBackupInstaller.exe**. Spus
 
 ![Instalační program extrahuje soubory pro instalaci.](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou *setup.exe* a začněte s instalací Microsoft Azure Backup serveru a vyberte tlačítko **Dokončit** .
+Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou *setup.exe* a začněte s instalací serveru Microsoft Azure Backup a vyberte tlačítko **Dokončit** .
 
 ### <a name="installing-the-software-package"></a>Instalace softwarového balíčku
 

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007772"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612635"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
 
@@ -51,7 +51,7 @@ Ve výchozím nastavení se aplikace a počítače běžící v konfiguracích s
 1. Připojte se k ploše virtuálního počítače pomocí účtu s oprávněními místního správce.
 2. Otevřete nabídku Start a zadáním příkazu gpedit. msc otevřete Editor Zásady skupiny.
 3. Přejděte ke stromu **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **prostředí vzdálené**plochy.
-4. Vyberte zásady **použít pro všechny relace vzdálené plochy výchozí grafický adaptér hardwaru** a nastavte tuto zásadu na **povoleno** , aby se povolilo vykreslování GPU ve vzdálené relaci.
+4. Vyberte zásady **použití hardwarových grafických adaptérů pro všechny relace vzdálené plochy** a nastavte tuto zásadu na **povoleno** , pokud chcete povolit vykreslování GPU ve vzdálené relaci.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného GPU
 

@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Firewall
+title: Nejčastější dotazy ke službě Azure Firewall
 description: Nejčastější dotazy týkající se Azure Firewall. Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.
 services: firewall
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208519"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611173"
 ---
-# <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
+# <a name="azure-firewall-faq"></a>Nejčastější dotazy ke službě Azure Firewall
 
 ## <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -80,7 +80,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Například:
+Příklad:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -97,7 +97,7 @@ $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
 $publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
 $publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet,@($publicip,$publicip2))
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
 
 Set-AzFirewall -AzureFirewall $azfw
 ```
@@ -185,9 +185,9 @@ Ne. Azure Firewall blokuje přístup ke službě Active Directory ve výchozím 
 Ano, Azure PowerShell k tomu můžete použít:
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `

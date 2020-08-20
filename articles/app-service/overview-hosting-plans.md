@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141580"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611445"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -65,11 +65,11 @@ Informace o škálování aplikace najdete v tématu [Ruční nebo automatické 
 
 Tato část popisuje, jak se účtují App Serviceé aplikace. Podrobné informace o cenách pro konkrétní oblast najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
 
-S výjimkou **bezplatné** úrovně přináší plán App Service hodinovou sazbu za výpočetní prostředky, které používá.
+S výjimkou **bezplatné** úrovně přináší plán App Service poplatky za výpočetní prostředky, které používá.
 
-- Na **sdílené** úrovni každá aplikace obdrží kvótu pro procesorové minuty, takže se _každá aplikace_ účtuje každou hodinu za kvótu procesoru.
-- Ve vyhrazených výpočetních úrovních (**Basic**, **Standard**, **Premium**, **PremiumV2**) plán App Service definuje počet instancí virtuálních počítačů, na které se aplikace škálují, takže _každá instance virtuálního počítače_ v plánu App Service má hodinovou sazbu. Tyto instance virtuálních počítačů se účtují stejně bez ohledu na to, kolik aplikací je v nich spuštěné. Pokud se chcete vyhnout neočekávaným poplatkům, přečtěte si téma [vyčištění App Serviceho plánu](app-service-plan-manage.md#delete).
-- V **izolované** úrovni App Service Environment definuje počet izolovaných pracovních procesů, na kterých běží vaše aplikace, a _každý pracovní proces_ se účtuje každou hodinu. Navíc platí hodinový základní poplatek za spuštěný App Service Environment sám.
+- Na **sdílené** úrovni každá aplikace obdrží kvótu pro procesorové minuty, takže se pro _každou aplikaci_ účtuje kvóta procesoru.
+- Ve vyhrazených výpočetních úrovních (**Basic**, **Standard**, **Premium**, **PremiumV2**) plán App Service definuje počet instancí virtuálních počítačů, na které se aplikace škálují, aby se _všechny instance virtuálních počítačů_ v plánu App Service vyrovnaly. Tyto instance virtuálních počítačů se účtují stejně bez ohledu na to, kolik aplikací je v nich spuštěné. Pokud se chcete vyhnout neočekávaným poplatkům, přečtěte si téma [vyčištění App Serviceho plánu](app-service-plan-manage.md#delete).
+- V **izolované** úrovni App Service Environment definuje počet izolovaných pracovníků, na kterých běží vaše aplikace, a _každý pracovní proces_ se účtuje. Kromě toho existuje poplatek za paušální razítko pro spuštění samotného App Service Environment.
 
 Neúčtují se vám žádné poplatky za použití funkcí App Service, které jsou k dispozici (Konfigurace vlastních domén, certifikátů TLS/SSL, slotů nasazení, zálohování atd.). Výjimky jsou:
 

@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585320"
+ms.locfileid: "88611292"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -69,7 +69,7 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 1. V **cíli zálohování**  >  **, kde je spuštěná vaše úloha?** vyberte **Azure**.
 1. V **Možnosti co chcete zálohovat?** vyberte **virtuální počítač**. Pak vyberte **zálohovat**.
 
-      ![Okno scénáře](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![Podokno scénáře](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. V části **zásady zálohování**  >  **Zvolte zásady zálohování**a vyberte zásadu, kterou chcete přidružit k trezoru. Pak vyberte **OK**.
     - Zásady zálohování určují, kdy se mají vytvářet zálohy a jak dlouho se budou ukládat.

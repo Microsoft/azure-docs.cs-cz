@@ -3,12 +3,12 @@ title: Kurz – zálohování databází SQL Server do Azure
 description: V tomto kurzu se naučíte zálohovat SQL Server databázi běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513296"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612448"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Zálohování databáze SQL Server na virtuálním počítači Azure
 
@@ -64,7 +64,7 @@ Nepoužívejte pro názvy databází následující:
 * Zavřít hranatou závorku '] '
 * Názvy databází začínají řetězcem ' F:\ '
 
-Pro nepodporované znaky tabulky Azure máme aliasy, ale doporučujeme je vyhnout. [Přečtěte si další informace](/rest/api/storageservices/understanding-the-table-service-data-model).
+Pro nepodporované znaky tabulky Azure máme aliasy, ale doporučujeme je vyhnout. [Další informace](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -98,7 +98,7 @@ Zjišťovat databáze běžící na virtuálním počítači.
 
     ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup zjistí všechny databáze SQL Server na virtuálním počítači. Během zjišťování se na pozadí objeví následující:
+8. Azure Backup zjistí všechny databáze SQL Server na virtuálním počítači. Během zjišťování dochází na pozadí k následujícím akcím:
 
     * Azure Backup Zaregistrujte virtuální počítač s trezorem pro zálohování úloh. Všechny databáze na zaregistrovaném virtuálním počítači se dají zálohovat jenom do tohoto trezoru.
     * Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** . V databázi SQL není nainstalován žádný agent.
@@ -117,7 +117,7 @@ Proveďte konfiguraci zálohování následujícím způsobem:
 
    ![Vyberte konfigurovat zálohu.](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. Klikněte na **Konfigurovat zálohu**. zobrazí se okno **Vybrat položky k zálohování** . Zobrazí se seznam všech registrovaných skupin dostupnosti a samostatných serverů SQL. Rozbalením dvojitou šipku nalevo od řádku zobrazíte všechny nechráněné databáze v této instanci nebo Always On AG.  
+2. Vyberte **Konfigurovat zálohu**. zobrazí se podokno **Vybrat položky k zálohování** . Zobrazí se seznam všech registrovaných skupin dostupnosti a samostatných serverů SQL. Rozbalením dvojitou šipku nalevo od řádku zobrazíte všechny nechráněné databáze v této instanci nebo Always On AG.  
 
     ![Zobrazení všech instancí SQL Server se samostatnými databázemi](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -129,11 +129,11 @@ Proveďte konfiguraci zálohování následujícím způsobem:
 
      * Případně můžete zapnout automatickou ochranu pro celou instanci nebo skupinu dostupnosti Always On výběrem možnosti **on** v odpovídajícím rozevíracím seznamu ve SLOUPCI automaticky **chránit** . Funkce automatické ochrany nepovoluje ochranu jenom na všech stávajících databázích na jednom cestách, ale také automaticky chrání všechny nové databáze, které se do této instance nebo skupiny dostupnosti přidají v budoucnu.  
 
-4. Kliknutím na **OK** otevřete okno **zásady zálohování** .
+4. Výběrem **OK** otevřete podokno **zásady zálohování** .
 
     ![Povolení automatické ochrany ve skupině dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. V **nabídce zvolte zásady zálohování**vyberte zásadu a pak klikněte na **OK**.
+5. V **Možnosti zvolit zásadu zálohování**vyberte zásadu a pak vyberte **OK**.
 
    * Vyberte výchozí zásadu: HourlyLogBackup.
    * Vyberte existující zásadu zálohování, která byla dříve vytvořena pro SQL.
@@ -161,8 +161,8 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 
 Vytvoření zásady zálohování:
 
-1. V trezoru klikněte na **zásady zálohování**  >  **Přidat**.
-2. V nabídce **Přidat** klikněte na **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
+1. V trezoru vyberte **zásady zálohování**  >  **Přidat**.
+2. V nabídce **Přidat** vyberte **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
 
    ![Vyberte typ zásad pro nové zásady zálohování.](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -171,7 +171,7 @@ Vytvoření zásady zálohování:
 
    * V **denní**době vyberte hodiny a časové pásmo, kdy se úloha zálohování spustí.
    * Musíte spustit úplnou zálohu, protože nemůžete vypnout možnost **úplného zálohování** .
-   * Zásadu zobrazíte kliknutím na **úplné zálohování** .
+   * Pro zobrazení zásady vyberte **úplné zálohování** .
    * Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
    * V poli **týdně**vyberte den v týdnu, hodinu a časové pásmo při zahájení úlohy zálohování.
 
@@ -214,7 +214,7 @@ Vytvoření zásady zálohování:
 ## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 
 1. V Recovery Services trezoru vyberte zálohované položky.
-2. Klikněte na SQL na virtuálním počítači Azure.
+2. Vyberte SQL na virtuálním počítači Azure.
 3. Klikněte pravým tlačítkem na databázi a vyberte zálohovat nyní.
 4. Vyberte typ zálohování (úplný/rozdíl/protokol/kopírovat pouze úplné) a kompresi (Povolit/zakázat).
 5. Kliknutím na OK zahajte zálohování.

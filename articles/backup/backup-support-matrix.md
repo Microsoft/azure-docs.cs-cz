@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922312"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612516"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -79,8 +79,8 @@ Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 --- | ---
 **Přímá záloha místního počítače se systémem Linux** | Nepodporováno Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
-**Použití DPM k zálohování místních počítačů se systémem Linux** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.
-**Zálohování místních počítačů se systémem Linux pomocí MABS** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.
+**Použití DPM k zálohování místních počítačů se systémem Linux** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMware.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMware Linux.
+**Zálohování místních počítačů se systémem Linux pomocí MABS** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMware.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMware Linux.
 **Použití MABS nebo DPM k zálohování virtuálních počítačů Azure se systémem Linux** | Nepodporováno
 
 ## <a name="daylight-saving-time-support"></a>Podpora letního času
@@ -113,10 +113,10 @@ Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-**Místní počítače s Windows bez DPM/MABS** | ![Ano][green] | ![Ano][green]
-**Virtuální počítače Azure** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Ano][green] | ![Ano][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows bez DPM/MABS** | ![Yes][green] | ![Yes][green]
+**Virtuální počítače Azure** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Kompresní podpora
 
@@ -129,7 +129,7 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 **Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
-**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
+**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
 
@@ -150,9 +150,9 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | Ne                                                           | –               |
-| SQL/SAP HANA          | Ne                                                           | –               |
-| BUŇK                    | Ne                                                           | –               |
+| Agent MARS/místní | No                                                           | –               |
+| SQL/SAP HANA          | No                                                           | –               |
+| BUŇK                    | No                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006855"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612414"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI (starší verze)
 
@@ -27,6 +27,7 @@ Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky
 ## <a name="the-following-limitations-apply"></a>Platí následující omezení:
 
 - Službu Azure AD lze povolit pouze v clusteru s povolenou službou RBAC.
+- Integraci služby Azure AD Legacy lze povolit pouze během vytváření clusteru.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -176,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Pokud se uživateli, kterému udělíte vazbu RBAC, nachází ve stejném tenantovi Azure AD, přiřaďte oprávnění na základě třídy *userPrincipalName*. Pokud je uživatel v jiném tenantovi služby Azure AD, dotaz na a místo toho použijte vlastnost *objectID* .
 
-Vytvořte manifest YAML s názvem `basic-azure-ad-binding.yaml` a vložte následující obsah. Na posledním řádku nahraďte *userPrincipalName_or_objectId* hlavním názvem uživatele (UPN) nebo ID objektu z předchozího příkazu:
+Vytvořte manifest YAML s názvem `basic-azure-ad-binding.yaml` a vložte následující obsah. Na posledním řádku nahraďte *userPrincipalName_or_objectId*  hlavním názvem uživatele (UPN) nebo ID objektu z předchozího příkazu:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -244,7 +245,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * V závislosti na tom, jestli je uživatelský účet ve stejném tenantovi Azure AD, jste definovali příslušné ID objektu nebo hlavní název uživatele (UPN).
 * Uživatel není členem více než 200 skupin.
-* Tajný kód definovaný v registraci aplikace pro server odpovídá hodnotě nakonfigurované pomocí`--aad-server-app-secret`
+* Tajný kód definovaný v registraci aplikace pro server odpovídá hodnotě nakonfigurované pomocí `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Další kroky
 

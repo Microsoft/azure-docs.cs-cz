@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225967"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607530"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -35,6 +35,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí bě
 
 * Aktuálně Průzkumník dat v emulátoru podporuje klienty pro rozhraní SQL API. Zobrazení a operace Průzkumník dat pro rozhraní API Azure Cosmos DB, jako jsou MongoDB, Table, Graph a Cassandra API, nejsou plně podporované.
 * Emulátor Azure Cosmos podporuje jenom jeden pevný účet a dobře známý hlavní klíč. Vygenerování klíče není možné v emulátoru Azure Cosmos, ale výchozí klíč se dá změnit pomocí možnosti příkazového řádku.
+* Emulátor Azure Cosmos podporuje účet Azure Cosmos v režimu [zřízené propustnosti](set-throughput.md) . v současné době nepodporuje účet Azure Cosmos v režimu bez [serveru](serverless.md) .
 * Emulátor Azure Cosmos není škálovatelná služba a nebude podporovat velký počet kontejnerů.
 * Emulátor Azure Cosmos nenabízí různé [Azure Cosmos dB úrovně konzistence](consistency-levels.md).
 * Emulátor Azure Cosmos nenabízí replikaci ve [více oblastech](distribute-data-globally.md).
@@ -318,7 +319,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntaxe**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -328,7 +329,7 @@ Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.
 
 ### `Start-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -338,7 +339,7 @@ Spustí emulátor. Ve výchozím nastavení tento příkaz čeká, dokud emulát
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -348,7 +349,7 @@ Zastaví emulátor. Ve výchozím nastavení tento příkaz čeká, až emuláto
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

@@ -4,14 +4,14 @@ description: Přečtěte si, jak nakonfigurovat a změnit výchozí zásady inde
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077590"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607511"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -30,15 +30,15 @@ Azure Cosmos DB podporuje dva režimy indexování:
 - **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
-> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete také požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete taky požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
 
 Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true` . Nastavením této vlastnosti `true` umožníte, aby Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Zahrnutí a vyloučení cest k vlastnostem
 
 Vlastní zásada indexování může určovat cesty vlastností, které jsou explicitně zahrnuté nebo vyloučené z indexování. Optimalizací počtu indexovaných cest můžete významně snížit latenci a RU za operace zápisu. Tyto cesty jsou definovány podle [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s následujícími přídavky:
 
-- Cesta vedoucí k skalární hodnotě (řetězec nebo číslo) končí na`/?`
+- Cesta vedoucí k skalární hodnotě (řetězec nebo číslo) končí na `/?`
 - prvky z pole jsou řešeny společně pomocí `/[]` zápisu (místo `/0` `/1` atd.)
 - `/*`zástupný znak se dá použít k vyhledání všech prvků pod uzlem.
 
@@ -62,7 +62,7 @@ Opětovné provedení stejného příkladu:
 
 - `locations` `country` cesta je`/locations/[]/country/?`
 
-- Cesta k libovolnému prvku `headquarters` je`/headquarters/*`
+- Cesta k libovolnému prvku `headquarters` je `/headquarters/*`
 
 Příkladem může být `/headquarters/employees/?` cesta. Tato cesta zajistí, že bude indexována vlastnost Employees, ale v rámci této vlastnosti se neindexuje další vnořený kód JSON.
 
@@ -81,11 +81,11 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
-- `kind`může být buď `range` nebo `hash` . Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
+- `kind` může být buď `range` nebo `hash` . Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
 
-- `precision`je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1` .
+- `precision` je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1` .
 
-- `dataType`může být buď `String` nebo `Number` . Určuje typy vlastností JSON, které budou indexovány.
+- `dataType` může být buď `String` nebo `Number` . Určuje typy vlastností JSON, které budou indexovány.
 
 Pokud tento parametr nezadáte, budou mít tyto vlastnosti následující výchozí hodnoty:
 
@@ -103,9 +103,9 @@ Pokud jsou zahrnuté cesty a vyloučené cesty v konfliktu, má přednost přesn
 
 Tady je příklad:
 
-**Zahrnutá cesta**:`/food/ingredients/nutrition/*`
+**Zahrnutá cesta**: `/food/ingredients/nutrition/*`
 
-**Vyloučená cesta**:`/food/ingredients/*`
+**Vyloučená cesta**: `/food/ingredients/*`
 
 V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest `food/ingredients` by se z indexu vyloučila jakákoli data v cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*` , která by byla indexována.
 
@@ -261,6 +261,9 @@ Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a kla
 
 Zásadu indexování kontejneru lze kdykoli aktualizovat [pomocí Azure Portal nebo jedné z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásad indexování spustí transformaci ze starého indexu do nového, který je proveden online a místně (takže během operace se nespotřebovává žádný další prostor úložiště). Index staré zásady se efektivně transformuje na nové zásady, aniž by to ovlivnilo dostupnost zápisu, dostupnost čtení nebo propustnost zajištěné v kontejneru. Transformace indexu je asynchronní operace a čas potřebný k dokončení závisí na zřízené propustnosti, počtu položek a jejich velikosti.
 
+> [!IMPORTANT]
+> Transformace indexu je operace, která využívá [jednotky žádosti](request-units.md). Pokud používáte kontejnery bez [serveru](serverless.md) , nejsou aktuálně účtovány jednotky žádosti spotřebované transformací indexu. Tyto jednotky žádosti se budou účtovat, jakmile budou všeobecně dostupné servery bez serveru.
+
 > [!NOTE]
 > Je možné sledovat průběh transformace indexu [pomocí jedné ze sad SDK](how-to-manage-indexing-policy.md).
 
@@ -284,7 +287,7 @@ U scénářů, ve kterých není nutné indexovat žádnou cestu k vlastnostem, 
 
 - režim indexování nastavený na konzistentní a
 - žádná zahrnutá cesta a
-- `/*`jako jediná Vyloučená cesta.
+- `/*` jako jediná Vyloučená cesta.
 
 ## <a name="next-steps"></a>Další kroky
 

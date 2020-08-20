@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3a23e0c2546da55f977d589eb38607994d3902b
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80133162"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611785"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Použití IoT Edge ve Windows ke spouštění kontejnerů Linux
 
@@ -26,7 +26,7 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 
 Informace o tom, co je zahrnuto v nejnovější verzi IoT Edge, najdete v tématu [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podporuje IoT Edge, a připravit ho pro modul kontejneru před instalací.
 
@@ -34,7 +34,7 @@ Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podpor
 
 Azure IoT Edge s kontejnery pro Linux se dají spustit na libovolné verzi Windows, která splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) .
 
-Pokud chcete nainstalovat IoT Edge na virtuálním počítači, povolte vnořenou virtualizaci a přidělte alespoň 2 GB paměti. Způsob povolení vnořené virtualizace se liší v závislosti na hypervisoru, který používáte. Virtuální počítače generace 2 pro Hyper-V mají ve výchozím nastavení vnořenou virtualizaci povolenou. Pro VMWare je k dispozici přepínač pro povolení funkce na vašem virtuálním počítači.
+Pokud chcete nainstalovat IoT Edge na virtuálním počítači, povolte vnořenou virtualizaci a přidělte alespoň 2 GB paměti. Způsob povolení vnořené virtualizace se liší v závislosti na hypervisoru, který používáte. Virtuální počítače generace 2 pro Hyper-V mají ve výchozím nastavení vnořenou virtualizaci povolenou. Pro VMware je k dispozici přepínač pro povolení funkce na vašem virtuálním počítači.
 
 ### <a name="prepare-the-container-engine"></a>Příprava kontejnerového modulu
 
@@ -88,7 +88,7 @@ Další informace o různých možnostech instalace a parametrech najdete v čl�
 
 6. Po zobrazení výzvy zadejte připojovací řetězec zařízení, který jste získali v kroku 1. Připojovací řetězec zařízení přidružuje fyzické zařízení k ID zařízení v IoT Hub.
 
-   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 

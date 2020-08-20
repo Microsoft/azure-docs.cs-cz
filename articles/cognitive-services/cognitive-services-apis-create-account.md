@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 00a4f7f6de207d5e8ad1bcd448cc587e3106d3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a28a8f22a8aa20612a177d88fd99a66660c74618
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87316966"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607560"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -37,9 +37,9 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     Prostředek s více službami v současnosti umožňuje přístup k následujícím Cognitive Services:
 
-    - Computer Vision
+    - Počítačové zpracování obrazu
     - Content Moderator
-    - Tvář
+    - Rozpoznávání tváře
     - Language Understanding (LUIS)
     - Analýza textu
     - Překladač
@@ -53,11 +53,11 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy níže:
 
-    | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             | Search                 |
+    | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             | Hledat                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Počítačové zpracování obrazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Hlasové služby](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Moderní čtečka](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Vyhledávání Bingu rozhraní API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Rozpoznávání mluvčího](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
-    | [Tvář](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizace](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Vyhledávání entit Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Rozpoznávání tváře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizace](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Vyhledávání entit Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Rozpoznávání rukopisu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Kontrola pravopisu Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Automatické návrhy Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
@@ -76,7 +76,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klikněte na **Vytvořit**.
+    Klikněte na možnost **Vytvořit**.
 
     #### <a name="single-service-resource"></a>[Prostředek s jednou službou](#tab/singleservice)
 
@@ -90,7 +90,7 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
     ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klikněte na **Vytvořit**.
+    Klikněte na možnost **Vytvořit**.
 
     ***
 
@@ -116,9 +116,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 2. Vyhledejte skupinu prostředků obsahující prostředek, který chcete odstranit.
 3. Klikněte pravým tlačítkem na výpis skupiny prostředků. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)
+* [Vytvoření nového prostředku pomocí klientské knihovny pro správu Azure](.\cognitive-services-apis-create-account-client-library.md)
 * [Podpora přirozeného jazyka](language-support.md)
 * [Podpora kontejneru Docker](cognitive-services-container-support.md)

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284281"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612550"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -71,6 +71,7 @@ Nejdřív vytvořte Nástroj pro vyrovnávání zatížení.
    | --- | --- |
    | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
    | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
+   | **Skladová jednotka (SKU)** |**Standard**: vyžaduje se v případě, že instance SQL jsou v jiné skupině dostupnosti než Nástroj pro vyrovnávání zatížení. </br> **Basic**: výchozí možnost. |
    | **Virtuální síť** |Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. |
    | **Přiřazení IP adresy** |**staticky**. |

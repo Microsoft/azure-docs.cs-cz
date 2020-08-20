@@ -246,10 +246,7 @@
     - name: Vytváření a správa prostředků
       items:
         - name: Vytvoření prostředku
-          href: cli-create-asset.md
-        - name: Správa prostředků
-          href: manage-asset-concept.md
-          displayName: 'name, naming, file name, upload, output, download'
+          href: how-to-create-asset.md
     - name: Nahrání obsahu
       items:
         - name: Z HTTPS
@@ -392,7 +389,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions
