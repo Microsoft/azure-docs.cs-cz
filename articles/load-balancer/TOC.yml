@@ -4,8 +4,6 @@
   items:
     - name: Co je Azure Load Balancer?
       href: load-balancer-overview.md
-    - name: Co je nového?
-      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – portál
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Co je nového?
+      href: whats-new.md
     - name: Komponenty
       href: components.md
     - name: Koncepty

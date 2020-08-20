@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184988"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607002"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
@@ -26,11 +26,11 @@ Partneři poskytují image Linux v Azure Marketplace. Microsoft spolupracuje s r
 
 ## <a name="supported-distributions-and-versions"></a>Podporované distribuce a verze
 
-V následující tabulce jsou uvedené distribuce a verze systému Linux podporované v Azure. Podrobnější informace o podpoře pro Linux a open source technologii v Azure najdete [v tématu Podpora imagí pro Linux v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
+V následující tabulce jsou uvedené distribuce a verze systému Linux podporované v Azure. Další informace najdete v tématu [Podpora imagí pro Linux v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure).
 
-Ovladače pro Linux Integration Services (LIS) pro Hyper-V a Azure jsou moduly jádra, které Microsoft přispívá přímo k jádru nadřazeného systému Linux. Některé ovladače v aplikaci LIS jsou ve výchozím nastavení součástí jádra distribuce. Starší distribuce založené na Red Hat Enterprise (RHEL)/CentOS jsou k dispozici jako samostatné stažení na [platformě Linux Integration Services verze 4,2 pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Další informace o ovladačích služby LIS najdete v tématu [požadavky na jádro systému Linux](create-upload-generic.md#linux-kernel-requirements) .
+Ovladače pro Linux Integration Services (LIS) pro Hyper-V a Azure jsou moduly jádra, které Microsoft přispívá přímo k jádru nadřazeného systému Linux. Některé ovladače v aplikaci LIS jsou ve výchozím nastavení součástí jádra distribuce. Starší distribuce založené na Red Hat Enterprise (RHEL)/CentOS jsou k dispozici jako samostatné stažení na [platformě Linux Integration Services verze 4,2 pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Další informace najdete v tématu [požadavky na jádro systému Linux](create-upload-generic.md#linux-kernel-requirements).
 
-Agent Azure Linux je už předinstalovaný na Azure Marketplace imagí a je typicky dostupný z úložiště balíčku distribuce. Zdrojový kód najdete na [GitHubu](https://github.com/azure/walinuxagent).
+Agent Azure Linux je již předinstalovaný na Azure Marketplace imagí a je obvykle k dispozici z úložiště balíčků distribuce. Zdrojový kód najdete na [GitHubu](https://github.com/azure/walinuxagent).
 
 | Distribuce | Verze | Ovladače | Agent |
 | --- | --- | --- | --- |
@@ -39,20 +39,20 @@ Agent Azure Linux je už předinstalovaný na Azure Marketplace imagí a je typi
 | Debian podle credativ |8.x, 9.x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar Container Linux od Kinvolk| Stable, Edge| | |
 | Oracle Linux Oracle |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux se Red Hat |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux se Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise podle SUSE |SLES/SLES pro SAP 11. x, 12. x, 15. x <br/> [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |V jádru |Balíček<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE podle SUSE |openSUSE Leap 15.x |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu podle kanonického |Server Ubuntu a verze pro. 16. x, 18. x, 20. x<p>Informace o rozšířené podpoře pro Ubuntu 12,04 a 14,04 najdete tady: [Ubuntu rozšířená údržba zabezpečení](https://www.ubuntu.com/esm). |V jádru |Balíček: v úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Tempo aktualizace image
 
-Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktualizovali své image v Azure Marketplace s nejnovějšími opravami a opravami zabezpečení, a to na čtvrtletním nebo rychlejším tempo. Aktualizované obrázky v Azure Marketplace jsou automaticky dostupné zákazníkům jako nové verze SKU image. Další informace o tom, jak najít image pro Linux: [vyhledání imagí virtuálních počítačů se systémem Linux v Azure Marketplace](./cli-ps-findimage.md).
+Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktualizovali své image v Azure Marketplace s nejnovějšími opravami a opravami zabezpečení, a to na čtvrtletním nebo rychlejším tempo. Aktualizované image na webu Marketplace jsou pro zákazníky dostupné automaticky jako nové verze SKU image. Další informace o tom, jak najít image pro Linux: [vyhledání imagí virtuálních počítačů se systémem Linux v Azure Marketplace](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Jádra Azure – vyladěné jádro
 
 Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Jádro optimalizované pro Azure zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
 
-Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhodu těchto optimalizovaných jader. Další informace o těchto jádrech vyladěných pro Azure najdete na následujících odkazech:
+Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhody těchto optimalizovaných jader. Další informace o těchto jádrech vyladěných pro Azure najdete na následujících odkazech:
 
 - [CentOS vyladěné v Azure – dostupné přes CentOS Virtualization SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel – k dispozici s imagemi Debian 10 a Debian 9 v Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
@@ -78,9 +78,9 @@ Credativ je nezávislá společnost pro poradenské a služby, která se special
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
 
-Kinvolk je společnost, na které se Flatcar Container Linux, a pokračuje v původním CoreOS výhledu pro použití v kontejnerových aplikacích s minimální, neproměnlivou a automatickou aktualizací Foundation. Flatcar jako minimální distribuce obsahuje jenom ty balíčky, které se vyžadují pro nasazení kontejnerů. Neměnné systémy souborů garantuje konzistenci a zabezpečení, zatímco funkce Automatické aktualizace umožňují, aby byly vždy aktuální s nejnovějšími opravami zabezpečení. 
+Kinvolk je společnost za Flatcar kontejnerem Linux, která pokračuje v původní CoreOSé vizi pro použití v kontejnerových aplikacích pro minimální, neměnné a automatické aktualizace Foundation. Flatcar jako minimální distribuce obsahuje jenom ty balíčky, které se vyžadují pro nasazení kontejnerů. Neměnné systémy souborů garantuje konzistenci a zabezpečení, zatímco funkce Automatické aktualizace umožňují, aby byly vždy aktuální s nejnovějšími opravami zabezpečení. 
 
-Flatcar Container Linux se zálohuje celosvětovým týmem Kinvolk specialistů na systémy Linux a kontejnerů, kteří nabízejí volitelné komerční předplatné podpory zahrnující nepřetržitou reakci, zabezpečení a technické výstrahy a exkluzivní image optimalizované pro Azure, včetně kanálu dlouhodobé podpory.
+Flatcar Container Linux je zálohovaný globálním týmem Kinvolk specialistů na systémy Linux a kontejnerů, kteří nabízejí volitelné obchodní předplatné podpory zahrnující nepřetržitou reakci, zabezpečení a technické výstrahy a exkluzivní image optimalizované pro Azure, včetně dlouhodobého kanálu podpory.
 
 
 ### <a name="oracle"></a>Oracle
@@ -93,7 +93,7 @@ Pomocí strategie Oracle můžete nabízet široké portfolio řešení pro veř
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Špičkovým poskytovatelem open source řešení, Red Hat pomáhá více než 90% společností Fortune 500 řešit obchodní výzvy, zarovnávat své IT a obchodní strategie a připravovat se na budoucnost technologie. Red Hat zajišťuje zabezpečená řešení prostřednictvím otevřeného obchodního modelu a cenově dostupného a předvídatelného modelu předplatného.
+Špičkovým poskytovatelem open source řešení, Red Hat pomáhá více než 90% společností Fortune 500 řešit obchodní výzvy, zarovnávat své IT a obchodní strategie a připravovat se na budoucnost technologie. Red Hat dosahuje zajištěním zabezpečených řešení prostřednictvím otevřeného obchodního modelu a cenově dostupného a předvídatelného modelu předplatného.
 
 ### <a name="suse"></a>SUSE
 

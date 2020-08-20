@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c8890afcdab1b6247fe072f2e34437d790185e58
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 823e116b659a582ceb9a09b752179ee5a78f4ebd
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88076924"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607037"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -98,18 +98,19 @@ Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze [9,30](https://support.m
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8, 8,0](https://support.microsoft.com/help/4564347/) [, 8,1, 8,2](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [8.2](https://support.microsoft.com/help/4570609/)
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), 8,0, [8,1, 8,2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8, 7,9](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), [8,1, 8,2](https://support.microsoft.com/help/4570609/) [7.9](https://support.microsoft.com/help/4578241/)
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7, 7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
 Server Ubuntu 14,04 LTS | [Podporované verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Server Ubuntu 16,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování a přihlášení pomocí hesla a balíčku Cloud-init ke konfiguraci cloudových virtuálních počítačů můžou mít při převzetí služeb při selhání zakázané přihlášení (v závislosti na konfiguraci cloudinit). Přihlášení založené na heslech na virtuálním počítači můžete znovu povolit tím, že resetujete heslo z nabídky nastavení > řešení potíží s >em (u virtuálního počítače, u kterého došlo k převzetí služeb při selhání v Azure Portal.
-Server Ubuntu 18,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Server Ubuntu 18,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) </br> Ubuntu 18.4.03 (jádro v 5.4) se podporuje z [9,36](https://support.microsoft.com/help/4578241/) .|
+Server Ubuntu 20,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | Zahrnuje podporu pro všechny 7. verze *x* – [podporované verze jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | Zahrnuje podporu pro všechny 8. verze *x* – [podporované verze jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5 [(podporované verze jádra)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> (* * SP5 je k dispozici prostřednictvím nejnovější opravy 9,33 pro Azure do Azure v případě zotavení po havárii).
+SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5  [(podporované verze jádra)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> (* * SP5 je k dispozici prostřednictvím nejnovější opravy 9,33 pro Azure do Azure v případě zotavení po havárii).
 SUSE Linux Enterprise Server 15 | 15 a 15 SP1. [(Podporované verze jádra)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | 3<br/><br/> Upgrade replikačních počítačů z aktualizace SP3 na verzi SP4 není podporován. Pokud byl replikovaný počítač upgradován, je nutné zakázat replikaci a po upgradu znovu povolit replikaci.
 SUSE Linux Enterprise Server 11 | OPRAVY
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, [7,6](https://support.microsoft.com/help/4573888/) , [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8, 8,0](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Je podporováno spouštění všech jader UEK a jádra RedHat <= 3.10.0-1062. *. Podpora pro zbytek jader RedHat bude k dispozici v 9,36. konci srpna se očekává.
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, [7,6](https://support.microsoft.com/help/4573888/) , [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8, 8,0](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Podpora [9,35](https://support.microsoft.com/help/4573888/) pro zbytek RedHat jader je dostupná ve všech jádrech uek a RedHat kernel <= 3.10.0-1062. * v [9,36](https://support.microsoft.com/help/4578241/) .
 
 * * Poznámka: Pokud chcete, aby se v průběhu 30 dnů vydaných verzí podporovaly nejnovější jádra pro Linux, Azure Site Recovery na nejnovější verzi agenta mobility opravena oprava hotfix. Tato oprava je zavedená v systému mezi dvěma verzemi hlavní verze. Pokud chcete aktualizovat na nejnovější verzi agenta mobility (včetně opravy hotfix hotfix), postupujte podle kroků uvedených v [tomto článku](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Tato oprava se v tuto chvíli zavedla pro agenty mobility používané ve scénáři zotavení po havárii v Azure.
 
@@ -117,18 +118,19 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/),[9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/)| 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
-14,04 LTS | 9,31 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
+14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/),[9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/)| 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 |||
+16,04 LTS | [9,36](https://support.microsoft.com/help/4578241/)| 4.4.0-21 – obecné pro 4.4.0-187-Generic,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – obecný pro 4.15.0-112 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1092 – Azure |
 16,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21 – obecné pro 4.4.0-184-Generic,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-106 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1089 – Azure</br> 4.15.0-107-Generic, 4.4.0-185-Generic & 4.15.0-1091-Azure až 9,35 oprava hotfix oprava * * |
 16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21 – obecné pro 4.4.0-178-Generic,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-99 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1082 – Azure </br> 4.15.0-101-Generic & 4.4.0-179 – obecné až 9,33 oprava hotfix * *|
 16,04 LTS | 9,32 | 4.4.0-21 – obecný pro 4.4.0-171 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-74 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1066 – Azure|
-16,04 LTS | 9,31 | 4.4.0-21 – obecné pro 4.4.0-170 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-72 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1063 – Azure|
 |||
+18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20 – obecný pro 4.15.0-112 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-58 – obecné </br> 5.3.0-19 – obecný pro 5.3.0-65 – obecný </br> 5.4.0-37 – obecný pro 5.4.0-42 – obecné</br> 4.15.0-1009 – Azure do 4.15.0-1092 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1032 – Azure </br> 5.4.0-1020 – Azure do 5.4.0-1022 – Azure|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20 – obecný pro 4.15.0-108 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0 – 52 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 61 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1089 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1031 – Azure </br> 4.15.0-109-Generic, 5.0.0-53-Generic, 5.3.0-62-Generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure až 9,35 oprava hotfix patch * *|
 18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20 – obecný pro 4.15.0-99 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-47 – obecné </br> 5.3.0-19 – obecný pro 5.3.0-51 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1082 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1020 – Azure </br> 4.15.0-101-Generic, 5.0.0-48-Generic, 5.3.0-1022-Azure & 5.3.0-53 – obecné až 9,33 oprava hotfix patch * *|
 18,04 LTS | 9,32| 4.15.0-20 – obecný pro 4.15.0-74 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-37 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 24 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1037 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1028 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1009 – Azure|
-18,04 LTS | 9,31| 4.15.0-20 – obecný pro 4.15.0-72 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-37 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 24 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1037 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1025-Azure </br> 5.3.0-1007 – Azure|
+|||
+20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26 – obecný pro 5.4.0-42 </br> -Generic 5.4.0-1010-Azure to 5.4.0-1022-Azure
 
 * * Poznámka: Pokud chcete, aby se v průběhu 30 dnů vydaných verzí podporovaly nejnovější jádra pro Linux, Azure Site Recovery na nejnovější verzi agenta mobility opravena oprava hotfix. Tato oprava je zavedená v systému mezi dvěma verzemi hlavní verze. Pokud chcete aktualizovat na nejnovější verzi agenta mobility (včetně opravy hotfix hotfix), postupujte podle kroků uvedených v [tomto článku](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Tato oprava se v tuto chvíli zavedla pro agenty mobility používané ve scénáři zotavení po havárii v Azure.
 
@@ -136,24 +138,25 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-Debian 7 | 9,31, 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
+Debian 7 | 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/) | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
-Debian 8 | [9,35](https://support.microsoft.com/help/4573888/) | 3.16.0-4-amd64 až 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
-Debian 8 | 9,31, 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
+Debian 8 | [9,35](https://support.microsoft.com/help/4573888/, ), [9,36](https://support.microsoft.com/help/4578241/) | 3.16.0-4-amd64 až 3.16.0-11-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
+Debian 8 | 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,36](https://support.microsoft.com/help/4578241/) | Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.43 – Azure </br> 4.12.14-16,7 – Azure do 4.12.14-16.22-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.43 – Azure </br> 4.12.14-16,7 – Azure do 4.12.14-16.19-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) [9,35](https://support.microsoft.com/help/4573888/) | Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | 9,33 oprava hotfix Hot Fix | Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure </br> 4.12.14-16,7 – Azure do 4.12.14-16.13-Azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Podporují se všechny [zásoby SUSE 12 SP1, SP2, SP3 a SP4](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Podporované SUSE Linux Enterprise Server 15 verzí jádra pro virtuální počítače Azure
 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 15 a 15 SP1 | [9,36](https://support.microsoft.com/help/4578241/)  | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.38 – Azure
 SUSE Linux Enterprise Server 15 a 15 SP1 | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/)  | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.33 – Azure 
 |SUSE Linux Enterprise Server 15 a 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.30 – Azure |
 SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 8.22 – Azure |
@@ -290,5 +293,5 @@ Přístup k Site Recovery službě přes soukromé odkazy | Podporováno | [Dal�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md) pro replikaci virtuálních počítačů Azure.
+- Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md)  pro replikaci virtuálních počítačů Azure.
 - Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](./azure-to-azure-quickstart.md).

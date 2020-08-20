@@ -7,38 +7,38 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498068"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607433"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
 Možnost publikování, kterou si zvolíte pro vaši nabídku, se vztahuje přímo na požadavky na způsobilost i na GTM výhody pro komerční tržiště. Důležitější je, že výběr možnosti publikování a typu nabídky definuje způsob, jakým uživatelé budou pracovat s vaší nabídkou komerčního tržiště.
 
-Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a volání akce, která se řídí tím, jak a kde se vaše nabídka zobrazuje na komerčním webu Marketplace prodejní místa.
+Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a volání akce, která se řídí tím, jak a kde se vaše nabídka zobrazuje v online obchodech s komerčním Marketplace.
 
 V tomto článku se dozvíte:
 
-- Určení vhodného prezentace pro vaše řešení
-- Které možnosti publikování a volání akce jsou k dispozici v každém prezentace
-- Které typy nabídek jsou k dispozici pro jednotlivé možnosti publikování
+- Jak určit odpovídající online obchod s vaším řešením.
+- Které možnosti publikování a volání akce jsou k dispozici v každém online obchodě.
+- Které typy nabídek jsou k dispozici pro jednotlivé možnosti publikování.
 
 ## <a name="commercial-marketplace-publishing-options"></a>Možnosti publikování na komerční web Marketplace
 
 V následující tabulce jsou uvedeny možnosti publikování pro typy nabídek v Microsoft AppSource a Azure Marketplace.
 
-|   | **Seznam (kontakt)**  | **Seznam (zkušební verze)**  | **Free** | **BYOL** | **Transakce**|
+|   | **Seznam (kontakt)**  | **Seznam (zkušební verze)**  | Zadejte možnost pro **bezplatnou** SKU. | **BYOL** | **Transakce**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Virtuální počítač** |  |  |  | Azure Marketplace |  Azure Marketplace |
 | **Aplikace Azure (pro více virtuálních počítačů)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
 | **Obrázek kontejneru** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **Modul IoT Edge** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **Spravované služby** |  |  |  | Azure Marketplace |   |
-| **Konzultační služby** | Prodejní místa |  |  |  |   |
-| **Aplikace SaaS** | Prodejní místa | Prodejní místa | Prodejní místa |  | Prodejní místa * |
+| **Konzultační služby** | Online obchody |  |  |  |   |
+| **Aplikace SaaS** | Online obchody | Online obchody | Online obchody |  | Online obchody * |
 | **Aplikace Microsoft 365** | AppSource | AppSource |  |  | AppSource * *  |
 | **Doplněk pro Dynamics 365** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
@@ -61,29 +61,29 @@ Dostupné možnosti publikování nabízejí odlišnou zákaznickou zapojení a 
 > [!Note]
 > Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Pokud se chcete dozvědět víc, přečtěte si článek [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro obchod na webu.
 
-## <a name="selecting-a-storefront"></a>Výběr prezentace
+## <a name="selecting-an-online-store"></a>Výběr online obchodu
 
-Každý prezentace slouží jako jedinečné požadavky zákazníků a cílí na konkrétní cílové skupiny. Typ vaší nabídky, možnosti jazyka Transact a kategorie určí, kde bude vaše nabídka publikována. Kategorie a podkategorie jsou namapovány na jednotlivé prezentacey na základě cílové cílové skupiny:
+Každý online obchod slouží jako jedinečné požadavky zákazníků a cílí na konkrétní cílové skupiny. Typ vaší nabídky, možnosti jazyka Transact a kategorie určí, kde bude vaše nabídka publikována. Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny:
 
 **Microsoft AppSource** cílí obchodním uživatelům, kteří hledají obchodní nebo Oborová řešení a konzultační služby pro Dynamics 365, Microsoft 365 a Power Platform.
 
 **Azure Marketplace** cílí na odborníky na IT a vývojáře, kteří hledají řešení vytvořená pro nebo v Azure, a také konzultační služby, které urychlují používání Azure.
 
-Vyberte kategorii a podkategorii, které nejlépe zarovnejte s cílovou cílovou skupinou. Například Brána Firewall webových aplikací by měla být publikována do Azure Marketplace v kategorii zabezpečení jako zamýšlená cílová skupina odborníky na IT. Aplikace pro správu smluv by se měla místo toho publikovat do AppSource v kategorii prodej, protože zamýšlená cílová skupina je firemním uživatelům. Výběr nesprávné kategorie nebo podkategorie může mít za následek publikování vaší nabídky na nesprávné prezentace.
+Vyberte kategorii a podkategorii, které nejlépe zarovnejte s cílovou cílovou skupinou. Například Brána Firewall webových aplikací by měla být publikována do Azure Marketplace v kategorii zabezpečení jako zamýšlená cílová skupina odborníky na IT. Aplikace pro správu smluv by se měla místo toho publikovat do AppSource v kategorii prodej, protože zamýšlená cílová skupina je firemním uživatelům. Výběr nesprávné kategorie nebo podkategorie může mít za následek publikování vaší nabídky do nesprávného online obchodu.
 
-### <a name="publishing-to-both-storefronts-saas-offers-only"></a>Publikování do obou prodejní místa (jenom nabídky SaaS)
+### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Publikování do online obchodů (jenom SaaS nabídky)
 
-Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud je vaše nabídka SaaS určená pro technickou cílovou skupinu (Azure Marketplace *) i pro* obchodní cílovou skupinu (AppSource), vyberte kategorii nebo podkategorii, které platí pro jednotlivé prezentace. Nabídky publikované do obou prodejní místa by měly mít popozici hodnoty, která se rozšiřuje na odborníky v oblasti IT *a* obchodní uživatele.
+Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud je vaše nabídka SaaS určená pro technickou cílovou skupinu (Azure Marketplace *) i pro* obchodní cílovou skupinu (AppSource), vyberte kategorii a podkategorii, které platí pro každý online obchod. Nabídky publikované v online obchodech by měly mít hodnotu, která bude rozšířena na odborníky v oblasti IT *a* obchodní uživatele.
 
 > [!IMPORTANT]
 > Nabídky SaaS s měřenou fakturací jsou k dispozici prostřednictvím Azure Marketplace a Azure Portal. SaaS nabízí pouze soukromé plány, které jsou k dispozici prostřednictvím Azure Portal.
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Ano             | Ano         | No           | Azure Marketplace a Azure Portal |
-| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
-| Ano             | No          | Ano          | Pouze Azure Portal |
-| No              | No          | Ano          | Pouze Azure Portal |
+| Yes             | Ano         | No           | Azure Marketplace a Azure Portal |
+| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
+| Ano             | No          | Yes          | Pouze Azure Portal |
+| No              | No          | Yes          | Pouze Azure Portal |
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
 
@@ -91,7 +91,7 @@ Zákazníci v Azure Portal zakoupí například nabídku s měřením fakturace 
 
 ### <a name="categories"></a>Kategorie
 
-Kategorie a podkategorie jsou namapovány na jednotlivé prezentacey založené na cílové cílové skupině. Vyberte kategorie a podkategorie, které nejlépe odpovídají vaší nabídce a zamýšlené cílové skupině. Můžete vybrat:
+Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny. Vyberte kategorie a podkategorie, které nejlépe odpovídají vaší nabídce a zamýšlené cílové skupině. Můžete vybrat:
 
 - Aspoň jedna a až dvě kategorie. Máte možnost zvolit primární a sekundární kategorii.
 - Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud nevyberete žádnou podkategorii, vaše nabídka bude i nadále zjistitelná v rámci vybrané kategorie.
@@ -102,4 +102,4 @@ Kategorie a podkategorie jsou namapovány na jednotlivé prezentacey založené 
 
 - Jakmile se rozhodnete pro možnost publikování, budete připraveni [Vybrat typ nabídky](./publisher-guide-by-offer-type.md) , který se bude používat k prezentaci vaší nabídky.
 - Pokud chcete dokončit výběr a konfiguraci vaší nabídky, přečtěte si požadavky na způsobilost v části Možnosti publikování podle typu nabídky.
-- Prohlédněte si vzory publikování podle prezentace, kde najdete příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
+- Seznamte se se vzorem publikování podle online obchodu s příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.

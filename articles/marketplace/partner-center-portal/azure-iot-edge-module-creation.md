@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167177"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606346"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet vě
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
+> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v online obchodech po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
 ### <a name="offer-id-and-alias"></a>ID nabídky a alias
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -149,7 +149,7 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -235,7 +235,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Name
 7. Shrnutí
-8. Description
+8. Popis
 9. Užitečné odkazy
 10. Snímky obrazovky a videa
 

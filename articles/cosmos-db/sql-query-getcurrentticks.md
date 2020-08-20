@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6b3cd5ab5849c33172e4a629c79fb792b82f1255
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227178"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606940"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 
-Vrátí aktuální datum a čas měřenou v taktech.
+Vrátí počet taktů 100 – nanosekund, které uplynuly od 00:00:00 čtvrtka, 1. ledna 1970.
   
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentTicks ()
@@ -26,9 +26,11 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>Návratové typy
 
-Vrátí kladnou celočíselnou hodnotu.
+Vrátí číslo se znaménkem, aktuální počet taktů 100, které uplynuly od epocha systému UNIX. Jinými slovy, GetCurrentTicks vrátí počet taktů 100 nanosekund, které uplynuly od 00:00:00 čtvrtka, 1. ledna 1970.
 
 ## <a name="remarks"></a>Poznámky
+
+GetCurrentTicks () je nedeterministické funkce. Vrácený výsledek je UTC (koordinovaný světový čas).
 
 Tato systémová funkce nebude index využívat.
 

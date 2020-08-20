@@ -3,30 +3,26 @@ title: Stažení výsledků úlohy – Azure Media Services
 description: Tento článek ukazuje, jak stáhnout výsledky úlohy.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
-ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: inhenkel
+ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80346299"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607252"
 ---
 # <a name="download-the-results-of-a-job"></a>Stažení výsledků úlohy
 
 V Azure Media Services při zpracování videí (například kódování nebo analýzy) potřebujete vytvořit výstupní [Asset](assets-concept.md) pro uložení výsledku vaší [úlohy](transforms-jobs-concept.md). Tyto výsledky pak můžete stáhnout do místní složky pomocí služby Media Service a rozhraní API pro úložiště. 
 
 Tento článek ukazuje, jak stáhnout výsledky pomocí sad Java a .NET SDK.
-
-## <a name="prerequisites"></a>Požadavky 
-
-Projděte si téma [Správa prostředků](manage-asset-concept.md).
 
 ## <a name="java"></a>Java
 

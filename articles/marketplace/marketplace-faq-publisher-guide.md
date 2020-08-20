@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036568"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607337"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -120,11 +120,11 @@ Komerční vydavatelé na webu Marketplace zodpovídají za podporu svého softw
 
 Během procesu publikování máte přístup k verzi Preview vaší nabídky. Přístup je omezen na uživatele, které zadáte na kartě **Preview** , a nabídku nemůže zobrazit nikdo jiný. Můžete si koupit verzi Preview a otestovat proces, ale v závislosti na nastavení vaší nabídky se vám bude účtovat celá částka.
 
-Abychom mohli dokončit nákup za velmi nízkou cenu, doporučujeme publikovat si soukromý plán, který si můžete zobrazit sami, a za cenu, kterou můžete přijmout jako náklady na testování. Je podporovaná cena $0,00, ale neodráží celé prostředí, jako je placené předplatné, takže doporučujeme nastavit cenu na $1,00.
+K dokončení nákupu za nízkou cenu doporučujeme publikovat si soukromý plán, který si můžete zobrazit sami a za cenu, kterou můžete přijmout jako náklady na testování. Je podporovaná cena $0,00, ale neodráží celé prostředí, jako je placené předplatné, takže doporučujeme nastavit cenu na $1,00.
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Co dělají zákazníci z komerčního tržiště a co s nimi mám dělat?
 
-Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace prodejní místa, zachytí se informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří jsou na komerčním tržišti, často sledují zájemce, vyvíjí vztahy a zavedou zájem o obchody.
+Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace online obchody, budou se shromažďovat informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří jsou na komerčním tržišti, často sledují zájemce, vyvíjí vztahy a zavedou zájem o obchody.
 
 Další informace najdete v tématu [zájemci zákazníků z vaší nabídky na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -140,7 +140,7 @@ Nabídky se zákazníkům prezentují prostřednictvím prostředí v rámci pro
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Je možné, že se moje nabídka zobrazuje jak v Microsoft AppSource, tak v Azure Marketplace?
 
-Microsoft AppSource je cílem pro obchodní a Oborová řešení a Azure Marketplace je navržená pro IT a Vývojářská řešení. Nabídky jsou dostupné v každém z prodejní místa založených na kategoriích a oborech, které jste vybrali během vytváření nabídky. V vzácných případech, kdy je nabídka relevantní pro uživatele obou prodejní místa, může se zobrazit v obou.
+Microsoft AppSource je cílem pro obchodní a Oborová řešení a Azure Marketplace je navržená pro IT a Vývojářská řešení. Nabídky jsou dostupné v každém z online obchodů na základě kategorií a odvětví, které jste vybrali během vytváření nabídky. V případě častého případu, že nabídka je relevantní pro uživatele obou online obchodů, může se zobrazit v obou.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Co je program Cloud Solution Provider?
 

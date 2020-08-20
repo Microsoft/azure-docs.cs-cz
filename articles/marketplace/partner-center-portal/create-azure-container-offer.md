@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166735"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606371"
 ---
-# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejnerů Azure na Azure Marketplace
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azur
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
+> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v online obchodech po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
 ### <a name="offer-id-and-alias"></a>ID nabídky a alias
 
@@ -50,7 +50,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

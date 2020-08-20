@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607207"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,14 +36,12 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): vytvoření veřejného nástroje pro vyrovnávání zatížení (standardní skladová položka Standard)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
-
-Můžete vytvořit veřejný Nástroj pro vyrovnávání zatížení nebo interní nástroj pro vyrovnávání zatížení. 
 
 Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
 
@@ -56,7 +54,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
     | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Region         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **Standard** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
@@ -167,7 +165,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Region           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -220,7 +218,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Region | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
@@ -244,7 +242,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Podsíť | **myBackendSubnet** |
     | Veřejná IP adresa | Vyberte **Žádná**. |
     | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
-    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
+    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části  **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
     | **Vyrovnávání zatížení**  |
     | Umístit tento virtuální počítač za existující řešení vyrovnávání zatížení? | Vyberte **Ano** |
     | **Nastavení vyrovnávání zatížení** |
@@ -289,7 +287,7 @@ Další informace o odchozích připojeních najdete v tématu [odchozí připoj
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte **myOutboundRule**. |
-    | IP adresa front-endu | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do **název**zadejte **LoadBalancerFrontEndOutbound**. </br> Vyberte **IP adresu** nebo **předponu IP**adresy. </br> V části **Veřejná IP adresa** nebo **předpona veřejné IP**adresy vyberte **vytvořit novou** . </br> Jako název zadejte **myPublicIPOutbound** nebo **myPublicIPPrefixOutbound**. </br> Vyberte **Přidat**.|
+    | IP adresa front-endu | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do **název**zadejte **LoadBalancerFrontEndOutbound**. </br> Vyberte **IP adresu** nebo **předponu IP**adresy. </br> V části **Veřejná IP adresa** nebo **předpona veřejné IP**adresy vyberte **vytvořit novou** . </br> Jako název zadejte  **myPublicIPOutbound** nebo **myPublicIPPrefixOutbound**. </br> Vyberte **Přidat**.|
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15 minut**.|
     | Resetování protokolu TCP | Vyberte **Povoleno**.|
     | Back-endový fond | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBackendPoolOutbound** . </br> Vyberte **Přidat**. |
@@ -317,14 +315,12 @@ Další informace o odchozích připojeních najdete v tématu [odchozí připoj
 
 8. Vyberte **Uložit**.
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Možnost 2: vytvoření veřejného nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
-
-Můžete vytvořit veřejný Nástroj pro vyrovnávání zatížení nebo interní nástroj pro vyrovnávání zatížení. 
 
 Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
 
@@ -337,7 +333,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
     | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Region         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **základní** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
@@ -375,7 +371,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Region           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -445,7 +441,7 @@ Vytvořte sondu stavu s názvem **myHealthProbe**, abyste mohli monitorovat stav
     | Název | Zadejte **myHealthProbe**. |
     | Protokol | Vyberte **http**. |
     | Port | Zadejte **80**.|
-    | Cesta | Napište**/** |
+    | Cesta | Napište **/** |
     | Interval | Zadejte hodnotu **15** pro **interval** mezi pokusy o sondu v sekundách. |
     | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
 
@@ -508,7 +504,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Region | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myAvailabilitySet** . </br> Vybrat **OK** |
     | Image | **Windows Server 2019 Datacenter** |
@@ -530,7 +526,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Podsíť | Vybrat **myBackendSubnet** |
     | Veřejná IP adresa | Vybrat **žádné** |
     | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
-    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
+    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části  **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
     | **Vyrovnávání zatížení**  |
     | Umístit tento virtuální počítač za existující řešení vyrovnávání zatížení? | Vybrat **ne** |
  

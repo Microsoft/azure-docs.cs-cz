@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503561"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607354"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -133,10 +133,10 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 
 |Účty Microsoft  | $100,00 za měsíc  |
 |---------|---------|
-|Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \*Společnost Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \*$90,00 za měsíc    |
-|Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \*Pro všechny kvalifikované aplikace SaaS udržuje společnost Microsoft 10% nákladů na licenci.  |  $20,00 za měsíc <br> \*$10,00     |
+|Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \* Společnost Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \* $90,00 za měsíc    |
+|Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \* Pro všechny kvalifikované aplikace SaaS udržuje společnost Microsoft 10% nákladů na licenci.  |  $20,00 za měsíc <br> \* $10,00     |
 
-U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
+U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované transakční IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Fakturace, platby, fakturace a kolekce zákazníků
 
@@ -148,7 +148,7 @@ U některých nabídek, které publikujete na komerčním webu Marketplace, sní
 
 **Bezplatné kredity a peněžní závazky** – někteří zákazníci si můžou Předplaťte Azure s peněžním závazkem v smlouva Enterprise nebo jste získali bezplatné kredity pro použití s Azure. I když se tyto kredity dají použít k placení za využití Azure, nedají se za licenční poplatky za software vydavatele použít.
 
-**Fakturace a kolekce** – fakturace na základě softwaru vydavatele se zobrazí při fakturaci vybraného zákazníka a postupuje podle časové osy fakturace. Zákazníkům, kteří nemají smlouva Enterprise v místě, se účtují měsíčně pro licence na tržiště pro software Marketplace. Zákazníci s smlouva Enterprise se účtují měsíčně prostřednictvím faktury, která se prezentuje čtvrtletně.
+**Fakturace a kolekce** – fakturace na základě softwaru vydavatele se zobrazí při fakturaci vybrané zákazníkem a postupuje podle časové osy fakturace. Zákazníkům, kteří nemají smlouva Enterprise v místě, se účtují měsíčně pro licence na tržiště pro software Marketplace. Zákazníci s smlouva Enterprise se účtují měsíčně prostřednictvím faktury, která se prezentuje čtvrtletně.
 
 Po výběru předplatného nebo cenového modelu s průběžnými platbami se společnost Microsoft chová jako agent vydavatele a zodpovídá za všechny aspekty fakturace, platby a kolekce.
 
@@ -191,4 +191,4 @@ Možnost publikování v režimu Transact je k dispozici pouze pro následujíc�
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete dokončit výběr a konfiguraci vaší nabídky, přečtěte si požadavky na způsobilost v části Možnosti publikování podle typu nabídky.
-- Prohlédněte si vzory publikování podle prezentace, kde najdete příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
+- Seznamte se se vzorem publikování podle online obchodu s příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.

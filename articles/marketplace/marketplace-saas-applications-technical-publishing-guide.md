@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280932"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607292"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
 
@@ -21,16 +21,16 @@ SaaS aplikace můžete publikovat na komerčním webu Marketplace se třemi růz
 
 ## <a name="offer-overview"></a>Přehled nabídky  
 
-SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Prodejní místa podporují seznam, zkušební verze a transakční nabídky.
+SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Online obchody podporují seznam, zkušební verze a nabídky Transact.
 
 **Seznam:**  Možnost publikování výpisu se skládá z nabídky typu kontakt mi a používá se v případě, že účast na úrovni zkušební verze nebo transakce není proveditelná. Výhodou tohoto přístupu je to, že vydavatelům v rámci trhu umožňuje okamžitě začít přijímat potenciální zákazníky, kteří se můžou rozrůstat, aby zvýšili vaši firmu.  
-**Zkušební verze/transakce:**  Zákazník má možnost si přímo koupit nebo požádat o zkušební verzi vašeho řešení. Díky zkušebnímu prostředí se zvýší úroveň zapojení nabízená zákazníkům a umožní zákazníkům prozkoumat vaše řešení před nákupem. V rámci zkušebního prostředí budete mít lepší šanci na zvýšení úrovně v prodejní místa a měli byste očekávat více a mnohem víc a lepších příležitostí od zákaznických rezervací. Zkušební verze musí zahrnovat bezplatnou podporu aspoň po dobu trvání zkušebního období.  
+**Zkušební verze/transakce:**  Zákazník má možnost si přímo koupit nebo požádat o zkušební verzi vašeho řešení. Díky zkušebnímu prostředí se zvýší úroveň zapojení nabízená zákazníkům a umožní zákazníkům prozkoumat vaše řešení před nákupem. V případě zkušebního prostředí budete mít lepší šanci na povýšení v online obchodech a měli byste očekávat více a mnohem více příležitostí od zapojení zákazníků. Zkušební verze musí zahrnovat bezplatnou podporu aspoň po dobu trvání zkušebního období.  
 
 | Nabídka aplikací pro SaaS | Podnikové požadavky | Technické požadavky |  
 | --- | --- | --- |  
-| **Kontaktujte nás** | Ano | Ne |  
-| **Power BI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
-| **Aplikace SaaS**| Ano | Ano (Integrace Azure AD) |     
+| **Kontaktujte nás** | Ano | No |  
+| **Power BI/Dynamics** | Yes | Ano (Integrace Azure AD) |  
+| **Aplikace SaaS**| Yes | Ano (Integrace Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS
 

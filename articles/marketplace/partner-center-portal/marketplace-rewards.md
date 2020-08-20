@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496011"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606749"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -27,7 +27,7 @@ Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud 
 
 U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy Marketplace, můžete pro každou úroveň odemknout větší výhody.
 
-Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
+Minimální požadavek na publikování v online obchodech je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
 
 Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 

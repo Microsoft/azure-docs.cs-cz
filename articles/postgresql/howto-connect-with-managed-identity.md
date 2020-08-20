@@ -6,24 +6,24 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102289"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606776"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Připojte se se spravovanou identitou pro Azure Database for PostgreSQL
+# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Připojení ke službě Azure Database for PostgreSQL s využitím spravované identity
 
-V tomto článku se dozvíte, jak použít uživatelem přiřazenou identitu pro virtuální počítač Azure pro přístup k serveru Azure Database for PostgreSQL. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
+V tomto článku se dozvíte, jak použít uživatelem přiřazenou identitu pro virtuální počítač Azure pro přístup k serveru Azure Database for PostgreSQL. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
 
-> [!div class="checklist"]
-> * Udělení přístupu k serveru Azure Database for PostgreSQL k VIRTUÁLNÍmu počítači
-> * Vytvoření uživatele v databázi, který reprezentuje identitu virtuálního počítače přiřazenou uživatelem
-> * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for PostgreSQL
-> * Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
+Získáte informace o těchto tématech:
+- Udělení přístupu k serveru Azure Database for PostgreSQL k VIRTUÁLNÍmu počítači
+- Vytvoření uživatele v databázi, který reprezentuje identitu virtuálního počítače přiřazenou uživatelem
+- Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for PostgreSQL
+- Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
@@ -80,7 +80,7 @@ Toto Načtení tokenu se provádí provedením požadavku HTTP `http://169.254.1
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(které jste získali dříve)
+* `client_id` = `CLIENT_ID` (které jste získali dříve)
 
 Vrátíte výsledek JSON, který obsahuje `access_token` pole – tato dlouhá textová hodnota je přístupový token spravované identity, který byste měli použít jako heslo při připojování k databázi.
 

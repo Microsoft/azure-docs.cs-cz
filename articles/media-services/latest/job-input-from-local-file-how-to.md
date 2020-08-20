@@ -3,20 +3,20 @@ title: Vytvoření vstupu Azure Media Services úlohy z místního souboru | Mic
 description: Tento článek ukazuje, jak vytvořit vstup Azure Media Services úlohy z místního souboru.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001124"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607234"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Vytvoření vstupu úlohy z místního souboru
 
@@ -25,7 +25,6 @@ Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, mu
 ## <a name="prerequisites"></a>Předpoklady 
 
 * [Vytvořte účet Media Services](./create-account-howto.md).
-* Projděte si téma [Správa prostředků](manage-asset-concept.md).
 
 ## <a name="net-sample"></a>Ukázka .NET
 

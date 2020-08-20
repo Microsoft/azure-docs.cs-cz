@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964579"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606911"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 
-Jako plně spravovaná cloudová databázová služba Azure Cosmos DB zjednodušuje fakturaci tím, že účtuje jenom za zřízené propustnost a využité úložiště. V porovnání s místními nebo IaaS alternativami nejsou žádné další licenční poplatky, náklady na nástroj ani náklady na zařízení. Když posuzujete možnosti více oblastí Azure Cosmos DB, databázová služba poskytuje výrazné snížení nákladů ve srovnání se stávajícími místními nebo IaaS řešeními.
+Jako plně spravovaná cloudová databázová služba Azure Cosmos DB zjednodušuje fakturaci tím, že se účtuje jenom za vaše databázové operace a využité úložiště. V porovnání s místními nebo IaaS alternativami nejsou žádné další licenční poplatky, náklady na nástroj ani náklady na zařízení. Když posuzujete možnosti více oblastí Azure Cosmos DB, databázová služba poskytuje výrazné snížení nákladů ve srovnání se stávajícími místními nebo IaaS řešeními.
 
-S Azure Cosmos DB se účtuje po hodinách na základě zřízené propustnosti a spotřebovaného úložiště. V případě zřízené propustnosti je jednotka pro fakturaci 100 RU/s za hodinu. nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) . U spotřebovaného úložiště se vám bude účtovat 1 GB úložiště za měsíc. nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+- **Databázové operace**: způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
 
-Tento článek vám na několika příkladech pomůže porozumět podrobným informacím na měsíční faktuře. Čísla uvedená v příkladech se můžou lišit, pokud vaše kontejnery Azure Cosmos mají jinou zřízenou propustnost, pokud pokrývají více oblastí nebo pokud jsou spuštěné po jinou dobu v měsíci. Všechny příklady v tomto článku vypočítávají fakturaci na základě informací o cenách, které jsou uvedené na [stránce s cenami.](https://azure.microsoft.com/pricing/details/cosmos-db/)
+  - **Zajištěná propustnost**: za každou hodinu se účtuje po hodinách maximální zajištěné propustnosti v přírůstcích po 100 ru/s.
+  - Bez **serveru**: účtuje se každou hodinu za celkovou částku jednotek žádostí spotřebovaných operacemi vaší databáze.
+
+- **Úložiště**: za určitou hodinu se účtuje paušální sazba za celkovou velikost úložiště (v GB) spotřebované Vašimi daty a indexy.
+
+Nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+
+Tento článek vám na několika příkladech pomůže porozumět podrobným informacím na měsíční faktuře. Čísla uvedená v příkladech se můžou lišit, pokud vaše kontejnery Azure Cosmos mají jinou zřízenou propustnost, pokud pokrývají více oblastí nebo pokud jsou spuštěné po jinou dobu v měsíci. Všechny příklady v tomto článku vypočítávají fakturaci na základě informací o cenách, které jsou uvedené na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 > [!NOTE]
 > Fakturuje se za každou část hodinové hodiny, ne pro dobu 60 minut. Všechny příklady zobrazené v tomto dokumentu jsou založené na ceně za účet Azure Cosmos nasazený v oblasti mimo státní správu v USA. Ceny a kalkulace se liší v závislosti na oblasti, kterou používáte, na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) najdete nejnovější informace o cenách.
 
 ## <a name="billing-examples"></a>Příklady fakturace
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>Příklad fakturace – propustnost na kontejneru (celý měsíc)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>Příklad fakturace – zřízená propustnost na kontejneru (celý měsíc)
 
 * Řekněme, že nakonfigurujete propustnost 1 000 RU/s na kontejneru a existuje 24 hodin × 30 dní pro měsíc = celkem 720 hodin.  
 
@@ -39,13 +46,21 @@ Tento článek vám na několika příkladech pomůže porozumět podrobným inf
 
 * Celková měsíční vyúčtování bude zobrazovat 7 200 jednotek (z 100 ru), což bude finančně $57,60.
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>Příklad fakturace – propustnost na kontejneru (částečný měsíc)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>Příklad fakturace – zřízená propustnost na kontejneru (částečný měsíc)
 
 * Řekněme, že vytvoříme kontejner s zřízenou propustností 2 500 RU/s. Kontejner je po dobu 24 hodin za měsíc (například odstraníme 24 hodin po jeho vytvoření).  
 
 * Pak uvidíme 600 jednotek na faktuře (2 500 RU/s/100 RU/s/jednotku × 24 hodin). Náklady budou $4,80 (600 jednotek × $0.008/Unit).
 
 * Celková faktura za měsíc bude $4,80.
+
+### <a name="billing-example---serverless-container"></a>Příklad fakturace – kontejner bez serveru
+
+* Řekněme, že vytvoříme kontejner bez serveru. 
+
+* Za měsíc vydáváme požadavky na databáze, které spotřebovávají celkem 500 000 jednotek žádostí. Náklady budou $0,125 (500 000 × 0,25/milion).
+
+* Celková faktura za měsíc bude $0,125.
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Fakturační sazba v případě změny velikosti úložiště
 
@@ -55,7 +70,7 @@ Kapacita úložiště se účtuje v jednotkách, které mají maximální hodino
 
 Za každou hodinu existence kontejneru nebo databáze se účtuje paušální sazba, bez ohledu na využití nebo na to, jestli je kontejner nebo databáze aktivní kratší dobu než hodinu. Pokud třeba vytvoříte kontejner nebo databázi a za 5 minut ji odstraníte, bude vaše faktura obsahovat jednu hodinu.
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>Fakturační sazba v případě, že se propustnost na kontejneru nebo databázi zvětší nahoru/dolů
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>Fakturační sazba, při které se zřízená propustnost na kontejneru nebo databáze škáluje nahoru/dolů
 
 Pokud zvýšíte zřízenou propustnost v 9:30.400 RU/s na 1 000 RU/s a pak nižší zřízenou propustnost při 10:45 až do 400 RU/s, bude se vám účtovat dvě hodiny od 1 000 RU/s. 
 
@@ -75,7 +90,7 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Příklad vyhrazené faktury za propustnost":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>Příklad fakturace: kontejnery se sdíleným režimem propustnosti
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>Příklad fakturace: kontejnery se sdíleným (zřízeným) režimem propustnosti
 
 * Pokud vytvoříte účet Azure Cosmos ve službě Východní USA 2 se dvěma databázemi Azure Cosmos (se sadou kontejnerů, které sdílí propustnost na úrovni databáze) se stanovenou propustností 50-K RU/s a 70-K RU/s, v uvedeném pořadí byste měli celkovou zřízenou propustnost 120 KB/s.  
 
@@ -97,7 +112,7 @@ Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého
 
 Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se vytvoří s propustností 10 000 RU/s a do tohoto měsíce uložíte 1 TB dat. Řekněme, že do svého účtu Azure Cosmos přidáte tři oblasti (Východní USA, Severní Evropa a Východní Asie), každé se stejným úložištěm a propustností. Vaše celková měsíční faktura bude (za za měsíc 30 dní). Vaše vyúčtování bude vypadat takto: 
 
-|**Položka** |**Využití (měsíc)** |**Sazba** |**Měsíční náklady** |
+|**Položka** |**Využití (měsíc)** |**Rychlost** |**Měsíční náklady** |
 |---------|---------|---------|-------|
 |Faktura za propustnost pro kontejner v Západní USA      | 10 000 RU/s * 24 * 30    |$0,008 za 100 RU/s za hodinu   |$576|
 |Faktura za propustnost pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie       | 3 × 10 000 RU/s * 24 * 30    |$0,008 za 100 RU/s za hodinu  |$1 728|
@@ -111,7 +126,7 @@ Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se
 
 Řekněme, že v Západní USA vytvoříte kontejner Azure Cosmos. Kontejner se vytvoří s propustností 10 000 RU/s a do tohoto měsíce uložíte 1 TB dat. Předpokládejme, že přidáte tři oblasti (Východní USA, Severní Evropa a Východní Asie), každou se stejným úložištěm a propustností a chcete mít možnost zapisovat do kontejnerů ve všech oblastech přidružených k vašemu účtu Azure Cosmos. Vaše celková měsíční faktura bude (za 30 dní za měsíc), a to takto:
 
-|**Položka** |**Využití (měsíc)**|**Sazba** |**Měsíční náklady** |
+|**Položka** |**Využití (měsíc)**|**Rychlost** |**Měsíční náklady** |
 |---------|---------|---------|-------|
 |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)       | 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu    |$1 152 |
 |Faktura za propustnost pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie (všechny oblasti jsou zapisovatelné)        | (3 + 1) × 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu   |$4 608 |
@@ -247,7 +262,7 @@ Podívejme se na jiný příklad, kde chcete proaktivně odhadnout fakturu před
 |Typ operace| Počet požadavků za sekundu| Průměrný RU/žádost| Požadováno ru|
 |----|----|----|----|
 |Zápis| 100 | 5 | 500|
-|Čtení| 400| 1| 400|
+|Číst| 400| 1| 400|
 
 Celkem RU/s: 500 + 400 = 900 hodinových nákladů: 900/100 * $0,008 = $0,072 očekávané měsíční náklady na propustnost (předpokládá se 31 dní): $0,072 * 24 * 31 = $53,57
 
@@ -267,10 +282,10 @@ Azure Cosmos DB Rezervovaná kapacita vám umožní koupit zřízenou propustnos
 
 Celkový počet faktur (bez rezervované kapacity) by byl (za 30 dní nebo 720 hodin): 
 
-|**Věřitel**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
+|**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|USA – východ|$0,008 |50 K|$4|$2 880 |
-|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
+|East US|$0,008 |50 K|$4|$2 880 |
+|Japan East|$0,009 |50 K| $4,50 |$3 240 |
 |Celkem|||$8,50|$6 120 |
 
 Pojďme si vzít v úvahu, že jste místo toho koupili rezervovanou kapacitu. Rezervovanou kapacitu můžete zakoupit 100 – K RU/s za cenu $56 064 po dobu jednoho roku (s 20% slevou) nebo $6,40 za hodinu. Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)na ceny rezervovaných kapacit.  
@@ -281,10 +296,10 @@ Pojďme si vzít v úvahu, že jste místo toho koupili rezervovanou kapacitu. R
 
 Z toho, co jste efektivně koupili, je kredit $8 za hodinu, za 100 K RU/s pomocí ceníkové ceny v Východní USA za cenu $6,40 za hodinu. Pak můžete vykreslit z této předem placené rezervace propustnosti na každou hodinu v rámci zřízené kapacity propustnosti v libovolné globální oblasti Azure na základě příslušné regionální ceny v seznamu pro vaše předplatné. V tomto příkladu, kdy zřizujete 50 K RU/s, každé v Východní USA a Japonsko – východ, budete moci vykreslit $8,00 na míru zřízené propustnosti za hodinu a bude se vám účtovat překročení limitu $0,50 za hodinu (nebo $360 za měsíc). 
 
-|**Věřitel**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
+|**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|USA – východ|$0,008 |50 K|$4|$2 880 |
-|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
+|East US|$0,008 |50 K|$4|$2 880 |
+|Japan East|$0,009 |50 K| $4,50 |$3 240 |
 |||Průběžné platby|$8,50|$6120|
 |Zakoupená Rezervovaná kapacita|$0,0064 (20% sleva) |předem zakoupená kapacita 100 RU/s nebo $8 |-$8|-$5 760 |
 |Čistý účet|||$0,50 |$360 |

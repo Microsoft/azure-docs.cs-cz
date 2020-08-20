@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258612"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607136"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -91,11 +91,11 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Funkce Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Windows Defender (antimalware Microsoftu)| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | No | Ano |
-| McAfee v10+ | Řada Windows Serverů  | No | Ano |
+| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Yes |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Yes |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Yes |
+| Symantec v12.1.1100+| Řada Windows Serverů  | No | Yes |
+| McAfee v10+ | Řada Windows Serverů  | No | Yes |
 | McAfee v10+ | Řada Linux serverů  | No | Ano **\*** |
 | Sophos v9 +| Řada Linux serverů  | No | Ano  **\***  |
 

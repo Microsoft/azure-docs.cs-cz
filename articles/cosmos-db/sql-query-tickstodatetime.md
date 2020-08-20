@@ -1,32 +1,38 @@
 ---
-title: GetCurrentDateTime v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o GetCurrentDateTime funkcí SQL systému v Azure Cosmos DB.
-author: ginamr
+title: TicksToDateTime v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o TicksToDateTime funkcí SQL systému v Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.author: girobins
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.openlocfilehash: 89a8dba97725049b86fc6b38c09e0dd125bb48d1
 ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606957"
+ms.locfileid: "88608735"
 ---
-# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+# <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 
-Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
+Převede zadanou hodnotu osové hodnoty na DateTime.
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
   
 ```sql
-GetCurrentDateTime ()
+TicksToDateTime (<Ticks>)
 ```
 
+## <a name="arguments"></a>Argumenty
+
+*Ticks*  
+
+Podepsaná číselná hodnota: aktuální počet taktů 100 nanosekund, které uplynuly od epocha systému UNIX. Jinými slovy je to počet taktů 100 nanosekund, které uplynuly od 00:00:00 čtvrtka, 1. ledna 1970.
+
 ## <a name="return-types"></a>Návratové typy
-  
-  Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
+
+Vrátí hodnotu řetězce data UTC a Time ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
   |Formát|Popis|
   |-|-|
@@ -44,24 +50,22 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Poznámky
 
-GetCurrentDateTime () je nedeterministické funkce. Vrácený výsledek je UTC. Přesnost je 7 číslic a přesnost 100 nanosekund.
-
-Tato systémová funkce nebude index využívat.
+TicksToDateTime se vrátí `undefined` , pokud je zadaná hodnota taktu neplatná.
 
 ## <a name="examples"></a>Příklady
   
-Následující příklad ukazuje, jak získat aktuální datum a čas UTC pomocí předdefinované funkce GetCurrentDateTime ().
-  
+Následující příklad převede osové značky na typ DateTime:
+
 ```sql
-SELECT GetCurrentDateTime() AS currentUtcDateTime
-```  
-  
- Tady je příklad sady výsledků dotazu.
-  
+SELECT TicksToDateTime(15943368134575530) AS DateTime
+```
+
 ```json
-[{
-  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
-}]  
+[
+    {
+        "DateTime": "2020-07-09T23:20:13.4575530Z"
+    }
+]
 ```  
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082797"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607491"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
-Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím [komerčního webového prodejní místau](comparing-appsource-azure-marketplace.md)na webu Marketplace můžete také prodávat prostřednictvím programu CSP a oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
+Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím služby [komerčního obchodu na webu Marketplace](comparing-appsource-azure-marketplace.md)můžete také provést prodej prostřednictvím programu CSP, abyste mohli oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
 
 Můžete nakonfigurovat nové nebo existující nabídky k dostupnosti v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
 
@@ -166,7 +166,7 @@ Pokud je vaše nabídka v současné době **možnost 3: žádní partneři v pr
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Sdílení materiálů pro prodej a podporu s partnery v programu CSP
 
-Aby mohli partneři v programu Cloud Solution Provider efektivně představovat vaši nabídku a zapojit se do vaší organizace, musíte odeslat prodejní a podpůrné materiály, které budou k dispozici pro prodejce. Tyto prostředky nebudou zveřejněny zákazníkům v prodejní místa na webu Marketplace.
+Aby mohli partneři v programu Cloud Solution Provider efektivně představovat vaši nabídku a zapojit se do vaší organizace, musíte odeslat prodejní a podpůrné materiály, které budou k dispozici pro prodejce. Tyto prostředky nebudou zveřejněny zákazníkům v online obchodech.
 
 ### <a name="partner-center-csp-channel"></a>Kanál CSP pro partnerské Centrum
 

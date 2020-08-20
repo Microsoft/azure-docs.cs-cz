@@ -6,27 +6,28 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120572"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606502"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojte se se spravovanou identitou pro Azure Database for MySQL
+# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojení ke službě Azure Database for MySQL s využitím spravované identity
 
-V tomto článku se dozvíte, jak použít uživatelem přiřazenou identitu pro virtuální počítač Azure pro přístup k serveru Azure Database for MySQL. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
+V tomto článku se dozvíte, jak použít uživatelem přiřazenou identitu pro virtuální počítač Azure pro přístup k serveru Azure Database for MySQL. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
 
-> [!div class="checklist"]
-> * Udělení přístupu k serveru Azure Database for MySQL k VIRTUÁLNÍmu počítači
-> * Vytvoření uživatele v databázi, který reprezentuje identitu virtuálního počítače přiřazenou uživatelem
-> * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for MySQL
-> * Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
+Získáte informace o těchto tématech:
+
+- Udělení přístupu k serveru Azure Database for MySQL k VIRTUÁLNÍmu počítači
+- Vytvoření uživatele v databázi, který reprezentuje identitu virtuálního počítače přiřazenou uživatelem
+- Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for MySQL
+- Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
 
 > [!IMPORTANT]
 > Připojení ke spravované identitě je dostupné jenom pro MySQL 5,7 a novější.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
@@ -83,7 +84,7 @@ Toto Načtení tokenu se provádí provedením požadavku HTTP `http://169.254.1
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(které jste získali dříve)
+* `client_id` = `CLIENT_ID` (které jste získali dříve)
 
 Vrátíte výsledek JSON, který obsahuje `access_token` pole – tato dlouhá textová hodnota je přístupový token spravované identity, který byste měli použít jako heslo při připojování k databázi.
 

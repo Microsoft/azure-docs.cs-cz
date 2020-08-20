@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: Řešení potíží s vyhodnocením a vizualizací závislostí
       href: troubleshoot-assessment.md
+    - name: Řešení potíží s replikací při migraci VMware bez agenta
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: Zdroje a prostředky
   items:
     - name: Migrace v architektuře přechodu na cloud

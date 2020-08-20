@@ -19,6 +19,8 @@
       href: cognitive-services-apis-create-account.md
     - name: Vytvoření nového prostředku pomocí Azure CLI
       href: cognitive-services-apis-create-account-cli.md
+    - name: Vytvoření nového prostředku pomocí klientské knihovny
+      href: cognitive-services-apis-create-account-client-library.md
     - name: Vytvoření nového prostředku pomocí šablony ARM
       displayName: Resource Manager
       href: resource-manager-template.md

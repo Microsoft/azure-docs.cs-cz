@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323260"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607421"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrujte svůj výpis na komerčním trhu s Azure Active Directory
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323260"
 
 ## <a name="azure-ad-benefits"></a>Výhody Azure AD
 
-Zákazníci, kteří Microsoft AppSource a Azure Marketplace, používají prostředí v produktu k hledání katalogů výpisů prezentace. Tyto akce vyžadují, aby se zákazníci přihlásili k produktu. Integrace Azure AD přináší následující výhody:
+Zákazníci Microsoft AppSource a Azure Marketplace používají prostředí v produktu k hledání katalogů seznamů Online Storu. Tyto akce vyžadují, aby se zákazníci přihlásili k produktu. Integrace Azure AD přináší následující výhody:
 
 - Rychlejší zapojení a optimalizované prostředí pro zákazníky
 - Jednotné přihlašování (SSO) pro miliony podnikových uživatelů
@@ -33,12 +33,12 @@ Různé možnosti výpisu komerčního tržiště [a typy nabídek](determine-yo
 
 | Typ nabídky    | Služba Azure AD SSO vyžaduje, aby mě kontaktovala?  | Vyžaduje se jednotné přihlašování Azure AD pro zkušební verzi? | Vyžaduje se jednotné přihlašování Azure AD pro testovací jednotku?  | Pro Transact se vyžaduje jednotné přihlašování Azure AD. |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Virtuální počítač | – | Ne | Ne | Ne |
-| Aplikace Azure (šablona řešení)  | – | – | – | – |
-| Spravované aplikace  | – | – | – | Ne |
-| SaaS  | Ne | Ano | Ano | Ano |
-| Containers  | – | – | – | Ne |
-| Konzultační služby  | Ne | – | – | – |
+| Virtuální počítač | – | No | No | No |
+| Aplikace Azure (šablona řešení)  | N/A | N/A | N/A | N/A |
+| Spravované aplikace  | N/A | N/A | N/A | No |
+| SaaS  | No | Yes | Yes | Yes |
+| Containers  | N/A | N/A | N/A | No |
+| Konzultační služby  | No | N/A | N/A | N/A |
 
 Další informace o technických požadavcích SaaS najdete v tématu [Azure AD a SaaS nabídky v obchodě na komerčním webu Marketplace](./azure-ad-saas.md).
 
@@ -56,8 +56,8 @@ Při ověřování Azure AD pošle token vaší aplikaci nebo nabídce. Informac
 
 Když použijete Azure AD k povolení ověřování jedním kliknutím ve vaší aplikaci nebo v seznamu zkušebních verzí, můžete:
 
-- Zjednodušte si prostředí pro zákazníky z webu Marketplace až po výpis vaší zkušební verze.
-- Udržujte si dojem prostředí v produktu i v případě, že je uživatel přesměrován z webu Marketplace do vaší domény nebo zkušebního prostředí.
+- Zjednodušte si prostředí pro zákazníky z komerčního tržiště až po výpis vaší zkušební verze.
+- Udržujte si dojem o prostředí v produktu i v případě, že je uživatel přesměrován z komerčního tržiště do vaší domény nebo zkušebního prostředí.
 - Snižte pravděpodobnost zrušení při přesměrování uživatelů, protože nejsou k dispozici žádné další kroky pro přihlášení.
 - Snižte překážky nasazení pro velké populace uživatelů Azure AD.
 
@@ -67,12 +67,12 @@ Když použijete Azure AD k povolení ověřování jedním kliknutím ve vaší
 
 Pomocí Azure AD můžete podporovat tyto akce:
 
-- Zaregistrujte svou aplikaci v některém z prodejní místa na webu Marketplace. Další informace najdete v zobrazení [Registrace aplikace](../active-directory/develop/quickstart-register-app.md) nebo [certifikace AppSource](../active-directory/azuread-dev/howto-get-appsource-certified.md) .
+- Zaregistrujte svou aplikaci v jednom z komerčních obchodů online pro obchod Marketplace. Další informace najdete v zobrazení [Registrace aplikace](../active-directory/develop/quickstart-register-app.md) nebo [certifikace AppSource](../active-directory/azuread-dev/howto-get-appsource-certified.md) .
 - Povolení funkce podpory víceklientské architektury ve službě Azure AD pro získání zkušebního prostředí jedním kliknutím.
 
 Pokud s použitím federovaného jednotného přihlašování Azure AD začínáte, proveďte tyto kroky:
 
-1. Zaregistrujte svou aplikaci na webu Marketplace.
+1. Zaregistrujte svou aplikaci na komerčním webu Marketplace.
 1. K vývoji jednotného přihlašování pomocí Azure AD použijte [OAuth 2,0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) nebo [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md).
 1. Povolení funkce podpory víceklientské architektury ve službě Azure AD za účelem poskytování zkušebního prostředí jedním kliknutím.
 
@@ -89,7 +89,7 @@ Pomocí Azure AD můžete podporovat jednu z následujících akcí:
 
 Pokud jste to ještě neudělali, 
 
-- [Seznamte](https://azuremarketplace.microsoft.com/sell) se s Marketplace.
+- [Přečtěte si](https://azuremarketplace.microsoft.com/sell) o komerčním tržišti.
 
 Pokud se chcete zaregistrovat v partnerském centru, začněte vytvářet novou nabídku nebo pracovat na stávajícím:
 

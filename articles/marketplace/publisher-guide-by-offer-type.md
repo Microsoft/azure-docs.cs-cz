@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119714"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607256"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -22,7 +22,7 @@ Předtím, než budete moci vytvořit nabídku, a poté, co se [rozhodnete pro m
 
 Jeden typ nabídky se dá nakonfigurovat různými způsoby, aby se povolily různé možnosti publikování, volání, zřizování nebo ceny. Možnost publikování a konfigurace typu nabídky také odpovídají nárokům na nabídku a technické požadavky.
 
-Před vytvořením vaší nabídky si nezapomeňte projít požadavky na nárok na prezentace a typ nabídky a technické požadavky na publikování.
+Před vytvořením vaší nabídky si přečtěte požadavky na online obchod a typ nabídky a požadavky na technickou podporu publikování.
 
 ## <a name="list-of-offer-types"></a>Seznam typů nabídek
 
@@ -45,4 +45,4 @@ Informace o požadavcích jednotného přihlašování pomocí výpisu možnost�
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete dokončit výběr a konfiguraci vaší nabídky, Projděte si požadavky na způsobilost v příslušném článku pro váš typ nabídky (následující části).
-- Prohlédněte si vzory publikování podle prezentace, kde najdete příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
+- Seznamte se se vzorem publikování podle online obchodu s příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.

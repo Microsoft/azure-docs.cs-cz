@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498017"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607382"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -32,7 +32,7 @@ Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud 
 
 U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy komerčního tržiště, můžete pro každou úroveň odemknout větší výhody.
 
-Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu prostřednictvím komerčního tržiště jako platformy.
+Minimální požadavek na publikování v online obchodech je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu prostřednictvím komerčního tržiště jako platformy.
 
 Získáte podporu při porozumění dostupným prostředkům a při implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
@@ -87,7 +87,7 @@ Všem partnerům, kteří mají živou nabídku, se dostanou pracovat s vyhrazen
 
 ![Technické výhody](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2021.
+\* Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2021.
 
 Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 

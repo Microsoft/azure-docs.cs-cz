@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě VPN Gateway
+    - name: Co je VPN Gateway?
       href: vpn-gateway-about-vpngateways.md
 - name: Kurzy
   items:

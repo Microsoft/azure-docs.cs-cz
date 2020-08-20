@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770947"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607108"
 ---
-# <a name="expressroute-overview"></a>Přehled ExpressRoute
+# <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navazovat připojení ke cloudovým službám Microsoftu, jako je Microsoft Azure nebo Office 365.
 
 Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To umožňuje připojením ExpressRoute nabídnout spolehlivější, rychlejší rychlost, konzistentní latenci a vyšší zabezpečení než typická připojení přes Internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
@@ -36,7 +36,7 @@ Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](ex
 ## <a name="features"></a>Funkce
 
 ### <a name="layer-3-connectivity"></a>Připojení vrstvy 3
-Microsoft používá standardní protokol dynamického směrování BGP k výměně tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. Navážeme několik relací protokolu BGP s vaší sítí pro různé profily přenosu. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
+Microsoft používá standardní protokol dynamického směrování BGP k výměně tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. S vaší sítí navážeme u různých profilů přenosu několik relací protokolu BGP. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 
 ### <a name="redundancy"></a>Redundance
 Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (směrovači msee) na [umístění ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) od poskytovatele připojení nebo z hraniční sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
@@ -64,7 +64,7 @@ Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v A
 Náklady na data můžete efektivně přenášet tím, že povolíte [místní SKU](expressroute-faqs.md) , pokud můžete data přenést do umístění ExpressRoute poblíž požadované oblasti Azure. V případě místního přenosu dat se do ExpressRoute portu zařadí poplatky za přenos dat. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Propojení místních lokalit pomocí ExpressRoute Global Reach
-Můžete povolit ExpressRoute Global Reach pro výměnu dat mezi místními lokalitami díky propojení okruhů ExpressRoute. Pokud třeba máte soukromé datacentrum v Kalifornii připojené k ExpressRoute v Silicon Valley a jiné soukromé datacentrum v Texasu připojené k ExpressRoute v Dallasu, pomocí ExpressRoute Global Reach můžete svá soukromá datacentra propojit prostřednictvím dvou okruhů ExpressRoute. Provoz mezi datacentry bude procházet přes síť Microsoftu.
+Službě ExpressRoute Global Reach můžete umožnit výměnu dat mezi místními lokalitami propojením okruhů ExpressRoute. Pokud třeba máte soukromé datacentrum v Kalifornii připojené k ExpressRoute v Silicon Valley a jiné soukromé datacentrum v Texasu připojené k ExpressRoute v Dallasu, pomocí ExpressRoute Global Reach můžete svá soukromá datacentra propojit prostřednictvím dvou okruhů ExpressRoute. Provoz mezi datacentry bude procházet přes síť Microsoftu.
 
 Další informace najdete v článku [ExpressRoute Global Reach](expressroute-global-reach.md).
 ### <a name="rich-connectivity-partner-ecosystem"></a>Bohatý ekosystém partnerů připojení

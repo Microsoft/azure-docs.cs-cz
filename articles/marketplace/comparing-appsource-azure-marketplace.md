@@ -1,32 +1,32 @@
 ---
 title: Porovnávání Microsoft AppSource a Azure Marketplace
-description: Tento článek vysvětluje rozdíly mezi Microsoft Commercial Marketplace prodejní místa-Microsoft AppSource a Azure Marketplace.
+description: Tento článek vysvětluje rozdíly mezi internetovými obchody Microsoft Marketplace online – Microsoft AppSource a Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121805"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607461"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Porovnávání Microsoft AppSource a Azure Marketplace
 
-Microsoft Commercial Marketplace zahrnuje [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Každý prezentace slouží jako jedinečné požadavky zákazníků a různé cílové skupiny, takže se můžete ujistit, že je vaše řešení nebo služba k dispozici pro správné zákazníky.
+Microsoft Commercial Marketplace zahrnuje [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Každý online obchod slouží jako jedinečné požadavky zákazníků a různé cílové skupiny, takže se můžete ujistit, že je vaše řešení nebo služba k dispozici pro správné zákazníky.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Princip rozdílů mezi prodejní místa
+## <a name="understanding-the-differences-between-online-stores"></a>Princip rozdílů mezi online obchody
 
-Pokud chcete zvolit prezentace, nejdřív identifikujte cílovou skupinu pro vaši nabídku. Pokud cílíte na cílové skupiny ve více prodejní místa, můžete je publikovat ve více prodejní místa.
+Chcete-li zvolit online obchod, nejprve identifikujte cílovou skupinu pro vaši nabídku. Pokud cílíte na cílové skupiny ve více online obchodech, můžete je publikovat v různých obchodech.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
 | IT specialisté a vývojáři | Obchodní uživatelé a tvůrci podnikových rozhodnutí |
 
-Následující tabulka popisuje výhody použití prezentace:
+V následující tabulce jsou popsány výhody použití online obchodu:
 
 | Výhody | Azure Marketplace | AppSource |
 |:--- |:--- | :--- |

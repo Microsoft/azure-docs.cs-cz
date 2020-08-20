@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797861"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607455"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -22,7 +22,7 @@ Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydav
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi těmito dvěma prodejní místa naleznete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
+Online obchody, Microsoft AppSource a Azure Marketplace na webu Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý online obchod má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi dvěma online obchody najdete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 
@@ -34,7 +34,7 @@ Konzultační služby a nabídky spravovaných služeb, které jsou založené n
 > Konzultační služby v AppSource by se měly soustředit na nabídky pro uživatele, kteří mají zkušenosti s poskytováním kvalitních řešení pro Dynamics 365, Power BI nebo Power Apps.
  
 > [!TIP]
-> Pokud chcete publikovat Azure Marketplace prezentace, v rozevíracím seznamu **primární produkt** partnerského centra vyberte **Azure**.
+> Pokud chcete publikovat na Azure Marketplace, v rozevíracím seznamu **primární produkt** partnerského centra vyberte **Azure**.
 >
 > Pokud chcete publikovat na AppSource, vyberte v rozevíracím seznamu **primární produkt** partnerského centra možnost **Dynamics 365**, **Power BI**nebo **Power Apps**.
 
@@ -58,7 +58,7 @@ V případě AppSource jsou způsobilé kompetence uvedené v následující tab
 | Dynamics 365 Sales<br>Dynamics 365 marketing<br>Zákaznická služba Dynamics 365<br>Služba pole Dynamics 365<br>Lidské zdroje pro Dynamics 365 |   V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost zapojení zákazníka musí být certifikováno Gold nebo stříbrné.    | 
 | Dynamics 365 – finance<br>Správa dodavatelských řetězců Dynamics 365<br>Dynamics 365 – obchod<br>Lidské zdroje pro Dynamics 365<br>Automatizace služby projektu Dynamics 365 |  V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost sjednocení operací musí být certifikováno Gold nebo stříbrné.       |
 | Dynamics 365 Customer Insights | Musí mít alespoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/)s aspoň pěti mírami a pěti segmenty. |
-| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>– nebo – <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>nebo <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
 | Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
 |Power Apps | Musí mít nárok na pokročilé výhody v [programu Power Apps pro partnerství](https://aka.ms/PowerAppsPartner) (PDF). |
 ||
@@ -86,12 +86,12 @@ Partneři se systémovým integrátorem mohou odesílat konzultační nabídky n
 Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
-Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi.
+Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi. 
 
 |Nastavení pro nové vydavatele  |
 |---------|
 |ID MPN     |
-|Loga společnosti: 48 x 48 pixelů (volitelné), 216 x 216 pixelů – 350 x 350 pixelů (povinné)  |
+|Loga společnosti (48 x 48, 216 × 216 pixelů)     |
 |Cíl zájemce     |
 ||
 
@@ -150,7 +150,7 @@ Příklady:
 
 Jakmile tým přezkoumání obsahu zkontroluje popisy vaší nabídky a nabídne souhrny, uplatní následující kritéria:
 
-|Typ nabídky  |Povinné |Doporučeno  |
+|Typ nabídky  |Vyžadováno |Doporučeno  |
 |---------|---------|---------|
 |**Posouzení**    |   Zahrňte podrobný agendu pro posouzení na více dní nebo více týdnů a vyjadřují, co může zákazník očekávat.      |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
 |**Briefingu**    |   Vyjadřují, co může zákazník očekávat. Pamatujte si, že je třeba poskytnout *přehlednou* osobu. Pokud poskytujete virtuální službu, vyberte jiný typ nabídky.    |  Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.       |

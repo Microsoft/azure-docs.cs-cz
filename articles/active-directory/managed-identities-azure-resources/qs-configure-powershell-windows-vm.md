@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 08/19/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56a5d8607ac2472ba4ef4bdb090468691c93de6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 474e6c96be810192d3c4e1ada1ab2e0391a5d4f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505000"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606485"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
 
@@ -32,7 +32,7 @@ V tomto článku se naučíte, jak provádět následující spravované identit
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -48,10 +48,10 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače").
 
-    Až se dostanete do části Vytvoření virtuálního počítače, udělejte nepatrnou úpravu syntaxe rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Nezapomeňte přidat `-AssignIdentity:$SystemAssigned` parametr pro zřízení virtuálního počítače s povolenou identitou přiřazenou systémem, například:
+    Až se dostanete do části Vytvoření virtuálního počítače, udělejte nepatrnou úpravu syntaxe rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Nezapomeňte přidat `-IdentityType SystemAssigned` parametr pro zřízení virtuálního počítače s povolenou identitou přiřazenou systémem, například:
 
     ```powershell
-    $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
+    $vmConfig = New-AzVMConfig -VMName myVM -IdentityType SystemAssigned ...
     ```
 
    - [Virtuální počítač s Windows s využitím PowerShellu](../../virtual-machines/windows/quick-create-powershell.md)
@@ -69,11 +69,11 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    Connect-AzAccount
    ```
 
-2. Nejdřív načtěte vlastnosti virtuálního počítače pomocí `Get-AzVM` rutiny. Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte `-AssignIdentity` přepínač v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) :
+2. Nejdřív načtěte vlastnosti virtuálního počítače pomocí `Get-AzVM` rutiny. Pokud chcete povolit spravovanou identitu přiřazenou systémem, použijte `-IdentityType` přepínač v rutině [Update-AzVM](/powershell/module/az.compute/update-azvm) :
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
+   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType SystemAssigned
    ```
 
 

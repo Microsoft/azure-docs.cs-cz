@@ -6,17 +6,22 @@ ms.author: sngun
 ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/02/2020
-ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112697"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606853"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a Správa nákladů na Azure Cosmos DB
 
-Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Cosmos DB. Nejprve pomocí kalkulačky Azure Cosmos DB kapacity pomůžete plánovat náklady před přidáním prostředků. V dalším kroku můžete při přidávání prostředků Azure zkontrolovat odhadované náklady. Po zahájení práce s prostředky Azure Cosmos DB použijte funkce pro správu nákladů a nastavte rozpočty a sledujte náklady. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat.
+Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Cosmos DB:
+
+- Odhad toho, co budou vaše náklady před vytvořením jakýchkoli prostředků
+- Projděte si odhadované náklady při zahájení používání prostředků.
+- Použití funkcí pro správu nákladů k nastavení rozpočtů a sledování nákladů
+- Projděte si předpovědi předpokládaných nákladů a Identifikujte trendy útraty, které odhalí oblasti, kde byste mohli chtít působit.
 
 Pochopení, že náklady na Azure Cosmos DB jsou jenom částí měsíčních nákladů na faktuře Azure. Pokud používáte další služby Azure, účtuje se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran. Tento článek vysvětluje, jak naplánovat a spravovat náklady na Azure Cosmos DB. Až budete obeznámeni se správou nákladů na Azure Cosmos DB, můžete použít podobné metody pro správu nákladů na všechny služby Azure používané ve vašem předplatném.
 
@@ -24,30 +29,55 @@ Pochopení, že náklady na Azure Cosmos DB jsou jenom částí měsíčních n�
 
 Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md).
 
-## <a name="review-estimated-costs-with-capacity-calculator"></a>Kontrola odhadovaných nákladů pomocí kalkulačky kapacity
+## <a name="provisioned-throughput-or-serverless"></a>Zřízená propustnost nebo bez serveru
 
-Pomocí [kalkulačky Azure Cosmos DB kapacity](https://cosmos.azure.com/capacitycalculator/) můžete odhadnout náklady ještě před vytvořením prostředků v účtu Azure Cosmos. Kalkulačka kapacity slouží k získání odhadu požadované propustnosti a nákladů na vaše zatížení. Konfigurace databází a kontejnerů Azure Cosmos s využitím správného množství zřízené propustnosti nebo [jednotek žádostí (ru/s)](request-units.md)pro vaše zatížení je základem pro optimalizaci nákladů a výkonu. Musíte zadat podrobnosti, jako je typ rozhraní API, počet oblastí, velikost položky, počet žádostí o čtení a zápis za sekundu, celkovou data uložená k získání odhadu nákladů. Další informace o kalkulačkě kapacity najdete v článku [odhad](estimate-ru-with-capacity-planner.md) .
+Azure Cosmos DB podporuje dva typy režimů kapacity: [zřízená propustnost](set-throughput.md) a bez [serveru](serverless.md). Způsob, jakým se vám budou účtovat poplatky za Azure Cosmos DB, se mezi těmito dvěma režimy liší, takže je důležité zvolit ten, který pro vaše zatížení funguje nejlépe. Pokyny a doporučení k tomu, jak vybrat, najdete v článku [Jak zvolit mezi zřízenou propustností a bez serveru](throughput-serverless.md) .
+
+## <a name="estimating-provisioned-throughput-costs-with-capacity-calculator"></a>Odhad nákladů na zajištěné propustnosti pomocí kalkulačky kapacity
+
+Pokud plánujete používat Azure Cosmos DB v režimu zřízené propustnosti, můžete pomocí [kalkulačky Azure Cosmos DB Capacity](https://cosmos.azure.com/capacitycalculator/) odhadnout náklady ještě před vytvořením prostředků v účtu Azure Cosmos. Kalkulačka kapacity slouží k získání odhadu požadované propustnosti a nákladů na vaše zatížení. Konfigurace databází a kontejnerů Azure Cosmos s využitím správného množství zřízené propustnosti nebo [jednotek žádostí (ru/s)](request-units.md)pro vaše zatížení je základem pro optimalizaci nákladů a výkonu. Musíte zadat podrobnosti, jako je typ rozhraní API, počet oblastí, velikost položky, počet žádostí o čtení a zápis za sekundu, celkovou data uložená k získání odhadu nákladů. Další informace o kalkulačkě kapacity najdete v článku [odhad](estimate-ru-with-capacity-planner.md) .
 
 Následující snímek obrazovky ukazuje odhad propustnosti a nákladů pomocí kalkulačky kapacity:
 
 :::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Odhad nákladů v programu Kalkulačka kapacity Azure Cosmos DB":::
 
+## <a name="estimating-serverless-costs"></a>Odhad nákladů bez serveru
+
+Pokud plánujete používat Azure Cosmos DB v režimu bez serveru, musíte odhadnout, kolik [jednotek požadavků](request-units.md) a GB úložiště můžete využívat měsíčně. Vyhodnocením počtu databázových operací, které by se vystavily v měsíci, můžete odhadnout požadované množství jednotek žádostí a vynásobit jejich množství odpovídajícími náklady na RU. V následující tabulce jsou uvedeny odhadované poplatky za RU za běžné databázové operace:
+
+| Operace | Odhadované náklady | Poznámky |
+| --- | --- | --- |
+| Vytvořit položku | 5 ru | Průměrné náklady na položku 1 KB s méně než 5 vlastnostmi pro index |
+| Aktualizace položky | 10 RU | Průměrné náklady na položku 1 KB s méně než 5 vlastnostmi pro index |
+| Číst jednotlivou položku podle jejího ID a klíče oddílu (bod-čtení) | 1 RU | Průměrné náklady za položku v 1 KB |
+| Odstranění položky | 5 ru | |
+| Spustit dotaz | 10 RU | Průměrné náklady na dotaz, který plně využívá [indexování](index-overview.md) a vrací 100 výsledků nebo méně |
+
+> [!IMPORTANT] 
+> Věnujte pozornost komentářům z výše uvedené tabulky. Pro přesnější odhad skutečných nákladů na vaše operace můžete použít [emulátor Azure Cosmos](local-emulator.md) a [měřit přesné náklady na ru za vaše operace](find-request-unit-charge.md). I když emulátor Azure Cosmos nepodporuje bez serveru, oznamuje za databázové operace Standard RU a dá se použít pro tento odhad.
+
+Po vypočítání celkového počtu jednotek žádostí a GB úložiště, které budete pravděpodobně spotřebovávat za měsíc, vrátí následující vzorec odhad nákladů: **([počet jednotek žádosti]/1 000 000 × $0,25) + ([GB úložiště] * $0,25)**.
+
+> [!NOTE]
+> Náklady zobrazené v předchozím příkladu jsou pouze pro demonstrační účely. Nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>Kontrola odhadovaných nákladů z Azure Portal
 
-Při vytváření Azure Cosmos DBch prostředků z Azure Portal můžete zobrazit odhadované náklady. Odhad nákladů můžete zkontrolovat pomocí následujících kroků:
+Při zahájení používání prostředků Azure Cosmos DB z Azure Portal můžete zobrazit odhadované náklady. Odhad nákladů můžete zkontrolovat pomocí následujících kroků:
 
 1. Přihlaste se k Azure Portal a přejděte k účtu Azure Cosmos.
-1. Přejít na **Průzkumník dat**.
+1. Přejít na oddíl **Přehled** .
+1. Podívejte se na **nákladový** graf v dolní části. Tento graf znázorňuje odhad vašich aktuálních nákladů v rámci konfigurovatelného časového období:
 1. Vytvořte nový kontejner, jako je například kontejner grafu.
 1. Zadejte propustnost požadovanou pro vaše zatížení, například 400 RU/s. Po zadání hodnoty propustnosti uvidíte odhad ceny, jak je znázorněno na následujícím snímku obrazovky:
 
    :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Odhad nákladů v Azure Portal":::
 
-Pokud má vaše předplatné Azure limit útraty, Azure vám zabrání v útratě za vaši kreditní částku. Při vytváření a používání prostředků Azure se vaše kredity používají. Po dosažení limitu kreditu budou prostředky, které jste nasadili, zakázané pro zbytek tohoto fakturačního období. Limit kreditu nemůžete změnit, ale můžete ho odebrat. Další informace o limitech útraty najdete v tématu [limit útraty Azure](../billing/billing-spending-limit.md).
-
 ## <a name="use-budgets-and-cost-alerts"></a>Použití rozpočtů a upozornění na náklady
 
 Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-management/tutorial-acm-create-budgets.md) a nastavit upozornění, která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. Můžou ale mít omezené funkce pro správu jednotlivých nákladů na služby Azure, jako jsou náklady na Azure Cosmos DB, protože jsou navržené tak, aby sledovaly náklady na vyšší úrovni.
+
+Pokud má vaše předplatné Azure limit útraty, Azure vám zabrání v útratě za vaši kreditní částku. Při vytváření a používání prostředků Azure se vaše kredity používají. Po dosažení limitu kreditu budou prostředky, které jste nasadili, zakázané pro zbytek tohoto fakturačního období. Limit kreditu nemůžete změnit, ale můžete ho odebrat. Další informace o limitech útraty najdete v tématu [limit útraty Azure](../billing/billing-spending-limit.md).
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 
@@ -55,7 +85,7 @@ Při používání prostředků s Azure Cosmos DB se účtují náklady. Náklad
 
 Při použití analýzy nákladů můžete zobrazit Azure Cosmos DB náklady v grafech a tabulkách v různých časových intervalech. Některé příklady jsou podle dne, aktuálního, předchozího měsíce a roku. Můžete také zobrazit náklady na rozpočty a předpokládané náklady. Přepínáním na delší zobrazení v průběhu času vám může pomáhat identifikovat trendy útraty a zjistit, kde došlo k nadměrnému útratě. Pokud jste vytvořili rozpočty, můžete také snadno zjistit, kde byly překročeny. Postup zobrazení Azure Cosmos DBch nákladů při analýze nákladů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů**. V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
 

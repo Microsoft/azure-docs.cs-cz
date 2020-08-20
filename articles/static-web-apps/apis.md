@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09daffa74ccd279c8187391ba3b86063aed7d204
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791618"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607034"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Podpora rozhraní API ve službě Azure static Web Apps Preview s využitím Azure Functions
 
@@ -34,8 +34,8 @@ Azure static Web Apps poskytuje rozhraní API prostřednictvím Azure Functions.
 - Předpona trasy rozhraní API musí být _rozhraní API_.
 - Aplikace API Functions musí být v JavaScriptu.
 - Pravidla směrování pro funkce rozhraní API podporují pouze [přesměrování](routes.md#redirects) a [zabezpečení tras s rolemi](routes.md#securing-routes-with-roles).
-- Aktivační události a vazby jsou omezené na [http](../azure-functions/functions-bindings-http-webhook.md).
-  - Všechny ostatní [Azure Functions triggery a vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) s výjimkou výstupních vazeb jsou omezeny.
+- Aktivační události jsou omezené na [http](../azure-functions/functions-bindings-http-webhook.md).
+  - Vstupní a výstupní [vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) jsou podporovány.
 - Protokoly jsou k dispozici pouze v případě, že do aplikace Functions přidáte [Application Insights](../azure-functions/functions-monitoring.md) .
 
 ## <a name="next-steps"></a>Další kroky

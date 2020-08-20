@@ -8,7 +8,7 @@
     - name: Přehled a výhody komerčního marketplace
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 'Jeden marketplace, dvě prodejní místa'
+        - name: 'Jeden marketplace, dvě prodejní místa online'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Aspekty a možnosti publikování
           href: ./determine-your-listing-type.md

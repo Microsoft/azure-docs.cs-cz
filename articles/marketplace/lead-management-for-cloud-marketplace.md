@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035174"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606886"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Správa zájemců pro komerční tržiště
 
@@ -44,7 +44,7 @@ Po správném nakonfigurování cíle potenciálního zákazníka a jeho publiko
 
 Po dokončení technického nastavení byste měli tyto zájemce začlenit do svého aktuálního & marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na poskytování vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o poskytování zpětné vazby a návrhů, které umožní vašemu prodejnímu týmu větší úspěšnost s zájemci na webu Marketplace.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Běžné chyby konfigurace potenciálních zákazníků během publikování v partnerském centru
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Běžné chyby konfigurace potenciálních zákazníků během publikování v partnerském centru
 
 **Nepovedlo se uložit zájemce do Dynamics CRM. Ověřte nastavení účtu Dynamics CRM. LastCRMError: nepovedlo se přihlásit k Dynamics CRM, LastCRMException:** 
 
@@ -170,7 +170,7 @@ Zájemce se napíše jenom v případě, že jako cíl pro zájemce vyberete úl
 
 **Obdržel jsem e-mail z webu Marketplace, proč nemůžu v mém CRM najít potenciálního zákazníka?**  
 
-Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodu ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné údaje. Odešlete lístek podpory na [pomoc a podporu](https://aka.ms/marketplacepublishersupport).
+Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné údaje. Odešlete lístek podpory na [pomoc a podporu](https://aka.ms/marketplacepublishersupport).
 
 **Jak mám nakonfigurované Azure Table/Azure BLOB jako cíl pro zájem, jak si můžu zobrazit potenciální zákazníky?** 
 

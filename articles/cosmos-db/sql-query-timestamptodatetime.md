@@ -1,32 +1,38 @@
 ---
-title: GetCurrentDateTime v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o GetCurrentDateTime funkcí SQL systému v Azure Cosmos DB.
-author: ginamr
+title: TimestampToDateTime v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o TimestampToDateTime funkcí SQL systému v Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.author: girobins
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.openlocfilehash: 9d4b5179ea08d5d6eca03422db7dfc7c8c4b5c3e
 ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606957"
+ms.locfileid: "88608734"
 ---
-# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+# <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB)
 
-Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
+Převede zadanou hodnotu časového razítka na typ DateTime.
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
   
 ```sql
-GetCurrentDateTime ()
+TimestampToDateTime (<Timestamp>)
 ```
 
+## <a name="arguments"></a>Argumenty
+
+*Timestamp*  
+
+Podepsaná číselná hodnota, aktuální počet milisekund, které uplynuly od epocha systému UNIX. Jinými slovy, počet milisekund, které uplynuly od 00:00:00 ve čtvrtek, 1. ledna 1970.
+
 ## <a name="return-types"></a>Návratové typy
-  
-  Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
+
+Vrátí hodnotu řetězce data UTC a Time ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
   |Formát|Popis|
   |-|-|
@@ -44,24 +50,22 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Poznámky
 
-GetCurrentDateTime () je nedeterministické funkce. Vrácený výsledek je UTC. Přesnost je 7 číslic a přesnost 100 nanosekund.
-
-Tato systémová funkce nebude index využívat.
+TimestampToDateTime se vrátí, `undefined` Pokud zadaná hodnota časového razítka není platná.
 
 ## <a name="examples"></a>Příklady
   
-Následující příklad ukazuje, jak získat aktuální datum a čas UTC pomocí předdefinované funkce GetCurrentDateTime ().
-  
+Následující příklad převede časové razítko na typ DateTime:
+
 ```sql
-SELECT GetCurrentDateTime() AS currentUtcDateTime
-```  
-  
- Tady je příklad sady výsledků dotazu.
-  
+SELECT TimestampToDateTime(1594227912345) AS DateTime
+```
+
 ```json
-[{
-  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
-}]  
+[
+    {
+        "DateTime": "2020-07-08T17:05:12.3450000Z"
+    }
+]
 ```  
 
 ## <a name="next-steps"></a>Další kroky

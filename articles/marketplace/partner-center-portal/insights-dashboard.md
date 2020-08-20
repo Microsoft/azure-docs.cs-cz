@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323277"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607140"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Řídicí panel přehledů Marketplace v partnerském centru
 
-Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na komerčním webu Marketplace prodejní místa: Microsoft AppSource a Azure Marketplace.
+Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené v online obchodech na komerčním webu Marketplace: Microsoft AppSource a Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Řídicí panel přehledů Marketplace
 
@@ -42,11 +42,11 @@ Maximální latence mezi uživateli, kteří navštěvují nabídky na Azure Mar
 
 Prohlédněte si komerční metriky na webu Marketplace různými způsoby:
 
-- Karty prezentace
+- Karty Online Storu
 - Filtry stránky
 - Filtry data
 
-**Karty prezentace**: můžete zobrazit metriky svých nabídek samostatně prostřednictvím karet AppSource & Azure Marketplace. Vyberte nabídky (nabídky) z rozevíracího seznamu nabídky vpravo a zobrazte vizualizaci metriky pro vybrané nabídky (y). Ve výchozím nastavení jsou vybrány všechny nabídky.
+**Karty online obchodu**: můžete zobrazit metriky svých nabídek samostatně prostřednictvím karet AppSource & Azure Marketplace. Vyberte nabídky (nabídky) z rozevíracího seznamu nabídky vpravo a zobrazte vizualizaci metriky pro vybrané nabídky (y). Ve výchozím nastavení jsou vybrány všechny nabídky.
 
 ![Rozevírací seznam nabídky na řídicím panelu služby partner Center Insights](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ Heatmapu obsahuje následující funkce:
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Návštěvy stránky versus trend jedinečných návštěvníků
 
-Níže uvedené sloupce představují počet návštěv na stránce, které se zobrazují na ose Y (osy na levé straně grafu). Trendová čára představuje měsíční trend jedinečných návštěvníků, který se zobrazí na sekundární ose Y (na pravé straně grafu) pro vaše nabídky publikované v prodejní místa: Azure Marketplace a AppSource.
+Níže uvedené sloupce představují počet návštěv na stránce, které se zobrazují na ose Y (osy na levé straně grafu). Trendová čára představuje měsíční trend jedinečných návštěvníků, který se zobrazí na sekundární ose Y (na pravé straně grafu) pro vaše nabídky publikované v online obchodech: Azure Marketplace a AppSource.
 
 ![Návštěvy stránky Datacenter Center Insights versus trend jedinečných návštěvníků](./media/insights-page-vists-unique-visitors.png)
 

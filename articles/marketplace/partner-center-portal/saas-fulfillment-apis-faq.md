@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304407"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606813"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Běžné otázky k rozhraní API pro plnění SaaS
 
@@ -67,9 +67,9 @@ Následující sekvence zachycuje tok, když zákazník Azure změní plán v pr
 
 ![Tok změn plánu zákazníků](media/saas-metering-service-integration-flow-b.png)
 
-Následující sekvence zachycuje tok, když zákazník Azure změní plán v prezentace Microsoftu.
+Následující sekvence zachycuje tok, když zákazník Azure změní plán v online obchodě Microsoftu:
 
-![Tok změn plánu Customer prezentace](media/saas-metering-service-integration-flow-c.png)
+![Tok změn plánu online obchodu zákazníka](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Jak může uživatel Azure zrušit odběr plánu přidruženého k předplatnému Azure?
 
@@ -79,9 +79,9 @@ Následující sekvence zachycuje tok, když se zákazník Azure odhlásí z nab
 
 ![Zákazník odhlašuje odběr v SaaS prostředí](media/saas-metering-service-integration-flow-d.png)
 
-Následující sekvence zachycuje tok, když uživatel Azure zruší odběr služby prezentace od Microsoftu:
+Následující sekvence zachycuje tok, když uživatel Azure zruší odběr online obchodu Microsoftu:
 
-![Zákazník odhlašuje odběr v prezentace Microsoftu.](media/saas-metering-service-integration-flow-e.png)
+![Zákazník odhlašuje odběr online obchodu Microsoftu.](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Další kroky
 

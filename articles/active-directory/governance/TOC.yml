@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: Kontroly přístupu
       items:
+        - name: Plánování nasazení kontroly přístupu
+          href: deploy-access-reviews.md
         - name: Přístupové balíčky
           items:
             - name: Vytvoření kontroly přístupu

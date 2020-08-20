@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056546"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607500"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -20,7 +20,7 @@ Portál partnerů cloudu přešla do partnerského centra. Partnerské centrum n
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Co znamená přechod do partnerského centra pro mě?
 
-V partnerském centru můžete dál provádět podnikání jako obvykle:
+Můžete pokračovat v podnikání v partnerském centru:
 
 | Oblast<img src="" width=200px> | Změny |
 | --- | --- |
@@ -58,7 +58,7 @@ Jedná se o rozdíly v sestavě výběr mezi vyřazeným portál partnerů cloud
 
 | Portál Cloud Partner | Partnerské centrum |
 | --- | --- |
-| **Odkaz**:https://cloudpartner.azure.com/ | **Odkaz**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ahttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Odkaz**: https://cloudpartner.azure.com/ | **Odkaz**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory a https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
 | **Navigace**: vytváření sestav o výběrech poskytované ve výběrech Insights | **Navigace**: vytváření sestav o výběrech poskytované v partnerském centru – ikona výběr |
 | **Rozsah**:<ul><li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby.</li><li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení.</li></ul> | **Rozsah**:<ul><li>Zobrazuje položky řádků poté, co se považují za oprávněné tržby.</li><li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li><li>Sestava výběru nezobrazuje probíhající shromažďování a probíhá fakturace.</li></ul> |
 | **Transakce není připravená na výběr**: probíhá fakturace. | **Transakce není připravená na výběr**: další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu. |
@@ -77,19 +77,19 @@ Pro typy nabídek podporované v partnerském centru se všechny nabídky přesu
 
 | Typ nabídky <img src="" width=150px>| Přesunuli jste se do partnerského centra? <img src="" width=100px>| Další kroky |
 | --- | --- | --- |
-| SaaS | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v části Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md). |
-| Virtuální počítač | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [na Azure Marketplace v nabídce vytvořit virtuální počítač Azure](partner-center-portal/azure-vm-create-offer.md). |
-| Aplikace Azure | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
+| SaaS | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v části Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md). |
+| Virtuální počítač | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [na Azure Marketplace v nabídce vytvořit virtuální počítač Azure](partner-center-portal/azure-vm-create-offer.md). |
+| Aplikace Azure | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
-| Dynamics 365 pro Customer Engagement & PowerApps | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |
-| Dynamics 365 for Operations | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md). |
-| Aplikace Power BI | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření aplikace Power BI pro AppSource](partner-center-portal/create-power-bi-app-offer.md). |
-| Modul IoT Edge | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v Azure Marketplace vytvoření, konfigurace a publikování IoT Edge modulu nabídky](partner-center-portal/azure-iot-edge-module-creation.md). |
-| Kontejner | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření nabídky kontejnerů Azure](partner-center-portal/create-azure-container-offer.md). |
-| Konzultační služba | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření konzultační nabídky služby](partner-center-portal/create-consulting-service-offer.md). |
-| Spravovaná služba | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření spravované služby](partner-center-portal/create-new-managed-service-offer.md). |
-| Spravovaná služba Dynamics NAV | Ne | Společnost Microsoft vyvinula službu Dynamics NAV Managed Service do [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/), takže ze AppSource deuvádíme živé nabídky spravované služby Dynamics NAV. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Aby vaše nabídky byly dostupné v AppSource, přizpůsobte si je na Dynamics 365 Business Central nabízí a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | Ne | Společnost Microsoft vyvinula mapu rozšíření produktu pro Cortana Intelligence, takže v seznamu Cortana Intelligence živé nabídky z AppSource. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Pokud chcete zpřístupnit nabídky na komerčním webu Marketplace, přizpůsobte si nabídky k software jako služby (SaaS) a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v tématu [Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru](partner-center-portal/offer-creation-checklist.md). |
+| Dynamics 365 pro Customer Engagement & PowerApps | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md). |
+| Aplikace Power BI | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření aplikace Power BI pro AppSource](partner-center-portal/create-power-bi-app-offer.md). |
+| Modul IoT Edge | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v Azure Marketplace vytvoření, konfigurace a publikování IoT Edge modulu nabídky](partner-center-portal/azure-iot-edge-module-creation.md). |
+| Kontejner | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření nabídky kontejnerů Azure](partner-center-portal/create-azure-container-offer.md). |
+| Konzultační služba | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření konzultační nabídky služby](partner-center-portal/create-consulting-service-offer.md). |
+| Spravovaná služba | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření spravované služby](partner-center-portal/create-new-managed-service-offer.md). |
+| Spravovaná služba Dynamics NAV | No | Společnost Microsoft vyvinula službu Dynamics NAV Managed Service do [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/), takže ze AppSource deuvádíme živé nabídky spravované služby Dynamics NAV. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Aby vaše nabídky byly dostupné v AppSource, přizpůsobte si je na Dynamics 365 Business Central nabízí a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | No | Společnost Microsoft vyvinula mapu rozšíření produktu pro Cortana Intelligence, takže v seznamu Cortana Intelligence živé nabídky z AppSource. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Pokud chcete zpřístupnit nabídky na komerčním webu Marketplace, přizpůsobte si nabídky k software jako služby (SaaS) a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v tématu [Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru](partner-center-portal/offer-creation-checklist.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Nemůžu najít moje portál partnerů cloudu nabídky v partnerském centru
 
@@ -135,7 +135,7 @@ Tady je několik rozdílů mezi portál partnerů cloudu a Partnerským centrem.
 
 ### <a name="modular-publishing-capabilities"></a>Modulární možnosti publikování
 
-Partnerské centrum poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, místo aby se vždy publikovaly všechny aktualizace najednou. Například na následující obrazovce vidíte, že pouze změny vybrané k publikování jsou změny **vlastností** a **seznamu nabídek**. Změny, které provedete na stránce verze Preview, nebudou publikovány.
+Partnerské centrum poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, místo aby se vždy publikovaly všechny aktualizace najednou. Například na následující obrazovce vidíte, že pouze změny vybrané k publikování jsou změny **vlastností** a  **seznamu nabídek**. Změny, které provedete na stránce verze Preview, nebudou publikovány.
 
 [![Snímek obrazovky zobrazující stránku pro kontrolu a publikování partnerského centra](media/cpp-pc-faq/review-page.png "Zobrazuje stránku pro kontrolu a publikování partnerského centra.")](media/cpp-pc-faq/review-page.png#lightbox)
 
@@ -153,7 +153,7 @@ Všimnete si, že se změní branding. Například *skladové jednotky* jsou v p
 
 [![Snímek obrazovky se zobrazí na stránce plány partnerského centra.](media/cpp-pc-faq/plans.png "Zobrazuje stránku plánů partnerského centra.")](media/cpp-pc-faq/plans.png#lightbox)
 
-Informace, které jste dříve zadali na **webu Marketplace** nebo v části **prezentace** (konzultační služba, Power BI App) v portál partnerů cloudu, se teď shromažďují na stránce **seznam nabídek** v partnerském centru:
+Informace, které jste dříve zadali na **webu Marketplace** nebo v části **prezentace**  (konzultační služba, Power BI App) v portál partnerů cloudu, se teď shromažďují na stránce **seznam nabídek** v partnerském centru:
 
 [![Snímek obrazovky se stránkou seznamu nabídek pro partnerských Center.](media/cpp-pc-faq/offer-listing.png "Zobrazuje stránku seznamu nabídek pro partnerský server.")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -181,6 +181,6 @@ Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského ce
 
 | Rozhraní API <img src="" width=100px>| Popis změny | Dopad |
 | --- | --- | --- |
-| Publikovat, GoLive, zrušit | V případě migrovaných nabídek bude hlavička odpovědi v jiném formátu, ale bude i nadále fungovat stejným způsobem, aby se zaznamenala relativní cesta pro načtení stavu operace. | Při odesílání kterékoli z odpovídajících požadavků POST pro nabídku bude mít hlavička umístění jeden ze dvou formátů v závislosti na stavu migrace této nabídky: <ul><li>Nemigrované nabídky:`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrované nabídky:`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+| Publikovat, GoLive, zrušit | V případě migrovaných nabídek bude hlavička odpovědi v jiném formátu, ale bude i nadále fungovat stejným způsobem, aby se zaznamenala relativní cesta pro načtení stavu operace. | Při odesílání kterékoli z odpovídajících požadavků POST pro nabídku bude mít hlavička umístění jeden ze dvou formátů v závislosti na stavu migrace této nabídky: <ul><li>Nemigrované nabídky: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrované nabídky: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | Operace GET | U nabídek, které dříve podporovaly pole "Notification-e-mail" v odpovědi, bude toto pole zastaralé a již nebude vráceno pro migrované nabídky. | U migrovaných nabídek už nebudeme odesílat oznámení na seznam e-mailů zadaných v požadavcích. Místo toho bude služba API v partnerském centru pro posílání e-mailů zarovnávat s e-mailovým procesem oznámení. Konkrétně oznámení o průběhu operace budou odeslána na e-mailovou adresu nastavenou v části kontaktní údaje prodejce v nastavení vašeho účtu v partnerském centru.<br><br>Zajistěte, aby byla e-mailová adresa uvedená v části kontaktní informace prodejce v [Nastavení účtu](https://partner.microsoft.com/dashboard/account/management) v partnerském centru správná pro příjem oznámení. |
 |||

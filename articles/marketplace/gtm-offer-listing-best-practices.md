@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213887"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607392"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
 Tento článek obsahuje návrhy na vytváření a poutavé nabídky Microsoftu pro komerční tržišti. Následující tabulky popisují osvědčené postupy pro dokončení informací nabídky v partnerském centru. Analýzu toho, jak vaše nabídky provádí, najdete na [řídicím panelu přehledy Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) v partnerském centru. 
 
-## <a name="storefront-offer-details"></a>Podrobnosti nabídky prezentace
+## <a name="online-store-offer-details"></a>Podrobnosti nabídky Online Storu
 
-| Nastavení prezentace | Osvědčený postup |
+| Nastavení | Osvědčený postup |
 |:--- |:--- |  
 | Název nabídky | V případě aplikací zadejte jasný název, který obsahuje klíčová slova pro hledání, která zákazníkům pomůžou vyhledat vaši nabídku. <br> <br> V případě konzultačních služeb použijte tento formát: [název nabídky: [doba trvání] [typ nabídky] (například contoso: implementace 2-Week). |
 | Popis nabídky | Zadejte jasný popis, který popisuje jeho hodnotu v prvních několika větách na pozici vaší nabídky.  Pamatujte, že tyto věty mohou být použity ve výsledcích vyhledávacího stroje. Základní komponenty pro vaši polohu hodnoty by měly zahrnovat: <ul> <li>Popis produktu nebo řešení. </li> <li> Uživatel, který je výhodou z produktu nebo řešení. </li> <li> Potřebu zákazníka nebo bolesti adres produktů nebo řešení. </li> </ul> <br> Pokud je to možné, využijte standardní oborové slovníace nebo používání na základě výhod.  Nespoléhá se na funkce a funkce k prodeji vašeho produktu.  Místo toho se zaměřte na hodnotu, kterou doručujete. <br> <br> V případě servisních konzultačních služeb jasně uveďte profesionální službu, kterou poskytnete. |
@@ -28,11 +28,11 @@ Tento článek obsahuje návrhy na vytváření a poutavé nabídky Microsoftu p
 > [!IMPORTANT]
 > Ujistěte se, že název vaší nabídky a popis nabídky se řídí **[zásadami Microsoftu a pokyny pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** a dalšími relevantními pokyny pro konkrétní produkt, které se vztahují na ochranné známky společnosti Microsoft a na názvy softwaru, produktů a služeb společnosti Microsoft.
 
-## <a name="storefront-listing-details"></a>Podrobnosti o prezentace seznamu
+## <a name="online-store-listing-details"></a>Podrobnosti o seznamu Online Storu
 
-Kategorie a odvětví pro různé prezentace budou platit pro různé typy nabídek.
+Kategorie a odvětví pro jiný online obchod budou platit pro různé typy nabídek.
 
-| Prezentace | Kategorie <br>od prezentace | Kategorie <br>od prezentace | Obory <br> pro AppSource |
+| Online obchod | Kategorie <br>podle online obchodu | Kategorie <br>podle online obchodu | Obory <br> pro AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Typ nabídky**   |  **Azure Marketplace**  | **AppSource**  |
 | Aplikace Azure | X | |
@@ -48,9 +48,9 @@ Kategorie a odvětví pro různé prezentace budou platit pro různé typy nabí
 
 ### <a name="categories"></a>Kategorie
 
-Microsoft AppSource a Azure Marketplace jsou dvě různé prodejní místa, které slouží jako jedinečné požadavky zákazníků. Azure Marketplace se zaměřuje na odborníky na IT a vývojáře, kteří vytvářejí řešení v Azure.  Microsoft AppSource cílení firemních uživatelů, kteří hledají obchodní a/nebo SaaS aplikace, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
+Microsoft AppSource a Azure Marketplace jsou dva různé online obchody, které slouží jako jedinečné požadavky zákazníků. Azure Marketplace se zaměřuje na odborníky na IT a vývojáře, kteří vytvářejí řešení v Azure.  Microsoft AppSource cílení firemních uživatelů, kteří hledají obchodní a/nebo SaaS aplikace, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
 
-Kategorie a podkategorie jsou namapovány na jednotlivé prezentacey založené na cílové cílové skupině. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
+Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
 
 Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou a zamýšlenou cílovou skupinou. Můžete vybrat:
 
@@ -61,9 +61,9 @@ Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou 
 
 **Důležité: SaaS nabídky a doplňky pro Microsoft 365**
 
-Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS, funkce transakce nabídky a výběr kategorie určí prezentace, kde se vaše nabídka publikuje:
+Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS se funkce transakce nabídky a výběr kategorie určí online obchod, ve kterém se vaše nabídka publikuje:
 
-| Nabídka SaaS    | Nabídka SaaS   | Nabídka SaaS  | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS    | Příslušné prezentace | Příslušné prezentace |
+| Nabídka SaaS    | Nabídka SaaS   | Nabídka SaaS  | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS    | Příslušný online obchod| Příslušný online obchod |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Měřené fakturace | Microsoft 365 Doplňky | Kontaktujte mě | Transact (minimálně 1 plán) | Pouze soukromý plán | Pouze veřejný plán | Veřejné & soukromé plány | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |
@@ -117,8 +117,8 @@ Vyberte příslušné produkty, ve kterých aplikace pracuje, aby se nabídka zo
 
 Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. Identifikujte nejdůležitější klíčová slova pro vyhledávání pro vaši nabídku, zahrňte je do souhrnu a popisu nabídky a také do části klíčové slovo v části Podrobnosti seznamu nabídky.
 
-## <a name="storefront-marketing-details"></a>Podrobnosti o marketingu prezentace
-| Nastavení prezentace | Osvědčený postup |
+## <a name="online-store-marketing-details"></a>Podrobnosti marketingu online obchodu
+| Nastavení | Osvědčený postup |
 |:--- |:--- |  
 | Logo nabídky (formát PNG, 48 &nbsp; &times; &nbsp; 48): stránka hledání | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání vaší nabídky. |
 | Logo nabídky (formát PNG, 216 &nbsp; &times; &nbsp; 216): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. |

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186456"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606512"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
 
@@ -59,6 +59,7 @@ V každém počítači se systémem Linux, který chcete chránit, udělejte tot
 11. Na kartě **Spravovat účty** vyberte **Přidat účet**.
 12. Přidejte účet, který jste vytvořili.
 13. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
+1. Další krok pro aktualizaci nebo ochranu počítačů SUSE Linux Enterprise Server 11 SP3. [Ujistěte se, že je na konfiguračním serveru k dispozici nejnovější verze](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Antivirová ochrana na replikovaných počítačích
 
