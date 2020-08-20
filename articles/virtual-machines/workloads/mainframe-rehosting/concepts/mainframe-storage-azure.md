@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042594"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652844"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
 
@@ -45,7 +45,7 @@ Možnosti infrastruktury Azure jako služby ([IaaS](https://azure.microsoft.com/
 
 Microsoft nabízí petabajty úložiště pro aplikace hostované v Azure a máte několik možností úložiště. Tento rozsah je od úložiště SSD vysokým výkonem pro úložiště objektů BLOB s nízkými náklady pro velkokapacitní úložiště a archivy. Azure navíc poskytuje možnost redundance dat pro úložiště – to je něco, co při vytváření v sálovém prostředí trvá více úsilí.
 
-Služba Azure Storage je dostupná jako [disky Azure](../../../windows/managed-disks-overview.md), [soubory Azure](../../../../storage/files/storage-files-introduction.md)a [objekty blob Azure](../../../../storage/blobs/storage-blobs-overview.md) , které jsou shrnuté v následující tabulce. Přečtěte si další informace o tom, [kdy použít jednotlivé](../../../../storage/common/storage-introduction.md).
+Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-overview.md), [soubory Azure](../../../../storage/files/storage-files-introduction.md)a [objekty blob Azure](../../../../storage/blobs/storage-blobs-overview.md) , které jsou shrnuté v následující tabulce. Přečtěte si další informace o tom, [kdy použít jednotlivé](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
@@ -54,7 +54,7 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../windows/managed-d
     <tr><th>Typ</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
 </thead>
 <tbody>
-<tr><td>Azure Files
+<tr><td>Soubory Azure
 </td>
 <td>
 Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
@@ -108,7 +108,7 @@ BLOB Storage poskytuje největší objem úložiště v Azure. Kromě velikosti 
 - [Opětovné hostování sálového počítače v Azure Virtual Machines](../overview.md)
 - [Přesunout do Azure výpočetní sálové počítače](mainframe-compute-Azure.md)
 - [Rozhodnutí o použití objektů blob Azure, souborů Azure nebo disků Azure](../../../../storage/common/storage-introduction.md)
-- [Managed Disks SSD úrovně Standard pro úlohy virtuálních počítačů Azure](../../../windows/disks-types.md#standard-ssd)
+- [Managed Disks SSD úrovně Standard pro úlohy virtuálních počítačů Azure](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>Prostředky IBM
 

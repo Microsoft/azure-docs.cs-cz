@@ -10,18 +10,19 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500014"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652861"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Známé problémy s virtuálními počítači řady HB a HC
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
-Tento článek popisuje nejběžnější problémy a řešení při použití virtuálních počítačů s více procesory a řady HC-Series.
+Tento článek popisuje nejběžnější problémy a řešení při použití virtuálních počítačů řady [H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) .
 
 ## <a name="dram-on-hb-series"></a>DRAM v řadě 7000
 
@@ -87,6 +88,15 @@ Při spuštění virtuálního počítače s rozhraním "7000-Series" v systému
 
 Toto upozornění můžete ignorovat. Důvodem je známé omezení hypervisoru Azure, který bude vyřešen v průběhu času.
 
+
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>Instalace ovladače InfiniBand ve velikosti virtuálních počítačů řady N-Series s povoleným InfiniBand
+
+NC24r_v3 a ND40r_v2 mají povolený rozhraní SR-IOV, zatímco NC24r a NC24r_v2 nejsou povolené rozhraní SR-IOV. Některé podrobnosti o bifurcation [najdete tady](../../sizes-hpc.md#rdma-capable-instances).
+InfiniBand (IB) je možné nakonfigurovat na velikosti virtuálních počítačů s podporou SR-IOV pomocí ovladačů OFED, zatímco velikosti virtuálních počítačů bez SR-IOV vyžadují ovladače ND. Tato podpora IB je k dispozici správně v [CentOS-HPC VMIs](configure.md). Ubuntu najdete [tady pokyny](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) k instalaci ovladačů OFED a ND, jak je popsáno v [dokumentaci](enable-infiniband.md#vm-images-with-infiniband-drivers).
+
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [vysoce výkonném výpočetním](/azure/architecture/topics/high-performance-computing/) prostředí v Azure.
+- Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
+- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

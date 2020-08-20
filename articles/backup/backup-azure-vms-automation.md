@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7957253565658ca387502acb413bc3e6f9a1a3a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538798"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652742"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -290,7 +290,7 @@ Chcete-li upravit zásady ochrany, použijte [příkaz set-AzRecoveryServicesBac
 
 #### <a name="modifying-scheduled-time"></a>Změna naplánovaného času
 
-Když vytvoříte zásady ochrany, ve výchozím nastavení se mu přiřadí čas spuštění. Následující příklady ukazují, jak upravit čas zahájení zásady ochrany.
+Při vytváření zásad ochrany je ve výchozím nastavení přiřazen počáteční čas. Následující příklady ukazují, jak upravit čas zahájení zásady ochrany.
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -394,7 +394,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
-Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, stačí přidat příznak/RemoveRecoveryPoints nebo přepnout na [příkaz "Zakázat" ochranu](#retain-data).
+Pokud chcete uložená zálohovaná data z trezoru úplně odebrat, přidejte příznak '-RemoveRecoveryPoints ' nebo přepněte do [příkazu ' zakázat ' ochrany](#retain-data).
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -402,7 +402,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 ## <a name="restore-an-azure-vm"></a>Obnovení virtuálního počítače Azure
 
-Je důležitý rozdíl mezi obnovením virtuálního počítače pomocí Azure Portal a obnovením virtuálního počítače pomocí PowerShellu. V prostředí PowerShell je operace obnovení dokončena až po vytvoření disků a informací o konfiguraci z bodu obnovení. Operace obnovení nevytvoří virtuální počítač. Postup vytvoření virtuálního počítače z disku najdete v části [Vytvoření virtuálního počítače z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Pokud nechcete obnovit celý virtuální počítač, ale chcete obnovit nebo obnovit několik souborů ze zálohy virtuálního počítače Azure, přečtěte si [část obnovení souborů](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
+Mezi obnovením virtuálního počítače pomocí Azure Portal a obnovením virtuálního počítače pomocí PowerShellu je důležitý rozdíl. V prostředí PowerShell je operace obnovení dokončena až po vytvoření disků a informací o konfiguraci z bodu obnovení. Operace obnovení nevytvoří virtuální počítač. Postup vytvoření virtuálního počítače z disku najdete v části [Vytvoření virtuálního počítače z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Pokud nechcete obnovit celý virtuální počítač, ale chcete obnovit nebo obnovit několik souborů ze zálohy virtuálního počítače Azure, přečtěte si [část obnovení souborů](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
 
 > [!Tip]
 > Operace obnovení nevytváří virtuální počítač.
@@ -422,7 +422,7 @@ Základní kroky pro obnovení virtuálního počítače Azure jsou:
 * Obnovte disky.
 * Vytvořte virtuální počítač z uložených disků.
 
-### <a name="select-the-vm"></a>Vyberte virtuální počítač.
+### <a name="select-the-vm-when-restoring-files"></a>Vyberte virtuální počítač (při obnovování souborů).
 
 Chcete-li získat objekt prostředí PowerShell, který identifikuje správnou zálohovanou položku, začněte z kontejneru v trezoru a Pracujte způsobem v hierarchii objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte rutinu [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který rutinu [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
 
@@ -431,7 +431,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point-when-restoring-files"></a>Zvolit bod obnovení (při obnovení souborů)
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
@@ -544,7 +544,7 @@ Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Šablona není přímo dostupná, protože se nachází v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
+Šablona není přímo přístupná, protože je v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
 
 1. Nejprve rozbalte název šablony z templateBlobURI. Formát je uveden níže. K extrakci konečné název šablony z této adresy URL můžete použít operaci rozdělit v prostředí PowerShell.
 
@@ -636,7 +636,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
         }
     ```
 
-    * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.
+    * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok není pro datový objekt BLOB vyžadován). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
     Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
 
@@ -663,9 +663,9 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
         }
     ```
 
-    * **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+    * **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok není pro datový objekt BLOB vyžadován). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
 
-    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
+    Skript níže je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -697,9 +697,9 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
     * **Spravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
+    * **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok není pro datový disk vyžadován). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
-    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
+    Skript níže je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -764,7 +764,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
     ```
 
 7. Vložení rozšíření ADE
-   Pokud nejsou vložená rozšíření ADE, budou se datové disky označovat jako nešifrované, takže je povinná pro provedení následujících kroků:
+   Pokud se rozšíření ADE nepřesunou, budou se datové disky označovat jako nešifrované, takže je povinná pro provedení následujících kroků:
 
    * **Pro virtuální počítač s Azure AD** – k ručnímu povolení šifrování pro datové disky použijte následující příkaz.  
 
@@ -811,7 +811,7 @@ Základní kroky pro obnovení souboru ze zálohy virtuálního počítače Azur
 * Zkopírujte požadované soubory.
 * Odpojení disku
 
-### <a name="select-the-vm"></a>Vyberte virtuální počítač.
+### <a name="select-the-vm-when-restoring-the-vm"></a>Vyberte virtuální počítač (při obnovení virtuálního počítače).
 
 Chcete-li získat objekt prostředí PowerShell, který identifikuje správnou zálohovanou položku, začněte z kontejneru v trezoru a Pracujte způsobem v hierarchii objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte rutinu [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) a kanál, který rutinu [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
 
@@ -820,7 +820,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>Zvolit bod obnovení (při obnovení virtuálního počítače)
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 

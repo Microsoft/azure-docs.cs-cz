@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257957"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652824"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -18,7 +18,7 @@ Tento článek popisuje, jak odstranit [Azure Backup](backup-overview.md) trezor
 
 Nemůžete odstranit trezor služby Recovery Services s některou z následujících závislostí:
 
-- Nemůžete odstranit trezor, který obsahuje chráněné zdroje dat (například virtuální počítače s IaaS, databáze SQL, sdílené složky Azure atd.).  
+- Nemůžete odstranit trezor, který obsahuje chráněné zdroje dat (například virtuální počítače s IaaS, databáze SQL, sdílené složky Azure).
 - Trezor, který obsahuje data zálohy, nelze odstranit. Zálohovaná data po odstranění přejdou do stavu obnovitelného odstranění.
 - Trezor, který obsahuje zálohovaná data, nelze odstranit ve stavu tichého odstranění.
 - Trezor, který má registrované účty úložiště, se nedá odstranit.
@@ -45,7 +45,7 @@ Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto 
   - **Položky chráněné cloudem**: přejděte do nabídky řídicího panelu trezoru > **zálohované položky**. Všechny položky, které jsou zde uvedeny, je nutné odebrat pomocí nástroje **Zastavit zálohování** nebo **Odstranit zálohovaná data** společně s jejich zálohovanými daty.  [Pomocí těchto kroků tyto](#delete-protected-items-in-the-cloud) položky odeberte.
   - **SQL Server instance**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery chráněné**infrastruktury zálohování. V části chráněné servery vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů. Klikněte pravým tlačítkem na chráněný Server a vyberte zrušit **registraci**.
   - **Servery chráněné Mars**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery chráněné**infrastruktury zálohování. Pokud máte chráněné servery MARS, musí se všechny uvedené položky odstranit spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraňte servery chráněné serverem Mars.
-   - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery pro správu zálohování**infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
+  - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery pro správu zálohování**infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
 
 - **Krok 4**: je potřeba zajistit, aby byly odstraněny všechny registrované účty úložiště. Přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování. Pokud zde jsou uvedené účty úložiště, musíte je zrušit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -234,7 +234,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Příspěvek, kde se zobrazí následující výzva:
+    Následně se zobrazí následující výzva:
 
     *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
 
@@ -244,7 +244,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Příspěvek, kde se zobrazí následující výzva:
+    Následně se zobrazí následující výzva:
 
    *Microsoft Azure Backup* Opravdu chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se data záloh trvale odstraní. <br/>
    [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
@@ -337,7 +337,7 @@ Pokud chcete odstranit existující trezor služby Recovery Services, udělejte 
 
 Tato možnost odstranění trezoru Recovery Services se doporučuje jenom v případě, že se odeberou všechny závislosti a pořád dojde k *chybě odstranění trezoru*. Zkuste použít některé z následujících tipů:
 
-- V podokně **základy** v nabídce trezoru ověřte, že v seznamu nejsou žádné zálohované položky, servery pro správu zálohování nebo replikované položky. Pokud jsou k dispozici zálohované položky, přečtěte si část [před zahájením](#before-you-start) .
+- V podokně **základy** v nabídce trezoru ověřte, že v seznamu nejsou žádné zálohované položky, servery pro správu zálohování nebo replikované položky. Pokud jsou k dispozici zálohované položky, přečtěte si informace v části [než začnete](#before-you-start) .
 - Zkuste [trezor odstranit znovu z portálu](#delete-the-recovery-services-vault) .
 - Pokud se všechny závislosti odeberou a pořád dojde k *chybě odstranění trezoru*, použijte nástroj ARMClient k provedení následujících kroků (po tom, kde se nachází Poznámka).
 
