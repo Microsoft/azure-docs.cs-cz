@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o virtuální síti WAN
+    - name: Co je Virtual WAN?
       href: virtual-wan-about.md
     - name: Architektura
       items:
