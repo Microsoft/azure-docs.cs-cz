@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321271"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639898"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -26,6 +26,7 @@ Azure Monitor vlastní metriky jsou aktuální ve verzi Public Preview.
 
 Vlastní metriky je možné odesílat Azure Monitor prostřednictvím několika metod:
 - Instrumentujte svoji aplikaci pomocí sady Azure Application Insights SDK a odešlete vlastní telemetrii do Azure Monitor. 
+- Nainstalujte agenta Azure Monitor (Preview) na [virtuální počítač se systémem Windows nebo Linux](azure-monitor-agent-overview.md) a pomocí [pravidla shromažďování dat](data-collection-rule-azure-monitor-agent.md) odešlete čítače výkonu pro Azure monitor metrik.
 - Nainstalujte rozšíření Windows Azure Diagnostics (WAD) na virtuální počítač [Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [sadu škálování virtuálního počítače](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasický virtuální](collect-custom-metrics-guestos-vm-classic.md)počítač nebo [klasický Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) a odešlete čítače výkonu do Azure monitor. 
 - Nainstalujte na virtuální počítač Azure Linux [agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) a odešlete metriky pomocí modulu plug-in Azure monitor Output.
 - Odešlete vlastní metriky [přímo do Azure Monitor REST API](./metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
@@ -60,7 +61,7 @@ Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastn
 > Nemůžete vygenerovat vlastní metriky s ID prostředku skupiny prostředků nebo předplatného.
 
 
-### <a name="region"></a>Oblast
+### <a name="region"></a>Region
 Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro který vydáváte metriky, nasazený v. Metriky musí být vygenerovány do stejného Azure Monitor oblastní koncový bod jako oblast, ve které je prostředek nasazen. Například vlastní metriky pro virtuální počítač nasazený v Západní USA musí být odesílány do koncového bodu oblastní Azure Monitor WestUS. Informace o oblasti jsou také kódované v adrese URL volání rozhraní API.
 
 > [!NOTE]  

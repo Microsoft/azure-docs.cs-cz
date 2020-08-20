@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
 ms.date: 07/16/2020
-ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513009"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642006"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rychlý Start: Vytvoření členu služby Azure blockchain pomocí šablony ARM
 
@@ -25,13 +25,13 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/).
 
-:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json":::
 
 Prostředky Azure definované v šabloně:
 
@@ -39,7 +39,7 @@ Prostředky Azure definované v šabloně:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující odkaz pro přihlášení do Azure a otevřete šablonu.
+1. Vyberte následující odkaz, přihlaste se k Azure a otevřete šablonu.
 
     [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 

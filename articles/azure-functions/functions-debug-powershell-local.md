@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082983"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642227"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Místní ladění Azure Functions PowerShellu
 
@@ -235,13 +235,23 @@ Stejnou funkci můžete vyvolat znovu ( `Invoke-RestMethod` například pomocí)
 
 Při ladění kódu vašich funkcí Pamatujte na následující problémy.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`může způsobit přerušení ladicího programu na neočekávaném místě.
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` může způsobit přerušení ladicího programu na neočekávaném místě.
 
 Rozšíření prostředí PowerShell používá nástroj `Debug-Runspace` , který následně spoléhá na funkci prostředí PowerShell `BreakAll` . Tato funkce oznamuje, že prostředí PowerShell se zastaví na prvním příkazu, který je spuštěn. Toto chování vám dává možnost nastavit zarážky v laděném prostředí runspace.
 
 Modul runtime Azure Functions spouští několik příkazů před samotným vyvoláním `run.ps1` skriptu, takže je možné, že ladicí program skončí v rámci `Microsoft.Azure.Functions.PowerShellWorker.psm1` nebo `Microsoft.Azure.Functions.PowerShellWorker.psd1` .
 
 Pokud má dojít k tomuto přerušení, `continue` Spusťte `c` příkaz nebo, který přeskočí tuto zarážku. Pak se zastaví na očekávané zarážce.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud máte během ladění problémy, měli byste ověřit následující:
+
+| Zaškrtnout | Akce |
+|------|------|
+| Spusťte `func --version` z terminálu. Pokud se zobrazí chyba, která se `func` nedá najít, v místní proměnné můžou chybět základní nástroje (func.exe) `path` .| [Přeinstalujte základní nástroje](functions-run-local.md#v2).|  
+| V Visual Studio Code musí mít výchozí terminál přístup k func.exe. Ujistěte se, že nepoužíváte výchozí terminál, ve kterém nejsou nainstalované základní nástroje, jako je například subsystém Windows pro Linux (WSL).  | Nastavte výchozí prostředí v Visual Studio Code na buď PowerShell 7 (doporučeno), nebo Windows PowerShell 5,1.|
+  
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164576"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640510"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -76,7 +76,7 @@ Proxy aplikací je služba Azure AD, kterou konfigurujete v Azure Portal. Umož�
 
 Mezi součásti této funkce patří služba proxy aplikací, která běží v cloudu, konektor proxy aplikací, což je jednoduchý agent, který běží na místním serveru a Azure AD, což je poskytovatel identity. Všechny tři komponenty společně poskytují přístup k místním webovým aplikacím pro uživatele s jednotným přihlašováním.
 
-Po přihlášení mohou externí uživatelé přistupovat k místním webovým aplikacím pomocí známé adresy URL nebo [přístupového panelu MyApp](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) ze svých počítačů nebo zařízení s iOS nebo Mac. Například proxy aplikace může poskytovat vzdálený přístup a jednotné přihlašování ke vzdálené ploše, webům SharePoint, Tableau, Qlik, Outlooku na webu a obchodním aplikacím (LOB).
+Po přihlášení mohou externí uživatelé přistupovat k místním webovým aplikacím pomocí známé adresy URL nebo [mých aplikací](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) ze zařízení s platformou Desktop nebo iOS nebo Mac. Například proxy aplikace může poskytovat vzdálený přístup a jednotné přihlašování ke vzdálené ploše, webům SharePoint, Tableau, Qlik, Outlooku na webu a obchodním aplikacím (LOB).
 
 ![Architektura Azure Proxy aplikací služby AD](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

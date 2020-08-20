@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168195"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641836"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -41,6 +41,14 @@ ms.locfileid: "84168195"
 
 ## <a name="release-notes-for-100-series"></a>Poznámky k verzi pro řady 1.0.0
 1.0.0 Series přebírá závislost na [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Přidání podpory pro nastavení vlastnosti TTL, pokud se jedná o koncový bod cosmosdb 
+* Dodržovat zásady opakování po vypršení časového limitu a zrušení úlohy
+* Oprava přerušované přerušované úlohy v aplikacích ASP .NET se zobrazila výjimka
+* Oprava načtení služby Azure Table Storage ze sekundárního koncového bodu pouze v režimu umístění
+* Aktualizovat `Microsoft.Azure.DocumentDB.Core` verzi závislosti na 2.11.2, která řeší přerušovanou výjimku nulového odkazu
+* Aktualizovat `Odata.Core` verzi závislosti na 7.6.4, která opravuje konflikt kompatibility s prostředím Azure Shell
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Zlepšení výkonu nastavením sady Table SDK výchozí úroveň trasování na SourceLevels. off, kterou lze zařadit prostřednictvím app.config

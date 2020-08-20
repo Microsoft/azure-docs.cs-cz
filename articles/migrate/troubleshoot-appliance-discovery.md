@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171856"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640578"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže při řešení potíží při nasazování zaříze
 
 Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Přečtěte si další informace](./tutorial-prepare-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](./tutorial-prepare-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).
@@ -117,6 +117,28 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
     3. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
     4. Uložte a zavřete soubor hostitelů.
     5. Ověřte, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste měli vidět nejnovější informace pro tyto hostitele v Azure Portal.
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Chyba 60001: Nelze se připojit k serveru 
+
+- Zajistěte, aby ze zařízení bylo připojení k serveru.
+- Pokud se jedná o server Linux, zajistěte, aby ověřování na základě hesla bylo povoleno pomocí následujících kroků:
+    1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
+    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
+    3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
+- Pokud se jedná o Windows Server, zajistěte, aby byl port 5985 otevřený pro vzdálenou volání rozhraní WMI.
+- Pokud zjišťujete Server GCP Linux a použijete uživatele root, změňte výchozí nastavení pro kořenové přihlášení pomocí následujících příkazů.
+    1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
+    2. Nastavte možnost PermitRootLogin na Ano.
+    3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
+
+## <a name="error-no-suitable-authentication-method-found"></a>Chyba: nebyla nalezena žádná vhodná metoda ověřování.
+
+Zajistěte, aby na serveru se systémem Linux bylo povoleno ověřování na základě hesla, a to pomocí následujících kroků:
+    1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
+    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
+    3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
+
 
 ## <a name="discovered-vms-not-in-portal"></a>Zjištěné virtuální počítače, které nejsou na portálu
 

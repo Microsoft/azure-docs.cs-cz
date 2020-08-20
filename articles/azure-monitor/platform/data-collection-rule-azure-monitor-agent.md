@@ -4,13 +4,13 @@ description: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 3cd2ed692f3a34223675da69efd92e78c2ba9504
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082984"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640833"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se mají odeslat. Tento článek popisuje, jak vytvořit pravidlo shromažďování dat pro shromažďování dat z virtuálních počítačů pomocí agenta Azure Monitor.
@@ -48,7 +48,7 @@ Na kartě **shromáždit a poskytnout** klikněte na **Přidat zdroj dat** a př
 [![Základní zdroj dat](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Chcete-li zadat další protokoly a čítače výkonu, vyberte možnost **vlastní**. Pak můžete zadat [cestu XPath](https://www.w3schools.com/xml/xpath_syntax.asp) pro všechny konkrétní hodnoty, které mají být shromažďovány. Příklady najdete v části [Sample DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
+Chcete-li zadat další protokoly a čítače výkonu, vyberte možnost **vlastní**. Pak můžete zadat [cestu XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) pro všechny konkrétní hodnoty, které mají být shromažďovány. Příklady najdete v části [Sample DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
 
 [![Vlastní zdroj dat](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
@@ -61,6 +61,11 @@ Klikněte na **Přidat zdroj dat** a pak **Zkontrolujte + vytvořit** a zkontrol
 > [!NOTE]
 > Po vytvoření pravidla shromažďování dat a přidružení může trvat až 5 minut, než se data odešlou do cílů.
 
+## <a name="createusingrestapi"></a>Vytvoření s použitím REST API
+Podle následujících kroků vytvořte DCR a přidružení pomocí REST API. 
+1.Ručně vytvořte soubor DCR pomocí formátu JSON, který je zobrazený v [ukázkové DCR](data-collection-rule-overview.md#sample-data-collection-rule).
+2.Vytvořte pravidlo pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples).
+3.Vytvořte přidružení pro každý virtuální počítač k pravidlu shromažďování dat pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples).
 
 ## <a name="next-steps"></a>Další kroky
 

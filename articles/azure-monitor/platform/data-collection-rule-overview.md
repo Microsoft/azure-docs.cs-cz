@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082977"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640731"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -68,7 +68,7 @@ V následující tabulce jsou uvedené limity, které se aktuálně vztahují na
 V současné době existují dvě dostupné metody pro vytvoření sady DCR:
 
 - [Pomocí Azure Portal](data-collection-rule-azure-monitor-agent.md) vytvořte pravidlo shromažďování dat a přidružit ho k jednomu nebo více virtuálním počítačům.
-- Přímo upravte pravidlo shromažďování dat ve formátu JSON a odešlete ho pomocí REST API.
+- Přímo upravte pravidlo shromažďování dat ve formátu JSON a [odešlete ho pomocí REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Pravidlo shromažďování ukázkových dat
 Níže uvedené pravidlo shromažďování ukázkových dat je pro virtuální počítače s agentem pro správu Azure a má následující podrobnosti:

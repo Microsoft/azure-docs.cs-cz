@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042010"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639799"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory
 
@@ -44,7 +44,8 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | Parametr | Komentáře |
@@ -168,7 +171,12 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
     | ResourceGroupLocation |Pokud vaše skupina prostředků neexistuje, je nutné dodat umístění, ve kterém chcete skupinu vytvořit. Chcete-li najít seznam umístění, spusťte příkaz `az account list-locations` . Použijte vlastnost *Name* (bez mezer) vráceného výsledku. Tento parametr je nepovinný, pokud vaše skupina prostředků již existuje. |
     | AADAppDisplayName |Zobrazovaný název aplikace Azure Active Directory. Pokud se nenašla existující aplikace Azure AD, vytvoří se nový s tímto názvem. Tento parametr je nepovinný, pokud už aplikace Azure AD existuje. |
     | AADAppIdentifierUri |Identifikátor URI pro aplikaci Azure AD. Pokud se nenašla existující aplikace služby Azure AD, vytvoří se nový s tímto identifikátorem URI. Například, `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Heslo, které vytvoříte, které se později použije k ověření při získání tokenu pro spuštění moderního čtecího zařízení. Heslo musí mít alespoň 16 znaků, musí obsahovat alespoň 1 speciální znak a musí obsahovat alespoň 1 číselný znak. |
+    | AADAppClientSecret |Heslo, které vytvoříte, které se později použije k ověření při získání tokenu pro spuštění moderního čtecího zařízení. Heslo musí mít alespoň 16 znaků, musí obsahovat alespoň 1 speciální znak a musí obsahovat alespoň 1 číselný znak. Pokud chcete spravovat tajné klíče klienta aplikace Azure AD po vytvoření tohoto prostředku, přejděte https://portal.azure.com na stránku domů-> Azure Active Directory – > registrace aplikací – > `[AADAppDisplayName]` – > certifikáty a tajné klíče – > pro klienta (viz obrázek "Správa tajných klíčů aplikace Azure AD" na obrázku níže). |
+    | AADAppClientSecretExpiration |Datum nebo datum a čas, po kterém `[AADAppClientSecret]` vyprší platnost (např. "2020-12-31T11:59:59 + 00:00" nebo "2020-12-31"). |
+
+    Správa tajných kódů aplikace Azure AD
+
+    ![Okno certifikátů a tajných klíčů na webu Azure Portal](./media/client-secrets-blade.png)
 
 1. Zkopírujte výstup JSON do textového souboru pro pozdější použití. Výstup by měl vypadat nějak takto.
 

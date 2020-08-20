@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757595"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641071"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -31,7 +31,7 @@ Chcete-li rychle zobrazit Multi-Factor Authentication Azure v akci a pak se vrá
 > [!div class="nextstepaction"]
 > [Povolení služby Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nasazením Azure Multi-Factor Authentication, jsou k dispozici nezbytné položky, které byste měli vzít v úvahu.
 
@@ -76,7 +76,7 @@ Zásady podmíněného přístupu vynutily registraci, což vyžaduje, aby regis
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) do scénáře Azure Multi-Factor Authentication dospěje jak zásady registrace, tak i automatické zjišťování rizik a nápravné zásady. Zásady je možné vytvořit pro vynucení změny hesla, pokud dojde k ohrožení zabezpečení identity nebo pokud je přihlášení považováno za rizikové pomocí následujících [událostí](../reports-monitoring/concept-risk-events.md):
 
-* Nevrácená pověření
+* Uniklé přihlašovací údaje
 * Přihlášení z anonymních IP adres
 * Nemožná cesta do netypických míst
 * Přihlášení z neznámých míst
@@ -108,6 +108,9 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
 ## <a name="plan-authentication-methods"></a>Plánování metod ověřování
 
 Správci mohou zvolit [metody ověřování](../authentication/concept-authentication-methods.md) , které mají být uživatelům k dispozici. Je důležité, abyste povolili více než jednu metodu ověřování, takže uživatelé mají k dispozici metodu zálohování pro případ, že jejich primární metoda není k dispozici. Pro povolení správců jsou k dispozici následující metody:
+
+> [!TIP]
+> Microsoft doporučuje používat mobilní aplikaci jako primární metodu pro Azure Multi-Factor Authentication pro zajištění nejlepšího zabezpečení a uživatelského prostředí.
 
 ### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
 
@@ -235,10 +238,10 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 1. V části **Uživatelé a skupiny**:
    * Na kartě **Zahrnout** klikněte na přepínač **Všichni uživatelé** .
    * Na kartě **vyloučit** zaškrtněte políčko pro **uživatele a skupiny** a vyberte účty pro nouzový přístup.
-   * Klikněte na **Done** (Hotovo).
+   * Klikněte na **Hotovo**.
 1. V části **cloudové aplikace**vyberte přepínač **všechny cloudové aplikace** .
    * Volitelně: na kartě **vyloučit** vyberte cloudové aplikace, pro které vaše organizace nevyžaduje MFA.
-   * Klikněte na **Done** (Hotovo).
+   * Klikněte na **Hotovo**.
 1. Oddíl **podmínky** :
    * Volitelně: Pokud jste povolili Azure Identity Protection, můžete v rámci této zásady vyhodnotit riziko přihlášení.
    * Volitelně: Pokud jste nakonfigurovali důvěryhodná umístění nebo pojmenovaná umístění, můžete určit, jestli se mají tato umístění zahrnout nebo vyloučit ze zásad.
@@ -247,7 +250,7 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
     * Klikněte na **Vybrat**.
 1. Přeskočit část **relace** .
 1. Nastavte přepínač **Povolit zásady** na **zapnuto**.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Plánování integrace s místními systémy
 
@@ -342,11 +345,11 @@ Teď, když jste naplánovali řešení, můžete implementovat podle následuj�
 1. Konfigurace zásad registrace MFA
    1. [Kombinované MFA a SSPR](howto-registration-mfa-sspr-combined.md)
    1. S [identitou Protection](../identity-protection/howto-mfa-policy.md)
-1. Odeslat komunikaci uživatele a získat uživatele k registraci na[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Odeslat komunikaci uživatele a získat uživatele k registraci na [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Udržujte si přehled o tom, kdo je zaregistrovaný](#identify-non-registered-users)
 
 > [!TIP]
-> Uživatelé cloudu pro státní správu se můžou zaregistrovat na[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Uživatelé cloudu pro státní správu se můžou zaregistrovat na [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Správa řešení
 
@@ -354,7 +357,7 @@ Sestavy pro Azure MFA
 
 Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
 
-| Sestava | Umístění | Description |
+| Sestava | Umístění | Popis |
 | --- | --- | --- |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
 

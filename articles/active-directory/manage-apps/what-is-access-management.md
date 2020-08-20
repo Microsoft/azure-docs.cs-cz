@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562561"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639915"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 
@@ -45,7 +45,7 @@ U určitých typů aplikací máte možnost [vyžadovat, aby byli uživatelé p�
 * Aplikace proxy aplikací, které používají předběžné ověření Azure Active Directory
 * Aplikace založené na platformě aplikace Azure AD, které používají ověřování OAuth 2,0/OpenID Connect po tom, co uživatel nebo správce souhlasí s touto aplikací. Některé podnikové aplikace poskytují další kontrolu nad tím, kdo se může přihlásit.
 
-Když není přiřazení uživatele *vyžadováno*, nepřiřazeným uživatelům se aplikace na svém přístupovém panelu Moje aplikace uvidí, ale můžou se i nadále přihlašovat k samotné aplikaci (označované také jako přihlašování iniciované v rámci SP) nebo můžou použít **adresu URL přístupu uživatele** na stránce **vlastností** aplikace (označuje se také jako přihlášení iniciované IDP).
+Když není přiřazení uživatele *vyžadováno*, nepřiřazeným uživatelům se aplikace v jejich aplikacích nezobrazuje, ale můžou se i nadále přihlašovat k samotné aplikaci (označuje se také jako přihlašování iniciované v rámci SP) nebo můžou použít **adresu URL přístupu uživatele** na stránce **vlastností** aplikace (označuje se také jako přihlášení iniciované IDP).
 
 U některých aplikací není ve vlastnostech aplikace možnost vyžadovat přiřazení uživatele k dispozici. V těchto případech můžete pomocí PowerShellu nastavit vlastnost appRoleAssignmentRequired instančního objektu.
 
@@ -53,12 +53,12 @@ U některých aplikací není ve vlastnostech aplikace možnost vyžadovat při�
 
 Azure AD poskytuje [několik přizpůsobitelných způsobů, jak nasadit aplikace](end-user-experiences.md) pro koncové uživatele ve vaší organizaci:
 
-* Přístupový panel služby Azure AD moje aplikace
+* Moje aplikace v Azure AD
 * Spouštěč aplikace Office 365
 * Přímé přihlašování k federovaným aplikacím (služba-PR)
 * Přímé odkazy na federované nebo existující aplikace či aplikace založené na hesle
 
-Můžete určit, jestli se uživatelé přiřazení k podnikové aplikaci uvidí na přístupovém panelu a ve Spouštěči aplikací Office 365.
+Můžete určit, jestli se uživatelé přiřazení k podnikové aplikaci uvidí v okně moje aplikace a spouštěč aplikací Office 365.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Příklad: komplexní přiřazení aplikace s Azure AD
 Vezměte v úvahu aplikaci, jako je Salesforce. V mnoha organizacích se Salesforce primárně používá pro marketingové a prodejní týmy. Členové marketingového týmu často mají vysoce privilegovaný přístup k Salesforce, zatímco členové prodejního týmu mají omezený přístup. V mnoha případech má hlavní populace informačních pracovníků omezený přístup k aplikaci. Výjimky z těchto pravidel komplikuje věci. Je často výhradním přístupem k marketingovým nebo prodejním týmům, aby uživatelům udělili přístup nebo měnili své role nezávisle na těchto obecných pravidlech.
@@ -72,7 +72,7 @@ S Azure AD je možné předem nakonfigurovat aplikace, jako je Salesforce, jedno
 
 * Pro povolení mechanismu výjimek může být pro každou roli vytvořená samoobslužná skupina. Například skupina "výjimka marketingu pro službu Salesforce" může být vytvořena jako samoobslužná skupina. Skupinu je možné přiřadit k marketingovým rolím Salesforce a tým vedoucí oddělení marketingu může být vlastníkem. Členové týmu marketingového vedení můžou přidat nebo odebrat uživatele, nastavit zásady připojení nebo dokonce schvalovat nebo odmítat žádosti jednotlivých uživatelů o připojení. Tento mechanismus se podporuje prostřednictvím vhodného prostředí pro informační pracovníky, které nevyžaduje specializované školení pro vlastníky nebo členy.
 
-V tomto případě se všichni přiřazení uživatelé automaticky zřídí do Salesforce, protože se přidají do různých skupin. jejich přiřazení role by se v Salesforce aktualizovala. Uživatelé by mohli zjišťovat a přistupovat k Salesforce prostřednictvím panelu pro přístup k aplikacím Microsoftu, webových klientů Office, nebo dokonce přechodem na přihlašovací stránku organizace Salesforce. Správci by mohli snadno zobrazit využití a stav přiřazení pomocí generování sestav Azure AD.
+V tomto případě se všichni přiřazení uživatelé automaticky zřídí do Salesforce, protože se přidají do různých skupin. jejich přiřazení role by se v Salesforce aktualizovala. Uživatelé budou moci zjišťovat a přistupovat k Salesforce prostřednictvím mých aplikací, webových klientů Office nebo dokonce přechodem na přihlašovací stránku organizace Salesforce. Správci by mohli snadno zobrazit využití a stav přiřazení pomocí generování sestav Azure AD.
 
 Správci můžou využít [podmíněný přístup Azure AD](../conditional-access/concept-conditional-access-users-groups.md) k nastavení zásad přístupu pro konkrétní role. Tyto zásady můžou zahrnovat, jestli je povolený přístup mimo podnikové prostředí, a dokonce i Multi-Factor Authentication nebo požadavky na zařízení pro zajištění přístupu v různých případech.
 
@@ -88,7 +88,7 @@ Existují tři hlavní způsoby, jak může uživatel získat přístup k aplika
 
 Některé aplikace tyto metody kombinují. Například některé aplikace od společnosti Microsoft jsou součástí předplatného sady Office 365, ale stále vyžadují souhlas.
 
-Uživatelé můžou k aplikacím Office 365 přistupovat prostřednictvím svých portálů Office 365. Můžete také zobrazit nebo skrýt aplikace Office 365 na přístupovém panelu Moje aplikace s [přepínačem viditelnosti sady office 365](hide-application-from-user-portal.md) v **uživatelském nastavení**adresáře. 
+Uživatelé můžou k aplikacím Office 365 přistupovat prostřednictvím svých portálů Office 365. V okně moje aplikace můžete také zobrazit nebo skrýt aplikace Office 365 s [přepínačem viditelnosti sady office 365](hide-application-from-user-portal.md) v **uživatelském nastavení**adresáře. 
 
 Stejně jako u podnikových aplikací můžete [přiřadit uživatele](assign-user-or-group-access-portal.md) k určitým aplikacím microsoftu prostřednictvím Azure Portal nebo, pokud možnost portálu není dostupná, pomocí PowerShellu.
 

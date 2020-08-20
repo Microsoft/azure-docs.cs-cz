@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233154"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642465"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
 
 Azure SQL Edge (Preview) je optimalizovaný relační databázový stroj pro nasazení IoT a IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. Azure SQL Edge poskytuje možnosti pro streamování, zpracování a analýzu relačních a nerelačních dat, jako jsou data JSON, Graph a Time-Series, což dává správné možnosti pro nejrůznější moderní aplikace IoT.
 
-Azure SQL Edge je založený na nejnovějších verzích [Microsoft SQL Server databázového stroje](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako SQL Server a Azure SQL Database, poskytuje stejnou oblast pro programování v T-SQL, která usnadňuje a urychluje vývoj aplikací nebo řešení a zároveň zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
+Azure SQL Edge je postaven na nejnovějších verzích modulu Microsoft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-Documentation? TOC =/Azure/Azure-SQL-Edge/toc.json), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) a [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), poskytuje stejnou oblast programování v T-SQL, která usnadňuje a urychluje vývoj aplikací nebo řešení a zároveň zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
 
 > [!NOTE]
 > Azure SQL Edge je momentálně ve verzi Preview a takovým způsobem by se neměl používat v produkčních prostředích.

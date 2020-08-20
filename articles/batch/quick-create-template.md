@@ -4,12 +4,12 @@ description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu sl
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511384"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642397"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Batch pomocí šablony ARM
 
@@ -31,7 +31,7 @@ Musíte mít aktivní předplatné Azure.
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
-:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
+:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 
@@ -54,7 +54,7 @@ V šabloně jsou definované dva prostředky Azure:
    - **Název účtu Batch**: ponechte výchozí hodnotu.
    - **Accountsku úložiště**: Vyberte typ účtu úložiště. Například **Standard_LRS**.
    - **Umístění**: ponechte výchozí hodnotu, aby se prostředky nacházet ve stejném umístění jako vaše skupina prostředků.
-   - Souhlasím s výše uvedenými podmínkami a ujednáními: **Vyberte**.
+   - Souhlasím s podmínkami a ujednáními uvedenými nahoře: **Vyberte**.
 
 1. Vyberte **Koupit**.
 

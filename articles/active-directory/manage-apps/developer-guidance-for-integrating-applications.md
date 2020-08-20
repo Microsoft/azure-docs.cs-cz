@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763410"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640442"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj obchodních aplikací pro Azure Active Directory
 Tato příručka poskytuje přehled vývoje obchodních aplikací pro Azure Active Directory (AD). Zamýšlenou cílovou skupinu je globální správce Active Directory/Office 365.
@@ -58,7 +58,7 @@ V takovém případě je třeba globální správce, aby usnadnil vývojářům,
 Nakonfigurujte pravidla přístupu pro jednotlivé aplikace do aplikací SaaS. Můžete například vyžadovat MFA nebo jenom udělit přístup uživatelům v důvěryhodných sítích. Podrobnosti o této službě jsou k dispozici v dokumentu [Konfigurace pravidel přístupu](../conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Konfigurace aplikace tak, aby vyžadovala přiřazení uživatele a přiřazení uživatelů
-Ve výchozím nastavení mají uživatelé přístup k aplikacím bez přiřazení. Pokud však aplikace zveřejňuje role nebo pokud chcete, aby se aplikace zobrazila na přístupovém panelu uživatele, měli byste vyžadovat přiřazení uživatele.
+Ve výchozím nastavení mají uživatelé přístup k aplikacím bez přiřazení. Pokud však aplikace zveřejňuje role nebo pokud chcete, aby se aplikace zobrazila v mých aplikacích uživatele, měli byste vyžadovat přiřazení uživatele.
 
 Pokud jste předplatitelem Azure AD Premium nebo sady Enterprise Mobility Suite (EMS), důrazně doporučujeme používat skupiny. Přiřazení skupin k aplikaci umožňuje delegovat průběžnou správu přístupu na vlastníka skupiny. Tuto skupinu můžete vytvořit nebo požádat, aby ji zúčastněná strana ve vaší organizaci vytvořila skupinu pomocí svého zařízení pro správu skupin.
 

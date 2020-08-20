@@ -6,34 +6,36 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482900"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642074"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
 
 Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování vašeho účtu a vytváření řídicích panelů. Metriky Azure Cosmos DB jsou ve výchozím nastavení shromažďovány, takže tato funkce nevyžaduje explicitní povolení ani konfiguraci.
 
-**Normalizovaná** metrika použití ru se používá k zobrazení, jak dobře nasycené repliky se týkají spotřeby jednotek požadavků v rozsahu klíče oddílu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi fyzickými oddíly. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti v rámci sady replik. Pomocí této metriky můžete vypočítat využití RU/s v jednotlivých oddílech pro daný kontejner. Pokud při použití této metriky vidíte vysoké procento využití jednotek požadavků, měli byste zvýšit propustnost tak, aby splňovala potřeby vašich úloh.
+**Normalizovaná** metrika použití ru se používá k zjištění, jak dobře nasycené rozsahy klíčů oddílů jsou vzhledem k provozu. Azure Cosmos DB distribuuje propustnost rovnoměrně napříč všemi rozsahy klíčů oddílu. Tato metrika poskytuje za sekundu zobrazení maximálního využití propustnosti pro rozsah klíčů oddílu. Pomocí této metriky můžete vypočítat využití RU/s v rozsahu klíče oddílu pro daný kontejner. Pokud se vám tato metrika zobrazuje vysoké procento využití jednotek požadavků napříč všemi rozsahy klíčů oddílu ve službě Azure monitor, měli byste zvýšit propustnost, aby splňovala potřeby vašich úloh. 
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Co očekávat a když je normalizované RU/s vyšší
 
-Když normalizovaná spotřeba RU/s dosáhne 100%, klient obdrží chyby s omezením četnosti. Klient by měl respektovat dobu čekání a opakovat akci. Pokud existuje krátký špička, která dosahuje 100% využití, znamená to, že propustnost repliky dosáhla svého maximálního limitu výkonu. Například jedna operace, například uložená procedura, která spotřebovává všechny RU/s na replice, povede k krátkému nárůstu normalizované spotřeby RU/s. V takových případech nedojde k žádné okamžité rychlosti, která by omezila chyby, pokud je míra požadavků nízká. Důvodem je to, že Azure Cosmos DB umožňuje žádostem o poskytnutí více než zřízené RU/s pro konkrétní požadavek a další žádosti v tomto časovém období jsou omezeny na míru.
+Když normalizovaná spotřeba RU/s dosáhne 100% pro daný rozsah klíčů oddílu a klient v tomto časovém intervalu (1 sekund) vydává požadavky na určitý rozsah klíčů oddílu, obdrží v něm chybu s omezeným počtem. Klient by měl respektovat navrhovanou dobu čekání a opakovat požadavek. Sada SDK usnadňuje zpracování této situace opakováním předem nakonfigurovaných časů tím, že se bude čekat správně.  Není nutné, abyste viděli chybu omezení míry RU, protože normalizované RU dosáhlo 100%. Vzhledem k tomu, že normalizované RU je jediná hodnota, která představuje maximální využití pro všechny rozsahy klíčů oddílu, může být jeden rozsah klíčů oddílu zaneprázdněný, ale ostatní rozsahy klíčů oddílu můžou požadavky zpracovat bez problémů. Například jedna operace, například uložená procedura, která spotřebovává všechny důležité/s na rozsah klíče oddílu, povede k krátkému nárůstu normalizované spotřeby RU/s. V takových případech nedojde k žádným okamžitému omezení rychlosti, pokud je rychlost požadavků nízká nebo se požadavky provedou na jiné oddíly v různých rozsahech klíčů oddílu. 
 
-Metriky Azure Monitor vám pomůžou najít operace na stavový kód pomocí metriky **celkových požadavků** . Později můžete tyto požadavky filtrovat pomocí kódu stavu 429 a rozdělit je podle **typu operace**.
+Metriky Azure Monitor vám pomůžou najít operace na stavový kód pro SQL API pomocí metriky **celkových požadavků** . Později můžete tyto požadavky filtrovat pomocí kódu stavu 429 a rozdělit je podle **typu operace**.  
 
 Pokud chcete zjistit, které požadavky jsou omezené, doporučuje se tyto informace získat prostřednictvím diagnostických protokolů.
 
-Pokud je nepřetržitá špička z 100% normalizované spotřeby RU/s nebo blízko až 100%, doporučuje se zvýšit propustnost. Pomocí metrik Azure monitoru a protokolů Azure monitor můžete zjistit, které operace jsou těžké a jejich špičkové využití.
+Pokud dochází k nepřetržité špičkě 100% normalizované spotřeby RU/s nebo blízko až 100% přes více rozsahů klíčů oddílu, doporučuje se zvýšit propustnost. Díky metrikám Azure monitor a diagnostickým protokolům Azure monitor můžete zjistit, které operace jsou těžké a jejich špičkové využití.
 
-**Normalizovaná metrika spotřeby ru** se používá také k tomu, abyste viděli, který rozsah klíčů oddílu je pro účely využití zahříváníný. Takže vám poskytneme zešikmení propustnosti směrem k rozsahu klíče oddílu. Později můžete sledovat protokol **PartitionKeyRUConsumption** Azure monitor protokoly, abyste získali informace o tom, které klíče logického oddílu jsou z pohledu na používání aktivní.
+V souhrnu se za **normalizovanou** metriku s využitím ru používá k zobrazení toho, který rozsah klíčů oddílu je v souladu s využitím. Takže vám poskytne přehled o propustnosti směrem k rozsahu klíčů oddílu. Později můžete sledovat protokol **PartitionKeyRUConsumption** Azure monitor protokoly, abyste získali informace o tom, které klíče logického oddílu jsou z pohledu na používání aktivní. To bude ukazovat na změnu v možnosti klíč oddílu nebo na změnu v logice aplikace. Chcete-li vyřešit omezení přenosové rychlosti, rozdělte zatížení dat do několika oddílů nebo stačí zvýšit propustnost, jak je skutečně potřeba. 
+
+
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Zobrazení normalizované metriky spotřeby jednotek požadavků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

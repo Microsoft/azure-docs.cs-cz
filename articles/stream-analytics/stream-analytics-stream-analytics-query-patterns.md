@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: edb84810b7391242e9ac90b1502c18f9af4e4698
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433166"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641037"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
 
@@ -807,7 +807,7 @@ Dotazovací jazyk Azure Stream Analytics lze rozšířit pomocí vlastních funk
 
 **Výstup**:
 
-| Device_id | Desetinné číslo |
+| Device_id | Decimal |
 | --- | --- |
 | 1 | 180 |
 | 2 | 283 |
@@ -863,10 +863,10 @@ Například v reálném čase je sledování sítě ATM v reálném čase k selh
 
 ```SQL
 SELECT *
-FROM intput TIMESTAMP BY time OVER ATM_id
+FROM input TIMESTAMP BY time OVER ATM_id
 MATCH_RECOGNIZE (
-    PARTITON BY ATM_id
     LIMIT DURATION(minute, 1)
+    PARTITON BY ATM_id
     MEASURES
         First(Warning.ATM_id) AS ATM_id,
         First(Warning.Operation_Id) AS First_Warning_Operation_id,
@@ -930,7 +930,7 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

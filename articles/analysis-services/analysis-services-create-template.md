@@ -8,12 +8,12 @@ ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: 249c678fb6d55f01a9f06e4e1db5f41fa85a700f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553066"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641904"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Rychlý Start: Vytvoření šablony serveru – ARM
 
@@ -27,14 +27,14 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+* **Předplatné Azure**: Pokud chcete vytvořit účet, přejděte na [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) .
+* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
 
 V šabloně je definován jeden prostředek [Microsoft. AnalysisServices/Servers](/azure/templates/microsoft.analysisservices/servers) s pravidlem brány firewall.
 

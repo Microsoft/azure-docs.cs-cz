@@ -15,22 +15,22 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763138"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640748"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace přiřazení samoobslužné aplikace
 
-Předtím, než budou moct vaši uživatelé sami vyhledávat aplikace z jejich přístupového panelu Moje aplikace, je potřeba povolit **Samoobslužný přístup** k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami zjistit a vyžádat přístup k aplikaci. Tato funkce je k dispozici pro aplikace, které byly přidány z [Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) nebo byly přidány prostřednictvím [souhlasu uživatele nebo správce](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
+Předtím, než budou moct vaši uživatelé sami vyhledávat aplikace ze svých aplikací, je nutné povolit **Samoobslužný přístup** k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a vyžádat přístup k aplikaci. Tato funkce je k dispozici pro aplikace, které byly přidány z [Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) nebo byly přidány prostřednictvím [souhlasu uživatele nebo správce](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
 
 Tato funkce je skvělým způsobem, jak ušetřit čas a peníze jako skupinu IT a důrazně se doporučuje jako součást nasazení moderních aplikací s Azure Active Directory.
 
 Tato funkce umožňuje:
 
--   Umožněte uživatelům automaticky zjišťovat aplikace z [přístupového panelu Moje aplikace](https://myapps.microsoft.com/) bez přestane IT skupiny.
+-   Umožněte uživatelům automaticky zjišťovat aplikace z [mých aplikací](https://myapps.microsoft.com/) , aniž byste přestane skupinu IT.
 
 -   Přidejte tyto uživatele do předem nakonfigurované skupiny, abyste viděli, kdo požadoval přístup, odebrali přístup a spravovali přiřazené role.
 
@@ -38,7 +38,7 @@ Tato funkce umožňuje:
 
 -   Volitelně můžete nakonfigurovat až 10 jednotlivců, kteří můžou schvalovat přístup k této aplikaci.
 
--   Volitelně umožníte obchodnímu schvalovateli nastavit hesla, která uživatelé můžou použít k přihlášení k aplikaci přímo z [přístupového panelu aplikace](https://myapps.microsoft.com/)obchodního schvalovatele.
+-   Volitelně umožňuje obchodnímu schvalovateli nastavit hesla, která uživatelé můžou použít k přihlášení k aplikaci přímo z [mých aplikací](https://myapps.microsoft.com/)schvalovatele firmy.
 
 -   Volitelně automaticky přiřazované uživatele samoobslužné služby přímo k roli aplikace.
 
@@ -79,7 +79,7 @@ Pokud chcete aplikaci povolit Samoobslužný přístup k aplikacím, postupujte 
 
 11. Kliknutím na tlačítko **Uložit** v horní části podokna dokončíte.
 
-Jakmile dokončíte konfiguraci samoobslužné aplikace, můžou uživatelé přejít na [přístupový panel Moje aplikace](https://myapps.microsoft.com/) a kliknout na tlačítko **Přidat samoobslužné aplikace** a vyhledat aplikace, které jsou povolené pomocí samoobslužného přístupu. Obchodní schvalovatelé také uvidí oznámení na svém [přístupovém panelu Moje aplikace](https://myapps.microsoft.com/). Můžete povolit e-mailem upozornění, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení.
+Jakmile dokončíte konfiguraci samoobslužné aplikace, uživatelé můžou přejít na své [aplikace](https://myapps.microsoft.com/) a kliknout na tlačítko **Přidat samoobslužné aplikace** a vyhledat aplikace, které jsou povolené pomocí samoobslužného přístupu. Obchodní schvalovatelé také uvidí oznámení ve svých [aplikacích](https://myapps.microsoft.com/). Můžete povolit e-mailem upozornění, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení.
 
 ## <a name="next-steps"></a>Další kroky
 [Nastavení služby Azure Active Directory pro samoobslužnou správu skupin](../users-groups-roles/groups-self-service-management.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850164"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639745"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ V tomto kurzu provedete pomoc s ovladačem, jehož baterie elektrického vozidla
 V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvořte a spusťte Poznámkový blok Jupyter v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
+> * Vytvořte a spusťte soubor Jupyter Notebook v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vyhledejte dosažitelný rozsah založený na modelu spotřeby elektrického vozidla.
 > * Vyhledejte čerpací stanice elektrického vozidla v dosahu dostupného rozsahu nebo isochrone.
@@ -35,7 +35,7 @@ V tomto kurzu provedete následující:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
@@ -45,9 +45,9 @@ Pokud chcete získat primární klíč předplatného pro svůj účet, postupuj
 
 Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Vytvoření poznámkového bloku Azure
+## <a name="create-an-azure-notebooks-project"></a>Vytvoření projektu Azure Notebooks
 
-Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure notebook a stáhnout a spustit soubor poznámkového bloku Jupyter. Soubor poznámkového bloku obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Pokud chcete vytvořit projekt Azure notebook a nahrát do něj dokument Jupyter poznámkového bloku, proveďte následující kroky:
+Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure Notebooks a stáhnout a spustit Jupyter Notebook soubor. Jupyter Notebook soubor obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Chcete-li vytvořit projekt Azure Notebooks a nahrát do něj dokument Jupyter Notebook, proveďte následující kroky:
 
 1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. V horní části stránky veřejného profilu vyberte **Moje projekty**.
@@ -64,25 +64,25 @@ Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure note
 
 1. Vyberte **Vytvořit**.
 
-1. Po vytvoření projektu si tento [soubor dokumentu poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) stáhněte [Azure Maps z úložiště poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
+1. Po vytvoření projektu Stáhněte tento [soubor dokumentu Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [úložiště Azure Maps Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
-1. V seznamu projekty na stránce **Moje projekty** vyberte svůj projekt a pak vyberte **Odeslat** a nahrajte soubor dokumentu poznámkového bloku Jupyter. 
+1. V seznamu projekty na stránce **Moje projekty** vyberte svůj projekt a pak vyberte **Odeslat** , aby se soubor dokumentu Jupyter notebook nahrál. 
 
-    ![nahrát Poznámkový blok](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Odeslat Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. Nahrajte soubor z počítače a potom vyberte **Hotovo**.
 
-1. Po úspěšném dokončení nahrávání se Váš soubor zobrazí na stránce projektu. Dvakrát klikněte na soubor a otevřete ho jako Jupyter Poznámkový blok.
+1. Po úspěšném dokončení nahrávání se Váš soubor zobrazí na stránce projektu. Dvakrát klikněte na soubor a otevřete ho jako Jupyter Notebook.
 
-Zkuste pochopit funkčnost, kterou implementujete v souboru poznámkového bloku. Spusťte kód v souboru poznámkového bloku vždy po jedné buňce. Kód můžete v každé buňce spustit tak, že v horní části aplikace Poznámkový blok vyberete tlačítko **Spustit** .
+Zkuste pochopit funkčnost, která je implementovaná v souboru Jupyter Notebook. Spusťte kód v souboru Jupyter Notebook vždy po jedné buňce. Kód můžete v každé buňce spustit tak, že v horní části aplikace Jupyter Notebook vyberete tlačítko **Spustit** .
 
-  ![Tlačítko spustit](./media/tutorial-ev-routing/run.png)
+  ![Tlačítko Spustit](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
 
-Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni projektu pomocí následujících kroků:
+Chcete-li spustit kód v Jupyter Notebook, nainstalujte balíčky na úrovni projektu pomocí následujících kroků:
 
-1. Stáhněte soubor [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště poznámkového bloku Azure Maps Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
+1. Stáhněte soubor [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště Azure Maps Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
 1. Na řídicím panelu projekt vyberte **nastavení projektu**. 
 1. V podokně **nastavení projektu** vyberte kartu **prostředí** a pak vyberte **Přidat**.
 1. V části **nastavení prostředí**proveďte následující kroky:   

@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760265"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642431"
 ---
 # <a name="application-management-best-practices"></a>Osvědčené postupy pro správu aplikací
 
@@ -33,8 +33,8 @@ Tento článek obsahuje doporučení a osvědčené postupy pro správu aplikac�
 | Podívejte se na galerii aplikací Azure AD pro aplikace  | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací, které jsou povolené s podnikovým jednotným přihlašováním (SSO). Pokyny k instalaci pro konkrétní aplikaci najdete v [seznamu výukových kurzů](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)pro aplikace SaaS.  | 
 | Použití federovaného jednotného přihlašování založené na SAML  | Když ji aplikace podporuje, použijte federované jednotné přihlašování založené na SAML s Azure AD místo jednotného přihlašování založeného na heslech a ADFS.  | 
 | Použití SHA-256 pro podepsání certifikátu  | Služba Azure AD ve výchozím nastavení používá algoritmus SHA-256 k podepsání odpovědi SAML. Použijte SHA-256, pokud aplikace nevyžaduje SHA-1 (viz [možnosti podepisování certifikátů](certificate-signing-options.md) a [problém s přihlášením aplikací](application-sign-in-problem-application-error.md).)  | 
-| Vyžadovat přiřazení uživatele  | Ve výchozím nastavení mají uživatelé přístup k podnikovým aplikacím bez jejich přiřazení. Pokud však aplikace zveřejňuje role nebo pokud chcete, aby se aplikace zobrazila na přístupovém panelu uživatele, vyžadovat přiřazení uživatele. (Další informace najdete v tématu [pokyny pro vývojáře při integraci aplikací](developer-guidance-for-integrating-applications.md).)  | 
-| Nasazení přístupového panelu Moje aplikace do vašich uživatelů | [Přístupový panel](end-user-experiences.md) na `https://myapps.microsoft.com` webu je webový portál, který poskytuje uživatelům jediný vstupní bod pro své přiřazené cloudové aplikace. Při přidání dalších možností, jako je Správa skupin a Samoobslužné resetování hesla, si uživatelé můžou najít na přístupovém panelu. Viz [Plánování nasazení přístupového panelu](access-panel-deployment-plan.md).
+| Vyžadovat přiřazení uživatele  | Ve výchozím nastavení mají uživatelé přístup k podnikovým aplikacím bez jejich přiřazení. Pokud však aplikace zveřejňuje role nebo pokud chcete, aby se aplikace zobrazila na mých aplikacích uživatele, vyžadovat přiřazení uživatele. (Další informace najdete v tématu [pokyny pro vývojáře při integraci aplikací](developer-guidance-for-integrating-applications.md).)  | 
+| Nasazení mých aplikací pro uživatele | [Moje aplikace](end-user-experiences.md) na `https://myapps.microsoft.com` webu je webový portál, který uživatelům poskytuje jediný bod záznamu pro své přiřazené cloudové aplikace. V případě přidání dalších možností, jako je Správa skupin a Samoobslužné resetování hesla, se uživatelé můžou v mých aplikacích najít. Viz [Plánování nasazení mých aplikací](access-panel-deployment-plan.md).
 | Použít přiřazení skupiny  | Pokud je součástí vašeho předplatného, přiřaďte skupiny k aplikaci, abyste mohli delegovat průběžnou správu přístupu na vlastníka skupiny. (Další informace najdete v tématu [pokyny pro vývojáře při integraci aplikací](developer-guidance-for-integrating-applications.md).)   | 
 | Vytvoření procesu pro správu certifikátů | Maximální doba života podpisového certifikátu je tři roky. Aby se zabránilo výpadku nebo minimalizoval výpadek z důvodu vypršení platnosti certifikátu, použijte k zajištění pečlivě monitorovaných oznámení o změnách souvisejících s certifikátem. |
 

@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080075"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642040"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurace aplikace PHP pro Azure App Service
 
@@ -119,7 +119,7 @@ Potvrďte všechny změny a nasaďte svůj kód pomocí Gitu nebo nasaďte zip s
 
 Pokud chcete, aby App Service spouštěla oblíbené nástroje pro automatizaci v době nasazení, jako je například grunt, Bower nebo Gulp, je nutné dodat [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script). App Service spustí tento skript při nasazení v Gitu nebo s povoleným [nasazením zip](deploy-zip.md) s povolenou automatizací sestavení. 
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
 
 ```json
 "dependencies": {
@@ -203,10 +203,10 @@ fi
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
 1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
-1. Spusťte příkaz `php composer.phar install`.
+1. Spusťte `php composer.phar install`.
 1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
+`PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
 
 Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
 
@@ -276,8 +276,8 @@ Pokud byste raději nepoužívali přepisování v souboru *.htaccess*, můžete
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -285,7 +285,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 ## <a name="customize-phpini-settings"></a>Přizpůsobení nastavení php.ini
 
-Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [direktivyphp.ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
+Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [ direktivyphp.ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
 
 > [!NOTE]
 > Nejlepším způsobem, jak zobrazit verzi PHP a aktuální *php.ini* konfigurace, je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
@@ -295,7 +295,7 @@ Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné 
 
 ::: zone pivot="platform-windows"  
 
-Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte `.user.ini` soubor do kořenového adresáře aplikace.
+Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte `.user.ini` soubor do kořenového adresáře aplikace.
 
 Přidejte konfigurační nastavení do `.user.ini` souboru pomocí stejné syntaxe, jakou byste použili v `php.ini` souboru. Pokud jste například chtěli zapnout nastavení `display_errors` a nastavit `upload_max_filesize` nastavení na 10 milionů, `.user.ini` soubor by obsahoval tento text:
 
@@ -316,9 +316,9 @@ Jako alternativu k používání `.user.ini` souboru můžete v aplikaci použí
 
 ::: zone pivot="platform-linux"
 
-Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
+Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
-V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Například:
+V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
 
 ```
 php_value upload_max_filesize 1000M
@@ -340,7 +340,7 @@ Jako alternativu k používání *. htaccess*můžete v aplikaci použít [ini_s
 
 ::: zone pivot="platform-windows"  
 
-Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
+Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
 
 Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) přidejte nastavení aplikace s názvem `PHP_INI_SCAN_DIR` :
 
@@ -366,7 +366,7 @@ Aby se změny projevily, restartujte aplikaci.
 
 ::: zone pivot="platform-linux"
 
-Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [direktivyphp.ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
+Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [ direktivyphp.ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
 
 Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) přidejte nastavení aplikace s názvem `PHP_INI_SCAN_DIR` :
 
@@ -374,7 +374,7 @@ Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`je výchozí adresář, ve kterém *php.ini* existuje. `/home/site/ini`je vlastní adresář, do kterého přidáte vlastní soubor *. ini* . Hodnoty oddělíte hodnotou `:` .
+`/usr/local/etc/php/conf.d` je výchozí adresář, ve kterém *php.ini* existuje. `/home/site/ini` je vlastní adresář, do kterého přidáte vlastní soubor *. ini* . Hodnoty oddělíte hodnotou `:` .
 
 Přejděte k webové relaci SSH pomocí kontejneru Linux ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
@@ -464,12 +464,12 @@ Pomocí nástroje standardní [error_log ()](https://php.net/manual/function.err
 
 ::: zone-end
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
+- Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
     - V závislosti na vaší *composer.js*se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

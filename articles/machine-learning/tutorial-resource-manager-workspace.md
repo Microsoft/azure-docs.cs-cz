@@ -9,12 +9,12 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: 098d82e6521a4a355ac31809937b589f984816f2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 760406b738d2aa95ef086941850814f4bf39fbb4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027150"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639864"
 ---
 # <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-an-arm-template"></a>Kurz: nasazení pracovního prostoru Azure Machine Learning pomocí šablony ARM
 
@@ -24,21 +24,21 @@ V tomto kurzu se dozvíte, jak vytvořit pracovní prostor Azure Machine Learnin
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-machine-learning-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/).
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-machine-learning-create/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-machine-learning-create/).
 
-:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json" range="1-258" highlight="224-254":::
+:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json":::
 
 V šabloně jsou definované následující prostředky:
 
@@ -69,8 +69,8 @@ Když spustíte výše uvedený příkaz, zadejte:
 
 Postup zobrazení pracovního prostoru Azure ML:
 
-1. Přejděte do části https://portal.azure.com (Soubor > Nový > Jiné).
-1. Přihlásit se.
+1. Přejděte na https://portal.azure.com.
+1. Přihlaste se.
 1. Vyberte pracovní prostor, který jste právě vytvořili.
 
 Uvidíte domovskou stránku Azure Machine Learning:

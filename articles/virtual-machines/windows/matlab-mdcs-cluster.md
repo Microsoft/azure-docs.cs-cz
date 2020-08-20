@@ -8,15 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074227"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639677"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření clusterů distribuovaných výpočetních serverů v programu MATLAB na virtuálních počítačích Azure
 Pomocí Microsoft Azure virtuálních počítačů můžete vytvořit jeden nebo více clusterů distribuovaných výpočetních serverů programu MATLAB pro spouštění paralelních úloh programu MATLAB náročných na výpočetní výkon. Nainstalujte na virtuální počítač software pro distribuovaný výpočetní systém v programu MATLAB, který použijete jako základní image, a pro nasazení a správu clusteru použijte šablonu Azure pro rychlý Start nebo skript Azure PowerShell (k dispozici na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)). Po nasazení se připojte ke clusteru, aby se spouštěly vaše úlohy.
+
+> [!IMPORTANT]
+> Od napsání tohoto článku teď existuje oficiální podpora používání aplikací pro MATLAB v Azure. Doporučuje se použít tyto novější funkce místo šablony a skriptů, na které se odkazuje v tomto článku. Hledat v [Azure Marketplace](https://azuremarketplace.microsoft.com/) pro "MATLAB"; Další informace o spouštění aplikací pro MATLAB v Azure najdete v [MathWorks](https://www.mathworks.com/solutions/cloud.html#public-cloud).
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>O serveru s distribuovaným výpočetním serverem a MATLAB
 Platforma pro [MATLAB](https://www.mathworks.com/products/matlab/) je optimalizovaná pro řešení technických a vědeckých problémů. Uživatelé programu MATLAB s vysokými simulacemi a úlohami zpracování dat můžou pomocí MathWorks paralelních výpočetních prostředků zrychlit úlohy náročné na výpočetní výkon, a to díky využití výpočetních clusterů a služby Grid. [Panel nástrojů pro paralelní výpočty](https://www.mathworks.com/products/parallel-computing/) umožňuje uživatelům programu MATLAB paralelizovat aplikace a využívat multi-core procesory, GPU a výpočetní clustery. [Distribuovaný výpočetní Server](https://www.mathworks.com/products/distriben/) v programu MATLAB umožňuje uživatelům programu MATLAB využívat mnoho počítačů ve výpočetním clusteru.

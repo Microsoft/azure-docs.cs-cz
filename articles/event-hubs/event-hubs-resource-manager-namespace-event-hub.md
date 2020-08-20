@@ -4,12 +4,12 @@ description: 'Rychlý Start: vytvoření oboru názvů Event Hubs s centrem udá
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 445a52593e95074d9941a1592d688de7eea9c006
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dbec62c182fe804ba45cae2f9e40c189b9bc0279
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522036"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641122"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Rychlý Start: vytvoření centra událostí pomocí šablony ARM
 
@@ -29,7 +29,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
 
-:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
+:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json":::
 
 Mezi prostředky, které jsou definované v šabloně, patří:
 

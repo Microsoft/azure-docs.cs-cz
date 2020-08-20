@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461183"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640476"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurace jednotného přihlašování pomocí SAML
 
@@ -47,8 +47,8 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 | Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
 |:--|:--|:--|:--|
 | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
-| **Adresa URL odpovědi** | Povinné | Povinné | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
-| **Přihlašovací adresa URL** | Povinné | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace ze sady Office 365 nebo přístupového panelu Azure AD. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci ze sady Office 365, přístupového panelu Azure AD nebo adresy URL jednotného přihlašování služby Azure AD.|
+| **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
+| **Přihlašovací adresa URL** | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Office 365, Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
 | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
 | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
 
@@ -112,7 +112,7 @@ Jakmile nakonfigurujete aplikaci tak, aby používala Azure AD jako zprostředko
 
 Vyberte **test** a pak zvolte možnost testovat s aktuálně přihlášeným uživatelem nebo jako někdo jiný. 
 
-Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Blahopřejeme!
+Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Congratulations!
 
 Pokud se zobrazí chybová zpráva, proveďte následující kroky:
 

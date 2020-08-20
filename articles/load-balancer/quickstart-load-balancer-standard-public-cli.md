@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: c80b4e57c94737778d8e6f63804d95f4d1b35fb0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95f8466944d4131b3356f44d65171bf1b6cc7a82
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501793"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640782"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
 Začínáme s Azure Load Balancer pomocí rozhraní příkazového řádku Azure k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Rozhraní příkazového řádku Azure je nainstalované místně nebo Azure Cloud Shell
@@ -52,7 +52,7 @@ Vytvořte skupinu prostředků pomocí [AZ Group Create](https://docs.microsoft.
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): Vytvoření nástroje pro vyrovnávání zatížení (standardní SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
@@ -593,7 +593,7 @@ Přidejte virtuální počítače do odchozího fondu pomocí [AZ Network nic IP
    --lb-name myLoadBalancer
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Možnost 2: Vytvoření nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.

@@ -3,12 +3,12 @@ title: Spuštění Azure Functions z balíčku
 description: Modul runtime Azure Functions spouští vaše funkce připojením souboru balíčku pro nasazení, který obsahuje soubory projektu Function App.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214246"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639881"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
@@ -50,6 +50,9 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 ## <a name="integration-with-zip-deployment"></a>Integrace s nasazením zip
 
 [Nasazení zip][Zip deployment for Azure Functions] je funkce Azure App Service, která umožňuje nasadit projekt Function App do `wwwroot` adresáře. Projekt je zabalen jako soubor nasazení. zip. Stejná rozhraní API je možné použít k nasazení balíčku do `d:\home\data\SitePackages` složky. S `WEBSITE_RUN_FROM_PACKAGE` hodnotou nastavení aplikace `1` nakopírují rozhraní API pro nasazení zip balíček do `d:\home\data\SitePackages` složky místo extrakce souborů do `d:\home\site\wwwroot` . Zároveň vytvoří `packagename.txt` soubor. Po restartování je balíček připojený k `wwwroot` systému souborů jen pro čtení. Další informace o nasazení zip najdete v tématu [nasazení zip pro Azure Functions](deployment-zip-push.md).
+
+> [!NOTE]
+> Když dojde k nasazení, aktivuje se restart aplikace Function App. Před restartováním můžou být všechny existující spuštěné funkce dokončené nebo vypršení časového limitu. Další informace najdete v tématu [chování nasazení](functions-deployment-technologies.md#deployment-behaviors).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>Přidání nastavení WEBSITE_RUN_FROM_PACKAGE
 

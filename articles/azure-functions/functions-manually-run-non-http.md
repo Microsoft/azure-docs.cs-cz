@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121731"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640955"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
@@ -37,7 +37,7 @@ Toto umístění požadavku použijete v poli post společně s hlavním klíče
 
 ## <a name="get-the-functions-master-key"></a>Získat hlavní klíč funkce
 
-1. V Azure Portal přejděte na svou funkci a vyberte **funkce klíče**. Pak vyberte klíč funkce, který chcete zkopírovat. 
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function App, vyberte možnost **klíče aplikace**a pak `_master` klíč. 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Vyhledejte hlavní klíč ke zkopírování." border="true":::
 
@@ -50,7 +50,7 @@ Toto umístění požadavku použijete v poli post společně s hlavním klíče
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Zobrazte protokoly a zobrazte výsledky testu hlavního klíče." border="true":::
 
 > [!CAUTION]  
-> Vzhledem ke zvýšeným oprávněním v aplikaci Function App udělené hlavním klíčem byste tento klíč neměli sdílet s třetími stranami nebo ho distribuovat do aplikace.
+> Vzhledem ke zvýšeným oprávněním v aplikaci Function App udělené hlavním klíčem byste tento klíč neměli sdílet s třetími stranami nebo ho distribuovat do aplikace. Klíč by měl být odeslán pouze do koncového bodu HTTPS.
 
 ## <a name="call-the-function"></a>Volání funkce
 

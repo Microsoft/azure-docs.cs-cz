@@ -4,20 +4,20 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905121"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641955"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
-K nasazení kódu Azure Functions projektu do Azure můžete použít několik různých technologií. Tento článek poskytuje přehled metod nasazení, které máte k dispozici, a doporučení pro nejlepší způsob použití v různých scénářích. Poskytuje taky vyčerpávající seznam a klíčových podrobností o technologiích nasazení underlyng. 
+K nasazení kódu Azure Functions projektu do Azure můžete použít několik různých technologií. Tento článek poskytuje přehled metod nasazení, které máte k dispozici, a doporučení pro nejlepší způsob použití v různých scénářích. Poskytuje taky vyčerpávající seznam a klíčových podrobností o základních technologiích nasazení. 
 
 ## <a name="deployment-methods"></a>Metody nasazení
 
-Technologie nasazení, kterou použijete k publikování kódu do Azure, je obecně určena způsobem, ve kterém publikujete aplikaci. Odpovídající metoda nasazení je určena konkrétními potřebami a bodem vývojového cyklu. Například během vývoje a testování můžete nasadit přímo z vývojového nástroje, jako je například Visual Studio Code. Pokud je vaše aplikace v produkčním prostředí, je pravděpodobnější publikovat průběžně ze správy zdrojového kódu nebo pomocí automatizovaného publikačního kanálu, který zahrnuje další ověřování a testování.  
+Technologie nasazení, kterou použijete k publikování kódu do Azure, je obecně určena způsobem, ve kterém publikujete aplikaci. Odpovídající metoda nasazení je určena konkrétními potřebami a bodem vývojového cyklu. Například během vývoje a testování můžete nasadit přímo z vývojového nástroje, jako je například Visual Studio Code. Pokud je vaše aplikace v produkčním prostředí, je pravděpodobnější, že budete průběžně publikovat ze správy zdrojového kódu nebo pomocí automatizovaného kanálu publikování, který zahrnuje další ověřování a testování.  
 
 Následující tabulka popisuje dostupné metody nasazení pro projekt funkce.
 
@@ -202,7 +202,13 @@ V následující tabulce jsou uvedeny operační systémy a jazyky, které podpo
 | PowerShell (Preview) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup>Úpravy portálu jsou povolené jenom pro aktivační události HTTP a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
+<sup>*</sup> Úpravy portálu jsou povolené jenom pro aktivační události HTTP a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
+
+## <a name="deployment-behaviors"></a>Chování nasazení
+
+Když nasazení provedete, všechna stávající spuštění budou moci být dokončena nebo vypršel časový limit, po kterém je nový kód načten pro zahájení zpracování požadavků.
+
+Pokud potřebujete větší kontrolu nad tímto přechodem, měli byste použít sloty nasazení.
 
 ## <a name="deployment-slots"></a>Nasazovací sloty
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367780"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642414"
 ---
-# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
+# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Naplánování nasazení proxy aplikací služby Azure AD
 
 Proxy aplikace Azure Active Directory (Azure AD) je zabezpečené a nákladově efektivní řešení vzdáleného přístupu pro místní aplikace. Poskytuje okamžitou přechodovou cestu pro "cloudové" organizace pro správu přístupu ke starším místním aplikacím, které ještě neumožňují použití moderních protokolů. Další úvodní informace najdete v tématu [co je proxy aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
 
@@ -33,7 +33,7 @@ Tento článek obsahuje prostředky, které potřebujete k plánování, provozo
 
 V následující části najdete širokou škálu klíčových prvků plánování, které nastavíte jako efektivní prostředí pro nasazení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete s implementací, musíte splnit následující požadavky. V tomto [kurzu](application-proxy-add-on-premises-application.md)můžete zobrazit další informace o nastavení prostředí, včetně těchto požadavků.
 
@@ -170,7 +170,7 @@ Po publikování aplikace proveďte základní funkční testování, aby se zaj
 
 ### <a name="deploy-application-proxy"></a>Nasadit proxy aplikace
 
-Postup nasazení proxy aplikace je popsaný v tomto [kurzu pro přidání místní aplikace pro vzdálený přístup](application-proxy-add-on-premises-application.md). Pokud instalace není úspěšná, vyberte **řešení potíží s proxy aplikací** na portálu nebo použijte Průvodce odstraňováním potíží, [kde najdete problémy při instalaci konektoru agenta proxy aplikace](application-proxy-connector-installation-problem.md).
+Postup nasazení proxy aplikace je popsaný v tomto [kurzu pro přidání místní aplikace pro vzdálený přístup](application-proxy-add-on-premises-application.md). Pokud instalace není úspěšná, vyberte  **řešení potíží s proxy aplikací**  na portálu nebo použijte Průvodce odstraňováním potíží, [kde najdete problémy při instalaci konektoru agenta proxy aplikace](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Publikování aplikací prostřednictvím proxy aplikace
 
@@ -271,7 +271,7 @@ K podpoře Proxy aplikací služby AD Azure je možné použít následující f
 
 * Podmíněný přístup na základě rizik: Chraňte svá data před škodlivými hackery pomocí [zásad podmíněného přístupu na základě rizik](https://www.microsoft.com/cloud-platform/conditional-access) , které je možné použít pro všechny aplikace a všechny uživatele, ať už místně, nebo v cloudu.
 
-* Přístupový panel Azure AD: u nasazené služby proxy aplikací a aplikací, které jsou bezpečně publikované, nabízí uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Zvyšte produktivitu díky samoobslužným funkcím, jako je třeba možnost požádat o přístup k novým aplikacím a skupinám nebo spravovat přístup k těmto prostředkům jménem jiné prostřednictvím [přístupového panelu](https://aka.ms/AccessPanelDPDownload).
+* Azure AD moje aplikace: u nasazené služby proxy aplikací a aplikací, které jsou bezpečně publikované, nabízejí uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Zvyšte produktivitu díky samoobslužným funkcím, jako je třeba možnost požádat o přístup k novým aplikacím a skupinám nebo spravovat přístup k těmto prostředkům jménem jiné prostřednictvím [mých aplikací](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>Správa implementace
 

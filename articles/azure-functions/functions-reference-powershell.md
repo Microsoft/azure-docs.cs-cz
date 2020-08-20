@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207416"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642210"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -128,7 +128,7 @@ Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
 | Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | String | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -382,14 +382,14 @@ Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visua
 * Automatické ověřování MSI do Azure
 * Možnost zapnout `AzureRM` aliasy Azure PowerShell PowerShellu, pokud byste chtěli.
 
-## <a name="powershell-version"></a>Verze prostředí PowerShell
+## <a name="powershell-versions"></a>Verze PowerShellu
 
-Následující tabulka ukazuje verzi prostředí PowerShell, kterou používá každá hlavní verze běhového modulu Functions:
+V následující tabulce jsou uvedeny verze prostředí PowerShell podporované každou hlavní verzí modulu runtime functions a požadovaná verze rozhraní .NET:
 
-| Verze funkcí | Verze prostředí PowerShell                             |
-|-------------------|------------------------------------------------|
-| verze               | Windows PowerShell 5,1 (uzamčeno modulem runtime) |
-| 2.x               | PowerShell Core 6                              |
+| Verze funkcí | Verze prostředí PowerShell                               | Verze .NET  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné funkce.
 

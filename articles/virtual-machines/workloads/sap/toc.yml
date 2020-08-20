@@ -291,6 +291,8 @@
       href: azure-monitor-overview.md
     - name: Azure Monitor for SAP Solutions – poskytovatelé
       href: azure-monitor-providers.md
+    - name: Konfigurace Azure Monitoru for SAP Solutions
+      href: azure-monitor-sap-quickstart.md
     - name: Azure Monitor for SAP Solutions – nejčastější dotazy
       href: azure-monitor-faq.md
 - name: Referenční informace

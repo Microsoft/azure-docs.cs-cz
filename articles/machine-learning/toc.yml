@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: Zabezpečení a připravenost na úrovni podniku
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Podnikové zabezpečení a zásady správného řízení
           items:
             - name: Přehled zabezpečení podniku

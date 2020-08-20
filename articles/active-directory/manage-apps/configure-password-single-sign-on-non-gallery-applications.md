@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459381"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640544"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Konfigurace jednotného přihlašování založeného na heslech
 
@@ -29,7 +29,7 @@ Jednotné přihlašování založené na heslech je skvělým způsobem, jak ryc
 
 - Podpora aplikací, které vyžadují více polí přihlašování pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
 
-- Přizpůsobte popisky polí uživatelské jméno a heslo, které uživatelé uvidí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadávání přihlašovacích údajů.
+- Přizpůsobte popisky polí uživatelské jméno a heslo, které uživatelé uvidí při zadávání přihlašovacích údajů v [mých aplikacích](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) .
 
 - Umožněte uživatelům zadání vlastních uživatelských jmen a hesel pro všechny existující účty aplikací, které píšete ručně.
 
@@ -71,7 +71,7 @@ Pokud se pokus o analýzu služby Azure AD nezdaří, můžete nakonfigurovat ru
    ![Ruční konfigurace jednotného přihlašování založeného na heslech](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. Vyberte možnost **zachytávání přihlašovacích polí**. Na nové kartě se otevře stránka stavu zachycení, která ukazuje, že **právě probíhá zachytávání metadat**zprávy.
 
-4. Pokud se na nové kartě zobrazí pole **požadované rozšíření přístupového panelu** , vyberte **instalovat hned** a nainstalujte rozšíření prohlížeče **rozšíření pro zabezpečené přihlašování k aplikacím** . (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Pak nainstalujte, spusťte a povolte rozšíření a aktualizujte stránku stavu zachycení.
+4. Pokud se na nové kartě zobrazí pole **požadováno rozšíření moje aplikace** , vyberte **nainstalovat hned** a nainstalujte rozšíření prohlížeče **rozšíření pro zabezpečené přihlašování k aplikacím** . (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Pak nainstalujte, spusťte a povolte rozšíření a aktualizujte stránku stavu zachycení.
 
    Rozšíření prohlížeče pak otevře jinou kartu, která zobrazí zadanou adresu URL.
 5. Na kartě se zadanou adresou URL Projděte přihlašovací proces. Do polí uživatelské jméno a heslo zadejte a zkuste se přihlásit. (Nemusíte zadávat správné heslo.)

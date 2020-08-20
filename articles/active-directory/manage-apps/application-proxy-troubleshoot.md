@@ -2,26 +2,21 @@
 title: Řešení potíží s proxy aplikací | Microsoft Docs
 description: Popisuje, jak řešit chyby v Azure Proxy aplikací služby AD.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848449"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640850"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami
 
@@ -84,6 +79,7 @@ Tento seznam obsahuje chyby, se kterými se můžou koncoví uživatelé setkat 
 | Tato podniková aplikace se teď nedá použít hned. Zkuste to prosím znovu později... Vypršel časový limit konektoru. | Při pokusu o přístup k aplikaci, kterou jste publikovali, se tato chyba může zobrazit, pokud nejsou správně definované pro tuto aplikaci na místní straně. Ujistěte se, že uživatelé mají správná oprávnění definovaná pro tuto back-end aplikaci na místním počítači. |
 | Tato podniková aplikace není dostupná. Nemáte oprávnění pro přístup k této aplikaci. Autorizace se nezdařila. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium. | K této chybě může uživatel získat přístup při pokusu o přístup k aplikaci, kterou jste publikovali, pokud správce předplatitele nepřiřadil explicitně licenci na prémii. Klikněte na kartu **licence** pro předplatitele služby Active Directory a ujistěte se, že je tomuto uživateli nebo skupině uživatelů přiřazena licence Premium. |
 | Server se zadaným názvem hostitele se nepovedlo najít. | Při pokusu o přístup k aplikaci, kterou jste publikovali v případě, že vlastní doména aplikace není správně nakonfigurovaná, může se uživateli zobrazit tato chyba. Postupujte podle kroků v části [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md) Ujistěte se, že jste nahráli certifikát pro doménu a správně nakonfigurovali záznam DNS. |
+|Zakázáno: k této podnikové aplikaci nelze přistupovat nebo uživatel není autorizován. Přesvědčte se, zda je uživatel definován v místní službě AD a zda má uživatel přístup k aplikaci v místní službě AD. | Může se jednat o problém s přístupem k autorizačním informacím. Další informace o tom, že [některé aplikace a rozhraní API vyžadují přístup k informacím o autorizaci pro objekty účtů]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). V kostce přidejte účet počítače proxy serveru aplikace do skupiny předdefinovaná doména "Windows Authorization Access Group", která se má vyřešit. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Zde uvedená chyba není.
 

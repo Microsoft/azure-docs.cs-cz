@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850742"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642193"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -21,7 +21,7 @@ Ukázkové projekty samostatné funkce v Pythonu najdete v [ukázkách funkcí P
 
 Azure Functions očekává ve skriptu Pythonu funkci, která bude mít nestavovou metodu, která zpracuje vstup a vytvoří výstup. Ve výchozím nastavení očekává modul runtime metodu, která má být implementována jako globální metoda volána `main()` v `__init__.py` souboru. Můžete také [zadat alternativní vstupní bod](#alternate-entry-point).
 
-Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody pomocí `name` vlastnosti definované v *function.jsv* souboru. Například _function.js_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req` :
+Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody pomocí `name` vlastnosti definované v *function.jsv* souboru. Například  _function.js_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -87,7 +87,6 @@ Hlavní složka projektu ( \_ \_ aplikace \_ \_ ) může obsahovat následujíc�
 * *requirements.txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
 * *host.js*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
 * *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
-* *. gitignore*: (volitelné) deklaruje soubory, které jsou vyloučeny z úložiště Git, například local.settings.js.
 * *Souboru Dockerfile*: (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json).
@@ -235,7 +234,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -351,11 +350,11 @@ def main(req: azure.functions.HttpRequest,
 
 Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) má následující atributy řetězce:
 
-`function_directory`Adresář, ve kterém je funkce spuštěná.
+`function_directory` Adresář, ve kterém je funkce spuštěná.
 
-`function_name`Název funkce
+`function_name` Název funkce
 
-`invocation_id`ID aktuálního vyvolání funkce
+`invocation_id` ID aktuálního vyvolání funkce
 
 ## <a name="global-variables"></a>Globální proměnné
 

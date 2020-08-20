@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009114"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641020"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -55,9 +55,9 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
-1. V části **podmínky**vyberte **klientské aplikace (Preview)**.
+1. V části **podmínky**vyberte **klientské aplikace**.
    1. Nastavte **Konfigurovat** na **Ano**.
-   1. Vyberte **mobilní aplikace a klienti pro stolní počítače** a **moderní ověřování**.
+   1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a zrušte výběr všech ostatních.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte následující možnosti:
    - **Vyžadovat klientskou aplikaci schválenou**
    - **Vyžadovat zásady ochrany aplikací (Preview)**
@@ -76,10 +76,9 @@ Pro zásady podmíněného přístupu v tomto kroku nakonfigurujte následujíc�
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
-1. V části **podmínky**:
-   1. **Klientské aplikace (Preview)**:
-      1. Nastavte **Konfigurovat** na **Ano**.
-      1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
+1. V části **podmínky**vyberte **klientské aplikace**:
+   1. Nastavte **Konfigurovat** na **Ano**.
+   1. Vyberte **klienti Exchange ActiveSync** a zrušte výběr všech ostatních.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat zásadu ochrany aplikací**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
@@ -107,9 +106,9 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
-1. V části **podmínky**vyberte **klientské aplikace (Preview)**.
+1. V části **podmínky**vyberte **klientské aplikace**.
    1. Nastavte **Konfigurovat** na **Ano**.
-   1. Vyberte **prohlížeč**.
+   1. Vyberte **prohlížeč** a zrušte výběr všech ostatních.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte následující možnosti:
    - **Vyžadovat klientskou aplikaci schválenou**
    - **Vyžadovat zásady ochrany aplikací (Preview)**
@@ -140,9 +139,9 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
-1. V části **podmínky**vyberte **klientské aplikace (Preview)**.
+1. V části **podmínky**vyberte **klientské aplikace**.
    1. Nastavte **Konfigurovat** na **Ano**.
-   1. Vyberte **mobilní aplikace a klienti pro stolní počítače** a **moderní ověřování**.
+   1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a zrušte výběr všech ostatních.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte následující možnosti:
    - **Vyžadovat klientskou aplikaci schválenou**
    - **Vyžadovat zásady ochrany aplikací (Preview)**
@@ -159,10 +158,9 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
-1. V části **podmínky**:
-   1. **Klientské aplikace (Preview)**:
-      1. Nastavte **Konfigurovat** na **Ano**.
-      1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
+1. V části **podmínky**vyberte **klientské aplikace**:
+   1. Nastavte **Konfigurovat** na **Ano**.
+   1. Vyberte **klienti Exchange ActiveSync** a zrušte výběr všech ostatních.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat zásadu ochrany aplikací**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.

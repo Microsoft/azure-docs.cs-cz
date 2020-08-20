@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764872"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642057"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavení vlastní domovské stránky publikovaných aplikací s využitím Azure Proxy aplikací služby AD
 
-Tento článek popisuje, jak nakonfigurovat aplikaci, která uživatele nasměruje na vlastní domovskou stránku. Při publikování aplikace pomocí proxy aplikace nastavíte interní adresu URL, ale někdy to není stránka, kterou by měl uživatel vidět jako první. Nastavte vlastní domovskou stránku tak, aby uživatel při přístupu k aplikaci získá pravou stránku. Uživatel uvidí vlastní domovskou stránku, kterou jste nastavili, bez ohledu na to, jestli k aplikaci přistupuje z přístupového panelu Azure Active Directory nebo ze Spouštěče aplikací pro Office 365.
+Tento článek popisuje, jak nakonfigurovat aplikaci, která uživatele nasměruje na vlastní domovskou stránku. Při publikování aplikace pomocí proxy aplikace nastavíte interní adresu URL, ale někdy to není stránka, kterou by měl uživatel vidět jako první. Nastavte vlastní domovskou stránku tak, aby uživatel při přístupu k aplikaci získá pravou stránku. Uživatel uvidí vlastní domovskou stránku, kterou jste nastavili, bez ohledu na to, jestli k aplikaci přistupuje z Azure Active Directory moje aplikace nebo spouštěče aplikací Microsoft 365.
 
 Když uživatel aplikaci spustí, bude se ve výchozím nastavení směrovat na adresu URL kořenové domény publikované aplikace. Cílová stránka je obvykle nastavena jako adresa URL domovské stránky. Pomocí modulu Azure AD PowerShell definujte vlastní adresu URL domovské stránky, pokud chcete, aby uživatel aplikace na konkrétní stránce v rámci aplikace nakládal.
 
@@ -37,7 +37,7 @@ Tady je jeden scénář, který vysvětluje, proč vaše společnost nastavila v
 - Místo toho je třeba nastavit `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` adresu URL domovské stránky, takže externí uživatel uvidí přihlašovací stránku jako první.
 
 > [!NOTE]
-> Když uživatelům udělíte přístup k publikovaným aplikacím, zobrazí se tyto aplikace na [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md) a ve [Spouštěči aplikací pro Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Když uživatelům udělíte přístup k publikovaným aplikacím, zobrazí se aplikace ve [složce Moje aplikace](../user-help/my-apps-portal-end-user-access.md) a ve [spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -59,7 +59,7 @@ Pokud chcete změnit adresu URL domovské stránky vaší aplikace prostřednict
 1. Vyberte **Azure Active Directory**a potom **Registrace aplikací**. Zobrazí se seznam registrovaných aplikací.
 1. Vyberte aplikaci ze seznamu. Zobrazí se stránka se zobrazenými podrobnostmi o registrované aplikaci.
 1. V části **Spravovat**vyberte **branding**.
-1. Aktualizujte **adresu URL domovské stránky** novou cestou.
+1. Aktualizujte **adresu URL domovské stránky**  novou cestou.
 
    ![Stránka branding pro registrovanou aplikaci, která zobrazuje pole adresy URL domovské stránky](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 

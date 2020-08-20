@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538169"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642346"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce & nástroje pro Azure Cloud Shell
 
@@ -57,7 +57,7 @@ Prostředí PowerShell v Cloud Shell obsahuje soukromé sestavení modulu Exchan
 
 ![Snímek obrazovky Azure Cloud Shell s příkazy Connect-EXOPSSession a Get-User](media/features-powershell/exchangeonline.png)
 
- Spusťte `Get-Command -Module tmp_*`.
+ Spuštěním příkazu `Get-Command -Module tmp_*`
 > [!NOTE]
 > Název modulu by měl začínat `tmp_` , pokud máte moduly se stejnou předponou, jejich rutiny budou také Surface. 
 
@@ -67,7 +67,7 @@ Prostředí PowerShell v Cloud Shell obsahuje soukromé sestavení modulu Exchan
 
 Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nástroje, jako jsou Terraformu, Ansible a INSPEC. Vyzkoušejte si to z ukázkových návodů.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 |Kategorie   |Název   |
 |---|---|
@@ -76,7 +76,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Editory textu           |kód (Editor Cloud Shell)<br> vim<br> nano<br> emacs    |
 |Správa zdrojového kódu         |git                    |
 |Nástroje pro sestavení            |make<br> maven<br> npm<br> PIP         |
-|Kontejnery             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
 |Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [skript MSSQL](https://github.com/Microsoft/sql-xplat-cli) |
 |Další                  |Klient iPython<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Nespec](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Pack](https://www.packer.io/)<br> [Sada Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
@@ -84,8 +84,8 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 |Jazyk   |Verze   |
 |---|---|
-|.NET Core  |2.2.402       |
-|Go         |1.9        |
+|.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
+|Přejít         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762951"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639932"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 
@@ -44,9 +44,9 @@ Pro uživatele, kteří mají přístup k aplikaci, je nutné je nejprve přiřa
 
     * Skupina [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
 
-3.  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit **uživatelům přidání aplikace** pomocí [přístupového panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **bez schválení firmy** .
+3.  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí funkce [Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat funkci aplikace** **bez schválení firmy** .
 
-4.  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí [přístupového panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat funkci aplikace** , ale jenom s tím,**že předá od vybrané sady obchodních schvalovatelů předchozí schválení** .
+4.  Správce umožňuje [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) povolit uživateli přidání aplikace pomocí funkce [Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **Přidat** aplikaci, ale jenom s tím,**že předá od vybrané sady obchodních schvalovatelů dřívější schválení** .
 
 5.  Správce umožňuje [samoobslužné správě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) dovolit uživateli připojit se ke skupině, ke které je aplikace přiřazená **bez souhlasu s obchodním schválením** .
 

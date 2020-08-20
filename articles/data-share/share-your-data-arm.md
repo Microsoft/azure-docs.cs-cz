@@ -6,15 +6,15 @@ ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 87b91d353b6d9f64f28892feed92c44ceafc2598
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575691"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640918"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>Kurz: sdílení dat pomocí šablon Azure Data Share a Správce prostředků
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Rychlý Start: sdílení dat pomocí šablon Azure Data Share a Správce prostředků
 
 Naučte se, jak nastavit novou sdílenou složku Azure z účtu služby Azure Storage pomocí šablony Azure Resource Manager a začít sdílet data se zákazníky a partnery mimo vaši organizaci Azure. Seznam podporovaných úložišť dat najdete [v tématu podporovaná úložiště dat v Azure Data Share](./supported-data-stores.md).
 
@@ -81,7 +81,7 @@ Je to proto, že se nasazení pokouší vytvořit datovou sadu před dokončení
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Otevřete účet pro sdílení dat, který jste vytvořili.
 1. V nabídce vlevo vyberte **Odeslat sdílené složky**.  V seznamu se zobrazí účet úložiště.
 1. Vyberte účet úložiště.  V části **Podrobnosti**se zobrazí nastavení synchronizace, jak jste nakonfigurovali v šabloně.
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte, jak vytvořit sdílenou složku Azure a pozvat příjemce. Další informace o tom, jak může příjemce dat přijmout a přijmout sdílená data, najdete v kurzu [přijímání a přijímání dat](subscribe-to-data-share.md) .
+V tomto rychlém startu se naučíte, jak vytvořit sdílenou složku Azure a pozvat příjemce. Další informace o tom, jak může příjemce dat přijmout a přijmout sdílená data, najdete v kurzu [přijímání a přijímání dat](subscribe-to-data-share.md) .

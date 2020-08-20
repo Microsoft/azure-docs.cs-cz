@@ -16,12 +16,12 @@ ms.date: 03/12/2019
 ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764940"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642125"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Konfigurace jednotného přihlašování k aplikaci proxy aplikací
 
@@ -49,7 +49,7 @@ Každou z těchto možností můžete najít tak, že v části podnikové aplik
 
 Na této stránce se zobrazí také jedna možnost Další přihlášení: propojené přihlašování. Tuto možnost podporuje i proxy aplikace. Tato možnost však nepřidá do aplikace jednotné přihlašování. To, že tato aplikace už může mít jednotné přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services (AD FS). 
 
-Tato možnost umožňuje správci vytvořit odkaz na aplikaci, kterou uživatelé poprvé dojdou při přístupu k aplikaci. Pokud je například aplikace konfigurovaná pro ověřování uživatelů pomocí Active Directory Federation Services (AD FS) 2,0, může správce pomocí možnosti "propojené přihlášení" vytvořit odkaz na přístupovém panelu.
+Tato možnost umožňuje správci vytvořit odkaz na aplikaci, kterou uživatelé poprvé dojdou při přístupu k aplikaci. Pokud je například aplikace konfigurovaná pro ověřování uživatelů pomocí Active Directory Federation Services (AD FS) 2,0, může správce pomocí možnosti "propojené přihlašování" vytvořit odkaz na vlastní aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 - [Trezor hesel pro jednotné přihlašování s proxy aplikací](application-proxy-configure-single-sign-on-password-vaulting.md)

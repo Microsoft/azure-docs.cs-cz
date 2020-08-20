@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3352bb13602947f08cc974d63308f2d802b144e7
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612346"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642091"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Možnosti jednotného přihlašování v Azure AD
 
 Jednotné přihlašování poskytuje mnoho výhod oproti tradičním metodám přihlašování.
 
-- **S jednotným přihlašováním**se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z přístupového panelu Azure AD Mojeapl. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
+- **S jednotným přihlašováním**se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z mých aplikací. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
 
 - **Bez jednotného přihlašování**si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
 
@@ -123,7 +123,7 @@ Hesla pro jednotlivé aplikace může spravovat správce Azure AD nebo uživatel
 
 Když správce Azure AD spravuje přihlašovací údaje:  
 
-- Uživatel není muset resetovat ani pamatovat uživatelské jméno a heslo. Uživatel má přístup k aplikaci kliknutím na panel přístupového panelu nebo prostřednictvím poskytnutého odkazu.
+- Uživatel není muset resetovat ani pamatovat uživatelské jméno a heslo. Uživatel má přístup k aplikaci kliknutím na ni ve svých aplikacích nebo prostřednictvím poskytnutého odkazu.
 - Správce může provádět úlohy správy s přihlašovacími údaji. Správce může například aktualizovat přístup k aplikaci podle členství ve skupině uživatelů a podle stavu zaměstnanců.
 - Správce může použít přihlašovací údaje správce k poskytnutí přístupu k aplikacím sdíleným mezi mnoha uživateli. Správce může například udělit všem uživatelům, kteří mají přístup k aplikaci, aby měli přístup k aplikaci pro sdílení přes sociální média nebo dokumentů.
 

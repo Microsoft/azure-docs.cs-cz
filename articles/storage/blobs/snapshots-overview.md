@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055764"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640595"
 ---
 # <a name="blob-snapshots"></a>Snímky objektů BLOB
 
 Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku.
 
 > [!NOTE]
-> Správa verzí objektů BLOB (Preview) nabízí alternativní způsob, jak zachovat historické kopie objektu BLOB. Další informace najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
+> Správa verzí objektů BLOB (Preview) nabízí alternativní způsob, jak zachovat předchozí verze objektu BLOB. Další informace najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>O snímcích objektů BLOB
 
@@ -33,7 +33,7 @@ Snímek objektu BLOB je stejný jako základní objekt BLOB s tím rozdílem, ž
 > Všechny snímky sdílí identifikátor URI základního objektu BLOB. Jediným rozdílem mezi základním objektem BLOB a snímkem je připojená hodnota **DateTime** .
 >
 
-Objekt BLOB může mít libovolný počet snímků. Snímky zůstanou zachované, dokud se explicitně neodstraní, ať už nezávisle, nebo jako součást operace odstranění objektu BLOB pro základní objekt BLOB. Můžete vytvořit výčet snímků přidružených k základnímu objektu BLOB a sledovat aktuální snímky.
+Objekt BLOB může mít libovolný počet snímků. Snímky zůstanou zachované, dokud se explicitně neodstraní, ať už nezávisle, nebo jako součást operace [odstranění objektu BLOB](/rest/api/storageservices/delete-blob) pro základní objekt BLOB. Můžete vytvořit výčet snímků přidružených k základnímu objektu BLOB a sledovat aktuální snímky.
 
 Když vytvoříte snímek objektu blob, vlastnosti systému objektu BLOB se zkopírují do snímku se stejnými hodnotami. Metadata základního objektu BLOB se také zkopírují do snímku, pokud při vytváření snímku neurčíte samostatná metadata. Až snímek vytvoříte, můžete ho číst, kopírovat nebo odstranit, ale nemůžete ho upravovat.
 
@@ -51,15 +51,15 @@ Následující seznam obsahuje klíčové body, které je potřeba vzít v úvah
 
 - Váš účet úložiště se za jedinečné bloky nebo stránky účtuje bez ohledu na to, jestli jsou v objektu BLOB nebo ve snímku. U vašeho účtu se neúčtují další poplatky za snímky přidružené k objektu blob, dokud neaktualizujete objekt blob, na kterém jsou založené. Po aktualizaci základního objektu BLOB se odliší od jeho snímků. Pokud k tomu dojde, budou se vám účtovat jedinečné bloky nebo stránky v každém objektu BLOB nebo snímku.
 - Když nahradíte blok v rámci objektu blob bloku, tento blok se následně účtuje jako jedinečný blok. To platí i v případě, že má blok stejné ID bloku a stejná data jako ve snímku. Po opětovném potvrzení bloku se odliší od jeho protějšku v jakémkoli snímku a za jeho data se vám budou účtovat poplatky. Totéž platí pro stránku v objektu blob stránky, který je aktualizovaný se stejnými daty.
-- Nahrazení objektu blob bloku voláním metody [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] nebo [UploadFromByteArray] [dotnet_UploadFromByteArray] nahradí všechny bloky v objektu BLOB. Pokud máte snímek přidružený k tomuto objektu blob, všechny bloky v základním objektu BLOB a snímku se teď odchýlit a budou se vám účtovat všechny bloky v obou objektech blob. To platí i v případě, že data v základním objektu BLOB a snímku zůstanou stejná.
+- Aktualizace objektu blob bloku voláním metody, která přepíše celý obsah objektu blob, nahradí všechny bloky v objektu BLOB. Pokud máte snímek přidružený k tomuto objektu blob, všechny bloky v základním objektu BLOB a snímku se teď odchýlit a budou se vám účtovat všechny bloky v obou objektech blob. To platí i v případě, že data v základním objektu BLOB a snímku zůstanou stejná.
 - Blob service Azure nemá žádný způsob, jak určit, jestli dva bloky obsahují identická data. Každý blok, který je nahraný a potvrzený, se považuje za jedinečný, a to i v případě, že má stejná data a stejné ID bloku. Vzhledem k tomu, že se poplatky za jedinečné bloky, je důležité vzít v úvahu, že aktualizace objektu blob, který má snímek, má za následek další jedinečné bloky a další poplatky.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Minimalizace nákladů pomocí správy snímků
+### <a name="minimize-costs-with-snapshot-management"></a>Minimalizace nákladů pomocí správy snímků
 
 Doporučujeme pečlivě spravovat vaše snímky, abyste se vyhnuli dodatečným poplatkům. Můžete dodržovat tyto osvědčené postupy, které vám pomohou minimalizovat náklady vzniklé úložištěm vašich snímků:
 
 - Odstraňte a znovu vytvořte snímky přidružené k objektu BLOB při aktualizaci objektu blob, a to i v případě, že se aktualizujete se stejnými daty, pokud návrh aplikace nevyžaduje, abyste zachovali snímky. Odstraněním a opětovným vytvořením snímků objektu BLOB se můžete ujistit, že se objekty BLOB a snímky neodchylují.
-- Pokud udržujete snímky pro objekt blob, vyhněte se volání [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] nebo [UploadFromByteArray] [dotnet_UploadFromByteArray] pro aktualizaci objektu BLOB. Tyto metody nahrazují všechny bloky v objektu blob, což způsobí, že základní objekt BLOB a jeho snímky se budou významně odchýlit. Místo toho aktualizujte nejmenší možný počet bloků pomocí metod [PutBlock] [dotnet_PutBlock] a [PutBlockList] [dotnet_PutBlockList].
+- Pokud udržujete snímky pro objekt blob, vyhněte se volání metod, které přepíší celý objekt BLOB při aktualizaci objektu BLOB. Místo toho aktualizujte nejmenším možným počtem bloků, aby se zajistilo nízké náklady.
 
 ### <a name="snapshot-billing-scenarios"></a>Scénáře fakturace snímků
 
@@ -85,9 +85,12 @@ Ve scénáři 3 se základní objekt BLOB aktualizoval, ale snímek ne. Blok 3 b
 
 #### <a name="scenario-4"></a>Scénář 4
 
-Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žádné původní bloky. V důsledku toho se účet účtuje za všechny osm jedinečných bloků. K tomuto scénáři může dojít, pokud používáte metodu aktualizace, například [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] nebo [UploadFromByteArray] [dotnet_UploadFromByteArray], protože tyto metody nahrazují celý obsah objektu BLOB.
+Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žádné původní bloky. V důsledku toho se účet účtuje za všechny osm jedinečných bloků.
 
 ![Prostředky Azure Storage](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> Vyhněte se volání metod, které přepisují celý objekt blob, a místo toho aktualizujte jednotlivé bloky, abyste zachovali náklady.
 
 ## <a name="next-steps"></a>Další kroky
 

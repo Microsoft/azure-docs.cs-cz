@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459330"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641972"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurace propojeného přihlašování
 
 V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nastavit jednotné přihlašování založené na SAML. Je **propojena**jiná možnost. V tomto článku najdete další podrobnosti o možnosti propojeno.
 
-Možnost **propojit** umožňuje nakonfigurovat cílové umístění, když uživatel vybere aplikaci v [mých aplikacích](https://myapplications.microsoft.com/) nebo na portálu Office 365 vaší organizace.
+Možnost **propojit** umožňuje nakonfigurovat cílové umístění, když uživatel vybere aplikaci v [mých aplikacích](https://myapps.microsoft.com/) nebo na portálu Office 365 vaší organizace.
 
 Mezi běžné scénáře, kde je možnost propojení užitečná, patří:
 - Přidejte odkaz na vlastní webovou aplikaci, která aktuálně používá federaci, například Active Directory Federation Services (AD FS) (AD FS).
@@ -35,7 +35,7 @@ Mezi běžné scénáře, kde je možnost propojení užitečná, patří:
 
 K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. V rychlém startu, ve kterém nakonfigurujete jednotné přihlašování, taky najdete **propojenou** možnost. 
 
-Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím služby Azure AD. Možnost jednoduše nastaví umístění, do kterého se budou uživatelé posílat při výběru aplikace v [okně moje aplikace](https://myapplications.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.
+Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím služby Azure AD. Možnost jednoduše nastaví umístění, do kterého se budou uživatelé posílat při výběru aplikace v [okně moje aplikace](https://myapps.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.
 
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude v navigaci pro aplikaci v **podnikových aplikacích**. 
@@ -48,7 +48,7 @@ Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím sl
 
 Chcete-li nastavit odkaz pro aplikaci, vyberte možnost **propojeno** na stránce **jednotného přihlašování** . Pak zadejte odkaz a vyberte **Uložit**. Potřebujete připomenutí, kde najít tyto možnosti? Podívejte se na [řadu rychlých startů](view-applications-portal.md).
  
-Po nakonfigurování aplikace přiřaďte k ní uživatele a skupiny. Když přiřadíte uživatele, můžete určit, kdy se aplikace zobrazí v [okně moje aplikace](https://myapplications.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.
+Po nakonfigurování aplikace přiřaďte k ní uživatele a skupiny. Když přiřadíte uživatele, můžete určit, kdy se aplikace zobrazí v [okně moje aplikace](https://myapps.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.
 
 ## <a name="next-steps"></a>Další kroky
 

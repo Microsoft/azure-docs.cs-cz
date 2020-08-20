@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799498"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642023"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
-V tomto článku se dozvíte, jak přiřadit uživatele nebo skupiny k podnikovým aplikacím v Azure Active Directory (Azure AD) v rámci Azure Portal nebo pomocí prostředí PowerShell. Když přiřadíte uživatele k aplikaci, aplikace se zobrazí na [přístupovém panelu Moje aplikace](https://myapps.microsoft.com/) uživatele, který má snadný přístup. Pokud aplikace zveřejňuje role, můžete uživateli přiřadit také konkrétní roli.
+V tomto článku se dozvíte, jak přiřadit uživatele nebo skupiny k podnikovým aplikacím v Azure Active Directory (Azure AD) v rámci Azure Portal nebo pomocí prostředí PowerShell. Když přiřadíte uživatele k aplikaci, zobrazí se aplikace v [mých aplikacích](https://myapps.microsoft.com/) uživatele, aby bylo možné získat snadný přístup. Pokud aplikace zveřejňuje role, můžete uživateli přiřadit také konkrétní roli.
 
 Pro lepší kontrolu je možné nakonfigurovat určité typy podnikových aplikací tak, aby [vyžadovaly přiřazení uživatele](#configure-an-application-to-require-user-assignment). 
 
@@ -45,7 +45,7 @@ Když se vyžaduje přiřazení uživatele, bude se moct přihlásit jenom uživ
 
 Pokud přiřazení není *vyžadováno*, protože jste tuto možnost nastavili na hodnotu **ne** nebo protože aplikace používá jiný režim jednotného přihlašování, bude mít každý uživatel přístup k aplikaci, pokud má přímý odkaz na aplikaci nebo **adresu URL přístupu uživatele** na stránce **vlastností** aplikace. 
 
-Toto nastavení nemá vliv na to, jestli se aplikace zobrazuje na přístupovém panelu Moje aplikace. Po přiřazení uživatele nebo skupiny k aplikaci se aplikace zobrazí na panelech uživatelů moje aplikace v aplikaci. Základní informace najdete v tématu [Správa přístupu k aplikacím](what-is-access-management.md).
+Toto nastavení nemá vliv na to, jestli se aplikace zobrazuje v mých aplikacích. Po přiřazení uživatele nebo skupiny k aplikaci se aplikace zobrazí na panelech uživatelů moje aplikace v aplikaci. Základní informace najdete v tématu [Správa přístupu k aplikacím](what-is-access-management.md).
 
 
 Vyžadování přiřazení uživatele pro aplikaci:
@@ -161,7 +161,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
 ## <a name="related-articles"></a>Související články
 
 - [Další informace o přístupu koncových uživatelů k aplikacím](end-user-experiences.md)
-- [Plánování nasazení přístupového panelu Azure AD](access-panel-deployment-plan.md)
+- [Plánování nasazení Azure AD moje aplikace](access-panel-deployment-plan.md)
 - [Správa přístupu k aplikacím](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Další kroky

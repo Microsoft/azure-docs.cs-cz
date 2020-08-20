@@ -1,5 +1,5 @@
 ---
-title: Co je Batch přepis-Speech Service
+title: Jak používat službu Batch přepis-Speech Service
 titleSuffix: Azure Cognitive Services
 description: Služba Batch přepis je ideální, pokud chcete přepisovat velké množství zvuků v úložišti, jako jsou objekty blob Azure. Pomocí vyhrazené REST API můžete odkazovat na zvukové soubory s identifikátorem URI sdíleného přístupového podpisu (SAS) a asynchronně přijímat přepisy.
 services: cognitive-services
@@ -10,20 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214043"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640153"
 ---
-# <a name="what-is-batch-transcription"></a>Co je Batch přepis?
+# <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
 Batch přepis je sada operací REST API, která umožňuje přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronní příjem výsledků přepisu. S novým rozhraním API v 3.0 můžete zvolit zdlouhavého přepisování jeden nebo více zvukových souborů nebo zpracovat celý kontejner úložiště.
 
 Přepis asynchronního převodu řeči na text je jenom jedna z funkcí. Pomocí rozhraní REST API pro dávkové přepisy můžete zavolat následující metody:
-
-
 
 |    Operace dávkového přepisu                                             |    Metoda    |    REST API volání                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -46,20 +44,14 @@ Vedle snadno použitelného rozhraní API nemusíte nasazovat vlastní koncové 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-### <a name="subscription-key"></a>Klíč předplatného
-
 Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](get-started.md)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
 >[!NOTE]
 > K použití dávkového přepisu se vyžaduje standardní předplatné (S0) pro službu Speech. Klíče bezplatného předplatného (F0) nefungují. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-### <a name="custom-models"></a>Vlastní modely
-
 Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akustické přizpůsobení](how-to-customize-acoustic-models.md) a [přizpůsobení jazyka](how-to-customize-language-model.md). Pokud chcete v dávkovém přepisu použít vytvořené modely, budete potřebovat jejich umístění modelu. Umístění modelu lze načíst při kontrole podrobností modelu ( `self` vlastnost). Pro službu Batch přepisu není *potřebný* nasazený vlastní koncový bod.
 
-## <a name="the-batch-transcription-api"></a>Rozhraní API pro dávkové Přepisy
-
-### <a name="supported-formats"></a>Podporované formáty
+## <a name="batch-transcription-api"></a>Rozhraní API pro dávkové Přepisy
 
 Rozhraní API dávkového přepisu podporuje následující formáty:
 
@@ -185,7 +177,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 Služba Batch přepisu podporuje [úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuku a psaní přepisů do úložiště.
 
-## <a name="the-batch-transcription-result"></a>Výsledek přepisu dávky
+## <a name="batch-transcription-result"></a>Výsledek dávkového přepisu
 
 Pro každý vstupní zvuk se vytváří jeden soubor výsledků přepisu. Seznam výsledných souborů můžete získat voláním metody [Get přepiss](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles). Tato metoda vrátí seznam souborů výsledků pro tento přepis. Chcete-li najít soubor přepisu pro konkrétní vstupní soubor, vyfiltrujte všechny vrácené soubory pomocí `kind`  ==  `Transcription` a `name`  ==  `{originalInputName.suffix}.json` .
 
@@ -251,7 +243,7 @@ Každý soubor výsledků přepisu má tento formát:
 }
 ```
 
-Výsledek obsahuje tyto formuláře:
+Výsledek obsahuje následující formuláře:
 
 :::row:::
    :::column span="1":::
@@ -289,9 +281,9 @@ Výsledek obsahuje tyto formuláře:
       Formulář pro zobrazení rozpoznaného textu Jsou zahrnutá interpunkční znaménka a malá písmena.
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>Oddělení mluvčího (Diarization)
+## <a name="speaker-separation-diarization"></a>Oddělení mluvčího (diarization)
 
-Diarization je proces oddělení mluvčích v rámci zvukového zařízení. Náš dávkový kanál podporuje diarization a dokáže rozpoznat dva reproduktory na záznamech kanálů mono. Tato funkce není k dispozici pro stereofonní nahrávky.
+Diarization je proces oddělení mluvčích v rámci zvukového zařízení. Kanál Batch podporuje diarization a dokáže rozpoznat dva reproduktory na záznamech kanálů mono. Tato funkce není k dispozici pro stereofonní nahrávky.
 
 Výstup přepisu s povoleným diarization obsahuje `Speaker` záznam pro každou frázi přepisu. Pokud se diarization nepoužívá, vlastnost není `Speaker` přítomna ve výstupu JSON. Pro diarization podporujeme dva hlasy, takže reproduktory se identifikují jako `1` nebo `2` .
 
@@ -317,7 +309,7 @@ Pro vyžádání diarization stačí přidat relevantní parametr v požadavku H
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Služba přepisu dokáže zvládnout velký počet odeslaných přepisů. Můžete zadat dotaz na stav vašich přepisů `GET` v části [získání přepisů](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Po načtení výsledků volání odstraňte ze služby pravidelné [přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) . Případně nastavte `timeToLive` vlastnost na rozumnou hodnotu, abyste zajistili případné odstranění výsledků.
+Služba Batch přepisu dokáže zvládnout velký počet odeslaných přepisů. Můžete zadat dotaz na stav vašich přepisů `GET` v části [získání přepisů](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Po načtení výsledků volání odstraňte ze služby pravidelné [přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) . Případně nastavte `timeToLive` vlastnost na rozumnou hodnotu, abyste zajistili případné odstranění výsledků.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

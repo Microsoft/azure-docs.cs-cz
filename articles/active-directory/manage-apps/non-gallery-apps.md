@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d4f00061664340681b365eddfa1a742795f96d99
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164678"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641139"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Používání Azure AD pro aplikace, které nejsou uvedené v galerii aplikací
 
@@ -31,7 +31,7 @@ Můžete přidat libovolnou aplikaci, která již existuje ve vaší organizaci,
 - Samoobslužná integrace všech aplikací, které podporují zprostředkovatele identity [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) (SP-inicied nebo IDP)
 - Samoobslužná integrace jakékoli webové aplikace, která má přihlašovací stránku založenou na jazyce HTML pomocí [jednotného přihlašování založeného na heslech](sso-options.md#password-based-sso)
 - Samoobslužné připojení aplikací, které používají [systém pro protokol SCIM (Domain Identity Management) pro zřizování uživatelů](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-- Možnost Přidat odkazy na libovolnou aplikaci ve [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [panelu přístup k Azure AD](sso-options.md#linked-sign-on)
+- Možnost Přidat odkazy na libovolnou aplikaci ve [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) nebo ve [složkách moje aplikace](sso-options.md#linked-sign-on)
 
 Pokud hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace do služby Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
 

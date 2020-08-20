@@ -3,12 +3,12 @@ title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423775"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640119"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -34,7 +34,7 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
+| **Oprávnění**           | **Windows:** Použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. <br/> Případně se ujistěte, že jsou požadované možnosti nastaveny pomocí následujících příkazů. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (Pokud není k dispozici/usr/sbin/Fdisk) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r –/sys/Class/DMI/ID/product_uuid
 | **Operační systém** | Pro migraci se dají posoudit všechny operační systémy s výjimkou systémů Windows Server 2003 a SUSE Linux. |
 
 
@@ -53,7 +53,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 
 **Zařízení** | **Připojení**
 --- | ---
-**Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
+**Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
 **Fyzické servery** | **Windows:** Příchozí připojení na portu WinRM 5985 (HTTP) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/><br/> **Linux:**  Příchozí připojení na portu 22 (TCP) k vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů

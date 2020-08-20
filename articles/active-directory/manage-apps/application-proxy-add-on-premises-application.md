@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212810"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642142"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -188,7 +188,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 
     | Pole | Popis |
     | :---- | :---------- |
-    | **Název** | Název aplikace, který se zobrazí na přístupovém panelu a v Azure Portal. |
+    | **Název** | Název aplikace, která se zobrazí v okně moje aplikace a v Azure Portal. |
     | **Interní adresa URL** | Adresa URL pro přístup k aplikaci zevnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé weby na stejném serveru jako různé aplikace a dát každému z nich vlastní název a pravidla přístupu.<br><br>Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud je vaše aplikace například na https: \/ /yourapp/App a používá Image umístěné v protokolu https: \/ /yourapp/Media, měli byste jako cestu publikovat https: \/ /yourapp/. Tato interní adresa URL nemusí být cílovou stránkou, kterou uživatelé uvidí. Další informace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace](application-proxy-configure-custom-home-page.md). |
     | **Externí adresa URL** | Adresa pro uživatele, kteří budou mít přístup k aplikaci mimo vaši síť. Pokud nechcete používat výchozí doménu proxy aplikace, přečtěte si o [vlastních doménách v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).|
     | **Předběžné ověření** | Jak proxy aplikace ověřuje uživatele před tím, než jim poskytne přístup k vaší aplikaci.<br><br>**Azure Active Directory** – proxy aplikací přesměruje uživatele na přihlášení pomocí služby Azure AD, která ověřuje jejich oprávnění pro adresář a aplikaci. Tuto možnost doporučujeme ponechat jako výchozí, abyste mohli využívat funkce zabezpečení Azure AD, jako je podmíněný přístup a Multi-Factor Authentication. **Azure Active Directory** se vyžaduje pro monitorování aplikace s Microsoft Cloud zabezpečení aplikací.<br><br>**Passthrough** – uživatelé nemusejí pro přístup k aplikaci ověřovat přes Azure AD. Požadavky na ověřování můžete nastavit i pro back-end. |

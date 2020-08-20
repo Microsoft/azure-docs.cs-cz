@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447057"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639847"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
@@ -92,7 +92,7 @@ Můžete nakonfigurovat *jeden* prostředek veřejného Standard Load Balancer p
 ## <a name="limitations"></a>Omezení
 
 - Pravidla vyrovnávání zatížení portů HA jsou k dispozici pouze pro interní Standard Load Balancer.
-- Kombinace pravidla vyrovnávání zatížení s porty HA a pravidlo vyrovnávání zatížení s porty bez vysoké dostupnosti, které odkazují na stejné IPConfiguration back-endu, nejsou podporované, pokud nemají povolený plovoucí IP adresu.
+- Kombinace pravidla vyrovnávání zatížení s porty HA a pravidlo vyrovnávání zatížení s porty bez vysoké dostupnosti, které odkazují na stejné IPConfiguration back-endu, **nejsou** v rámci jedné konfigurace IP adresy front-endu podporovány, pokud nemají povolenou plovoucí IP adresu.
 - Existující fragmenty IP adresy předají pravidla pro vyrovnávání zatížení s porty HA do stejného cíle jako první paket.  Fragmentace IP adres protokolu UDP nebo TCP není podporována.
 - Symetrie flow (primárně pro scénáře síťové virtuální zařízení) je podporována u back-endu instance a jediného síťového rozhraní (a jedné konfigurace protokolu IP) pouze v případě, že se používá, jak je znázorněno v diagramu výše a používá pravidla pro vyrovnávání zatížení portů Není k dispozici v žádném jiném scénáři. To znamená, že dva nebo více Load Balancerch prostředků a jejich příslušných pravidel nezávisle na rozhodnutích a nejsou nikdy koordinovány. Podívejte se na popis a diagram [síťových virtuálních zařízení](#nva). Pokud používáte více síťových adaptérů nebo chcete-li síťové virtuální zařízení mezi veřejným a interním Load Balancer, není k dispozici symetrie Flow.  Můžete to obejít tak, že zdroj NAT'ing příchozí přenos dat zařízení na IP adresu a umožníte doručení odpovědí na stejný síťové virtuální zařízení.  Důrazně však doporučujeme použít jeden síťový adaptér a použít referenční architekturu uvedenou v diagramu výše.
 

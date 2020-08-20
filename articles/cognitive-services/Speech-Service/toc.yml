@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: Přehled
       items:
-        - name: Co je převod řeči na text v reálném čase?
+        - name: Co je převod řeči na text?
           href: speech-to-text.md
-        - name: Co je dávkový převod řeči na text?
-          href: batch-transcription.md
         - name: Základy rozpoznávání řeči
           href: speech-to-text-basics.md
     - name: Rychlé starty
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: Použití automatického rozpoznávání zdrojového jazyka
           href: how-to-automatic-language-detection.md
+        - name: Použití rozhraní API pro dávkový přepis
+          href: batch-transcription.md
     - name: Kurzy
       items:
         - name: Zlepšení přesnosti s využitím modelů tenantů

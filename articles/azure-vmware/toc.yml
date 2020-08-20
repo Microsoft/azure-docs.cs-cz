@@ -58,8 +58,10 @@
               href: set-up-mabs-for-avs.md
             - name: Zálohování virtuálních počítačů AVS s využitím Backup Serveru
               href: backup-avs-vms-with-mabs.md
-        - name: Application Gateway v AVS
+        - name: Application Gateway s využitím AVS
           href: protect-avs-web-apps-with-app-gateway.md
+        - name: Traffic Manager s využitím AVS
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: Řešení VMware
       items:
         - name: Nastavení vRealize Operations pro AVS

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168146"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639693"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -45,7 +45,7 @@ Privátní propojení Azure přináší následující výhody:
 |Služby privátního propojení za standardním Azure Load Balancer | Všechny veřejné oblasti<br/> Všechny oblasti státní správy  | Podporováno v Standard Load Balancer | GA <br/> [Další informace](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
 | Azure Storage       |  Všechny veřejné oblasti       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  Všechny veřejné oblasti      |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
-|  Databáze Azure SQL         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy      |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy | GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|  Azure SQL Database         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy      |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy | GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure synapse Analytics (SQL Data Warehouse)| Všechny veřejné oblasti <br/> Všechny oblasti státní správy |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy |GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  Všechny veřejné oblasti<br/> Všechny oblasti státní správy | |GA <br/> [Další informace](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy     | Podporováno pro Pro obecné účely a paměťově optimalizované cenové úrovně | GA <br/> [Další informace](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
@@ -68,6 +68,7 @@ Privátní propojení Azure přináší následující výhody:
 | Azure SignalR | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |  | Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Synchronizace souborů Azure | Všechny veřejné oblasti      | |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH, STŘED USA – ZÁPAD, FRANCIE – STŘED, VÝCHODNÍ ASIE, VELKÁ BRITÁNIE – JIH, USA – GOV) – VIRGINIA, USA GOV ARIZONA  | | GA <br/> [Další informace](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi privátních odkazů Azure](https://azure.microsoft.com/updates/?product=private-link).
 

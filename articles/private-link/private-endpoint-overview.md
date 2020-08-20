@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543465"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639830"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -47,6 +47,7 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
  
 - Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
+- Odběr z prostředku privátního propojení musí být také zaregistrován pomocí poskytovatele prostředků obraťte. Network. Podrobnosti najdete v tématu [poskytovatelé prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
  
 ## <a name="private-link-resource"></a>Prostředek privátního propojení 
@@ -132,11 +133,11 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu](create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell](create-private-endpoint-powershell.md)
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
-- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu ](create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell ](create-private-endpoint-powershell.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku ](create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu ](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu ](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí portálu](../postgresql/howto-configure-privatelink-portal.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku](../postgresql/howto-configure-privatelink-cli.md)
