@@ -3,12 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190834"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648747"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Novinky ve Microsoft Azure Backup serveru (MABS)
 
@@ -114,7 +114,7 @@ MABS V3 se dá nainstalovat pomocí SQL 2017 jako databáze MABS. SQL Server mů
 
 ### <a name="windows-server-2019-support"></a>Podpora systému Windows Server 2019
 
-MABS V3 se dá nainstalovat na Windows Server 2019. Pokud chcete používat MABS v3 s WS2019, můžete buď upgradovat operační systém na WS2019 před instalací nebo upgradem na MABS v3, nebo můžete upgradovat svůj operační systém po instalaci/upgrade V3 na WS2016.
+MABS V3 se dá nainstalovat na Windows Server 2019. Pokud chcete používat MABS v3 s WS2019, můžete buď upgradovat operační systém na WS2019 před instalací nebo upgradem na MABS v3, nebo můžete upgradovat operační systém po instalaci nebo upgradu V3 na WS2016.
 
 MABS v3 je plná verze, která se dá nainstalovat přímo na Windows Server 2016, Windows Server 2019 nebo se dá upgradovat z MABS v2. Před upgradem na nebo instalaci záložního serveru V3 si přečtěte informace o požadavcích na instalaci.
 Další informace o postupu instalace/upgradu pro MABS najdete [zde](./backup-azure-microsoft-azure-backup.md#software-package).

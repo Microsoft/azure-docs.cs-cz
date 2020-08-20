@@ -11,14 +11,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058159"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649733"
 ---
-# <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředků úložiště
+# <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení potíží s chybami odstraňování prostředků úložiště
 
 V některých scénářích se může při pokusu o odstranění účtu, kontejneru nebo objektu BLOB služby Azure Storage v nasazení Azure Resource Manager narazit k jedné z následujících chyb:
 
@@ -28,7 +28,7 @@ V některých scénářích se může při pokusu o odstranění účtu, kontejn
 > 
 > **Nepovedlo se odstranit # z # objektů BLOB: <br> BLOB. VHD: v tomto objektu BLOB je momentálně zapůjčení a v žádosti se nezadalo žádné ID zapůjčení.**
 
-Virtuální pevné disky používané ve virtuálních počítačích Azure jsou soubory. VHD uložené jako objekty blob stránky v účtu úložiště Standard nebo Premium v Azure. Další informace o discích Azure najdete v našem [úvodu ke spravovaným diskům](../linux/managed-disks-overview.md).
+Virtuální pevné disky používané ve virtuálních počítačích Azure jsou soubory. VHD uložené jako objekty blob stránky v účtu úložiště Standard nebo Premium v Azure. Další informace o discích Azure najdete v našem [úvodu ke spravovaným diskům](../managed-disks-overview.md).
 
 Azure zabraňuje odstranění disku připojeného k virtuálnímu počítači, aby nedocházelo k poškození. Zabrání taky odstranění kontejnerů a účtů úložiště, které mají objekt blob stránky, který je připojený k virtuálnímu počítači. 
 
@@ -76,7 +76,7 @@ Po dokončení těchto kroků zkuste znovu odstranit účet úložiště, kontej
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: odstranění virtuálního počítače pro odpojení disku s operačním systémem
 Pokud se jedná o disk s operačním systémem, musíte virtuální počítač odstranit, aby se mohl odstranit připojený virtuální pevný disk (VHD). Po dokončení těchto kroků nebude potřeba žádná další akce pro datové disky připojené ke stejnému virtuálnímu počítači:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. Ujistěte se, že virtuální počítač aktivně nepoužíváte a že ho už nepotřebujete.
@@ -86,7 +86,7 @@ Pokud se jedná o disk s operačním systémem, musíte virtuální počítač o
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: odpojení datového disku od virtuálního počítače
 Pokud je virtuální pevný disk datového disku, odpojte virtuální pevný disk od virtuálního počítače a odeberte zapůjčení:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. V podokně **podrobností virtuálního počítače** vyberte **disky** .

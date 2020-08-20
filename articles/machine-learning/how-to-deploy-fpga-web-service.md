@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843092"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648781"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 
@@ -89,7 +89,7 @@ Nasazení modelu do FPGA zahrnuje následující kroky:
 
 V této ukázce vytvoříte graf TensorFlow, abyste mohli předzpracovat vstupní image, vytvořit ji featurizer pomocí ResNet 50 na FPGA a pak tyto funkce spustit prostřednictvím klasifikátoru, který je vyškolený na ImageNet sadě dat. Model se pak nasadí do clusteru AKS.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ho nemáte, budete muset vytvořit účet s průběžnými [platbami](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) (bezplatné účty Azure nejsou vhodné pro FPGA kvótu).
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -163,7 +163,7 @@ K vytvoření definice služby použijte [sadu SDK Azure Machine Learning pro Py
    print(feature_tensor.shape)
    ```
 
-1. Přidejte klasifikátor. Tento klasifikátor byl vyškolený pro ImageNet datovou sadu.  V sadě [ukázkových poznámkových bloků](https://aka.ms/aml-notebooks)jsou k dispozici příklady pro učení a školení pro vaše vlastní váhy.
+1. Přidejte klasifikátor. Tento klasifikátor byl vyškolený pro ImageNet datovou sadu.  V sadě [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks)jsou k dispozici příklady pro učení a školení pro vaše vlastní váhy.
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -405,7 +405,7 @@ converted_model.delete()
 
 Podívejte se na tyto poznámkové bloky, videa a blogy:
 
-+ Několik [ukázkových poznámkových bloků](https://aka.ms/aml-accel-models-notebooks)
++ Několik [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + Chcete-li zabezpečit webové služby FPGA, přečtěte si dokument [zabezpečené webové služby](how-to-secure-web-service.md) .
 + [Hardware s škálovatelným škálováním: ML na škále nad Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [V rámci konfigurovatelného cloudu založeného na Microsoft FPGA (video)](https://channel9.msdn.com/Events/Build/2017/B8063)

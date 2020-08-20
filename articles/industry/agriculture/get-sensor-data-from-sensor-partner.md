@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508783"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649155"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -66,13 +66,13 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
     cd
     ```
 
-6. Spusťte následující příkaz. Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
+6. Spusťte následující příkaz: Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
 
     ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
-7. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
+7. Spusťte následující příkaz: Tím se stáhne skript do domovského adresáře.
 
     ```azurepowershell-interactive
 
@@ -87,6 +87,10 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
     ./generatePartnerCredentials.ps1
 
     ```
+
+> [!NOTE]
+> 1. Název koncového bodu rozhraní DataHub API musí být malými písmeny.
+> 2. Pokud kopírujete adresu URL názvu webu farmbeats pro koncový bod rozhraní API DataHub, ujistěte se, že neexistuje žádné koncové lomítko (/).
 
 9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
 

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: acd030d8108ef3983be29fe85de6d7b3caf620af
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849331"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651212"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,11 +26,11 @@ V tomto článku se dozvíte, jak ve školicích experimentech pracovat s [Azure
 
 Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) a [kanály Azure Machine Learning](how-to-create-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a školení s datovými sadami potřebujete:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -90,7 +90,7 @@ Tento kód vytvoří obecný objekt Estimator, `est` který určuje
 
 * Adresář skriptu pro skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Školicí skript *train_titanic. py*.
-* Vstupní datová sada pro školení, `titanic_ds` . `as_named_input()`je nutné, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu `titanic` ve školicím skriptu. 
+* Vstupní datová sada pro školení, `titanic_ds` . `as_named_input()` je nutné, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu `titanic` ve školicím skriptu. 
 * Cílová výpočetní operace experimentu.
 * Definice prostředí pro experiment.
 
@@ -115,7 +115,7 @@ Následující příklad vytvoří datovou sadu a připojí datovou sadu k cíli
 
 ### <a name="create-a-filedataset"></a>Vytvoření datové sady
 
-Následující příklad vytvoří neregistrovanou datovou sadu z adres URL webu. Přečtěte si další informace o [tom, jak vytvořit datové sady](https://aka.ms/azureml/howto/createdatasets) z jiných zdrojů.
+Následující příklad vytvoří neregistrovanou datovou sadu z adres URL webu. Přečtěte si další informace o [tom, jak vytvořit datové sady](how-to-create-register-datasets.md) z jiných zdrojů.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -201,7 +201,7 @@ Když **stáhnete** datovou sadu, všechny soubory, na které datová sada odkaz
 
 Pokud váš skript zpracovává všechny soubory, na které datová sada odkazuje, a váš výpočetní disk může vyhovovat vaší celé datové sadě, doporučujeme stažení se doporučuje, abyste se vyhnuli režii streamování dat ze služby úložiště. Pokud velikost dat překročí výpočetní velikost disku, není stahování možné. V tomto scénáři doporučujeme připojení, protože jenom datové soubory používané skriptem se načtou v době zpracování.
 
-Následující kód se připojí `dataset` k dočasnému adresáři na adrese`mounted_path`
+Následující kód se připojí `dataset` k dočasnému adresáři na adrese `mounted_path`
 
 ```python
 import tempfile

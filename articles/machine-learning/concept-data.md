@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875298"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651790"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -118,5 +118,4 @@ Další informace o tom, jak detekovat a upozorňovat na data pro nová data v d
 ## <a name="next-steps"></a>Další kroky 
 
 + [Pomocí těchto kroků](how-to-create-register-datasets.md) Vytvořte datovou sadu v Azure Machine Learning studiu nebo v sadě Python SDK.
-+ Vyzkoušejte si příklady školení datových sad pomocí našich [ukázkových poznámkových bloků](https://aka.ms/dataset-tutorial).
-+ Příklady posunu dat najdete v tomto [kurzu pro posun](https://aka.ms/datadrift-notebook)dat.
++ Vyzkoušejte si příklady školení datových sad pomocí našich [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/).

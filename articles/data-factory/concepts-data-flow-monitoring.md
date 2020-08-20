@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475545"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650889"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -76,6 +76,10 @@ Pokud v zobrazení monitorování kanálu ADF otevřete výstup JSON z aktivity 
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>Čas po zpracování
+
+Když na mapě vyberete ikonu transformace jímky, v pravém dolním rohu se v panelu pro odesílání na pravé straně zobrazí další datový bod s názvem "doba zpracování". Toto je množství času stráveného prováděním úlohy v clusteru Spark *po* načtení dat, transformaci a zápis. Tento čas může zahrnovat uzavírání fondů připojení, vypnutí ovladače, odstraňování souborů, slučování souborů atd. Při provádění akcí ve vašem toku, jako je "přesunout soubory" a "výstup do jednoho souboru", se pravděpodobně zobrazí zvýšení hodnoty doba zpracování po zpracování.
   
 ## <a name="monitor-icons"></a>Monitorovat ikony
 

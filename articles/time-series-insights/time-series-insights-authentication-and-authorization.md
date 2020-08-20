@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168027"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649121"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -85,7 +85,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 
    1. V jazyce C# může následující kód získat token jménem aplikace. Úplný příklad pro dotazování dat z prostředí Gen1 najdete v článku o [dotazování dat pomocí jazyka C#](time-series-insights-query-data-csharp.md).
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
+        Chcete-li získat přístup k kódu jazyka C#, Prohlédněte si [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] úložiště. 
 
    1. Token se pak může předat v hlavičce, `Authorization` když aplikace volá rozhraní Azure Time Series Insights API.
 
@@ -110,7 +110,7 @@ Aby bylo možné provádět ověřené dotazy proti [Azure Time Series Insights 
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Description |
+| Požadovaná hlavička žádosti | Popis |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Azure Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. |
 
@@ -118,11 +118,11 @@ Požadované hlavičky požadavku jsou popsány níže.
 > Token se musí vystavit přesně `https://api.timeseries.azure.com/` prostředku (označuje se také jako "cílová skupina" tokenu).
 
 > * Váš [Postman](https://www.getpostman.com/) **AuthURL** bude mít tedy následující:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
-> * `https://api.timeseries.azure.com/`je platný, ale není `https://api.timeseries.azure.com` .
+> * `https://api.timeseries.azure.com/` je platný, ale není `https://api.timeseries.azure.com` .
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Description |
+| Nepovinná hlavička požadavku | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -131,7 +131,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Description |
+| Hlavička odpovědi | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |

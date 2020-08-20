@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808623"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650872"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -175,7 +175,7 @@ Azure Backup vyžaduje přesun dat z vaší úlohy do trezoru Recovery Services.
 
 * *Zálohování virtuálních počítačů Azure* – veškerá požadovaná komunikace a přenos dat mezi úložištěm a Azure Backup službou se provádí v síti Azure, aniž by bylo potřeba mít přístup k virtuální síti. Zálohování virtuálních počítačů Azure umístěných v zabezpečených sítích proto nevyžaduje povolení přístupu k žádným IP adresám nebo plně kvalifikovaným názvům domén.
 
-* *SAP HANA databáze na virtuálním počítači Azure, SQL Server databází na virtuálním počítači Azure* – vyžaduje připojení ke službě Azure Backup, Azure Storage a Azure Active Directory. Toho lze dosáhnout použitím privátních koncových bodů nebo povolením přístupu k požadovaným veřejným IP adresám nebo plně kvalifikovanému názvu domény. Pokud nepovolíte správné připojení k požadovaným službám Azure, může dojít k selhání operací, jako je zjišťování databáze, konfigurace zálohování, provádění zálohování a obnovování dat. Úplný návod k síti při použití značek NSG, brány firewall Azure a proxy serveru HTTP najdete v těchto článcích o [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) a [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) .
+* *SAP HANA databáze na virtuálním počítači Azure, SQL Server databází na virtuálním počítači Azure* – vyžaduje připojení ke službě Azure Backup, Azure Storage a Azure Active Directory. Toho lze dosáhnout použitím privátních koncových bodů nebo povolením přístupu k požadovaným veřejným IP adresám nebo plně kvalifikovanému názvu domény. Pokud nepovolíte správné připojení k požadovaným službám Azure, může dojít k selhání operací, jako je zjišťování databáze, konfigurace zálohování, provádění zálohování a obnovování dat. Úplný návod k síti při použití značek NSG, brány Azure firewall a proxy serveru HTTP najdete v těchto článcích [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) a [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) .
 
 * *Hybridní* – agent MARS (Microsoft Azure Recovery Services) vyžaduje přístup k síti pro všechny kritické operace – instalace, konfigurace, zálohování a obnovení. Agent MARS se může připojit k Azure Backup službě přes [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) pomocí veřejného partnerského vztahu (k dispozici pro staré okruhy) a partnerského vztahu Microsoftu [s příslušnými ovládacími prvky přístupu](install-mars-agent.md#verify-internet-access)pomocí [privátních koncových bodů](install-mars-agent.md#private-endpoints) nebo přes proxy server nebo bránu firewall.
 
@@ -189,7 +189,7 @@ Azure Backup vyžaduje přesun dat z vaší úlohy do trezoru Recovery Services.
 
 ## <a name="governance-considerations"></a>Požadavky na zásady správného řízení
 
-Zásady správného řízení v Azure jsou primárně implementovány pomocí [Azure Policy](../governance/policy/overview.md) a [Azure cost management](../cost-management-billing/cost-management-billing-overview.md). [Azure Policy](../governance/policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad pro vymáhání vašich prostředků. Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele. Následující nástroje, jako je například [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) , a [Azure Advisor](../advisor/advisor-overview.md) hrají důležitou roli v procesu správy nákladů.
+Zásady správného řízení v Azure jsou primárně implementovány pomocí [Azure Policy](../governance/policy/overview.md) a [Azure cost management](../cost-management-billing/cost-management-billing-overview.md). [Azure Policy](../governance/policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad pro vymáhání vašich prostředků. Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele. Následující nástroje, jako je například [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) , a [Azure Advisor](../advisor/advisor-overview.md)  hrají důležitou roli v procesu správy nákladů.
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup podporují dva klíčové scénáře prostřednictvím integrované Azure Policy
 

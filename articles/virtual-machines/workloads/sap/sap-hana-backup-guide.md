@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507824"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652181"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA v Azure Virtual Machines
 
@@ -45,7 +45,7 @@ Prvním zobrazeným scénářem je situace, kdy služba Azure Backup používá 
 
 Azure Backup integruje a je certifikovaný jako řešení zálohování pro SAP HANA pomocí vlastního rozhraní SAP HANA s názvem [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Další podrobnosti o řešení, jeho schopnostech a oblastech Azure, kde jsou k dispozici, najdete v článku věnovaném [podpoře pro zálohování SAP HANA databází na virtuálních počítačích Azure v matici podpory](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Podrobnosti a principy služby Azure Backup pro HANA najdete v článku [o SAP HANA zálohování databáze ve virtuálních počítačích Azure](../../../backup/sap-hana-db-about.md). 
 
-Druhou možností, jak službu Azure Backup využít, je vytvoření zálohy konzistentní s aplikací pomocí snímků disku Azure Premium Storage. Další úložiště Azure s certifikací HANA, jako je [Azure Ultra disk](../../linux/disks-enable-ultra-ssd.md) a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , nepodporují tento druh snímku prostřednictvím služby Azure Backup. Přečtěte si tyto články:
+Druhou možností, jak službu Azure Backup využít, je vytvoření zálohy konzistentní s aplikací pomocí snímků disku Azure Premium Storage. Další úložiště Azure s certifikací HANA, jako je [Azure Ultra disk](../../disks-enable-ultra-ssd.md) a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , nepodporují tento druh snímku prostřednictvím služby Azure Backup. Přečtěte si tyto články:
 
 - [Plánování infrastruktury zálohování virtuálních počítačů v Azure](../../../backup/backup-azure-vms-introduction.md)
 - [Zálohování virtuálních počítačů Azure s Linuxem konzistentní vzhledem k aplikacím](../../../backup/backup-azure-linux-app-consistent.md) 

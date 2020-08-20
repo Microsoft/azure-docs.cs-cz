@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284298"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651178"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On u SQL Server v Azure Virtual Machines
 
@@ -44,7 +44,7 @@ Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Tuto možnost vyberte **+** , pokud chcete vytvořit nový objekt na portálu.
 
    ![Nový objekt](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -167,7 +167,7 @@ Po vytvoření sítě, podsítí a skupin dostupnosti jste připraveni vytvořit
 
 Řadiče domény vytvoříte a nakonfigurujete tak, že se vrátíte do skupiny prostředků **SQL-ha-RG** .
 
-1. Vyberte možnost **Přidat**. 
+1. Vyberte **Přidat**. 
 2. Zadejte **Windows Server 2016 Datacenter**.
 3. Vyberte **Windows Server 2016 Datacenter**. V **systému Windows Server 2016 Datacenter**ověřte, zda je model nasazení **Správce prostředků**a pak vyberte **vytvořit**. 
 
@@ -194,7 +194,7 @@ Následující tabulka uvádí nastavení těchto dvou počítačů:
 | **Velikost** |DS1_V2 |
 | **Storage** | **Použití spravovaných disků**  -  **Ano** |
 | **Virtuální síť** |autoHAVNET |
-| **Podsíť** |admin |
+| **Podsíť** |správce |
 | **Veřejná IP adresa** |*Stejný název jako virtuální počítač* |
 | **Skupina zabezpečení sítě** |*Stejný název jako virtuální počítač* |
 | **Skupina dostupnosti** |adavailabilityset </br>**Domény selhání**: 2 </br>**Aktualizovat domény**: 2|
@@ -328,7 +328,7 @@ Poté, co server dokončí změny konfigurace, restartujte server.
 
 V Azure Portal v části virtuální síť změňte server DNS tak, aby zahrnoval IP adresu sekundárního řadiče domény. Toto nastavení povoluje redundanci služby DNS.
 
-### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a>Konfigurace doménových účtů
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> Konfigurace doménových účtů
 
 V dalších krocích nakonfigurujete účty služby Active Directory. Následující tabulka uvádí účty:
 
@@ -380,7 +380,7 @@ Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 
 * **Storage – Azure Managed Disks**
 
-   Pro úložiště virtuálního počítače použijte Azure Managed Disks. Microsoft doporučuje Managed Disks pro SQL Server virtuálních počítačů. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../../../virtual-machines/linux/managed-disks-overview.md). Konkrétní informace o spravovaných discích ve skupině dostupnosti najdete v tématu [použití Managed disks pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Pro úložiště virtuálního počítače použijte Azure Managed Disks. Microsoft doporučuje Managed Disks pro SQL Server virtuálních počítačů. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../../../virtual-machines/managed-disks-overview.md). Konkrétní informace o spravovaných discích ve skupině dostupnosti najdete v tématu [použití Managed disks pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Privátní IP adresy sítě v produkčním prostředí**
 
@@ -391,13 +391,13 @@ Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 Dále vytvořte tři virtuální počítače – dva SQL Server virtuální počítače a jeden virtuální počítač pro další uzel clusteru. Pro vytvoření každého virtuálního počítače se vraťte do skupiny prostředků **SQL-ha-RG** a pak vyberte **Přidat**. Vyhledejte příslušnou položku galerie, vyberte **virtuální počítač**a potom vyberte **z Galerie**. Informace v následující tabulce vám pomůžou při vytváření virtuálních počítačů:
 
 
-| stránka | VM1 | VM2 | VM3 |
+| Stránka | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | Vyberte příslušnou položku galerie. |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise v systému Windows Server 2016** |**SQL Server 2016 SP1 Enterprise v systému Windows Server 2016** |
 | **Základy** konfigurace virtuálních počítačů |**Název** = cluster – FSW<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-0<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-1<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |
 | **Velikost** konfigurace virtuálního počítače |**Velikost** = DS1 \_ v2 (1 VCPU, 3,5 GB) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB)</br>Velikost musí podporovat úložiště SSD (podpora disků úrovně Premium. )) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB) |
 | **Nastavení** konfigurace virtuálního počítače |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |
-| **Nastavení SQL Server** konfigurace virtuálního počítače |Není |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
+| **Nastavení SQL Server** konfigurace virtuálního počítače |Nelze použít |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
 
 <br/>
 
@@ -496,7 +496,7 @@ Opakujte postup na jiném SQL Serverovém virtuálním počítači.
   >
 
 
-## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>Konfigurace brány firewall na každém virtuálním počítači s SQL Server
+## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Konfigurace brány firewall na každém virtuálním počítači s SQL Server
 
 Řešení vyžaduje, aby v bráně firewall byly otevřené následující porty TCP:
 

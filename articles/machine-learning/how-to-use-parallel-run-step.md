@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507110"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651195"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ V tomto článku se seznámíte s následujícími úlohami:
 > 1. Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
 > 1. Zkontrolujte výsledky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Zápis skriptu pro odvození
 
 >[!Warning]
->Následující kód je pouze ukázka, kterou používá [ukázkový Poznámkový blok](https://aka.ms/batch-inference-notebooks) . Pro svůj scénář budete muset vytvořit vlastní skript.
+>Následující kód je pouze ukázka, kterou používá [ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run) . Pro svůj scénář budete muset vytvořit vlastní skript.
 
 Skript *musí obsahovat* dvě funkce:
 - `init()`: Tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu. Tato funkce bude volána pouze jednou na začátku procesu.
@@ -214,7 +214,7 @@ Skript *musí obsahovat* dvě funkce:
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li zobrazit tento proces na konci, zkuste [Poznámkový blok pro odvození dávky](https://aka.ms/batch-inference-notebooks). 
+Chcete-li zobrazit tento proces na konci, zkuste [Poznámkový blok pro odvození dávky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run). 
 
 Pokyny k ladění a řešení potíží pro ParallelRunStep najdete v tématu [Průvodce postupy](how-to-debug-parallel-run-step.md).
 

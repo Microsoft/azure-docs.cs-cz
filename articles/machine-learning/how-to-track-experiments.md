@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f49a66fc6e233658b228b7ad9bacdaa23917afef
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547320"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648730"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Povolit protokolování v běhu školicích kurzů Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,8 +70,6 @@ Můžete také použít stejný parametr ve `wait_for_completion` funkci ve výs
 run.wait_for_completion(show_output=True)
 ```
 
-Úplný ukázkový Poznámkový blok, který používá protokoly ScriptRunConfigs, najdete v tématu [výuka modelu místně](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb).
-
 ## <a name="native-python-logging"></a>Nativní protokolování v Pythonu
 
 Některé protokoly v sadě SDK mohou obsahovat chybu, která dává pokyn k nastavení úrovně protokolování na ladění. Chcete-li nastavit úroveň protokolování, přidejte do skriptu následující kód.
@@ -88,9 +86,7 @@ Azure Machine Learning může během školení protokolovat také informace z ji
 Informace o protokolování metrik v Návrháři Azure Machine Learning (Preview) najdete v tématu [postup protokolu metrik v Návrháři (Preview)](how-to-track-designer-experiments.md) .
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
-Následující poznámkové bloky ukazují koncepty v tomto článku:
-* [Postupy: použití-AzureML/školení/výuka v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [Postupy: použití-AzureML/školení/výuka v místním prostředí](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+Následující Poznámkový blok znázorňuje koncepty v tomto článku:
 * [Postupy: použití-AzureML/Track-and-monitor-experimenty/protokolování – rozhraní API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

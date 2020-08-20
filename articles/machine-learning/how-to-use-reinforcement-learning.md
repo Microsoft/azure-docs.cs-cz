@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847631"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650821"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -34,9 +34,9 @@ V tomto článku se dozvíte, jak:
 > * Odeslat experiment ke spuštění běhu
 > * Zobrazení výsledků
 
-Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://aka.ms/azureml-rl-notebooks)poznámkového bloku Azure Machine Learning.
+Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
 
@@ -45,12 +45,12 @@ Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abys
      - Naučte se klonovat ukázkové poznámkové bloky v [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
          - Klonování složky s **postupy použití-AzureML** místo **kurzů**
      - Spusťte Poznámkový blok instalace virtuální sítě umístěný na adrese `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` a otevřete tak síťové porty používané pro distribuované výztuže.
-     - Spuštění ukázkového poznámkového bloku`/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
+     - Spuštění ukázkového poznámkového bloku `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
  
  - Váš vlastní server Jupyter Notebook
 
     - Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py):`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - Spusťte [Poznámkový blok instalace](https://aka.ms/azure-rl-env-setup) virtuální sítě a otevřete tak síťové porty, které se používají pro distribuované výztuže při výuce.
 
@@ -75,7 +75,7 @@ Azure Machine Learning poskytuje rozhraní pro správu těchto složitých proce
 
 Nastavte místní prostředí RL načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a zadáním nakonfigurované virtuální sítě.
 
-### <a name="import-libraries"></a>Importovat knihovny
+### <a name="import-libraries"></a>Import knihoven
 
 Naimportujte potřebné balíčky Pythonu pro spuštění zbytku tohoto příkladu.
 
@@ -433,4 +433,4 @@ V krátké práci jste se naučili nakonfigurovat více výpočetních prostřed
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak pomocí agenta učení IMPALA vytvořit výukového agenta pro posílení. Pokud se chcete podívat na další příklady, přejděte [Azure Machine Learning na úložiště GitHub learningu](https://aka.ms/azureml-rl-notebooks).
+V tomto článku jste zjistili, jak pomocí agenta učení IMPALA vytvořit výukového agenta pro posílení. Pokud se chcete podívat na další příklady, přejděte [Azure Machine Learning na úložiště GitHub learningu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

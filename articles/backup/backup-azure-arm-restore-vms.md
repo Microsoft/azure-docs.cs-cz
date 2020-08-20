@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263006"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651144"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -184,7 +184,7 @@ Funkce obnovení koncového uživatele v sekundární oblasti bude podobná prim
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>Obnovení nespravovaných virtuálních počítačů a disků jako spravovaných
 
-Při obnovení máte k dispozici možnost obnovit [nespravované disky](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) jako [spravované disky](../virtual-machines/windows/managed-disks-overview.md) . Ve výchozím nastavení se nespravované virtuální počítače/disky obnoví jako nespravované virtuální počítače nebo disky. Pokud se ale rozhodnete je obnovit jako spravované virtuální počítače nebo disky, je teď možné to udělat. Tato obnovení nejsou aktivována ze fáze snímku, ale pouze ze fáze trezoru. Tato funkce není k dispozici pro nespravované šifrované virtuální počítače.
+Při obnovení máte k dispozici možnost obnovit [nespravované disky](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) jako [spravované disky](../virtual-machines/managed-disks-overview.md) . Ve výchozím nastavení se nespravované virtuální počítače/disky obnoví jako nespravované virtuální počítače nebo disky. Pokud se ale rozhodnete je obnovit jako spravované virtuální počítače nebo disky, je teď možné to udělat. Tato obnovení nejsou aktivována ze fáze snímku, ale pouze ze fáze trezoru. Tato funkce není k dispozici pro nespravované šifrované virtuální počítače.
 
 ![Obnovit jako spravované disky](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

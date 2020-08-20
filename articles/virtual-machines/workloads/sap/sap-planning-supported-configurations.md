@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833330"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648985"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](./hana-overview-architecture.md)najdete v článku [podporované scénáře pro velké instance Hana](./hana-supported-scenario.md). 
@@ -160,7 +160,7 @@ Služba SAP Central Services je druhým jediným bodem selhání konfigurace SAP
     - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)
 - Pacemaker na operační systém Red Hat se sdílenou složkou systému souborů NFS, která je hostovaná v `glusterfs` clusteru. Podrobnosti najdete v článcích.
     - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
-    - [`GlusterFS`na virtuálních počítačích Azure v Red Hat Enterprise Linux pro SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
+    - [`GlusterFS` na virtuálních počítačích Azure v Red Hat Enterprise Linux pro SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 - Pacemaker na operační systém Red Hat se sdílenou složkou systému souborů NFS, která je hostována na [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) Podrobnosti jsou popsány v článku.
     - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md)
 
@@ -215,7 +215,7 @@ Cluster s více identifikátory SID se schématem replikačního serveru pro za�
 SAP HANA scénáře škálování na více instancí se podporují pro podmnožinu certifikovaných virtuálních počítačů Azure HANA, jak je uvedeno v [adresáři SAP HANA hardwaru](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Všechny virtuální počítače označené "Yes" ve sloupci "Clustering" lze použít pro možnost škálování OLAP nebo S/4HANA. Konfigurace bez pohotovostního režimu se podporují s Azure Storage typy: 
 
 - Azure Premium Storage, včetně akcelerátoru zápisu Azure pro svazek/Hana/log
-- [Disky Ultra](../../linux/disks-enable-ultra-ssd.md)
+- [Disky Ultra](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 SAP HANA konfigurace škálování na více instancí pro OLAP nebo S/4HANA s pohotovostními uzly se podporuje výhradně se systémem souborů NFS Shared hosted on Azure NetApp Files.

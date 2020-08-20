@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9f63b4215e9b4a67a439e47501876d237a6d3c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320914"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650311"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ print(run.get_portal_url())
 >
 > Podobně můžete do složky napsat jakékoli protokoly z školicích běhů `./logs` . Aby bylo možné využívat Azure Machine Learning [integrace TensorBoard](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) , nezapomeňte zapisovat do této složky protokoly TensorBoard. Během probíhajícího běhu budete moct spouštět TensorBoard a streamovat tyto protokoly.  Později také budete moci obnovit protokoly z libovolného z předchozích spuštění.
 >
-> Například pro stažení souboru zapsaného do složky *výstupy* do místního počítače po spuštění vzdáleného školení:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
+> Například pro stažení souboru zapsaného do složky *výstupy* do místního počítače po spuštění vzdáleného školení: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ### <a name="distributed-training-and-custom-docker-images"></a>Distribuované školení a vlastní image Docker
 
@@ -113,10 +113,10 @@ Výše uvedený kód zpřístupňuje následující nové parametry `Estimator` 
 
 Parametr | Popis | Výchozí
 --|--|--
-`custom_docker_image`| Název obrázku, který chcete použít. Poskytněte jenom image dostupné ve veřejných úložištích Docker (v tomto případě Docker Hub). Pokud chcete použít image z privátního úložiště Docker, použijte `environment_definition` místo toho parametr konstruktoru. [Viz příklad](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
+`custom_docker_image`| Název obrázku, který chcete použít. Poskytněte jenom image dostupné ve veřejných úložištích Docker (v tomto případě Docker Hub). Pokud chcete použít image z privátního úložiště Docker, použijte `environment_definition` místo toho parametr konstruktoru.| `None`
 `node_count`| Počet uzlů, které se mají použít pro úlohu školení | `1`
 `process_count_per_node`| Počet procesů (nebo "pracovní procesy"), které mají být spuštěny na jednotlivých uzlech. V takovém případě použijete `2` k dispozici GPU na jednotlivých uzlech.| `1`
-`distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro spouštění distribuovaného školení pomocí back-endu MPI.  | `None`
 
 
 Nakonec odešlete školicí úlohu:
@@ -140,8 +140,6 @@ model = run.register_model(model_name='sklearn-sample', model_path=None)
 Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="examples"></a>Příklady
-Poznámkový blok, který zobrazuje základy Estimator vzoru, najdete v těchto tématech:
-* [Postupy: použití-AzureML/školení – s využitím hloubkového učení/postupy-použití-Estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
 Pro Poznámkový blok, který používá scikit model pomocí Estimator, se podívejte na:
 * [kurzy/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)

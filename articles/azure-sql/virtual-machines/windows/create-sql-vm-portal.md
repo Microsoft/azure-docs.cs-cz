@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669286"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652012"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Jak pomocí Azure Portal zřídit virtuální počítač s Windows pomocí SQL Server
 
@@ -32,9 +32,9 @@ Pomocí tohoto průvodce můžete vytvořit vlastní virtuální počítač SQL 
 > [!TIP]
 > Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](frequently-asked-questions-faq.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a>SQL Server imagí Galerie virtuálních počítačů
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server imagí Galerie virtuálních počítačů
 
 Když vytváříte virtuální počítač s SQL Server, můžete z Galerie virtuálních počítačů vybrat jednu z několika předem nakonfigurovaných imagí. Následující kroky ukazují, jak vybrat jednu z imagí SQL Server 2017.
 
@@ -104,7 +104,7 @@ Na kartě **disky** nakonfigurujte možnosti disku.
 * V části **Upřesnit**vyberte v části použít **Managed disks** **Ano** .
 
    > [!NOTE]
-   > Microsoft pro SQL Server doporučuje Spravované disky. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled služby Azure Managed disks](../../../virtual-machines/windows/managed-disks-overview.md). Podrobnosti o spravovaných discích ve skupině dostupnosti najdete v tématu [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/windows/manage-availability.md).
+   > Microsoft pro SQL Server doporučuje Spravované disky. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled služby Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Podrobnosti o spravovaných discích ve skupině dostupnosti najdete v tématu [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/windows/manage-availability.md).
 
 ![Nastavení disku pro virtuální počítač SQL](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -137,7 +137,7 @@ Na kartě **nastavení SQL Server** nakonfigurujte konkrétní nastavení a opti
 
 - [Připojení](#connectivity)
 - [Authentication](#authentication)
-- [Integrace se službou Azure Key Vault](#azure-key-vault-integration)
+- [Integrace Azure Key Vault](#azure-key-vault-integration)
 - [Konfigurace úložiště](#storage-configuration)
 - [Automatizované opravy](#automated-patching)
 - [Automatizované zálohování](#automated-backup)
@@ -177,7 +177,7 @@ Pokud nechcete povolit SQL Server ověřování, můžete se pomocí účtu mís
 
 ### <a name="azure-key-vault-integration"></a>Integrace se službou Azure Key Vault
 
-Pokud chcete pro šifrování ukládat tajné klíče zabezpečení v Azure, vyberte **SQL Server nastavení**a přejděte dolů k **integraci Azure Key trezoru**. Vyberte **Povolit** a vyplňte požadované informace. 
+Pokud chcete pro šifrování ukládat tajné klíče zabezpečení v Azure, vyberte **SQL Server nastavení**a přejděte dolů k  **integraci Azure Key trezoru**. Vyberte **Povolit** a vyplňte požadované informace. 
 
 ![Integrace se službou Azure Key Vault](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -257,7 +257,7 @@ Nasazení můžete monitorovat z webu Azure Portal. Tlačítko **Oznámení** v 
 > [!NOTE]
 > Příklad času, kdy může Azure nasadit SQL Server virtuální počítač: testovací SQL Server virtuální počítač zřízený do Východní USA oblasti s výchozími nastaveními trvá přibližně 12 minut. V závislosti na vaší oblasti a zvolených nastaveních se může vyskytnout rychlejší nebo pomalejší doba nasazení.
 
-## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a>Otevření virtuálního počítače pomocí vzdálené plochy
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a> Otevření virtuálního počítače pomocí vzdálené plochy
 
 Pomocí následujících kroků se připojte k SQL Server virtuálnímu počítači pomocí protokol RDP (Remote Desktop Protocol) (RDP):
 
@@ -267,7 +267,7 @@ Po připojení k virtuálnímu počítači s SQL Serverem můžete spustit SQL S
 
 Přístup k počítači vám umožňuje podle potřeb přímo měnit nastavení počítače a SQL Serveru. Můžete například nakonfigurovat nastavení brány firewall nebo změnit nastavení konfigurace SQL Serveru.
 
-## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a>Připojení k SQL Server vzdáleně
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> Připojení k SQL Server vzdáleně
 
 V tomto návodu jste vybrali **veřejný** přístup k virtuálnímu počítači a **SQL Server ověřování**. Tato nastavení automaticky nakonfigurovala virtuální počítač tak, aby povoloval připojení k SQL Serveru z libovolného klienta přes internet (za předpokladu, že má správné přihlašovací údaje SQL Serveru).
 

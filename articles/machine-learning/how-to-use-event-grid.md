@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319486"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650413"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -33,7 +33,7 @@ Kdy použít Event Grid pro akce řízené událostmi:
 > [!NOTE] 
 > V současné době se události runStatusChanged aktivují jenom v případě, že se stav spuštění **nezdařil** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li použít Event Grid, potřebujete přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, ve kterém vytvoříte události.
 
 ## <a name="the-event-model--types"></a>Typy & modelu událostí
@@ -199,7 +199,7 @@ Tento příklad ukazuje, jak pomocí služby Event Grid s aplikací logiky Azure
 
 Než začnete, proveďte následující akce:
 
-* Nastavení monitoru datové sady pro [detekci posunu dat]( https://aka.ms/datadrift) v pracovním prostoru
+* Nastavení monitoru datové sady pro [detekci posunu dat](how-to-monitor-datasets.md) v pracovním prostoru
 * Vytvoří publikovaný [kanál Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 V tomto příkladu se k kopírování souborů do úložiště objektů BLOB a spuštění publikovaného kanálu Machine Learning používá jednoduchý kanál Data Factory. Další informace o tomto scénáři najdete v tématu Postup nastavení [Machine Learning kroku v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)

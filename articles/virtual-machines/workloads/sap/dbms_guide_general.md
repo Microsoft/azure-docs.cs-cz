@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510228"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650611"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -82,7 +82,7 @@ V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou 
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
 
-| Číslo poznámky | Nadpis |
+| Číslo poznámky | Title |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -111,10 +111,7 @@ Obecně platí, že instalace a konfigurace systému Windows, Linux a DBMS jsou 
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktura úložiště virtuálního počítače pro nasazení RDBMS
 Pokud chcete postupovat podle této kapitoly, přečtěte si informace uvedené v [této kapitole][deployment-guide-3] [příručky pro nasazení][deployment-guide]a pochopte je. Před čtením této kapitoly musíte pochopit a znát různé řady virtuálních počítačů a rozdíl mezi úložištěm Standard a Premium. 
 
-Další informace o Azure Storage pro virtuální počítače Azure najdete v těchto tématech:
-
-- [Úvod ke spravovaným diskům pro virtuální počítače Azure s Windows](../../windows/managed-disks-overview.md)
-- [Úvod ke spravovaným diskům pro virtuální počítače Azure Linux](../../linux/managed-disks-overview.md).
+Další informace o Azure Storage pro virtuální počítače Azure najdete v tématu [Úvod ke spravovaným diskům pro virtuální počítače Azure](../../managed-disks-overview.md).
 
 V základní konfiguraci obvykle doporučujeme strukturu nasazení, ve které jsou operační systém, systémy DBMS a konečné binární soubory SAP oddělené od databázových souborů. Doporučujeme, aby systémy SAP, které běží na virtuálních počítačích Azure, měly základní virtuální pevný disk (nebo disk), které jsou nainstalované s operačním systémem, spustitelnými soubory systému správy databáze a spustitelnými soubory SAP. 
 
@@ -156,7 +153,7 @@ Jak už bylo uvedeno, pokud požadavek IOPS překročí, co může poskytnout je
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace:
+> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématu:
 >
 > - [Konfigurace softwarového pole RAID v systému Linux](../../linux/configure-raid.md) pomocí MDADM
 > - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](../../linux/configure-lvm.md) pomocí LVM

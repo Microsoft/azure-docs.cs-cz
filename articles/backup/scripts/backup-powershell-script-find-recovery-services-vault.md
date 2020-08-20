@@ -3,12 +3,12 @@ title: PowerShellový skript – najít trezor pro účet úložiště
 description: Naučte se, jak pomocí skriptu Azure PowerShell najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56e1b1bc1b9d46abecfbdc4b98385a0349711aab
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513247"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648713"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Skript PowerShellu pro vyhledání trezoru Recovery Services, ve kterém je registrovaný účet úložiště
 

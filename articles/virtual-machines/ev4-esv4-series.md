@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: aa7e773cb45ea23d0e091ce12cc8488114ddfbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 94c47369d7b638640fab1971801177103779e896
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837053"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648934"
 ---
 # <a name="ev4-and-esv4-series"></a>Řada Ev4 a Esv4
 
 Ev4 a Esv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s více vlákny, jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až na 504GiB paměti RAM.
 
 > [!NOTE]
-> Nejčastější dotazy najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
+> Nejčastější dotazy najdete v tématu  [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 
 ## <a name="ev4-series"></a>Ev4-Series
 
@@ -97,7 +97,7 @@ Aktualizace pro zachování paměti: podporováno
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
+Další informace o typech disků: [typy disků](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

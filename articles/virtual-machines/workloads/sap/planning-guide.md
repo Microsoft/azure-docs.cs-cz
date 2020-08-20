@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547405"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652198"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -242,7 +242,7 @@ ms.locfileid: "88547405"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -533,7 +533,7 @@ Při nasazování služeb nebo virtuálních počítačů v Azure jsou nasazení
 
 hraje důležitou roli při plánování nasazení SAP v Azure. Bylo na vás, abyste mohli spravovat počet trvalých disků v rámci účtu úložiště. Je potřeba spravovat účty úložiště a nakonec vytvořit nové účty úložiště a vytvořit tak další trvalé disky.
 
-V posledních letech se zavedení služby [Azure Managed disk](../../windows/managed-disks-overview.md) z těchto úloh zbavuje. Doporučení pro nasazení SAP je využít Azure Managed disks místo správy účtů Azure Storage sami. Služba Azure Managed disks bude distribuovat disky napříč různými účty úložiště, takže nebudou překročeny limity jednotlivých účtů úložiště.
+V posledních letech se zavedení služby [Azure Managed disk](../../managed-disks-overview.md) z těchto úloh zbavuje. Doporučení pro nasazení SAP je využít Azure Managed disks místo správy účtů Azure Storage sami. Služba Azure Managed disks bude distribuovat disky napříč různými účty úložiště, takže nebudou překročeny limity jednotlivých účtů úložiště.
 
 V rámci účtu úložiště máte typ konceptu s názvem Containers, který se dá použít k seskupení určitých disků do konkrétních kontejnerů.
 
@@ -804,7 +804,7 @@ Požadavky při přípravě vlastního disku virtuálního počítače Azure jso
 
 * Původní virtuální pevný disk obsahující operační systém může mít maximálně 127 GB. Toto omezení bylo na konci března 2015 eliminováno. Virtuální pevný disk obsahující operační systém teď může mít velikost až 1 TB stejně jako všechny ostatní Azure Storage hostovaného virtuálního pevného disku.
 * Musí být v pevném formátu VHD. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se v Azure zatím nepodporují. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
-* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a měly by se znovu připojit k virtuálnímu počítači v Azure, musí být v pevném formátu VHD. Přečtěte si [článek (Linux)](../../linux/managed-disks-overview.md) a [Tento článek (Windows)](../../windows/managed-disks-overview.md)) pro omezení velikosti datových disků. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
+* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a měly by se znovu připojit k virtuálnímu počítači v Azure, musí být v pevném formátu VHD. Přečtěte si [Tento článek](../../managed-disks-overview.md) , kde najdete omezení velikosti datových disků. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
 * Přidejte další místní účet s oprávněními správce, který může používat podpora Microsoftu, nebo které se dají přiřadit jako kontext pro služby a aplikace, které se mají spustit v nástroji, dokud není nasazený virtuální počítač a nebude možné používat vhodné uživatele.
 * Přidejte další místní účty, které by mohly být potřeba pro konkrétní scénář nasazení.
 
@@ -831,7 +831,7 @@ Požadavky při přípravě vlastní image virtuálního počítače Azure:
 
 * Původní virtuální pevný disk obsahující operační systém může mít maximálně 127 GB. Toto omezení bylo na konci března 2015 eliminováno. Virtuální pevný disk obsahující operační systém teď může mít velikost až 1 TB stejně jako všechny ostatní Azure Storage hostovaného virtuálního pevného disku.
 * Musí být v pevném formátu VHD. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx se v Azure zatím nepodporují. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
-* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a měly by se znovu připojit k virtuálnímu počítači v Azure, musí být v pevném formátu VHD. Přečtěte si [Tento článek (Linux)](../../windows/managed-disks-overview.md) a [Tento článek (Windows)](../../linux/managed-disks-overview.md) pro omezení velikosti datových disků. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
+* Virtuální pevné disky, které jsou připojené k virtuálnímu počítači a měly by se znovu připojit k virtuálnímu počítači v Azure, musí být v pevném formátu VHD. Přečtěte si [Tento článek](../../managed-disks-overview.md) , kde najdete omezení velikosti datových disků. Když nahráváte VHD pomocí PowerShellu rutin nebo CLI, budou dynamické virtuální pevné disky převedeny na statické virtuální pevné disky.
 * Přidejte další místní účty, které by mohly být potřeba pro konkrétní scénář nasazení.
 * Pokud bitová kopie obsahuje instalaci SAP NetWeaver a přejmenování názvu hostitele z původního názvu v místě nasazení Azure je nejspíš, doporučujeme zkopírovat do šablony nejnovější verze disku DVD správce zřizování softwaru SAP. To vám umožní snadno použít funkci přejmenovávání SAP k přizpůsobení změněného názvu hostitele nebo změně identifikátoru SID systému SAP v nasazené imagi virtuálního počítače, jakmile se spustí nová kopie.
 

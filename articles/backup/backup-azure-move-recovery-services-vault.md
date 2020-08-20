@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout trezor služby Recovery Services napříč p
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612567"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650909"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -141,7 +141,7 @@ Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscript
 ## <a name="post-migration"></a>Po dokončení migrace
 
 1. Nastaví nebo ověří řízení přístupu pro skupiny prostředků.  
-2. Po dokončení přesunu se musí znovu nakonfigurovat funkce pro vytváření sestav a monitorování zálohování pro trezor. Předchozí konfigurace bude ztracena během operace přesunutí.
+2. Po dokončení přesunu je třeba pro trezor znovu nakonfigurovat funkci vytváření sestav a monitorování zálohování. Předchozí konfigurace bude ztracena během operace přesunutí.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Přehrávání nahrávek na více dní – Azure
 description: V tomto kurzu se naučíte používat rozhraní API služby Azure Media Service k přehrání nepřetržitého nahrávání videa.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433655"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649087"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Kurz: přehrávání vícedenních nahrávek  
 
@@ -33,14 +33,14 @@ Doporučujeme si přečíst následující stránky dokumentace:
 * [Návod: přehrávání nahrávek](playback-recordings-how-to.md)
 * [Kurz: nepřetržité nahrávání videa](continuous-video-recording-tutorial.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete [kurz CVR](continuous-video-recording-tutorial.md). V tomto kurzu a v relevantních rozhraních API popisovaných v [kurzu se průběžné zaznamenávání videa](continuous-video-recording-tutorial.md) vztahuje na nahrávky, které jsou 5 minut nebo déle, a pokud ne, doporučujeme vám nahrávat 5 hodin na video. Rozhraní API používaná k procházení záznamů jsou nejlépe znázorněná s dlouhými nahrávkami.
 * Doporučujeme, abyste spustili tento kurz v průběhu tohoto [kurzu: nepřetržité nahrávání videa](continuous-video-recording-tutorial.md) je pořád spuštěné – to znamená, že pořád budete nahrávat video do cloudu.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky 
 
-V rámci [kurzu CVR](continuous-video-recording-tutorial.md)jste vytvořili účet Media Service. Pro tento kurz budete muset mít k tomuto účtu úplný přístup k rozhraní API. Pomocí kroků v části [získání přihlašovacích údajů můžete získat přístup k Media Services rozhraní API](../latest/access-api-howto.md#use-the-azure-portal) k vytvoření instančního objektu. Měli byste být schopni získat blok JSON z Azure Portal, který vypadá takto:
+V rámci [kurzu CVR](continuous-video-recording-tutorial.md)jste vytvořili účet Media Service. Pro tento kurz budete muset mít k tomuto účtu úplný přístup k rozhraní API. Pomocí kroků v části [získání přihlašovacích údajů můžete získat přístup k Media Services rozhraní API](../latest/access-api-howto.md?tabs=portal) k vytvoření instančního objektu. Měli byste být schopni získat blok JSON z Azure Portal, který vypadá takto:
 
 ```
 {
@@ -57,7 +57,7 @@ V rámci [kurzu CVR](continuous-video-recording-tutorial.md)jste vytvořili úč
 }
 ```
 
-Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete soubor appSettings. JSON a zkopírujte jeho obsah do nového souboru appSettings. Development. JSON. Proveďte následující úpravy pro druhý soubor:
+Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete appsettings.jsv souboru a zkopírujte jeho obsah do nového souboru, appsettings.development.jsna. Proveďte následující úpravy pro druhý soubor:
 
 ```
   "AMS" : {
@@ -87,7 +87,7 @@ Přehrávač assetů AMS vás vyzve k zadání názvu prostředku Media Service.
 
 Po zadání názvu assetu a jeho odeslání bude kód přehrávače načíst adresu URL streamování. Další informace najdete v tématu [Návod: přehrávání nahrávek](playback-recordings-how-to.md). Pokud se v takovém případě stále záznam do assetu zaznamená, přehrávač ho detekuje a pokusí se o přehrání přehrávání do poslední části zaznamenaného videa. Můžete vidět časové razítko (v UTC) v levém horním rohu přehrávače. Na následujícím snímku obrazovky si všimněte, jak je vybráno tlačítko "živé".
 
-![Stream](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
+![Datový proud](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  
 Na pravé straně přehrávače uvidíte ovládací prvky pro procházení archivu. Roky, měsíce a kalendářní data v tomto ovládacím prvku jsou vyplněny pomocí rozhraní availableMedia API dokumentovaného v tématu [Návod: přehrávání nahrávek](playback-recordings-how-to.md).
 Pokud po rozbalení dne necháte kurz CVR běžet několik hodin, zobrazí se výsledek podobný tomuto:

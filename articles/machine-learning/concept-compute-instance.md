@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829437"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651911"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -145,7 +145,7 @@ Pokud jste připraveni spustit jeden z vašich poznámkových bloků, vytvořte 
 
 |Pole  |Popis  |
 |---------|---------|
-|Název výpočtu     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-** se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
+|Název výpočetních prostředků     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Povolit/zakázat přístup přes SSH     |   Přístup SSH je ve výchozím nastavení zakázán.  Přístup SSH nemůže být. Po vytvoření se změnila. Pokud chcete interaktivně ladit pomocí [vs Code vzdálených](how-to-set-up-vs-code-remote.md) , Nezapomeňte povolit přístup.   |
@@ -155,26 +155,22 @@ Můžete také vytvořit instanci.
 * Přímo z [prostředí integrovaných poznámkových bloků](tutorial-1st-experiment-sdk-setup.md#azure)
 * V Azure Portal
 * Z šablony Azure Resource Manager. Příklad šablony najdete v tématu [vytvoření Azure Machine Learning šablony výpočetních instancí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
-* S [Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* S Azure Machine Learning SDK
 * Z [rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 
 Vyhrazená jádra na jednu oblast a kvótu pro skupinu virtuálních počítačů a celkovou kvótu, která se vztahuje na vytvoření instance Compute. je sjednocený a sdílený s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci.
 
 ## <a name="compute-target"></a>Cílový výpočetní objekt
 
-Výpočetní instance se dají použít jako [školicí cíl](concept-compute-target.md#train) Azure Machine Learning pro výpočetní prostředky, podobně jako clustery výpočetního školení. 
+Výpočetní instance se dají použít jako [školicí cíl pro výpočetní](concept-compute-target.md#train) prostředky, podobně jako Azure Machine Learning výpočetních clusterů. 
 
 Výpočetní instance:
 * Má frontu úloh.
 * Spustí úlohy bezpečně ve virtuálním síťovém prostředí, aniž by museli podniky otevřít port SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker.
 * Může spustit více malých úloh paralelně (ve verzi Preview).  Dvě úlohy na jádro můžou běžet paralelně, zatímco zbývající úlohy jsou zařazené do fronty.
+* Podpora distribuovaných školicích úloh s jedním uzlem
 
 Výpočetní instanci můžete použít jako cíl nasazení místní Inferencing pro scénáře testování a ladění.
-
-> [!NOTE]
-> Distribuované školicí úlohy nejsou u výpočetní instance podporovány.  Pro distribuované školení použijte (výpočetní clustery) (postupy-nastavení-procvičení-cílení. MD # amlcompute).
-
-Další podrobnosti najdete v poznámkovém bloku s [výukou computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Tento Poznámkový blok je také k dispozici ve složce **ukázek** studia v části *školení/výuka-on-computeinstance*.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Co se stalo s virtuálním počítačem poznámkového bloku?
 

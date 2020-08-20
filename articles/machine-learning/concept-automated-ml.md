@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290038"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652096"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -76,7 +76,7 @@ Pomocí **Azure Machine Learning**můžete navrhovat a spouštět experimenty au
 
 1. **Vyberte, jestli chcete použít sadu Python SDK nebo webové prostředí studia**: Přečtěte si informace o paritě mezi [webovým prostředím Python SDK a Studio](#parity).
 
-   * V případě omezeného nebo žádného prostředí pro práci s kódem zkuste vyzkoušet web Azure Machine Learning Studio na adrese.[https://ml.azure.com](https://ml.azure.com/)  
+   * V případě omezeného nebo žádného prostředí pro práci s kódem zkuste vyzkoušet web Azure Machine Learning Studio na adrese. [https://ml.azure.com](https://ml.azure.com/)  
    * Pro vývojáře v Pythonu se podívejte na [sadu SDK Azure Machine Learning Pythonu](how-to-configure-auto-train.md) . 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
@@ -138,7 +138,7 @@ Povolit toto nastavení pomocí:
 
 + Python SDK: zadejte `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` v objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . Přečtěte si další informace o [Povolení featurization](how-to-configure-auto-features.md). 
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Modely kompletování
+## <a name="ensemble-models"></a><a name="ensemble"></a> Modely kompletování
 
 Automatizované Machine Learning podporuje modely kompletování, které jsou ve výchozím nastavení povolené. Seznámení se službou kompletování vylepšuje výsledky strojového učení a prediktivní výkon tím, že kombinuje více modelů na rozdíl od použití jednoduchých modelů. Iterace kompletu se zobrazí jako poslední iterace vašeho spuštění. Automatizované strojové učení používá pro kombinování modelů jak hlasovací, tak i stohování metod kompletování:
 
@@ -202,15 +202,13 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 * Prediktivní údržba stovek ropných zásobníků
 * Přizpůsobení prostředí pro jednotlivé uživatele.
 
-Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
-
 ## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
 
 Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML.
 
 * Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
-* Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na[https://ml.azure.com](https://ml.azure.com/)  
+* Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

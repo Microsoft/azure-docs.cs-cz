@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdc5f56d4500581b36f366663dc3db915070ee2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659736"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649841"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
@@ -56,7 +56,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
     ```
 
     > [!NOTE]
-    > Když rozbalíte spravovaný disk, aktualizovaná velikost se zaokrouhluje na nejbližší velikost spravovaného disku. Tabulku dostupných velikostí a úrovní spravovaných disků najdete v tématu [Přehled Azure Managed disks – ceny a fakturace](../windows/managed-disks-overview.md).
+    > Když rozbalíte spravovaný disk, aktualizovaná velikost se zaokrouhluje na nejbližší velikost spravovaného disku. Tabulku dostupných velikostí a úrovní spravovaných disků najdete v tématu [Přehled Azure Managed disks – ceny a fakturace](../managed-disks-overview.md).
 
 1. Spusťte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm#az-vm-start). Následující příklad spustí virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 

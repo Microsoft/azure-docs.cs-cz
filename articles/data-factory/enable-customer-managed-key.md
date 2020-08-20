@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570004"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650569"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Šifrování Azure Data Factory pomocí klíčů spravovaných zákazníkem
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory šifruje neaktivní uložená data, včetně definic entit, všech dat ukládaných do mezipaměti během probíhajících běhů a dat v mezipaměti pro náhled dat. Ve výchozím nastavení jsou data šifrována pomocí náhodně generovaného klíče spravovaného společností Microsoft, který je jednoznačně přiřazen k vaší datové továrně. V případě dalších bezpečnostních záruk teď můžete Bring Your Own Key (BYOK) povolit funkce klíčů spravovaných zákazníkem v Azure Data Factory. Když zadáte klíč spravovaný zákazníkem, Data Factory k šifrování zákaznických dat použít __jak__ systémový klíč továrny, tak i CMK. Chybějící, protože by došlo k odepření přístupu k datům a továrně.
+Azure Data Factory šifruje neaktivní uložená data, včetně definic entit a všech dat uložených v mezipaměti v průběhu probíhajících běhů. Ve výchozím nastavení jsou data šifrována pomocí náhodně generovaného klíče spravovaného společností Microsoft, který je jednoznačně přiřazen k vaší datové továrně. V případě dalších bezpečnostních záruk teď můžete Bring Your Own Key (BYOK) povolit funkce klíčů spravovaných zákazníkem v Azure Data Factory. Když zadáte klíč spravovaný zákazníkem, Data Factory k šifrování zákaznických dat použít __jak__ systémový klíč továrny, tak i CMK. Chybějící, protože by došlo k odepření přístupu k datům a továrně.
 
 K ukládání klíčů spravovaných zákazníkem se vyžaduje Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Trezor klíčů a Data Factory musí být ve stejném regionu Azure Active Directory (Azure AD) a ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 
@@ -76,7 +76,7 @@ Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo 
 
     ![Snímek obrazovky s identifikátorem URI klíče z Key Vault](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. Spustit portál Azure Data Factory a použít navigační panel vlevo, přejít na Data Factory domovskou stránku
+1. Spusťte Azure Data Factory portál a pomocí navigačního panelu vlevo přejděte na Data Factory Portál pro správu
 
 1. Klikněte na ikonu __Customer spravovaných Key__ .
 

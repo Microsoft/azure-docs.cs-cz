@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506392"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650464"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
 Azure poskytuje různé typy úložiště, které jsou vhodné pro virtuální počítače Azure, na kterých běží SAP HANA. **SAP HANA certifikované typy úložiště Azure** , které je možné zvážit pro seznam nasazení SAP HANA, jako je: 
 
 - Azure Premium SSD nebo Storage úrovně Premium 
-- [Disky Ultra](../../linux/disks-enable-ultra-ssd.md)
+- [Disky Ultra](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Další informace o těchto typech disků najdete v článku [Azure Storage typy pro úlohu SAP](./planning-guide-storage.md) a [Výběr typu disku](../../linux/disks-types.md) .
+Další informace o těchto typech disků najdete v článku [Azure Storage typy pro úlohu SAP](./planning-guide-storage.md) a [Výběr typu disku](../../disks-types.md) .
 
 Azure nabízí dvě metody nasazení pro virtuální pevné disky v Azure Standard a Premium Storage. Očekáváme, že využijete [Azure Managed disk](https://azure.microsoft.com/services/managed-disks/) pro nasazení blokového úložiště Azure. 
 
@@ -59,7 +59,7 @@ Vzhledem k toho, že nízká latence úložiště je pro systémy DBMS velmi kri
 
 V části výběr konfigurace úložiště pro HANA se můžou zobrazit tyto zásady GUID:
 
-- Rozhodněte o typu úložiště založeném na [typech Azure Storage pro úlohu SAP](./planning-guide-storage.md) a [Vyberte typ disku](../../linux/disks-types.md) .
+- Rozhodněte o typu úložiště založeném na [typech Azure Storage pro úlohu SAP](./planning-guide-storage.md) a [Vyberte typ disku](../../disks-types.md) .
 - Celková propustnost vstupně-výstupních operací virtuálních počítačů a omezení IOPS při změně velikosti nebo rozhodování pro virtuální počítač. Celková propustnost úložiště virtuálního počítače je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) .
 - Při rozhodování o konfiguraci úložiště se snažte zůstat pod celkovou propustností virtuálního počítače s konfigurací svazku **/Hana/data** . Zápisem úložných bodů SAP HANA může být agresivní vystavení vstupně-výstupních volání. Při zápisu do uloženého bodu je možné snadno nabídnout až omezení propustnosti **/Hana/data** svazku. Pokud vaše disky, které sestavují svazek **/Hana/data** , mají vyšší propustnost, než umožňuje váš virtuální počítač, můžete se v situacích, kdy propustnost využívané zápisem uloženého bodu, narušovat pomocí propustnosti zápisů protokolů znovu. Situace, která může ovlivnit propustnost aplikace
 - Pokud používáte službu Azure Premium Storage, jedná se o nejlevnějšíou konfiguraci pomocí správců logických svazků k sestavení sad Stripe Sets pro vytváření svazků **/Hana/data** a **/Hana/log** .
@@ -218,7 +218,7 @@ U ostatních svazků, včetně **/Hana/log** na disku Ultra, může konfigurace 
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Konfigurace úložiště Azure Ultra disk pro SAP HANA
-Jiný typ úložiště Azure se nazývá [Azure Ultra disk](../../windows/disks-types.md#ultra-disk). Významný rozdíl mezi službou Azure Storage, která je doposud dostupná a Ultra disk, je, že možnosti disku už nejsou svázané s velikostí disku. Jako zákazník můžete definovat tyto možnosti pro ultra disk:
+Jiný typ úložiště Azure se nazývá [Azure Ultra disk](../../disks-types.md#ultra-disk). Významný rozdíl mezi službou Azure Storage, která je doposud dostupná a Ultra disk, je, že možnosti disku už nejsou svázané s velikostí disku. Jako zákazník můžete definovat tyto možnosti pro ultra disk:
 
 - Velikost disku v rozsahu od 4 GiB do 65 536 GiB
 - Rozsah IOPS od 100 IOPS do 160K IOPS (maximální počet závisí na typech virtuálních počítačů).
@@ -362,6 +362,6 @@ V seznamu jsou uvedené typy virtuálních počítačů, které nejsou certifiko
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace:
+Další informace naleznete v tématu:
 
 - [SAP HANA Průvodce vysokou dostupností pro virtuální počítače Azure](./sap-hana-availability-overview.md).

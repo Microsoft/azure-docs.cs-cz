@@ -3,19 +3,19 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067880"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652453"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
@@ -51,7 +51,7 @@ Pomocí tohoto příkazu můžete spustit koncový bod streamování.
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-Podle kroků v tomto článku získáte přihlašovací údaje pro přístup k rozhraním API služby Media Service: [přístup k rozhraním API služby Media Service](../latest/access-api-howto.md#use-the-azure-portal).
+Podle kroků v tomto článku získáte přihlašovací údaje pro přístup k rozhraním API služby Media Service: Získejte [přístup k rozhraním API služby Media Service](../latest/access-api-howto.md?tabs=portal) a vyberte kartu portál.
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>Vytvoření a použití místního uživatelského účtu pro nasazení
 Pokud chcete spustit video Analytics v modulu IoT Edge, vytvořte místní uživatelský účet s co nejmenším možným oprávněním. Například spusťte na počítači se systémem Linux následující příkazy:
@@ -168,7 +168,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     * {resourceGroupName} – Tato skupina prostředků, do které patří váš účet Media Service
     * {AMS – Account-Name} – Toto je název vašeho účtu Media Services.
     
-    Další hodnoty získáte v tématu [přístup Azure Media Services API](../latest/access-api-howto.md#use-the-azure-portal).  
+    Pokud chcete získat další hodnoty, přečtěte si téma [přístup Azure Media Services API](../latest/access-api-howto.md?tabs=portal) a vyberte kartu portál.  
     * aadTenantId – Toto je ID tenanta a je stejné jako "AadTenantId" z výše uvedeného odkazu.
     * aadServicePrincipalAppId – Toto je ID aplikace instančního objektu pro váš účet Media Service a je stejné jako "AadClientId" z výše uvedeného odkazu.
     * aadServicePrincipalSecret – Toto je heslo k instančnímu objektu a je stejné jako "AadSecret" z výše uvedeného odkazu.

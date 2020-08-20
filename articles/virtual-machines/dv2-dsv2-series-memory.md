@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837087"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648492"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 
@@ -66,7 +66,7 @@ Aktualizace pro zachování paměti: podporováno
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720) | 64000/960 | 8|25000 <sup>4</sup> |
 
 <sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít u virtuálního počítače DSv2 Series, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [navrhování pro vysoký výkon](./windows/premium-storage-performance.md).
-<sup>2</sup> instance je izolovaná na hardwaru založeném na Intel Haswell a vyhrazeném pro jediného zákazníka.  
+<sup>2</sup>  instance je izolovaná na hardwaru založeném na Intel Haswell a vyhrazeném pro jediného zákazníka.  
 jsou k dispozici <sup>3</sup> omezené základní velikosti.  
 <sup>4</sup> 25000 MB/s s akcelerovanými síťovými službami.
 
@@ -83,7 +83,7 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
+Další informace o typech disků: [typy disků](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

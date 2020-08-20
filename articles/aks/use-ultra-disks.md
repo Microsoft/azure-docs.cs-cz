@@ -4,25 +4,25 @@ description: Přečtěte si, jak povolit a nakonfigurovat disky Ultra v clusteru
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986827"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650175"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Použití disků Azure Ultra ve službě Azure Kubernetes (Preview)
 
-[Azure Ultra disks](../virtual-machines/linux/disks-enable-ultra-ssd.md) nabízí vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro stavové aplikace. Jednou z hlavních výhod Ultra disks je schopnost dynamicky měnit výkon jednotky SSD společně s vašimi úlohami, aniž by bylo nutné restartovat uzly agenta. Disky Ultra jsou vhodné pro úlohy náročné na data.
+[Azure Ultra disks](../virtual-machines/disks-enable-ultra-ssd.md) nabízí vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro stavové aplikace. Jednou z hlavních výhod Ultra disks je schopnost dynamicky měnit výkon jednotky SSD společně s vašimi úlohami, aniž by bylo nutné restartovat uzly agenta. Disky Ultra jsou vhodné pro úlohy náročné na data.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváření fondu uzlů.
 
 > [!IMPORTANT]
-> Disky Azure Ultra vyžadují nodepools nasazené v zónách dostupnosti a oblastech, které tyto disky podporují, a také pouze konkrétní řady virtuálních počítačů. Podívejte se na téma [**omezení a rozsahy Ultra discích GA**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
+> Disky Azure Ultra vyžadují nodepools nasazené v zónách dostupnosti a oblastech, které tyto disky podporují, a také pouze konkrétní řady virtuálních počítačů. Podívejte se na téma [**omezení a rozsahy Ultra discích GA**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že máte `EnableUltraSSD` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou nejnovější [rozšíření CLI][az-extension-add] .
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>Omezení
-- Viz [ **omezení a obory Ultra disky GA** .](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Viz [ **omezení a obory Ultra disky GA** .](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 - Velikost podporovaného rozsahu pro disky Ultra je mezi 100 a 1500.
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Vytvoření nového clusteru, který může používat Ultra disks
@@ -226,7 +226,7 @@ Events:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o discích Ultra najdete v tématu [použití disků Azure Ultra](../virtual-machines/linux/disks-enable-ultra-ssd.md).
+- Další informace o discích Ultra najdete v tématu [použití disků Azure Ultra](../virtual-machines/disks-enable-ultra-ssd.md).
 - Další informace o osvědčených postupech pro úložiště najdete v tématu [osvědčené postupy pro úložiště a zálohy ve službě Azure Kubernetes Service (AKS)][operator-best-practices-storage] .
 
 <!-- LINKS - external -->
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

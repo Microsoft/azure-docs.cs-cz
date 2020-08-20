@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511138"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651722"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -110,9 +110,9 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
            -  [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
    2. Úložiště.
         - Podívejte se na dokument [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) .
-        - Minimálně použijte [úložiště Azure SSD úrovně Standard](../../windows/disks-types.md#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
-        - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../windows/disks-types.md#standard-hdd).
-        - [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
+        - Minimálně použijte [úložiště Azure SSD úrovně Standard](../../disks-types.md#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
+        - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../disks-types.md#standard-hdd).
+        - [Azure Premium Storage](../../disks-types.md#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
         - Použijte službu [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
         - Použijte Azure Akcelerátor zápisu pro DBMS protokolové jednotky s M-Series. Akcelerátor zápisu omezení a využití, jak je popsáno v [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
         - Pro různé typy DBMS ověřte [dokumentaci k obecnému systému DBMS související s SAP](./dbms_guide_general.md) a dokumentaci ke konkrétnímu systému DBMS, na kterou se odkazuje obecný dokument.
