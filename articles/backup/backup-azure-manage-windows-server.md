@@ -3,12 +3,12 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263323"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654204"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -70,8 +70,8 @@ Předběžná kontrola zálohování kontroluje v konfiguraci virtuálních poč
 Předběžné kontroly zálohování se spouštějí jako součást plánovaných operací zálohování pro vaše virtuální počítače Azure. Dokončí jeden z následujících stavů:
 
 * **Úspěch**: Tento stav označuje, že by konfigurace vašeho virtuálního počítače měla vést k úspěšným zálohám a není nutné provádět žádné nápravné akce.
-* **Upozornění**: Tento stav označuje jeden nebo více problémů v konfiguraci virtuálního počítače, které *mohou* vést k selhání zálohování. Poskytuje *Doporučené* kroky k zajištění úspěšných záloh. Například pokud není nainstalován nejnovější agent virtuálního počítače, může dojít k výpadku zálohování. Tato situace by poskytovala stav upozornění.
-* **Kritické**: Tento stav indikuje minimálně jeden kritický problém v konfiguraci virtuálního *počítače, který vede k* selhání zálohování, a poskytne *potřebné* kroky k zajištění úspěšných záloh. Například problém se sítí způsobený aktualizací pravidel NSG virtuálního počítače způsobí selhání zálohování, protože zabrání tomu, aby virtuální počítač komunikoval se službou Azure Backup. Tato situace by poskytovala kritický stav.
+* **Upozornění**: Tento stav označuje jeden nebo více problémů v konfiguraci virtuálního počítače, které *mohou* vést k selhání zálohování. Poskytuje *Doporučené* kroky k zajištění úspěšných záloh. Například pokud není nainstalován nejnovější agent virtuálního počítače, může dojít k výpadku zálohování. Tato situace bude poskytovat stav upozornění.
+* **Kritické**: Tento stav indikuje minimálně jeden kritický problém v konfiguraci virtuálního *počítače, který vede k* selhání zálohování, a poskytne *potřebné* kroky k zajištění úspěšných záloh. Například problém se sítí způsobený aktualizací pravidel NSG virtuálního počítače způsobí selhání zálohování, protože zabrání tomu, aby virtuální počítač komunikoval se službou Azure Backup. Tato situace bude mít kritický stav.
 
 Postupujte podle následujících kroků a začněte řešit všechny problémy hlášené předběžnými kontrolami zálohování virtuálních počítačů ve vašem úložišti Recovery Services.
 
@@ -96,7 +96,7 @@ V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná
 | Alert Level | Události, které generují výstrahy |
 | ----------- | ----------- |
 | Kritické | Zobrazí se důležité výstrahy, když se nezdaří úlohy zálohování, úlohy obnovení selžou a když zastavíte ochranu na serveru, ale zachováte data.|
-| Upozornění | Upozornění se zobrazí, když se úlohy zálohování dokončí s upozorněními, například pokud se méně než 100 souborů nezálohuje kvůli problémům s poškozením nebo pokud jsou soubory s více než 1 000 000 úspěšně zálohovány. |
+| Upozornění | Upozornění se zobrazí, když: úlohy zálohování se dokončí s upozorněními. Například pokud se méně než 100 souborů nezálohuje kvůli problémům s poškozením nebo pokud je více než 1 000 000 souborů úspěšně zálohováno). |
 | Informační | v současné době se nepoužívají žádné informativní výstrahy. |
 
 ### <a name="viewing-alert-details"></a>Zobrazení podrobností výstrah

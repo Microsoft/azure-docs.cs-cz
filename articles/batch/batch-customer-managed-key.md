@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053741"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654884"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Batch s využitím Azure Key Vault a spravované identity
 
@@ -19,7 +19,7 @@ Ve výchozím nastavení Azure Batch používá klíče spravované platformou k
 Klíče, které zadáte, musí být vygenerované v [Azure Key Vault](../key-vault/general/basic-concepts.md)a účty Batch, které chcete nakonfigurovat pomocí klíčů spravovaných zákazníkem, musí být povolené pomocí [spravované identity Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Podpora klíčů spravovaných zákazníkem v Azure Batch je v současnosti ve verzi Public Preview pro oblasti Středozápadní USA, Východní USA, Střed USA – jih, Západní USA 2, US Gov – Virginie a US Gov – Arizona.
+> Podpora klíčů spravovaných zákazníkem v Azure Batch je v současnosti ve verzi Public Preview pro oblasti Západní Evropa, Severní Evropa, Švýcarsko – sever, Střed USA, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA 2, US Gov – Virginie a US Gov – Arizona.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -82,7 +82,7 @@ V poli **Vybrat** v části **hlavní**název zadejte, `principalId` které jste
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Vygenerovat klíč v Azure Key Vault
 
-V Azure Portal v části **klíč** klikněte na instance Key Vault a vyberte **Generovat/importovat**. Vyberte **typ klíče** , který má být `RSA` a **Velikost klíče RSA** , která má být alespoň `2048` bitů. `EC`typy klíčů nejsou aktuálně podporovány jako klíč spravovaný zákazníkem na účtu Batch.
+V Azure Portal v části **klíč** klikněte na instance Key Vault a vyberte **Generovat/importovat**. Vyberte **typ klíče** , který má být `RSA` a **Velikost klíče RSA** , která má být alespoň `2048` bitů. `EC` typy klíčů nejsou aktuálně podporovány jako klíč spravovaný zákazníkem na účtu Batch.
 
 ![Vytvoření klíče](./media/batch-customer-managed-key/create-key.png)
 

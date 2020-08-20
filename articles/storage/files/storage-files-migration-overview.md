@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827856"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654255"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -26,7 +26,7 @@ Azure má několik dostupných typů cloudového úložiště. Základní aspekt
 
 [Sdílené složky Azure](storage-files-introduction.md) jsou vhodné pro data souborů pro obecné účely. Mezi tato data patří cokoli, co používáte pro aplikaci místní sdílenou složku SMB nebo NFS. Pomocí [Azure File Sync](storage-sync-files-planning.md)můžete ukládat obsah několika sdílených složek Azure na serverech, na kterých běží Windows Server místně.
 
-Pro aplikaci, která je aktuálně spuštěná na místním serveru, může být vhodné zvolit ukládání souborů ve sdílené složce Azure. Aplikaci můžete přesunout do Azure a používat sdílené složky Azure jako sdílené úložiště. V tomto scénáři můžete zvážit také [disky Azure](../../virtual-machines/windows/managed-disks-overview.md) .
+Pro aplikaci, která je aktuálně spuštěná na místním serveru, může být vhodné zvolit ukládání souborů ve sdílené složce Azure. Aplikaci můžete přesunout do Azure a používat sdílené složky Azure jako sdílené úložiště. V tomto scénáři můžete zvážit také [disky Azure](../../virtual-machines/managed-disks-overview.md) .
 
 Některé cloudové aplikace nezávisí na SMB nebo na místním přístupovém přístupu k datům nebo na sdíleném přístupu v počítači. Pro tyto aplikace je často nejlepší volbou úložiště objektů, jako jsou [objekty blob Azure](../blobs/storage-blobs-overview.md) .
 
@@ -126,7 +126,7 @@ Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhod
 |![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Podporuje se. | Nekopíruje metadata. |
 |||||
 
-*\*Úplná věrnost: splňuje nebo překračuje možnosti sdílení souborů Azure.*
+*\* Úplná věrnost: splňuje nebo překračuje možnosti sdílení souborů Azure.*
 
 ### <a name="migration-helper-tools"></a>Pomocné nástroje pro migraci
 

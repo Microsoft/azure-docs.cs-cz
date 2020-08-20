@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 71cec82550ae8ca2bc6ddd7bda6452870e5e0818
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263295"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654221"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -92,7 +92,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
   - Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany.
   - Služba Azure Backup bude nadále uchovávat všechny existující body obnovení.  
   - Budete moct obnovit zálohovaná data pro body obnovení, které nevypršely.
-  - Pokud se rozhodnete obnovit ochranu, můžete použít možnost *znovu povolit plán zálohování* . Pak by se data zachovala na základě nových zásad uchovávání informací.
+  - Pokud se rozhodnete obnovit ochranu, můžete použít možnost *znovu povolit plán zálohování* . Pak se data uchovávají na základě nových zásad uchovávání informací.
 - **Zastavte ochranu a odstraňte zálohovaná data**.
   - Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany vašich dat a odstraní všechny body obnovení.
   - Obdržíte e-mail s upozorněním na odstranění záložních dat se zprávou, že *vaše data této zálohované položky se odstranila. Tato data budou dočasně k dispozici po dobu 14 dnů, po jejímž uplynutí bude tato data trvale odstraněna* a doporučená akce znovu *zabezpečí zálohovanou položku během 14 dnů pro obnovení dat.*

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: a8503f701a36d7197f85f2c86e37272ccf1cab48
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760715"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653422"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
@@ -80,7 +80,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
   * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Konfigurace ASCS/OLAJÍCÍCH pro SAP NetWeaver se samostatnými prostředky v RHEL 7,5](https://access.redhat.com/articles/3569681)
-  * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL](https://access.redhat.com/articles/3974941)
+  * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL ](https://access.redhat.com/articles/3974941)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
   * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
@@ -156,7 +156,7 @@ Architektura SAP NetWeaver uvedená v tomto článku používá fond kapacit s j
    6. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas)
    7. Volume SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
   
-V tomto příkladu jsme použili Azure NetApp Files pro všechny systémy souborů SAP NetWeaver k předvedení toho, jak se dá Azure NetApp Files použít. Systémy souborů SAP, které není nutné připojit přes systém souborů NFS, se dají nasadit taky jako [Azure Disk Storage](../../windows/disks-types.md#premium-ssd) . V tomto příkladu musí být a <b>-e</b> Azure NetApp Files a <b>f-g</b> (tj./usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) se dají nasadit jako Azure Disk Storage. 
+V tomto příkladu jsme použili Azure NetApp Files pro všechny systémy souborů SAP NetWeaver k předvedení toho, jak se dá Azure NetApp Files použít. Systémy souborů SAP, které není nutné připojit přes systém souborů NFS, se dají nasadit taky jako [Azure Disk Storage](../../disks-types.md#premium-ssd) . V tomto příkladu musí být a <b>-e</b> Azure NetApp Files a <b>f-g</b> (tj./usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) se dají nasadit jako Azure Disk Storage. 
 
 ### <a name="important-considerations"></a>Důležité informace
 

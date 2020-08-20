@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258533"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654034"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -71,7 +71,7 @@ Služba Advisor analyzuje úložiště objektů BLOB v Azure a využití úloži
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>Vyhrazená kapacita MariaDB, MySQL a PostgreSQL
 Advisor analyzuje vaše vzory využití pro Azure Database for MariaDB, Azure Database for MySQL a Azure Database for PostgreSQL za posledních 30 dnů. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit MariaDB, MySQL a PostgreSQL hodinové využití a ušetřit přitom své aktuální náklady. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Rezervovaná kapacita synapse Analytics (dříve SQL Data Warehouse)
+### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Rezervovaná kapacita Azure synapse Analytics (dříve SQL Data Warehouse)
 Advisor během posledních 30 dnů analyzuje vaše vzory využití Azure synapse Analytics a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit synapse analýzu po hodinách a ušetřit náklady na vyžádání. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí cen za 3 roky a vzorců využití zjištěných za posledních 30 dní. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstraní nepřidružené veřejné IP adresy, aby se ušetřily peníze.

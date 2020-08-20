@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 9499fe2140f4a345d48bce6ef010989cfc22c58e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037078"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653133"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
@@ -52,7 +52,7 @@ Pomocí následujících kroků spusťte analytické dotazy s odkazem na synapse
 
 [Šablona Azure Resource Manager](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) vytvoří pro rozhraní SQL API účet Azure Cosmos s povoleným odkazem na synapse. Tato šablona vytvoří účet základního (SQL) rozhraní API v jedné oblasti s kontejnerem nakonfigurovaným s povoleným analytickým standardem TTL a možností ručního škálování nebo propustnosti. Tuto šablonu nasadíte kliknutím na **nasadit do Azure** na stránce Readme.
 
-## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a>Vytvoření kontejneru Azure Cosmos s analytickým úložištěm
+## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Vytvoření kontejneru Azure Cosmos s analytickým úložištěm
 
 Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytváření kontejneru. Můžete použít Azure Portal nebo nakonfigurovat `analyticalTTL` vlastnost během vytváření kontejneru pomocí sady Azure Cosmos DB SDK.
 
@@ -103,44 +103,63 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="python-v3-sdk"></a>Python V3 SDK
+### <a name="python-v4-sdk"></a>Sada Python v4 SDK
 
-Následující kód vytvoří kontejner s analytickým úložištěm pomocí sady Python SDK:
+Python 2,7 a Azure Cosmos DB SDK 4.1.0 jsou vyžadovány minimální verze a sada SDK je kompatibilní pouze s rozhraním SQL API.
+
+Prvním krokem je, abyste se ujistili, že používáte minimálně 4.1.0 verze [Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos):
 
 ```python
+import azure.cosmos as cosmos
+
+print (cosmos.__version__)
+```
+V dalším kroku se vytvoří kontejner s analytickým úložištěm pomocí Azure Cosmos DB Python SDK:
+
+```python
+# Azure Cosmos DB Python SDK, for SQL API only.
+# Creating an analytical store enabled container.
+
 import azure.cosmos.cosmos_client as cosmos_client
-def create_collection_if_not_exists(cosmosEndpoint, cosmosKey, databaseName, collectionName):
-    client = cosmos_client.CosmosClient(url_connection=cosmosEndpoint, auth={'masterKey': cosmosKey})
+import azure.cosmos.exceptions as exceptions
+from azure.cosmos.partition_key import PartitionKey
 
-db = client.QueryDatabases("select * from c where c.id = '" + databaseName + "'").fetch_next_block()[0]
-options = {
-    'offerThroughput': 1000
-}
+HOST = 'your-cosmos-db-account-URI'
+KEY = 'your-cosmos-db-account-key'
+DATABASE = 'your-cosmos-db-database-name'
+CONTAINER = 'your-cosmos-db-container-name'
 
-container_definition = {
-    'id': collectionName,
-    "partitionKey": {  
-        "paths": [  
-        "/id"  
-        ],  
-        "kind": "Hash" 
-    },
-    "indexingPolicy": {  
-    "indexingMode": "consistent",  
-    "automatic": True,  
-    "includedPaths": [],  
-    "excludedPaths": [{
-        "path": "/*"
-    }]  
-    },
-    "defaultTtl": -1,
-    "analyticalStorageTtl": -1
-}
+client = cosmos_client.CosmosClient(HOST,  KEY )
+# setup database for this sample. 
+# If doesn't exist, creates a new one with the name informed above.
+try:
+    db = client.create_database(DATABASE)
 
-container = client.CreateContainer(db['_self'], container_definition, options)
+except exceptions.CosmosResourceExistsError:
+    db = client.get_database_client(DATABASE)
+
+# Creating the container with analytical store enabled, using the name informed above.
+# If a container with the same name exists, an error is returned.
+#
+# The 3 options for the analytical_storage_ttl parameter are:
+# 1) 0 or Null or not informed (Not enabled).
+# 2) -1 (The data will be stored in analytical store infinitely).
+# 3) Any other number is the actual ttl, in seconds.
+
+try:
+    container = db.create_container(
+        id=CONTAINER,
+        partition_key=PartitionKey(path='/id', kind='Hash'),analytical_storage_ttl=-1
+    )
+    properties = container.read()
+    print('Container with id \'{0}\' created'.format(container.id))
+    print('Partition Key - \'{0}\''.format(properties['partitionKey']))
+
+except exceptions.CosmosResourceExistsError:
+    print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a>Aktualizace doby analytického úložiště na Live
+### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Aktualizace doby analytického úložiště na Live
 
 Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto hodnotu později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí webu Azure Portal nebo sad SDK. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
 
@@ -185,15 +204,15 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 container.replace(containerProperties).block();
 ```
 
-## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a>Připojení k pracovnímu prostoru synapse
+## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Připojení k pracovnímu prostoru synapse
 
 Použijte pokyny v tématu [připojení k Azure synapse](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) , jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics studia pomocí Azure synapse Link.
 
-## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a>Dotazování pomocí synapse Spark
+## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Dotazování pomocí synapse Spark
 
 Postupujte podle pokynů v článku [dotaz Azure Cosmos DB analytické úložiště](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) pro dotazování pomocí synapse Spark. Tento článek obsahuje několik příkladů, jak můžete pracovat s analytickým úložištěm z synapse gest. Tato gesta se zobrazí po kliknutí pravým tlačítkem na kontejner. Pomocí gest můžete rychle vygenerovat kód a vylepšit ho podle svých potřeb. Jsou také ideální pro zjišťování dat jediným kliknutím.
 
-## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Začínáme s propojením Azure Synpase – ukázky
+## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Začínáme s propojením Azure Synpase – ukázky
 
 Ukázky, které vám pomůžou začít s propojením Azure synapse na [GitHubu](https://aka.ms/cosmosdb-synapselink-samples), najdete v ukázkách. Tato předvádí ucelená řešení s využitím scénářů IoT a Retail.
 

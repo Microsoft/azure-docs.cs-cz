@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498969"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653813"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na místní zotavení po havárii do Azure
 
@@ -94,4 +94,4 @@ Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí
 - Pro zotavení po havárii technologie Hyper-V [Připravte místní servery Hyper-v](hyper-v-prepare-on-premises-tutorial.md).
 - Pro zotavení po havárii fyzického serveru [nastavte konfigurační server a zdrojové prostředí](physical-azure-disaster-recovery.md) .
 - Informace o [sítích Azure](../virtual-network/virtual-networks-overview.md)
-- [Přečtěte si o](../virtual-machines/windows/managed-disks-overview.md) spravovaných discích.
+- [Přečtěte si o](../virtual-machines/managed-disks-overview.md) spravovaných discích.

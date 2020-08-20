@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659801"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654425"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače se systémem Linux z nespravovaných disků na Managed disks
 
-Pokud máte existující virtuální počítače s Linuxem, které používají nespravované disky, můžete virtuální počítače převést na používání [Azure Managed disks](../linux/managed-disks-overview.md). Tento proces převede disk s operačním systémem i všechny připojené datové disky.
+Pokud máte existující virtuální počítače s Linuxem, které používají nespravované disky, můžete virtuální počítače převést na používání [Azure Managed disks](../managed-disks-overview.md). Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
 V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure CLI. Pokud ho potřebujete nainstalovat nebo upgradovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
@@ -94,7 +94,7 @@ Před převodem skupiny dostupnosti je nutné uvolnit všechny virtuální poč�
 
 Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač vyberte z nabídky **disky** .
 4. V horní části okna **disky** vyberte **migrovat na Managed disks**.
@@ -104,4 +104,4 @@ Po dokončení migrace se virtuální počítač zastaví a restartuje.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech úložiště najdete v tématu [Přehled Azure Managed disks](../windows/managed-disks-overview.md).
+Další informace o možnostech úložiště najdete v tématu [Přehled Azure Managed disks](../managed-disks-overview.md).

@@ -3,12 +3,12 @@ title: Zálohování sdílených složek Azure pomocí REST API
 description: Naučte se používat REST API k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036738"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654136"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Zálohování sdílené složky Azure pomocí Azure Backup přes REST API
 
@@ -40,11 +40,11 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Identifikátor URI příspěvku obsahuje `{subscriptionId}` `{vaultName}` parametry,, `{vaultresourceGroupName}` a `{fabricName}` . V našem příkladu bude hodnota různých parametrů následující:
 
-- `{fabricName}`je *Azure*
+- `{fabricName}` je *Azure*
 
-- `{vaultName}`je *azurefilesvault*
+- `{vaultName}` je *azurefilesvault*
 
-- `{vaultresourceGroupName}`je *azurefiles*
+- `{vaultresourceGroupName}` je *azurefiles*
 
 - $filter = backupManagementType EQ ' AzureStorage '
 
@@ -54,13 +54,13 @@ Vzhledem k tomu, že všechny požadované parametry jsou uvedeny v identifikát
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses-to-the-refresh-operation"></a>Odpovědi na operaci aktualizace
 
 Operace Refresh je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace 200 (OK).
 
-##### <a name="example-responses"></a>Příklady odpovědí
+##### <a name="example-responses-to-the-refresh-operation"></a>Příklady odpovědí na operaci aktualizace
 
 Po odeslání žádosti *post* se vrátí odpověď 202 (přijato).
 
@@ -421,7 +421,7 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation pomocí příkazu *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation pomocí příkazu  *Get* .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
@@ -487,13 +487,13 @@ Příklad textu žádosti
 }
 ```
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses-to-the-on-demand-backup-operation"></a>Odpovědi na operaci zálohování na vyžádání
 
 Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a 200 (OK) po dokončení této operace.
 
-### <a name="example-responses"></a>Příklady odpovědí
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>Příklady odpovědí na operaci zálohování na vyžádání
 
 Jakmile odešlete požadavek *post* pro zálohování na vyžádání, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
 
@@ -516,7 +516,7 @@ Jakmile odešlete požadavek *post* pro zálohování na vyžádání, počáte�
 'Content-Length': '0'
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation pomocí příkazu *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation pomocí příkazu  *Get* .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01

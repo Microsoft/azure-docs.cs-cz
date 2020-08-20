@@ -3,7 +3,7 @@ title: Začínáme s ověřováním Azure AD
 description: Přečtěte si, jak získat přístup k ověřování Azure Active Directory (Azure AD) pro využívání rozhraní Azure Media Services API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035787"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654833"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Získání přihlašovacích údajů pro přístup k rozhraní Media Services API  
 
@@ -33,14 +33,14 @@ Když použijete ověřování Azure AD pro přístup k rozhraní Azure Media Se
 
 Tento článek popisuje kroky pro získání přihlašovacích údajů pro přístup k rozhraní Media Services API. Vyberte z následujících karet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](create-account-howto.md).
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+## <a name="portal"></a>[Azure Portal](#tab/portal/)
 
-### <a name="api-access"></a>API access 
+### <a name="api-access"></a>API access
 
 Stránka **přístup přes rozhraní API** umožňuje vybrat metodu ověřování, kterou chcete použít pro připojení k rozhraní API. Stránka také poskytuje hodnoty, které potřebujete pro připojení k rozhraní API.
 
@@ -70,7 +70,7 @@ Tato možnost slouží k ověření zaměstnance nebo člena Azure Active Direct
 
 Zkopírujte přihlašovací údaje pro připojení uživatelské aplikace z oddílu **připojení k Media Services rozhraní API** . Můžete získat textové hodnoty nebo zkopírovat bloky JSON nebo XML.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

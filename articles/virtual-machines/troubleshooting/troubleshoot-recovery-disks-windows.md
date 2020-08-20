@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 1c7b6ee73513c7e51e3bb18c3835a1d395a4c516
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028257"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654680"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure PowerShell
 Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure PowerShell připojit disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak opravit původní virtuální počítač. 
 
 > [!Important]
-> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../windows/managed-disks-overview.md). 
+> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../managed-disks-overview.md). 
 
  
 

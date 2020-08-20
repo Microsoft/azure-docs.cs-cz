@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065229"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654493"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,7 +36,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ---
 
-# <a name="option-1-default-create-a-internal-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): vytvoření interního nástroje pro vyrovnávání zatížení (standardní skladová položka Standard)](#tab/option-1-create-internal-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-1-create-internal-load-balancer-standard)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
@@ -66,7 +66,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
     | Název             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Region           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -113,7 +113,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
     | Název                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Region         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -228,7 +228,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Region | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
@@ -280,7 +280,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
 
-# <a name="option-2-create-a-internal-load-balancer-basic-sku"></a>[Možnost 2: vytvoření interního nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-internal-load-balancer-basic)
+# <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-internal-load-balancer-basic)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
@@ -310,7 +310,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
     | Název             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Region           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -357,7 +357,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
     | Název                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Region         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -415,7 +415,7 @@ Vytvořte sondu stavu s názvem **myHealthProbe**, abyste mohli monitorovat stav
     | Název | Zadejte **myHealthProbe**. |
     | Protokol | Vyberte **http**. |
     | Port | Zadejte **80**.|
-    | Cesta | Napište**/** |
+    | Cesta | Napište **/** |
     | Interval | Zadejte hodnotu **15** pro **interval** mezi pokusy o sondu v sekundách. |
     | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
 
@@ -480,7 +480,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Region | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myAvailabilitySet** . </br> Vybrat **OK** |
     | Image | **Windows Server 2019 Datacenter** |
@@ -561,7 +561,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |  |
     | Název virtuálního počítače | Zadejte **myTestVM** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Region | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |

@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 823e116b659a582ceb9a09b752179ee5a78f4ebd
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6cb2f3d099c328f00fab335e1cbe9ea146c0fc55
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607037"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653643"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -206,8 +206,8 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
+Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/managed-disks-overview.md) o discích virtuálních počítačů.
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/managed-disks-overview.md).
 Maximální velikost datového disku | 8192 GB pro Managed disks<br></br>4095 GB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/sizes.md) o velikostech virtuálních počítačů.

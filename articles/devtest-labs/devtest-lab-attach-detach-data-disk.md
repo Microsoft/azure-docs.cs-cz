@@ -3,15 +3,15 @@ title: Připojení nebo odpojení datového disku k virtuálnímu počítači v 
 description: Zjistěte, jak připojit nebo odpojit datový disk k virtuálnímu počítači v Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287559"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653915"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Připojení nebo odpojení datového disku k virtuálnímu počítači v Azure DevTest Labs
-[Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) spravuje účty úložiště přidružené k datovým diskům virtuálních počítačů. Uživatel připojí k virtuálnímu počítači nový datový disk, určí typ a velikost potřebného disku a Azure automaticky vytvoří a spravuje disk. Datový disk se pak může z virtuálního počítače odpojit a buď znovu připojit ke stejnému virtuálnímu počítači, nebo připojit k jinému virtuálnímu počítači, který patří stejnému uživateli.
+[Azure Managed disks](../virtual-machines/managed-disks-overview.md) spravuje účty úložiště přidružené k datovým diskům virtuálních počítačů. Uživatel připojí k virtuálnímu počítači nový datový disk, určí typ a velikost potřebného disku a Azure automaticky vytvoří a spravuje disk. Datový disk se pak může z virtuálního počítače odpojit a buď znovu připojit ke stejnému virtuálnímu počítači, nebo připojit k jinému virtuálnímu počítači, který patří stejnému uživateli.
 
 Tato funkce je užitečná pro správu úložiště nebo softwaru mimo každý jednotlivý virtuální počítač. Pokud už úložiště nebo software v datovém disku existuje, dá se snadno připojit, odpojit a znovu připojit k libovolnému virtuálnímu počítači vlastněné uživatelem, který vlastní tento datový disk.
 
@@ -24,7 +24,7 @@ Než připojíte datový disk k virtuálnímu počítači, přečtěte si tyto t
 ### <a name="attach-a-new-disk"></a>Připojit nový disk
 Pomocí těchto kroků můžete vytvořit a připojit nový spravovaný datový disk k virtuálnímu počítači v Azure DevTest Labs.
 
-1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte požadované testovací prostředí. 
 1. V seznamu **virtuálních počítačů**vyberte spuštěný virtuální počítač.

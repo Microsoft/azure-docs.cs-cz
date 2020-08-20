@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 37d9cf0b0ac7145e389f9fc768ff0b593b27ae1a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 93c97c70a65be40b5801b202ba277b8f86ad1566
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88515180"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655315"
 ---
 ## <a name="limitations"></a>Omezení
 
@@ -137,7 +137,7 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 Po nasazení sdíleného disku pomocí nástroje `maxShares>1` můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!NOTE]
-> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v části věnované [PowerShellu](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) nebo [CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) v článku o disku Ultra.
+> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v části věnované [PowerShellu](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) nebo [CLI](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) v článku o disku Ultra.
 
 ```azurepowershell-interactive
 

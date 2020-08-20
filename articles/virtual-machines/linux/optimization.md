@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 662475bdcb6b1ea9809f4501d144fb94e21e945e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659470"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654187"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto tématu se předpokládá, že už máte funkční předplatné Azure ([registrace bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už jste do svého předplatného Azure ZŘÍDILI virtuální počítač. Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k předplatnému Azure pomocí [AZ Login](/cli/azure/reference-index) , než [vytvoříte virtuální počítač](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Disk s operačním systémem Azure
@@ -34,7 +34,7 @@ Aby bylo možné získat nejvyšší IOps na Premium Storage discích, kde nasta
 * Pokud používáte **XFS**, zakažte bariéry pomocí možnosti připojení `nobarrier` (pro povolení bariéry použijte možnost `barrier` ).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Požadavky na účet nespravovaného úložiště
-Výchozí akcí při vytváření virtuálního počítače pomocí Azure CLI je použití Azure Managed Disks.  Tyto disky jsou zpracovávány platformou Azure a nevyžadují žádnou přípravu ani umístění k jejich uložení.  Nespravované disky vyžadují účet úložiště a mají nějaké další požadavky na výkon.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  V následující části jsou popsány požadavky na výkon pouze v případě, že používáte nespravované disky.  Výchozím a doporučeným řešením úložiště je znovu použít Managed disks.
+Výchozí akcí při vytváření virtuálního počítače pomocí Azure CLI je použití Azure Managed Disks.  Tyto disky jsou zpracovávány platformou Azure a nevyžadují žádnou přípravu ani umístění k jejich uložení.  Nespravované disky vyžadují účet úložiště a mají nějaké další požadavky na výkon.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../managed-disks-overview.md).  V následující části jsou popsány požadavky na výkon pouze v případě, že používáte nespravované disky.  Výchozím a doporučeným řešením úložiště je znovu použít Managed disks.
 
 Pokud vytvoříte virtuální počítač s nespravovanými disky, nezapomeňte připojit disky z účtů úložiště, které se nacházejí ve stejné oblasti jako váš virtuální počítač, aby se zajistila těsná vzdálenost a minimalizovala latence sítě.  Každý účet úložiště úrovně Standard má maximálně 20 tisíc IOps a kapacitu velikosti 500 TB.  Toto omezení funguje na přibližně 40 intenzivně používaných disků, včetně disku s operačním systémem i všech datových disků, které vytvoříte. U Premium Storage účtů není limit počtu vstupně-výstupních operací stanoven, ale omezení velikosti 32 TB. 
 
@@ -51,7 +51,7 @@ V případě cloudových imagí Ubuntu je potřeba ke konfiguraci odkládacího 
 
 U imagí bez podpory Cloud-init mají image virtuálních počítačů nasazené z Azure Marketplace agenta pro Linux virtuálního počítače integrovaný s operačním systémem. Tento agent umožňuje VIRTUÁLNÍm počítačům komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní bitovou kopii z Azure Marketplace, musíte provést následující kroky, abyste správně nakonfigurovali nastavení souborů odkládacího souboru se systémem Linux:
 
-Vyhledejte a upravte dvě položky v souboru **/etc/waagent.conf** . Řídí existenci vyhrazeného stránkovacího souboru a velikosti odkládacího souboru. Parametry, které je třeba ověřit, jsou `ResourceDisk.EnableSwap` a`ResourceDisk.SwapSizeMB` 
+Vyhledejte a upravte dvě položky v souboru **/etc/waagent.conf** . Řídí existenci vyhrazeného stránkovacího souboru a velikosti odkládacího souboru. Parametry, které je třeba ověřit, jsou `ResourceDisk.EnableSwap` a `ResourceDisk.SwapSizeMB` 
 
 Pokud chcete povolit řádně povolený disk a připojený soubor odkládacího souboru, ujistěte se, že parametry mají následující nastavení:
 

@@ -5,15 +5,15 @@ author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 08/17/2020
+ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562783"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654272"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Preview – upgrady imagí uzlu služby Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade image uzlu služby Azure Kubernetes (AKS)
 
 AKS podporuje upgrade imagí na uzlu, takže budete mít nejnovější aktualizace operačního systému a modulu runtime. AKS poskytuje za týden jednu novou image s nejnovějšími aktualizacemi, takže je vhodné pravidelně upgradovat image vašeho uzlu na nejnovější funkce, včetně aktualizací pro Linux nebo Windows. V tomto článku se dozvíte, jak upgradovat image uzlů clusteru AKS a jak aktualizovat image fondu uzlů bez upgradu verze Kubernetes.
 
@@ -21,23 +21,9 @@ Pokud vás zajímá informace o nejnovějších obrázcích poskytovaných služ
 
 Informace o tom, jak upgradovat verzi Kubernetes pro váš cluster, najdete v tématu [upgrade clusteru AKS][upgrade-cluster].
 
-## <a name="register-the-node-image-upgrade-preview-feature"></a>Registrace funkce aktualizace image pro upgrade uzlu
+## <a name="install-the-aks-cli-extension"></a>Instalace rozšíření CLI AKS
 
-Chcete-li použít funkci upgradu uzlu image v období Preview, je nutné ji zaregistrovat.
-
-```azurecli
-# Register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "NodeImageUpgradePreview"
-```
-
-Dokončení registrace bude trvat několik minut. Pro ověření, zda je funkce zaregistrována, použijte následující příkaz:
-
-```azurecli
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodeImageUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-Během období Preview budete potřebovat rozšíření CLI *AKS-Preview* pro použití upgradu bitové kopie uzlu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
+Předtím, než bude vydána další základní verze rozhraní příkazového řádku, budete potřebovat rozšíření CLI *AKS-Preview* pro použití upgradu bitové kopie uzlu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli
 # Install the aks-preview extension
@@ -46,12 +32,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Upgradovat všechny uzly ve všech fondech uzlů
 

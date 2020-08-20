@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498986"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653847"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 
@@ -48,7 +48,7 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste správcem tohoto př
 
 K dokončení těchto úloh by měl být vašemu účtu přiřazená předdefinovaná role Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by mít váš účet přiřazenou předdefinovanou roli Site Recovery Přispěvatel.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure. Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
@@ -99,7 +99,7 @@ Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí
 
 Projdeme si tyto možnosti:
 - [Sítě Azure](../virtual-network/virtual-networks-overview.md)
-- [Spravované disky](../virtual-machines/windows/managed-disks-overview.md)
+- [Spravované disky](../virtual-machines/managed-disks-overview.md)
 
 
 

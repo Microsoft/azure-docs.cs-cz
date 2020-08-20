@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236015"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653239"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrovat disk protokolu na Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Dokončete [úplnou zálohu](backup-restore.md) databáze.
 
 Jakmile na virtuálním počítači povolíte ultradisk kompatibilitu, připojte SSD úrovně Ultra k virtuálnímu počítači. 
 
-Ultra disk se podporuje u podmnožiny velikostí a oblastí virtuálních počítačů. Než budete pokračovat, ověřte, že je váš virtuální počítač v oblasti, zóně a velikosti, která podporuje Ultra disk. [Velikost virtuálního počítače a oblast můžete určit a ověřit](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) pomocí Azure CLI nebo PowerShellu. 
+Ultra disk se podporuje u podmnožiny velikostí a oblastí virtuálních počítačů. Než budete pokračovat, ověřte, že je váš virtuální počítač v oblasti, zóně a velikosti, která podporuje Ultra disk. [Velikost virtuálního počítače a oblast můžete určit a ověřit](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) pomocí Azure CLI nebo PowerShellu. 
 
 ### <a name="enable-compatibility"></a>Povolit kompatibilitu
 
@@ -50,7 +50,7 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 1. Vyberte **Ano** , pokud chcete **Povolit kompatibilitu s Ultra diskem**. 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="V části nastavení v Azure Portal vyberte další nastavení pro disky.":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="V části nastavení v Azure Portal vyberte další nastavení pro disky.":::
 
 1. Vyberte **Uložit**. 
 
@@ -58,7 +58,7 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 ### <a name="attach-disk"></a>Připojit disk
 
-Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) .
+Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) .
 
 Po připojení disku spusťte virtuální počítač ještě jednou pomocí Azure Portal. 
 
@@ -85,7 +85,7 @@ Nakonfigurujte SQL Server pro použití nové jednotky protokolu. Můžete tak u
 1. Vytvořte složku (nebo více složek), která se má použít pro soubor protokolu. 
 1. Klikněte pravým tlačítkem na složku a vyberte **vlastnosti**.
 1. Na kartě **zabezpečení** udělte oprávnění Úplné řízení k účtu služby SQL Server. 
-1. Kliknutím na **OK** uložte nastavení. 
+1. Kliknutím na **OK**  uložte nastavení. 
 1. Tento postup opakujte pro každou složku na úrovni root, kde plánujete mít data SQL. 
 
 ### <a name="use-new-log-drive"></a>Použít novou jednotku protokolu 

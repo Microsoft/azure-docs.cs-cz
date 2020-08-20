@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545209"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655027"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -23,7 +23,7 @@ Existují tři scénáře, které mohou vést k ovlivnění virtuálního počí
 
 * **Neočekávaný výpadek** je při neočekávaném výpadku hardwaru nebo fyzické infrastruktury virtuálního počítače. To může zahrnovat selhání místní sítě, selhání místního disku nebo jiné chyby na úrovni racku. Po zjištění platformy Azure automaticky migruje (zaznamená) váš virtuální počítač do správného fyzického počítače ve stejném datovém centru. Během opravné procedury jsou virtuální počítače odstavené (restartují se) a v některých případech dojde ke ztrátě dočasné jednotky. Připojené disky s operačním systémem a datové disky se vždy zachovají.
 
-  Virtuální počítače můžou také zacházet s výpadky v nepravděpodobném případě výpadku nebo havárie, které mají vliv na celé datové centrum nebo dokonce na celé oblasti. V těchto scénářích poskytuje Azure možnosti ochrany včetně [zón dostupnosti](../articles/availability-zones/az-overview.md) a [spárovaných oblastí](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
+  Virtuální počítače můžou také zacházet s výpadky v nepravděpodobném případě výpadku nebo havárie, které mají vliv na celé datové centrum nebo dokonce na celé oblasti. V těchto scénářích poskytuje Azure možnosti ochrany včetně  [zón dostupnosti](../articles/availability-zones/az-overview.md) a [spárovaných oblastí](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 * **Plánované události údržby** jsou pravidelné aktualizace základní platformy Azure prováděné Microsoftem za účelem zlepšení celkové spolehlivosti, výkonu a zabezpečení infrastruktury platformy, na které běží vaše virtuální počítače. U většiny těchto aktualizací nemá jejich provedení žádný vliv na vaše služby Virtual Machines ani Cloud Services (viz [Údržba se zachováním virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/preserving-maintenance)). Přestože se platforma Azure pokouší použít údržbu se zachováním virtuálních počítačů kdykoli je to možné, existují výjimečné případy, kdy tyto aktualizace k aplikaci požadovaných aktualizací na základní infrastrukturu vyžadují restartování virtuálního počítače. V takovém případě můžete provést plánovanou údržbu Azure pomocí operace údržba-opětovné nasazení, která zahájí údržbu virtuálních počítačů ve vhodném časovém intervalu. Další informace najdete v tématu [Plánovaná údržba pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/planned-maintenance/).
 
@@ -67,7 +67,7 @@ Domény selhání definují skupinu virtuálních počítačů, které sdílejí
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti
 Pokud aktuálně používáte virtuální počítače s nespravovanými disky, důrazně doporučujeme [převést virtuální počítače ve skupině dostupnosti na používání spravovaných disků](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
-[Spravované disky](../articles/virtual-machines/windows/managed-disks-overview.md) poskytují vyšší spolehlivost skupiny dostupnosti tím, že zajišťují dostatečné oddělení jednotlivých disků virtuálních počítačů ve skupině dostupnosti, aby se zabránilo jedinému bodu selhání. Provede to tím, že automaticky umístí disky do různých domén selhání úložiště (clustery úložiště) a zarovnají je s doménou selhání virtuálního počítače. Pokud doména selhání úložiště selže kvůli selhání hardwaru nebo softwaru, dojde k chybě jenom instance virtuálního počítače s disky v doméně selhání úložiště.
+[Spravované disky](../articles/virtual-machines/managed-disks-overview.md) poskytují vyšší spolehlivost skupiny dostupnosti tím, že zajišťují dostatečné oddělení jednotlivých disků virtuálních počítačů ve skupině dostupnosti, aby se zabránilo jedinému bodu selhání. Provede to tím, že automaticky umístí disky do různých domén selhání úložiště (clustery úložiště) a zarovnají je s doménou selhání virtuálního počítače. Pokud doména selhání úložiště selže kvůli selhání hardwaru nebo softwaru, dojde k chybě jenom instance virtuálního počítače s disky v doméně selhání úložiště.
 ![Doménami selhání spravované disky](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]

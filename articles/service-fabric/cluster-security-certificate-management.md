@@ -4,12 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246703"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653660"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -91,7 +91,7 @@ V tomto okamžiku existuje certifikát v trezoru, který je připravený pro pou
 Uvedli jsme "zřizovací agent", který je entita, která načte certifikát, včetně jeho privátního klíče, z trezoru a nainstaluje ho do každého hostitele clusteru. (Odvolání tohoto Service Fabric nezřizuje certifikáty.) V našem kontextu se cluster bude hostovat na kolekci virtuálních počítačů Azure a/nebo virtuálních počítačů s měřítkem. V Azure se dá zřízení certifikátu z trezoru na virtuální počítač nebo VMSS dosáhnout pomocí následujících mechanismů – za předpokladu, že agent zřizování předtím udělil oprávnění Get k trezoru vlastníkem trezoru: 
   - ad-hoc: operátor načte certifikát z trezoru (jako PFX/PKCS #12 nebo PEM) a nainstaluje ho do každého uzlu.
   - jako klíčová sada pro škálování virtuálního počítače "tajné" při nasazení: služba COMPUTE načítá, používá ke své první straně identitu prvního subjektu, certifikát z trezoru s povoleným nasazením šablony a nainstaluje ho do každého uzlu sady škálování virtuálních počítačů ([např](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).). Všimněte si, že to umožňuje zřizování pouze tajných klíčů.
-  - pomocí [rozšíření virtuálního počítače Key Vault](../virtual-machines/extensions/key-vault-windows.md); To umožňuje zřizování certifikátů pomocí deklarací bez verzí s pravidelným obnovením pozorovaných certifikátů. V takovém případě se očekává, že virtuální počítač/VMSS bude mít [spravovanou identitu](../virtual-machines/windows/security-policy.md#managed-identities-for-azure-resources), což byl udělen přístup k trezorům, které obsahují zjištěné certifikáty.
+  - pomocí [rozšíření virtuálního počítače Key Vault](../virtual-machines/extensions/key-vault-windows.md); To umožňuje zřizování certifikátů pomocí deklarací bez verzí s pravidelným obnovením pozorovaných certifikátů. V takovém případě se očekává, že virtuální počítač/VMSS bude mít [spravovanou identitu](../virtual-machines/security-policy.md#managed-identities-for-azure-resources), což byl udělen přístup k trezorům, které obsahují zjištěné certifikáty.
 
 Mechanismus ad-hoc se nedoporučuje z několika důvodů od zabezpečení po dostupnost a nezabývá se tady. Podrobnosti najdete [v tématu certifikáty ve Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).
 

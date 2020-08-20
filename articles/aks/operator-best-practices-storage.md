@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro úložiště, šifrování
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551791"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653966"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes (AKS)
 
@@ -34,9 +34,9 @@ Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 
 | Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Sdílená konfigurace       | Soubory Azure   | Yes | Yes | Yes | Yes |
-| Data strukturovaných aplikací        | Disky Azure   | Ano | No  | No  | Yes |
-| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Yes | Yes | Ano | No |
+| Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
+| Data strukturovaných aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
+| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | Ne |
 
 Dva primární typy úložiště poskytované pro svazky v AKS se zálohují na disky Azure nebo soubory Azure. Pro zvýšení zabezpečení oba typy úložiště ve výchozím nastavení používají šifrování služby Azure Storage (SSE), které šifruje neaktivní neaktivní data. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 
@@ -110,6 +110,6 @@ Tento článek se zaměřuje na osvědčené postupy pro úložiště v AKS. Dal
 [reclaim-policy]: concepts-storage.md#storage-classes
 [aks-concepts-storage-pvcs]: concepts-storage.md#persistent-volume-claims
 [aks-concepts-storage-classes]: concepts-storage.md#storage-classes
-[managed-disks]: ../virtual-machines/linux/managed-disks-overview.md
+[managed-disks]: ../virtual-machines/managed-disks-overview.md
 [best-practices-multi-region]: operator-best-practices-multi-region.md
 [remove-state]: operator-best-practices-multi-region.md#remove-service-state-from-inside-containers

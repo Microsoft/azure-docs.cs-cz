@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505554"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654578"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -247,7 +247,7 @@ ms.locfileid: "88505554"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -381,7 +381,7 @@ SQL Server 2014 a novější verze si otevřou možnost ukládat soubory databá
 * V této metodě nasazení se vztahují i na výše uvedené požadavky týkající se distribuce VHD na různé Azure Storage účty. Znamená počet vstupně-výstupních operací na základě limitů Azure Storageho účtu.
 * Místo monitorování propustnosti vstupně-výstupních operací úložiště virtuálního počítače bude přenos dat objektů BLOB úložiště, které představují SQL Server data a soubory protokolů, zaúčtován do šířky pásma sítě určitého typu virtuálního počítače. Šířku pásma sítě a úložiště pro určitý typ virtuálního počítače najdete v článku [velikosti virtuálních počítačů s Windows v Azure](../../sizes.md).
 * V důsledku nahrávání vstupně-výstupních operací se soubory přes kvótu sítě vytváříte hlavně kvótu úložiště, která využívá celkovou šířku pásma virtuálního počítače jenom částečně.
-* Cíle vstupně-výstupních operací za sekundu a vstupně-výstupní propustnosti, které Azure Premium Storage pro různé velikosti disků, už neplatí. I v případě, že se objekty blob, které jste vytvořili, nacházejí v Premium Storage Azure. Cíle jsou popsány v článku o [vysoce výkonném Premium Storage a spravovaných discích pro virtuální počítače](../../windows/disks-types.md#premium-ssd). V důsledku umístění SQL Server datových souborů a souborů protokolu přímo do objektů BLOB uložených v Azure Premium Storage se výkonnostní charakteristiky můžou v porovnání s virtuálními pevnými disky v Azure Premium Storage lišit.
+* Cíle vstupně-výstupních operací za sekundu a vstupně-výstupní propustnosti, které Azure Premium Storage pro různé velikosti disků, už neplatí. I v případě, že se objekty blob, které jste vytvořili, nacházejí v Premium Storage Azure. Cíle jsou popsány v článku o [vysoce výkonném Premium Storage a spravovaných discích pro virtuální počítače](../../disks-types.md#premium-ssd). V důsledku umístění SQL Server datových souborů a souborů protokolu přímo do objektů BLOB uložených v Azure Premium Storage se výkonnostní charakteristiky můžou v porovnání s virtuálními pevnými disky v Azure Premium Storage lišit.
 * Ukládání do mezipaměti, které je k dispozici pro Azure Premium Storage disky, není k dispozici při umísťování SQL Server datových souborů přímo do objektů blob Azure.
 * V případě virtuálních počítačů řady M-Series nejde Azure Akcelerátor zápisu použít pro podporu zápisů za běhu do SQL Server souboru protokolu transakcí. 
 

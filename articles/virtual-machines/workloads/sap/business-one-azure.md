@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831103"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654646"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.
@@ -118,7 +118,7 @@ Tyto dokumenty by vám měly pomáhat při rozhodování o výběru typů úlož
 
 V zásadě byste měli:
 
-- Použijte Premium SSD oproti standardu HDD. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../../windows/disks-types.md) .
+- Použijte Premium SSD oproti standardu HDD. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../../disks-types.md) .
 - Použití Azure Managed disks na nespravovaných discích
 - Ujistěte se, že máte dostatečný počet IOPS a propustnost vstupně-výstupních operací nakonfigurovaných s konfigurací disku.
 - Pokud chcete mít cenově výhodnější konfiguraci úložiště, zkombinujte/Hana/data a/Hana/log svazek.

@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504309"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653524"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Běžné problémy při vytváření virtuálního pevného disku
 
@@ -20,7 +20,7 @@ Tyto nejčastější dotazy se týkají běžných problémů, se kterými se m�
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Návody vytvořit virtuální počítač z Azure Portal pomocí virtuálního pevného disku ve službě Premium Storage?
 
-Azure Marketplace v současné době nepodporuje vytváření nabídek virtuálních počítačů z imagí ve spravovaném úložišti nebo z Azure Premium Storage. Podrobnosti najdete v tématu [Přehled Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
+Azure Marketplace v současné době nepodporuje vytváření nabídek virtuálních počítačů z imagí ve spravovaném úložišti nebo z Azure Premium Storage. Podrobnosti najdete v tématu [Přehled Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Můžu pro nabídky použít virtuální počítače generace 2?
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 49e5acb7fc0cfe947d846f2943fb5071d6554ea5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b3c42901b4ef503a6099b49db84012521a7eba9f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192468"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654561"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -33,14 +33,16 @@ Po výběru metriky se použije výchozí agregace. Volitelně můžete použít
 | --- | --- | --- | --- |
 |Dostupnost protokolu ARP|Dostupnost|<ui><li>Partner (primární/sekundární ExpressRoute směrovač)</ui></li><ui><li> Typ partnerského vztahu (Private/Public/Microsoft)</ui></li>|ExpressRoute|
 |Dostupnost protokolu BGP|Dostupnost|<ui><li> Partner (primární/sekundární ExpressRoute směrovač)</ui></li><ui><li> Typ partnerského vztahu</ui></li>|ExpressRoute|
-|BitsInPerSecond|Provoz|<ui><li> Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li>Odkaz (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Provoz| <ui><li>Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li> Odkaz (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsInPerSecond|Provoz|<ui><li> Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li>Odkaz (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Provoz| <ui><li>Typ partnerského vztahu (ExpressRoute)</ui></li><ui><li> Odkaz (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|Využití procesoru|Výkon| <ui><li>Instance</ui></li>|ExpressRoute Virtual Network bránu|
+|Pakety za sekundu|Výkon| <ui><li>Instance</ui></li>|ExpressRoute Virtual Network bránu|
 |GlobalReachBitsInPerSecond|Provoz|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|Provoz|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Global Reach|
 |AdminState|Fyzické připojení|Odkaz|ExpressRoute Direct|
 |LineProtocol|Fyzické připojení|Odkaz|ExpressRoute Direct|
-|RxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Použití *GlobalGlobalReachBitsInPerSecond* a *GlobalGlobalReachBitsOutPerSecond* se zobrazí jenom v případě, že se naváže aspoň jedno připojení Global REACH.
 >
@@ -102,6 +104,14 @@ Můžete zobrazit úroveň indikátoru příjmu (úroveň světla, kterou port p
 Úroveň síla pro odesílání můžete zobrazit (úroveň světla, kterou port ExpressRoute Direct **odesílá) pro**každý port. Slabá úroveň nesprávného zpomalení v pořádku spadá do rozsahu od-10 do 0 dBm
 
 ![Úroveň nízké linky pro příjem na er](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
+## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute Virtual Network metriky brány
+
+### <a name="cpu-utilization---split-instance"></a>Využití CPU – dělená instance
+Můžete zobrazit využití CPU instancí brány.
+
+### <a name="packets-per-second---split-by-instance"></a>Počet paketů za sekundu – rozdělení podle instance
+Můžete zobrazit pakety za sekundu, které procházejí bránou.
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Připojení brány ExpressRoute v bitech za sekundu
 

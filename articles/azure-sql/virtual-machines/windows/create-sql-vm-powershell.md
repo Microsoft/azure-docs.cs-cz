@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c4a43d113df09d88e8b93028c68dcf04f718fad
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003878"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653983"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
 
@@ -27,7 +27,7 @@ ms.locfileid: "87003878"
 
 Tato příručka popisuje možnosti použití prostředí PowerShell ke zřízení SQL Server v Azure Virtual Machines (VM). Zjednodušený Azure PowerShell příklad, který závisí na výchozích hodnotách, najdete v článku [rychlý Start k SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -60,7 +60,7 @@ $ResourceGroupName = "sqlvm2"
 
 Definujte účet úložiště a typ úložiště, který bude virtuální počítač používat.
 
-Upravte podle potřeby a spusťte následující rutinu pro inicializaci těchto proměnných. Pro produkční úlohy doporučujeme používat [prémiové SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) .
+Upravte podle potřeby a spusťte následující rutinu pro inicializaci těchto proměnných. Pro produkční úlohy doporučujeme používat [prémiové SSD](../../../virtual-machines/disks-types.md#premium-ssd) .
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"
@@ -150,7 +150,7 @@ Spuštěním této rutiny vytvořte novou skupinu prostředků.
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Virtuální počítač vyžaduje prostředky úložiště pro disk operačního systému a SQL Server data a soubory protokolů. Pro zjednodušení vytvoříte pro obojí jeden disk. Další disky můžete připojit později pomocí rutiny [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) k umístění SQL serverch dat a souborů protokolu na vyhrazené disky. Pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) vytvořte v nové skupině prostředků účet úložiště úrovně Standard. Zadejte proměnné, které jste předtím inicializoval pro název účtu úložiště, název SKU úložiště a umístění.
 

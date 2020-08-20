@@ -5,17 +5,15 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: dotnet
-ms.openlocfilehash: 820353ffbb5e23e27c3039ad27a8f6507b9d2167
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: dcd2cda3bad2a13a83c5f3f6700e5a57471e2065
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608797"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653870"
 ---
 <!--Create a media services asset REST-->
 
 Následující příkaz Azure .NET vytvoří nový prostředek Media Services. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `amsAccountName` hodnotami, se kterými právě pracujete. Zadejte název assetu tak, že `assetName` tady nastavíte.
 
-```csharp
- Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
-```
+[!code-csharp[Main](../../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

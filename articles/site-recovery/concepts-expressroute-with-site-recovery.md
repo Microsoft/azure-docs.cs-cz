@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700881"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654306"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
+Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
 
 Tento článek popisuje, jak můžete použít Azure ExpressRoute s Azure Site Recovery pro zotavení po havárii a migraci.
 
@@ -50,7 +50,7 @@ Kombinovaný scénář je reprezentován v následujícím diagramu: ![ místní
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikace z Azure do Azure pomocí ExpressRoute
 
-Azure Site Recovery umožňuje zotavení po havárii [virtuálních počítačů Azure](azure-to-azure-architecture.md). V závislosti na tom, jestli vaše virtuální počítače Azure používají [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md), se data replikace odesílají na účet Azure Storage nebo na spravovaný disk repliky v cílové oblasti Azure. I když jsou koncové body replikace veřejné, provoz replikace pro replikaci virtuálních počítačů Azure ve výchozím nastavení neprojde internetem, bez ohledu na to, ve které oblasti Azure ve zdrojové virtuální síti existuje. Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
+Azure Site Recovery umožňuje zotavení po havárii [virtuálních počítačů Azure](azure-to-azure-architecture.md). V závislosti na tom, jestli vaše virtuální počítače Azure používají [azure Managed disks](../virtual-machines/managed-disks-overview.md), se data replikace odesílají na účet Azure Storage nebo na spravovaný disk repliky v cílové oblasti Azure. I když jsou koncové body replikace veřejné, provoz replikace pro replikaci virtuálních počítačů Azure ve výchozím nastavení neprojde internetem, bez ohledu na to, ve které oblasti Azure ve zdrojové virtuální síti existuje. Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 
 Pro zotavení po havárii virtuálního počítače Azure se ve výchozím nastavení ExpressRoute nevyžaduje pro replikaci. Po převzetí služeb virtuálních počítačů do cílové oblasti Azure získáte přístup k nim pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). Počítejte s tím, že ceny za přenos dat platí bez ohledu na režim replikace dat napříč oblastmi Azure.
 

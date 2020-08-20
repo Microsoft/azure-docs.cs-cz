@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082252"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653507"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -133,7 +133,7 @@ ms.locfileid: "87082252"
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Řešení potíží s rozšířením Azure pro SAP – kontaktní podpora)
 [deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (Řešení potíží s rozšířením Azure pro SAP – spuštění instalačního skriptu)
 [deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (Řešení potíží s rozšířením Azure pro SAP – opětovné nasazení po dokončení programu Sysprep)
-[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (Řešení potíží s rozšířením Azure pro SAP – Oprava připojení k Internetu)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 ( Řešení potíží s rozšířením Azure pro SAP – Oprava připojení k Internetu)
 
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Nakonfigurovat rozšíření virtuálního počítače)
@@ -256,7 +256,7 @@ ms.locfileid: "87082252"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -368,9 +368,9 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 ### <a name="resource-groups"></a>Skupiny prostředků
 
-V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace naleznete v tématu [Přehled Azure Resource Manager][resource-group-overview].
+V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace najdete v článku [Přehled Azure Resource Manageru][resource-group-overview].
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -549,7 +549,7 @@ Pomocí různých kroků můžete vytvořit soukromou bitovou kopii pro Linux, n
 >
 > ![Linux][Logo_Linux] Linux
 >
-> K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete použít `waagent -deprovision` . Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
+> K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete použít `waagent -deprovision`  . Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
 >
 >
 
@@ -1169,7 +1169,7 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    b.  Spuštěním příkazu `ps -ax | grep waagent`
 
-   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /usr/sbin/waagent -daemon`
+   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této: `python /usr/sbin/waagent -daemon`
 
 1. Ujistěte se, že je nainstalovaná a spuštěná přípona Azure pro SAP.
 
@@ -1179,7 +1179,7 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    b. Spuštěním příkazu `ps -ax | grep AzureEnhanced`
 
-   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte výstup `saposcol` .
 
@@ -1203,7 +1203,7 @@ Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v ap
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Spuštění kontroly připravenosti na virtuálním počítači s Windows
 
 1. Přihlaste se k virtuálnímu počítači Azure (použití účtu správce není nutné).
-1. Otevřete webový prohlížeč a přejděte nahttp://127.0.0.1:11812/azure4sap/metrics
+1. Otevřete webový prohlížeč a přejděte na http://127.0.0.1:11812/azure4sap/metrics
 1. V prohlížeči by se měl zobrazit nebo stáhnout soubor XML, který obsahuje data monitorování virtuálního počítače. V takovém případě se ujistěte, že je nainstalovaná přípona Azure pro SAP.
 
 ##### <a name="check-the-content-of-the-xml-file"></a>Ověřte obsah souboru XML
@@ -1234,7 +1234,7 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    b.  Spuštěním příkazu `ps -ax | grep waagent`
 
-   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /usr/sbin/waagent -daemon`
+   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této: `python /usr/sbin/waagent -daemon`
 
 1. Ujistěte se, že je nainstalovaná a spuštěná přípona Azure pro SAP.
 
@@ -1244,7 +1244,7 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    b. Spuštěním příkazu `ps -ax | grep AzureEnhanced`
 
-   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+   **Očekávaný výsledek**: zobrazuje jednu položku podobnou této: `/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte výstup `saposcol` .
 

@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 666f84da8f0999268b09dfd06ff5b3fe21bbef96
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525564"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653626"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2-Series
+# <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích s Windows Lsv2-Series
 
 Virtuální počítače řady Lsv2-series podporují nejrůznější úlohy, které vyžadují vysokou vstupně-výstupní operace a propustnost v místním úložišti napříč širokou škálou aplikací a oborů.  Lsv2-Series je ideální pro velké objemy dat, SQL, NoSQL databáze, datové sklady a velké transakční databáze, včetně Cassandra, MongoDB, Cloudera a Redis.
 
@@ -75,7 +75,7 @@ Mezi scénáře, které bezpečně maže data k ochraně zákazníka, patří:
 - Virtuální počítač se nemění v pořádku a musí kvůli problému s hardwarem zaretušovat ho na jiný uzel.
 - Malý počet plánovaných operací údržby údržby, které vyžadují, aby se virtuální počítač znovu dělil jinému hostiteli pro obsluhu.
 
-Další informace o možnostech zálohování dat v místním úložišti najdete v tématu [zálohování a zotavení po havárii pro disky Azure s IaaS](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Další informace o možnostech zálohování dat v místním úložišti najdete v tématu [zálohování a zotavení po havárii pro disky Azure s IaaS](../backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

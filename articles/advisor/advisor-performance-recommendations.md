@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257461"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653303"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -51,32 +51,32 @@ Advisor identifikuje virtuální počítače se standardními disky, které maj�
 
 Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, které spouští úlohy náročné na vstupně-výstupní operace. Disky virtuálních počítačů, které používají účty Premium Storage ukládají data na jednotky SSD (Solid-State Drive) (SSD). Pro dosažení nejlepšího výkonu pro vaši aplikaci doporučujeme migrovat všechny disky virtuálních počítačů, které pro Premium Storage vyžadují vysoké IOPS.
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Pokud chcete zvýšit výkon dotazů, odeberte na vašich SQL Data Warehouse tabulkách zešikmení dat.
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Odebrání zkosení dat v tabulkách Azure synapse Analytics ke zvýšení výkonu dotazů
 
 Při spuštění úlohy může zkosit data způsobit zbytečné přesuny dat nebo kritická místa prostředků. Advisor detekuje povýšení distribučních dat o více než 15%. Doporučuje se znovu distribuovat data a znovu navštívit vaše výběry pro distribuční klíč tabulky. Další informace o tom, jak identifikovat a odebrat zkosení, najdete v tématu [řešení potíží s funkcí zkosit](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Umožňuje vytvořit nebo aktualizovat statistiku zastaralých tabulek v tabulkách SQL Data Warehouse, aby se zvýšil výkon dotazů.
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Umožňuje vytvořit nebo aktualizovat statistiku zastaralých tabulek v tabulkách Azure synapse Analytics a zvýšit tak výkon dotazů.
 
-Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) , a doporučuje vytvořit nebo aktualizovat statistiku. Optimalizátor dotazů v Azure SQL Data Warehouse využívá aktuální statistiku k odhadu mohutnosti nebo počtu řádků ve výsledcích dotazu. Tyto odhady umožňují, aby Optimalizátor dotazů vytvořil plán dotazů, který poskytuje nejrychlejší výkon.
+Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) , a doporučuje vytvořit nebo aktualizovat statistiku. Optimalizátor dotazů ve službě Azure synapse Analytics používá aktuální statistiku k odhadu mohutnosti nebo počtu řádků ve výsledcích dotazu. Tyto odhady umožňují, aby Optimalizátor dotazů vytvořil plán dotazů, který poskytuje nejrychlejší výkon.
 
 ## <a name="improve-mysql-connection-management"></a>Vylepšení správy připojení k MySQL
 
 Analýza Advisor může znamenat, že vaše aplikace připojující se k serveru MySQL nemusí efektivně spravovat připojení. Tato podmínka by mohla vést k zbytečným spotřebám prostředků a celkové vyšší latenci aplikace. Pokud chcete zlepšit správu připojení, doporučujeme snížit počet krátkodobých připojení a eliminovat zbytečná nečinná připojení. Tato vylepšení můžete udělat konfigurací Pooler připojení na straně serveru, jako je ProxySQL.
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Horizontální navýšení kapacity pro optimalizaci využití mezipaměti v tabulkách SQL Data Warehouse pro zvýšení výkonu dotazů
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Horizontální navýšení kapacity pro optimalizaci využití mezipaměti v tabulkách Azure synapse Analytics ke zvýšení výkonu dotazů
 
-Azure Advisor zjistí, jestli mají SQL Data Warehouse tabulky vysoké procento využití mezipaměti a procento nízkého počtu přístupů. Tato podmínka indikuje vysokou vyřazení mezipaměti, což může ovlivnit výkon vaší instance SQL Data Warehouse. Poradce doporučuje, abyste nastavili horizontální navýšení kapacity SQL Data Warehouse, abyste zajistili dostatečnou kapacitu mezipaměti pro vaše úlohy.
+Azure Advisor zjistí, jestli vaše tabulky Azure synapse Analytics mají vysoké procento využití mezipaměti a procento nízkého počtu přístupů. Tato podmínka indikuje vysokou vyřazení mezipaměti, které může ovlivnit výkon vaší instance Azure synapse Analytics. Poradce doporučuje, abyste nastavili horizontální navýšení kapacity vaší instance Azure synapse Analytics, abyste zajistili dostatečnou kapacitu mezipaměti pro vaše úlohy.
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Převod tabulek SQL Data Warehouse na replikované tabulky a zvýšení výkonu dotazů
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Převod tabulek Azure synapse Analytics na replikované tabulky a zvýšení výkonu dotazů
 
 Poradce identifikuje tabulky, které nejsou replikované tabulky, ale může využít převod. Navrhne, abyste tyto tabulky převedli. Doporučení jsou založená na:
 - Velikost replikované tabulky 
 - Počet sloupců 
 - Typ distribuce tabulky 
-- Počet oddílů v tabulce SQL Data Warehouse. 
+- Počet oddílů v tabulce Azure synapse Analytics 
 
-Další heuristiky mohou být k dispozici v doporučení pro kontext. Další informace o tom, jak se toto doporučení stanoví, najdete v tématu [SQL Data Warehouse doporučení](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
+Další heuristiky mohou být k dispozici v doporučení pro kontext. Další informace o tom, jak se toto doporučení stanoví, najdete v tématu [doporučení ke službě Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Pokud chcete získat nejnovější funkce Azure, migrujte svůj účet úložiště na Azure Resource Manager.
 
@@ -160,7 +160,7 @@ Analýza Azure Advisor v systémových protokolech za posledních 7 dnů a zjist
 Tato zjištění indikují, že cluster trpí vysokou latencí při zapisování. Důvodem může být to, že ve vašem clusteru bude provedeno velké zatížení. Pokud chcete zvýšit výkon clusteru, můžete zvážit použití funkce akcelerovaného zápisu, kterou poskytuje služba Azure HDInsight HBA. Funkce Akcelerované zápisy pro clustery HDInsight Apache HBase připojuje prémiové disky spravované přes SSD ke každému pracovnímu uzlu (RegionServer) místo použití cloudového úložiště. Ve výsledku pak pro aplikace zajišťuje nízkou latenci při zapisování a lepší odolnost. Další informace o této funkci najdete v článku [Další](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Kontrola mezipaměti Azure Průzkumník dat cache – perioda (zásady) pro lepší výkon (Preview)
-Toto doporučení rozsvítí tabulky Azure Průzkumník dat s vysokým počtem dotazů, které se prohledají po nakonfigurovaném období mezipaměti (zásady) (zobrazí se prvních 10 tabulek podle procenta dotazu, které přistupují k datům mimo mezipaměť). Doporučená akce pro zlepšení výkonu clusteru: omezí dotazy na tuto tabulku na minimální časový rozsah (v rámci definovaných zásad). Případně platí, že pokud potřebujete data z celého časového rozsahu, zvyšte dobu mezipaměti na doporučenou hodnotu.
+Toto doporučení ukazuje tabulky Azure Data Exploreru s velkým počtem dotazů, které se dívají nazpět před nakonfigurovanou dobu (zásady) uložení v mezipaměti (zobrazí se 10 tabulek s nejvyšším procentem dotazů, které přistupují k datům mimo mezipaměť). Doporučená akce pro zvýšení výkonu clusteru: Omezte dotazy na tuto tabulku na minimální nezbytný časový rozsah (v rámci definovaných zásad). Případně, pokud se vyžadují data z celého časového rozsahu, prodlužte dobu uložení v mezipaměti na doporučenou hodnotu.
 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Zvýšení výkonu optimalizací velikosti dočasné tabulky MySQL
 Analýza Advisor indikuje, že váš server MySQL může vydávat zbytečné vstupně-výstupní režii kvůli nízkým nastavením parametrů pro dočasné tabulky. To může vést ke zbytečným transakcím na disku a snížení výkonu. Pokud chcete snížit počet transakcí na disku, doporučujeme zvýšit hodnoty parametrů tmp_table_size a max_heap_table_size. [Další informace](https://aka.ms/azure_mysql_tmp_table)

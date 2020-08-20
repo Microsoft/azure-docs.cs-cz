@@ -1,16 +1,16 @@
 ---
-title: Úvod do Azure Advisor
+title: Seznámení s Azure Advisorem
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057686"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654017"
 ---
-# <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
+# <a name="introduction-to-azure-advisor"></a>Seznámení s Azure Advisorem
 
 Přečtěte si o klíčových funkcích Azure Advisor a Získejte odpovědi na nejčastější dotazy.
 
@@ -55,7 +55,7 @@ K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel*nebo *Čt
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>K jakým prostředkům poradce poskytuje doporučení?
 
-Služba Advisor poskytuje doporučení pro Application Gateway, App Services, skupiny dostupnosti, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, veřejné IP adresy Azure, SQL Data Warehouse, SQL servery, účty úložiště, profily Traffic Manager a virtuální počítače.
+Advisor poskytuje doporučení pro Application Gateway, App Services, skupiny dostupnosti, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, veřejné IP adresy Azure, Azure synapse Analytics, SQL servery, účty úložiště, profily Traffic Manager a virtuální počítače.
 
 Azure Advisor také obsahuje doporučení z [Azure Security Center](../security-center/security-center-recommendations.md) , která mohou obsahovat doporučení pro další typy prostředků.
 

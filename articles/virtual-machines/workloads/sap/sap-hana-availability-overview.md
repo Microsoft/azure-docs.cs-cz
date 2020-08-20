@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035634"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653541"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA vysoké dostupnosti pro virtuální počítače Azure
 
@@ -60,7 +60,7 @@ Azure má různé SLA dostupnosti pro různé komponenty, jako jsou sítě, úlo
 
 [Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) popisuje tři různé SLA pro tři různé konfigurace:
 
-- Jeden virtuální počítač, který používá [Azure Premium SSD](../../windows/managed-disks-overview.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
+- Jeden virtuální počítač, který používá [Azure Premium SSD](../../managed-disks-overview.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dobu provozu 99,9 procent.
 - Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [skupiny dostupnosti Azure](../../windows/tutorial-availability-sets.md). Tato možnost poskytuje měsíční dobu provozu 99,95 procent.
 - Víc (aspoň dva) virtuální počítače, které jsou uspořádané do [zóny dostupnost](../../../availability-zones/az-overview.md). Tato možnost zadala za měsíc 99,99% dobu provozu.
 

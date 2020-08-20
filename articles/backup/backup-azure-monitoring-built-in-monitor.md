@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054549"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654119"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -52,7 +52,7 @@ Následující scénáře jsou definovány službou jako scénáře s možností
 - Zálohování virtuálních počítačů Azure
 - Zálohování souborů Azure
 - Zálohování úloh Azure, jako je SQL, SAP HANA
-- Agent Microsoft Azure Recovery Services (MARS) 
+- Agent Microsoft Azure Recovery Services (MARS)
 
 > [!NOTE]
 > Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazují.
@@ -83,7 +83,7 @@ Na základě závažnosti výstrahy je možné výstrahy definovat ve třech typ
 ## <a name="notification-for-backup-alerts"></a>Oznámení pro výstrahy zálohování
 
 > [!NOTE]
-> Konfigurace oznámení se dá provést jenom prostřednictvím webu Azure Portal. Podpora šablon PS/CLI/REST API/Azure Resource Manager není podporována.
+> Konfiguraci oznámení lze provést pouze prostřednictvím Azure Portal. Podpora šablon PS/CLI/REST API/Azure Resource Manager není podporována.
 
 Po vyvolání výstrahy budou uživatelé upozorněni. Azure Backup poskytuje integrovaný mechanizmus oznámení prostřednictvím e-mailu. Jedním z nich může být zadání jednotlivých e-mailových adres nebo distribučních seznamů, které budou oznamovány při vygenerování výstrahy. Můžete si také vybrat, jestli se má zobrazit upozornění na každou jednotlivou výstrahu, nebo je seskupit do hodinových Digest a pak získat oznámení.
 
@@ -100,7 +100,7 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 
 ## <a name="inactivating-alerts"></a>Deaktivace výstrah
 
-Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete kliknout na položku seznamu, která odpovídá výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem "deaktivovat" v horní části. Po kliknutí na toto tlačítko se změní stav výstrahy na neaktivní. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete deaktivovat.
+Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Kliknutím na toto tlačítko se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
 
 ![Deaktivace výstrah trezoru RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

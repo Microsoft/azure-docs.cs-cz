@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611836"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654153"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -169,7 +169,7 @@ První sloupec (PV) zobrazuje fyzický svazek. následující sloupce zobrazují
 
 ###### <a name="duplicate-volume-groups"></a>Duplicitní skupiny svazků
 
-K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, kde je skript spuštěný, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na následující příklad.
+K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, kde je skript spuštěný, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na příklad níže.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -398,7 +398,7 @@ Tok dat mezi službou obnovení a počítačem je chráněný vytvořením zabez
 
 Jakýkoli seznam Access Control souborů (ACL), který se nachází v nadřazeném nebo zálohovaném virtuálním počítači, se zachová i v připojeném systému souborů.
 
-Skript poskytuje přístup jen pro čtení k bodu obnovení a je platný jenom 12 hodin. Pokud chcete přístup odebrat dříve, přihlaste se k portálu Azure Portal, PowerShellu nebo rozhraní příkazového řádku a proveďte **odpojování disků** pro konkrétní bod obnovení. Tento skript se okamžitě zruší.
+Skript poskytuje přístup jen pro čtení k bodu obnovení a je platný jenom 12 hodin. Pokud chcete přístup odebrat dříve, přihlaste se Azure Portal/PowerShell/CLI a proveďte **odpojování disků** pro konkrétní bod obnovení. Tento skript se okamžitě zruší.
 
 ## <a name="next-steps"></a>Další kroky
 

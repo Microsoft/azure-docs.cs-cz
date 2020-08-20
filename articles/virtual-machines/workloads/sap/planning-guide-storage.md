@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510857"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653609"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -36,7 +36,7 @@ Existuje několik dalších metod redundance, které jsou popsány v článku [A
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
-Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se [skupinou dostupnosti] [virtuální počítače-spravovat-dostupnost] virtuálního počítače, ke kterému jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](../../windows/managed-disks-overview.md).
+Managed disks je typ prostředku v Azure Resource Manager, který se dá použít místo VHD, které jsou uložené v účtech Azure Storage. Managed Disks automaticky zarovnává se [skupinou dostupnosti] [virtuální počítače-spravovat-dostupnost] virtuálního počítače, ke kterému jsou připojené, a proto Zvyšte dostupnost vašeho virtuálního počítače a služeb, které běží na virtuálním počítači. Další informace najdete v [článku Přehled](../../managed-disks-overview.md).
 
 V souvislosti s odolností tento příklad ukazuje výhody spravovaných disků:
 
@@ -61,7 +61,7 @@ Trvalé úložiště je potřeba v úlohách SAP v různých součástech zásob
 - Sdílené složky nebo sdílené disky, které obsahují váš globální adresář pro přenos pro NetWeaver nebo S/4HANA. Obsah těchto sdílených složek je využíván softwarem spuštěným ve více virtuálních počítačích nebo při vytváření scénářů clusteru s podporou převzetí služeb při selhání s vysokou dostupností.
 - Adresář/sapmnt nebo běžné sdílené složky pro procesy EDI nebo podobné. Obsah těchto sdílených složek je využíván softwarem spuštěným ve více virtuálních počítačích nebo při vytváření scénářů clusteru s podporou převzetí služeb při selhání s vysokou dostupností.
 
-V následujících částech se v několika dalších typech úložiště Azure a jejich použitelnost pro úlohy SAP prodiskutuje, které se vztahují na výše uvedené čtyři scénáře. V článku o tom, [Jaké typy disků jsou k dispozici v Azure](../../linux/disks-types.md), je popsána obecná kategorizace způsobu použití různých typů úložiště Azure. Doporučení pro používání různých typů úložiště Azure pro úlohy SAP se neúčtují podstatným rozdílem.
+V následujících částech se v několika dalších typech úložiště Azure a jejich použitelnost pro úlohy SAP prodiskutuje, které se vztahují na výše uvedené čtyři scénáře. V článku o tom, [Jaké typy disků jsou k dispozici v Azure](../../disks-types.md), je popsána obecná kategorizace způsobu použití různých typů úložiště Azure. Doporučení pro používání různých typů úložiště Azure pro úlohy SAP se neúčtují podstatným rozdílem.
 
 Pro omezení podpory typů úložiště Azure pro NetWeaver/aplikační vrstvu SAP pro 4HANA si přečtěte [poznámku o podpoře SAP 2015553](https://launchpad.support.sap.com/#/notes/2015553) pro SAP HANA certifikovaný a podporované typy úložiště Azure Přečtěte si článek [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
@@ -123,7 +123,7 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 * SLA pro IOPS a propustnost
 * Menší variabilita v/v latence
 
-Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžaduje latenci s nízkou dobou v milisekundách, a v případě Azure Premium Storage se SLA na zatížení za vstupně-výstupní operace a náklady na propustnost, a to v případě, že se v případě Azure Premium Storage nejedná o skutečný objem dat, který je na těchto discích uložený. Můžete také vytvořit disky na Premium Storage, které nejsou přímo mapovány na kategorie velikosti uvedené v článku [SSD úrovně Premium](../../linux/disks-types.md#premium-ssd). K závěrům z tohoto článku patří:
+Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžaduje latenci s nízkou dobou v milisekundách, a v případě Azure Premium Storage se SLA na zatížení za vstupně-výstupní operace a náklady na propustnost, a to v případě, že se v případě Azure Premium Storage nejedná o skutečný objem dat, který je na těchto discích uložený. Můžete také vytvořit disky na Premium Storage, které nejsou přímo mapovány na kategorie velikosti uvedené v článku [SSD úrovně Premium](../../disks-types.md#premium-ssd). K závěrům z tohoto článku patří:
 
 - Úložiště je uspořádáno v oblastech. Například disk v rozsahu od 513 GiB do 1024 kapacity GiB sdílí stejné možnosti a stejné měsíční náklady
 - Počet IOPS na GiB nesleduje lineární napříč kategoriemi velikostí. Menší disky nižší než 32 GiB mají za GiB vyšší sazby za IOPS. U disků přesahujících 32 GiB až 1024 GiB je sazba IOPS za GiB mezi 4-5 IOPS za GiB. V případě větších disků až do 32 767 GiB je sazba IOPS za GiB nižší než 1.
@@ -184,8 +184,8 @@ Disky Azure Ultra zajišťují vysokou propustnost, vysoké IOPS a představují
 Při vytváření Ultra disk máte tři dimenze, které můžete definovat:
 
 - Kapacita disku. Rozsahy jsou 4 GiB až 65 536 GiB.
-- Zřízené IOPS pro disk. Na kapacitu disku se vztahují různé maximální hodnoty. Další podrobnosti najdete v článku o [Ultra discích](../../linux/disks-types.md#ultra-disk) .
-- Zajištěná šířka pásma úložiště. Liší se maximální šířka pásma závislá na kapacitě disku. Další podrobnosti najdete v článku o [Ultra discích](../../linux/disks-types.md#ultra-disk) .
+- Zřízené IOPS pro disk. Na kapacitu disku se vztahují různé maximální hodnoty. Další podrobnosti najdete v článku o [Ultra discích](../../disks-types.md#ultra-disk) .
+- Zajištěná šířka pásma úložiště. Liší se maximální šířka pásma závislá na kapacitě disku. Další podrobnosti najdete v článku o [Ultra discích](../../disks-types.md#ultra-disk) .
 
 Náklady na jeden disk se určují podle tří dimenzí, které můžete pro konkrétní disky definovat samostatně. 
 

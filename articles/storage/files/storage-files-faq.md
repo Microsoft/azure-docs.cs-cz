@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245430"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654323"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -54,7 +54,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     Jedním ze způsobů, jak získat nejlepší z obou souborů Azure a souborového serveru, který je hostovaný v Azure Virtual Machines (kromě používání disků Azure jako back-endu úložiště) je instalace Azure File Sync na souborovém serveru, který je hostovaný na cloudovém virtuálním počítači. Pokud je sdílená složka Azure ve stejné oblasti jako souborový server, můžete povolit vrstvení cloudu a nastavit rozsah volného místa v procentech na maximum (99%). Tím se zajistí minimální duplicita dat. Můžete také použít libovolné aplikace, které požadujete u souborových serverů, jako třeba aplikace, které vyžadují podporu protokolu NFS.
 
-    Informace o možnostech nastavení vysoce výkonného a vysoce dostupného souborového serveru v Azure najdete v tématu [nasazení clusterů hostů virtuálních počítačů s IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a disky Azure najdete v tématu [Úvod do služby core Azure Storage Services](../common/storage-introduction.md). Další informace o discích Azure najdete v tématu [Přehled azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
+    Informace o možnostech nastavení vysoce výkonného a vysoce dostupného souborového serveru v Azure najdete v tématu [nasazení clusterů hostů virtuálních počítačů s IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a disky Azure najdete v tématu [Úvod do služby core Azure Storage Services](../common/storage-introduction.md). Další informace o discích Azure najdete v tématu [Přehled azure Managed disks](../../virtual-machines/managed-disks-overview.md).
 
 * <a id="get-started"></a>
   **Návody začít používat soubory Azure?**  
@@ -93,7 +93,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="cross-domain-sync"></a>
   **Můžu ve stejné skupině synchronizovat servery připojené k doméně a jiné domény?**  
-    Yes. Skupina synchronizace může obsahovat koncové body serveru, které mají jiné členství ve službě Active Directory, a to i v případě, že nejsou připojeny k doméně. I když tato konfigurace technicky funguje, nedoporučujeme ji používat jako typickou konfiguraci, protože seznamy řízení přístupu (ACL), které jsou definované pro soubory a složky na jednom serveru, nemusí být možné vyhovět jinými servery ve skupině synchronizace. Pro dosažení nejlepších výsledků doporučujeme synchronizovat mezi servery, které jsou ve stejné doménové struktuře služby Active Directory, mezi servery, které jsou v různých doménových strukturách služby Active Directory, ale mají vytvořené vztahy důvěryhodnosti, nebo mezi servery, které nejsou v doméně. Doporučujeme, abyste se vyhnuli používání kombinace těchto konfigurací.
+    Ano. Skupina synchronizace může obsahovat koncové body serveru, které mají jiné členství ve službě Active Directory, a to i v případě, že nejsou připojeny k doméně. I když tato konfigurace technicky funguje, nedoporučujeme ji používat jako typickou konfiguraci, protože seznamy řízení přístupu (ACL), které jsou definované pro soubory a složky na jednom serveru, nemusí být možné vyhovět jinými servery ve skupině synchronizace. Pro dosažení nejlepších výsledků doporučujeme synchronizovat mezi servery, které jsou ve stejné doménové struktuře služby Active Directory, mezi servery, které jsou v různých doménových strukturách služby Active Directory, ale mají vytvořené vztahy důvěryhodnosti, nebo mezi servery, které nejsou v doméně. Doporučujeme, abyste se vyhnuli používání kombinace těchto konfigurací.
 
 * <a id="afs-change-detection"></a>
   **Vytvořili jsme soubor přímo ve sdílené složce Azure pomocí protokolu SMB nebo na portálu. Jak dlouho trvá, než se soubor synchronizuje se servery ve skupině synchronizace?**  
@@ -188,7 +188,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="encryption-at-rest"></a>
 **Jak se dá zajistit, aby byla moje sdílená složka Azure šifrovaná v klidovém stavu?**  
 
-    Yes. Další informace najdete v tématu [šifrování služby Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ano. Další informace najdete v tématu [šifrování služby Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Jak můžu poskytnout přístup ke konkrétnímu souboru pomocí webového prohlížeče?**  
@@ -203,7 +203,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="ip-restrictions"></a>
 **Můžu pro sdílenou složku Azure implementovat omezení IP adres?**  
 
-    Yes. Přístup ke sdílené složce Azure se může omezit na úrovni účtu úložiště. Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ano. Přístup ke sdílené složce Azure se může omezit na úrovni účtu úložiště. Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
 **Jaké zásady dodržování předpisů podporují soubory Azure?**  
@@ -293,7 +293,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Azure File Sync v místním prostředí?**  
 
-    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -322,7 +322,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="snapshot-limits"></a>
 **Existují omezení počtu snímků sdílené složky, které můžu použít?**  
-    Yes. Soubory Azure můžou uchovávat maximálně 200 snímků sdílené složky. Snímky sdílené složky se nepočítají směrem k kvótě sdílení, takže neexistují žádné limity pro sdílení na celkovém prostoru, který používají všechny snímky sdílené složky. Omezení účtu úložiště se pořád používají. Po 200 sdílení snímků musíte odstranit starší snímky pro vytvoření nových snímků sdílené složky.
+    Ano. Soubory Azure můžou uchovávat maximálně 200 snímků sdílené složky. Snímky sdílené složky se nepočítají směrem k kvótě sdílení, takže neexistují žádné limity pro sdílení na celkovém prostoru, který používají všechny snímky sdílené složky. Omezení účtu úložiště se pořád používají. Po 200 sdílení snímků musíte odstranit starší snímky pro vytvoření nových snímků sdílené složky.
 
 * <a id="snapshot-cost"></a>
 **Kolik stojí sdílení snímků?**  
@@ -363,7 +363,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
 **Můžu obnovit data ze snímku sdílené složky na jiný účet úložiště?**  
-    Yes. Soubory ze snímku sdílené složky můžete zkopírovat do původního umístění nebo do alternativního umístění, které obsahuje buď stejný účet úložiště, nebo jiný účet úložiště, a to buď ve stejné oblasti, nebo v různých oblastech. Můžete také kopírovat soubory do místního umístění nebo do jakéhokoli jiného cloudu.    
+    Ano. Soubory ze snímku sdílené složky můžete zkopírovat do původního umístění nebo do alternativního umístění, které obsahuje buď stejný účet úložiště, nebo jiný účet úložiště, a to buď ve stejné oblasti, nebo v různých oblastech. Můžete také kopírovat soubory do místního umístění nebo do jakéhokoli jiného cloudu.    
   
 ### <a name="clean-up-share-snapshots"></a>Vyčištění snímků sdílených složek
 * <a id="delete-share-keep-snapshots"></a>
@@ -397,7 +397,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Azure File Sync?**
     
-    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
+    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -426,13 +426,13 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  
     Společnost IBM vydala dokument, který pomáhá zákazníkům IBM MQ nakonfigurovat soubory Azure pomocí služby IBM. Další informace najdete v tématu [jak nastavit správce front více instancí IBM MQ pomocí služby Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

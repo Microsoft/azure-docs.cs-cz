@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653796"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
 
@@ -21,7 +21,7 @@ Azure Storage platformou je řešení cloudového úložiště Microsoftu pro sc
 
 - **Odolné a vysoce dostupné:** Redundance zajišťuje, že vaše data budou v případě krátkodobého selhání hardwaru v bezpečí. Můžete se také rozhodnout data replikovat napříč několika datacentry nebo geografickými oblastmi, abyste se ochránili i proti místní pohromě nebo přírodní katastrofě. Data replikovaná tímto způsobem zůstávají v případě nečekaného výpadku vysoce dostupná.
 - **Požadavk.** Všechna data zapsaná do účtu služby Azure Storage jsou službou šifrována. Azure Storage poskytuje jemně odstupňované řízení přístupu k datům.
-- **Škálovatelné:** Azure Storage je navržené pro širokou škálovatelnost, aby splňovalo požadavky dnešních aplikací na datové úložiště a výkon.
+- **Měřítk.** Služba Azure Storage je navržená pro širokou škálovatelnost, aby splňovala požadavky dnešních aplikací na datové úložiště a výkon.
 - **Starosti.** Azure zpracovává údržbu, aktualizace a kritické problémy s hardwarem.
 - **Přístupné:** Data ve službě Azure Storage jsou přístupná prostřednictvím protokolu HTTP nebo HTTPS odkudkoli na světě. Microsoft poskytuje klientské knihovny pro Azure Storage v různých jazycích, včetně .NET, Java, Node.js, Pythonu, PHP, Ruby, přechodu a dalších, a také na vyspělé REST API. Azure Storage podporuje skriptování v Azure PowerShellu nebo Azure CLI. A web Azure Portal a Průzkumník služby Azure Storage nabízí snadná vizuální řešení pro práci s daty.  
 
@@ -30,14 +30,14 @@ Azure Storage platformou je řešení cloudového úložiště Microsoftu pro sc
 Platforma Azure Storage zahrnuje následující datové služby:
 
 - [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data Zahrnuje také podporu pro analýzy velkých objemů dat prostřednictvím Data Lake Storage Gen2.
-- [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro nasazení v cloudu nebo místní nasazení.
+- [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro cloudová nebo místní nasazení.
 - [Fronty Azure](../queues/storage-queues-introduction.md): spolehlivé úložiště pro přenos zpráv mezi součástmi aplikace.
 - [Tabulky Azure](../tables/table-storage-overview.md): úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
-- [Disky Azure](../../virtual-machines/windows/managed-disks-overview.md): svazky úložiště na úrovni bloku pro virtuální počítače Azure.
+- [Disky Azure](../../virtual-machines/managed-disks-overview.md): svazky úložiště na úrovni bloku pro virtuální počítače Azure.
 
 Ke každé službě získáte přístup z účtu uložiště. Než začnete, přečtěte si článek [Vytvoření účtu úložiště](storage-account-create.md).
 
-## <a name="example-scenarios"></a>Ukázkové scénáře
+## <a name="example-scenarios"></a>Příklady scénářů
 
 Následující tabulka porovnává soubory, objekty blob, disky, fronty a tabulky a obsahuje příklady scénářů pro každý z nich.
 
@@ -51,7 +51,7 @@ Následující tabulka porovnává soubory, objekty blob, disky, fronty a tabulk
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Blob Storage je optimalizované pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data.
+Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Blob Storage je optimalizované pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data.
 
 Blob Storage je ideální pro:
 
@@ -59,7 +59,7 @@ Blob Storage je ideální pro:
 - Ukládání souborů pro distribuovaný přístup
 - Streamování videa a zvuku
 - Ukládání dat pro zálohování a obnovování, zotavení po havárii a pro archivaci
-- Ukládání dat, které bude analyzovat místní nebo v Azure hostovaná služba
+- Ukládání dat, která bude analyzovat místní nebo v Azure hostovaná služba
 
 Přístup k objektům ve službě Blob Storage je prostřednictvím protokolů HTTP nebo HTTPS možný odkudkoli na světě. Uživatelé nebo klientské aplikace mohou získat přístup k objektům blob prostřednictvím adres URL, [rozhraní REST API služby Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShellu](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage) nebo klientské knihovny služby Azure Storage. Klientské knihovny úložiště jsou dostupné pro řadu jazyků, mezi které patří [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) a [Ruby](https://azure.github.io/azure-storage-ruby).
 
@@ -67,7 +67,7 @@ Další informace o službě BLOB Storage najdete v tématu [Úvod do úložišt
 
 ## <a name="azure-files"></a>Soubory Azure
 
-Služba [Soubory Azure](../files/storage-files-introduction.md) umožňuje nastavit vysoce dostupné sdílené složky souborů sítě, ke kterým je možný přístup pomocí standardního protokolu SMB (Server Message Block). To znamená, že několik virtuálních počítačů může sdílet stejné soubory s oprávněním ke čtení i zápisu. Soubory můžete číst také pomocí rozhraní REST nebo klientských knihoven pro úložiště.
+Služba [soubory Azure](../files/storage-files-introduction.md) umožňuje nastavit vysoce dostupné sdílené síťové složky, ke kterým lze získat přístup pomocí standardního protokolu SMB (Server Message Block). To znamená, že několik virtuálních počítačů může sdílet stejné soubory s oprávněním ke čtení i zápisu. Soubory můžete číst také pomocí rozhraní REST nebo klientských knihoven pro úložiště.
 
 Jednou z věcí, která odlišuje Soubory Azure od souborů v podnikové sdílené složce je, že k souborům můžete přistupovat odkudkoli na světě pomocí adresy URL, která odkazuje na soubor a zahrnuje token sdíleného přístupového podpisu (SAS). Můžete generovat tokeny SAS, které po určitou dobu umožňují specifický přístup k privátním prostředkům.
 
@@ -101,7 +101,7 @@ Další informace o službě Table Storage získáte v tématu s [přehledem o s
 
 Spravovaný disk Azure je virtuální pevný disk (VHD). Můžete si to představit jako fyzický disk na místním serveru, ale virtualizované. Disky spravované Azure se ukládají jako objekty blob stránky, což jsou v Azure náhodný objekt úložiště v/v. Zavoláme spravovaný spravovaný disk, protože se jedná o abstrakci přes objekty blob stránky, kontejnery objektů BLOB a účty Azure Storage. U spravovaných disků stačí zřídit disk a Azure se postará o zbytek.
 
-Další informace o spravovaných discích najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
+Další informace o spravovaných discích najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
@@ -121,7 +121,7 @@ Každý požadavek na Azure Storage musí být autorizován. Azure Storage podpo
 
 Pro základní služby úložiště jsou k dispozici dva základní druhy šifrování. Další informace o zabezpečení a šifrování najdete v [průvodci zabezpečením Azure Storage](../blobs/security-recommendations.md).
 
-### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 
 Azure Storage šifrování chrání a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Azure Storage automaticky šifruje všechna data před uložením do účtu úložiště a před načtením ji dešifruje. Procesy šifrování, dešifrování a správy klíčů jsou pro uživatele transparentní. Zákazníci si také můžou pomocí Azure Key Vault spravovat vlastní klíče. Další informace najdete v tématu [Azure Storage šifrování pro](storage-service-encryption.md)neaktivní neaktivní data.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586890"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653830"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -38,6 +38,7 @@ Aktualizace v srpnu zahrnují:
 - [Přidání podpory pro výchozí nastavení zabezpečení Azure Active Directory (pro Multi-Factor Authentication)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [Přidalo se doporučení instančních objektů.](#service-principals-recommendation-added)
 - [Posouzení ohrožení zabezpečení na virtuálních počítačích – konsolidovaná doporučení a zásady](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [Nové zásady zabezpečení AKS přidané do ASC_default iniciativy – jenom pro zákazníky s privátní verzí Preview](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
 
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Inventář assetů – výkonné nové zobrazení stav zabezpečení vašich prostředků
@@ -59,7 +60,7 @@ Výchozí hodnoty zabezpečení poskytují předem nakonfigurovaná nastavení z
 
 Security Center teď poskytuje doporučení zabezpečení vždy, když identifikuje předplatné Azure bez povolených výchozích hodnot zabezpečení. Až do této chvíle Security Center doporučeno povolit vícefaktorové ověřování pomocí podmíněného přístupu, který je součástí licence Azure Active Directory (AD) Premium. Pro zákazníky, kteří používají Azure AD Free, teď doporučujeme povolit výchozí nastavení zabezpečení. 
 
-Naším cílem je povzbudit větší počet zákazníků k zabezpečení svých cloudových prostředí pomocí vícefaktorového ověřování a zmírnit jedno z nejvyšších rizik, která jsou také největší dopadem na jejich [bezpečné skóre](https://docs.microsoft.com/azure/security-center/secure-score-security-controls).
+Naším cílem je povzbudit větší počet zákazníků k zabezpečení svých cloudových prostředí pomocí vícefaktorového ověřování a zmírnit jedno z nejvyšších rizik, která jsou také největší dopadem na vaše [zabezpečené skóre](https://docs.microsoft.com/azure/security-center/secure-score-security-controls).
 
 Přečtěte si další informace o [výchozích hodnotách zabezpečení](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
@@ -97,7 +98,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="before-august-2020"></a>Před srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Povolení integrovaného řešení posouzení ohrožení zabezpečení na virtuálních počítačích (používá se Qualys)**<br>Klíč: 550e890b-e652-4d22-8274-60b3bdb24c63|Integrované|
 |**Náprava ohrožení zabezpečení zjištěná na vašich virtuálních počítačích (používá se Qualys)**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Integrované|
@@ -106,7 +107,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -115,17 +116,28 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="from-august-2020"></a>Od srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.**<br>Klíč: ffff0522-1e88-47fc-8382-2a80ba848f5d|Předdefinované + BYOL|
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||
 
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>Nové zásady zabezpečení AKS přidané do ASC_default iniciativy – jenom pro zákazníky s privátní verzí Preview
+
+Aby se zajistilo, že Kubernetes úlohy jsou zabezpečené ve výchozím nastavení, Security Center přidávají zásady Kubernetes úrovně a posílení doporučení, včetně možností vynucení pomocí řízení přístupu Kubernetes.
+
+Úvodní fáze tohoto projektu zahrnuje soukromou verzi Preview a přidání nových (zakázaných ve výchozím) zásadách pro ASC_default iniciativu.
+
+Tyto zásady můžete bezpečně ignorovat a nebude to mít žádný vliv na vaše prostředí. Pokud je chcete povolit, zaregistrujte si verzi Preview na adrese https://aka.ms/SecurityPrP a vyberte si z těchto možností:
+
+1. **Single Preview** – pro připojení pouze k této privátní verzi Preview. Jako náhled, ke kterému se chcete připojit, výslovně uveďte "ASC průběžné prověřování".
+1. **Probíhající program** – přidaný do tohoto a budoucího privátního náhledu. Budete muset dokončit profil a smlouvu o ochraně osobních údajů.
 
 
 ## <a name="july-2020"></a>Červenec 2020

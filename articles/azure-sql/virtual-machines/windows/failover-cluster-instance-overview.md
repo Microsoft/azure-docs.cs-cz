@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533814"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653269"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,14 +51,14 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Ano|No|Ano |
-|**Mezipaměť objektů BLOB v Azure**|No|No|Ano|
+|**Podporuje FileStream**|Ano|Ne|Ano |
+|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
 ### <a name="azure-shared-disks"></a>Sdílené disky Azure
 
-[Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/windows/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
+[Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
 
 **Podporovaný operační systém**: vše   
 **Podporovaná verze SQL**: vše     
@@ -166,7 +166,7 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 Projděte si [osvědčené postupy konfigurace clusteru](hadr-cluster-best-practices.md)a potom můžete [připravit SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md). 
 
-Další informace: 
+Další informace naleznete v tématu: 
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

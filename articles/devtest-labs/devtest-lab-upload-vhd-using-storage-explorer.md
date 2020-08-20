@@ -3,18 +3,18 @@ title: Nahrání souboru VHD do Azure DevTest Labs pomocí Průzkumník služby 
 description: Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480758"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654510"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak použít [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD se v [části Další kroky](#next-steps) zobrazí některé články, které ukazují, jak vytvořit vlastní image z nahraného souboru VHD. Další informace o discích a virtuálních pevných discích v Azure najdete v tématu [Úvod do Managed disks](../virtual-machines/linux/managed-disks-overview.md) .
+V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak použít [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD se v [části Další kroky](#next-steps) zobrazí některé články, které ukazují, jak vytvořit vlastní image z nahraného souboru VHD. Další informace o discích a virtuálních pevných discích v Azure najdete v tématu [Úvod do Managed disks](../virtual-machines/managed-disks-overview.md) .
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
@@ -24,7 +24,7 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
 
 1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-    1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
     1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
     

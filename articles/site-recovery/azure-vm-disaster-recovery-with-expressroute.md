@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954085"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654374"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace ExpressRoute s zotavením po havárii pro virtuální počítače Azure
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak integrovat Azure ExpressRoute s [Azure Site Recover
 
 Site Recovery umožňuje zotavení po havárii virtuálních počítačů Azure tím, že replikuje data virtuálních počítačů Azure do Azure.
 
-- Pokud virtuální počítače Azure používají [spravované disky Azure](../virtual-machines/windows/managed-disks-overview.md), replikují se data virtuálních počítačů do replikovaného spravovaného disku v sekundární oblasti.
+- Pokud virtuální počítače Azure používají [spravované disky Azure](../virtual-machines/managed-disks-overview.md), replikují se data virtuálních počítačů do replikovaného spravovaného disku v sekundární oblasti.
 - Pokud virtuální počítače Azure nepoužívají spravované disky, replikují se data virtuálních počítačů do účtu služby Azure Storage.
 - Koncové body replikace jsou veřejné, ale provoz replikace pro virtuální počítače Azure nepřekračuje Internet.
 

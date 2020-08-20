@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780058"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653711"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
 
@@ -24,7 +24,7 @@ ms.locfileid: "82780058"
 
 V tomto článku se dozvíte, jak získat přístup k úložišti z následujících prostředí:
 
-- [Azure Machine Learning výpočetní instance](#notebookvm)
+- [Výpočetní instance Azure Machine Learningu](#notebookvm)
 - [Přineste si vlastní server poznámkového bloku](#byo)
 - [Virtuální počítač pro datové vědy](#dsvm)
 
@@ -55,7 +55,7 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co Azure Machine Learning může dělat.
+Prozkoumejte [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks) , abyste zjistili, co Azure Machine Learning může dělat.
 
 Další ukázkové projekty GitHubu a příklady najdete v těchto úložištích:
 + [Microsoft/MLOps](https://github.com/Microsoft/MLOps)

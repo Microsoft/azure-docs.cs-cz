@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710265"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653575"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
@@ -179,7 +179,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **VM Name:** Název virtuálního počítače, který se použil v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VHD) připojené k virtuálním počítačům. Názvy zahrnují názvy hostitelů Hyper-V, kam byly virtuální počítače umístěné, když je nástroj během období profilace rozpoznal.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano** \* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Premium Storage se disk bude mapovat, na základě jeho velikosti: 
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano** \* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/disks-types.md). Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Premium Storage se disk bude mapovat, na základě jeho velikosti: 
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.

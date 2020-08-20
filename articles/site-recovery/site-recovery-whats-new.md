@@ -3,12 +3,12 @@ title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 09afd4416efc8e6904b7c487d5ed2f3be22db081
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611734"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654816"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -378,7 +378,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 **Funkce** | **Podrobnosti**
 --- | ---
 **Mapování sítě** | Pro zotavení po havárii virtuálního počítače Azure teď můžete použít jakoukoli dostupnou cílovou síť, když povolíte replikaci.
-**SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](../virtual-machines/windows/disks-types.md#standard-ssd).
+**SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](../virtual-machines/disks-types.md#standard-ssd).
 **Prostory úložiště – přímé** | Zotavení po havárii pro aplikace běžící na Azure VM Apps můžete nastavit pomocí [prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) pro vysokou dostupnost.  Použití Prostory úložiště s přímým přístupem (S2D) společně s Site Recovery poskytuje komplexní ochranu úloh virtuálních počítačů Azure. S2D umožňuje hostovat hostovaný cluster v Azure. To je užitečné hlavně v případě, že virtuální počítač je hostitelem kritické aplikace, například SAP ASCS Layer, SQL Server nebo souborového serveru se škálováním na více systémů.
 
 

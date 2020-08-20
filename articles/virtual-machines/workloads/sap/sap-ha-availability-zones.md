@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035787"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653592"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](../../../availability-zones/az-overview.md) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
@@ -109,7 +109,7 @@ Pro tuto konfiguraci platí následující požadavky:
 - Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md). Základní Load Balancer nebudou v různých zónách fungovat.
 - Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
 - U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
-- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../windows/disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
 - Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
   - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
   - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
@@ -137,7 +137,7 @@ Pro tuto konfiguraci platí následující požadavky:
 - Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md). Základní Load Balancer nebudou v různých zónách fungovat.
 - Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
 - U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
-- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../windows/disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
 - Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
     - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
@@ -167,7 +167,7 @@ Pro tuto konfiguraci platí následující požadavky:
 - Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md). Základní Load Balancer nebudou v různých zónách fungovat.
 - Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
 - U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
-- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../windows/disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](../../disks-types.md#ultra-disk) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
 - Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
     - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).

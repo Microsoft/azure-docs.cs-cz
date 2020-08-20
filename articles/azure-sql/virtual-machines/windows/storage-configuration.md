@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667365"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653337"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače SQL Serveru
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,13 +28,13 @@ V tomto tématu se dozvíte, jak Azure nakonfiguruje úložiště pro vaše SQL 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít nastavení konfigurace automatizovaného úložiště, váš virtuální počítač musí mít následující vlastnosti:
 
 * Zřízeno s [imagí galerie SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
 * Používá [model nasazení Správce prostředků](../../../azure-resource-manager/management/deployment-models.md).
-* Používá [prémiové SSD](../../../virtual-machines/windows/disks-types.md).
+* Používá [prémiové SSD](../../../virtual-machines/disks-types.md).
 
 ## <a name="new-vms"></a>Nové virtuální počítače
 
@@ -99,7 +99,7 @@ U stávajících SQL Server virtuálních počítačů můžete upravit někter�
 * Data SQL
 * Protokol SQL
 * Jiné (jiné úložiště než SQL)
-* K dispozici
+* K dispozici.
 
 Pokud chcete upravit nastavení úložiště, vyberte **Konfigurovat** v části **Nastavení**. 
 
@@ -115,7 +115,7 @@ Můžete upravit nastavení disku pro jednotky, které byly nakonfigurované bě
 V této části najdete referenční informace o změnách konfigurace úložiště, které Azure automaticky provede během SQL Server zřizování a konfigurace virtuálních počítačů v Azure Portal.
 
 * Azure nakonfiguruje fond úložiště z úložiště vybraného z virtuálního počítače. V další části tohoto tématu najdete podrobné informace o konfiguraci fondu úložiště.
-* Automatická konfigurace úložiště vždycky používá datové disky [Premium SSD](../../../virtual-machines/windows/disks-types.md) P30. V důsledku toho je k dispozici mapování 1:1 mezi vybraným počtem terabajtů a počtem datových disků připojených k VIRTUÁLNÍmu počítači.
+* Automatická konfigurace úložiště vždycky používá datové disky [Premium SSD](../../../virtual-machines/disks-types.md) P30. V důsledku toho je k dispozici mapování 1:1 mezi vybraným počtem terabajtů a počtem datových disků připojených k VIRTUÁLNÍmu počítači.
 
 Informace o cenách najdete na stránce s [cenami za úložiště](https://azure.microsoft.com/pricing/details/storage) na kartě **Disk Storage** .
 
@@ -127,9 +127,9 @@ Azure na SQL Server virtuálních počítačích vytvoří fond úložiště pom
 | --- | --- |
 | Velikost pruhu |256 KB (datové sklady); 64 KB (transakční) |
 | Velikosti disků |1 TB |
-| Mezipaměť |Čtení |
+| Mezipaměť |Číst |
 | Velikost přidělení |velikost alokační jednotky systému souborů NTFS v 64 KB |
-| Obnovení | Jednoduché obnovení (bez odolnosti) |
+| Obnovovací | Jednoduché obnovení (bez odolnosti) |
 | Počet sloupců |Počet datových disků až do 8<sup>1</sup> |
 
 
@@ -140,9 +140,9 @@ Azure na SQL Server virtuálních počítačích vytvoří fond úložiště pom
 
 Následující tabulka popisuje tři dostupné možnosti typu úlohy a jejich odpovídající optimalizace:
 
-| Typ úlohy | Description | Optimalizace |
+| Typ úlohy | Popis | Optimalizace |
 | --- | --- | --- |
-| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádná |
+| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádné |
 | **Zpracování transakcí** |Optimalizuje úložiště pro tradiční databázové OLTP úlohy. |Příznak trasování 1117<br/>Příznak trasování 1118 |
 | **Datové sklady** |Optimalizuje úložiště pro analytické a generování sestav úloh. |Příznak trasování 610<br/>Příznak trasování 1117 |
 

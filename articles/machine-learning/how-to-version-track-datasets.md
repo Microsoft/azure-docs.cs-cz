@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4ae0ebaec011634153e4ac9bbe43ef519c58a251
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845880"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654085"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -192,4 +192,4 @@ Následující zobrazení je z podokna datové **sady** v části **assety**. Vy
 ## <a name="next-steps"></a>Další kroky
 
 * [Trénování s datovými sadami](how-to-train-with-datasets.md)
-* [Další ukázkové poznámkové bloky datové sady](https://aka.ms/dataset-tutorial)
+* [Další ukázkové poznámkové bloky datové sady](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

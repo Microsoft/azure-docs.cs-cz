@@ -3,12 +3,12 @@ title: Analýza nákladů a rozpočet
 description: Naučte se, jak získat nákladovou analýzu a nastavit rozpočet pro základní výpočetní prostředky a softwarové licence používané ke spouštění úloh služby Batch.
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725767"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654238"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analýza nákladů a rozpočty pro Azure Batch
 
@@ -68,7 +68,7 @@ Přečtěte si další informace o nastavení virtuálních počítačů s nízk
 
 ### <a name="virtual-machine-os-disk-type"></a>Typ disku s operačním systémem virtuálního počítače
 
-Existuje několik [typů disků s operačním systémem virtuálních počítačů](../virtual-machines/windows/disks-types.md). Většina řady virtuálních počítačů má velikosti podporující úložiště úrovně Premium i Standard. Když je pro fond vybraná velikost virtuálního počítače, Batch nakonfiguruje disky s operačním systémem SSD úrovně Premium. Když je vybraná velikost virtuálního počítače bez s, použije se levnější pevný disk typu HDD. Například disky s operačním systémem SSD úrovně Premium se používají pro `Standard_D2s_v3` a standardní disky s operačním systémem HDD se používají pro `Standard_D2_v3` .
+Existuje několik [typů disků s operačním systémem virtuálních počítačů](../virtual-machines/disks-types.md). Většina řady virtuálních počítačů má velikosti podporující úložiště úrovně Premium i Standard. Když je pro fond vybraná velikost virtuálního počítače, Batch nakonfiguruje disky s operačním systémem SSD úrovně Premium. Když je vybraná velikost virtuálního počítače bez s, použije se levnější pevný disk typu HDD. Například disky s operačním systémem SSD úrovně Premium se používají pro `Standard_D2s_v3` a standardní disky s operačním systémem HDD se používají pro `Standard_D2_v3` .
 
 SSD úrovně Premium disky s operačním systémem jsou dražší, ale mají vyšší výkon a virtuální počítače s disky Premium můžou u virtuálních počítačů s disky s pevným pevným operačním systémem trochu rychlejší. Při použití dávky se disk s operačním systémem často nepoužívá mnohem jako aplikace a soubory úloh se nacházejí na dočasném disku SSD. V mnoha případech tedy není nutné platit zvýšené náklady na jednotku SSD úrovně Premium, která je zřízena při určení velikosti virtuálního počítače.
 

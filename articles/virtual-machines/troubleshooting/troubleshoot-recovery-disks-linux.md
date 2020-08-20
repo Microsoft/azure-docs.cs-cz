@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f05804785435824970d90410d9a1c9490a3d6c06
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73620567"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654714"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI
 Pokud váš virtuální počítač se systémem Linux zaznamená chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neplatná položka v `/etc/fstab` systému, která zabraňuje úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure připojit virtuální pevný disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -37,7 +37,7 @@ Proces řešení potíží je následující:
 K provedení těchto kroků při odstraňování potíží budete potřebovat nainstalovat nejnovější verzi [Azure CLI](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
 > [!Important]
-> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../linux/managed-disks-overview.md). 
+> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../managed-disks-overview.md). 
 
 V následujících příkladech nahraďte názvy parametrů vlastními hodnotami, například `myResourceGroup` a `myVM` .
 
