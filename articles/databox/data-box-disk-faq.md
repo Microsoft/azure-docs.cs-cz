@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745796"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649410"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -58,6 +58,23 @@ A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii, Z
 
 ### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Otázka: Budou v průběhu expedice Data Box Diska ohraničení mezi země a oblast?
 A. Data Box Disk se dodávají v rámci stejné země nebo oblasti jako jejich cíl a nebudou se předávat mezi žádné mezinárodní hranice. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se disky můžou dodávat do a z libovolné země nebo oblasti EU.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>Otázka: Jak mohu importovat místní zdrojová data v jedné zemi nebo oblasti do oblasti Azure v jiné zemi nebo oblasti?
+A. Data Box Disk podporuje přijímání dat pouze v rámci stejné oblasti (obchod hranice). Ve všech ostatních případech může být nutné provést další akci. 
+
+Pokud jste například v Kanadě používali místní data, která jste chtěli přesunout do účtu úložiště Azure WestUS, můžete to dosáhnout následujícím způsobem:
+
+### <a name="option-1"></a>Možnost 1: 
+
+Dodejte [podporovaný disk](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) obsahující data pomocí [služby Azure import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) ze zdrojového umístění v Kanadě do datacentra Azure WestUS.
+
+### <a name="option-2"></a>Možnost 2:
+
+1. Objednat Data Box Disk v Kanadě výběrem účtu úložiště, který říká Cananda Central. Disky SSD se dodávají z datacentra Azure v Kanadě – střed na dodací adresu (v Kanadě), která je k dispozici během vytváření objednávky.
+
+2. Po zkopírování dat z místního serveru na disky je vraťte do datacentra Azure v Kanadě pomocí poskytnutých návratových popisků Microsoftu. Data přítomná v Data Box Disk a pak se nahrají do cílového účtu úložiště v oblasti Kanady Azure, kterou jste zvolili během vytváření objednávky.
+
+3. Pak můžete použít nástroj jako AzCopy ke zkopírování dat do účtu úložiště v WestUS. Tento krok se započítá se [standardními](https://azure.microsoft.com/pricing/details/storage/) [poplatky za úložiště a šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) , které nejsou zahrnuté do data box disk fakturace.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
 A. Pokud narazíte na problémy s Data Box disky, [kontaktujte prosím podpora Microsoftu](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).

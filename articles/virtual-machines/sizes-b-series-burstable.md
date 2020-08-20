@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832582"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654731"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -88,7 +88,7 @@ Směrný plán: 270%
 
 <sup>1</sup> kumulovaná kredity/kredity využité za hodinu jsou ekvivalentem: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
-V případě D16s_v3, který má 16 vCPU a 64 GiB paměti, je hodinová sazba $0,936 za hodinu (měsíční $673,92) a pro B16ms s 16 vCPU a 64 GiB paměti je sazba $0,794 za hodinu (měsíční $547,86). <b>Výsledkem je 15% úspora!</b>
+V případě D16s_v3, který má 16 vCPU a 64 GiB paměti, je hodinová sazba $0,936 za hodinu (měsíční $673,92) a pro B16ms s 16 vCPU a 64 GiB paměti je sazba $0,794 za hodinu (měsíční $547,86). <b> Výsledkem je 15% úspora!</b>
 
 ## <a name="q--a"></a>Otázky a odpovědi
 
@@ -149,7 +149,7 @@ Odpověď **: B1ls** podporuje pouze systémy Linux a pokud nasazujete jinou bit
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
+Další informace o typech disků: [typy disků](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 0fa4fb1fa55d5d3fa61c923bc024e6536b43c87a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e87d32de2d8139a768100ccecec7529ddcacf33
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829182"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648390"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
@@ -87,7 +87,7 @@ počet [dostupných jader s omezením](./windows/constrained-vcpu.md): <sup>1</s
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
+Další informace o typech disků: [typy disků](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642278"
+ms.locfileid: "88649053"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise ve službě Azure HDInsight
 
@@ -58,7 +58,7 @@ Následující vzorový scénář ukazuje, jak použít *SparkCruise* k optimali
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-`analyze`Příkaz analyzuje plány dotazů a vytvoří tabulkovou reprezentaci úlohy. Pak `views` příkaz identifikuje běžné výrazy dílčího plánu a vybere zajímavé výrazy dílčího plánu pro budoucí materializaci a opakované použití. Výstupem je soubor zpětné vazby, který obsahuje poznámky k budoucím dotazům SQL Spark. 
+`analyze`Příkaz analyzuje plány dotazů a vytvoří tabulkovou reprezentaci úlohy. K této tabulce úloh se dá dotázat pomocí poznámkového bloku *WorkloadInsights* , který je zahrnutý v úložišti [ukázek HDInsight SparkCruise](https://github.com/Azure-Samples/azure-sparkcruise-samples) . Pak `views` příkaz identifikuje běžné výrazy dílčího plánu a vybere zajímavé výrazy dílčího plánu pro budoucí materializaci a opakované použití. Výstupem je soubor zpětné vazby, který obsahuje poznámky k budoucím dotazům SQL Spark. 
 
 `show`Příkaz zobrazí výstup podobný následujícímu textu:
 

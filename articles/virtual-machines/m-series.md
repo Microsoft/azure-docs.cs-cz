@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 79d0386e12b38eb6590b68ff959911ddc0a0ab5f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505542"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654782"
 ---
 # <a name="m-series"></a>Řada M
 
@@ -66,7 +66,7 @@ Akcelerátor zápisu:  [podporováno](./how-to-enable-write-accelerator.md)
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
+Další informace o typech disků: [typy disků](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky
