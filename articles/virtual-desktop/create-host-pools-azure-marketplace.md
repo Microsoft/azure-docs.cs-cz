@@ -3,15 +3,15 @@ title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Az
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 06ac7719c5ada08da37beffa23801a0201f75dc4
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002659"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661363"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -22,7 +22,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 Tento článek vás provede procesem instalace pro vytvoření fondu hostitelů pro prostředí virtuálních ploch Windows prostřednictvím Azure Portal. Tato metoda poskytuje uživatelské rozhraní založené na prohlížeči k vytvoření fondu hostitelů na virtuálním počítači s Windows, vytvoření skupiny prostředků s virtuálními počítači v rámci předplatného Azure, připojení těchto virtuálních počítačů k doméně Azure Active Directory (AD) a registraci virtuálních počítačů pomocí virtuálního počítače s Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro vytvoření fondu hostitelů musíte zadat následující parametry:
 
@@ -36,7 +36,7 @@ Budete také muset znát následující věci:
 - Kde je zdroj obrázku, který chcete použít. Je to z Galerie Azure nebo se jedná o vlastní image?
 - Vaše přihlašovací údaje k doméně
 
-Ujistěte se také, že jste zaregistrovali poskytovatele prostředků Microsoft. DesktopVirtualization. Pokud jste to ještě neudělali, pokračujte na **odběry**, vyberte název vašeho předplatného a potom vyberte **poskytovatelé prostředků Azure**.
+Ujistěte se také, že jste zaregistrovali poskytovatele prostředků Microsoft. DesktopVirtualization. Pokud jste to ještě neudělali, pokračujte na **odběry**, vyberte název vašeho předplatného a pak vyberte **poskytovatelé prostředků**. Vyhledejte DesktopVirtualization, vyberte Microsoft. DesktopVirtualization a pak vyberte zaregistrovat.
 
 Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
 
@@ -80,9 +80,9 @@ Chcete-li začít vytvářet nový fond hostitelů:
        > [!div class="mx-imgBorder"]
        > ![Snímek obrazovky s polem typu přiřazení se zvolenými možnostmi ve fondu Uživatel v rozevírací nabídce pro vyrovnávání zatížení najede myší na ukazatel nad pozicí – první.](media/pooled-assignment-type.png)
 
-10. Vyberte **Další: podrobnosti o virtuálním počítači**.
+10. Vyberte **Další: Virtual Machines >**.
 
-11. Pokud jste již vytvořili virtuální počítače a chcete je použít s novým fondem hostitelů, vyberte možnost **ne**. Pokud chcete vytvořit nové virtuální počítače a zaregistrovat je do nového fondu hostitelů, vyberte **Ano**.
+11. Pokud jste již vytvořili virtuální počítače a chcete je použít s novým fondem hostitelů, vyberte možnost **ne**, vyberte **Další: pracovní prostor >** a přejděte do části [informace o pracovním prostoru](#workspace-information) . Pokud chcete vytvořit nové virtuální počítače a zaregistrovat je do nového fondu hostitelů, vyberte **Ano**.
 
 Teď, když jste dokončili první část, pojďme přejít k další části procesu nastavení, kde vytvoříme virtuální počítač.
 
@@ -92,16 +92,16 @@ Teď, když máme první část, budete muset nastavit virtuální počítač.
 
 Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitelů:
 
-1. V části Skupina prostředků vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače. Může se jednat o jinou skupinu prostředků než tu, kterou jste použili pro fond hostitelů.
+1. V části **Skupina prostředků**vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače. Může se jednat o jinou skupinu prostředků než tu, kterou jste použili pro fond hostitelů.
 
-2. Vyberte **oblast virtuálního počítače** , ve které chcete vytvořit virtuální počítače. Můžou být stejné nebo odlišné od oblasti, kterou jste vybrali pro fond hostitelů.
+2. Vyberte **umístění virtuálního počítače** , kde chcete vytvořit virtuální počítače. Můžou být stejné nebo odlišné od oblasti, kterou jste vybrali pro fond hostitelů.
 
-3. Pak vyberte velikost virtuálního počítače, který chcete vytvořit. Můžete ponechat výchozí velikost tak, jak je, nebo vybrat **změnit velikost** pro změnu velikosti. Pokud vyberete možnost **změnit velikost**, v zobrazeném okně zvolte velikost virtuálního počítače, který je vhodný pro vaše zatížení.
+3. V dalším kroku vyberte **Velikost virtuálního počítače** , kterou chcete použít. Můžete ponechat výchozí velikost tak, jak je, nebo vybrat **změnit velikost** pro změnu velikosti. Pokud vyberete možnost **změnit velikost**, v zobrazeném okně zvolte velikost virtuálního počítače, který je vhodný pro vaše zatížení.
 
-4. V části počet virtuálních počítačů zadejte počet virtuálních počítačů, které chcete pro fond hostitelů vytvořit.
+4. V části **počet virtuálních počítačů**zadejte počet virtuálních počítačů, které chcete pro fond hostitelů vytvořit.
 
     >[!NOTE]
-    >Proces instalace může během nastavování fondu hostitelů vytvořit až 400 virtuálních počítačů a každý proces nastavení virtuálního počítače vytvoří ve vaší skupině prostředků čtyři objekty. Vzhledem k tomu, že proces vytvoření nekontroluje kvótu předplatného, ujistěte se, že zadaný počet virtuálních počítačů je v rámci virtuálních počítačů Azure a omezení rozhraní API pro vaši skupinu prostředků a předplatné. Po dokončení vytváření fondu hostitelů můžete přidat další virtuální počítače.
+    >Proces instalace může během nastavování fondu hostitelů vytvořit až 400 virtuálních počítačů a každý proces nastavení virtuálního počítače vytvoří ve vaší skupině prostředků čtyři objekty. Vzhledem k tomu, že proces vytváření nekontroluje kvótu předplatného, ujistěte se, že zadaný počet virtuálních počítačů je v rámci virtuálních počítačů Azure a omezení rozhraní API pro skupinu prostředků a předplatné. Po dokončení vytváření fondu hostitelů můžete přidat další virtuální počítače.
 
 5. Potom zadejte **předponu názvu** pro pojmenování virtuálních počítačů, které proces instalace vytvoří. Přípona bude obsahovat `-` čísla od 0.
 
@@ -109,9 +109,11 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     - Pokud zvolíte položku **Galerie**, v rozevírací nabídce vyberte jednu z doporučených imagí:
 
-      - Windows 10 Enterprise s více relacemi, verze 1909 a aplikace Microsoft 365 pro podniky – Gen 1
-      - Windows 10 Enterprise s více relacemi verze 1909 – Gen 1
-      - Windows Server 2019 Datacenter – Gen1
+      - Windows 10 Enterprise s více relacemi verze 1909
+      - Windows 10 Enterprise multi-session verze 1909 + Microsoft 365 Apps
+      - Windows Server 2019 Datacenter
+      - Windows 10 Enterprise s více relacemi verze 2004
+      - Windows 10 Enterprise multi-session verze 2004 + Microsoft 365 Apps
 
      Pokud nevidíte požadovaný obrázek, vyberte **Procházet všechny image a disky**, které vám umožní vybrat v galerii jiný obrázek nebo obrázek poskytnutý Microsoftem a jinými vydavateli.
 
@@ -127,7 +129,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
 7. Vyberte, jaké disky s operačním systémem chcete použít pro vaše virtuální počítače: SSD úrovně Standard, SSD úrovně Premium nebo HDD úrovně Standard.
 
-8. V části síť a zabezpečení vyberte virtuální síť a podsíť, kam chcete umístit virtuální počítače, které vytvoříte. Ujistěte se, že se virtuální síť může připojit k řadiči domény, protože budete muset připojit virtuální počítače uvnitř virtuální sítě k doméně. Dále vyberte, jestli chcete pro virtuální počítače zvolit veřejnou IP adresu. Doporučujeme, abyste vybrali možnost **ne**, protože privátní IP adresa je bezpečnější.
+8. V části síť a zabezpečení vyberte **virtuální síť** a **podsíť** , kam chcete umístit virtuální počítače, které vytvoříte. Ujistěte se, že se virtuální síť může připojit k řadiči domény, protože budete muset připojit virtuální počítače uvnitř virtuální sítě k doméně. Dále vyberte, jestli chcete pro virtuální počítače zvolit veřejnou IP adresu. Doporučujeme, abyste vybrali možnost **ne**, protože privátní IP adresa je bezpečnější.
 
 9. Vyberte druh skupiny zabezpečení, který chcete: **Basic**, **Advanced**nebo **none**.
 
@@ -141,11 +143,11 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     Pokud zvolíte možnost **Upřesnit**, vyberte existující skupinu zabezpečení sítě, kterou jste již nakonfigurovali.
 
-10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Můžete také přidat konkrétní organizační jednotku, ve které chcete virtuální počítače.
+10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Můžete také přidat konkrétní organizační jednotku, ve které chcete virtuální počítače. Pokud zvolíte **ne**, virtuální počítače budou připojené k doméně, která odpovídá příponě **hlavního názvu uživatele (UPN) připojení k doméně AD**.
 
 11. V části účet správce zadejte přihlašovací údaje pro správce Doména služby Active Directory virtuální sítě, kterou jste vybrali.
 
-12. Vyberte **pracovní prostor**.
+12. Vyberte **Další: pracovní prostor >**.
 
 V takovém případě jsme připraveni zahájit další fázi nastavení fondu hostitelů: registrace skupiny aplikací do pracovního prostoru.
 
@@ -161,7 +163,7 @@ Chcete-li zaregistrovat skupinu desktopových aplikací do pracovního prostoru:
 
 2. Dále zvolte, zda chcete vytvořit nový pracovní prostor, nebo vybrat z existujících pracovních prostorů. Registrovat skupinu aplikací můžou pouze pracovní prostory vytvořené ve stejném umístění, ve kterém bude fond hostitelů povolen.
 
-3. Volitelně můžete vybrat **značky**.
+3. Volitelně můžete vybrat **Další: značky >**.
 
     Tady můžete přidat značky, abyste mohli objekty s metadaty seskupovat, aby bylo snazší pro vaše správce.
 

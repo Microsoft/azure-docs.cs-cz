@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272344"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660678"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -704,8 +704,9 @@ Můžete začít s Durable Functions za 10 minut, a to provedením jednoho z tě
 * [C# s využitím sady Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript pomocí Visual Studio Code](quickstart-js-vscode.md)
 * [Python s použitím Visual Studio Code](quickstart-python-vscode.md)
+* [PowerShell s použitím Visual Studio Code](quickstart-powershell-vscode.md)
 
-V obou rychlých startech můžete místně vytvořit a otestovat funkci "Hello World". Kód funkce potom publikujete do Azure. Funkce, kterou vytváříte, orchestruje a řetězí volání dalších funkcí.
+V těchto rychlých startech se místně vytváří a testuje trvalá funkce Hello World. Kód funkce potom publikujete do Azure. Funkce, kterou vytváříte, orchestruje a řetězí volání dalších funkcí.
 
 ## <a name="learn-more"></a>Další informace
 

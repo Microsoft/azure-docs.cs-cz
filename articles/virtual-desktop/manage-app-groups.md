@@ -3,15 +3,15 @@ title: Správa skupin aplikací pro virtuální desktopový portál Windows – 
 description: Správa skupin aplikací virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010085"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659479"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
 
@@ -30,15 +30,19 @@ V tomto kurzu získáte informace o těchto tématech:
 
 Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Portal nebo PowerShellu, můžete přidat skupiny aplikací z Azure Portal pomocí následujícího postupu:
 
-1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2.  Vyhledejte a vyberte **virtuální počítač s Windows**.
 
-3.  V nabídce na levé straně stránky vyberte **skupiny aplikací** a pak vyberte **+ Přidat**.
+3. Můžete přidat skupinu aplikací přímo nebo ji můžete přidat z existujícího fondu hostitelů. Vyberte některou z níže uvedených možností:
 
-4. Na kartě **základy** vyberte skupinu předplatných a skupinu prostředků, pro kterou chcete vytvořit skupinu aplikací. Můžete také vytvořit novou skupinu prostředků a nemusíte si vybrat některou z existujících.
+    - V nabídce na levé straně stránky vyberte **skupiny aplikací** a pak vyberte **+ Přidat**.
 
-5. Z rozevírací nabídky vedle **fondu hostitelů**vyberte fond hostitelů, který bude přidružený ke skupině aplikací.
+    - V nabídce na levé straně obrazovky vyberte **fondy hostitelů** , vyberte název fondu hostitelů, v nabídce na levé straně vyberte **skupiny aplikací** a pak vyberte **+ Přidat**. V takovém případě se fond hostitelů už vybere na kartě základy.
+
+4. Na kartě **základy** vyberte **předplatné** a **skupinu prostředků** , pro které chcete vytvořit skupinu aplikací. Můžete také vytvořit novou skupinu prostředků a nemusíte si vybrat některou z existujících.
+
+5. Z rozevírací nabídky vyberte **fond hostitelů** , který bude přidružen ke skupině aplikací.
 
     >[!NOTE]
     >Musíte vybrat fond hostitelů přidružený ke skupině aplikací. Skupiny aplikací mají aplikace nebo plochy, které jsou obsluhovány od hostitele relace, a hostitelé relace jsou součástí fondů hostitelů. Skupina aplikací musí být během vytváření přidružená ke fondu hostitelů.
@@ -46,41 +50,27 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky karty základy v Azure Portal.](media/basics-tab.png)
 
-6. Pokud chcete přidat skupiny aplikací do fondu hostitelů, vyberte v nabídce na levé straně obrazovky **fondy hostitelů** .
-
-    Pak vyberte název fondu hostitelů, do kterého chcete přidat skupiny aplikací.
-
-    Potom v nabídce na levé straně obrazovky vyberte **skupiny aplikací** a pak vyberte **+ Přidat**.
-
-    Nakonec vyberte skupinu předplatných a skupinu prostředků, ve které chcete vytvořit skupinu aplikací. Můžete buď vybrat název existující skupiny prostředků z rozevírací nabídky, nebo vybrat **vytvořit nové** a vytvořit novou.
-
-      >[!NOTE]
-      >Když do fondu hostitelů přidáte skupiny aplikací, fond hostitelů, který souvisí se skupinou aplikací, je už vybraný, protože jste na něj přešli.
-      >
-      > [!div class="mx-imgBorder"]
-      >![Snímek obrazovky s kartou základy s předvybraným fondem hostitelů.](media/host-pool-selected.png)
-
-7. V části Typ skupiny aplikací vyberte **Vzdálená aplikace RemoteApp** a potom zadejte název vaší aplikace RemoteApp.
+6. V části **typ skupiny aplikací**vyberte **Vzdálená aplikace RemoteApp** a potom zadejte název vaší aplikace RemoteApp.
 
       > [!div class="mx-imgBorder"]
       > ![Snímek obrazovky s poli typu skupiny aplikací. Je zvýrazněna Vzdálená aplikace RemoteApp.](media/remoteapp-button.png)
 
-8.  Vyberte kartu **přiřazení** .
+7.  Vyberte **Další: přiřazení >** kartě.
 
-9.  Pokud chcete publikovat jednotlivé uživatele nebo skupiny uživatelů ve skupině aplikací, vyberte **+ Přidat uživatele nebo skupiny uživatelů Azure AD**.
+8.  Pokud chcete přiřadit jednotlivé uživatele nebo skupiny uživatelů ke skupině aplikací, vyberte **+ Přidat uživatele nebo skupiny uživatelů Azure AD**.
 
-10.  Vyberte počet uživatelů, do kterých chcete přidat aplikace. Můžete vybrat jednoho nebo více uživatelů a skupin uživatelů.
+9.  Vyberte uživatele, kteří mají mít přístup k aplikacím. Můžete vybrat jednoho nebo více uživatelů a skupin uživatelů.
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky nabídky výběru uživatele](media/select-users.png)
 
-11.  Vyberte **Vybrat**.
+10.  Vyberte **Vybrat**.
 
-12.  Vyberte kartu **aplikace** a pak vyberte **+ Přidat aplikace**.
+11.  Vyberte **Další: aplikace >** a pak vyberte **+ Přidat aplikace**.
 
-13.  Přidání aplikace z nabídky Start:
+12.  Přidání aplikace z nabídky Start:
 
-      - Přejděte do části **zdroj aplikace** a v rozevírací nabídce vyberte **Nabídka Start** . Potom přejděte na **aplikace** a z rozevírací nabídky vyberte aplikaci.
+      - V části **zdroj aplikace**v rozevírací nabídce vyberte **Nabídka Start** . Dále v části **aplikace**vyberte aplikaci z rozevírací nabídky.
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky obrazovky Přidat aplikaci s vybranou nabídkou Start](media/add-app-start.png)
@@ -89,11 +79,11 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
 
       - Ostatní možnosti ponechte zapnuté a vyberte **Uložit**.
 
-14. Přidání aplikace z konkrétní cesty k souboru:
+13.  Přidání aplikace z konkrétní cesty k souboru:
 
-      - Přejděte na **zdroj aplikace** a v rozevírací nabídce vyberte **cesta k souboru** .
+      - V části **zdroj aplikace**vyberte v rozevírací nabídce možnost **cesta k souboru** .
 
-      - Zadejte cestu k aplikaci na hostiteli relace, která je zaregistrovaná u přidruženého fondu hostitelů.
+      - Do pole **cesta k aplikaci**zadejte cestu k aplikaci na hostiteli relace registrovaném s přidruženým fondem hostitelů.
 
       - Zadejte podrobnosti aplikace do polí **název aplikace**, **Zobrazovaný název**, **cesta ikony**a **index ikony** .
 
@@ -102,11 +92,11 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky se stránkou přidat aplikaci s vybranou cestou k souboru](media/add-app-file.png)
 
-     Tento postup opakujte pro každou aplikaci, kterou chcete přidat do skupiny aplikací.
+14.  Tento postup opakujte pro každou aplikaci, kterou chcete přidat do skupiny aplikací.
 
-15.  V dalším kroku vyberte kartu **pracovní prostor** .
+15.  Potom vyberte **Další: >pracovního prostoru **.
 
-16.  Pokud chcete zaregistrovat skupinu aplikací k pracovnímu prostoru, klikněte na **zaregistrovat skupinu aplikací** a vyberte **Ano**. Pokud místo toho chcete skupinu aplikací zaregistrovat později, vyberte možnost **ne**.
+16.  Pokud chcete zaregistrovat skupinu aplikací k pracovnímu prostoru, pro **registraci skupiny aplikací**vyberte **Ano** . Pokud místo toho chcete skupinu aplikací zaregistrovat později, vyberte možnost **ne**.
 
 17.  Pokud vyberete **Ano**, můžete vybrat existující pracovní prostor, do kterého se má skupina aplikací zaregistrovat.
 
@@ -116,11 +106,11 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky se stránkou zaregistrovat skupinu aplikací pro už existující pracovní prostor Fond hostitelů je předvybraný.](media/register-existing.png)
 
-18. Případně, pokud chcete vytvořit značky, které usnadňují uspořádání vašeho pracovního prostoru, vyberte kartu **značky** a zadejte názvy značek.
+18.  Případně, pokud chcete vytvořit značky, které usnadňují uspořádání vašeho pracovního prostoru, vyberte **Další: značky >** a zadejte názvy značek.
 
-19. Až budete hotovi, vyberte kartu **Revize + vytvořit** .
+19.  Až budete hotovi, vyberte **zkontrolovat + vytvořit**.
 
-20. Počkejte, než se proces ověření dokončí. Až to bude hotové, vyberte **vytvořit** a nasaďte skupinu aplikací.
+20.  Počkejte, než se proces ověření dokončí. Až to bude hotové, vyberte **vytvořit** a nasaďte skupinu aplikací.
 
 Proces nasazení provede následující akce:
 

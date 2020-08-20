@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/20/2020
+ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211505"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660965"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -147,9 +147,18 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
    using Azure.Search.Documents.Models;
    ```
 
-1. Nahraďte [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) pomocí [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential).
+1. Opravte kód ověřování klienta. V předchozích verzích byste pomocí vlastností objektu klienta nastavili klíč rozhraní API (například vlastnost [SearchServiceClient. credentialss](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) ). V aktuální verzi použijte třídu [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) a předejte klíč jako přihlašovací údaje, takže v případě potřeby můžete klíč rozhraní API aktualizovat bez vytváření nových objektů klienta.
 
-1. Aktualizujte klientské odkazy pro objekty související s indexerem. Pokud používáte indexery, zdroje dat nebo dovednosti, změňte odkazy klienta na [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient). Tento klient je ve verzi 11 novinkou a nemá žádného předchůdce.
+   Vlastnosti klienta byly zjednodušeny pouze pro `Endpoint` , `ServiceName` a `IndexName` (kde je to vhodné). Následující příklad používá třídu [identifikátoru URI](https://docs.microsoft.com/dotnet/api/system.uri) systému k poskytnutí koncového bodu a třídy [prostředí](https://docs.microsoft.com//dotnet/api/system.environment) pro čtení v hodnotě klíče:
+
+   ```csharp
+   Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+   AzureKeyCredential credential = new AzureKeyCredential(
+      Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+   SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
+   ```
+
+1. Přidejte nové odkazy na klienty pro objekty související s indexerem. Pokud používáte indexery, zdroje dat nebo dovednosti, změňte odkazy klienta na [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient). Tento klient je ve verzi 11 novinkou a nemá žádného předchůdce.
 
 1. Aktualizujte klientské odkazy na dotazy a import dat. Instance [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) by měly být změněny na [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient). Aby nedošlo k nejasnostem názvů, před pokračováním na další krok nezapomeňte zachytit všechny instance.
 

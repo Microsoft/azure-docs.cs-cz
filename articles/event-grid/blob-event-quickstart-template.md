@@ -3,12 +3,12 @@ title: Odeslání událostí služby Blob Storage do webového koncového bodu �
 description: Pomocí Azure Event Grid a šablony Azure Resource Manager vytvořte účet úložiště objektů BLOB a přihlaste se k odběru událostí. Odeslat události do Webhooku
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460435"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661261"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony ARM
 
@@ -41,7 +41,7 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/).
 
-:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 
@@ -51,7 +51,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující odkaz pro přihlášení do Azure a otevřete šablonu. Šablona vytvoří Trezor klíčů a tajný klíč.
+1. Vyberte následující odkaz, přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Trezor klíčů a tajný klíč.
 
     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
@@ -87,6 +87,6 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 Další informace o šablonách Azure Resource Manager najdete v následujících článcích:
 
 * [Dokumentace k Azure Resource Manager](../azure-resource-manager/index.yml)
-* [Definování prostředků v šablonách Azure Resource Manager](/azure/templates/)
-* [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
+* [Definice prostředků v šabloně Azure Resource Manageru](/azure/templates/)
+* [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
 * [Šablony Azure Event Grid](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

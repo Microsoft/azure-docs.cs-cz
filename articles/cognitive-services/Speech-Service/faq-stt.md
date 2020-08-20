@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921016"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661516"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -75,7 +75,7 @@ Odpověď **: ve**výchozím nastavení se požadavky neprotokolují (ani zvuk a
 
 **Otázka: jsou omezeny moje požadavky?**
 
-Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod řeči na text](speech-to-text.md).
+**A**Odpověď: viz [kvóty a limity služby Speech Services](speech-services-quotas-and-limits.md).
 
 **Otázka: jak se mi účtuje zvuk Dual Channel?**
 
@@ -85,52 +85,14 @@ Odpověď **: Pokud**odešlete každý kanál samostatně (každý kanál ve vla
 > Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
 
 ## <a name="increasing-concurrency"></a>Zvýšení souběžnosti
+Viz [kvóty a limity služby Speech Services](speech-services-quotas-and-limits.md).
 
-**Otázka: Co když potřebuji vyšší souběžnost pro nasazený model, než je nabídka na portálu?**
-
-Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných požadavcích.
-
-Pomocí požadovaných informací vytvořte žádost o podporu na [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Nezveřejňujte informace na žádném z veřejných kanálů (GitHub, StackOverflow,...), které jsou uvedené na [stránce podpory](support.md).
-
-Pro zvýšení souběžnosti pro ***vlastní model***potřebujeme následující informace:
-
-- Oblast, ve které je model nasazený,
-- ID koncového bodu nasazeného modelu:
-  - Máte [Custom Speech portálu](https://aka.ms/customspeech),
-  - přihlásit (v případě potřeby)
-  - Vyberte svůj projekt a nasazení,
-  - Vyberte koncový bod, pro který potřebujete zvýšení souběžnosti,
-  - Zkopírujte `Endpoint ID` .
-
-Pro zvýšení souběžnosti pro ***základní model***potřebujeme následující informace:
-
-- Oblast vaší služby,
-
-a buď
-
-- přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
-
-nebo
-
-- ID prostředku pro vaše předplatné:
-  - Přejít na [Azure Portal](https://portal.azure.com),
-  - `Cognitive Services`do vyhledávacího pole vyberte.
-  - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
-  - Zobrazit `Properties` pro tuto službu,
-  - Zkopírujte dokončeno `Resource ID` .
-  
-**Otázka: zvýší počet mých souběžných souběžnosti na moje náklady?**
-
-Odpověď: Ne, náklady vycházejí **z využití**. Zvýšení souběžnosti nemá za následek vyšší náklady. Podrobnosti o nákladech najdete na naší [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) . 
-  
->[!NOTE]
->[Kontejnery](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) nevyžadují zvýšení omezení souběžnosti, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
 
 ## <a name="importing-data"></a>Importing data
 
 **Otázka: Jaký je limit velikosti datové sady a proč je limit?**
 
-**O**: aktuální limit pro datovou sadu je 2 GB. Omezení je způsobeno omezením velikosti souboru pro nahrání protokolu HTTP.
+Odpověď **: omezení**je způsobeno omezením velikosti souboru pro NAHRÁNÍ protokolu HTTP. Skutečný limit najdete v tématu [kvóty a limity služby Speech Services](speech-services-quotas-and-limits.md) .
 
 **Otázka: můžu odeslat textové soubory, aby mohl nahrát větší textový soubor?**
 
@@ -198,11 +160,11 @@ Odpověď **: závisí**na tom, jak se liší slovní a slovní fráze používa
 
 **Otázka: Jaké prostředí pro rozpoznávání řeči vylepšuje model tenanta?**
 
-**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předají token AAD uživatele, který indikuje členství v podniku.
+**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předá uživatelský token Azure AD, který indikuje členství v podniku.
 
 Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, jako je například popis diktování a aplikace PowerPoint, se při vytváření modelu tenanta pro aplikace služby Speech nemění.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží](troubleshooting.md)
+- [Odstraňování potíží](troubleshooting.md)
 - [Zpráva k vydání verze](releasenotes.md)

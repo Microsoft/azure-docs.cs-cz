@@ -3,12 +3,12 @@ title: Správa a sledování SQL Server databáze na virtuálním počítači Az
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537300"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659538"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -38,7 +38,7 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
@@ -58,7 +58,7 @@ Můžete zastavit zálohování databáze SQL Server několika způsoby:
 Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 
 - Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
-- Bude se vám účtovat za chráněnou instanci a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
+- Bude se vám účtovat chráněná instance a spotřebované úložiště. Další informace najdete v tématu [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/).
 - Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří. V souladu se zásadami vyprší platnost starých bodů obnovení, ale jeden poslední bod obnovení bude vždycky uložený, dokud nezastavíte zálohování a data odstraníte.
 
 Zastavení ochrany databáze:
@@ -117,24 +117,6 @@ I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uch
 
 Další informace najdete v tématu [SQL Server typy zálohování](backup-architecture.md#sql-server-backup-types).
 
-## <a name="unregister-a-sql-server-instance"></a>Zrušení registrace instance SQL Server
-
-Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstraněním trezoru:
-
-1. Na řídicím panelu trezoru v části **Spravovat**vyberte **infrastruktura zálohování**.  
-
-   ![Výběr infrastruktury zálohování](./media/backup-azure-sql-database/backup-infrastructure-button.png)
-
-2. V části **servery pro správu**vyberte **chráněné servery**.
-
-   ![Vybrat chráněné servery](./media/backup-azure-sql-database/protected-servers.png)
-
-3. V části **chráněné servery**vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů.
-
-4. Klikněte pravým tlačítkem myši na chráněný Server a vyberte zrušit **registraci**.
-
-   ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
-
 ## <a name="modify-policy"></a>Upravit zásadu
 
 Upravte zásadu pro změnu četnosti zálohování nebo rozsahu uchovávání.
@@ -160,11 +142,31 @@ Verzi zásad můžete u všech ovlivněných položek opravit jedním kliknutím
 
   ![Opravit nekonzistentní zásady](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 
+## <a name="unregister-a-sql-server-instance"></a>Zrušení registrace instance SQL Server
+
+Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstraněním trezoru:
+
+1. Na řídicím panelu trezoru v části **Spravovat**vyberte **infrastruktura zálohování**.  
+
+   ![Výběr infrastruktury zálohování](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+
+2. V části **servery pro správu**vyberte **chráněné servery**.
+
+   ![Vybrat chráněné servery](./media/backup-azure-sql-database/protected-servers.png)
+
+3. V části **chráněné servery**vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů.
+
+4. Klikněte pravým tlačítkem myši na chráněný Server a vyberte zrušit **registraci**.
+
+   ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 
-V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo na druhý. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného registrace znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly.
+V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo jiné. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného zápisu znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly. Tuto možnost najdete v části **infrastruktura zálohování** v trezoru služby Recovery Services.
 
-Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může vést k selhání všech probíhajících úloh. Před aktivací operace opětovného registrace zkontrolujte, zda některé z těchto [symptomů](backup-sql-server-azure-troubleshoot.md#re-registration-failures) existuje.
+![Chráněné servery v rámci infrastruktury zálohování](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
+
+Tuto možnost používejte opatrně. Pokud se aktivuje na virtuálním počítači s již nedobrým rozšířením, tato operace způsobí restartování rozšíření. To může způsobit selhání všech probíhajících úloh. Před aktivací operace opětovného registrace se podívejte na jeden nebo více [příznaků](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
 
 ## <a name="next-steps"></a>Další kroky
 

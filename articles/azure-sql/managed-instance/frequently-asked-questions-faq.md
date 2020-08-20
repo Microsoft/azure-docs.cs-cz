@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661414"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -223,12 +223,15 @@ Pokud chcete optimalizovat výkon úložiště, přečtěte si téma [osvědčen
 Ne, úložiště zálohování se neodečte z prostoru úložiště spravované instance. Úložiště zálohování je nezávislé na rozsahu úložiště instance a velikost není omezená. Úložiště zálohování je omezeno časovým obdobím, aby se zachovalo zálohování databází instancí, a to s možností konfigurace až 35 dní. Podrobnosti najdete v tématu [automatizované zálohování](../database/automated-backups-overview.md).
 
 **Jak zjistím, kdy se v mé spravované instanci provádí automatizované zálohování?**
+
 Pokud chcete sledovat, kdy se na spravované instanci provádělo automatizované zálohování, přečtěte si téma [jak sledovat automatizované zálohování pro spravovanou instanci SQL Azure](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355).
 
 **Je podporováno zálohování na vyžádání?**
+
 Ano, v Blob Storage Azure můžete vytvořit úplnou zálohu, která je jen pro kopírování, ale bude obnovitelné jenom ve spravované instanci. Podrobnosti najdete v tématu [zálohování jen pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Zálohování jen pro kopírování ale není možné, pokud je databáze zašifrovaná službou TDE spravované službou, protože certifikát použitý k šifrování je nepřístupný. V takovém případě použijte funkci obnovení k bodu v čase k přesunu databáze na jinou spravovanou instanci SQL nebo přepněte na klíč spravovaný zákazníkem.
 
 **Je nativní obnovení (ze souborů. bak) do podporované spravované instance?**
+
 Ano, podporuje se a je k dispozici pro SQL Server 2005 a verze.  Pokud chcete použít nativní obnovení, nahrajte soubor. bak do Azure Blob Storage a spusťte příkazy T-SQL. Další podrobnosti najdete v tématu [nativní obnovení z adresy URL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
 
 ## <a name="business-continuity"></a>Kontinuita podnikových procesů
@@ -296,7 +299,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
-## <a name="connectivity"></a>Možnosti připojení 
+## <a name="connectivity"></a>Připojení 
 
 **Můžu se k spravované instanci připojit pomocí IP adresy?**
 
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (nahraďte ' test ' s požadovaným přihlašovacím jménem a upravte hodnoty zásady a vypršení platnosti.)
+
+
+## <a name="service-updates"></a>Aktualizace služeb
+
+**Jaká je plánovaná událost údržby pro spravovanou instanci SQL?**
+
+Viz [plánování událostí údržby Azure ve spravované instanci SQL](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+
 
 ## <a name="azure-feedback-and-support"></a>Názory a podpora Azure
 

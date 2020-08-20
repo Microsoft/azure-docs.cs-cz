@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80236032"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660243"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
@@ -37,7 +37,7 @@ Používáme Azure Notebooks k hostování dvou poznámkových bloků Jupyter a 
 * **Rychlý Start:** [Vytvoření a sdílení poznámkového bloku](../notebooks/quickstart-create-share-jupyter-notebook.md)
 * **Kurz:** [Vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Použití poznámkových bloků Azure zajišťuje konzistentní prostředí pro cvičení.
+Použití Azure Notebooks zajišťuje konzistentní prostředí pro cvičení.
 
 > [!NOTE]
 > Po nastavení se k Azure Notebooks službě dostanete z libovolného počítače. Během instalace byste měli použít vývojový virtuální počítač, který bude mít všechny soubory, které budete potřebovat.
@@ -46,7 +46,7 @@ Použití poznámkových bloků Azure zajišťuje konzistentní prostředí pro 
 
 Chcete-li použít Azure Notebooks, je nutné vytvořit účet. Účty poznámkového bloku Azure jsou nezávislé na předplatných Azure.
 
-1. Přejděte do [poznámkových bloků Azure](https://notebooks.azure.com).
+1. Přejděte na [Azure Notebooks](https://notebooks.azure.com).
 
 1. V pravém horním rohu stránky klikněte na **Přihlásit** se.
 
@@ -62,7 +62,7 @@ Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámk
 
 1. Na stránce uživatele nového účtu v horním řádku nabídek vyberte **Moje projekty** .
 
-1. Kliknutím na **+** tlačítko přidejte nový projekt.
+1. Kliknutím na tlačítko přidejte nový projekt **+** .
 
 1. V dialogovém okně **vytvořit nový projekt** zadejte **název projektu**. 
 
@@ -84,23 +84,23 @@ Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámk
 
 Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks. Aktivity v této části kurzu jsou rozloženy mezi dva soubory poznámkového bloku, které používají několik podpůrných souborů.
 
-* **01 – turbofan\_regrese. ipynb:** Tento Poznámkový blok používá pracovní prostor služby Machine Learning k vytvoření a spuštění experimentu machine learningu. Poznámkový blok v podstatě provede následující kroky:
+* **01 – turbofan \_ regrese. ipynb:** tento poznámkový blok používá pracovní prostor služby Machine Learning k vytvoření a spuštění experimentu machine learningu. Poznámkový blok v podstatě provede následující kroky:
 
   1. Stáhne data z Azure Storage účtu, který vygenerovalo předaný svazek zařízení.
   1. Prozkoumá a připraví data a pak data použije ke školení modelu třídění.
-  1. Vyhodnoťte model z experimentu pomocí testovací datové sady (test\_FD003. txt).
+  1. Vyhodnoťte model z experimentu pomocí testovací datové sady (testovací \_FD003.txt).
   1. Publikuje nejlepší model třídění v pracovním prostoru služby Machine Learning.
 
-* **02 – turbofan\_nasazení\_modelu. ipynb:** Tento Poznámkový blok získá model vytvořený v předchozím poznámkovém bloku a použije ho k vytvoření image kontejneru, která je připravená k nasazení do zařízení Azure IoT Edge. Poznámkový blok provede následující kroky:
+* **02 – turbofan \_ nasazení \_ modelu. ipynb:** tento poznámkový blok získá model vytvořený v předchozím poznámkovém bloku a použije ho k vytvoření image kontejneru, která je připravená k nasazení do zařízení Azure IoT Edge. Poznámkový blok provede následující kroky:
 
   1. Vytvoří skript bodování pro model.
   1. Vytvoří Image kontejneru pomocí modelu klasifikátoru, který byl uložen v pracovním prostoru služby Machine Learning.
   1. Nasadí Image jako webovou službu ve službě Azure Container instance.
   1. Používá webovou službu k ověření modelu a image funguje podle očekávání. Ověřená bitová kopie se nasadí do našeho zařízení IoT Edge v části [Vytvoření a nasazení vlastních IoT Edge modulů](tutorial-machine-learning-edge-06-custom-modules.md) v tomto kurzu.
 
-* **Test\_FD003. txt:** Tento soubor obsahuje data, která budeme používat jako naši sadu testů při ověřování našeho učeného třídění. Rozhodli jsme se používat testovací data, jak je k dispozici pro původní soutěž, jako naše testovací sada pro zjednodušení.
+* **Testovací \_FD003.txt:** tento soubor obsahuje data, která budeme používat jako naši sadu testů při ověřování našeho vyučeného třídění. Rozhodli jsme se používat testovací data, jak je k dispozici pro původní soutěž, jako naše testovací sada pro zjednodušení.
 
-* **RUL\_FD003. txt:** tento soubor obsahuje zbývající užitečnou životnost (RUL) pro poslední cyklus každého zařízení v souboru Test\_FD003. txt. Podrobné vysvětlení dat najdete v souboru Readme. txt a v článku C\\: Source\\IoTEdgeAndMlSample\\data\\Turbofan.
+* **RUL \_FD003.txt:** tento soubor obsahuje zbývající dobu života (RUL) pro poslední cyklus každého zařízení v testovacím \_FD003.txt souboru. Podrobné vysvětlení dat najdete v tématu readme.txt a šíření poškození Modeling.pdf souborů ve službě C: \\ source \\ IoTEdgeAndMlSample \\ data \\ Turbofan.
 
 * **Utils.py:** Obsahuje sadu funkcí nástrojů Pythonu pro práci s daty. První Poznámkový blok obsahuje podrobné vysvětlení funkcí.
 
@@ -110,7 +110,7 @@ Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks
 
 Teď, když je projekt vytvořený, můžete spustit poznámkové bloky. 
 
-1. Na stránce projektu vyberte **01-turbofan\_regrese. ipynb**.
+1. Na stránce projektu vyberte **01-turbofan \_ regrese. ipynb**.
 
     ![Vyberte první Poznámkový blok, který chcete spustit.](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
@@ -118,9 +118,9 @@ Teď, když je projekt vytvořený, můžete spustit poznámkové bloky.
 
 1. Pro dosažení nejlepších výsledků si přečtěte dokumentaci pro každou buňku a spusťte ji samostatně. Na panelu nástrojů vyberte **Spustit** . Později zjistíte, že pro spuštění více buněk bude vhodné. Můžete debrát v úvahu aktualizace a upozornění na zastarání.
 
-    Když je buňka spuštěná, zobrazí se hvězdička v hranatých závorkách (\*[]). Po dokončení operace buňky je hvězdička nahrazena číslem a může se zobrazit relevantní výstup. Buňky v poznámkovém bloku se sestavují sekvenčně a v jednu chvíli může běžet jenom jedna.
+    Když je buňka spuštěná, zobrazí se hvězdička v hranatých závorkách ([ \* ]). Po dokončení operace buňky je hvězdička nahrazena číslem a může se zobrazit relevantní výstup. Buňky v poznámkovém bloku se sestavují sekvenčně a v jednu chvíli může běžet jenom jedna.
 
-    Můžete také použít možnosti spuštění z nabídky **buňka** , `Ctrl`  +  `Enter` spustit buňku `Shift`  +  `Enter` a spustit buňku a přejít na další buňku.
+    Můžete také použít možnosti spuštění z nabídky **buňka** , `Ctrl`  +  `Enter` Spustit buňku a `Shift`  +  `Enter` Spustit buňku a přejít na další buňku.
 
     > [!TIP]
     > V případě konzistentních operací s buňkami nepoužívejte stejný Poznámkový blok z více karet v prohlížeči.
@@ -145,7 +145,7 @@ Teď, když je projekt vytvořený, můžete spustit poznámkové bloky.
 
 1. Uložte Poznámkový blok a vraťte se na stránku projektu.
 
-1. Otevřete **02-turbofan\_nasazení\_model. ipynb** a spusťte každou buňku. K ověření se budete muset přihlásit v buňce, která následuje po **konfiguraci pracovního prostoru**.
+1. Otevřete **02-turbofan \_ nasazení \_ model. ipynb** a spusťte každou buňku. K ověření se budete muset přihlásit v buňce, která následuje po **konfiguraci pracovního prostoru**.
 
 1. Uložte Poznámkový blok a vraťte se na stránku projektu.
 
@@ -157,10 +157,10 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující soubory:
 
-    | File | Popis |
+    | Soubor | Popis |
     | --- | --- |
-    | ./aml_config/.AzureML/config.JSON | Konfigurační soubor, který se používá k vytvoření pracovní prostor Azure Machine Learning. |
-    | ./aml_config/model_config. JSON | Konfigurační soubor, který budeme potřebovat k nasazení modelu v pracovním prostoru **turbofanDemo** Machine Learning v Azure. |
+    | ./aml_config/.AzureML/config.jsna | Konfigurační soubor, který se používá k vytvoření pracovní prostor Azure Machine Learning. |
+    | ./aml_config/model_config.jsna | Konfigurační soubor, který budeme potřebovat k nasazení modelu v pracovním prostoru **turbofanDemo** Machine Learning v Azure. |
     | MyENV. yml| Poskytuje informace o závislostech pro nasazený Machine Learning model.|
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
@@ -175,7 +175,7 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 ### <a name="debugging"></a>Ladění
 
-Do poznámkového bloku můžete vkládat příkazy Pythonu pro ladění, jako `print()` je například příkaz pro zobrazení hodnot. Pokud vidíte proměnné nebo objekty, které nejsou definovány, spusťte buňky, kde jsou nejprve deklarovány nebo vytvořeny instance.
+Do poznámkového bloku můžete vkládat příkazy Pythonu pro ladění, jako je například `print()` příkaz pro zobrazení hodnot. Pokud vidíte proměnné nebo objekty, které nejsou definovány, spusťte buňky, kde jsou nejprve deklarovány nebo vytvořeny instance.
 
 Pokud potřebujete opakovat poznámkové bloky, možná budete muset odstranit dříve vytvořené soubory a prostředky Azure.
 

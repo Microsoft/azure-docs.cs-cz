@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f4049cca317d254bd5ee120e47cedc4cd42300e8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926480"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660123"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -30,7 +30,7 @@ Pokud se v konfiguraci zálohování nezobrazuje virtuální počítač SQL a je
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>Krok 1: zjištění databáze na virtuálních počítačích
 
-- Pokud není virtuální počítač uvedený v seznamu zjištěných virtuálních počítačů a není zaregistrovaný pro zálohování SQL v jiném trezoru, postupujte podle kroků [SQL Server zálohování pro zjišťování](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) .
+- Pokud není virtuální počítač uvedený v seznamu zjištěných virtuálních počítačů a není zaregistrován pro zálohování SQL v jiném úložišti, postupujte podle kroků [SQL Server zálohování](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) .
 
 ### <a name="step-2-configure-backup"></a>Krok 2: Konfigurace zálohování
 
@@ -62,7 +62,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Závažnost | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
-| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
+| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Rozdílové zálohování a zálohování protokolu transakcí není možné. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -113,6 +113,13 @@ V některých případech se může stát, že při operacích zálohování a o
 |---|---|---|
 | Obnovení selhalo, protože databázi nejde nastavit offline. | I když provádíte obnovení, musí být cílová databáze přepnuta do režimu offline. Azure Backup nemůže převést tato data do režimu offline. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Další informace najdete v [dokumentaci k SQL Serveru](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
+### <a name="wlextgenericiofaultusererror"></a>WlExtGenericIOFaultUserError
+
+|Chybová zpráva |Možné příčiny  |Doporučená akce  |
+|---------|---------|---------|
+|Během operace došlo k chybě vstupu/výstupu. Zkontrolujte běžné vstupně-výstupní chyby na virtuálním počítači.   |   Přístupová oprávnění nebo omezení místa na cíli.       |  Vyhledejte běžné vstupně-výstupní chyby na virtuálním počítači. Zajistěte, aby cílová jednotka nebo síťová sdílená položka v počítači: <li> má oprávnění ke čtení a zápisu pro účet NT AUTHORITY\SYSTEM v počítači. <li> má dostatek místa pro úspěšné dokončení operace.<br> Další informace najdete v tématu [obnovení souborů](restore-sql-database-azure-vm.md#restore-as-files).
+       |
+
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
@@ -129,7 +136,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Předvolbu zálohování pro skupinu dostupnosti SQL AlwaysOn není možné zajistit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou potřebné k provedení zálohování, nejsou registrovány nebo jsou nedosažitelné. | <ul><li>Zajistěte, aby všechny uzly potřebné k provedení záloh této databáze byly registrovány a v pořádku, a potom operaci opakujte.</li><li>Změňte předvolby zálohování pro skupinu dostupnosti Always On SQL Server.</li></ul> |
+| Předvolbu zálohování pro skupinu dostupnosti SQL AlwaysOn není možné zajistit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou nutné k provedení zálohování, nejsou registrovány nebo jsou nedosažitelné. | <ul><li>Zajistěte, aby všechny uzly potřebné k provedení záloh této databáze byly registrovány a v pořádku, a potom operaci opakujte.</li><li>Změňte předvolby zálohování pro skupinu dostupnosti Always On SQL Server.</li></ul> |
 
 ### <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 
@@ -153,19 +160,19 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Operace je blokovaná, protože jste dosáhli limitu počtu operací povolených během 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. <br> Příklad: Pokud jste dosáhli limitu pro počet úloh konfigurace zálohování, které se můžou aktivovat za den, a pokusíte se nakonfigurovat zálohování pro novou položku, zobrazí se tato chyba. | Obvykle se tento problém vyřeší opakováním operace po 24 hodinách. Pokud se ale problém nevyřeší, můžete požádat o pomoc podporu Microsoftu.
+Operace je blokovaná, protože jste dosáhli limitu počtu operací povolených během 24 hodin. | Když jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, zobrazí se tato chyba. <br> Příklad: Pokud jste dosáhli limitu pro počet úloh konfigurace zálohování, které se můžou aktivovat za den, a pokusíte se nakonfigurovat zálohování pro novou položku, zobrazí se tato chyba. | Obvykle se tento problém vyřeší opakováním operace po 24 hodinách. Pokud se ale problém nevyřeší, můžete požádat o pomoc podporu Microsoftu.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. K této chybě obvykle dochází v případě, že dojde k operacím v měřítku, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit, ale ve skutečnosti Azure Backup služba bude operace opakovat interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách.
+Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Když jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, zobrazí se tato chyba. Tato chyba se obvykle zobrazuje v případě, že dojde k operacím na škálování, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit. Služba Azure Backup služby ve skutečnosti zopakuje operace interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách.
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu. | Virtuální počítač potřebuje odchozí připojení ke službě Azure Backup, Azure Storage nebo Azure Active Directory.| – Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup Azure Backup služby, Azure Storage nebo Azure Active Directory služby. Pomocí těchto [kroků](./backup-sql-server-database-azure-vms.md#nsg-tags) udělíte přístup.<br>– Zajistěte překlad koncových bodů Azure DNS.<br>– Ověřte, jestli je virtuální počítač za nástrojem pro vyrovnávání zatížení blokující přístup k Internetu. Po přiřazení veřejné IP adresy k virtuálním počítačům bude zjišťování fungovat.<br>– Ověřte, že není k dispozici brána firewall/antivirová ochrana nebo proxy server blokující volání výše uvedených tří cílových služeb.
+Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu. | Virtuální počítač potřebuje odchozí připojení k Azure Backup službě, Azure Storage nebo službám Azure Active Directory.| – Pokud k omezení připojení používáte NSG, měli byste použít značku služby AzureBackup a povolit odchozí přístup k Azure Backup službě, Azure Storage nebo službám Azure Active Directory. Pomocí těchto [kroků](./backup-sql-server-database-azure-vms.md#nsg-tags) udělíte přístup.<br>– Zajistěte překlad koncových bodů Azure DNS.<br>– Ověřte, jestli je virtuální počítač za nástrojem pro vyrovnávání zatížení blokující přístup k Internetu. Po přiřazení veřejné IP adresy k virtuálním počítačům bude zjišťování fungovat.<br>– Ověřte, že není k dispozici brána firewall/antivirová ochrana nebo proxy server blokující volání výše uvedených tří cílových služeb.
 
 ## <a name="re-registration-failures"></a>Selhání opětovné registrace
 
@@ -261,7 +268,7 @@ V předchozím obsahu můžete získat logický název databázového souboru po
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
-  ```
+```
 
 Tento soubor by měl být umístěn před aktivací operace obnovení.
 

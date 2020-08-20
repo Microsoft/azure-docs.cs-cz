@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6316bcc91bb381facb4f77b2d8dbd8b22f9ed387
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652861"
+ms.locfileid: "88660091"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
@@ -35,10 +35,6 @@ Urychlené používání sítě Azure není v tuto chvíli povolené, ale v prů
 ## <a name="qp0-access-restriction"></a>Omezení přístupu qp0
 
 Aby nedocházelo k hardwarovému přístupu nízké úrovně, který může mít za následek ohrožení zabezpečení, spárování fronty 0 není pro virtuální počítače hosta k dispozici. To by mělo mít vliv pouze na akce, které jsou obvykle spojeny s správou síťového rozhraní ConnectX-5, a spuštění některé diagnostiky InfiniBand jako ibdiagnet, ale nejedná se o samotné aplikace koncového uživatele.
-
-## <a name="ud-transport"></a>UD přenos
-
-Při spuštění se v rozhraních s přípravou a HC-Series nepodporuje dynamicky připojený přenos (DCT). Podpora DCT se v průběhu času implementuje. Jsou podporovány přenosy Reliable Connection (RC) a nespolehlivé datagramy (UD).
 
 ## <a name="gss-proxy"></a>Proxy služby GSS
 

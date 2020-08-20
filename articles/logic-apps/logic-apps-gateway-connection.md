@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/18/2020
+ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386176"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661193"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
-Po [instalaci místní *brány dat* na místním počítači](../logic-apps/logic-apps-gateway-install.md) a před tím, než budete moci získat přístup ke zdrojům dat místně z aplikace logiky, je potřeba vytvořit prostředek brány v Azure pro instalaci brány. Pak můžete vybrat tento prostředek brány v aktivačních událostech a akcích, které chcete použít pro [místní konektory](../connectors/apis-list.md#on-premises-connectors) dostupné v Azure Logic Apps.
+Po [instalaci místní *brány dat* na místním počítači](../logic-apps/logic-apps-gateway-install.md) a před tím, než budete moci získat přístup ke zdrojům dat místně z aplikace logiky, je potřeba vytvořit prostředek brány v Azure pro instalaci brány. Pak můžete vybrat tento prostředek brány v aktivačních událostech a akcích, které chcete použít pro [místní konektory](../connectors/apis-list.md#on-premises-connectors) dostupné v Azure Logic Apps. Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations).
 
 Tento článek ukazuje, jak vytvořit prostředek brány Azure pro dříve [nainstalovanou bránu na místním počítači](../logic-apps/logic-apps-gateway-install.md). Další informace o bráně najdete v tématu [jak brána funguje](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -44,11 +44,11 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 * Oracle Database
 * PostgreSQL
 * SAP
-* SharePoint Designer
+* SharePoint Server
 * SQL Server
 * Teradata
 
-Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](/data-integration/gateway/service-gateway-onprem#considerations). I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
+Můžete také vytvořit [vlastní konektory](../logic-apps/custom-connector-overview.md) , které se připojují ke zdrojům dat přes HTTP nebo HTTPS pomocí REST nebo protokolu SOAP. I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
 ## <a name="prerequisites"></a>Předpoklady
 

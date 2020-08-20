@@ -2,13 +2,13 @@
 title: Konfigurace přístupu k veřejnému registru
 description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523821"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660921"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
 
@@ -61,12 +61,12 @@ az acr network-rule add \
 
 Volitelně zakažte veřejný koncový bod v registru. Zakázání veřejného koncového bodu přepíše všechny konfigurace brány firewall. Můžete například chtít zakázat veřejný přístup k registru zabezpečenému ve virtuální síti pomocí [privátního odkazu](container-registry-private-link.md).
 
+> [!NOTE]
+> Pokud je registr nastavený ve virtuální síti s [koncovým bodem služby](container-registry-vnet.md), zakážete přístup k veřejnému koncovému bodu registru, ale zakážete přístup k registru v rámci virtuální sítě.
+
 ### <a name="disable-public-access---cli"></a>Zakázat veřejný přístup – CLI
 
-Pokud chcete zakázat veřejný přístup pomocí rozhraní příkazového řádku Azure, spusťte příkaz [AZ ACR Update][az-acr-update] a nastavte `--public-network-enabled` na `false` . 
-
-> [!NOTE]
-> Argument vyžaduje rozhraní příkazového `public-network-enabled` řádku Azure CLI 2.6.0 nebo novější. 
+Pokud chcete zakázat veřejný přístup pomocí rozhraní příkazového řádku Azure, spusťte příkaz [AZ ACR Update][az-acr-update] a nastavte `--public-network-enabled` na `false` . Argument vyžaduje rozhraní příkazového `public-network-enabled` řádku Azure CLI 2.6.0 nebo novější. 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false
@@ -75,7 +75,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
 
 ![Zakázat veřejný přístup][acr-access-disabled]
 
@@ -98,11 +98,11 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Obnovit veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Pak vyberte **Uložit**.
 
 ![Veřejný přístup ze všech sítí][acr-access-all-networks]
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud je nastavené pravidlo veřejné sítě nebo je veřejný přístup k registru odepřený, pokusy o přihlášení k registru z nepovolené veřejné sítě se nezdaří. Přístup klienta z za proxy serveru HTTPS selže i v případě, že není nastavené pravidlo přístupu pro proxy server. Zobrazí se chybová zpráva podobná `Error response from daemon: login attempt failed with status: 403 Forbidden` nebo `Looks like you don't have access to registry` .
 

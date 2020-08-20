@@ -1,18 +1,18 @@
 ---
 title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
-ms.date: 08/12/2020
+ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: f65411c03725058e8aa6491245ffd94987efa6c9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163216"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660729"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
-Azure Lighthouse nabízí jedinou řídicí plochu pro zobrazení a správu prostředků Azure napříč několika klienty s vyšším zabezpečením, škálováním a vylepšeným řízením správného řízení. S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Tato nabídka může také těžit z podnikových IT organizací, které spravují prostředky napříč více klienty.
+Azure Lighthouse umožňuje správu napříč více klienty, což umožňuje vyšší automatizaci, škálovatelnost a rozšířené zásady správného řízení napříč prostředky a klienty. S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Tato nabídka může také těžit z podnikových IT organizací, které spravují prostředky napříč více klienty.
 
 ![Diagram s přehledem Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 

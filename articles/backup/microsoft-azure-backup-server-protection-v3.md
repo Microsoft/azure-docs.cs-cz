@@ -3,12 +3,12 @@ title: Co může zálohovat Azure Backup Server V3 RTM
 description: Tento článek obsahuje matrici ochrany, kde najdete seznam všech úloh, datových typů a instalací, které Azure Backup zajišťují ochranu pomocí v3 RTM.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611972"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661278"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM – matice ochrany
 
@@ -32,9 +32,9 @@ Následující tabulka uvádí, co se dá chránit pomocí Azure Backup Server V
 |Servery (32bitové a 64bitové)|Windows Server 2012/2012 s aktualizací SP1 – Datacenter and Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému<br /><br />Aby bylo možné chránit svazky s odstraněním duplicit systému Windows Server 2012, Azure Backup Server musí být spuštěná aspoň na Windows Serveru 2012 R2.|
 |Servery (32bitové a 64bitové)|Windows Server 2012/2012 s aktualizací SP1 – Datacenter and Standard|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor<br /><br />Aby bylo možné chránit svazky s odstraněním duplicit systému Windows Server 2012, Azure Backup Server musí být spuštěná aspoň na Windows Serveru 2012 R2.|
 |Servery (32bitové a 64bitové)|Windows Server 2012/2012 s aktualizací SP1 – Datacenter and Standard|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému<br /><br />Aby bylo možné chránit svazky s odstraněním duplicit systému Windows Server 2012, Azure Backup Server musí být spuštěná aspoň na Windows Serveru 2012 R2.|
-|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
-|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor|
-|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2<br />Musíte používat verzi SP1 a nainstalovat [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
+|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2<br />Musíte spustit SP1 a nainstalovat [rozhraní Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) .|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
+|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2<br />Musíte spustit SP1 a nainstalovat [rozhraní Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) .|Svazek, sdílená složka, složka, soubor|
+|Servery (32bitové a 64bitové)|Windows Server 2008 R2 SP1 – Standard a Enterprise|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2<br />Musíte spustit SP1 a nainstalovat [rozhraní Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) .|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Nepodporováno|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Virtuální počítač s Windows ve VMware (chrání úlohy spuštěné ve virtuálním počítači s Windows ve VMware)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Storage Server 2008|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799853"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661057"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -20,7 +20,7 @@ Integrace služby Azure AD spravovaná pomocí AKS je navržená tak, aby zjedno
 
 Správci clusteru můžou nakonfigurovat řízení přístupu na základě role (RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
 
-Přečtěte si další informace o postupu integrace AAD v [dokumentaci k Azure Active Directory v konceptech integrace](concepts-identity.md#azure-active-directory-integration).
+Přečtěte si další informace o službě Azure AD Integration flow v [dokumentaci k koncepcím Azure Active Directory Integration](concepts-identity.md#azure-active-directory-integration).
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
@@ -32,8 +32,8 @@ Integrace Azure Active Directory spravovaná v AKS je dostupná ve veřejných o
 ## <a name="limitations"></a>Omezení 
 
 * Integraci služby Azure AD spravovanou v AKS nejde zakázat.
-* pro integraci AAD spravované v AKS se nepodporují clustery s podporou non RBAC.
-* Změna tenanta Azure AD přidruženého k integraci AAD spravovaného přes AKS se nepodporuje.
+* pro integraci služby instituce AD spravovanou v AKS se nepodporují clustery s podporou nerbac.
+* Změna tenanta Azure AD přidruženého k integraci Azure AD spravované v AKS se nepodporuje.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -139,6 +139,31 @@ K provedení těchto kroků budete potřebovat přístup k předdefinované roli
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
 
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Povolit integraci služby Azure AD spravovanou v AKS na vašem existujícím clusteru
+
+Integraci služby Azure AD spravovanou v AKS můžete povolit na svém existujícím clusteru s povoleným RBAC. Ujistěte se, že jste nastavili skupinu pro správu tak, aby zůstala v clusteru přístup.
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+Úspěšná aktivace clusteru Azure AD spravovaného AKS má následující oddíl v těle odpovědi.
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+Stáhněte si znovu přihlašovací údaje [uživatele, abyste][access-cluster]měli přístup ke clusteru pomocí následujících kroků.
+
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Upgrade na integraci služby Azure AD spravované na AKS
 
 Pokud váš cluster používá starší integraci služby Azure AD, můžete upgradovat na integraci služby Azure AD spravovanou v AKS.
@@ -174,7 +199,7 @@ Existují některé neinteraktivní scénáře, jako jsou kanály průběžné i
 * Přečtěte si o [integraci Azure AD s KUBERNETES RBAC][azure-ad-rbac].
 * Pomocí [kubelogin](https://github.com/Azure/kubelogin) můžete získat přístup k funkcím pro ověřování Azure, které nejsou dostupné v kubectl.
 * Přečtěte si další informace o [konceptech identit AKS a Kubernetes][aks-concepts-identity].
-* Pomocí [šablon Azure Resource Manager (ARM)][aks-arm-template] můžete vytvářet clustery s podporou Azure AD s povolenou správou AKS.
+* Pomocí [šablon Azure Resource Manager (ARM) ][aks-arm-template] můžete vytvářet clustery s podporou Azure AD s povolenou správou AKS.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

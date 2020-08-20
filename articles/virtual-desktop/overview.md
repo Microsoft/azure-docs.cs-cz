@@ -3,15 +3,15 @@ title: Co je Windows Virtual Desktop? – Azure
 description: Přehled virtuálního klienta Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002383"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661108"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -46,7 +46,7 @@ S virtuálním počítačem s Windows můžete nastavit škálovatelné a flexib
 
 Můžete nasazovat a spravovat virtuální klienty:
 
-* K nakonfigurování fondů hostitelů, vytváření skupin aplikací, přiřazování uživatelů a publikování prostředků použijte rozhraní PowerShell a rozhraní REST pro virtuální počítače s Windows.
+* K nakonfigurování fondů hostitelů, vytváření skupin aplikací, přiřazování uživatelů a publikování prostředků použijte rozhraní PowerShellu pro Azure Portal, virtuální plochu Windows a rozhraní REST.
 * Můžete publikovat celou plochu nebo jednotlivé vzdálené aplikace z jednoho fondu hostitelů, vytvořit jednotlivé skupiny aplikací pro různé sady uživatelů nebo dokonce přiřadit uživatele k několika skupinám aplikací, abyste snížili počet imagí.
 * Při správě prostředí použijte integrovaný delegovaný přístup k přiřazování rolí a shromažďování diagnostiky pro pochopení různých konfiguračních a uživatelských chyb.
 * Použijte novou diagnostickou službu k řešení chyb.
@@ -61,7 +61,7 @@ Můžete také přiřadit uživatele k virtuálním plochám a propojit je:
 
 K dispozici je několik věcí, které potřebujete k nastavení virtuální plochy Windows, a k úspěšnému připojení uživatelů ke svým plochám a aplikacím v systému Windows.
 
-Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
+Podporujeme následující operační systémy, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
 |Operační systém|Požadovaná licence|
 |---|---|
@@ -71,11 +71,17 @@ Plánujeme přidat podporu pro následující operačních systémech, takže se
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
 
-* [Azure Active Directory](/azure/active-directory/)
-* Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Můžete ji nakonfigurovat jedním z následujících způsobů:
-  * Azure AD Connect (pro hybridní organizace)
-  * Azure AD Domain Services (pro hybridní nebo cloudové organizace)
-* Předplatné Azure, které obsahuje virtuální síť, která buď obsahuje nebo je připojená k Windows serveru Active Directory
+* [Azure Active Directory](/azure/active-directory/).
+* Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Tuto možnost můžete nakonfigurovat pomocí Azure AD Connect (pro hybridní organizace) nebo Azure AD Domain Services (pro hybridní nebo cloudové organizace).
+  * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Windows serveru AD.
+  * Windows Server AD se synchronizuje s Azure Active Directory. Uživatel se nachází z Windows serveru AD a virtuální počítač virtuálních počítačů s Windows je připojený k doméně Azure AD Domain Services.
+  * Doména Azure AD Domain Services. Uživatel je od Azure Active Directory nasource a virtuální počítač s Windows je připojený k doméně Azure AD Domain Services.
+* Předplatné Azure nadřazené ke stejnému tenantovi služby Azure AD, které obsahuje virtuální síť, která buď obsahuje, nebo je připojená k instanci služby Windows Server Active Directory nebo Azure služba AD DS.
+
+Požadavky uživatelů pro připojení k virtuálnímu počítači s Windows:
+
+* Uživatel musí být ve stejné službě Active Directory, která je připojená k Azure AD. Virtuální počítač s Windows nepodporuje účty B2B ani MSA.
+* Hlavní název uživatele, který použijete k přihlášení k odběru virtuálních ploch Windows, musí existovat v doméně služby Active Directory, ke které je virtuální počítač připojený.
 
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
@@ -91,7 +97,7 @@ Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které 
 
 Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala následující požadavky:
 
-* Latence operace Round-Trip (RTT) ze sítě klienta do oblasti Azure, ve které byly nasazené fondy hostitelů, musí být nižší než 150 ms.
+* Latence operace Round-Trip (RTT) ze sítě klienta do oblasti Azure, ve které byly nasazené fondy hostitelů, musí být nižší než 150 ms. K zobrazení stavu připojení a doporučené oblasti Azure použijte [prostředí Estimator Experience](https://azure.microsoft.com/services/virtual-desktop/assessment) .
 * Síťový provoz se může směrovat mimo hranice země/oblasti, když se virtuální počítače, které hostují desktopy a aplikace, připojí ke službě správy.
 * Pro optimalizaci výkonu sítě doporučujeme, aby se virtuální počítače hostitele relace společně umístěného ve stejné oblasti Azure jako služba pro správu.
 
@@ -111,7 +117,7 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 > [!IMPORTANT]
 > Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu. Podpora tohoto klienta se přidá v budoucí verzi.
 
-Další informace o adresách URL, které musíte odblokovat, abyste mohli používat vzdálené klienty, najdete v [seznamu bezpečných adres URL](safe-url-list.md).
+Další informace o adresách URL, které musíte odblokovat, abyste mohli používat klienty, najdete v [seznamu bezpečných adres URL](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Podporované image operačních systémů virtuálních počítačů
 
@@ -130,10 +136,10 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|
-|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
 |Windows 7 Enterprise|Ano|Ano|Ne|Ne|
 |Windows Server 2019|Ano|Ano|Ne|Ne|
 |Windows Server 2016|Ano|Ano|Ano|Ano|

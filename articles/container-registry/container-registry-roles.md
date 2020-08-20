@@ -2,17 +2,17 @@
 title: Role a oprávnění Azure
 description: Využijte řízení přístupu na základě role Azure (Azure RBAC) a správu identit a přístupu (IAM) k zajištění podrobných oprávnění k prostředkům v registru kontejnerů Azure.
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920071"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661380"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
-Služba Azure Container Registry podporuje sadu [integrovaných rolí Azure](../role-based-access-control/built-in-roles.md) , které poskytují různé úrovně oprávnění ke službě Azure Container Registry. Použijte [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/index.yml) k přiřazení konkrétních oprávnění uživatelům, instančním objektům nebo jiným identitám, které potřebují pracovat s registrem. 
+Služba Azure Container Registry podporuje sadu [integrovaných rolí Azure](../role-based-access-control/built-in-roles.md) , které poskytují různé úrovně oprávnění ke službě Azure Container Registry. Použijte [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/index.yml) k přiřazení konkrétních oprávnění uživatelům, instančním objektům nebo jiným identitám, které potřebují pracovat s registrem. Můžete také definovat [vlastní role](#custom-roles) s podrobnými oprávněními k registru pro různé operace.
 
 | Role/oprávnění       | [Přístup Správce prostředků](#access-resource-manager) | [Vytvořit nebo odstranit registr](#create-and-delete-registry) | [Obrázek push](#push-image) | [Obrázek pro vyžádání obsahu](#pull-image) | [Odstranit data obrázku](#delete-image-data) | [Změnit zásady](#change-policies) |   [Podepsat obrázky](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ Schopnost podepisovat obrázky obvykle přiřazené automatizovanému procesu, k
 
 ## <a name="custom-roles"></a>Vlastní role
 
-Stejně jako u jiných prostředků Azure můžete vytvořit vlastní [role](../role-based-access-control/custom-roles.md) s jemně odstupňovaným oprávněním pro Azure Container Registry. Pak přiřaďte vlastní role uživatelům, instančním objektům nebo jiným identitám, které potřebují pracovat s registrem. 
+Stejně jako u jiných prostředků Azure můžete vytvořit [vlastní role](../role-based-access-control/custom-roles.md) s jemně odstupňovaným oprávněním pro Azure Container Registry. Pak přiřaďte vlastní role uživatelům, instančním objektům nebo jiným identitám, které potřebují pracovat s registrem. 
 
 Chcete-li určit, která oprávnění použít u vlastní role, Projděte si seznam [akcí](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)Microsoft. ContainerRegistry, zkontrolujte povolené akce [integrovaných rolí ACR](../role-based-access-control/built-in-roles.md)nebo spusťte následující příkaz:
 
@@ -82,6 +82,36 @@ Pokud chcete definovat vlastní roli, přečtěte si téma [Postup vytvoření v
 
 > [!IMPORTANT]
 > V rámci vlastní role Azure Container Registry aktuálně nepodporuje zástupné znaky, například `Microsoft.ContainerRegistry/*` nebo `Microsoft.ContainerRegistry/registries/*` , které udělují přístup ke všem odpovídajícím akcím. Zadejte všechny požadované akce jednotlivě v roli.
+
+### <a name="example-custom-role-to-import-images"></a>Příklad: vlastní role pro import imagí
+
+Následující JSON například definuje minimální akce pro vlastní roli, která povoluje [Import imagí](container-registry-import-images.md) do registru.
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+Pokud chcete vytvořit nebo aktualizovat vlastní roli pomocí popisu JSON, použijte rozhraní příkazového [řádku Azure](../role-based-access-control/custom-roles-cli.md), [Azure Resource Manager šablonu](../role-based-access-control/custom-roles-template.md), [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)nebo jiné nástroje Azure. Přidejte nebo odeberte přiřazení rolí pro vlastní roli stejným způsobem, jakým spravujete přiřazení rolí pro předdefinované role Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
