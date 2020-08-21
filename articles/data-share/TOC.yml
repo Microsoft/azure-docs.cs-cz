@@ -8,6 +8,8 @@
       href: supported-data-stores.md
 - name: Rychlé starty
   items:
+    - name: Vytvoření sdílené datové složky – Azure Portal
+      href: share-your-data-portal.md
     - name: Vytvoření sdílené datové složky – šablona ARM
       displayName: Resource Manager
       href: share-your-data-arm.md
@@ -52,6 +54,9 @@
       href: security.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
+    - name: Sdílení dat Azure Data Exploreru
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: Referenční informace
   items:
     - name: .NET

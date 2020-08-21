@@ -22,7 +22,7 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 > [!IMPORTANT]
 > Disky Azure Ultra vyžadují nodepools nasazené v zónách dostupnosti a oblastech, které tyto disky podporují, a také pouze konkrétní řady virtuálních počítačů. Podívejte se na téma [**omezení a rozsahy Ultra discích GA**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že máte `EnableUltraSSD` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou nejnovější [rozšíření CLI][az-extension-add] .

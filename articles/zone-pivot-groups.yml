@@ -488,22 +488,16 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
-- id: app-service-platform-windows-linux
-  title: Platforma App Service
-  prompt: Volba platformy pro hostování
+- id: programming-languages-spark-all-minus-sql
+  title: Programovací jazyky
+  prompt: Volba jazyka
   pivots:
-  - id: platform-linux
-    title: Linux
-  - id: platform-windows
-    title: Windows
-- id: app-service-containers-windows-linux
-  title: App Service s vlastními kontejnery
-  prompt: Volba vlastní kontejnerové platformy
-  pivots:
-  - id: container-linux
-    title: Kontejner Linuxu
-  - id: container-windows
-    title: Kontejner Windows
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
 - id: aml-control-methods
   title: Řídicí rovina Azure Machine Learningu
   prompt: Volba rozhraní řídicí roviny Azure Machine Learningu
@@ -527,7 +521,7 @@ groups:
   - id: programming-language-javascript
     title: JavaScript
   - id: programming-language-spx
-    title: Rozhraní příkazového řádku
+    title: CLI
 - id: programming-languages-voice-assistants
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -540,10 +534,34 @@ groups:
     title: Java
   - id: programming-language-more
     title: Další jazyky...
+- id: ams-lva-edge-programming-languages
+  title: Programovací jazyky pro Live Video Analytics ve službě IoT Edge
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: Platforma App Service
+  prompt: Volba platformy pro hostování
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: App Service s vlastními kontejnery
+  prompt: Volba vlastní kontejnerové platformy
+  pivots:
+  - id: container-linux
+    title: Kontejner Linuxu
+  - id: container-windows
+    title: Kontejner Windows
 metadata:
-  ms.openlocfilehash: a51aa5fcc88269e718375ed08f0238867da7079b
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: e9997400e1ed6708889f5f9f70078f5d3ec4c282
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88225627"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88691203"

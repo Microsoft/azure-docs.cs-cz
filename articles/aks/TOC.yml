@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: Použití skupin umístění bezkontaktní komunikace (Preview)
           href: reduce-latency-ppg.md
-        - name: Upgrade image uzlu (Preview)
+        - name: Upgrade image uzlu
           href: node-image-upgrade.md
         - name: Aktualizace operačního systému procesních uzlů
           href: node-updates-kured.md

@@ -17,11 +17,27 @@
     - name: 'Detekce pohybu, nahrávání videa do Media Services'
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: Detekce pohybu a generování událostí
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: S využitím volání přímých metod
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 'Detekce pohybu, nahrávání videa na hraničních zařízeních'
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: Spuštění analýzy živého videa s využitím vlastního modelu
-      href: use-your-model-quickstart.md
+      items:
+        - name: S využitím volání přímých metod
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Analýza živého videa s využitím vlastního modelu
+      items:
+        - name: s rozšířením HTTP
+          items:
+            - name: S využitím volání přímých metod
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: s rozšířením gRPC
+          items:
+            - name: S využitím volání přímých metod
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: Kurzy
   items:
     - name: Nepřetržité nahrávání videa
@@ -37,12 +53,16 @@
           href: use-intel-openvino-tutorial.md
 - name: ukázky
   items:
-    - name: Ukázky v C# pro analýzu živého videa ve službě IoT Edge
+    - name: Ukázky přímých metod v C#
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Ukázky přímých metod v Pythonu
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: Koncepty
   items:
     - name: Graf médií
       href: media-graph-concept.md
+    - name: Rozšíření grafu médií
+      href: media-graph-extension-concept.md
     - name: Záznam videa
       href: video-recording-concept.md
     - name: Přehrávání videa
@@ -67,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: Správa zásad nahrávání
       href: manage-recording-policy-how-to.md
-    - name: Analýza živého videa s využitím AI dle vašeho výběru
-      href: analyze-with-ai-your-choice-how-to.md
     - name: Vyvolání přímých metod s využitím portálu
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Řešení potíží
       href: troubleshoot-how-to.md
 - name: Referenční informace
   items:
+    - name: Kontrakt dat HTTP
+      href: http-data-contract.md
+    - name: Kontrakt dat gRPC
+      href: grpc-data-contract.md
+    - name: Schéma odvozování metadat
+      href: inference-metadata-schema.md
     - name: Přímé metody
       href: direct-methods.md
     - name: Schéma konfigurace dvojčat modulů

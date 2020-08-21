@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: Nastavení e-mailových oznámení
       href: security-center-provide-security-contact-details.md
+    - name: Vytvoření automatické odpovědi na upozornění s využitím šablony ARM
+      href: quickstart-automation-alert.md
 - name: Kurzy
   items:
     - name: Průvodce plánováním a provozem

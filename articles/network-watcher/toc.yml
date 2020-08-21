@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: Pomocí ARMClienta
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: Migrace na Monitorování připojení (Preview)
+      items:
+        - name: Z Network Performance Monitoru
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: Z Monitorování připojení
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: Diagnostika potíží se sítí virtuálních počítačů
       items:
         - name: Instalace rozšíření virtuálních počítačů

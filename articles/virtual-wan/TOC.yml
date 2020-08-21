@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: Automatizační pokyny pro partnery
           href: virtual-wan-configure-automation-providers.md
-    - name: Koncepce cen
-      href: pricing-concepts.md
-    - name: Informace o NVA ve virtuálním centru
-      href: about-nva-hub.md
     - name: Směrování
       items:
         - name: Informace o směrováních virtuálních center
@@ -48,21 +44,21 @@
           items:
             - name: Mezi libovolnými prostředky
               href: scenario-any-to-any.md
-            - name: Izolované virtuální sítě
+            - name: Izolování virtuálních sítí
               href: scenario-isolate-vnets.md
-            - name: Izolované virtuální sítě – vlastní
+            - name: Izolování virtuálních sítí – vlastní
               href: scenario-isolate-vnets-custom.md
             - name: Virtuální sítě sdílených služeb
               href: scenario-shared-services-vnet.md
             - name: Směrování přes NVA
               href: scenario-route-through-nva.md
-            - name: Směrování přes NVA – vlastní (Preview)
+            - name: Směrování přes NVA – vlastní
               href: scenario-route-through-nvas-custom.md
             - name: Azure Firewall – vlastní
               href: scenario-route-between-vnets-firewall.md
     - name: Monitorování
       items:
-        - name: Informace o Azure Monitor Insights pro Virtual WAN (Preview)
+        - name: Informace o Azure Monitor Insights pro Virtual WAN
           href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
           href: path-selection-multiple-links.md
+    - name: Koncepce cen
+      href: pricing-concepts.md
+    - name: Informace o NVA ve virtuálním centru
+      href: about-nva-hub.md
 - name: Návody
   items:
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md
-    - name: Vytvoření NVA ve virtuálním centru (Preview)
+    - name: Vytvoření NVA ve virtuálním centru
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -154,14 +154,18 @@
   items:
     - name: Nejčastější dotazy
       href: virtual-wan-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Omezení služeb a předplatných
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Oznámení o aktualizacích
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Omezení služeb a předplatných
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Plány nasazení sítí
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog o sítích
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Oznámení o aktualizacích sítě
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

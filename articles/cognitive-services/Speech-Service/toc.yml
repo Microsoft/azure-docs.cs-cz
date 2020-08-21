@@ -638,10 +638,12 @@
     - name: Suverénní cloudy
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Ceny a omezení
+    - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: Kvóty a omezení
+      href: speech-services-quotas-and-limits.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování

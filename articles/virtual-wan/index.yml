@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 05/08/2020
-  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/19/2020
+  ms.openlocfilehash: 1a0a64864c4e8229b4a0f2211af06920fc1e73cc
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564028"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88654544"
 landingContent:
 - title: Informace o virtuální síti WAN
   linkLists:
@@ -39,24 +39,60 @@ landingContent:
       url: virtual-wan-expressroute-portal.md
     - text: Vytvoření připojení VPN uživatele (Point-to-Site)
       url: virtual-wan-point-to-site-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurace automatizace pro partnery služby Virtual WAN
-      url: virtual-wan-configure-automation-providers.md
   - linkListType: concept
     links:
     - text: Výchozí zásady pro připojení IPsec
       url: virtual-wan-ipsec.md
+    - text: Automatizační pokyny pro partnery služby Virtual WAN
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření NVA v centru
+      url: how-to-nva-hub.md
+    - text: Konfigurace IPsec přes ExpressRoute pro Virtual WAN
+      url: vpn-over-expressroute.md
+    - text: Připojení služby VPN Gateway k Virtual WAN
+      url: connect-virtual-network-gateway-vwan.md
 - title: Architektura
   linkLists:
   - linkListType: concept
     links:
     - text: Migrace na Virtual WAN
       url: migrate-from-hub-spoke-topology.md
+  - linkListType: architecture
+    links:
     - text: Architektura globální přenosové sítě
       url: virtual-wan-global-transit-network-architecture.md
     - text: Architektura připojení SD-WAN
       url: sd-wan-connectivity-architecture.md
+- title: Směrování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informace o směrováních virtuálních center
+      url: about-virtual-hub-routing.md
+    - text: 'Scénář: Směrování provozu přes síťové virtuální zařízení'
+      url: scenario-route-through-nva.md
+    - text: 'Scénář: Mezi libovolnými prostředky'
+      url: scenario-any-to-any.md
+    - text: 'Scénář: Izolované virtuální sítě'
+      url: scenario-isolate-vnets.md
+    - text: 'Scénář: Virtuální sítě sdílených služeb'
+      url: scenario-shared-services-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace směrování virtuálního centra
+      url: how-to-virtual-hub-routing.md
+- title: Monitorování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Monitorování s využitím Azure Monitor Insights
+      url: azure-monitor-insights.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace metrik a protokolů Azure Monitoru
+      url: azure-monitor-insights.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
