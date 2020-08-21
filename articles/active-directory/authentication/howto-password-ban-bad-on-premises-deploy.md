@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82143223"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718947"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -88,7 +88,7 @@ Platí následující základní požadavky:
     * Ve výchozím nastavení je port serveru RPC dynamickým portem RPC, ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
 * Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít síťový přístup k následujícím koncovým bodům:
 
-    |**Služba**|**Účel**|
+    |**Koncový bod**|**Účel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Žádosti o ověření|
     |`https://enterpriseregistration.windows.net`|Funkce ochrany heslem Azure AD|
@@ -101,7 +101,7 @@ Na agenta řadiče domény služby Azure AD Password Protection platí následuj
     * Doména nebo doménová struktura služby Active Directory nemusí být na úrovni funkčnosti domény (úrovni funkčnosti domény) nebo úrovně funkčnosti doménové struktury (FFL) systému Windows Server 2012. Jak je uvedeno v [zásadách návrhu](concept-password-ban-bad-on-premises.md#design-principles), není k dispozici žádný minimální úrovni funkčnosti domény ani FFL nutný pro spuštění agenta řadiče domény ani proxy serveru.
 * Všechny počítače, na kterých běží agent řadiče domény Azure AD pro ochranu heslem, musí mít nainstalované rozhraní .NET 4,5.
 * Jakákoli doména služby Active Directory, která spouští službu agenta řadiče domény Azure AD, musí používat replikaci služby systém souborů DFS (Distributed File System) (DFSR) pro replikaci adresáře SYSVOL.
-   * Pokud vaše doména již nepoužívá službu DFSR, je nutné před instalací ochrany hesel služby Azure AD provést migraci. Další informace najdete v tématu [Průvodce migrací replikace SYSVOL: FRS pro replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+   * Pokud vaše doména již nepoužívá službu DFSR, je nutné před instalací ochrany hesel služby Azure AD provést migraci. Další informace najdete v tématu [Průvodce migrací replikace SYSVOL: FRS pro replikace DFS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
     > [!WARNING]
     > Software agenta řadiče domény Azure AD pro ochranu heslem se v tuto chvíli nainstaluje na řadičích domény v doménách, které pořád využívají službu replikace souborů (DFSR) pro replikaci SYSVOL, ale software v tomto prostředí nebude správně fungovat.
@@ -124,14 +124,14 @@ Na službu proxy ochrany heslem služby Azure AD platí následující požadavk
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby řadičům domény udělily možnost přihlásit se k proxy službě. Tato možnost se ovládá přes přiřazení oprávnění "přístup k tomuto počítači ze sítě".
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby umožňovaly odchozí přenosy TLS 1,2 HTTP.
 * Účet *globálního správce* pro registraci služby proxy ochrany heslem Azure AD a doménové struktury pomocí Azure AD.
-* Pro sadu portů a adres URL, které jsou zadané v [postupech nastavení prostředí proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment), musí být povolený přístup k síti.
+* Pro sadu portů a adres URL, které jsou zadané v [postupech nastavení prostředí proxy aplikací](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment), musí být povolený přístup k síti.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Požadavky aktualizace agenta Microsoft Azure AD Connect
 
 Služba aktualizace agenta Microsoft Azure AD Connect je nainstalovaná souběžně se službou proxy ochrany heslem Azure AD. Aby služba aktualizace agenta Microsoft Azure AD Connect mohla fungovat, je potřeba dodatečnou konfiguraci:
 
-* Pokud vaše prostředí používá proxy server HTTP, postupujte podle pokynů uvedených v části [práce se stávajícími místními proxy servery](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers).
-* Služba aktualizace agenta Microsoft Azure AD Connect vyžaduje také kroky TLS 1,2 uvedené v části [požadavky TLS](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements).
+* Pokud vaše prostředí používá proxy server HTTP, postupujte podle pokynů uvedených v části [práce se stávajícími místními proxy servery](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md).
+* Služba aktualizace agenta Microsoft Azure AD Connect vyžaduje také kroky TLS 1,2 uvedené v části [požadavky TLS](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements).
 
 > [!WARNING]
 > Proxy ochrana heslem Azure AD a Azure Proxy aplikací služby AD instalují různé verze služby Microsoft Azure AD Connect agent, což je důvod, proč se pokyny odkazují na obsah proxy aplikací. Tyto různé verze jsou při instalaci vedle sebe nekompatibilní a zabrání tak službě aktualizace agenta, aby kontaktovala kontaktování Azure s aktualizacemi softwaru, takže na stejném počítači byste nikdy neměli instalovat proxy server ochrany heslem a proxy aplikací služby Azure AD.

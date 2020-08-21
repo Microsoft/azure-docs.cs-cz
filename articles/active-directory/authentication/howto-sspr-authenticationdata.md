@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22037468c47de45513351e1d6126d3f3e5fccadc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035379"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717791"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Doplňte kontaktní údaje pro ověření uživatele pro Azure Active Directory Samoobslužné resetování hesla (SSPR).
 
@@ -88,7 +88,7 @@ Následující pole lze nastavit pomocí prostředí PowerShell:
 
 ### <a name="use-powershell-version-1"></a>Použití PowerShellu verze 1
 
-Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Po instalaci použijte následující postup ke konfiguraci jednotlivých polí.
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule). Po instalaci použijte následující postup ke konfiguraci jednotlivých polí.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Nastavení ověřovacích dat s využitím PowerShellu verze 1
 
@@ -126,7 +126,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Použití prostředí PowerShell verze 2
 
-Začněte tím, [že si stáhnete a nainstalujete modul Azure AD verze 2 PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0).
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD verze 2 PowerShell](/powershell/module/azuread/?view=azureadps-2.0).
 
 Pokud chcete rychle nainstalovat z nedávných verzí PowerShellu, které podporují `Install-Module` , spusťte následující příkazy. První řádek zkontroluje, zda je modul již nainstalován:
 

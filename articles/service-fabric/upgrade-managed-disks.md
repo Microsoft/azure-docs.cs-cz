@@ -3,12 +3,12 @@ title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
 description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653694"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717519"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
@@ -365,7 +365,7 @@ V tomto návodu jste se dozvěděli, jak upgradovat sadu škálování virtuáln
 
 Naučte se:
 
-* [Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric](service-fabric-scale-up-node-type.md)
+* [Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric](service-fabric-scale-up-primary-node-type.md)
 
 * [Převod šablony sady škálování na používání spravovaných disků](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

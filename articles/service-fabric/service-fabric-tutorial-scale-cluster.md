@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257100"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716873"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -33,7 +33,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -809,7 +809,7 @@ Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně od
 > [!WARNING]
 > Použití funkce Remove-AzServiceFabricNodeType k odebrání typu uzlu z produkčního clusteru se nedoporučuje používat na častém základě. Jedná se o nebezpečný příkaz, protože odstraňuje prostředek sady škálování virtuálního počítače za typem uzlu. 
 
-Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti][durability] . rutina odstraní sadu škálování přidruženou k typu uzlu a její dokončení nějakou dobu trvá.  Pak na všech uzlech spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) , která se má odebrat. tím se odstraní stav uzlu a z clusteru se odeberou uzly. Pokud na uzlech existují služby, pak se služby nejprve přesunou na jiný uzel. Pokud Správce clusteru nenašel uzel pro repliku nebo službu, operace je zpožděná nebo blokovaná.
+Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti][durability]  . rutina odstraní sadu škálování přidruženou k typu uzlu a její dokončení nějakou dobu trvá.  Pak na všech uzlech spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) , která se má odebrat. tím se odstraní stav uzlu a z clusteru se odeberou uzly. Pokud na uzlech existují služby, pak se služby nejprve přesunou na jiný uzel. Pokud Správce clusteru nenašel uzel pro repliku nebo službu, operace je zpožděná nebo blokovaná.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Zvýšení prostředků uzlu 
-Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů tak, že nahradíte původní typ uzlu novým typem uzlu (s aktualizovanou SKU virtuálního počítače nebo image operačního systému). Další podrobnosti najdete v tématu věnovaném [horizontálnímu navýšení kapacity typu uzlu Azure Service Fabric](service-fabric-scale-up-node-type.md).
+Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů tak, že nahradíte původní typ uzlu novým typem uzlu (s aktualizovanou SKU virtuálního počítače nebo image operačního systému). Další podrobnosti najdete v tématu věnovaném [horizontálnímu navýšení kapacity typu uzlu Azure Service Fabric](service-fabric-scale-up-primary-node-type.md).
 
 > [!IMPORTANT]
 > Nikdy nepokusit se o místní změnu pro SKU virtuálního počítače nebo image operačního systému, což je nebezpečná operace, která není podporována.

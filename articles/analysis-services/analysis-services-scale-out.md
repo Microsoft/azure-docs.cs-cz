@@ -4,15 +4,15 @@ description: Replikace Azure Analysis Services serverů s možností horizontál
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247994"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716924"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -50,7 +50,7 @@ Při provádění následných operací škálování, například zvýšení po
 
 ### <a name="synchronization-mode"></a>Režim synchronizace
 
-Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, nikoli přírůstkově. K dehydrataci dochází ve fázích. Jsou odpojeny a připojeny dvakrát (za předpokladu, že jsou k dispozici alespoň tři repliky), aby bylo zajištěno, že nejméně jedna replika bude pro dotazy v daném okamžiku udržována online. V některých případech se může stát, že se klienti budou muset při provádění tohoto procesu znovu připojit k jedné z online replik. Když použijete nastavení **ReplicaSyncMode** (v Preview), můžete teď zadat synchronizaci repliky dotazů paralelně. Paralelní synchronizace přináší následující výhody: 
+Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, nikoli přírůstkově. K dehydrataci dochází ve fázích. Jsou odpojeny a připojeny dvakrát (za předpokladu, že jsou k dispozici alespoň tři repliky), aby bylo zajištěno, že nejméně jedna replika bude pro dotazy v daném okamžiku udržována online. V některých případech se může stát, že se klienti budou muset při provádění tohoto procesu znovu připojit k jedné z online replik. Když použijete nastavení **ReplicaSyncMode** , můžete teď zadat synchronizaci repliky dotazů paralelně. Paralelní synchronizace přináší následující výhody: 
 
 - Významné snížení doby synchronizace. 
 - Data napříč replikami jsou pravděpodobně během procesu synchronizace konzistentní. 
@@ -61,7 +61,7 @@ Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, n
 
 Pomocí SSMS můžete nastavit ReplicaSyncMode v upřesňujících vlastnostech. Možné hodnoty jsou: 
 
-- `1`(výchozí): úplné vysazování databáze ve fázích (přírůstkově). 
+- `1` (výchozí): úplné vysazování databáze ve fázích (přírůstkově). 
 - `2`: Optimalizovaná synchronizace paralelně. 
 
 ![Nastavení RelicaSyncMode](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
@@ -131,13 +131,13 @@ Použijte operaci **synchronizace** .
 Vrátit stavové kódy:
 
 
-|Kód  |Description  |
+|Kód  |Popis  |
 |---------|---------|
 |-1     |  Neplatný       |
 |0     | Replikaci        |
 |1     |  Dosazování dat       |
 |2     |   Dokončeno       |
-|3     |   Failed      |
+|3     |   Neúspěšný      |
 |4     |    Dokončuje     |
 |||
 

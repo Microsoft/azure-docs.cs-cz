@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d49331f08a83eb48c232ced2c565935eb2abd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051215"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718012"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
@@ -66,4 +66,4 @@ Další informace o licencování najdete v tématu [funkce a licence pro Azure 
 Pokud chcete zjistit MFA v akci, povolte v následujícím kurzu Azure Multi-Factor Authentication pro sadu testovacích uživatelů:
 
 > [!div class="nextstepaction"]
-> [Povolení služby Azure Multi-Factor Authentication](tutorial-mfa-applications.md)
+> [Povolení služby Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)

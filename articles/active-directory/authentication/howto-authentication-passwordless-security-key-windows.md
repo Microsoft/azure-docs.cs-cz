@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550614"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717961"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -33,13 +33,13 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 | [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší. | X | X |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | × |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | × |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné) | X | X |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1903 nebo vyšší. | X |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | X |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (volitelné) | X | X |
 | Zřizovací balíček (volitelné) | X | X |
-| Zásady skupiny (volitelné) |   | × |
+| Zásady skupiny (volitelné) |   | X |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -78,7 +78,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení**s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
 1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
@@ -88,7 +88,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily**zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro přihlášení k Windows
@@ -100,7 +100,7 @@ Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele p
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Datový typ: celé číslo
       - Hodnota: 1
-1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v tématu [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v tématu [přiřazení profilů uživatelů a zařízení v Microsoft Intune](/intune/device-profile-assign).
 
 ![Vytvoření vlastní zásady konfigurace zařízení v Intune](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -122,10 +122,10 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 1. Poznamenejte si nebo změňte cestu v oknech **sestavení** v části **Vyberte místo, kde se má zřizovací balíček uložit** , a vyberte **Další**.
 1. Na stránce **sestavení balíčku pro zřizování** vyberte **sestavit** .
 1. Uložte dva vytvořené soubory (*ppkg* a *Cat*) do umístění, kde je můžete použít na počítače později.
-1. Pokud chcete použít zřizovací balíček, který jste vytvořili, přečtěte si téma [použití zřizovacího balíčku](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
+1. Pokud chcete použít zřizovací balíček, který jste vytvořili, přečtěte si téma [použití zřizovacího balíčku](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Zařízení se systémem Windows 10 verze 1809 musí umožňovat také režim sdíleného osobního počítače (*EnableSharedPCMode*). Další informace o povolení této funkce najdete v tématu [nastavení sdíleného nebo hostovaného počítače s Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> Zařízení se systémem Windows 10 verze 1809 musí umožňovat také režim sdíleného osobního počítače (*EnableSharedPCMode*). Další informace o povolení této funkce najdete v tématu [nastavení sdíleného nebo hostovaného počítače s Windows 10](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>Povolit s Zásady skupiny
 

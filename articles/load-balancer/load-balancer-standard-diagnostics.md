@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090446"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717332"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -25,7 +25,7 @@ Azure Standard Load Balancer zpřístupňuje následující diagnostické možno
 
 * Multidimenzionální **metriky a upozornění**: poskytuje multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
 
-* **Resource Health**: stránka Load Balancer v Azure Portal a stránka Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro standard Load Balancer. 
+* **Resource Health**: stav Resource Health Load Balancer je k dispozici na stránce Resource Health pod položkou monitor. Tato automatická rezervace vás informuje o aktuální dostupnosti vašeho prostředku Load Balancer.
 
 Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer. 
 
@@ -91,7 +91,7 @@ Konfigurace upozornění:
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Je cesta k datům a dostupná pro moje Load Balancer front-end?
 <details><summary>Rozbalit</summary>
 
-Metrika dostupnosti datové cesty popisuje stav cesty k datům v rámci oblasti a výpočetnímu hostiteli, ve kterém se nachází vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Metriku můžete použít k těmto akcím:
+Metrika dostupnosti datových cest popisuje stav cesty dat v rámci oblasti pro výpočetní hostitele, ve kterém se nachází vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Metriku můžete použít k těmto akcím:
 - Monitorování externí dostupnosti vaší služby
 - Dig hlubší a zjistěte, jestli je platforma, na které je vaše služba nasazená, v dobrém stavu, nebo jestli je instance hostovaného operačního systému nebo aplikace v pořádku.
 - Izolujte, jestli událost souvisí se službou nebo základní rovinou dat. Nezaměňujte tuto metriku se stavem sondy stavu ("dostupnost instance back-endu").
@@ -110,7 +110,7 @@ Metrika je generována aktivním měřením v pásmu. Služba zjišťování v r
 
 Paket, který odpovídá front-end a pravidlu nasazení, se generuje pravidelně. Projde oblast ze zdroje na hostitele, kde se nachází virtuální počítač ve fondu back-end. Infrastruktura nástroje pro vyrovnávání zatížení provádí stejné operace vyrovnávání zatížení a překladu, protože funguje pro všechny ostatní přenosy. Tento test je v rámci vašeho koncového bodu s vyrovnáváním zatížení v pásmu. Po doručení testu do výpočetního hostitele, kde je umístěn zdravý virtuální počítač ve fondu back-end, vygeneruje výpočetní hostitel odpověď na službu zjišťování. Váš virtuální počítač tento provoz nevidí.
 
-Dostupnost dostupnosti DataPath se nezdařila z následujících důvodů:
+Dostupnost DataPath se nezdařila z následujících důvodů:
 - Vaše nasazení nemá ve fondu back-end žádné dobré virtuální počítače. 
 - Došlo k výpadku infrastruktury.
 
@@ -155,14 +155,14 @@ Získání statistiky připojení SNAT:
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Návody kontrolovat využití a přidělování portů SNAT?
 <details>
   <summary>Rozbalit</summary>
-Metrika využití SNAT indikuje, kolik jedinečných toků mezi internetovým zdrojem a back-end virtuálním počítačem nebo sadou škálování virtuálního počítače, která je za nástrojem pro vyrovnávání zatížení, a nemá veřejnou IP adresu. Porovnáním s metrikou přidělování SNAT můžete zjistit, jestli se vaše služba objevila, nebo na nebezpečí vyčerpání SNAT a výsledný výstup selhání toku. 
+Metrika používaných portů SNAT sleduje, kolik portů SNAT se spotřebovává pro udržování odchozích toků. To indikuje, kolik jedinečných toků mezi internetovým zdrojem a back-end virtuálním počítačem nebo sadou škálování virtuálního počítače, která je za nástrojem pro vyrovnávání zatížení, a nemá veřejnou IP adresu. Porovnáním počtu portů SNAT, které používáte s přidělenou metrikou portů SNAT, můžete zjistit, jestli vaše služba má nebo nehrozí v nebezpečí vyčerpání SNAT, a výsledný výstupní tok se nezdařil. 
 
 Pokud vaše metrika signalizuje riziko selhání [odchozího toku](https://aka.ms/lboutbound) , proveďte odkaz na článek a proveďte kroky, které tuto skutečnost zmírnit, abyste zajistili stav služby.
 
 Zobrazení využití a přidělení portu SNAT:
 1. Nastavte časovou agregaci grafu na 1 minutu, aby se zobrazila požadovaná data.
-1. Jako typ metriky vyberte **využití SNAT** nebo **alokaci SNAT** a **průměr** jako agregaci.
-    * Ve výchozím nastavení se jedná o průměrný počet portů SNAT přidělených nebo používaných jednotlivými virtuálními počítači back-end nebo VMSS, které odpovídají všem veřejným IP adresám front-endu mapovaným na Load Balancer agregované přes protokoly TCP a UDP.
+1. Vyberte **použité porty SNAT** nebo **přidělené porty SNAT** jako typ metriky a **průměr** jako agregaci.
+    * Ve výchozím nastavení jsou tyto metriky průměrný počet portů SNAT, které jsou přiděleny nebo využity jednotlivými virtuálními počítači back-endu nebo VMSS, a odpovídající všechny veřejné IP adresy front-endu namapované na Load Balancer, agregované přes protokoly TCP a UDP.
     * Zobrazení celkových portů SNAT používaných nástrojem nebo přiděleným pro nástroj pro vyrovnávání zatížení použití **součtu** agregace metriky
 1. Filtr na konkrétní **typ protokolu**, sadu **back-end**serverů nebo **IP adresy front-endu**.
 1. Pokud chcete monitorovat stav na back-end nebo front-endové instance, použijte rozdělení. 
@@ -252,13 +252,14 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
 
    *Obrázek: Load Balancer zobrazení stavu prostředků*
  
-V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy: 
+Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](https://docs.microsoft.com/azure/service-health/resource-health-overview). Konkrétní stavy pro Azure Load Balancer jsou uvedené v následující tabulce: 
 
 | Stav prostředku | Popis |
 | --- | --- |
-| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor**  >  **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
-| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
+| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti DataPath ohlásila méně než 90%, ale více než 25% stavu pro alespoň dvě minuty. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost.
+| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost. |
+| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a odráží správný stav, jakmile budou data přijata. |
 
 ## <a name="next-steps"></a>Další kroky
 

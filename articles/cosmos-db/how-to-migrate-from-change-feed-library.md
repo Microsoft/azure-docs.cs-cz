@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b610748e425b9497e12c389cca4d797d6da54087
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261405"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718997"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny Change feed Processor do sady Azure Cosmos DB .NET V3 SDK
 
@@ -46,10 +46,6 @@ Podobně jako knihovna Change feed Processor, funkce Change feed v sadě .NET V3
 Procesor změn sady SDK V3 detekuje libovolný původní stav knihovny a automaticky ho migruje do nového schématu při prvním spuštění migrovaného kódu aplikace. 
 
 Aplikaci můžete bezpečně zastavit pomocí starého kódu, migrovat kód na novou verzi, spustit migrovaná aplikace a všechny změny, ke kterým došlo v době, kdy byla aplikace zastavena, budou vyzvednuty a zpracovávány novou verzí.
-
-> [!NOTE]
-> Migrace z aplikací, které používají knihovnu do sady .NET V3 SDK, je jednosměrná, protože stav (zapůjčení) bude migrován do nového schématu. Migrace není zpětně kompatibilní.
-
 
 ## <a name="additional-resources"></a>Další zdroje
 

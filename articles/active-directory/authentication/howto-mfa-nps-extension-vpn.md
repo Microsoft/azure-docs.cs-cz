@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507174"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717859"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -41,7 +41,7 @@ Služba Síťové zásady a přístup poskytuje organizacím možnost:
 * Vytvořte a vyvynuťte zásady stavu klienta architektury NAP (Network Access Protection), které určují, jestli mají zařízení udělený neomezený nebo omezený přístup k síťovým prostředkům.
 
 * Poskytněte způsob, jak vymáhat ověřování a autorizaci pro přístup k bezdrátovým přístupovým bodům 802.1 x a přepínačům sítě Ethernet.
-  Další informace najdete v tématu [Server NPS (Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)).
+  Další informace najdete v tématu [Server NPS (Network Policy Server](/windows-server/networking/technologies/nps/nps-top)).
 
 Z důvodu zvýšení zabezpečení a zajištění vysoké úrovně dodržování předpisů mohou organizace integrovat server NPS se službou Azure Multi-Factor Authentication, aby uživatelé mohli pomocí dvoustupňového ověřování připojit k virtuálnímu portu na serveru VPN dva kroky. Aby mohli uživatelé udělit přístup, musí poskytnout kombinaci uživatelského jména a hesla a další informace, které řídí. Tyto informace musí být důvěryhodné a nelze je snadno duplikovat. Může obsahovat číslo mobilního telefonu, pevné číslo nebo aplikaci na mobilním zařízení.
 
@@ -72,7 +72,7 @@ Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěš
 7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
 8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 
@@ -94,7 +94,7 @@ Pokud nemáte funkční infrastrukturu sítě VPN, můžete ji rychle vytvořit 
 
 Služba Síťové zásady a přístup poskytuje funkce serveru a klienta protokolu RADIUS. V tomto článku se předpokládá, že jste nainstalovali roli služby síťové zásady a přístup na členský server nebo řadič domény ve vašem prostředí. V této příručce nakonfigurujete protokol RADIUS pro konfiguraci sítě VPN. Nainstalujte roli služby síťové zásady a přístup na jiném serveru, *než* je server VPN.
 
-Informace o instalaci služby role Síťové zásady a přístup k Windows Serveru 2012 nebo novějšímu najdete v tématu [instalace serveru zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Architektura NAP je v systému Windows Server 2016 zastaralá. Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
+Informace o instalaci služby role Síťové zásady a přístup k Windows Serveru 2012 nebo novějšímu najdete v tématu [instalace serveru zásad stavu NAP](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). Architektura NAP je v systému Windows Server 2016 zastaralá. Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-mfa-license"></a>Licence Azure MFA
 
@@ -446,13 +446,13 @@ Související událost z protokolu Azure Multi-Factor Authentication se tady zob
 
 ![Protokoly Multi-Factor Authentication Azure](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-Chcete-li provést pokročilé řešení potíží, Projděte si soubory protokolu ve formátu databáze NPS, kde je nainstalována služba NPS. Soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory oddělené čárkami. Popis souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](https://technet.microsoft.com/library/cc771748.aspx).
+Chcete-li provést pokročilé řešení potíží, Projděte si soubory protokolu ve formátu databáze NPS, kde je nainstalována služba NPS. Soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory oddělené čárkami. Popis souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)).
 
 Položky v těchto souborech protokolu je obtížné interpretovat, pokud je neexportujete do tabulky nebo databáze. Mnoho analytických nástrojů služby ověřování v Internetu (IAS) můžete najít online, abyste vám pomohli interpretovat soubory protokolů. Výstup jedné takové aplikace ke stažení [shareware](https://www.deepsoftware.com/iasviewer) se zobrazí zde:
 
 ![Ukázka analyzátoru služby IAS pro shareware App](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-Chcete-li provést další řešení potíží, můžete použít analyzátor protokolů, například Wireshark nebo [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx). Následující obrázek z nástroje Wireshark zobrazuje zprávy protokolu RADIUS mezi serverem VPN a serverem NPS.
+Chcete-li provést další řešení potíží, můžete použít analyzátor protokolů, například Wireshark nebo [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide). Následující obrázek z nástroje Wireshark zobrazuje zprávy protokolu RADIUS mezi serverem VPN a serverem NPS.
 
 ![Microsoft Message Analyzer zobrazující filtrovaný provoz](./media/howto-mfa-nps-extension-vpn/image50.png)
 

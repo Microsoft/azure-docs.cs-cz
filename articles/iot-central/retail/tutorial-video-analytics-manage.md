@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038347"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719066"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Kurz: monitorování a Správa aplikace video Analytics – objekt a detekce pohybu
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Přidejte kamery detekce objektu a pohybu do aplikace IoT Central.
 > * Umožňuje spravovat streamy videa a přehrávat je, když se zjistí zajímavé události.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste dokončit:
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-V aplikaci přejděte na řídicí panel **monitorování** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
+Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Fragment videa":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>Změna simulovaných zařízení v řídicím panelu aplikace
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>Změna simulovaných zařízení v řídicích panelech aplikací
 
 Řídicí panely aplikace se původně naplní telemetrie a vlastnostmi generovanými z IoT Central simulovaných zařízení. Pokud chcete nakonfigurovat dlaždice na telemetrii z reálných kamer nebo simulátoru Live555, postupujte takto:
 
-1. Přejděte na řídicí panel **monitorování reálné kamery** .
+1. Přejděte na řídicí panel aplikace **(ukázka) Real Camera Monitor** .
 1. Vyberte **Upravit**.
+1. Vyberte dlaždici **poznámek** a odstraňte ji.
+1. Změňte název řídicího panelu na *monitor reálné kamery*.
 1. Na dlaždici **počet odvození** vyberte ikonu konfigurace.
 1. V části **Konfigurace grafu** vyberte jeden nebo více reálných kamer ve skupině zařízení **lva Edge Object detektor** .
 1. Vyberte `AI Inference Interface/Inference Count` pole telemetrie.
 1. Vyberte **Aktualizovat**.
-
-   
 
 1. Opakujte postup pro následující dlaždice:
     1. **Zjišťování** výsečového grafu používá `AI Inference Interface/Inference/entity/tag/value` typ telemetrie.
