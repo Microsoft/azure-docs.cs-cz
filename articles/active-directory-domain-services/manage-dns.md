@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040210"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722938"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa DNS a vytvoření podmíněného předávaného serveru ve Azure Active Directory Domain Services spravované doméně
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak nainstalovat nástroje serveru DNS a pak pomoc
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -107,7 +107,7 @@ Překlad názvů prostředků v jiných oborech názvů z virtuálních počíta
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě DNS najdete v článku věnovaném [nástrojům DNS na webu TechNet](https://technet.microsoft.com/library/cc753579.aspx).
+Další informace o správě DNS najdete v článku věnovaném [nástrojům DNS na webu TechNet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753579(v=ws.11)).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

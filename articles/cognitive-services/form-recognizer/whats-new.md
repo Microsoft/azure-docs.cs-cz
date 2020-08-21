@@ -9,37 +9,61 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272942"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724128"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
 Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek vám umožní udržovat aktuální informace o vylepšeních, opravách a dokumentaci k funkcím.
 
-> [!NOTE]
-> Rychlé starty a příručky pro rozpoznávání formulářů vždy používají nejnovější verzi rozhraní API, pokud nejsou zadány.
+## <a name="august-2020"></a>Srpen 2020
+
+### <a name="new-features"></a>Nové funkce
+
+**Verze Public Preview pro rozpoznávání formulářů v 2.1 je nyní k dispozici.** Verze 2.1-Preview. 1 byla uvolněna, včetně následujících funkcí: 
+
+
+- **Odkaz na REST API je k dispozici** – Podívejte se na [odkaz v 2.1-Preview. 1.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
+- **Nové jazyky, které jsou kromě angličtiny podporované**, jsou teď podporované tyto jazyky: pro `Layout` a `Train Custom Model` : angličtina (EN), čínština (zjednodušená) (zh-zh), holandština (NL), francouzština (FR), němčina (Německo), italština (IT), portugalština (PT) a španělština (ES).
+- **Detekce značek zaškrtnutí nebo výběru** – Nástroj pro rozpoznávání formulářů podporuje detekci a extrakci značek výběru, jako jsou zaškrtávací políčka a přepínače. Značky výběru jsou extrahovány v `Layout` a nyní můžete také označovat popisky a vlaky v `Train Custom Model`  -  _vlakech pomocí popisků_ pro extrakci párů klíč-hodnota pro značky výběru. 
+- **Vytvoření modelu** umožňuje sestavit více modelů a volat je pomocí jediného ID modelu. Při odeslání dokumentu, který má být analyzován pomocí ID složeného modelu, je nejprve proveden krok klasifikace, který bude směrován do správného vlastního modelu. Vytváření modelů je k dispozici pro `Train Custom Model`  -  _vlaky s popisky_.
+- **Název modelu** : přidejte do vlastních modelů popisný název pro snazší správu a sledování.
+- **Nový předem sestavený model pro vizitky** pro extrakci společných polí v angličtině, jazykových obchodních karet.
+- **Nové národní prostředí pro předem připravené příjmy** kromě en-US je teď k dispozici pro en-au, en-CA, en-GB, EN-in.
+- **Vylepšení kvality** pro `Layout` , `Train Custom Model`  -  _výuku bez popisků_ a _vlaků s popisky_.
+
+
+**v 2.0** zahrnuje následující aktualizaci:
+-   [Klientské knihovny](quickstarts/client-library.md) pro NET, Python, Java a JavaScript vstoupily do všeobecné dostupnosti. 
+
+
+**Nové ukázky** jsou k dispozici na GitHubu. 
+- [Recepty pro extrakci znalostní báze – Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) shromažďuje osvědčené postupy z reálných zákaznických zapojení pro rozpoznávání a poskytuje použitelné ukázky kódu, kontrolní seznamy a ukázkové kanály používané při vývoji těchto projektů. 
+- Ukázka rozpoznávání formuláře [inteligentního veřejného terminálu](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) ukazuje, jak integrovat `Analyze Receipt` a `Train Custom Model`  -  _vyškolit bez popisků_.
+
+
 
 ## <a name="july-2020"></a>Červenec 2020
 
 ### <a name="new-features"></a>Nové funkce
 * **dostupný odkaz v 2.0** Podívejte se [na reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)a [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest).
-* Vylepšení **tabulek a vylepšení extrakce** zahrnují vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve vlastním vlaku bez popisků. 
+* Vylepšení **tabulek a vylepšení extrakce** zahrnují vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve _vlastním vlaku bez popisků_. 
 * **Podpora měn** Detekce a extrakce globálních symbolů měny.
 * **Gov Azure** Nástroj pro rozpoznávání formulářů je teď také dostupný v Azure gov.
 * **Rozšířené funkce zabezpečení**: 
-   * **Přineste si vlastní klíč**  Nástroj pro rozpoznávání formulářů automaticky šifruje vaše data při trvalém ukládání do cloudu, aby bylo možné je chránit a aby vám pomohla splnit vaše závazky na zabezpečení a dodržování předpisů v organizaci. Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.  
-   * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](https://docs.microsoft.com/azure/private-link/private-link-overview)
+   * **Přineste si vlastní klíč**  Nástroj pro rozpoznávání formulářů automaticky šifruje vaše data při trvalém ukládání do cloudu, aby bylo možné je chránit a aby vám pomohla splnit vaše závazky na zabezpečení a dodržování předpisů v organizaci. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
+   * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení. ](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 
 ## <a name="june-2020"></a>Červen 2020
 
 ### <a name="new-features"></a>Nové funkce
 * **Rozhraní API CopyModel přidané do klientských sad SDK** Nyní můžete použít klientské sady SDK ke kopírování modelů z jednoho předplatného do jiného. Obecné informace o této funkci najdete v tématu [zálohování a obnovení modelů](./disaster-recovery.md) .
-* **Integrace Azure Active Directory** Nyní můžete použít svoje přihlašovací údaje AAD k ověření objektů klienta pro rozpoznávání ve formuláři v sadách SDK.
+* **Integrace Azure Active Directory** Teď můžete použít svoje přihlašovací údaje Azure AD k ověřování objektů klienta pro rozpoznávání ve formuláři v sadách SDK.
 * **Změny specifické pro sadu SDK** Zahrnuje to i drobné dodatečné funkce a zásadní změny. Další informace najdete v tématu Protokol změn sady SDK.
   * [Protokol změn sady C# SDK Preview 3](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Protokol změn sady Python SDK verze 3](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -72,11 +96,11 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 * **Typy hodnot pro popisky** Nyní můžete určit typy hodnot, na které přiřadíte, pomocí nástroje pro rozpoznávání popisků ve formě. V současné době jsou podporovány následující typy hodnot a variace:
   * `string`
-    * výchozí, `no-whitespaces` ,`alphanumeric`
+    * výchozí, `no-whitespaces` , `alphanumeric`
   * `number`
-    * výchozí`currency`
+    * výchozí `currency`
   * `date` 
-    * výchozí, `dmy` , `mdy` ,`ymd`
+    * výchozí, `dmy` , `mdy` , `ymd`
   * `time`
   * `integer`
 

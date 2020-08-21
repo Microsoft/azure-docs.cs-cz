@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725580"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723669"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Všechny lusky by `STATUS` se měly zobrazovat jako `Running` a `READY` by měly být buď `3/3` nebo `2/2` . Načte protokoly a popište lusky, které vrací `Error` nebo `CrashLoopBackOff` .
+Všechny lusky by `STATUS` se měly zobrazovat jako `Running` a `READY` by měly být buď `3/3` nebo `2/2` . Načte protokoly a popište lusky, které vrací `Error` nebo `CrashLoopBackOff` . Pokud je některá z těchto lusků zablokovaná ve `Pending` stavu, může to být způsobeno nedostatečnými prostředky v uzlech clusteru. Při vertikálním [navýšení kapacity clusteru](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) budou tyto lusky přecházet do `Running` stavu.
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>Nepovedlo se připojit svůj cluster Kubernetes k Azure.
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Připojení clusterů Kubernetes ke službě Azure ARC
 
 Připojení clusterů k Azure vyžaduje přístup k předplatnému Azure a `cluster-admin` přístup k cílovému clusteru. Pokud cluster není dostupný nebo má nedostatečná oprávnění k registraci, dojde k chybě.
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>Správa konfigurace
@@ -116,7 +114,7 @@ az k8sconfiguration create <parameters> --debug
 ### <a name="create-source-control-configuration"></a>Vytvořit konfiguraci správy zdrojového kódu
 Role Přispěvatel v prostředku Microsoft. Kubernetes/connectedCluster je nezbytná a dostatečná pro vytvoření prostředku Microsoft. KubernetesConfiguration/sourceControlConfiguration.
 
-### <a name="configuration-remains-pending"></a>Konfigurace zůstává`Pending`
+### <a name="configuration-remains-pending"></a>Konfigurace zůstává `Pending`
 
 ```console
 kubectl -n azure-arc logs -l app.kubernetes.io/component=config-agent -c config-agent
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>Monitorování
+
+Azure Monitor pro kontejnery vyžaduje spuštění DaemonSet v privilegovaném režimu. Chcete-li úspěšně vytvořit kanonický cluster Charmed Kubernetes pro monitorování, spusťte následující příkaz:
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f498111afaaeff935e1ea7d1d3400cfe05efda12
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220265"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722955"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurace Azure Active Directory Domain Services pro podporu synchronizace profilů uživatelů pro server SharePoint
 
-SharePoint Server obsahuje službu pro synchronizaci profilů uživatelů. Tato funkce umožňuje, aby byly profily uživatelů uloženy v centrálním umístění a přístupné napříč několika weby a farmami služby SharePoint. Chcete-li nakonfigurovat službu profilů uživatelů serveru SharePoint, musí být udělena příslušná oprávnění ve spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS). Další informace najdete v tématu [synchronizace profilů uživatelů na serveru SharePoint](https://technet.microsoft.com/library/hh296982.aspx).
+SharePoint Server obsahuje službu pro synchronizaci profilů uživatelů. Tato funkce umožňuje, aby byly profily uživatelů uloženy v centrálním umístění a přístupné napříč několika weby a farmami služby SharePoint. Chcete-li nakonfigurovat službu profilů uživatelů serveru SharePoint, musí být udělena příslušná oprávnění ve spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS). Další informace najdete v tématu [synchronizace profilů uživatelů na serveru SharePoint](/SharePoint/administration/user-profile-service-administration).
 
 V tomto článku se dozvíte, jak nakonfigurovat službu Azure služba AD DS tak, aby umožňovala službu synchronizace profilů uživatelů serveru SharePoint.
 
@@ -71,7 +71,7 @@ Z virtuálního počítače pro správu Azure služba AD DS proveďte následuj�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [udělení oprávnění Active Directory Domain Services pro synchronizaci profilů na serveru SharePoint](https://technet.microsoft.com/library/hh296982.aspx) .
+Další informace najdete v tématu [udělení oprávnění Active Directory Domain Services pro synchronizaci profilů na serveru SharePoint](/SharePoint/administration/user-profile-service-administration) .
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

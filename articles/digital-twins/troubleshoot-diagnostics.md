@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612397"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723924"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -49,7 +49,7 @@ Tady je postup povolení nastavení diagnostiky instance digitálního vlákna A
     
 4. Uložte nová nastavení. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky, kde uživatel vyplnil název nastavení diagnostiky a provedl některé výběry zaškrtávacích políček pro podrobnosti kategorie a podrobnosti o cíli. Tlačítko Uložit je zvýrazněno.":::
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci se protokoly zobrazí na stránce **nastavení diagnostiky na stránce nastavení diagnostiky** pro vaši instanci. 
 
@@ -93,6 +93,135 @@ Tady je vyčerpávající seznam operací a odpovídajících [digitálních vl�
 |  | Microsoft. DigitalTwins/DigitalTwins/Read | Digitální vlákna získá podle ID, získá komponentu, získá relaci podle ID, vypíše příchozí vztahy, vypíše relace. |
 |  | Microsoft. DigitalTwins/DigitalTwins/DELETE | Digitální vlákna odstranit, odstranit relaci |
 |  | Microsoft. DigitalTwins/DigitalTwins/Action | Digitální vlákna odesílají telemetrii komponent, odesílají telemetrii. |
+
+## <a name="log-schemas"></a>Schémata protokolů 
+
+Každá kategorie protokolu má schéma, které definuje způsob hlášení událostí v této kategorii. Jednotlivé položky protokolu se ukládají jako text a naformátují se jako objekt BLOB JSON. Pole v části log a příklady JSON jsou k dispozici pro každý níže uvedený typ protokolu. 
+
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` a `ADTQueryOperation` používejte konzistentní schéma protokolu rozhraní API; `ADTEventRoutesOperation` má vlastní samostatné schéma.
+
+### <a name="api-log-schemas"></a>Schémata protokolů rozhraní API
+
+Toto schéma protokolu je konzistentní pro `ADTDigitalTwinsOperation` , `ADTModelsOperation` a `ADTQueryOperation` . Obsahuje informace týkající se volání rozhraní API k instanci digitálních vláken Azure.
+
+Tady jsou popisy polí a vlastností pro protokoly rozhraní API.
+
+| Název pole | Datový typ | Popis |
+|-----|------|-------------|
+| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
+| `ResourceID` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
+| `OperationName` | Řetězec  | Typ akce prováděné během události |
+| `OperationVersion` | Řetězec | Verze rozhraní API využitá během události |
+| `Category` | Řetězec | Typ prostředku, který se emituje. |
+| `ResultType` | Řetězec | Výsledek události |
+| `ResultSignature` | Řetězec | Stavový kód HTTP události |
+| `ResultDescription` | Řetězec | Další podrobnosti o události |
+| `DurationMs` | Řetězec | Jak dlouho trvalo provádění události v milisekundách |
+| `CallerIpAddress` | Řetězec | Maskovaná zdrojová IP adresa pro událost |
+| `CorrelationId` | Identifikátor GUID | Pro událost se zadal jedinečný identifikátor zákazníka. |
+| `Level` | Řetězec | Závažnost protokolování události |
+| `Location` | Řetězec | Oblast, ve které byla událost provedena |
+| `RequestUri` | Identifikátor URI | Koncový bod využíval během události |
+
+Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
+
+#### <a name="adtdigitaltwinsoperation"></a>ADTDigitalTwinsOperation
+
+```json
+{
+  "time": "2020-03-14T21:11:14.9918922Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "DigitalTwinOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "314",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+}
+```
+
+#### <a name="adtmodelsoperation"></a>ADTModelsOperation
+
+```json
+{
+  "time": "2020-10-29T21:12:24.2337302Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/models/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "ModelsOperation",
+  "resultType": "Success",
+  "resultSignature": "201",
+  "resultDescription": "",
+  "durationMs": "935",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+}
+```
+
+#### <a name="adtqueryoperation"></a>ADTQueryOperation
+
+```json
+{
+  "time": "2020-12-04T21:11:44.1690031Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/query/action",
+  "operationVersion": "2020-05-31-preview",
+  "category": "QueryOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "255",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+}
+```
+
+### <a name="egress-log-schemas"></a>Schémata protokolu odchozího přenosu dat
+
+Toto je schéma pro `ADTEventRoutesOperation` protokoly. Obsahují podrobnosti týkající se výjimek a operace rozhraní API kolem koncových bodů, které se připojují k instanci digitálních vláken Azure.
+
+|Název pole | Datový typ | Popis |
+|-----|------|-------------|
+| `Time` | DateTime | Datum a čas, kdy k této události došlo, v UTC |
+| `ResourceId` | Řetězec | ID prostředku Azure Resource Manager prostředku, ve kterém se událost uskutečnila |
+| `OperationName` | Řetězec  | Typ akce prováděné během události |
+| `Category` | Řetězec | Typ prostředku, který se emituje. |
+| `ResultDescription` | Řetězec | Další podrobnosti o události |
+| `Level` | Řetězec | Závažnost protokolování události |
+| `Location` | Řetězec | Oblast, ve které byla událost provedena |
+| `EndpointName` | Řetězec | Název výstupního koncového bodu vytvořeného v rámci digitálních vláken Azure |
+
+Níže jsou uvedeny příklady tělo JSON pro tyto typy protokolů.
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+```json
+{
+  "time": "2020-11-05T22:18:38.0708705Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "category": "EventRoutesOperation",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+  "level": "3",
+  "location": "southcentralus",
+  "properties": {
+    "endpointName": "endpointEventGridInvalidKey"
+  }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

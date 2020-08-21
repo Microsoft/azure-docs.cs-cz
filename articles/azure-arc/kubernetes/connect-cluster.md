@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080486"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723737"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -57,12 +57,12 @@ Ověřte, že máte připravené tyto požadavky:
 * East US
 * West Europe
 
-## <a name="network-requirements"></a>Požadavky sítě
+## <a name="network-requirements"></a>Síťové požadavky
 
 Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy URL fungovaly.
 
-* TCP na portu 443 – >`https://:443`
-* TCP na portu 9418 – >`git://:9418`
+* TCP na portu 443 – > `https://:443`
+* TCP na portu 9418 – > `git://:9418`
 
 | Koncový bod (DNS)                                                                                               | Popis                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -72,6 +72,7 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 | `https://github.com`, git://github.com                                                                         | Příklady úložišť GitOps jsou hostované na GitHubu. Agent konfigurace vyžaduje připojení k libovolnému koncovému bodu Git, který zadáte. |
 | `https://login.microsoftonline.com`                                                                            | Požadováno pro načtení a aktualizaci tokenů Azure Resource Manager                                                                                    |
 | `https://azurearcfork8s.azurecr.io`                                                                            | Požadováno pro získání imagí kontejneru pro agenty Azure ARC                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Požadováno pro získání certifikátů spravovaných identitou přidělené systémem                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Zaregistrujte dva poskytovatele pro Kubernetes s povoleným ARC Azure:
 
@@ -113,7 +114,7 @@ eastus      AzureArcTest
 
 Dále připojíme náš cluster Kubernetes k Azure. Pracovní postup pro `az connectedk8s connect` je následující:
 
-1. Ověřte připojení ke clusteru Kubernetes: prostřednictvím `KUBECONFIG` , `~/.kube/config` nebo`--kube-config`
+1. Ověřte připojení ke clusteru Kubernetes: prostřednictvím `KUBECONFIG` , `~/.kube/config` nebo `--kube-config`
 1. Nasazení agentů Azure ARC pro Kubernetes pomocí Helm 3 do `azure-arc` oboru názvů
 
 ```console
@@ -174,7 +175,7 @@ Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>Připojení pomocí odchozí proxy server
 
-Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes s povoleným obloukem musí směrovat své žádosti přes odchozí proxy server. Tato konfigurace pomáhá dosáhnout těchto akcí:
+Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes s povoleným obloukem musí směrovat své žádosti přes odchozí proxy server. Tato konfigurace umožňuje:
 
 1. `connectedk8s`Spuštěním tohoto příkazu ověřte verzi rozšíření nainstalovanou na počítači:
 

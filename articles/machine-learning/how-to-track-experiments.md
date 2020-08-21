@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f49a66fc6e233658b228b7ad9bacdaa23917afef
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648730"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723839"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Povolit protokolování v běhu školicích kurzů Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,9 @@ Azure Machine Learning může během školení protokolovat také informace z ji
 Informace o protokolování metrik v Návrháři Azure Machine Learning (Preview) najdete v tématu [postup protokolu metrik v Návrháři (Preview)](how-to-track-designer-experiments.md) .
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
-Následující Poznámkový blok znázorňuje koncepty v tomto článku:
+
+Následující poznámkové bloky ukazují koncepty v tomto článku:
+* [Postupy: použití-AzureML/školení/výuka v místním prostředí](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [Postupy: použití-AzureML/Track-and-monitor-experimenty/protokolování – rozhraní API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

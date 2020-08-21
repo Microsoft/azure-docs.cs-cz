@@ -2,17 +2,17 @@
 title: Povolení koncového šifrování TLS v Azure Application Gateway
 description: Tento článek představuje přehled Application Gateway kompletní podpora protokolu TLS.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962097"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723295"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
 
@@ -30,7 +30,7 @@ Application Gateway podporuje ukončení protokolu TLS v bráně, po kterém pro
 Chcete-li nakonfigurovat ukončení protokolu TLS, je nutné přidat certifikát TLS/SSL do naslouchacího procesu, aby Application Gateway mohl odvodit symetrický klíč jako podle specifikace protokolu TLS/SSL. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. Certifikát TLS/SSL musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat privátní klíč, který služba Application Gateway vyžaduje k provádění šifrování a dešifrování provozu.
 
 > [!IMPORTANT] 
-> Upozorňujeme, že certifikát na naslouchací službě vyžaduje nahrání celého řetězu certifikátů. 
+> Certifikát na naslouchací službě vyžaduje nahrání celého řetězce certifikátů (kořenový certifikát od certifikační autority, zprostředkujících a listových certifikátů) k vytvoření řetězu důvěryhodnosti. 
 
 
 > [!NOTE] 

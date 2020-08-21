@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222968"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722581"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -106,7 +106,7 @@ Azure služba AD DS vyžaduje aktivní předplatné a nedá se přesunout do jin
 
 Azure služba AD DS vyžaduje aktivní předplatné. Pokud předplatné Azure, ke kterému je spravovaná doména přidružená, není aktivní, musíte ho obnovit, aby se předplatné znovu aktivovalo.
 
-1. [Prodlužte si platnost předplatného Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Prodlužte si platnost předplatného Azure](../cost-management-billing/manage/subscription-disabled.md).
 2. Po obnovení odběru vám oznámení služby Azure služba AD DS umožní znovu povolit spravovanou doménu.
 
 Pokud je spravovaná doména znovu povolena, stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
@@ -162,7 +162,7 @@ Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte
 
 Některé automaticky generované objekty služby se používají ke správě a vytváření prostředků pro spravovanou doménu. Pokud dojde ke změně oprávnění pro přístup k některému z těchto instančních objektů, doména nemůže správně spravovat prostředky. Následující kroky ukazují, jak pochopit a pak udělit přístupová oprávnění k instančnímu objektu:
 
-1. Přečtěte si o [řízení přístupu na základě role a o tom, jak udělit přístup k aplikacím v Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+1. Přečtěte si o [řízení přístupu na základě role a o tom, jak udělit přístup k aplikacím v Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Zkontrolujte přístup, který instanční objekt s ID *abba844e-bc0e-44b0-947a-dc74e5d09022* má, a udělte přístup, který byl zamítnut v dřívější datum.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: ve spravované doméně není dostatečná IP adresa.
@@ -276,7 +276,7 @@ Následující běžné důvody způsobují zastavení synchronizace ve spravova
 
 Azure služba AD DS vyžaduje aktivní předplatné. Pokud předplatné Azure, ke kterému je spravovaná doména přidružená, není aktivní, musíte ho obnovit, aby se předplatné znovu aktivovalo.
 
-1. [Prodlužte si platnost předplatného Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Prodlužte si platnost předplatného Azure](../cost-management-billing/manage/subscription-disabled.md).
 2. Po obnovení odběru vám oznámení služby Azure služba AD DS umožní znovu povolit spravovanou doménu.
 
 Pokud je spravovaná doména znovu povolena, stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13c54b548a507043fda7ff230cf7641c26f471d1
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517910"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724029"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů RES
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu musíte mít:
 
@@ -52,14 +52,35 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. Získejte vzorový kontejner nástrojů pro označování pomocí `docker pull` příkazu.
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. Teď jste připraveni spustit kontejner pomocí `docker run` .
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    ```
+
+    --- 
 
    Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte na `http://localhost:3000`.
 
@@ -97,7 +118,8 @@ Vyplňte pole následujícími hodnotami:
 * **Popis** – Popis projektu.
 * **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na nějakou dobu, kdy jste službu použili. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
-![Nastavení připojení nástroje Sample labeling Tool](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -111,7 +133,7 @@ V nástroji pro označování ukázkových popisků se v projektech ukládají v
 * **Klíč rozhraní API** – klíč předplatného pro rozpoznávání formulářů
 * **Popis** -volitelné – Popis projektu
 
-![Nová stránka projektu s ukázkovým popisem nástroje](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Nová stránka projektu s ukázkovým nástrojem pro označování":::
 
 ## <a name="label-your-forms"></a>Popisek formulářů
 
@@ -125,10 +147,15 @@ Při vytváření nebo otevírání projektu se otevře okno Editor hlavních zn
 
 Kliknutím na možnost **spustit optické rozpoznávání znaků u všech souborů** v levém podokně získáte informace o rozložení textu pro každý dokument. Nástroj pro popisování vykreslí ohraničující rámečky kolem každého prvku textu.
 
+Zobrazí také, které tabulky byly automaticky extrahovány. Extrahovanou tabulku zobrazíte kliknutím na ikonu tabulky nebo mřížky na levé straně dokumentu. V tomto rychlém startu, protože obsah tabulky se automaticky extrahuje, nebudeme označovat obsah tabulky, ale místo toho se spoléháme na automatizovanou extrakci.
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Vizualizace tabulky v nástroji ukázka popisků":::
+
 ### <a name="apply-labels-to-text"></a>Použít popisky na text
 
 V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky, které má model rozpoznat.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. Nejprve pomocí podokna editor značek vytvořte značky, které chcete identifikovat.
    1. Kliknutím **+** vytvoříte novou značku.
    1. Zadejte název značky.
@@ -146,7 +173,30 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
     > * Pomocí tlačítek napravo od **+** můžete vyhledat, přejmenovat, změnit pořadí a odstranit značky.
     > * Chcete-li odebrat použitou značku bez odstranění samotné značky, vyberte tagovaný obdélník v zobrazení dokumentu a stiskněte klávesu DELETE.
 
-![Okno hlavního editoru nástroje pro ukázkové označování](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1) 
+1. Nejprve pomocí podokna editor značek vytvořte značky, které chcete identifikovat.
+   1. Kliknutím **+** vytvoříte novou značku.
+   1. Zadejte název značky.
+   1. Stisknutím klávesy ENTER značku uložíte.
+1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. Ve _verzi Preview v 2.1_ můžete také kliknout na výběr _značek výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
+1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
+    > [!Tip]
+    > Při označování formulářů mějte na paměti následující tipy.
+    > * Pro každý vybraný textový prvek lze použít pouze jednu značku.
+    > * Každou značku lze na stránce použít pouze jednou. Pokud se hodnota ve stejném formuláři objeví víckrát, vytvořte pro každou instanci různé značky. Například: "Faktura č. 1", "Faktura č. 2" atd.
+    > * Značky nemohou být rozloženy mezi stránkami.
+    > * Hodnoty popisků tak, jak se zobrazí ve formuláři; Nepokoušejte se rozdělit hodnotu do dvou částí se dvěma různými značkami. Například pole adresa musí být označeno s jednou značkou, i když pokrývá více řádků.
+    > * Nezahrnujte klíče do polí s příznakem &mdash; pouze hodnoty.
+    > * Data tabulky by měla být zjištěna automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud však model nerozpozná všechna data tabulky, můžete tato pole také označit ručně. Označte každou buňku v tabulce jiným popiskem. Pokud mají vaše formuláře tabulky s různými počty řádků, ujistěte se, že jste si vystavili alespoň jednu formu s největší možnou tabulkou.
+    > * Pomocí tlačítek napravo od **+** můžete vyhledat, přejmenovat, změnit pořadí a odstranit značky.
+    > * Chcete-li odebrat použitou značku bez odstranění samotné značky, vyberte tagovaný obdélník v zobrazení dokumentu a stiskněte klávesu DELETE.
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Okno hlavního editoru nástroje pro ukázkové označování":::
+
 
 Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem.
 
@@ -166,6 +216,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
     * výchozí, `dmy` , `mdy` , `ymd`
 * `time`
 * `integer`
+* `selectionMark` – _Novinka v verze 2.1 – Preview. 1!_
 
 > [!NOTE]
 > Tato pravidla se zobrazují pro formátování data:
@@ -196,14 +247,31 @@ Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom
 * **Průměrná přesnost** – Průměrná přesnost modelu Přesnost modelu můžete vylepšit tak, že si znovu označíte další formuláře a školení a vytvoříte nový model. Doporučujeme začít tím, že budete označovat pět forem a podle potřeby přidat další formuláře.
 * Seznam značek a předpokládaná přesnost na značku.
 
-![školicí zobrazení](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Školicí zobrazení.":::
 
 Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud je nízká, měli byste přidat další vstupní dokumenty a opakovat výše uvedené kroky. Již označené dokumenty zůstanou v indexu projektu.
 
 > [!TIP]
 > Můžete také spustit školicí proces s voláním REST API. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](./python-labeled-data.md).
 
-## <a name="analyze-a-form"></a>Analýza formuláře
+## <a name="compose-trained-models"></a>Vytváření vycvičených modelů
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+Tato funkce je aktuálně dostupná v v 2.1. Tisk. 
+
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1) 
+
+Při vytváření modelu můžete sestavit až 100 modelů pro jediné ID modelu. Při volání funkce analyzovat pomocí tohoto složeného ID modelu, nástroj pro rozpoznávání formulářů nejprve klasifikuje formulář, který jste odeslali, přiřadí ho k nejlépe odpovídajícímu modelu a vrátí výsledky pro tento model. To je užitečné, když příchozí formuláře mohou patřit do jedné z několika šablon.
+
+Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (dvě šipky) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
+
+---
+
+## <a name="analyze-a-form"></a>Analýza formuláře 
 
 Kliknutím na ikonu prediktivní (žárovky) na levé straně otestujete svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
 

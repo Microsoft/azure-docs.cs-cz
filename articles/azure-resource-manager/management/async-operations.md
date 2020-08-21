@@ -2,14 +2,14 @@
 title: Stav asynchronních operací
 description: Popisuje, jak sledovat asynchronní operace v Azure. Zobrazuje hodnoty, které použijete k získání stavu dlouhotrvající operace.
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718420"
+ms.locfileid: "88723448"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Sledování asynchronních operací Azure
 
@@ -31,7 +31,7 @@ Odpovědi na operaci, kterou provádíte, najdete v [dokumentaci k REST API](/re
 
 Po získání kódu odpovědi 201 nebo 202 jste připraveni monitorovat stav operace.
 
-## <a name="use-url-to-monitor-status"></a>Pro monitorování stavu použít adresu URL
+## <a name="url-to-monitor-status"></a>Adresa URL pro sledování stavu
 
 Stav asynchronní operace můžete monitorovat dvěma různými způsoby. Správný přístup určíte tak, že prozkoumáte hodnoty hlaviček, které se vrátí z původní žádosti. Nejdřív vyhledejte:
 
@@ -45,7 +45,9 @@ Pokud `Azure-AsyncOperation` není jedna z hodnot záhlaví, vyhledejte:
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Požadavek a odpověď Azure-AsyncOperation
 
-Pokud máte adresu URL z hodnoty v `Azure-AsyncOperation` hlavičce, pošlete požadavek GET na tuto adresu URL. Pomocí hodnoty z `Retry-After` můžete naplánovat, jak často se má stav kontrolovat. Vlastnosti odpovědi se mohou lišit, ale vždy obsahují stav asynchronní operace.
+Pokud máte adresu URL z hodnoty v `Azure-AsyncOperation` hlavičce, pošlete požadavek GET na tuto adresu URL. Pomocí hodnoty z `Retry-After` můžete naplánovat, jak často se má stav kontrolovat. Dostanete objekt Response, který indikuje stav operace. Při kontrole stavu operace s adresou URL se vrátí jiná odpověď `Location` . Další informace o odpovědi z adresy URL umístění najdete v tématu [Vytvoření účtu úložiště (202 s umístěním a opakování)](#create-storage-account-202-with-location-and-retry-after).
+
+Vlastnosti odpovědi se mohou lišit, ale vždy obsahují stav asynchronní operace.
 
 ```json
 {

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584599"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722564"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -35,13 +35,29 @@ Tato image kontejneru má k dispozici následující značky:
 
 ## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
-Bitovou kopii kontejneru [počítačové zpracování obrazu][cv-containers] najdete v `containerpreview.azurecr.io` registru kontejnerů. Je uložený v `microsoft` úložišti a má název `cognitive-services-read` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
+Bitovou kopii kontejneru rozpoznávání OCR [počítačové zpracování obrazu][cv-containers] najdete v `containerpreview.azurecr.io` registru kontejneru. Je uložený v `microsoft` úložišti a má název `cognitive-services-read` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Tato image kontejneru má k dispozici následující značky:
 
 | Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | • Další snížení využití paměti pro kontejner. |
+|                                          | • Při instalaci s více lusky se vyžaduje externí mezipaměť. Například nastavte Redis pro ukládání do mezipaměti. |
+|                                          | • Oprava výsledky chybějící problém, pokud je Redis mezipaměť nastavená na hodnotu ResultExpirationPeriod = 0.  |
+|                                          | • Odeberte omezení velikosti textu požadavku 26MB. Kontejner teď může přijímat >soubory 26MB.  |
+|                                          | • Přidejte časové razítko a sestavte verzi do protokolování konzoly.  |
+| `1.1.013050001-amd64-preview`            | * Přidání ReadEngineConfig: ResultExpirationPeriod konfigurace inicializace kontejneru pro určení, kdy má systém vyčistit výsledky rozpoznávání. |
+|                                          | Nastavení je v hodinách a výchozí hodnota je 48hr.   |
+|                                          |   Nastavení může snížit využití paměti pro ukládání výsledků, zejména v případě, že je použito úložiště kontejneru v paměti.  |
+|                                          |    * Příklad 1. ReadEngineConfig: ResultExpirationPeriod = 1, systém vymaže výsledek rozpoznávání 1hr po dokončení procesu.   |
+|                                          |    * Příklad 2. ReadEngineConfig: ResultExpirationPeriod = 0, systém vymaže výsledek rozpoznávání po načtení výsledku.  |
+|                                          | Při předání neplatného formátu obrázku do systému byla opravena interní chyba serveru 500. Nyní se vrátí 400 chyba:   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |

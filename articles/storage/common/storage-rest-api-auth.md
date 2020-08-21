@@ -10,24 +10,24 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905376"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724162"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Volání REST API operací s autorizací sdíleného klíče
 
 V tomto článku se dozvíte, jak volat Azure Storage rozhraní REST API, včetně toho, jak vytvořit autorizační hlavičku. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Až se dozvíte, jak zavolat operaci REST, můžete tyto znalosti využít k používání dalších Azure Storagech operací REST.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s úlohou **vývoj pro Azure** .
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-account-create.md).
 
@@ -65,7 +65,7 @@ Projděte si odkaz na operaci [ListContainers](/rest/api/storageservices/List-Co
 
 **Metoda požadavku**: získat. Tato operace je metoda HTTP, kterou zadáte jako vlastnost objektu Request. Mezi další hodnoty tohoto příkazu patří HEADers, PUT a DELETE v závislosti na rozhraní API, které voláte.
 
-**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list` .Identifikátor URI žádosti se vytvoří z koncového bodu účtu úložiště objektů BLOB `http://myaccount.blob.core.windows.net` a řetězce prostředků `/?comp=list` .
+**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list` .Identifikátor URI žádosti se vytvoří z koncového bodu účtu úložiště objektů BLOB `https://myaccount.blob.core.windows.net` a řetězce prostředků `/?comp=list` .
 
 [Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): existují další parametry dotazu, které lze použít při volání ListContainers. Několik z těchto parametrů je *časovým limitem* pro volání (v sekundách) a *předponou*, která se používá pro filtrování.
 
@@ -563,7 +563,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili, jak vytvořit požadavek na úložiště objektů BLOB REST API. S požadavkem můžete načíst seznam kontejnerů nebo seznam objektů BLOB v kontejneru. Zjistili jste, jak vytvořit autorizační podpis pro volání REST API a jak ho použít v žádosti REST. Nakonec jste zjistili, jak můžete odpověď prostudovat.
 

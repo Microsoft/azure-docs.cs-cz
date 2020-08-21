@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 307b1a6838c3a78c04ba6a36ffd52bd6b98aae04
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054268"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722819"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -94,7 +94,7 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 | Prostředek Azure                          | Popis |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
-| Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/public-ip-addresses.md). |
 | Azure Load Balancer úrovně Standard            | Azure služba AD DS používá nástroj pro vyrovnávání zatížení Standard SKU pro překlad síťových adres (NAT) a vyrovnávání zatížení (při použití se zabezpečeným protokolem LDAP). Další informace o nástrojích pro vyrovnávání zatížení Azure najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Pravidla překladu síťových adres (NAT) | Azure služba AD DS vytvoří a použije tři pravidla překladu adres (NAT) pro nástroj pro vyrovnávání zatížení – jedno pravidlo pro zabezpečený provoz HTTP a dvě pravidla pro zabezpečenou vzdálenou komunikaci PowerShellu. |
 | Pravidla nástroje pro vyrovnávání zatížení                     | Když je spravovaná doména nakonfigurovaná na Secure LDAP na portu TCP 636, vytvoří se pro distribuci provozu tři pravidla a použijí se na nástroji pro vyrovnávání zatížení. |
@@ -104,7 +104,7 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 
 ## <a name="network-security-groups-and-required-ports"></a>Skupiny zabezpečení sítě a požadované porty
 
-[Skupina zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
+[Skupina zabezpečení sítě (NSG)](../virtual-network/virtual-network-vnet-plan-design-arm.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
 
 Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžadují se následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které je spravovaná doména nasazená.
 

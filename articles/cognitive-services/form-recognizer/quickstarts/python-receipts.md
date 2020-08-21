@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: a863d8ccc157272ab736201615fb079eaf7f5dbc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 235b2a1e3a75c01c8e57a0e4b0c27664f638385f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522823"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723516"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -23,7 +23,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
@@ -44,7 +44,9 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
 1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
-    ```python
+  # <a name="v20"></a>[v2.0](#tab/v2-0)    
+    ```
+    python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -81,6 +83,51 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
         print("POST analyze failed:\n%s" % str(e))
         quit()
     ```
+    
+   # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+    ```
+    python
+    ########### Python Form Recognizer Async Receipt #############
+
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<subscription key>"
+    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
+    source = r"<path to your receipt>"
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    
+    params = {
+        "includeTextDetails": True
+        "locale": "en-US"
+    }
+    
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
+    ```
+> [!NOTE]
+> **Vstup jazyka** 
+>
+> Operace vydání Analzye Receipt 2,1 obsahuje volitelný parametr požadavku pro jazyk, národní prostředí účtenky. Mezi podporovaná národní prostředí patří: EN-AU, en-CA, en-GB, en-IN, en-US. 
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Receipts.py*.
 1. Otevřete okno příkazového řádku.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254839"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723941"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -222,41 +222,41 @@ Poslední nastavení, `$ref-policy` mapuje na soubor globálních příkazů zá
 ### <a name="apis-folder"></a>Složka rozhraní API
 `apis`Složka obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
 
-* `apis\<api name>\configuration.json`– Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny v případě, že jste volali funkci [získat konkrétní rozhraní API](/rest/api/apimanagement/2019-12-01/apis/get) `export=true` ve `application/json` formátu.
-* `apis\<api name>\api.description.html`– Toto je popis rozhraní API a odpovídá `description` vlastnosti [entity rozhraní API](/java/api/com.microsoft.azure.storage.table.entityproperty).
-* `apis\<api name>\operations\`– Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [entity operace](/rest/api/visualstudio/operations/list#operationproperties) v REST API.
+* `apis\<api name>\configuration.json` – Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny v případě, že jste volali funkci [získat konkrétní rozhraní API](/rest/api/apimanagement/2019-12-01/apis/get) `export=true` ve `application/json` formátu.
+* `apis\<api name>\api.description.html` – Toto je popis rozhraní API a odpovídá `description` vlastnosti [entity rozhraní API](/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [entity operace](/rest/api/visualstudio/operations/list#operationproperties) v REST API.
 
 ### <a name="groups-folder"></a>Složka skupin
 `groups`Složka obsahuje složku pro každou skupinu definovanou v instanci služby.
 
-* `groups\<group name>\configuration.json`– Jedná se o konfiguraci skupiny. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní skupinu](/rest/api/apimanagement/2019-12-01/group/get) .
-* `groups\<group name>\description.html`– Toto je popis skupiny a odpovídá `description` vlastnosti [entity Group](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json` – Jedná se o konfiguraci skupiny. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní skupinu](/rest/api/apimanagement/2019-12-01/group/get) .
+* `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnosti [entity Group](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Složka zásad
 `policies`Složka obsahuje příkazy zásad pro instanci služby.
 
-* `policies\global.xml`-obsahuje zásady definované v globálním oboru pro instanci služby.
-* `policies\apis\<api name>\`– Pokud máte v oboru rozhraní API definované nějaké zásady, jsou obsažené v této složce.
-* `policies\apis\<api name>\<operation name>\`Složka – Pokud máte v oboru operací definované nějaké zásady, jsou obsažené v této složce v `<operation name>.xml` souborech, které se mapují na příkazy zásad pro jednotlivé operace.
-* `policies\products\`– Pokud máte v oboru produktů definované nějaké zásady, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které se mapují na příkazy zásad pro každý produkt.
+* `policies\global.xml` -obsahuje zásady definované v globálním oboru pro instanci služby.
+* `policies\apis\<api name>\` – Pokud máte v oboru rozhraní API definované nějaké zásady, jsou obsažené v této složce.
+* `policies\apis\<api name>\<operation name>\` Složka – Pokud máte v oboru operací definované nějaké zásady, jsou obsažené v této složce v `<operation name>.xml` souborech, které se mapují na příkazy zásad pro jednotlivé operace.
+* `policies\products\` – Pokud máte v oboru produktů definované nějaké zásady, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které se mapují na příkazy zásad pro každý produkt.
 
 ### <a name="portalstyles-folder"></a>portalStyles složka
 `portalStyles`Složka obsahuje konfiguraci a šablony stylů pro přizpůsobení portálu pro vývojáře pro instanci služby.
 
-* `portalStyles\configuration.json`-obsahuje názvy šablon stylů používaných portálem pro vývojáře.
-* `portalStyles\<style name>.css`– Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře ( `Preview.css` a `Production.css` ve výchozím nastavení).
+* `portalStyles\configuration.json` -obsahuje názvy šablon stylů používaných portálem pro vývojáře.
+* `portalStyles\<style name>.css` – Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře ( `Preview.css` a `Production.css` ve výchozím nastavení).
 
 ### <a name="products-folder"></a>Složka Products
 `products`Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json`– Jedná se o konfiguraci produktu. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní produkt](/rest/api/apimanagement/2019-12-01/product/get) .
-* `products\<product name>\product.description.html`– Toto je popis produktu a odpovídá `description` vlastnosti [entity produktu](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v REST API.
+* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní produkt](/rest/api/apimanagement/2019-12-01/product/get) .
+* `products\<product name>\product.description.html` – Toto je popis produktu a odpovídá `description` vlastnosti [entity produktu](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v REST API.
 
 ### <a name="templates"></a>šablony
 `templates`Složka obsahuje konfiguraci pro [e-mailové šablony](api-management-howto-configure-notifications.md) instance služby.
 
-* `<template name>\configuration.json`– Jedná se o konfiguraci e-mailové šablony.
-* `<template name>\body.html`– Jedná se o tělo e-mailové šablony.
+* `<template name>\configuration.json` – Jedná se o konfiguraci e-mailové šablony.
+* `<template name>\body.html` – Jedná se o tělo e-mailové šablony.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o dalších způsobech správy instance služby najdete v následujících tématech:

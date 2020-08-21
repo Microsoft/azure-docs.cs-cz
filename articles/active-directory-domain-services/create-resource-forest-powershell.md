@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506324"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723159"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > [!IMPORTANT]
 > Doménové struktury prostředků spravované domény aktuálně nepodporují Azure HDInsight ani soubory Azure. Výchozí doménové struktury uživatelů spravované domény podporují obě tyto další služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -102,7 +102,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Zkontrolujte následující parametry potřebné pro tento `New-AzureAaddsForest` skript. Ujistěte se, že máte také požadované **Azure PowerShell** a moduly **Azure AD PowerShellu** . Ujistěte se, že jste naplánovali požadavky virtuální sítě, aby poskytovaly aplikace a místní připojení.
 
-    | Název                         | Parametr skriptu          | Popis |
+    | Name                         | Parametr skriptu          | Popis |
     |:-----------------------------|---------------------------|:------------|
     | Předplatné                 | *– azureSubscriptionId*    | ID předplatného, které se používá pro fakturaci Azure služba AD DS Seznam předplatných můžete získat pomocí rutiny [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
     | Skupina prostředků               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
@@ -112,7 +112,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Název                              | Parametr skriptu                  | Popis |
+    | Name                              | Parametr skriptu                  | Popis |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
@@ -148,15 +148,15 @@ Než začnete, ujistěte se, že rozumíte [hlediskům a doporučením sítě](t
 
 1. Vytvořte hybridní připojení k místní síti do Azure pomocí připojení Azure VPN nebo Azure ExpressRoute. Konfigurace hybridní sítě překračuje rozsah této dokumentace a ve vašem prostředí už možná existují. Podrobnosti o konkrétních scénářích najdete v následujících článcích:
 
-    * [Síť VPN typu Site-to-site](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Přehled služby Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
+    * [Síť VPN typu Site-to-site](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+    * [Přehled služby Azure ExpressRoute](../expressroute/expressroute-introduction.md).
 
     > [!IMPORTANT]
     > Pokud vytvoříte připojení přímo k virtuální síti spravované domény, použijte samostatnou podsíť brány. Nevytvářejte bránu v podsíti spravované domény.
 
 1. Pokud chcete spravovat spravovanou doménu, vytvořte virtuální počítač pro správu, připojte ho ke spravované doméně a nainstalujte požadované nástroje pro správu služba AD DS.
 
-    Během nasazování doménové struktury prostředků spravované domény [vytvořte virtuální počítač s Windows serverem](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) a nainstalujte si [základní služba AD DS nástroje pro správu](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm) , abyste nainstalovali potřebné nástroje pro správu. Počkejte, až se virtuální počítač pro správu připojí ke spravované doméně, až po úspěšném nasazení domény do jednoho z následujících kroků.
+    Během nasazování doménové struktury prostředků spravované domény [vytvořte virtuální počítač s Windows serverem](./join-windows-vm.md) a nainstalujte si [základní služba AD DS nástroje pro správu](./tutorial-create-management-vm.md) , abyste nainstalovali potřebné nástroje pro správu. Počkejte, až se virtuální počítač pro správu připojí ke spravované doméně, až po úspěšném nasazení domény do jednoho z následujících kroků.
 
 1. Ověřte síťové připojení mezi vaší místní sítí a virtuální sítí Azure.
 
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Název                               | Parametr skriptu     | Popis |
+| Name                               | Parametr skriptu     | Popis |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |
@@ -260,7 +260,7 @@ Je potřeba, aby byl virtuální počítač s Windows serverem připojený k dom
 1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků spravované domény pomocí přihlašovacích údajů pro vzdálenou plochu a správce spravované domény. Pokud se zobrazí chyba ověřování na úrovni sítě (NLA), ověřte, že uživatelský účet, který jste použili, není uživatelský účet domény.
 
     > [!TIP]
-    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](https://docs.microsoft.com/azure/bastion/bastion-overview) v podporovaných oblastech Azure.
+    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](../bastion/bastion-overview.md) v podporovaných oblastech Azure.
 
 1. Otevřete příkazový řádek a pomocí `whoami` příkazu Zobrazte rozlišující název aktuálně ověřeného uživatele:
 
@@ -286,7 +286,7 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků spravované domény pomocí přihlašovacích údajů pro vzdálenou plochu a správce spravované domény. Pokud se zobrazí chyba ověřování na úrovni sítě (NLA), ověřte, že uživatelský účet, který jste použili, není uživatelský účet domény.
 
     > [!TIP]
-    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](https://docs.microsoft.com/azure/bastion/bastion-overview) v podporovaných oblastech Azure.
+    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](../bastion/bastion-overview.md) v podporovaných oblastech Azure.
 
 1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
 1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .

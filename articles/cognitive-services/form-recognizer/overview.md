@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836900"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723553"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -24,7 +24,7 @@ Nástroj pro rozpoznávání formulářů Azure je výtahová služba, která po
 
 Nástroj pro rozpoznávání formulářů se skládá z následujících služeb:
 * **Vlastní modely** – z formulářů extrahuje páry klíč/hodnota a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
-* **Model předem vytvořeného příjmu** – extrakce dat z prodejních příjmů v USA pomocí předem připraveného modelu.
+* Předem **připravené modely** – extrakce dat z jedinečných typů formulářů pomocí předem sestavených modelů. Aktuálně dostupné jsou předem připravené modely pro prodejní příjemky a obchodní karty v angličtině.
 * **Rozhraní API pro rozložení** – rozbalí textové a tabulkové struktury spolu s jejich souřadnicemi ohraničovacího rámečku z dokumentů.
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Při výuce s povzorovými daty model předává pod dohledem učení o extrakci
 
 Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozložení](#layout-api) a zjišťuje očekávané velikosti a pozice vytištěných a ručně psaných textových prvků. Pak pomocí uživatelem zadaných popisků zjistí přidružení klíč/hodnota v dokumentech. Doporučujeme použít pět ručně označených forem stejného typu, abyste mohli začít při výuce nového modelu a přidávat další označená data, aby se zlepšila přesnost modelu.
 
-## <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
+## <a name="prebuilt-models"></a>Předem připravené modely
 
-Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prodejních příjmů v angličtině z USA &mdash; typ používaný v restauracích, čerpacích stanicích, maloobchodě atd. ([příjem vzorků](./media/contoso-receipt-small.png)). Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní a součtů a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence.
+Nástroj pro rozpoznávání formulářů obsahuje také předem připravené modely pro jedinečné typy formulářů.
+### <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
+Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence. 
+
+![Ukázka účtenky](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>Model předdefinovaných vizitek
+Model vizitek vám umožňuje extrahovat v angličtině informace, jako je jméno osoby, název úlohy, adresa, e-mail, společnost a telefonní číslo z obchodních karet. 
+
+![Ukázka vizitky](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Rozhraní API pro rozložení
 
@@ -90,7 +99,7 @@ Další informace najdete v [referenční dokumentaci k REST API](https://westus
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
+### <a name="prebuilt"></a>Předem připravených
 
 Vstupní požadavky pro model příjemky se mírně liší.
 

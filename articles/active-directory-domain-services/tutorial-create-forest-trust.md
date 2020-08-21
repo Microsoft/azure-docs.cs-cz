@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492152"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722717"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -128,7 +128,7 @@ Následující běžné scénáře vám umožní ověřit, že vztah důvěryhod
 
 K spravované doméně byste měli připojit virtuální počítač s Windows serverem. Použijte tento virtuální počítač k otestování místního uživatele, který se může ověřit na virtuálním počítači. V případě potřeby [vytvořte virtuální počítač s Windows a připojte ho ke spravované doméně][join-windows-vm].
 
-1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview) a vašich přihlašovacích údajů správce Azure služba AD DS.
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](../bastion/bastion-overview.md) a vašich přihlašovacích údajů správce Azure služba AD DS.
 1. Otevřete příkazový řádek a pomocí `whoami` příkazu Zobrazte rozlišující název aktuálně ověřeného uživatele:
 
     ```console
@@ -150,7 +150,7 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 
 #### <a name="enable-file-and-printer-sharing"></a>Povolit sdílení souborů a tiskáren
 
-1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview) a vašich přihlašovacích údajů správce Azure služba AD DS.
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](../bastion/bastion-overview.md) a vašich přihlašovacích údajů správce Azure služba AD DS.
 
 1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
 1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640731"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723856"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -28,7 +28,7 @@ Pravidlo shromažďování dat zahrnuje následující součásti.
 
 | Komponenta | Popis |
 |:---|:---|
-| Zdroje dat | Jedinečný zdroj dat monitorování s vlastním formátem a metodou, která zveřejňuje svá data. Mezi příklady zdroje dat patří protokol událostí systému Windows, čítače výkonu a syslog. Každý zdroj dat odpovídá konkrétnímu typu zdroje dat, jak je popsáno níže. |
+| Zdroje dat | Jedinečný zdroj dat monitorování s vlastním formátem a způsobem, jak vystavit jeho data Mezi příklady zdroje dat patří protokol událostí systému Windows, čítače výkonu a syslog. Každý zdroj dat odpovídá konkrétnímu typu zdroje dat, jak je popsáno níže. |
 | Streamy | Jedinečný popisovač, který popisuje sadu zdrojů dat, které budou transformované a schematized jako jeden typ. Každý zdroj dat vyžaduje jeden nebo více datových proudů a jeden datový proud může být použit více zdroji dat. Všechny zdroje dat v datovém proudu sdílejí společné schéma. Použijte několik datových proudů, například pokud chcete odeslat konkrétní zdroj dat do několika tabulek ve stejném pracovním prostoru Log Analytics. |
 | Cíle | Sada míst, kde mají být data odeslána Mezi příklady patří Log Analytics pracovní prostor, Azure Monitor metriky a Azure Event Hubs. | 
 | Toky dat | Definice, do které se mají odesílat datové proudy, do kterých míst určení | 
@@ -44,7 +44,7 @@ Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlas
 |:---|:---|
 | přípona | Zdroj dat založený na rozšíření virtuálních počítačů |
 | Čítače výkonu | Čítače výkonu pro systémy Windows i Linux |
-| syslog | Události syslog na virtuálním počítači se systémem Linux |
+| syslog | Události syslogu na platformě Linux |
 | windowsEventLogs | Protokol událostí systému Windows |
 
 
@@ -54,8 +54,8 @@ V následující tabulce jsou uvedené limity, které se aktuálně vztahují na
 | Omezení | Hodnota |
 |:---|:---|
 | Maximální počet zdrojů dat | 10 |
-| Maximální počet specifikátorů čítače ve výkonu | 100 |
-| Maximální počet názvů zařízení v protokolu SysLog | 20 |
+| Maximální počet specifikátorů čítače v čítači výkonu | 100 |
+| Maximální počet názvů zařízení v protokolu syslog | 20 |
 | Maximální počet dotazů XPath v protokolu událostí | 100 |
 | Maximální počet toků dat | 10 |
 | Maximální počet datových proudů | 10 |
@@ -83,8 +83,7 @@ Níže uvedené pravidlo shromažďování ukázkových dat je pro virtuální p
   - Shromažďuje ladění, kritické a naléhavé události ze zařízení cron.
   - Shromažďuje výstrahy, kritické a naléhavé události ze zařízení syslog.
 - Cíle
-  - Pošle všechna data do pracovního prostoru Log Analytics s názvem centralTeamWorkspace.
-  - Odesílá údaje o výkonu do Azure Monitor metrik v aktuálním předplatném.
+  - Pošle všechna data do pracovního prostoru Log Analytics s názvem centralWorkspace.
 
 ```json
 {
@@ -157,7 +156,7 @@ Níže uvedené pravidlo shromažďování ukázkových dat je pro virtuální p
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],
