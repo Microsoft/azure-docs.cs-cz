@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165766"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691322"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD). (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -90,8 +90,8 @@ V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core p
 
 > [!div renderon="docs"]
 > Kde:
-> - `Enter_the_Application_Id_here`– je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali v Azure Portal. **ID aplikace (klienta)** můžete najít na stránce **Přehled** aplikace.
-> - `Enter_the_Tenant_Info_Here`– je jedna z následujících možností:
+> - `Enter_the_Application_Id_here` – je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali v Azure Portal. **ID aplikace (klienta)** můžete najít na stránce **Přehled** aplikace.
+> - `Enter_the_Tenant_Info_Here` – je jedna z následujících možností:
 >   - Pokud vaše aplikace podporuje **jenom účty v tomto organizačním adresáři**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
 >   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
 >   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
@@ -145,10 +145,10 @@ Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování
 
 Řádek, který obsahuje `.AddAzureAd` , přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform.
 
-> |Kde | Description |
+> |Kde | Popis |
 > |---------|---------|
 > | ClientId  | ID aplikace (klienta) z aplikace zaregistrované v Azure Portal. |
-> | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
+> | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
 > | TokenValidationParameters | Seznam parametrů pro ověřování tokenů; V tomto případě `ValidateIssuer` je nastaveno, aby `false` označoval, že může přijímat přihlášení z libovolného osobního nebo pracovního nebo školního účtu. |
 
 
@@ -156,7 +156,7 @@ Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování
 > Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. Ve skutečných aplikacích potřebujete k ověření vystavitele.
 > V ukázkách si můžete uvědomit, jak to udělat.
 >
-> Všimněte si také `Configure` metody, která obsahuje dvě důležité metody: `app.UseCookiePolicy()` a`app.UseAuthentication()`
+> Všimněte si také `Configure` metody, která obsahuje dvě důležité metody: `app.UseCookiePolicy()` a `app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

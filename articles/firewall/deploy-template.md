@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260630"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705125"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-ARM
 
@@ -29,11 +29,11 @@ Uživatelem definovaná trasa směrování v síti z podsítě *ServersSubnet* p
 
 Další informace o Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall použití Azure Portal](tutorial-firewall-deploy-portal.md).
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,9 +41,9 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 Tato šablona vytvoří Azure Firewall s Zóny dostupnosti, včetně nezbytných prostředků pro podporu Azure Firewall.
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 V šabloně je definováno víc prostředků Azure:
 

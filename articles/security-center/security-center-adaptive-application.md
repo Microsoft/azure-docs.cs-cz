@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036945"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691475"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -83,7 +83,7 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
     - **Žádné doporučení** – počítače bez definovaného seznamu povolených aplikací, které tuto funkci nepodporují. Počítač může být na této kartě z následujících důvodů:
       - Chybí agent Log Analytics.
       - Agent Log Analytics neodesílá události.
-      - Jedná se o počítač s Windows s již existujícími zásadami [AppLockeru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) , které jsou povolené buď pomocí objektu zásad skupiny, nebo místních zásad zabezpečení.
+      - Jedná se o počítač s Windows s již existujícími zásadami [AppLockeru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) , které jsou povolené buď pomocí objektu zásad skupiny, nebo místních zásad zabezpečení.
 
       > [!TIP]
       > Security Center potřebuje k definování jedinečných doporučení na skupinu počítačů aspoň dva týdny dat. Na kartě **bez doporučení** se zobrazí počítače, které byly nedávno vytvořeny nebo které patří k předplatným, která byla naposledy povolena pouze s úrovní Standard.
@@ -187,7 +187,7 @@ Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zása
 
 1. Na stránce **Adaptivní řízení aplikací** vyberte z karty **nakonfigurovaná** skupinu obsahující počítač, který chcete přesunout.
 
-1. Otevřete seznam **nakonfigurovaných počítačů**.
+1. Otevřete seznam  **nakonfigurovaných počítačů**.
 
 1. V nabídce počítače otevřete tři tečky na konci řádku a vyberte **přesunout**. Otevře se podokno **přesunout počítač do jiné skupiny** .
 

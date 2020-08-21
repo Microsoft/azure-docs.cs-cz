@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1aff5780aa5f4cf21d862a5cee3b140179dac03c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046402"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88703800"
 ---
 Následující shrnuje omezení klíčů v Azure Time Series Insights Gen1.
 
@@ -37,7 +37,7 @@ Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při
 
 Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají výrazně vyšší kapacitu příchozího přenosu dat.
 
-| Skladová položka  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
+| SKU  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
 |---------|---------|---------|---------|---------|
 | S1     |   30 000 000   |  720    |  720 KB   |
  |S2     |   300 000 000   | 7 200   | 7 200 KB  |
@@ -46,7 +46,7 @@ Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají vý
 
 Omezení vlastností Gen1 závisí na vybraném prostředí SKU. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které se dají zobrazit v [Azure Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
-| Skladová položka | Maximální vlastnosti |
+| SKU | Maximální vlastnosti |
 | --- | --- |
 | S1 | 600 vlastnosti (sloupce) |
 | S2 | 800 vlastnosti (sloupce) |
@@ -60,4 +60,4 @@ Podporuje se maximálně dva zdroje událostí na instanci.
 
 ### <a name="api-limits"></a>Omezení rozhraní API
 
-REST API omezení pro Azure Time Series Insights Gen1 jsou uvedena v [referenční dokumentaci REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).
+REST API omezení pro Azure Time Series Insights Gen1 jsou uvedena v [referenční dokumentaci REST API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability).

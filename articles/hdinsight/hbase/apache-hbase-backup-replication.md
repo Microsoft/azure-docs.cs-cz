@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076738"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705720"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace pro Apache HBA a Apache Phoenix v HDInsight
 
@@ -114,11 +114,11 @@ Cílová adresa se skládá z následujících tří částí:
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>`je čárkami oddělený seznam uzlů Apache ZooKeeper, například:
+* `<ZooKeeperQuorum>` je čárkami oddělený seznam uzlů Apache ZooKeeper, například:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. NET, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. NET, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`ve výchozím nastavení má HDInsight hodnotu 2181 a `<ZnodeParent>` je `/hbase-unsecure` to proto, že dokončení bude `<destinationAddress>` :
+* `<Port>` ve výchozím nastavení má HDInsight hodnotu 2181 a `<ZnodeParent>` je `/hbase-unsecure` to proto, že dokončení bude `<destinationAddress>` :
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. NET, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. NET, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. Internal. cloudapp. NET: 2181:/HBase-Unsecure
 
@@ -213,7 +213,13 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-Po exportu snímku SSH do hlavního uzlu cílového clusteru a obnovte snímek pomocí příkazu restore_snapshot, jak je popsáno výše.
+Pokud ke zdrojovému clusteru nemáte připojený sekundární Azure Storage účet, nebo pokud je zdrojový cluster místní cluster (nebo jiný cluster než HDI), může při pokusu o přístup k účtu úložiště clusteru HDI dojít k problémům s autorizací. Pokud to chcete vyřešit, zadejte klíč účtu úložiště jako parametr příkazového řádku, jak je znázorněno v následujícím příkladu. Klíč k účtu úložiště můžete získat v Azure Portal.
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+Po exportu snímku, SSH do hlavního uzlu cílového clusteru a obnovte snímek pomocí `restore_snapshot` příkazu, jak je popsáno výše.
 
 Snímky poskytují úplnou zálohu tabulky v okamžiku `snapshot` příkazu. Snímky neposkytují možnost provádět přírůstkové snímky ve Windows čase, ani Neurčovat podmnožiny sloupců, které se mají zahrnout do snímku.
 

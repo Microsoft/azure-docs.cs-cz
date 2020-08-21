@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554429"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705924"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rychlý Start: vytvoření profilu Azure CDN a šablony koncového bodu – ARM
 
@@ -25,7 +25,7 @@ Začínáme s Azure Content Delivery Network (CDN) pomocí šablony Azure Resour
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -35,14 +35,14 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/).
 
 Tato šablona je nakonfigurovaná tak, aby vytvořila:
 
 * Profil
 * Koncový bod
 
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json":::
 
 V této šabloně je definovaný jeden prostředek Azure:
 
@@ -84,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V levém podokně vyberte **skupiny prostředků** .
 

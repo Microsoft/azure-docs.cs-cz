@@ -3,14 +3,14 @@ title: Přehled verzí Durable Functions – Azure Functions
 description: Přečtěte si o Durable Functions verzích.
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024720"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705788"
 ---
 # <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
 
@@ -44,7 +44,29 @@ Tato část popisuje, jak migrovat existující verzi 1. x Durable Functions na 
 
 ### <a name="upgrade-the-extension"></a>Upgradovat rozšíření
 
-Nainstalujte ve svém projektu verzi 2. x [rozšíření vazby Durable Functions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) . Další informace najdete v tématu věnovaném [registraci rozšíření vazby Azure Functions](../functions-bindings-register.md) .
+Do projektu nainstalujte nejnovější verzi 2. x rozšíření Durable Functions vazby.
+
+#### <a name="javascript-and-python"></a>JavaScript a Python
+
+Durable Functions 2. x je k dispozici ve verzi 2. x sady [rozšíření Azure Functions](../functions-bindings-register.md#extension-bundles).
+
+Chcete-li aktualizovat verzi balíčku rozšíření v projektu, otevřete host.jsv části a aktualizujte `extensionBundle` oddíl na použití verze 2. x ( `[2.*, 3.0.0)` ).
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+Aktualizujte projekt .NET tak, aby používal nejnovější verzi [rozšíření Durable Functions vazby](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask).
+
+Další informace najdete v tématu věnovaném [registraci rozšíření vazby Azure Functions](../functions-bindings-register.md#local-csharp) .
 
 ### <a name="update-your-code"></a>Aktualizace kódu
 
@@ -54,9 +76,9 @@ Durable Functions 2. x přináší několik přerušujících změn. Aplikace Du
 
 Durable Functions 2. x používá nový host.jsve schématu. Hlavní změny od 1. x zahrnují:
 
-* `"storageProvider"`(a `"azureStorage"` dílčí část) pro konfiguraci specifickou pro úložiště.
-* `"tracing"`pro trasování a konfiguraci protokolování.
-* `"notifications"`(a `"eventGrid"` dílčí část) pro konfiguraci oznámení služby Event Grid.
+* `"storageProvider"` (a `"azureStorage"` dílčí část) pro konfiguraci specifickou pro úložiště.
+* `"tracing"` pro trasování a konfiguraci protokolování.
+* `"notifications"` (a `"eventGrid"` dílčí část) pro konfiguraci oznámení služby Event Grid.
 
 Podrobnosti najdete v tématu [Durable Functions host.jsv referenční dokumentaci](durable-functions-bindings.md#durable-functions-2-0-host-json) .
 

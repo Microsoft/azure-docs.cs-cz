@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260554"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705431"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Rychlý Start: vytvoření Azure Firewall s více veřejnými IP adresami – šablona ARM
 
@@ -23,11 +23,11 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 Další informace o Azure Firewall s více veřejnými IP adresami najdete v tématu [nasazení Azure firewall s více veřejnými IP adresami pomocí Azure PowerShell](deploy-multi-public-ip-powershell.md).
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -35,9 +35,9 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 Tato šablona vytvoří Azure Firewall se dvěma veřejnými IP adresami, včetně nezbytných prostředků pro podporu Azure Firewall.
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fw-docs-qs).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
+:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
 
 V šabloně je definováno víc prostředků Azure:
 

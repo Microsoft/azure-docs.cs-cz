@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: fe059f684306e2c98e625af72248f03f0932ebad
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168265"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705057"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů a dá se použít ke správě a konfiguraci virtuálních počítačů.
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dat, která jsou k dispozici, najdete v tématu [rozhraní API pro metadata](#metadata-apis).
-Instance Metadata Service je k dispozici jak pro instance virtuálních počítačů, tak pro instance sady škálování virtuálních počítačů. Je k dispozici pouze pro spuštěné virtuální počítače vytvořené nebo spravované pomocí [Azure Resource Manager](/rest/api/resources/).
+Instance Metadata Service je k dispozici pro spouštění instancí virtuálních počítačů a sady škálování virtuálních počítačů. Všechna rozhraní API podporují virtuální počítače vytvořené nebo spravované pomocí [Azure Resource Manager](/rest/api/resources/). Pouze koncové body s omezením a sítě podporují jenom klasické virtuální počítače (non ARM) a jsou ověřené jenom v omezeném rozsahu.
 
 Azure IMDS je koncový bod REST, který je dostupný na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), dá se k němu získat přístup jenom z virtuálního počítače. Komunikace mezi virtuálním počítačem a IMDS nikdy neopustí hostitele.
 Osvědčeným postupem je, že klienti HTTP při dotazování na IMDS a považovat za stejné jako při dotazování na webové proxy servery v rámci virtuálního počítače `169.254.169.254` [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
@@ -157,14 +157,14 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON ( `Content-Type: application/json` ). V případě potřeby ale některá rozhraní API můžou vracet data v různých formátech.
 Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
-Rozhraní API | Výchozí formát dat | Jiné formáty
+rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /attested | json | žádné
 /identity | json | žádné
 /instance | json | text
 /scheduledevents | json | žádné
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
 
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -239,7 +239,7 @@ Rozhraní API | Popis | Představená verze
 
 Rozhraní API instance zpřístupňuje důležitá metadata pro instance virtuálních počítačů, včetně virtuálních počítačů, sítí a úložiště. K následujícím kategoriím lze přistupovat prostřednictvím instance/Compute:
 
-Data | Description | Představená verze
+Data | Popis | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
@@ -433,7 +433,7 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 
 Síťová metadata jsou součástí rozhraní API instance. V rámci koncového bodu instance/sítě jsou k dispozici následující kategorie sítě.
 
-Data | Description | Představená verze
+Data | Popis | Představená verze
 -----|-------------|-----------------------
 IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -501,7 +501,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-Data    | Description
+Data    | Popis
 --------|-----------------
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
@@ -511,7 +511,7 @@ verze | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-Data    | Description
+Data    | Popis
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -526,7 +526,7 @@ writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAc
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data    | Description
+Data    | Popis
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -685,18 +685,21 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, 
 }
 ```
 
-Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro Azure Marketplace image. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
+Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s určitými podrobnostmi specifickými pro virtuální počítače. U virtuálních počítačů ARM to zahrnuje vmId, SKU, nonce, subscriptionId, časové razítko pro vytváření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro Azure Marketplace image. U klasických virtuálních počítačů (ne ARM) je zaručeno, že se naplní pouze vmId. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 Dokument obsahuje následující pole:
 
-Data | Description
+Data | Popis
 -----|------------
 generované | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud nebyla zadána žádná hodnota nonce, použije se aktuální časové razítko UTC.
 rozhraní | [Azure Marketplace plán obrázku](/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel).
 časové razítko/createdOn | Časové razítko UTC pro vytvoření podepsaného dokumentu
 časové razítko/expiresOn | Časové razítko UTC pro vypršení platnosti podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
-subscriptionId | Předplatné Azure pro virtuální počítač představené v`2019-04-30`
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v`2019-11-01`
+subscriptionId | Předplatné Azure pro virtuální počítač představené v `2019-04-30`
+skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
+
+> [!NOTE]
+> U klasických virtuálních počítačů (ne ARM) je zaručeno, že se naplní pouze vmId.
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Ukázka 2: ověření, že virtuální počítač běží v Azure
 
@@ -834,7 +837,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 ## <a name="error-and-debugging"></a>Chyba a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
 
 Stavový kód HTTP | Důvod
 -----------------|-------

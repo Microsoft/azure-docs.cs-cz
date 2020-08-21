@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271154"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691492"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
 Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru prostřednictvím integrace s Azure Functions. Tento článek ukazuje, jak přidat a nasadit rozhraní API do webu Azure static Web Apps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným.
   - Pokud účet nemáte, můžete si [ho vytvořit zdarma](https://azure.microsoft.com/free).
@@ -147,7 +147,7 @@ Visual Studio Code se integruje s [Azure Functions Core Tools](../azure-function
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
 
-1. Pokud běží základní nástroje, přejděte na následující adresu URL, abyste ověřili, že rozhraní API běží správně: <http://localhost:7071/api/message> .
+1. Pokud běží základní nástroje, přejděte na následující adresu URL, abyste ověřili, že rozhraní API běží správně: `http://localhost:7071/api/message` .
 
    Odpověď v prohlížeči by měla vypadat podobně jako v následujícím příkladu:
 

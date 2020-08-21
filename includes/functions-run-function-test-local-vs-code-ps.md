@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78191007"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88703310"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -30,7 +30,7 @@ Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spusti
 
     Požadavek GET můžete také spustit z prohlížeče z následující adresy URL:
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
     Když zavoláte koncový bod HttpTrigger bez předání `name` parametru buď jako parametr dotazu, nebo v těle, funkce vrátí `BadRequest` chybu. Při revizi kódu v run.ps1 vidíte, že k této chybě dochází v rámci návrhu.
 

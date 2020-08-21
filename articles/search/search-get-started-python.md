@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 04/01/2020
+ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8e8f10b07d47f7aebd8482b8dae995bd50050162
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: aa2357e31bf2fba97ae8547948cacdffc70cc741
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852204"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705006"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
 
@@ -29,9 +29,9 @@ ms.locfileid: "87852204"
 
 Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
@@ -89,7 +89,7 @@ V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete
 
    ![Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání")
 
-   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 

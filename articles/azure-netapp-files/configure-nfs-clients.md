@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 4a54858f4a09cd62bb555a6df2c12efa2290dd69
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653167"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704973"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurace klienta NFS pro Azure NetApp Files
 
-K použití s Azure NetApp Files je k dispozici celá řada distribucí systému Linux. Tento článek popisuje konfigurace pro dvě z běžně používaných prostředí: RHEL 8 a Ubuntu 18,04. Konfigurace klienta NFS, která je popsaná v tomto článku, je součástí instalace, když [nakonfigurujete šifrování protokolu Kerberos nfsv 4.1](configure-kerberos-encryption.md) nebo [vytvoříte svazek se dvěma protokoly](create-volumes-dual-protocol.md).  
+Konfigurace klienta NFS, která je popsaná v tomto článku, je součástí instalace, když [nakonfigurujete šifrování protokolu Kerberos nfsv 4.1](configure-kerberos-encryption.md) nebo [vytvoříte svazek se dvěma protokoly](create-volumes-dual-protocol.md). K použití s Azure NetApp Files je k dispozici celá řada distribucí systému Linux. Tento článek popisuje konfigurace pro dvě z běžně používaných prostředí: RHEL 8 a Ubuntu 18,04. 
 
 Bez ohledu na to, jaký systém Linux používáte, jsou potřeba následující konfigurace:
 * Nakonfigurujte klienta NTP, aby nedocházelo k problémům s časovým zkosením.

@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844639"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691305"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
 
@@ -33,7 +33,7 @@ V této příručce se dozvíte, jak pomocí [Fairlearn](https://fairlearn.githu
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Sada SDK pro Azure Machine Learning spravedlivosti 
 
-Sada SDK pro Azure Machine Learning spravedlivě `azureml-contrib-fairness` integruje Open Source balíček Pythonu [Fairlearn](http://fairlearn.github.io)v rámci Azure Machine Learning. Další informace o integraci Fairlearn v rámci Azure Machine Learning najdete v těchto [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). Další informace o Fairlearn najdete v ukázkové [příručce](https://fairlearn.github.io/auto_examples/notebooks/index.html) a [ukázkových poznámkových blocích](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+Sada SDK pro Azure Machine Learning spravedlivě `azureml-contrib-fairness` integruje Open Source balíček Pythonu [Fairlearn](http://fairlearn.github.io)v rámci Azure Machine Learning. Další informace o integraci Fairlearn v rámci Azure Machine Learning najdete v těchto [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). Další informace o Fairlearn najdete v ukázkové [příručce](https://fairlearn.github.io/auto_examples/) a [ukázkových poznámkových blocích](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Balíčky a nainstalujte pomocí následujících příkazů `azureml-contrib-fairness` `fairlearn` :
 ```bash

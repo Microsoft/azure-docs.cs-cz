@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908673"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705981"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
-Tento článek popisuje, jak povolit spolupráci B2B v Azure Active Directory (Azure AD) a určit, kdo může pozvat hosty. Ve výchozím nastavení mohou všichni uživatelé a hosté ve vašem adresáři pozvat hosty i v případě, že nejsou přiřazeni k roli správce. Nastavení externí spolupráce vám umožní zapnout nebo vypnout pozvánky hostů pro různé typy uživatelů ve vaší organizaci. Můžete také delegovat pozvánky na jednotlivé uživatele přiřazením rolí, které jim umožní pozvat hosty.
+Tento článek popisuje, jak povolit spolupráci B2B v Azure Active Directory (Azure AD), určit, kdo může pozvat hosty a určit oprávnění, která mají uživatelé typu Host ve službě Azure AD. 
+
+Ve výchozím nastavení mohou všichni uživatelé a hosté ve vašem adresáři pozvat hosty i v případě, že nejsou přiřazeni k roli správce. Nastavení externí spolupráce vám umožní zapnout nebo vypnout pozvánky hostů pro různé typy uživatelů ve vaší organizaci. Můžete také delegovat pozvánky na jednotlivé uživatele přiřazením rolí, které jim umožní pozvat hosty.
+
+Azure AD umožňuje omezit, co můžou externí uživatelé typu Host zobrazit v adresáři služby Azure AD. Ve výchozím nastavení jsou uživatelé typu Host nastaveni na úroveň omezené úrovně oprávnění, která je blokuje při vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře, ale umožňuje zobrazit členství neskrytých skupin. Nové nastavení ve verzi Preview umožňuje omezit přístup hostů ještě dál, aby mohli hosté zobrazit jenom svoje vlastní informace o profilu. 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurace nastavení externí spolupráce B2B
 
@@ -38,19 +42,38 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce tenanta.
 2. Vyberte **Azure Active Directory**.
 3. Vyberte externí **identity**externí  >  **nastavení spolupráce**.
-6. Na stránce **externí nastavení spolupráce** vyberte zásady, které chcete povolit.
 
-   ![Nastavení externí spolupráce](./media/delegate-invitations/control-who-to-invite.png)
+4. V části **omezení přístupu uživatele typu Host (Preview)** vyberte úroveň přístupu, kterou mají mít uživatelé typu Host:
 
-  - **Oprávnění uživatelů typu Host jsou omezená**: Tato zásada určuje oprávnění pro hosty ve vašem adresáři. Vyberte **Ano** , pokud chcete blokovat hosty z určitých úloh adresáře, jako je vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře. Pokud chcete dát hostům stejný přístup k datům adresáře jako běžné uživatele v adresáři, vyberte **ne** .
+   > [!IMPORTANT]
+   > Po krátkou dobu tyto nové ovládací prvky portálu pro uživatelská oprávnění typu Host budou viditelné pouze pomocí adresy URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Další informace najdete v tématu [omezení oprávnění přístupu hosta (Preview)](https://aka.ms/exid-users-restrict-guest-permissions).
+
+   - **Uživatelé typu Host mají stejný přístup jako členové (nejvíc včetně)**: Tato možnost dává hostům stejný přístup k prostředkům a datům Azure AD jako členské uživatele.
+
+   - **Uživatelé typu Host mají omezený přístup k vlastnostem a členstvím objektů adresáře**: (výchozí) Toto nastavení blokuje hosty z určitých úloh adresáře, jako je vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře. Hosté můžou zobrazit členství všech neskrytých skupin.
+
+   - **Přístup uživatelů typu Host je omezený na vlastnosti a členství svých objektů adresáře (nejvíce omezující)**: s tímto nastavením můžou hosté přistupovat jenom k vlastním profilům. Hosté nemají povoleno zobrazovat profily, skupiny nebo členství v jiných uživatelích.
+  
+    ![Nastavení omezení přístupu uživatele typu Host](./media/delegate-invitations/guest-user-access.png)
+
+5. V části **nastavení pozvánky hosta**vyberte odpovídající nastavení:
+
    - **Správci a uživatelé v roli Pozvánka hosta může pozvat**: Pokud chcete správcům a uživatelům v roli "pozvání hosta" umožnit pozvat hosty, nastavte tuto zásadu na **Ano**.
+
    - **Členové můžou pozvat**: Pokud chcete, aby členové adresáře bez správce mohli pozvat hosty, nastavte tuto zásadu na **Ano**.
+
    - **Hosté můžou pozvat**: Pokud chcete, aby hosty mohli pozvat další hosty, nastavte tuto zásadu na **Ano**.
+
    - **Povolení e-mailového hesla pro hosty (Preview)**: Další informace o funkci jednorázového hesla najdete v tématu e- [mailové ověřování heslem jednorázového hesla (Preview)](one-time-passcode.md).
-   - **Omezení spolupráce**: Další informace o povolení nebo blokování pozvánek ke konkrétním doménám najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
-   
+
+   - **Povolit samoobslužnou registraci hosta prostřednictvím toků uživatelů (Preview)**: Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md).
+
    > [!NOTE]
    > Pokud je možné, že **členové můžou pozvat** na možnost **ne** a **Správci a uživatelé v roli pozvat pozvánky hosta** je nastavená na **Ano**, uživatelé v roli **pozvání hosta** budou mít i nadále možnost pozvat hosty.
+
+    ![Nastavení pozvánky hosta](./media/delegate-invitations/guest-invite-settings.png)
+
+6. V části **omezení spolupráce**zvolte, jestli chcete povolit nebo odepřít pozvánky k zadaným doménám. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Přiřazení role pozvánky hosta uživateli
 

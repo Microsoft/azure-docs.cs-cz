@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236552"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705618"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -35,7 +35,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 ![Tabulka pro nahrávání a volání s vysvětlením účelu a hodnot pro každý řádek a sloupec](./media/users-bulk-add/create-template-example.png)
 
 > [!WARNING]
-> Pokud se pokusíte přidat jenom jednu položku v šabloně sdíleného svazku clusteru, musíte zachovat řádek 3 a přidat novou položku do řádku 4. 
+> Pokud přidáváte jenom jednu položku pomocí šablony sdíleného svazku clusteru, musíte zachovat řádek 3 a přidat novou položku do řádku 4.
 
 ### <a name="csv-template-structure"></a>Struktura šablony CSV
 

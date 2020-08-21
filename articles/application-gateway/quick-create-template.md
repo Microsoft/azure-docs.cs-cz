@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249355"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705941"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Rychlý Start: směrování webového provozu pomocí šablony Azure Application Gateway – ARM
 
@@ -26,11 +26,11 @@ Tento rychlý Start můžete také dokončit pomocí [Azure Portal](quick-create
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +40,7 @@ V zájmu zjednodušení Tato šablona vytvoří jednoduché nastavení s veřejn
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/ag-docs-qs/) .
 
-:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
+:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json":::
 
 V šabloně je definováno víc prostředků Azure:
 

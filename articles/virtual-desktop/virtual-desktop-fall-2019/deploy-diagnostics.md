@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009184"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691407"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
@@ -32,7 +32,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -112,7 +112,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
-3. V části **Nastavení** vyberte **Upřesnit nastavení**.
+3. V části **Nastavení** vyberte  **Upřesnit nastavení**.
 4. Potom přejděte do části **Data**  >  **čítače výkonu data systému Windows** a přidejte následující čítače:
 
     -   Logický disk ( \* ) \\ % volného místa
@@ -191,12 +191,12 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
 
-8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace, který jste použili v šabloně `contosoapp45` , pak je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net> ).
+8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud jste například použili název aplikace, který jste použili v šabloně `contosoapp45` , pak je vaše přidružená adresa URL <http://contoso.azurewebsites.net> ).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 10.   Vyberte **Přijmout**.
 

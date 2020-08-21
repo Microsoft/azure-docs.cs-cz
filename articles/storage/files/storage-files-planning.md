@@ -8,12 +8,12 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520515"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705907"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -37,7 +37,7 @@ Při nasazování sdílených složek Azure do účtů úložiště doporučujem
 
 ## <a name="identity"></a>Identita
 Aby bylo možné získat přístup ke sdílené složce Azure, musí být uživatel sdílené složky ověřený a mít autorizaci pro přístup ke sdílené složce. To se provádí na základě identity uživatele, který přistupuje ke sdílené složce souborů. Soubory Azure se integrují se třemi hlavními zprostředkovateli identity:
-- **Místní Active Directory Domain Services (služba AD DS nebo místní služba AD DS)** (Preview): účty Azure Storage můžou být připojené k doméně, která patří k zákazníkovi, Active Directory Domain Services, podobně jako souborový server s Windows serverem nebo zařízení NAS. Můžete nasadit řadič domény místně, na virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu. Soubory Azure se nezávislá na místo, kde je hostovaný váš řadič domény. Jakmile je účet úložiště připojený k doméně, koncový uživatel může připojit sdílenou složku s uživatelským účtem, pomocí kterého se přihlásili ke svému počítači. Ověřování založené na AD používá ověřovací protokol Kerberos.
+- Místní **Active Directory Domain Services (služba AD DS nebo místní služba AD DS)**: účty Azure Storage můžou být připojené k doméně, která patří k zákazníkovi Active Directory Domain Services, stejně jako souborový server Windows nebo zařízení NAS. Můžete nasadit řadič domény místně, na virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu. Soubory Azure se nezávislá na místo, kde je hostovaný váš řadič domény. Jakmile je účet úložiště připojený k doméně, koncový uživatel může připojit sdílenou složku s uživatelským účtem, pomocí kterého se přihlásili ke svému počítači. Ověřování založené na AD používá ověřovací protokol Kerberos.
 - **Azure Active Directory Domain Services (azure služba AD DS)**: Azure služba AD DS poskytuje řadič domény spravovaný Microsoftem, který se dá použít pro prostředky Azure. Doména, která se připojuje k vašemu účtu úložiště k Azure služba AD DS poskytuje podobné výhody pro doménu, která se připojuje ke službě Active Directory vlastněné zákazníkem. Tato možnost nasazení je nejužitečnější pro scénáře použití a posunutí aplikace, které vyžadují oprávnění založené na službě AD. Vzhledem k tomu, že Azure služba AD DS poskytuje ověřování založené na AD, používá tato možnost také ověřovací protokol Kerberos.
 - **Klíč účtu úložiště Azure**: sdílené složky Azure můžou být taky připojené pomocí klíče účtu úložiště Azure. Chcete-li připojit sdílenou složku tímto způsobem, je název účtu úložiště použit jako uživatelské jméno a klíč účtu úložiště se používá jako heslo. Použití klíče účtu úložiště pro připojení sdílené složky Azure je efektivně operace správce, protože připojená sdílená složka bude mít úplná oprávnění ke všem souborům a složkám ve sdílené složce, a to i v případě, že mají seznamy řízení přístupu (ACL). Při použití klíče účtu úložiště k připojení přes protokol SMB se používá ověřovací protokol NTLMv2.
 

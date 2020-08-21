@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242011"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705754"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rychlý Start: zabezpečení virtuálního centra pomocí šablony Azure Firewall Manager – ARM
 
@@ -23,11 +23,11 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 Další informace o Azure Firewall Manageru najdete v tématu [co je Azure firewall Manager?](overview.md).
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -35,9 +35,9 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nástroje Azure Firewall Manager spolu s nezbytnými prostředky pro podporu tohoto scénáře.
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
-:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
+:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json":::
 
 V šabloně je definováno víc prostředků Azure:
 
@@ -82,7 +82,7 @@ Nyní otestujte pravidla brány firewall a potvrďte, že funguje podle očekáv
 
    Měla by se zobrazit Domovská stránka společnosti Microsoft.
 
-5. Přejděte na `www.google.com`.
+5. Přejděte na adresu `www.google.com`.
 
    Brána firewall by vás měla zablokovat.
 

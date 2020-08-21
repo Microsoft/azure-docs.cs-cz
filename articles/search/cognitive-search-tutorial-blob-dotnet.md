@@ -7,13 +7,13 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: 0ad3e6dbb63d7c89919d6d341bd62c5d57960a43
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/20/2020
+ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511649"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705890"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
 
@@ -201,7 +201,7 @@ public static void Main(string[] args)
     SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
-`CreateSearchServiceClient`Vytvoří nový `SearchServiceClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json).
+`CreateSearchServiceClient` Vytvoří nový `SearchServiceClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json).
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -242,7 +242,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
 
 `SearchServiceClient` obsahuje vlastnost `DataSources`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění zdrojů dat Azure Kognitivní hledání.
 
-Vytvořte novou `DataSource` instanci voláním `serviceClient.DataSources.CreateOrUpdate(dataSource)` . `DataSource.AzureBlobStorage`vyžaduje, abyste zadali název zdroje dat, připojovací řetězec a název kontejneru objektů BLOB.
+Vytvořte novou `DataSource` instanci voláním `serviceClient.DataSources.CreateOrUpdate(dataSource)` . `DataSource.AzureBlobStorage` vyžaduje, abyste zadali název zdroje dat, připojovací řetězec a název kontejneru objektů BLOB.
 
 ```csharp
 private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceClient, IConfigurationRoot configuration)
@@ -319,15 +319,19 @@ Dovednost **optického rozpoznávání znaků** extrahuje text z obrázků. Tato
 ```csharp
 private static OcrSkill CreateOcrSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "image",
-        source: "/document/normalized_images/*"));
+        source: "/document/normalized_images/*")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "text",
-        targetName: "text"));
+        targetName: "text")
+    };
 
     OcrSkill ocrSkill = new OcrSkill(
         description: "Extract text (plain and structured) from image",
@@ -348,21 +352,25 @@ V této části vytvoříte dovednost **sloučení** , která sloučí pole obsa
 ```csharp
 private static MergeSkill CreateMergeSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/content"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/content"),
+        new InputFieldMappingEntry(
         name: "itemsToInsert",
-        source: "/document/normalized_images/*/text"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/normalized_images/*/text"),
+        new InputFieldMappingEntry(
         name: "offsets",
-        source: "/document/normalized_images/*/contentOffset"));
+        source: "/document/normalized_images/*/contentOffset")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "mergedText",
-        targetName: "merged_text"));
+        targetName: "merged_text")
+    };
 
     MergeSkill mergeSkill = new MergeSkill(
         description: "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
@@ -383,15 +391,19 @@ private static MergeSkill CreateMergeSkill()
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/merged_text"));
+        source: "/document/merged_text")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "languageCode",
-        targetName: "languageCode"));
+        targetName: "languageCode")
+    };
 
     LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
         description: "Detect the language used in the document",
@@ -410,19 +422,22 @@ Níže uvedená **rozdělená** dovednost rozdělí text na stránky a omezí d�
 ```csharp
 private static SplitSkill CreateSplitSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/merged_text"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/merged_text"),
+        new InputFieldMappingEntry(
         name: "languageCode",
-        source: "/document/languageCode"));
+        source: "/document/languageCode")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "textItems",
-        targetName: "pages"));
+        targetName: "pages")
+    };
 
     SplitSkill splitSkill = new SplitSkill(
         description: "Split content into pages",
@@ -445,18 +460,24 @@ Všimněte si, že pole "Context" je nastaveno na ```"/document/pages/*"``` hvě
 ```csharp
 private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/pages/*"));
+        source: "/document/pages/*")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "organizations",
-        targetName: "organizations"));
+        targetName: "organizations")
+    };
 
-    List<EntityCategory> entityCategory = new List<EntityCategory>();
-    entityCategory.Add(EntityCategory.Organization);
+    List<EntityCategory> entityCategory = new List<EntityCategory>
+    {
+        EntityCategory.Organization
+    };
 
     EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
         description: "Recognize organizations",
@@ -543,13 +564,15 @@ Přidejte následující řádky do `Main` .
 
     // Create the skillset
     Console.WriteLine("Creating or updating the skillset...");
-    List<Skill> skills = new List<Skill>();
-    skills.Add(ocrSkill);
-    skills.Add(mergeSkill);
-    skills.Add(languageDetectionSkill);
-    skills.Add(splitSkill);
-    skills.Add(entityRecognitionSkill);
-    skills.Add(keyPhraseExtractionSkill);
+    List<Skill> skills = new List<Skill>
+    {
+        ocrSkill,
+        mergeSkill,
+        languageDetectionSkill,
+        splitSkill,
+        entityRecognitionSkill,
+        keyPhraseExtractionSkill
+    };
 
     Skillset skillset = CreateOrUpdateDemoSkillSet(serviceClient, skills);
 ```
@@ -680,26 +703,30 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
         key: "imageAction",
         value: "generateNormalizedImages");
 
-    List<FieldMapping> fieldMappings = new List<FieldMapping>();
-    fieldMappings.Add(new FieldMapping(
+    List<FieldMapping> fieldMappings = new List<FieldMapping>
+    {
+        new FieldMapping(
         sourceFieldName: "metadata_storage_path",
         targetFieldName: "id",
         mappingFunction: new FieldMappingFunction(
-            name: "base64Encode")));
-    fieldMappings.Add(new FieldMapping(
+            name: "base64Encode")),
+        new FieldMapping(
         sourceFieldName: "content",
-        targetFieldName: "content"));
+        targetFieldName: "content")
+    };
 
-    List<FieldMapping> outputMappings = new List<FieldMapping>();
-    outputMappings.Add(new FieldMapping(
+    List<FieldMapping> outputMappings = new List<FieldMapping>
+    {
+        new FieldMapping(
         sourceFieldName: "/document/pages/*/organizations/*",
-        targetFieldName: "organizations"));
-    outputMappings.Add(new FieldMapping(
+        targetFieldName: "organizations"),
+        new FieldMapping(
         sourceFieldName: "/document/pages/*/keyPhrases/*",
-        targetFieldName: "keyPhrases"));
-    outputMappings.Add(new FieldMapping(
+        targetFieldName: "keyPhrases"),
+        new FieldMapping(
         sourceFieldName: "/document/languageCode",
-        targetFieldName: "languageCode"));
+        targetFieldName: "languageCode")
+    };
 
     Indexer indexer = new Indexer(
         name: "demoindexer",
@@ -749,7 +776,7 @@ Očekává se, že dokončení vytváření indexeru bude trvat trochu dlouho. I
 
 ### <a name="explore-creating-the-indexer"></a>Prozkoumat vytváření indexeru
 
-Kód nastaví ```"maxFailedItems"``` na-1, který dává modulu indexování pokyn, aby při importu dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je velmi málo dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
+Kód nastaví ```"maxFailedItems"```  na-1, který dává modulu indexování pokyn, aby při importu dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je velmi málo dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
 
 Všimněte si také, že ```"dataToExtract"``` je nastavena na ```"contentAndMetadata"``` . Tento příkaz dává indexeru pokyn, aby automaticky extrahoval obsah z různých formátů souborů, stejně jako metadata, která s jednotlivými soubory souvisí.
 
@@ -791,7 +818,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 }
 ```
 
-`IndexerExecutionInfo`představuje aktuální stav a historii provádění indexeru.
+`IndexerExecutionInfo` představuje aktuální stav a historii provádění indexeru.
 
 Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. V tomto kurzu jsou upozornění neškodná (např. v souboru JPEG nejsou žádné textové vstupy).
 
@@ -832,7 +859,7 @@ catch (Exception e)
 }
 ```
 
-`CreateSearchIndexClient`Vytvoří nový `SearchIndexClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). Všimněte si, že se používá klíč rozhraní API vyhledávací služby, a ne klíč správce.
+`CreateSearchIndexClient` Vytvoří nový `SearchIndexClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). Všimněte si, že se používá klíč rozhraní API vyhledávací služby, a ne klíč správce.
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -900,7 +927,7 @@ Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro dal�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

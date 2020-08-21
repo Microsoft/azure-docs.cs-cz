@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807855"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691356"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásada
+* Zásady
 * Operace
 * Zabezpečení informací
 * Servery
@@ -373,7 +373,7 @@ Při správě privilegovaných účtů pro přístup doporučujeme následujíc�
 * Udělit privilegovaný přístup pouze v případě potřeby a později ho odebrat (za běhu)
 * Udržování protokolů aktivit auditu týkajících se privilegovaných účtů
 
-Další informace o vytvoření kompletního plánu zabezpečení najdete v tématu [prostředky architektury Cloud IT v Microsoftu](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Pokud se chcete zapojit se službami Microsoftu, které vám pomůžou s implementací jakékoli části svého plánu, obraťte se na zástupce Microsoftu nebo si přečtěte téma [Vytvoření důležitých obranných obrany k ochraně vašeho podniku](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Další informace o vytvoření kompletního plánu zabezpečení najdete v tématu [prostředky architektury Cloud IT v Microsoftu](https://almbok.com/office365/microsoft_cloud_it_architecture_resources). Pokud se chcete zapojit se službami Microsoftu, které vám pomůžou s implementací jakékoli části svého plánu, obraťte se na zástupce Microsoftu nebo si přečtěte téma [Vytvoření důležitých obranných obrany k ochraně vašeho podniku](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Tato poslední nepřetržitá fáze plánu zabezpečení privilegovaného přístupu zahrnuje následující součásti.
 

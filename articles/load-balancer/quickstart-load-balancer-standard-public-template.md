@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479756"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706043"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí šablony ARM
 
@@ -28,21 +28,21 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálov�
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/).
 
 Load Balancer a veřejné SKU IP adres se musí shodovat. Při vytváření Standard Load Balancer musíte také vytvořit novou standardní veřejnou IP adresu, která je nakonfigurovaná jako front-end pro nástroj pro vyrovnávání zatížení úrovně Standard. Pokud chcete vytvořit základní Load Balancer, použijte [tuto šablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft doporučuje pro produkční úlohy používat standardní SKU.
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
 V šabloně bylo definováno více prostředků Azure:
 
@@ -95,7 +95,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 

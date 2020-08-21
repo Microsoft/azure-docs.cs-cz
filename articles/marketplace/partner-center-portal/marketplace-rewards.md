@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606749"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705040"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Ceny na webu Marketplace vám v konkrétní fázi růstu a od aktivit pro sledování, které vám pomůžou získat své první zákazníky, vám pomůžou. Při růstu prostřednictvím komerčního tržiště odemknete nové výhody, které vám pomohou převést zákazníky a uzavřít obchody.
+Ceny na webu Marketplace vám v konkrétní fázi růstu a od aktivit pro sledování, které vám pomůžou získat své první zákazníky, vám pomůžou. Při růstu prostřednictvím komerčního tržiště Microsoftu můžete odemknout nové výhody, které vám pomůžou při převodu zákazníků a uzavírání obchodů.
 
 Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu vám pomůžou s průběhem další fáze, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště jako platformy.
 
-Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](../determine-your-listing-type.md#choose-a-call-to-action).
+Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](../determine-your-listing-type.md#choose-a-listing-option).
 
 Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá.
 
-U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy Marketplace, můžete pro každou úroveň odemknout větší výhody.
+U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostřednictvím platformy komerčního tržiště, můžete pro každou úroveň odemknout větší výhody.
 
-Minimální požadavek na publikování v online obchodech je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
+Minimální požadavek na publikování v online obchodech je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu prostřednictvím komerčního tržiště jako platformy.
 
 Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-[Tady](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)si přečtěte nárok na program Marketplace pro vyvýšení ceny.
+Pokud chcete zjistit, jestli máte nárok na program Marketplace, přečtěte si stránku [ceny na webu Marketplace](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) v partnerském centru.
 
 Postup, jak začít, je snadné:
 

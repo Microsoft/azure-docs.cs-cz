@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8d57b4499f3f1b2f22c14cc912e81b709ec4054c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500323"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705692"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure
 
@@ -52,14 +52,14 @@ foreach ($md in $managedDisks) {
 Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) v [účtech úložiště Azure](../../storage/common/storage-account-overview.md). Následující skript vyhledá nepřipojené nespravované disky (objekty blob stránky) prozkoumáním hodnoty vlastnosti **LeaseStatus** . Pokud je k virtuálnímu počítači připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **Uzamčeno**. Když není připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **odemčeno**. Skript prověřuje všechny nespravované disky ve všech účtech úložiště Azure v rámci předplatného Azure. Když skript najde nespravovaný disk s vlastností **LeaseStatus** nastavenou na **odemknutý**, skript určí, že disk není připojený.
 
 >[!IMPORTANT]
->Nejdřív spusťte skript nastavením proměnné **deleteUnattachedVHDs** na hodnotu 0. Tato akce vám umožní najít a zobrazit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
+>Nejdřív spusťte skript nastavením proměnné **deleteUnattachedVHDs** na `$false` . Tato akce vám umožní najít a zobrazit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
 >
->Po kontrole všech nepřipojených disků spusťte skript znovu a nastavte proměnnou **deleteUnattachedVHDs** na hodnotu 1. Tato akce umožňuje odstranit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
+>Po kontrole všech nepřipojených disků spusťte skript znovu a nastavte proměnnou **deleteUnattachedVHDs** na `$true` . Tato akce umožňuje odstranit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
 
 ```azurepowershell-interactive
-# Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
-# Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
-$deleteUnattachedVHDs=0
+# Set deleteUnattachedVHDs=$true if you want to delete unattached VHDs
+# Set deleteUnattachedVHDs=$false if you want to see the Uri of the unattached VHDs
+$deleteUnattachedVHDs=$false
 $storageAccounts = Get-AzStorageAccount
 foreach($storageAccount in $storageAccounts){
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
@@ -71,7 +71,7 @@ foreach($storageAccount in $storageAccounts){
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
             #If a Page blob is not attached as disk then LeaseStatus will be unlocked
             if($_.ICloudBlob.Properties.LeaseStatus -eq 'Unlocked'){
-                    if($deleteUnattachedVHDs -eq 1){
+                    if($deleteUnattachedVHDs){
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                         $_ | Remove-AzStorageBlob -Force
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"

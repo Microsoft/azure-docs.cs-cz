@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607433"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705873"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
@@ -47,9 +47,9 @@ V následující tabulce jsou uvedeny možnosti publikování pro typy nabídek 
 
 Nabídky &#42;&#42; Microsoft 365 jsou zdarma a je možné je můžou finančně zhodnocovat prostřednictvím SaaS nabídky jako licenční služba. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="choose-a-call-to-action"></a>Zvolit volání akce
+## <a name="choose-a-listing-option"></a>Zvolit možnost výpisu
 
-Dostupné možnosti publikování nabízejí odlišnou zákaznickou zapojení a zároveň vám dávají přístup k výhodám sdílení potenciálních zákazníků a [komerčních webů na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Všimněte si volání akce, které odpovídá možnosti publikování:
+Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zákaznickou zapojení a poskytují přístup k výhodám sdílení potenciálních zákazníků a [komerčních Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Všimněte si možností výpisu, které odpovídají možnosti publikování:
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
@@ -80,10 +80,10 @@ Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Yes             | Ano         | No           | Azure Marketplace a Azure Portal |
-| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
-| Ano             | No          | Yes          | Pouze Azure Portal |
-| No              | No          | Yes          | Pouze Azure Portal |
+| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
+| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
+| Ano             | Ne          | Ano          | Pouze Azure Portal |
+| Ne              | Ne          | Ano          | Pouze Azure Portal |
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
 

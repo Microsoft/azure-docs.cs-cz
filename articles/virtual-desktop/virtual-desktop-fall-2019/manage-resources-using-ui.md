@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005699"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691390"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí šablony Azure Resource Manager
 
@@ -83,7 +83,7 @@ Chcete-li zjistit, který uživatel, který můžete použít k přihlášení k
 
 Jakmile se rozhodnete, který uživatel použijete k poskytnutí souhlasu, postupujte podle těchto pokynů a poskytněte tomuto nástroji souhlas:
 
-1. Přejděte do prostředků Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která k němu je přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Přejděte do prostředků Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která k němu je přidružená. například  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
 3. Pokud jste ověřili s globálním správcem, můžete teď zaškrtnout políčko pro **vyjádření souhlasu jménem vaší organizace**. Vyberte **přijmout** pro poskytnutí souhlasu.
 
@@ -98,7 +98,7 @@ Po poskytnutí souhlasu organizace nebo zadaného uživatele můžete kdykoli z�
 
 Při spuštění nástroje postupujte podle těchto pokynů:
 
-1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například  <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
 3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
 4. Když vyberete **výchozí skupinu tenantů**, měla by se zobrazit nabídka na levé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.

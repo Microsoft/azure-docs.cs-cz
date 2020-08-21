@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: f20a40603916e703d6f3cfc13ee2d165675f3ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: df2c626de39ff4482a4dc69fa5a514fc92002ccb
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588496"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705856"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -101,35 +101,22 @@ Pokud chcete pokračovat, [Stáhněte si .NET 4.7.1](https://www.microsoft.com/d
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajného klíče do tajného souboru, který je mimo složku správy zdrojového kódu
 Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projděte si tuto možnost.
 
-1. Do projektu nainstalujte následující balíček NuGet
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    ```
+1. Klikněte pravým tlačítkem na projekt a vyberte **Správa uživatelských tajných klíčů**. Tím se nainstaluje balíček NuGet **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , vytvořte soubor pro uložení nastavení tajného klíče mimo web.config soubor a přidejte do souboru web.config oddíl **ConfigBuilders** .
 
-2. Vytvořte soubor podobný následujícímu. Uložte ho do umístění mimo složku vašeho projektu.
+2. Vložte nastavení tajného klíče do kořenového elementu. Níže je příklad
 
     ```xml
+    <?xml version="1.0" encoding="utf-8"?>
     <root>
-        <secrets ver="1.0">
-            <secret name="secret1" value="foo_one" />
-            <secret name="secret2" value="foo_two" />
-        </secrets>
+      <secrets ver="1.0">
+        <secret name="secret" value="foo"/>
+        <secret name="secret1" value="foo_one" />
+        <secret name="secret2" value="foo_two" />
+      </secrets>
     </root>
     ```
 
-3. V souboru Web.config definujte tajný soubor, který bude tvůrcem konfigurace. Tuto část vložte do oddílu *appSettings* .
-
-    ```xml
-    <configBuilders>
-        <builders>
-            <add name="Secrets"
-                 secretsFile="C:\Users\AppData\MyWebApplication1\secret.xml" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder,
-                    Microsoft.Configuration.ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
-        </builders>
-    </configBuilders>
-    ```
-
-4. Část určení appSettings používá tvůrce konfigurace tajného klíče. Ujistěte se, že existuje položka pro nastavení tajného klíče se fiktivní hodnotou.
+3. Část určení appSettings používá tvůrce konfigurace tajného klíče. Ujistěte se, že existuje položka pro nastavení tajného klíče se fiktivní hodnotou.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -148,20 +135,18 @@ Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro s
 
 1. Do projektu nainstalujte následující balíček NuGet
    ```
-   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
-2. Definujte Key Vault Configuration Builder v Web.config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název *trezoru* názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
+2. Definujte Key Vault Configuration Builder v Web.config. Tuto část vložte do oddílu *appSettings* . Pokud používáte službu svrchovaného cloudu, nahraďte název *trezoru* názvem Key Vault, pokud Key Vault v globálním prostředí Azure nebo v ÚPLNÉm identifikátoru URI.
 
     ```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-    <configBuilders>
+     <configBuilders>
         <builders>
-            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="Secrets" userSecretsId="695823c3-6921-4458-b60b-2b82bbd39b8d" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            <add name="AzureKeyVault" vaultName="[VaultName]" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
         </builders>
-    </configBuilders>
+      </configBuilders>
     ```
 3. Oddíl určení appSettings používá Key Vault Configuration Builder. Ujistěte se, že existuje nějaká položka pro nastavení tajného klíče se fiktivní hodnotou.
 

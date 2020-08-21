@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e38d59ff1eb31dd5fc3ecf6b7df6b12504141d5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082971"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705771"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -107,7 +107,7 @@ Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítač
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
 | Typ      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 0.9 |
+| TypeHandlerVersion  | 1.0 | 1.5 |
 
 Nainstalujte agenta Azure Monitor pomocí kterékoli z metod, jak nainstalovat agenty virtuálních počítačů, včetně těchto postupů: PowerShell nebo CLI. Případně můžete agenta nainstalovat a nakonfigurovat shromažďování dat na virtuálních počítačích v předplatném Azure pomocí portálu s postupem popsaným v části [Konfigurace shromažďování dat pro agenta Azure monitor (Preview)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal).
 
@@ -116,14 +116,14 @@ Nainstalujte agenta Azure Monitor pomocí kterékoli z metod, jak nainstalovat a
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI1)
 
 ```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --version 1.0 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
 
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -Version 1.0 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 
@@ -133,14 +133,14 @@ Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publ
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI2)
 
 ```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --version 0.9 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -Version 0.9 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 

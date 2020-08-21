@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292098"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705636"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače se systémem Linux v Azure
 
@@ -64,7 +64,7 @@ Ve výchozím nastavení je většina Azure Marketplace imagí pro Linux nakonfi
 - NTP jako primární, který získává čas od serveru NTP. Například Image Ubuntu 16,04 LTS na webu Marketplace používají **NTP.Ubuntu.com**.
 - Služba VMICTimeSync jako sekundární, která slouží ke komunikaci času hostitele s virtuálními počítači a provádí opravy po pozastavení virtuálního počítače za účelem údržby. Hostitelé Azure používají zařízení vrstvy 1 vlastněná společností Microsoft k udržení přesného času.
 
-V novějších distribucích systému Linux služba VMICTimeSync používá protokol PTP (Precision Time Protocol), ale starší distribuce nemusí podporovat PTP a při získávání času od hostitele se vrátí do NTP.
+V novějších distribucích systému Linux služba VMICTimeSync poskytuje zdroj hardwarových hodin protokolu PTP (Precision Time Protocol), ale starší distribuce nemusí tento zdroj hodin poskytnout a vrátí se zpět do NTP pro získání času od hostitele.
 
 Pokud chcete potvrdit, že se NTP synchronizuje správně, spusťte `ntpq -p` příkaz.
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Vyhledat PTP
+### <a name="check-for-ptp-clock-source"></a>Kontrolovat zdroj hodin PTP
 
-V novějších verzích systému Linux je zdroj hodin protokolu PTP (Precision Time Protocol) dostupný jako součást poskytovatele VMICTimeSync. Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7. x můžete stáhnout a použít k instalaci aktualizovaného ovladače [služby Linux Integration Services](https://github.com/LIS/lis-next) . Při použití PTP bude zařízení se systémem Linux ve formátu/dev/PTP*x*. 
+V novějších verzích systému Linux je zdroj hodin protokolu PTP (Precision Time Protocol) dostupný jako součást poskytovatele VMICTimeSync. Ve starších verzích Red Hat Enterprise Linux nebo CentOS 7. x můžete stáhnout a použít k instalaci aktualizovaného ovladače [služby Linux Integration Services](https://github.com/LIS/lis-next) . Když je k dispozici zdroj hodin PTP, bude zařízení se systémem Linux ve tvaru/dev/PTP*x*. 
 
 Podívejte se, které zdroje s hodinami PTP jsou k dispozici.
 

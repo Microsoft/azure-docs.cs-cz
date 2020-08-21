@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265241"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706026"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -49,9 +49,8 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
 
      I když při vytváření virtuální sítě na portálu můžete definovat pouze jeden rozsah adres, můžete přidat další rozsah adres do adresního prostoru po vytvoření virtuální sítě. Informace o tom, jak přidat rozsah adres do existující virtuální sítě, najdete v tématu [Přidání nebo odebrání rozsahu adres](#add-or-remove-an-address-range).
 
-     >[!WARNING]
-     >Pokud má virtuální síť rozsahy adres, které se překrývají s jinou virtuální sítí nebo místní sítí, nelze tyto dvě sítě připojit. Než nadefinujete rozsah adres, zvažte, jestli možná budete chtít virtuální síť připojit k jiným virtuálním sítím nebo místním sítím v budoucnu.
-     >
+     > [!WARNING]
+     > Pokud má virtuální síť rozsahy adres, které se překrývají s jinou virtuální sítí nebo místní sítí, nelze tyto dvě sítě připojit. Než nadefinujete rozsah adres, zvažte, jestli možná budete chtít virtuální síť připojit k jiným virtuálním sítím nebo místním sítím v budoucnu. Microsoft doporučuje konfigurovat rozsahy adres virtuální sítě s privátním adresním prostorem nebo veřejným adresním prostorem vlastněným vaší organizací.
      >
 
      - **Název podsítě**: název podsítě musí být v rámci virtuální sítě jedinečný. Po vytvoření podsítě už název podsítě nemůžete změnit. Portál vyžaduje, abyste při vytváření virtuální sítě definovali jednu podsíť, a to i v případě, že virtuální síť nemusí mít žádné podsítě. Na portálu můžete při vytváření virtuální sítě definovat jenom jednu podsíť. Další podsítě můžete do virtuální sítě přidat později po vytvoření virtuální sítě. Informace o přidání podsítě do virtuální sítě najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md). Virtuální síť s více podsítěmi můžete vytvořit pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu.

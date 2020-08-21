@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: ea73a4164a2f23a51ce1702cd85d29d7fb4c6790
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650396"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706060"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -136,7 +136,7 @@ Pokud NSG blokuje požadavky na test stavu z AZURE_LOADBALANCER výchozí značk
 - Maximální počet použitelných dočasných portů na IP adresu front-endu je 64 000.
 - Rozsah konfigurovatelného odchozího časového limitu nečinnosti je 4 až 120 minut (240 až 7200 sekund).
 - Load Balancer nepodporuje protokol ICMP pro odchozí překlad adres (NAT).
-- Odchozí pravidla se dají použít jenom u primární konfigurace IP adresy síťového adaptéru.  Podporuje se víc síťových adaptérů.
+- Odchozí pravidla se dají použít jenom u primární konfigurace IP adresy síťového adaptéru.  Nemůžete vytvořit odchozí pravidlo pro sekundární IP adresu virtuálního počítače nebo síťové virtuální zařízení. Podporuje se víc síťových adaptérů.
 - Role webového pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft můžou být dostupné, když se k vedlejšímu účinku používá jenom vnitřní Standard Load Balancer, která se dá použít jenom pro služby předplatného a jiné služby platformy. Nespoléhá se na tento vedlejší účinek jako na samotnou službu nebo na podkladovou platformu se může změnit bez předchozího upozornění. Vždy musíte předpokládat, že pokud budete chtít používat jenom interní Standard Load Balancer, musíte v případě potřeby explicitně vytvořit odchozí připojení. Scénář 3 popsaný v tomto článku není k dispozici.
 
 ## <a name="next-steps"></a>Další kroky

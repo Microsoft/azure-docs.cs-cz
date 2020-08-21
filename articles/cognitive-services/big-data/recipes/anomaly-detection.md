@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244342"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691458"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
@@ -28,7 +28,7 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
@@ -151,4 +151,4 @@ V případě úspěchu bude výstup vypadat takto:
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se provádět prediktivní údržbu ve velkém měřítku s využitím Azure Cognitive Services, Azure synapse Analytics a Azure CosmosDB. Další informace najdete v kompletní ukázce na [GitHubu](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT).
+Naučte se provádět prediktivní údržbu ve velkém měřítku s využitím Azure Cognitive Services, Azure synapse Analytics a Azure CosmosDB. Další informace najdete v kompletní ukázce na [GitHubu](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples).
