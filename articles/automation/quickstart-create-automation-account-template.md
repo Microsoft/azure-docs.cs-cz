@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4246d8324eebe15b314393fc4a26adcaf12c9f6f
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117272"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685625"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Automation pomocí šablony ARM
 
@@ -50,7 +50,7 @@ Po dokončení těchto kroků je potřeba [nakonfigurovat nastavení diagnostiky
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-automation/).
 
-:::code language="json" source="~/quickstart-templates/101-automation/azuredeploy.json" range="1-324" highlight="58-122":::
+:::code language="json" source="~/quickstart-templates/101-automation/azuredeploy.json":::
 
 ### <a name="api-versions"></a>Verze rozhraní API
 
@@ -104,7 +104,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste právě vytvořili. 
 

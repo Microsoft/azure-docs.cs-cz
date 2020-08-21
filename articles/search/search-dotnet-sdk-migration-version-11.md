@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660965"
+ms.locfileid: "88688347"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -28,6 +28,9 @@ Mezi hlavní rozdíly, které si všimnete v nové verzi, patří:
 + Nový název balíčku: `Azure.Search.Documents` místo `Microsoft.Azure.Search` .
 + Tři klienti místo dvou: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Rozdíly v pojmenovávání napříč celou řadou rozhraní API a malé strukturální rozdíly, které zjednodušují některé úkoly
+
+> [!NOTE]
+> Projděte si [**protokol změn**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) pro vydaný seznam změn v sadě .NET SDK verze 11.
 
 ## <a name="package-and-library-consolidation"></a>Konsolidace balíčků a knihoven
 
@@ -114,19 +117,23 @@ Každá verze klientské knihovny Azure Kognitivní hledání cílí na odpovíd
 
 Verze 11 cílí na [službu vyhledávání 2020-06-30](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json). Vzhledem k tomu, že verze 11 je také novou knihovnou klienta vytvořenou od základů, je většina úsilí při vývoji zaměřená na rovnocennost s verzí 10 a stále ještě čeká na určitou podporu funkcí REST API.
 
-Verze 11 plně podporuje následující objekty a operace:
+Verze 11,0 plně podporuje následující objekty a operace:
 
 + Vytváření a Správa indexů
 + Vytváření a Správa mapování synonym
 + Všechny typy dotazů a syntaxe (s výjimkou geografických filtrů)
 + Objekty a operace indexeru pro indexování datových zdrojů Azure, včetně zdrojů dat a dovednosti
 
+Verze 11,1 přidává následující:
+
++ [FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) (přidáno v 11,1)
++ [Vlastnost serializátoru](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (přidaná v 11,1) pro podporu vlastní serializace
+
 ### <a name="pending-features"></a>Nedokončené funkce
 
-Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyto funkce použijete, při migraci se držte, dokud se nepodporují.
+Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyto funkce vyžádáte, při migraci počkejte, dokud se nepodporují.
 
 + geoprostorové typy
-+ [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (i když můžete použít [Toto alternativní řešení](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)).
 + [Knowledge Store](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
@@ -176,7 +183,7 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
 
 Vzhledem k rozbalení změn knihoven a rozhraní API je upgrade na verzi 11 netriviální a představuje zásadní změnu v tom smyslu, že váš kód již nebude zpětně kompatibilní s verzí 10 a starší. Důkladné přezkoumání rozdílů najdete v [protokolu změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) pro `Azure.Search.Documents` .
 
-V souvislosti s verzemi služeb přináší přechod z 10 na 11 následující změny chování: 
+V případě aktualizací verze služby, kde se změny kódu ve verzi 11 vztahují na stávající funkce (a ne jenom na refaktoring rozhraní API), zjistíte následující změny chování:
 
 + [Algoritmus řazení BM25](index-ranking-similarity.md) nahrazuje algoritmus předchozí klasifikace novější technologií. Nové služby budou tento algoritmus používat automaticky. Pro existující služby musíte nastavit parametry pro použití nového algoritmu.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ae98f74092c3955a54c0817082e8f29c1b251237
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3394882574f94e4a1af3aa942f3b0bd87be55368
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533389"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690081"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -46,7 +46,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 ## <a name="create-an-ssml-document"></a>Vytvoření dokumentu SSML
 
-`speak`je kořenový prvek a je **vyžadován** pro všechny dokumenty SSML. `speak`Element obsahuje důležité informace, jako je verze, jazyk a definice slovníku označení.
+`speak` je kořenový prvek a je **vyžadován** pro všechny dokumenty SSML. `speak`Element obsahuje důležité informace, jako je verze, jazyk a definice slovníku označení.
 
 **Syntax**
 
@@ -192,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > Úpravy mluveného stylu budou fungovat jenom s neuronové hlasy.
 
-Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro hlasy Standard i neuronové. Pomocí hlasů neuronové můžete upravit styl speaking tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit a Calm, nebo optimalizovat hlas pro různé scénáře, jako je například Custom Service, newscasting a Voice Assistant, pomocí <mstts: Express-as> elementu. Toto je volitelný element jedinečný pro službu Speech Service.
+Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pomocí neutrálního mluveného stylu pro hlasy Standard i neuronové. S neuronové hlasymi můžete upravit styl speaking tak, aby bylo možné vyjádřit různé emoce, jako je cheerfulness, soucit a Calm, nebo optimalizovat hlas pro různé scénáře, jako je vlastní služba, newscasting a hlasový asistent, a to pomocí  `mstts:express-as`   elementu. Toto je volitelný element jedinečný pro službu Speech Service.
 
 V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
 * `en-US-AriaNeural`
@@ -215,7 +215,7 @@ Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl ne
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Description                                                 |
+| Hlas                   | Styl                     | Popis                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formální, jistý a autoritativní tón pro doručování zpráv|
 |                         | `style="newscast-casual"` | Univerzální a příležitostné tóny pro obecné doručování zpráv       |
@@ -263,9 +263,9 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
-| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a.`500` | Volitelné |
+| `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a. `500` | Volitelné |
 
-| Obsahem                      | Description |
+| Obsahem                      | Popis |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -564,7 +564,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 ```
 ## <a name="say-as-element"></a>Říkám elementu
 
-`say-as`je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči.
+`say-as` je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči.
 
 **Syntax**
 
@@ -617,7 +617,7 @@ Modul Shrnutí řeči připraví následující příklad jako "první požadave
 
 ## <a name="add-recorded-audio"></a>Přidat zaznamenaný zvuk
 
-`audio`je volitelný prvek, který umožňuje vložit zvuk MP3 do dokumentu SSML. Tělo zvukového prvku může obsahovat prostý text nebo SSML poznámky, které jsou mluvené, pokud je zvukový soubor nedostupný nebo nezobrazitelný. Kromě toho `audio` element může obsahovat text a následující prvky: `audio` , `break` , `p` , `s` , `phoneme` ,, a `prosody` `say-as` `sub` .
+`audio` je volitelný prvek, který umožňuje vložit zvuk MP3 do dokumentu SSML. Tělo zvukového prvku může obsahovat prostý text nebo SSML poznámky, které jsou mluvené, pokud je zvukový soubor nedostupný nebo nezobrazitelný. Kromě toho `audio` element může obsahovat text a následující prvky: `audio` , `break` , `p` , `s` , `phoneme` ,, a `prosody` `say-as` `sub` .
 
 Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 

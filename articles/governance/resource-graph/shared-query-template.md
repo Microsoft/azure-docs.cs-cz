@@ -4,12 +4,12 @@ description: V tomto rychlém startu použijete šablonu Azure Resource Manager 
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252364"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685523"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony ARM
 
@@ -17,21 +17,21 @@ Dotazy na grafy prostředků se dají uložit jako _soukromý dotaz_ nebo do _sd
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro vytvoření sdíleného dotazu do Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
 V tomto rychlém startu vytvoříte sdílený dotaz s názvem _počet virtuálních počítačů podle operačního systému_. Pokud chcete tento dotaz vyzkoušet v sadě SDK nebo na portálu pomocí Průzkumníka grafů prostředků, přečtěte si téma [Počet ukázek – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os).
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
-:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
+:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json":::
 
 Prostředek definovaný v šabloně je:
 
@@ -48,13 +48,13 @@ Prostředek definovaný v šabloně je:
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. |
    | Umístění | Vyberte oblast. Například **USA – střed**. |
    | Název dotazu | Ponechejte výchozí **počet virtuálních počítačů v operačním systému**. |
-   | Dotaz na kód | Ponechte výchozí hodnotu.`Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | Dotaz na kód | Ponechte výchozí hodnotu. `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | Popis dotazu | Ponechte výchozí hodnotu, kterou **tento sdílený dotaz počítá s počtem prostředků virtuálního počítače a shrnuje podle typu operačního systému.** |
    | Souhlasím s podmínkami a ujednáními uvedenými nahoře | Vybrali |
 

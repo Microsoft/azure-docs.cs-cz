@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235464"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690251"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -153,6 +153,7 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 * Podporuje dotazování uživatele podle ID a podle manažera podle části 3.4.2 protokolu SCIM.  
 * Podporuje dotazování skupin podle ID a členu podle části 3.4.2 protokolu SCIM.  
 * Přijme jeden nosný token pro ověřování a autorizaci služby Azure AD pro vaši aplikaci.
+* Podporuje obnovitelné odstranění uživatele `active=false` a obnovení uživatele `active=true` .
 
 Při implementaci SCIM koncového bodu, který zajistí kompatibilitu s Azure AD, postupujte podle těchto obecných pokynů:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829369"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689673"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Zmírnění rovnosti v modelech strojového učení (Preview)
 
@@ -51,7 +51,7 @@ Společně tyto komponenty umožňují odborníkům přes data a vedoucím praco
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>Posouzení spravedlivosti v modelech strojového učení
 
-V Fairlearnm Open Source balíčku se spravedlivě rozkládá i v případě, že se jedná o přizpůsobenou **skupinu**, na které se požádá: které skupiny jednotlivců jsou ohrožené poškozením? Příslušné skupiny, označované také jako podmnožiny, jsou definovány prostřednictvím **citlivých funkcí** nebo citlivých atributů. Citlivé funkce jsou předány do Estimator v Fairlearn Open Source balíčku jako vektor nebo matice s názvem `sensitive_features` . Pojem naznačuje, že při posuzování spravedlnosti skupin by měl být System Designer citlivý na tyto funkce. 
+V Fairlearnm Open Source balíčku se spravedlivě rozkládá i v případě, že se jedná o přizpůsobenou **skupinu**, na které se požádá: které skupiny jednotlivců jsou ohrožené poškozením? Příslušné skupiny, označované také jako podmnožiny, jsou definovány prostřednictvím **citlivých funkcí** nebo citlivých atributů. Citlivé funkce jsou předány do Estimator v Fairlearn Open Source balíčku jako vektor nebo matice s názvem  `sensitive_features` . Pojem naznačuje, že při posuzování spravedlnosti skupin by měl být System Designer citlivý na tyto funkce. 
 
 Je třeba mít na vědomí, zda tyto funkce obsahují dopad na ochranu osobních údajů z důvodu soukromých dat. Ale slovo "citlivé" neznamená, že tyto funkce by neměly být použity pro předpovědi.
 
@@ -108,6 +108,6 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/user_guide/index.html), [Příklady](https://fairlearn.github.io/auto_examples/notebooks/index.html)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
+- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/user_guide/index.html), [Příklady](https://fairlearn.github.io/auto_examples/)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
 - Naučte [se, jak](how-to-machine-learning-fairness-aml.md) v Azure Machine Learning povolit posouzení spravedlnosti pro modely strojového učení.
 - V [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) najdete další scénáře posouzení spravedlivosti v Azure Machine Learning. 

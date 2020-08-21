@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: alexeyo
-ms.openlocfilehash: 86182130daf5cbb61df7a751aaeff392dd608a67
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88662584"
+ms.locfileid: "88690132"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služby Speech Services
 
@@ -132,7 +132,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
   - "Ověření platnosti kvót nebo využití" pro kontrolu existujícího limitu
 - Klikněte na *Další: řešení*
 - Další postup při vytváření žádosti
-- V poli *Details (podrobnosti* ) zadejte do pole *Popis* :
+- Do pole *Popis zadejte text* na kartě *Podrobnosti* :
   - Poznámka: žádost o kvótu **pro převod řeči na text**
   - **Základní** nebo **vlastní** model
   - Informace o prostředcích Azure, které jste [shromáždili před](#have-the-required-information-ready) 
@@ -184,7 +184,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
   - "Ověření platnosti kvót nebo využití" pro kontrolu existujícího limitu
 - Klikněte na *Další: řešení*
 - Další postup při vytváření žádosti
-- V poli *Details (podrobnosti* ) zadejte do pole *Popis* :
+- Do pole *Popis zadejte text* na kartě *Podrobnosti* :
   - Poznámka: žádost o kvótu **pro převod textu na řeč**
   - Informace o prostředcích Azure, které jste [shromáždili před](#prepare-the-required-information) 
   - Dokončete zadávání požadovaných informací a klikněte na tlačítko *vytvořit* v nabídce *Revize + vytvořit* kartu.

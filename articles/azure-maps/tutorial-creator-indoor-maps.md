@@ -3,17 +3,17 @@ title: Vytvoření vnitřních map pomocí autora
 description: K vytvoření vnitřních map použijte Tvůrce Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075411"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688078"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -109,16 +109,25 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > Adresy URL rozhraní API v tomto dokumentu může být potřeba upravit podle umístění prostředku autora. Další podrobnosti najdete v tématu [přístup ke službě Creator Services](how-to-manage-creator.md#access-to-creator-services).
 
-3. Klikněte na tlačítko **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi a vyhledejte klíč **umístění** . Zkopírujte hodnotu klíče **umístění** , který je `status URL` pro požadavek na převod.
+3. Klikněte na tlačítko **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi a vyhledejte klíč **umístění** . Zkopírujte hodnotu klíče **umístění** , který je `status URL` pro požadavek na převod. Tento postup použijete v dalším kroku.
 
-4. Spusťte novou metodu **Get** http na kartě tvůrce. do přidejte Azure Maps klíč primárního předplatného `status URL` . Vytvořte požadavek **Get** `status URL` z předchozího kroku. Pokud se proces převodu ještě nedokončí, může se zobrazit něco podobného jako u následující odpovědi JSON:
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Zkopírujte hodnotu klíče umístění.":::
+
+4. Spusťte novou metodu **Get** http na kartě tvůrce. do přidejte Azure Maps klíč primárního předplatného `status URL` . Vytvořte požadavek **Get** `status URL` v umístění, které jste zkopírovali v kroku 3. `status URL`Vypadá to jako následující adresa URL:
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    Pokud se proces převodu ještě nedokončí, může se zobrazit něco podobného jako u následující odpovědi JSON:
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ Vzorový balíček pro kreslení by měl být převeden bez chyb nebo upozorněn
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -177,7 +186,7 @@ Datová sada je kolekce funkcí mapy, jako jsou budovy, úrovně a místnosti. C
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -206,7 +215,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"
@@ -215,7 +224,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 ## <a name="query-datasets-with-wfs-api"></a>Dotazování datových sad pomocí rozhraní WFS API
 
- K datovým sadám se dá dotázat pomocí [rozhraní WFS API](https://docs.microsoft.com/rest/api/maps/wfs). Pomocí rozhraní WFS API můžete zadávat dotazy na kolekce funkcí, konkrétní kolekci nebo konkrétní funkci s **ID**funkce. **ID** funkce jednoznačně identifikuje funkci v rámci datové sady. Používá se například k identifikaci toho, který stav funkce by měl být v daném stateset aktualizován.
+ K datovým sadám se dá dotázat pomocí  [rozhraní WFS API](https://docs.microsoft.com/rest/api/maps/wfs). Pomocí rozhraní WFS API můžete zadávat dotazy na kolekce funkcí, konkrétní kolekci nebo konkrétní funkci s **ID**funkce. **ID** funkce jednoznačně identifikuje funkci v rámci datové sady. Používá se například k identifikaci toho, který stav funkce by měl být v daném stateset aktualizován.
 
 1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
@@ -391,7 +400,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
     >[!NOTE]
     > Aktualizace se uloží pouze v případě, že je čas razítka za časovým razítkem předchozí žádosti. Můžeme předat libovolný KeyName, který jsme předtím nakonfigurovali během vytváření.
 
-7. Po úspěšné aktualizaci obdržíte `200 OK` stavový kód HTTP. Pokud jste pro mapu vnitřních umístění [implementovali dynamické styly](indoor-map-dynamic-styling.md) , aktualizace se zobrazí ve vykreslené mapě v zadaném časovém razítku.
+7. Po úspěšné aktualizaci obdržíte `200 OK` stavový kód HTTP. Pokud jste pro mapu vnitřních umístění  [implementovali dynamické styly](indoor-map-dynamic-styling.md) , aktualizace se zobrazí ve vykreslené mapě v zadaném časovém razítku.
 
 [Rozhraní API pro získání](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) stavů funkce umožňuje načíst stav funkce pomocí její funkce `ID` . Stateset a jeho prostředky můžete také odstranit pomocí [rozhraní API pro odstranění stavu funkce](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview).
 

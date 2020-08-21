@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585453"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688636"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -25,7 +25,7 @@ Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtí
 Po zahájení škálování služby se zvýší počet požadavků odeslaných do trezoru klíčů. To má potenciál na zvýšení latence vašich požadavků a v extrémních případech způsobit omezení požadavků, což ovlivní výkon vaší služby. Můžete monitorovat metriky výkonu trezoru klíčů a získat výstrahy pro konkrétní prahové hodnoty. podrobné pokyny ke konfiguraci monitorování najdete v [článku Další informace](https://docs.microsoft.com/azure/key-vault/general/alert).
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Jak můžu přiřazovat řízení přístupu na objekt trezoru klíčů? 
-K dostupnosti funkce řízení přístupu na základě tajného kódu/klíče/certifikátu se zobrazí oznámení, [Další informace](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+K dostupnosti funkce řízení přístupu na základě tajného kódu/klíče/certifikátu se zobrazí oznámení, [Další informace](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>Jak můžu zajistit ověřování trezoru klíčů pomocí zásad řízení přístupu?
 Nejjednodušší způsob, jak ověřit cloudovou aplikaci, která je Key Vault, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault]( https://docs.microsoft.com/azure/key-vault/general/managed-identity) .

@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2ff5b7832b894e218cf65447378bfe6fd3e42ca3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3da313803aa546c2399e3c8c18858bee5cfa2ea1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658402"
+ms.locfileid: "88684367"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Nahrání média pro streamování nebo kódování
 V Media Services nahrajete digitální soubory (Media) do kontejneru objektů BLOB přidruženého k assetu. Entita [assetu](/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů do kontejneru assetu se váš obsah bezpečně uloží do cloudu pro další zpracování a streamování.
@@ -44,7 +44,7 @@ Než začnete, budete muset shromáždit několik hodnot nebo si je představit.
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 
-Po [Vytvoření assetu pomocí metody post nebo jiné metody Rest a obdržení adresy URL služby SUS pro daný Asset](how-to-create-asset.md?tabs=rest)použijte Azure Storage rozhraní API nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+Po [Vytvoření assetu pomocí metody post nebo jiné metody Rest a obdržení adresy URL SAS pro daný Asset](how-to-create-asset.md?tabs=rest)použijte Azure Storage rozhraní API nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sada .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 ---
 <!-- add these to the tabs when available -->

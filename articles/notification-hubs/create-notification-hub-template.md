@@ -10,12 +10,12 @@ ms.author: sethm
 ms.date: 08/04/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: b9fe363da0fa5e451aaee83e895d539a0741a174
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2165351bee4ee260e768c10b23e26bf095779cad
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830729"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684639"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Rychlý Start: vytvoření centra oznámení pomocí šablony ARM
 
@@ -31,13 +31,13 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-notification-hub/).
 
-:::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json" range="1-45" highlight="22-40":::
+:::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json":::
 
 * [Microsoft. NotificationHubs/obory názvů](/azure/templates/microsoft.notificationhubs/namespaces)
 * [Microsoft. NotificationHubs/obory názvů/notificationHubs](/azure/templates/microsoft.notificationhubs/namespaces/notificationhubs)

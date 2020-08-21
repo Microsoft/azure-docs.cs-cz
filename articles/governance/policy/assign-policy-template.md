@@ -4,12 +4,12 @@ description: V tomto rychlém startu použijete šablonu Azure Resource Manager 
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520868"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689843"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí šablony ARM
 
@@ -22,7 +22,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro přiřazení Azure Policy k Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -32,7 +32,7 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json":::
 
 Prostředek definovaný v šabloně je:
 
@@ -49,7 +49,7 @@ Prostředek definovaný v šabloně je:
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je _mypolicyquickstart \<Date in MMDD\> RG_. |

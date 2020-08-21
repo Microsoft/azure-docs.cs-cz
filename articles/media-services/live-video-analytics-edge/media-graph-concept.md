@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300803"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690676"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -80,6 +80,10 @@ Uzel procesor filtru frekvence snímků umožňuje vzorkovat snímky z příchoz
 #### <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
 Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+
+#### <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
+
+Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu gRPC vystaveného vaším modulem. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
 
 #### <a name="signal-gate-processor"></a>Procesor brány signálu  
 

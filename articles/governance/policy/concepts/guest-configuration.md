@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544668"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685761"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -36,7 +36,7 @@ Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíře
 > [!IMPORTANT]
 > K auditování virtuálních počítačů Azure se vyžaduje rozšíření konfigurace hosta a spravovaná identita. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující iniciativu zásad:
 > 
-> - [Nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
 
@@ -62,7 +62,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
@@ -74,7 +74,7 @@ Následující tabulka obsahuje seznam podporovaných operačních systémů pro
 
 Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
-## <a name="network-requirements"></a>Požadavky sítě
+## <a name="network-requirements"></a>Síťové požadavky
 
 Virtuální počítače v Azure můžou ke komunikaci se službou konfigurace hosta použít buď svůj místní síťový adaptér, nebo privátní odkaz.
 

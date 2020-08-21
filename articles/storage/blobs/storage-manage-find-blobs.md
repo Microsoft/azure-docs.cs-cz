@@ -3,17 +3,17 @@ title: Správa a hledání dat v Azure Blob Storage s využitím indexu objektů
 description: Naučte se používat značky indexu objektů BLOB ke kategorizaci, správě a dotazování pro zjišťování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499870"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690370"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
 
@@ -105,7 +105,7 @@ Následující tabulka uvádí všechny platné operátory pro FindBlobsByTags:
 |     <      |  Menší než    | "Stáří" < "32" |
 |     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
 |    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
-| @container |  Nastavit obor na konkrétní kontejner   | @container= "VideoFiles" a "status" = "Hotovo" |
+| @container |  Nastavit obor na konkrétní kontejner   | @container = "VideoFiles" a "status" = "Hotovo" |
 
 > [!NOTE]
 > Seznámení s lexicographical objednání při nastavení a dotazování na značky.
@@ -296,7 +296,7 @@ Tato část popisuje známé problémy a podmínky v aktuální verzi Public Pre
 - CopyBlob (asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB v současné době způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Doporučuje se v provizorním použití CopyBlob z adresy URL (Synchronization Copy).
 -   Značky jsou při vytváření snímku trvalé; zvýšení úrovně snímku se ale v tuto chvíli nepodporuje a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB? 
 Ne, značky indexu objektů BLOB vám pomůžou najít objekty blob, které hledáte. Pokud potřebujete hledat v rámci objektů blob, použijte akceleraci dotazu nebo Azure Search.

@@ -9,32 +9,31 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431203"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691254"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
 **platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI Gallery](https://gallery.azure.ai)** je web založený na komunitě pro zjišťování a sdílení řešení vytvořených pomocí Azure AI.
 Galerie má řadu prostředků, které můžete použít k vývoji vlastních analytických řešení.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Zde jsou některé z nich:
 
 * **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
 * **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
 * **Kolekce – kolekce** umožňuje seskupit experimenty, rozhraní API a další prostředky galerie, které řeší konkrétní řešení nebo koncept.
 * **Vlastní moduly** – vlastní moduly si můžete stáhnout do pracovního prostoru studia (Classic), abyste je mohli použít ve svých experimentech.
-* **Jupyter poznámkové bloky** – Jupyter notebooky obsahují kód, vizualizace dat a dokumentaci na jednom interaktivním plátně. Poznámkové bloky v galerii poskytují kurzy a podrobná vysvětlení pokročilých technik strojového učení a řešení.
 
 ## <a name="discover-and-contribute"></a>Zjišťování a přispívání
 
@@ -49,12 +48,12 @@ Můžete dokonce sdílet prostředek s přáteli nebo kolegy pomocí možností 
 
 Když se přihlásíte, stanete se členem komunity galerie. To vám umožňuje stahovat prostředky nebo přispívat k vlastním položkám galerie, aby ostatní mohli využívat řešení, která jste zjistili.
 
-Můžete si stáhnout **experimenty**, **vlastní moduly**a **Jupyter poznámkové bloky** pro použití při vývoji vlastních analytických řešení.
+Můžete si stáhnout **experimenty**, **vlastní moduly** pro použití při vývoji vlastních analytických řešení.
 Do galerie můžete přispívat **experimenty**, **kurzy**a **kolekce** .
 
-## <a name="download-experiments-modules-notebooks"></a>Stáhnout experimenty, moduly, poznámkové bloky
+## <a name="download-experiments-modules"></a>Stáhnout experimenty, moduly
 
-**Experimenty**, **vlastní moduly**a **Jupyter poznámkové bloky** můžete stáhnout do svého vlastního Machine Learning Studioho (klasického) pracovního prostoru, abyste je mohli využít při vývoji vlastních řešení.
+**Experimenty**a **vlastní moduly** si můžete stáhnout do vlastního pracovního prostoru Machine Learning Studio (klasický) a použít ho při vývoji vlastních řešení.
 
 Stažení prostředku z Galerie AI:
 
@@ -205,4 +204,4 @@ Chceme, aby Galerie byla řízena našimi uživateli a pro naše uživatele. Pou
 
 ![Zpětná vazba](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT NA >>GALERIE](https://gallery.azure.ai)**
+**[PŘEJÍT NA >>GALERIE ](https://gallery.azure.ai)**

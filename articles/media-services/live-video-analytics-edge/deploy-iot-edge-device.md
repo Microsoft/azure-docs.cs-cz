@@ -3,17 +3,16 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652453"
+ms.locfileid: "88684095"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
-
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -23,6 +22,7 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 * [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
 * [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
+
     * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).
 
@@ -190,6 +190,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > Dvojitá vlastnost **allowUnsecuredEndpoints** je nastavena na hodnotu true pro účely kurzů a rychlých startů.   
    Tuto vlastnost byste měli nastavit na **hodnotu false** při spuštění v produkčním prostředí. Tím se zajistí, že aplikace bude blokovat všechny nezabezpečené koncové body, a aby se daly spustit topologie grafu, budou potřeba platné přihlašovací údaje pro připojení.  
@@ -210,8 +211,8 @@ Zkontrolujte informace o svém nasazení a pak vyberte vytvořit.
 
 Po vytvoření nasazení se vrátíte na stránku IoT Edge služby IoT Hub.
 
-1.  Vyberte zařízení IoT Edge, na které cílíte nasazení, a otevřete jeho podrobnosti.
-2.  V podrobnostech o zařízení ověřte, že je modul BLOB Storage uveden v části **nasazení a nahlášený zařízením**.
+1. Vyberte zařízení IoT Edge, na které cílíte nasazení, a otevřete jeho podrobnosti.
+2. V podrobnostech o zařízení ověřte, že je modul BLOB Storage uveden v části **nasazení a nahlášený zařízením**.
 
 Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) je v pořádku a pracuje správně.
@@ -247,6 +248,7 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
     ![Stavová zpráva 200](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Další kroky
+
 Vyzkoušejte [rychlý Start: Začínáme – Live video Analytics na IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

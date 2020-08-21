@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649121"
+ms.locfileid: "88690387"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -157,7 +157,7 @@ Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového
 
 | Volitelný parametr dotazu | Popis | Verze |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s` . Výchozí hodnota je `30 s` . | Gen1 |
+| `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s` . Výchozí hodnota je `30 s` . | Gen1 |
 | `storeType=<storeType>` | Pro prostředí Gen2 s povoleným teplým úložištěm se dotaz dá spustit buď na `WarmStore` nebo `ColdStore` . Tento parametr v dotazu definuje, na kterém úložišti se má dotaz spustit. Pokud není definován, dotaz se spustí v chladírenském skladu. Pro dotazování na záložní úložiště musí být **storeType** nastavené na `WarmStore` . Pokud není definován, dotaz se spustí pro chladírenský sklad. | Gen2 |
 
 ## <a name="next-steps"></a>Další kroky

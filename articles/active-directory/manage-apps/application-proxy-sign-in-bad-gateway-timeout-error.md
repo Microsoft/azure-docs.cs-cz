@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367746"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690268"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Při použití aplikace proxy aplikací nejde získat přístup k této podnikové aplikaci.
 
@@ -50,7 +50,7 @@ K vypršení časového limitu brány dojde, když se služba pokusí spojit s k
 Chybná chyba brány indikuje, že konektor nemůže získat přístup k back-endové aplikaci. Ujistěte se, že jste publikovali správnou aplikaci. Běžné chyby, které způsobují tuto chybu:
 
 - Překlep nebo omyl v interní adrese URL
-- Nepublikuje se kořen aplikace. Například publikování, <http://expenses/reimbursement> ale pokus o přístup<http://expenses>
+- Nepublikuje se kořen aplikace. Například publikování, `http://expenses/reimbursement` ale pokus o přístup `http://expenses`
 - Problémy s konfigurací vynuceného delegování protokolu Kerberos (KCD)
 - Problémy s back-end aplikací
 

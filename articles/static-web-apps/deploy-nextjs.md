@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431641"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684588"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Next.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
 
@@ -57,7 +57,7 @@ Začněte vytvořením nového úložiště v rámci účtu GitHub z úložišt�
     npm run dev
     ```
 
-Přejděte na adresu <http://localhost:3000> a otevřete aplikaci, kde by se měl zobrazit následující web v upřednostňovaném prohlížeči:
+Přejděte na adresu `http://localhost:3000` a otevřete aplikaci, kde by se měl zobrazit následující web v upřednostňovaném prohlížeči:
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Spustit aplikaci Next.js":::
 
@@ -169,7 +169,7 @@ Statická Web Apps Azure je sestavená tak, aby automaticky provedla běžné ú
 
 2. Zadejte **text** do textového pole *umístění artefaktu aplikace* .
 
-### <a name="review-and-create"></a>Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 1. Kliknutím na **vytvořit** zahájíte vytváření prostředku a zároveň zajistěte akci GitHubu pro nasazení.

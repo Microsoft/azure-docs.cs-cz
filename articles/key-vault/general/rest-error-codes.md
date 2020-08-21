@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424371"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685710"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -89,7 +89,7 @@ Tokeny mají kódování Base64 a hodnoty lze dekódovat na webech, jako je nap�
 
 V tomto tokenu jsme viděli spoustu důležitých částí:
 
-- AUD (cílová skupina): prostředek tokenu. Všimněte si, že je to <https://vault.azure.net> . Tento token nebude fungovat pro všechny prostředky, které explicitně neodpovídají této hodnotě, jako je například Graph.
+- AUD (cílová skupina): prostředek tokenu. Všimněte si, že je to `https://vault.azure.net` . Tento token nebude fungovat pro všechny prostředky, které explicitně neodpovídají této hodnotě, jako je například Graph.
 - IAT (vydáno v): počet taktů od začátku epocha při vydání tokenu.
 - NBF (ne dříve): počet taktů od začátku epocha, pokud je tento token platný.
 - EXP (vypršení platnosti): počet taktů od začátku epocha po vypršení platnosti tokenu.

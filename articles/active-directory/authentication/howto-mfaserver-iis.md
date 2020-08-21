@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83845436"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690302"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurace serveru Azure Multi-Factor Authentication pro webové aplikace IIS
 
@@ -33,7 +33,7 @@ Pro zabezpečení webové aplikace služby IIS, která používá ověřování 
 
 1. V Azure Multi-Factor Authentication Serveru klikněte na ikonu Ověřování IIS v levé nabídce.
 2. Klikněte na kartu **Založené na formulářích**.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. Pokud chcete automaticky detekovat uživatelské jméno, heslo a proměnné domény, zadejte adresu URL pro přihlášení (například `https://localhost/contoso/auth/login.aspx` ) v dialogovém okně Automatická konfigurace webu založeného na formuláři a klikněte na **OK**.
 5. Zaškrtněte políčko **Vyžadovat porovnání uživatele u služby Multi-Factor Authentication**, pokud se všichni uživatelé importovali nebo budou importovat na server a budou podléhat vícefaktorovému ověřování. Pokud se ještě neimportoval velký počet uživatelů do Serveru a/nebo se vyloučí z vícefaktorového ověřování, nechte pole nezaškrtnuté.
 6. Pokud proměnné stránky nejde rozpoznat automaticky, v dialogovém okně Automatická konfigurace webové stránky s formuláři klikněte na **Zadat ručně**.
@@ -57,8 +57,8 @@ Pro zabezpečení webové aplikace služby IIS, která používá integrované H
 
 1. V Azure Multi-Factor Authentication Serveru klikněte na ikonu Ověřování IIS v levé nabídce.
 2. Klikněte na kartu **HTTP**.
-3. Klikněte na tlačítko **Add** (Přidat).
-4. V dialogovém okně Přidat základní adresu URL zadejte adresu URL pro web, kde se provádí ověřování HTTP (například <http://localhost/owa> ), a zadejte název aplikace (volitelné). Název aplikace se zobrazí v sestavách Azure Multi-Factor Authentication a může se zobrazit v rámci SMS zpráv nebo mobilních aplikací ověřování.
+3. Klikněte na **Přidat**.
+4. V dialogovém okně Přidat základní adresu URL zadejte adresu URL pro web, kde se provádí ověřování HTTP (například `http://localhost/owa` ), a zadejte název aplikace (volitelné). Název aplikace se zobrazí v sestavách Azure Multi-Factor Authentication a může se zobrazit v rámci SMS zpráv nebo mobilních aplikací ověřování.
 5. Pokud je výchozí hodnota nedostatečná, upravte časový limit nečinnosti a maximální dobu trvání relace.
 6. Zaškrtněte políčko **Vyžadovat porovnání uživatele u služby Multi-Factor Authentication**, pokud se všichni uživatelé importovali nebo budou importovat na server a budou podléhat vícefaktorovému ověřování. Pokud se ještě neimportoval velký počet uživatelů do Serveru a/nebo se vyloučí z vícefaktorového ověřování, nechte pole nezaškrtnuté.
 7. V případě potřeby zaškrtněte políčko pro **mezipaměť souborů cookie**.
@@ -77,6 +77,6 @@ Po konfiguraci nastavení a adres URL založených na formulářích nebo adres 
 Důvěryhodné IP adresy umožňují uživatelům obejít ověřování Azure Multi-Factor Authentication u požadavků webů pocházejících z konkrétní IP adresy nebo podsítě. Například můžete chtít vyloučit uživatele z ověřování Azure Multi-Factor Authentication při přihlašování z kanceláře. V takovém případě zadáte podsíť kanceláře jako položku důvěryhodných IP adres. Ke konfiguraci důvěryhodných IP adres použijte následující postup:
 
 1. V části ověřování služby IIS klikněte na kartu **důvěryhodné IP adresy** .
-2. Klikněte na tlačítko **Add** (Přidat).
+2. Klikněte na **Přidat**.
 3. Jakmile se zobrazí dialogové okno Přidat důvěryhodné IP adresy, vyberte přepínač **Samostatná IP adresa**, **Rozsah IP adres** nebo **Podsíť**.
 4. Zadejte IP adresu, rozsah IP adres nebo podsíť, které mají být povoleny. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na **OK**.

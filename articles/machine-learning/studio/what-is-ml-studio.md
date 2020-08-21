@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: 0dff28d5bfb2623a7362dc9b8aeb0840ac4e1e49
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 22f0b7af7434288bea45e6edcf4868dcffe526db
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430098"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690710"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
 
@@ -29,7 +29,7 @@ Machine Learning Studio (Classic) je místo, kde se doplňují datové vědy, pr
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Interaktivní pracovní prostor Machine Learning Studio (klasický)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj podobného modelu, jako je tento, je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, až budete mít trénovaný a účinný model, se kterým budete spokojeni.
 

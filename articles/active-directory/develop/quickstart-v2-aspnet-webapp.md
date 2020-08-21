@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 297c2354e8a56b681230bfe2cedd0d49ddbb5b82
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165715"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691288"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace ASP.NET přihlašuje k osobním účtům (hotmail.com, outlook.com, ostatním) a pracovním a školním účtům z jakékoli instance Azure Active Directory (Azure AD).  (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -28,7 +28,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
+> 1. Přejít na nové podokno  [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
 > 1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -77,7 +77,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace
 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 1. Otevřete řešení v sadě Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
 1. V závislosti na verzi sady Visual Studio možná budete muset kliknout pravým tlačítkem na projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` a **obnovit balíčky NuGet** .
-1. Otevřete konzolu Správce balíčků (zobrazení – > jiné konzoly Správce balíčků > systému Windows) a spusťte příkaz.`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Otevřete konzolu Správce balíčků (zobrazení – > jiné konzoly Správce balíčků > systému Windows) a spusťte příkaz. `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
 > 5. Upravte soubor **Web.config** a nahraďte parametry `ClientId` a `Tenant` následujícími hodnotami:
@@ -156,10 +156,10 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Kde  | Description |
+> |Kde  | Popis |
 > |---------|---------|
 > | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
-> | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
+> | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
 > | `RedirectUri`  | Adresa URL, kam se po ověření s koncovým bodem platformy Microsoft Identity odesílají uživatelé |
 > | `PostLogoutRedirectUri`     | Adresa URL, na kterou jsou uživatelé přesměrováni po odhlášení |
 > | `Scope`     | Seznam požadovaných oborů oddělených mezerami |

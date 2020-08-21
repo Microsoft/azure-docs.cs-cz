@@ -5,12 +5,12 @@ description: Zjistěte, jak dynamicky vytvořit trvalý svazek s disky Azure ve 
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 3d01b2c2098dcbe896ecaa7f854d91477eba2cab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648764"
+ms.locfileid: "88683602"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Každý cluster AKS obsahuje čtyři předem vytvořené třídy úložiště, d
     
 Pokud používáte jednu z výchozích tříd úložiště, nemůžete po vytvoření třídy úložiště aktualizovat velikost svazku. Aby bylo možné aktualizovat velikost svazku po vytvoření třídy úložiště, přidejte řádek `allowVolumeExpansion: true` do jedné z výchozích tříd úložiště, nebo můžete vytvořit vlastní třídu úložiště. Počítejte s tím, že není podporováno snížení velikosti trvalého virtuálního počítače (aby nedošlo ke ztrátě dat). Existující třídu úložiště můžete upravit pomocí `kubectl edit sc` příkazu. 
 
-Pokud například chcete použít disk o velikosti 4 TiB, musíte vytvořit třídu úložiště, která definuje, `cachingmode: None` protože [ukládání disku do mezipaměti není podporováno pro disky 4 TIB a větší](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+Pokud například chcete použít disk o velikosti 4 TiB, musíte vytvořit třídu úložiště, která definuje, `cachingmode: None` protože [ukládání disku do mezipaměti není podporováno pro disky 4 TIB a větší](../virtual-machines/premium-storage-performance.md#disk-caching).
 
 Další informace o třídách úložiště a vytváření vlastních tříd úložiště najdete v tématu [Možnosti úložiště pro aplikace v AKS][storage-class-concepts].
 

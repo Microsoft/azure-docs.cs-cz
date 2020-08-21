@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092383"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684452"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
@@ -61,7 +61,7 @@ Pokud se při vytváření nového virtuálního přepínače zobrazí chyby, za
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Stáhněte si soubor image disku, který se má použít pro virtuální počítač, a uložte ho místně. Například [Ubuntu server 18,04](http://releases.ubuntu.com/18.04.4/). Informace o podporovaných operačních systémech pro zařízení IoT Edge najdete v článku [Azure IoT Edge podporované systémy](support.md).
+1. Stáhněte si soubor image disku, který se má použít pro virtuální počítač, a uložte ho místně. Například [Ubuntu server 18,04](http://releases.ubuntu.com/18.04/). Informace o podporovaných operačních systémech pro zařízení IoT Edge najdete v článku [Azure IoT Edge podporované systémy](support.md).
 
 2. Ve Správci technologie Hyper-V znovu vyberte **Akce**  >  **Nový**  >  **virtuální počítač** v nabídce **Akce** .
 

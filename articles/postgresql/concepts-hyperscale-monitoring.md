@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580652"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690404"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Monitorování a ladění Azure Database for PostgreSQL – Citus (škálování)
 
@@ -28,11 +28,11 @@ Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné po
 
 Tyto metriky jsou k dispozici pro uzly Citus (s měřítkem):
 
-|Metric|Zobrazovaný název metriky|Jednotka|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
-|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
+|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
-|IOPS|IOPS|Počet|Podívejte se na [definici IOPS](../virtual-machines/linux/premium-storage-performance.md#iops) a propustnost v rámci [škálování](concepts-hyperscale-configuration-options.md) .|
+|IOPS|IOPS|Count|Podívejte se na [definici IOPS](../virtual-machines/premium-storage-performance.md#iops) a propustnost v rámci [škálování](concepts-hyperscale-configuration-options.md) .|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|

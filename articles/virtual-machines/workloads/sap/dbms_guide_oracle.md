@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654612"
+ms.locfileid: "88690319"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -318,7 +318,7 @@ Oracle podporuje software Oracle pro spouštění na Microsoft Azure. Další in
 
 Následující poznámky SAP souvisejí s SAP v Azure.
 
-| Číslo poznámky | Title |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -444,7 +444,7 @@ V takovém případě doporučujeme na spouštěcí disk nainstalovat nebo nají
 
 Systémy souborů ext4, XFS a Oracle ASM jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na základě VHD nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [Azure Managed disks](../../managed-disks-overview.md).
 
-Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching).
+Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](../../premium-storage-performance.md#disk-caching).
 
 Používání [Azure Managed disks](../../managed-disks-overview.md)se důrazně doporučuje. Pro nasazení Oracle Database se důrazně doporučuje používat [Azure Premium SSD](../../disks-types.md) .
 

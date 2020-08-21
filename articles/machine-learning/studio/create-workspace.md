@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433246"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691271"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Vytvoření a sdílení pracovního prostoru Machine Learning Studio (Classic)
 
@@ -26,7 +26,7 @@ Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít prac
 
 Pokud chcete otevřít pracovní prostor v Machine Learning Studio (Classic), musíte být přihlášeni k účtu Microsoft, který jste použili k vytvoření pracovního prostoru, nebo potřebujete získat pozvánku od vlastníka, aby se připojil k pracovnímu prostoru. Z Azure Portal můžete spravovat pracovní prostor, který zahrnuje možnost konfigurace přístupu.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
     > [!NOTE]
     > Pokud se chcete přihlásit a vytvořit pracovní prostor studia (Classic), musíte být správcem předplatného Azure. 
@@ -39,12 +39,12 @@ Pokud chcete otevřít pracovní prostor v Machine Learning Studio (Classic), mu
 
 4. Zadejte informace o pracovním prostoru:
 
-   - *Název pracovního prostoru* může být až 260 znaků, ale nekončí mezerou. Název nesmí obsahovat tyto znaky:`< > * % & : \ ? + /`
+   - *Název pracovního prostoru* může být až 260 znaků, ale nekončí mezerou. Název nesmí obsahovat tyto znaky: `< > * % & : \ ? + /`
    - *Plán webové služby* , který zvolíte (nebo vytvoříte), spolu s přidruženou *cenovou úrovní* , kterou vyberete, se použije, pokud nasadíte webové služby z tohoto pracovního prostoru.
 
      ![Vytvořit nový pracovní prostor studia (Classic)](./media/create-workspace/create-new-workspace.png)
 
-5. Klikněte na **Vytvořit**.
+5. Klikněte na možnost **Vytvořit**.
 
    Machine Learning je aktuálně k dispozici v omezeném počtu oblastí. Pokud vaše předplatné neobsahuje jednu z těchto oblastí, může se zobrazit chybová zpráva "nemáte žádná předplatná v povolených oblastech".  Pokud chcete požádat o přidání oblasti do předplatného, vytvořte z Azure Portal novou žádost o podporu od Microsoftu, jako typ problému vyberte **fakturace** a podle pokynů odešlete žádost.
 
@@ -70,7 +70,7 @@ Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si 
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Sdílení pracovního prostoru Azure Machine Learning Studio (Classic)
-Jakmile se vytvoří pracovní prostor Machine Learning Studio (Classic), můžete uživatele pozvat do svého pracovního prostoru a sdílet tak přístup k vašemu pracovnímu prostoru a všem jeho experimentům, datovým sadám, poznámkovým blokům atd. Uživatele můžete přidat v jedné ze dvou rolí:
+Jakmile se vytvoří pracovní prostor Machine Learning Studio (Classic), můžete uživatele pozvat do svého pracovního prostoru a sdílet tak přístup k vašemu pracovnímu prostoru a všem jeho experimentům, datovým sadám atd. Uživatele můžete přidat v jedné ze dvou rolí:
 
 * **Uživatel pracovní** prostor může vytvořit, otevřít, upravit a odstranit experimenty, datové sady atd. v pracovním prostoru.
 * **Vlastník** – vlastník může pozvat a odebrat uživatele v pracovním prostoru, a to i to, co může uživatel dělat.
@@ -82,7 +82,7 @@ Jakmile se vytvoří pracovní prostor Machine Learning Studio (Classic), může
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Sdílení pracovního prostoru studia (Classic)
 
-1. Přihlaste se k Machine Learning Studio (Classic) na adrese[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Přihlaste se k Machine Learning Studio (Classic) na adrese [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
 2. Na levém panelu klikněte na **Nastavení** .
 

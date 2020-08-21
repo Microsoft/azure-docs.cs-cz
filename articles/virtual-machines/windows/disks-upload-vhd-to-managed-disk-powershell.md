@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009608"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689605"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "87009608"
 
 ## <a name="getting-started"></a>Začínáme
 
-Pokud byste chtěli nahrávat disky prostřednictvím grafického uživatelského rozhraní, můžete to udělat pomocí Průzkumník služby Azure Storage. Podrobnosti najdete v tématu: [použití Průzkumník služby Azure Storage ke správě služby Azure Managed disks](disks-use-storage-explorer-managed-disks.md) .
+Pokud byste chtěli nahrávat disky prostřednictvím grafického uživatelského rozhraní, můžete to udělat pomocí Průzkumník služby Azure Storage. Podrobnosti najdete v tématu: [použití Průzkumník služby Azure Storage ke správě služby Azure Managed disks](../disks-use-storage-explorer-managed-disks.md) .
 
 Pokud chcete nahrát virtuální pevný disk do Azure, budete muset vytvořit prázdný spravovaný disk, který je nakonfigurovaný pro tento proces nahrávání. Před tím, než ho vytvoříte, se dozvíte o některých dalších informacích, které byste měli znát na těchto discích.
 

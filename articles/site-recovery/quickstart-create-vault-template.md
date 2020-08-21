@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby A
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248821"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684112"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony ARM
 
@@ -17,19 +17,19 @@ V tomto rychlém startu se dozvíte, jak nastavit trezor Recovery Services pomoc
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud nemáte aktivní předplatné Azure, můžete si před tím, než začnete, vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json" range="1-66" highlight="41-65":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 

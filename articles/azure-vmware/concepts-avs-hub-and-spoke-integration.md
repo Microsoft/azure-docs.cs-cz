@@ -2,13 +2,13 @@
 title: Koncept – integrace nasazení řešení Azure VMware v architektuře hub a paprsků
 description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware do existující nebo nové architektury hub a paprsků v Azure.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649580"
+ms.locfileid: "88684484"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -28,10 +28,7 @@ Přenosy dat mezi místním datacentrem, privátním cloudem řešení Azure VMw
 
 Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného k místnímu a řešení Azure VMware prostřednictvím ExpressRoute.
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
 
 Architektura má následující hlavní součásti:
 
@@ -64,12 +61,12 @@ K místnímu připojení můžou ExpressRoute Global Reach také použít, ale n
 
 * **Tok provozu řešení VMware z místního prostředí do Azure**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Tok provozu řešení VMware z místního prostředí do Azure":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Tok provozu řešení VMware z místního prostředí do Azure" border="false":::
 
 
 * **Tok provozu řešení Azure VMware do centra přenosů virtuální sítě**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Tok provozu řešení Azure VMware do centra přenosů dat virtuální sítě":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Tok provozu řešení Azure VMware do centra přenosů dat virtuální sítě" border="false":::
 
 
 Další podrobnosti o sítích řešení Azure VMware a konceptech vzájemné propojení najdete v [dokumentaci k produktu řešení Azure VMware](./concepts-networking.md).
@@ -97,7 +94,7 @@ Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Pa
 
 Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, které běží na virtuálních počítačích řešení VMware Azure jako fond back-end. Application Gateway je aktuálně jedinou podporovanou metodou pro vystavení webových aplikací běžících na virtuálních počítačích řešení VMware Azure na internetu. Můžou aplikace bezpečně zveřejnit i pro interní uživatele.
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Druhá úroveň segmentace provozu pomocí skupin zabezpečení sítě" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>JumpBox a Azure bastionu
@@ -110,7 +107,7 @@ Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bas
 > Neposkytněte virtuálnímu počítači s JumpBox veřejnou IP adresu nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtuální síť Azure bastionu hub":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtuální síť Azure bastionu hub" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS – požadavky na řešení

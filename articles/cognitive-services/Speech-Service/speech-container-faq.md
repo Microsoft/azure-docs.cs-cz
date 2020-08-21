@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289037"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690200"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -97,7 +97,7 @@ Náklady na údržbu placené Microsoftu závisí na úrovni služby a obsahu sl
 
 **Odpověď:** V `speech_recognition_language=<YOUR_LANGUAGE>` případě, že klient používá klienta, musí být explicitně nakonfigurován v žádosti.
 
-Například:
+Příklad:
 
 ```python
 if not recognize_once(
@@ -305,7 +305,7 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 - Uhlík, který má kontrolní výraz v sestavení vydaných verzí (ukončuje se proces)
 
 Alternativní řešení je buď přepnout na použití průběžného rozpoznávání v kódu, nebo (rychlejší) připojit se k interaktivním nebo souvislým koncovým bodům v kontejneru.
-Pro svůj kód nastavte koncový bod na <hostitel: port>/Speech/Recognition/Interactive/cognitiveservices/v1
+Pro váš kód nastavte koncový bod na `host:port` /Speech/Recognition/Interactive/cognitiveservices/v1
 
 Různé režimy najdete v tématu režimy řeči – viz níže:
 
@@ -559,7 +559,7 @@ Jsou určené pro různé účely a jsou používány odlišně.
 
 V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation()` funkci.
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`Třídy
+### <a name="fromendpoint-apis"></a>`FromEndpoint` Třídy
 | Jazyk | Podrobnosti rozhraní API |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -579,7 +579,7 @@ V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation
 
 **Odpověď:** Existuje nové `FromHost` rozhraní API. Nenahrazuje ani nemění žádná existující rozhraní API. Jenom přidá alternativní způsob, jak vytvořit konfiguraci řeči pomocí vlastního hostitele.
 
-### <a name="fromhost-apis"></a>`FromHost`Třídy
+### <a name="fromhost-apis"></a>`FromHost` Třídy
 
 | Jazyk | Podrobnosti rozhraní API |
 |--|:-|
@@ -597,8 +597,8 @@ Formát pro hostitele je `protocol://hostname:port` `:port` volitelné (viz ní�
 - Pokud je kontejner spuštěn na vzdáleném serveru, použijte název hostitele nebo adresu IPv4 tohoto serveru.
 
 Příklady parametrů hostitele pro převod řeči na text:
-- `ws://localhost:5000`– nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
-- `ws://some.host.com:5000`– nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
+- `ws://localhost:5000` – nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
+- `ws://some.host.com:5000` – nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
 
 Ukázky Pythonu výše, ale použijte `host` parametr místo `endpoint` :
 

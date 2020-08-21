@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 28260728532d9db52b8d36488c2e456bd11803ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c18977807d8cdca264a27d7fcff37aec7a61eb55
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091775"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690647"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -21,12 +21,34 @@ V tomto článku najdete informace o:
 * Opravy chyb
 * Zastaralé funkce
 
+## <a name="august-19-2020"></a>19. srpna 2020
+
+Tato značka vydání pro aktualizaci modulu v 2020. srpna je:
+
+```
+mcr.microsoft.com/media/live-video-analytics:1.0.3
+```
+
+> [!NOTE]
+> V rychlých startech a kurzech manifesty nasazení používají značku 1 (Live-video-Analytics: 1). Takže jednoduše znovu nasadíte takové manifesty, které by měly aktualizovat modul na hraničních > zařízeních.
+
+## <a name="new-features"></a>Nové funkce 
+
+* Nyní můžete dosáhnout vysokého výkonu přenosu dat mezi živým analýzou videa na IoT Edge a vlastním rozšířením pomocí rozhraní gRPC Framework. Začněte [tím](analyze-live-video-use-your-grpc-model-quickstart.md) , že se zobrazí.
+* Širší regionální nasazení živé analýzy videí a aktualizace jenom cloudové služby.  
+* Live video Analytics je teď k dispozici v 25 dalších oblastech po celém světě. Tady je [seznam](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) všech oblastí, které jsou k dispozici.  
+* [Nastavení](https://aka.ms/lva-edge/setup-resources-for-samples) pro rychlé spuštění bylo aktualizováno také. 
+
+## <a name="bug-fixes"></a>Opravy chyb 
+
+Žádné 
+
 ## <a name="july-13-2020"></a>13. července 2020
 
 Tato značka vydání v červenci 2020 aktualizace modulu je:
 
 ```
-     mcr.microsoft.com/media/live-video-analytics:1.0.2
+mcr.microsoft.com/media/live-video-analytics:1.0.2
 ```
 
 > [!NOTE]

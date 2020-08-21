@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236467"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688041"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -100,8 +100,8 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 Procesor změnového kanálu lze hostovat na libovolné platformě, která podporuje dlouho běžící procesy nebo úlohy:
 
 * Nepřetržitě běžící [Webová úloha Azure](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)
-* Proces na [virtuálním počítači Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
-* Úloha na pozadí ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* Proces na [virtuálním počítači Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
+* Úloha na pozadí ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
 * [Hostovaná služba ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)
 
 I když se procesor Change feed může spouštět v krátkodobých prostředích, protože kontejner zapůjčení udržuje stav, cyklus spuštění a zastavení těchto prostředí přidá zpoždění pro příjem oznámení (kvůli režii spuštění procesoru při každém spuštění prostředí).

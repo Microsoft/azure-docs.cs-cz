@@ -3,55 +3,63 @@ title: Registrovat rozšíření vazby Azure Functions
 description: Naučte se registrovat rozšíření vazby Azure Functions v závislosti na vašem prostředí.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/08/2019
+ms.date: 08/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224777"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689545"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
-Počínaje verzí Azure Functions 2. x jsou [vazby](./functions-triggers-bindings.md) k dispozici jako samostatné balíčky z modulu runtime Functions. I když rozhraní .NET Functions přistupuje k vazbám prostřednictvím balíčků NuGet, rozšiřující balíčky umožňují ostatním funkcím přístup k všem vazbám prostřednictvím nastavení konfigurace.
+Počínaje verzí Azure Functions 2. x obsahuje modul runtime Functions ve výchozím nastavení pouze triggery protokolu HTTP a časovače. Další [triggery a vazby](./functions-triggers-bindings.md) jsou k dispozici jako samostatné balíčky.
 
-Vezměte v úvahu následující položky týkající se rozšíření vazby:
-
-- Rozšíření vazby nejsou explicitně registrována ve funkcích 1. x s výjimkou [Vytvoření knihovny tříd C# pomocí sady Visual Studio](#local-csharp).
-
-- Aktivační události protokolu HTTP a časovače jsou ve výchozím nastavení podporovány a nevyžadují rozšíření.
+Knihovna tříd .NET Functions Functions Apps používá vazby, které jsou nainstalovány v projektu jako balíčky NuGet. Sady rozšíření umožňují aplikacím non-.NET Functions používat stejné vazby, aniž by museli pracovat s infrastrukturou .NET.
 
 Následující tabulka uvádí, kdy a jak registrovat vazby.
 
 | Vývojové prostředí |Registrace<br/> ve funkcích 1. x  |Registrace<br/> ve funkcích 3. x/2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |portál Azure|Automaticky|Automatické<sup>*</sup>|
-|Non-.NET jazyky nebo místní vývoj nástrojů Azure Core|Automaticky|[Použití Azure Functions Core Tools a rozšíření sad](#extension-bundles)|
+|Jazyky Non-.NET|Automaticky|Používejte [sady rozšíření](#extension-bundles) (doporučeno) nebo [explicitně nainstalujte rozšíření](#explicitly-install-extensions) .|
 |Knihovna tříd C# s využitím sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
 |Knihovna tříd C# pomocí Visual Studio Code|–|[Použít .NET Core CLI](#vs-code)|
 
 <sup>*</sup> Portál používá sady rozšíření.
 
-## <a name="extension-bundles"></a><a name="extension-bundles"></a>Sady rozšíření
+## <a name="access-extensions-in-non-net-languages"></a>Přístup k rozšířením v non-.NET jazycích
 
-Sady rozšíření umožňují přidat do aplikace Function App kompatibilní sadu funkcí pro vazby. Při použití sad se při sestavování aplikace přidají předdefinované sady rozšíření. Balíčky rozšíření definované ve svazku jsou ověřené tak, aby byly vzájemně kompatibilní, což pomáhá vyhnout se konfliktům mezi balíčky. Sady rozšíření umožňují vyhnout se nutnosti publikovat kód projektu .NET pomocí projektu non-.NET Functions. Balíčky rozšíření povolíte v host.jsaplikace v souboru.  
+Pro přístup k vazbám doporučujeme používat sady rozšíření pro jazyky Java, JavaScript, PowerShell, Python a Customer Functions. V případech, kdy nelze použít rozšiřující balíčky, můžete explicitně nainstalovat rozšíření vazby.
 
-Můžete použít sady rozšíření s verzí 2. x a novějšími verzemi modulu runtime Functions. 
+### <a name="extension-bundles"></a><a name="extension-bundles"></a>Sady rozšíření
 
-Balíčky rozšíření můžete použít pro místní vývoj pomocí Azure Functions Core Tools, Visual Studio Code a při vzdáleném sestavování. Při vývoji místně se ujistěte, že používáte nejnovější verzi [Azure Functions Core Tools](functions-run-local.md#v2). Sady rozšíření se používají také při vývoji funkcí v Azure Portal. 
+Sady rozšíření je způsob, jak přidat kompatibilní sadu rozšíření vazby do aplikace Function App. Balíčky rozšíření povolíte v *host.jsaplikace v* souboru.
 
-Pokud nepoužíváte sady rozšíření, musíte nainstalovat sadu .NET Core 2. x SDK na svůj místní počítač předtím, než [explicitně nainstalujete rozšíření vazby](#explicitly-install-extensions). Do projektu se přidá soubor Extensions. csproj, který explicitně definuje požadovaná rozšíření. Sady rozšíření odstraňují tyto požadavky pro místní vývoj. 
+Můžete použít sady rozšíření s verzí 2. x a novějšími verzemi modulu runtime Functions.
 
-Pokud chcete použít sady rozšíření, aktualizujte *host.jsv* souboru tak, aby obsahovaly následující položku pro `extensionBundle` :
- 
+Sady rozšíření jsou ve verzi. Každá verze obsahuje konkrétní sadu rozšíření vazby, které jsou ověřené k vzájemné spolupráci. Vyberte verzi sady prostředků na základě rozšíření, která potřebujete ve vaší aplikaci.
+
+Pokud chcete přidat rozšiřující sadu do aplikace Function App, přidejte do ní `extensionBundle` oddíl, do *host.js*. V mnoha případech se Visual Studio Code a Azure Functions Core Tools automaticky přidá.
+
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="explicitly-install-extensions"></a>Explicitní instalace rozšíření
+Následující tabulka uvádí aktuálně dostupné verze výchozí sady *Microsoft. Azure. Functions. ExtensionBundle* a odkazuje na rozšíření, která obsahují.
+
+| Verze sady prostředků | Verze v host.jszapnuta | Zahrnutá rozšíření |
+| --- | --- | --- |
+| verze | `[1.*, 2.0.0)` | Informace [ o](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) vygenerování sady najdete v tématuextensions.js. |
+| 2.x | `[2.*, 3.0.0)` | Informace [ o](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) vygenerování sady najdete v tématuextensions.js. |
+
+> [!NOTE]
+> I když můžete zadat rozsah vlastní verze v host.jsna, doporučujeme použít hodnotu verze z této tabulky.
+
+### <a name="explicitly-install-extensions"></a><a name="explicitly-install-extensions"></a>Explicitní instalace rozšíření
 
 [!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
-## <a name="nuget-packages"></a><a name="local-csharp"></a>Balíčky NuGet
+## <a name="install-extensions-from-nuget-in-net-languages"></a><a name="local-csharp"></a>Instalace rozšíření z NuGetu v jazycích .NET
 
 Pro projekt funkcí založených na knihovně jazyka C# byste měli nainstalovat rozšíření přímo. Sady rozšíření jsou určeny konkrétně pro projekty, které nejsou založené na knihovně C# třídy.
 
@@ -69,7 +77,7 @@ Název balíčku, který se používá pro danou vazbu, je uveden v referenční
 
 Pokud používáte `Install-Package` pro odkazování na vazbu, nemusíte používat [sady rozšíření](#extension-bundles). Tento přístup je specifický pro knihovny tříd sestavené v aplikaci Visual Studio.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Knihovna tříd C# s Visual Studio Code
+### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Knihovna tříd C# s Visual Studio Code
 
 V **Visual Studio Code**nainstalujte balíčky pro projekt knihovny tříd jazyka C# z příkazového řádku pomocí příkazu [dotnet add Package](/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
 

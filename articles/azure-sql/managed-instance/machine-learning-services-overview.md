@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708735"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689503"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services ve spravované instanci Azure SQL (Preview)
 
@@ -52,7 +52,23 @@ Základní distribuce Pythonu a R jsou součástí Machine Learning Services. Kr
 
 Tato omezená verze Public Preview podléhá [podmínkám Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . U možnosti "typ problému" vyberte "Technical", "služba" vyberte "SQL Database Managed instance" a pro "typ problému" vyberte "jiné". Ve vaší žádosti uveďte, že si chcete zaregistrovat omezenou verzi Public Preview služby Machine Learning pro službu SQL Managed Instance a tyto podrobnosti: název logického serveru, oblast a ID předplatného.
+Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
+
+1. Vyberte následující možnosti:
+   - Typ problému – **technický**
+   - Předplatné – *Vyberte své předplatné* .
+   - **Spravovaná Instance SQL Database** služby
+   - Shrnutí – *Zadejte stručný popis vaší žádosti* .
+   - Typ problému – **Machine Learning Services pro spravovanou instanci SQL (Preview)**
+   - Problémový podtyp – **jiný problém nebo "How to" (otázky** )
+
+1. Klikněte na **Další: řešení**.
+
+1. Přečtěte si informace o verzi Preview a klikněte na tlačítko **Podrobnosti**.
+
+1. Do pole **Popis**zadejte konkrétní požadavky vaší žádosti, včetně názvu logického serveru, oblasti a ID předplatného, které chcete zaregistrovat ve verzi Preview. Podle potřeby zadejte další podrobnosti.
+
+1. Až skončíte, klikněte na **Další: Zkontrolujte + vytvořit**a pak klikněte na **vytvořit**.
 
 Po registraci do programu vás Microsoft připojí k verzi Public Preview a povolí službu Machine Learning Services pro vaši stávající nebo novou databázi.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9c7e03f5e658b8e15dcae1c5314b73dfbfdf0206
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430287"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684571"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Nuxt.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
 
@@ -56,7 +56,7 @@ Můžete nastavit nový Nuxt.js projekt pomocí `create-nuxt-app` . Místo nové
     npm run dev
     ```
 
-Přejděte na adresu <http://localhost:3000> a otevřete aplikaci, kde by se měl zobrazit následující web v upřednostňovaném prohlížeči:
+Přejděte na adresu `http://localhost:3000` a otevřete aplikaci, kde by se měl zobrazit následující web v upřednostňovaném prohlížeči:
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Spustit aplikaci Nuxt.js":::
 
@@ -153,7 +153,7 @@ Statická Web Apps Azure je sestavená tak, aby automaticky provedla běžné ú
 
 1. Do textového pole *umístění artefaktu aplikace* zadejte text **DIST** .
 
-### <a name="review-and-create"></a>Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 1. Kliknutím na **vytvořit** zahájíte vytváření prostředku a zároveň zajistěte akci GitHubu pro nasazení.
@@ -211,7 +211,7 @@ Pokud se jedná o dynamickou stránku, například `_id.vue` nebude mít dostate
    ```
 
    > [!NOTE]
-   > `routes`je asynchronní funkce, takže můžete vytvořit požadavek na rozhraní API v této funkci a použít vrácený seznam k vygenerování cest.
+   > `routes` je asynchronní funkce, takže můžete vytvořit požadavek na rozhraní API v této funkci a použít vrácený seznam k vygenerování cest.
 
 2. Nahrajte nové změny do úložiště GitHubu a počkejte pár minut, než akce GitHubu znovu vytvoří váš web. Po dokončení sestavení se zobrazí chyba 404.
 

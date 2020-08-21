@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210919"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688126"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -73,6 +73,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 - Omezte přístup pro správu serveru Azure AD Connect jenom na správce domény nebo na jiné skupiny zabezpečení, které jsou pod kontrolou.
 - Vytvořte [vyhrazený účet pro všechny pracovníky s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Správci by neměli procházet web, kontrolovat jejich e-maily a provádět každodenní úkoly s vysoce privilegovanými účty.
 - Postupujte podle pokynů uvedených v části [zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+- Zamítnout použití ověřování NTLM se serverem AADConnect Tady je několik způsobů, jak to provést: [omezení NTLM na serveru AADConnect](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) a [omezení NTLM v doméně](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain) .
 - Zajistěte, aby měl každý počítač jedinečné heslo místního správce. Další informace najdete v tématu [řešení hesla místního správce (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) může konfigurovat jedinečná náhodná hesla na každé pracovní stanici a na serveru, kde jsou v ní chráněná seznamem ACL. Resetovat hesla těchto účtů místních správců můžou číst nebo žádat jenom oprávnění autorizovaní uživatelé. LAPS můžete získat pro použití na pracovních stanicích a serverech z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Další pokyny pro provoz prostředí s LAPS a privilegovaným přístupem (Privileged Access Workstations) najdete v [provozních standardech na základě principu čistého zdroje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementujte vyhrazené [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) pro všechny pracovníky s privilegovaným přístupem k informačním systémům vaší organizace. 
 - Pomocí těchto [dalších pokynů](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) můžete omezit plochu útoku prostředí Active Directory.
@@ -90,7 +91,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 * Pokud používáte [expresní nastavení](reference-connect-accounts-permissions.md#express-settings-installation) nebo upgrade z DirSync, musíte mít účet správce rozlehlé sítě pro vaši místní službu Active Directory.
 * Pokud použijete instalační cestu k vlastnímu nastavení, máte více možností. Další informace najdete v tématu [vlastní nastavení instalace](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Možnosti připojení
+### <a name="connectivity"></a>Připojení
 * Azure AD Connect server potřebuje překlad DNS pro intranet i Internet. Server DNS musí být schopný přeložit názvy do vaší místní služby Active Directory a koncových bodů Azure AD.
 * Pokud máte v intranetu brány firewall a potřebujete otevřít porty mezi Azure AD Connect servery a řadiči domény, přečtěte si další informace v tématu [Azure AD Connect porty](reference-connect-ports.md) .
 * Pokud váš proxy server nebo brána firewall omezují pøístup k adresám URL, musí se otevřít adresy URL dokumentované v [adresách URL Office 365 a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) .
@@ -131,7 +132,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 Volitelné: k ověření synchronizace použijte účet testovacího uživatele.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

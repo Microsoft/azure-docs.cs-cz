@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660870"
+ms.locfileid: "88689741"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -174,7 +174,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 ### <a name="storage"></a>Storage
 
-Batch přepis může číst zvuk z internetového identifikátoru URI a může číst zvuk nebo psát přepisy pomocí služby [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview).
+Batch přepis může číst zvuk z internetového identifikátoru URI, který je veřejně viditelný, a může číst zvuk nebo zapisovat přepisy pomocí identifikátoru URI SAS s [úložištěm objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview).
 
 ## <a name="batch-transcription-result"></a>Výsledek dávkového přepisu
 
@@ -243,7 +243,7 @@ Každý soubor výsledků přepisu má tento formát:
 }
 ```
 
-Výsledek obsahuje následující formuláře:
+Výsledek obsahuje následující pole:
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ Chcete-li požádat o diarization, přidejte `diarizationEnabled` vlastnost nast
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Služba Batch přepisu dokáže zvládnout velký počet odeslaných přepisů. Můžete zadat dotaz na stav vašich přepisů `GET` v části [získání přepisů](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Po načtení výsledků volání odstraňte ze služby pravidelné [přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) . Případně nastavte `timeToLive` vlastnost na rozumnou hodnotu, abyste zajistili případné odstranění výsledků.
+Služba Batch přepisu dokáže zvládnout velký počet odeslaných přepisů. Můžete se dotazovat na stav přepisu pomocí příkazu [získat přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions).
+Po načtení výsledků volání odstraňte ze služby pravidelné [přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) . Případně nastavte `timeToLive` vlastnost, aby se zajistilo konečné odstranění výsledků.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

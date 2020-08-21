@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252347"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690438"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Rychlý Start: přidání přiřazení role Azure pomocí šablony ARM
 
@@ -23,23 +23,23 @@ ms.locfileid: "86252347"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
-- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 - Chcete-li přidat přiřazení role, je nutné zadat tři prvky: objekt zabezpečení, definice role a obor. V tomto rychlém startu je objekt zabezpečení vy nebo jiný uživatel ve vašem adresáři, definice role je [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor)a obor je skupina prostředků, kterou určíte.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Šablona má tři parametry a oddíl Resources. V části Resources (prostředky) si všimněte, že má tři prvky přiřazení role: objekt zabezpečení, definice role a obor.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Šablona má tři parametry a oddíl Resources. V části Resources (prostředky) si všimněte, že má tři prvky přiřazení role: objekt zabezpečení, definice role a obor.
 
-:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
 Prostředek definovaný v šabloně je:
 
@@ -47,7 +47,7 @@ Prostředek definovaný v šabloně je:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Určete svou e-mailovou adresu, která je přidružená k vašemu předplatnému Azure. Nebo určete e-mailovou adresu jiného uživatele ve vašem adresáři.
 

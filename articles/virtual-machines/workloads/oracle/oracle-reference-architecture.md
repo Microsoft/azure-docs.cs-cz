@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690353"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -79,7 +79,7 @@ Následující diagram je doporučená architektura pro používání ochrany da
 
 ![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
+V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
 
 Databáze Oracle jsou umístěné v několika zónách dostupnosti pro zajištění vysoké dostupnosti. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, ve všech povolených oblastech se nastaví minimálně tři samostatné zóny. Fyzické oddělení zón dostupnosti v rámci oblasti chrání data před selháními datových center. Kromě toho se dva FSFO pozorovatelé nastavují ve dvou zónách dostupnosti, aby se při výpadku databáze nastavily a přestaly při selhání. 
 
@@ -113,7 +113,7 @@ Následující diagram je architektura, která využívá Oracle data Guard FSFO
 
 GoldenGate umožňuje výměnu a manipulaci s daty na úrovni transakcí mezi několika heterogenními platformami v celém podniku. Přesouvá potvrzené transakce s integritou transakcí a minimální režií na stávající infrastruktuře. Jeho modulární architektura poskytuje flexibilitu pro extrakci a replikaci vybraných záznamů dat, transakčních změn a změny v jazyce DDL (Data Definition Language) v nejrůznějších topologiích.
 
-Oracle GoldenGate umožňuje konfiguraci databáze pro zajištění vysoké dostupnosti díky obousměrné replikaci. To vám umožní nastavit konfiguraci s **více hlavními servery** nebo **aktivní-aktivní**. Následující diagram je doporučovanou architekturou pro Oracle GoldenGate Active-Active Setup v Azure. V následující architektuře byla databáze Oracle nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. K výkonu a dostupnosti se používá několik disků Premium nebo Ultra (spravované disky).
+Oracle GoldenGate umožňuje konfiguraci databáze pro zajištění vysoké dostupnosti díky obousměrné replikaci. To vám umožní nastavit konfiguraci s **více hlavními servery** nebo **aktivní-aktivní**. Následující diagram je doporučovanou architekturou pro Oracle GoldenGate Active-Active Setup v Azure. V následující architektuře byla databáze Oracle nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. K výkonu a dostupnosti se používá několik disků Premium nebo Ultra (spravované disky).
 
 ![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Opravy operačního systému virtuálního počítače můžete automatizovat po
 
 ## <a name="architecture-and-design-considerations"></a>Požadavky na architekturu a návrh
 
-- Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/windows/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
+- Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
 - Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
 - Pomocí zón dostupnosti můžete dosáhnout vysoké dostupnosti v oblasti.
 - Zvažte použití disků Ultra (Pokud je k dispozici) nebo prémiových disků pro vaši databázi Oracle.

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076054"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688551"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -468,7 +468,7 @@ Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděp
 | Zdroj | Podrobnosti | Podrobnosti | ID požadavku klienta | Text operace |
 | --- | --- | --- | --- | --- |
 | Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Spouští se operace s primárním umístěním na režim umístění PrimaryOnly. |
-| Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Spouští se synchronní požadavek na<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Spouští se synchronní požadavek na <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
 | Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Čeká se na odpověď. |
 | Microsoft. Azure. Storage |Upozornění |2 |85d077ab-... |Při čekání na odpověď se vyvolala výjimka: vzdálený server vrátil chybu: (403) zakázáno. |
 | Microsoft. Azure. Storage |Informace |3 |85d077ab-... |Přijata odpověď. Stavový kód = 403, ID žádosti = 9d67c64a-64ed-4B0D-9515-3b14bbcdc63d, Content-MD5 =, ETag =. |
@@ -516,7 +516,7 @@ Položky protokolu:
 | 07b26a5d-... |Spouští se synchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.................. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: Út, 03. června 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | 07b26a5d-... |Čeká se na odpověď. |
-| 07b26a5d-... |Přijata odpověď. Stavový kód = 200, ID žádosti = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
+| 07b26a5d-... |Přijata odpověď. Stavový kód = 200, ID žádosti = eeead849-... Content-MD5 =, ETag =    &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | 07b26a5d-... |Stahuje se text odpovědi. |
 | 07b26a5d-... |Operace se úspěšně dokončila. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052152"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690336"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -112,7 +112,7 @@ Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetA
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencování Oracle Database & software v Azure
 
 Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s technologií Hyper-Threading povolených pro databáze edice Enterprise Edition počítá 2 vCPU jako ekvivalentní jedné licenci Oracle Processor, pokud je povolená možnost webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](../../sizes-memory.md) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](../../linux/constrained-vcpu.md) Oracle Database pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
+Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](../../sizes-memory.md) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](../../constrained-vcpu.md) Oracle Database pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
 
 Když migrujete software Oracle a úlohy z místního prostředí do Microsoft Azure, Oracle nabízí mobilitu licencí, jak je uvedeno v tématu [Oracle on Azure – Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) .
 
