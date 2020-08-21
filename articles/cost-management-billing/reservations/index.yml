@@ -5,17 +5,18 @@ metadata:
   title: Úspory s využitím rezervací Azure
   description: Zjistěte, jak rezervace Azure umožňují šetřit peníze tím, že v rámci plánů na jeden nebo tři roky potvrzují závazek využívání virtuálních počítačů, služeb Azure Blob Storage nebo Azure Data Lake Storage Gen2, výpočetní kapacity služby SQL Database, propustnosti služby Azure Cosmos DB nebo jiných prostředků Azure.
   ms.service: cost-management-billing
+  ms.subservice: reservations
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
   ms.date: 04/30/2020
-  ms.openlocfilehash: 4706c13d6c9e354c6c7ca382f724a7b1094bdda3
-  ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+  ms.openlocfilehash: d8c7e7eee6307ce48e89cb5ade65d7dbff0f42d4
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/09/2020
-  ms.locfileid: "86207126"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88684690"
 landingContent:
 - title: Nákup rezervací
   linkLists:

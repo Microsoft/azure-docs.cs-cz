@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: Výstrahy
       items:
-        - name: Pravidla upozornění aplikace
-          items:
-            - name: Dostupnost
-              href: app/monitor-web-app-availability.md
-            - name: Upozornění metrik
-              href: ./platform/alerts-log.md
         - name: Pravidla upozornění metrik
           items:
             - name: Správa upozornění metrik
               href: platform/alerts-metric.md
+            - name: Dostupnost
+              href: app/monitor-web-app-availability.md
             - name: Použití dynamických prahových hodnot
               href: platform/alerts-dynamic-thresholds.md
             - name: Jedno upozornění pro mnoho časových řad

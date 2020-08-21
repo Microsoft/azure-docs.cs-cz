@@ -193,7 +193,7 @@
 - name: Problémy se správou virtuálních disků
   items:
     - name: Přehled
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: Nejčastější dotazy
       href: ../windows/faq-for-disks.md
     - name: Chyby při odstraňování prostředků úložiště
