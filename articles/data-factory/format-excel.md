@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044404"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718199"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excelový formát v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ Formát aplikace Excel je podporován pro následující konektory [: Amazon S3]
 | typ             | Vlastnost Type datové sady musí být nastavená na **Excel**.   | Yes      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . | Yes      |
 | sheetName        | Název sešitu aplikace Excel, ve kterém se mají číst data                       | Yes      |
-| range            | Rozsah buněk v daném listu pro vyhledání selektivních dat, například `A3:H5` (tabulka z a3 do H5), `A3` (tabulka začínající z buňky A3) ( `A3:A3` jedna buňka). Pokud není zadaný, ADF načte z celého listu jako tabulku. | No       |
+| range            | Rozsah buněk v daném listu pro hledání selektivních dat, např.:<br>-Neurčeno: přečte celý list jako tabulku z prvního neprázdného řádku a sloupce.<br>- `A3`: přečte tabulku od dané buňky, dynamicky detekuje všechny řádky níže a všechny sloupce napravo.<br>- `A3:H5`: přečte tento pevný rozsah jako tabulku.<br>- `A3:A3`: přečte tuto jedinou buňku. | No       |
 | firstRowAsHeader | Určuje, zda má být první řádek v daném listu nebo rozsahu považován za řádek záhlaví s názvy sloupců.<br>Povolené hodnoty jsou **true** a **false** (výchozí). | No       |
 | nullValue        | Určuje řetězcovou reprezentaci hodnoty null. <br>Výchozí hodnota je **prázdný řetězec**. | No       |
 | komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | No |
@@ -112,7 +112,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem aplikace 
 | Kořenová cesta oddílu       | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne       | Řetězec                                                    | partitionRootPath                 |
 | Seznam souborů             | Určuje, zda váš zdroj odkazuje na textový soubor se seznamem souborů, které se mají zpracovat. | ne       | `true` nebo `false`                                         | fileList                          |
 | Sloupec, ve kterém se má uložit název souboru | Vytvoří nový sloupec s názvem a cestou ke zdrojovému souboru.       | ne       | Řetězec                                                    | rowUrlColumn                      |
-| Po dokončení          | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne       | Odstranit: `true` nebo`false` <br> Pøesunout`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| Po dokončení          | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne       | Odstranit: `true` nebo `false` <br> Pøesunout `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | Filtrovat podle poslední změny   | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>Zdrojový příklad

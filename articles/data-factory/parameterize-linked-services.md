@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 08/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987772"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716839"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,6 +43,8 @@ V tuto chvíli je propojená služba Parametrizace podporovaná v uživatelském
 - MySQL
 - Oracle
 - SQL Server
+- Obecná rozhraní HTTP
+- Obecný standard REST
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 

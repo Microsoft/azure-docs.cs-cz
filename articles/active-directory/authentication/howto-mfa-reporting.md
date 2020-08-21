@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418232"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719508"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Azure Multi-Factor Authentication
 
@@ -90,7 +90,7 @@ V okně *Podrobnosti o ověřování* se zobrazí následující podrobnosti o u
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>Vytváření sestav PowerShellu u uživatelů registrovaných pro MFA
 
-Nejdřív se ujistěte, že máte nainstalovaný [modul PowerShellu MSOnline v1](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) .
+Nejdřív se ujistěte, že máte nainstalovaný [modul PowerShellu MSOnline v1](/powershell/azure/active-directory/overview?view=azureadps-1.0) .
 
 Identifikujte uživatele, kteří se zaregistrovali pro MFA, pomocí PowerShellu, který následuje. Tato sada příkazů nezahrnuje zakázané uživatele, protože tyto účty nelze ověřit vůči službě Azure AD:
 

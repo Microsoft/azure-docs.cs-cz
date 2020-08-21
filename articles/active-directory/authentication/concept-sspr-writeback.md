@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027593"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717434"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -47,7 +47,7 @@ Zpětný zápis hesla poskytuje následující funkce:
 Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
 
@@ -140,7 +140,7 @@ Hesla se zapisují zpátky do všech těchto situací:
    * Jakákoli operace změny hesla samoobslužného hesla pro správce, například vypršení platnosti hesla.
    * Jakékoli Samoobslužné resetování hesla, které pochází z portálu pro [resetování hesla](https://passwordreset.microsoftonline.com).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem z [Azure Portal](https://portal.azure.com).
-   * Všichni správci iniciovali resetování hesla koncových uživatelů z [rozhraní Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http).
+   * Všichni správci iniciovali resetování hesla koncových uživatelů z [rozhraní Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta).
 
 ## <a name="unsupported-writeback-operations"></a>Nepodporované operace zpětného zápisu
 
@@ -149,7 +149,7 @@ Hesla se nezapisují zpátky v následujících situacích:
 * **Nepodporované operace koncového uživatele**
    * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo rozhraní Microsoft Graph API.
 * **Nepodporované operace Správce**
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) ).
+   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) ).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem v [centru pro správu Microsoft 365](https://admin.microsoft.com).
    * Žádný správce nemůže použít nástroj pro resetování hesla k resetování vlastního hesla pro zpětný zápis hesla.
 
@@ -161,4 +161,4 @@ Hesla se nezapisují zpátky v následujících situacích:
 Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)

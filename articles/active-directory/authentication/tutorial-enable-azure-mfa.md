@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419542"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718896"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication
 
@@ -101,7 +101,7 @@ Zásady podmíněného přístupu se dají nastavit na *sestavu jenom* v přípa
 
 Pojďme se podívat na vaše zásady podmíněného přístupu a Azure Multi-Factor Authentication v akci. Nejprve se přihlaste k prostředku, který nepotřebuje vícefaktorové ověřování, následovně:
 
-1. Otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
+1. Otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 1. Přihlaste se pomocí testovacího uživatele bez správce, jako je například *testuser*. Pro dokončení vícefaktorového ověřování není k dispozici žádná výzva.
 1. Zavřete okno prohlížeče.
 
@@ -118,7 +118,7 @@ Teď se přihlaste k Azure Portal. Protože Azure Portal byl nakonfigurován v z
 
 Pokud už nechcete zásady podmíněného přístupu povolit, aby se Azure Multi-Factor Authentication nakonfiguroval jako součást tohoto kurzu, odstraňte tyto zásady pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **zabezpečení** .
 1. Vyberte **podmíněný přístup**a pak vyberte zásadu, kterou jste vytvořili, jako je například *MFA pilot* .
 1. Zvolte **Odstranit**a pak potvrďte, že chcete zásadu odstranit.
@@ -133,4 +133,4 @@ V tomto kurzu jste povolili Azure Multi-Factor Authentication používáním zá
 > * Testování procesu MFA jako uživatel
 
 > [!div class="nextstepaction"]
-> [Povolení zpětného zápisu hesla pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Povolení zpětného zápisu hesla pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)

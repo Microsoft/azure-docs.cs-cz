@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903336"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718811"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -26,7 +26,7 @@ Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní
 
 Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpoznávání formulářů, doporučujeme model zkopírovat do jiného účtu pro rozpoznávání formulářů v jiné oblasti. Pokud dojde k oblastnímu výpadku, můžete získat přístup k modelu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Požadavky
+##  <a name="prerequisites"></a>Předpoklady
 
 1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
@@ -39,6 +39,9 @@ Proces kopírování vlastního modelu se skládá z následujících kroků:
 1. Nejprve vydáte požadavek na autorizaci kopírování na cílový prostředek &mdash; , který je, prostředkem, který obdrží zkopírovaný model. Vrátíte adresu URL nově vytvořeného cílového modelu, který získá zkopírovaná data.
 1. Dál odešlete žádost o kopírování zdrojovému prostředku &mdash; prostředku, který obsahuje model, který se má zkopírovat. Vrátíte se zpátky adresu URL, na kterou se můžete dotazovat a sledovat průběh operace.
 1. Pomocí svých přihlašovacích údajů ke zdrojovému zdroji se můžete dotazovat na adresu URL průběhu, dokud nebude operace úspěšná. Můžete také zadat dotaz na nové ID modelu v cílovém prostředku a získat tak stav nového modelu.
+
+> [!CAUTION]
+> Rozhraní API pro kopírování v současné době nepodporuje ID modelů pro [složené vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose). Vytváření modelů je funkce ve verzi Preview v 2.1 verze Preview. 1 Preview. 
 
 ## <a name="generate-copy-authorization-request"></a>Vytvořit kopii žádosti o autorizaci
 
@@ -90,7 +93,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |Chyba|Řešení|
 |:--|:--|
-| 400/Chybný požadavek s`"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
+| 400/Chybný požadavek s `"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
 |
 
 ## <a name="track-copy-progress"></a>Sledovat průběh kopírování

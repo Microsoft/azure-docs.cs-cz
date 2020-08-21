@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500959"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719270"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimalizujte zpracování dat pomocí Azure Machine Learning
 
@@ -33,9 +33,9 @@ Soubory CSV se běžně používají k importu a exportu dat, protože je lze sn
 
 ## <a name="pandas-dataframe"></a>PANDAS – datový rámec
 
-[PANDAS](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) se běžně používají k manipulaci s daty a k analýze. `Pandas`funguje dobře pro velikost dat menší než 1 GB, ale doba zpracování pro datové `pandas` rámce se zpomalí, když velikost souboru dosáhne přibližně 1 GB. Tento zpomalení je způsobeno tím, že velikost dat v úložišti není stejná jako velikost dat v datovém rámečku. Například data v souborech CSV můžou v datovém rámci rozšířit až 10krát, takže soubor CSV o velikosti 1 GB se může v dataframe nastát 10 GB.
+[PANDAS](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) se běžně používají k manipulaci s daty a k analýze. `Pandas` funguje dobře pro velikost dat menší než 1 GB, ale doba zpracování pro datové `pandas` rámce se zpomalí, když velikost souboru dosáhne přibližně 1 GB. Tento zpomalení je způsobeno tím, že velikost dat v úložišti není stejná jako velikost dat v datovém rámečku. Například data v souborech CSV můžou v datovém rámci rozšířit až 10krát, takže soubor CSV o velikosti 1 GB se může v dataframe nastát 10 GB.
 
-`Pandas`je jedním vláknem, což znamená, že operace se provádějí postupně na jednom procesoru. Můžete snadno paralelizovat úlohy na více virtuálních procesorů na jednom Azure Machine Learning výpočetní instanci s balíčky, jako je [Modin](https://modin.readthedocs.io/en/latest/) , které se zabalí `Pandas` pomocí distribuovaného back-endu.
+`Pandas` je jedním vláknem, což znamená, že operace se provádějí postupně na jednom procesoru. Můžete snadno paralelizovat úlohy na více virtuálních procesorů na jednom Azure Machine Learning výpočetní instanci s balíčky, jako je [Modin](https://modin.readthedocs.io/en/latest/) , které se zabalí `Pandas` pomocí distribuovaného back-endu.
 
 Pokud chcete paralelizovat své úkoly pomocí `Modin` a [dAsK](https://dask.org), stačí změnit tento řádek kódu `import pandas as pd` na `import modin.pandas as pd` .
 
@@ -46,6 +46,16 @@ K *nedostatku paměti* obvykle dochází v případě, že se váš datový rám
 Jedním z řešení je zvýšit velikost paměti RAM tak, aby odpovídala velikosti datového rámce v paměti. Doporučujeme, aby výpočet velikosti a výkon zpracování obsahoval dvojnásobek velikosti paměti RAM. Takže pokud je váš datový rámec 10 GB, použijte výpočetní cíl s aspoň 20 GB paměti RAM, abyste zajistili, že se může datový rámec pohodlně vejít do paměti a zpracovat. 
 
 U více virtuálních procesorů vCPU Pamatujte na to, že chcete, aby se jeden oddíl pohodlně vešel do paměti RAM každý vCPU může mít v počítači. To znamená, že pokud máte 16 GB RAM 4 vCPU, budete chtít přibližně 2 GB datasnímků na každou vCPU.
+
+### <a name="local-vs-remote"></a>Místní a vzdálené
+
+Můžete si všimnout, že některé příkazy PANDAS dataframe fungují rychleji při práci na místním počítači a na vzdáleném VIRTUÁLNÍm počítači, který jste zřídili pomocí Azure Machine Learning. Váš místní počítač má obvykle povolený stránkovací soubor, který umožňuje načíst více, než co se vejde do fyzické paměti, což je váš pevný disk se používá jako rozšíření paměti RAM. V současné době se Azure Machine Learning virtuální počítače spouštějí bez stránkovacího souboru, takže můžou načíst jenom tolik dat, kolik je k dispozici fyzické paměti RAM. 
+
+Pro úlohy náročné na výpočetní výkon doporučujeme vybrat větší virtuální počítač pro zlepšení rychlosti zpracování.
+
+Přečtěte si další informace o [dostupných řadách a velikostech virtuálních počítačů](concept-compute-target.md#supported-vm-series-and-sizes) pro Azure Machine Learning. 
+
+Specifikace paměti RAM najdete na odpovídajících stránkách řady virtuálních počítačů, jako jsou [Dv2-Dsv2 Series](../virtual-machines/dv2-dsv2-series-memory.md) nebo [řady NC](../virtual-machines/nc-series.md).
 
 ### <a name="minimize-cpu-workloads"></a>Minimalizace zatížení procesoru
 
@@ -71,10 +81,10 @@ V následující tabulce jsou doporučeny distribuované architektury, které js
 
 Zkušenosti nebo velikost dat | Doporučení
 ------|------
-Pokud jste obeznámeni s`Pandas`| `Modin`nebo datový `Dask` rámec
-Pokud dáváte přednost`Spark` | `PySpark`
-Pro data menší než 1 GB | `Pandas`místně **nebo** vzdálená instance Azure Machine Learning COMPUTE
-Pro data větší než 10 GB| Přejděte ke clusteru pomocí `Ray` , `Dask` nebo`Spark`
+Pokud jste obeznámeni s `Pandas`| `Modin` nebo datový `Dask` rámec
+Pokud dáváte přednost `Spark` | `PySpark`
+Pro data menší než 1 GB | `Pandas` místně **nebo** vzdálená instance Azure Machine Learning COMPUTE
+Pro data větší než 10 GB| Přejděte ke clusteru pomocí `Ray` , `Dask` nebo `Spark`
 
 `Dask`Clustery v Azure ml Compute Cluster můžete vytvořit pomocí balíčku [dAsK-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) . Nebo můžete spustit `Dask` místně na výpočetní instanci.
 

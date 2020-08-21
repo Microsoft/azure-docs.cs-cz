@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338562"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717740"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
@@ -30,7 +30,7 @@ ms.locfileid: "84338562"
 SSPR má následující klíčové funkce:
 
 * Samoobslužná služba umožňuje koncovým uživatelům resetovat hesla, jejichž platnost vypršela nebo nevypršela, aniž by kontaktovali správce nebo technickou podporu.
-* [Zpětný zápis hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) umožňuje správu místních hesel a řešení uzamčení účtu i přes Cloud.
+* [Zpětný zápis hesla](./concept-sspr-writeback.md) umožňuje správu místních hesel a řešení uzamčení účtu i přes Cloud.
 * Sestavy aktivit správy hesel dávají správcům přehled o resetování hesel a aktivitě registrace, ke kterým dochází ve své organizaci.
 
 V této příručce pro nasazení se dozvíte, jak naplánovat a otestovat SSPR zavedení.
@@ -42,7 +42,7 @@ Chcete-li rychle zobrazit SSPR v akci a pak se vrátit k pochopení dalších hl
 
 ## <a name="learn-about-sspr"></a>Další informace o SSPR
 
-Přečtěte si další informace o SSPR. Podívejte [se, jak to funguje: Samoobslužné resetování hesla služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks).
+Přečtěte si další informace o SSPR. Podívejte [se, jak to funguje: Samoobslužné resetování hesla služby Azure AD](./concept-sspr-howitworks.md).
 
 ### <a name="key-benefits"></a>Klíčové výhody
 
@@ -60,11 +60,11 @@ Klíčové výhody povolování SSPR jsou:
 
 Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel vyžaduje odpovídající licenci pro funkce, které používají. Pro SSPR doporučujeme licencování na základě skupin. 
 
-Pokud chcete porovnat edice a funkce a povolit skupinu nebo uživatele licencování, přečtěte si téma [požadavky na licencování pro Samoobslužné resetování hesla služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing).
+Pokud chcete porovnat edice a funkce a povolit skupinu nebo uživatele licencování, přečtěte si téma [požadavky na licencování pro Samoobslužné resetování hesla služby Azure AD](./concept-sspr-licensing.md).
 
 Další informace o cenách najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -73,7 +73,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| Prostředky| Odkaz a popis |
+| Zdroje a prostředky| Odkaz a popis |
 | - | - |
 | Videa| [Poskytněte uživatelům lepší škálovatelnost IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co je samoobslužné resetování hesla?](https://youtu.be/hc97Yx5PJiM)|
@@ -83,10 +83,10 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 | Online kurzy|[Správa identit v Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Využijte SSPR a poskytněte uživatelům moderní a chráněné prostředí. Viz téma "[správa Azure Active Directory uživatelů a skupin](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)". |
 |Placené kurzy Pluralsight |[Problémy se správou identit a přístupu](https://www.pluralsight.com/courses/identity-access-management-issues) Seznamte se s informacemi o IAM a zabezpečení, které jsou ve vaší organizaci důležité. Viz zejména modul "jiné metody ověřování".|
 | |[Začínáme se sadou Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Seznamte se s osvědčenými postupy pro rozšíření místních prostředků do cloudu způsobem, který umožňuje ověřování, autorizaci, šifrování a zabezpečené mobilní prostředí. Viz zejména "modul konfigurace pokročilých funkcí Microsoft Azure Active Directory Premium.
-|Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[Povolení zpětného zápisu hesla](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Nejčastější dotazy|[Nejčastější dotazy ke správě hesel](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](./tutorial-enable-sspr.md) |
+| |[Povolení zpětného zápisu hesla](./tutorial-enable-sspr-writeback.md) |
+| |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](./howto-sspr-windows.md) |
+| Časté otázky|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -103,7 +103,7 @@ Pokud chcete resetovat heslo, uživatelé přejdou na [portál pro resetování 
 
 * Pro hybridní uživatele SSPR zapisuje zpátky heslo do služby Active Directory on-Prem prostřednictvím služby Azure AD Connect. 
 
-Poznámka: pro uživatele, kteří mají zakázanou [synchronizaci hodnot hash hesel (kosmetice)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) , SSPR ukládá hesla pouze v Prem službě Active Directory.
+Poznámka: pro uživatele, kteří mají zakázanou [synchronizaci hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) , SSPR ukládá hesla pouze v Prem službě Active Directory.
 
 ### <a name="best-practices"></a>Osvědčené postupy
 
@@ -141,9 +141,9 @@ Komunikace je zásadní pro úspěch jakékoli nové služby. Měli byste aktivn
 
 ### <a name="plan-a-pilot"></a>Plánování pilotního projektu
 
-Doporučujeme, aby počáteční konfigurace SSPR byla v testovacím prostředí. Začněte s pilotní skupinou tím, že povolíte SSPR pro podmnožinu uživatelů ve vaší organizaci. Podívejte [se na osvědčené postupy pro pilotní nasazení](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+Doporučujeme, aby počáteční konfigurace SSPR byla v testovacím prostředí. Začněte s pilotní skupinou tím, že povolíte SSPR pro podmnožinu uživatelů ve vaší organizaci. Podívejte [se na osvědčené postupy pro pilotní nasazení](../fundamentals/active-directory-deployment-plans.md).
 
-Chcete-li vytvořit skupinu, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
+Chcete-li vytvořit skupinu, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md). 
 
 ## <a name="plan-configuration"></a>Konfigurace plánu
 
@@ -172,7 +172,7 @@ Při povolování SSPR vyberte v pilotním prostředí příslušnou skupinu zab
 
 ### <a name="authentication-methods"></a>Metody ověřování
 
-Když je povolený SSPR, uživatelé můžou resetovat heslo jenom v případě, že mají data přítomná v metodách ověřování, které správce povolil. Metody zahrnují telefon, oznámení o ověřovací aplikaci, bezpečnostní otázky atd. Další informace najdete v tématu [co jsou metody ověřování?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods).
+Když je povolený SSPR, uživatelé můžou resetovat heslo jenom v případě, že mají data přítomná v metodách ověřování, které správce povolil. Metody zahrnují telefon, oznámení o ověřovací aplikaci, bezpečnostní otázky atd. Další informace najdete v tématu [co jsou metody ověřování?](./concept-authentication-methods.md).
 
 Doporučujeme následující nastavení metody ověřování:
 
@@ -180,7 +180,7 @@ Doporučujeme následující nastavení metody ověřování:
 
 * Nastavte **počet metod požadovaných k resetování** na úroveň odpovídající vaší organizaci. Jeden vyžaduje nejméně tření, zatímco dva můžou zvýšit stav zabezpečení. 
 
-Poznámka: uživatel musí mít metody ověřování nakonfigurované v [zásadách a omezeních hesel v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+Poznámka: uživatel musí mít metody ověřování nakonfigurované v [zásadách a omezeních hesel v Azure Active Directory](./concept-sspr-policy.md).
 
 ### <a name="registration-settings"></a>Nastavení registrace
 
@@ -196,11 +196,11 @@ Nakonfigurujte nastavení **upozorní uživatele na resetování hesla** a **upo
 
 Je důležité přizpůsobit e-mail nebo adresu URL helpdesku, aby se zajistilo, že uživatelé s problémy můžou získat pomoc hned. Tuto možnost nastavte na společnou e-mailovou adresu helpdesku nebo webovou stránku, se kterou uživatelé znají. 
 
-Další informace najdete v tématu [přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization).
+Další informace najdete v tématu [přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla](./howto-sspr-customization.md).
 
 ### <a name="password-writeback"></a>Zpětný zápis hesla
 
-**Zpětný zápis hesla** je povolený pomocí [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) a zapisuje do stávajícího místního adresáře v reálném čase resetování hesla v cloudu zpátky do stávajícího místního adresáře. Další informace najdete v tématu [co je zpětný zápis hesla?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+**Zpětný zápis hesla** je povolený pomocí [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) a zapisuje do stávajícího místního adresáře v reálném čase resetování hesla v cloudu zpátky do stávajícího místního adresáře. Další informace najdete v tématu [co je zpětný zápis hesla?](./concept-sspr-writeback.md)
 
 Doporučujeme následující nastavení:
 
@@ -220,7 +220,7 @@ Doporučujeme, abyste nesynchronizoval vaše účty pro správu služby Active D
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Prostředí s více systémy správy identit
 
-Některá prostředí mají více systémů správy identit. Místní správci identit, jako je Oracle AM a SiteMinder, vyžadují synchronizaci se službou AD pro hesla. To můžete provést pomocí nástroje, jako je například služba PCNS (Password Change Notification Service) s Microsoft Identity Manager (MIM). Informace o tomto složitějším scénáři najdete v článku [nasazení služby MIM Password Change Notification Service na řadiči domény](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Některá prostředí mají více systémů správy identit. Místní správci identit, jako je Oracle AM a SiteMinder, vyžadují synchronizaci se službou AD pro hesla. To můžete provést pomocí nástroje, jako je například služba PCNS (Password Change Notification Service) s Microsoft Identity Manager (MIM). Informace o tomto složitějším scénáři najdete v článku [nasazení služby MIM Password Change Notification Service na řadiči domény](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
 ## <a name="plan-testing-and-support"></a>Plánování testování a podpory
 
@@ -228,7 +228,7 @@ V každé fázi nasazení od počátečních pilotních skupin v rámci organiza
 
 ### <a name="plan-testing"></a>Plánování testování
 
-Chcete-li zajistit, že vaše nasazení funguje podle očekávání, naplánujte sadu testovacích případů pro ověření implementace. Chcete-li vyhodnotit testovací případy, budete potřebovat testovacího uživatele bez správce s heslem. Pokud potřebujete vytvořit uživatele, přečtěte si téma [Přidání nových uživatelů do Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Chcete-li zajistit, že vaše nasazení funguje podle očekávání, naplánujte sadu testovacích případů pro ověření implementace. Chcete-li vyhodnotit testovací případy, budete potřebovat testovacího uživatele bez správce s heslem. Pokud potřebujete vytvořit uživatele, přečtěte si téma [Přidání nových uživatelů do Azure Active Directory](../fundamentals/add-users-azure-active-directory.md).
 
 Následující tabulka obsahuje užitečné testovací scénáře, které můžete použít k dokumentaci očekávaných výsledků vaší organizace na základě vašich zásad.
 <br>
@@ -246,7 +246,7 @@ Následující tabulka obsahuje užitečné testovací scénáře, které může
 | Resetování hesla uživatele z připojené aplikace Windows 10 Azure AD nebo uzamčené obrazovky zařízení připojené ke službě Azure AD| Uživatel může resetovat heslo. |
 | SSPR registrace a data o využití jsou k dispozici správcům téměř v reálném čase.| Je k dispozici prostřednictvím protokolů auditu |
 
-Můžete se také podívat na [kompletní zkušební nasazení samoobslužného resetování hesla služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot). V tomto kurzu umožníte pilotní zavedení SSPR ve vaší organizaci a testování pomocí účtu bez oprávnění správce.
+Můžete se také podívat na [kompletní zkušební nasazení samoobslužného resetování hesla služby Azure AD](./tutorial-enable-sspr.md). V tomto kurzu umožníte pilotní zavedení SSPR ve vaší organizaci a testování pomocí účtu bez oprávnění správce.
 
 ### <a name="plan-support"></a>Plán podpory
 
@@ -254,7 +254,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Description |
+| Scénáře| Popis |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
@@ -289,20 +289,20 @@ Před nasazením se ujistěte, že jste provedli následující akce:
 
 **Nyní jste připraveni k nasazení SSPR.**
 
-Kompletní podrobné pokyny ke konfiguraci následujících oblastí najdete v tématu [Povolení samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset) .
+Kompletní podrobné pokyny ke konfiguraci následujících oblastí najdete v tématu [Povolení samoobslužného resetování hesla](./tutorial-enable-sspr.md#enable-self-service-password-reset) .
 
-1. [Metody ověřování](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [Metody ověřování](./concept-authentication-methods.md)
 
-1. [Nastavení registrace](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [Nastavení registrace](./concept-registration-mfa-sspr-combined.md)
 
 1. [Nastavení oznámení](#notifications-settings)
 
-1. [Nastavení přizpůsobení](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [Nastavení přizpůsobení](./howto-sspr-customization.md)
 
-1. [Místní integrace](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [Místní integrace](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>Povolení SSPR ve Windows
-V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete [uživatelům povolit resetování hesla na přihlašovací obrazovce Windows](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows) .
+V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete [uživatelům povolit resetování hesla na přihlašovací obrazovce Windows](./howto-sspr-windows.md) .
 
 ## <a name="manage-sspr"></a>Správa SSPR
 
@@ -310,41 +310,41 @@ Azure AD může poskytovat další informace o výkonu SSPR prostřednictvím au
 
 ### <a name="password-management-activity-reports"></a>Sestavy aktivit správy hesel 
 
-K měření výkonu SSPR můžete použít předem připravené sestavy na Azure Portal. Pokud máte patřičnou licenci, můžete také vytvořit vlastní dotazy. Další informace najdete v tématu [Možnosti vytváření sestav pro správu hesel služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) .
+K měření výkonu SSPR můžete použít předem připravené sestavy na Azure Portal. Pokud máte patřičnou licenci, můžete také vytvořit vlastní dotazy. Další informace najdete v tématu [Možnosti vytváření sestav pro správu hesel služby Azure AD](./howto-sspr-reporting.md) .
 
 > [!NOTE]
->  Musíte být [globálním správcem](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)a musíte se vyjádřit, že se tato data budou shromažďovat pro vaši organizaci. Pokud se chcete přihlásit, musíte navštívit kartu pro vytváření sestav nebo protokoly auditu na portálu Azure Portal aspoň jednou. Data nebudou pro vaši organizaci shromažďována.
+>  Musíte být [globálním správcem](../users-groups-roles/directory-assign-admin-roles.md)a musíte se vyjádřit, že se tato data budou shromažďovat pro vaši organizaci. Pokud se chcete přihlásit, musíte navštívit kartu pro vytváření sestav nebo protokoly auditu na portálu Azure Portal aspoň jednou. Data nebudou pro vaši organizaci shromažďována.
 
-Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30 dnů. Pokud audit zabezpečení v rámci vaší společnosti vyžaduje delší dobu uchovávání, je nutné tyto protokoly exportovat a spotřebovat do nástroje SIEM, jako je například [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory), Splunk nebo ArcSight.
+Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30 dnů. Pokud audit zabezpečení v rámci vaší společnosti vyžaduje delší dobu uchovávání, je nutné tyto protokoly exportovat a spotřebovat do nástroje SIEM, jako je například [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk nebo ArcSight.
 
 ![Snímek obrazovky pro vytváření sestav SSPR](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>Metody ověřování – využití a přehledy
 
-[Využití a přehledy](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
+[Využití a přehledy](./howto-authentication-methods-usage-insights.md) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-* Přečtěte si téma [řešení potíží samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) . 
+* Přečtěte si téma [řešení potíží samoobslužného resetování hesla](./active-directory-passwords-troubleshoot.md) . 
 
-* Dodržujte [Nejčastější dotazy týkající se správy hesel](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) 
+* Dodržujte [Nejčastější dotazy týkající se správy hesel](./active-directory-passwords-faq.md) 
 
 ### <a name="helpful-documentation"></a>Užitečná dokumentace
 
-* [Co jsou metody ověřování?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [Co jsou metody ověřování?](./concept-authentication-methods.md)
 
-* [Jak to funguje: Samoobslužné resetování hesla služby Azure AD?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [Jak to funguje: Samoobslužné resetování hesla služby Azure AD?](./concept-sspr-howitworks.md)
 
-* [Přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [Přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla](./howto-sspr-customization.md)
 
-* [Zásady resetování hesel a omezení v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Zásady resetování hesel a omezení v Azure Active Directory](./concept-sspr-policy.md)
 
-* [Co je zpětný zápis hesla?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [Co je zpětný zápis hesla?](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete začít nasazovat SSPR, přečtěte si téma [Povolení samoobslužného resetování hesla služby Azure AD](tutorial-enable-sspr.md) .
 
-* [Zvažte implementaci ochrany heslem Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Zvažte implementaci ochrany heslem Azure AD.](./concept-password-ban-bad.md)
 
-* [Zvažte implementaci inteligentního uzamčení Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Zvažte implementaci inteligentního uzamčení Azure AD.](./howto-password-smart-lockout.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428025"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717043"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -54,7 +54,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Registrace a Správa uživatelů aplikace Microsoft Authenticator
 
-1. Přejít na[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Přihlásit se, pokud ještě není
 1. Přidejte aplikaci ověřovatele tak, že kliknete na **Přidat metodu**, zvolíte **ověřovací aplikaci**a kliknete na **Přidat** .
 1. Podle pokynů nainstalujte a nakonfigurujte na svém zařízení Microsoft Authenticatorovou aplikaci.
@@ -62,7 +62,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 1. V **Microsoft Authenticator**v rozevírací nabídce účet vyberte **Povolit přihlášení k telefonu** .
 1. Podle pokynů v aplikaci dokončete registraci pro přihlášení k telefonu s neheslem. 
 
-Organizace mohou nasměrovat své uživatele na článek [Přihlásit se svým telefonem, nejedná](../user-help/microsoft-authenticator-app-phone-signin-faq.md) se o heslo pro další pomoc při nastavování v aplikaci Microsoft Authenticator a povolení přihlašování telefonem. Abyste mohli použít tato nastavení, možná se budete muset odhlásit a znovu přihlásit do tenanta. 
+Organizace mohou nasměrovat své uživatele na článek [Přihlásit se svým telefonem, nejedná](../user-help/user-help-auth-app-sign-in.md) se o heslo pro další pomoc při nastavování v aplikaci Microsoft Authenticator a povolení přihlašování telefonem. Abyste mohli použít tato nastavení, možná se budete muset odhlásit a znovu přihlásit do tenanta. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Přihlášení pomocí přihlašovacích údajů bez hesla
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: 5aa6b3717925146607f3785ad5ea5fb940e8c236
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503369"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716669"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Transformujte JSON a XML pomocí šablon Liquid jako mapy v Azure Logic Apps
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 * Přidejte akci pro kapalinovou transformaci do aplikace logiky.
 * Vyberte šablonu jako mapu, kterou chcete použít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 * Základní znalosti o [jazyce kapalné šablony](https://shopify.github.io/liquid/)
 
   > [!NOTE]
-  > Akce **transformace JSON na formát JSON** následuje po [implementaci DotLiquid pro kapalinu](https://github.com/dotliquid/dotliquid), která se liší v určitých případech od [implementace Shopify pro kapalinu](https://shopify.github.io/liquid). Další informace najdete v tématu [požadavky na šablonu pro Liquid](#template-considerations).
+  > Akce **transformace JSON na formát JSON** následuje po [implementaci DotLiquid pro kapalinu](https://github.com/dotliquid/dotliquid), která se liší v určitých případech od [implementace Shopify pro kapalinu](https://shopify.github.io/liquid). Další informace najdete v tématu [požadavky na šablonu pro Liquid](#liquid-template-considerations).
 
 ## <a name="create-the-template"></a>Vytvoření šablony
 
@@ -90,7 +90,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
    |----------|-------|-------------|
    | **Název** | `JsonToJsonTemplate` | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" |
    | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. |
-   | **Mapy** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
+   | **Mapa** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    |||
 
    ![Přidat kapalinovou šablonu](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

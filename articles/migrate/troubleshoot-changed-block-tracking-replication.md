@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608820"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718692"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -59,7 +59,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
 
    2.  Otevřete modul snap-in služby Microsoft Services MMC (spusťte > Services. msc) a ověřte, zda je spuštěna služba Microsoft Azure Gateway. Pokud je služba zastavená nebo nespuštěná, spusťte službu. Případně můžete otevřít příkazový řádek nebo PowerShell a udělat: "net start asrgwy"
 
-3. Ověřte problémy s připojením mezi zařízením Azure Migrate a účtem úložiště mezipaměti: 
+3. Ověřte problémy s připojením mezi zařízením Azure Migrate a účtem úložiště zařízení: 
 
     Po stažení AzCopy do zařízení Azure Migrate spusťte následující příkaz:
     
@@ -149,7 +149,7 @@ Mezi možné příčiny patří:
     
       1. [Stáhnout](https://go.microsoft.com/fwlink/?linkid=2138966) AzCopy
         
-      2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migrategwsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
+      2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migratelsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
         
       3. V Azure Portal vyhledejte svůj účet úložiště. Ujistěte se, že předplatné, které používáte pro hledání, je stejné jako předplatné (cílové předplatné), ve kterém je účet úložiště vytvořený. Přejít na kontejnery v části služby BLOB Service. Klikněte na + kontejner a vytvořte kontejner. Ponechte úroveň veřejného přístupu na výchozí vybranou hodnotu.
         
@@ -226,7 +226,7 @@ Například: chybová zpráva: došlo k vnitřní chybě. [Zjistila se neplatná
 
 V následující části jsou uvedené některé běžně zjištěné chyby VMware a způsob, jakým je můžete zmírnit.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Chybová zpráva: došlo k vnitřní chybě. [Server odmítl připojení.]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Chybová zpráva: došlo k vnitřní chybě. [Server odmítl připojení.]
 
 Problém je známým problémem VMware a probíhá v VDDK 6,7. Musíte zastavit službu brány spuštěnou v zařízení Azure Migrate, [Stáhnout aktualizaci z VMware KB](https://go.microsoft.com/fwlink/?linkid=2138889)a restartovat službu brány.
 
@@ -240,33 +240,33 @@ Postup spuštění služby brány:
 1. Stiskněte kombinaci kláves Windows + R a otevřete Services. msc. Klikněte pravým tlačítkem na Microsoft Azure službu brány a spusťte ji.
 2. Případně můžete otevřít příkazový řádek nebo PowerShell a udělat: net start asrgwy.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Chybová zpráva: došlo k vnitřní chybě. [Byla zjištěna neplatná konfigurace snímku. ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Chybová zpráva: došlo k vnitřní chybě. [Byla zjištěna neplatná konfigurace snímku. ']
 
 Pokud máte virtuální počítač s více disky, může dojít k této chybě při odebrání disku z virtuálního počítače. Chcete-li tento problém vyřešit, přečtěte si postup v [tomto článku o VMware](https://go.microsoft.com/fwlink/?linkid=2138890).
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Chybová zpráva: došlo k vnitřní chybě. [Generovat zavěšení snímků]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Chybová zpráva: došlo k vnitřní chybě. [Generovat zavěšení snímků]
 
 K tomuto problému dochází, když je generování snímků zavěšeno. Když k tomuto problému dojde, můžete vidět, že se úloha vytvoření snímku zastaví na 95% nebo v 99%. Pokud chcete tento problém vyřešit, přečtěte si tento [článek o VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
 
 Když konsolidujeme disky na konci replikačního cyklu, operace se nezdařila. Postupujte podle pokynů v nástroji [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) výběrem vhodného _důvodu_ k vyřešení problému.
 
 K následujícím chybám dojde při selhání operací souvisejících se snímkem VMware – vytvoření, odstranění nebo konsolidace disků. Pokud chcete chyby opravit, postupujte podle pokynů v následující části:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Chybová zpráva: došlo k vnitřní chybě. [Už probíhá jiná úloha.]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Chybová zpráva: došlo k vnitřní chybě. [Už probíhá jiná úloha.]
 
 K tomuto problému dochází v případě, že na pozadí běží konfliktní úkoly virtuálních počítačů, nebo když vyprší časový limit úlohy v vCenter Server. Postupujte podle řešení uvedeného v následující [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138891).
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Chybová zpráva: došlo k vnitřní chybě. [Operace není v aktuálním stavu povolena.]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Chybová zpráva: došlo k vnitřní chybě. [Operace není v aktuálním stavu povolena.]
 
 K tomuto problému dochází, když vCenter Server agenti pro správu přestanou fungovat. Pokud chcete tento problém vyřešit, přečtěte si řešení v následující [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138971).
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Chybová zpráva: došlo k vnitřní chybě. [Neplatná velikost disku snímku]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Chybová zpráva: došlo k vnitřní chybě. [Neplatná velikost disku snímku]
 
 Jedná se o známý problém VMware, ve kterém se velikost disku indikuje snímkem, se změní na nula. Postupujte podle řešení uvedeného v [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972).
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
 
 K tomu dojde v případě, že vyrovnávací paměť hostitele NFC nemá dostatek paměti. Pokud chcete tento problém vyřešit, musíte virtuální počítač (COMPUTE vMotion) přesunout na jiného hostitele, který má bezplatné prostředky.
 

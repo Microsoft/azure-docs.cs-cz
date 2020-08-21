@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848683"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716720"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -30,8 +30,8 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **CONTACT_SUPPORT** | [Obraťte](#contact-microsoft-support)se na podporu a uveďte seznam kroků pro shromažďování protokolů. Poskytněte co nejvíce informací o tom, co se stalo před chybou, včetně ID tenanta a hlavního názvu uživatele (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Může se jednat o problém s tím, jak byl klientský certifikát nainstalován nebo přidružen k vašemu tenantovi. Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy s certifikátem klienta. |
 | **ESTS_TOKEN_ERROR** | Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy klienta a tokenu ADAL. |
-| **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z.https://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, že máte přístup k `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com/` . Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
+| **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z. https://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, že máte přístup k  `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com/` . Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
 | **Rozšíření serveru NPS pro Azure MFA:** <br> Rozšíření serveru NPS pro Azure MFA provádí sekundární ověřování pouze pro žádosti RADIUS ve stavu AccessAccept. Byl přijat požadavek na uživatelské jméno uživatele se stavem odpovědi AccessReject, ignorování požadavku. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo to, že server NPS nemůže přijímat odpovědi z Azure AD. Ověřte, že brány firewall jsou pro přenos do a z `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com` pomocí portů 80 a 443 obousměrné. Je také důležité ověřit, že na kartě Telefonické připojení v části oprávnění k přístupu k síti je nastavení nastaveno na možnost řídit přístup prostřednictvím zásad sítě NPS. Tato chyba se může také aktivovat, pokud uživatel nemá přiřazenou licenci. |
 | **REGISTRY_CONFIG_ERROR** | V registru aplikace chybí klíč, což může být způsobeno tím, že se [powershellový skript](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustil. Chybová zpráva by měla obsahovat chybějící klíč. Ujistěte se, že máte klíč pod HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Požadavek protokolu RADIUS neobsahuje povinný atribut userName\Identifier protokolu RADIUS. Ověření, že server NPS přijímá žádosti RADIUS | Tato chyba obvykle odráží problém instalace. Rozšíření serveru NPS musí být nainstalováno na servery NPS, které mohou přijímat žádosti RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS, neobdrží žádosti RADIUS. Rozšíření serveru NPS nefunguje při instalaci těchto instalací a chybách, protože nemůže přečíst podrobnosti žádosti o ověření. |
@@ -43,7 +43,7 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | Kód chyby | Chybová zpráva | Postup při řešení potíží |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: nepovedlo se userObjectSidovat vyhledávání | Ověřte, zda uživatel existuje v místní instanci služby Active Directory. Pokud používáte vztahy důvěryhodnosti mezi doménovými strukturami, [požádejte](#contact-microsoft-support) o další pomoc podporu. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Chyba: nepovedlo se provést alternativní LoginId vyhledávání | Ověřte, zda je LDAP_ALTERNATE_LOGINID_ATTRIBUTE nastaveno na [platný atribut služby Active Directory](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Je-li LDAP_FORCE_GLOBAL_CATALOG nastavena na hodnotu true nebo je LDAP_LOOKUP_FORESTS nakonfigurována s neprázdnou hodnotou, ověřte, zda jste nakonfigurovali globální katalog a zda je do něj přidán atribut AlternateLoginId. <br><br> Pokud je LDAP_LOOKUP_FORESTS nakonfigurována s neprázdnou hodnotou, ověřte, zda je hodnota správná. Pokud existuje více než jeden název doménové struktury, názvy musí být odděleny středníkem, ne mezerami. <br><br> Pokud tyto kroky problém nevyřeší, [požádejte](#contact-microsoft-support) o další pomoc podporu. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Chyba: nepovedlo se provést alternativní LoginId vyhledávání | Ověřte, zda je LDAP_ALTERNATE_LOGINID_ATTRIBUTE nastaveno na [platný atribut služby Active Directory](/windows/win32/adschema/attributes-all). <br><br> Je-li LDAP_FORCE_GLOBAL_CATALOG nastavena na hodnotu true nebo je LDAP_LOOKUP_FORESTS nakonfigurována s neprázdnou hodnotou, ověřte, zda jste nakonfigurovali globální katalog a zda je do něj přidán atribut AlternateLoginId. <br><br> Pokud je LDAP_LOOKUP_FORESTS nakonfigurována s neprázdnou hodnotou, ověřte, zda je hodnota správná. Pokud existuje více než jeden název doménové struktury, názvy musí být odděleny středníkem, ne mezerami. <br><br> Pokud tyto kroky problém nevyřeší, [požádejte](#contact-microsoft-support) o další pomoc podporu. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: hodnota alternativní LoginId je prázdná. | Ověřte, jestli je pro uživatele nakonfigurovaný atribut AlternateLoginId. |
 
 ## <a name="errors-your-users-may-encounter"></a>Chyby, se kterými se uživatelé mohou setkat
@@ -81,7 +81,7 @@ Pokud narazíte na jednu z těchto chyb, doporučujeme, abyste [kontaktovali pod
 | ---------- | ------------- |
 | **InvalidParameter** | Požadavek nesmí mít hodnotu null. |
 | **InvalidParameter** | ObjectId nesmí mít hodnotu null ani být prázdné pro ReplicationScope:{0} |
-| **InvalidParameter** | Délka CompanyName \{ 0} je delší, než je maximální povolená délka.{1} |
+| **InvalidParameter** | Délka CompanyName \{ 0} je delší, než je maximální povolená délka. {1} |
 | **InvalidParameter** | Atribut UserPrincipalName nesmí mít hodnotu null ani být prázdný. |
 | **InvalidParameter** | Zadaný TenantId nemá správný formát. |
 | **InvalidParameter** | Identifikátor SessionId nesmí mít hodnotu null ani být prázdný. |
@@ -99,7 +99,7 @@ Pokud uživatelé mají [problémy se dvoustupňové ověřováním](../user-hel
 
 ### <a name="health-check-script"></a>Skript kontroly stavu
 
-[Skript kontroly stavu rozšíření Azure MFA NPS](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) provede základní kontrolu stavu při řešení potíží s rozšířením NPS. Spusťte skript a vyberte možnost 3.
+[Skript kontroly stavu rozšíření Azure MFA NPS](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) provede základní kontrolu stavu při řešení potíží s rozšířením NPS. Spusťte skript a vyberte možnost 3.
 
 ### <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144066"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716431"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
 
@@ -61,15 +61,15 @@ Platí následující požadavky a předpoklady pro Active Directory Federation 
 
 Aby služba Azure AD mohla odvolat klientský certifikát, musí mít token ADFS následující deklarace identity. Azure AD přidá tyto deklarace do aktualizačního tokenu, pokud jsou k dispozici v tokenu služby AD FS (nebo jakémkoli jiném tokenu SAML). Pokud je nutné ověřit token aktualizace, slouží tyto informace ke kontrole odvolání:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`-přidat sériové číslo vašeho klientského certifikátu
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`– Přidejte řetězec pro vystavitele klientského certifikátu.
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` -přidat sériové číslo vašeho klientského certifikátu
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` – Přidejte řetězec pro vystavitele klientského certifikátu.
 
 Osvědčeným postupem je, že byste měli aktualizovat také chybové stránky ADFS vaší organizace s následujícími informacemi:
 
 * Požadavek na instalaci Microsoft Authenticator v systému iOS.
 * Pokyny, jak získat uživatelský certifikát
 
-Další informace najdete v tématu [přizpůsobení AD FS přihlašovací stránky](https://technet.microsoft.com/library/dn280950.aspx).
+Další informace najdete v tématu [přizpůsobení AD FS přihlašovací stránky](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Použití moderního ověřování s aplikacemi Office
 

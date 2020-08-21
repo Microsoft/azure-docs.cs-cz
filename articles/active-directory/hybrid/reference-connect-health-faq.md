@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446978"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718539"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy obsahují otázky týkající se používání služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -37,9 +37,11 @@ V následující tabulce jsou uvedeny role a podporované verze operačních sys
 
 |Role| Operační systém/verze|
 |--|--|
-|Active Directory Federation Services (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Federation Services (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | Verze 1.0.9125 nebo vyšší|
-|AD DS (Active Directory Domain Services)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|AD DS (Active Directory Domain Services)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+Instalace jádra systému Windows Server nejsou podporovány.
 
 Všimněte si, že funkce poskytované službou se můžou lišit v závislosti na roli a operačním systému. Jinými slovy, některé funkce nemusí být k dispozici pro všechny verze operačního systému. Podrobnosti najdete v popisech funkcí.
 
@@ -68,10 +70,10 @@ Azure AD Connect Health není v německém cloudu podporován s výjimkou [funkc
 
 | Role | Funkce | Podporováno v německém cloudu |
 | ------ | --------------- | --- |
-| Připojit stav pro synchronizaci | Monitorování/Insight/výstrahy/analýza | Ne |
-|  | Zpráva o chybách synchronizace | Ano |
-| Connect Health pro AD FS | Monitorování/Insight/výstrahy/analýza | Ne |
-| Připojit stav pro přidání | Monitorování/Insight/výstrahy/analýza | Ne |
+| Připojit stav pro synchronizaci | Monitorování/Insight/výstrahy/analýza | No |
+|  | Zpráva o chybách synchronizace | Yes |
+| Connect Health pro AD FS | Monitorování/Insight/výstrahy/analýza | No |
+| Připojit stav pro přidání | Monitorování/Insight/výstrahy/analýza | No |
 
 Aby bylo zajištěno připojení agenta ke službě Connect Health pro synchronizaci, nakonfigurujte prosím odpovídající [požadavky na instalaci](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) .
 

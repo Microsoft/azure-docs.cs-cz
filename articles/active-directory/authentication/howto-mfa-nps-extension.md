@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 35842520b26d3a98342660244295e26e934e7d3c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848471"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717366"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -44,13 +44,13 @@ V případě potřeby můžete vytvořit libovolný počet serverů NPS s povole
 
 Servery VPN směrují žádosti o ověření, takže potřebují vědět o nových serverech NPS s povolenou službou Azure MFA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Licenses
 
-Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro azure Multi-Factor Authentication](multi-factor-authentication.md) (jsou součástí Azure AD Premium, EMS nebo samostatné licence MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
+Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro azure Multi-Factor Authentication](./concept-mfa-howitworks.md) (jsou součástí Azure AD Premium, EMS nebo samostatné licence MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
 
 ### <a name="software"></a>Software
 
@@ -81,7 +81,7 @@ Když nainstalujete rozšíření, budete potřebovat *ID tenanta* a přihlašov
 
    ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
-### <a name="network-requirements"></a>Požadavky sítě
+### <a name="network-requirements"></a>Síťové požadavky
 
 Server NPS musí být schopný komunikovat s následujícími adresami URL přes porty 80 a 443.
 
@@ -106,7 +106,7 @@ Server NPS se připojí k Azure Active Directory a ověří požadavky MFA. Vybe
 1. Na serveru otevřete **Průvodce přidáním rolí a funkcí** z nabídky pro rychlý Start správce serveru.
 2. Pro typ instalace vyberte instalace na základě **rolí nebo na základě funkcí** .
 3. Vyberte roli serveru **Služba Síťové zásady a přístup** . Okno se může zobrazit pro informování o požadovaných funkcích pro spuštění této role.
-4. Pokračujte v průvodci, dokud nebude stránka potvrzení. Vyberte **Nainstalovat**.
+4. Pokračujte v průvodci, dokud nebude stránka potvrzení. Vyberte **Install** (Nainstalovat).
 
 Když teď máte server určený pro server NPS, měli byste tento server taky nakonfigurovat tak, aby zpracovával příchozí žádosti RADIUS z řešení VPN.
 
@@ -290,7 +290,7 @@ Můžete zvolit vytvoření tohoto klíče a jeho nastavení na hodnotu NEPRAVDA
 
 Následující skript je k dispozici k provedení základních kroků kontroly stavu při řešení potíží s rozšířením NPS.
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -365,7 +365,7 @@ Pokud chcete zjistit, jestli máte platný certifikát, zkontrolujte úložišt�
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
 
-Doporučuje se, aby starší a slabší šifrovací sady byly zakázané nebo odebrané, pokud to vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+Doporučuje se, aby starší a slabší šifrovací sady byly zakázané nebo odebrané, pokud to vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ### <a name="additional-troubleshooting"></a>Další řešení potíží
 
@@ -373,7 +373,7 @@ Další pokyny k odstraňování potíží a možná řešení najdete v článk
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled a konfigurace serveru NPS (Network Policy Server) v systému Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [Přehled a konfigurace serveru NPS (Network Policy Server) v systému Windows Server](/windows-server/networking/technologies/nps/nps-top)
 
 - Nakonfigurujte alternativní ID pro přihlášení nebo nastavte seznam výjimek pro IP adresy, které by se nemusely provádět dvoustupňové ověřování v [pokročilých možnostech konfigurace pro rozšíření serveru NPS pro Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423418"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716618"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů
 
@@ -55,7 +55,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Pokud již máte existující obor názvů, můžete vytvořit privátní koncový bod pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** . 
@@ -79,7 +79,7 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
     2. Vyberte **skupinu prostředků** pro prostředek privátního koncového bodu.
     3. Zadejte **název** privátního koncového bodu. 
     5. Vyberte **oblast** pro soukromý koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může být v jiné oblasti než prostředek privátního propojení, ke kterému se připojujete. 
-    6. V dolní části stránky vyberte tlačítko **Další: >prostředku** .
+    6. V dolní části stránky vyberte tlačítko **Další: >prostředku ** .
 
         ![Stránka pro vytvoření privátního koncového bodu – základy](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Na stránce **prostředek** použijte následující postup:
@@ -88,14 +88,14 @@ Pokud již máte existující obor názvů, můžete vytvořit privátní koncov
         2. Jako **typ prostředku**vyberte **Microsoft. ServiceBus/obory názvů** pro **typ prostředku**.
         3. V části **prostředek**vyberte obor názvů Service Bus v rozevíracím seznamu. 
         4. Potvrďte, že je **cílový podprostředek** nastavený na **obor názvů**.
-        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
         
             ![Vytvoření stránky privátního koncového bodu – prostředek](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu**, postupujte podle těchto kroků:
         1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Service Bus v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Příklad najdete na následujícím obrázku. 
         2. Pro **cílový dílčí prostředek**zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup. 
         3. volitelné Zadejte **zprávu požadavku**. Vlastník prostředku se zobrazí tato zpráva během správy připojení privátního koncového bodu. 
-        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
 
             ![Vytvoření privátního koncového bodu – připojení pomocí ID prostředku](./media/private-link-service/connect-resource-id.png)
 9. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -234,7 +234,7 @@ Existují čtyři stavy zřizování:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Ověření, že připojení privátního propojení funguje
 
-Měli byste ověřit, že prostředky ve stejné podsíti prostředku privátního koncového bodu se připojují k vašemu Service Bus oboru názvů přes soukromou IP adresu a že mají správnou integraci privátní zóny DNS.
+Měli byste ověřit, že prostředky v rámci virtuální sítě privátního koncového bodu se připojují k vašemu Service Bus oboru názvů přes soukromou IP adresu a že mají správnou integraci privátní zóny DNS.
 
 Nejdřív vytvořte virtuální počítač podle kroků v [části Vytvoření virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 

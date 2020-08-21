@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419474"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718845"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -76,7 +76,7 @@ Když uživatelé potřebují odemknout svůj účet nebo resetovat heslo, zobra
 
     * *Oznámení mobilní aplikace*
     * *Kód mobilní aplikace*
-    * *Elektron*
+    * *E-mail*
     * *Mobilní telefon*
 
     Další metody ověřování, jako je třeba *telefon do kanceláře* nebo *bezpečnostní otázky*, můžete podle potřeby povolit, aby vyhovovaly vašim obchodním požadavkům.
@@ -107,7 +107,7 @@ Pokud chcete, aby uživatelé měli informace o aktivitě účtu, můžete nakon
 Pokud uživatelé potřebují další nápovědu k procesu SSPR, můžete upravit odkaz na "kontaktujte správce". Tento odkaz se používá v procesu registrace SSPR a uživatel odemkne svůj účet nebo obnoví heslo. Abyste se ujistili, že uživatelé potřebují potřebnou podporu, důrazně doporučujeme zadat e-mail nebo adresu URL vlastního helpdesku.
 
 1. Na stránce **vlastní nastavení** v nabídce na levé straně nastavte *odkaz přizpůsobit Helpdesk* na **Ano**.
-1. V poli **e-mail nebo adresa URL vlastního helpdesku** zadejte e-mailovou adresu nebo adresu URL webové stránky, kde mohou uživatelé získat další pomoc z vaší organizace, například*`https://support.contoso.com/`*
+1. V poli **e-mail nebo adresa URL vlastního helpdesku** zadejte e-mailovou adresu nebo adresu URL webové stránky, kde mohou uživatelé získat další pomoc z vaší organizace, například *`https://support.contoso.com/`*
 1. Chcete-li použít vlastní odkaz, vyberte možnost **Uložit**.
 
 ## <a name="test-self-service-password-reset"></a>Testování samoobslužného resetování hesla
@@ -133,7 +133,7 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.
@@ -148,4 +148,4 @@ V tomto kurzu jste povolili Samoobslužné resetování hesla služby Azure AD p
 > * Testování procesu SSPR jako uživatel
 
 > [!div class="nextstepaction"]
-> [Povolení služby Azure Multi-Factor Authentication](tutorial-mfa-applications.md)
+> [Povolení služby Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)

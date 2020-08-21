@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565770"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719491"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
 
@@ -76,7 +76,7 @@ Pokud chcete pro uživatele změnit stav Multi-Factor Authentication Azure na u�
 
 1. Potvrďte výběr v automaticky otevíraném okně, které se otevře.
 
-Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte uživatelům, že se zobrazí výzva, aby se zaregistrovali při příštím přihlášení. Pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Další informace najdete v [Průvodci koncovými uživateli Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user.md) , který jim pomůže začít.
+Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte uživatelům, že se zobrazí výzva, aby se zaregistrovali při příštím přihlášení. Pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Další informace najdete v [Průvodci koncovými uživateli Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md) , který jim pomůže začít.
 
 ## <a name="change-state-using-powershell"></a>Změna stavu pomocí PowerShellu
 

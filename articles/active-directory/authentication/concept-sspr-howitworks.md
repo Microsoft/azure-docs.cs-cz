@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027639"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716312"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -73,7 +73,7 @@ Předtím, než uživatelé můžou resetovat nebo měnit heslo pomocí SSPR, se
 Můžete povolit, aby uživatel po přihlášení k aplikacím pomocí Azure AD dokončil registraci SSPR. Tento pracovní postup obsahuje následující aplikace:
 
 * Office 365
-* Portál Azure Portal
+* portál Azure
 * Přístupový panel
 * Federované aplikace
 * Vlastní aplikace s využitím Azure AD
@@ -139,7 +139,7 @@ Uživatelé nemají možnost registrovat svou mobilní aplikaci při registraci 
 >
 > Při konfiguraci zásad SSPR, které obsahují ověřovací aplikaci jako metodu, by měla být vybraná aspoň jedna další metoda, když je potřeba jedna metoda a při konfiguraci dvou metod je potřeba vybrat aspoň dvě další metody.
 >
-> Důvodem je, že aktuální prostředí pro registraci SSPR neobsahuje možnost Registrovat ověřovací aplikaci. Možnost registrace ověřovací aplikace je součástí nového [kombinovaného prostředí pro registraci](concept-registration-mfa-sspr-converged.md).
+> Důvodem je, že aktuální prostředí pro registraci SSPR neobsahuje možnost Registrovat ověřovací aplikaci. Možnost registrace ověřovací aplikace je součástí nového [kombinovaného prostředí pro registraci](./concept-registration-mfa-sspr-combined.md).
 >
 > Povolení zásad, které používají pouze aplikaci ověřovatele (když je vyžadována jedna metoda) nebo ověřovací aplikace a pouze jedna další metoda (když jsou požadovány dvě metody), by mohlo vést k tomu, že uživatelé budou zablokováni v registraci pro SSPR, dokud nejsou nakonfigurováni tak, aby používali nové kombinované možnosti registrace.
 
@@ -191,13 +191,13 @@ Azure AD kontroluje vaše aktuální hybridní připojení a poskytuje jednu z n
 * Služba Azure AD je online a je připojená k vašemu místnímu klientovi zpětného zápisu. Vypadá to ale, že nainstalovaná verze Azure AD Connect je zastaralá. Zvažte [upgrade Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) , abyste měli jistotu, že máte nejnovější funkce připojení a důležité opravy chyb.
 * Bohužel nemůžeme kontrolovat stav místního klienta zpětného zápisu, protože nainstalovaná verze Azure AD Connect je zastaralá. [Upgradujte Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) , abyste mohli kontrolovat stav připojení.
 * Bohužel to vypadá, že se teď nemůžeme připojit k místnímu klientovi zpětného zápisu. [Řešení potíží s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) k obnovení připojení.
-* Bohužel se nemůžeme připojit k vašemu místnímu klientovi zpětného zápisu, protože zpětný zápis hesla není správně nakonfigurovaný. [Nakonfigurujte zpětný zápis hesla](howto-sspr-writeback.md) pro obnovení připojení.
+* Bohužel se nemůžeme připojit k vašemu místnímu klientovi zpětného zápisu, protože zpětný zápis hesla není správně nakonfigurovaný. [Nakonfigurujte zpětný zápis hesla](./tutorial-enable-sspr-writeback.md) pro obnovení připojení.
 * Bohužel to vypadá, že se teď nemůžeme připojit k místnímu klientovi zpětného zápisu. To může být způsobeno dočasnými problémy na našem konci. Pokud potíže potrvají, [vyřešte potíže s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) k obnovení připojení.
 
 Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Zápis hesel zpátky do místního adresáře
 
@@ -223,7 +223,7 @@ Resetování a změna hesla jsou plně podporované ve všech konfiguracích B2B
 
 * **Uživatelé z partnerské organizace s existujícím klientem Azure AD**: Pokud organizace, se kterou jste partnerem, má stávajícího TENANTA Azure AD, zaplatíme, že v tomto tenantovi jsou povolené zásady pro resetování hesla. Aby se resetování hesla fungovalo, partnerská organizace potřebuje jenom jistotu, že je povolená služba Azure AD SSPR. Zákazníkům Office 365 se neúčtují žádné další poplatky.
 * **Uživatelé, kteří se přihlásí prostřednictvím** samoobslužné registrace: Pokud je organizace, které jste partner použili k tomu, aby se do tenanta dostali pomocí [samoobslužné](../users-groups-roles/directory-self-service-signup.md) funkce pro registraci, umožníme jim resetovat heslo pomocí e-mailu, který zaregistrovali.
-* **Uživatelé B2B**: Všichni noví uživatelé B2B, kteří vytvořili pomocí nových [možností Azure AD B2B](../b2b/what-is-b2b.md) , můžou resetovat hesla také pomocí e-mailu, který zaregistrovali během procesu pozvání.
+* **Uživatelé B2B**: Všichni noví uživatelé B2B, kteří vytvořili pomocí nových [možností Azure AD B2B](../external-identities/what-is-b2b.md) , můžou resetovat hesla také pomocí e-mailu, který zaregistrovali během procesu pozvání.
 
 Pokud chcete tento scénář vyzkoušet, přečtěte si https://passwordreset.microsoftonline.com některý z těchto partnerských uživatelů. Pokud mají definovaný alternativní e-mail nebo ověřovací e-mail, resetování hesla funguje podle očekávání.
 

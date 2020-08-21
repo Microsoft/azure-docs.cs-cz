@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680193"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717162"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
@@ -27,7 +27,7 @@ Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce
 K využití a přehledům můžou získat přístup následující role:
 
 - Globální správce
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 - Správce zabezpečení
 - Čtečka sestav
 
@@ -98,6 +98,6 @@ Sestavu nejde aktuálně filtrovat, aby vyloučila externí uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Práce s rozhraním API pro sestavy využití metod ověřování](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Práce s rozhraním API pro sestavy využití metod ověřování](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [Výběr metod ověřování pro vaši organizaci](concept-authentication-methods.md)
 - [Prostředí kombinované registrace](concept-registration-mfa-sspr-combined.md)

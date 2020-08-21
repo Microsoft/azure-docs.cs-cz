@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685761"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717572"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -62,7 +62,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
@@ -70,7 +70,7 @@ Následující tabulka obsahuje seznam podporovaných operačních systémů pro
 |Partnerský vztah Microsoftu|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
-|SUSE|SLES|12 SP3 a novější|
+|SUSE|SLES|12. SP3 – SP5|
 
 Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
@@ -95,6 +95,11 @@ Provoz se směruje pomocí [virtuální veřejné IP adresy](../../../virtual-ne
 Uzly umístěné mimo Azure, které jsou připojené přes Azure ARC, vyžadují připojení ke službě konfigurace hosta. Podrobnosti o požadavcích sítě a proxy serveru, které jsou k dispozici v [dokumentaci k Azure ARC](../../../azure-arc/servers/overview.md).
 
 Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
+
+Pro servery připojené k ARC v privátních datových centrech povolte provoz pomocí následujících vzorů:
+
+- Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
+- Globální adresa URL: `*.guestconfiguration.azure.com`
 
 ## <a name="managed-identity-requirements"></a>Požadavky na spravovanou identitu
 
@@ -139,9 +144,12 @@ Pokud zásadu přiřadíte pomocí šablony Azure Resource Manager (šablona ARM
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Použití konfigurace pomocí konfigurace hosta
 
-Nejnovější funkce Azure Policy konfiguruje nastavení v počítačích. Definice _nastaví časové pásmo na počítačích s Windows_ a provede změny v počítači konfigurací časového pásma.
+Pouze definice _, které časové pásmo v počítačích se systémem Windows_ , provádí změny v počítači konfigurací časového pásma. Definice vlastních zásad pro konfiguraci nastavení uvnitř počítačů nejsou podporované.
 
 Při přiřazování definic, které začínají na _Konfigurovat_, musíte také přiřadit _předpoklady nasazení definice a povolit zásadu konfigurace hosta na virtuálních počítačích s Windows_. V případě, že se rozhodnete, můžete tyto definice kombinovat v iniciativě.
+
+> [!NOTE]
+> Integrovaná zásada časového pásma je jediná definice, která podporuje konfiguraci nastavení v počítačích a vlastní zásady, které konfigurují nastavení v počítačích nejsou podporované.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Přiřazování zásad do počítačů mimo Azure
 

@@ -12,14 +12,15 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3da313803aa546c2399e3c8c18858bee5cfa2ea1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684367"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719253"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Nahrání média pro streamování nebo kódování
+
 V Media Services nahrajete digitální soubory (Media) do kontejneru objektů BLOB přidruženého k assetu. Entita [assetu](/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů do kontejneru assetu se váš obsah bezpečně uloží do cloudu pro další zpracování a streamování.
 
 Než začnete, budete muset shromáždit několik hodnot nebo si je představit.
@@ -37,10 +38,6 @@ Než začnete, budete muset shromáždit několik hodnot nebo si je představit.
 ## <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli/)
 
 [!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli.md)]
-
-## <a name="cli-shell"></a>[Prostředí CLI](#tab/clishell/)
-
-[!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli-shell.md)]
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 

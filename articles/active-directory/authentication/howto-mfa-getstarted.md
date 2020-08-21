@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641071"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717026"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -74,7 +74,7 @@ Používejte přizpůsobitelné plakáty a e-mailové šablony v [materiálech p
 
 Zásady podmíněného přístupu vynutily registraci, což vyžaduje, aby registraci při prvním přihlášení vyžadovali Neregistrovaní uživatelé, což je důležité bezpečnostní hledisko.
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) do scénáře Azure Multi-Factor Authentication dospěje jak zásady registrace, tak i automatické zjišťování rizik a nápravné zásady. Zásady je možné vytvořit pro vynucení změny hesla, pokud dojde k ohrožení zabezpečení identity nebo pokud je přihlášení považováno za rizikové pomocí následujících [událostí](../reports-monitoring/concept-risk-events.md):
+[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) do scénáře Azure Multi-Factor Authentication dospěje jak zásady registrace, tak i automatické zjišťování rizik a nápravné zásady. Zásady je možné vytvořit pro vynucení změny hesla, pokud dojde k ohrožení zabezpečení identity nebo pokud je přihlášení považováno za rizikové pomocí následujících [událostí](../identity-protection/overview-identity-protection.md):
 
 * Uniklé přihlašovací údaje
 * Přihlášení z anonymních IP adres
@@ -151,7 +151,7 @@ Správci musí určit, jak budou uživatelé registrovat své metody. Organizace
 
 ### <a name="registration-with-identity-protection"></a>Registrace pomocí Identity Protection
 
-Pokud vaše organizace používá Azure Active Directory Identity Protection, [nakonfigurujte zásady registrace MFA](../identity-protection/howto-mfa-policy.md) , aby vyzvat uživatele k registraci při příštím přihlášení.
+Pokud vaše organizace používá Azure Active Directory Identity Protection, [nakonfigurujte zásady registrace MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) , aby vyzvat uživatele k registraci při příštím přihlášení.
 
 ### <a name="registration-without-identity-protection"></a>Registrace bez ochrany identity
 
@@ -165,7 +165,7 @@ Pomocí následujících kroků může zásada podmíněného přístupu vynutit
 2. Pomocí podmíněného přístupu vynuťte službu Multi-Factor Authentication pro tuto skupinu pro přístup ke všem prostředkům.
 3. Pravidelně znovu vyhodnoťte členství ve skupině a odeberte uživatele, kteří se zaregistrovali ze skupiny.
 
-Registrované a Neregistrovaní uživatelé Azure MFA můžete identifikovat pomocí příkazů PowerShellu, které se spoléhají na [modul MSOnline PowerShellu](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+Registrované a Neregistrovaní uživatelé Azure MFA můžete identifikovat pomocí příkazů PowerShellu, které se spoléhají na [modul MSOnline PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
 
 #### <a name="identify-registered-users"></a>Identifikace registrovaných uživatelů
 
@@ -281,7 +281,7 @@ Rozšíření serveru NPS funguje jako adaptér mezi POLOMĚRem a cloudovou slu�
 
 #### <a name="implementing-your-nps-server"></a>Implementace serveru NPS
 
-Pokud máte nasazenou instanci serveru NPS a používáte ji již v provozu, odkaz [integruje stávající infrastrukturu serveru NPS do Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). Pokud instalujete NPS poprvé, přečtěte si pokyny v tématu [NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) . Pokyny k řešení potíží najdete v článku [řešení chybových zpráv z rozšíření serveru NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
+Pokud máte nasazenou instanci serveru NPS a používáte ji již v provozu, odkaz [integruje stávající infrastrukturu serveru NPS do Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). Pokud instalujete NPS poprvé, přečtěte si pokyny v tématu [NPS (Network Policy Server)](/windows-server/networking/technologies/nps/nps-top) . Pokyny k řešení potíží najdete v článku [řešení chybových zpráv z rozšíření serveru NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Příprava serveru NPS pro uživatele, kteří nejsou zaregistrovaní pro MFA
 
@@ -325,7 +325,7 @@ Standardní AD FS 2016 a 2019 protokolování v protokolu zabezpečení systému
 
 Na každém AD FSovém serveru bude v místním počítači moje úložiště k dispozici certifikát Azure MFA s názvem OU = Microsoft AD FS Azure MFA, který obsahuje datum vypršení platnosti certifikátu. Zkontrolujte dobu platnosti tohoto certifikátu na každém serveru AD FS, abyste zjistili datum vypršení platnosti.
 
-Pokud se doba platnosti vašich certifikátů blíží k vypršení platnosti, [vygenerujte a ověřte nový certifikát MFA na každém serveru AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Pokud se doba platnosti vašich certifikátů blíží k vypršení platnosti, [vygenerujte a ověřte nový certifikát MFA na každém serveru AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
 Následující pokyny vám podrobně poradí, jak spravovat certifikáty Azure MFA na serverech AD FS. Když nakonfigurujete AD FS s využitím Azure MFA, certifikáty vygenerované pomocí `New-AdfsAzureMfaTenantCertificate` rutiny PowerShellu jsou platné po dobu dvou let. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti ovoid výpadků ve službě MFA.
 
@@ -336,7 +336,7 @@ Teď, když jste naplánovali řešení, můžete implementovat podle následuj�
 1. Splnění všech nezbytných požadavků
    1. Nasazení [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) pro všechny hybridní scénáře
    1. Nasazení [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) pro na všech místních aplikacích publikovaných pro přístup z cloudu
-   1. Nasazení [serveru NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) pro jakékoli ověřování pomocí protokolu RADIUS
+   1. Nasazení [serveru NPS](/windows-server/networking/technologies/nps/nps-top) pro jakékoli ověřování pomocí protokolu RADIUS
    1. Zajistěte, aby byly uživatelé upgradováni na podporované verze systém Microsoft Office s povoleným moderním ověřováním.
 1. Konfigurovat zvolené [metody ověřování](#choose-verification-options)
 1. Definice [pojmenovaných síťových umístění](../conditional-access/location-condition.md#named-locations)
@@ -344,7 +344,7 @@ Teď, když jste naplánovali řešení, můžete implementovat podle následuj�
 1. Konfigurace [zásad podmíněného přístupu](#create-conditional-access-policy)
 1. Konfigurace zásad registrace MFA
    1. [Kombinované MFA a SSPR](howto-registration-mfa-sspr-combined.md)
-   1. S [identitou Protection](../identity-protection/howto-mfa-policy.md)
+   1. S [identitou Protection](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
 1. Odeslat komunikaci uživatele a získat uživatele k registraci na [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Udržujte si přehled o tom, kdo je zaregistrovaný](#identify-non-registered-users)
 

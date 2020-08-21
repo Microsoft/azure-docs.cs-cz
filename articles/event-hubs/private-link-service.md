@@ -3,12 +3,12 @@ title: Integrace služby Azure Event Hubs se službou privátního propojení Az
 description: Naučte se integrovat Azure Event Hubs se službou Azure Private Link.
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185464"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716787"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů 
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
@@ -47,7 +47,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Váš privátní koncový bod používá privátní IP adresu ve vaší virtuální síti.
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
@@ -71,7 +71,7 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
     2. Vyberte **skupinu prostředků** pro prostředek privátního koncového bodu.
     3. Zadejte **název** privátního koncového bodu. 
     5. Vyberte **oblast** pro soukromý koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může být v jiné oblasti než prostředek privátního propojení, ke kterému se připojujete. 
-    6. V dolní části stránky vyberte tlačítko **Další: >prostředku** .
+    6. V dolní části stránky vyberte tlačítko **Další: >prostředku ** .
 
         ![Stránka pro vytvoření privátního koncového bodu – základy](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Na stránce **prostředek** použijte následující postup:
@@ -80,14 +80,14 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
         2. Jako **typ prostředku**vyberte **Microsoft. EventHub/obory názvů** pro **typ prostředku**.
         3. V části **prostředek**vyberte obor názvů Event Hubs v rozevíracím seznamu. 
         4. Potvrďte, že je **cílový podprostředek** nastavený na **obor názvů**.
-        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
         
             ![Vytvoření stránky privátního koncového bodu – prostředek](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu**, postupujte podle těchto kroků:
         1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Event Hubs v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Příklad najdete na následujícím obrázku. 
         2. Pro **cílový dílčí prostředek**zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup.
         3. volitelné Zadejte **zprávu požadavku**. Vlastník prostředku se zobrazí tato zpráva během správy připojení privátního koncového bodu.
-        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace** .
+        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace ** .
 
             ![Vytvoření privátního koncového bodu – připojení pomocí ID prostředku](./media/private-link-service/connect-resource-id.png)
 9. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -211,7 +211,7 @@ Existují čtyři stavy zřizování:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. Vyberte **obor názvů** , který chcete spravovat.
 4. Vyberte kartu **síť** .
@@ -222,7 +222,7 @@ Existují čtyři stavy zřizování:
 2. Vyberte **privátní koncový bod** , který chcete schválit.
 3. Vyberte tlačítko **schválit** .
 
-    ![Image](./media/private-link-service/approve-private-endpoint.png)
+    ![Schválit soukromý koncový bod](./media/private-link-service/approve-private-endpoint.png)
 4. Na stránce **schválit připojení** přidejte komentář (volitelné) a vyberte **Ano**. Pokud vyberete **ne**, nic se nestane. 
 5. V seznamu byste měli vidět stav připojení privátního koncového bodu, které se změnilo na **schváleno**. 
 
@@ -230,7 +230,7 @@ Existují čtyři stavy zřizování:
 
 1. Pokud existují nějaká připojení privátního koncového bodu, která chcete zamítnout, ať už se jedná o nevyřízenou žádost nebo existující připojení, vyberte připojení a klikněte na tlačítko **odmítnout** .
 
-    ![Image](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Odmítnout privátní koncový bod](./media/private-link-service/private-endpoint-reject-button.png)
 2. Na stránce **odmítnout připojení** zadejte komentář (volitelné) a vyberte **Ano**. Pokud vyberete **ne**, nic se nestane. 
 3. V seznamu byste měli vidět stav připojení privátního koncového bodu, které se změnilo na **Odmítnuto**. 
 
@@ -242,7 +242,7 @@ Existují čtyři stavy zřizování:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Ověření, že připojení privátního propojení funguje
 
-Měli byste ověřit, že prostředky ve stejné podsíti prostředku privátního koncového bodu se připojují k vašemu Event Hubs oboru názvů přes soukromou IP adresu a že mají správnou integraci privátní zóny DNS.
+Měli byste ověřit, že prostředky v rámci virtuální sítě privátního koncového bodu se připojují k vašemu Event Hubs oboru názvů přes soukromou IP adresu a že mají správnou integraci privátní zóny DNS.
 
 Nejdřív vytvořte virtuální počítač podle kroků v [části Vytvoření virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 

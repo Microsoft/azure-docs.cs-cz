@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550633"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716992"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
 
@@ -48,10 +48,10 @@ Organizace musí splňovat i tyto požadavky na software.
 
 - Na zařízeních musí běžet Windows 10 Insider Build 18945 nebo novější.
 - Musíte mít verzi 1.4.32.0 nebo [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)novější.
-  - Další informace o dostupných možnostech hybridního ověřování Azure AD najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../../security/fundamentals/choose-ad-authn.md) a [Výběr typu instalace, který se má použít pro Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
+  - Další informace o dostupných možnostech hybridního ověřování Azure AD najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) a [Výběr typu instalace, který se má použít pro Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Na řadičích domény se systémem Windows Server musí být nainstalovány následující opravy:
-    - Pro Windows Server 2016 –https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Pro Windows Server 2019 –https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Pro Windows Server 2016 – https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Pro Windows Server 2019 – https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -75,7 +75,7 @@ Následující scénáře nejsou podporovány:
 Správci pomocí nástrojů PowerShellu ze svého Azure AD Connect serveru vytvoří objekt serveru Azure AD Kerberos ve svém místním adresáři. V každé doméně a doménové struktuře ve vaší organizaci, která obsahuje uživatele Azure AD, spusťte následující kroky:
 
 1. Upgradujte na nejnovější verzi Azure AD Connect. Tyto pokyny předpokládají, že jste už Azure AD Connect nakonfigurovali pro podporu hybridního prostředí.
-1. Na serveru Azure AD Connect otevřete příkazový řádek prostředí PowerShell se zvýšenými oprávněními a přejděte do`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Na serveru Azure AD Connect otevřete příkazový řádek prostředí PowerShell se zvýšenými oprávněními a přejděte do `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
 1. Spusťte následující příkazy PowerShellu pro vytvoření nového objektu serveru Azure AD Kerberos v místní doméně služby Active Directory i v tenantovi Azure Active Directory.
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Tento příkaz vypíše vlastnosti serveru Azure AD Kerberos. Můžete zkontrolo
 | ID | Jedinečné ID objektu služba AD DSho řadiče domény. Toto ID se někdy označuje jako "slot" nebo je "ID větve". |
 | DomainDnsName | Název domény DNS Doména služby Active Directory. |
 | ComputerAccount | Objekt účtu počítače objektu serveru Azure AD Kerberos (řadič domény). |
-| UserAccount | Zakázaný objekt uživatelského účtu, který obsahuje šifrovací klíč TGT serveru Azure AD Kerberos. Rozlišující název tohoto účtu je`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| UserAccount | Zakázaný objekt uživatelského účtu, který obsahuje šifrovací klíč TGT serveru Azure AD Kerberos. Rozlišující název tohoto účtu je `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
 | Verze | Klíčová verze šifrovacího klíče TGT serveru Azure AD Kerberos. Verze je přiřazena při vytvoření klíče. Verze se pak zvýší pokaždé, když se klíč otočí. Přírůstky jsou založené na metadatech replikace a jsou nejspíš větší než jedna. Například počáteční *verze* může být *192272*. Při prvním otočení klíče může verze přejít na *212621*. Důležitou věcí, kterou je třeba ověřit, je, že *verze* *CloudKeyVersion* pro místní objekt a objekt pro cloudový objekt jsou stejné. |
 | KeyUpdatedOn | Datum a čas, kdy se šifrovací klíč TGT serveru Azure AD Kerberos aktualizoval nebo vytvořil |
 | KeyUpdatedFrom | Řadič domény, kde se naposledy aktualizoval šifrovací klíč TGT serveru Azure AD Kerberos |

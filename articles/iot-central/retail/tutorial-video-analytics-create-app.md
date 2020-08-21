@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038326"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719168"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace video Analytics – objekt a detekce pohybu v Azure IoT Central
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření šablony zařízení pro zařízení IoT Edge brány
 > * Přidání zařízení brány do aplikace IoT Central
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této série kurzů potřebujete:
 
@@ -98,7 +98,7 @@ Vytvoření nové aplikace Azure IoT Central:
 
 Vytvoření nové aplikace video Analytics:
 
-1. Vyberte šablonu aplikace pro **video Analytics – objekt a detekce pohybu** . Tato šablona obsahuje šablony zařízení pro zařízení použitá v tomto kurzu. Šablona také poskytuje řídicí panel operátora pro monitorování videa.
+1. Vyberte šablonu aplikace pro **video Analytics – objekt a detekce pohybu** . Tato šablona obsahuje šablony zařízení pro zařízení použitá v tomto kurzu. Šablona obsahuje ukázkové řídicí panely, které operátory můžou použít k provádění úloh, jako je monitorování a Správa fotoaparátů.
 
 1. Volitelně můžete zvolit popisný **název aplikace**. Tato aplikace je založená na fiktivním maloobchodním obchodě s názvem Northwind Traders. V tomto kurzu se používá **název aplikace** *Northwind Traders video Analytics*.
 
@@ -245,12 +245,12 @@ Přejděte do složky *lva-Configuration* a vyberte *deployment.amd64.jsv* soubo
 
 V šabloně zařízení **brány lva Edge** v části **moduly/lva Edge Gateway**vyberte **relace**. Vyberte **+ Přidat relaci** a přidejte následující dvě relace:
 
-|Zobrazovaný název               |Název          |Cíl |
+|Zobrazovaný název               |Name          |Cíl |
 |-------------------------- |------------- |------ |
 |Detektor pohybu LVA Edge   |Použijte výchozí.   |Zařízení detektoru pohybu LVA Edge |
 |Detektor objektu LVA Edge   |Použijte výchozí.   |Zařízení LVA Edge pro detektor objektů |
 
-Potom vyberte **Uložit**.
+Pak vyberte **Uložit**.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="Přidat relace":::
 

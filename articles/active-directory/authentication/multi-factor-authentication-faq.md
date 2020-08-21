@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035073"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718862"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy ohledně služby Azure Multi-Factor Authentication
 
@@ -259,6 +259,6 @@ Alternativním řešením této chyby je, aby byly samostatné uživatelské ú�
 Pokud tady na vaši otázku neodpovíte, jsou k dispozici následující možnosti podpory:
 
 * Vyhledejte v [Podpora Microsoftu znalostní bázi](https://support.microsoft.com) řešení běžných technických problémů.
-* Vyhledejte a procházejte technické dotazy a odpovědi z komunity nebo si položte svoji vlastní otázku do [Azure Active Directory Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html).
+* Vyhledejte a procházejte technické dotazy a odpovědi z komunity nebo si položte svoji vlastní otázku do [Azure Active Directory Q&A](/answers/topics/azure-active-directory.html).
 * Kontaktujte Microsoft Professional prostřednictvím [podpory Azure Multi-Factor Authentication Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Při kontaktování nás je užitečné, pokud můžete zahrnout co nejvíce informací o vašem problému. Informace, které můžete dodat, zahrnují stránku, kde jste viděli chybu, konkrétní kód chyby, konkrétní ID relace a ID uživatele, který chybu viděl.
 * Pokud jste starší verze PhoneFactor zákazníka a máte nějaké dotazy nebo potřebujete pomoc s resetem hesla, použijte [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) e-mailovou adresu a otevřete případ podpory.

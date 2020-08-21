@@ -3,14 +3,14 @@ title: Co je rozšíření Media graphu – Azure
 description: Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 09fc2b71a6188caf1bdd9b7a2ef4da287f022845
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691775"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716074"
 ---
-# <a name="media-graph-extension"></a>Rozšíření Media graphu
+# <a name="media-graph-extension"></a>Rozšíření grafu médií
 
 Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu. Váš modul plug-in pro analýzu analýz může využívat tradiční techniky zpracování obrazu nebo modely AI pro počítačové vidění. Rozšíření grafu jsou povolena zahrnutím uzlu rozšíření procesoru v mediálním grafu. Uzel procesoru rozšíření přenáší video snímky do nakonfigurovaného koncového bodu a funguje jako rozhraní pro vaše rozšíření. Připojení se dá vytvořit v místním nebo vzdáleném koncovém bodě a v případě potřeby ho můžete zabezpečit pomocí ověřování a šifrování TLS. Kromě toho uzel procesoru rozšíření grafu umožňuje volitelné škálování a kódování snímků videa předtím, než se odešlou do vašeho vlastního rozšíření.
 
@@ -54,7 +54,7 @@ Následující diagram znázorňuje tok dat vysoké úrovně:
 
 ## <a name="samples"></a>Ukázky
 
-Zarezervujte některé ukázky [Jupyter poznámkových bloků](https://jupyter.org/) pro Live video Analytics. Tyto poznámkové bloky vám poskytnou podrobné pokyny:
+Zarezervujte některé ukázky [Jupyter poznámkových bloků](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) pro Live video Analytics. Tyto poznámkové bloky vám poskytnou podrobné pokyny:
 
 * Postup vytvoření image kontejneru Docker pro službu rozšíření
 * Jak nasadit službu rozšíření jako kontejner spolu s kontejnerem živé analýzy videí

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043878"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716108"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault podporuje ukládání digitálního certifikátu vydaného jakou
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Přidání certifikátu v Key Vault vydaného nedůvěryhodnou certifikační autoritou
 
@@ -59,7 +59,7 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 
     Žádost o certifikát se teď úspěšně sloučila.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
@@ -69,7 +69,7 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
     - **Název certifikátu:** ContosoManualCSRCertificate.
     - **Typ certifikační autority (CA):** Certifikát vydaný neintegrovanou certifikační autoritou
     - **Předmět:**`"CN=www.contosoHRApp.com"`
-    - Vyberte další hodnoty podle potřeby. Klikněte na **Vytvořit**.
+    - Vyberte další hodnoty podle potřeby. Klikněte na možnost **Vytvořit**.
 
     ![Vlastnosti certifikátu](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Uvidíte, že certifikát se teď přidal do seznamu certifikáty. Vyberte tento nový certifikát, který jste právě vytvořili. Aktuální stav certifikátu by byl zakázán, protože ještě nebyl vydán certifikační autoritou.
@@ -98,9 +98,11 @@ Příklad
 >Pokud požadujete certifikát DV se všemi těmito podrobnostmi v oddělení IT, certifikační autorita může žádost odmítnout, protože certifikační autorita nemusí být schopna ověřit všechny informace v žádosti. Pokud požadujete certifikát OV, je vhodnější přidat všechny tyto informace v oddělení IT.
 
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte chybovou zprávu pro daný certifikát.
+- **Typ chyby: veřejný klíč certifikátu koncové entity v zadaném obsahu certifikátu X. 509 se neshoduje s veřejnou součástí zadaného privátního klíče. Zkontrolujte prosím, jestli je certifikát platný** . k této chybě může dojít, pokud neslučujete CSR se stejným zahájeným požadavkem CSR. Pokaždé, když se vytvoří zástupce oddělení IT, vytvoří privátní klíč, který se musí shodovat při slučování podepsané žádosti.
+    
+- Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte chybovou zprávu pro daný certifikát.
 
 Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 

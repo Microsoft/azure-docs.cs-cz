@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212441"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717893"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -35,13 +35,13 @@ Nejrychlejší způsob, jak začít s označováním dat, je spustit nástroj pr
 Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit vzorový Nástroj pro označování do instance kontejneru Azure (ACI). Obě možnosti slouží ke spuštění ukázkového nástroje pro označování pomocí ACI: 
 
 * [Použití webu Azure Portal](#azure-portal)
-* [Pomocí Azure CLI](#azure-cli)
+* [Použití rozhraní příkazového řádku Azure](#azure-cli)
 
 ### <a name="azure-portal"></a>portál Azure
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/signin/index/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Pak vyberte **Webová aplikace**. 
 
@@ -70,14 +70,27 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
 
 6. Teď nakonfigurujeme kontejner Docker. Všechna pole jsou povinná, pokud není uvedeno jinak:
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)  
    * Možnosti – výběr **jednoho kontejneru**
    * Zdroj image – výběr **privátního registru** 
-   * Adresa URL serveru – nastavte tuto hodnotu na`https://mcr.microsoft.com`
+   * Adresa URL serveru – nastavte tuto hodnotu na `https://mcr.microsoft.com`
    * Username (volitelné) – vytvořte uživatelské jméno. 
    * Heslo (volitelné) – vytvořte zabezpečené heslo, které si zapamatujete.
-   * Image a tag – nastavte tuto hodnotu na`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Image a tag – nastavte tuto hodnotu na `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
    * Průběžné nasazování – toto nastavte na **zapnuto** , pokud chcete dostávat automatické aktualizace, když vývojový tým provede změny v nástroji Sample labeling.
-   * Spouštěcí příkaz – nastavte tuto hodnotu na`./run.sh eula=accept`
+   * Spouštěcí příkaz – nastavte tuto hodnotu na `./run.sh eula=accept`
+
+    # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1) 
+   * Možnosti – výběr **jednoho kontejneru**
+   * Zdroj image – výběr **privátního registru** 
+   * Adresa URL serveru – nastavte tuto hodnotu na `https://mcr.microsoft.com`
+   * Username (volitelné) – vytvořte uživatelské jméno. 
+   * Heslo (volitelné) – vytvořte zabezpečené heslo, které si zapamatujete.
+   * Image a tag – nastavte tuto hodnotu na `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Průběžné nasazování – toto nastavte na **zapnuto** , pokud chcete dostávat automatické aktualizace, když vývojový tým provede změny v nástroji Sample labeling.
+   * Spouštěcí příkaz – nastavte tuto hodnotu na `./run.sh eula=accept`
+    
+    ---
 
    > [!div class="mx-imgBorder"]
    > ![Konfigurovat Docker](./media/quickstarts/formre-configure-docker.png)
@@ -93,13 +106,15 @@ Jako alternativu k používání Azure Portal můžete vytvořit prostředek pom
 
 K tomuto příkazu potřebujete znát několik věcí:
 
-* `DNS_NAME_LABEL=aci-demo-$RANDOM`vygeneruje náhodný název DNS. 
+* `DNS_NAME_LABEL=aci-demo-$RANDOM` vygeneruje náhodný název DNS. 
 * V této ukázce se předpokládá, že máte skupinu prostředků, kterou můžete použít k vytvoření prostředku. Nahraďte `<resource_group_name>` platnou skupinou prostředků, která je přidružená k vašemu předplatnému. 
 * Budete muset určit, kde chcete prostředek vytvořit. Nahraďte `<region name>` požadovanou oblastí pro webovou aplikaci. 
 * Tento příkaz automaticky přijme smlouvu EULA.
 
 V Azure CLI spuštěním tohoto příkazu vytvořte prostředek webové aplikace pro nástroj pro označování ukázek: 
 
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -113,7 +128,24 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
+``` 
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
 ```
+
+---
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Připojení k Azure AD pro autorizaci
 

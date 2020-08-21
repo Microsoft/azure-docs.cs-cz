@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035227"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717348"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Povolení samoobslužného resetování hesla Azure Active Directory na přihlašovací obrazovce Windows
 
@@ -35,7 +35,7 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
 
 - Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
 - Je známo, že někteří poskytovatelé přihlašovacích údajů třetích stran způsobují problémy s touto funkcí.
-- Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
+- Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce pro sítě s nasazeným ověřováním pomocí sítě 802.1 x doporučujeme použít ověřování počítače.
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti. To znamená, že zařízení musí být buď v interní síti organizace, nebo na síti VPN se síťovým přístupem k místnímu řadiči domény.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
@@ -59,10 +59,10 @@ Pokud chcete na přihlašovací obrazovce nakonfigurovat zařízení s Windows 1
 ### <a name="windows-10-prerequisites"></a>Požadavky Windows 10
 
 - Správce [musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal](tutorial-enable-sspr.md).
-- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Není jedinečné, aby bylo možné používat SSPR z přihlašovací obrazovky Windows, všichni uživatelé musí před resetováním hesla zadat kontaktní údaje pro ověření.
 - Požadavky na síťový proxy server:
-    - Port 443 až `passwordreset.microsoftonline.com` a`ajax.aspnetcdn.com`
+    - Port 443 až `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
     - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
 - Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
     - Připojené k Azure AD
@@ -126,10 +126,10 @@ Pokud chcete na přihlašovací obrazovce nakonfigurovat zařízení se systéme
 ### <a name="windows-7-8-and-81-prerequisites"></a>Požadavky pro Windows 7, 8 a 8,1
 
 - Správce [musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal](tutorial-enable-sspr.md).
-- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Není jedinečné, aby bylo možné používat SSPR z přihlašovací obrazovky Windows, všichni uživatelé musí před resetováním hesla zadat kontaktní údaje pro ověření.
 - Požadavky na síťový proxy server:
-    - Port 443 až`passwordreset.microsoftonline.com`
+    - Port 443 až `passwordreset.microsoftonline.com`
 - Opraven operační systém Windows 7 nebo Windows 8.1.
 - Protokol TLS 1,2 povolený pomocí pokynů uvedených v [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings#tls-12).
 - Pokud je na vašem počítači povolený víc než jeden poskytovatel přihlašovacích údajů třetích stran, na přihlašovací obrazovce se uživatelům zobrazí víc než jeden profil uživatele.
@@ -143,7 +143,7 @@ V systému Windows 7, 8 a 8,1 musí být v počítači nainstalována malá sou�
 
 1. Stáhněte si odpovídající instalační program pro verzi systému Windows, kterou chcete povolit.
 
-    Instalační program softwaru je k dispozici na webu Microsoft Download Center na adrese[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+    Instalační program softwaru je k dispozici na webu Microsoft Download Center na adrese [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Přihlaste se k počítači, do kterého chcete nainstalovat, a spusťte instalační program.
 1. Po instalaci se důrazně doporučuje restartování počítače.
 1. Po restartování klikněte na obrazovce přihlášení na uživatele a vyberte zapomenuté heslo. Pro zahájení pracovního postupu pro resetování hesla.

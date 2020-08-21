@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117018"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717842"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
 Tento článek poskytuje podrobné informace o integraci Brána vzdálené plochy infrastruktury s Azure Multi-Factor Authentication (MFA) pomocí rozšíření NPS (Network Policy Server) pro Microsoft Azure.
 
-Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům chránit ověřování klientů protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové [Multi-Factor Authentication Azure (MFA)](multi-factor-authentication.md). Toto řešení poskytuje dvoustupňové ověřování pro přidání druhé vrstvy zabezpečení do přihlašování a transakcí uživatelů.
+Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům chránit ověřování klientů protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové [Multi-Factor Authentication Azure (MFA)](./concept-mfa-howitworks.md). Toto řešení poskytuje dvoustupňové ověřování pro přidání druhé vrstvy zabezpečení do přihlašování a transakcí uživatelů.
 
 Tento článek poskytuje podrobné pokyny pro integraci infrastruktury serveru NPS s Azure MFA pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele, kteří se pokoušejí přihlásit k Brána vzdálené plochy.
 
@@ -59,7 +59,7 @@ Když je rozšíření serveru NPS pro Azure integrované s NPS a Brána vzdále
 1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu o přístupu přes protokol RADIUS pro zásady CAP k vzdálené ploše.
 1. Uživateli je udělen přístup k požadovanému síťovému prostředku prostřednictvím Brána VP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato část podrobně popisuje požadavky nezbytné před integrací Azure MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky.  
 
@@ -75,7 +75,7 @@ Tato část podrobně popisuje požadavky nezbytné před integrací Azure MFA s
 Je nutné, aby byla k dispozici fungující infrastruktura vzdálené plochy (Remote Desktop Services). Pokud to neuděláte, můžete tuto infrastrukturu v Azure rychle vytvořit pomocí následující šablony pro rychlé zprovoznění: [vytvoření nasazení kolekce relací vzdálené plochy](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Pokud chcete rychle vytvořit místní infrastrukturu služby Vzdálená plocha pro účely testování, postupujte podle pokynů pro nasazení jednoho.
-**Další informace**: [nasazení RDS pomocí rychlého startu Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) a [základního nasazení infrastruktury VP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)
+**Další informace**: [nasazení RDS pomocí rychlého startu Azure](/windows-server/remote/remote-desktop-services/rds-in-azure) a [základního nasazení infrastruktury VP](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)
 
 ### <a name="azure-mfa-license"></a>Licence Azure MFA
 
@@ -89,7 +89,7 @@ Rozšíření serveru NPS vyžaduje systém Windows Server 2008 R2 SP1 nebo nov�
 
 Služba role NPS poskytuje funkce serveru RADIUS a klienta a také službu stavu zásad přístupu k síti. Tato role musí být nainstalovaná aspoň na dvou počítačích v infrastruktuře: Brána vzdálené plochy a jiný členský server nebo řadič domény. Ve výchozím nastavení je role již přítomna v počítači nakonfigurovaném jako Brána vzdálené plochy.  Také je nutné nainstalovat roli serveru NPS alespoň do jiného počítače, jako je například řadič domény nebo členský server.
 
-Informace o instalaci služby role NPS Windows Server 2012 nebo starší najdete v tématu [instalace serveru zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
+Informace o instalaci služby role NPS Windows Server 2012 nebo starší najdete v tématu [instalace serveru zásad stavu NAP](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronizován s místní službou Active Directory
 
@@ -109,7 +109,7 @@ Postupujte podle kroků v části [Začínáme s Azure Multi-Factor Authenticati
 
 Jakmile je pro MFA povolený účet, nebudete se moct přihlašovat k prostředkům, které řídí zásada MFA, dokud jste neúspěšně nenakonfigurovali důvěryhodné zařízení na použití pro druhý faktor ověřování a ověřili jste ověřování pomocí dvoustupňového ověřování.
 
-Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
+Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user-first-time.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
 
 > [!IMPORTANT]
 > Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód pomocí Azure Multi-Factor Authentication. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
@@ -250,7 +250,7 @@ Ve výchozím nastavení platí, že když nakonfigurujete Brána VP pro použit
 1. Klikněte na tlačítko **Storno**.
 
 >[!NOTE]
-> Další informace o vytvoření zásady vyžádání nového připojení najdete v článku Konfigurace dokumentace pro [zásady požadavků na připojení](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) . 
+> Další informace o vytvoření zásady vyžádání nového připojení najdete v článku Konfigurace dokumentace pro [zásady požadavků na připojení](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) . 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurace serveru NPS na serveru, na kterém je nainstalováno rozšíření serveru NPS
 
@@ -378,13 +378,13 @@ Níže je uvedená související událost z AzureMFA protokolů:
 
 Pokud chcete provádět pokročilé možnosti odstraňování potíží, Projděte si soubory protokolů ve formátu databáze NPS, kde je nainstalovaná služba NPS. Tyto soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory s oddělovači.
 
-Popis těchto souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](https://technet.microsoft.com/library/cc771748.aspx). Položky v těchto protokolových souborech se můžou obtížně interpretovat bez jejich importu do tabulky nebo databáze. Několik analyzátorů služby IAS můžete najít online, abyste vám pomohli interpretovat soubory protokolu.
+Popis těchto souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)). Položky v těchto protokolových souborech se můžou obtížně interpretovat bez jejich importu do tabulky nebo databáze. Několik analyzátorů služby IAS můžete najít online, abyste vám pomohli interpretovat soubory protokolu.
 
 Následující obrázek ukazuje výstup jedné takové [shareware aplikace](https://www.deepsoftware.com/iasviewer)ke stažení.
 
 ![Ukázka analyzátoru služby IAS pro shareware App](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Nakonec můžete pro další možnosti řešení potíží použít analyzátor protokolů, jako je například [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Nakonec můžete pro další možnosti řešení potíží použít analyzátor protokolů, jako je například [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide).
 
 Následující obrázek v Microsoft Message Analyzer zobrazuje síťový provoz filtrovaný podle protokolu RADIUS, který obsahuje uživatelské jméno **CONTOSO\AliceC**.
 

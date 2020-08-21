@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904815"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718097"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -56,7 +56,7 @@ Počet počátečních uzlů závisí na účelu clusteru a aplikacích a služb
 
     Service Fabric podporuje clustery, které jsou rozloženy mezi [zóny dostupnosti](../availability-zones/az-overview.md) , nasazením typů uzlů, které jsou připnuté na konkrétní zóny, a zajišťuje tak vysokou dostupnost vašich aplikací. Zóny dostupnosti vyžadovat další plánování typu uzlu a minimální požadavky. Podrobnosti najdete v tématu [doporučená topologie pro typ primárního uzlu Service Fabricch clusterů, které jsou rozloženy mezi zóny dostupnosti](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-Při určování počtu a vlastností typů uzlů pro počáteční vytvoření clusteru mějte na paměti, že po nasazení clusteru můžete kdykoli přidat, upravit nebo odebrat (neprimární) typy uzlů. [Typy primárních uzlů je také možné upravovat](service-fabric-scale-up-node-type.md) ve spuštěných clusterech (i když tyto operace vyžadují skvělé řešení plánování a opatrnosti v produkčních prostředích).
+Při určování počtu a vlastností typů uzlů pro počáteční vytvoření clusteru mějte na paměti, že po nasazení clusteru můžete kdykoli přidat, upravit nebo odebrat (neprimární) typy uzlů. [Typy primárních uzlů je také možné upravovat](service-fabric-scale-up-primary-node-type.md) ve spuštěných clusterech (i když tyto operace vyžadují skvělé řešení plánování a opatrnosti v produkčních prostředích).
 
 Dalším aspektem vlastností typu uzlu je úroveň odolnosti, která určuje oprávnění, které virtuální počítače typu uzlu mají v infrastruktuře Azure. Použijte velikost virtuálních počítačů, které jste si zvolili pro svůj cluster, a počet instancí, které přiřadíte pro jednotlivé typy uzlů, které vám pomůžou určit vhodnou úroveň odolnosti pro každý typ uzlu, jak je popsáno dále.
 
@@ -105,7 +105,7 @@ Používejte stříbro nebo zlatou odolnost pro všechny typy uzlů, které host
 Použijte tato doporučení pro správu typů uzlů pomocí stříbrné nebo zlaté odolnosti:
 
 * Udržujte cluster a aplikace pořád v pořádku a ujistěte se, že aplikace reagují na všechny [události životního cyklu repliky služby](service-fabric-reliable-services-lifecycle.md) (jako replika v buildu se zablokuje) včas.
-* Zajištění bezpečnějšího způsobu změny velikosti virtuálního počítače (horizontální navýšení kapacity) Změna velikosti virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje pečlivé plánování a zvýšení opatrnosti. Podrobnosti najdete v tématu [horizontální navýšení kapacity Service Fabric typu uzlu](service-fabric-scale-up-node-type.md) .
+* Zajištění bezpečnějšího způsobu změny velikosti virtuálního počítače (horizontální navýšení kapacity) Změna velikosti virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje pečlivé plánování a zvýšení opatrnosti. Podrobnosti najdete v tématu [horizontální navýšení kapacity Service Fabric typu uzlu](service-fabric-scale-up-primary-node-type.md) .
 * Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné. Cluster zadáte chybový stav, pokud budete škálovat pod tuto prahovou hodnotu a budete muset ručně vyčistit stav ( `Remove-ServiceFabricNodeState` ) odebraných uzlů.
 * Každá sada škálování virtuálního počítače s úrovní odolnosti stříbrného nebo zlata musí být v Service Fabricm clusteru namapována na vlastní typ uzlu. Mapování několika sad Virtual Machine Scale Sets na jeden typ uzlu zabráníte správnému fungování koordinace mezi Service Fabricm clusterem a infrastrukturou Azure.
 * Neodstraňujte náhodné instance virtuálních počítačů, ve funkci vždy používejte škálování Virtual Machine Scale-Scale. Odstranění náhodných instancí virtuálních počítačů může mít za následek vytvoření nerovnováhy v instanci virtuálního počítače mezi [doménami upgradu](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) a [doménami selhání](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains). Tato nerovnováha by mohla negativně ovlivnit schopnost systémů správně vyrovnávat zatížení mezi instancemi služby nebo replikami služeb.

@@ -3,12 +3,12 @@ title: Integrace Azure Relay se službou Azure Private Link
 description: Naučte se integrovat Azure Relay se službou Azure Private Link.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317307"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719423"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrace Azure Relay s privátním odkazem Azure (Preview)
 **Služba privátního propojení** Azure umožňuje přístup ke službám Azure (například Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Další informace najdete v tématu [co je to Azure Private Link (Preview)?](../private-link/private-link-overview.md)
@@ -24,7 +24,7 @@ ms.locfileid: "85317307"
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Pokud chcete integrovat obor názvů Azure Relay pomocí privátního propojení Azure (Preview), budete potřebovat následující entity nebo oprávnění:
 
 - Azure Relay obor názvů.
@@ -36,10 +36,10 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Váš privátní koncový bod používá privátní IP adresu ve vaší virtuální síti.
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této části najdete v tématu [Vytvoření oboru názvů Azure Relay pomocí Azure Portal](relay-create-namespace-portal.md).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte text **Relay**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
@@ -52,7 +52,7 @@ Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této
     2. Vyberte **skupinu prostředků** pro prostředek privátního koncového bodu.
     3. Zadejte **název** privátního koncového bodu. 
     5. Vyberte **oblast** pro soukromý koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může být v jiné oblasti než obor názvů Azure Relay, ke kterému se připojujete. 
-    6. V dolní části stránky vyberte tlačítko **Další: >prostředku** .
+    6. V dolní části stránky vyberte tlačítko **Další: >prostředku ** .
 
         ![Stránka pro vytvoření privátního koncového bodu – základy](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. Na stránce **prostředek** použijte následující postup:
@@ -61,14 +61,14 @@ Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této
         2. Jako **typ prostředku**vyberte **Microsoft. Relay/obory názvů** pro **typ prostředku**.
         3. V části **prostředek**vyberte obor názvů Relay z rozevíracího seznamu. 
         4. Potvrďte, že je **cílový podprostředek** nastavený na **obor názvů**.
-        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        5. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
         
             ![Vytvoření stránky privátního koncového bodu – prostředek](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu** , protože obor názvů není ve stejném adresáři jako soukromý koncový bod, postupujte takto:
-        1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Azure Relay v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Tady je příklad:`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Azure Relay v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Tady je příklad: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
         2. Pro **cílový dílčí prostředek**zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup.
         3. volitelné Zadejte **zprávu požadavku**. Vlastník prostředku se zobrazí tato zpráva během správy připojení privátního koncového bodu.
-        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace** .
+        4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace ** .
 
             ![Vytvoření privátního koncového bodu – připojení pomocí ID prostředku](./media/private-link-service/connect-resource-id.png)
 9. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -158,16 +158,16 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení od Azure Relay vlastníka oboru názvů. |
+| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení od Azure Relay vlastníka oboru názvů. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení Azure Relay vlastník oboru názvů odmítnuto. |
 | Odebrat | Propojení | Připojení odebral vlastník oboru názvů Azure Relay, privátní koncový bod se bude zobrazovat jako informativní a měl by se odstranit pro vyčištění. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Do panelu hledání zadejte text **Relay**.
 1. Vyberte **obor názvů** , který chcete spravovat.
 1. Vyberte kartu **síť** .
@@ -207,7 +207,7 @@ Existují čtyři stavy zřizování:
 3. Měl by se zobrazit stav změněno na **Odpojeno**. Pak se v seznamu zobrazí koncový bod. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Ověření, že připojení privátního propojení funguje
-Měli byste ověřit, že prostředky ve stejné podsíti privátního koncového bodu se připojují k vašemu Azure Relay oboru názvů prostřednictvím své privátní IP adresy.
+Měli byste ověřit, že prostředky v rámci virtuální sítě privátního koncového bodu se připojují k vašemu oboru názvů Azure Relay přes jeho privátní IP adresu.
 
 Pro tento test vytvořte virtuální počítač podle kroků uvedených v části [Vytvoření virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
@@ -235,7 +235,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Omezení a faktory návrhu
 
-### <a name="design-considerations"></a>Na co dát pozor při navrhování
+### <a name="design-considerations"></a>Co vzít v úvahu při návrhu
 - Privátní koncový bod pro Azure Relay je ve **verzi Public Preview**. 
 - Informace o cenách najdete v tématu [ceny pro privátní propojení Azure (Preview)](https://azure.microsoft.com/pricing/details/private-link/).
 
