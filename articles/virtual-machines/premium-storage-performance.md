@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0e0f6df04eda45af04659edc2010e8d68b013892
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701420"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751507"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -31,16 +31,16 @@ Tento článek vám pomůže zodpovědět následující otázky týkající se 
 Tyto pokyny poskytujeme konkrétně pro Premium Storage, protože úlohy spuštěné v Premium Storage jsou vysoce výkonná. V případě potřeby jsme zadali příklady. Některé z těchto pokynů můžete také použít pro aplikace běžící na virtuálních počítačích s IaaS se standardními disky úložiště.
 
 > [!NOTE]
-> V některých případech se může jednat o problém s výkonem disku, což je kritické místo v síti. V těchto situacích byste měli optimalizovat [výkon sítě](~/articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> V některých případech se může jednat o problém s výkonem disku, což je kritické místo v síti. V těchto situacích byste měli optimalizovat [výkon sítě](../virtual-network/virtual-network-optimize-network-bandwidth.md).
 >
 > Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 >
-> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./linux/disks-benchmarks.md)
-> * Pro Windows: [srovnávací testy disku](./windows/disks-benchmarks.md).
+> * Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](linux/disks-benchmarks.md)
+> * Pro Windows: [srovnávací testy disku](windows/disks-benchmarks.md).
 >
-> Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](~/articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](~/articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
+> Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečtěte téma [Výběr typu disku Azure pro virtuální počítače s IaaS](./linux/disks-types.md) a [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](~/articles/storage/blobs/scalability-targets-premium-page-blobs.md).
+Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečtěte téma [Výběr typu disku Azure pro virtuální počítače s IaaS](disks-types.md) a [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -62,7 +62,7 @@ Když k virtuálnímu počítači s vysokým rozsahem připojíte disk služby P
 
 Existuje vztah mezi propustností a IOPS, jak je znázorněno ve vzorci níže.
 
-![Vztah IOPS a propustnosti](~/articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![Vztah IOPS a propustnosti](linux/media/premium-storage-performance/image1.png)
 
 Proto je důležité určit optimální propustnost a hodnoty IOPS, které vaše aplikace vyžaduje. Při pokusu o optimalizaci se druhá taky ovlivní. V pozdější části, která *optimalizuje výkon aplikace*, probereme další podrobnosti o optimalizaci IOPS a propustnosti.
 
@@ -144,7 +144,7 @@ V této části najdete kontrolní seznam požadavků aplikace, který jste vytv
 
 Následující tabulka shrnuje faktory výkonu a kroky potřebné k optimalizaci IOPS, propustnosti a latence. Oddíly uvedené v tomto souhrnu popisují, že každý faktor bude mnohem větší hloubka.
 
-Další informace o velikostech virtuálních počítačů a počtu vstupně-výstupních operací, propustnosti a latence dostupných pro každý typ virtuálního počítače najdete v tématu [velikosti virtuálních počítačů Linux](~/articles/virtual-machines/linux/sizes.md) nebo [velikosti virtuálních počítačů s Windows](~/articles/virtual-machines/windows/sizes.md).
+Další informace o velikostech virtuálních počítačů a počtu IOPS, propustnosti a latence dostupných pro každý typ virtuálního počítače najdete v tématu [velikosti pro virtuální počítače v Azure](sizes.md).
 
 | | **IOPS** | **Propustnost** | **Latence** |
 | --- | --- | --- | --- |
@@ -206,7 +206,7 @@ Virtuální počítače s vysokým rozsahem jsou k dispozici v různých velikos
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4 000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
 
-Úplný seznam dostupných velikostí virtuálních počítačů Azure najdete v tématu velikosti virtuálních počítačů s [Windows](~/articles/virtual-machines/windows/sizes.md) nebo [velikosti virtuálních počítačů](~/articles/virtual-machines/linux/sizes.md)se systémem Linux. Vyberte velikost virtuálního počítače, která může splňovat požadavky na výkon požadované aplikace a škálovat je. Kromě toho vezměte v úvahu následující důležité informace při volbě velikostí virtuálních počítačů.
+Úplný seznam dostupných velikostí virtuálních počítačů Azure najdete [v tématu velikosti pro virtuální počítače v Azure](sizes.md) nebo. Vyberte velikost virtuálního počítače, která může splňovat požadavky na výkon požadované aplikace a škálovat je. Kromě toho vezměte v úvahu následující důležité informace při volbě velikostí virtuálních počítačů.
 
 *Omezení škálování*  
 Maximální počet IOPS na virtuální počítač a na disk se liší a nezávisle na sobě navzájem. Ujistěte se, že aplikace řídí IOPS v rámci limitů virtuálního počítače a taky připojených prémiových disků. V opačném případě výkon aplikace zaznamená omezení.
@@ -238,7 +238,7 @@ Pokud používáte systém Linux se Premium Storage, přečtěte si nejnovějš�
 
 Azure Premium Storage nabízí celou řadu velikostí, takže si můžete vybrat, který nejlépe vyhovuje vašim potřebám. Velikost každého disku má jiný limit škálování pro IOPS, šířku pásma a úložiště. Vyberte správnou Premium Storage velikost disku v závislosti na požadavcích aplikace a velikosti virtuálního počítače s vysokým rozsahem. V následující tabulce jsou uvedeny velikosti disků a jejich možnosti. Velikosti P4, P6, P15, P60, P70 a P80 se aktuálně podporují jenom pro Managed Disks.
 
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Počet disků, které zvolíte, závisí na zvolené velikosti disku. K splnění požadavku vaší aplikace můžete použít jeden disk s P50 nebo více disků P10. Při rozhodování Vezměte v úvahu níže uvedené otázky.
 
@@ -353,14 +353,14 @@ Ve Windows můžete pomocí prostorů úložiště prokládat disky společně. 
 
 Důležité: pomocí Správce serveru uživatelského rozhraní můžete pro prokládaný svazek nastavit celkový počet sloupců o velikosti až 8. Při připojování více než osmi disků použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell můžete nastavit počet sloupců, které se rovnají počtu disků. Například pokud je v jedné sadě Stripe nastavený 16 disků; v parametru *NumberOfColumns* rutiny *New-VirtualDisk* prostředí PowerShell zadejte 16 sloupců.
 
-V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](~/articles/virtual-machines/linux/configure-raid.md).
+V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](linux/configure-raid.md).
 
 *Velikost pruhu*  
 Důležitou konfigurací při proložení disku je velikost pruhu. Velikost nebo velikost bloku je nejmenší datový blok, který aplikace může adresovat na prokládaný svazek. Velikost pruhu, kterou nakonfigurujete, závisí na typu aplikace a jeho vzoru požadavků. Pokud zvolíte špatnou velikost pruhu, může to vést k chybnému zarovnání v/v, což vede ke snížení výkonu aplikace.
 
 Pokud je například požadavek v/v generovaný vaší aplikací větší než velikost diskového pruhu, systém úložiště ho zapisuje přes hranice prokládaných jednotek na více než jednom disku. Pokud je čas na přístup k těmto datům, bude nutné vyhledat v rámci více jednotek Stripe, aby bylo možné požadavek dokončit. Kumulativní účinek takového chování může vést k výraznému snížení výkonu. Na druhou stranu platí, že pokud je velikost vstupně-výstupních operací menší než velikost pruhu, a pokud je náhodná, můžou požadavky na vstupně-výstupní operace přidat na stejný disk, který způsobuje kritické body, a nakonec zpomalit výkon v/v.
 
-V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
+V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > Na virtuálním počítači řady DS 64 a na discích úrovně Premium úložiště na VIRTUÁLNÍm počítači řady GS můžete prokládat maximálně 32 disků úložiště úrovně Premium.
@@ -414,15 +414,15 @@ Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za 
 
 Pokud chcete otestovat srovnávací testy disku, přečtěte si naše články o testování disku:
 
-* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](./linux/disks-benchmarks.md)
-* Pro Windows: [srovnávací testy disku](./windows/disks-benchmarks.md).
+* Pro Linux: [srovnávací testy vaší aplikace v Azure Disk Storage](linux/disks-benchmarks.md)
+* Pro Windows: [srovnávací testy disku](windows/disks-benchmarks.md).
 
 Další informace o dostupných typech disků:
 
-* Pro Linux: [Vyberte typ disku](./linux/disks-types.md) .
-* Pro Windows: [Vyberte typ disku](./windows//disks-types.md) .
+* Pro Linux: [Vyberte typ disku](disks-types.md) .
+* Pro Windows: [Vyberte typ disku](disks-types.md) .
 
 Informace o SQL Server uživatelů najdete v článcích o osvědčených postupech výkonu pro SQL Server:
 
-* [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure Premium Storage poskytuje nejvyšší výkon pro SQL Server na virtuálním počítači Azure.](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

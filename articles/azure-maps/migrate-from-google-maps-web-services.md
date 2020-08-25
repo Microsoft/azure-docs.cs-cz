@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83747502"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrace webové služby z Google Maps
@@ -24,7 +24,7 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Značení              | [Cestě](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Pokyny              | [Trasa](https://docs.microsoft.com/rest/api/maps/route)                                     |
 | Matice vzdáleností         | [Matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
 | Geokódování               | [Hledání](https://docs.microsoft.com/rest/api/maps/search)                                   |
 | Hledání míst           | [Hledání](https://docs.microsoft.com/rest/api/maps/search)                                   |
@@ -67,9 +67,9 @@ Následující tabulka odkazuje na parametry rozhraní API Google Maps pomocí s
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` a `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`– Město/město<br/>`municipalitySubdivision`– okolí, sub/super City<br/>`countrySubdivision`– stát nebo provincie<br/>`countrySecondarySubdivision`– Okres<br/>`countryTertiarySubdivision`– Okres<br/>`countryCode`– dvě číslice kód země/oblasti |
-| `key`                       | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                  | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` – Město/město<br/>`municipalitySubdivision` – okolí, sub/super City<br/>`countrySubdivision` – stát nebo provincie<br/>`countrySecondarySubdivision` – Okres<br/>`countryTertiarySubdivision` – Okres<br/>`countryCode` – dvě číslice kód země/oblasti |
+| `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `region`                    | `countrySet`                       |
 
 Příklad použití vyhledávací služby je popsán [zde](how-to-search-for-address.md). Nezapomeňte si projít [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -91,10 +91,10 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 
 | Parametr rozhraní API pro Google Maps   | Srovnatelný parametr Azure Maps rozhraní API   |
 |-----------------------------|---------------------------------------|
-| `key`                       | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                  | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *NENÍ K DISPOZICI*     |
+| `location_type`             | *–*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -138,11 +138,11 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srov
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *NENÍ K DISPOZICI*                               |
+| `fields`                  | *–*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *NENÍ K DISPOZICI*                               |
-| `key`                     | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `inputtype`               | *–*                               |
+| `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
 
 ### <a name="nearby-search"></a>Okolní hledání
@@ -153,18 +153,18 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API  |
 |---------------------------|--------------------------------------|
-| `key`                       | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `keyword`                   | `categorySet` a `brandSet`        |
-| `language`                  | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *NENÍ K DISPOZICI*                               |
-| `minprice`                  | *NENÍ K DISPOZICI*                               |
+| `maxprice`                  | *–*                               |
+| `minprice`                  | *–*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *NENÍ K DISPOZICI*                               |
+| `opennow`                   | *–*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *NENÍ K DISPOZICI*                               |
-| `type`                      | `categorySet –`Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
+| `rankby`                    | *–*                               |
+| `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
 
@@ -191,9 +191,9 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `arrival_time`                | `arriveAt`                          |
 | `avoid`                        | `avoid`                            |
 | `departure_time`              | `departAt`                          |
-| `destination`                  | `query`– souřadnice ve formátu`"lat0,lon0:lat1,lon1…."`  |
-| `key`                          | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                     | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .   |
+| `destination`                  | `query` – souřadnice ve formátu `"lat0,lon0:lat1,lon1…."`  |
+| `key`                          | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                     | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .   |
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
@@ -236,17 +236,17 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API  |
 |---------------------------|--------------------------------------|
 | `center`                    | `center`                           |
-| `format`                    | `format`– zadáno jako součást cesty URL. V současné době je podporována pouze PNG. |
-| `key`                       | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                  | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
-| `maptype`                   | `layer`a `style` – Viz dokumentace k [podporovaným stylům mapy](supported-map-styles.md) . |
+| `format`                    | `format` – zadáno jako součást cesty URL. V současné době je podporována pouze PNG. |
+| `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `maptype`                   | `layer` a `style` – Viz dokumentace k [podporovaným stylům mapy](supported-map-styles.md) . |
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *NENÍ K DISPOZICI*                              |
-| `size`                      | `width`a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *NENÍ K DISPOZICI*                              |
-| `visible`                   | *NENÍ K DISPOZICI*                              |
+| `scale`                     | *–*                              |
+| `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
+| `style`                     | *–*                              |
+| `visible`                   | *–*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -278,14 +278,14 @@ Zadejte umístění značek s formátem Zeměpisná šířka, zeměpisná délka
 
 Přidejte styly značek ve `optionName:value` formátu s několika styly oddělenými znaky svislé čáry ( \| ), jako je například "optionName1: hodnota1 \| optionName2: hodnota2". Všimněte si, že názvy možností a hodnoty jsou oddělené dvojtečkou (:). Pro značky stylu v Google Maps použijte následující názvy možností stylu:
 
-- `color`– Barva výchozí ikony značky Může být 24bitové hexadecimální barva ( `0xrrggbb` ) nebo jedna z následujících hodnot: `black` , `brown` , `green` , `purple` , `yellow` , `blue` , `gray` , `orange` , `red` , `white` .
-- `label`– Jedním velkým alfanumerickým znakem, který se zobrazí nad ikonu.
-- `size`– Velikost značky. Může být `tiny` , `mid` , nebo `small` .
+- `color` – Barva výchozí ikony značky Může být 24bitové hexadecimální barva ( `0xrrggbb` ) nebo jedna z následujících hodnot: `black` , `brown` , `green` , `purple` , `yellow` , `blue` , `gray` , `orange` , `red` , `white` .
+- `label` – Jedním velkým alfanumerickým znakem, který se zobrazí nad ikonu.
+- `size` – Velikost značky. Může být `tiny` , `mid` , nebo `small` .
 
 Pro vlastní ikony v Google Maps použijte následující názvy možností stylu:
 
-- `anchor`– Určuje způsob zarovnání obrázku ikony na souřadnici. Může to být hodnota pixel (x, y) nebo jedna z následujících hodnot: `top`, `bottom` , `left` , `right` , `center` , `topleft` , `topright` , `bottomleft` nebo `bottomright` .
-- `icon`– Adresa URL ukazující na obrázek ikony.
+- `anchor` – Určuje způsob zarovnání obrázku ikony na souřadnici. Může to být hodnota pixel (x, y) nebo jedna z následujících hodnot: `top`, `bottom` , `left` , `right` , `center` , `topleft` , `topright` , `bottomleft` nebo `bottomright` .
+- `icon` – Adresa URL ukazující na obrázek ikony.
 
 Řekněme například, že na mapu přidáte červenou značku střední velikosti:-110, zeměpisná šířka: 45:
 
@@ -311,21 +311,21 @@ V Azure Maps musí být umístění kódu PIN ve formátu "Zeměpisná šířka"
 
 `iconType`Určuje typ PIN kódu, který se má vytvořit. Může mít následující hodnoty:
 
-- `default`– Výchozí ikona PIN
-- `none`– Není zobrazena žádná ikona, budou vykresleny pouze popisky.
-- `custom`– Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
-- `{udid}`– Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
+- `default` – Výchozí ikona PIN
+- `none` – Není zobrazena žádná ikona, budou vykresleny pouze popisky.
+- `custom` – Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
+- `{udid}` – Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
 
-Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Příklad: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
+Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Například: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
 
-- `al`– Určuje neprůhlednost (alfa) značky. Vyberte číslo mezi 0 a 1.
-- `an`– Určuje kotvu PIN. Zadejte hodnoty X a y pixelů ve formátu "X y".
-- `co`– Barva kódu PIN. Zadejte 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
-- `la`– Určuje kotvu popisku. Zadejte hodnoty X a y pixelů ve formátu "X y".
-- `lc`– Barva popisku. Zadejte 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
-- `ls`– Velikost popisku v pixelech. Vyberte číslo větší než 0.
-- `ro`– Hodnota ve stupních pro otočení ikony. Vyberte číslo v rozmezí od-360 do 360.
-- `sc`– Hodnota měřítka pro ikonu připnutí. Vyberte číslo větší než 0.
+- `al` – Určuje neprůhlednost (alfa) značky. Vyberte číslo mezi 0 a 1.
+- `an` – Určuje kotvu PIN. Zadejte hodnoty X a y pixelů ve formátu "X y".
+- `co` – Barva kódu PIN. Zadejte 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
+- `la` – Určuje kotvu popisku. Zadejte hodnoty X a y pixelů ve formátu "X y".
+- `lc` – Barva popisku. Zadejte 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
+- `ls` – Velikost popisku v pixelech. Vyberte číslo větší než 0.
+- `ro` – Hodnota ve stupních pro otočení ikony. Vyberte číslo v rozmezí od-360 do 360.
+- `sc` – Hodnota měřítka pro ikonu připnutí. Vyberte číslo větší než 0.
 
 Zadejte hodnoty popisků pro každé umístění kódu PIN. Tento přístup je efektivnější než použití jedné hodnoty popisku na všechny značky v seznamu umístění. Hodnota popisku může být řetězec s více znaky. Zabalte řetězec s jednoduchými uvozovkami, aby se zajistilo, že není možné ho nahradit jako styl nebo hodnotu umístění.
 
@@ -365,10 +365,10 @@ Umístění cesty jsou zadána ve `latitude1,longitude1|latitude2,longitude2|…
 
 Přidejte styly cest ve `optionName:value` formátu a oddělte více stylů znaky kanálu ( \| ). Názvy a hodnoty možností oddělujte dvojtečkou (:). Takto: `optionName1:value1|optionName2:value2` . Následující názvy možností stylu lze použít ke stylování cest v Google Maps:
 
-- `color`– Barva obrysu cesty nebo mnohoúhelníku. Může být 24bitové hexadecimální barva ( `0xrrggbb` ), 32 šestnáctková barva ( `0xrrggbbbaa` ) nebo jedna z následujících hodnot: černá, hnědá, zelená, fialová, žlutá, modrá, šedá, oranžová, červená a bílá.
-- `fillColor`– Barva, kterou chcete vyplnit oblast cesty (mnohoúhelník). Může být 24bitové hexadecimální barva ( `0xrrggbb` ), 32 šestnáctková barva ( `0xrrggbbbaa` ) nebo jedna z následujících hodnot: černá, hnědá, zelená, fialová, žlutá, modrá, šedá, oranžová, červená a bílá.
-- `geodesic`– Určuje, zda by měla být cesta čára, která následuje zakřivení země.
-- `weight`– Tloušťka čáry cesty v pixelech
+- `color` – Barva obrysu cesty nebo mnohoúhelníku. Může být 24bitové hexadecimální barva ( `0xrrggbb` ), 32 šestnáctková barva ( `0xrrggbbbaa` ) nebo jedna z následujících hodnot: černá, hnědá, zelená, fialová, žlutá, modrá, šedá, oranžová, červená a bílá.
+- `fillColor` – Barva, kterou chcete vyplnit oblast cesty (mnohoúhelník). Může být 24bitové hexadecimální barva ( `0xrrggbb` ), 32 šestnáctková barva ( `0xrrggbbbaa` ) nebo jedna z následujících hodnot: černá, hnědá, zelená, fialová, žlutá, modrá, šedá, oranžová, červená a bílá.
+- `geodesic` – Určuje, zda by měla být cesta čára, která následuje zakřivení země.
+- `weight` – Tloušťka čáry cesty v pixelech
 
 Přidejte neprůhlednost červené čáry a tloušťku pixelů na mapu mezi souřadnicemi v parametru URL. V příkladu níže má čára neprůhlednost 50% a tloušťku čtyř pixelů. Souřadnice jsou zeměpisná délka:-110, zeměpisná šířka: 45 a zeměpisná délka:-100, zeměpisná šířka: 50.
 
@@ -392,12 +392,12 @@ Když přichází do umístění cest, Azure Maps vyžaduje, aby souřadnice byl
 
 Přidejte styly cest ve `optionNameValue` formátu. Rozdělte více stylů podle svislých ( \| ) znaků, jako je to `optionName1Value1|optionName2Value2` . Hodnoty a názvy možností nejsou oddělené. Pro styly cest v Azure Maps použijte následující názvy možností stylu:
 
-- `fa`– Neprůhlednost barvy výplně (alfa), která se používá při vykreslování mnohoúhelníků. Vyberte číslo mezi 0 a 1.
-- `fc`– Barva výplně použitá k vykreslení oblasti mnohoúhelníku
-- `la`– Barva čáry neprůhlednosti (alfa), která se používá při vykreslování čar a obrysu mnohoúhelníků. Vyberte číslo mezi 0 a 1.
-- `lc`– Barva čáry použitá k vykreslení čar a obrysu mnohoúhelníků.
-- `lw`– Šířka čáry v pixelech.
-- `ra`– Určuje poloměr kroužků v měřičích.
+- `fa` – Neprůhlednost barvy výplně (alfa), která se používá při vykreslování mnohoúhelníků. Vyberte číslo mezi 0 a 1.
+- `fc` – Barva výplně použitá k vykreslení oblasti mnohoúhelníku
+- `la` – Barva čáry neprůhlednosti (alfa), která se používá při vykreslování čar a obrysu mnohoúhelníků. Vyberte číslo mezi 0 a 1.
+- `lc` – Barva čáry použitá k vykreslení čar a obrysu mnohoúhelníků.
+- `lw` – Šířka čáry v pixelech.
+- `ra` – Určuje poloměr kroužků v měřičích.
 
 V parametru URL přidejte neprůhlednost červené čáry a tloušťku pixelů mezi souřadnicemi. Pro příklad níže má čára 50% krytí a tloušťku čtyř pixelů. Souřadnice mají následující hodnoty: Zeměpisná délka:-110, zeměpisná šířka: 45 a zeměpisná délka:-100, zeměpisná šířka: 50.
 
@@ -425,11 +425,11 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `arrivial_time`                | `arriveAt`                           |
 | `avoid`                        | `avoid`                              |
 | `depature_time`                | `departAt`                           |
-| `destinations`                 | `destination`– Zadejte v textu požadavku POST jako text typu injson. |
-| `key`                          | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
-| `language`                     | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
+| `destinations`                 | `destination` – Zadejte v textu požadavku POST jako text typu injson. |
+| `key`                          | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
+| `language`                     | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `mode`                         | `travelMode`                         |
-| `origins`                      | `origins`– Zadejte v textu požadavku POST jako text typu injson.  |
+| `origins`                      | `origins` – Zadejte v textu požadavku POST jako text typu injson.  |
 | `region`                       | Není *k dispozici* – Tato funkce se týká geografického kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování. |
 | `traffic_model`                | Není *k dispozici* – lze určit, zda mají být v parametru použity data přenosů `traffic` . |
 | `transit_mode`                 | V současné době *se* nepodporují meziměstské matice na bázi přenosu.  |
@@ -451,8 +451,8 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API   |
 |---------------------------|---------------------------------------|
-| `key`                       | `subscription-key`– Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci.       |
-| `language`                  | `language`– Viz dokumentace k [podporovaným jazykům](supported-languages.md) .    |
+| `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci.       |
+| `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .    |
 | `location`                  | `query`             |
 | `timestamp`                 | `timeStamp`         |
 
@@ -468,7 +468,7 @@ Kromě tohoto rozhraní API Azure Maps poskytuje řadu rozhraní API pro časov�
 
 Azure Maps poskytuje klientské knihovny pro následující programovací jazyky:
 
-- JavaScript, TypeScript, Node. js – [documentation](how-to-use-services-module.md) \| [balíček dokumentace npm](https://www.npmjs.com/package/azure-maps-rest)
+- JavaScript, TypeScript, Node.js – [documentation](how-to-use-services-module.md) \| [balíček dokumentace npm](https://www.npmjs.com/package/azure-maps-rest)
 
 Tyto open source klientské knihovny jsou pro jiné programovací jazyky:
 

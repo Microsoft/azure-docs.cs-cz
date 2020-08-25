@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587595"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796948"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 Toto volání vrátí jako řetězec JSON dvojitá data. 
 
-> [!TIP]
-> Po načtení vlákna se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin` .
+Po načtení vlákna se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin` .
+
+>[!TIP]
+>`displayName`Pro objekt, který je pro vlákna, je součástí metadat modelu, takže se při získávání dat pro dvojitou instanci nebude zobrazovat. Chcete-li zobrazit tuto hodnotu, můžete [ji načíst z modelu](how-to-manage-model.md#retrieve-models).
 
 Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [*Postupy: vytvoření dotazu na nevlákenný graf*](how-to-query-graph.md).
 
@@ -164,7 +166,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
 * `$etag`, standardní pole HTTP přiřazené webovým serverem
-* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
+* Další vlastnosti v `$metadata` oddílu. Zde jsou některé z nich:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 

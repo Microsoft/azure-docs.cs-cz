@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214225"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796965"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -19,7 +19,7 @@ Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval spec
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Azure CLI verze 2.0.81 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
@@ -32,7 +32,7 @@ Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru
 
 ## <a name="overview-of-outbound-types-in-aks"></a>Přehled odchozích typů v AKS
 
-Cluster AKS se dá přizpůsobit jedinečným typem pro `outboundType` Vyrovnávání zatížení nebo uživatelem definovaným směrováním.
+Cluster AKS se dá přizpůsobit jedinečným `outboundType` typem `loadBalancer` nebo `userDefinedRouting` .
 
 > [!IMPORTANT]
 > Typ odchozího přenosu ovlivňuje jenom výstupní přenos vašeho clusteru. Další informace najdete v tématu [nastavení řadičů](ingress-basic.md)příchozího přenosu dat.
@@ -62,7 +62,11 @@ Pokud `userDefinedRouting` je nastavená, AKS nebude automaticky konfigurovat v�
 
 Cluster AKS musí být nasazený do existující virtuální sítě s dříve nakonfigurovanou podsítí, protože pokud nepoužívá architekturu služby Load Balancer úrovně Standard (SLB), musíte nastavit explicitní výstup. Tato architektura proto vyžaduje explicitní odeslání odchozího provozu do zařízení, jako je brána firewall, brána, proxy server, nebo povolení překladu adres (NAT) veřejnou IP adresou přiřazenou ke službě Load Balancer úrovně Standard nebo zařízením.
 
-Poskytovatel prostředků AKS nasadí standardní nástroj pro vyrovnávání zatížení (SLB). Služba Vyrovnávání zatížení není nakonfigurovaná s žádným pravidlem a [neúčtuje poplatek, dokud se pravidlo neuloží](https://azure.microsoft.com/pricing/details/load-balancer/). AKS **nebude** automaticky ZŘIZOVAT veřejnou IP adresu pro službu SLB front-end ani automaticky nekonfiguruje back-end fond nástroje pro vyrovnávání zatížení.
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Vytvoření nástroje pro vyrovnávání zatížení s userDefinedRouting
+
+Clustery AKS s odchozím typem UDR obdrží standardní nástroj pro vyrovnávání zatížení (SLB) pouze v případě, že je nasazená první Kubernetes služba typu "vyrovnávání zatížení". Nástroj pro vyrovnávání zatížení je nakonfigurovaný s veřejnou IP adresou pro *příchozí* požadavky a back-end fond pro *příchozí* požadavky. Příchozí pravidla jsou nakonfigurovaná poskytovatelem cloudu Azure, ale **žádná odchozí veřejná IP adresa ani odchozí pravidla** se nekonfigurují jako výsledek pro odchozí typ udr. Váš UDR bude stále jediným zdrojem provozu pro výstup.
+
+Nástroje pro vyrovnávání zatížení Azure neúčtují [poplatky, dokud se neuloží pravidlo](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Nasazení clusteru s odchozím typem UDR a Azure Firewall
 
@@ -70,9 +74,7 @@ K ilustraci aplikace clusteru s odchozím typem pomocí uživatelsky definované
 
 > [!IMPORTANT]
 > Výstupní typ UDR vyžaduje trasu pro 0.0.0.0/0 a cíl dalšího segmentu směrování síťové virtuální zařízení (síťové virtuální zařízení) v tabulce směrování.
-> Tabulka směrování už má výchozí hodnotu 0.0.0.0/0 pro Internet, bez veřejné IP adresy do SNAT jenom přidání této trasy vám neposkytne žádný výstup. AKS ověří, že nevytvoříte trasu 0.0.0.0/0 ukazující na Internet, ale místo síťové virtuální zařízení nebo brány atd.
-> 
-> Při použití odchozího typu UDR není vytvořena veřejná IP adresa nástroje pro vyrovnávání zatížení, pokud není nakonfigurované služba typu *Vyrovnávání* zatížení.
+> Tabulka směrování už má výchozí hodnotu 0.0.0.0/0 pro Internet, bez veřejné IP adresy do SNAT jenom přidání této trasy vám neposkytne žádný výstup. AKS ověří, že nevytvoříte trasu 0.0.0.0/0 ukazující na Internet, ale místo síťové virtuální zařízení nebo brány atd. Při použití odchozího typu UDR není vytvořena veřejná IP adresa nástroje pro vyrovnávání zatížení pro **příchozí požadavky** , pokud není nakonfigurované služba typu *Vyrovnávání* zatížení. Veřejná IP adresa pro **odchozí požadavky** není nikdy vytvořena službou AKS, pokud je nastaven odchozí typ udr.
 
 ## <a name="next-steps"></a>Další kroky
 

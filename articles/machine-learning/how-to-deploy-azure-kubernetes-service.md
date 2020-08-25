@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 03477fa46aaec04c0563ed38b085605dce5b87a1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120826"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751742"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 - Možnosti __hardwarové akcelerace__ , jako například GPU a pole programovatelné brány (FPGA).
 
 > [!IMPORTANT]
-> Škálování clusteru není k dispozici prostřednictvím sady Azure Machine Learning SDK. Další informace o škálování uzlů v clusteru AKS najdete v tématu [škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md).
+> Škálování clusteru není k dispozici prostřednictvím sady Azure Machine Learning SDK. Další informace o škálování uzlů v clusteru AKS najdete v tématu. 
+- [Ruční škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md)
+- [Nastavení automatického škálování clusteru v AKS](../aks/cluster-autoscaler.md)
 
 Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Existují dva způsoby, jak připojit cluster AKS k vašemu pracovnímu prostoru:
 
@@ -43,9 +45,9 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 > [!IMPORTANT]
 > Doporučujeme, abyste před nasazením do webové služby ladit místně. Další informace najdete v tématu [ladění místně](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally) .
 >
-> Můžete se také podívat na Azure Machine Learning – [nasazení do místního poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) .
+> Můžete využít také [poznámkový blok služby Azure Machine Learning pro místní nasazení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -55,9 +57,9 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 
 - Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastavené následující proměnné:
 
-    * `ws`– Nastavte na svůj pracovní prostor.
-    * `model`– Nastavte na registrovaný model.
-    * `inference_config`– Nastavte na odvození konfigurace pro model.
+    * `ws` – Nastavte na svůj pracovní prostor.
+    * `model` – Nastavte na registrovaný model.
+    * `inference_config` – Nastavte na odvození konfigurace pro model.
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
@@ -65,9 +67,16 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 
 - Pokud v clusteru potřebujete nasadit Standard Load Balancer (SLB) místo základního Load Balancer (BLB), vytvořte cluster na portálu AKS/CLI/SDK a pak ho připojte k pracovnímu prostoru AML.
 
-- Pokud připojíte cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), povolte rozsahy IP adres řídicí plochy AML pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí Inferencing lusky do clusteru AKS. Bez přístupu k serveru rozhraní API se Inferencing lusky nedají nasadit. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) pro obě [spárované oblasti]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) .
+- Pokud máte Azure Policy, která omezuje vytvoření veřejné IP adresy, vytvoření clusteru AKS se nezdaří. AKS vyžaduje veřejnou IP adresu pro [odchozí přenosy](https://docs.microsoft.com/azure/aks/limit-egress-traffic). Tento článek také poskytuje pokyny k uzamčení odchozího provozu z clusteru prostřednictvím veřejné IP adresy s výjimkou několika plně kvalifikovaných názvů domén. Existují dva způsoby, jak povolit veřejnou IP adresu:
+  - Cluster může používat veřejnou IP adresu vytvořenou ve výchozím nastavení s BLB nebo SLB nebo
+  - Cluster se dá vytvořit bez veřejné IP adresy a pak je nakonfigurovaná veřejná IP adresa s bránou firewall s trasou definovanou uživatelem, jak je uvedeno [tady](https://docs.microsoft.com/azure/aks/egress-outboundtype) . 
+  
+  Rovina ovládacího prvku AML nehovoří s touto veřejnou IP adresou. Mluví s rovinou ovládacího prvku AKS pro nasazení. 
 
-__Rozsahy IP adres Authroized fungují jenom s Standard Load Balancer.__
+- Pokud připojíte cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), povolte rozsahy IP adres AML contol pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí Inferencing lusky do clusteru AKS. Bez přístupu k serveru rozhraní API se Inferencing lusky nedají nasadit. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) pro obě [spárované oblasti]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) .
+
+
+  Rozsahy IP adres Authroized fungují jenom s Standard Load Balancer.
  
  - Název výpočtu musí být v rámci pracovního prostoru jedinečný.
    - Název je povinný a musí mít délku 3 až 24 znaků.
@@ -76,10 +85,6 @@ __Rozsahy IP adres Authroized fungují jenom s Standard Load Balancer.__
    - Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.
    
  - Pokud chcete nasadit modely do uzlů GPU nebo FPGAch uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
@@ -290,7 +295,7 @@ V Azure Machine Learning se "nasazení" používá v obecnější smyslu, jak zp
     1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a bude registrována v pracovním prostoru ACR).
 1. Stažení souboru projektu zip do dočasného úložiště na výpočetním uzlu
 1. Rozzipovává soubor projektu
-1. Prováděný výpočetní uzel`python <entry script> <arguments>`
+1. Prováděný výpočetní uzel `python <entry script> <arguments>`
 1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
 1. Horizontální snížení kapacity, včetně odebrání dočasného úložiště (týká se Kubernetes)
 
@@ -409,7 +414,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Pokud potřebujete znovu vygenerovat klíč, použijte[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
@@ -439,7 +444,7 @@ print(token)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

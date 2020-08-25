@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
 ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83725665"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrace s nasazením Kubernetes pomocí Helm
@@ -23,14 +23,14 @@ Během procesu vydávání Helm sloučí graf se správnou konfigurací pro spu�
 
 Hodnoty uložené v *hodnotách. yaml* můžete přepsat tak, že na příkazovém řádku zadáte další konfigurační soubory založené na YAML při spuštění Helm. Konfigurace aplikace Azure podporuje export hodnot konfigurace do souborů YAML. Integrací této možnosti exportu do nasazení umožníte aplikacím Kubernetes využívat konfigurační hodnoty uložené v konfiguraci aplikace.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Při nasazování aplikace do Kubernetes pomocí Helm používejte hodnoty z konfigurace aplikace.
 > * Vytvoření tajného klíče Kubernetes na základě odkazu na Key Vault v konfiguraci aplikace.
 
 V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí Helm. Přečtěte si další informace o instalaci aplikací pomocí Helm ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-helm).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 - Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.4.0 nebo novější)

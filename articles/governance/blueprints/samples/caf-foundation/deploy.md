@@ -4,10 +4,10 @@ description: Nasaďte kroky pro ukázka podrobného plánu CAF Foundation, včet
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: a2d3090e5e9fe265683c077d7056ebf2b108352d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82871635"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Nasazení rozhraní Microsoft Cloud pro přijetí v ukázce pro Azure Foundation podrobný plán
@@ -19,7 +19,7 @@ Chcete-li Microsoft Cloud nasadit ukázkovou strukturu plánů pro Azure (CAF) F
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -102,11 +102,11 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Povolené skladové položky účtu úložiště|Přiřazení zásad|Policy_Allowed-StorageAccount-SKU|SKU používané v účtech úložiště diagnostického protokolu|
-|Povolené SKU virtuálních počítačů|Přiřazení zásad|Policy_Allowed-VM – SKU|Povolené SKU virtuálních počítačů|
-|Přidat značku CostCenter do skupin prostředků|Přiřazení zásad|Policy_CostCenter_Tag|Připojit značku CostCenter a její hodnotu ze skupiny prostředků|
-|Typy prostředků, které nechcete ve svém prostředí povolit|Přiřazení zásad|_Allowed zásad – typy prostředků|Které prostředky Azure mají být ve vašem prostředí povolené|
-|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel <Object ID> Azure AD, kterým chcete udělit oprávnění v Key Vault|
+|Povolené skladové položky účtu úložiště|Přiřazení zásady|Policy_Allowed-StorageAccount-SKU|SKU používané v účtech úložiště diagnostického protokolu|
+|Povolené SKU virtuálních počítačů|Přiřazení zásady|Policy_Allowed-VM – SKU|Povolené SKU virtuálních počítačů|
+|Přidat značku CostCenter do skupin prostředků|Přiřazení zásady|Policy_CostCenter_Tag|Připojit značku CostCenter a její hodnotu ze skupiny prostředků|
+|Typy prostředků, které nechcete ve svém prostředí povolit|Přiřazení zásady|_Allowed zásad – typy prostředků|Které prostředky Azure mají být ve vašem prostředí povolené|
+|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel Azure AD <Object ID> , kterým chcete udělit oprávnění v Key Vault|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_DataRetention|**Uzamčený** počet dní, po které se budou uchovávat data v Log Analytics|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
 

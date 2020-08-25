@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006668"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752309"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -33,7 +33,7 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |----------------|---------------------|--------------------------------------|
 |  Počet účtů NetApp na oblast Azure   |  10    |  Ano   |
 |  Počet fondů kapacity na účet NetApp   |    25     |   Ano   |
-|  Počet svazků na účet NetApp   |    500     |   Ano   |
+|  Počet svazků na předplatné   |    500     |   Ano   |
 |  Počet svazků na fond kapacity     |    500   |    Ano     |
 |  Počet snímků na svazek       |    255     |    Ne        |
 |  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
@@ -48,7 +48,7 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 
-## <a name="maxfiles-limits"></a>Omezení maxfiles<a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Omezení maxfiles <a name="maxfiles"></a> 
 
 Azure NetApp Files svazky mají omezení s názvem *maxfiles*. Limit maxfiles je počet souborů, které může obsahovat svazek. Limit maxfiles pro Azure NetApp Files svazek je indexovaný na základě velikosti (kvóty) svazku. Limit maxfiles pro svazek se zvyšuje nebo snižuje rychlostí 20 000 000 souborů za TiB zřízené velikosti svazku. 
 
@@ -64,7 +64,7 @@ Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízen�
 
 Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete [žádost o podporu](#limit_increase) iniciovat tak, že zvýšíte maxfiles limit nad 100 000 000.
 
-## <a name="request-limit-increase"></a>Zvýšení limitu požadavku<a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>Zvýšení limitu požadavku <a name="limit_increase"></a> 
 
 Můžete vytvořit žádost o podporu Azure, která zvýší nastavitelná omezení z výše uvedené tabulky. 
 
@@ -80,7 +80,7 @@ Z Azure Portal rovina navigace:
 4. Na kartě Podrobnosti:
     1. V poli Popis zadejte pro odpovídající typ prostředku následující informace:
 
-        |  Prostředek  |    Nadřazené prostředky      |    Požadovaná nová omezení     |    Důvod zvýšení kvóty       |
+        |  Prostředek  |    Nadřazené prostředky      |    Požadovaná nová omezení     |    Odůvodnění pro navýšení kvóty       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Účet |  *ID předplatného*   |  *Požadované nové maximální číslo **účtu***    |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
         |  Fond    |  *ID předplatného, identifikátor URI účtu*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |

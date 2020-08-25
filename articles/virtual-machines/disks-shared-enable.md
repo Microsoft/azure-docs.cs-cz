@@ -4,16 +4,16 @@ description: Nakonfigurujte Azure Managed disk se sdílenými disky, abyste ho m
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f6b34cd93dcfabee2974bea5cf57258527df94d7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701505"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752040"
 ---
 # <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
@@ -21,21 +21,21 @@ Tento článek popisuje, jak povolit funkci sdílené disky pro službu Azure Ma
 
 Pokud hledáte koncepční informace o spravovaných discích, které mají povolené sdílené disky, přečtěte si téma:
 
-* Pro Linux: [sdílené disky Azure](./linux/disks-shared.md)
+* Pro Linux: [sdílené disky Azure](linux/disks-shared.md)
 
-* Pro Windows: [sdílené disky Azure](./windows/disks-shared.md)
+* Pro Windows: [sdílené disky Azure](windows/disks-shared.md)
 
 ## <a name="limitations"></a>Omezení
 
-[!INCLUDE [virtual-machines-disks-shared-limitations](~/includes/virtual-machines-disks-shared-limitations.md)]
+[!INCLUDE [virtual-machines-disks-shared-limitations](../../includes/virtual-machines-disks-shared-limitations.md)]
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v částech [Windows](~/articles/virtual-machines/windows/disks-shared.md#windows) a [Linux](~/articles/virtual-machines/linux/disks-shared.md#linux) článku konceptu.
+Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v částech [Windows](windows/disks-shared.md#windows) a [Linux](linux/disks-shared.md#linux) článku konceptu.
 
 ## <a name="disk-sizes"></a>Velikosti disků
 
-[!INCLUDE [virtual-machines-disks-shared-sizes](~/includes/virtual-machines-disks-shared-sizes.md)]
+[!INCLUDE [virtual-machines-disks-shared-sizes](../../includes/virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Nasazení sdílených disků
 
@@ -147,7 +147,7 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 Po nasazení sdíleného disku pomocí nástroje `maxShares>1` můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!NOTE]
-> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v části věnované [PowerShellu](~/articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) nebo [CLI](~/articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) v článku o disku Ultra.
+> Pokud nasazujete Ultra disk, ujistěte se, že splňuje požadavky nezbytné pro. Podrobnosti najdete v části věnované [PowerShellu](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) nebo [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) v článku o disku Ultra.
 
 ```azurepowershell-interactive
 

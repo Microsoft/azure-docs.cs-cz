@@ -3,18 +3,18 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Software-Defined data Centers a vSphere v řešení VMware v Azure pomocí VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906985"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752291"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Koncept řešení Azure VMware (AVS) ve verzi Preview pro privátní cloud a clustery
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Koncept řešení Azure VMware ve verzi Preview privátní cloud a cluster
 
-Řešení Azure VMware (AVS) poskytuje privátní cloudy založené na VMware v Azure. Privátní cloudy jsou sestavené z clusterů vyhrazených hostitelů holých počítačů a nasazují a spravují prostřednictvím Azure Portal. Clustery v privátních cloudech se zřídí pomocí softwaru VMware vSphere, vCenter, síti vSAN a NSX. Nasazení hardwaru a softwaru privátního cloudu služby AVS jsou plně integrovaná a automatizovaná v Azure.
+Řešení Azure VMware poskytuje privátní cloudy založené na VMware v Azure. Privátní cloudy jsou sestavené z clusterů vyhrazených hostitelů holých počítačů a nasazují a spravují prostřednictvím Azure Portal. Clustery v privátních cloudech se zřídí pomocí softwaru VMware vSphere, vCenter, síti vSAN a NSX. Nasazení hardwaru a softwaru privátního cloudu řešení Azure VMware jsou v Azure plně integrovaná a automatizovaná.
 
-Mezi předplatnými Azure, soukromými cloudy služby AVS, clustery síti vSAN a hostiteli existuje logický vztah. V diagramu se zobrazí dva privátní cloudy v jednom předplatném Azure. Privátní cloudy reprezentují vývojové a produkční prostředí, z nichž každý má vlastní privátní cloud. V každém z těchto privátních cloudů existují dva clustery. Pro zobrazení nižších možných potřeb vývojového prostředí se používají menší clustery s nižšími hostiteli kapacity. Všechny tyto koncepce jsou popsány v následujících částech.
+Mezi předplatnými Azure, privátními cloudy Azure VMware, clustery síti vSAN a hostiteli jsou logické vztahy. V diagramu se zobrazí dva privátní cloudy v jednom předplatném Azure. Privátní cloudy reprezentují vývojové a produkční prostředí, z nichž každý má vlastní privátní cloud. V každém z těchto privátních cloudů existují dva clustery. Pro zobrazení nižších možných potřeb vývojového prostředí se používají menší clustery s nižšími hostiteli kapacity. Všechny tyto koncepce jsou popsány v následujících částech.
 
 ![Obrázek dvou privátních cloudů v rámci zákaznického předplatného](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ Clustery můžete vytvářet, odstraňovat a škálovat prostřednictvím portá
 
 ## <a name="hosts"></a>Hostitelé
 
-V clusterech se zabezpečením v privátním cloudu pro funkci AVS se používají neúplné uzly infrastruktury s použitím technologie Hyper-v. Kapacita paměti RAM, procesoru a disku hostitele je uvedena v následující tabulce. 
+V clusterech v rámci řešení Azure VMware pro privátní cloudy se používají holé uzly neholých počítačů s využitím technologie Hyper-v. Kapacita paměti RAM, procesoru a disku hostitele je uvedena v následující tabulce. 
 
 | Typ hostitele              |             Procesor             |   RAM (GB)   |  Síti vSAN NVMe cache úrovně (TB, RAW)  |  úroveň kapacity síti vSAN SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,27 +44,27 @@ Hostitelé, kteří se používají k sestavení nebo škálování clusterů, s
 
 ## <a name="vmware-software-versions"></a>Verze softwaru VMware
 
-Aktuální verze softwaru VMware softwaru používané v clusterech privátních cloudů pro funkci AVS jsou:
+Aktuální verze softwaru softwaru VMware používané v clusterech privátního cloudu řešení Azure VMware jsou:
 
 | Software              |    Verze   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | Síti vSAN                  |    6,7 U2    |
-| NSX-T                 |      2.5     |
+| NSX-T                 |      2,5     |
 
 U všech nových clusterů v privátním cloudu bude verze softwaru odpovídat obsahu, který aktuálně běží v privátním cloudu. Pro všechny nové privátní cloudy v rámci zákaznického předplatného je nainstalovaná nejnovější verze softwarového zásobníku.
 
-Obecné zásady upgradu a procesy pro software pro platformu AVS jsou popsány v dokumentu koncepty upgrady.
+Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware jsou popsány v dokumentu koncepty upgrady.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Údržba hostitelů a správa životního cyklu
 
 Údržba hostitelů a správa životního cyklu se provádí bez dopadu na kapacitu nebo výkon clusterů privátního cloudu. Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
 
-Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu služby AVS zodpovídáte za NSX konfiguraci SDN, jako jsou segmenty sítě, distribuovaná pravidla brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
+Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za NSX konfiguraci SDN, jako jsou segmenty sítě, pravidla brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
-> Správce služby AVS nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.
+> Správce řešení Azure VMware nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.
 
 ## <a name="backup-and-restoration"></a>Zálohování a obnovení
 

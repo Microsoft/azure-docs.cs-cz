@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/21/2020
+ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036585"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751470"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -72,3 +72,7 @@ Pod JIRAs jsou pro adaptéry HBA back-Transported:
 
 ## <a name="component-version-change"></a>Změna verze součásti
 Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="known-issues"></a>Známé problémy
+
+Při pokusu o vytvoření clusteru Azure HDInsight ze Azure Portal a použití typu ověřování SSH veřejného klíče se uživatelům při kliknutí na **zkontrolovat + vytvořit**zobrazí chyba. Chyba na portálu je "nesmí obsahovat žádné tři po sobě jdoucí znaky z uživatelského jména SSH". Tento problém se řeší. Pokud ale dojde k této chybě, alternativní řešení vytvoří cluster se šablonou ARM. 

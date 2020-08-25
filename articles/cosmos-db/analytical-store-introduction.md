@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037095"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795860"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -123,7 +123,7 @@ Díky oddělení analytického úložného systému z výpočetního systému se
 > [!NOTE]
 > Z analytického úložiště se dá číst jenom pomocí synapse analýzy běhu. Data můžete zapsat zpátky do transakčního úložiště jako obsluhující vrstvu.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a>Stanov
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Stanov
 
 Analytické úložiště sleduje cenový model založený na spotřebě, kde se vám účtují poplatky za:
 
@@ -134,17 +134,17 @@ Analytické úložiště sleduje cenový model založený na spotřebě, kde se 
 * Analytické operace čtení: operace čtení provedené na analytickém úložišti z synapse Analytics Spark a za běhu bez SQL serveru.
 
 > [!NOTE]
-> Azure Cosmos DB analytické úložiště je dostupné ve verzi Public Preview bez jakýchkoli poplatků do 30. srpna 2020.
+> Služba Azure Cosmos DB Analytical Store je aktuálně dostupná ve verzi Public Preview bez jakýchkoli poplatků.
 
 Ceny za analytické úložiště jsou oddělené od cenového modelu úložiště transakcí. V analytickém úložišti neexistuje koncept zřízené ru. Úplné podrobnosti o cenovém modelu pro analytické úložiště najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 Abyste získali odhad nákladů na nejvyšší úroveň, abyste mohli analytické úložiště v kontejneru Azure Cosmos DB povolit, můžete použít [Plánovač kapacity Azure Cosmos DB](https://cosmos.azure.com/capacitycalculator/) a získat odhad nákladů na analytické úložiště a operace zápisu. Náklady na operace čtení v analytickém režimu závisí na charakteristikách úloh analýzy, ale jako odhad vysoké úrovně, skenování 1 TB dat v analytickém úložišti obvykle vede k 130 000 operací analýzy čtení a výsledkem je cena $0,065.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analytická hodnota TTL (Time to Live)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analytická hodnota TTL (Time to Live)
 
 Analytická hodnota TTL pro kontejner určuje, jak dlouho se mají uchovávat data v analytickém úložišti. 
 
-Vložení, aktualizace a odstranění provozních dat se automaticky synchronizují z transakčního úložiště do analytického úložiště, bez ohledu na konfiguraci transakčního standardu TTL. Uchovávání těchto provozních dat v analytickém úložišti se dá řídit analytickou hodnotou TTL na úrovni kontejneru, jak je uvedeno níže:
+Pokud je analytické úložiště povolené, vkládání, aktualizace a odstraňování provozních dat se automaticky synchronizují z transakčního úložiště do analytického úložiště, bez ohledu na konfiguraci transakčního standardu TTL. Uchovávání těchto provozních dat v analytickém úložišti se dá řídit analytickou hodnotou TTL na úrovni kontejneru, jak je uvedeno níže:
 
 Analytická hodnota TTL na kontejneru je nastavena pomocí `AnalyticalStoreTimeToLiveInSeconds` vlastnosti:
 
@@ -152,7 +152,7 @@ Analytická hodnota TTL na kontejneru je nastavena pomocí `AnalyticalStoreTimeT
 
 * Je-li k dispozici a hodnota je nastavena na "-1": analytické úložiště uchovává všechna historická data bez ohledu na uchovávání dat v transakčním úložišti. Toto nastavení indikuje, že analytické úložiště nemá nekonečné uchovávání vašich provozních dat.
 
-* Je-li k dispozici a hodnota je nastavena na nějaké kladné číslo "n", vyprší platnost položek z analytického úložiště "n" sekund po datu poslední změny v transakčním úložišti. Toto nastavení se dá využít, pokud chcete uchovávat provozní data po určitou dobu v analytickém úložišti bez ohledu na uchovávání dat v transakčním úložišti.
+* Je-li k dispozici a hodnota je nastavena na nějaké kladné číslo "n", vyprší platnost položek z analytického úložiště "n" sekund po datu poslední změny v transakčním úložišti. Toto nastavení se dá využít, pokud chcete uchovávat provozní data po určitou dobu v analytickém úložišti, bez ohledu na uchovávání dat v transakčním úložišti.
 
 Některé body ke zvážení:
 *   Až bude analytické úložiště povolené s analytickou hodnotou TTL, dá se později aktualizovat na jinou platnou hodnotu. 

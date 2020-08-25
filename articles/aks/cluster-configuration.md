@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008793"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752101"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -81,17 +81,17 @@ Pokud chcete vytvořit fondy uzlů s imagí AKS Ubuntu 16,04, můžete to uděla
 
 Modul runtime kontejneru je software, který spouští kontejnery a spravuje image kontejneru na uzlu. Modul runtime pomáhá abstraktním funkcím sys-Call nebo Operating System (OS) spouštět kontejnery v systému Linux nebo Windows. V dnešní době AKS používá [Moby](https://mobyproject.org/) (nadřazený Docker) jako svůj modul runtime kontejneru. 
     
-![Docker CRI](media/cluster-configuration/docker-cri.png)
+![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/)je modul runtime základního kontejneru kompatibilního s rozhraním [OCI](https://opencontainers.org/) (Open container Initiative), který poskytuje minimální sadu požadovaných funkcí pro spouštění kontejnerů a správu imagí na uzlu. V březnu [2017 byl tento](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) Cloud Native COMPUTE Foundation (CNCF). Aktuální verze Moby, kterou AKS používá ještě dnes, je postavená na začátku `containerd` , jak je uvedeno výše. 
+[`Containerd`](https://containerd.io/) je modul runtime základního kontejneru kompatibilního s rozhraním [OCI](https://opencontainers.org/) (Open container Initiative), který poskytuje minimální sadu požadovaných funkcí pro spouštění kontejnerů a správu imagí na uzlu. V březnu [2017 byl tento](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) Cloud Native COMPUTE Foundation (CNCF). Aktuální verze Moby, kterou AKS používá ještě dnes, je postavená na začátku `containerd` , jak je uvedeno výše. 
 
 U kontejnerů uzlů a fondů uzlů, které se nemluví s `dockershim` , bude kubelet komunikovat přímo s `containerd` modulem plug-in CRI (rozhraní Container Runtime) a při porovnání s implementací Docker CRI odstraní nadbytečné segmenty směrování v toku. V takovém případě se zobrazí lepší latence při spuštění a menší využití prostředků (CPU a paměti).
 
 Díky použití `containerd` pro uzly AKS zlepšuje latence při spuštění a snižuje spotřebu prostředků v modulu runtime kontejneru. Tato vylepšení jsou povolená touto novou architekturou, ve které kubelet mluví přímo s modulem `containerd` Plug-in CRI v době, kdy se v architektuře Moby/Docker kubelet `dockershim` před dosažením domluví k modulu a Docker `containerd` , takže bude mít další směrování v toku.
 
-![Docker CRI](media/cluster-configuration/containerd-cri.png)
+![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd`funguje na všech Kubernetes verze GA v AKS a v každé nadřazené Kubernetes verzi výše v 1,10 a podporuje všechny funkce Kubernetes a AKS.
+`Containerd` funguje na všech Kubernetes verze GA v AKS a v každé nadřazené Kubernetes verzi výše v 1,10 a podporuje všechny funkce Kubernetes a AKS.
 
 > [!IMPORTANT]
 > Až `containerd` bude všeobecně k dispozici na AKS, bude to výchozí a dostupná jenom možnost pro modul runtime kontejneru v nových clusterech. Můžete nadále používat Moby nodepools a clustery ve starších podporovaných verzích, dokud tyto nespadají do podpory. 
@@ -159,14 +159,14 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 Pokud chcete vytvořit fondy uzlů s modulem runtime Moby (Docker), můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
 
-### <a name="containerd-limitationsdifferences"></a>`Containerd`omezení/rozdíly
+### <a name="containerd-limitationsdifferences"></a>`Containerd` omezení/rozdíly
 
 * Pokud chcete použít `containerd` jako modul runtime kontejneru, musíte jako základní image operačního systému použít AKS Ubuntu 18,04.
 * I když je sada nástrojů Docker stále přítomna v uzlech, Kubernetes používá `containerd` jako modul runtime kontejneru. Proto vzhledem k tomu, že Moby/Docker nespravuje kontejnery vytvořené Kubernetes na uzlech, nemůžete zobrazit ani s nimi pracovat pomocí příkazů Docker (jako `docker ps` ) nebo rozhraní Docker API.
 * `containerd`V případě nástroje doporučujeme použít [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) jako náhradní příkaz CLI místo Docker CLI pro **řešení potíží s** podmnožinami, kontejnery a imagemi kontejnerů na uzlech Kubernetes (například `crictl ps` ). 
    * Neposkytuje kompletní funkce rozhraní příkazového řádku Docker. Je určený jenom pro odstraňování potíží.
-   * `crictl`nabízí více kubernetesch zobrazení kontejnerů, s koncepty, jako jsou lusky atd.
-* `Containerd`Nastaví protokolování pomocí standardizovaného `cri` formátu protokolování (to se liší od toho, co aktuálně pochází z ovladače rozhraní JSON Docker). Vaše řešení protokolování vyžaduje podporu `cri` formátu protokolování (například [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-enable-new-cluster.md)).
+   * `crictl` nabízí více kubernetesch zobrazení kontejnerů, s koncepty, jako jsou lusky atd.
+* `Containerd` Nastaví protokolování pomocí standardizovaného `cri` formátu protokolování (to se liší od toho, co aktuálně pochází z ovladače rozhraní JSON Docker). Vaše řešení protokolování vyžaduje podporu `cri` formátu protokolování (například [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-enable-new-cluster.md)).
 * Už nemůžete získat přístup k modulu Docker, `/var/run/docker.sock` ani použít Docker-in-Docker (DinD).
   * Pokud v současné době extrahujete protokoly aplikací nebo monitorovaná data z modulu Docker, použijte místo toho něco jako [Azure monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) . AKS navíc nepodporuje spouštění jakýchkoli příkazů mimo pásmo na uzlech agentů, které by mohly způsobit nestabilitu.
   * I když používáte Moby/Docker, sestavování imagí a přímé využití modulu Docker prostřednictvím výše uvedených metod se důrazně nedoporučuje. Kubernetes není plně vědoma těch spotřebovaných prostředků a tyto přístupy obsahují řadu problémů, které jsou [zde](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) popsané, a [tady](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), například.
@@ -236,7 +236,7 @@ Pokud chcete vytvořit regulární fondy uzlů Gen1, můžete to udělat tak, ž
 
 ## <a name="ephemeral-os-preview"></a>Dočasný operační systém (Preview)
 
-Ve výchozím nastavení se disk s operačním systémem pro virtuální počítač Azure automaticky replikuje do služby Azure Storage, aby se zabránilo ztrátě dat, aby se virtuální počítač mohl přeumístit na jiného hostitele. Vzhledem k tomu, že kontejnery nejsou navržené tak, aby měly trvalý místní stav, toto chování nabízí omezené hodnoty a zároveň poskytuje některé nevýhody, včetně pomalejšího zřizování uzlů a nižší latence čtení a zápisu.
+Ve výchozím nastavení se disk s operačním systémem pro virtuální počítač Azure automaticky replikuje do služby Azure Storage, aby se zabránilo ztrátě dat, aby se virtuální počítač mohl přeumístit na jiného hostitele. Vzhledem k tomu, že kontejnery nejsou navržené tak, aby měly trvalý místní stav, toto chování nabízí omezené hodnoty a zároveň poskytuje některé nevýhody, včetně pomalejšího zřizování uzlů a vyšší latence čtení a zápisu.
 
 Naproti tomu jsou dočasné disky s operačním systémem uložené jenom na hostitelském počítači, stejně jako na dočasném disku. To zajišťuje nižší latenci čtení a zápisu společně s rychlejším škálováním uzlů a upgrady clusteru.
 

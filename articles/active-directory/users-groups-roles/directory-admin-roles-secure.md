@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691356"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795911"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -37,7 +37,7 @@ Zabezpečení privilegovaného přístupu vyžaduje změny:
 * Procesy, postupy správy a Správa znalostí
 * Technické komponenty, jako jsou obrany hostitelů, ochrana účtů a Správa identit
 
-Zabezpečte privilegovaný přístup takovým způsobem, který je spravovaný a nahlášený ve službách Microsoftu, které vás zajímají. Pokud máte místní účty správců, přečtěte si pokyny pro místní a hybridní privilegovaný přístup ve službě Active Directory při [zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access).
+Zabezpečte privilegovaný přístup takovým způsobem, který je spravovaný a nahlášený ve službách Microsoftu, které vás zajímají. Pokud máte místní účty správců, přečtěte si pokyny pro místní a hybridní privilegovaný přístup ve službě Active Directory při [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 > [!NOTE]
 > Pokyny v tomto článku se primárně vztahují k funkcím Azure Active Directory, které jsou zahrnuté v Azure Active Directory Premiumch plánech P1 a P2. Azure Active Directory Premium P2 je součástí EMS E5 Suite a Microsoft 365 E5 Suite. V těchto pokynech předpokládáme, že vaše organizace už má pro vaše uživatele zakoupené licence Azure AD Premium P2. Pokud tyto licence nemáte, nemusí se některé doprovodné materiály vztahovat na vaši organizaci. V celém tomto článku se taky pojem globální správce (neboli globální správce) označuje jako správce společnosti nebo správce tenanta.
@@ -93,7 +93,7 @@ Po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele,
 * Správce Exchange
 * Správce SharePointu
 
-Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
+Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
 
 Odeberte všechny účty, které už v těchto rolích nepotřebujete. Pak zařaďte do kategorií zbývající účty, které jsou přiřazené rolím Správce:
 
@@ -130,7 +130,7 @@ Zvýšením možnosti "Přineste si vlastní zařízení" a práce z domácích 
 
 * Identifikujte uživatele, kteří mají administrativní role a služby, kde mohou spravovat.
 * Pomocí Azure AD PIM zjistíte, kteří uživatelé ve vaší organizaci mají přístup správce ke službě Azure AD.
-* Mimo role definované v Azure AD obsahuje sada Office 365 sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 Zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí, které nejsou spravované v Azure AD. Další informace najdete v tématu [o rolích správce office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [postupech zabezpečení pro Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
+* Mimo role definované v Azure AD obsahuje sada Office 365 sadu rolí správce, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce je namapována na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění provádět konkrétní úkoly v [centru pro správu Microsoft 365](https://admin.microsoft.com). Pomocí centra pro správu Microsoft 365 Zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí, které nejsou spravované v Azure AD. Další informace najdete v tématu [o rolích správce office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [postupech zabezpečení pro Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Seznamte se s inventářem ve službách, na kterých vaše organizace spoléhá, jako je Azure, Intune nebo Dynamics 365.
 * Zajistěte, aby byly účty používané pro účely správy:
 
@@ -169,11 +169,11 @@ Zapnout:
 
 * [Vícefaktorové ověřování pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) pro všechny uživatele ve vaší organizaci.
 
-Pokud používáte Windows Hello pro firmy, požadavek MFA se dá splnit pomocí přihlašovacího prostředí Windows Hello. Další informace najdete v tématu [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport).
+Pokud používáte Windows Hello pro firmy, požadavek MFA se dá splnit pomocí přihlašovacího prostředí Windows Hello. Další informace najdete v tématu [Windows Hello](/windows/uwp/security/microsoft-passport).
 
 #### <a name="configure-identity-protection"></a>Konfigurace identity Protection
 
-Azure AD Identity Protection je nástroj pro monitorování a vytváření sestav založený na algoritmech, který detekuje potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Můžete nakonfigurovat automatizované odpovědi na ty zjištěné podezřelé aktivity a provést odpovídající opatření k jejich vyřešení. Další informace najdete v článku [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Azure AD Identity Protection je nástroj pro monitorování a vytváření sestav založený na algoritmech, který detekuje potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Můžete nakonfigurovat automatizované odpovědi na ty zjištěné podezřelé aktivity a provést odpovídající opatření k jejich vyřešení. Další informace najdete v článku [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Získání zabezpečeného skóre Office 365 (při použití Office 365)
 
@@ -193,7 +193,7 @@ Navázání úspěšné schopnosti reakce na incidenty vyžaduje značné pláno
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Zabezpečení místních privilegovaných účtů správců, pokud se ještě neudělaly
 
-Pokud je vaše organizace Azure Active Directory synchronizovaná s místní službou Active Directory, postupujte podle pokynů v části [Průvodce zabezpečením privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Tato fáze zahrnuje:
+Pokud je vaše organizace Azure Active Directory synchronizovaná s místní službou Active Directory, postupujte podle pokynů v části [Průvodce zabezpečením privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access): Tato fáze zahrnuje:
 
 * Vytváření samostatných účtů správce pro uživatele, kteří potřebují provádět místní úlohy správy
 * Nasazení pracovních stanic s privilegovaným přístupem pro správce služby Active Directory
@@ -211,13 +211,13 @@ Použijte portál Enterprise a Azure Portal k identifikaci předplatných ve va�
 
 #### <a name="monitor-azure-activity"></a>Monitorování aktivity Azure
 
-Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v Azure. Nabízí informace o tom, kdo vytvořil, aktualizoval a odstranil prostředky a kdy k těmto událostem došlo. Další informace najdete v tématu [auditování a příjem oznámení o důležitých akcích ve vašem předplatném Azure](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
+Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v Azure. Nabízí informace o tom, kdo vytvořil, aktualizoval a odstranil prostředky a kdy k těmto událostem došlo. Další informace najdete v tématu [auditování a příjem oznámení o důležitých akcích ve vašem předplatném Azure](../../azure-monitor/platform/alerts-activity-log.md).
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Další kroky pro organizace, které spravují přístup k jiným cloudovým aplikacím přes Azure AD
 
 #### <a name="configure-conditional-access-policies"></a>Konfigurace zásad podmíněného přístupu
 
-Připravte zásady podmíněného přístupu pro místní a cloudové aplikace hostované v cloudu. Pokud máte zařízení připojená k síti na pracovišti, získáte další informace z [nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../active-directory-device-registration-on-premises-setup.md).
+Připravte zásady podmíněného přístupu pro místní a cloudové aplikace hostované v cloudu. Pokud máte zařízení připojená k síti na pracovišti, získáte další informace z [nastavení místního podmíněného přístupu pomocí registrace zařízení Azure Active Directory](../devices/overview.md).
 
 ## <a name="stage-3-take-control-of-admin-activity"></a>Fáze 3: převzetí kontroly nad aktivitou správy
 
@@ -255,7 +255,7 @@ Vyžadovat, aby vysoce vyexponované uživatelé měli moderní, silné ověřov
 * Útoky typu zosobnění
 * Útoky krádeže přihlašovacích údajů, jako je protokolování kláves, pass-the-hash a Pass-The-Ticket
 
-Nasazením pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadají svoje přihlašovací údaje v desktopovém prostředí, které nedošlo k posílení zabezpečení. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Nasazením pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadají svoje přihlašovací údaje v desktopovém prostředí, které nedošlo k posílení zabezpečení. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Kontrola Národního institutu standardů a technologických doporučení pro zpracování incidentů
 
@@ -279,7 +279,7 @@ Pokud již používáte Azure AD Privileged Identity Management, upravte časov�
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Určení vystavení přihlašovacích protokolů založených na heslech (Pokud používáte Exchange Online)
 
-Doporučujeme, abyste identifikovali každého potenciálního uživatele, který může být pro organizaci nevědomý, pokud jejich přihlašovací údaje byly ohroženy. Pro tyto uživatele založte požadavky na silné ověřování a pomocí podmíněného přístupu Azure AD je zajistěte, aby se přihlašovat k e-mailu pomocí uživatelského jména a hesla. Můžete zablokovat [starší ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)a pomocí Exchange Online můžete [zablokovat základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) .
+Doporučujeme, abyste identifikovali každého potenciálního uživatele, který může být pro organizaci nevědomý, pokud jejich přihlašovací údaje byly ohroženy. Pro tyto uživatele založte požadavky na silné ověřování a pomocí podmíněného přístupu Azure AD je zajistěte, aby se přihlašovat k e-mailu pomocí uživatelského jména a hesla. Můžete zablokovat [starší ověřování pomocí podmíněného přístupu](../conditional-access/block-legacy-authentication.md)a pomocí Exchange Online můžete [zablokovat základní ověřování](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) .
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Dokončení vyhodnocení přezkoumání rolí u rolí Office 365 (Pokud používáte Office 365)
 
@@ -291,7 +291,7 @@ Tuto sestavu můžete stáhnout ze [správy incidentů zabezpečení v systém M
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Pokračovat v zabezpečení místních privilegovaných účtů pro správu
 
-Pokud je váš Azure Active Directory připojený k místní službě Active Directory, postupujte podle pokynů v části [plán zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): fáze 2. V této fázi:
+Pokud je váš Azure Active Directory připojený k místní službě Active Directory, postupujte podle pokynů v části [plán zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access): fáze 2. V této fázi:
 
 * Nasazení pracovních stanic s privilegovaným přístupem pro všechny správce
 * Vyžadování MFA
@@ -314,11 +314,11 @@ Obvykle nemusíte uživatelům poskytovat neomezená oprávnění k vašim před
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementace rolí PIM pro správce Azure AD
 
-Využijte Privileged Identity Management s rolemi správce Azure AD ke správě, řízení a monitorování přístupu k prostředkům Azure. Ochrana osobních údajů je chráněná tím, že se snižuje doba expozice oprávnění a zvyšuje se jejich využití prostřednictvím sestav a výstrah. Další informace najdete v tématu [Správa přístupu RBAC k prostředkům Azure pomocí Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md).
+Využijte Privileged Identity Management s rolemi správce Azure AD ke správě, řízení a monitorování přístupu k prostředkům Azure. Ochrana osobních údajů je chráněná tím, že se snižuje doba expozice oprávnění a zvyšuje se jejich využití prostřednictvím sestav a výstrah. Další informace najdete v tématu [Správa přístupu RBAC k prostředkům Azure pomocí Privileged Identity Management](../../role-based-access-control/best-practices.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Použití integrace protokolů Azure k posílání relevantních protokolů Azure do systémů SIEM
 
-Integrace protokolů Azure umožňuje integrovat nezpracované protokoly z vašich prostředků Azure do stávajících systémů zabezpečení a SIEM (Security Information and Event Management) vaší organizace. [Integrace protokolu Azure](../../security/fundamentals/azure-log-integration-overview.md) shromažďuje události Windows z protokolů Windows Prohlížeč událostí a prostředků Azure z těchto zdrojů:
+Integrace protokolů Azure umožňuje integrovat nezpracované protokoly z vašich prostředků Azure do stávajících systémů zabezpečení a SIEM (Security Information and Event Management) vaší organizace. [Integrace protokolu Azure](/previous-versions/azure/security/fundamentals/azure-log-integration-overview) shromažďuje události Windows z protokolů Windows Prohlížeč událostí a prostředků Azure z těchto zdrojů:
 
 * Protokoly aktivit Azure
 * Upozornění služby Azure Security Center
@@ -332,7 +332,7 @@ Azure AD umožňuje automatizovat vytváření a údržbu identit uživatelů v 
 
 #### <a name="integrate-information-protection"></a>Integrace ochrany informací
 
-Microsoft Cloud App Security umožňuje prozkoumat soubory a nastavovat zásady na základě popisků klasifikace Azure Information Protection a umožnit tak lepší viditelnost a kontrolu nad daty v cloudu. Prohledávání a klasifikace souborů v cloudu a použití popisků služby Azure Information Protection. Další informace najdete v tématu [integrace Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
+Microsoft Cloud App Security umožňuje prozkoumat soubory a nastavovat zásady na základě popisků klasifikace Azure Information Protection a umožnit tak lepší viditelnost a kontrolu nad daty v cloudu. Prohledávání a klasifikace souborů v cloudu a použití popisků služby Azure Information Protection. Další informace najdete v tématu [integrace Azure Information Protection](/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Konfigurace podmíněného přístupu
 
@@ -340,7 +340,7 @@ Nakonfigurujte podmíněný přístup na základě skupiny, umístění a citliv
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>Monitorování aktivity v připojených cloudových aplikacích
 
-Doporučujeme použít [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) , abyste zajistili, že přístup uživatelů je taky chráněný v připojených aplikacích. Tato funkce zabezpečení podnikového přístupu ke cloudovým aplikacím a zabezpečení účtů správců vám umožní:
+Doporučujeme použít [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) , abyste zajistili, že přístup uživatelů je taky chráněný v připojených aplikacích. Tato funkce zabezpečení podnikového přístupu ke cloudovým aplikacím a zabezpečení účtů správců vám umožní:
 
 * Rozšiřování viditelnosti a řízení pro cloudové aplikace
 * Vytvoření zásad pro přístup, aktivity a sdílení dat
@@ -348,7 +348,7 @@ Doporučujeme použít [Microsoft Cloud App Security](https://docs.microsoft.com
 * Zabránit úniku dat
 * Minimalizace rizik a automatizované ochrany před hrozbami a vynucení zásad
 
-Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu věnovaném [integraci Siem](https://docs.microsoft.com/cloud-app-security/siem).
+Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu věnovaném [integraci Siem](/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses"></a>Fáze 4: pokračování v budování obrany
 
@@ -385,7 +385,7 @@ Zjistěte, jestli jsou aktuální předdefinované role správce Azure AD pořá
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Kontrola uživatelů, kteří mají správu zařízení připojených k Azure AD
 
-Další informace najdete v tématu [jak nakonfigurovat zařízení připojená k hybridním Azure Active Directory](../device-management-hybrid-azuread-joined-devices-setup.md).
+Další informace najdete v tématu [jak nakonfigurovat zařízení připojená k hybridním Azure Active Directory](../devices/hybrid-azuread-join-plan.md).
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>Kontrola členů [předdefinovaných rolí správce sady Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
 Pokud nepoužíváte Office 365, tento krok přeskočte.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 45e091fe1ed77a4efc90d426b1d9a2842ae00175
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: aa16952d2b2dff6f69abfc37090a9e00b7d48a27
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88725444"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751133"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce dat z vizitky pomocí REST API pro rozpoznávání formulářů pomocí Pythonu
 
@@ -89,7 +89,7 @@ Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýz
 Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec následuje `operations/` ID operace.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults{operationID}
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>Získání výsledků obchodních karet
@@ -127,12 +127,124 @@ while n_try < n_tries:
 1. Znovu použijte `python` příkaz ke spuštění ukázky. Například, `python form-recognizer-businesscards.py`.
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
-
-Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat obchodní kartu** . Pak budou ve formátu JSON vytištěna extrahovaná textová data. `"recognitionResults"`Pole obsahuje všechny řádky textu, které byly extrahovány z vizitky, a `"understandingResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části vizitky.
-
 ![Firemní karta od společnosti Contoso](../media/business-card-english.jpg)
 
-`"recognitionResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"understandingResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
+Tato ukázka znázorňuje výstup JSON vrácený nástrojem pro rozpoznávání formulářů. Z důvodu čitelnosti tohoto příkladu byly tyto ukázky zkráceny.
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-06-04T08:19:29Z",
+    "lastUpdatedDateTime": "2020-06-04T08:19:35Z",
+    "analyzeResult": {
+        "version": "2.1.1",
+        "readResults": [
+            {
+                "page": 1,
+                "angle": -17.0956,
+                "width": 4032,
+                "height": 3024,
+                "unit": "pixel"
+            }
+        ],
+        "documentResults": [
+            {
+                "docType": "prebuilt:businesscard",
+                "pageRange": [
+                    1,
+                    1
+                ],
+                "fields": {
+                    "ContactNames": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "object",
+                                "valueObject": {
+                                    "FirstName": {
+                                        "type": "string",
+                                        "valueString": "Avery",
+                                        "text": "Avery",
+                                        "boundingBox": [
+                                            703,
+                                            1096,
+                                            1134,
+                                            989,
+                                            1165,
+                                            1109,
+                                            733,
+                                            1206
+                                        ],
+                                        "page": 1
+                                },
+                                "text": "Dr. Avery Smith",
+                                "boundingBox": [
+                                    419.3,
+                                    1154.6,
+                                    1589.6,
+                                    877.9,
+                                    1618.9,
+                                    1001.7,
+                                    448.6,
+                                    1278.4
+                                ],
+                                "confidence": 0.993
+                            }
+                        ]
+                    },
+                    "Emails": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "avery.smith@contoso.com",
+                                "text": "avery.smith@contoso.com",
+                                "boundingBox": [
+                                    2107,
+                                    934,
+                                    2917,
+                                    696,
+                                    2935,
+                                    764,
+                                    2126,
+                                    995
+                                ],
+                                "page": 1,
+                                "confidence": 0.99
+                            }
+                        ]
+                    },
+                    "Websites": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "https://www.contoso.com/",
+                                "text": "https://www.contoso.com/",
+                                "boundingBox": [
+                                    2121,
+                                    1002,
+                                    2992,
+                                    755,
+                                    3014,
+                                    826,
+                                    2143,
+                                    1077
+                                ],
+                                "page": 1,
+                                "confidence": 0.995
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat obchodní kartu** . `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je název společnosti, křestní jméno, příjmení, telefon a tak dále.
+
 
 ## <a name="next-steps"></a>Další kroky
 

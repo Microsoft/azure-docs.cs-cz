@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
 ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83201515"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

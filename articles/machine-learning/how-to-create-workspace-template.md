@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192337"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751712"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -165,158 +165,50 @@ Další informace najdete v tématu věnovaném [šifrování v klidovém umíst
 
 > [!IMPORTANT]
 > Než použijete tuto šablonu, musí vaše předplatné splňovat tyto požadavky:
->
-> * Aplikace __Azure Machine Learning__ musí být __přispěvatelem__ vašeho předplatného Azure.
 > * Musíte mít existující Azure Key Vault, která obsahuje šifrovací klíč.
-> * V Azure Key Vault musíte mít zásadu přístupu, která uděluje přístup k aplikaci __Azure Cosmos DB__ k __získání__, __zabalení__a __rozbalení__ .
 > * Azure Key Vault musí být ve stejné oblasti, ve které plánujete vytvořit pracovní prostor Azure Machine Learning.
+> * Je nutné zadat ID Azure Key Vault a identifikátor URI šifrovacího klíče.
 
-Pokud __chcete přidat aplikaci Azure Machine Learning jako přispěvatele__, použijte následující příkazy:
+__Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_uri` parametry (identifikátor URI klíče) vyžadované touto šablonou, použijte následující postup:    
 
-1. Přihlaste se k účtu Azure a Získejte ID vašeho předplatného. Toto předplatné musí být stejné, které obsahuje váš pracovní prostor Azure Machine Learning.  
+1. Chcete-li získat ID Key Vault, použijte následující příkaz:  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > Pokud chcete vybrat jiné předplatné, použijte `az account set -s <subscription name or ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > Pokud chcete vybrat jiné předplatné, použijte `Az-SetContext -SubscriptionId <subscription ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
-
-    ---
-
-1. K získání ID objektu aplikace Azure Machine Learning použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    Tento příkaz vrátí ID objektu, což je identifikátor GUID.
-
-1. Pokud chcete přidat ID objektu jako přispěvatele k vašemu předplatnému, použijte následující příkaz. Nahraďte `<object-ID>` ID objektu instančního objektu. Nahraďte `<subscription-ID>` názvem nebo ID vašeho předplatného Azure:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. Pokud chcete vygenerovat klíč v existující Azure Key Vault, použijte jeden z následujících příkazů. Nahraďte `<keyvault-name>` názvem trezoru klíčů. Nahraďte `<key-name>` názvem, který se má použít pro klíč:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-Pokud chcete __do trezoru klíčů přidat zásady přístupu, použijte následující příkazy__:
+    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .  
 
-1. K získání ID objektu aplikace Azure Cosmos DB použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
+1. Chcete-li získat hodnotu identifikátoru URI pro spravovaný klíč zákazníka, použijte následující příkaz:    
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    Tento příkaz vrátí ID objektu, což je identifikátor GUID. Uložit pro pozdější
+    Tento příkaz vrátí hodnotu podobnou `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` . 
 
-1. Chcete-li nastavit zásadu, použijte následující příkaz. Nahraďte `<keyvault-name>` názvem existující Azure Key Vault. Nahraďte `<object-ID>` identifikátorem GUID z předchozího kroku:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-__Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_uri` parametry (identifikátor URI klíče) vyžadované touto šablonou, použijte následující postup:
-
-1. Chcete-li získat ID Key Vault, použijte následující příkaz:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
-
-1. Chcete-li získat hodnotu identifikátoru URI pro spravovaný klíč zákazníka, použijte následující příkaz:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    Tento příkaz vrátí hodnotu podobnou `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-Po úspěšném dokončení výše uvedených kroků nasaďte šablonu, jako byste to udělali normálně. Pokud chcete povolit použití spravovaných klíčů zákazníka, nastavte následující parametry:
+Pokud chcete povolit použití zákaznických klíčů, nastavte při nasazování šablony následující parametry:
 
 * **Encryption_status** **Povolit**.
 * **cmk_keyvault** na `cmk_keyvault` hodnotu získanou v předchozích krocích.

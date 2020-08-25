@@ -1,14 +1,14 @@
 ---
 title: Dokončení zotavení po havárii virtuálních počítačů
-description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuálních počítačů pomocí funkce AVS
+description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749956"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752265"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
 
@@ -46,7 +46,7 @@ Zadejte oblast **zotavení po havárii** a klikněte na **chránit virtuální p
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="Výběr chránit virtuální počítače" border="true":::
 
-V okně, které se otevře, vyberte zdroj a vzdálené lokality, vzdálený web v tomto případě by měl být privátní cloud využívající funkci AVS.
+V okně, které se otevře, vyberte zdroj a vzdálené lokality, vzdálený web v tomto případě by měl být privátní cloud řešení Azure VMware.
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="okno pro ochranu virtuálních počítačů" border="true":::
 
@@ -56,7 +56,7 @@ V případě potřeby vyberte výchozí možnosti replikace:
 
 - **Povolit Quiescence:** Pozastaví virtuální počítač, aby se zajistila synchronizace konzistentní kopie na vzdálené lokalitě.
 
-- **Cílové úložiště:** Vyberte vzdálené úložiště dat pro chráněné virtuální počítače. V privátním cloudu služby AVS by měl být tento výběr úložiště dat síti vSAN.
+- **Cílové úložiště:** Vyberte vzdálené úložiště dat pro chráněné virtuální počítače. V privátním cloudu řešení VMware Azure by měl být tento výběr úložiště dat síti vSAN.
 
 - **Kontejner Compute:** Vzdálený cluster vSphere nebo fond zdrojů.
 
@@ -95,7 +95,7 @@ Když je virtuální počítač zapnutý, spustí se synchronizace procesu na vz
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>Dokončit test obnovení virtuálních počítačů
 
-Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem AVS. V rámci **modulu plug-in HCX**v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace. Vyberte **test obnovit virtuální počítač**.
+Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, což je privátní cloud řešení Azure VMware. V rámci **modulu plug-in HCX**v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace. Vyberte **test obnovit virtuální počítač**.
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="Vybrat test obnovit virtuální počítač" border="true":::
 
@@ -105,7 +105,7 @@ V novém okně vyberte možnosti pro test. Vyberte snímek, který chcete použ�
 
 Po kliknutí na **test**bude zahájena operace obnovení.
 
-Po dokončení operace obnovení testu můžete nový virtuální počítač zkontrolovat v rámci služby AVS Private Cloud vCenter.
+Po dokončení operace obnovení testovacího prostředí se dá nový virtuální počítač vrátit do úložiště Azure VMware privátního cloudu vCenter.
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="ověřit operaci obnovení" border="true":::
 
@@ -115,7 +115,7 @@ Nakonec po otestování na virtuálním počítači nebo v jakékoli aplikaci, k
 
 ## <a name="recover-virtual-machines"></a>Obnovení virtuálních počítačů
 
-Přihlaste se k **vSphere klientovi** na vzdálené lokalitě, která je privátním cloudem AVS, a získejte přístup k **modulu plug-in HCX**.
+Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
 
 V případě scénáře obnovení je skupina virtuálních počítačů použitá v tomto příkladu.
 
@@ -131,7 +131,7 @@ Po dokončení operace obnovení se nové virtuální počítače zobrazí v inv
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>Dokončení zpětné replikace na virtuálních počítačích
 
-Přihlaste se k **vSphere klientovi** v privátním cloudu služby AVS a přístup k **modulu plug-in HCX**.
+Přihlaste se ke **klientovi vSphere** v privátním cloudu řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
 Před zahájením zpětné replikace je nutné, aby původní virtuální počítače ve zdrojové lokalitě byly vypnuté. Tato operace se nezdařila, pokud nejsou virtuální počítače vypnuty.
 
 V seznamu vyberte virtuální počítače, které mají být replikovány zpátky do zdrojové lokality, otevřete nabídku **Akce** a vyberte možnost **obrátit**. V automaticky otevíraném okně kliknutím na tlačítko **zpět** spusťte replikaci.
