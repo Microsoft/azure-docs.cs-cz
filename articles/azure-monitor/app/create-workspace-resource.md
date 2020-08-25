@@ -4,13 +4,13 @@ description: Přečtěte si o krocích požadovaných k povolení nových Azure 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824983"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783837"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Prostředky Application Insights založené na pracovním prostoru (Preview)
 
@@ -27,7 +27,7 @@ Pokud chcete vyzkoušet nové prostředí, přihlaste se k [Azure Portal](https:
 
 Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../learn/quick-create-workspace.md).
 
-Pro **prostředky založené na pracovním prostoru verze Public Preview jsou aktuálně omezeny na západní USA 2, východní USA a střed USA – jih.**
+**Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a Azure Government**
 
 Po vytvoření prostředku se v podokně **přehledu** zobrazí příslušné informace o pracovním prostoru:
 
@@ -53,10 +53,10 @@ Pro monitorování aplikací založených na kódu stačí nainstalovat příslu
 Podrobnou dokumentaci k nastavení Application Insights SDK pro monitorování založené na kódu najdete v dokumentaci ke konkrétnímu jazyku nebo rozhraní:
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core](./asp-net-core.md)
+- [ASP.NET Core ](./asp-net-core.md)
 - [Úlohy na pozadí & moderních konzolových aplikací (.NET/.NET Core)](./worker-service.md)
 - [Klasické konzolové aplikace (.NET)](./console.md) 
-- [Kompilátor](./java-get-started.md?tabs=maven)
+- [Kompilátor ](./java-get-started.md?tabs=maven)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -79,7 +79,7 @@ Abyste měli přístup k verzi Preview Application Insights příkazy rozhraní 
  az extension add -n application-insights
 ```
 
-Pokud tento příkaz nespustíte `az extension add` , zobrazí se chybová zpráva s oznámením:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Pokud tento příkaz nespustíte `az extension add` , zobrazí se chybová zpráva s oznámením: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Nyní můžete spustit následující a vytvořit prostředek Application Insights:
 
@@ -184,6 +184,14 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 
 ```
+
+## <a name="new-capabilities"></a>Nové funkce
+
+Application Insights na základě pracovního prostoru vám umožní využít výhod všech nejnovějších možností Azure Monitor, včetně těchto:
+
+* [Klíče spravované zákazníkem (CMK)](../platform/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
+* [Privátní odkaz Azure](../platform/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
+* [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
 
 ## <a name="modifying-the-associated-workspace"></a>Změna přidruženého pracovního prostoru
 

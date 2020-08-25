@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208197"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798291"
 ---
-# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke skupinám cloudu
+# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
 
 Tady jsou některé běžné dotazy a tipy pro řešení potíží při přiřazování rolí do skupin v Azure Active Directory (Azure AD).
 
@@ -40,8 +40,8 @@ Odpověď **: uživatel**může narazit na čtečku adresářů pomocí skupiny 
 
 **A:** Uživatel může být vlastníkem skupiny přiřazení role. Chráníme vlastníky rolí a přiřazení skupin, abyste se vyhnuli zvýšení oprávnění. Příkladem může být, pokud je skupina Contoso_Security_Admins přiřazena k roli správce zabezpečení, kde Jan je vlastníkem skupiny a Alice je správcem hesel v organizaci. Pokud tato ochrana nebyla přítomna, mohl by Alice resetovat přihlašovací údaje Bobovi a převzít její identitu. Potom Alice může přidat do skupiny skupinu Contoso_Security_Admins, aby se stala správcem zabezpečení v organizaci. Pokud chcete zjistit, jestli je uživatel vlastníkem skupiny, získejte seznam vlastněných objektů daného uživatele a podívejte se, jestli má některá z těchto skupin isAssignableToRole nastavenou na hodnotu true. Pokud ano, pak je tento uživatel chráněný a chování je záměrné. Informace o tom, jak vlastní objekty získat, najdete v těchto dokumentech:
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [Seznam ownedObjects](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [Seznam ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **Otázka:** Můžu vytvořit kontrolu přístupu pro skupiny, které se dají přiřadit k rolím Azure AD (konkrétně skupiny s vlastností isAssignableToRole nastavenou na hodnotu true)?  
 

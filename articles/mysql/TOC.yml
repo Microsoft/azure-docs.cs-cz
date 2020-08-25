@@ -262,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: Řešení potíží
       items:
+        - name: Odstraňování běžných chyb
+          href: howto-troubleshoot-common-errors.md
         - name: Řešení chyb připojení
           href: howto-troubleshoot-common-connection-issues.md
         - name: Řešení potíží s výkonem dotazů

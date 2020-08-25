@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s AWS
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611428"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762415"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -379,7 +379,7 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 **Odpověď:** V současné době nepodporujeme import vyhodnocení pro tento pracovní postup. Jako alternativní řešení můžete vyexportovat posouzení a pak ručně vybrat doporučení pro virtuální počítač v kroku povolení replikace.
   
 **Otázka:** Při pokusu o zjištění virtuálních počítačů s AWS se zobrazí chyba "Nepodařilo se načíst GUID systému BIOS".   
-**Odpověď:** Zkontrolujte podporované operační systémy pro virtuální počítače s AWS.  
+**Odpověď:** Pro ověřování vždy používejte přihlašovací jméno uživatele a ne každého pseudo uživatele. Také si přečtěte podporované operační systémy pro virtuální počítače s AWS.  
 
 **Otázka:** Můj stav replikace neprobíhá.    
 **Odpověď:** Ověřte, jestli vaše zařízení replikace splňuje požadavky. Ujistěte se, že jste povolili požadované porty na zařízení replikace TCP port 9443 a HTTPS 443 pro přenos dat. Ujistěte se, že nejsou k dispozici žádné zastaralé duplicitní verze replikačního zařízení připojeného ke stejnému projektu.   

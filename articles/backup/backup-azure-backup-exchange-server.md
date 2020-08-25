@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 2d547b1d86b95a4f90d3faaa2f676c7cc37255d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c9d54bb8e9875bcd622c5ce5343dc6f8baa3f2be
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091126"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763571"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 
@@ -32,7 +32,7 @@ Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](b
 * Přihlašovací údaje agenta a trezoru se stáhly na server DPM.
 * Agent je nainstalován na serveru DPM.
 * Přihlašovací údaje trezoru se použily k registraci serveru DPM.
-* Pokud chráníte Exchange 2016, upgradujte prosím na DPM 2012 R2 UR9 nebo novější.
+* Pokud chráníte Exchange 2016, upgradujte na DPM 2012 R2 UR9 nebo novější.
 
 ## <a name="dpm-protection-agent"></a>Agent ochrany aplikace DPM
 
@@ -62,7 +62,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 
    * Chci krátkodobou ochranu pomocí disku.
    * Chci online ochranu.
-6. Klikněte na **Next** (Další).
+6. Klikněte na **Další**.
 7. Zaškrtněte možnost **Spustit Eseutil pro kontrolu integrity dat** , pokud chcete ověřit integritu databází serveru Exchange.
 
     Po výběru této možnosti se kontrola konzistence zálohy spustí na serveru DPM, aby se zabránilo vstupně-výstupnímu přenosu generovanému spuštěním příkazu **eseutil** na serveru Exchange.
@@ -72,7 +72,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
    > ![Chyba programu Eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Klikněte na **Next** (Další).
+8. Klikněte na **Další**.
 9. Vyberte databázi pro **zálohování kopírováním**a pak klikněte na **Další**.
 
    > [!NOTE]

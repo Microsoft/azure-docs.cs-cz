@@ -3,12 +3,12 @@ title: Řešení potíží s agentem Azure Backup
 description: V tomto článku se dozvíte, jak řešit potíže s instalací a registrací agenta Azure Backup.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564108"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763503"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -204,7 +204,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, a to ani po ně
 
 5. Klikněte pravým tlačítkem na **neznámé zařízení** a vyberte **aktualizovat software ovladače**.
 
-6. Aktualizujte ovladač tak, že vyberete možnost pro **Automatické hledání aktualizovaného softwaru ovladače**. Tato aktualizace by měla změnit **neznámé zařízení** **iniciátoru iSCSI společnosti Microsoft**:
+6. Aktualizujte ovladač tak, že vyberete možnost pro  **Automatické hledání aktualizovaného softwaru ovladače**. Tato aktualizace by měla změnit **neznámé zařízení** **iniciátoru iSCSI společnosti Microsoft**:
 
     ![Snímek obrazovky Azure Backup Device Manager se zvýrazněnými řadiči úložiště](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
@@ -238,15 +238,15 @@ Pokud není k dispozici dostatek úložného prostoru stínové kopie, který je
 
 - Ověřte aktuální prostor stínového úložiště z příkazového řádku se zvýšenými oprávněními:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Zvětšete prostor pro stín úložiště pomocí příkazu níže:<br/>
+- Zvětšete prostor pro stín úložiště pomocí následujícího příkazu:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Jiný proces nebo antivirový software blokuje přístup ke složce mezipaměti.
 
 Pokud máte na serveru nainstalovaný antivirový software, přidejte potřebná pravidla vyloučení do kontroly antivirového programu pro tyto soubory a složky:  
 
-- Pomocná složka Výchozí umístění je`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-- Složka Bin v`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
+- Pomocná složka Výchozí umístění je `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- Složka Bin v `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,25 +258,25 @@ Tato část se zabývá běžnými chybami, ke kterým dojde při použití agen
 
 Chybová zpráva | Doporučená akce
 --|--
-Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup ke kontrolnímu součtu zálohování uloženému na pomocném místě. | Pokud chcete tento problém vyřešit, proveďte níže uvedený postup a restartujte server. <br/> - [Ověřte, jestli existuje antivirový nebo jiný proces, který by uzamknul soubory s pomocným umístěním.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup ke kontrolnímu součtu zálohování uloženému na pomocném místě. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Ověřte, jestli existuje antivirový nebo jiný proces, který by uzamknul soubory s pomocným umístěním.](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Chybová zpráva | Doporučená akce
 --|--
-Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup k pomocnému místu za účelem inicializace virtuálního pevného disku. | Pokud chcete tento problém vyřešit, proveďte níže uvedený postup a restartujte server. <br/> - [Zjistit, jestli antivirová nebo jiné procesy uzamyká soubory s pomocným umístěním](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup k pomocnému místu za účelem inicializace virtuálního pevného disku. | Pokud chcete tento problém vyřešit, proveďte následující kroky a restartujte server. <br/> - [Zjistit, jestli antivirová nebo jiné procesy uzamyká soubory s pomocným umístěním](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Zkontroluje, jestli je pomocné umístění platné a dostupné pro agenta MARS.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Chybová zpráva | Doporučená akce
 --|--
-Zálohování se nepovedlo kvůli nedostatku úložiště na svazku, kde se nachází pomocná složka. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/>- [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#prerequisites)
+Zálohování se nepovedlo kvůli nedostatku úložiště na svazku, kde se nachází pomocná složka. | Chcete-li tento problém vyřešit, ověřte následující kroky a opakujte operaci:<br/>- [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Chybová zpráva | Doporučená akce
 --|--
-Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/> - [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#prerequisites)
+Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte následující kroky a opakujte operaci:<br/> - [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#prerequisites)
 
 ## <a name="next-steps"></a>Další kroky
 

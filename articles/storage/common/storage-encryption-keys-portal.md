@@ -6,18 +6,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/31/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a216714939dc45fd1b220f24414a527969ab7fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a506f59d3f2d331e4c7680565f3c110b9cd12956
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029558"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799161"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem se službou Azure Key Vault pomocí webu Azure Portal
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
@@ -45,11 +45,11 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 
 ## <a name="specify-a-key"></a>Zadat klíč
 
-Po povolení klíčů spravovaných zákazníkem budete mít možnost zadat klíč, který chcete přidružit k účtu úložiště. Můžete také určit, jestli má Azure Storage automaticky otočit klíč spravovaný zákazníkem, nebo jestli se má klíč otočit ručně.
+Po povolení klíčů spravovaných zákazníkem budete mít možnost zadat klíč, který chcete přidružit k účtu úložiště. Můžete také určit, zda má Azure Storage automaticky aktualizovat klíč spravovaný zákazníkem na nejnovější verzi nebo zda bude verze klíče aktualizována ručně.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Zadat klíč z trezoru klíčů
 
-Když vyberete klíč spravovaný zákazníkem z trezoru klíčů, automaticky se povolí automatické otočení klíče. Chcete-li ručně spravovat verzi klíče, zadejte místo toho identifikátor URI klíče a zahrňte verzi klíče. Další informace najdete v tématu [určení klíče jako identifikátoru URI](#specify-a-key-as-a-uri).
+Když vyberete klíč spravovaný zákazníkem z trezoru klíčů, je povolená Automatická aktualizace verze klíče. Chcete-li ručně spravovat verzi klíče, zadejte místo toho identifikátor URI klíče a zahrňte verzi klíče. Další informace najdete v tématu [určení klíče jako identifikátoru URI](#specify-a-key-as-a-uri).
 
 Pokud chcete zadat klíč z trezoru klíčů, použijte následující postup:
 
@@ -64,7 +64,12 @@ Pokud chcete zadat klíč z trezoru klíčů, použijte následující postup:
 
 ### <a name="specify-a-key-as-a-uri"></a>Zadat klíč jako identifikátor URI
 
-Pokud zadáte identifikátor URI klíče, vynechejte verzi klíče, aby se povolilo automatické otočení klíče spravovaného zákazníkem. Pokud zahrnete verzi klíče do identifikátoru URI klíče, nebude automatické otočení zapnuté a Vy musíte spravovat verzi klíče sami. Další informace o aktualizaci verze klíče najdete v tématu [Ruční aktualizace verze klíče](#manually-update-the-key-version).
+Azure Storage může automaticky aktualizovat klíč spravovaný zákazníkem, který se používá k šifrování, aby používal nejnovější verzi klíče. Při otočení klíče spravovaného zákazníkem v Azure Key Vault Azure Storage automaticky začít používat k šifrování nejnovější verzi klíče.
+
+> [!NOTE]
+> Pokud chcete klíč otočit, vytvořte v Azure Key Vault novou verzi klíče. Azure Storage nezpracovává rotaci klíče v Azure Key Vault, takže budete muset klíč otočit ručně nebo vytvořit funkci, která ho otočí podle plánu.
+
+Když zadáte identifikátor URI klíče, vynechejte verzi klíče z identifikátoru URI, aby se povolily automatické aktualizace na nejnovější verzi klíče. Pokud zahrnete klíčovou verzi do identifikátoru URI klíče, nepovolí se automatické aktualizace a Vy musíte spravovat verzi klíče sami. Další informace o aktualizaci verze klíče najdete v tématu [Ruční aktualizace verze klíče](#manually-update-the-key-version).
 
 Pokud chcete zadat klíč jako identifikátor URI, použijte následující postup:
 
@@ -74,25 +79,25 @@ Pokud chcete zadat klíč jako identifikátor URI, použijte následující post
     ![Snímek obrazovky s identifikátorem URI klíče trezoru klíčů](media/storage-encryption-keys-portal/portal-copy-key-identifier.png)
 
 1. V nastavení **šifrovacího klíče** pro váš účet úložiště klikněte na možnost **zadat identifikátor URI klíče** .
-1. Vložte identifikátor URI, který jste zkopírovali do pole **identifikátor URI klíče** . Pokud chcete povolit automatické otočení, vynechejte verzi klíče z identifikátoru URI.
+1. Vložte identifikátor URI, který jste zkopírovali do pole **identifikátor URI klíče** . Pokud chcete povolit automatickou aktualizaci verze klíče, vynechejte verzi klíče z identifikátoru URI.
 
    ![Snímek obrazovky ukazující, jak zadat identifikátor URI klíče](./media/storage-encryption-keys-portal/portal-specify-key-uri.png)
 
 1. Zadejte předplatné, které obsahuje Trezor klíčů.
 1. Uložte provedené změny.
 
-Po zadání klíče Azure Portal určuje, jestli je povolené automatické střídání klíčů, a zobrazí verzi klíče, která se v tuto chvíli používá pro šifrování.
+Po zadání klíče Azure Portal určuje, jestli je povolená Automatická aktualizace verze klíče, a zobrazí verzi klíče, která se v tuto chvíli používá pro šifrování.
 
-:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky znázorňující automatické rotaci povolených klíčů spravovaných zákazníkem":::
+:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky s automatickou aktualizací aktivované verze klíče":::
 
 ## <a name="manually-update-the-key-version"></a>Ruční aktualizace verze klíče
 
-Ve výchozím nastavení Azure Storage automaticky střídat klíče spravované zákazníkem, jak je popsáno v předchozích částech. Pokud se rozhodnete spravovat verzi klíče sami, musíte aktualizovat klíčovou verzi zadanou pro účet úložiště pokaždé, když vytvoříte novou verzi klíče.
+Ve výchozím nastavení se při vytváření nové verze klíče spravovaného zákazníkem v Key Vault Azure Storage automaticky používá nová verze pro šifrování pomocí klíčů spravovaných zákazníkem, jak je popsáno v předchozích částech. Pokud se rozhodnete spravovat verzi klíče sami, musíte aktualizovat verzi klíče, která je přidružená k účtu úložiště pokaždé, když vytvoříte novou verzi klíče.
 
 Pokud chcete aktualizovat účet úložiště, aby používal novou verzi klíče, postupujte takto:
 
 1. Přejděte k účtu úložiště a zobrazte nastavení **šifrování** .
-1. Zadejte identifikátor URI pro novou verzi klíče. Alternativně můžete vybrat Trezor klíčů a klíč znovu pro aktualizaci verze.
+1. Zadejte identifikátor URI nové verze klíče. Alternativně můžete vybrat Trezor klíčů a klíč znovu pro aktualizaci verze.
 1. Uložte provedené změny.
 
 ## <a name="switch-to-a-different-key"></a>Přepnout na jiný klíč

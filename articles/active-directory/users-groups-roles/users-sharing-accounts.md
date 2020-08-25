@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164219"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798393"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 
@@ -59,7 +59,7 @@ Funkce Azure AD, které umožňují sdílení účtů, zahrnují:
 * Agent jednotného přihlašování k heslům
 * [Přiřazení skupiny](groups-self-service-management.md)
 * Vlastní aplikace pro hesla
-* [Řídicí panel a sestavy využití aplikací](../active-directory-passwords-get-insights.md)
+* [Řídicí panel a sestavy využití aplikací](../authentication/howto-sspr-reporting.md)
 * Portál pro přístup koncových uživatelů
 * [Proxy aplikace](../manage-apps/application-proxy.md)
 * [Tržiště služby Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Pokud chcete ke sdílení účtu použít Azure AD, musíte:
 * Konfigurace aplikace pro jednotné přihlašování k heslům (SSO)
 * Použijte [přiřazení na základě skupin](groups-saasapps.md) a vyberte možnost zadání sdíleného přihlašovacího údaje.
 
-Sdílený účet můžete také lépe zabezpečit pomocí Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací pomocí služby Azure AD](../authentication/concept-mfa-whichversion.md)) a můžete delegovat schopnost spravovat, kdo má k aplikaci přístup pomocí [samoobslužné správy skupin Azure AD](groups-self-service-management.md) .
+Sdílený účet můžete také lépe zabezpečit pomocí Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací pomocí služby Azure AD](../authentication/concept-mfa-howitworks.md)) a můžete delegovat schopnost spravovat, kdo má k aplikaci přístup pomocí [samoobslužné správy skupin Azure AD](groups-self-service-management.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Ochrana aplikací pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
+* [Ochrana aplikací pomocí podmíněného přístupu](../conditional-access/overview.md)
 * [Samoobslužná správa skupin/SSAA](groups-self-service-management.md)

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057923"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798512"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Přiřaďte vlastní role správců pomocí rozhraní Microsoft Graph API v Azure Active Directory 
 
@@ -136,7 +136,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-Pro rozsah jednotek správy je povolena pouze podmnožina předdefinovaných rolí. V [této dokumentaci](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) najdete seznam integrovaných rolí podporovaných prostřednictvím jednotky pro správu.
+Pro rozsah jednotek správy je povolena pouze podmnožina předdefinovaných rolí. V [této dokumentaci](./roles-admin-units-assign-roles.md) najdete seznam integrovaných rolí podporovaných prostřednictvím jednotky pro správu.
 
 ## <a name="get-operations-on-roleassignment"></a>ZÍSKAT operace na RoleAssignment
 

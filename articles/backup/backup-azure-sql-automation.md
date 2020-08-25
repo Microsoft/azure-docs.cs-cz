@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6bd119b743ad83bcab9f92d386a5091593f6a5c0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 51c3aa13b088eb056e8b7dcaa2af80b83a606a54
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761317"
+ms.locfileid: "88763401"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 

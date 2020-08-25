@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513719"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762313"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
@@ -25,10 +25,6 @@ Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat
 ## <a name="routing-concepts"></a><a name="concepts"></a>Koncepty směrování
 
 V následujících částech najdete popis klíčových konceptů v směrování virtuálního rozbočovače.
-
-> [!NOTE]
-> Některé z těchto nových konceptů tabulky směrování centra, přidružení, šíření a statických tras v připojení k virtuální síti se pořád můžou vydávat a očekávat v týdnu 17 VIII.
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Tabulka směrování centra
 
@@ -77,9 +73,9 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Standardní virtuální zákazníci sítě WAN s předem existujícími trasami ve virtuálním centru**:
 
-Pokud chcete používat nové funkce směrovací tabulky, počkejte prosím, než se dokončí týden od srpna 17, aby se zavedla implementace v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
+Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
 
-* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí 17 v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Doporučení pro směrování virtuálních sítí WAN
 
@@ -89,6 +85,8 @@ Při konfiguraci směrování virtuální sítě WAN Vezměte v úvahu následuj
 * Všechna připojení větví potřebují rozšířit své trasy do stejné sady směrovacích tabulek. Pokud se například rozhodnete, že by se větve měly rozšířit do výchozí směrovací tabulky, tato konfigurace by měla být konzistentní napříč všemi větvemi. V důsledku toho budou mít všechna připojení přidružená k výchozí směrovací tabulce přístup k všem větvím.
 * Větev-do větve prostřednictvím Azure Firewall není aktuálně podporována.
 * Při použití Azure Firewall ve více oblastech musí být všechny virtuální sítě s paprsky přidruženy ke stejné směrovací tabulce. Například podmnožina virtuální sítě projde skrze Azure Firewall, zatímco jiné virtuální sítěy obcházejí Azure Firewall ve stejném virtuálním rozbočovači není možné.
+* Pro každé připojení k virtuální síti se dá nakonfigurovat jedna IP adresa dalšího směrování.
+* Virtuální rozbočovač nepodporuje statickou trasu pro 0.0.0.0/0 a další segment směrování Virtual Network připojení (nebo IP zařízení ve virtuální síti VNet).
 
 ## <a name="next-steps"></a>Další kroky
 

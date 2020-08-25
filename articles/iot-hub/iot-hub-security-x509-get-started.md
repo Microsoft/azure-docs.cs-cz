@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307280"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783259"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X.509 v Azure IoT Hubu
 
@@ -49,6 +49,9 @@ Pro získání certifikátů můžete zvolit některý z následujících způso
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Registrace certifikátů certifikační autority X. 509 do služby IoT Hub
 
 Tyto kroky ukazují, jak přidat novou certifikační autoritu do služby IoT Hub prostřednictvím portálu.
+
+> [!NOTE]
+> Maximální počet certifikátů certifikační autority X. 509, které mohou být zaregistrovány ve službě IoT Hub, je 25. Další informace najdete v tématu [kvóty a omezení pro Azure IoT Hub](iot-hub-devguide-quotas-throttling.md).
 
 1. V Azure Portal přejděte do svého centra IoT a vyberte **Nastavení**  >  **certifikáty** pro centrum.
 

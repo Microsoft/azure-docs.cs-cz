@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719168"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762773"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace video Analytics – objekt a detekce pohybu v Azure IoT Central
 
@@ -40,7 +40,7 @@ K dokončení této série kurzů potřebujete:
 
 ## <a name="initial-setup"></a>Počáteční nastavení
 
-V těchto kurzech aktualizujete a použijete několik konfiguračních souborů. Počáteční verze těchto souborů jsou k dispozici v úložišti GitHub [lva-Gateway](https://github.com/Azure/live-video-analytics) . Úložiště obsahuje také textový soubor scratchpad, který můžete stáhnout a použít k nahrání hodnot konfigurace ze služeb, které nasazujete.
+V těchto kurzech aktualizujete a použijete několik konfiguračních souborů. Počáteční verze těchto souborů jsou k dispozici v úložišti GitHub [lva-Gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) . Úložiště obsahuje také textový soubor scratchpad, který můžete stáhnout a použít k nahrání hodnot konfigurace ze služeb, které nasazujete.
 
 Vytvořte složku s názvem *lva-Configuration* na místním počítači pro uložení kopií těchto souborů. Potom klikněte pravým tlačítkem na každý z následujících odkazů a zvolte **Uložit jako** a uložte soubor do složky *lva-Configuration* :
 

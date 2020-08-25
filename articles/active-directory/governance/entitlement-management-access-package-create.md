@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798779"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783633"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,7 +57,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -83,7 +83,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
     Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Později můžete také přidat další vlastníky katalogu.
 
-1. Klikněte na **Next** (Další).
+1. Klikněte na **Další**.
 
 ## <a name="resource-roles"></a>Role prostředků
 
@@ -105,7 +105,7 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. Klikněte na **Next** (Další).
+1. Klikněte na **Další**.
 
 ## <a name="requests"></a>Žádosti
 
@@ -135,11 +135,11 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 Balíček pro přístup můžete také vytvořit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API na
 
-1. [Seznamte se s accessPackageResources v katalogu](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
-1. [Vypíše accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
-1. [Vytvořte accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Vytvořte accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. [Vytvořte accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
+1. [Seznamte se s accessPackageResources v katalogu](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
+1. [Vypíše accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
+1. [Vytvořte accessPackage](/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Vytvořte accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Vytvořte accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
 
 ## <a name="next-steps"></a>Další kroky
 

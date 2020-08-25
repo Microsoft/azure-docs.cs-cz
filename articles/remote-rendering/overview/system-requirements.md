@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300602"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798461"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -24,7 +24,7 @@ V této části jsou uvedeny minimální požadavky na systém pro práci s *Azu
 
 * Windows 10 verze 1903 nebo vyšší.
 * Aktuální grafické ovladače.
-* Volitelné: h265 hardwarové video dekodér, pokud chcete použít místní verzi Preview vzdáleně vykresleného obsahu (například v Unity).
+* Volitelné: [h265 hardwarové video dekodér](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7), pokud chcete použít místní verzi Preview vzdáleně vykresleného obsahu (například v Unity).
 
 > [!IMPORTANT]
 > Windows Update vždy neposkytuje nejnovější ovladače GPU. nejnovější ovladače najdete na webu výrobce GPU:
@@ -52,7 +52,7 @@ Je důležité používat nejnovější kodek HEVC, protože novější verze ma
 1. Spusťte **Microsoft Store**.
 1. Klikněte na tlačítko **"..."** v pravém horním rohu.
 1. Vyberte **soubory ke stažení a aktualizace**.
-1. V seznamu vyhledejte **rozšíření videa HEVC od výrobce zařízení**.
+1. V seznamu vyhledejte **rozšíření videa HEVC od výrobce zařízení**. Pokud tato položka není uvedená v části aktualizace, nejnovější verze je už nainstalovaná.
 1. Ujistěte se, že uvedený kodek má minimálně verzi **1.0.21821.0**.
 1. Klikněte na tlačítko **získat aktualizace** a počkejte na jeho instalaci.
 
@@ -74,7 +74,7 @@ Musí být nainstalovaný následující software:
   * **Vývoj Univerzální platforma Windows (UWP)**
 * **Windows SDK 10.0.18362.0** [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(Stáhnout)](https://git-scm.com/downloads)
-* Volitelné: Pokud chcete zobrazit datový proud videa ze serveru na stolním počítači, potřebujete **rozšíření videa HEVC** [(odkaz Microsoft Store)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).
+* Volitelné: Pokud chcete zobrazit datový proud videa ze serveru na stolním počítači, potřebujete **rozšíření videa HEVC** [(odkaz Microsoft Store)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7). Zkontrolujte, jestli je nainstalovaná nejnovější verze, a to tak, že zkontrolujete aktualizace ve Storu.
 
 ## <a name="unity"></a>Unity
 

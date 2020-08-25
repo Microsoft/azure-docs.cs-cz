@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb2ad8e6d37190d0473f3f9f4af7738edd3b27f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475205"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798410"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Odvolání přístupu uživatele v Azure Active Directory
 
@@ -38,7 +38,7 @@ Přístupové tokeny a aktualizační tokeny se často používají s tlustými 
 
 Služba Azure AD pak znovu vyhodnotí své zásady autorizace. Pokud je uživatel pořád autorizovaný, Azure AD vydá nový přístupový token a aktualizuje token.
 
-Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) do aplikací Office 365, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
+Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) do aplikací Office 365, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
 
 ## <a name="session-tokens-cookies"></a>Tokeny relace (soubory cookie)
 
@@ -60,13 +60,13 @@ Pro hybridní prostředí s místní službou Active Directory synchronizovanou 
 
 Jako správce ve službě Active Directory se připojte k místní síti, otevřete PowerShell a proveďte následující akce:
 
-1. Zakáže uživatele ve službě Active Directory. Podívejte se na téma [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
+1. Zakáže uživatele ve službě Active Directory. Podívejte se na téma [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Resetujte heslo uživatele dvakrát ve službě Active Directory. Další informace najdete v tématu [set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
+1. Resetujte heslo uživatele dvakrát ve službě Active Directory. Další informace najdete v tématu [set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
 
     > [!NOTE]
     > Důvod změny hesla uživatele dvakrát znamená zmírnit riziko průchodu pass-the-hash, zejména v případě, že dojde k prodlevám při místní replikaci hesel. Pokud můžete tento účet bezpečně předpokládat, můžete heslo resetovat jenom jednou.
@@ -83,18 +83,18 @@ Jako správce ve službě Active Directory se připojte k místní síti, otevř
 
 Jako správce v Azure Active Directory otevřete PowerShell, spusťte ``Connect-AzureAD`` příkaz a proveďte následující akce:
 
-1. Zakáže uživatele v Azure AD. Další informace najdete v tématu [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Zakáže uživatele v Azure AD. Další informace najdete v tématu [set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Odvolá obnovovací tokeny Azure AD uživatele. Podívejte se na téma [REVOKE-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+1. Odvolá obnovovací tokeny Azure AD uživatele. Podívejte se na téma [REVOKE-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Zakažte zařízení uživatele. Další informace najdete v tématu [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+1. Zakažte zařízení uživatele. Další informace najdete v tématu [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -102,9 +102,9 @@ Jako správce v Azure Active Directory otevřete PowerShell, spusťte ``Connect-
 
 ## <a name="optional-steps"></a>Volitelné kroky
 
-- [Vymazání podnikových dat z aplikací spravovaných pomocí Intune](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe)
+- [Vymazání podnikových dat z aplikací spravovaných pomocí Intune](/mem/intune/apps/apps-selective-wipe)
 
-- [Vymazáním zařízení vlastněných společností se zařízení resetuje na výchozí tovární nastavení](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe).
+- [Vymazáním zařízení vlastněných společností se zařízení resetuje na výchozí tovární nastavení](/mem/intune/remote-actions/devices-wipe).
 
 > [!NOTE]
 > Po vymazání nelze data v zařízení obnovit.

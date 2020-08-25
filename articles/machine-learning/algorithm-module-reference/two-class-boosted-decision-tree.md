@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 1e66774d4239bdad6c8af426a28af6081bb0da3c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137650"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782171"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul pro zvýšení rozhodovacího stromu se dvěma třídami
 
@@ -22,9 +22,11 @@ Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů. 
 
-Posílený rozhodovací strom je metoda učení kompletu, ve které druhý strom opravuje chyby prvního stromu, třetí strom pro chyby první a druhé stromy a tak dále.  Předpovědi jsou založené na celé kompletování stromů dohromady, které tvoří předpověď.
+Posílený rozhodovací strom je metoda učení kompletu, ve které druhý strom opravuje chyby prvního stromu, třetí strom pro chyby první a druhé stromy a tak dále. Předpovědi jsou založené na celé kompletování stromů dohromady, které tvoří předpověď.
   
 Obecně platí, že při správné konfiguraci jsou posílené rozhodovací stromy nejjednodušším způsobem, kterým získáte nejvyšší výkon nejrůznějších úloh strojového učení. Jsou to však také jedním z dalších učí náročných na paměť a aktuální implementace uchovává vše v paměti. Proto je možné, že model zesíleného rozhodovacího stromu nebude moci zpracovat velké datové sady, které mohou procesy lineárních učí zpracovat.
+
+Tento modul je založený na LightGBM algoritmu.
 
 ## <a name="how-to-configure"></a>Jak nakonfigurovat
 

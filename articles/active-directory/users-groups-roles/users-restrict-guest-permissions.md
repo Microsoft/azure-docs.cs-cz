@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8cba89abd65844d238120726572481457f27cb
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706149"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798427"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
 
@@ -54,7 +54,7 @@ Provedli jsme změny stávajících Azure Portalch ovládacích prvků pro uživ
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Aktualizace pomocí rozhraní Microsoft Graph API
 
-Přidali jsme nové rozhraní Microsoft Graph API pro konfiguraci oprávnění hostů ve vaší organizaci Azure AD. K přiřazení libovolné úrovně oprávnění je možné provést následující volání rozhraní API. Hodnota pro guestUserRoleId, kterou zde využijete, slouží k ilustraci nejvíce omezeného uživatelského nastavení hostů. Další informace o použití Microsoft Graph k nastavení oprávnění hostů najdete v tématu [typ prostředku authorizationPolicy](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+Přidali jsme nové rozhraní Microsoft Graph API pro konfiguraci oprávnění hostů ve vaší organizaci Azure AD. K přiřazení libovolné úrovně oprávnění je možné provést následující volání rozhraní API. Hodnota pro guestUserRoleId, kterou zde využijete, slouží k ilustraci nejvíce omezeného uživatelského nastavení hostů. Další informace o použití Microsoft Graph k nastavení oprávnění hostů najdete v tématu [typ prostředku authorizationPolicy](/graph/api/resources/authorizationpolicy).
 
 ### <a name="configuring-for-the-first-time"></a>První konfigurace
 
@@ -168,5 +168,5 @@ Existují pro tuto funkci nějaké licenční požadavky? | Ne, s touto funkcí 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o stávajících oprávněních hostů v Azure AD najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../fundamentals/users-default-permissions.md).
-- Pokud chcete zobrazit metody rozhraní API Microsoft Graph pro omezení přístupu hostů, přečtěte si téma [typ prostředku authorizationPolicy](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+- Pokud chcete zobrazit metody rozhraní API Microsoft Graph pro omezení přístupu hostů, přečtěte si téma [typ prostředku authorizationPolicy](/graph/api/resources/authorizationpolicy).
 - Pokud chcete pro uživatele odvolat veškerý přístup, přečtěte si téma [Odvolání přístupu uživatele ve službě Azure AD](users-revoke-access.md).

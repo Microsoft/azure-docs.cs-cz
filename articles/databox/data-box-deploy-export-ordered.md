@@ -2,18 +2,18 @@
 title: Kurz pro export dat z Azure Data Box | Microsoft Docs
 description: Přečtěte si o požadavcích na nasazení a o tom, jak exportovat data z Azure Data Box
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.author: twooley
+ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209321"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783616"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
 
@@ -30,7 +30,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před objednáním zařízení dokončete následující požadavky na konfiguraci pro Data Box službu a zařízení.
 
@@ -252,8 +252,8 @@ V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
    | Začíná na |/containers |Exportuje všechny objekty BLOB v jakémkoli kontejneru, který začíná předponami **kontejnerů** . |
    | Začíná na |/container-name/ |Exportuje všechny objekty BLOB v kontejneru kontejneru **– název** |
    | Začíná na |/container-name/prefix |Exportuje všechny objekty BLOB v **kontejneru kontejneru – název** , který začíná **předponou** předpony. |
-   | Je rovno |$root/logo.bmp |Export objektu BLOB **logo.bmp** do kořenového kontejneru |
-   | Je rovno |8tbpageblob/mydata.txt |Export **mydata.txt** objektů BLOB v kontejneru **8tbpageblob** |
+   | Rovno |$root/logo.bmp |Export objektu BLOB **logo.bmp** do kořenového kontejneru |
+   | Rovno |8tbpageblob/mydata.txt |Export **mydata.txt** objektů BLOB v kontejneru **8tbpageblob** |
 
 ## <a name="sample-log-files"></a>Ukázkové soubory protokolů
 

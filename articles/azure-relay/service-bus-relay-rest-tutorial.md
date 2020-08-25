@@ -4,10 +4,10 @@ description: 'Kurz: Sestavte hostitelskou aplikaci Azure Relay, která zpřístu
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85316636"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Kurz: kurz pro Azure WCF Relay REST
@@ -27,12 +27,12 @@ V tomto kurzu provedete následující úlohy:
 > * Hostování a spuštění služby WCF založené na REST.
 > * Spusťte a otestujte službu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
+* [Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
 * Sada Azure SDK pro .NET Nainstalujte ji ze [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
 ## <a name="create-a-relay-namespace"></a>Vytvoření oboru názvů Relay

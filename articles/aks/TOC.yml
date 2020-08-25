@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linuxové nástroje pro měření výkonu
           href: troubleshoot-linux.md
+        - name: Kontrola událostí Resource Health
+          href: aks-resource-health.md
 - name: Referenční informace
   items:
     - name: Azure CLI

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408940"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749856"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
@@ -25,7 +25,9 @@ Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. A
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementace spravované identity HDInsight
 
-Ve službě Azure HDInsight se spravované identity zřídí v každém uzlu clusteru. Tyto součásti identity se ale dá použít jenom ve službě HDInsight. V tuto chvíli není k dispozici žádná podporovaná metoda pro generování přístupových tokenů pomocí spravovaných identit nainstalovaných na uzlech clusteru HDInsight. U některých služeb Azure se spravované identity implementují s koncovým bodem, který můžete použít k získání přístupových tokenů. Použijte tokeny pro interakci s ostatními službami Azure sami.
+Ve službě Azure HDInsight jsou spravované identity dostupné jenom pro interní součásti služby HDInsight. Pro přístup k externím službám není momentálně k dispozici žádná podporovaná metoda pro generování přístupových tokenů pomocí spravovaných identit nainstalovaných na uzlech clusteru HDInsight. U některých služeb Azure, jako jsou výpočetní virtuální počítače, se spravované identity implementují s koncovým bodem, který můžete použít k získání přístupových tokenů. Tento koncový bod není v uzlech HDInsight aktuálně k dispozici.
+
+Pokud potřebujete spustit své aplikace, abyste se vyhnuli vkládání tajných klíčů a hesel v úlohách analýzy (např. SCALA úlohy), můžete distrubte své vlastní certifikáty na uzly clusteru pomocí akcí skriptů a pak použít tento certifikát pro získání přístupového tokenu (například pro přístup k trezoru klíčů Azure).
 
 ## <a name="create-a-managed-identity"></a>Vytvoření spravované identity
 
@@ -46,7 +48,7 @@ Spravované identity se používají ve službě Azure HDInsight ve více scén�
 * [Balíček zabezpečení podniku](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Šifrování disků s využitím klíčů spravovaných zákazníky](disk-encryption.md)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co se stane, když po vytvoření clusteru odstraním spravovanou identitu?
 

@@ -2,18 +2,18 @@
 title: Azure Stack Edge & zpráva k vydání verze Azure Data Box Gateway 2007 | Microsoft Docs
 description: Popisuje kritické otevřené problémy a řešení pro Azure Stack Edge a Data Box Gateway spuštění 2007 verze.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4964454a5636120840fbdb5f3fbdd3aee30d8e74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: twooley
+ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531318"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783922"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Zpráva k vydání verze Azure Stack Edge a Azure Data Box Gateway 2007
 

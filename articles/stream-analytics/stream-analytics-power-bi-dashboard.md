@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314216"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794302"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
@@ -20,7 +20,7 @@ Azure Stream Analytics vám umožní využít jeden z špičkových business int
 
 Tento článek pokračuje v kurzu Stream Analytics [rozpoznávání podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) . Vytvoří se v pracovním postupu vytvořeném v tomto kurzu a přidá výstup Power BI, abyste mohli vizualizovat podvodné telefonní hovory zjištěné úlohou Stream Analytics. 
 
-Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA) , které znázorňuje tento scénář.
+Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA)  , které znázorňuje tento scénář.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -39,7 +39,10 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 
 2. V nabídce vlevo vyberte v části **topologie úlohy**možnost **výstupy** . Pak vyberte **+ Přidat** a v rozevírací nabídce vyberte **Power BI** .
 
-3. Vyberte **+ Přidat**  >  **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
+3. Vyberte **+ Přidat**  >  **Power BI**. Pak vyplňte formulář následujícími podrobnostmi a vyberte **autorizovat** , abyste pro připojení k Power BI používali vlastní identitu uživatele (token je platný po 90 dnech). 
+
+>[!NOTE]
+>Pro produkční úlohy doporučujeme, abyste se připojili k [použití spravované identity k ověření Azure Stream Analytics úlohy Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
@@ -56,7 +59,7 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 
 4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**.
 
-8. Klikněte na **Vytvořit**.
+8. Klikněte na možnost **Vytvořit**.
 
 Datová sada je vytvořena s následujícími nastaveními:
 
@@ -157,7 +160,7 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Podrobnosti vizualizace pro novou dlaždici](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. Klikněte na **Next** (Další).
+7. Klikněte na **Další**.
 
 8. Vyplňte podrobnosti dlaždice jako název a podnadpis.
 
@@ -230,3 +233,4 @@ Po obnovení autorizace pomocí Power BI se v oblasti autorizace zobrazí Zelen�
 * [Výstupy Stream Analytics](stream-analytics-define-outputs.md)
 * [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

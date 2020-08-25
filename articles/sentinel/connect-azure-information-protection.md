@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559145"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794441"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat z Azure Information Protection
 
@@ -57,15 +57,17 @@ Pokud se však protokolování informací z Azure Information Protection chystá
 
 Následující pokyny použijte, pokud jste nenakonfigurovali Log Analytics pracovní prostor pro Azure Information Protection, nebo potřebujete změnit pracovní prostor, ve kterém jsou uloženy informace o protokolování Azure Information Protection.
 
-1. V Azure Sentinel vyberte **datové konektory**a pak **Azure Information Protection (Preview)**.
+1. V Azure Sentinel vyberte **datové konektory**  >  **Azure Information Protection (Preview)**.
 
 2. Vyberte **stránku otevřít konektor**.
 
-3. V okně **Konfigurace analýzy (Preview)** vyberte pracovní prostor, který aktuálně používáte pro Azure Sentinel. Pokud vyberete jiný pracovní prostor, data sestav z Azure Information Protection nebudou k dispozici pro Azure Sentinel.
+3. V části **Konfigurace**vyberte **připojit Azure Information Protection protokoly**.
 
-4. Po výběru pracovního prostoru vyberte **OK** a **stav** konektoru by se teď měl změnit na **připojeno**.
+4. V okně **Konfigurace analýzy (Preview)** vyberte pracovní prostor, který aktuálně používáte pro službu Azure Sentinel. Pokud vyberete jiný pracovní prostor, data sestav z Azure Information Protection nejsou k dispozici pro službu Azure Sentinel.
 
-5. Data vytváření sestav z Azure Information Protection jsou uložena v tabulce **InformationProtectionLogs_CL** ve vybraném pracovním prostoru. 
+5. Po výběru pracovního prostoru vyberte **OK**. **Stav** konektoru se změní na **připojeno**.
+
+6. Data sestavy z Azure Information Protection jsou uložena v tabulce **InformationProtectionLogs_CL** ve vybraném pracovním prostoru. 
     
     Pokud chcete pro tato data sestav použít příslušné schéma v Azure Monitor, vyhledejte **InformationProtectionEvents**. Informace o těchto funkcích událostí najdete v části [Popis schématu pro funkce událostí](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) v dokumentaci k Azure Information Protection.
 

@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75639016"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Čištění samostatného clusteru
@@ -36,7 +36,7 @@ Ve čtvrté části této série se naučíte:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Po `Y` zobrazení výzvy zadejte, že pokud bylo úspěšné, váš výstup bude vypadat jako následující s vašimi vlastními IP adresami, které jsou nahrazeny v:
+5. `Y`Po zobrazení výzvy zadejte, že pokud bylo úspěšné, váš výstup bude vypadat jako následující s vašimi vlastními IP adresami, které jsou nahrazeny v:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -54,11 +54,11 @@ Ve čtvrté části této série se naučíte:
 1. Přihlaste se ke svému účtu AWS.
 2. Přejděte na konzolu EC2.
 3. Vyberte tři uzly, které jste vytvořili v první části kurzu.
-4. Klikněte na položku **Akce** > **ukončit****stav** > instance.
+4. Klikněte na položku **Akce**  >  **ukončit stav instance**  >  **Terminate**.
 
 ## <a name="clean-up-azure-resources"></a>Vyčištění prostředků Azure
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejít na část **Virtual Machines** .
 3. Zaškrtněte políčka pro tři uzly, které jste vytvořili v první části kurzu.
 4. Klikněte na **Odstranit**.

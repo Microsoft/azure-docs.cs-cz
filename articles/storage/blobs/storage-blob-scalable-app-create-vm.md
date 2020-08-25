@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75372224"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci
@@ -21,11 +21,11 @@ Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit apl
 V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Vytvoření virtuálního počítače
 > * Konfigurace rozšíření vlastních skriptů
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/m
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
  
 Ukázka nahraje 50 velkých souborů do kontejneru objektů blob v účtu služby Azure Storage. Účet služby Storage poskytuje jedinečný obor názvů pro ukládání datových objektů Azure Storage a přístup k nim. Ve skupině prostředků, kterou jste vytvořili, vytvořte účet úložiště pomocí příkazu [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) .
 
@@ -126,7 +126,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 V první části série jste se seznámili s vytvořením účtu úložiště, nasazením virtuálního počítače a konfigurací požadovaných součástí na virtuálním počítači a naučili jste se například:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Vytvoření virtuálního počítače
 > * Konfigurace rozšíření vlastních skriptů
 

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75430738"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Přizpůsobení stylu stránek portálu pro vývojáře
@@ -55,11 +55,11 @@ V tomto článku se dozvíte, jak přizpůsobit styl prvků na stránkách star�
     Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů**.
 5. Do pole **Změna hodnot proměnných pro přizpůsobení vzhledu portálu pro vývojáře** zadejte headings-color.
 
-    Element ** \@záhlaví-barva** se zobrazí na stránce. Tato proměnná řídí barvu textu.
+    Element ** \@ záhlaví-barva** se zobrazí na stránce. Tato proměnná řídí barvu textu.
 
     ![přizpůsobení stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klikněte na pole pro proměnnou ** \@nadpis-barva** . 
+6. Klikněte na pole pro proměnnou ** \@ Nadpis-barva** . 
     
     Otevře se rozevírací nabídka editoru barev.
 7. V rozevírací nabídce editoru barev vyberte novou barvu.

@@ -7,42 +7,29 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513702"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762262"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Zobrazení efektivních tras virtuálního centra
 
 Všechny trasy vašeho virtuálního rozbočovače WAN můžete zobrazit v Azure Portal. Tento článek vás provede kroky k zobrazení efektivních tras. Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-> [!NOTE]
-> Na Azure Portal mohou být některé z těchto funkcí stále vyřízeny a nejsou k dispozici, dokud týden ze srpna 17. 
->
-
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Výběr připojení nebo směrovacích tabulek
 
 1. Přejděte do svého virtuálního centra a pak vyberte **Směrování**. Na stránce směrování vyberte **platné trasy**.
-1. Z rozevíracího seznamu můžete vybrat **Typ připojení** nebo **směrovací tabulku**. Pokud nevidíte možnost směrovací tabulky, znamená to, že v tomto virtuálním centru nemáte nastavenou vlastní nebo výchozí směrovací tabulku.
-1. Z rozevíracího seznamu pro **tabulky připojení/směrování**můžete vybrat z následujících položek:
-
-   * Virtual Network připojení
-   * Připojení k síti VPN
-   * Připojení ExpressRoute
-   * Připojení Point-to-site
-   * Tabulka směrování
-
-   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Směrování":::
+1. Z rozevíracího seznamu můžete vybrat **směrovací tabulku**. Pokud nevidíte možnost směrovací tabulky, znamená to, že v tomto virtuálním centru nemáte nastavenou vlastní nebo výchozí směrovací tabulku.
 
 ## <a name="view-output"></a><a name="output"></a>Zobrazit výstup
 
 Výstup stránky zobrazuje následující pole:
 
-* **Prefix**: Předpona adresy známá aktuální entitě.
+* **Prefix**: Předpona adresy známá k aktuální entitě (informace o směrovači virtuálního rozbočovače)
 * **Typ dalšího segmentu směrování**: může být Virtual Network připojení, VPN_S2S_Gateway, ExpressRouteGateway, vzdáleného rozbočovače nebo Azure firewall.
-* **Další segment směrování**: Jedná se o IP adresu, nebo jenom v případě, že se na odkaz ukáže aktuální centrum.
+* **Další segment směrování**: Toto je odkaz na ID prostředku dalšího segmentu směrování, nebo se k tomu, že se zobrazí odkaz na aktuální centrum, jednoduše zobrazuje odkaz.
 * **Původ**: ID prostředku zdroje směrování.
 * **Jako cesta**: atribut BGP jako (autonomní systém) cesta uvádí všechny hodnoty, které je třeba procházet, aby se dosáhlo místa, odkud je inzerována předpona, ke které je připojena cesta.
 
@@ -54,13 +41,15 @@ Pomocí posuvníku v dolní části tabulky zobrazte "AS Path".
 
 | **Předpona** |  **Typ dalšího segmentu směrování** | **Další směrování** |  **Původ trasy** |**JAKO cesta** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
+| 10.2.0.0/24| VPN_S2S_Gateway |/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
 **Odůvodněn**
 
 * Pokud se ve výstupu **získat efektivní trasy** zobrazí hodnota 0.0.0.0/0, znamená to, že trasa existuje v jedné z směrovacích tabulek. Pokud se ale tato trasa nastavila pro Internet, pro připojení se vyžaduje další příznak **"enableInternetSecurity": true** . V případě, že je příznak "enableInternetSecurity" u připojení "NEPRAVDA", nebude cesta platná v síťovém adaptéru virtuálního počítače ukazovat.
 
 * Pole **rozšířit výchozí trasu** se zobrazuje na portálu Azure Virtual WAN při úpravě připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Toto pole indikuje příznak **enableInternetSecurity** , který je vždycky ve výchozím nastavení false pro připojení EXPRESSROUTE a VPN, ale pro připojení k virtuální síti je nastavená hodnota true.
+
+* Pokud se při zobrazení efektivních tras na síťové kartě virtuálního počítače zobrazí další segment směrování jako Virtual Network brána, která implikuje směrovač virtuálního rozbočovače v případě, že je virtuální počítač připojený k virtuálnímu rozbočovači sítě WAN.
 
 ## <a name="next-steps"></a>Další kroky
 
