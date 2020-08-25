@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252164"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: vytvoření služby Azure Container registry a vložení image kontejneru
@@ -77,7 +77,7 @@ Před nahráváním imagí do instance služby Azure Container Registry se k ní
 az acr login --name <acrName>
 ```
 
-Příklad:
+Například:
 
 ```azurecli
 az acr login --name mycontainerregistry082
@@ -170,7 +170,7 @@ Pokud si chcete ověřit, že image, kterou jste právě odeslali, se skutečně
 az acr repository list --name <acrName> --output table
 ```
 
-Příklad:
+Například:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table

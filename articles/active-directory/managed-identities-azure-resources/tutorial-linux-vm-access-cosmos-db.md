@@ -1,5 +1,5 @@
 ---
-title: Kurz`:`použití spravované identity pro přístup k Azure Cosmos DB-Linux – Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Cosmos DB-Linux – Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78248282"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Cosmos DB 
@@ -55,7 +55,7 @@ Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok mů
 3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
 4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu služby Cosmos DB
 
@@ -67,7 +67,7 @@ Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se m�
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>Načtení `principalID` spravované identity přiřazené systémem virtuálního počítače s Linuxem
 
-Jelikož budete v následující části potřebovat získat přístup z Resource Manageru k přístupovým klíčům účtu Cosmos DB, je potřeba načíst `principalID` spravované identity přiřazené systémem virtuálního počítače s Linuxem.  Nezapomeňte nahradit skupinu prostředků `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` ve které se virtuální počítač nachází, a `<VM NAME>` hodnoty parametrů vlastními hodnotami.
+Jelikož budete v následující části potřebovat získat přístup z Resource Manageru k přístupovým klíčům účtu Cosmos DB, je potřeba načíst `principalID` spravované identity přiřazené systémem virtuálního počítače s Linuxem.  Nezapomeňte nahradit `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` skupinu prostředků, ve které se virtuální počítač nachází, a `<VM NAME>` hodnoty parametrů vlastními hodnotami.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
@@ -228,5 +228,5 @@ Tento příkaz rozhraní příkazového řádku vrátí podrobnosti o kolekci:
 V tomto kurzu jste zjistili, jak použít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup ke službě Cosmos DB.  Další informace o službě Cosmos DB najdete tady:
 
 > [!div class="nextstepaction"]
->[Přehledu databáze Azure Cosmos DB](/azure/cosmos-db/introduction)
+>[Přehled Azure Cosmos DB](/azure/cosmos-db/introduction)
 

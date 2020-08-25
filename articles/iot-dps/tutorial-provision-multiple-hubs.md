@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74976736"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
@@ -25,7 +25,7 @@ Tento kurz ukazuje, jak zřídit zařízení pro několik center IoT s vyrovnáv
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
 > * Propojit nové centrum IoT se službou Device Provisioning
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,7 +63,7 @@ Propojte službu Device Provisioning a centrum IoT, aby služba Device Provision
 
 1. Na stránce **Všechny prostředky** klikněte na službu Device Provisioning, kterou jste vytvořili dříve.
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 

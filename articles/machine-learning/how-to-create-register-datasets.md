@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, contperfq1
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 8bc99be12b4bd4e56163150f939e5d9ace4b59bd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ae8dcc02618220750e2d15d815da4b36ea64da2d
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652555"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782188"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -35,7 +35,7 @@ S Azure Machine Learningmi datovými sadami můžete:
 
 * Sdílejte data a spolupracujte s ostatními uživateli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s datovými sadami potřebujete:
 
@@ -163,11 +163,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Indexovacím|PassengerId|Zachované|Pclass|Název|Sex|Stáří|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
+|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Stáří|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22.0|1|0|A/5 21171|7,2500||S
-1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+1|2|Pravda|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|Pravda|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 ### <a name="create-a-dataset-from-pandas-dataframe"></a>Vytvoření datové sady z PANDAS dataframe
 

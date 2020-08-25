@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76169832"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Přidání obličeje k osobě
@@ -28,7 +28,7 @@ Následující kód deklaruje několik proměnných a implementuje pomocnou funk
 - `PersonCount` je celkový počet osob.
 - `CallLimitPerSecond` je maximální počet volání za sekundu podle úrovně předplatného.
 - `_timeStampQueue` je fronta zaznamenávající časová razítka požadavků.
-- `await WaitCallLimitPerSecondAsync()`počká, dokud nebude platná k odeslání dalšího požadavku.
+- `await WaitCallLimitPerSecondAsync()` počká, dokud nebude platná k odeslání dalšího požadavku.
 
 ```csharp
 const int PersonCount = 10000;
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autorizace volání rozhraní API
 
-Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Příklad:
+Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Například:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -100,7 +100,7 @@ Parallel.For(0, PersonCount, async i =>
 ## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Přidání tváří osobám
 
 Plošky přidané různým osobám jsou zpracovávány souběžně. Plošky přidané pro jednu konkrétní osobu jsou zpracovávány postupně.
-`await WaitCallLimitPerSecondAsync()` Znovu se vyvolá, aby se zajistilo, že frekvence požadavků spadá do rozsahu omezení.
+Znovu se vyvolá, aby se `await WaitCallLimitPerSecondAsync()` zajistilo, že frekvence požadavků spadá do rozsahu omezení.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>
@@ -120,7 +120,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V této příručce jste se dozvěděli o procesu vytvoření osoby typu osoba s obrovským počtem osob a ploch. Několik připomenutí:
 

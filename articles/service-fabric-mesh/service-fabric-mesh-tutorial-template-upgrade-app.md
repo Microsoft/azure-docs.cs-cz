@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75351726"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné ve službě Service Fabric Mesh

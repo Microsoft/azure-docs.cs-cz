@@ -8,25 +8,23 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
-ms.date: 03/09/2020
-ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: how-to, contperfq1
+ms.date: 08/20/2020
+ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371511"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782834"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení v [sadě Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)nakonfigurovat a naučit regresní model předpovědi časových řad. 
+V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení a AutoML [Azure Machine Learning v sadě SDK Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)nakonfigurovat a naučit regresní model předpovědi časových řad. 
 
 Pro používání s nízkým kódem si přečtěte [kurz: Předpověď poptávky pomocí automatizovaného strojového učení s](tutorial-automated-ml-forecast.md) využitím automatizovaného strojového učení v [Azure Machine Learning Studiu](https://ml.azure.com/).
 
-Konfigurace modelu prognózy je podobná nastavení standardního regresního modelu pomocí automatizovaného strojového učení, ale pro práci s daty časových řad existují některé možnosti konfigurace a postup předběžného zpracování. 
-
-Můžete například [nakonfigurovat](#config) , jak daleko do budoucna má být prognóza rozšířena (horizont předpovědi), a také prodlevy a další. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady.
+Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. 
 
 Následující příklady vám ukážou, jak:
 
@@ -34,39 +32,26 @@ Následující příklady vám ukážou, jak:
 * Konfigurace určitých parametrů časových řad v [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektu
 * Spuštění předpovědi s daty časových řad
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
-
-Na rozdíl od metod klasických časových řad jsou hodnoty "pivoted" v hodnotách časových řad automatizované ML po "pivoted", aby se do regresory staly další dimenze a další předpovědi. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. 
-
-Funkce extrahované ze školicích dat hrají důležitou roli. Automatizované ML a vychází ze standardních kroků předběžného zpracování a generuje další funkce časových řad, které zaznamenávají sezónní účinky a maximalizují prediktivní přesnost.
-
-## <a name="time-series-and-deep-learning-models"></a>Modely časových řad a hloubkového učení
-
-Obsáhlý Learning v automatizovaném ML umožňuje prognózování dat univariate a lineární časových řad.
-
-Modely hloubkového učení mají tři vnitřní možnosti:
-1. Můžou se učit z libovolného mapování ze vstupů na výstupy.
-1. Podporují několik vstupů a výstupů.
-1. Můžou automaticky extrahovat vzory ve vstupních datech, která jsou rozložená přes dlouhé sekvence.
-
-Kvalitní modely pro hloubkové učení, jako je ForecastTCN Microsoftu, můžou zlepšit skóre výsledného modelu. Naučte se [Konfigurovat experiment pro obsáhlý Learning](#configure-a-dnn-enable-forecasting-experiment).
-
-Automatizované ML poskytuje uživatelům v rámci systému doporučení jak nativní modely časových řad, tak i obsáhlé učení. 
-
-Modely| Popis | Výhody
-----|----|---
-Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
-Auto-ARIMA (Preview)|V případě, že jsou data stacionární, provede autoregresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
-ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
-
 ## <a name="prerequisites"></a>Požadavky
 
+Pro tento článek potřebujete, 
+
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
+
 * Tento článek předpokládá základní znalost s nastavením automatizovaného experimentu strojového učení. Pomocí [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) si můžete prohlédnout základní modely návrhu experimentů pro strojové učení.
 
 ## <a name="preparing-data"></a> Příprava dat
 
-Nejdůležitější rozdíl mezi typem úkolu regrese regrese a typem úlohy regrese v rámci automatizovaného strojového učení je zahrnutí funkce do vašich dat, která představuje platnou časovou řadu. Pravidelná časová řada má jasně definovanou a konzistentní frekvenci a má hodnotu pro každý vzorový bod v souvislém časovém intervalu. Vezměte v úvahu následující snímek souboru `sample.csv` .
+Nejdůležitější rozdíl mezi typem úkolu regrese regrese a typem úlohy regrese v rámci AutoML je, včetně funkce v datech, která představuje platnou časovou řadu. Pravidelná časová řada má jasně definovanou a konzistentní frekvenci a má hodnotu pro každý vzorový bod v souvislém časovém intervalu. 
+
+Vezměte v úvahu následující snímek souboru `sample.csv` .
+Tato datová sada má denní prodejní data pro společnost, která má dvě různá úložiště, a a B. 
+
+Kromě toho jsou k dispozici funkce pro
+
+ *  `week_of_year`: umožňuje modelu detekovat sezónnost týdně.
+* `day_datetime`: představuje čistou časovou řadu s denní frekvencí.
+* `sales_quantity`: cílový sloupec pro spuštění předpovědi. 
 
 ```output
 day_datetime,store,sales_quantity,week_of_year
@@ -82,7 +67,8 @@ day_datetime,store,sales_quantity,week_of_year
 9/7/2018,B,650,36
 ```
 
-Tato datová sada je jednoduchý příklad každodenních prodejních dat pro společnost, která má dvě různá úložiště, a a B. Navíc je k dispozici funkce `week_of_year` , která umožňuje, aby model zjišťoval týdenní sezónnost. Pole `day_datetime` představuje čistou časovou řadu s denní frekvencí a pole `sales_quantity` je cílovým sloupcem pro spuštění předpovědi. Přečtěte si data do PANDAS dataframe a pak použijte `to_datetime` funkci, abyste zajistili, že časová řada je `datetime` typu.
+
+Přečtěte si data do PANDAS dataframe a pak použijte `to_datetime` funkci, abyste zajistili, že časová řada je `datetime` typu.
 
 ```python
 import pandas as pd
@@ -90,7 +76,12 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-V tomto případě jsou data již seřazena vzestupně podle pole čas `day_datetime` . Při nastavování experimentu se ale ujistěte, že požadovaný sloupec čas je seřazen vzestupně, aby se vytvořila platná časová řada. Předpokládejme, že data obsahují 1 000 záznamů a vytvoří deterministické rozdělení dat pro vytváření školicích a testovacích sad dat. Identifikujte název sloupce popisku a nastavte jej na popisek. V tomto příkladu bude popisek `sales_quantity` . Pak pole label oddělte od `test_data` pro vytvoření `test_target` sady.
+V tomto případě jsou data již seřazena vzestupně podle pole čas `day_datetime` . Při nastavování experimentu se ale ujistěte, že požadovaný sloupec čas je seřazen vzestupně, aby se vytvořila platná časová řada. 
+
+Následující kód: 
+* Předpokládá, že data obsahují 1 000 záznamů a vytvoří deterministické rozdělení dat pro vytváření školicích a testovacích sad dat. 
+* Identifikuje sloupec popisku jako `sales_quantity` .
+* Odděluje pole popisku od `test_data` pro vytvoření `test_target` sady.
 
 ```python
 train_data = data.iloc[:950]
@@ -101,20 +92,21 @@ label =  "sales_quantity"
 test_labels = test_data.pop(label).values
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > Při výuce modelu pro předpověď budoucích hodnot se ujistěte, že všechny funkce používané v rámci školení můžou být použité pro předpovědi pro zamýšlené horizonty. Například při vytváření prognózy poptávky, včetně funkce pro aktuální cenu akcií, se může zvýšit přesnost školení. Pokud máte v úmyslu předpovědi s dlouhým horizontem, možná nebudete schopni přesně předpovědět budoucí hodnoty v budoucích zásobách, které odpovídají budoucím bodům časových řad, a přesnost modelu by mohla být zhoršená.
 
 <a name="config"></a>
 
-## <a name="train-and-validation-data"></a>Data o školeních a ověřováních
-V konstruktoru můžete určit samostatné sady vlaků a ověřovacích sad přímo `AutoMLConfig` .
+## <a name="training-and-validation-data"></a>Školení a ověřovací data
 
-### <a name="rolling-origin-cross-validation"></a>Překročení počátečního ověřování
-Pro časovou osu, která provádí průběžné ověřování (ROCV), slouží k rozdělení časových řad do dočasného konzistentního způsobu. ROCV rozdělí řadu na data o školení a ověření pomocí počátečního časového bodu. Posunutí zdroje v čase generuje skládání křížového ověření.  
+Můžete určit samostatné sady vlaků a ověřovacích sad přímo v `AutoMLConfig` objektu.   Přečtěte si další informace o [AutoMLConfig](#configure-experiment).
+
+V případě prognózy časových řad se při **překročení průběžného ověřování (ROCV)** automaticky použije při předávání dat pro školení a ověření a nastavení počtu přeložení pro vzájemné ověření s `n_cross_validations` parametrem v `AutoMLConfig` . ROCV rozdělí řadu na data o školení a ověření pomocí počátečního časového bodu. Posunutí zdroje v čase generuje skládání křížového ověření. Tato strategie zachovává integritu dat časové řady a eliminuje riziko úniku dat.
 
 ![alternativní text](./media/how-to-auto-train-forecast/ROCV.svg)
 
-Tato strategie zachovává integritu dat časové řady a eliminuje riziko úniku dat. ROCV se automaticky používá pro prognózování úkolů předáním dat školení a ověření společně a nastavením počtu skládání pro vzájemné ověřování pomocí `n_cross_validations` . Přečtěte si další informace o tom, jak auto ML používá křížové ověřování, aby se [předešlo navýšení modelů](concept-manage-ml-pitfalls.md#prevent-over-fitting)
+Další možnosti vzájemného ověřování a rozdělení dat najdete [v tématu Konfigurace rozdělení dat a křížového ověřování v AutoML](how-to-configure-cross-validation-data-splits.md).
+
 
 ```python
 automl_config = AutoMLConfig(task='forecasting',
@@ -122,11 +114,17 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
-Přečtěte si další informace o [AutoMLConfig](#configure-and-run-experiment).
 
-## <a name="configure-and-run-experiment"></a>Konfigurace a spuštění experimentu
+Přečtěte si další informace o tom, jak AutoML používá křížové ověřování, aby se [předešlo navýšení modelů](concept-manage-ml-pitfalls.md#prevent-over-fitting)
 
-Pro úlohy předpovědi používá automatizované strojové učení kroky předběžného zpracování a odhadu, které jsou specifické pro data časových řad. Spustí se následující kroky předběžného zpracování:
+## <a name="configure-experiment"></a>Konfigurovat experiment
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Konfigurace pro model prognózy je podobná nastavení standardního regresního modelu, ale některé kroky featurization a možnosti konfigurace existují konkrétně pro data časových řad. 
+
+### <a name="featurization-steps"></a>Featurization kroky
+
+V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují automatické škálování a normalizační techniky. Tyto techniky jsou typy **featurization** , které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Další informace o výchozích krocích featurization v [featurization v AutoML](how-to-configure-auto-features.md#automatic-featurization)
+
+Následující kroky jsou však provedeny pouze pro `forecasting` typy úloh:
 
 * Detekuje četnost vzorkování časové řady (například každou hodinu, denně, týdně) a vytvoří nové záznamy pro nepřítomné časové body, aby se řada souvislá.
 * Imputace chybějící hodnoty v cíli (prostřednictvím předávaného sloupce) a sloupců funkcí (pomocí hodnot sloupců mediánu)
@@ -134,38 +132,75 @@ Pro úlohy předpovědi používá automatizované strojové učení kroky před
 * Vytváření funkcí založených na čase, které vám pomůžou při učení se sezónními vzory
 * Kódovat proměnné kategorií na číselné množství
 
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. Následující tabulka vysvětluje jednotlivé parametry a jejich použití.
+Informace o tom, jaké funkce jsou vytvořeny v důsledku těchto kroků, najdete v tématu [Featurization transparentnost](how-to-configure-auto-features.md#featurization-transparency) .
+
+> [!NOTE]
+> Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.
+
+#### <a name="customize-featurization"></a>Přizpůsobení featurization
+
+Máte také možnost přizpůsobit si nastavení featurization, abyste zajistili, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi. 
+
+Mezi podporovaná přizpůsobení pro `forecasting` úlohy patří:
+
+|Přizpůsobení|Definice|
+|--|--|
+|**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
+|**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (fill_value a medián).|
+|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
+
+Chcete-li přizpůsobit featurizations pomocí sady SDK, zadejte `"featurization": FeaturizationConfig` do `AutoMLConfig` objektu. Přečtěte si další informace o [vlastních featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
+Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+
+### <a name="configuration-settings"></a>Nastavení konfigurace
+
+Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. 
+
+Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) .
 
 | &nbsp;Název parametru | Popis | Povinné |
 |-------|-------|-------|
 |`time_column_name`|Slouží k zadání sloupce data a času ve vstupních datech použitých k vytvoření časové řady a odvození frekvence.|✓|
-|`time_series_id_column_names`|Názvy sloupců, které slouží k jednoznačné identifikaci časových řad v datech s více řádky se stejným časovým razítkem. Pokud nejsou definovány identifikátory časových řad, předpokládá se, že datová sada bude jedna časová řada.||
 |`forecast_horizon`|Definuje, kolik období má být předáno předpovědi. Horizont je v jednotkách časové řady. Jednotky jsou založené na časovém intervalu vašich školicích dat, například měsíčně, týdně, kdy by měl prognóza předpovědět.|✓|
-|`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Prodleva je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislou proměnnou se ve výchozím nastavení neshoduje nebo koreluje. Například při pokusu o Předpověď poptávky za produkt může být poptávka v jakémkoli měsíci závislá na ceně konkrétních komoditních 3 měsíců předem. V tomto příkladu můžete chtít, aby se cíl (poptávka) negativně zavedl 3 měsíce, aby model byl školením správného vztahu.||
-|`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, <= velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie.||
-|`enable_dnn`|Povolte prognózování hluboké.||
+|`enable_dnn`|[Povolte prognózování hluboké]().||
+|`time_series_id_column_names`|Názvy sloupců, které slouží k jednoznačné identifikaci časových řad v datech s více řádky se stejným časovým razítkem. Pokud nejsou definovány identifikátory časových řad, předpokládá se, že datová sada bude jedna časová řada. Další informace o jednotlivých časových řadách najdete v [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
+|`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Prodleva je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislou proměnnou se ve výchozím nastavení neshoduje nebo koreluje. ||
+|`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, <= velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie. Přečtěte si další informace o [agregaci cílového souhrnného okna](#target-rolling-window-aggregation).||
 
-Další informace najdete v [referenční dokumentaci](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
-Vytvořte nastavení časových řad jako objekt Dictionary. Nastavte na `time_column_name` `day_datetime` pole v datové sadě. Definujte `time_series_id_column_names` parametr, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro úložiště a a B. nakonec nastavte na 50, aby `forecast_horizon` bylo možné předpovědět celou sadu testů. Nastavte okno prognózy na 10 teček s `target_rolling_window_size` a zadejte jednu prodlevu pro cílové hodnoty pro dvě tečky předem s `target_lags` parametrem. Doporučuje se nastavit `forecast_horizon` `target_rolling_window_size` `target_lags` možnost automaticky, což vám tyto hodnoty automaticky detekuje. V následujícím příkladu se pro tyto parametry používala nastavení "auto". 
+Následující kód: 
+* Vytvoří `time-series settings` objekt as slovníku. 
+* Nastaví na `time_column_name` `day_datetime` pole v datové sadě. 
+* Definuje `time_series_id_column_names` parametr pro `"store"` . Tím se zajistí, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro úložiště a a B.
+* Nastaví na `forecast_horizon` 50, aby bylo možné předpovědět celou sadu testů. 
+* Nastaví okno prognózy na 10 teček s `target_rolling_window_size`
+* Určuje jednu prodlevu na cílových hodnotách pro dvě tečky předem s `target_lags` parametrem. 
+* Nastaví `target_lags` Doporučené nastavení "automatické", které tuto hodnotu automaticky detekuje za vás.
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
     "time_series_id_column_names": ["store"],
-    "forecast_horizon": "auto",
+    "forecast_horizon": 50,
     "target_lags": "auto",
-    "target_rolling_window_size": "auto",
-    "preprocess": True,
+    "target_rolling_window_size": 10,
 }
 ```
 
-> [!NOTE]
-> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
-
-Definováním `time_series_id_column_names` ve výše uvedeném fragmentu kódu AutoML vytvoří dvě samostatné skupiny časových řad, označované také jako více časových řad. Pokud nejsou definovány žádné identifikátory časových řad, AutoML bude předpokládat, že datová sada je jediná časová řada. Další informace o jednotlivých časových řadách najdete v [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
-
-Nyní vytvořte standardní `AutoMLConfig` objekt, zadáním `forecasting` typu úkolu a experiment odešlete. Po dokončení modelu načtěte nejlepší iteraci spuštění.
+Ty `time_series_settings` se pak předají do standardního `AutoMLConfig` objektu společně s `forecasting` typem úkolu, primární metrikou, kritériem ukončení a školicími daty. 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -183,27 +218,25 @@ automl_config = AutoMLConfig(task='forecasting',
                              enable_ensembling=False,
                              verbosity=logging.INFO,
                              **time_series_settings)
-
-ws = Workspace.from_config()
-experiment = Experiment(ws, "forecasting_example")
-local_run = experiment.submit(automl_config, show_output=True)
-best_run, fitted_model = local_run.get_output()
 ```
 
-Podrobné příklady kódu pro pokročilou konfiguraci prognózování najdete v [poznámkových blocích ukázkových poznámkách k prognózám](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) , včetně:
+## <a name="optional-configurations"></a>Volitelné Konfigurace
 
-* [detekce svátků a featurization](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [křížové ověření pro návratové zdroje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [konfigurovatelné prodlevy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [souhrnné funkce kumulovaných oken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+Další volitelné konfigurace jsou k dispozici pro úlohy předpovědi, jako je například umožnění hloubkového učení a určení cílové agregované kumulativní okna. 
 
-### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurace experimentu s DNN povolení prognózování
+### <a name="enable-deep-learning"></a>Povolit hloubkové učení
 
 > [!NOTE]
-> Podpora DNN pro prognózování v automatizovaných Machine Learning je ve verzi Preview a není podporovaná pro místní běhy.
+> Podpora DNN pro prognózování v automatizovaných Machine Learning je ve **verzi Preview** a není podporovaná pro místní běhy.
 
-Aby bylo možné využít hluboké pro prognózování, budete muset nastavit `enable_dnn` parametr v AutoMLConfig na hodnotu true. 
+Můžete také využít obsáhlý Learning s hlubokými neuronové sítěmi hluboké, abyste vylepšili skóre svého modelu. Obsáhlý Learning v automatizovaném ML umožňuje prognózování dat univariate a lineární časových řad.
+
+Modely hloubkového učení mají tři vnitřní možnosti:
+1. Můžou se učit z libovolného mapování ze vstupů na výstupy.
+1. Podporují několik vstupů a výstupů.
+1. Mohou automaticky extrahovat vzory ve vstupních datech, která jsou rozložena přes dlouhé sekvence. 
+
+Pokud chcete povolit hloubkové učení, nastavte `enable_dnn=True` v `AutoMLConfig` objektu.
 
 ```python
 automl_config = AutoMLConfig(task='forecasting',
@@ -211,72 +244,51 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
-Přečtěte si další informace o [AutoMLConfig](#configure-and-run-experiment).
+Pokud chcete povolit DNN pro experiment AutoML vytvořený v Azure Machine Learning studiu, přečtěte si téma [Nastavení typu úlohy v tématu Postup](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Alternativně můžete vybrat `Enable deep learning` možnost v nástroji Studio.
-![alternativní text](./media/how-to-auto-train-forecast/enable_dnn.png)
+Automatizované ML poskytuje uživatelům v rámci systému doporučení jak nativní modely časových řad, tak i obsáhlé učení. 
 
-Doporučujeme použít výpočetní cluster AML s SKU GPU a alespoň dva uzly jako cíl výpočtů. Aby bylo umožněno dostatek času na dokončení školení DNN, doporučujeme nastavit časový limit experimentu na minimálně několik hodin.
-Další informace o AML výpočetních a virtuálních počítačích, které zahrnují GPU, najdete v dokumentaci ke [výpočetním dokumentům AML](how-to-set-up-training-targets.md#amlcompute) a na [velikost virtuálních počítačů optimalizovaných pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+
+Modely| Popis | Výhody
+----|----|---
+Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
+Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Pokud například překlopete mince, pravděpodobnost, že se vám povede, je 50%, bez ohledu na překlopení dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
+ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
+
 
 Podrobný příklad kódu, který využívá hluboké, najdete v [poznámkovém bloku pro vytváření předpovědí pro produkci nápojů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
 
-### <a name="customize-featurization"></a>Přizpůsobení featurization
-Nastavení featurization můžete přizpůsobit tak, aby se zajistilo, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi. 
-
-Chcete-li přizpůsobit featurizations, zadejte `"featurization": FeaturizationConfig` v `AutoMLConfig` objektu. Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
-
-Mezi podporovaná přizpůsobení patří:
-
-|Přizpůsobení|Definice|
-|--|--|
-|**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
-|**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (fill_value a medián).|
-|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
-
-Vytvořte `FeaturizationConfig` objekt tak, že definujete konfigurace featurization:
-```python
-featurization_config = FeaturizationConfig()
-# `logQuantity` is a leaky feature, so we remove it.
-featurization_config.drop_columns = ['logQuantitity']
-# Force the CPWVOL5 feature to be of numeric type.
-featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
-# Fill missing values in the target column, Quantity, with zeroes.
-featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
-# Fill mising values in the `INCOME` column with median value.
-featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
-```
 
 ### <a name="target-rolling-window-aggregation"></a>Cílová agregace návratového okna
-Nejlepší informace, které může vytvořit předpověď, jsou často poslední hodnotou cíle. Vytváření kumulativních statistik cíle může zvýšit přesnost vašich předpovědi. Cílová agregace kumulovaných oken vám umožní přidat do funkcí hromadnou agregaci hodnot dat. Chcete-li povolit cílovému systému Windows nastavit požadovanou `target_rolling_window_size` velikost okna na celé číslo. 
+Nejlepší informace, které může vytvořit předpověď, jsou často poslední hodnotou cíle.  Cílová agregace kumulovaných oken vám umožní přidat do funkcí hromadnou agregaci hodnot dat. Vytváření a používání těchto dalších funkcí jako dodatečných kontextových dat pomáhá s přesností modelu vlaku.
 
-Příkladem toho lze zobrazit při předvídání poptávky energie. Pro tepelné změny v zahřívanách prostorech můžete přidat funkci posuvných oken po dobu tří dní. V následujícím příkladu jsme vytvořili toto okno o velikosti tři nastavením `target_rolling_window_size=3` v `AutoMLConfig` konstruktoru. V tabulce se zobrazuje inženýr funkcí, který nastane při použití agregace okna. Sloupce pro minimální, maximální a součet se generují na posuvné okno tři na základě definovaných nastavení. Každý řádek obsahuje novou vypočítanou funkci v případě časového razítka pro 8. září 2017:10:00 hodnoty maxima, minima a suma se počítají pomocí hodnot požadavků pro 8. září 2017 1:10:00-3:10:00. V tomto okně se třemi posunutími naplní data pro zbývající řádky.
+Řekněme například, že chcete předpovědět spotřebu energie. Pro tepelné změny v zahřívanách prostorech můžete chtít přidat funkci postupného okna na tři dny. V tomto příkladu vytvořte toto okno nastavením `target_rolling_window_size= 3` v `AutoMLConfig` konstruktoru. 
+
+V tabulce je zobrazen výsledný inženýr funkcí, který nastane při použití agregace okna. Sloupce pro **minimální, maximální** a **součet** se generují na posuvné okno tři na základě definovaných nastavení. Každý řádek obsahuje novou vypočítanou funkci v případě časového razítka pro 8. září 2017:10:00 hodnoty maxima, minima a suma se počítají pomocí **hodnot požadavků** pro 8. září 2017 1:10:00-3:10:00. V tomto okně se třemi posunutími naplní data pro zbývající řádky.
 
 ![alternativní text](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Vytváření a používání těchto dalších funkcí jako dodatečných kontextových dat pomáhá s přesností modelu vlaku.
 
 Podívejte se na příklad kódu Pythonu s využitím [agregované agregační funkce](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)pro souhrnné okno.
 
-### <a name="view-feature-engineering-summary"></a>Zobrazit souhrn metodologie funkcí
+## <a name="run-the-experiment"></a>Spusťte experiment. 
 
-V případě typů úloh časových řad v automatizovaném strojovém učení můžete zobrazit podrobnosti z procesu technické analýzy funkcí. Následující kód ukazuje jednotlivé nezpracované funkce spolu s následujícími atributy:
-
-* Nezpracovaný název funkce
-* Počet vydaných funkcí, které byly vytvořeny z této nezpracované funkce
-* Zjištěn typ
-* Určuje, zda byla funkce vyřazena.
-* Seznam transformací funkcí pro nezpracované funkce
+Když máte `AutoMLConfig` objekt připravený, můžete experiment odeslat. Po dokončení modelu načtěte nejlepší iteraci spuštění.
 
 ```python
-fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+ws = Workspace.from_config()
+experiment = Experiment(ws, "forecasting_example")
+local_run = experiment.submit(automl_config, show_output=True)
+best_run, fitted_model = local_run.get_output()
 ```
 
 ## <a name="forecasting-with-best-model"></a>Prognózování s nejlepším modelem
 
 Použijte nejlepší modelovou iteraci pro předpověď hodnot sady dat testu.
 
-`forecast()`Funkce by měla být použita místo `predict()` , a to umožní specifikace, pokud by se měla spustit předpovědi. V následujícím příkladu je třeba nejprve nahradit všechny hodnoty v `y_pred` `NaN` . V takovém případě bude zdroj prognózy na konci školicích dat, jako by to bylo normálně při použití `predict()` . Pokud jste však nahradili pouze druhou polovinu z `y_pred` s `NaN` , funkce by v první polovině nezměněných hodnot nechala tyto číselné hodnoty, ale předpověď `NaN` hodnot v druhé polovině. Funkce vrátí předpovězené hodnoty i zarovnané funkce.
+`forecast()`Funkce umožňuje specifikace, pokud má předpovědi začít, na rozdíl od `predict()` , který je obvykle používán pro klasifikaci a regresní úkoly.
+
+V následujícím příkladu je třeba nejprve nahradit všechny hodnoty v `y_pred` `NaN` . V tomto případě bude zdroj prognózy na konci školicích dat. Pokud jste však nahradili pouze druhou polovinu z `y_pred` s `NaN` , funkce by v první polovině nezměněných hodnot nechala tyto číselné hodnoty, ale předpověď `NaN` hodnot v druhé polovině. Funkce vrátí předpovězené hodnoty i zarovnané funkce.
 
 Můžete také použít `forecast_destination` parametr ve `forecast()` funkci k předpovědi hodnot až do zadaného data.
 
@@ -287,7 +299,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Vypočítá RMSE (znak "root střed_hodn" Error) mezi `actual_labels` skutečnými hodnotami a předpovězené hodnoty v `predict_labels` .
+Vypočítat hlavní střední hodnotu chyby (RMSE) mezi `actual_labels` skutečnými hodnotami a předpovězenými hodnotami v `predict_labels` .
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -297,7 +309,9 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-Teď, když je zjištěná přesnost celkového modelu, je nejrealističtějším dalším krokem použití modelu k předpovědi neznámých budoucích hodnot. Poskytněte datovou sadu ve stejném formátu jako sadu testů `test_data` , ale s budoucími DateTime a výslednou předpokládanou sadou je předpověď hodnot pro každý krok časové řady. Předpokládejte, že poslední záznamy časových řad v datové sadě byly pro 12/31/2018. Chcete-li odhadnout poptávku pro následující den (nebo tolik období, kolik potřebujete pro předpověď <= `forecast_horizon` ), vytvořte jeden záznam časových řad pro každé úložiště pro 01/01/2019.
+Teď, když je zjištěná přesnost celkového modelu, je nejrealističtějším dalším krokem použití modelu k předpovědi neznámých budoucích hodnot. 
+
+Poskytněte datovou sadu ve stejném formátu jako sadu testů `test_data` , ale s budoucími DateTime a výslednou předpokládanou sadou je předpověď hodnot pro každý krok časové řady. Předpokládejte, že poslední záznamy časových řad v datové sadě byly pro 12/31/2018. Chcete-li odhadnout poptávku pro následující den (nebo tolik období, kolik potřebujete pro předpověď <= `forecast_horizon` ), vytvořte jeden záznam časových řad pro každé úložiště pro 01/01/2019.
 
 ```output
 day_datetime,store,week_of_year
@@ -309,6 +323,16 @@ Zopakováním potřebných kroků načtěte tato budoucí data do datového rám
 
 > [!NOTE]
 > Hodnoty nelze předpovědět pro počet období, který je větší než `forecast_horizon` . Model musí být znovu vyškolen s větším horizontem, aby bylo možné předpovědět budoucí hodnoty nad rámec aktuálního horizontu.
+
+
+## <a name="example-notebooks"></a>Příklady poznámkových bloků
+Podrobné příklady kódu pro pokročilou konfiguraci prognózování najdete v [poznámkových blocích ukázkových poznámkách k prognózám](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) , včetně:
+
+* [detekce svátků a featurization](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [křížové ověření pro návratové zdroje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [konfigurovatelné prodlevy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [souhrnné funkce kumulovaných oken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ## <a name="next-steps"></a>Další kroky
 

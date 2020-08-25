@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 08/21/2020
+ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079224"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749456"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
@@ -30,9 +30,9 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotn
 > * Použití více vláken ke zvýšení rychlosti indexování
 > * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné položky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
@@ -154,7 +154,7 @@ DataGenerator dg = new DataGenerator();
 List<Hotel> hotels = dg.GetHotels(100000, "large");
 ```
 
-K dispozici jsou dvě velikosti hotelů pro testování v této ukázce: **malá** a **Velká**.
+K dispozici jsou dvě velikosti hotelů pro testování v této ukázce: **malá** a  **Velká**.
 
 Schéma indexu může mít výrazný vliv na rychlosti indexování. Z důvodu tohoto dopadu má smysl převést tuto třídu tak, aby po spuštění tohoto kurzu generovala data odpovídající schématu indexu.
 
@@ -382,7 +382,7 @@ Pomocí portálu můžete také odstranit indexy.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

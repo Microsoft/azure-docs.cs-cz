@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75977884"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Data Lake Storu
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Udělení přístupu virtuálnímu počítači ke službě Azure Data Lake Store
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k přístupu ke službě Azure Data Lake Store
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

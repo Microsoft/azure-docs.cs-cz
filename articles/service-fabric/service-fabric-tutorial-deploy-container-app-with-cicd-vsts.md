@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614124"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
@@ -42,7 +42,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Sdílejte zdrojové soubory aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to tak, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete ->  **Přidat do správy zdrojového kódu****Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control**tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu**Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
@@ -62,7 +62,7 @@ Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí ba
 
 ### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Otevřete nový týmový projekt tak, že přejdete https://dev.azure.com na webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
+Otevřete nový týmový projekt tak, že přejdete na https://dev.azure.com webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
 
 Na levém panelu vyberte možnost **kanály** a pak klikněte na **Nový kanál**.
 
@@ -134,7 +134,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ vydaná** -> verze**vytvořit vydání** -> **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
+Výběrem **+ vydaná**verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
@@ -142,7 +142,7 @@ Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clust
 
 Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.
 
-Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající na vyřízení][pending]) na stavovém řádku v pravém dolním rohu.
+Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající][pending]) na stavovém řádku v pravém dolním rohu.
 
 V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktualizace a potvrďte provedené změny.
 

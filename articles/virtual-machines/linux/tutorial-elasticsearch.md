@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80066546"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalace řešení Elastic Stack na virtuální počítač Azure
@@ -236,7 +236,7 @@ V konzole Kibana vyberte **Discover** (Vyhledat), abyste mohli prohledávat, pro
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste na vývojový virtuální počítač v Azure nasadili řešení Elastic Stack. Naučili jste se tyto postupy:
+V tomto kurzu jste na vývojový virtuální počítač v Azure nasadili řešení Elastic Stack. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Ubuntu ve skupině prostředků Azure

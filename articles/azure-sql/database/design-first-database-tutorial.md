@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84216547"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
@@ -39,7 +39,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!NOTE]
 > Pro účely tohoto kurzu používáme Azure SQL Database. Můžete použít také databázi ve fondu v elastickém fondu nebo v spravované instanci SQL. Informace o připojení ke spravované instanci SQL najdete v těchto rychlých startech spravované instance SQL: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL](../managed-instance/connect-vm-instance-configure.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního](../managed-instance/point-to-site-p2s-configure.md)prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
@@ -48,7 +48,7 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
@@ -68,7 +68,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
     | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
     | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-    | **Vybrat zdroj** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
+    | **Zvolit zdroj** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
 
 4. Pokud chcete použít existující server nebo vytvořit a nakonfigurovat nový server, klikněte na **Server** . Buď vyberte existující server, nebo klikněte na **vytvořit nový server** a vyplňte formulář **nového serveru** pomocí následujících informací:
 
@@ -135,7 +135,7 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serveru** | Databázový stroj | Tato hodnota se vyžaduje. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET*. |
-   | **Authentication** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
+   | **Ověřování** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
    | **Přihlásit** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | **Heslo** | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
@@ -212,7 +212,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
    )
    ```
 
-   ![Vytvoření tabulek](./media/design-first-database-tutorial/create-tables.png)
+   ![Vytváření tabulek](./media/design-first-database-tutorial/create-tables.png)
 
 3. Rozbalením uzlu **Tables** ( *yourDatabase* ) v **Průzkumník objektů** zobrazíte tabulky, které jste vytvořili.
 
@@ -274,7 +274,7 @@ Informace z databázových tabulek můžete načíst spuštěním následující
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili mnoho základních databázových úloh. Naučili jste se tyto postupy:
+V tomto kurzu jste se naučili mnoho základních databázových úloh. Naučili jste se:
 
 > [!div class="checklist"]
 >

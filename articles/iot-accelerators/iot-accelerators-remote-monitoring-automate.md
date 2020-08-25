@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84712509"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
@@ -33,7 +33,7 @@ V tomto kurzu jste:
 > * Úprava existujícího pravidla
 > * Zapnutí a vypnutí pravidel
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -54,7 +54,7 @@ Pokud chcete vytvořit pravidlo, které generuje upozornění, když tlak v chla
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Upozornění chladiče                       |
-| Description      | Tlak v chladiči překročil 150 PSI |
+| Popis      | Tlak v chladiči překročil 150 PSI |
 | Skupina zařízení     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Okamžitě                               |
 | Pole podmínky 1| tlak                              |
@@ -77,7 +77,7 @@ Pokud chcete vytvořit pravidlo s několika podmínkami, které generuje kritick
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
 | Název pravidla        | Kritická vlhkost a teplota chladiče    |
-| Description      | Úrovně vlhkosti a teploty jsou kritické |
+| Popis      | Úrovně vlhkosti a teploty jsou kritické |
 | Skupina zařízení     | Skupina zařízení **Chladiče**             |
 | Výpočet      | Průměr                               |
 | Časové období      | 5                                     |

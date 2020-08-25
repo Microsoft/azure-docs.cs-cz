@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75443695"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Kurz: vlastní deserializace rozhraní .NET pro Azure Stream Analytics
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Nainstalujte [Visual studio 2017](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/). Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express není podporovaná.
 
@@ -63,7 +63,7 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
 
 ## <a name="configure-a-stream-analytics-job"></a>Konfigurace úlohy Stream Analytics
 
-1. Dvakrát klikněte na **JobConfig. JSON**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
+1. Dvakrát klikněte na **JobConfig.jszapnuto**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
@@ -74,7 +74,7 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    |Vlastní nastavení úložiště kódu účet úložiště|< svého účtu úložiště >|
    |Kontejner nastavení vlastního úložiště kódu|< kontejneru úložiště >|
 
-2. V části **vstupy**poklikejte na **input. JSON**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
+2. V části **vstupy**dvakrát klikněte **Input.jsna**. Použijte výchozí konfigurace s výjimkou následujících nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
@@ -85,9 +85,9 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    |Kontejner|< kontejneru úložiště >|
    |Formát serializace události|Jiné (Protobuf, XML, proprietární...)|
    |Prostředek|Zatížení z odkazu na projekt ASA nebo CodeBehind|
-   |Název sestavení CSharp|ProtobufDeserializer. dll|
+   |Název sestavení CSharp|ProtobufDeserializer.dll|
    |Název třídy|MessageBodyProto.MessageBodyDeserializer|
-   |Typ komprese události|Žádná|
+   |Typ komprese události|Žádné|
 
 3. Do souboru **script. asaql** přidejte následující dotaz.
 
@@ -95,14 +95,14 @@ Kontejner, který vytvoříte, se použije k uložení prostředků souvisejíc�
    SELECT * FROM Input
    ```
 
-4. Stáhněte si [vzorový vstupní soubor protobuf](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). Ve složce **vstupy** klikněte pravým tlačítkem na **input. JSON** a vyberte **Přidat místní vstup**. Potom poklikejte na **local_Input. JSON** a nakonfigurujte následující nastavení:
+4. Stáhněte si [vzorový vstupní soubor protobuf](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). Ve složce **vstupy** klikněte pravým tlačítkem na **Input.jsna** a vyberte **Přidat místní vstup**. Pak dvakrát klikněte **local_Input.jsna** a nakonfigurujte následující nastavení:
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
    |Alias pro vstup|Vstup|
    |Typ zdroje|Datový proud|
    |Formát serializace události|Jiné (Protobuf, XML, proprietární...)|
-   |Název sestavení CSharp|ProtobufDeserializer. dll|
+   |Název sestavení CSharp|ProtobufDeserializer.dll|
    |Název třídy|MessageBodyProto.MessageBodyDeserializer|
    |Cesta k místnímu vstupnímu souboru|< cestu k souboru pro stažený ukázkový vstupní soubor protobuf>|
 

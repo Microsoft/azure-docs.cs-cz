@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85318620"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Kurz: nasazení aplikace ASP.NET a kódu Azure SQL Database pomocí Azure DevOps Starter
@@ -36,7 +36,7 @@ V tomto kurzu provedete následující:
 > * Připojení k Azure SQL Database 
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -44,7 +44,7 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také v předplatném Azure vytvoří prostředky Azure, jako je například Azure SQL Database, podle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -66,7 +66,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Vyberte služby předplatného Azure. Pokud chcete zobrazit další nastavení konfigurace Azure a identifikovat uživatelské jméno v části **Podrobnosti o přihlášení k databázovému serveru** , můžete vybrat **změnit**. Uložte si uživatelské jméno pro další kroky v tomto kurzu. Pokud tento volitelný krok provedete, před výběrem **Hotovo**ukončete oblast konfigurace Azure.
  
-1. Vyberte **Done** (Hotovo). Po několika minutách se proces dokončí a otevře se řídicí panel DevOps Starter v Azure Portal. Můžete také přejít na řídicí panel přímo ze **všech prostředků** v Azure Portal. Na pravé straně vyberte **Procházet** a zobrazte spuštěnou aplikaci.
+1. Vyberte **Hotovo**. Po několika minutách se proces dokončí a otevře se řídicí panel DevOps Starter v Azure Portal. Můžete také přejít na řídicí panel přímo ze **všech prostředků** v Azure Portal. Na pravé straně vyberte **Procházet** a zobrazte spuštěnou aplikaci.
     
 ## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
 

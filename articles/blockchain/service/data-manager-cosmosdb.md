@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "79533177"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
@@ -29,7 +29,7 @@ V tomto kurzu jste:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
@@ -283,7 +283,7 @@ Teď, když jste se připojili Data Manager blockchain k Azure Cosmos DB, může
 
     Pole **DecodedProperties** obsahuje vlastnosti transakce.
 
-Gratulujeme! Úspěšně jste vytvořili Průzkumníka transakčních zpráv pomocí Data Manager blockchain a Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste vytvořili Průzkumníka transakčních zpráv pomocí Data Manager blockchain a Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

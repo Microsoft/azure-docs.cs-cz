@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
 ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85361587"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
@@ -176,7 +176,7 @@ Po úspěšném škálování clusteru se výstup podobá následujícímu pří
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se tyto postupy:
+V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Naučili jste se:
 
 > [!div class="checklist"]
 > * Ruční škálování podů Kubernetes, ve kterých se spouští vaše aplikace

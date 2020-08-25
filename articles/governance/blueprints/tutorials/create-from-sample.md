@@ -4,10 +4,10 @@ description: V tomto kurzu použijete ukázku podrobného plánu k vytvoření d
 ms.date: 03/25/2020
 ms.topic: tutorial
 ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80677096"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Kurz: vytvoření prostředí z ukázky podrobného plánu
@@ -25,7 +25,7 @@ V následujícím kurzu se k předvedení různých aspektů služby Azure modro
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-blueprint-definition-from-sample"></a>Vytvořit definici podrobného plánu z ukázky
 
@@ -96,12 +96,12 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
    - Parametry artefaktu
 
-     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . `{Your ID}`V případě vyberte svůj uživatelský účet Azure.
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . V případě `{Your ID}` Vyberte svůj uživatelský účet Azure.
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
      |Skupina prostředků ProdRG|Skupina prostředků|Název|ProductionRG|Definuje název první skupiny prostředků.|
-     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|USA – západ 2|Nastaví umístění první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|Západní USA 2|Nastaví umístění první skupiny prostředků.|
      |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým chcete udělit přiřazení role _přispěvatele_ v rámci první skupiny prostředků.|
      |Skupina prostředků PreProdRG|Skupina prostředků|Název|PreProductionRG|Definuje název druhé skupiny prostředků.|
      |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|USA – západ|Nastaví umístění druhé skupiny prostředků.|
@@ -144,7 +144,7 @@ Přiřazení podrobného plánu vytvoří a sleduje artefakty definované v defi
 
 1. Vyberte přiřazení odepřít a pak na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \*/Read** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s **\*** konfigurací **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \* /Read** prostřednictvím **NotActions**.
 
 1. Z Azure Portal s popisem cesty vyberte **PreProductionRG-Access Control (IAM)**. Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadejte název _PreProductionRG_ a potvrďte odstranění a vyberte **Odstranit** v dolní části podokna.
 

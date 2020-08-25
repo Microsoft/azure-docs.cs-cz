@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Storage pomocí přístupového klíče – Linux – Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Storage pomocí přístupového klíče – Linux – Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78273823"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
@@ -36,7 +36,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit spravované identitě přiřazené systémem virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 
@@ -45,7 +45,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok tak
 3. Zadejte **název** účtu úložiště, který budete používat později.  
 4. V polích **Model nasazení** a **Druh účtu** nastavte Resource manager a Pro obecné účely (v uvedeném pořadí). 
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

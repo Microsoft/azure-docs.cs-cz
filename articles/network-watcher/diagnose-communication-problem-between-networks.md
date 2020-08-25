@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76834676"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat diagnostiku VPN, musí být spuštěná brána VPN. Pokud bránu VPN pro diagnostiku ještě nepoužíváte, můžete ji nasadit pomocí [skriptu PowerShellu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skript PowerShellu můžete spustit z těchto umístění:
 - **Místní instalace prostředí PowerShell**: skript vyžaduje `Az` modul Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.

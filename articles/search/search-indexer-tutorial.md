@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045446"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
@@ -27,9 +27,9 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotn
 > * Spuštění indexeru pro načtení dat do indexu
 > * Dotazování indexu jako ověřovacího kroku
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -108,7 +108,7 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. `searchServiceName`Pokud je úplná adresa URL " https://my-demo-service.search.windows.net ", název služby, který se má poskytnout, je "Moje ukázka-služba".
 
-1. Pro je `AzureSqlConnectionString` formát řetězce podobný tomuto:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
+1. Pro je `AzureSqlConnectionString` formát řetězce podobný tomuto: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
@@ -244,7 +244,7 @@ Portál můžete také použít k odstranění indexů, indexerů a zdrojů dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

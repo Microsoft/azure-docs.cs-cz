@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80063789"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal
@@ -41,7 +41,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Vyberte **databáze** > **Azure Database for MariaDB**. Službu můžete vyhledat také zadáním **MariaDB** do vyhledávacího pole.
+2. Vyberte **databáze**  >  **Azure Database for MariaDB**. Službu můžete vyhledat také zadáním **MariaDB** do vyhledávacího pole.
 
    ![Přechod k MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
@@ -54,13 +54,13 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
     Název serveru | *Jedinečný název serveru* | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MariaDB. Například **mydemoserver**. K zadanému názvu serveru se připojí název domény *.mariadb.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
     Předplatné | *Vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | **myresourcegroup** | Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků.
-    Výběr zdroje | **Prázdné** | Vyberte **Prázdné** a vytvořte nový server. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
-    Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
+    Zvolit zdroj | **Trhnout** | Vyberte **Prázdné** a vytvořte nový server. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
+    Přihlášení správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
     Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-    Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
-    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte**pro obecné účely** **cenové úrovně** > . U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
+    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **pro obecné účely cenové úrovně**  >  **General Purpose**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
@@ -93,7 +93,7 @@ Na webu Azure Portal získejte hodnoty **Název serveru** (plně kvalifikovaný)
 
    ![Vlastnosti serveru](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-V našem příkladu je název serveru **mydemoserver.MariaDB.Database.Azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.MariaDB.Database.Azure.com** a přihlašovací jméno správce serveru je **myadmin \@ mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Připojení k serveru pomocí mysql
 

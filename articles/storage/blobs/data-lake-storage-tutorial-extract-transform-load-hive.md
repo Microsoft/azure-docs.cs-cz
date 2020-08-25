@@ -9,10 +9,10 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045293"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure HDInsight
@@ -26,9 +26,9 @@ V tomto kurzu se naučíte:
 > * Transformujte data pomocí Apache Hive.
 > * Načtěte data pro Azure SQL Database pomocí Sqoop.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Účet úložiště Azure Data Lake Storage Gen2, který je nakonfigurovaný pro HDInsight**
 
@@ -54,11 +54,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    | --- | --- |
    | Filter Year (Filtr roku) |2013 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Fields (Pole) |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Pole |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    
    Zrušte zaškrtnutí všech ostatních polí.
 
-3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
+3. Vyberte **Stáhnout**. Získáte soubor .zip s vybranými datovými poli.
 
 ## <a name="extract-and-upload-the-data"></a>Extrakce a nahrání dat
 
@@ -122,7 +122,7 @@ V této části použijete Beeline ke spuštění úlohy Apache Hive.
 
 V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache Hive s názvem **zpoždění**.
 
-1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem **flightdelays. HQL**:
+1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem     **flightdelays. HQL**:
 
    ```bash
    nano flightdelays.hql
@@ -226,7 +226,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
 
 Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete najít název vašeho serveru, proveďte tyto kroky.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **databáze SQL**.
 
@@ -300,7 +300,7 @@ Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete 
 
 ## <a name="export-and-load-the-data"></a>Exportovat a načíst data
 
-V předchozích částech jste do umístění zkopírovali transformovaná data `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
+V předchozích částech jste do umístění zkopírovali transformovaná data  `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 

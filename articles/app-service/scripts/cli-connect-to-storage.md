@@ -10,10 +10,10 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 92cb41552d246dd30a84ce7bc27573ab6dbb7dae
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80058086"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Připojení aplikace App Service k účtu úložiště pomocí rozhraní příkazového řádku

@@ -4,10 +4,10 @@ description: V tomto kurzu použijete možnosti zámků prostředků Azure modro
 ms.date: 05/06/2020
 ms.topic: tutorial
 ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85969636"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
@@ -25,7 +25,7 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-blueprint-definition"></a>Vytvořit definici podrobného plánu
 
@@ -154,7 +154,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
      |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|USA – západ 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
 1. Po zadání všech parametrů vyberte **přiřadit** v dolní části stránky.

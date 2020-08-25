@@ -9,15 +9,15 @@ ms.date: 03/02/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78251491"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
 
-Můžete nakonfigurovat Azure Firewall cílový DNAT (Network Address Translation) pro překlad a filtrování příchozího internetového provozu do podsítí. Když nakonfigurujete DNAT, akce kolekce pravidel překladu adres (NAT) se nastaví na **DNAT**. Každé pravidlo v kolekci pravidel NAT pak lze použít k překladu veřejné IP adresy a portu brány firewall na privátní IP adresu a port. Pravidla DNAT implicitně přidávají odpovídající pravidlo sítě, které povoluje přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
+Ve službě Azure Firewall můžete nakonfigurovat překlad adres na základě cíle (DNAT) pro překlad a filtrování příchozího internetového provozu do vašich podsítí. Když nakonfigurujete DNAT, akce kolekce pravidel překladu adres (NAT) se nastaví na **DNAT**. Každé pravidlo v kolekci pravidel NAT pak lze použít k překladu veřejné IP adresy a portu brány firewall na privátní IP adresu a port. Pravidla DNAT implicitně přidávají odpovídající pravidlo sítě, které povoluje přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 
 V tomto kurzu se naučíte:
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace pravidla DNAT
 > * Testování brány firewall
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
 
@@ -130,7 +130,7 @@ Vytvořte virtuální počítač úloh a umístěte ho do podsítě **SN-Workloa
 
 **Zkontrolovat a vytvořit**
 
-Zkontrolujte souhrn a pak vyberte **vytvořit**. Dokončení tohoto procesu může několik minut trvat.
+Zkontrolujte souhrn a pak vyberte **vytvořit**. Dokončení může několik minut trvat.
 
 Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního počítače. Použijete ji později při konfiguraci brány firewall. Vyberte název virtuálního počítače a v části **Nastavení**vyberte **sítě** , abyste našli privátní IP adresu.
 
@@ -144,7 +144,7 @@ Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního poč
    |Nastavení  |Hodnota  |
    |---------|---------|
    |Název     |FW-DNAT-test|
-   |Předplatné     |\<Vaše předplatné\>|
+   |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |**Použít existující:** RG-DNAT-Test |
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující:** VN-Hub|

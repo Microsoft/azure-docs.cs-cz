@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76169772"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Příklad: použití funkce rozsáhlého škálování
@@ -199,7 +199,7 @@ I když se operace vlaků zrychlí [FindSimilar](https://westus.dev.cognitive.mi
 
 | Škálování pro plošky nebo osoby | Odhadovaná doba školení |
 |:---:|:---:|
-| 1 000 | 1-2 sec |
+| 1 000 | 1-2 sec |
 | 10 000 | 5-10 sec |
 | 100 000 | 1-2 min. |
 | 1 000 000 | 10-30 min. |
@@ -208,7 +208,7 @@ Abychom lépe využili velkou škálu funkcí, doporučujeme následující stra
 
 ### <a name="step-31-customize-time-interval"></a>Krok 3,1: přizpůsobení časového intervalu
 
-Jak je znázorněno `TrainLargeFaceList()`v, je časový interval v milisekundách pro zpoždění procesu kontroly stavu nekonečného školení. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Upravte časový interval podle očekávané kapacity LargeFaceList.
+Jak je znázorněno v `TrainLargeFaceList()` , je časový interval v milisekundách pro zpoždění procesu kontroly stavu nekonečného školení. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Upravte časový interval podle očekávané kapacity LargeFaceList.
 
 Stejná strategie platí i pro LargePersonGroup. Například když provedete LargePersonGroupi s 1 000 000 osobami, `timeIntervalInMilliseconds` může to být 60 000, což je 1 minutový interval.
 
@@ -231,7 +231,7 @@ Příklad pracovního postupu:
 
 Pokud je přijatelné poměrně dlouhé latence, nemusíte aktivovat operaci vlaku hned po přidání nových dat. Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně. Tato strategie je vhodná pro dynamické scénáře s přijatelnou latencí. Dá se použít ke statickým scénářům k dalšímu snížení četnosti vlaků.
 
-Předpokládejme, že je `TrainLargePersonGroup` funkce podobná `TrainLargeFaceList`. Typická implementace samostatného školení na LargePersonGroup vyvoláním [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` je:
+Předpokládejme, že je `TrainLargePersonGroup` funkce podobná `TrainLargeFaceList` . Typická implementace samostatného školení na LargePersonGroup vyvoláním [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` je:
 
 ```csharp
 private static void Main()
@@ -261,7 +261,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 Další informace o implementacích pro správu dat a identifikaci najdete v tématu [Přidání plošek](how-to-add-faces.md) a [Identifikace plošek v obrázku](HowtoIdentifyFacesinImage.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V této příručce jste zjistili, jak migrovat existující kód person nebo FaceList, ne data, na LargePersonGroup nebo LargeFaceList:
 

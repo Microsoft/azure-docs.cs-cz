@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: rohink
 ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77136289"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Kurz: směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí Traffic Manager
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
 
@@ -174,7 +174,7 @@ Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVME
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Koncový bod Azure                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | Název           | myInternalWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidejte IP adresu testovacího virtuálního počítače *myVMEastUS* . Všechny dotazy uživatelů pocházející z tohoto virtuálního počítače se přesměrují na *myInternalWebSiteEndpoint*.    |

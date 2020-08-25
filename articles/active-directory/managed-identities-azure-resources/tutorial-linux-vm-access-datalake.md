@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Data Lake Store-Linux – Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Data Lake Store-Linux – Azure AD
 description: V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75888511"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
@@ -60,7 +60,7 @@ Spravované identity pro prostředky Azure teď můžou se soubory ve vytvořen�
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
-V této části se dozvíte, jak získat přístupový token a volat Data Lake Store systému souborů. Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu „Bearer \<HODNOTA_PŘÍSTUPOVÉHO_TOKENU\>“.  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+V této části se dozvíte, jak získat přístupový token a volat Data Lake Store systému souborů. Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu "Nosičer \<ACCESS_TOKEN_VALUE\> ".  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
 
 V tomto kurzu použijete při ověření přístupu k REST API systému souborů Data Lake Store nástroj cURL pro požadavky REST.
 
@@ -71,7 +71,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 
 1. Na portálu přejděte ke svému linuxovému virtuálním počítači. V **Přehledu** vyberte **Připojit**.  
 2. Připojte se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. Identifikátor prostředku pro Data Lake Store je `https://datalake.azure.net/`.  V identifikátoru prostředku musí být koncové lomítko.
+3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. Identifikátor prostředku pro Data Lake Store je `https://datalake.azure.net/` .  V identifikátoru prostředku musí být koncové lomítko.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

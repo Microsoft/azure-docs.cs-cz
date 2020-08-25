@@ -15,10 +15,10 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: fd5d20ed3f2cc41f4d7d51f06d4bc90a6afd22eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75526528"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Odebrání aplikace z Service Fabricho clusteru pomocí rozhraní příkazového řádku Service Fabric

@@ -1,5 +1,5 @@
 ---
-title: Připojení ke službám Azure Storage
+title: Připojení k službám úložiště Azure
 titleSuffix: Azure Machine Learning
 description: Naučte se používat úložiště dat k zabezpečenému připojení ke službám Azure Storage během školení pomocí Azure Machine Learning
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, devx-track-python
-ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, contperfq1, devx-track-python
+ms.openlocfilehash: c5200214946b52ce974a8b7557e38eb57481028a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852527"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782987"
 ---
-# <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
+# <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](#studio) .
@@ -32,7 +32,7 @@ Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
@@ -71,7 +71,7 @@ Budete potřebovat:
 [&nbsp;Databáze SQL &nbsp; Azure](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| Ověřování SQL <br>Instanční objekt| ✓ | ✓ | ✓ |✓|
 [&nbsp;PostgreSQL Azure](https://docs.microsoft.com/azure/postgresql/overview) | Ověřování SQL| ✓ | ✓ | ✓ |✓|
 [Azure &nbsp; Database &nbsp; for &nbsp; MySQL](https://docs.microsoft.com/azure/mysql/overview) | Ověřování SQL|  | ✓* | ✓* |✓*|
-[Systém souborů datacihly &nbsp; &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Žádné ověřování | | ✓** | ✓ ** |✓** |
+[Systém souborů datacihly &nbsp; &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Bez ověřování | | ✓** | ✓ ** |✓** |
 
 * MySQL se podporuje jenom pro [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)kanálu. <br>
 * * Datacihly se podporují jenom pro [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) kanálu.

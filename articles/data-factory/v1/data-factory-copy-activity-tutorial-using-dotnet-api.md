@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85254850"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
@@ -43,7 +43,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

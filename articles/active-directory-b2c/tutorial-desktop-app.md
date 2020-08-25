@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78186195"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: ověřování uživatelů v nativním klientském počítači pomocí Azure Active Directory B2C
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s pracovními procesy pro vývoj **desktopových** aplikací pro .NET a **ASP.NET a web** .
@@ -61,7 +61,7 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Příklad:
+3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Například:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
