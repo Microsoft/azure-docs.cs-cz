@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85250957"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -65,9 +65,9 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
 * **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
@@ -812,7 +812,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
@@ -985,7 +985,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků

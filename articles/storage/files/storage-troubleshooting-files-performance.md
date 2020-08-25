@@ -4,15 +4,15 @@ description: Řešení známých problémů s výkonem u sdílených složek Azu
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009269"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782366"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -20,13 +20,13 @@ V tomto článku jsou uvedené některé běžné problémy související se sd�
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Vysoká latence, nízká propustnost a obecné problémy s výkonem
 
-### <a name="cause-1-share-experiencing-throttling"></a>Příčina 1: sdílená omezení
+### <a name="cause-1-share-was-throttled"></a>Příčina 1: sdílená složka byla omezená.
 
-Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100 standardních IOPS (s potenciálem pro nárůst až 300 po hodinu). Další informace o zřizování a jeho vztahu k IOPS najdete v části [zřízené sdílené složky](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) v příručce pro plánování.
+Požadavky jsou omezeny, když jsou dosaženy limity IOPS, příchozí nebo odchozí připojení ke sdílené složce. Pokud chcete pochopit omezení pro sdílené složky Standard a Premium, přečtěte si téma [sdílení souborů a cíle škálování souborů](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
@@ -47,7 +47,8 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využ
 
 ### <a name="solution"></a>Řešení
 
-- Zvyšte kapacitu zřízenou sdílenou složkou tím, že zadáte vyšší kvótu pro sdílenou složku.
+- Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
+- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části [Principy zřizování pro služby Premium pro sdílení](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) souborů v příručce pro plánování souborů Azure.
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>Příčina 2: silná úloha metadat/obor názvů
 

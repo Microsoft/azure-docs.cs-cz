@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 235b2a1e3a75c01c8e57a0e4b0c27664f638385f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c93f4f3976e4e036aa47144618145461ac37ad4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723516"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755615"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -44,9 +44,9 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
 1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
-  # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    python
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -82,11 +82,10 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
     
-   # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-    ```
-    python
+# <a name="v21-preview1"></a>[v 2.1 – Preview. 1](#tab/v2-1)    
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -96,7 +95,7 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -123,11 +122,14 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
+
 > [!NOTE]
 > **Vstup jazyka** 
 >
 > Operace vydání Analzye Receipt 2,1 obsahuje volitelný parametr požadavku pro jazyk, národní prostředí účtenky. Mezi podporovaná národní prostředí patří: EN-AU, en-CA, en-GB, en-IN, en-US. 
+
+---
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Receipts.py*.
 1. Otevřete okno příkazového řádku.
@@ -135,9 +137,15 @@ Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro p
 
 Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec následuje `operations/` ID operace.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
+# <a name="v21-preview1"></a>[v 2.1 – Preview. 1](#tab/v2-1)    
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+---
 
 ## <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
@@ -175,13 +183,13 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat příjem** . Pak budou ve formátu JSON vytištěna extrahovaná textová data. `"recognitionResults"`Pole obsahuje každý řádek textu, který byl extrahován z účtenky, a `"understandingResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky.
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat příjem** . Pak budou ve formátu JSON vytištěna extrahovaná textová data. `"readResults"`Pole obsahuje každý řádek textu, který byl extrahován z účtenky, a `"documentResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky.
 
 Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
 
 ![Účtenka z obchodu contoso](../media/contoso-allinone.jpg)
 
-`"recognitionResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"understandingResults"`Uzel obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
+`"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
 
 ```json
 { 

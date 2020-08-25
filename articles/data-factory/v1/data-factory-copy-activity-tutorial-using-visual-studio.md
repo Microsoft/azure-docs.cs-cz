@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85248620"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
@@ -44,7 +44,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > [!NOTE] 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
    * Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
    * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie sady Visual Studio**  ->  **Microsoft Azure Data Factory nástrojů pro Visual Studio**  ->  **Update**.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 Zde jsou kroky, které provedete v rámci tohoto kurzu:
 
 1. V této datové továrně vytvořte **propojené služby**. V tomto kroku vytvoříte dvě propojené služby typu: Azure Storage a Azure SQL Database. 
@@ -362,7 +362,7 @@ Přejděte na domovskou stránku své datové továrny:
     ![Domovská stránka objektu pro vytváření dat](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. Postupujte podle pokynů v tématu [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md) k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu. V současné době Visual Studio monitorování kanálů Data Factory nepodporuje. 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V tomto kurzu jste vytvořili objekt pro vytváření dat Azure ke zkopírování dat z objektu blob Azure do Azure SQL Database. Visual Studio jste použili k vytvoření objektu pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.

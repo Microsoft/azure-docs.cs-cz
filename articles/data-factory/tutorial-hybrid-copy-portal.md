@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84661014"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
@@ -38,7 +38,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -186,7 +186,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
  
     ![Nová propojená služba (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
-1. Po vytvoření propojené služby se vrátíte zpátky na stránku **vlastností set** pro SqlServerDataset. Proveďte následující kroky:
+1. Po vytvoření propojené služby se vrátíte zpátky na stránku **vlastností set** pro SqlServerDataset. Postupujte následovně:
 
     a. Ověřte, že se v části **Propojená služba** zobrazí **SqlServerLinkedService**.
 
@@ -249,7 +249,7 @@ Kanál v kontejneru objektů blob `adftutorial` automaticky vytvoří výstupní
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úložišti objektů blob. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úložišti objektů blob. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

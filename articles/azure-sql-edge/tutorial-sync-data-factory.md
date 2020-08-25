@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85255428"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z Edge SQL do úložiště objektů BLOB v Azure pomocí Azure Data Factory
@@ -195,7 +195,7 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
     2. Chcete-li zadat hodnoty parametrů uložené procedury, vyberte možnost **importovat parametr** a zadejte tyto hodnoty parametrů:
 
-    |Name|Typ|Hodnota|
+    |Název|Typ|Hodnota|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
     |TableName|Řetězec|@ {Activity (' OldWaterMark '). Output. firstRow. TableName}|

@@ -7,19 +7,19 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 9b2bf8763d175bca028be1fcceda921e87eb5b23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 204ca121045d1bd53fd507acc7ea9691bfeac12e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334785"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748746"
 ---
 | Prostředek | Omezení |
 | --- | --- |
-| Skupiny pro správu na adresář | 10 000 |
+| Skupiny pro správu na tenanta Azure AD | 10 000 |
 | Předplatná na skupinu pro správu | Počet. |
 | Úrovně hierarchie skupiny pro správu | Kořenová úroveň plus 6 úrovní<sup>1</sup> |
-| Přímá nadřazená skupina pro správu na jednu skupinu pro správu | Jeden |
+| Přímá nadřazená skupina pro správu na jednu skupinu pro správu | Jednu |
 | [Nasazení na úrovni skupiny pro správu](../articles/azure-resource-manager/templates/deploy-to-management-group.md) na umístění | 800<sup>2</sup> |
 
 <sup>1</sup> Úrovně 6 neobsahují úroveň předplatného.

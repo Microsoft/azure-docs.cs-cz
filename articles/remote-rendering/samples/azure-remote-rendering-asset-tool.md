@@ -1,15 +1,15 @@
 ---
-title: Nástroj Asset Remote rendering pro Azure
+title: Nástroj Azure Remote Rendering
 description: Odkaz na úložiště GitHubu, které prezentuje aplikaci.
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
 ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84637148"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Nástroj Asset Remote rendering pro Azure (ARRT)

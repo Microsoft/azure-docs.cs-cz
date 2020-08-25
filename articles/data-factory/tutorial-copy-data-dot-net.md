@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85513257"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
@@ -38,7 +38,7 @@ Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použ�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * *Účet Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-account-create.md).
 * *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
@@ -275,7 +275,7 @@ Přidejte následující kód do `Main` metody, která vytvoří *datovou sadu o
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a`FileName`
+- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a `FileName`
 - Formát objektu blob, který označuje, jak analyzovat obsah: `TextFormat` a jeho nastavení, například Oddělovač sloupců
 - Datová struktura, včetně názvů sloupců a datových typů, které jsou v tomto příkladu namapovány na tabulku SQL jímky
 
@@ -566,7 +566,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
 ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84418173"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 > * Vytvoření fondu služby Batch jako paralelního back-endu pro relaci jazyka R
 > * Spuštění ukázkové paralelní simulace v tomto fondu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalovaná distribuce [R](https://www.r-project.org/), například [Microsoft R Open](https://mran.microsoft.com/open). Použijte jazyk R verze 3.3.1 nebo novější.
 

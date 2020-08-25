@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85609431"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak:
 - Vytvoření jednoduchého dotazu na rozhraní API Bingu pro vyhledávání na webu
 - Zobrazit výsledky dotazu v pořadí podle pořadí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, budete potřebovat:
 
@@ -48,7 +48,7 @@ Pojmenujte aplikaci **MyConsoleSearchApp**a pak klikněte na **OK**.
 JSON.net umožňuje pracovat se odpověďmi JSON vrácenými rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
 - V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...**.
-- Na kartě **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
+- Na kartě  **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
 - V okně **Zkontrolovat změny** klikněte na tlačítko **OK** .
 - Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
 
@@ -275,7 +275,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 Tato metoda:
 
 - Projde mezi `rankingResponse` skupinami, které odpověď obsahuje.
-- Zobrazí položky v každé skupině voláním`DisplaySpecificResults(...)`
+- Zobrazí položky v každé skupině voláním `DisplaySpecificResults(...)`
 
 Do **program.cs**přidejte následující dvě metody:
 
@@ -310,7 +310,7 @@ Tyto metody spolupracují na výstupu výsledků hledání do konzoly.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci. Výstup by měl vypadat nějak takto:
+Aplikaci spusťte. Výstup by měl vypadat nějak takto:
 
 ```
 Enter Bing query: sailing lessons seattle

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118810"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
@@ -40,11 +40,11 @@ Tento kurz zahrnuje:
 > * Provádění operací vytvoření, čtení, aktualizace a odstranění (CRUD) u položky
 > * Odstranění databáze
 
-Nemáte čas? Nevadí! Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-getting-started). Přejděte do [části získání kompletního řešení kurzu](#GetSolution) , kde najdete rychlé pokyny.
+Nemáte čas? Ale žádný strach. Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-getting-started). Přejděte do [části získání kompletního řešení kurzu](#GetSolution) , kde najdete rychlé pokyny.
 
 Můžeme začít!
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -118,7 +118,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
    > [!NOTE]
    > Pokud jste obeznámeni s předchozí verzí sady .NET SDK, můžete být obeznámeni se *shromažďováním* a *dokumentem*s podmínkami. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, verze 3,0 sady .NET SDK používá obecný pojem *kontejner* a *položka*. *Kontejner* může být kolekce, graf nebo tabulka. *Položka* může být dokument, okraj, vrchol nebo řádek a je obsahem uvnitř kontejneru. Další informace najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md).
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Získat Azure Cosmos DB klíče z Azure Portal":::
 
@@ -162,7 +162,7 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Pom
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
-    `CreateDatabaseAsync`Vytvoří novou databázi s ID `FamilyDatabase` , pokud ještě neexistuje, která má ID zadané v `databaseId` poli.
+    `CreateDatabaseAsync` Vytvoří novou databázi s ID `FamilyDatabase` , pokud ještě neexistuje, která má ID zadané v `databaseId` poli.
 
 1. Zkopírujte a vložte kód níže, kde vytváříte instanci CosmosClient k volání metody **metody createdatabaseasync** , kterou jste právě přidali.
 
@@ -279,7 +279,7 @@ Gratulujeme! Úspěšně jste vytvořili databázi Azure Cosmos.
 
 Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) nebo [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) ve `CosmosDatabase` třídě. Kontejner se skládá z položek (dokumenty JSON, pokud je SQL API) a přidružená aplikační logika na straně serveru v JavaScriptu, například uložené procedury, uživatelsky definované funkce a triggery.
 
-1. Zkopírujte a vložte `CreateContainerAsync` metodu pod vaší `CreateDatabaseAsync` metodou. `CreateContainerAsync`Vytvoří nový kontejner s ID `FamilyContainer` , pokud ještě neexistuje, pomocí ID zadaného v `containerId` poli děleného `LastName` vlastností.
+1. Zkopírujte a vložte `CreateContainerAsync` metodu pod vaší `CreateDatabaseAsync` metodou. `CreateContainerAsync`  Vytvoří nový kontejner s ID `FamilyContainer` , pokud ještě neexistuje, pomocí ID zadaného v `containerId` poli děleného `LastName` vlastností.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 

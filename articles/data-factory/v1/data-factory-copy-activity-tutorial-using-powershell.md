@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85254357"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Kurz: Vytvoření kanálu Data Factory pro přesouvání dat pomocí Azure PowerShellu
@@ -44,14 +44,14 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 - Dokončete požadované kroky uvedené v [požadavcích kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 - Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 Zde jsou kroky, které provedete v rámci tohoto kurzu:
 
 1. Vytvořte **datovou továrnu**Azure. V tomto kroku vytvoříte datovou továrnu s názvem ADFTutorialDataFactoryPSH. 
@@ -450,7 +450,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
     ProvisioningState : Succeeded
     ```
 
-**Gratulujeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database. 
+**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database. 
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se děje v objektu pro vytváření dat Azure.
@@ -553,7 +553,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
 
 Úplnou dokumentaci o rutinách služby Data Factory najdete v článku [Referenční informace o rutinách služby Data Factory](/powershell/module/az.datafactory).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V tomto kurzu jste vytvořili objekt pro vytváření dat Azure ke zkopírování dat z objektu blob Azure do Azure SQL Database. PowerShell jste použili k vytvoření objektu pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.

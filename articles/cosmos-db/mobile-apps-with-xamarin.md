@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: fbcbf1be29031596201774ae5ebb40cb1a3b89a2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85113445"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Kurz: sestavování mobilních aplikací pomocí Xamarin a Azure Cosmos DB
@@ -70,7 +70,7 @@ V projektech Xamarin můžete k dotazování dat bez schématu využít dotazy i
         Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
     }
 ```
-### <a name="add-users"></a>Přidávání uživatelů
+### <a name="add-users"></a>Přidání uživatelů
 Stejně jako většina úvodních ukázek se ukázka Azure Cosmos DB, kterou jste stáhli, ověřuje ve službě pomocí hlavního klíče pevně zakódovaného v kódu aplikace. Toto výchozí chování není vhodné pro aplikaci, kterou chcete spouštět kdekoli mimo místní emulátor. Kdyby neoprávněný uživatel získal hlavní klíč, mohlo by dojít k ohrožení všech dat v celém účtu služby Azure Cosmos DB. Místo toho by vaše aplikace měla mít přístup pouze k záznamům pro přihlášeného uživatele. Azure Cosmos DB umožňuje vývojářům udělit aplikaci oprávnění ke čtení nebo zápisu a čtení ke kolekci, k sadě dokumentů seskupených podle klíče oddílu nebo ke konkrétnímu dokumentu. 
 
 Podle těchto pokynů upravte aplikaci seznamu úkolů na víceuživatelskou aplikaci seznamu úkolů: 

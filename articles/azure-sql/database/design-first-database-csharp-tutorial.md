@@ -11,10 +11,10 @@ ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
 ms.openlocfilehash: 057ffcdc8a21567e909d768236e454ee10036115
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84216564"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v Azure SQL Database C&#x23; a ADO.NET
@@ -36,7 +36,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), včetně vytvoření jednoduché databáze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Instalace sady [Visual Studio 2019](https://www.visualstudio.com/downloads/) nebo novější.
 
@@ -58,7 +58,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
     | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
     | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-    | **Vybrat zdroj** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
+    | **Zvolit zdroj** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
 
 4. Pokud chcete použít existující server nebo vytvořit a nakonfigurovat nový server, klikněte na **Server** . Buď vyberte existující server, nebo klikněte na **vytvořit nový server** a vyplňte formulář **nového serveru** pomocí následujících informací:
 
@@ -116,7 +116,7 @@ Vaše IP adresa teď může projít bránou firewall protokolu IP. Nyní se mů�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili základní databázové úlohy, jako je například vytvoření databáze a tabulek, připojení k databázi, načtení dat a spuštění dotazů. Naučili jste se tyto postupy:
+V tomto kurzu jste se naučili základní databázové úlohy, jako je například vytvoření databáze a tabulek, připojení k databázi, načtení dat a spuštění dotazů. Naučili jste se:
 
 > [!div class="checklist"]
 >

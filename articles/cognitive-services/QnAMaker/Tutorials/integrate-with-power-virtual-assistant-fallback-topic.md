@@ -4,10 +4,10 @@ description: V tomto kurzu Vylepšete kvalitu znalostní báze s aktivním učen
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84635331"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Kurz: Přidání znalostní báze do virtuálních agentů pro napájení
@@ -212,11 +212,11 @@ Tady je popis plátna finálního agenta.
 
     |Pořadí otázek|Testovací otázky|Účel|
     |--|--|--|
-    |1|Dobrý den|Spustit konverzaci|
+    |1|Hello (Nazdar)|Spustit konverzaci|
     |2|Hodiny úložiště|Ukázkové téma. To je nakonfigurované pro vás bez jakékoli další práce na vaší straně.|
-    |3|Yes|V reakci na`Did that answer your question?`|
-    |4|Vynikající|V reakci na`Please rate your experience.`|
-    |5|Yes|V reakci na`Can I help with anything else?`|
+    |3|Ano|V reakci na `Did that answer your question?`|
+    |4|Vynikající|V reakci na `Please rate your experience.`|
+    |5|Ano|V reakci na `Can I help with anything else?`|
     |6|Jak můžu zlepšit výkon propustnosti pro dotaz předpovědi?|Tato otázka spustí záložní akci, která odešle text do vaší znalostní báze na odpověď. Pak se zobrazí odpověď. zelené značky zaškrtnutí u jednotlivých akcí označují úspěch pro každou akci.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Snímek obrazovky s chatem s plátnem, který indikuje zelenou značku zaškrtnutí u úspěšných akcí":::
@@ -229,7 +229,7 @@ Pokud chcete, aby byl agent dostupný pro všechny členy školy nebo organizace
 
 1. Vyzkoušejte si bot na webu demo (podívejte se na odkaz v části **publikovat**).
 
-    Otevře se nová webová stránka s vaším robotem. Zeptejte se na robota stejnou zkušební otázku:`How can I improve the throughput performance for query predictions?`
+    Otevře se nová webová stránka s vaším robotem. Zeptejte se na robota stejnou zkušební otázku: `How can I improve the throughput performance for query predictions?`
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s finálním plátnem agenta](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)

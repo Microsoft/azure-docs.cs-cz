@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85261456"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
@@ -44,7 +44,7 @@ Toto jedno volání iniciuje hledání dat Azure a vrátí výsledky.
 ![Hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -504,7 +504,7 @@ Volání služby Azure Kognitivní hledání je zapouzdřeno v naší metodě **
 
     Asynchronní volání vyhledávání (**model. resultList = await _indexClient.Documents. SearchAsync &lt; Hotel &gt; (model. prohledávanýtext, Parameters);**) je to, co se týká tohoto kurzu a aplikace. Třída **DocumentSearchResult** je zajímavá a dobrý nápad (Pokud je aplikace spuštěná), je nastavit zarážku a použít ladicí program k prohlédnutí obsahu **model. resultList**. Měli byste zjistit, že je intuitivní a poskytuje vám data, která jste si vyžádali, a ne mnohem jinak.
 
-Nyní pro Moment pravdy.
+Teď přichází okamžik pravdy.
 
 ### <a name="test-the-app"></a>Otestování aplikace
 

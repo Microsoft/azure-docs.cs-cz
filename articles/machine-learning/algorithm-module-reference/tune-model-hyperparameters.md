@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983408"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782154"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
@@ -77,11 +77,11 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 
 Po dokončení školení:
 
-+ Pokud chcete zobrazit sadu metrik přesnosti pro nejlepší model, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
++ Chcete-li zobrazit výsledky Sweep, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
 
-    Výstup obsahuje všechny metriky přesnosti, které platí pro typ modelu, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
+    Výstup obsahuje všechny parametry pro mazání a přesnost parametrů, které platí pro typ modelu, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
 
-+ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy + protokoly** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 
 ## <a name="technical-notes"></a>Technické poznámky

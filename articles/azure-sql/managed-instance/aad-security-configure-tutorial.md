@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84706424"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení ve spravované instanci Azure SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 Další informace najdete v tématu [Přehled spravované instance Azure SQL](sql-managed-instance-paas-overview.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -112,7 +112,7 @@ Další informace najdete v tématu [Vytvoření přihlašovacích](/sql/t-sql/s
 
 Aby bylo možné vytvářet další objekty zabezpečení serveru Azure AD (přihlášení), musí být SQL Server rolí nebo oprávnění udělena objektu zabezpečení (SQL nebo Azure AD).
 
-### <a name="sql-authentication"></a>Ověřování pomocí SQL
+### <a name="sql-authentication"></a>Ověřování SQL
 
 - Pokud je přihlášení objektem zabezpečení SQL, `sysadmin` můžou k vytvoření přihlašovacích údajů pro účet Azure AD používat jenom přihlášení, která jsou součástí této role.
 
@@ -136,7 +136,7 @@ Přidání přihlašovacích údajů do `sysadmin` role serveru:
     GO
     ```
 
-    V následujícím příkladu udělí `sysadmin` role serveru přihlašovací údaje.nativeuser@aadsqlmi.onmicrosoft.com
+    V následujícím příkladu udělí `sysadmin` role serveru přihlašovací údaje. nativeuser@aadsqlmi.onmicrosoft.com
 
     ```sql
     ALTER SERVER ROLE sysadmin ADD MEMBER [nativeuser@aadsqlmi.onmicrosoft.com]
@@ -239,7 +239,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
     GO
     ```
 
-    Následující příklad vytvoří uživatele bob@aadsqlmi.net z přihlašovacích údajů.bob@aadsqlmi.net:
+    Následující příklad vytvoří uživatele bob@aadsqlmi.net z přihlašovacích údajů. bob@aadsqlmi.net:
 
     ```sql
     USE MyMITestDB

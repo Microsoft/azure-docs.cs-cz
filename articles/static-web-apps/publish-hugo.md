@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85297937"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/).
 - Účet GitHub. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://github.com/join).
@@ -98,10 +98,10 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 ### <a name="create-the-application"></a>Vytvoření aplikace
 
 1. Přejít na [Azure Portal](https://portal.azure.com)
-1. Klikněte na **vytvořit prostředek** .
-1. Hledání **statického Web Apps**
-1. Klikněte na **statické Web Apps (Preview)** .
-1. Klikněte na **vytvořit** .
+1. Klikněte na **Vytvořit prostředek**.
+1. Vyhledejte **Static Web Apps**.
+1. Klikněte na **Static Web Apps (Preview)**
+1. Klikněte na **Vytvořit**.
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
 
@@ -131,7 +131,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
+1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/** .
 
@@ -139,7 +139,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 
-### <a name="review-and-create"></a>Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 

@@ -1,15 +1,15 @@
 ---
 title: Jak přesunout trezory služby Azure Backup Recovery Services
-description: Pokyny, jak přesunout trezor služby Recovery Services napříč předplatnými Azure a skupinami prostředků.
+description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými Azure a skupinami prostředků.
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650909"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755734"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -50,12 +50,12 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Použití Azure Portal k přesunu Recovery Services trezoru do jiné skupiny prostředků
 
-Přesun trezoru služby Recovery Services a přidružených prostředků do jiné skupiny prostředků
+Přesunutí trezoru Recovery Services a přidružených prostředků do jiné skupiny prostředků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam **trezorů Recovery Services** a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
-   ![Otevřít Recovery Service Recovery](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    Pokud nevidíte **základní** informace pro váš trezor, vyberte ikonu rozevíracího seznamu. Teď byste měli vidět základní informace o vašem trezoru.
 
@@ -84,7 +84,7 @@ Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam trezorů Recovery Services a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
-    ![Otevřít Recovery Service Recovery](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     Pokud nevidíte **základní** informace pro váš trezor, vyberte ikonu rozevíracího seznamu. Teď byste měli vidět základní informace o vašem trezoru.
 

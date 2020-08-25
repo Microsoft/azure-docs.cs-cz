@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585725"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782715"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -39,7 +39,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 Některé objekty služby (uživatelé a aplikace) jsou vázány na konkrétního tenanta. Pokud přesunete Trezor klíčů do předplatného jiného tenanta, může se stát, že nebudete moct obnovit přístup k určitému instančnímu objektu. Ujistěte se, že v tenantovi existují všechny základní instanční objekty, u kterých přesouváte Trezor klíčů.
 
-## <a name="design-considerations"></a>Aspekty návrhu
+## <a name="design-considerations"></a>Co vzít v úvahu při návrhu
 
 Vaše organizace mohla implementovat Azure Policy s vynucením nebo vyloučením na úrovni předplatného. V předplatném může být jiná sada přiřazení zásad, kde váš Trezor klíčů momentálně existuje, a předplatné, na které přesouváte Trezor klíčů. Konflikt v požadavcích zásad má potenciál pro přerušení vašich aplikací.
 
@@ -59,7 +59,9 @@ Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédn
 
 ## <a name="procedure"></a>Postup
 
-### <a name="initial-steps-moving-key-vault"></a>Počáteční kroky (Přesun Key Vault)
+Pokud jste 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Přesun Key Vault k novému předplatnému v rámci stejného tenanta
 
 1. Přihlášení k webu Azure Portal
 2. Přejděte do trezoru klíčů.
@@ -70,9 +72,9 @@ Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédn
 7. Potvrzení upozornění týkající se přesunu prostředků
 8. Vyberte OK.
 
-### <a name="additional-steps-post-move"></a>Další kroky (po přesunu)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Další kroky, pokud jste přesunuli Trezor klíčů do předplatného v novém tenantovi
 
-Teď, když jste svůj Trezor klíčů přesunuli do nového předplatného, musíte aktualizovat ID tenanta a odebrat staré zásady přístupu. Tady jsou kurzy pro tyto kroky v PowerShellu a Azure CLI.
+Pokud jste Trezor klíčů přesunuli do předplatného v novém tenantovi, budete muset ručně aktualizovat ID tenanta a odebrat staré zásady přístupu. Tady jsou kurzy pro tyto kroky v PowerShellu a Azure CLI. Pokud používáte PowerShell, možná budete muset spustit příkaz Clear-AzContext popsaný níže, který vám umožní zobrazit prostředky mimo aktuálně vybraný obor. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc
 ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85367372"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
@@ -31,7 +31,7 @@ Ve třetí části této série se naučíte:
 
 [Úložiště objektů blob v Azure](../common/storage-introduction.md#blob-storage) představuje robustní službu pro ukládání souborů pro aplikace. Tento kurz rozšiřuje [předchozí téma][previous-tutorial] a ukazuje, jak bezpečně přistupovat k účtu úložiště z webové aplikace. Až budete hotovi, obrázky budou šifrované a webová aplikace bude pro přístup k obrázkům miniatur používat zabezpečené tokeny SAS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid][previous-tutorial].
 
@@ -152,7 +152,7 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
 |[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Identifikátor URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Existuje](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [Getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Název](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name](/dotnet/api/azure.storage.blobs.models.blobitem.name) (Jméno) |  |
 |[Objekt UriBuilder protokolu](/dotnet/api/system.uribuilder) | [Dotaz](/dotnet/api/system.uribuilder.query) |  |
 |[Seznam](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
 
