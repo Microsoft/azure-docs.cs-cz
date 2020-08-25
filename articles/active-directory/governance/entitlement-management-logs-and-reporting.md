@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078186"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783813"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -59,7 +59,7 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
 
 ## <a name="view-events-for-an-access-package"></a>Zobrazit události pro balíček pro přístup  
 
-Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
+Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
 
 - Globální správce  
 - Správce zabezpečení  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Odeslat dotaz do pracovního prostoru Log Analytics
 Nakonec, když máte identifikovaný pracovní prostor, můžete k odeslání dotazu Kusto do tohoto pracovního prostoru použít [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](https://docs.microsoft.com/azure/kusto/query/).
+) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](/azure/kusto/query/).
  
 Můžete například načíst rozsah dat záznamů událostí auditu z pracovního prostoru Log Analytics a pomocí rutin prostředí PowerShell odeslat dotaz jako:
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Další kroky:
-- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md)

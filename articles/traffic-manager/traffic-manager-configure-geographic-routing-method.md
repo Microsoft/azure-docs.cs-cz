@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76938793"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Kurz: Konfigurace metody geografického směrování provozu pomocí Traffic Manager
@@ -25,9 +25,9 @@ Metoda geografického směrování provozu umožňuje směrovat provoz do konkr�
 ## <a name="create-a-traffic-manager-profile"></a>Vytvořit profil Traffic Manager
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/).
-2. Klikněte na **vytvořit prostředek** > **sítě** > **Traffic Manager profil** > **vytvořit**.
+2. Klikněte na **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**  >  **vytvořit**.
 4. V **profilu Create Traffic Manager**:
-    1. Zadejte název profilu. Tento název musí být v rámci zóny trafficmanager.net jedinečný. Pokud chcete získat přístup k profilu Traffic Manager, použijte název `<profilename>.trafficmanager.net`DNS.
+    1. Zadejte název profilu. Tento název musí být v rámci zóny trafficmanager.net jedinečný. Pokud chcete získat přístup k profilu Traffic Manager, použijte název DNS `<profilename>.trafficmanager.net` .
     2. Vyberte metodu **geografického** směrování.
     3. Vyberte předplatné, pod kterým chcete tento profil vytvořit.
     4. Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků, do které chcete tento profil umístit. Pokud se rozhodnete vytvořit novou skupinu prostředků, zadejte umístění skupiny prostředků pomocí rozevíracího seznamu **umístění skupiny prostředků** . Toto nastavení odkazuje na umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manager, který se globálně nasazuje.
@@ -38,7 +38,7 @@ Metoda geografického směrování provozu umožňuje směrovat provoz do konkr�
 ## <a name="add-endpoints"></a>Přidat koncové body
 
 1. Vyhledejte název profilu Traffic Manager, který jste vytvořili v panelu hledání na portálu, a po zobrazení klikněte na výsledek.
-2. Přejděte do **Nastavení** -> **koncové body** v Traffic Manager.
+2. Přejděte do **Nastavení**  ->  **koncové body** v Traffic Manager.
 3. Kliknutím na **Přidat** zobrazíte **koncový bod přidat**.
 3. Klikněte na **Přidat** a v zobrazení přidat zobrazený **koncový bod** proveďte následující kroky:
 4. V závislosti na typu koncového bodu, který chcete přidat, vyberte **typ** . Pro geografické profily směrování používané v produkčním prostředí důrazně doporučujeme používat vnořené typy koncových bodů obsahující podřízený profil s více než jedním koncovým bodem. Další podrobnosti najdete v tématu [Nejčastější dotazy týkající se metod směrování geografického provozu](traffic-manager-FAQs.md).

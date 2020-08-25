@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612329"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756006"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -101,7 +101,7 @@ Chcete-li upravit nastavení replikace úložiště:
    * V seznamu prostředků zadejte **Recovery Services**.
    * Během zadávání se seznam bude filtrovat podle zadávaného textu. Když vidíte **Recovery Services trezory**, vyberte ji.
 
-     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Vytvoření trezoru Recovery Services – Krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Objeví se seznam trezorů Služeb zotavení.
    * Ze seznamu trezorů Služeb zotavení vyberte trezor.
@@ -135,7 +135,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
     ![Změna Průvodce Začínáme](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. V podokně **připravit infrastrukturu** , které se otevře, vyberte **Stáhnout** odkazy pro instalaci Azure Backup Server a stáhnout přihlašovací údaje trezoru. Přihlašovací údaje trezoru použijete během registrace Azure Backup Server do trezoru služby Recovery Services. Odkazy vás provedou do centra pro stahování, kde se dá stáhnout balíček softwaru.
+6. V podokně **připravit infrastrukturu** , které se otevře, vyberte **Stáhnout** odkazy pro instalaci Azure Backup Server a stáhnout přihlašovací údaje trezoru. Přihlašovací údaje trezoru použijete během registrace Azure Backup Server do trezoru Recovery Services. Odkazy vás provedou do centra pro stahování, kde se dá stáhnout balíček softwaru.
 
     ![Příprava infrastruktury pro Azure Backup Server](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -143,7 +143,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
     ![Stažení centra 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Vzhledem k tomu, že velikost stahovaných souborů všech souborů je > 3G, na odkaz pro stažení 10 MB může trvat až 60 minut, než se stahování dokončí.
+    Vzhledem k tomu, že velikost stahovaných souborů všech souborů je > 3 GB, na odkaz pro stažení 10 MB může trvat až 60 minut, než se stahování dokončí.
 
 ### <a name="extracting-the-software-package"></a>Extrakce softwarového balíčku
 
@@ -216,7 +216,7 @@ Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou 
     ![Souhrn nastavení](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. Instalace proběhne ve fázích. V první fázi se agent Microsoft Azure Recovery Services nainstaluje na server. Průvodce také kontroluje připojení k Internetu. Pokud je k dispozici připojení k Internetu, můžete pokračovat v instalaci. V takovém případě je potřeba zadat podrobnosti o proxy serveru pro připojení k Internetu.
 
-    Dalším krokem je konfigurace agenta Microsoft Azure Recovery Services. V rámci konfigurace budete muset zadat své přihlašovací údaje k trezoru pro registraci počítače do trezoru služby Recovery Services. Zadáte také heslo pro šifrování/dešifrování dat odesílaných mezi Azure a vaším místním prostředím. Můžete automaticky vygenerovat heslo nebo zadat vlastní minimální přístupové heslo 16 znaků. Pokračujte v průvodci, dokud neproběhne konfigurace agenta.
+    Dalším krokem je konfigurace agenta Microsoft Azure Recovery Services. V rámci konfigurace budete muset zadat přihlašovací údaje trezoru, abyste počítač zaregistrovali do trezoru Recovery Services. Zadáte také heslo pro šifrování/dešifrování dat odesílaných mezi Azure a vaším místním prostředím. Můžete automaticky vygenerovat heslo nebo zadat vlastní minimální přístupové heslo 16 znaků. Pokračujte v průvodci, dokud neproběhne konfigurace agenta.
 
     ![Průvodce registrací serveru](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po úspěšném dokončení registrace Microsoft Azure Backup serveru přejde průvodce celkovým nastavením na instalaci a konfiguraci SQL Server a Azure Backup Server komponenty. Po dokončení instalace součásti SQL Server se nainstalují Azure Backup Server součásti.

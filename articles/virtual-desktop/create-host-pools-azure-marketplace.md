@@ -3,15 +3,15 @@ title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Az
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 06ac7719c5ada08da37beffa23801a0201f75dc4
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661363"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755479"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -143,7 +143,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     Pokud zvolíte možnost **Upřesnit**, vyberte existující skupinu zabezpečení sítě, kterou jste již nakonfigurovali.
 
-10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Můžete také přidat konkrétní organizační jednotku, ve které chcete virtuální počítače. Pokud zvolíte **ne**, virtuální počítače budou připojené k doméně, která odpovídá příponě **hlavního názvu uživatele (UPN) připojení k doméně AD**.
+10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Volitelně můžete přidat konkrétní organizační jednotku, ve které chcete virtuální počítače. Pokud zvolíte **ne**, virtuální počítače budou připojené k doméně, která odpovídá příponě **hlavního názvu uživatele (UPN) připojení k doméně AD**.
 
 11. V části účet správce zadejte přihlašovací údaje pro správce Doména služby Active Directory virtuální sítě, kterou jste vybrali.
 

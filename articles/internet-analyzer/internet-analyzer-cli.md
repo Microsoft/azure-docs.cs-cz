@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74184266"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
@@ -23,7 +23,7 @@ Existují dva způsoby, jak vytvořit prostředek nástroje Internet Analyzer po
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Verze Public Preview je k dispozici pro použití globálně; úložiště dat je ale ve verzi Preview omezené na *USA – západ 2* .
 
@@ -44,7 +44,7 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
     ```
 
     Pokud rozhraní příkazového řádku může otevřít výchozí prohlížeč, bude to mít za následek a načíst přihlašovací stránku Azure.
-    V opačném případě otevřete stránku prohlížeče https://aka.ms/devicelogin na adrese a zadejte autorizační kód zobrazený v terminálu.
+    V opačném případě otevřete stránku prohlížeče na adrese https://aka.ms/devicelogin a zadejte autorizační kód zobrazený v terminálu.
 
 4. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
 
@@ -79,7 +79,7 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Výše uvedený příkaz předpokládá, že `www.contoso.com` oba `www.microsoft.com` a jsou v rámci vlastních cest hostovány obrázky s jedním pixelem ([trans. gif](https://fpc.msedge.net/apc/trans.gif)). Pokud není cesta k objektu explicitně určena, bude služba Internet Analyzer `/apc/trans.gif` ve výchozím nastavení používat jako cestu k objektu, což je umístění předkonfigurovaných koncových bodů pro obrázek v podobě jednoho pixelu. Všimněte si také, že není nutné zadávat schéma (HTTPS/HTTP); Nástroj Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
+    Výše uvedený příkaz předpokládá, že oba a hostují obrázek v obrazovém obraze `www.contoso.com` `www.microsoft.com` ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) v části vlastní cesty. Pokud není cesta k objektu explicitně určena, bude služba Internet Analyzer `/apc/trans.gif` ve výchozím nastavení používat jako cestu k objektu, což je umístění předkonfigurovaných koncových bodů pro obrázek v podobě jednoho pixelu. Všimněte si také, že není nutné zadávat schéma (HTTPS/HTTP); Nástroj Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
 
 11. Nový test by měl být zobrazen pod profilem nástroje Internet Analyzer:
     ```azurecli-interactive

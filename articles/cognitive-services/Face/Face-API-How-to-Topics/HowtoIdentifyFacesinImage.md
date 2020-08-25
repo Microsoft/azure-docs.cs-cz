@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/02/2020
 ms.author: sbowles
 ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85918753"
 ---
 # <a name="example-identify-faces-in-images"></a>Příklad: identifikace plošek na obrázcích
@@ -26,7 +26,7 @@ Tato ukázka demonstruje:
 - Jak vytvořit objekt Person. Tento objekt Person obsahuje seznam známých lidí.
 - Jak přiřadit obličeje všem uživatelům. Tyto obličeje slouží jako základ k identifikaci osob. Doporučujeme, abyste používali jasná přední zobrazení obličeje. Příkladem je ID fotografie. Dobrá sada fotek zahrnuje i plošky stejné osoby v různých případech, oděvech nebo hairstyles.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** a zkopírujte svůj klíč.
@@ -99,7 +99,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>Krok 2,2: detekce plošek a jejich registrace pro správnou osobu
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a> Krok 2,2: detekce plošek a jejich registrace pro správnou osobu
 Detekce se provádí odesláním webové žádosti POST do rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) se souborem obrázku v textu požadavku HTTP. Když použijete klientskou knihovnu, detekce obličeje se provádí pomocí jednoho z těchto detekcí. Asynchronní metody třídy FaceClient
 
 Pro každou nalezenou plošku zavolejte [osobu person – přidejte plochu](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) , abyste ji mohli přidat ke správné osobě.
@@ -191,7 +191,7 @@ Po dokončení kroků se pokuste identifikovat různé plošky. Podívejte se, j
 
 **Osoba** může na základě předchozího omezení návrhu obsahovat až 10 000 osob. Další informace o scénářích s až miliónem osob najdete v článku[Způsob použití funkce ve velkém měřítku](how-to-use-large-scale.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V této příručce jste se dozvěděli o procesu vytvoření **osoby** a identifikaci osoby. Následující funkce byly vysvětleny a ukázaly:
 

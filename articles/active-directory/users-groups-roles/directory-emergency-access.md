@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421718"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795390"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -44,7 +44,7 @@ Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly b�
 Při konfiguraci těchto účtů je potřeba splnit tyto požadavky:
 
 - Účty pro nouzový přístup by neměly být přidruženy k žádnému individuálnímu uživateli v organizaci. Ujistěte se, že vaše účty nejsou propojené s žádnými mobilními telefony dodanými zaměstnanci, hardwarovými tokeny, které se cestují s jednotlivými zaměstnanci, nebo s jinými přihlašovacími údaji určenými zaměstnanci Tato preventivní opatření zahrnují případy, kdy je individuální zaměstnanec nedosažitelný, když je potřeba přihlašovací údaje. Je důležité zajistit, aby všechna registrovaná zařízení byla udržována ve známém a zabezpečeném umístění, které má více prostředků komunikace se službou Azure AD.
-- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure MFA by byl jiný mechanismus.  Pokud je ale Azure MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem MFA třetí strany prostřednictvím [vlastních ovládacích prvků](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
+- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure MFA by byl jiný mechanismus.  Pokud je ale Azure MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem MFA třetí strany prostřednictvím [vlastních ovládacích prvků](../conditional-access/controls.md).
 - Zařízení nebo přihlašovací údaje nesmí vypršet nebo být v oboru automatického čištění z důvodu nedostatku použití.  
 - Měli byste nastavit trvalé přiřazení role globálního správce pro účty pro nouzový přístup. 
 
@@ -72,9 +72,9 @@ Pokud používáte hesla, ujistěte se, že účty obsahují silná hesla, kter�
 
 Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádných účtů a aktivovat oznámení ostatním správcům. Když monitorete aktivitu na účtech s oddělovači, můžete ověřit, že tyto účty jsou používány pouze pro účely testování nebo k skutečným mimořádným událostem. Pomocí služby Azure Log Analytics můžete monitorovat protokoly přihlášení a aktivovat e-maily a upozornění serveru SMS vašim správcům, když se přihlásí účty se systémem Break.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-1. [Odešlete přihlašovací protokoly služby Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) , aby se Azure monitor.
+1. [Odešlete přihlašovací protokoly služby Azure AD](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) , aby se Azure monitor.
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Získat ID objektů pro účty skla
 
@@ -156,5 +156,5 @@ Tyto kroky by se měly provádět v pravidelných intervalech a pro klíčové z
 - [Přidání uživatelů pomocí Azure AD](../fundamentals/add-users-azure-active-directory.md) a [přiřazení nového uživatele k roli globálního správce](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - Pokud jste se ještě nezaregistrovali, [Zaregistrujte](../fundamentals/active-directory-get-started-premium.md)se do Azure AD Premium.
 - [Jak pro uživatele vyžadovat dvoustupňové ověřování](../authentication/howto-mfa-userstates.md)
-- [Konfigurace dalších ochran pro globální správce v Microsoft 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), pokud používáte Microsoft 365
+- [Konfigurace dalších ochran pro globální správce v Microsoft 365](/office365/enterprise/protect-your-global-administrator-accounts), pokud používáte Microsoft 365
 - [Spusťte kontrolu přístupu globálních správců](../privileged-identity-management/pim-how-to-start-security-review.md) a [Převeďte stávající globální správce na další konkrétní role správce](directory-assign-admin-roles.md) .

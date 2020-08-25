@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74007859"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: archivace protokolů služby Azure AD do účtu služby Azure Storage
@@ -38,9 +38,9 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Archivace protokolů do účtu úložiště Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory** > **Activity** > **protokoly auditu**aktivit. 
+2. Vyberte **Azure Active Directory**  >  **Activity**  >  **protokoly auditu**aktivit. 
 
 3. Vyberte **Exportovat nastavení**. 
 

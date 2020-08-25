@@ -2,17 +2,17 @@
 title: Instalace aktualizace na zařízení s Azure Data Box Gateway Series | Microsoft Docs
 description: Popisuje, jak použít aktualizace pomocí Azure Portal a místního webového uživatelského rozhraní pro zařízení Azure Data Box Gateway Series.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4c17488a875484b2d3dc0e7e8e1045ce8ea75cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85802133"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783871"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Aktualizace Azure Data Box Gateway
 
@@ -63,7 +63,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Verze softwaru po aktualizaci](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
   
     ![Verze softwaru po aktualizaci](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -116,7 +116,7 @@ Chcete-li stáhnout aktualizaci z katalogu Microsoft Update, proveďte následuj
 
    ![Prohledávání katalogu](./media/data-box-gateway-apply-updates/download-update-2.png)
 
-3. Vyberte **Download** (Stáhnout). Existuje jeden soubor ke stažení s názvem *SoftwareUpdatePackage.exe* , který odpovídá aktualizaci softwaru zařízení. Stáhněte soubor do složky v místním systému. Můžete také zkopírovat složku do síťové sdílené složky, která je dosažitelná ze zařízení.
+3. Vyberte **Stáhnout**. Existuje jeden soubor ke stažení s názvem *SoftwareUpdatePackage.exe* , který odpovídá aktualizaci softwaru zařízení. Stáhněte soubor do složky v místním systému. Můžete také zkopírovat složku do síťové sdílené složky, která je dosažitelná ze zařízení.
 
    ![Prohledávání katalogu](./media/data-box-gateway-apply-updates/download-update-3.png)
 
@@ -139,7 +139,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
    ![aktualizace zařízení](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. Vyberte **Použít**.
+3. Vyberte **Apply** (Použít).
 
    ![aktualizace zařízení](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

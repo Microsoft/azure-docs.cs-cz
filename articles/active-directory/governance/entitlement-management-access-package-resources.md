@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798630"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783582"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
@@ -78,7 +78,7 @@ Můžete vybrat libovolnou [skupinu zabezpečení Azure AD nebo skupinu Office 3
 - Azure AD nemůže změnit členství ve skupině, která byla synchronizovaná ze služby Windows Server Active Directory pomocí Azure AD Connect, nebo vytvořeného v systému Exchange Online jako distribuční skupinu.  
 - Členství dynamických skupin nelze aktualizovat přidáním nebo odebráním člena, takže dynamická členství ve skupině nejsou vhodná pro použití se správou nároků.
 
-Další informace najdete v tématu věnovaném [porovnání skupin](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) a [skupin Office 365 a Microsoft Teams](https://docs.microsoft.com/microsoftteams/office-365-groups).
+Další informace najdete v tématu věnovaném [porovnání skupin](/office365/admin/create-groups/compare-groups) a [skupin Office 365 a Microsoft Teams](/microsoftteams/office-365-groups).
 
 1. Na stránce **Přidat role prostředků pro přístup k balíčku** kliknutím na **skupiny a týmy** otevřete podokno vybrat skupiny.
 
@@ -178,7 +178,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
 V rámci správy nároků služba Azure AD zpracuje hromadnou změnu přiřazení a prostředků v balíčcích přístupu několikrát denně. Takže pokud provedete přiřazení nebo změníte role prostředků vašeho balíčku pro přístup, může trvat až 24 hodin, než se tato změna provede v Azure AD, a navíc dobu potřebnou k rozšíření těchto změn na jiné online služby Microsoftu nebo připojené aplikace SaaS. Pokud vaše změna ovlivní jenom pár objektů, může tato změna trvat jenom pár minut, než se použije ve službě Azure AD, potom ostatní součásti Azure AD tuto změnu odhalí a aktualizují aplikace SaaS. Pokud vaše změna ovlivní tisíce objektů, bude změna trvat déle. Například pokud máte balíček pro přístup se dvěma aplikacemi a 100 přiřazení uživatele a rozhodnete se přidat roli webu služby SharePoint do balíčku pro přístup, může dojít ke zpoždění, dokud všichni uživatelé nebudou součástí této role webu služby SharePoint. Průběh můžete sledovat pomocí protokolu auditu Azure AD, protokolu zřizování Azure AD a protokolů auditu webu služby SharePoint.
 
-Když odeberete člena týmu, odebere se i ze skupiny Office 365. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Když odeberete člena týmu, odebere se i ze skupiny Office 365. Odebrání z týmového chatu může trvat o něco déle. Další informace najdete v tématu [členství ve skupině](/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Další kroky
 

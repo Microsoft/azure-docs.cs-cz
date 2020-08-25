@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "70067947"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
@@ -65,7 +65,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
     | Nastavení             | Hodnota                             | Popis                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Zobrazované jméno**    | *Test call*                       | Název, který se zobrazí na **portálu pro vývojáře**.                                                                                                                                       |
+    | **Zobrazovaný název**    | *Test call*                       | Název, který se zobrazí na **portálu pro vývojáře**.                                                                                                                                       |
     | **Adresa URL** (příkaz HTTP) | GET                               | Můžete zvolit některý z předdefinovaných příkazů HTTP.                                                                                                                                         |
     | **Adresa URL**             | */test*                           | Cesta URL k rozhraní API.                                                                                                                                                                       |
     | **Popis**     |                                   | Zadejte popis operace, který se na **portálu pro vývojáře** použije jako dokumentace pro vývojáře používající toto rozhraní API.                                                    |

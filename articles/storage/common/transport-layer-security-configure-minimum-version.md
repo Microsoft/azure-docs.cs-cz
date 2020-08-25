@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533372"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755904"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -338,6 +338,10 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště s minimální verzí TLS nastavenou na TLS 1,0 (výchozí pro nový účet), když zásada s efektem odepření vyžaduje, aby se minimální verze protokolu TLS nastavila na TLS 1,2.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+
+## <a name="network-considerations"></a>Důležité informace z hlediska využívání sítě
+
+Když klient odešle požadavek na účet úložiště, napřed zpracováním všech požadavků napředá klient připojení k veřejnému koncovému bodu účtu úložiště. Po navázání připojení se kontroluje nastavení minimální verze protokolu TLS. Pokud žádost používá starší verzi TLS, než je zadaná v nastavení, bude připojení i nadále úspěšné, ale žádost bude nakonec neúspěšná. Další informace o veřejných koncových bodech pro Azure Storage najdete v tématu [syntaxe identifikátoru URI prostředku](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
 ## <a name="next-steps"></a>Další kroky
 

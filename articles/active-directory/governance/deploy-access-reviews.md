@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604004"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783599"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -180,7 +180,7 @@ Mezi obvyklé cíle pro kontrolu patří:
 
 * [Aplikace integrované do Azure AD pro jednotné přihlašování](../manage-apps/what-is-application-management.md) (například SaaS, obchodní).
 
-* [Členství](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure AD nebo Office 365, včetně Microsoft Teams).
+* [Členství](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure AD nebo Office 365, včetně Microsoft Teams).
 
 * [Přístup k balíčku](/entitlement-management-overview.md) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
 
@@ -246,7 +246,7 @@ Chcete-li vytvořit zásadu kontroly přístupu, je nutné mít následující i
 | **Prostředky ke kontrole**| Přístup k Microsoft Dynamics |
 | **Frekvence kontroly**| Měsíčně |
 | **Kdo provádí kontrolu**| Správci programu Dynamics Business Group |
-| **Zveřejnění**| E-mailová adresa 24 hodin před kontrolou aliasu Dynamics-PMS<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
+| **Notification (Oznámení)**| E-mailová adresa 24 hodin před kontrolou aliasu Dynamics-PMS<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
 | **Časová osa**| 48 hodin z oznámení |
 |**Automatické akce**| Odebrání přístupu z libovolného účtu, který nemá v 90 dnech žádné interaktivní přihlášení, odebráním uživatele ze skupiny zabezpečení Dynamics-Access. <p>*Provede akce, pokud se nekontrolují v časové ose.* |
 | **Ruční akce**| Recenzenti mohou odebrat schválení před automatickými akcemi v případě potřeby. |
@@ -389,7 +389,7 @@ Kontroly přístupu mohou být pro členy skupiny nebo pro uživatele, kteří b
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Plánování přezkoumání rolí prostředků Azure AD a Azure
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům ve službě Azure AD. Tím se udržuje seznam privilegovaných rolí, jak v [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) , tak v [prostředcích Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) mnohem menší a zvyšuje celkové zabezpečení adresáře.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům ve službě Azure AD. Tím se udržuje seznam privilegovaných rolí, jak v [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) , tak v [prostředcích Azure](../../role-based-access-control/built-in-roles.md) mnohem menší a zvyšuje celkové zabezpečení adresáře.
 
 Kontroly přístupu umožňují kontrolorům ověřit, jestli se uživatelé pořád potřebují v roli. Stejně jako kontroly přístupu pro balíčky přístupu se recenze pro role Azure AD a prostředek Azure integrují do uživatelského prostředí správce PIM. Doporučujeme pravidelně kontrolovat následující přiřazení rolí:
 
@@ -452,9 +452,9 @@ Postupujte podle pokynů v následujících odkazech:
 
 | Články s návody | Popis |
 | - | - |
- [Vytvořit kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
-| [Vlastní kontrola přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
-| [Dokončení kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Zobrazení kontroly přístupu a použití výsledků |
+ [Vytvořit kontroly přístupu](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
+| [Vlastní kontrola přístupu](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
+| [Dokončení kontroly přístupu](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Zobrazení kontroly přístupu a použití výsledků |
 
 
 ### <a name="review-azure-resource-roles"></a>Kontrola rolí prostředků Azure
@@ -467,14 +467,14 @@ Postupujte podle pokynů v následujících odkazech:
 
 | Články s návody| Popis |
 | - | -|
-| [Vytvořit kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
-| [Vlastní kontrola přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
-| [Dokončení kontroly přístupu](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Zobrazení kontroly přístupu a použití výsledků |
+| [Vytvořit kontroly přístupu](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
+| [Vlastní kontrola přístupu](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
+| [Dokončení kontroly přístupu](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Zobrazení kontroly přístupu a použití výsledků |
 
 
 ## <a name="use-the-access-reviews-api"></a>Použití rozhraní API kontroly přístupu
 
-V tématu [metody rozhraní Graph API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [ověření autorizace rolí a aplikací](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
+V tématu [metody rozhraní Graph API](/graph/api/resources/accessreviews-root?view=graph-rest-beta) a [ověření autorizace rolí a aplikací](/graph/api/resources/accessreviews-root?view=graph-rest-beta) můžete pracovat s prostředky, které lze snadno zobrazit, a spravovat je. Metody kontroly přístupu v rozhraní Microsoft Graph API jsou k dispozici pro kontext aplikace i uživatele. Při spouštění skriptů v kontextu aplikace musí být účet použitý ke spuštění rozhraní API (princip služby) udělen oprávnění "AccessReview. Read. All" pro dotazování na informace o kontrolách přístupu.
 
 Populární kontroly přístupu: úlohy pro automatizaci pomocí Graph API pro kontroly přístupu:
 
@@ -519,4 +519,3 @@ Přečtěte si další informace o souvisejících technologiích.
 
 * [Co je Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 
- 

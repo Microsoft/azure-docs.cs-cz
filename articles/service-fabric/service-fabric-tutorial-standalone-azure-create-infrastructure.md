@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614005"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
@@ -51,10 +51,10 @@ K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ješt�
 
    ![SF – příchozí][sf-inbound]
 
-   * Port `3389`pro RDP a ICMP (základní připojení).
-   * Porty `19000-19003`pro Service Fabric.
-   * Porty `19080-19081`pro Service Fabric.
-   * Port `8080`pro požadavky webového prohlížeče.
+   * Port `3389` pro RDP a ICMP (základní připojení).
+   * Porty `19000-19003` pro Service Fabric.
+   * Porty `19080-19081` pro Service Fabric.
+   * Port `8080` pro požadavky webového prohlížeče.
 
    > [!TIP]
    > Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači. Naštěstí Azure umožňuje, aby se všechny virtuální počítače ve stejné **virtuální síti** snadno připojovaly, takže budeme mít jistotu, že všechny naše instance budou ve stejné síti.

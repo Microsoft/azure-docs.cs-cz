@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75613937"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
@@ -30,7 +30,7 @@ Ve druhé části této série se naučíte:
 
 Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Po úspěšném stažení ho zkopírujte přes připojení RDP k vašemu VIRTUÁLNÍmu počítači a vložte ho na plochu.
 
-Vyberte soubor zip a otevřete kontextovou nabídku a vyberte **Extrahovat vše** > **extrakce**.  Při extrahování souborů se na ploše vygeneruje složka se stejným názvem jako soubor ZIP.
+Vyberte soubor zip a otevřete kontextovou nabídku a vyberte **Extrahovat vše**  >  **extrakce**.  Při extrahování souborů se na ploše vygeneruje složka se stejným názvem jako soubor ZIP.
 
 Můžete si přečíst podrobnější informace o [obsahu instalačního balíčku](service-fabric-cluster-standalone-package-contents.md).
 
@@ -120,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Vyvolání Service Fabric Exploreru
 
-Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer buď přímo z jednoho z počítačů s http\/:/localhost:19080/Explorer/index.html nebo vzdáleně pomocí http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html.
+Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer přímo z jednoho z počítačů pomocí http: \/ /localhost: 19080/Explorer/index.html nebo vzdáleně s http: \/ /< *IPAddressofaMachine*>:19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Přidávání a odebírání uzlů
 

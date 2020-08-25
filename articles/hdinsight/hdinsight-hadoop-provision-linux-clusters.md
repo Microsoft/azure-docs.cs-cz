@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873598"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749867"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 
@@ -63,7 +63,7 @@ Názvy clusterů HDInsight mají následující omezení:
 * Obor názvů clusteru je pro všechny Azure v rámci všech předplatných. Proto musí být název clusteru jedinečný po celém světě.
 * Prvních šest znaků musí být jedinečný v rámci virtuální sítě.
 
-#### <a name="region"></a>Oblast
+#### <a name="region"></a>Region
 
 Umístění clusteru nemusíte explicitně určovat: cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí získáte tak, že vyberete rozevírací seznam **oblast** na [ceny služby HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
@@ -97,18 +97,18 @@ Clustery HDInsight umožňují během vytváření clusteru konfigurovat dva už
 
 Uživatelské jméno protokolu HTTP má následující omezení:
 
-* Povolené speciální znaky: `_` a`@`
+* Povolené speciální znaky: `_` a `@`
 * Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 20
 
 Uživatelské jméno SSH má následující omezení:
 
-* Povolené speciální znaky: `_` a`@`
+* Povolené speciální znaky: `_` a `@`
 * Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 64
 * Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, test1, Administrator, admin, User, uživatel1, test, uživatel2,, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, Owner, test2, test3, user4, user5, Spark Support_388945a0
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ![Nastavení úložiště clusteru: koncové body kompatibilní se HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
@@ -133,6 +133,9 @@ Během konfigurace pro výchozí koncový bod úložiště zadáte kontejner obj
 
 > [!IMPORTANT]
 > Povolení přenosu zabezpečeného úložiště po vytvoření clusteru může způsobit chyby v účtu úložiště a nedoporučuje se ho použít. Je lepší vytvořit nový cluster pomocí účtu úložiště s povoleným zabezpečeným přenosem.
+
+> [!Note]  
+> Azure HDInsight automaticky nepřenáší, nepřesouvá ani nekopíruje vaše data uložená v Azure Storage z jedné oblasti do druhé.
 
 ### <a name="metastore-settings"></a>Nastavení metastore
 

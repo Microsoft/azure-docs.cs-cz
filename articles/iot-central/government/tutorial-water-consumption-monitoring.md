@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77122057"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody pomocí Azure IoT Central
 
 V tomto kurzu se dozvíte, jak vytvořit aplikaci monitorování spotřeby ve službě Azure IoT Central voda pomocí šablony aplikace monitorování využití vody Azure IoT Central.
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * K vytvoření aplikace pro monitorování spotřeby vody použijte šablonu monitorování využití vody Azure IoT Central.
@@ -136,8 +136,8 @@ Postup zobrazení šablony zařízení:
 Přizpůsobení šablony zařízení:
 
 1. V nabídce **šablony zařízení** přejděte na **přizpůsobit** .
-1. Najděte typ `Temperature` telemetrie.
-1. Aktualizujte **Zobrazovaný název** `Temperature` na `Reported temperature`.
+1. Najděte `Temperature` typ telemetrie.
+1. Aktualizujte **Zobrazovaný název** `Temperature` na `Reported temperature` .
 1. Aktualizujte jednotku měření nebo nastavte **minimální hodnotu** a **maximální hodnotu**.
 1. Výběrem **Uložit** uložte změny.
 
@@ -169,7 +169,7 @@ V Azure IoT Central můžete vytvořit simulovaná zařízení, abyste mohli tes
 
 ### <a name="view-the-devices"></a>Zobrazit zařízení
 
-1. V levém podokně vyberte **zařízení** > **všechna zařízení** .
+1. V levém podokně vyberte **zařízení**  >  **všechna zařízení** .
 
    ![Podokno všechna zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
@@ -204,7 +204,7 @@ Vytvořená aplikace pro monitorování spotřeby vody má tři předem nakonfig
 
      ![Výstraha s vysokým pH](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` Pravidlo je nakonfigurováno pro kontrolu proti této podmínce `greater than` `Max flow threshold` `Acidity (pH)` je. Maximální prahová hodnota toku je cloudová vlastnost definovaná v šabloně zařízení **čipového ventilu** . Hodnota `Max flow threshold` je nastavená na instanci zařízení.
+    `High flow alert`Pravidlo je nakonfigurováno pro kontrolu proti této podmínce `Acidity (pH)` je `greater than` `Max flow threshold` . Maximální prahová hodnota toku je cloudová vlastnost definovaná v šabloně zařízení **čipového ventilu** . Hodnota `Max flow threshold` je nastavená na instanci zařízení.
 
 Nyní vytvoříme akci e-mailu.
 
@@ -237,14 +237,14 @@ V Azure IoT Central úlohy umožňují aktivovat aktualizace zařízení nebo cl
 
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
 
-1. Vyberte možnost **Správa** > **přizpůsobení aplikace**.
+1. Vyberte možnost **Správa**  >  **přizpůsobení aplikace**.
 1. Chcete-li zvolit obrázek, který se má nahrát jako **logo aplikace**, vyberte tlačítko **změnit** .
 1. Chcete-li zvolit obrázek **ikony prohlížeče** , který se zobrazí na kartách prohlížeče, vyberte tlačítko **změnit** .
 1. Můžete také nahradit výchozí barvy v **prohlížeči** přidáním hexadecimálních kódů HTML.
 
    ![Výběry pro logo aplikace, ikonu prohlížeče a barvy v prohlížeči](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. Můžete také změnit image aplikace tak, že vyberete**nastavení aplikace** **pro správu** > . Chcete-li zvolit obrázek, který se má nahrát jako obrázek aplikace, vyberte tlačítko **Vybrat obrázek** .
+1. Můžete také změnit image aplikace tak, že **Administration**vyberete  >  **nastavení aplikace**pro správu. Chcete-li zvolit obrázek, který se má nahrát jako obrázek aplikace, vyberte tlačítko **Vybrat obrázek** .
 1. Nakonec můžete **motiv** změnit také tak, že vyberete ikonu **Nastavení** v pravém horním rohu aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

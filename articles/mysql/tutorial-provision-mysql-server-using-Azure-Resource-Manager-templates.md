@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74771084"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: zřízení Azure Database for MySQL serveru pomocí šablony Azure Resource Manager
@@ -76,27 +76,27 @@ Chcete-li získat odkaz na šablonu JSON pro server Azure Database for MySQL, vy
 }
 ```
 V této žádosti jsou hodnoty, které je třeba přizpůsobit, následující:
-+   `name`-Zadejte název serveru MySQL (bez názvu domény).
-+   `location`– Zadejte platnou oblast datového centra Azure pro server MySQL. Například westus2.
-+   `properties/version`-Zadejte verzi serveru MySQL, která se má nasadit. Například 5,6 nebo 5,7.
-+   `properties/administratorLogin`-Zadejte přihlašovací jméno správce MySQL pro server. Přihlašovací jméno správce nemůže být azure_superuser, admin, administrator, root, guest ani public.
-+   `properties/administratorLoginPassword`– Zadejte heslo pro uživatele správce MySQL uvedeného výše.
-+   `properties/sslEnforcement`– Pokud chcete povolit nebo zakázat sslEnforcement, zadejte enabled/disabled.
-+   `storageProfile/storageMB`-Zadejte maximální velikost zřízené úložiště, která je požadována pro server v megabajtech. Například 5120.
-+   `storageProfile/backupRetentionDays`-Zadejte požadovanou dobu uchovávání záloh ve dnech. Například 7. 
-+   `storageProfile/geoRedundantBackup`-Zadejte enabled/disabled v závislosti na požadavcích geografického zotavení po havárii.
-+   `sku/tier`– Zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
-+   `sku/capacity`-Zadejte kapacitu vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
-+   `sku/family`-Zadejte Gen5 pro výběr generování hardwaru pro nasazení serveru.
-+   `sku/name`-Zadat TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16 MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
-+   `resources/properties/virtualNetworkSubnetId`– Zadejte identifikátor Azure podsítě ve virtuální síti, kam se má umístit server Azure MySQL. 
-+   `tags(optional)`-Zadat volitelné značky jsou páry klíč-hodnota, které byste použili k kategorizaci prostředků pro fakturaci atd.
++   `name` -Zadejte název serveru MySQL (bez názvu domény).
++   `location` – Zadejte platnou oblast datového centra Azure pro server MySQL. Například westus2.
++   `properties/version` -Zadejte verzi serveru MySQL, která se má nasadit. Například 5,6 nebo 5,7.
++   `properties/administratorLogin` -Zadejte přihlašovací jméno správce MySQL pro server. Přihlašovací jméno správce nemůže být azure_superuser, admin, administrator, root, guest ani public.
++   `properties/administratorLoginPassword` – Zadejte heslo pro uživatele správce MySQL uvedeného výše.
++   `properties/sslEnforcement` – Pokud chcete povolit nebo zakázat sslEnforcement, zadejte enabled/disabled.
++   `storageProfile/storageMB` -Zadejte maximální velikost zřízené úložiště, která je požadována pro server v megabajtech. Například 5120.
++   `storageProfile/backupRetentionDays` -Zadejte požadovanou dobu uchovávání záloh ve dnech. Například 7. 
++   `storageProfile/geoRedundantBackup` -Zadejte enabled/disabled v závislosti na požadavcích geografického zotavení po havárii.
++   `sku/tier` – Zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
++   `sku/capacity` -Zadejte kapacitu vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
++   `sku/family` -Zadejte Gen5 pro výběr generování hardwaru pro nasazení serveru.
++   `sku/name` -Zadat TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16 MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
++   `resources/properties/virtualNetworkSubnetId` – Zadejte identifikátor Azure podsítě ve virtuální síti, kam se má umístit server Azure MySQL. 
++   `tags(optional)` -Zadat volitelné značky jsou páry klíč-hodnota, které byste použili k kategorizaci prostředků pro fakturaci atd.
 
 Pokud chcete vytvořit šablonu Azure Resource Manager pro automatizaci nasazení Azure Database for MySQL pro vaši organizaci, doporučujeme nejdřív začít od šablony vzorové [Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) v galerii GitHub pro rychlý Start v Azure a sestavovat ji nad ní. 
 
 Pokud Azure Resource Manager šablony a chcete si je vyzkoušet, můžete začít pomocí následujících kroků:
 +   Naklonujte nebo Stáhněte vzorovou [šablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) z Galerie Azure pro rychlý Start.  
-+   Úpravou souboru azuredeploy. Parameters. JSON aktualizujte hodnoty parametrů na základě vaší předvolby a uložte soubor. 
++   Upravte azuredeploy.parameters.jsna pro aktualizaci hodnot parametrů podle vaší předvolby a uložte soubor. 
 +   Pomocí Azure CLI vytvořte server Azure MySQL pomocí následujících příkazů.
 
 Ke spuštění bloků kódu v tomto kurzu můžete použít Azure Cloud Shell v prohlížeči nebo si nainstalujte Azure CLI ve vašem počítači.

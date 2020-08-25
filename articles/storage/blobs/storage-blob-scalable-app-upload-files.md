@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75371934"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>Konfigurace připojovacího řetězce
 
-Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. Přihlaste se k virtuálnímu počítači, který jste vytvořili v předchozím kurzu. Otevřete **příkazový řádek** jako správce a spusťte příkaz `setx` s přepínačem `/m`. Tento příkaz uloží proměnnou prostředí s nastavením počítače. Proměnná prostředí není dostupná, dokud znovu nenačtete **příkazový řádek**. Nahraďte ** \<storageConnectionString\> ** v následující ukázce:
+Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. Přihlaste se k virtuálnímu počítači, který jste vytvořili v předchozím kurzu. Otevřete **příkazový řádek** jako správce a spusťte příkaz `setx` s přepínačem `/m`. Tento příkaz uloží proměnnou prostředí s nastavením počítače. Proměnná prostředí není dostupná, dokud znovu nenačtete **příkazový řádek**. Nahraďte **\<storageConnectionString\>** v následující ukázce:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m

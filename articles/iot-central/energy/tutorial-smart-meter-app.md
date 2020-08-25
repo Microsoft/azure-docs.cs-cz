@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77015996"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
@@ -30,7 +30,7 @@ Tento kurz vás provede procesem vytvoření aplikace pro monitorování intelig
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Požadavky
-- Žádná
+- Žádné
 - Doporučuje se předplatné Azure, ale není to nutné.
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Vytvoření aplikace pro inteligentní monitorování měřičů 
