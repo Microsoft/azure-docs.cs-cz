@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205952"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826782"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
 
 Tento článek obsahuje seznam klávesových zkratek, které fungují všude v Azure Portal. Jednotlivé služby mohou mít své vlastní klávesové zkratky.
 
-## <a name="actions"></a>Akce
+## <a name="actions"></a>Actions
 
 |Akce |Klávesová zkratka |
 | --- | --- |
@@ -52,6 +52,10 @@ Tento článek obsahuje seznam klávesových zkratek, které fungují všude v A
 |Přejít na **všechny prostředky**|G + A |
 |Přejít na **skupiny prostředků**|G + R |
 |Otevřít levou položku bočního panelu na této pozici |Číslo G +|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Klávesové zkratky pro konkrétní stránky v Azure Portal
+
+- [Průzkumník služby Azure Resource Graph](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825575"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -26,7 +26,7 @@ I když je snadné začít chránit infrastrukturu a aplikace v Azure, když zab
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura služby Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
+![Architektura Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
 
 ### <a name="workloads"></a>Úlohy
 
@@ -108,7 +108,7 @@ Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
 
 * Dlouhodobé uchovávání:
   * Plánováno (požadavky na dodržování předpisů) – Pokud víte předem, že data jsou od aktuálního času vyžadována za roky, pak použijte dlouhodobou dobu uchovávání.
-  * Neplánované (požadavek na vyžádání) – Pokud si nejste jistí předem, můžete použít na vyžádání s konkrétním vlastním nastavením uchovávání informací (Tato vlastní nastavení uchování nejsou ovlivněná nastavením zásad).
+  * Neplánované (požadavek na vyžádání) – Pokud si nejste jistí předem, můžete použít na vyžádání s konkrétním vlastním nastavením uchovávání informací (Tato vlastní nastavení uchování ovlivněná nastaveními zásad).
 
 * Zálohování na vyžádání s vlastním uchováváním – Pokud potřebujete provést zálohování, které není naplánované prostřednictvím zásad zálohování, můžete použít zálohování na vyžádání. To může být užitečné při pořizování záloh, které nevyhovují plánovanému zálohování, nebo pro provádění podrobného zálohování (například několik záloh virtuálních počítačů IaaS za den, protože plánované zálohování povoluje jenom jednu zálohu za den). Je důležité si uvědomit, že zásady uchovávání informací definované v naplánovaných zásadách se nevztahují na zálohování na vyžádání.
 
@@ -239,7 +239,7 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
 * Navíc
   * Do pracovního prostoru **Log Analytics** můžete odesílat data (například úlohy, zásady atd.). Tím umožníte, aby se funkce protokolů Azure Monitor povolily korelace dat s jinými daty monitorování shromážděnými pomocí Azure Monitor, Konsolidujte položky protokolu z několika předplatných Azure a klientů do jednoho umístění pro účely analýzy, pomocí dotazů protokolu provádíte komplexní analýzu a získáte podrobné přehledy o položkách protokolu. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
   * Data můžete odesílat do centra událostí, abyste mohli odesílat položky mimo Azure, například SIEM třetí strany (informace o zabezpečení a správu událostí) nebo jiné řešení Log Analytics. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Další informace](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Přečtěte si další informace](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Zobrazení výstrah
 
@@ -247,13 +247,13 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
 
 * Azure Backup poskytuje integrovaný mechanizmus oznámení o **výstrahách** prostřednictvím e-mailu pro chyby, varování a kritické operace. Můžete zadat jednotlivé e-mailové adresy nebo distribuční seznamy, které budou oznamovány při vygenerování výstrahy. Můžete si také vybrat, jestli se má zobrazit upozornění na každou jednotlivou výstrahu, nebo je seskupit do hodinových Digest a pak získat oznámení.
   * Tyto výstrahy definuje služba a poskytují podporu pro omezené scénáře – selhání zálohování a obnovování, zastavení ochrany při zachování dat/zastavení ochrany pomocí odstranit data atd. [Další informace najdete tady](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Pokud se provede destruktivní operace, jako je zastavení ochrany pomocí odstranění dat, vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro Recovery Services trezoru nejsou nakonfigurované oznámení.
+  * Pokud se provede destruktivní operace, jako je zastavení ochrany pomocí odstranění dat, vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro Recovery Services trezoru **nejsou nakonfigurované oznámení** .
   * Některé úlohy můžou generovat vysokou frekvenci selhání (například SQL Server každých 15 minut). Aby nedocházelo k zahlcení výstrahám, které jsou vyvolány pro jednotlivé výskyty selhání, jsou výstrahy konsolidovány. [Další informace najdete tady](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Integrované výstrahy nelze přizpůsobit a jsou omezeny na e-maily definované v Azure Portal.
 
 * Pokud potřebujete **vytvořit vlastní výstrahy** (například výstrahy na úspěšné úlohy), pak použijte Log Analytics. V Azure Monitor můžete vytvořit vlastní výstrahy v pracovním prostoru Log Analytics. Hybridní úlohy (DPM/MABS) taky můžou odesílat data do LA a používat LA k poskytování běžných výstrah napříč úlohami, které Azure Backup podporuje.
 
-* Můžete také dostávat oznámení prostřednictvím integrovaných **protokolů aktivit**služby Recovery Services trezoru. podporuje ale omezené scénáře a není vhodné pro operace, jako je například naplánované zálohování, které se lépe zarovnají s protokoly prostředků než s protokoly aktivit. Další informace o těchto omezeních a o tom, jak můžete používat Log Analytics pracovní prostor pro monitorování a upozorňování ve velkém měřítku pro všechny vaše úlohy, které jsou chráněné pomocí Azure Backup, najdete v tomto [článku](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
+* Můžete také dostávat oznámení prostřednictvím integrovaných **protokolů aktivit**služby Recovery Services trezor. Podporuje ale omezené scénáře a není vhodné pro operace, jako je například naplánované zálohování, které se lépe zarovnají s protokoly prostředků než s protokoly aktivit. Další informace o těchto omezeních a o tom, jak můžete používat Log Analytics pracovní prostor pro monitorování a upozorňování ve velkém měřítku pro všechny vaše úlohy, které jsou chráněné pomocí Azure Backup, najdete v tomto [článku](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
 
 ## <a name="next-steps"></a>Další kroky
 

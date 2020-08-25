@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762908"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826646"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -60,7 +60,7 @@ Spravované identity umožňují trezoru vytvářet a používat soukromé konco
 1. Generuje se **ID objektu** , což je spravovaná identita trezoru.
 
     >[!NOTE]
-    >Po povolení nesmí být spravovaná identita zakázaná (ještě dočasně). Zakázání spravované identity může vést k nekonzistentnímu chování.
+    >Po povolení nesmí být spravovaná identita zakázaná **(ještě dočasně** ). Zakázání spravované identity může vést k nekonzistentnímu chování.
 
 ## <a name="dns-changes"></a>Změny DNS
 

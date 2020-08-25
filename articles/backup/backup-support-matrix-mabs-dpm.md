@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34b15ea0752bf013d2b1e5c3a7434ff009e2d80a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761334"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825218"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -85,7 +85,7 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 **Instalace** | Nainstalujte DPM/MABS na jeden z účelových počítačů.<br/><br/> Neinstalujte DPM/MABS na řadiči domény na počítači s instalací role aplikačního serveru na počítači, na kterém běží Microsoft Exchange Server nebo System Center Operations Manager, nebo na uzlu clusteru.<br/><br/> [Zkontrolujte všechny požadavky na systém aplikace DPM](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Doména** | DPM/MABS by měl být připojený k doméně. Nejdřív nainstalujte a pak připojte DPM/MABS k doméně. Přesunutí DPM/MABS do nové domény po nasazení se nepodporuje.
 **Storage** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
-**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Přečtěte si další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Přesunutí MABS** | Přesun MABS na nový server a zachování úložiště je podporované, pokud používáte MBS.<br/><br/> Server musí mít stejný název jako původní. Název nemůžete změnit, pokud chcete zachovat stejný fond úložiště a použít stejnou databázi MABS k ukládání bodů obnovení dat.<br/><br/> Budete potřebovat zálohu databáze MABS, protože ji budete muset obnovit.
 
 ## <a name="mabs-support-on-azure-stack"></a>Podpora MABS na Azure Stack

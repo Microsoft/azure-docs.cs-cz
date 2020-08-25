@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: b4917129b7b6dd3799f5e79dab881a1bcaa130d5
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 61a1dae356209126af47837ec7e8940c394b77a5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761657"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827048"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -183,7 +183,7 @@ Nastavení zásad určete následujícím způsobem:
 10. Až dokončíte definování zásad zálohování, klikněte na **OK**.
 
 > [!NOTE]
-> Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Předpokládejme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden v plném rozsahu může být skutečně vyčištěný nebo odstraněný až po dokončení dalších úplných záloh, tj. po 30 až 7 dnech. Řekněme, že týdenní úplné zálohování probíhá na 16. listopadu. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.
+> Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Předpokládejme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden plný může být skutečně vyčištěn nebo odstraněn až po nejbližším úplném zálohování, tj. po dobu 30 až 7 dnů. V případě příkladu dojde k týdennímu úplnému zálohování v listopadu 16. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.
 
 ## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 

@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514543"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823960"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -139,7 +139,7 @@ Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obno
     - **Obnovit na původní instanci**: Při obnovení na původní instanci se odstraní původní virtuální pevný disk (VHD). MABS obnoví virtuální pevný disk a další konfigurační soubory do původního umístění pomocí zapisovače VSS technologie Hyper-V. Na konci procesu obnovení jsou virtuální počítače stále vysoce dostupné.
         Pro obnovení musí být dostupná skupina prostředků. Pokud není dostupná, proveďte obnovení do alternativního umístění a pak změňte virtuální počítač na vysoce dostupný.
 
-    - **Obnovit jako virtuální počítač na libovolného hostitele**: MABS podporuje obnovení do alternativního umístění (ALR), které poskytuje bezproblémové obnovení chráněného virtuálního počítače s technologií Hyper-v na jiného hostitele Hyper-v, nezávisle na architektuře procesoru. Virtuální počítače s technologií Hyper-V, které jsou obnovovány do uzlu clusteru, nebudou vysoce dostupné. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
+    - **Obnovit jako virtuální počítač na libovolného hostitele**: MABS podporuje obnovení do alternativního umístění (ALR), které poskytuje bezproblémové obnovení chráněného virtuálního počítače s technologií Hyper-v na jiného hostitele Hyper-v, nezávisle na architektuře procesoru. Virtuální počítače Hyper-V, které jsou obnoveny do uzlu clusteru, nebudou vysoce dostupné. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
 
     - **Kopírovat do síťové složky**: MABS podporuje obnovení na úrovni položek (ilr), které umožňuje provádět obnovení na úrovni položek souborů, složek, svazků a virtuálních pevných disků (VHD) ze záloh virtuálních počítačů Hyper-V na úrovni hostitele do sdílené síťové složky nebo svazku na chráněném serveru MABS. K provedení obnovení na úrovni položek není nutné instalovat agenta MABS Protection v rámci hosta. Pokud zvolíte tuto možnost, Průvodce obnovením vám nabídne další obrazovku, kde identifikujete cíl a cílovou cestu.
 

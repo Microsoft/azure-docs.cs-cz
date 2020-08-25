@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503604"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826986"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -74,7 +74,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 | Chybová zpráva      | <span style="font-weight:normal">Zjistila se neplatná konfigurace backint.</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Možné příčiny**    | Parametry zálohování jsou pro Azure Backup nesprávně zadané. |
-| **Doporučená akce** | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
+| **Doporučená akce** | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -96,7 +96,7 @@ Předpokládat, že je instance SDC HANA "H21" zálohovaná. Na stránce záloho
 Je třeba počítat s následujícím:
 
 - Ve výchozím nastavení se název obnovené databáze naplní názvem zálohované položky. V tomto případě H21 (SDC).
-- Když vyberete cíl jako h11, nemění se automaticky název obnovené databáze. **Měla by být upravena na H11 (SDC)**. V souvislosti s SDCem bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
+- Výběr cíle jako h11 nemění automaticky obnovený název databáze. **Měla by být upravena na H11 (SDC)**. V souvislosti s SDCem bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
 - Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné kliknout na zaškrtávací políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
 - Linux rozlišuje velká a malá písmena. Buďte proto opatrní při zachování případu.
 

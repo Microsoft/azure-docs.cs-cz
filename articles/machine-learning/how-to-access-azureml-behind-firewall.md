@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873632"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827422"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -57,6 +57,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **mcr.microsoft.com** | Microsoft Container Registry pro základní image Docker |
 | **your-acr-server-name.azurecr.io** | Vyžaduje se jenom v případě, že je vaše Azure Container Registry za virtuální sítí. V této konfiguraci se privátní odkaz vytvoří z prostředí Microsoftu do instance ACR v rámci vašeho předplatného. Pro Azure Machine Learning pracovní prostor použijte název serveru ACR. |
 | **\*. notebooks.azure.net** | Vyžaduje poznámkové bloky v Azure Machine Learning Studiu. |
+| **graph.windows.net** | Vyžadováno pro poznámkové bloky |
 
 ## <a name="python-hosts"></a>Hostitelé Pythonu
 
@@ -78,6 +79,15 @@ Hostitelé v této části se používají k instalaci balíčků R. Jsou požad
 | **Název hostitele** | **Účel** |
 | ---- | ---- |
 | **cloud.r-project.org** | Používá se při instalaci balíčků CRAN. |
+
+## <a name="azure-government-region"></a>Oblast Azure Government
+
+Požadované adresy URL pro oblasti Azure Government
+
+| **Název hostitele** | **Účel** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | Oblast US-Arizona |
+| **usgovvirginia.api.ml.azure.us** | Oblast US-) – Virginia |
 
 ## <a name="next-steps"></a>Další kroky
 

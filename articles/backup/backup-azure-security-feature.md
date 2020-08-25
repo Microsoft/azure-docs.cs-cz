@@ -4,12 +4,12 @@ description: Naučte se používat funkce zabezpečení v Azure Backup k zajišt
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757026"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826901"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 

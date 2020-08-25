@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak pomocí ukázkového skriptu Azur
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: c45ee26bef0f9afbb0b9d03f1dcafee21a894f8a
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 755c4dbfffbd4e083c591d64c0f156e15f6e3780
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757553"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826578"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrovaného virtuálního počítače Azure pomocí PowerShellu
 

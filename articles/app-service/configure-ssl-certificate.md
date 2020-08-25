@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: dea07e8a2dd0f70c714c6213408db9264bd30750
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987167"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826952"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -122,6 +122,10 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Skupina prostředků | Skupina prostředků, která bude obsahovat certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
 | SKU certifikátu | Určuje typ certifikátu, který se má vytvořit, zda se jedná o standardní certifikát nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Právní výrazy | Kliknutím potvrďte, že souhlasíte s právními podmínkami. Certifikáty se získávají z GoDaddy. |
+
+> [!NOTE]
+> Certifikáty App Service zakoupené v Azure vystavuje GoDaddy. U některých domén nejvyšší úrovně musíte explicitně dovolit GoDaddy jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue godaddy.com`
+> 
 
 ### <a name="store-in-azure-key-vault"></a>Uložit v Azure Key Vault
 

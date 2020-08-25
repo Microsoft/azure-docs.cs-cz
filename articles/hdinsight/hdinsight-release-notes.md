@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751470"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826816"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -75,4 +75,4 @@ Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](http
 
 ## <a name="known-issues"></a>Známé problémy
 
-Při pokusu o vytvoření clusteru Azure HDInsight ze Azure Portal a použití typu ověřování SSH veřejného klíče se uživatelům při kliknutí na **zkontrolovat + vytvořit**zobrazí chyba. Chyba na portálu je "nesmí obsahovat žádné tři po sobě jdoucí znaky z uživatelského jména SSH". Tento problém se řeší. Pokud ale dojde k této chybě, alternativní řešení vytvoří cluster se šablonou ARM. 
+Na webu Azure Portal byl opraven problém, ve kterém při vytváření clusteru Azure HDInsight pomocí typu ověřování SSH veřejného klíče došlo k chybě. Když uživatel klikne na **zkontrolovat + vytvořit**, zobrazí se mu chyba "nesmí obsahovat žádné tři po sobě jdoucí znaky od uživatelského jména SSH". Tento problém byl vyřešen, ale může vyžadovat, abyste si aktualizovali mezipaměť prohlížeče pomocí kombinace kláves CTRL + F5 pro načtení opraveného zobrazení. Alternativním řešením tohoto problému bylo vytvořit cluster se šablonou ARM. 

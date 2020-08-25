@@ -4,16 +4,16 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054619"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827150"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
-Azure Backup poskytuje [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Tato integrovaná služba je však omezená v následujících situacích:
+Azure Backup poskytuje [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další infrastruktury pro správu. Tato integrovaná služba je však omezená v následujících situacích:
 
 - Pokud budete monitorovat data z několika trezorů Recovery Services napříč předplatnými
 - Pokud preferovaný kanál oznámení není *e-* mailem
@@ -46,7 +46,7 @@ Charakteristickou charakteristikou výstrahy je stav triggeru. Vyberte **podmín
 V případě potřeby můžete upravit dotaz Kusto. Výběr prahové hodnoty, tečky a frekvence. Prahová hodnota určuje, kdy bude vyvolána výstraha. Období je okno času, ve kterém se dotaz spustí. Pokud je například prahová hodnota větší než 0, období je 5 minut a frekvence je 5 minut, potom pravidlo spustí dotaz každých 5 minut a zkontroluje předchozí 5 minut. Pokud je počet výsledků větší než 0, budete upozorněni na vybranou skupinu akcí.
 
 > [!NOTE]
-> Chcete-li spustit pravidlo výstrahy jednou denně, ve všech událostech nebo protokolech, které byly vytvořeny v daném dni, změňte hodnotu period a počet_plateb na 1440, tj. 24 hodin.
+> Pokud chcete pravidlo výstrahy spustit jednou denně, ve všech událostech nebo protokolech, které byly vytvořené v daném dni, změňte hodnotu Perioda a počet_plateb na 1440, tj. 24 hodin.
 
 #### <a name="alert-action-groups"></a>Skupiny akcí výstrah
 

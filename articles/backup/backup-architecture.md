@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652776"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824028"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -44,8 +44,8 @@ Recovery Services trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
@@ -134,7 +134,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 
 1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
 1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.
-    - Pro virtuální počítače s Windows se nainstaluje rozšíření VMSnapshot.
+    - U virtuálních počítačů s Windows se nainstaluje rozšíření VMSnapshot.
     - Pro virtuální počítače se systémem Linux se nainstaluje rozšíření VMSnapshot Linux.
 1. Rozšíření používá snímek na úrovni úložiště.
     - Pro virtuální počítače s Windows, na kterých běží, se zaregistrují služby Windows služba Stínová kopie svazku (VSS), aby vybraly snímek konzistentní vzhledem k aplikacím virtuálního počítače. Ve výchozím nastavení provádí zálohování úplné zálohy VSS. Pokud zálohování nedokáže vytvořit snímek konzistentní vzhledem k aplikacím, převezme snímek konzistentní se souborem.
@@ -143,10 +143,10 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 1. Po pořízení snímku se data přenesou do trezoru.
     - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
     - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
-    - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
+    - Data snímku se nemusí do trezoru zkopírovat okamžitě. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování virtuálního počítače bude u zásad denního zálohování menší než 24 hodin.
 1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](./backup-instant-restore-capability.md).
 
-Nemusíte výslovně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
+Nemusíte explicitně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
 
 ![Zálohování virtuálních počítačů Azure](./media/backup-architecture/architecture-azure-vm.png)
 

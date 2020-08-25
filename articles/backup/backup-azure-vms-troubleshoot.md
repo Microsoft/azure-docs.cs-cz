@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763299"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826236"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Tato část popisuje selhání operace zálohování virtuálního počítače A
 * Ověřte, že virtuální počítač má připojení k Internetu.
   * Ujistěte se, že není spuštěná jiná služba zálohování.
 * `Services.msc`Ověřte, že je **spuštěná**služba **agenta hosta systému Windows Azure** . Pokud chybí služba **Windows Azure Host agent** , nainstalujte ji z [zálohování virtuálních počítačů Azure do trezoru Recovery Services](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-* **Protokol událostí** může zobrazovat selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování Windows serveru, a není způsobené zálohováním Azure. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
+* **Protokol událostí** může zobrazit selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování Windows serveru, a ne kvůli službě Azure Backup. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
   * Pokud dojde k chybě při **zálohování** položky ve zdroji nebo zprávě události, ověřte, jestli se zálohy zálohování virtuálních počítačů Azure IaaS úspěšně a jestli se vytvořil bod obnovení s požadovaným typem snímku.
   * Pokud Azure Backup funguje, bude problém nejspíš s jiným řešením zálohování.
   * Tady je příklad chyby prohlížeče událostí 517, kdy služba Azure Backup fungovala správně, ale "Zálohování Windows Serveru" se nezdařila:<br>
@@ -71,7 +71,7 @@ Operace zálohování se nezdařila, protože virtuální počítač je v neúsp
 Kód chyby: UserErrorFsFreezeFailed <br/>
 Chybová zpráva: Nepodařilo se zablokovat jeden nebo více přípojných bodů virtuálního počítače, aby bylo možné vytvořit snímek konzistentní se systémem souborů.
 
-* Odpojte zařízení, u kterých se stav systému souborů nečistí, pomocí příkazu **umount** .
+* Pomocí příkazu **umount** odpojte zařízení, pro které se stav systému souborů nečistí.
 * Spusťte kontrolu konzistence systému souborů na těchto zařízeních pomocí příkazu **fsck** .
 * Připojte zařízení znovu a zkuste operaci zálohování zopakovat.</ol>
 
@@ -167,12 +167,12 @@ Chybová zpráva: operace snímku se nezdařila, protože byl překročen limit 
 
 Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte následující kroky pro řešení potíží a potom operaci opakujte.
 
-* Odstraňte objekty blob disku – snímky, které nejsou povinné. Buďte opatrní, abyste neodstranili objekt BLOB disku, měli byste odstranit jenom objekty blob snímků.
-* Pokud je v účtech úložiště disků virtuálního počítače povolené obnovitelné odstranění, nakonfigurujte zachování obnovitelného odstranění tak, aby existující snímky byly menší než maximální povolený počet v libovolném časovém okamžiku.
+* Odstraňte objekty blob disku – snímky, které nejsou povinné. Buďte opatrní, abyste neodstranili objekty blob disku. Odstranit se dají jenom objekty blob snímku.
+* Pokud je v účtech úložiště disků virtuálního počítače povolené obnovitelné odstranění, nakonfigurujte uchovávání obnovitelného odstranění, aby byly existující snímky menší, než je povolené maximum v jakémkoli okamžiku.
 * Pokud je v zálohovaném virtuálním počítači povolená možnost Azure Site Recovery, proveďte následující kroky:
 
   * Ujistěte se, že hodnota **isanysnapshotfailed** je v/etc/Azure/vmbackup.conf nastavena na hodnotu false.
-  * Naplánujte Azure Site Recovery v jinou dobu, aby nedošlo ke konfliktu operace zálohování.
+  * Naplánujte Azure Site Recovery v jinou dobu, takže nekoliduje s operací zálohování.
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-snímková operace selhala kvůli nedostatečným prostředkům virtuálního počítače.
 
@@ -203,7 +203,7 @@ Virtuální počítač Azure se nenašel.
 
 K této chybě dojde, když se odstraní primární virtuální počítač, ale zásady zálohování pořád hledají virtuální počítač, který se má zálohovat. Chcete-li tuto chybu opravit, proveďte následující kroky:
 
-* Znovu vytvořit virtuální počítač se stejným názvem a stejným názvem skupiny prostředků, **název cloudové služby**<br>– nebo –
+* Znovu vytvořit virtuální počítač se stejným názvem a stejným názvem skupiny prostředků, **název cloudové služby**<br>nebo
 * Zastavte ochranu virtuálního počítače s nebo bez odstranění zálohovaných dat. Další informace najdete v tématu [zastavení ochrany virtuálních počítačů](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError – snímek virtuálního počítače nejde zkopírovat kvůli nedostatku volného místa v účtu úložiště.
@@ -259,7 +259,7 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení není pro tento typ úlohy podporováno: <br>Počkejte, až se úloha dokončí. |Žádné |
-| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**– nebo –**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
+| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**nebo**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
 | Zálohování nemůže úlohu zrušit, protože neprobíhá: <br>Zrušení je podporováno pouze pro probíhající úlohy. Zkuste zrušit probíhající úlohu. |K této chybě dochází z důvodu přechodného stavu. Počkejte minutu a zkuste operaci zrušit. |
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 

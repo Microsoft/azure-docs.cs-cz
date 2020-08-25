@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/23/2020
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86119323"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825490"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: použití skriptů pro nasazení k vytvoření certifikátu podepsaného svým držitelem (Preview)
 
@@ -42,7 +42,7 @@ K dokončení tohoto článku potřebujete:
 
 * ** [Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). ID identity budete potřebovat při nasazení šablony. Formát identity je:
+* **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

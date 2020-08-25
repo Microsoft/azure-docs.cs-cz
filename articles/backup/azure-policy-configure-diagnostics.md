@@ -3,12 +3,12 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612499"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824045"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
@@ -78,7 +78,7 @@ Pokud má uživatel navíc trezor, který má povolenou pouze podmnožinu šesti
 >
 > Pokud má Trezor existující nastavení diagnostiky s povolenou **podmnožinou kategorií konkrétního prostředku** , která je nakonfigurovaná tak, aby odesílala data do konkrétního pracovního prostoru La, řekněme: "pracovní prostor x", a pokud je cílový pracovní prostor La v přiřazení zásad **stejný** jako pracovní prostor x, úloha nápravy selže (pro samotný trezor).
 >
->Důvodem je, že pokud se události, které jsou povolené dvěma různými nastaveními diagnostiky u stejného prostředku, **překrývají** v některém formuláři, nemůže mít nastavení stejný pracovní prostor La jako cíl. Tuto chybu budete muset ručně vyřešit tak, že přejdete do příslušného trezoru a nakonfigurujete nastavení diagnostiky s jiným pracovním prostorem LA jako cíl.
+>Důvodem je, že pokud se události, které jsou povolené dvěma různými nastaveními diagnostiky u stejného prostředku, **překrývají** v některém formuláři, nemůžou mít nastavení stejný pracovní prostor La jako cíl. Tuto chybu budete muset ručně vyřešit tak, že přejdete do příslušného trezoru a nakonfigurujete nastavení diagnostiky s jiným pracovním prostorem LA jako cíl.
 >
 > Všimněte si, že úloha nápravy **selže,** pokud stávající nastavení diagnostiky bude jako cíl povoleno pouze AzureBackupReport s pracovním prostorem X, protože v tomto případě se nebude překrývat mezi událostmi povolenými existujícím nastavením a událostmi, které jsou povoleny nastavením vytvořeným úlohou nápravy.
 

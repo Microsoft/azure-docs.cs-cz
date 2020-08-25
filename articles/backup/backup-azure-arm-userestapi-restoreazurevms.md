@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763537"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826357"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -210,7 +210,7 @@ Vzhledem k tomu, že úloha obnovení je dlouhodobě spuštěná operace, měla 
 
 ### <a name="restore-disks"></a>Obnovit disky
 
-Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště. Jak je vysvětleno [výše](#restore-operations), níže je uveden relevantní text žádosti o obnovení disků.
+Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, stačí obnovit disky do zvoleného účtu úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako úložiště Recovery Services a neměl by být zóna redundantní. Disky a také konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště. Jak je vysvětleno [výše](#restore-operations), níže je uveden relevantní text žádosti o obnovení disků.
 
 #### <a name="create-request-body"></a>Vytvořit text žádosti
 

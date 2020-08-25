@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 505c4502281f4d32e1e28d913ed5a040e533cfb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762398"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824300"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -178,7 +178,7 @@ Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke 
 >[!NOTE]
 >Kromě plánování úplné nebo rozdílové zálohy je také možné aktuálně aktivovat ručně. Zálohy protokolu se automaticky spouštějí a spravují SAP HANA interně.
 >
-> Azure Backup v současné době nepodporuje přírůstkové zálohování.
+> Azure Backup aktuálně přírůstkové zálohy nepodporují.
 
 ## <a name="next-steps"></a>Další kroky
 

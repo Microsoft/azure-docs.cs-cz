@@ -3,12 +3,12 @@ title: Zálohování virtuálního počítače s SQL Server v podokně virtuáln
 description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze na virtuálních počítačích Azure z podokna virtuálního počítače.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755241"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827473"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Zálohování SQL Server v podokně virtuálního počítače
 

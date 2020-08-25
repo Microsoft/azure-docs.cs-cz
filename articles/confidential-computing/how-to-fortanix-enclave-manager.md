@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815840"
+ms.locfileid: "88826289"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Postupy: spuštění aplikace pomocí Fortanix enklávy Manageru 
 
 Spusťte aplikaci v důvěrné výpočetní službě Azure pomocí [Fortanix enklávy Manageru](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) a [agenta Fortanix Node](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) z [Fortanix](https://www.fortanix.com/).
 
 
-Fortanix je dodavatel softwaru od jiného výrobce s produkty a službami postavenými nad infrastrukturou Azure. Jiní poskytovatelé třetích stran nabízejí podobné důvěrné výpočetní služby v Azure, například [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) a [Scone](https://sconedocs.github.io).  
+Fortanix je dodavatel softwaru od jiného výrobce s produkty a službami postavenými nad infrastrukturou Azure. Jiní poskytovatelé třetích stran nabízejí podobné důvěrné výpočetní služby v Azure.
 
 > [!Note] 
  > PRODUKTY, NA KTERÉ SE ODKAZUJE V TOMTO DOKUMENTU, NEJSOU POD KONTROLOU MICROSOFTU. SPOLEČNOST MICROSOFT POSKYTUJE TYTO INFORMACE JENOM JAKO POHODLÍ A ODKAZ NA TYTO PRODUKTY OD JINÝCH VÝROBCŮ NEPŘEDPOKLÁDÁ, ŽE MICROSOFT.
@@ -162,7 +162,7 @@ V tomto kurzu je příkaz, který se má provést:
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a přidružené prostředky. Odstraněním skupiny prostředků zrušíte registraci uzlů přidružených k převedené imagi. 
 
-Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků. \
+Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
 
 Pokud chcete odstranit účet Fortanix enklávy Manageru, který jste vytvořili, přečtěte si [stránku Accounts (účty](https://em.fortanix.com/accounts) ) ve Správci enklávy. Najeďte myší na účet, který chcete odstranit. Vyberte svislé černé tečky v pravém horním rohu a vyberte **Odstranit účet**.
 
@@ -174,3 +174,4 @@ V tomto rychlém startu jste použili nástroje Fortanix k převedení image apl
 
 Další informace o nabídkách důvěrného výpočetního prostředí Azure najdete v tématu [Přehled důvěrných výpočetních řešení Azure](overview.md) .
 
+ Naučte se, jak provádět podobné úlohy pomocí dalších nabídek třetích stran v Azure, jako jsou [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) a [Scone](https://sconedocs.github.io).  

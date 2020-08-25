@@ -4,19 +4,19 @@ description: Přečtěte si, jak obnovitelné odstranění pro virtuální poč�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763690"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826476"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Obnovitelné odstranění u virtuálních počítačů
 
 Obnovitelné odstranění pro virtuální počítače chrání zálohy virtuálních počítačů před nezamýšleným odstraněním. I po odstranění záloh jsou zachovány stav obnovitelného odstranění po dobu 14 dalších dnů.
 
 > [!NOTE]
-> Obnovitelné odstranění chrání pouze Odstraněná data zálohy. Pokud se virtuální počítač odstraní bez zálohy, funkce obnovitelného odstranění nebude data uchovávat. Všechny prostředky by měly být chráněné pomocí Azure Backup, aby se zajistila plná odolnost.
+> Obnovitelné odstranění chrání pouze Odstraněná data zálohy. Pokud se virtuální počítač odstraní bez zálohy, funkce obnovitelného odstranění data nezachová. Všechny prostředky by měly být chráněné pomocí Azure Backup, aby se zajistila plná odolnost.
 >
 
 ## <a name="supported-regions"></a>Podporované oblasti
@@ -38,7 +38,7 @@ Obnovitelné odstranění se v současné době podporuje v Středozápadní USA
    ![Snímek obrazovky Azure Portal, virtuální počítač ve stavu tichého odstranění](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Pokud se v trezoru nacházejí nějaké záložní zálohované položky, trezor se v této době nedá odstranit. Zkuste trezor odstranit, až se zálohované položky trvale odstraní, a v trezoru se neodstraní žádná položka v tichém odstraněném stavu.
+   > Pokud se v trezoru nacházejí nějaké záložní položky odstraněné, trezor se v tuto chvíli nedá odstranit. Zkuste trezor odstranit, až se zálohované položky trvale odstraní a v trezoru nejsou žádné položky v tichém odstraněném stavu.
 
 4. Aby bylo možné obnovit částečný odstraněný virtuální počítač, musí být nejprve obnoven. Pokud ho chcete obnovit, vyberte virtuální počítač s příjemným odstraněnou a potom vyberte možnost **obnovit**.
 
@@ -62,13 +62,13 @@ Obnovitelné odstranění se v současné době podporuje v Středozápadní USA
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Obnovitelné odstranění pro virtuální počítače pomocí Azure PowerShell
 
 > [!IMPORTANT]
-> Verze AZ. RecoveryServices, která je nutná k použití obnovitelného odstranění pomocí Azure PS, je min 2.2.0. Použijte ```Install-Module -Name Az.RecoveryServices -Force``` k získání nejnovější verze.
+> Verze AZ. RecoveryServices, která je nutná k použití obnovitelného odstranění pomocí Azure PowerShell, je minimální 2.2.0. Použijte ```Install-Module -Name Az.RecoveryServices -Force``` k získání nejnovější verze.
 
 Jak je uvedeno výše pro Azure Portal, sekvence kroků je stejná i při použití Azure PowerShell.
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Odstraňte zálohovanou položku pomocí Azure PowerShell
 
-Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS.
+Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) prostředí PowerShell.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS.
+Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) prostředí PowerShell.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: e1b24eb8e2d355e73eedda903745df73593fa1a8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749209"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825344"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -89,8 +89,6 @@ Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení vyb
 ## <a name="complete-a-quickstart"></a>Dokončení rychlého startu
 
 Nabízíme rychlé zprovoznění ve většině oblíbených programovacích jazyků, z nichž každá je navržena pro učení základních vzorů návrhu a spouštění kódu za méně než 10 minut. Seznam rychlých startů pro jednotlivé funkce najdete v následujícím seznamu.
-
-Tato tabulka obsahuje nejoblíbenější rychlé starty pro jednotlivé funkce. Pomocí levé navigační navigace můžete prozkoumat další jazyky a platformy.
 
 * [Rychlý Start pro převod řeči na text](speech-to-text-basics.md)
 * [Rychlé zprovoznění převodu textu na řeč](get-started-text-to-speech.md)

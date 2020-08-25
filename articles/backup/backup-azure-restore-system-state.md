@@ -3,12 +3,12 @@ title: Obnovení stavu systému na Windows Server
 description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827099"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -73,7 +73,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 * *Vzorový trezor* – Recovery Services trezor, ke kterému jsou zaregistrované *zdrojový počítač* a *cílový počítač* .
 
 > [!NOTE]
-> Zálohy provedené z jednoho počítače nelze obnovit do počítače, na kterém je spuštěna dřívější verze operačního systému. Například zálohy pořízené z počítače se systémem Windows Server 2016 nelze obnovit do systému Windows Server 2012 R2. Je však možné, že se jedná o funkci INVERT. K obnovení systému Windows Server 2016 můžete použít zálohy z Windows Serveru 2012 R2.
+> Zálohy provedené z jednoho počítače se nedají obnovit na počítač, na kterém běží starší verze operačního systému. Například zálohy pořízené z počítače se systémem Windows Server 2016 nelze obnovit do systému Windows Server 2012 R2. Je však možné, že se jedná o funkci INVERT. K obnovení systému Windows Server 2016 můžete použít zálohy z Windows Serveru 2012 R2.
 >
 
 1. Otevřete modul snap-in **Microsoft Azure Backup** v *cílovém počítači*.
@@ -88,7 +88,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a vyberte možnost **Další**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Hledat](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
@@ -154,7 +154,7 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
     ![Spustit obnovení souborů stavu systému](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >Nevybírejte možnost **automaticky restartovat server** , pokud provádíte obnovení v režimu DSRM.
+    >Pokud provádíte obnovení v režimu DSRM, nevybírejte možnost **automaticky restartovat server** .
 
 1. Po úspěšném dokončení obnovení je nutné restartovat server v normálním režimu. Otevřete příkazový řádek a zadejte následující příkaz: `bcdedit /deletevalue safeboot`
 1. Restartujte server.

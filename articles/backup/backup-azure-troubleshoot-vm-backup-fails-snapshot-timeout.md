@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755364"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826049"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -57,7 +57,7 @@ Azure Backup používá rozšíření snímku virtuálního počítače k poří
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Další informace](../virtual-machines/extensions/features-windows.md#network-access).
+- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Přečtěte si další informace](../virtual-machines/extensions/features-windows.md#network-access).
   - Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
   - Pokud jste zablokovali přístup k `168.63.129.16` použití brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526. [Další informace najdete tady](../virtual-machines/extensions/features-windows.md#network-access).
 
@@ -119,7 +119,7 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků virtuálního počítače a potom operaci spusťte znovu, aby se aktivovala operace vyčištění.
 > [!NOTE]
-> Služba Backup vytvoří samostatnou skupinu prostředků, než je skupina prostředků virtuálního počítače pro uložení kolekce bodů obnovení. Zákazníkům se doporučuje, aby nezamkli skupinu prostředků vytvořenou pro použití v rámci služby zálohování. Formát názvů pro skupinu prostředků vytvořenou službou zálohování: AzureBackupRG_ `<Geo>` _ `<number>` např. AzureBackupRG_northeurope_1
+> Služba Backup vytvoří samostatnou skupinu prostředků, než je skupina prostředků virtuálního počítače pro uložení kolekce bodů obnovení. Doporučujeme neuzamknout skupinu prostředků vytvořenou pro použití službou zálohování. Formát názvů pro skupinu prostředků vytvořenou službou zálohování: AzureBackupRG_ `<Geo>` _ `<number>` . Příklad: *AzureBackupRG_northeurope_1*
 
 **Krok 1: [Odebrání zámku ze skupiny prostředků bodu obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [Vyčištění kolekce bodů obnovení](#clean_up_restore_point_collection)**<br>
@@ -297,7 +297,7 @@ Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Vyčištění kolekce bodů obnovení spuštěním zálohování na vyžádání
 
-Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí, že body obnovení se automaticky vyčistí. Tuto operaci na vyžádání byste měli očekávat při prvním selhání. ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo doběhnout k dalšímu plánovanému zálohování.
+Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí, že body obnovení se automaticky vyčistí. Tato operace na vyžádání se pravděpodobně nezdařila při prvním spuštění. Ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo doběhnout k dalšímu plánovanému zálohování.
 
 > [!NOTE]
 > Automatické čištění proběhne po několika hodinách spuštění zálohování na vyžádání. Pokud se naplánované zálohování stále nedaří, zkuste kolekci bodů obnovení ručně odstranit pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
@@ -320,4 +320,4 @@ Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvo
 6. Opakujte operaci zálohování znovu.
 
 > [!NOTE]
- >Pokud má prostředek (kolekce RP) velký počet bodů obnovení, může se stát, že odstraněním z portálu dojde k vypršení časového limitu a selhání. Jedná se o známý problém CRP, kdy se v určitém čase neodstraní všechny body obnovení a vyprší časový limit operace. operace odstranění ale obvykle proběhne po 2 nebo 3 opakováních.
+ >Pokud má prostředek (kolekce RP) velký počet bodů obnovení, může se stát, že odstraněním z portálu dojde k vypršení časového limitu a selhání. Jedná se o známý problém s CRP, kde se v určitém čase neodstraní všechny body obnovení a vyprší časový limit operace. Operace odstranění ale obvykle proběhne po dvou nebo třech opakovaných pokusech.

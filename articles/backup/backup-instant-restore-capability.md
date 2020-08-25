@@ -4,12 +4,12 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: df5af780730f4f5b972107f50387dc0c58b80eaa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761742"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825847"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -21,7 +21,7 @@ Nový model pro okamžité obnovení nabízí následující vylepšení funkcí
 
 * Možnost používat snímky provedené jako součást úlohy zálohování, která je k dispozici pro obnovení bez čekání na dokončení přenosu dat do trezoru. Před aktivací obnovení zkracuje dobu čekání na kopírování snímků do trezoru.
 * Omezí časy zálohování a obnovení tím, že se snímky ponechají místně, a to ve výchozím nastavení po dobu dvou dnů. Tato výchozí hodnota uchování snímku se dá nakonfigurovat na libovolnou hodnotu od 1 do 5 dní.
-* Podporuje velikosti disků až do 32 TB. Změna velikosti disků se Azure Backup nedoporučuje.
+* Podporuje velikosti disků až do 32 TB. Změny velikosti disků nedoporučuje Azure Backup.
 * Podporuje SSD úrovně Standard disky spolu s HDD úrovně Standard disky a SSD úrovně Premium disky.
 * Možnost při obnovení použít pro původní účty úložiště (na disk) nespravované virtuální počítače Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
 * Pro zálohování virtuálních počítačů, které používají nespravované disky Premium v účtech úložiště s okamžitým obnovením, doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.

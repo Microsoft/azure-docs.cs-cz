@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136333"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826765"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -166,18 +166,25 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
+\* Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
 
 \** Jenom image virtuálních počítačů s bezplatným a BYOL.
 
 ## <a name="how-we-convert-currency"></a>Jak převádíme měnu
 
-U všech placených typů nabídek má nezávislý výrobce softwaru možnost zadávat ceny v USD nebo odesílat ceny v místní měně. Ceny zadané v USD se automaticky převedou na místní měnu při uložení stránky. Sazby používané partnerským centrem se aktualizují každý den. ISV může exportovat ceny a zkontrolovat převedené ekvivalenty.
+U všech placených typů nabídek máte možnost zadat ceny v USD nebo odeslat ceny v místní měně. Ceny zadané v USD se automaticky převedou na místní měnu při uložení stránky. Sazby používané partnerským centrem se aktualizují každý den. Můžete exportovat ceny a zkontrolovat převedené ekvivalenty.
 
 Pokud chcete upravit jakoukoli cenu před publikováním, stačí exportovat tabulku cen, upravit ji a nahrát ji se změnami.
 
 > [!NOTE]
 > Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
+
+Cena nabídky se vždycky zobrazuje zákazníkům v jejich místní měně. Cena, kterou vyberete v partnerském centru, se převede na místní měnu zákazníků podle směnného kurzu v době, kdy jste ceny v partnerském centru uložili. Cena zobrazená zákazníkům v online obchodech se nemění, pokud vaši nabídku znovu nepublikujete.
+
+Společnost Microsoft přijímá platby od zákazníků v jejich místní měně a zaplatí vám v místní měně. Microsoft převede zákaznickou zákaznickou měnu na svou místní měnu pomocí směnného kurzu pro daný den nákupu.
+
+> [!NOTE]
+> Microsoft převede ceny nabídek za použití pokladny od Microsoftu.
 
 ## <a name="retrieving-currency-information-by-api"></a>Načítání informací o měně pomocí rozhraní API
 
@@ -189,7 +196,7 @@ Podrobnosti o tom, jak zadat cenu za konkrétní typy nabídek, najdete v těcht
 - [Vytvoření nabídky kontejneru Azure](partner-center-portal/create-azure-container-offer.md)
 - [Vytvoření nabídky virtuálních počítačů Azure](partner-center-portal/azure-vm-create-offer.md)
 - [Vytvoření nabídky konzultačních služeb](partner-center-portal/create-consulting-service-offer.md)
-- [365 vytvoření nabídky PowerApps pro Customer Engagement &](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
 - [Vytvoření nabídky Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
 - [Vytvoření nabídky modulu IoT Edge](partner-center-portal/azure-iot-edge-module-creation.md)

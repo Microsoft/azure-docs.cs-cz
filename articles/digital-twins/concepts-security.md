@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 973eeebfdf9164cb50cf98ae8edc845a80a7e080
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794497"
+ms.locfileid: "88827524"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -79,7 +79,7 @@ Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobr
 
 ## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
-Digitální vlákna Azure zajišťuje Šifrování neaktivních a přenosových dat, která se zapisují v našich datových centrech, a při přístupu k nim dešifruje.
+Digitální vlákna Azure zajišťuje Šifrování neaktivních a přenosových dat, která se zapisují v našich datových centrech, a při přístupu k nim dešifruje. K tomuto šifrování dochází pomocí spravovaného šifrovacího klíče společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 

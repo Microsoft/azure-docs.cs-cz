@@ -3,12 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921142"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826552"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -23,7 +23,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 - Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 - Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -126,7 +126,7 @@ Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možn
     >
     >- Spuštění `PsExec -s cmd` a zadání do prostředí NT AUTHORITY\SYSTEM Shell
     >   - Spusťte příkaz `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`.
-    >   - Ověřit přístup pomocí`dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >   - Ověřit přístup pomocí `dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- Aktivovat obnovení jako soubory z trezoru záloh do `\\<storageacct>.file.core.windows.net\<filesharename>` cesty<BR>
     PsExec si můžete stáhnout ze stránky [Sysinternals](/sysinternals/downloads/psexec) .
 

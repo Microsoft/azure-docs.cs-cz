@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755258"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826850"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -70,7 +70,7 @@ Kliknutím na tento odkaz otevřete sešit zálohované sestavy.
 
 Sestava obsahuje různé karty:
 
-##### <a name="summary"></a>Shrnutí
+##### <a name="summary"></a>Souhrn
 
 Tato karta vám umožní získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
 
@@ -89,7 +89,7 @@ Pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše z
    ![Karta použití](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> V případě úloh DPM se uživatelům může v porovnání s hodnotou agregovaného využití zobrazit lehký rozdíl (z pořadí 20 MB na server DPM) mezi hodnotami využití zobrazenými v sestavách, jak je znázorněno na kartě **přehled** Recovery Servicesového trezoru. Tento rozdíl je vydaný faktem, že každý server DPM, který se zaregistruje pro zálohování, má přidružený zdroj dat metadata, který není povrchový jako artefakt pro vytváření sestav.
+> V případě úloh DPM se uživatelům může v porovnání s hodnotou agregovaného využití zobrazit lehký rozdíl (z pořadí 20 MB na server DPM) mezi hodnotami využití zobrazenými v sestavách, jak je znázorněno na kartě **přehled** Recovery Servicesového trezoru. Tento rozdíl je vydaný faktem, že každý server DPM, který je zaregistrován pro zálohování, má přidružený zdroj dat metadata, který není povrchový jako artefakt pro vytváření sestav.
 
 ##### <a name="jobs"></a>Úlohy
 
@@ -109,7 +109,7 @@ Tato karta slouží k získání přehledu o potenciálních příležitostech p
 
 ###### <a name="inactive-resources"></a>Neaktivní prostředky
 
-Pomocí tohoto zobrazení můžete identifikovat tyto zálohované položky, které po významnou dobu neobsahovaly úspěšnou zálohu. To může znamenat, že základní počítač, který se zálohuje, už neexistuje (a výsledkem je selhání zálohování), nebo došlo k nějakému problému s počítačem, který brání spolehlivému zálohování.
+Pomocí tohoto zobrazení můžete identifikovat zálohované položky, které po delší dobu neobsahovaly úspěšnou zálohu. To může znamenat, že základní počítač, který se zálohuje, už neexistuje (a výsledkem je selhání zálohování), nebo došlo k nějakému problému s počítačem, který brání spolehlivému zálohování.
 
 Chcete-li zobrazit neaktivní prostředky, přejděte na kartu **optimalizace** a vyberte dlaždici **neaktivní prostředky** . Kliknutím na tuto dlaždici zobrazíte mřížku, která obsahuje podrobnosti o všech neaktivních prostředcích, které existují ve vybraném oboru. Ve výchozím nastavení mřížka zobrazuje položky, které nemají bod obnovení za posledních sedm dnů. Pokud chcete najít neaktivní prostředky pro jiný časový rozsah, můžete upravit filtr **časového rozsahu** v horní části karty.
 

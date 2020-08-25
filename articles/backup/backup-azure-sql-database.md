@@ -3,19 +3,19 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: edcc77c98737b9f4e76ade0471d273f5e0070969
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763418"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826918"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
 [Azure Backup](backup-overview.md) nabízí specializované řešení založené na datových proudech k zálohování SQL Server spuštěných ve virtuálních počítačích Azure. Toto řešení se zarovnává s výhodami Azure Backup pro zálohování s nulovou infrastrukturou, dlouhodobou uchovávání a centrální správu. Kromě toho nabízí následující výhody, které jsou specifické pro SQL Server:
 
 1. Zálohy s podporou úloh, které podporují všechny typy zálohování – úplný, rozdíl a protokol
-2. 15 – min. RPO (cíl bodu obnovení) s častými zálohami protokolů
+2. 15 minut RPO (cíl bodu obnovení) s častými zálohami protokolů
 3. Obnovení k určitému bodu v čase až do druhé
 4. Zálohování a obnovení úrovně individuální databáze
 
@@ -27,7 +27,7 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 
 * Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úlohy pomocí `AzureBackupWindowsWorkload` přípony názvu.
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
-* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet vytvoří `NT SERVICE\AzureWLBackupPluginSvc` . Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. `NT SERVICE\AzureWLBackupPluginSvc`Účet je [účet virtuální služby](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup využívá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet vytvoří `NT SERVICE\AzureWLBackupPluginSvc` . Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. `NT SERVICE\AzureWLBackupPluginSvc`Účet je [účet virtuální služby](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup používá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotazování databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru Recovery Services, čímž eliminuje nutnost pracovní polohy. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.

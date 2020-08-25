@@ -4,12 +4,12 @@ description: Zjistěte, jak na virtuálním počítači Azure provádět obnoven
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: e74fd14c0f33c8633165029a18582b80810184a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb327d014efc3df02edd14afafe1e2e7c1ea9d73
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003504"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824451"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure
 
@@ -31,7 +31,7 @@ Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure
 
 ## <a name="backup-overview"></a>Přehled služby Backup
 
-Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může pořídit také snímek základního úložiště, pokud virtuální počítač není při zálohování spuštěný.
+Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může také pořídit snímek základního úložiště, pokud virtuální počítač neběží, když dojde k zálohování.
 
 Ve výchozím nastavení provede Azure Backup zálohování konzistentní vzhledem k systému souborů. Jakmile Azure Backup pořídí snímek, data se přenesou do trezoru služby Recovery Services. Pro maximalizaci efektivity Azure Backup identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 

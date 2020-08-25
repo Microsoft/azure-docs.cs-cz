@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652572"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823977"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -57,7 +57,7 @@ A.  Informace o tom, které země nebo oblasti jsou Data Box k dispozici, najdet
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Otázka: V jakých oblastech můžu k ukládání dat použít Data Box?
 A. Data Box se podporuje pro všechny oblasti v USA, Západní Evropa, Severní Evropa, Francie, Spojené království, Japonsko, Austrálie a Kanada. Další informace najdete v [oblasti dostupnost oblasti](data-box-overview.md#region-availability).
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Otázka: Jak můžu importovat místní zdrojová data do oblasti Azure v jiné zemi nebo oblasti nebo exportovat data z oblasti Azure v jedné zemi do jiné země nebo oblasti?
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Otázka: Jak můžu importovat zdrojová data v dané zemi do konkrétní země do oblasti Azure v jiné zemi nebo oblasti nebo exportovat data z oblasti Azure v jedné zemi do jiné země nebo oblasti?
 
 Data Box podporuje příjem dat nebo výstup pouze v rámci stejné země nebo oblasti jako jejich cíl a nebude se překračovat na mezinárodní hranici. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se datová pole dají dodávat do a z libovolné země nebo oblasti EU.
 

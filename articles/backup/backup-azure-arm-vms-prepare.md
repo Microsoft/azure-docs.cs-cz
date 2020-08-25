@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261935"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826306"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -89,7 +89,7 @@ Nakonfigurujte zásady zálohování pro trezor.
      ![Podokno vybrat virtuální počítače](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům. Pokud je váš virtuální počítač v tichém odstraněném stavu, nezobrazí se v tomto seznamu. Pokud potřebujete znovu nastavit ochranu virtuálního počítače, musíte počkat na vypršení platnosti nebo zrušit platnost tohoto virtuálního počítače ze seznamu odstraněných. Další informace najdete v [článku obnovitelné odstranění pro virtuální počítače](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
+    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům. Pokud je váš virtuální počítač v tichém odstraněném stavu, nebude se v tomto seznamu zobrazovat. Pokud potřebujete znovu nastavit ochranu virtuálního počítače, musíte počkat na vypršení platnosti nebo zrušit platnost tohoto virtuálního počítače ze seznamu odstraněných. Další informace najdete v [článku obnovitelné odstranění pro virtuální počítače](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. V **zálohování**vyberte **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
 

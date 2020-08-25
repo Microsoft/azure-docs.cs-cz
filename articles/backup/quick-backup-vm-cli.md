@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1105665296c7319c32995d1f83cb25b559abf997
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 2bd3487e58f204ba7ada9320b50d4b87538ae987
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756142"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826544"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 
@@ -60,7 +60,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!NOTE]
-> Pokud se virtuální počítač nenachází ve stejné skupině prostředků jako trezor, potom skupina myResourceGroup odkazuje na skupinu prostředků, ve které byl trezor vytvořen. Místo názvu virtuálního počítače uveďte ID virtuálního počítače, jak je uvedeno níže.
+> Pokud virtuální počítač není ve stejné skupině prostředků jako úložiště, pak myResourceGroup odkazuje na skupinu prostředků, ve které se vytvořil trezor. Místo názvu virtuálního počítače uveďte ID virtuálního počítače, jak je uvedeno níže.
 
 ```azurecli-interactive
 az backup protection enable-for-vm \
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Při použití rozhraní příkazového řádku pro povolení zálohování několika virtuálních počítačů najednou zajistěte, aby k jedné zásadě nedošlo k více než 100 virtuálním počítačům. Toto je [doporučený postup](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud je k dispozici více než 100 virtuálních počítačů, ale tato kontrolní služba bude plánována do budoucna.
+> Při použití rozhraní příkazového řádku pro povolení zálohování několika virtuálních počítačů najednou zajistěte, aby k jedné zásadě nedošlo k více než 100 virtuálním počítačům. Toto je [doporučený postup](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). V současné době klient PowerShellu explicitně neblokuje, pokud existuje více než 100 virtuálních počítačů, ale tato kontrolní rutina se plánuje do budoucna přidat.
 
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
 

@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612652"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827303"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -160,8 +160,8 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
     ![Šifrování](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
-    > Vlastníte šifrovací heslo a společnost Microsoft k němu nemá přehled.
-    > Pokud je přístupové heslo ztraceno nebo zapomenuto; Microsoft nemůže při obnovování zálohovaných dat pomáhat.
+    > Šifrovací heslo vlastníte a Microsoft k němu nemá přehled.
+    > Pokud je přístupové heslo ztraceno nebo zapomenuté, Microsoft nemůže při obnovování zálohovaných dat pomáhat.
 
 7. Vyberte **Registrovat** a zaregistrujte server DPM do trezoru.
 

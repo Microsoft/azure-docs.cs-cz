@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649410"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826136"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -56,13 +56,13 @@ A.  Pokud chcete zjistit, kde jsou Data Box disky aktuálně k dispozici, přejd
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
 A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii, Západní Evropa a Severní Evropa, Koreje a Japonsku. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Otázka: Budou v průběhu expedice Data Box Diska ohraničení mezi země a oblast?
-A. Data Box Disk se dodávají v rámci stejné země nebo oblasti jako jejich cíl a nebudou se předávat mezi žádné mezinárodní hranice. Jediná výjimka je určena pro objednávky v Evropské unii (EU), kde se disky můžou dodávat do a z libovolné země nebo oblasti EU.
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
+A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii, Západní Evropa a Severní Evropa, Koreje a Japonsku. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>Otázka: Jak mohu importovat místní zdrojová data v jedné zemi nebo oblasti do oblasti Azure v jiné zemi nebo oblasti?
-A. Data Box Disk podporuje přijímání dat pouze v rámci stejné oblasti (obchod hranice). Ve všech ostatních případech může být nutné provést další akci. 
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Otázka: Jak mohu importovat zdrojová data přítomná v umístění v jedné zemi nebo oblasti do oblasti Azure v jiné zemi?
+A. Data Box Disk podporuje přijímání dat pouze v rámci stejné země nebo oblasti jako jejich cíl a nebude se protínat na mezinárodní hranice. Jedinou výjimkou jsou objednávky v Evropské unii (EU), kde se Data Box disky můžou dodávat do a z libovolné země nebo oblasti EU.
 
-Pokud jste například v Kanadě používali místní data, která jste chtěli přesunout do účtu úložiště Azure WestUS, můžete to dosáhnout následujícím způsobem:
+Pokud jste například chtěli přesunout data do svého umístění v Kanadě do účtu úložiště Azure WestUS, můžete to dosáhnout následujícím způsobem:
 
 ### <a name="option-1"></a>Možnost 1: 
 

@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763367"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826442"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -96,7 +96,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Zadejte typ redundance úložiště, který se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testvault je nastavená na geograficky redundantní.
+3. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testvault je nastavená na geograficky redundantní.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Po definování zásady ochrany je stále nutné povolit zásadu pro položku. K povolení ochrany použijte [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) . Povolení ochrany vyžaduje dva objekty – položku a zásadu. Po přidružení zásady k trezoru se spustí pracovní postup zálohování v čase definovaném v plánu zásad.
 
 > [!IMPORTANT]
-> Když použijete PS k povolení zálohování pro víc virtuálních počítačů najednou, ujistěte se, že k jedné zásadě nemáte k dispozici víc než 100 virtuálních počítačů. Toto je [doporučený postup](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). V současné době klient PS explicitně neblokuje, pokud je k dispozici více než 100 virtuálních počítačů, ale tato kontrolní služba bude plánována do budoucna.
+> Při použití PowerShellu k povolení zálohování pro víc virtuálních počítačů najednou zajistěte, aby jedna zásada neměla k dispozici víc než 100 virtuálních počítačů. Toto je [doporučený postup](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). V současné době klient PowerShellu explicitně neblokuje, pokud existuje více než 100 virtuálních počítačů, ale tato kontrolní rutina se plánuje do budoucna přidat.
 
 Následující příklady umožňují ochranu položky V2VM pomocí zásad NewPolicy. Příklady se liší v závislosti na tom, jestli je virtuální počítač zašifrovaný a jaký typ šifrování.
 
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurace uchování snímku okamžitého obnovení
 
 > [!NOTE]
-> Z AZ PS Version 1.6.0 a vyšší můžete aktualizovat dobu uchování snímku okamžitého obnovení v zásadách pomocí PowerShellu.
+> Z Azure PowerShell verze 1.6.0 a vyšší může aktualizace doby uchování snímku okamžitého obnovení v zásadách pomocí prostředí PowerShell.
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Výchozí hodnota bude 2, uživatel může nastavit hodnotu s minimálním počtem 1 a Max z 5. Pro týdenní zásady zálohování je Tato perioda nastavená na 5 a nedá se změnit.
+Výchozí hodnota bude 2, uživatel může nastavit hodnotu minimálně 1 a maximálně 5. Pro týdenní zásady zálohování je Tato perioda nastavená na 5 a nedá se změnit.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Vytváření skupiny prostředků Azure Backup během uchování snímku
 
 > [!NOTE]
-> Z Azure PS verze 3.7.0 a vyšší může jedna vytvořit a upravit skupinu prostředků vytvořenou pro ukládání okamžitých snímků.
+> Z Azure PowerShell verze 3.7.0 a vyšší může jedna vytvořit a upravit skupinu prostředků vytvořenou pro ukládání okamžitých snímků.
 
 Pokud chcete získat další informace o pravidlech vytváření skupin prostředků a dalších relevantních podrobnostech, přečtěte si téma [Azure Backup skupinu prostředků Virtual Machines](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines) dokumentaci.
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>Zachování dat
 
-Pokud si uživatel přeje zastavit ochranu, může použít rutinu [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS. Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
+Pokud chcete zastavit ochranu, můžete použít rutinu PowerShellu [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) . Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -405,7 +405,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 Mezi obnovením virtuálního počítače pomocí Azure Portal a obnovením virtuálního počítače pomocí PowerShellu je důležitý rozdíl. V prostředí PowerShell je operace obnovení dokončena až po vytvoření disků a informací o konfiguraci z bodu obnovení. Operace obnovení nevytvoří virtuální počítač. Postup vytvoření virtuálního počítače z disku najdete v části [Vytvoření virtuálního počítače z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Pokud nechcete obnovit celý virtuální počítač, ale chcete obnovit nebo obnovit několik souborů ze zálohy virtuálního počítače Azure, přečtěte si [část obnovení souborů](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
 
 > [!Tip]
-> Operace obnovení nevytváří virtuální počítač.
+> Operace obnovení nevytvoří virtuální počítač.
 >
 >
 
@@ -481,7 +481,7 @@ $restorejob
 Zadejte další parametr **TargetResourceGroupName** a určete tak RG, na které se budou spravované disky obnovovat.
 
 > [!IMPORTANT]
-> Pro obnovení spravovaných disků se důrazně doporučuje použít parametr **TargetResourceGroupName** , protože výsledkem je výrazné zlepšení výkonu. Pokud tento parametr není zadaný, zákazníci nemůžou využít výhod funkce okamžitého obnovení a operace obnovení bude při porovnání pomalejší. Pokud chcete, aby se spravované disky obnovily jako nespravované disky, Neposkytněte tento parametr a udělejte záměr jasným zadáním parametru-RestoreAsUnmanagedDisks. Parametr-RestoreAsUnmanagedDisks je k dispozici z AZ PS 3.7.0 a vyšší. V budoucích verzích bude povinná zadat jeden z těchto parametrů pro správné prostředí obnovení.
+> Pro obnovení spravovaných disků se důrazně doporučuje použít parametr **TargetResourceGroupName** , protože výsledkem je výrazné zlepšení výkonu. Pokud tento parametr není zadaný, nemůžete využít výhod funkce okamžitého obnovení a operace obnovení bude v porovnání pomalejší. Pokud je účelem obnovení spravovaných disků jako nespravovaných disků, Neposkytněte tento parametr a udělejte záměr jasným zadáním `-RestoreAsUnmanagedDisks` parametru. `-RestoreAsUnmanagedDisks`Parametr je k dispozici z Azure PowerShell 3.7.0 a vyšší. V budoucích verzích bude povinná zadat jeden z těchto parametrů pro správné prostředí obnovení.
 >
 >
 
@@ -530,7 +530,7 @@ Po obnovení disků pomocí následujících kroků vytvořte a nakonfigurujte v
 >
 > 1. AzureAz modul 3.0.0 nebo vyšší je povinný. <br>
 > 2. Aby bylo možné vytvořit šifrované virtuální počítače z obnovených disků, musí mít vaše role Azure oprávnění k provedení této akce, **trezoru Microsoft. a trezorů/nasazení/akce**. Pokud vaše role nemá toto oprávnění, vytvořte pomocí této akce vlastní roli. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md). <br>
-> 3. Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. Žádné další rutiny PS pro vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované/nešifrované.<br>
+> 3. Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. K vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované nebo nešifrované, nepotřebujete různé rutiny PowerShellu.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Vytvoření virtuálního počítače pomocí šablony nasazení

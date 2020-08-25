@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763469"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827184"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -30,7 +30,7 @@ Tady jsou uvedené úlohy z následujících řešení Azure Backup:
 - Zálohování úloh Azure, jako je SQL a SAP HANA
 - Agent Microsoft Azure Recovery Services (MARS)
 
-Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazí.
+Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazují.
 
 > [!NOTE]
 > Úlohy Azure, jako jsou zálohování SQL a SAP HANA v rámci virtuálních počítačů Azure, mají velký počet úloh zálohování. Například zálohování protokolů může běžet každých 15 minut. Pro takové databázové úlohy se ale zobrazí jenom operace aktivované uživatelem. Naplánované operace zálohování se nezobrazují.
@@ -55,7 +55,7 @@ Následující scénáře jsou definovány službou jako scénáře s možností
 - Agent Microsoft Azure Recovery Services (MARS)
 
 > [!NOTE]
-> Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazují.
+> Výstrahy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se tady nezobrazí.
 
 ### <a name="consolidated-alerts"></a>Konsolidované výstrahy
 
@@ -63,7 +63,7 @@ V případě řešení zálohování úloh Azure, jako je SQL a SAP HANA, se zá
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Výjimky při vyvolání výstrahy
 
-Je-li výstraha při selhání vyvolána, existuje několik výjimek. Jsou to tyto:
+Je-li výstraha při selhání vyvolána, existuje několik výjimek. Jedná se o tyto peeringy:
 
 - Uživatel explicitně zrušil spuštěnou úlohu.
 - Úloha se nezdařila, protože právě probíhá jiná úloha zálohování (nic se nestane, protože musíme počkat na dokončení předchozí úlohy)
@@ -95,7 +95,7 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 
 > [!NOTE]
 >
-> - Pokud se provede destruktivní operace, jako je **zastavení ochrany pomocí odstranění dat** , vygeneruje se výstraha a vlastníkům předplatného, správcům a spolupracovníkům se pošle e-mail, i když pro Recovery Services trezoru nejsou nakonfigurované oznámení.
+> - Pokud se provede destruktivní operace, jako je **zastavení ochrany pomocí odstranění dat** , vygeneruje se výstraha a vlastníkům, správcům a spolupracovníkům předplatného se pošle e-mail, i když nejsou oznámení nakonfigurovaná pro Recovery Services trezor.
 > - K nakonfigurování oznámení pro úspěšné úlohy použijte [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="inactivating-alerts"></a>Deaktivace výstrah

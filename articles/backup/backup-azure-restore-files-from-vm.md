@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763452"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827133"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -17,7 +17,7 @@ Azure Backup poskytuje možnost obnovení [virtuálních počítačů Azure a di
 
 > [!NOTE]
 > Tato funkce je k dispozici pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněných do trezoru Recovery Services.
-> Obnovení souborů ze zašifrované zálohy virtuálního počítače není podporováno.
+> Obnovení souborů ze zašifrované zálohy virtuálního počítače se nepodporuje.
 >
 
 ## <a name="mount-the-volume-and-copy-files"></a>Připojení svazku a zkopírování souborů
@@ -87,7 +87,7 @@ Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat n�
 V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
 
 > [!NOTE]
-> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. V případě, že je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a při jejich použití může selhat, protože zdrojové úložiště, tj., nemusí mít cílový server iSCSI k dispozici. Vymazáním připojení dojde k odebrání těchto jednotek nebo svazků, takže nebudou během zálohování k dispozici.
+> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. Pokud je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a když k nim dojde, můžou selhat, protože základní úložiště, které je cílový server iSCSI, nemusí být k dispozici. Vymazáním připojení dojde k odebrání těchto jednotek a svazků, takže nebudou během zálohování k dispozici.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Výběr správného počítače ke spuštění skriptu
 

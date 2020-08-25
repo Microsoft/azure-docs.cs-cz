@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762874"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826408"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -302,7 +302,7 @@ Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součás
 
 #### <a name="example-request-body-for-on-demand-backup"></a>Příklad textu žádosti o zálohování na vyžádání
 
-Následující text žádosti definuje vlastnosti vyžadované k aktivaci zálohy chráněné položky. Pokud není uchovávání zadáno, bude uchováno po dobu 30 dnů od aktivace úlohy zálohování.
+Následující text žádosti definuje vlastnosti vyžadované k aktivaci zálohy chráněné položky. Pokud se uchování nezadá, bude se uchovávat po dobu 30 dnů od aktivace úlohy zálohování.
 
 ```json
 {
@@ -445,7 +445,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 
 |202 přijato     |         |     Přijato    |
 
 > [!IMPORTANT]
-> Aby byla zajištěna ochrana před náhodným odstraněním scénářů, je [k dispozici funkce obnovitelného odstranění](use-restapi-update-vault-properties.md#soft-delete-state) pro Recovery Services trezor. Pokud je stav obnovitelného odstranění trezoru nastavený na povoleno, operace odstranění data okamžitě neodstraní. Bude se uchovávat 14 dní a pak se trvale vyprázdní. Zákazníkovi se za tento 14 dnů neúčtují žádné úložiště. Chcete-li operaci odstranění vrátit zpět, přečtěte si [část věnované vrácení zpět a odstranění](#undo-the-deletion).
+> Aby byla zajištěna ochrana před náhodným odstraněním scénářů, je [k dispozici funkce obnovitelného odstranění](use-restapi-update-vault-properties.md#soft-delete-state) pro Recovery Services trezor. Pokud je stav obnovitelného odstranění trezoru nastavený na povoleno, operace odstranění data okamžitě neodstraní. Bude se uchovávat 14 dní a pak se trvale vyprázdní. Za tento 14 dní se vám neúčtují žádné poplatky za úložiště. Chcete-li operaci odstranění vrátit zpět, přečtěte si [část věnované vrácení zpět a odstranění](#undo-the-deletion).
 
 ### <a name="undo-the-deletion"></a>Zrušit odstranění
 

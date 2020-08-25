@@ -3,12 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263057"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827003"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -29,9 +29,9 @@ Azure Backup Server chrání následující Azure Stack úlohy virtuálních po�
 | Windows Server 2012 R2 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2012 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2008 R2 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
-| SQL Server 2016 | databáze |
-| SQL Server 2014 | databáze |
-| SQL Server 2012 SP1 | databáze |
+| SQL Server 2016 | Databáze |
+| SQL Server 2014 | Databáze |
+| SQL Server 2012 SP1 | Databáze |
 | SharePoint 2016 | Farma, databáze, front-end, webový server |
 | SharePoint 2013 | Farma, databáze, front-end, webový server |
 | SharePoint 2010 | Farma, databáze, front-end, webový server |
@@ -228,7 +228,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 4. Microsoft Azure Backup Server vyžaduje SQL Server. Instalační balíček Azure Backup Server obsahuje balíčky s odpovídajícími binárními soubory SQL Server. Pokud chcete použít vlastní instalaci SQL, můžete. Doporučená volba ale umožňuje, aby instalační program přidal novou instanci SQL Server. Pokud chcete mít jistotu, že volba funguje ve vašem prostředí, vyberte **zkontrolovat a nainstalovat**.
 
    > [!NOTE]
-   > Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní.
+   > Azure Backup Server nebude fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní.
    >
 
     ![Nastavení Azure Backup Server-SQL](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)

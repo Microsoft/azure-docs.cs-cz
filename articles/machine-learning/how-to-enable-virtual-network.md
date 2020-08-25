@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506494"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824198"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak zabezpečit životní cyklus strojového učen
 
 __Virtuální síť__ funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -366,6 +366,12 @@ Můžete to provést dvěma způsoby:
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+
+        > [!TIP]
+        > Pokud používáte oblasti US-) – Virginia, US-Arizona nebo Čínu – východ-2, tyto příkazy nevrátí žádné IP adresy. Místo toho použijte jeden z následujících odkazů ke stažení seznamu IP adres:
+        >
+        > * [Rozsahy IP adres a značek služeb Azure pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [Rozsahy IP adres a značky služeb Azure pro Azure Čína](https://www.microsoft.com//download/details.aspx?id=57062)
     
     Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
 
@@ -648,7 +654,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
 
 2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu [použití Azure Machine Learningho pracovního prostoru za Azure firewall](how-to-access-azureml-behind-firewall.md).
 

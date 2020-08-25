@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/04/2019
+ms.date: 08/25/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924026"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826867"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -94,12 +94,12 @@ Můžete filtrovat data zřizování. Některé hodnoty filtru se dynamicky napl
 Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
-- Datum
+- Date (Datum)
 - Status
 - Akce
 
 
-![Filtr](./media/concept-provisioning-logs/default-filter.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -166,7 +166,7 @@ Kromě toho můžete také nastavit následující filtry pro filtry výchozího
 Když vyberete položku v zobrazení seznamu zřizování, získáte další podrobnosti o této položce.
 Podrobnosti jsou seskupené podle následujících kategorií:
 
-- Kroky
+- Postup
 
 - Řešení potíží a doporučení
 
@@ -179,7 +179,7 @@ Podrobnosti jsou seskupené podle následujících kategorií:
 
 
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 
 Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizování objektu se může skládat ze čtyř kroků: 
 
@@ -190,7 +190,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Filtr](./media/concept-provisioning-logs/steps.png "Filtr")
+![Filtr](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -242,6 +242,8 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 |LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.|
 |DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
 |DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|ImportSkipped | Při vyhodnocování každého uživatele se pokusíme importovat uživatele ze zdrojového systému. K této chybě obvykle dochází v případě, že uživatel, který naimportoval, nemá vlastnost Matching definovanou v mapování atributů. Bez hodnoty přítomné v objektu User pro atribut Matching nemůžeme vyhodnotit rozsahy, shodující se ani exportovat změny. Všimněte si, že přítomnost této chyby neindikuje, že se uživatel nachází v oboru, protože pro uživatele zatím nehodnotili rozsah.|
+|EntrySynchronizationSkipped | Služba zřizování úspěšně provedla dotaz na zdrojový systém a identifikovala uživatele. U uživatele se neuskutečnila žádná další akce, která se přeskočila. Přeskočení může být způsobeno tím, že uživatel je mimo rozsah nebo uživatel, který už v cílovém systému existuje, a nevyžaduje žádné další změny.|
 
 ## <a name="next-steps"></a>Další kroky
 

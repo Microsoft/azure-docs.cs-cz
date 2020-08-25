@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte Spravovat zálohované SAP HANA databáz
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 03e3f7450fd7282acde7988550df404656021961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757349"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824164"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: Správa databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -119,7 +119,7 @@ Ochranu databáze SAP HANA můžete zastavit několika způsoby:
 
 Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 
-* Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
+* Všechny body obnovení zůstanou nedotčené trvale a všechny vyřazení se zastaví při zastavení ochrany s uchováním dat.
 * Bude se vám účtovat chráněná instance a spotřebované úložiště.
 * Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří.
 

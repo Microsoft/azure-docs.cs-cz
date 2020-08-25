@@ -4,14 +4,14 @@ description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální poč�
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141342"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824436"
 ---
-# <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače pomocí Azure CLI
+# <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače s využitím Azure CLI
 
 Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. Co se v tomto kurzu naučíte:
 
@@ -88,7 +88,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
     ```
 
     > [!WARNING]
-    > Pokud není zadaná cílová skupina prostředků, pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Zákazníci získají výhodu okamžitého obnovení jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, pak Neposkytněte parametr Target-Resource-Group a místo toho zadejte parametr Restore-as-unmanaged-disk, jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
+    > Pokud není zadaná **cílová skupina prostředků** , pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Zákazníci získají výhodu okamžitého obnovení jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,7 +101,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
     --restore-as-unmanaged-disk
     ```
 
-Tato akce obnoví spravované disky jako nespravované disky do daného účtu úložiště a nebude využívat funkci okamžitého obnovení. V budoucích verzích rozhraní příkazového řádku bude povinná zadat buď parametr Target-Resource-Group, nebo možnost Restore as-unmanaged-disk.
+Tato akce obnoví spravované disky jako nespravované disky do daného účtu úložiště a nebude využívat funkci okamžitého obnovení. V budoucích verzích rozhraní příkazového řádku bude povinná zadat parametr **target-Resource-Group** nebo **Restore-as-unmanaged-disk** .
 
 ### <a name="unmanaged-disks-restore"></a>Obnovení nespravovaných disků
 
@@ -224,7 +224,7 @@ Identifikátor URI objektu BLOB šablony bude v tomto formátu a extrahuje náze
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Proto název šablony z výše uvedeného příkladu bude ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a název kontejneru bude```myVM-daa1931199fd4a22ae601f46d8812276```
+Proto název šablony z výše uvedeného příkladu bude ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a název kontejneru bude ```myVM-daa1931199fd4a22ae601f46d8812276```
 
 Nyní Získejte token SAS pro tento kontejner a šablonu, jak je popsáno [zde](../azure-resource-manager/templates/secure-template-with-sas-token.md?tabs=azure-cli#provide-sas-token-during-deployment) .
 

@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763673"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825456"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -251,7 +251,7 @@ Chybová zpráva: nenašel se snímek sdílené složky Azure odpovídající bo
 - Zajistěte, aby byl snímek sdílené složky odpovídající bodu obnovení, který se snažíte použít pro obnovení, stále existuje.
 
   >[!NOTE]
-  >Pokud odstraníte snímek sdílené složky, který byl vytvořen Azure Backup, odpovídající body obnovení se stanou nepoužitelnými. Pro zajištění zaručeného obnovení Doporučujeme neodstraňovat snímky.
+  >Pokud odstraníte snímek sdílené složky, který byl vytvořen Azure Backup, odpovídající body obnovení se stanou nepoužitelnými. Doporučujeme, abyste neodstranili snímky, abyste zajistili zaručené obnovení.
 
 - Zkuste pro obnovení dat vybrat jiný bod obnovení.
 

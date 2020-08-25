@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755734"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827116"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -106,7 +106,7 @@ Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do
 7. Vyberte **, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud je neaktualizujete tak, aby pro potvrzení používaly nové identifikátory prostředků** , a pak vyberte **OK**.
 
 > [!NOTE]
-> Zálohování mezi předplatnými (trezor RS a chráněné virtuální počítače jsou v různých předplatných) není podporovaným scénářem. Možnost redundance úložiště z místního redundantního úložiště (LRS) do globálního redundantního úložiště (GRS) a naopak se nedá změnit během operace přesunu trezoru.
+> Zálohování mezi předplatnými (trezor RS a chráněné virtuální počítače jsou v různých předplatných) není podporovaný scénář. Možnost redundance úložiště z místního redundantního úložiště (LRS) do globálního redundantního úložiště (GRS) a naopak se nedá změnit během operace přesunu trezoru.
 >
 >
 

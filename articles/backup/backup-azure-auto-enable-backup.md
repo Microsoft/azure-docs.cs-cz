@@ -3,12 +3,12 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763588"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826068"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
@@ -52,7 +52,7 @@ Chcete-li přiřadit zásadu k požadovanému oboru, postupujte podle následuj�
 
 > [!NOTE]
 >
-> Doporučuje se, aby se tato zásada nepřiřazoval více než 200 virtuálních počítačů najednou. Pokud je zásada přiřazená k více než 200 virtuálním počítačům, může to vést k tomu, že zálohování bude vyvoláno několik hodin později než podle plánu.
+> Doporučuje se, aby se tyto zásady nepřiřazované více než 200 virtuálních počítačů najednou. Pokud je zásada přiřazená k více než 200 virtuálním počítačům, může dojít k tomu, že se zálohování aktivuje několik hodin později než podle plánu.
 
 ## <a name="next-steps"></a>Další kroky
 

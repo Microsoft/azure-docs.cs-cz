@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ebda6eec0f2e0866a13f04859c491662a8f9ca43
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757485"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825643"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 

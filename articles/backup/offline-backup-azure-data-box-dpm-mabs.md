@@ -3,12 +3,12 @@ title: Offline zálohování s Azure Data Box pro DPM a MABS
 description: Azure Data Box můžete použít k počátečnímu počátečnímu zálohování dat v režimu offline z aplikace DPM a MABS.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762449"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824555"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
 
@@ -60,14 +60,14 @@ Zajistěte, aby:
 - Uživatel, který má provést zásady zálohování offline, musí být vlastníkem předplatného Azure.
 - Data Box úlohy a trezor Recovery Services, do kterých musí být data odsazený, musí být k dispozici ve stejných předplatných.
     > [!NOTE]
-    > Doporučujeme, aby byl cílový účet úložiště a Recovery Servicesý trezor ve stejné oblasti. Nicméně to není povinné.
+    > Doporučujeme, aby byl cílový účet úložiště a Recovery Servicesý trezor ve stejné oblasti. To ale není povinné.
 
 ### <a name="order-and-receive-the-data-box-device"></a>Objednat a přijmout Data Box zařízení
 
 Před aktivací offline zálohování zajistěte, aby byla požadovaná zařízení Data Box v *doručeném* stavu. V tématu [Velikost zálohovaných dat a podporovaných data box SKU](#backup-data-size-and-supported-data-box-skus) můžete seřadit nejvhodnější SKU podle vašich požadavků. Podle kroků v [tomto článku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) seřiďte a dodržujte zařízení data box.
 
 > [!IMPORTANT]
-> Pro **druh účtu**nevybírejte možnost *BlobStorage* . Server DPM/MABS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
+> Pro **druh účtu**nevybírejte *BlobStorage* . Server DPM/MABS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
 
 ![Nastavení Azure Databox](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -234,7 +234,7 @@ Chcete-li vyřešit tento problém, proveďte následující kroky a opakujte ko
 2. Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci z **Azure Portal > Azure Active Directory > registrace aplikací**.
 
    > [!NOTE]
-   > Ověřte, zda aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné jiné počáteční hodnoty pro offline a zda na této aplikaci není závislý žádný jiný server. V části veřejné klíče vyberte **nastavení > klíče** . neměla by se přidat žádný jiný **veřejný klíč** . Referenční informace najdete na následujícím snímku obrazovky:
+   > Ověřte, zda aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné jiné počáteční hodnoty pro offline a zda na této aplikaci není závislý žádný jiný server. V části veřejné klíče přejdete na **nastavení > klíče** . Neměl by mít přidané žádné jiné **veřejné klíče** . Referenční informace najdete na následujícím snímku obrazovky:
    >
    > ![Veřejné klíče](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 
