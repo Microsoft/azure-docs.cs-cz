@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782530"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749314"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
 Služba rozpoznávání řeči umožňuje aplikaci převést zvuk na text, provést překlad řeči a převést text na řeč. Služba je dostupná ve více oblastech s jedinečnými koncovými body pro sadu Speech SDK a rozhraní REST API.
 
-Portál pro rozpoznávání řeči pro vlastní konfigurace prostředí Speech pro všechny oblasti je k dispozici zde:https://speech.microsoft.com
+Portál pro rozpoznávání řeči pro vlastní konfigurace prostředí Speech pro všechny oblasti je k dispozici zde: https://speech.microsoft.com
 
-V případě vyvolání služby Speech zajistěte, aby se hovor shodoval s oblastí vašeho předplatného.
+Při zvažování oblastí Pamatujte na tyto body:
+
+* Pokud vaše aplikace používá [sadu Speech SDK](speech-sdk.md), při vytváření konfigurace řeči zadáte identifikátor oblasti, například `westus` .
+* Pokud vaše aplikace používá jedno z [rozhraní REST API](rest-apis.md)služby pro rozpoznávání řeči, je tato oblast součástí identifikátoru URI koncového bodu, který používáte při provádění požadavků.
+* Klíče vytvořené pro oblast jsou platné pouze v této oblasti. Při pokusu o jejich použití s ostatními oblastmi dojde k chybám ověřování.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
@@ -32,7 +36,7 @@ V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (napřík
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Převod řeči na text, převod textu na řeč a překlad
 
-Portál pro přizpůsobení řeči je k dispozici zde:https://speech.microsoft.com
+Portál pro přizpůsobení řeči je k dispozici zde: https://speech.microsoft.com
 
 Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
 
@@ -44,20 +48,20 @@ Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifik
 
 Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
 
-| Globální oblast | Oblast           | Identifikátor oblasti |
+| Globální oblast | Region           | Identifikátor oblasti |
 | ------------- | ---------------- | -------------------- |
 | Asie          | Východní Asie        | `eastasia`           |
-| Asie          | Jihovýchodní Asie   | `southeastasia`      |
+| Asie          | Southeast Asia   | `southeastasia`      |
 | Austrálie     | Austrálie – východ   | `australiaeast`      |
 | Evropa        | Severní Evropa     | `northeurope`        |
-| Evropa        | Západní Evropa      | `westeurope`         |
-| Severní Amerika | USA – východ          | `eastus`             |
+| Evropa        | West Europe      | `westeurope`         |
+| Severní Amerika | East US          | `eastus`             |
 | Severní Amerika | USA – východ 2        | `eastus2`            |
-| Severní Amerika | USA – středojih | `southcentralus`     |
+| Severní Amerika | Středojižní USA | `southcentralus`     |
 | Severní Amerika | USA – středozápad  | `westcentralus`      |
 | Severní Amerika | USA – západ          | `westus`             |
-| Severní Amerika | USA – západ 2        | `westus2`            |
-| Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
+| Severní Amerika | Západní USA 2        | `westus2`            |
+| Jižní Amerika | Brazil South     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
@@ -65,13 +69,13 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 
 [Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
 
-| Oblast         | Identifikátor oblasti |
+| Region         | Identifikátor oblasti |
 | -------------- | -------------------- |
 | USA – západ        | `westus`             |
-| USA – západ 2      | `westus2`            |
-| USA – východ        | `eastus`             |
+| Západní USA 2      | `westus2`            |
+| East US        | `eastus`             |
 | USA – východ 2      | `eastus2`            |
-| Západní Evropa    | `westeurope`         |
+| West Europe    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |
 

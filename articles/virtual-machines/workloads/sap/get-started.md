@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/18/2020
+ms.date: 08/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603846"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749661"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -88,6 +88,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 08/21/2020: Přidání nového vydání operačního systému do [kompatibilních operačních systémů pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) jako dostupný operační systém pro jednotky HLI typu i a II
 - 08/18/2020: vydání [ha pro SAP HANA navýšení kapacity pomocí ANF na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020: přidejte informace o použití Azure Site Recovery pro přesun systémů SAP NetWeaver z místního prostředí do Azure v článku [azure Virtual Machines plánování a implementace pro SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: Přidání rad konfigurace disku pro Db2 v článku [IBM Db2 Azure Virtual Machines DBMS nasazení pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

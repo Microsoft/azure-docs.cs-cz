@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118878"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
@@ -42,11 +42,11 @@ Tento kurz zahrnuje:
 > [!TIP]
 > V tomto kurzu se předpokládá, že máte předchozí zkušenosti s používáním ASP.NET Core MVC a Azure App Service. Pokud ASP.NET Core nebo požadované [nástroje](#prerequisites)nepoužíváte, doporučujeme si stáhnout kompletní ukázkový projekt z [GitHubu][GitHub], přidat požadované balíčky NuGet a spustit ho. Po sestavení projektu si můžete projít tento článek, abyste získali přehled o kódu v kontextu projektu.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -68,7 +68,7 @@ V další části vytvoříte novou ASP.NET Core aplikaci MVC.
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
-1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Next** (Další).
+1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Další**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Vytvořit nový projekt ASP.NET Core webové aplikace":::
 
@@ -86,7 +86,7 @@ Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro 
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Nainstalovat**.
+1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Install** (Nainstalovat).
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Nainstalovat balíček NuGet":::
 
@@ -102,7 +102,7 @@ Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro 
 
 Nyní přidáme do této aplikace MVC modely, zobrazení a řadiče.
 
-### <a name="add-a-model"></a><a name="add-a-model"></a>Přidání modelu
+### <a name="add-a-model"></a><a name="add-a-model"></a> Přidání modelu
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu**.
 
@@ -153,7 +153,7 @@ Podobně jako při vytváření zobrazení pro položky seznamu vytvořte nové 
    * V **šabloně**vyberte **vytvořit**.
    * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte možnost **Přidat**.
+   * Vyberte **Přidat**.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Přidání zobrazení upravit položku
 
@@ -167,7 +167,7 @@ A nakonec přidejte zobrazení pro úpravu položky pomocí následujících kro
    * V poli **Šablona** vyberte **Edit**.
    * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte možnost **Přidat**.
+   * Vyberte **Přidat**.
 
 Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Visual Studio při návratu do těchto zobrazení později.
 

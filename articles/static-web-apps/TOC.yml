@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: Sestavení první statické webové aplikace
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: portál Azure
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: Koncepty
   items:
     - name: Podpora rozhraní API s využitím Azure Functions

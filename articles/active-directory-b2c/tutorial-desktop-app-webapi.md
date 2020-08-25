@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: poskytnutí přístupu k webovému rozhraní API Node. js z desktopové aplikace'
-description: Kurz týkající se použití Active Directory B2C k ochraně webového rozhraní API Node. js a jeho volání z desktopové aplikace .NET.
+title: 'Kurz: poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace'
+description: Kurz týkající se použití Active Directory B2C k ochraně Node.js webového rozhraní API a jeho volání z desktopové aplikace .NET.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84298839"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak volat webové rozhraní API Node. js chráněné pomocí Azure Active Directory B2C (Azure AD B2C) z desktopové aplikace Windows Presentation Foundation (WPF), která je chráněná taky Azure AD B2C.
+V tomto kurzu se dozvíte, jak volat Node.js webového rozhraní API chráněného Azure Active Directory B2C (Azure AD B2C) z desktopové aplikace Windows Presentation Foundation (WPF), která je chráněná také Azure AD B2C.
 
 V tomto kurzu se naučíte:
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Aktualizace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky a požadavky v [kurzu: ověřování uživatelů v nativním klientském počítači](tutorial-desktop-app.md).
 
@@ -51,7 +51,7 @@ Chcete-li volat chráněné webové rozhraní API z nativní klientské aplikace
 
 V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *nativeapp1*. Následující postup nakonfiguruje registraci nativní aplikace pomocí oborů rozhraní API, které jste vystavili pro *webapi1* v předchozí části. To umožňuje aplikaci klasické pracovní plochy získat přístupový token z Azure AD B2C, kterou může webové rozhraní API použít k ověření a poskytování vymezeného přístupu k prostředkům. V tomto kurzu nakonfigurujete a spustíte i ukázky kódu desktopové aplikace i webové rozhraní API.
 
-K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -99,9 +99,9 @@ V předpokladech tohoto článku jste upravili [desktopovou aplikaci WPF](https:
     public static string ApiEndpoint = "http://localhost:5000";
     ```
 
-### <a name="get-and-update-the-nodejs-api-sample"></a>Získání a aktualizace ukázky rozhraní API pro Node. js
+### <a name="get-and-update-the-nodejs-api-sample"></a>Získání a aktualizace ukázky rozhraní Node.js API
 
-V dalším kroku získáte ukázku kódu webového rozhraní API Node. js z GitHubu a nakonfigurujete ho tak, aby používalo webové rozhraní API, které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
+V dalším kroku získáte ukázku kódu Node.js webového rozhraní API z GitHubu a nakonfigurujete ho tak, aby používalo webové rozhraní API, které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
 
 [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
 
@@ -128,7 +128,7 @@ Ukázka webového rozhraní API Node.js s využitím knihovny Passport.js umož�
 
 ## <a name="run-the-samples"></a>Spuštění ukázek
 
-### <a name="run-the-nodejs-web-api"></a>Spuštění webového rozhraní API Node. js
+### <a name="run-the-nodejs-web-api"></a>Spuštění Node.js webového rozhraní API
 
 1. Spusťte příkazový řádek Node.js.
 2. Přejděte do adresáře obsahujícího ukázku Node.js. Příklad: `cd c:\active-directory-b2c-javascript-nodejs-webapi`

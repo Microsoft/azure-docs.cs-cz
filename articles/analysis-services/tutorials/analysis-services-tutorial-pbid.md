@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73572314"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Připojení pomocí Power BI Desktopu
@@ -43,7 +43,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
 ## <a name="connect-in-power-bi-desktop"></a>Připojení v Power BI Desktopu
 
-1. V Power BI Desktop klikněte na **získat data** > databáze**Azure** > **Azure Analysis Services**.
+1. V Power BI Desktop klikněte na **získat data**  >  **Azure**  >  **databáze Azure Azure Analysis Services**.
 
    ![Připojení v okně Získat data](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
    ![Vizualizace](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. V **poli** > tabulka**internetových prodejů** vyberte míry **internetového prodeje celková** a **marže** . V tabulce **Product Category** (Kategorie produktů) vyberte **Product Category Name** (Název kategorie produktů).
+5. V **poli**  >  tabulka**internetových prodejů** vyberte míry **internetového prodeje celková** a **marže** . V tabulce **Product Category** (Kategorie produktů) vyberte **Product Category Name** (Název kategorie produktů).
 
    ![Dokončení sestavy](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 

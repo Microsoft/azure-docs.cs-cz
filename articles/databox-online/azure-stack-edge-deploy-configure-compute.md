@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83774095"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Kurz: transformace dat pomocí Azure Stack Edge
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak na zařízení Azure Stack Edge nakonfigurovat v�
 
 Dokončení této procedury může trvat přibližně 10 až 15 minut.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace COMPUTE
@@ -31,7 +31,7 @@ V tomto kurzu:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge se ujistěte, že:
 

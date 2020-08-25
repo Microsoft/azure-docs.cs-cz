@@ -4,10 +4,10 @@ description: V tomto kurzu použijete zásady k vymáhání standardů, řízen�
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84781123"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů
@@ -24,7 +24,7 @@ Pokud chcete přiřadit zásadu pro identifikaci aktuálního stavu dodržován�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="assign-a-policy"></a>Přiřazení zásady
 
@@ -42,7 +42,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
    :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Přiřazení definice zásady ze stránky přiřazení" border="false":::
 
-1. Na stránce **přiřadit zásady** a na kartě **základy** vyberte **obor** tak, že vyberete tři tečky a vyberete buď skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat.
+1. Na stránce **přiřadit zásady** a na kartě **základy** vyberte **obor** tak, že vyberete tři tečky a vyberete buď skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo seskupení prostředků se toto přiřazení zásady bude vynucovat.
    Pak vyberte **Vybrat** v dolní části stránky **Rozsah** .
 
    V tomto příkladu se používá předplatné **Contoso** . Vaše předplatné se bude lišit.
@@ -428,7 +428,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
    :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Přiřazení definice ze stránky definice iniciativy" border="false":::
 
-   Můžete také kliknout pravým tlačítkem myši na vybraný řádek nebo vybrat tři tečky na konci řádku kontextové nabídky. Pak vyberte **Přiřadit**.
+   Můžete také kliknout pravým tlačítkem myši na vybraný řádek nebo vybrat tři tečky na konci řádku kontextové nabídky. Pak vyberte **přiřadit**.
 
    :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Alternativní možnosti pro iniciativu" border="false":::
 
@@ -506,7 +506,7 @@ Pokud jste dokončili práci s prostředky z tohoto kurzu, pomocí následujíc�
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

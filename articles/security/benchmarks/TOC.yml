@@ -89,6 +89,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro DDOS Protection
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Event Grid
+      href: ../../event-grid/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Hubs
       href: ../../event-hubs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro ExpressRoute

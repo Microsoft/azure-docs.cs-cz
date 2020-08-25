@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aea29cfff6b3827cfb9169722e48120e3a5a3709
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302181"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794312"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLIKovat (Azure Cosmos DB)
  Zopakuje řetězcovou hodnotu v zadaném počtu opakování.
@@ -36,7 +36,8 @@ REPLICATE(<str_expr>, <num_expr>)
   Vrátí řetězcový výraz.
   
 ## <a name="remarks"></a>Poznámky
-  Maximální délka výsledku je 10 000 znaků, například (length (*str_expr*) * *num_expr*) <= 10 000.
+
+  Maximální délka výsledku je 10 000 znaků, například (length (*str_expr*) *  *num_expr*) <= 10 000. Tato systémová funkce nebude index využívat.
 
 ## <a name="examples"></a>Příklady
   
@@ -51,10 +52,6 @@ SELECT REPLICATE("a", 3) AS replicate
 ```json
 [{"replicate": "aaa"}]
 ```  
-
-## <a name="remarks"></a>Poznámky
-
-Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

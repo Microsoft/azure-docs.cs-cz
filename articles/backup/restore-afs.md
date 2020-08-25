@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure
 description: Naučte se používat Azure Portal k obnovení celé sdílené složky nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503638"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761844"
 ---
 # <a name="restore-azure-file-shares"></a>Obnovení sdílených složek Azure
 
@@ -66,7 +66,7 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
     * **Původní umístění**: Obnovte úplnou sdílenou složku do stejného umístění jako původní zdroj.
     * **Alternativní umístění**: Obnovte úplnou sdílenou složku do alternativního umístění a zachovejte původní sdílenou složku tak, jak je.
 
-#### <a name="restore-to-the-original-location"></a>Obnovit do původního umístění
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>Obnovit do původního umístění (úplné obnovení sdílené složky)
 
 1. Jako **cíl obnovení**vyberte **původní umístění** a vyberte, jestli se má přeskočit nebo přepsat, pokud dojde ke konfliktům, a to tak, že vyberete vhodnou možnost z rozevíracího seznamu **v případě konfliktů** .
 
@@ -74,7 +74,7 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
 
     ![Vyberte Obnovit a začněte.](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Obnovit do alternativního umístění
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Obnovit do alternativního umístění (úplné obnovení sdílené složky)
 
 1. Jako **cíl obnovení**vyberte **alternativní umístění** .
 1. V rozevíracím seznamu **účet úložiště** vyberte cílový účet úložiště, ve kterém chcete obnovit zálohovaný obsah.
@@ -106,7 +106,7 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
     * **Původní umístění**: Obnovte vybrané soubory nebo složky do stejné sdílené složky jako původní zdroj.
     * **Alternativní umístění**: Obnovte vybrané soubory nebo složky do alternativního umístění a zachovejte původní obsah sdílení souborů.
 
-#### <a name="restore-to-the-original-location"></a>Obnovit do původního umístění
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>Obnovit do původního umístění (obnovení na úrovni položek)
 
 1. Jako **cíl obnovení**vyberte **původní umístění** a vyberte, jestli se má přeskočit nebo přepsat, pokud dojde ke konfliktům, a to výběrem příslušné možnosti v rozevíracím seznamu **v případě konfliktů** .
 
@@ -125,7 +125,7 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
     ![Vyberte Obnovit a začněte.](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Obnovit do alternativního umístění
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Obnovit do alternativního umístění (obnovení na úrovni položek)
 
 1. Jako **cíl obnovení**vyberte **alternativní umístění** .
 1. V rozevíracím seznamu **účet úložiště** vyberte cílový účet úložiště, ve kterém chcete obnovit zálohovaný obsah.

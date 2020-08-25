@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84983616"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: zkoumání aplikace pro zpracování obrázků pomocí jazyka C #
@@ -28,7 +28,7 @@ Prozkoumejte základní aplikaci pro Windows, která používá Počítačové z
 > * Spusťte ukázkovou aplikaci a pracujte s ní, abyste mohli provádět různé scénáře.
 > * Prozkoumejte různé scénáře, které jsou součástí ukázkové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zkoumáním ukázkové aplikace se ujistěte, že jste splnili následující požadavky:
 

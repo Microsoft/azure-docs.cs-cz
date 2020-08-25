@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563275"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749118"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -25,9 +25,8 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech a Azure Government oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Azure Government se momentálně nepodporuje.
 * Azure Čína 21Vianet se momentálně nepodporuje.
 
 ## <a name="limitations"></a>Omezení

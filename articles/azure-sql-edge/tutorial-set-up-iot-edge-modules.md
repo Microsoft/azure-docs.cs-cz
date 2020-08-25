@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84235022"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
@@ -34,8 +34,8 @@ Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastav
    Pole|Hodnota
    -----|-----
    Formát serializace události|JSON
-   Kódování|UTF-8
-   Typ komprese události|Žádná
+   Encoding|UTF-8
+   Typ komprese události|Žádné
 
 2. **Výstup**vytvoříte tak, že kliknete na **+ přidat** a zvolíte SQL Database. Vyplňte část Podrobnosti pomocí následujících informací.
 
@@ -48,7 +48,7 @@ Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastav
    Název serveru|TCP:., 1433
    Uživatelské jméno|sa
    Heslo|Zadat silné heslo
-   Table|IronOreMeasurements1
+   Tabulka|IronOreMeasurements1
 
 3. Přejděte do části **dotaz** a nastavte dotaz následujícím způsobem:
 
@@ -77,7 +77,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
    _Pole_|_Hodnota_
    -------|-------
-   Název|Název registru
+   Name|Název registru
    Adresa|Přihlašovací server
    Uživatelské jméno|Uživatelské jméno
    Heslo|Heslo

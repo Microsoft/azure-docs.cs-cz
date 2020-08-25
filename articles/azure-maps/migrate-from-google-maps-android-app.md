@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83747422"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrace aplikace pro Android z Google Maps
@@ -52,7 +52,7 @@ Pokud chcete zobrazit mapu pomocí Google Maps SDK pro Android, provede se násl
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru ** \_ \_ . XML rozhraní API pro Google Maps** :
+1.  Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru  ** \_ \_api.xmlmapy Google ** :
     
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -182,7 +182,7 @@ Chcete-li zobrazit mapu pomocí sady Azure Maps SDK pro Android, je nutné prov�
         > Android SDK Azure Maps se pravidelně upgradují a zvyšují. Nejnovější verzi Azure Maps získáte pomocí [ovládacího prvku Začínáme s nástrojem pro správu Androidu](how-to-use-android-map-control-library.md) . Můžete také nastavit číslo verze z "0,2" na "0 +", aby váš kód vždy odkazoval na nejnovější verzi.
     
     4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
-3. Přidejte fragment mapy do hlavní aktivity ( \> aktivita rozložení prostředků \> \_ Main. XML):
+3. Přidejte fragment mapy do hlavní aktivity ( \>main.xml aktivity rozložení prostředků \> \_ ):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -495,7 +495,7 @@ Vlastní image lze použít k reprezentaci bodů na mapě. Mapa v níže uveden�
 <center>
 
 ![Obrázek žlutého připínáčku](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW \_ připínáček. png</center>
+YLW \_pushpin.png</center>
 
 V obou příkladech se výše uvedený obrázek přidá do vykreslené složky prostředků aplikací.
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Dlaždicovou vrstvu lze přidat k mapě podobným způsobem jako jakékoli jiné vrstvy. Naformátovaná adresa URL, která má zástupné symboly x, y a zoom; `{x}`, `{y}` , v `{z}` uvedeném pořadí, slouží k oznámení vrstvy, kde má být přístup k dlaždicím. Také vrstvy dlaždic v Azure Maps podporu `{quadkey}` , `{bbox-epsg-3857}` a `{subdomain}` zástupné symboly. Chcete-li nastavit, aby byla vrstva dlaždice částečně průhledná, je použita hodnota neprůhlednosti 0,8. Neprůhlednost a průhlednost, i když jsou podobné, používají obrácené hodnoty. Pro převod obou možností odečtěte jejich hodnotu od čísla 1.
 
 > [!TIP]
-> V Azure Maps je vhodné vykreslit vrstvy pod jinými vrstvami, včetně základních vrstev mapy. Je také často žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. `map.layers.add`Metoda přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky map, lze použít následující kód:`map.layers.add(myTileLayer, "labels");`
+> V Azure Maps je vhodné vykreslit vrstvy pod jinými vrstvami, včetně základních vrstev mapy. Je také často žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. `map.layers.add`Metoda přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky map, lze použít následující kód: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

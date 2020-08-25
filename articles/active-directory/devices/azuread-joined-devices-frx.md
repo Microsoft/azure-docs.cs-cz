@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da37316724bf6ef166f08faa7208ad196000bb00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85253099"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Kurz: Připojení nového zařízení s Windows 10 k Azure AD při prvním spuštění
@@ -31,11 +31,11 @@ V *prostředí prvního spuštění* Windows se nepodporuje připojení k místn
  
 V tomto kurzu se dozvíte, jak připojit zařízení k Azure AD při prvním spuštění:
  > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Připojení zařízení
 > * Ověření
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli připojit zařízení s Windows 10, musíte mít v konfiguraci služby registrace zařízení povoleno registrovat zařízení. Kromě oprávnění k připojování zařízení ve vašem tenantovi Azure AD musíte mít zaregistrovaných méně zařízení, než je nakonfigurované maximum. Další informace najdete v tématu popisujícím [konfiguraci nastavení zařízení](device-management-azure-portal.md#configure-device-settings).
 

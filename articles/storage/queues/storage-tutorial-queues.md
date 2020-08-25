@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84809566"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Kurz: práce s frontami úložiště Azure v .NET
@@ -32,9 +32,9 @@ V tomto kurzu se naučíte:
 > - Vyřadit zprávy z fronty
 > - Odstraní prázdnou frontu.
 > - Vyhledat argumenty příkazového řádku
-> - Sestavení a spuštění aplikace
+> - Sestavte a spusťte aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Získejte bezplatnou kopii [Visual Studio Codeového](https://code.visualstudio.com/download) editoru pro různé platformy.
 - Stáhněte a nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download) verze 3,1 nebo novější.
@@ -133,7 +133,7 @@ Vytvořte aplikaci .NET Core s názvem **QueueApp**. Pro zjednodušení bude tat
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-1. Uložte soubor **program.cs** .
+1. Uložte soubor **Program.cs**.
 
 ## <a name="add-support-for-asynchronous-code"></a>Přidat podporu pro asynchronní kód
 
@@ -145,7 +145,7 @@ Vzhledem k tomu, že aplikace používá cloudové prostředky, kód se spoušt�
    static async Task Main(string[] args)
    ```
 
-1. Uložte soubor **program.cs** .
+1. Uložte soubor **Program.cs**.
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
@@ -159,7 +159,7 @@ Přidejte připojovací řetězec do aplikace, aby mohl získat přístup k úč
 
 1. Přepněte zpátky na Visual Studio Code.
 
-1. V metodě **Main** nahraďte `Console.WriteLine("Hello World!");` kód následujícím řádkem, který získá připojovací řetězec z proměnné prostředí.
+1. V metodě **Main**  nahraďte `Console.WriteLine("Hello World!");` kód následujícím řádkem, který získá připojovací řetězec z proměnné prostředí.
 
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -239,7 +239,7 @@ Vytvořte novou metodu pro načtení zprávy z fronty. Po úspěšném přijetí
 
 ## <a name="delete-an-empty-queue"></a>Odstraní prázdnou frontu.
 
-Je to osvědčený postup na konci projektu k určení, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které necháte běžet, vás můžou stát peníze. Pokud fronta existuje, ale je prázdná, požádejte uživatele, jestli ho chce odstranit.
+Je to osvědčený postup na konci projektu k určení, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které necháte běžet, vás stojí peníze. Pokud fronta existuje, ale je prázdná, požádejte uživatele, jestli ho chce odstranit.
 
 1. Rozbalte metodu **RetrieveNextMessageAsync** pro zahrnutí výzvy k odstranění prázdné fronty.
 
@@ -286,7 +286,7 @@ Zde je kompletní výpis kódu pro tento projekt.
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 1. Z příkazového řádku v adresáři projektu spusťte následující příkaz dotnet pro sestavení projektu.
 

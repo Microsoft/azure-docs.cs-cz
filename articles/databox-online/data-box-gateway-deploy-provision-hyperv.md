@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84196642"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení v hypervisoru
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky na zřízení virtuálního zařízení v hostitelském systému s Hyper-V ve Windows Serveru 2016 nebo Windows Serveru 2012 R2 jsou následující.
 

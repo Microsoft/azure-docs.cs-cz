@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2020
+ms.date: 08/24/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115726"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794667"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | –         | Podporováno   |
+| Osobní účet Microsoft | Není k dispozici         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -59,8 +59,8 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 | `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | TOKEN        |           |        |
 | `vnet`                     | Informace o specifikátoru virtuální sítě | TOKEN        |           |      |
 | `fwd`                      | IP adresa.| TOKEN    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
-| `ctry`                     | Země nebo oblast uživatele | TOKEN |  | Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota deklarace je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
-| `tenant_ctry`              | Země/oblast tenanta prostředku | TOKEN | | |
+| `ctry`                     | Země nebo oblast uživatele | TOKEN |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota pole je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
+| `tenant_ctry`              | Země tenanta prostředku | TOKEN | | Stejné jako `ctry` s výjimkou nastavenou na úrovni tenanta správcem.  Musí být také standardní hodnota se dvěma písmeny. |
 | `xms_pdl`             | Preferované umístění dat   | TOKEN | | V případě tenantů s více geografickými klienty je preferovaným umístěním dat kód se třemi písmeny ukazující geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Například: `APC` pro Asie a Tichomoří. |
 | `xms_pl`                   | Preferovaný jazyk uživatele  | TOKEN ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
 | `xms_tpl`                  | Preferovaný jazyk tenanta| TOKEN | | Preferovaný jazyk tenanta prostředků, pokud je nastavený. Naformátované vše ("en"). |
@@ -98,7 +98,7 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |
-|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že značky hash ( `#` ) jsou nahrazeny podtržítkem ( `_` ), například`foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že značky hash ( `#` ) jsou nahrazeny podtržítkem ( `_` ), například `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Příklad dalších vlastností
 
@@ -216,9 +216,9 @@ Rozšíření schématu a Open nejsou podporovaná nepovinnými deklaracemi, ale
 
 Při konfiguraci volitelných deklarací rozšíření adresáře pomocí manifestu aplikace použijte úplný název rozšíření (ve formátu: `extension_<appid>_<attributename>` ). `<appid>`Musí odpovídat ID aplikace, která žádá o deklaraci identity.
 
-V rámci tokenu JWT budou tyto deklarace vygenerovány s následujícím formátem názvu: `extn.<attributename>` .
+V rámci tokenu JWT budou tyto deklarace vygenerovány s následujícím formátem názvu:  `extn.<attributename>` .
 
-V rámci tokenů SAML budou tyto deklarace vygenerovány s následujícím formátem identifikátoru URI:`http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+V rámci tokenů SAML budou tyto deklarace vygenerovány s následujícím formátem identifikátoru URI: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
 ## <a name="configuring-groups-optional-claims"></a>Konfigurace volitelných deklarací skupin
 

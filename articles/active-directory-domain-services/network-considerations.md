@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 307b1a6838c3a78c04ba6a36ffd52bd6b98aae04
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722819"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749620"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -104,7 +104,7 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 
 ## <a name="network-security-groups-and-required-ports"></a>Skupiny zabezpečení sítě a požadované porty
 
-[Skupina zabezpečení sítě (NSG)](../virtual-network/virtual-network-vnet-plan-design-arm.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
+[Skupina zabezpečení sítě (NSG)](../virtual-network/security-overview.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
 
 Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžadují se následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které je spravovaná doména nasazená.
 

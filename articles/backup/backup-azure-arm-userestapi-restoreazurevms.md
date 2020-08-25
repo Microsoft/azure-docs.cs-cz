@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079294"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761470"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -25,7 +25,7 @@ Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST 
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-`{containerName}`A `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`je "Azure".
+`{containerName}`A `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` je "Azure".
 
 Identifikátor URI *Get* má všechny požadované parametry. Není potřeba žádné další tělo žádosti.
 
@@ -117,7 +117,7 @@ Bod obnovení je označený `{name}` polem ve výše uvedené reakci.
 
 ## <a name="restore-disks"></a>Obnovit disky
 
-Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor služby Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště.
+Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště.
 
 Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
@@ -125,7 +125,7 @@ Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat dalš�
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}`A `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`je "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [výše](#example-response).
+`{containerName}`A `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` je "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [výše](#example-response).
 
 ### <a name="create-request-body"></a>Vytvořit text žádosti
 

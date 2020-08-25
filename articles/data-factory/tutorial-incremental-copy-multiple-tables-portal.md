@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85251144"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Přírůstkové načtení dat z více tabulek v SQL Server do databáze v Azure SQL Database pomocí Azure Portal
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -65,9 +65,9 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
 * **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
 
@@ -254,7 +254,7 @@ END
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 6. Jako **verzi** vyberte **V2**.
 7. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
-8. Klikněte na **Vytvořit**.      
+8. Klikněte na možnost **Vytvořit**.      
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
@@ -410,7 +410,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 
     ![Aktivita ForEach – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
-1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)**.
+1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)** .
 
 1. V sadě nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu. Pak jako **Název** zadejte **LookupOldWaterMarkActivity**.
 
@@ -477,7 +477,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Vyberte **Importovat parametr**. 
     1. Zadejte následující hodnoty parametrů: 
 
-        | Name | Typ | Hodnota | 
+        | Název | Typ | Hodnota | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -692,7 +692,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Zkontrolujte výsledky.
+> * Prohlédněte si výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků

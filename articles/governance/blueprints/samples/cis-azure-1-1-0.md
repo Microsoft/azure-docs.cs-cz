@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu srovnávacího testu CIS Micros
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84740305"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
@@ -27,7 +27,7 @@ Pokud chcete nasadit ukázkovou srovnávací plán pro Azure modrotisky Microsof
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ### <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -99,10 +99,10 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
-|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
+|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
+|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Další kroky
 

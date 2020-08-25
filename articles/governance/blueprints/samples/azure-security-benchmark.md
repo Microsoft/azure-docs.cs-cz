@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu srovnávacího testu zabezpeče
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84740377"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Ukázka Azure Security test details
@@ -27,7 +27,7 @@ Pokud chcete nasadit ukázku Azure Security test Testal na Azure, musíte prové
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ### <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -99,20 +99,20 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam uživatelů vyloučených ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam uživatelů, které musí být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam uživatelů, které skupina správců virtuálních počítačů s Windows smí zahrnovat *jenom*|Středníkem oddělený seznam všech očekávaných členů místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam oblastí, kde by měla být povolena Network Watcher|Úplný seznam oblastí získáte pomocí Get-AzLocation.|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Virtuální síť, ve které by se měly připojit virtuální počítače|Příklad:/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Network/virtualNetworks/Name|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Síťová brána, kterou by měly virtuální sítě používat|Příklad:/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworkGateways/Name|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam ID pracovních prostorů, kde se mají Log Analytics agenti připojit|Středníkem oddělený seznam ID pracovních prostorů, ke kterým by měl být agent Log Analytics připojený|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Auditování nastavení diagnostiky pro vybrané typy prostředků|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Nejnovější verze PHP|Nejnovější podporovaná verze PHP pro App Services|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Nejnovější verze Java|Nejnovější podporovaná verze Java pro App Services|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Nejnovější verze Windows Pythonu|Nejnovější podporovaná verze Pythonu pro App Services|
-|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Nejnovější verze Pythonu pro Linux|Nejnovější podporovaná verze Pythonu pro App Services|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam uživatelů vyloučených ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam uživatelů, které musí být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam uživatelů, které skupina správců virtuálních počítačů s Windows smí zahrnovat *jenom*|Středníkem oddělený seznam všech očekávaných členů místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam oblastí, kde by měla být povolena Network Watcher|Úplný seznam oblastí získáte pomocí Get-AzLocation.|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Virtuální síť, ve které by se měly připojit virtuální počítače|Příklad:/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.Network/virtualNetworks/Name|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Síťová brána, kterou by měly virtuální sítě používat|Příklad:/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworkGateways/Name|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam ID pracovních prostorů, kde se mají Log Analytics agenti připojit|Středníkem oddělený seznam ID pracovních prostorů, ke kterým by měl být agent Log Analytics připojený|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Auditování nastavení diagnostiky pro vybrané typy prostředků|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Nejnovější verze PHP|Nejnovější podporovaná verze PHP pro App Services|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Nejnovější verze Java|Nejnovější podporovaná verze Java pro App Services|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Nejnovější verze Windows Pythonu|Nejnovější podporovaná verze Pythonu pro App Services|
+|Auditování doporučení srovnávacích testů zabezpečení Azure a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Nejnovější verze Pythonu pro Linux|Nejnovější podporovaná verze Pythonu pro App Services|
 
 ## <a name="next-steps"></a>Další kroky
 

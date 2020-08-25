@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905193"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749019"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -55,7 +55,7 @@ Metriky, které se musí dělat s požadavky rozhraní API:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| ApiRequests | Požadavky rozhraní API (Preview) | Count | Celkem | Počet požadavků rozhraní API provedených pro digitální vlákna čtení, zápisu, odstranění a dotazování. |  Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text |
+| ApiRequests | Požadavky rozhraní API (Preview) | Počet | Celkem | Počet požadavků rozhraní API provedených pro digitální vlákna čtení, zápisu, odstranění a dotazování. |  Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text |
 | ApiRequestsFailureRate | Frekvence neúspěšných požadavků rozhraní API (Preview) | Procento | Průměr | Procento požadavků rozhraní API, které služba obdrží pro vaši instanci, která poskytuje kód odpovědi interní chyby (500) pro digitální vlákna čtení, zápisu, odstranění a dotazování. | Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text
 | ApiRequestsLatency | Latence požadavků rozhraní API (Preview) | Milisekund | Průměr | Doba odezvy pro žádosti rozhraní API. Tato operace odkazuje na čas od okamžiku, kdy je požadavek přijat pomocí digitálních vláken Azure, dokud služba neodešle výsledek úspěch/selhání pro digitální vlákna čtení, zápisu, odstranění a dotazování. | Přihlašovací <br>NázevOperace <br>Protokol |
 
@@ -68,9 +68,9 @@ Metriky, které je potřeba provést s fakturací:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations | Fakturační operace rozhraní API (Preview) | Count | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | ID měřiče |
-| BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Count | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů. | ID měřiče |
-| BillingQueryUnits | Fakturační jednotky dotazů (Preview) | Count | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | ID měřiče |
+| BillingApiOperations | Fakturační operace rozhraní API (Preview) | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | ID měřiče |
+| BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů. | ID měřiče |
+| BillingQueryUnits | Fakturační jednotky dotazů (Preview) | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | ID měřiče |
 
 #### <a name="ingress-metrics"></a>Metriky příchozího přenosu dat
 
@@ -78,7 +78,7 @@ Metriky, které se musí dělat s daty příchozího přenosu dat:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| IngressEvents | Události příchozího přenosu dat (Preview) | Count | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Výsledek |
+| IngressEvents | Události příchozího přenosu dat (Preview) | Počet | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Výsledek |
 | IngressEventsFailureRate | Frekvence neúspěšných událostí příchozího přenosu dat (Preview) | Procento | Průměr | Procento příchozích událostí telemetrie, pro které služba vrací kód odpovědi vnitřní chyba (500). | Výsledek |
 | IngressEventsLatency | Latence událostí příchozího přenosu dat (Preview) | Milisekund | Průměr | Čas od okamžiku, kdy událost dorazí, když je připravená na výstup pomocí digitálních vláken Azure, kdy služba odešle výsledek úspěch/selhání. | Výsledek |
 
@@ -88,9 +88,9 @@ Metriky, které se musí dělat s směrováním:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Směrované zprávy (Preview) | Count | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | NázevOperace <br>Výsledek |
-| RoutingFailureRate | Frekvence chyb směrování (Preview) | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | NázevOperace <br>Výsledek |
-| RoutingLatency | Latence směrování (Preview) | Milisekund | Průměr | Uplynulý čas mezi událostí, která je směrována z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | NázevOperace <br>Výsledek |
+| MessagesRouted | Směrované zprávy (Preview) | Počet | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
+| RoutingFailureRate | Frekvence chyb směrování (Preview) | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
+| RoutingLatency | Latence směrování (Preview) | Milisekund | Průměr | Uplynulý čas mezi událostí, která je směrována z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
 
 ## <a name="dimensions"></a>Dimenze
 
@@ -100,7 +100,7 @@ Dimenze vám pomůžou identifikovat další podrobnosti o metrikách. Některé
 | --- | --- |
 | Authentication | OAuth |
 | Operace (pro požadavky rozhraní API) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modely/číst, <br>Microsoft. DigitalTwins/modely/Write, <br>Microsoft. DigitalTwins/modely/DELETE, <br>Microsoft. DigitalTwins/dotaz/akce |
-| Operace (pro směrování) | Event Grid <br>Centrum událostí, <br>Service Bus |
+| Typ koncového bodu | Event Grid <br>Centrum událostí, <br>Service Bus |
 | Protokol | HTTPS |
 | Výsledek | Nástup <br>Selhání |
 | Stavový kód | 200, 404, 500 a tak dále. |

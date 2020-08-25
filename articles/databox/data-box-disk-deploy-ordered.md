@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84266521"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: seřazení Azure Data Box Disk
@@ -41,7 +41,7 @@ Před nasazením nástroje dokončete následující požadavky na konfiguraci p
 Než začnete, ujistěte se, že:
 
 * Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
-  * Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+  * Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
   * Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
 ## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
@@ -57,7 +57,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
    ![Vyhledání Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Klikněte na **Vytvořit**.
+2. Klikněte na možnost **Vytvořit**.
 
 3. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak klikněte na **Použít**.
 

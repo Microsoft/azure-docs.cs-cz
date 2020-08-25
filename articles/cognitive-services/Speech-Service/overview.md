@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 06/25/2020
+ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1b24eb8e2d355e73eedda903745df73593fa1a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167738"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749209"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -24,7 +24,7 @@ Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod t
 > [!IMPORTANT]
 > Služba rozpoznávání řeči nahradila rozhraní API pro zpracování řeči Bingu a Translator Speech. Pokyny k migraci najdete v tématu _Průvodce postupy > migrace_ .
 
-Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
+Následující funkce jsou součástí služby Speech. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
 
 | Služba | Funkce | Popis | Sada SDK | REST |
 |---------|---------|-------------|-----|------|
@@ -37,25 +37,68 @@ Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této 
 | | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Ne |
 | [Hlasoví asistenti](voice-assistants.md) | Hlasoví asistenti | Hlasové asistenti, kteří používají službu pro rozpoznávání řeči, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá kanál s přímým přístupem na platformě bot nebo integrované vlastní příkazy (Preview) pro dokončení úkolu. | [Ano](voice-assistants.md) | Ne |
-| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Yes | [Ano](https://docs.microsoft.com/rest/api/speakerrecognition/) |
+| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Ano | [Ano](https://docs.microsoft.com/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="try-the-speech-service"></a>Vyzkoušejte službu pro rozpoznávání řeči
+## <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
-Nabízíme rychlé zprovoznění v nejoblíbenějších programovacích jazycích, z nichž každá je navržena tak, aby používala kód za méně než 10 minut. Tato tabulka obsahuje nejoblíbenější rychlé starty pro jednotlivé funkce. Pomocí levé navigační navigace můžete prozkoumat další jazyky a platformy.
+Pro následující kroky potřebujete účet Microsoft i účet Azure. Pokud nemáte účet Microsoft, můžete si na [portálu účet Microsoft](https://account.microsoft.com/account)zdarma zaregistrovat bezplatný poplatek. Vyberte **Přihlásit se účtem Microsoft** a po zobrazení výzvy k přihlášení vyberte **vytvořit účet Microsoft**. Při vytváření a ověřování nových účet Microsoft postupujte podle pokynů.
 
-| Převod řeči na text (SDK) | Převod textu na řeč (SDK) | Překlad (SDK) |
-|----------------------|----------------------|-------------------|
-| [Rozpoznávání řeči ze zvukového souboru](quickstarts/speech-to-text-from-file.md) | [Syntéza řeči do zvukového souboru](quickstarts/text-to-speech-audio-file.md) | [Přeložit řeč na text](quickstarts/translate-speech-to-text.md) |
-| [Rozpoznávání řeči pomocí mikrofonu](quickstarts/speech-to-text-from-microphone.md) | [Syntéza řeči do reproduktoru](quickstarts/text-to-speech.md) | [Překlad řeči do několika cílových jazyků](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [Rozpoznávání řeči uložené v úložišti objektů blob](quickstarts/from-blob.md) | [Asynchronní syntéza řeči dlouhého formátu](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Překlad řeči na řeč](quickstarts/translate-speech-to-speech.md) |
+Jakmile budete mít účet Microsoft, navštivte [stránku registrace do Azure](https://azure.microsoft.com/free/ai/), vyberte **začít zdarma**a vytvořte nový účet Azure pomocí účet Microsoft.
 
 > [!NOTE]
-> Převod řeči na text a převod textu na řeč má také koncové body REST a přidružené rychlé starty.
+> Služba Speech má dvě úrovně služeb: Free a Subscription, které mají různá omezení a výhody. Když si zaregistrujte bezplatný účet Azure, najdete ho v kreditu služby $200, který můžete použít k placenému předplatnému služby Speech Service, které platí až po dobu až 30 dnů.
+>
+> Pokud používáte bezplatnou úroveň služby řeči s nízkým objemem, můžete si toto bezplatné předplatné ponechat i po vypršení bezplatné zkušební verze nebo kreditu služby.
+>
+> Další informace najdete v tématu [Cognitive Services Price-Speech Service](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Až budete mít možnost používat službu rozpoznávání řeči, vyzkoušejte naše kurzy, které vás seznámí s postupem řešení různých scénářů.
+### <a name="create-the-azure-resource"></a>Vytvoření prostředku Azure
+
+Postup přidání prostředku služby řeči (bezplatná nebo placená úroveň) do účtu Azure:
+
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Microsoft.
+
+1. V levém horním rohu portálu vyberte **vytvořit prostředek** . Pokud se vám nepovede **vytvořit prostředek**, můžete ho vždycky najít tak, že vyberete sbalenou nabídku v levém horním rohu obrazovky.
+
+1. V **novém** okně zadejte do vyhledávacího pole text "Speech" a stiskněte klávesu ENTER.
+
+1. Ve výsledcích hledání vyberte **řeč**.
+
+   ![výsledky hledání řeči](media/index/speech-search.png)
+
+1. Vyberte **vytvořit**a potom:
+
+   - Zadejte jedinečný název nového prostředku. Název vám pomůže rozlišovat mezi několika předplatnými vázanými na stejnou službu.
+   - Vyberte předplatné Azure, ke kterému je přiřazen nový prostředek, abyste zjistili, jak se účtují poplatky.
+   - Vyberte [oblast](regions.md) , ve které se prostředek použije.
+   - Vyberte cenovou úroveň Free (F0) nebo Place (S0). Pokud chcete získat úplné informace o cenách a kvótách využití pro každou úroveň, vyberte **Zobrazit úplné podrobnosti o cenách**.
+   - Vytvořte novou skupinu prostředků pro toto předplatné řeči nebo přiřaďte předplatné k existující skupině prostředků. Skupiny prostředků vám pomůžou udržovat vaše různá předplatná Azure uspořádaná.
+   - Vyberte **Vytvořit**. Tím přejdete na přehled nasazení a zobrazíte zprávy o průběhu nasazení.
+
+> [!NOTE]
+> V jedné nebo několika oblastech můžete vytvořit neomezený počet předplatných na úrovni Standard. Můžete ale vytvořit jenom jeden předplatné na bezplatné úrovni. Nasazení modelů na bezplatné úrovni, která zůstanou nevyužitá po dobu 7 dní, se automaticky vyřadí z provozu.
+
+Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení vyberte **Přejít k prostředku** a v levém navigačním podokně vyberte **klíče** . zobrazí se klíče předplatného služby Speech. Každé předplatné má dva klíče; v aplikaci můžete použít libovolný klíč. Chcete-li rychle zkopírovat nebo vložit klíč do editoru kódu nebo jiné umístění, vyberte tlačítko Kopírovat vedle každého klíče, přepněte okna a vložte obsah schránky do požadovaného umístění.
+
+> [!IMPORTANT]
+> Tyto klíče předplatného se používají pro přístup ke službě rozpoznávání rozhraní API. Nesdílejte své klíče. Uložte je bezpečně – například pomocí Azure Key Vault. Tyto klíče doporučujeme také pravidelně obnovovat. K volání rozhraní API je potřeba jenom jeden klíč. Při opětovném generování prvního klíče můžete použít druhý klíč pro pokračování přístupu ke službě.
+
+## <a name="complete-a-quickstart"></a>Dokončení rychlého startu
+
+Nabízíme rychlé zprovoznění ve většině oblíbených programovacích jazyků, z nichž každá je navržena pro učení základních vzorů návrhu a spouštění kódu za méně než 10 minut. Seznam rychlých startů pro jednotlivé funkce najdete v následujícím seznamu.
+
+Tato tabulka obsahuje nejoblíbenější rychlé starty pro jednotlivé funkce. Pomocí levé navigační navigace můžete prozkoumat další jazyky a platformy.
+
+* [Rychlý Start pro převod řeči na text](speech-to-text-basics.md)
+* [Rychlé zprovoznění převodu textu na řeč](get-started-text-to-speech.md)
+* [Rychlý Start překladu řeči](speech-translation-basics.md)
+* [Rychlý Start rozpoznávání záměrů](quickstarts/intent-recognition.md)
+* [Rychlé zprovoznění rozpoznávání mluvčího](speaker-recognition-basics.md)
+
+Až budete mít možnost začít pracovat se službou Speech, vyzkoušejte naše kurzy, které ukazují, jak řešit různé scénáře.
 
 - [Kurz: rozpoznávání záměrů z řeči pomocí sady Speech SDK a LUIS, C #](how-to-recognize-intents-from-speech-csharp.md)
 - [Kurz: hlasový vstup pro robota pomocí sady Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
@@ -74,7 +117,9 @@ Vzorový kód je k dispozici na GitHubu pro službu rozpoznávání řeči. Tyto
 
 Služba Speech funguje dobře s integrovanými modely, ale možná budete chtít další přizpůsobení a vyladit prostředí pro svůj produkt nebo prostředí. Možnosti přizpůsobení jsou v rozsahu od ladění akustického modelu až po jedinečná hlasová písma pro vaši značku.
 
-| Speech Service | Platforma | Description |
+Další produkty nabízejí modely řeči optimalizované pro konkrétní účely, jako je zdravotní péče nebo pojištění, ale jsou k dispozici všem uživatelům současně. Přizpůsobení ve službě Azure Speech se stávají součástí *vaší jedinečné* konkurenční výhody, která není k dispozici pro žádného jiného uživatele nebo zákazníka. Jinými slovy, vaše modely jsou soukromé a vlastní – vyladěny jenom pro váš případ použití.
+
+| Speech Service | Platforma | Popis |
 | -------------- | -------- | ----------- |
 | Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání překážek rozpoznávání řeči, například mluveného stylu, slovníku a hluku na pozadí. |
 | Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný jedinečný hlas vašich aplikací pro převod textu na řeč pomocí vašich dostupných dat o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
@@ -90,4 +135,5 @@ Služba Speech funguje dobře s integrovanými modely, ale možná budete chtít
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+> [Začínáme s převodem řeči na text](speech-to-text-basics.md) 
+>  [Začínáme s převodem textu na řeč](get-started-text-to-speech.md)

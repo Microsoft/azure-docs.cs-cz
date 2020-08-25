@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85248543"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí průvodce kopírováním služby Data Factory.
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak pomocí **Průvodce kopírováním** kopírovat d
 
 Tento návod ukazuje, jak vytvořit objekt pro vytváření dat Azure, spustit Průvodce kopírováním a projít posloupností kroků poskytnutí podrobností o vašem scénáři příjmu/pohybu dat. Po dokončení kroků v průvodci vytvoří průvodce automaticky kanál s aktivitou kopírování pro kopírování dat z úložiště objektů BLOB v Azure do Azure SQL Database. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než se pustíte do tohoto kurzu, dokončete požadované kroky uvedené v článku [Přehled kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
@@ -64,7 +64,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
         Některé kroky v tomto kurzu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../../azure-resource-manager/management/overview.md).
    4. Vyberte **umístění** pro příslušný objekt pro vytváření dat.
    5. Zaškrtněte políčko **Připnout na řídicí panel** v dolní části okna.  
-   6. Klikněte na **Vytvořit**.
+   6. Klikněte na možnost **Vytvořit**.
       
        ![Okno Nový objekt pro vytváření dat](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. Po dokončení vytváření se zobrazí okno **Data Factory** , jak je znázorněno na následujícím obrázku:

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706201"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761861"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,9 +89,14 @@ Za účelem vyřešení požadavků na zabezpečení a možnosti správy je spra
 
 Při konfiguraci podsítě s podporou služby je uživatel plně řízen provozem dat (TDS), zatímco spravované instance SQL vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
 
-Konfigurace podsítě s podporou služby je založena na funkci [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) virtuální sítě, která poskytuje automatickou správu konfigurace sítě a povoluje koncové body služby. Koncové body služby se daly použít ke konfiguraci pravidel brány firewall virtuální sítě pro účty úložiště, které udržují protokoly zálohování a auditu.
+Konfigurace podsítě s podporou služby je založena na funkci [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) virtuální sítě, která poskytuje automatickou správu konfigurace sítě a povoluje koncové body služby. 
 
-### <a name="network-requirements"></a>Požadavky sítě
+Koncové body služby se daly použít ke konfiguraci pravidel brány firewall virtuální sítě pro účty úložiště, které udržují protokoly zálohování a auditu. I s povolenými koncovými body služby doporučujeme zákazníkům používat [privátní odkaz](../../private-link/private-link-overview.md) , který poskytuje další zabezpečení nad koncovými body služby.
+
+> [!IMPORTANT]
+> Z důvodu specifičnosti konfigurace roviny řízení by konfigurace podsítě pro službu nepovolovala koncové body služby v národních cloudech. 
+
+### <a name="network-requirements"></a>Síťové požadavky
 
 Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
@@ -106,7 +111,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protokol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
@@ -116,7 +121,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná odchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protokol|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
@@ -294,7 +299,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 |mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-\*PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
+\* PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
 Kromě toho můžete přidat položky do směrovací tabulky pro směrování provozu, který má místní rozsahy privátních IP adres jako cíl prostřednictvím brány virtuální sítě nebo zařízení virtuální sítě (síťové virtuální zařízení).
 
@@ -326,15 +331,15 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-inbound-security-rules"></a>Povinná příchozí pravidla zabezpečení
 
-| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protokol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
+|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Libovolný              |PODSÍŤ MI  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 |health_probe|Všechny                         |Všechny     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinná odchozí pravidla zabezpečení
 
-| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protokol|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
@@ -342,7 +347,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 > [!IMPORTANT]
 > Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440 a 1452 a jedno odchozí pravidlo pro porty 443 a 12000. Zřizování spravované instance SQL prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby `VnetSubnetConflictWithIntendedPolicy` .
 
-\*PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
+\* PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
 > [!IMPORTANT]
 > I když požadovaná příchozí pravidla zabezpečení umožňují provoz z _libovolného_ zdroje na portech 9000, 9003, 1438, 1440 a 1452, jsou tyto porty chráněny integrovanou bránou firewall. Další informace najdete v tématu [určení adresy koncového bodu správy](management-endpoint-find-ip-address.md).

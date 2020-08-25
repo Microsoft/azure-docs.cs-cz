@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 832abd0d8a5b7fad126359edcc7de5019560a82f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82096072"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748820"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -23,8 +23,8 @@ Následující omezení platí pouze pro síťové prostředky spravované prost
 
 | Prostředek | Omezení | 
 | --- | --- |
-| Virtuální sítě |1 000 |
-| Podsítě na virtuální síť |3 000 |
+| Virtuální sítě |1 000 |
+| Podsítě v jedné virtuální síti |3 000 |
 | Partnerské vztahy virtuální sítě v jedné virtuální síti |500 |
 | [Brány virtuální sítě (brány VPN) na virtuální síť](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [Brány virtuální sítě (brány ExpressRoute) na virtuální síť](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
@@ -37,9 +37,9 @@ Následující omezení platí pouze pro síťové prostředky spravované prost
 | [Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500 000 |
 | Karty síťového rozhraní |65 536 |
 | Network Security Groups (Skupiny zabezpečení sítě) |5 000 |
-| Počet pravidel NSG na skupinu NSG |1 000 |
+| Počet pravidel NSG na skupinu NSG |1 000 |
 | IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4 000 |
-| Skupiny zabezpečení aplikací |3 000 |
+| Skupiny zabezpečení aplikací |3 000 |
 | Skupiny zabezpečení aplikace na konfiguraci protokolu IP, na síťové kartě |20 |
 | Konfigurace protokolu IP na jednu skupinu zabezpečení aplikace |4 000 |
 | Skupiny zabezpečení aplikací, které se dají zadat v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |100 |
@@ -67,7 +67,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení         |
 |-----------------------------------------|-------------------------------|
-| Nástroje pro vyrovnávání zatížení                          | 1 000                         |
+| Nástrojů pro vyrovnávání zatížení                          | 1 000                         |
 | Pravidla na prostředek                      | 1 500                         |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
@@ -83,7 +83,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení        |
 |-----------------------------------------|------------------------------|
-| Nástroje pro vyrovnávání zatížení                          | 1 000                        |
+| Nástrojů pro vyrovnávání zatížení                          | 1 000                        |
 | Pravidla na prostředek                      | 250                          |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                          |
 | Konfigurace IP adresy front-endu              | 200                          |
@@ -100,7 +100,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Privátní IP adresy v jedné virtuální síti |4 096 |4 096 |
 | Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role |500 000, až 1 000 000 pro dvě nebo více síťových adaptérů. |500 000, až 1 000 000 pro dvě nebo více síťových adaptérů. |
 | Skupiny zabezpečení sítě (skupin zabezpečení sítě) |200 |200 |
-| Počet pravidel NSG na skupinu NSG |1 000 |1 000 |
+| Počet pravidel NSG na skupinu NSG |200 |1 000 |
 | Tabulky směrování definované uživatelem |200 |200 |
 | Trasy definované uživatelem na směrovací tabulku |400 |400 |
 | Veřejné IP adresy (dynamické) |500 |500 |

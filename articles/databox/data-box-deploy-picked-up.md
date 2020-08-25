@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 08/14/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 577c184f78c5784b29db7562f3c33a3cb7518f0c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1d84d25e5605ede064ddc853a4249ba49d59513d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142039"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257747"
 ---
 ::: zone target="docs"
 
@@ -352,7 +352,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box v Japonsku, Singapuru, Indii, Jihoafrické republice, Koreji nebo Západní Evropě a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů. 
+Pokud používáte Data Box ve státní správě USA, v Japonsku, Singapuru, Indii, Jihoafrické republice, Koreji nebo Západní Evropě a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů. 
 
 1. Po úspěšném dokončení tohoto kroku si poznamenejte autorizační kód uvedený na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu.
 2. Vypněte zařízení a odpojte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.

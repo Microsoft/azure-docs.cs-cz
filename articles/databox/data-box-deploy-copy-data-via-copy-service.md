@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84219166"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Kurz: použití služby kopírování dat ke kopírování dat do Azure Data Box (Preview)
@@ -51,7 +51,7 @@ Až budete připojeni k zařízení se serverem NAS, je dalším krokem kopírov
 * Pokud se data mění, protože ji služba kopírování dat čte, můžou se zobrazit chyby nebo poškození dat.
 
 > [!IMPORTANT]
-> Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
+> Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
 Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit úlohu:
 
@@ -64,9 +64,9 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
     
     |Pole                          |Hodnota    |
     |-------------------------------|---------|
-    |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povoleny v názvu úlohy: \<, \> , \| , \? , \* , \\ , \: , \/ a\\\.         |
+    |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povoleny v názvu úlohy: \<, \> , \| , \? , \* , \\ , \: , \/ a \\\.         |
     |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>` .        |
-    |**Jmen**                       |Uživatelské jméno ve `\\<DomainName><UserName>` formátu pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
+    |**Uživatelské jméno**                       |Uživatelské jméno ve `\\<DomainName><UserName>` formátu pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
     |**Heslo**                       |Heslo pro přístup ke zdroji dat.           |
     |**Cílový účet úložiště**    |Vyberte cílový účet úložiště, do kterého se mají nahrát data ze seznamu.         |
     |**Cílový typ**       |V seznamu vyberte typ cílového úložiště: **objekt blob bloku**, **objekt blob stránky**nebo **soubory Azure**.        |
@@ -120,8 +120,8 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
 
     - Ve sloupci **stav** můžete zobrazit stav úlohy kopírování. Stav může být následující:
         - **Spuštěno**
-        - **Failed**
-        - **Úspěch**
+        - **Neúspěšný**
+        - **Úspěšný**
         - **Pozastaveno**
         - **Pozastaveno**
         - **Probíhá zrušení**

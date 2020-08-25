@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 67b041476ecc5b5da389ab1377025a94675fc42a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078882"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794538"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -112,6 +112,28 @@ Nyní můžete nastavit počet instancí, které chcete ručně škálovat.
 ![Nastavení ručního škálování][14]
 
 K automatickému škálování se můžete kdykoli vrátit kliknutím na **Povolit automatické škálování** a pak na **Uložit**.
+
+## <a name="route-traffic-to-healthy-instances-app-service"></a>Směrování provozu do instancí v pořádku (App Service)
+
+Při horizontálním navýšení kapacity na více instancí může App Service provádět kontroly stavu instancí, aby bylo možné směrovat provoz pouze do zdravých instancí. Provedete to tak, že otevřete portál pro App Service a v části **monitorování**vyberete **kontrolu stavu** . Vyberte **Povolit** a zadejte platnou cestu adresy URL v aplikaci, například `/health` nebo `/api/health` . Klikněte na **Uložit**.
+
+### <a name="health-check-path"></a>Cesta kontroly stavu
+
+Cesta musí odpovídat do dvou minut se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do dvou minut nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP**s** , Healthcheck bude dodržovat http**s** a odeslat žádost pomocí tohoto protokolu.
+
+Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit k důležité součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, aby označoval, že aplikace není v pořádku.
+
+### <a name="behavior"></a>Chování
+
+Po zadání cesty pro kontrolu stavu App Service otestuje cestu k cestě všech instancí. Pokud kód úspěšné odpovědi po 5 příkazech otestuje neobdrží, považuje se tato instance za "není v pořádku". Z rotace nástroje pro vyrovnávání zatížení budou vyloučeny instance, které nejsou v pořádku. Při horizontálním navýšení nebo zmenšení kapacity App Service nástroj otestuje cestu kontroly stavu, aby bylo zajištěno, že nové instance budou připravené na požadavky.
+
+Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné.
+
+Pokud instance zůstane po jednu hodinu v nesprávném stavu, bude nahrazena novou instancí. V jednom z nich bude za hodinu nahrazena maximálně jedna instance, a to s maximálním počtem tří instancí za den a App Service.
+
+### <a name="monitoring"></a>Monitorování
+
+Po poskytnutí cesty pro kontrolu stavu vaší aplikace můžete monitorovat stav svého webu pomocí Azure Monitor. V okně pro **kontrolu stavu** na portálu klikněte na **metriky** na horním panelu nástrojů. Otevře se nové okno, kde můžete zobrazit historický stav webu a vytvořit nové pravidlo výstrahy. Další informace o monitorování vašich lokalit najdete v [příručce k Azure monitor](../../app-service/web-sites-monitor.md).
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech operací modulu automatického škálování v předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

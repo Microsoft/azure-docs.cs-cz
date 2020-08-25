@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73241204"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Kurz: zápis do Apache Hadoop HDFS z Apache Storm ve službě Azure HDInsight
@@ -38,11 +38,11 @@ V tomto kurzu se naučíte:
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. `wasb://` To Azure Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro `wasb://` `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
-Následující YAML je výňatek ze `resources/writetohdfs.yaml` souboru, který je zahrnutý v příkladu. Tento soubor definuje topologii zaplavování pomocí rozhraní pro [tok](https://storm.apache.org/releases/current/flux.html) Apache Storm.
+Následující YAML je výňatek ze souboru, který je `resources/writetohdfs.yaml` zahrnutý v příkladu. Tento soubor definuje topologii zaplavování pomocí rozhraní pro [tok](https://storm.apache.org/releases/current/flux.html) Apache Storm.
 
 ```yaml
 components:
@@ -101,29 +101,29 @@ bolts:
 Tento YAML definuje následující položky:
 
 * `syncPolicy`: Definuje, kdy jsou soubory synchronizovány/vyprázdněny do systému souborů. V tomto příkladu každé 1000 řazených kolekcí členů.
-* `fileNameFormat`: Definuje cestu a vzor názvu souboru, který se má použít při zápisu souborů. V tomto příkladu je cesta k dispozici za běhu pomocí filtru a Přípona souboru je `.txt`.
+* `fileNameFormat`: Definuje cestu a vzor názvu souboru, který se má použít při zápisu souborů. V tomto příkladu je cesta k dispozici za běhu pomocí filtru a Přípona souboru je `.txt` .
 * `recordFormat`: Definuje interní formát napsaných souborů. V tomto příkladu jsou pole oddělená `|` znakem.
 * `rotationPolicy`: Definuje, kdy se mají soubory otáčet. V tomto příkladu není provedeno otočení.
 * `hdfs-bolt`: Používá předchozí součásti jako konfigurační parametry pro `HdfsBolt` třídu.
 
-Další informace o rozhraních toků naleznete v tématu [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
+Další informace o rozhraních toků naleznete v tématu [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) .
 
 ## <a name="configure-the-cluster"></a>Konfigurace clusteru
 
-Ve výchozím nastavení zaplave v HDInsight neobsahuje součásti, které `HdfsBolt` nástroj používá ke komunikaci s Azure Storage nebo data Lake Storage v cestě třídy classpath. Pomocí následující akce skriptu přidejte tyto komponenty do `extlib` adresáře pro zaplavení v clusteru:
+Ve výchozím nastavení zaplave v HDInsight neobsahuje součásti, které nástroj `HdfsBolt` používá ke komunikaci s Azure Storage nebo data Lake Storage v cestě třídy classpath. Pomocí následující akce skriptu přidejte tyto komponenty do adresáře pro zaplavení `extlib` v clusteru:
 
 | Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu |– Vlastní|
 |Identifikátor URI skriptu bash |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Typ (typy) uzlů |Nimbus, nadřízený|
-|Parametry |Žádná|
+|Parametry |Žádné|
 
 Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](./../hdinsight-hadoop-customize-cluster-linux.md) .
 
 ## <a name="build-and-package-the-topology"></a>Sestavení a zabalení topologie
 
-1. Stáhněte si ukázkový projekt z [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) nástroje do vývojového prostředí.
+1. Stáhněte si ukázkový projekt z nástroje [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) do vývojového prostředí.
 
 2. Z příkazového řádku, terminálu nebo relace prostředí změňte adresáře na kořen staženého projektu. K sestavení a zabalení topologie použijte následující příkaz:
 
@@ -131,7 +131,7 @@ Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpů
     mvn compile package
     ```
 
-    Po dokončení sestavení a balíčku je k dispozici nový adresář s názvem `target`, který obsahuje soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar`. Tento soubor obsahuje kompilovaná topologie.
+    Po dokončení sestavení a balíčku je k dispozici nový adresář s názvem `target` , který obsahuje soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar` . Tento soubor obsahuje kompilovaná topologie.
 
 ## <a name="deploy-and-run-the-topology"></a>Nasazení a spuštění topologie
 
@@ -147,13 +147,13 @@ Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpů
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Po připojení pomocí následujícího příkazu vytvořte soubor s názvem `dev.properties`:
+1. Po připojení pomocí následujícího příkazu vytvořte soubor s názvem `dev.properties` :
 
     ```bash
     nano dev.properties
     ```
 
-1. Jako obsah `dev.properties` souboru použijte následující text. Podle vašeho [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme)upravte podle potřeby.
+1. Jako obsah souboru použijte následující text `dev.properties` . Podle vašeho [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme)upravte podle potřeby.
 
     ```
     hdfs.write.dir: /stormdata/
@@ -168,7 +168,7 @@ Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpů
     storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
     ```
 
-    Tento příkaz spustí topologii pomocí rozhraní toků, protože ho odešle do uzlu Nimbus clusteru. Topologie je definována `writetohdfs.yaml` souborem, který je součástí jar. `dev.properties` Soubor se předává jako filtr a hodnoty obsažené v souboru jsou čteny topologiemi.
+    Tento příkaz spustí topologii pomocí rozhraní toků, protože ho odešle do uzlu Nimbus clusteru. Topologie je definována souborem, který je `writetohdfs.yaml` součástí jar. `dev.properties`Soubor se předává jako filtr a hodnoty obsažené v souboru jsou čteny topologiemi.
 
 ## <a name="view-output-data"></a>Zobrazit výstupní data
 

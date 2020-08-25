@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84142380"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: zjištění jazyka pomocí Analýza textu
@@ -69,7 +69,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvořte žádost POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro rozpoznávání jazyka](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages).
 
-+ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. `/text/analytics/v3.0/languages`Do adresy URL musíte zahrnout. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
++ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. `/text/analytics/v3.0/languages`Do adresy URL musíte zahrnout. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -259,7 +259,7 @@ Výsledný výstup se skládá z předpřevládajícího jazyka s skóre menší
     }
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka pomocí Analýza textu ve službě Azure Cognitive Services. Následující body byly vysvětleny a ukázaly:
 
@@ -270,6 +270,6 @@ V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka po
 
 ## <a name="see-also"></a>Viz také
 
-* [Přehled Analýza textu](../overview.md)
+* [Přehled analýzy textu](../overview.md)
 * [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
 * [Co je nového](../whats-new.md)

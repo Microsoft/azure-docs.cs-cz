@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 7bcf656b1fa0a73021a92113eb5879312d100823
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84974496"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis uživatelsky definované funkce jazyka C# pro Azure Stream Analytics úlohy (Preview)
@@ -26,11 +26,11 @@ V tomto kurzu se naučíte:
 > * Otestujte úlohu Stream Analytics místně.
 > * Publikujte svoji úlohu do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [Nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a sadu funkcí **Vývoj pro Azure** nebo **Ukládání a zpracování dat**.
 * Pokud vytváříte úlohu IoT Edge, podívejte se na stávající [Průvodce vývojem Stream Analytics Edge](stream-analytics-tools-for-visual-studio-edge-jobs.md) .
 
