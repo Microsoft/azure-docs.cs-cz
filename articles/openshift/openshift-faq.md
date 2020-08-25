@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497575"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816231"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -65,25 +65,9 @@ V clusterech Azure Red Hat OpenShift 4. x nejsou uzly infrastruktury aktuálně 
 
 Ve výchozím nastavení jsou v clusterech Azure Red Hat OpenShift 3,11 zahrnuté uzly infrastruktury.
 
-## <a name="upgrades"></a>Programů
+## <a name="how-do-i-handle-cluster-upgrades"></a>Návody se obsluhují upgrady clusteru?
 
-###  <a name="what-is-the-general-upgrade-process"></a>Jaký je obecný proces upgradu?
-
-Opravy se automaticky aplikují do vašeho clusteru. Nemusíte provádět žádnou akci, abyste mohli přijímat upgrady oprav v clusteru.
-
-Spuštění upgradu je bezpečný proces ke spuštění a neměl by rušit Clusterové služby. Společný tým Microsoft-Red Hat může aktivovat proces upgradu, pokud jsou k dispozici nové verze nebo běžné chyby zabezpečení a ohrožení. Dostupné aktualizace se testují v přípravném prostředí a pak se aplikují na produkční clustery. Následující osvědčené postupy pomáhají zajistit minimální a žádné výpadky.
-
-Plánovaná údržba není u zákazníka předplánována. Oznámení související s údržbou je možné odeslat e-mailem.
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Co je proces údržby Azure Red Hat OpenShift?
-
-Existují dva typy údržby pro Azure Red Hat OpenShift: upgrady a údržba iniciovaná poskytovatelem cloudu.
-- Mezi upgrady patří upgrady softwaru a časté chyby zabezpečení a ohrožení.
-- Údržba iniciovaná poskytovatelem cloudu zahrnuje sítě, úložiště a oblastní výpadky. Údržba závisí na poskytovateli cloudu a spoléhá na aktualizace poskytované zprostředkovatelem.
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Co je v nouzi a v plánovaných oknech údržby?
-
-Mezi těmito dvěma typy údržby nerozlišujeme. Naši týmy jsou k dispozici 24/7/365 a nepoužívají tradiční plánovaná časová období údržby "mimo špičku".
+Informace o upgradech, údržbě a podporovaných verzích najdete v [Průvodci životního cyklu podpory](support-lifecycle.md).
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Jak se bude aktualizovat hostitelský operační systém a OpenShift software?
 
@@ -157,7 +141,7 @@ Zákazníci a jednotliví Správci projektu mohou přizpůsobit sítě mezi obor
 
 ### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Snažím se vytvořit partnerský vztah k virtuální síti v jiném předplatném, ale při neúspěšném získání chyby CIDR virtuální sítě.
 
-V předplatném, které má virtuální síť, nezapomeňte zaregistrovat `Microsoft.ContainerService` poskytovatele pomocí následujícího příkazu:`az provider register -n Microsoft.ContainerService --wait`
+V předplatném, které má virtuální síť, nezapomeňte zaregistrovat `Microsoft.ContainerService` poskytovatele pomocí následujícího příkazu: `az provider register -n Microsoft.ContainerService --wait`
 
 ### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Můžeme zadat rozsahy IP adres pro nasazení na privátní virtuální síti a vyhnout se konfliktům s ostatními podnikovými virtuální sítě po sobě partnerských vztahů?
 

@@ -41,7 +41,7 @@
 - name: ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
     - name: Šablony Resource Manageru
       href: container-instances-samples-rm.md
 - name: Koncepty

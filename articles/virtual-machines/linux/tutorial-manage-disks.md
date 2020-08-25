@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 5ebb3883304584570759ea02a2de7187efcdaf26
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718675"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757669"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
@@ -50,6 +50,7 @@ Azure poskytuje dva typy disků.
 **Disky Premium založené na discích** SSD s vysokým výkonem a nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Velikosti virtuálních počítačů s názvem  **s** v [názvu velikosti](../vm-naming-conventions.md), obvykle podporují Premium Storage. Například virtuální počítače DS-Series, DSv2-Series, GS-Series a FS-series podporují Prémiové úložiště. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Například pokud je velikost disku větší než 64 GB, ale menší než 128 GB, je typ disku P10. 
 
 <br>
+
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
@@ -112,16 +113,17 @@ Vytvořte připojení SSH k virtuálnímu počítači. Ukázkovou IP adresu nahr
 ssh 10.101.10.10
 ```
 
-Rozdělte disk na oddíly pomocí příkazu `fdisk`.
+Rozdělte disk na oddíly pomocí příkazu `parted`.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Zapište na oddíl systém souborů pomocí příkazu `mkfs`.
+Zapište na oddíl systém souborů pomocí příkazu `mkfs`. Použijte `partprobe` k tomu, aby operační systém tuto změnu věděli.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 Připojte nový disk, aby byl přístupný v operačním systému.
@@ -130,18 +132,19 @@ Připojte nový disk, aby byl přístupný v operačním systému.
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Disk je teď přístupný prostřednictvím přípojného bodu *datadrive*, což můžete ověřit spuštěním příkazu `df -h`.
+K disku je teď možné přistupovat prostřednictvím `/datadrive` přípojný bod, který se dá ověřit spuštěním `df -h` příkazu.
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-Ve výstupu uvidíte novou jednotku připojenou na přípojném bodu */datadrive*.
+Výstup ukazuje nově připojenou jednotku `/datadrive` .
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -157,11 +160,22 @@ Ve výstupu se zobrazí identifikátor UUID jednotky, v tomto případě `/dev/s
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-Přidejte do souboru */etc/fstab* řádek podobný následujícímu.
+> [!NOTE]
+> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
+
+Otevřete `/etc/fstab` soubor v textovém editoru následujícím způsobem:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Do souboru */etc/fstab* přidejte řádek podobný tomuto: Nahraďte hodnotu UUID vlastními.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+Až budete hotovi s úpravou souboru, použijte `Ctrl+O` k zápisu souboru a `Ctrl+X` k ukončení editoru.
 
 Po dokončení konfigurace disku zavřete relaci SSH.
 
@@ -175,7 +189,7 @@ Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku
 
 ### <a name="create-snapshot"></a>Vytvoření snímku
 
-Před vytvořením snímku disku virtuálního počítače potřebujete ID nebo název disku. K vrácení ID disku použijte příkaz [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
+Před vytvořením snímku potřebujete ID nebo název disku. K snímku ID disku použijte [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -185,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Jakmile máte ID disku virtuálního počítače, můžete jeho snímek vytvořit pomocí následujícího příkazu.
+Teď, když máte ID, vytvořte snímek disku pomocí [AZ Snapshot Create](/cli/azure/snapshot#az-snapshot-create) .
 
 ```azurecli-interactive
 az snapshot create \
@@ -196,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Vytvoření disku ze snímku
 
-Tento snímek pak můžete převést na disk a jeho pomocí znovu vytvořit virtuální počítač.
+Tento snímek se pak dá převést na disk pomocí [AZ disk Create](/cli/azure/disk#az-disk-create), který se dá použít k opětovnému vytvoření virtuálního počítače.
 
 ```azurecli-interactive
 az disk create \
@@ -207,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Obnovení virtuálního počítače ze snímku
 
-Abychom si předvedli obnovení virtuálního počítače, odstraníme napřed existující virtuální počítač.
+Pokud chcete předvést obnovení virtuálního počítače, odstraňte existující virtuální počítač pomocí [AZ VM Delete](/cli/azure/vm#az-vm-delete).
 
 ```azurecli-interactive
 az vm delete \
@@ -229,7 +243,7 @@ az vm create \
 
 K virtuálnímu počítači bude potřeba znovu připojit všechny datové disky.
 
-Napřed zjistěte název datového disku pomocí příkazu [az disk list](/cli/azure/disk#az-disk-list). V tomto příkladu se název disku uloží do proměnné s názvem *datadisk*, která se použije v dalším kroku.
+Pomocí příkazu [AZ disk list](/cli/azure/disk#az-disk-list) vyhledejte název datového disku. V tomto příkladu se umístí název disku do proměnné s názvem `datadisk` , která se používá v dalším kroku.
 
 ```azurecli-interactive
 datadisk=$(az disk list \

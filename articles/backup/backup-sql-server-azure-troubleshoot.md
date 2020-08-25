@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660123"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756907"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -24,7 +24,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 Po vytvoření a konfiguraci trezoru Recovery Services, který zjišťuje databáze a konfiguruje zálohování, je proces se dvěma kroky.<br>
 
-![sql](./media/backup-azure-sql-database/sql.png)
+![Cíl zálohování – SQL Server na virtuálním počítači Azure](./media/backup-azure-sql-database/sql.png)
 
 Pokud se v konfiguraci zálohování nezobrazuje virtuální počítač SQL a jeho instance ve **databáze zjišťování na virtuálních počítačích** a **Konfigurace zálohování** (viz výše uvedený obrázek), zajistěte, aby:
 
