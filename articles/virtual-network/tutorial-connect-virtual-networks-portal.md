@@ -14,10 +14,10 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77201294"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
@@ -49,7 +49,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Předplatné| Vyberte předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
     |Region| Vyberte **USA – východ**.|
-    |Name|myVirtualNetwork1|
+    |Název|myVirtualNetwork1|
 
 4. Na kartě **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte *Subnet1* pro **název podsítě** a 10.0.0.0/24.
 5. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
@@ -101,7 +101,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Name|myVm1|
+    |Název|myVm1|
     |Umístění| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|

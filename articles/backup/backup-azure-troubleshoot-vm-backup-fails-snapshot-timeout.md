@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611853"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755364"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -175,8 +175,8 @@ Operace zálohování může selhat při zálohování virtuálního počítače
 
 Poslední úloha zálohování se nezdařila, protože probíhá existující úloha zálohování. Novou úlohu zálohování nemůžete spustit, dokud se nedokončí aktuální úloha. Před aktivací nebo plánováním dalších operací zálohování zajistěte, aby byla právě probíhající operace zálohování dokončena. Chcete-li zjistit stav úloh zálohování, proveďte následující kroky:
 
-1. Přihlaste se k Azure Portal vyberte **všechny služby**. Zadejte Recovery Services a vyberte **trezory Recovery Services**. Objeví se seznam trezorů Recovery Services.
-2. V seznamu trezorů služby Recovery Services vyberte trezor, ve kterém je zálohování nakonfigurované.
+1. Přihlaste se k Azure Portal vyberte **všechny služby**. Zadejte Recovery Services a vyberte **trezory Recovery Services**. Objeví se seznam trezorů Služeb zotavení.
+2. V seznamu trezorů Recovery Services vyberte trezor, ve kterém je zálohování nakonfigurované.
 3. V nabídce řídicího panelu trezoru vyberte **úlohy zálohování** , ve kterých se zobrazí všechny úlohy zálohování.
    - Pokud úloha zálohování probíhá, počkejte, než se dokončí, nebo zrušte úlohu zálohování.
      - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a vyberete **Zrušit** nebo použijete [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).

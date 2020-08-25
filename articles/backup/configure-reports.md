@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612431"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755258"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -89,7 +89,7 @@ Pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše z
    ![Karta použití](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> U úloh aplikace DPM se uživatelům může v porovnání s hodnotou agregovaného využití zobrazit lehký rozdíl (z pořadí 20 MB na server DPM) mezi hodnotami využití zobrazenými v sestavách, jak je znázorněno na kartě Přehled trezoru služby Recovery Services. Tento rozdíl je vydaný faktem, že každý server DPM, který se zaregistruje pro zálohování, má přidružený zdroj dat metadata, který není povrchový jako artefakt pro vytváření sestav.
+> V případě úloh DPM se uživatelům může v porovnání s hodnotou agregovaného využití zobrazit lehký rozdíl (z pořadí 20 MB na server DPM) mezi hodnotami využití zobrazenými v sestavách, jak je znázorněno na kartě **přehled** Recovery Servicesového trezoru. Tento rozdíl je vydaný faktem, že každý server DPM, který se zaregistruje pro zálohování, má přidružený zdroj dat metadata, který není povrchový jako artefakt pro vytváření sestav.
 
 ##### <a name="jobs"></a>Úlohy
 

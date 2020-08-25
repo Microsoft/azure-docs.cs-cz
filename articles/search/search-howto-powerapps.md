@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565833"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751067"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Power Apps](http://make.powerapps.com)
 
@@ -47,7 +47,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
-1. Vyberte **+ Nový vlastní konektor**a pak vyberte **vytvořit z prázdné**.
+1. Vyberte  **+ Nový vlastní konektor**a pak vyberte **vytvořit z prázdné**.
 
     :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Vytvořit z prázdné nabídky" border="true":::
 
@@ -72,9 +72,9 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
 1. Posuňte se dolů. V části požadavky kliknutím na **+ importovat z ukázkového** tlačítka nakonfigurujte požadavek na dotaz na vyhledávací službu:
 
-   * Vyberte operaci.`GET`
+   * Vyberte operaci. `GET`
 
-   * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání ( `search=*` vrátí všechny dokumenty, `$select=` umožňuje zvolit pole). Verze rozhraní API je povinná. V plném rozsahu adresa URL může vypadat takto:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
+   * Pro adresu URL zadejte ukázkový dotaz pro index vyhledávání ( `search=*` vrátí všechny dokumenty, `$select=` umožňuje zvolit pole). Verze rozhraní API je povinná. V plném rozsahu adresa URL může vypadat takto: `https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * Pro záhlaví zadejte `Content-Type` . 
 
@@ -92,7 +92,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
 1. U pole *Vybrat*: nastavit `HotelName,Description,Address/City` jako **výchozí hodnotu**nastavte hodnotu **požadováno** na *false*a nastavte vlastnost **visibility** na *none*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metadata parametrů verze" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Vybrat metadata parametrů" border="true":::
 
 1. Pro *rozhraní API-Version*: `2020-06-30` nastavte jako **výchozí hodnotu**, nastavte **required** na *true*a nastavte **visibility** jako *interní*.  
 
@@ -250,7 +250,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

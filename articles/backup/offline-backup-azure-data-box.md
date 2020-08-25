@@ -3,12 +3,12 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091024"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761555"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
@@ -247,7 +247,7 @@ V této části najdete popis kroků, které je potřeba provést po úspěšné
 
 - Poté, co agent MARS úspěšně vytvoří bod obnovení, který odpovídá prvotnímu zálohování, můžete odstranit účet úložiště nebo konkrétní obsah přidružený k Azure Data Box úlohy.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Agent Microsoft Azure Recovery Services (MARS) vytvoří ve vašem tenantovi aplikaci Azure Active Directory (Azure AD). Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 
@@ -259,13 +259,13 @@ Při konfiguraci offline zálohování se můžete setkat s problémem v důsled
 
 Chcete-li zjistit, zda je váš problém stejný jako dříve popsaný, proveďte jeden z následujících kroků.
 
-#### <a name="step-1"></a>Step 1
+#### <a name="step-1-of-verification"></a>Krok 1 ověřování
 
 Zkontrolujte, jestli se v konzole MAB při konfiguraci offline zálohování zobrazuje následující chybová zpráva.
 
 ![Nepovedlo se vytvořit zásady offline zálohování pro aktuální účet Azure.](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>Krok 2
+#### <a name="step-2-of-verification"></a>Krok 2 ověření
 
 1. Otevřete složku **TEMP** v instalační cestě. Výchozí cesta k dočasné složce je *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Vyhledejte soubor *CBUICurr* a soubor otevřete.
 
@@ -275,11 +275,11 @@ Zkontrolujte, jestli se v konzole MAB při konfiguraci offline zálohování zob
 
 Chcete-li tento problém vyřešit, postupujte podle následujících kroků a opakujte konfiguraci zásad.
 
-#### <a name="step-1"></a>Step 1
+#### <a name="step-1-of-workaround"></a>Krok 1 alternativního řešení
 
 Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu nebo exportu.
 
-#### <a name="step-2"></a>Krok 2
+#### <a name="step-2-of-workaround"></a>Krok 2 – alternativní řešení
 
 Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci. Vyberte **Azure Portal**  >  **Azure Active Directory**  >  **Registrace aplikací**.
 

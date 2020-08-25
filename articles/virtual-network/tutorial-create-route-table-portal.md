@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86079645"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
@@ -34,13 +34,13 @@ Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci 
 
 V tomto kurzu se používá [Azure Portal](https://portal.azure.com). Můžete použít také rozhraní příkazového [řádku Azure](tutorial-create-route-table-cli.md) nebo [Azure PowerShell](tutorial-create-route-table-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-nva"></a>Vytvoření síťového virtuálního zařízení
 
 Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtuální počítače, které vám pomůžou se síťovými funkcemi, jako je například směrování a optimalizace brány firewall. V tomto kurzu se předpokládá, že používáte **Windows Server 2016 Datacenter**. Pokud chcete, můžete vybrat jiný operační systém.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 1. Vyberte **zabezpečení**  >  **Windows serveru 2016 Datacenter**.
 
@@ -53,7 +53,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
     | **Podrobnosti o projektu** | Předplatné | Zvolte vaše předplatné. |
     | | Skupina prostředků | Vyberte **vytvořit novou**, zadejte *MyResourceGroup*a vyberte **OK**. |
     | **Podrobnosti instance** | Název virtuálního počítače | Zadejte *myVmNva*. |
-    | | Oblast | Vyberte **východní USA (US)**. |
+    | | Region | Vyberte **východní USA (US)**. |
     | | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury**. |
     | | Image | Vyberte **Windows Server 2016 Datacenter**. |
     | | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
@@ -102,7 +102,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
         | Nastavení | Hodnota |
         | ------- | ----- |
         | Název | *mynvastorageaccount* |
-        | Account kind (Druh účtu) | **Storage (pro obecné účely V1)** |
+        | Druh účtu | **Storage (pro obecné účely V1)** |
         | Výkon | **Standard** |
         | Replikace | **Místně redundantní úložiště (LRS)** |
     
@@ -118,7 +118,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Do vyhledávacího pole zadejte *směrovací tabulku*. Pokud se ve výsledcích hledání zobrazí **tabulka směrování** , vyberte ji.
 
@@ -132,7 +132,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
     | Předplatné | Vaše předplatné |
     | Skupina prostředků | **myResourceGroup** |
     | Umístění | **VYLEPŠENÍ Východní USA** |
-    | Šíření tras brány virtuální sítě | **Enabled** (Povoleno) |
+    | Šíření tras brány virtuální sítě | **Povoleno** |
 
     ![Vytvoření směrovací tabulky, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
 
@@ -154,7 +154,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
     | ------- | ----- |
     | Název trasy | *ToPrivateSubnet* |
     | Předpona adresy | *10.0.1.0/24* (rozsah adres *privátní* podsítě vytvořené dříve) |
-    | Typ dalšího segmentu | **Virtuální zařízení** |
+    | Typ dalšího segmentu směrování | **Virtuální zařízení** |
     | Adresa dalšího segmentu | *10.0.2.4* (adresa v rozsahu adres podsítě *DMZ* ) |
 
 1. Vyberte **OK**.

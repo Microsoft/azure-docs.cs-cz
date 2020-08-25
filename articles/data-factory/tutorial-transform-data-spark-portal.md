@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81409266"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktivace spuštění kanálu
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 > HdInsight podporuje jenom účty úložiště pro obecné účely s úrovní Standard. Ujistěte se, že účet úložiště nemá úroveň Premium nebo není určený jenom pro objekty blob.
 
-* **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+* **Azure PowerShell.** Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 
 
 ### <a name="upload-the-python-script-to-your-blob-storage-account"></a>Nahrání skriptu Pythonu do účtu služby Blob Storage
@@ -71,7 +71,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     if __name__ == "__main__":
         main()
     ```
-1. Nahraďte * &lt;storageAccountName&gt; * názvem vašeho účtu úložiště Azure. Pak soubor uložte. 
+1. Nahraďte * &lt; storageAccountName &gt; * názvem vašeho účtu úložiště Azure. Pak soubor uložte. 
 1. Ve službě Azure Blob Storage vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
 1. Vytvořte složku **spark**.
 1. Ve složce **spark** vytvořte dílčí složku s názvem **script**. 
@@ -93,7 +93,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
       
    ![Podokno Nová datová továrna](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Můžete například použít ** &lt;svůj&gt;ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Můžete například použít ** &lt; svůj &gt; ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
@@ -159,7 +159,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    f. Do pole **Klíč instančního objektu** zadejte klíč. 
    
-   g. V poli **Skupina prostředků** vyberte stejnou skupinu prostředků, kterou jste použili při vytváření datové továrny. Cluster Spark se vytvoří v této skupině prostředků. 
+   například V poli **Skupina prostředků** vyberte stejnou skupinu prostředků, kterou jste použili při vytváření datové továrny. Cluster Spark se vytvoří v této skupině prostředků. 
    
    h. Rozbalte **Typ operačního systému**.
    
@@ -167,7 +167,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    j. Zadejte **Heslo clusteru** pro tohoto uživatele. 
    
-   k. Vyberte **Finish** (Dokončit). 
+   k. Vyberte **Dokončit**. 
 
    ![Nastavení propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -176,7 +176,7 @@ V této části vytvoříte tyto dvě propojené služby:
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte tlačítko **+** (plus) a pak v nabídce vyberte **kanál** .
+1. Vyberte **+** tlačítko (plus) a pak v nabídce vyberte **kanál** .
 
    ![Tlačítka pro vytvoření nového kanálu](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
 1. Na panelu nástrojů **Aktivity** rozbalte **HDInsight**. Přetáhněte aktivitu **Spark** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. 
@@ -199,7 +199,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    c. Přejděte do složky **adftutorial/spark/script**, vyberte soubor **WordCount_Spark.py** a potom vyberte **Dokončit**.      
 
-1. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem tlačítka **>>** (šipka doprava) zavřete okno ověřování. 
+1. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem **>>** tlačítka (šipka doprava) zavřete okno ověřování. 
     
    ![Tlačítko Ověřit](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. Vyberte **Publikovat vše**. Uživatelské rozhraní služby Data Factory publikuje entity (propojené služby a kanál) do služby Azure Data Factory. 
@@ -233,7 +233,7 @@ Ověřte, že se ve složce spark/otuputfiles/wordcount kontejneru adftutorial v
 
 ![Umístění výstupního souboru](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a počet výskytů těchto slov v souboru. Příklad: 
+Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a počet výskytů těchto slov v souboru. Například: 
 
 ```
 (u'This', 1)
@@ -244,7 +244,7 @@ Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádáni. Naučili jste se tyto postupy: 
+Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádáni. Naučili jste se: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny 

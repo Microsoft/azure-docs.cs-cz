@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422503"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798189"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Změna hesla k pracovnímu nebo školnímu účtu na stránce změnit heslo
 
 Stránka pro **změnu hesla** na portálu **můj účet** vám pomůže aktualizovat existující heslo pro svůj pracovní nebo školní účet za předpokladu, že si zapamatujete heslo a nejste ve svém účtu uzamčeni. Pokud si nepamatujete své heslo, pokud jste se odhlásili z účtu nebo pokud jste nikdy nezapomněli heslo z vaší organizace, můžete svoje heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat známé heslo pro stávající pracovní nebo školní účet. Pokud jste uživatelem, který se pokoušíte získat do osobního účtu, jako je například Xbox, Hotmail nebo Outlook.com, vyzkoušejte návrhy v části když se [nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku. Pokud jste správcem a chcete získat další informace o tom, jak otestovat Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat známé heslo pro stávající pracovní nebo školní účet. Pokud jste uživatelem, který se pokoušíte získat do osobního účtu, jako je například Xbox, Hotmail nebo Outlook.com, vyzkoušejte návrhy v části když se [nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku. Pokud jste správcem a chcete získat další informace o tom, jak otestovat Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md).
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Aktualizace hesla na stránce změnit heslo
 
@@ -45,7 +45,7 @@ Stránka pro **změnu hesla** na portálu **můj účet** vám pomůže aktualiz
 
 Po změně hesla můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 

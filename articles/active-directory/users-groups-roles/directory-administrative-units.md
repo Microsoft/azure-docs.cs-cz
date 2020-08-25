@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475783"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795894"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
@@ -47,8 +47,8 @@ Použití jednotek pro správu vyžaduje licenci Azure Active Directory Premium 
 V této verzi Preview můžete spravovat jednotky pro správu pomocí Azure Portal, rutin prostředí PowerShell a skriptů nebo Microsoft Graph. Podrobnosti najdete v naší dokumentaci:
 
 - [Vytváření, odebírání, naplnění a přidávání rolí do jednotek pro správu](roles-admin-units-manage.md): kompletní postupy postupů
-- [Práce s jednotkami](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
-- [Podpora grafu jednotek pro správu](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
+- [Práce s jednotkami](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
+- [Podpora grafu jednotek pro správu](/graph/api/resources/administrativeunit?view=graph-rest-beta): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
 
 ### <a name="planning-your-administrative-units"></a>Plánování jednotek pro správu
 

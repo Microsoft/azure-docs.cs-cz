@@ -1,28 +1,28 @@
 ---
 title: Koncepty – řízení přístupu na základě role (RBAC)
-description: Seznamte se s klíčovými možnostmi řízení přístupu na základě rolí pro řešení Azure VMware (AVS).
+description: Seznamte se s klíčovými možnostmi řízení přístupu na základě rolí pro řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8628c88c300ef8ed271f5e06a8e8dfae40231fec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9e83f0442953f59d02c42514a8550301ea947b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660820"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752245"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution-avs"></a>Řízení přístupu na základě role (RBAC) pro řešení Azure VMware (AVS)
+# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Řízení přístupu na základě role (RBAC) pro řešení Azure VMware
 
-V místním nasazení vCenter a ESXi má správce přístup k administrator@vsphere.local účtu vCenter a můžou mít přiřazené další uživatele nebo skupiny služby Active Directory (AD). V nasazení řešení Azure VMware (AVS) ale správce nemá přístup k uživatelskému účtu správce, ale může přiřadit uživatele a skupiny AD k roli CloudAdmin v vCenter.  Uživatel privátního cloudu služby AVS také nemá oprávnění pro přístup k určitým součástem pro správu, které podporuje a spravuje Microsoft, jako jsou clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
+V místním nasazení vCenter a ESXi má správce přístup k administrator@vsphere.local účtu vCenter a můžou mít přiřazené další uživatele nebo skupiny služby Active Directory (AD). V nasazení řešení Azure VMware však správce nemá přístup k uživatelskému účtu správce, ale může přiřadit uživatele a skupiny služby AD k roli CloudAdmin v vCenter.  Uživatel privátního cloudu řešení Azure VMware navíc nemá oprávnění pro přístup k určitým součástem pro správu, které podporuje a spravuje Microsoft, jako jsou clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
 
 
-V prostředí AVS má vCenter integrovaný místní uživatel s názvem cloudadmin, který je přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení dalších uživatelů ve službě AD. Role CloudAdmin obecně má oprávnění k vytváření a správě úloh ve vašem privátním cloudu (virtuální počítače, fondy zdrojů, úložiště dat a sítě). Role CloudAdmin v funkci AVS má konkrétní sadu oprávnění vCenter, která se liší od jiných cloudových řešení VMware.   
+V řešení Azure VMware má vCenter integrovaný místní uživatel s názvem cloudadmin, který je přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení dalších uživatelů ve službě AD. Role CloudAdmin obecně má oprávnění k vytváření a správě úloh ve vašem privátním cloudu (virtuální počítače, fondy zdrojů, úložiště dat a sítě). Role CloudAdmin v řešení Azure VMware má konkrétní sadu oprávnění vCenter, která se liší od jiných cloudových řešení VMware.   
 
 > [!NOTE]
-> Služba AVS aktuálně nenabízí vlastní role v vCenter nebo na portálu pro funkci AVS. 
+> Řešení Azure VMware v současnosti nenabízí vlastní role na vCenter nebo na portálu řešení Azure VMware. 
 
-## <a name="avs-cloudadmin-role-on-vcenter"></a>Role CloudAdmin funkce AVS na vCenter
+## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Role CloudAdmin řešení Azure VMware na serveru vCenter
 
-Můžete zobrazit oprávnění udělená roli AVS CloudAdmin v privátním cloudu služby AVS.
+Můžete zobrazit oprávnění udělená roli CloudAdmin Azure VMware pro řešení Azure VMware v rámci vašeho privátního cloudu vCenter.
 
 1. Přihlaste se ke klientovi SDDC vSphere a přejděte do **nabídky**  >  **Správa**.
 1. V části **Access Control**vyberte **role**.
@@ -30,9 +30,9 @@ Můžete zobrazit oprávnění udělená roli AVS CloudAdmin v privátním cloud
 
    :::image type="content" source="media/rbac-cloudadmin-role-privileges.png" alt-text="Jak zobrazit oprávnění role CloudAdmin v klientovi vSphere":::
 
-Role CloudAdmin v funkci AVS má následující oprávnění pro vCenter. Podrobné vysvětlení jednotlivých oprávnění najdete v [dokumentaci k produktu VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) .
+Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCenter. Podrobné vysvětlení jednotlivých oprávnění najdete v [dokumentaci k produktu VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) .
 
-| Privilege | Description |
+| Privilege | Popis |
 | --------- | ----------- |
 | **Upozornění** | Potvrzení upozornění<br />Vytvořit alarm<br />Zakázat akci alarmu<br />Upravit alarm<br />Odebrat alarm<br />Nastavit stav alarmu |
 | **Oprávnění** | Upravit oprávnění |

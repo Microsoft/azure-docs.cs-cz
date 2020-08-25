@@ -1,35 +1,35 @@
 ---
 title: Nejčastější dotazy
-description: Poskytuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware (AVS).
+description: Obsahuje odpovědi na některé běžné dotazy týkající se řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cffa31bb66adfde2af24ab2542322479639ed9dd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872323"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752175"
 ---
-# <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
+# <a name="frequently-asked-questions-about-azure-vmware-solution-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware Preview
 
-Odpovědi na nejčastější dotazy týkající se řešení Azure VMware (AVS).
+Odpovědi na nejčastější dotazy týkající se řešení Azure VMware.
 
 ## <a name="general"></a>Obecné
 
-**Co je řešení Azure VMware (AVS)?**
+**Co je řešení Azure VMware?**
 
-Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylepšili flexibilitu, snížili náklady a urychlili inovace, hybridní cloudové platformy se vypracovaly jako klíčové aktivátory digitální transformace zákazníků. Služba AVS kombinuje software definovaného datového centra (SDDC) společnosti VMware s využitím ekosystému Microsoft Azure Global Cloud Service. Řešení AVS je spravované tak, aby splňovalo požadavky na výkon, dostupnost, zabezpečení a dodržování předpisů.
+Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylepšili flexibilitu, snížili náklady a urychlili inovace, hybridní cloudové platformy se vypracovaly jako klíčové aktivátory digitální transformace zákazníků. Řešení Azure VMware spojuje software definovaného datového centra (SDDC) společnosti VMware s Microsoft Azureým ekosystémem globálních cloudových služeb. Řešení Azure VMware je spravované tak, aby splňovalo požadavky na výkon, dostupnost, zabezpečení a dodržování předpisů.
 
-## <a name="avs-service"></a>Služba AVS
+## <a name="azure-vmware-solution-service"></a>Služba řešení Azure VMware
 
-**Kde je tato funkci AVS k dispozici ještě dnes?**
+**Kde je řešení Azure VMware k dispozici ještě dnes?**
 
 Služba se neustále přidává do nových oblastí, proto si prohlédněte [nejnovější informace o dostupnosti služby](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) , kde najdete další podrobnosti. 
 
-**Můžou úlohy spuštěné v instanci řešení Azure VMware (AVS) využívat nebo integrovat se službami Azure?**
+**Můžou úlohy spuštěné v instanci řešení Azure VMware spotřebovat nebo integrovat se službami Azure?**
 
-K dispozici jsou všechny služby Azure, které budou dostupné pro zákazníky řešení AVS. Omezení výkonu a dostupnosti pro konkrétní služby se musí řešit na základě případu.
+Všechny služby Azure budou dostupné pro zákazníky řešení Azure VMware. Omezení výkonu a dostupnosti pro konkrétní služby se musí řešit na základě případu.
 
 **Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?**
 
@@ -37,13 +37,13 @@ Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter 
 
 **Můžu pomocí místního serveru vCenter spravovat privátní cloud?**
 
-Funkce AVS při spuštění nepodporuje jednotné prostředí pro správu v místních i privátních cloudových prostředích. Clustery privátního cloudu se budou spravovat pomocí vCenter a NSX Manageru v privátním cloudu.
+V případě spuštění řešení Azure VMware nebude podporovat jednotné prostředí pro správu v místních i privátních cloudových prostředích. Clustery privátního cloudu se budou spravovat pomocí vCenter a NSX Manageru v privátním cloudu.
 
 **Můžu používat vRealize Suite spuštěnou místně?** 
 
 Konkrétní integrace a případy použití mohou být vyhodnoceny případ od případu.
 
-**Můžu migrovat virtuální počítače s vSphere z místního prostředí do služby AVS Private cloudy?**
+**Můžu migrovat virtuální počítače s vSphere z místního prostředí do privátních cloudů řešení Azure VMware?**
 
 Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní [požadavky na vMotion](https://kb.vmware.com/s/article/210695) pro architekturu vCenter.
 
@@ -89,7 +89,7 @@ Každý hostitel ESXi má dvě síti vSAN diskgroups s úrovní kapacity 15,2 TB
 
 **Kolik šířky pásma sítě je k dispozici na každém hostiteli ESXi?**
 
-U každého hostitele ESXi je konfigurace služby AVS nakonfigurovaná pomocí síťových adaptérů 4 25 GB/s, se dvěma síťovými kartami zřízenými pro přenos dat systému ESXi a pro provoz úloh. 
+U každého hostitele ESXi je řešení Azure VMware nakonfigurované se síťovými kartami 4 25 GB/s a se dvěma síťovými kartami zřízenými pro přenos systému ESXi a se dvěma síťovými kartami zřízenými pro provoz úloh. 
 
 **Jsou data uložená v úložišti datasíti vsans zašifrovaná v klidovém stavu?**
 
@@ -111,13 +111,13 @@ Ano, clustery se škálují mezi minimálním a maximálním počtem hostitelů 
 
 **Co jsou zkušební clustery?**
 
-Clustery zkušební verze jsou tři hostitelské clustery, které se používají k měsíčnímu hodnocení privátních cloudů služby AVS.
+Zkušební clustery jsou tři hostitelské clustery, které se používají k měsíčnímu hodnocení privátních cloudů řešení Azure VMware.
 
 **Můžu pro zkušební clustery použít špičkové hostitele?**
 
 Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
 
-## <a name="avs-and-vmware-software"></a>Software pro funkci AVS a VMware
+## <a name="azure-vmware-solution-and-vmware-software"></a>Řešení Azure VMware a software VMware
 
 **Jaké verze softwaru VMware se používají v privátních cloudech?**
 
@@ -125,7 +125,7 @@ Privátní cloudy používají vSphere 6,7, síti vSAN 6,7, HCX a Version 2,5 NS
 
 **Používají privátní cloudy VMware NSX?**
 
-Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních cloudech služby AVS.
+Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních cloudech řešení Azure VMware.
 
 **Můžu použít VMware NSX-V v privátním cloudu?**
 
@@ -147,9 +147,9 @@ Software privátního cloudu se upgraduje podle plánu, který sleduje vydání 
 
 **Jaké plánování síťových IP adres je potřeba k začleňování privátních cloudů do místních prostředí?**
 
-Pro nasazení privátního cloudu služby AVS je vyžadován adresní prostor privátní sítě/22. Tento privátní adresní prostor by se neměl překrývat s ostatními virtuálními sítěmi v rámci předplatného nebo s místními sítěmi.
+K nasazení privátního cloudu řešení Azure VMware je nutný adresní prostor privátní sítě/22. Tento privátní adresní prostor by se neměl překrývat s ostatními virtuálními sítěmi v rámci předplatného nebo s místními sítěmi.
  
-**Návody se z místních prostředí připojit k privátnímu cloudu služby AVS?**
+**Návody se připojit z místních prostředí k privátnímu cloudu řešení Azure VMware?**
 
 Ke službě se můžete připojit jedním ze dvou způsobů: 
 
@@ -170,7 +170,7 @@ Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuáln�
 
 ## <a name="accounts-and-privileges"></a>Účty a oprávnění
 
-**Jaké účty a oprávnění se zobrazí v mém novém privátním cloudu pro funkci AVS?**
+**Jaké účty a oprávnění se zobrazí s novým privátním cloudem řešení Azure VMware?**
 
 K dispozici jsou přihlašovací údaje pro uživatele cloudadmin v vCenter a přístup správce NSX-T Manageru. K dispozici je také skupina CloudAdmin, kterou lze použít k začlenění Azure Active Directory. Další informace najdete v tématu [Koncepty přístupu a identity](concepts-identity.md).
 
@@ -191,19 +191,19 @@ Budete mít úplná oprávnění správce NSX-T a mohli spravovat řízení př�
 
 ## <a name="billing-and-support"></a>Fakturace a podpora
 
-**Jak se mi bude účtovat během verze Preview funkce AVS**
+**Jak se mi bude účtovat během verze Preview řešení Azure VMware**
 
-Faktura za službu AVS ve verzi Preview je měsíčně na základě průběžných plateb. Další možnosti budou k dispozici při obecné dostupnosti.
+Fakturace za řešení Azure VMware během období Preview je měsíčně na základě průběžných plateb. Další možnosti budou k dispozici při obecné dostupnosti.
 
-**Jak budou během verze Preview funkce AVS strukturované ceny?**
+**Jak budou v rámci verze Preview řešení Azure VMware strukturované ceny?**
 
 Obecné otázky týkající se cen najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/azure-vmware) řešení Azure VMware. Ceny verze Preview jsou k dispozici na vyžádání, obraťte se na tým účtu nebo použijte odkaz na stránce s cenami a kontaktujte prodej.
 
-**Kdo podporuje funkci AVS?**
+**Kdo podporuje řešení Azure VMware?**
 
-Společnost Microsoft doručuje podporu služby AVS. Všimněte si, že podle našich pokynů pro verzi Preview budeme poskytovat podporu během 9 až 5 hodin PST v pracovní době od pondělí do pátku. Z [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) můžete vyvolat lístek podpory.
+Podpora řešení Azure VMware je poskytována společností Microsoft. Všimněte si, že podle našich pokynů pro verzi Preview budeme poskytovat podporu během 9 až 5 hodin PST v pracovní době od pondělí do pátku. Z [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) můžete vyvolat lístek podpory.
 
-**Jaké účty potřebuji k vytvoření privátního cloudu služby AVS?**
+**Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?**
 
 Budete potřebovat účet Azure v předplatném Azure.
 
@@ -229,7 +229,7 @@ Můžete požádat o zvýšení kvóty tím, že [odešlete žádost o podporu](
 1. V popisu lístku podpory zadejte na kartě Podrobnosti:
    - Počet dalších uzlů   
    - SKU uzlu
-   - Oblast
+   - Region
 
    > [!NOTE] 
    > Ve výchozím nastavení se udělí minimálně čtyři uzly.

@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538832"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763435"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
@@ -69,7 +69,7 @@ Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce 
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#enabling-and-disabling-soft-delete), postupujte podle pokynů.
 
@@ -136,7 +136,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
 
-1. Nejprve vraťte operace odstranění se kroky uvedenými [zde](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data).
+1. Nejprve vraťte operace odstranění se kroky uvedenými [zde](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion).
 2. Pak pomocí REST API podle kroků uvedených [tady](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)zakažte funkci obnovitelného odstranění.
 3. Pak zálohy odstraňte pomocí REST API, jak je uvedeno [zde](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
 
@@ -144,7 +144,7 @@ Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak
 
 ### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Musím u každého trezoru povolit funkci obnovitelného odstranění?
 
-Ne, je vestavěná a povolená ve výchozím nastavení pro všechny trezory služby Recovery Services.
+Ne, je ve výchozím nastavení integrovaná a povolená pro všechny trezory Recovery Services.
 
 ### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-the-delete-operation-is-complete"></a>Můžu nakonfigurovat počet dní, po které se po dokončení operace odstranění budou uchovávat data ve stavu tichého odstranění?
 
@@ -160,7 +160,7 @@ Ne, chcete-li obnovit, je nutné obnovit neodstraněný prostředek. Operace zru
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Budou se moje snímky řídit stejným životním cyklem jako body obnovení v trezoru?
 
-Yes.
+Ano.
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak můžu znovu aktivovat naplánované zálohy u prostředku odstraněného z nějakého obnovitelného?
 

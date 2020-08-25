@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142515"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796557"
 ---
 # <a name="features"></a>Funkce
 
@@ -25,9 +25,9 @@ Nejnovější verze je podporována: `4.0.1`
 
 Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
-| Rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
+| rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
 | read                           | Ano       | Ano       | Ano       |                                                     |
 | vread                          | Ano       | Ano       | Ano       |                                                     |
@@ -57,7 +57,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 |-----------------------|-----------|-----------|-----------|---------|
 | Číslo                | Ano       | Ano       | Ano       |         |
 | Datum/datum a čas         | Ano       | Ano       | Ano       |         |
-| Řetězec                | Ano       | Ano       | Ano       |         |
+| String                | Ano       | Ano       | Ano       |         |
 | Token                 | Ano       | Ano       | Ano       |         |
 | Referenční informace             | Ano       | Ano       | Ano       |         |
 | Složený             | Ano       | Ano       | Ano       |         |
@@ -90,7 +90,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | `_security`             | Ano       | Ano       | Ano       |         |
 | `_text`                 | Ne        | Ne        | Ne        |         |
 | `_content`              | Ne        | Ne        | Ne        |         |
-| `_list`                 | Ne        | Ano       | Ano       |         |
+| `_list`                 | Ano       | Ano       | Ano       |         |
 | `_has`                  | Ne        | Ne        | Ne        |         |
 | `_type`                 | Ano       | Ano       | Ano       |         |
 | `_query`                | Ne        | Ne        | Ne        |         |

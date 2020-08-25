@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204655"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795605"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -48,6 +48,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
+
+>[!TIP]
+> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 > [!NOTE] 
 > V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V synapse SQL je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
@@ -109,7 +112,7 @@ Počet překrývajících se segmentů závisí na velikosti dat, která se maj�
 
 - Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistuje žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
-- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Třeba
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Příklad:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )

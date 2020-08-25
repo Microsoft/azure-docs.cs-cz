@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85b457b4aefee408e35fb89d46e0de0dc4e96740
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213858"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797169"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -80,7 +80,7 @@ Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azur
 
 ## <a name="turn-on-or-off-welcome-email"></a>Zapnutí nebo vypnutí uvítacího e-mailu
 
-Když se vytvoří nová skupina Microsoft 365, uživatelům, kteří se do této skupiny přidají, se pošle uvítací e-mailové oznámení. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
+Když se vytvoří nová skupina Microsoft 365, uživatelům, kteří se do této skupiny přidají, se pošle uvítací e-mailové oznámení. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
 
 ## <a name="check-processing-status-for-a-rule"></a>Zkontroluje stav zpracování pravidla.
 

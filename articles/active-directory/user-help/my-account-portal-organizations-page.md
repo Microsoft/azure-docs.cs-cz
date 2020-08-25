@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422435"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798172"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Spravujte své připojené organizace ze stránky organizace.
 
@@ -30,7 +30,7 @@ Stránka **organizace** na portálu **můj účet** vám pomůže spravovat orga
 - **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Zobrazit vaše organizace
 
@@ -61,7 +61,7 @@ Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací
 
 Po zobrazení svých organizací můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 

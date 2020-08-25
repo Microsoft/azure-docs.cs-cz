@@ -4,10 +4,10 @@ description: Tento kurz ukazuje, jak pomocí dávkového testování ověřit kv
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681631"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: dávkové test sady dat
@@ -24,7 +24,7 @@ Požadavky na dávkové testování:
 
 Pokud používáte jinou aplikaci než tento kurz, *nepoužívejte ukázkový* projevy již přidaný do vaší aplikace.
 
-**V tomto kurzu:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -81,7 +81,7 @@ Příklad JSON obsahuje jeden utterance s označenou entitou pro ilustraci toho,
     > [!div class="mx-imgBorder"]
     > ![Vybrat soubor](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
-6. Vyberte tlačítko **Spustit**.
+6. Vyberte tlačítko **Run** (Spustit).
 
 7. Vyberte **Zobrazit výsledky**.
 

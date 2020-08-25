@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82024468"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
@@ -231,7 +231,7 @@ Pomocí úloh Azure IoT Central můžete na více zařízeních aktivovat aktual
 
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
 
-1. Vyberte možnost **Správa** > **přizpůsobení aplikace**.
+1. Vyberte možnost **Správa**  >  **přizpůsobení aplikace**.
 1. V části **logo aplikace**vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
 1. V části **ikona prohlížeče**vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
 1. V části **barvy v prohlížeči**můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
@@ -241,7 +241,7 @@ Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatels
 
 ### <a name="update-the-application-image"></a>Aktualizace image aplikace
 
-1. Vyberte**nastavení aplikace** **pro správu** > .
+1. Vyberte **Administration**  >  **nastavení aplikace**pro správu.
 
 1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace.
 

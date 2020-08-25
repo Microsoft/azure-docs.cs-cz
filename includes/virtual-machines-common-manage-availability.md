@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655027"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760583"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -34,7 +34,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 * [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
 * [Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače](../articles/virtual-machines/linux/scheduled-events.md)
 * [Konfigurace jednotlivých vrstev aplikace na samostatné skupiny dostupnosti]
-* [Kombinování Load Balancer se skupinami dostupnosti]
+* [Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti]
 * [Použití zón dostupnosti k ochraně před chybami na úrovni datacentra]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Použití zón dostupnosti k ochraně před chybami na úrovni datacentra
@@ -110,7 +110,7 @@ Kurz o tom, jak vyrovnávat zatížení napříč zónami dostupnosti, najdete v
 
 <!-- Link references -->
 [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Kombinování Load Balancer se skupinami dostupnosti]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]: #use-managed-disks-for-vms-in-an-availability-set
 [Použití zón dostupnosti k ochraně před chybami na úrovni datacentra]: #use-availability-zones-to-protect-from-datacenter-level-failures

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729026"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795418"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Odstranění tenanta v Azure Active Directory
 
@@ -85,7 +85,7 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
    ![Odstranit odkaz pro odstranění předplatného](./media/directory-delete-howto/delete-command.png)
 
-6. Vyberte **Odstranit předplatné** a odstraňte předplatné a přijměte podmínky a ujednání. Všechna data se trvale odstraní do tří dní. Pokud změníte svůj názor, můžete [předplatné znovu aktivovat](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) v průběhu tříletého období.
+6. Vyberte **Odstranit předplatné** a odstraňte předplatné a přijměte podmínky a ujednání. Všechna data se trvale odstraní do tří dní. Pokud změníte svůj názor, můžete [předplatné znovu aktivovat](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) v průběhu tříletého období.
   
    ![pečlivě načtěte podmínky a ujednání.](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,18 +97,18 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Mám zkušební předplatné, které blokuje odstranění
 
-K dispozici jsou [samoobslužné produkty pro registraci](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé pomocí Office 365, který taky vytvoří uživatele typu Host pro ověřování ve vaší organizaci Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud se produkty z organizace zcela neodstraní, aby se předešlo ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
+K dispozici jsou [samoobslužné produkty pro registraci](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé pomocí Office 365, který taky vytvoří uživatele typu Host pro ověřování ve vaší organizaci Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud se produkty z organizace zcela neodstraní, aby se předešlo ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
 
 Existují dva typy samoobslužných registračních produktů ve způsobu jejich přiřazení: 
 
 * Přiřazení na úrovni organizace: správce Azure AD přiřadí produkt celé organizaci a uživatel může tuto službu aktivně používat s tímto přiřazením na úrovni organizace, i když nejsou samostatně licencované.
 * Přiřazení na úrovni uživatele: jednotliví uživatelé během přihlašování k samoobslužné službě v podstatě přiřadí produkt sami sobě bez správce. Jakmile bude organizace spravována správcem (viz [převzetí správce nespravované organizace](domains-admin-takeover.md)), může správce přímo přiřadit produkt uživatelům bez samoobslužné registrace.  
 
-Když zahájíte odstranění samoobslužného registračního produktu, akce trvale odstraní data a odebere veškerý přístup uživatelů ke službě. Každému uživateli, kterému byla nabídka přiřazena individuálně nebo na úrovni organizace, se pak zablokuje přihlášení nebo přístup k žádným existujícím datům. Pokud chcete zabránit ztrátě dat pomocí samoobslužného registračního produktu, jako jsou například [řídicí panely Microsoft Power BI](https://docs.microsoft.com/power-bi/service-export-to-pbix) nebo [konfigurace zásad služby Rights Management Services](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), zajistěte, aby byla data zálohována a ukládána jinde.
+Když zahájíte odstranění samoobslužného registračního produktu, akce trvale odstraní data a odebere veškerý přístup uživatelů ke službě. Každému uživateli, kterému byla nabídka přiřazena individuálně nebo na úrovni organizace, se pak zablokuje přihlášení nebo přístup k žádným existujícím datům. Pokud chcete zabránit ztrátě dat pomocí samoobslužného registračního produktu, jako jsou například [řídicí panely Microsoft Power BI](/power-bi/service-export-to-pbix) nebo [konfigurace zásad služby Rights Management Services](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), zajistěte, aby byla data zálohována a ukládána jinde.
 
-Další informace o aktuálně dostupných samoobslužných produktech a službách pro registraci najdete v tématu [dostupné samoobslužné programy](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
+Další informace o aktuálně dostupných samoobslužných produktech a službách pro registraci najdete v tématu [dostupné samoobslužné programy](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Stav produktu | Data | Přístup k datům
 ------------- | ---- | --------------
@@ -143,4 +143,4 @@ Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Dokumentace k Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+[Dokumentace k Azure Active Directory](../index.yml)

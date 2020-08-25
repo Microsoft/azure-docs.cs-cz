@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798597"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegovat správu v Azure Active Directory
 
@@ -60,7 +60,7 @@ Určete úlohy služby Active Directory, které jsou prováděny správci a jak 
 Každý úkol by měl být vyhodnocen pro četnost, důležitost a obtížnost. Tato kritéria jsou zásadními aspekty definice úlohy, protože určují, jestli by měla být delegovaná oprávnění:
 
 * Úlohy, které provedete v rutinách, mají omezené riziko a jsou triviální k dokončení, jsou vynikajícími kandidáty na delegování.
-* Úlohy, které provedete zřídka, ale mají velký dopad na celou organizaci a vyžadují vysokou úroveň dovedností, se před delegováním považují za velmi pečlivě. Místo toho můžete [dočasně zvýšit účet na požadovanou roli](../active-directory-privileged-identity-management-configure.md) nebo znovu přiřadit úlohu.
+* Úlohy, které provedete zřídka, ale mají velký dopad na celou organizaci a vyžadují vysokou úroveň dovedností, se před delegováním považují za velmi pečlivě. Místo toho můžete [dočasně zvýšit účet na požadovanou roli](../privileged-identity-management/pim-configure.md) nebo znovu přiřadit úlohu.
 
 ## <a name="delegate-app-administration"></a>Delegování správy aplikace
 
@@ -110,7 +110,7 @@ Chcete-li zachovat přístup k úložišti správy identit, když vzniká probl�
 
 ## <a name="elevate-privilege-temporarily"></a>Dočasné zvýšení oprávnění
 
-Pro většinu každodenních činností není nutné, aby všichni uživatelé měli oprávnění globálního správce, a ne všechny z nich museli být trvale přiřazeni k roli globálního správce. Když uživatelé potřebují oprávnění globálního správce, měli by aktivovat přiřazení role v Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) na svém vlastním účtu nebo alternativním účtu správce.
+Pro většinu každodenních činností není nutné, aby všichni uživatelé měli oprávnění globálního správce, a ne všechny z nich museli být trvale přiřazeni k roli globálního správce. Když uživatelé potřebují oprávnění globálního správce, měli by aktivovat přiřazení role v Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) na svém vlastním účtu nebo alternativním účtu správce.
 
 ## <a name="next-steps"></a>Další kroky
 

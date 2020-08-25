@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213797"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797101"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -135,7 +135,7 @@ Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operátor | Syntaxe |
+| Operátor | Syntax |
 | --- | --- |
 | Nerovná se |-Ne |
 | Je rovno |– EQ |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Vlastnosti rozšíření a vlastnosti vlastního rozšíření
 
-Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. [Atributy rozšíření](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
+Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. [Atributy rozšíření](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Vlastní vlastnosti rozšíření](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]` , kde:
+[Vlastní vlastnosti rozšíření](../hybrid/how-to-connect-sync-feature-directory-extensions.md) se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]` , kde:
 
 * [GUID] je jedinečný identifikátor ve službě Azure AD pro aplikaci, která vytvořila vlastnost ve službě Azure AD.
 * [Attribute] je název vlastnosti, jak byla vytvořena.
@@ -393,7 +393,7 @@ Je možné použít následující atributy zařízení.
  systemLabels | libovolný řetězec odpovídající vlastnosti zařízení Intune pro označování moderních zařízení na pracovišti | (device.systemLabels-obsahuje "M365Managed")
 
 > [!Note]  
-> Pro deviceOwnership při vytváření dynamických skupin pro zařízení musíte nastavit hodnotu rovnou "společnost". V Intune se vlastnictví zařízení prezentuje jako firemní. Další podrobnosti najdete v tématu [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
+> Pro deviceOwnership při vytváření dynamických skupin pro zařízení musíte nastavit hodnotu rovnou "společnost". V Intune se vlastnictví zařízení prezentuje jako firemní. Další podrobnosti najdete v tématu [OwnerTypes](/intune/reports-ref-devices#ownertypes) . 
 
 ## <a name="next-steps"></a>Další kroky
 

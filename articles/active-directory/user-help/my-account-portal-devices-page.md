@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422470"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798206"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Správa připojených zařízení ze stránky zařízení
 
@@ -27,7 +27,7 @@ Stránka **zařízení** na portálu **můj účet** vám pomůže se správou z
 - Zakažte všechna zařízení, která už nevlastníte, ztratila nebo která byla odcizena.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o zařízení připojených k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě zařízení pro vaše zaměstnance a další použití, přečtěte si [dokumentaci identity zařízení](https://docs.microsoft.com/azure/active-directory/devices/index).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o zařízení připojených k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě zařízení pro vaše zaměstnance a další použití, přečtěte si [dokumentaci identity zařízení](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
 
@@ -68,7 +68,7 @@ Pokud jste se odhlásili ze zařízení nebo máte závažnou chybu, můžete p�
 
 Po zobrazení připojených zařízení můžete:
 
-- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat své [bezpečnostní údaje](user-help-security-info-overview.md).
+- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat své [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit a spravovat vaše [organizace](my-account-portal-organizations-page.md).
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727190"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797985"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -33,14 +33,14 @@ Uživatelům ve vaší organizaci můžete dovolit přístup k jejich připojen�
 > * Toto nastavení je ve výchozím nastavení vypnuté pro organizace Azure AD zřízené v Německu. Všimněte si, že toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud Německo.
 > * Toto nastavení je ve výchozím nastavení vypnuté pro organizace zřízené ve Francii.
 >
-> Jakmile budou připojení k účtu LinkedInu pro vaši organizaci povolená, připojení k účtům budou fungovat až po jejich souhlasu s aplikacemi, které přistupují k firemním datům. Informace o nastavení souhlasu uživatele najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+> Jakmile budou připojení k účtu LinkedInu pro vaši organizaci povolená, připojení k účtům budou fungovat až po jejich souhlasu s aplikacemi, které přistupují k firemním datům. Informace o nastavení souhlasu uživatele najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../manage-apps/methods-for-removing-user-access.md).
 
 ## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>Povolit připojení k účtu LinkedIn v Azure Portal
 
 Připojení k účtu LinkedIn můžete povolit jenom pro uživatele, kterým chcete mít přístup, od celé organizace až po vybrané uživatele ve vaší organizaci.
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
-1. Vyberte možnost **Uživatelé**.
+1. Vyberte **Uživatelé**.
 1. Na stránce **Uživatelé** vyberte **nastavení uživatele**.
 1. V části **připojení k účtu LinkedInu**Umožněte uživatelům připojit své účty pro přístup k jejich připojením LinkedIn v některých aplikacích Microsoftu. Žádná data nejsou sdílená, dokud uživatel nesouhlasí připojit své účty.
 
@@ -71,7 +71,7 @@ Nahradili jsme možnost Selected, která určuje seznam uživatelů s možností
 1. Vytvořte soubor CSV pro uživatele, kteří jsou vybráni pro připojení k účtu LinkedIn.
 1. Přihlaste se Microsoft 365 pomocí účtu správce.
 1. Spusťte PowerShell.
-1. Nainstalujte modul Azure AD spuštěním`Install-Module AzureAD`
+1. Nainstalujte modul Azure AD spuštěním `Install-Module AzureAD`
 1. Spusťte tento skript:
 
   ``` PowerShell
@@ -96,8 +96,8 @@ Pokud chcete použít skupinu z kroku 2 jako vybranou skupinu v nastavení přip
   
    Stav | Efekt
    ------ | ------
-   **Enabled** (Povoleno) | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je povolené. Uživatelé ve vaší organizaci můžou používat funkce LinkedInu v aplikacích Office 2016.
-   **Disabled** (Zakázáno) | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je zakázané a koncoví uživatelé toto nastavení nemůžou změnit. Uživatelé ve vaší organizaci nemůžou ve svých aplikacích Office 2016 používat funkce LinkedIn.
+   **Povoleno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je povolené. Uživatelé ve vaší organizaci můžou používat funkce LinkedInu v aplikacích Office 2016.
+   **Zakázáno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je zakázané a koncoví uživatelé toto nastavení nemůžou změnit. Uživatelé ve vaší organizaci nemůžou ve svých aplikacích Office 2016 používat funkce LinkedIn.
 
 Tato zásada skupiny ovlivňuje jenom aplikace Office 2016 pro místní počítač. Pokud uživatelé vypnou LinkedIn ve svých aplikacích Office 2016, můžou pořád zobrazit funkce LinkedIn v sadě Office 365.
 

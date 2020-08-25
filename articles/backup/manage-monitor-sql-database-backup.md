@@ -3,12 +3,12 @@ title: Správa a sledování SQL Server databáze na virtuálním počítači Az
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659538"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756312"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -16,15 +16,11 @@ Tento článek popisuje běžné úlohy pro správu a monitorování SQL Serverc
 
 Pokud jste ještě nenakonfigurovali zálohy pro databáze SQL Server, přečtěte si téma [zálohování databází SQL Server na virtuálních počítačích Azure](backup-azure-sql-database.md) .
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Monitorování úloh ručního zálohování na portálu
+## <a name="monitor-backup-jobs-in-the-portal"></a>Monitorování úloh zálohování na portálu
 
-Azure Backup zobrazí všechny ručně aktivované úlohy na portálu **úlohy zálohování** . Úlohy, které vidíte na tomto portálu, zahrnují zjišťování a registraci databází a operace zálohování a obnovení.
+Azure Backup zobrazuje všechny plánované a vyžádané operace v rámci **úlohy zálohování** na portálu s výjimkou naplánovaných záloh protokolů, protože můžou být velmi časté. Úlohy, které vidíte na tomto portálu, zahrnují zjišťování a registraci databází, konfiguraci zálohování a operace zálohování a obnovení.
 
 ![Portál úlohy zálohování](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> Portál **úlohy zálohování** nezobrazuje naplánované úlohy zálohování. Pomocí SQL Server Management Studio můžete monitorovat naplánované úlohy zálohování, jak je popsáno v následující části.
->
 
 Podrobné informace o scénářích monitorování najdete [v části monitorování v Azure Portal](backup-azure-monitoring-built-in-monitor.md) a [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
@@ -162,7 +158,7 @@ Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstr
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 
-V některých případech může mít rozšíření úlohy na virtuálním počítači vliv na jeden důvod nebo jiné. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného zápisu znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly. Tuto možnost najdete v části **infrastruktura zálohování** v trezoru služby Recovery Services.
+Někdy se může stát, že rozšíření úlohy na virtuálním počítači bude mít vliv na jeden nebo jiný důvod. V takových případech se začnou zdařit všechny operace aktivované na virtuálním počítači. Pak možná budete muset znovu zaregistrovat rozšíření na virtuálním počítači. Operace **opětovného zápisu znovu** nainstaluje rozšíření zálohování úlohy na virtuálním počítači, aby operace pokračovaly. Tuto možnost najdete v části **infrastruktura zálohování** v trezoru Recovery Services.
 
 ![Chráněné servery v rámci infrastruktury zálohování](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

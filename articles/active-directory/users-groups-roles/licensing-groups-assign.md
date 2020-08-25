@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e8beb8d694b0ee155e3707faef34dff6d56eb3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727649"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797747"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory
 
@@ -97,9 +97,9 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 Další informace o sadě funkcí pro přiřazení licencí pomocí skupin najdete v následujících článcích:
 
-- [Co je licencování na základě skupin v Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
+- [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
 - [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 - [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
 - [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](licensing-groups-change-licenses.md)
-- [Další scénáře licencování na základě skupin v Azure Active Directory](../active-directory-licensing-group-advanced.md)
+- [Další scénáře licencování na základě skupin v Azure Active Directory](./licensing-group-advanced.md)
 - [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](licensing-ps-examples.md)

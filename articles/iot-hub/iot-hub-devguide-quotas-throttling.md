@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782562"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797798"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -112,7 +112,7 @@ IoT Hub vynutila jiné provozní limity:
 | IoT Edge automatické nasazení<sup>1</sup> | moduly 50 na jedno nasazení. 100 nasazení (včetně vrstev nasazení) na placené centrum SKU 10 nasazení na rozbočovač volných SKU |
 | Dvojitá vlákna<sup>1</sup> | Maximální velikost požadovaných vlastností a sekcí hlášených vlastností jsou 32 KB. Oddíl maximální velikost značek je 8 KB. |
 | Zásady sdíleného přístupu | Maximální počet zásad sdíleného přístupu je 16. |
-| Certifikáty certifikačních autorit | Maximální počet certifikátů certifikační autority X. 509, které mohou být zaregistrovány, je 25. |
+| certifikáty CA x509 | Maximální počet certifikátů CA x509, které mohou být registrovány v IoT Hub je 25. |
 
 <sup>1</sup> Tato funkce není k dispozici na úrovni Basic IoT Hub. Další informace najdete v tématu [Jak zvolit správnou IoT Hub](iot-hub-scaling.md).
 

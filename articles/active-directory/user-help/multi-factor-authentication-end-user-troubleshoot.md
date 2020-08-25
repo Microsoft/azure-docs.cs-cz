@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661433"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796574"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
 
@@ -33,7 +33,7 @@ Pokud je zapnutá 2FV, vyžaduje přihlášení k účtu kombinaci následujíc�
 2FV je bezpečnější než heslo, protože 2FV vyžaduje něco, co _víte_ a co _máte_. Žádný hacker nemá váš fyzický telefon.
 
 >[!Important]
->Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure AD v [dokumentaci k Azure AD](https://docs.microsoft.com/azure/active-directory).
+>Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure AD v [dokumentaci k Azure AD](../index.yml).
 
 Tento obsah je určený k tomu, aby vám pomohl váš pracovní nebo školní účet, což je účet, který vám poskytla vaše organizace (například dritan@contoso.com ). Pokud máte problémy se dvojúrovňovém ověřováním na osobním účet Microsoft, což je účet, který jste si nastavili pro sebe (například danielle@outlook.com ), přečtěte si téma [Zapnutí nebo vypnutí dvojúrovňové ověřování pro vaši účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 

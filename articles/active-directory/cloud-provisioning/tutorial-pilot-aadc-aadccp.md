@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86146805"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -86,7 +86,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stránce pravidla **spojování** klikněte na **Další**.
- 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na tlačítko **Add** (Přidat).
+ 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na **Přidat**.
  ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup. Opakujte kroky podle nakonfigurované doménové struktury AD Connector/AD na jednu. 
@@ -118,7 +118,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
-1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.  Pokud používáte [Základní kurz prostředí AD a prostředí Azure](tutorial-basic-ad-azure.md) , bude CP1.
+1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.  Pokud používáte  [Základní kurz prostředí AD a prostředí Azure](tutorial-basic-ad-azure.md) , bude CP1.
 2. Stáhněte si tohoto Azure AD Connectho agenta zřizování cloudu pomocí kroků uvedených [tady](how-to-install.md#install-the-agent).
 3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
 3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
@@ -141,7 +141,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
