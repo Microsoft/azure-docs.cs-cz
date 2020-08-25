@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85957898"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
@@ -35,7 +35,7 @@ Tyto funkce nabízí následující možnosti:
 - **Možnost 1**: analýza vymezená v oboru – analýza pouze zadaného modelu
 - **Možnost 2**: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí [taxonomie 86-Categories](../Category-Taxonomy.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.

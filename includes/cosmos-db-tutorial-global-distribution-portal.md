@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75752386"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Přidání globálních oblastí databáze pomocí webu Azure Portal
@@ -31,7 +31,7 @@ Po přidání druhé oblasti se na stránce portálu **Globální replikace dat*
 Pro konfiguraci dvou nebo více oblastí existují dva běžné scénáře:
 
 1. Poskytování přístupu k datům s nízkou latencí koncovým uživatelům po celém světe bez ohledu na to, kde se nacházejí.
-2. Přidání oblastní odolnosti pro zajištění provozní kontinuity a zotavení po havárii (BCDR).
+2. Přidání oblastní odolnosti pro zajištění provozní kontinuity a zotavení po havárii (BCDR)
 
 Pro zajištění nízké latence pro koncové uživatele se doporučuje nasadit aplikaci i službu Azure Cosmos DB v oblastech, které odpovídají umístění uživatelů aplikace.
 

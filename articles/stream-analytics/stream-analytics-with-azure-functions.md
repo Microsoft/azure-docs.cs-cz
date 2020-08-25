@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
 ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77589449"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Kurz: spuštění Azure Functions z úloh Azure Stream Analytics 
@@ -52,7 +52,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). V této části se dozvíte, jak vytvořit aplikaci funkcí a funkci aktivovanou [protokolem HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function)pomocí jazyka CSharp.  
 
-2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. Místo **řetězce\<"mezipaměť Azure pro připojovací řetězec Redis se sem\>přihlaste"** pomocí mezipaměti Azure pro primární připojovací řetězec Redis, který jste získali v předchozí části. 
+2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. Nahraďte **" \<your Azure Cache for Redis connection string goes here\> "** pomocí mezipaměti Azure pro primární připojovací řetězec Redis, který jste získali v předchozí části. 
 
     ```csharp
     using System;
@@ -140,7 +140,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Otevřete úlohu Stream Analytics na portálu Azure Portal.  
 
-2. Přejděte na svou funkci a vyberte **Přehled** > **výstupy** > **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Adaptér pro výstup funkcí má následující vlastnosti:  
+2. Přejděte na svou funkci a vyberte **Přehled**  >  **výstupy**  >  **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Adaptér pro výstup funkcí má následující vlastnosti:  
 
    |**Název vlastnosti**|**Popis**|
    |---|---|
@@ -150,7 +150,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
    |Funkce| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
    |Maximální velikost dávky|Nastaví maximální velikost pro každou výstupní dávku, která se pošle do vaší funkce v bajtech. Ve výchozím nastavení je tato hodnota nastavená na 262 144 bajtů (256 KB).|
    |Maximální počet v dávce|Určuje maximální počet událostí v každé dávce, která se odesílá do dané funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
-   |Key|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
+   |Klíč|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
 
 3. Zadejte název aliasu pro výstup. V tomto kurzu se jmenuje **saop1**, ale můžete použít libovolný název. Zadejte další podrobnosti.
 
@@ -167,7 +167,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Spusťte aplikaci telcodatagen. exe spuštěním následujícího příkazu v příkazovém řádku. Příkaz používá formát `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`.  
+5. Spusťte aplikaci telcodatagen.exe spuštěním následujícího příkazu v příkazovém řádku. Příkaz používá formát `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]` .  
    
    ```cmd
    telcodatagen.exe 1000 0.2 2

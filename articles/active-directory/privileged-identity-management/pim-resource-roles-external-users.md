@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743775"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782732"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Pozvání uživatelů typu Host a přiřazení rolí prostředků Azure v Privileged Identity Management
 
@@ -45,7 +45,7 @@ Tady je několik příkladů, kdy je možné pozvat hosty do vaší organizace:
 
 ## <a name="how-does-collaboration-using-b2b-guests-work"></a>Jak funguje spolupráce pomocí programu B2B pro hosty?
 
-Pokud používáte spolupráci B2B, můžete jako hosta pozvat externího uživatele do vaší organizace. Host se dá spravovat jako uživatel ve vaší organizaci, ale Host musí být ověřený v jejich domovské organizaci, a ne ve vaší organizaci Azure AD. To znamená, že pokud už Host nebude mít přístup k své domovské organizaci, ztratí přístup i k vaší organizaci. Pokud například Host opustí svou organizaci, automaticky ztratí přístup k prostředkům, které s nimi sdílíte ve službě Azure AD, aniž byste museli nic dělat. Další informace o spolupráci B2B najdete v tématu [co je přístup uživatelů typu Host v Azure Active Directory B2B?](../b2b/what-is-b2b.md).
+Pokud používáte spolupráci B2B, můžete jako hosta pozvat externího uživatele do vaší organizace. Host se dá spravovat jako uživatel ve vaší organizaci, ale Host musí být ověřený v jejich domovské organizaci, a ne ve vaší organizaci Azure AD. To znamená, že pokud už Host nebude mít přístup k své domovské organizaci, ztratí přístup i k vaší organizaci. Pokud například Host opustí svou organizaci, automaticky ztratí přístup k prostředkům, které s nimi sdílíte ve službě Azure AD, aniž byste museli nic dělat. Další informace o spolupráci B2B najdete v tématu [co je přístup uživatelů typu Host v Azure Active Directory B2B?](../external-identities/what-is-b2b.md).
 
 ![Diagram znázorňující, jak je uživatel typu Host ověřený v domovském adresáři](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
@@ -166,4 +166,4 @@ Můžete zobrazit protokoly auditu a sledovat, co dělají hosté.
 ## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení rolí správce Azure AD v Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Co je přístup uživatelů typu Host ve spolupráci B2B Azure AD?](../b2b/what-is-b2b.md)
+- [Co je přístup uživatelů typu Host ve spolupráci B2B Azure AD?](../external-identities/what-is-b2b.md)

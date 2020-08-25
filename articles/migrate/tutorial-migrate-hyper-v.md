@@ -7,10 +7,10 @@ ms.custom:
 - MVC
 - fasttrack-edit
 ms.openlocfilehash: 0e909a91d610c032bc1d9d003efae7c555afd8bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86108222"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
@@ -31,10 +31,10 @@ Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat poč
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci virtuálního počítače.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 1. [Zkontrolujte](hyper-v-migration-architecture.md) architekturu migrace technologie Hyper-V.
 2. [Kontrola](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Požadavky na hostitele Hyper-V pro migraci a adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
 3. [Projděte si](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
-4. Doporučujeme, abyste před migrací na Azure [vyhodnotili virtuální počítače Hyper-V](tutorial-assess-hyper-v.md) , ale nemusíte je používat.
+4. Doporučujeme, abyste před migrací na Azure  [vyhodnotili virtuální počítače Hyper-V](tutorial-assess-hyper-v.md) , ale nemusíte je používat.
 
    
 ## <a name="add-the-azure-migrateserver-migration-tool"></a>Přidejte Azure Migrate: Nástroj pro migraci serveru

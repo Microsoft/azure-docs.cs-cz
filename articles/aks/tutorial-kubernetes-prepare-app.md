@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77593156"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS)
@@ -27,7 +27,7 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 V dalších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
@@ -104,7 +104,7 @@ Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se otestovala aplikace a vytvořily se pro ni image kontejnerů. Naučili jste se tyto postupy:
+V tomto kurzu se otestovala aplikace a vytvořily se pro ni image kontejnerů. Naučili jste se:
 
 > [!div class="checklist"]
 > * Klonování zdroje ukázkové aplikace z GitHubu
@@ -125,7 +125,7 @@ V dalším kurzu se dozvíte, jak ukládat image do služby Azure Container Regi
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[Git]: https://git-scm.com/downloads
+[git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

@@ -9,10 +9,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76020874"
 ---
 ## <a name="create-base-resources"></a>Vytvoření základních prostředků

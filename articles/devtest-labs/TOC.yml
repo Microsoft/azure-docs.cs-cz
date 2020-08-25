@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: Nastavení zásad a plánů
           href: devtest-lab-set-lab-policy.md
+        - name: "Konfigurace identity testovacího prostředí\_"
+          href: configure-lab-identity.md
         - name: Konfigurace testovacího prostředí pro použití brány vzdálené plochy
           href: configure-lab-remote-desktop-gateway.md
         - name: Zveřejnění oznámení v testovacím prostředí
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Škálování testovacího prostředí
           href: devtest-lab-scale-lab.md
-        - name: Povolení spravovaných identit pro virtuální počítače v testovacím prostředí
-          href: enable-managed-identities-lab-vms.md
         - name: Správa základů virtuálních počítačů
           items:
             - name: Konfigurace imagí na Azure Marketplace
@@ -133,7 +133,7 @@
               href: devtest-lab-add-vm.md
             - name: Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: devtest-lab-vmcli.md
             - name: Šablona Resource Manageru
               href: devtest-lab-use-resource-manager-template.md
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: Import virtuálních počítačů z jiného testovacího prostředí
           href: import-virtual-machines-from-another-lab.md
+        - name: Povolení spravovaných identit pro virtuální počítače v testovacím prostředí
+          href: enable-managed-identities-lab-vms.md
     - name: Použití prostředí v testovacím prostředí
       items:
         - name: Vytvoření prostředí

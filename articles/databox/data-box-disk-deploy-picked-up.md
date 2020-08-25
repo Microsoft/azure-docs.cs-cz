@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923777"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257452"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ Při vracení zařízení v Číně proveďte následující kroky.
 
 ### <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji, Západní Evropě nebo Indii a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů.
+Pokud používáte Data Box Disk ve státní správě USA, v Japonsku, Singapuru, Koreji, Západní Evropě, Jižní Africe nebo Indii a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů.
 
 1. Na webu Azure Portal přejděte do okna **Přehled** pro vaši objednávku. Projděte si pokyny zobrazené po výběru **Naplánovat vyzvednutí**. Měl by se zobrazit autorizační kód, který se používá při předávání objednávky.
 

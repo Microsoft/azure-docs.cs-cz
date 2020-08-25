@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálo
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9f69b8815cc8d508d5a10dda82803581216a4eb
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079311"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761623"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
@@ -17,7 +17,7 @@ Služba Azure Backup Service spouští úlohy, které běží na pozadí v různ
 
 ## <a name="fetch-job-information-from-operations"></a>Načíst informace o úloze z operací
 
-Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
+Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup) je následující:
 
 ```http
 {

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371732"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761759"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -56,7 +56,7 @@ Chybová zpráva: při kopírování zálohovaných dat z trezoru vypršel časo
 
 K tomu může dojít v důsledku přechodných chyb úložiště nebo nedostatečného účtu úložiště pro službu Backup pro přenos dat do trezoru v časovém limitu. Nakonfigurujte zálohování virtuálních počítačů pomocí těchto [osvědčených postupů](backup-azure-vms-introduction.md#best-practices) a zkuste operaci zálohování zopakovat.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – virtuální počítač není ve stavu, který umožňuje zálohování.
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Virtuální počítač není ve stavu, který umožňuje zálohování
 
 Kód chyby: UserErrorVmNotInDesirableState <br/>
 Chybová zpráva: virtuální počítač není ve stavu, který umožňuje zálohování.<br/>
@@ -162,7 +162,7 @@ Operace zálohování se nezdařila z důvodu nekonzistentního stavu záložní
 
 ### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError-snímková operace se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky.
 
-Kód chyby: ExtensionFailedSnapshotLimitReachedError <br/>
+Kód chyby: ExtensionFailedSnapshotLimitReachedError  <br/>
 Chybová zpráva: operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky.
 
 Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte níže uvedené kroky pro řešení potíží a potom operaci opakujte.
@@ -248,7 +248,7 @@ Kód chyby: ExtensionVCRedistInstallationFailure <br/> Chybová zpráva: operace
 * Přejděte na `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64 a nainstalujte ji.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastavte **počáteční** hodnotu v **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.
 * Zkontrolujte protokol událostí a ověřte, jestli máte všímáte problémy související s přístupem. Příklad: *produkt: Microsoft Visual C++ 2013 x64 minimální modul runtime-12.0.21005--Error 1401. nelze vytvořit klíč: Software\Classes.  Chyba systému 5.  Ověřte, zda máte dostatečný přístup k tomuto klíči, nebo se obraťte na pracovníky podpory.* <br><br> Zajistěte, aby měl účet správce nebo uživatele dostatečná oprávnění k aktualizaci klíče registru **HKEY_LOCAL_MACHINE \software\classes**. Poskytněte dostatečná oprávnění a restartujte agenta hosta systému Windows Azure.<br><br> <li> Pokud máte antivirové produkty, ujistěte se, že mají správná pravidla vyloučení, která umožňují instalaci.
 
-### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – na virtuálním počítači je nakonfigurovaná neplatná zásada, která znemožňuje operaci snímku.
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – Na virtuálním počítači jsou nakonfigurované neplatné zásady, které brání operaci vytvoření snímku
 
 Kód chyby: UserErrorRequestDisallowedByPolicy <BR> Chybová zpráva: na virtuálním počítači je nakonfigurovaná neplatná zásada, která znemožňuje operaci snímku.
 
@@ -289,23 +289,23 @@ Pokud zálohování trvá déle než 12 hodin nebo obnovení trvá déle než 6 
 
 Agent virtuálního počítače je obvykle přítomen na virtuálních počítačích vytvořených z Galerie Azure. Virtuální počítače, které jsou migrovány z místních datových center, ale nebudou mít nainstalovaného agenta virtuálního počítače. Pro tyto virtuální počítače musí být agent virtuálního počítače nainstalovaný explicitně.
 
-#### <a name="windows-vms"></a>Virtuální počítače s Windows
+#### <a name="windows-vms---set-up-the-agent"></a>Virtuální počítače s Windows – nastavení agenta
 
 * Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace potřebujete oprávnění správce.
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) tak, aby označovala, že agent je nainstalovaný. Tento krok není nutný pro Azure Resource Manager virtuálních počítačů.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms---set-up-the-agent"></a>Virtuální počítače se systémem Linux – nastavení agenta
 
 * Nainstalujte nejnovější verzi agenta z distribučního úložiště. Podrobnosti o názvu balíčku najdete v části [úložiště agenta pro Linux](https://github.com/Azure/WALinuxAgent).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Classic [aktualizujte vlastnost VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) a ověřte, jestli je agent nainstalovaný. Tento krok není nutný pro Správce prostředků virtuálních počítačů.
 
 ### <a name="update-the-vm-agent"></a>Aktualizace agenta virtuálního počítače
 
-#### <a name="windows-vms"></a>Virtuální počítače s Windows
+#### <a name="windows-vms---update-the-agent"></a>Virtuální počítače s Windows – aktualizace agenta
 
 * Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binární soubory agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Než agenta aktualizujete, ujistěte se, že během aktualizace agenta virtuálního počítače nedochází k žádným operacím zálohování.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms---update-the-agent"></a>Virtuální počítače se systémem Linux – aktualizace agenta
 
 * Chcete-li aktualizovat agenta virtuálního počítače se systémem Linux, postupujte podle pokynů v článku [aktualizace agenta virtuálního počítače se systémem Linux](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json).
 

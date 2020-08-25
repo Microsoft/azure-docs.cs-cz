@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86120632"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete tento kurz dokončit, Stáhněte si nejnovější verzi AzCopy. Viz Začínáme [s AzCopy](storage-use-azcopy-v10.md).
 
@@ -184,7 +184,7 @@ Další informace o AzCopy najdete v některém z těchto článků:
 
 * [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 
-* [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+* [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 
 * [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
  

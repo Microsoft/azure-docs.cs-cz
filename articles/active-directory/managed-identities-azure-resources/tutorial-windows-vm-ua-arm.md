@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Resource Manager-Windows-Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Resource Manager-Windows-Azure AD
 description: Tento kurz vás provede procesem použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75977836"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manager
@@ -39,11 +39,11 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Přihlášení k Azure Portal](https://portal.azure.com)
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
 
 - [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
@@ -55,7 +55,7 @@ Získáte informace o těchto tématech:
 - Spuštěním rutiny `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `Az.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
 
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 
 V případě scénáře, který je založen na identitě přiřazené uživatelem, je třeba provést následující kroky:
 
@@ -129,7 +129,7 @@ CanDelegate: False
 
 Ve zbývající části kurzu použijete k práci dříve vytvořený virtuální počítač.
 
-1. Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.com)
+1. Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com)
 
 2. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
 
@@ -137,7 +137,7 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
 
 4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **PowerShell** ve vzdálené relaci.
 
-5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  `client_id` Hodnota je hodnota vrácená při vytvoření spravované identity přiřazené uživatelem.
+5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  `client_id`Hodnota je hodnota vrácená při vytvoření spravované identity přiřazené uživatelem.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}

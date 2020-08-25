@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: a5b62b05c36afac078ccc7aeb7ed0e7259072fc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6bd119b743ad83bcab9f92d386a5091593f6a5c0
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513791"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761317"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>Registrace virtuálního počítače SQL
 
-Pro zálohování virtuálních počítačů Azure a sdílené složky Azure se služba Backup může připojit k těmto Azure Resource Manager prostředkům a načíst příslušné podrobnosti. Vzhledem k tomu, že SQL je aplikace na virtuálním počítači Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností. Abyste to mohli udělat, musíte *zaregistrovat* virtuální počítač Azure, který obsahuje aplikaci SQL, s trezorem služby Recovery Services. Jakmile zaregistrujete virtuální počítač SQL pomocí trezoru, můžete SQL databáze chránit jenom k tomuto trezoru. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS.
+Pro zálohování virtuálních počítačů Azure a sdílené složky Azure se služba Backup může připojit k těmto Azure Resource Manager prostředkům a načíst příslušné podrobnosti. Vzhledem k tomu, že SQL je aplikace na virtuálním počítači Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností. Abyste to mohli udělat, musíte *zaregistrovat* virtuální počítač Azure, který obsahuje aplikaci SQL, s úložištěm Recovery Services. Jakmile zaregistrujete virtuální počítač SQL pomocí trezoru, můžete SQL databáze chránit jenom k tomuto trezoru. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -522,6 +522,7 @@ Pokud chcete upravit existující zásady, použijte příkaz [set-AzRecoverySer
 ```powershell
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
+
 Po uplynutí určité doby Projděte úlohy zálohování a sledujte případné chyby. V takovém případě je potřeba problémy vyřešit. Pak znovu spusťte příkaz Upravit zásadu s parametrem **FixForInconsistentItems** a zkuste znovu upravit zásady u všech zálohovaných položek, pro které se operace dřív nezdařila.
 
 ```powershell

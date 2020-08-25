@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74456106"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
@@ -37,11 +37,11 @@ V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA
 
 Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
-Vyberte **úložiště** > **ACR-HelloWorld**, potom klikněte pravým tlačítkem na značku **v1** v části **značky** a vyberte **nasadit do webové aplikace**:
+Vyberte **úložiště**  >  **ACR-HelloWorld**, potom klikněte pravým tlačítkem na značku **v1** v části **značky** a vyberte **nasadit do webové aplikace**:
 
 ![Nasazení do služby App Service na portálu Azure Portal][deploy-app-portal-01]
 
-Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v **Nastavení** > **přístupové klíče** v Azure Portal.
+Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v **Nastavení**  >  **přístupové klíče** v Azure Portal.
 
 V části **Web App for Containers**, která se zobrazí po výběru možnosti Nasadit do webové aplikace, zadejte u jednotlivých nastavení následující hodnoty:
 
@@ -50,7 +50,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
-| **Image** | `acr-helloworld:v1` |
+| **Obrázek** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci 
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
-| **Image** | `acr-helloworld:v1` |
+| **Obrázek** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.

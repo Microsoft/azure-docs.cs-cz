@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "66473010"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz: integrace jedné doménové struktury služby AD pomocí předávacího ověřování (PTA)
@@ -24,7 +24,7 @@ ms.locfileid: "66473010"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí předávacího ověřování.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Předplatné Azure](https://azure.microsoft.com/free)
@@ -43,9 +43,9 @@ Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 První věc, kterou musíme udělat, je vytvoření virtuálního počítače, který se bude používat jako náš místní server služby Active Directory, za účelem zprovoznění našeho prostředí hybridních identit.  
 
 >[!NOTE]
->Pokud jste nikdy nespouštěli skript v PowerShellu na hostitelském počítači, budete muset před `Set-ExecutionPolicy remotesigned` spuštěním skriptů spustit příkaz Ano v prostředí PowerShell.
+>Pokud jste nikdy nespouštěli skript v PowerShellu na hostitelském počítači, budete muset `Set-ExecutionPolicy remotesigned` před spuštěním skriptů spustit příkaz Ano v prostředí PowerShell.
 
-Udělejte toto:
+Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -90,10 +90,10 @@ Aby bylo možné dokončit vytváření virtuálního počítače, je nutné dok
 10. Až se instalace dokončí, restartujte virtuální počítač, přihlaste se a spusťte aktualizace Windows, abyste měli jistotu, že je virtuální počítač nejaktuálnější.  Nainstalujte nejnovější aktualizace.
 
 ## <a name="install-active-directory-prerequisites"></a>Nainstalovat požadavky služby Active Directory
-Teď, když máme virtuální počítač, musíme před instalací služby Active Directory udělat několik věcí.  To znamená, že musíme virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Udělejte toto:
+Teď, když máme virtuální počítač, musíme před instalací služby Active Directory udělat několik věcí.  To znamená, že musíme virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
-2. Spusťte `Set-ExecutionPolicy remotesigned` příkaz a řekněte Ano všem [A].  Stiskněte klávesu Enter.
+2. Spusťte příkaz `Set-ExecutionPolicy remotesigned` a řekněte Ano všem [A].  Stiskněte klávesu Enter.
 3. Spusťte následující skript.
 
 ```powershell
@@ -127,7 +127,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Vytvoření prostředí Windows Server AD
-Teď, když jsme vytvořili virtuální počítač a přejmenovali a má statickou IP adresu, můžeme pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Udělejte toto:
+Teď, když jsme vytvořili virtuální počítač a přejmenovali a má statickou IP adresu, můžeme pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -158,7 +158,7 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Vytvoření uživatele Windows Server AD
-Teď, když máme prostředí Active Directory, musíme otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Udělejte toto:
+Teď, když máme prostředí Active Directory, musíme otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -189,13 +189,13 @@ Nyní musíme vytvořit tenanta Azure AD, abychom mohli synchronizovat naše už
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
 4. Vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/create1.png)</br>
-5. Zadejte **název organizace** společně s **počátečním názvem domény**. Pak vyberte **vytvořit**. Vytvoří se váš adresář.
+5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Vytvoření globálního správce v Azure AD
 Teď, když máme tenanta Azure AD, vytvoříme účet globálního správce.  Tento účet se používá k vytvoření účtu konektoru Azure AD během Azure AD Connect instalace.  Účet konektoru Azure AD se používá k zápisu informací do služby Azure AD.   Účet globálního správce vytvoříte takto.
 
-1.  V části **Spravovat** vyberte **Uživatele**.</br>
+1.  V části **Spravovat** vyberte **Uživatelé**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **Všichni uživatelé** a pak vyberte **+ Nový uživatel**.
 3.  Zadejte jméno a uživatelské jméno uživatele. To bude globální správce pro tenanta. Také budete chtít změnit **roli adresáře** na **globální správce.** A můžete i zobrazit dočasné heslo. Po dokončení vyberte **Vytvořit**.</br>
@@ -204,7 +204,7 @@ Teď, když máme tenanta Azure AD, vytvoříme účet globálního správce.  T
 5. Změňte heslo pro globálního správce na něco, co si pamatujete.
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>Přidání vlastního názvu domény do adresáře
-Teď, když máme tenanta a globálního správce, musíme přidat naši vlastní doménu, aby ji Azure mohl ověřit.  Udělejte toto:
+Teď, když máme tenanta a globálního správce, musíme přidat naši vlastní doménu, aby ji Azure mohl ověřit.  Postupujte následovně:
 
 1. Zpátky v [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nezapomeňte zavřít okno **Všichni uživatelé** .
 2. Nalevo vyberte **Názvy vlastních domén**.
@@ -217,13 +217,13 @@ Teď, když máme tenanta a globálního správce, musíme přidat naši vlastn�
 ![Vlastní](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Stažení a instalace Azure AD Connect
-Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci se spustí prostřednictvím Expresní instalace.  Udělejte toto:
+Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci se spustí prostřednictvím Expresní instalace.  Postupujte následovně:
 
 1. Stáhnout [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2. Přejděte k souboru **AzureADConnect.msi** a dvakrát na něj klikněte.
 3. Na uvítací obrazovce zaškrtněte políčko, kterým odsouhlasíte licenční podmínky, a klikněte na **Pokračovat**.  
 4. Na obrazovce expresní nastavení klikněte na **přizpůsobit**.  
-5. Na obrazovce instalace požadovaných součástí. Klikněte na **nainstalovat**.  
+5. Na obrazovce instalace požadovaných součástí. Klikněte na **Install** (Nainstalovat).  
 6. Na obrazovce přihlášení uživatele vyberte **předávací ověřování** a **Povolit jednotné přihlašování** a klikněte na **Další**.</br>
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Na obrazovce připojit k Azure AD zadejte uživatelské jméno a heslo globálního správce, který jsme vytvořili výše, a klikněte na **Další**.
@@ -246,14 +246,14 @@ Nyní bude ověřeno, že uživatelé, kteří byli v místním adresáři, byli
 
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Na levé straně vyberte **Azure Active Directory**
-3. V části **Spravovat** vyberte **Uživatele**.
-4. Ověřte, že se v naší synchronizaci tenanta ![zobrazují noví uživatelé.](media/tutorial-password-hash-sync/synch1.png)
+3. V části **Spravovat** vyberte **Uživatelé**.
+4. Ověřte, že se v naší synchronizaci tenanta zobrazují noví uživatelé. ![](media/tutorial-password-hash-sync/synch1.png)
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.
-   ![Ověřit](media/tutorial-password-hash-sync/verify1.png)
+1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.
+   ![Ověříte](media/tutorial-password-hash-sync/verify1.png)
 
 Nyní jste úspěšně nastavili hybridní prostředí identity, které můžete použít k otestování a seznámení s tím, co Azure nabízí.
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86083062"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Transformujte data v Azure Virtual Network pomocí aktivity podregistru v Azure Data Factory pomocí Azure Portal
@@ -32,9 +32,9 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který 
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 - **Cluster HDInsight.** Vytvořte cluster HDInsight a připojte ho k virtuální síti, kterou jste vytvořili v předchozím kroku, a na základě informací v článku věnovaném [rozšíření Azure HDInsightu s využitím služby Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Tady je ukázka konfigurace HDInsightu ve virtuální síti. 
 
     ![HDInsight ve virtuální síti](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+- **Azure PowerShell.** Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 - **Virtuální počítač**. Vytvořte virtuální počítač Azure a připojte ho do stejné virtuální sítě, která obsahuje váš cluster HDInsight. Podrobnosti najdete v tématu věnovaném [postupu při vytváření virtuálních počítačů](../virtual-network/quick-create-portal.md#create-virtual-machines). 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Uložení skriptu Hivu do vašeho účtu služby Blob Storage
@@ -94,7 +94,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**. 
 
      ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391209"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
@@ -55,7 +55,7 @@ Postup vypnutí instance modelu tenanta:
 
 Pokud chcete model tenanta použít se sadou Speech SDK, potřebujete prostředek pro rozpoznávání řeči a jeho přidružený klíč předplatného.
 
-1. Přihlaste se k webu [Azure Portal](https://aka.ms/azureportal).
+1. Přihlaste se na web [Azure Portal](https://aka.ms/azureportal).
 1. Vyberte **Vytvořit prostředek**.
 1. Do **vyhledávacího** pole zadejte **Speech**.
 1. V seznamu výsledků vyberte **řeč**a pak vyberte **vytvořit**.

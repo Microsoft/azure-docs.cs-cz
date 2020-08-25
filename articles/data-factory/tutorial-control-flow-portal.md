@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86077643"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
@@ -40,9 +40,9 @@ V tomto kurzu provedete následující kroky:
 
 Tento kurz používá Azure Portal. K interakci s Azure Data Factory můžete použít další mechanismy – podívejte se v obsahu na téma Šablony Rychlý start.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud nemáte databázi v Azure SQL Database, přečtěte si článek [Vytvoření databáze v článku Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 
@@ -93,7 +93,7 @@ Požadavek v návrháři aplikace logiky by měl vypadat podobně jako na násle
 
 ![Návrhář aplikace logiky – požadavek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Zde naleznete příklad:
+Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Tady je příklad:
 
 ![Návrhář aplikace logiky – akce odeslání e-mailu](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
-Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
+Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
 
 ![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -151,7 +151,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na **Vytvořit**.      
+7. Klikněte na možnost **Vytvořit**.      
 8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**.
 
     ![nasazování dlaždice datové továrny](media/tutorial-control-flow-portal/deploying-data-factory.png)

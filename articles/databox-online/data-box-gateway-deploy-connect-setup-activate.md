@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82561683"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Kurz: připojení, nastavení, aktivace Azure Data Box Gateway
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Připojení k virtuálnímu zařízení
 > * Nastavení a aktivace virtuálního zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
 
@@ -41,7 +41,7 @@ Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
 
 1. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení v:
    
-   https:\//IP-address-of-Network-Interface
+   https: \/ /IP-address-of-Network-Interface
    
    Použijte adresu URL připojení, kterou jste si poznamenali v předchozím kurzu. Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu.
 
@@ -88,7 +88,7 @@ Nyní jste na **řídicím panelu** zařízení.
    
    Na stránce **webový proxy server** proveďte následující kroky:
    
-   1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://&lt;host-IP address or FQDN&gt;:Port number`. Adresy URL protokolu HTTPS nejsou podporovány.
+   1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://&lt;host-IP address or FQDN&gt;:Port number` . Adresy URL protokolu HTTPS nejsou podporovány.
    2. V části **ověřování**vyberte **žádné** nebo **NTLM**.
    3. Pokud používáte ověřování, zadejte **uživatelské jméno** a **heslo**.
    4. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít**.
@@ -109,7 +109,7 @@ Nyní jste na **řídicím panelu** zařízení.
     1. V rozevíracím seznamu **časové pásmo** vyberte časové pásmo, které odpovídá geografickému umístění, ve kterém je zařízení nasazené.
         Výchozím časovým pásmem pro vaše zařízení je PST. Toto časové pásmo bude zařízení používat pro všechny naplánované operace.
 
-    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu `time.windows.com`.   
+    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu `time.windows.com` .   
         Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
 
     3. Případně můžete v poli **sekundární server NTP** zadat sekundární server pro vaše zařízení.

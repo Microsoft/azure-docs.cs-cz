@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495620"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782477"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Role, které nemůžete spravovat v Privileged Identity Management
 
@@ -37,7 +37,7 @@ Další informace o rolích správců klasických předplatných najdete v téma
 
 ## <a name="what-about-office-365-admin-roles"></a>Co jsou role správců Office 365?
 
-Všechny role Office 365 podporujeme v prostředí portálu rolí a správců Azure AD, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto službách Office 365 najdete v tématu [role správce sady office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Všechny role Office 365 podporujeme v prostředí portálu rolí a správců Azure AD, jako je například správce Exchange a správce služby SharePoint, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto službách Office 365 najdete v tématu [role správce sady office 365](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > Oprávnění uživatelé pro roli správce služby SharePoint, role Správce zařízení a všech rolí, které se pokoušejí získat přístup k centru zabezpečení a dodržování předpisů, můžou po aktivaci své role zaznamenat prodlevu až několik hodin. S těmito týmy pracujeme na řešení těchto problémů.

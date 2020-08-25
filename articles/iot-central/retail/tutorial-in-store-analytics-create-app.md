@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000249"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Připojení zařízení k aplikaci
 > * Přidat pravidla a akce pro monitorování podmínek
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této série kurzů potřebujete:
 * Doporučuje se předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -146,7 +146,7 @@ Přidání šablony zařízení RuuviTag do vaší aplikace:
 
 1. Vyhledejte a vyberte šablonu zařízení **RuuviTag** snímače v katalogu zařízení Azure IoT. 
 
-1. Vyberte **Další: přizpůsobit**.
+1. Vyberte **Další: Přizpůsobit**.
 
     ![Šablona zařízení RuuviTag pro senzory Azure IoT Central](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
@@ -177,11 +177,11 @@ Přizpůsobení vestavěných rozhraní šablony zařízení RuuviTag:
 
 1. V nabídce šablona zařízení RuuviTag vyberte **přizpůsobit** . 
 
-1. Posuňte se v seznamu možností a najděte typ `humidity` telemetrie. Je to položka řádku s upravitelným **zobrazovaným názvem** hodnoty *vlhkosti*.
+1. Posuňte se v seznamu možností a najděte `humidity` typ telemetrie. Je to položka řádku s upravitelným **zobrazovaným názvem** hodnoty *vlhkosti*.
 
-V následujících krocích si přizpůsobíte typ `humidity` telemetrie pro senzory RuuviTag. Volitelně můžete přizpůsobit některé z ostatních typů telemetrie.
+V následujících krocích si přizpůsobíte `humidity` typ telemetrie pro senzory RuuviTag. Volitelně můžete přizpůsobit některé z ostatních typů telemetrie.
 
-Pro typ `humidity` telemetrie proveďte následující změny:
+Pro `humidity` typ telemetrie proveďte následující změny:
 
 1. Výběrem **rozbalovacího** ovládacího prvku rozbalíte podrobnosti o schématu pro daný řádek.
 
@@ -250,7 +250,7 @@ Vytvoření pravidla:
 
 1. V části **obory**vyberte šablonu zařízení RuuviTag. Pravidlo, které definujete, bude platit pro všechny senzory založené na této šabloně. Volitelně můžete vytvořit filtr, který by pravidlo použilo jenom pro definovanou podmnožinu senzorů. 
 
-1. Vyberte `Relative humidity` si jako **telemetrii**. Je to funkce zařízení, kterou jste přizpůsobili v předchozím kroku.
+1. Vyberte si `Relative humidity` jako **telemetrii**. Je to funkce zařízení, kterou jste přizpůsobili v předchozím kroku.
 
 1. Vyberte `Is greater than` jako **operátor**. 
 

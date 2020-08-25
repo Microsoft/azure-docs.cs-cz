@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86057003"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
@@ -39,7 +39,7 @@ Další informace o používání zón dostupnosti s Load Balancerem úrovně St
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -54,11 +54,11 @@ Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu.
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
+    | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
     | Name                   | *myLoadBalancer*                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
+    | Region         | Vyberte **Západní Evropa**.                                        |
+    | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
@@ -77,7 +77,7 @@ V této části budete muset v krocích níže nahradit následující parametry
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLBAZ (vyberte existující skupinu prostředků) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Západní Evropa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.0.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.0.0.0/24          |
@@ -180,7 +180,7 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
     - Pro možnost **Virtuální počítač** v rozevírací nabídce klikněte na **myVM1**.
     - Pro možnost **IP adresa** v rozevírací nabídce klikněte na IP adresu myVM1.
 4. Kliknutím na **Přidat nový back-endový prostředek** přidejte jednotlivé virtuální počítače (*myVM2* a *myVM3*), které chcete přidat do back-endového fondu nástroje pro vyrovnávání zatížení.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na **Přidat**.
 
     ![Přidání do back-endového fondu adres –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -220,7 +220,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
     
     ![Přidání pravidla vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
-## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
+## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 1. Na obrazovce **Přehled** vyhledejte veřejnou IP adresu Load Balanceru. Klikněte na **Všechny prostředky** a pak klikněte na **myPublicIP**.
 
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.

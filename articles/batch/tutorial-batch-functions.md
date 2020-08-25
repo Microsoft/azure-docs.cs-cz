@@ -7,17 +7,17 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85963848"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Kurz: Aktivace dávkové úlohy pomocí Azure Functions
 
 V tomto kurzu se dozvíte, jak aktivovat dávkovou úlohu pomocí Azure Functions. Provedeme si příklad, ve kterém dokumenty přidané do kontejneru objektů blob Azure Storage mají pro ně použit optické rozpoznávání znaků (OCR) prostřednictvím Azure Batch. Abychom zjednodušili zpracování optického rozpoznávání znaků, nakonfigurujeme funkci Azure, která spustí úlohu dávkového optického rozpoznávání při každém přidání souboru do kontejneru objektů BLOB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 * Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak aktivovat dávkovou úlohu pomocí Azure Function
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Vytvoření fondu Batch a úlohy Batch pomocí Batch Explorer
 
@@ -72,8 +72,8 @@ V této části vytvoříte funkci Azure, která aktivuje dávkovou úlohu OCR p
     1. Po zobrazení výzvy k zadání účtu úložiště použijte stejný účet úložiště, který jste propojili s vaším účtem Batch.
     1. V případě **zásobníků modulu runtime**vyberte .NET. Napíšeme naši funkci v jazyce C#, abychom využili sadu Batch .NET SDK.
 1. Jakmile je funkce aktivovaná objektem BLOB vytvořená, použijte [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) ve funkci a z GitHubu.
-    * `run.csx`se spustí při přidání nového objektu blob do vstupního kontejneru objektů BLOB.
-    * `function.proj`obsahuje seznam externích knihoven v kódu funkce, například sadu Batch .NET SDK.
+    * `run.csx` se spustí při přidání nového objektu blob do vstupního kontejneru objektů BLOB.
+    * `function.proj` obsahuje seznam externích knihoven v kódu funkce, například sadu Batch .NET SDK.
 1. Změňte zástupné hodnoty proměnných ve `Run()` funkci `run.csx` souboru tak, aby odrážely přihlašovací údaje pro dávku a úložiště. Přihlašovací údaje k účtu Batch a účtu úložiště najdete v Azure Portal v části **klíče** účtu Batch.
     * Přihlašovací údaje k účtu Batch a účtu úložiště načtěte v Azure Portal v části **klíče** účtu Batch. 
 

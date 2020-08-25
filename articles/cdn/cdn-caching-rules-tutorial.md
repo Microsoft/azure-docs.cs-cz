@@ -15,10 +15,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81254304"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 

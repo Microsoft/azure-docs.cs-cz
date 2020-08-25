@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82582875"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
@@ -31,11 +31,11 @@ V tomto kurzu se naučíte:
 > * Přiřazení licencí ke skupině pro funkce specifické pro partnera, ke kterým budou mít uživatelé typu host přístup
 > * Bonus: Zabezpečení skupiny **Všichni uživatelé** odebráním uživatelů typu host, abyste členům mohli například udělit přístup k výhradně interním webům
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tato funkce vyžaduje jednu licenci Azure AD Premium pro vás jako globální správce organizace. Pokud ho nemáte, v Azure AD vyberte **licence** > **produkty** > **vyzkoušet/koupit**.
+Tato funkce vyžaduje jednu licenci Azure AD Premium pro vás jako globální správce organizace. Pokud ho nemáte, v Azure AD vyberte **licence**  >  **produkty**  >  **vyzkoušet/koupit**.
 
 Uživatelům, kteří mají být členy dynamických skupin, licence přiřazovat nemusíte. K pokrytí všech takových uživatelů potřebujete jenom minimální počet dostupných licencí Azure AD Premium P1 v organizaci. 
 
@@ -43,14 +43,14 @@ Uživatelům, kteří mají být členy dynamických skupin, licence přiřazova
 
 Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z jedné partnerské společnosti. Potřebují zvláštní licencování, takže je efektivnější pro tento účel vytvořit skupinu.
 
-1. Přihlaste se k Azure Portalhttps://portal.azure.com) (pomocí účtu, který je globálním správcem vaší organizace.
-2. Vyberte **Azure Active Directory** > **skupiny** > **Nová skupina**.
+1. Přihlaste se k Azure Portal ( https://portal.azure.com) pomocí účtu, který je globálním správcem vaší organizace.
+2. Vyberte **Azure Active Directory**  >  **skupiny**  >  **Nová skupina**.
    ![výběrem příkazu zahájíte novou skupinu.](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:
   
    * Jako typ skupiny vyberte **zabezpečení** .
-   * Jako `Guest users Contoso` název a popis skupiny zadejte.
-   * Změňte **typ členství** na **dynamický uživatel**.
+   * `Guest users Contoso`Jako název a popis skupiny zadejte.
+   * Změňte **Typ členství** na **Dynamický uživatel**.
    
 4. Vyberte **vlastníci** a v okně **Přidat vlastníky** vyhledejte požadované vlastníky. Klikněte na požadované vlastníky a přidejte je do výběru.
 5. Kliknutím na **Vybrat** zavřete okno **Přidat vlastníky** .  
@@ -89,10 +89,10 @@ Možná je vaším konečným správním plánem přiřadit všechny uživatele 
 **Odebrání skupiny uživatelů typu host**
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, který je globálním správcem vaší organizace.
-2. Vyberte **Azure Active Directory** > **skupiny**. Vyberte skupinu **Uživatelé typu host – Contoso**, vyberte tři tečky (...) a pak vyberte **Odstranit**. Když odstraníte skupinu, odeberou se všechny přiřazené licence.
+2. Vyberte **Azure Active Directory**  >  **skupiny**. Vyberte skupinu **Uživatelé typu host – Contoso**, vyberte tři tečky (...) a pak vyberte **Odstranit**. Když odstraníte skupinu, odeberou se všechny přiřazené licence.
 
 **Obnovení skupiny Všichni uživatelé**
-1. Vyberte **Azure Active Directory** > **skupiny**. Výběrem názvu skupiny **Všichni uživatelé** otevřete skupinu.
+1. Vyberte **Azure Active Directory**  >  **skupiny**. Výběrem názvu skupiny **Všichni uživatelé** otevřete skupinu.
 1. Vyberte **Pravidla dynamického členství**, vymažte veškerý text pravidla a vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky

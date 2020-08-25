@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
 ms.openlocfilehash: 77fc621dc5e8013f49c261f7e0e265aad939bc2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86113526"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
@@ -30,9 +30,9 @@ V tomto kurzu se naučíte:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci virtuálního počítače.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 

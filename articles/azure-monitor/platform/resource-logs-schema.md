@@ -4,12 +4,12 @@ description: Pochopte podporované služby a schéma událostí pro protokoly pr
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318279"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782120"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
 
@@ -25,12 +25,12 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 | Název | Požadováno/volitelné | Popis |
 |---|---|---|
-| time | Povinné | Časové razítko (UTC) události. |
-| resourceId | Povinné | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
+| time | Vyžadováno | Časové razítko (UTC) události. |
+| resourceId | Vyžadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
 | tenantId | Vyžadováno pro protokoly klientů | ID tenanta klienta služby Active Directory, se kterým je tato událost svázána. Tato vlastnost se používá jenom pro protokoly na úrovni tenanta, nezobrazuje se v protokolech na úrovni prostředků. |
-| operationName | Povinné | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (například Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace ( `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` ). |
+| operationName | Vyžadováno | Název operace reprezentované touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (například Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace ( `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` ). |
 | operationVersion | Volitelné | Verze rozhraní API přidružená k operaci, pokud se operace provedla pomocí rozhraní API (například `http://myservice.windowsazure.net/object?api-version=2016-06-01` ). Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
-| category | Povinné | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
+| category | Vyžadováno | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
 | resultType | Volitelné | Stav události Mezi obvyklé hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
 | resultSignature | Volitelné | Stav sub události Pokud tato operace odpovídá volání REST API, toto pole je stavový kód HTTP odpovídajícího volání REST. |
 | resultDescription | Volitelné | Popis statického textu této operace, například "získat soubor úložiště". |
@@ -64,9 +64,10 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Data Factory | [Monitorování datových továren pomocí Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům pro Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Přístup k protokolům pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Databricks | [Protokolování diagnostiky v Azure Databricks](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
 | Event Hubs |[Protokoly Event Hubs Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Schéma není k dispozici. |
-| Brána Azure Firewall | Schéma není k dispozici. |
+| Azure Firewall | Schéma není k dispozici. |
 | IoT Hub | [IoT Hub operace](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Protokolování Azure Key Vault](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Protokolování Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
@@ -76,7 +77,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |

@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: Řešení potíží s běžnými chybami nasazení
           href: load-balancer-common-deployment-errors.md
-        - name: Řešení běžných problémů s odchozím připojením
+        - name: Řešení běžných potíží s odchozím připojením
           href: troubleshoot-outbound-connection.md
+        - name: Řešení potíží se stavem prostředků a příchozí dostupností
+          href: troubleshoot-rhc.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů

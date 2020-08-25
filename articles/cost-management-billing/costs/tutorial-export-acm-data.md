@@ -3,17 +3,17 @@ title: Kurz – Vytvoření a správa exportovaných dat ze služby Azure Cost M
 description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 69b7b4bff46ba2998ca931ba1cb6bc9e7c1d9096
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142301"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272189"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -49,40 +49,38 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-daily-export"></a>Vytvořit každodenní export
 
-Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. V horní části stránky Analýza nákladů vyberte **Nastavení** a **Exportovat** a potom zvolte možnost exportu.
+Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. V horní části stránky Analýza nákladů vyberte **Nastavení**a pak **Exporty**.
 
 > [!NOTE]
-> - Kromě předplatných můžete vytvářet exporty u skupin prostředků, účtů, oddělení a registrací. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
+> - Kromě předplatných můžete vytvářet exporty u skupin prostředků, skupin pro správu, oddělení a registrací. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
 >- Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojený s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
 
-Vyberte **Přidat**, zadejte název exportu a potom vyberte možnost **Denní export nákladů od začátku měsíce**. Vyberte **Další**.
-
-[![Příklad nového exportu znázorňující typ exportu](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
-
-Zadejte předplatné pro účet úložiště Azure a vyberte účet úložiště.  Zadejte kontejner úložiště a cestu k adresáři, do kterého chcete exportovat soubor. Vyberte **Další**.
-
-![Příklad nového exportu znázorňující podrobnosti o účtu úložiště](./media/tutorial-export-acm-data/storage_exports.png)
-
-Zkontrolujte podrobnosti exportu a vyberte **Vytvořit**.
+1. Vyberte **Přidat** a zadejte název exportu. 
+1. Jako **metriku** vyberte:
+    - **Skutečné náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat standardní využití a nákupy.
+    - **Amortizované náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat amortizované náklady pro nákupy, jako jsou rezervace Azure.
+1. V poli **Typ exportu** vyberte:
+    - **Denní export nákladů od začátku měsíce** – Poskytuje každý den nový soubor exportu s náklady od začátku měsíce. Nejnovější data jsou agregována z předchozích denních exportů.
+    - **Týdenní export nákladů v posledních 7 dnech** – Vytvoří týdenní export nákladů za posledních 7 dní od vybraného počátečního data exportu.  
+    - **Měsíční export nákladů za poslední měsíc** – Poskytne vám export nákladů za poslední měsíc na základě aktuálního měsíce, ve kterém jste export vytvořili. Podle rozvrhu se export spustí vždy pátého dne v měsíci pro náklady za předchozí měsíc.  
+    - **Jednorázový export** – Umožňuje zvolit časový rozsah historických dat pro export do služby Azure Blob Storage. Můžete exportovat maximálně 90 dní historických nákladů, a to od libovolného data. Tento export se spustí okamžitě a v účtu úložiště je k dispozici do dvou hodin.  
+        V závislosti na typu exportu buď vyberte počáteční datum, nebo vyberte data **Od** a **Do**.
+1. Zadejte předplatné pro účet úložiště Azure a potom vyberte skupinu prostředků nebo vytvořte novou. 
+1. Vyberte název účtu úložiště nebo vytvořte nový. 
+1. Vyberte umístění (oblast Azure).
+1. Zadejte kontejner úložiště a cestu k adresáři, do kterého chcete soubor exportu poslat. 
+    :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Příklad nového exportu" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
+1. Zkontrolujte podrobnosti o exportu a vyberte **Vytvořit**.
 
 Nový export se zobrazí v seznamu exportů. Ve výchozím nastavení jsou nové exporty povolené. Pokud chcete zakázat nebo odstranit naplánovaný export, vyberte libovolnou položku v seznamu a pak vyberte **Zakázat** nebo **Odstranit**.
 
-Na začátku může trvat jednu až dvě hodiny, než se export spustí. Může však trvat až čtyři hodiny, než se v exportovaných souborech zobrazí data.
+Na začátku může trvat 12 až 24 hodin, než se export spustí. Může však trvat i déle, než se v exportovaných souborech zobrazí data.
 
 ### <a name="export-schedule"></a>Plán exportu
 
-Naplánované exporty jsou ovlivněny časem a dnem v týdnu, kdy byl export původně vytvořen. Když vytvoříte naplánovaný export, export se bude spouštět se stejnou frekvencí pro každý další výskyt exportu. Například pro export od začátku měsíce nastavený na denní frekvenci se export bude spouštět denně. Podobně u týdenního exportu bude export probíhat každý týden ve stejný den, ve kterém je naplánován. Přesná doba doručení exportu není zaručena a exportovaná data jsou dostupná během čtyř hodin od spuštění.
-Každý export vytvoří nový soubor, takže starší exporty se nepřepíšou.
+Naplánované exporty jsou ovlivněny časem a dnem v týdnu, kdy byl export původně vytvořen. Když vytvoříte naplánovaný export, export se bude spouštět se stejnou frekvencí pro každý další výskyt exportu. Například export nákladů od začátku měsíce nastavený na denní frekvenci se bude spouštět denně. Podobně u týdenního exportu bude export probíhat každý týden ve stejný den, ve kterém je naplánován. Přesná doba doručení exportu není zaručena a exportovaná data jsou dostupná během čtyř hodin od spuštění.
 
-Existují dva typy možností exportu:
-
-**Denní export nákladů od začátku měsíce** – počáteční export se spustí okamžitě. Následné exporty se spustí další den ve stejnou dobu jako počáteční export. Nejnovější data jsou agregována z předchozích denních exportů.
-
-**Vlastní** – umožňuje naplánovat týdenní a měsíční exporty s možnostmi od začátku týdne a od začátku měsíce. *Počáteční export se spustí okamžitě.*
-
-Pokud máte předplatné s průběžnými platbami, MSDN nebo předplatné sady Visual Studio, nemusí se fakturační období shodovat s kalendářním měsícem. Pro tyto typy předplatného a skupiny prostředků můžete vytvořit export, který se shoduje s vaším fakturačním obdobím nebo kalendářním měsícem. Pokud chcete vytvořit export, který se shoduje s fakturačním měsícem, přejděte na **Vlastní** a potom vyberte **Od začátku fakturačního období**.  Pokud chcete vytvořit export, který se shoduje s kalendářním měsícem, vyberte možnost **Od začátku měsíce**.
-
-![Nový export – karta Základy znázorňující vlastní týdenní výběr od začátku týdne](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+Každý export vytvoří nový soubor, takže starší exporty se nepřepíší.
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>Vytvoření exportu pro více předplatných
 
@@ -90,12 +88,13 @@ Pokud máte smlouva Enterprise, můžete použít skupinu pro správu k agregaci
 
 Export pro skupiny pro správu jiných typů předplatného se nepodporuje.
 
-1. Vytvořte skupinu pro správu a přiřaďte k ní předplatná.
-1. V části Exporty vyberte **Rozsah**.
-1. Vyberte **Vybrat tuto skupinu pro správu**.
-1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.
+1. Pokud jste si ještě nevytvořili skupinu pro správu, vytvořte si ji a přiřaďte do ní předplatná.
+1. V analýze nákladů jako rozsah nastavte skupinu pro správu a vyberte možnost **Vybrat tuto skupinu pro správu**.  
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Příklad ukazující možnost Vybrat tuto skupinu pro správu" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.  
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Příklad ukazující možnost vytvoření nového exportu s rozsahem skupiny pro správu":::
 
-## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
+## <a name="verify-that-data-is-collected"></a>Ověřte, že jsou data shromážděná
 
 Pomocí Průzkumníka služby Azure Storage můžete snadno ověřit, že se data služby Cost Management shromažďují, a zobrazit exportovaný soubor CSV.
 
@@ -123,6 +122,16 @@ Vyexportovaný soubor CSV si také můžete stáhnout na webu Azure Portal. Nás
 1. Vyberte soubor CSV a potom vyberte **Stáhnout**.
 
 [![Příklad stažení exportu](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
+
+## <a name="view-export-run-history"></a>Zobrazení historie spuštění exportu  
+
+Historii spuštění naplánovaného exportu můžete zobrazit výběrem příslušného exportu na stránce se seznam exportů. Stránka se seznamem exportů také poskytuje rychlý přístup k zobrazení doby běhu předchozích exportů a času příštího spuštění exportu. Tady je příklad ukazující historii spuštění.
+
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Příklad ukazující historii spuštění exportu":::
+
+Výběrem exportu zobrazíte jeho historii spuštění.
+
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Příklad ukazující historii spuštění exportu":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
 

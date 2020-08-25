@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79501853"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box k importu dat jako spravovaných disků v Azure
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box](data-box-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Jste připojení k síti s vysokou rychlostí. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není připojení k dispozici, použijte linku s 1 GbE, ale rychlost kopírování ovlivní.
 4. Zkontrolovali jste:
@@ -78,7 +78,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na tlačítko **OK**.
+2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -117,7 +117,7 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
     ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na tlačítko **OK**.
+2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
     ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 

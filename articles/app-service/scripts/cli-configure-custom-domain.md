@@ -8,15 +8,15 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80058607"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Mapování vlastní domény na aplikaci App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří v App Service aplikaci se souvisejícími prostředky a pak na ni namapuje `www.<yourdomain>` .
+Tento ukázkový skript vytvoří v App Service aplikaci se souvisejícími prostředky a pak `www.<yourdomain>` na ni namapuje.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

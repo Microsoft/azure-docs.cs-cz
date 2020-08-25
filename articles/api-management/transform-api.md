@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85851250"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 ![Zásady](./media/transform-api/api-management-management-console.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
@@ -74,7 +74,7 @@ Původní odpověď by měla vypadat takto:
 1. Vyberte **Demo Conference API**.
 2. V horní části obrazovky vyberte kartu **Návrh**.
 3. Vyberte **všechny operace**.
-4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+4. V části **odchozí zpracování** klikněte na **</>** ikonu.
 5. Umístěte kurzor do ** &lt; výstupního &gt; ** elementu.
 6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
@@ -113,7 +113,7 @@ Původní odpověď zobrazíte následovně:
 1.  Vyberte **Demo Conference API**.
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
-4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+4.  V části **odchozí zpracování** klikněte na **</>** ikonu.
 5.  Umístěte kurzor do elementu ** &lt; odchozího &gt; ** a klikněte na tlačítko **Zobrazit fragmenty** v pravém horním rohu.
 6.  V pravém okně v části **zásady transformace**klikněte na **Maska adresy URL v obsahu**.
 

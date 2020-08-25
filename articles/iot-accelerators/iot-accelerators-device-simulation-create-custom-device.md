@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "61450543"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Kurz: Vytvoření vlastního simulovaného zařízení
@@ -28,9 +28,9 @@ V tomto kurzu jste:
 > * Klonování modelu zařízení
 > * Odstranění modelu zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci Simulace zařízení.
 
@@ -64,7 +64,7 @@ Do formuláře zadejte následující informace:
 | ------------------- | ---------------------------------------------------- |
 | Název modelu zařízení   | Lednice                                         |
 | Popis modelu   | Lednice se snímači teploty a vlhkosti |
-| Version             | 1.0                                                  |
+| Verze             | 1,0                                                  |
 
 > [!NOTE]
 > Název modelu zařízení musí být jedinečný.
@@ -73,8 +73,8 @@ Klikněte na **+ Přidat datový bod** a přidejte datové body pro teplotu a vl
 
 | Datový bod          | Chování        | Min. hodnota | Max. hodnota | Jednotka |
 | ------------------- | --------------- | --------- | --------- | ---- |
-| Teplota         | Náhodné          | −50       | 100       | F    |
-| Vlhkost            | Náhodné          | 0         | 100       | %    |
+| Teplota         | Náhodný          | −50       | 100       | F    |
+| Vlhkost            | Náhodný          | 0         | 100       | %    |
 
 Kliknutím na **Uložit** uložte model zařízení.
 

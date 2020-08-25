@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85360516"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Kurz: základní prostředí služby Active Directory
@@ -26,7 +26,7 @@ Tento kurz vás provede vytvořením základního prostředí Active Directory.
 Prostředí, které vytvoříte v tomto kurzu, můžete použít k otestování různých aspektů hybridních scénářů identity a pro některé z těchto kurzů se vyžaduje předpoklad.  Pokud již máte existující prostředí služby Active Directory, můžete ho použít jako náhradu.  Tyto informace jsou k dispozici pro jednotlivce, kteří začínají od Nothing.
 
 Tento kurz se skládá z
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Externí síťový adaptér](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
@@ -42,7 +42,7 @@ Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 > Kopie skriptů PowerShellu, které se používají v tomto kurzu, jsou k dispozici [na GitHubu](https://github.com/billmath/tutorial-phs).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-První věc, kterou je třeba udělat, je vytvořit virtuální počítač, který se bude používat jako náš místní server služby Active Directory, aby bylo možné začít používat naše hybridní prostředí identity.  Udělejte toto:
+První věc, kterou je třeba udělat, je vytvořit virtuální počítač, který se bude používat jako náš místní server služby Active Directory, aby bylo možné začít používat naše hybridní prostředí identity.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -87,7 +87,7 @@ Aby bylo možné dokončit vytváření virtuálního počítače, je nutné dok
 10. Až se instalace dokončí, restartujte virtuální počítač, přihlaste se a spusťte aktualizace Windows, abyste měli jistotu, že je virtuální počítač nejaktuálnější.  Nainstalujte nejnovější aktualizace.
 
 ## <a name="install-active-directory-prerequisites"></a>Nainstalovat požadavky služby Active Directory
-Teď, když máte virtuální počítač, musíte před instalací služby Active Directory udělat několik věcí.  To znamená, že budete muset virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Udělejte toto:
+Teď, když máte virtuální počítač, musíte před instalací služby Active Directory udělat několik věcí.  To znamená, že budete muset virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -123,7 +123,7 @@ Teď, když máte virtuální počítač, musíte před instalací služby Activ
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Vytvoření prostředí Windows Server AD
-Teď, když máte vytvořený virtuální počítač, který se přejmenoval a má statickou IP adresu, můžete pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Udělejte toto:
+Teď, když máte vytvořený virtuální počítač, který se přejmenoval a má statickou IP adresu, můžete pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -154,7 +154,7 @@ Teď, když máte vytvořený virtuální počítač, který se přejmenoval a m
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Vytvoření uživatele Windows Server AD
-Teď, když máte prostředí Active Directory, musíte otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Udělejte toto:
+Teď, když máte prostředí Active Directory, musíte otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -274,7 +274,7 @@ Aby bylo možné dokončit vytváření virtuálního počítače, je nutné dok
 10. Až se instalace dokončí, restartujte virtuální počítač, přihlaste se a spusťte aktualizace Windows, abyste měli jistotu, že je virtuální počítač nejaktuálnější.  Nainstalujte nejnovější aktualizace.
 
 ### <a name="install-active-directory-prerequisites"></a>Nainstalovat požadavky služby Active Directory
-Teď, když máte virtuální počítač, musíte před instalací služby Active Directory udělat několik věcí.  To znamená, že budete muset virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Udělejte toto:
+Teď, když máte virtuální počítač, musíte před instalací služby Active Directory udělat několik věcí.  To znamená, že budete muset virtuální počítač přejmenovat, nastavit statickou IP adresu a informace DNS a nainstalovat nástroje pro vzdálenou správu serveru.   Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -324,7 +324,7 @@ Teď, když máte virtuální počítač, musíte před instalací služby Activ
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Vytvoření prostředí Windows Server AD
-Teď, když máte vytvořený virtuální počítač, který se přejmenoval a má statickou IP adresu, můžete pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Udělejte toto:
+Teď, když máte vytvořený virtuální počítač, který se přejmenoval a má statickou IP adresu, můžete pokračovat a nainstalovat a nakonfigurovat Active Directory Domain Services.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.
@@ -370,7 +370,7 @@ Teď, když máte vytvořený virtuální počítač, který se přejmenoval a m
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Vytvoření uživatele Windows Server AD
-Teď, když máte prostředí Active Directory, musíte otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Udělejte toto:
+Teď, když máte prostředí Active Directory, musíte otestovat účet.  Tento účet se vytvoří v místním prostředí AD a pak se synchronizuje do Azure AD.  Postupujte následovně:
 
 1. Otevřete PowerShellový ISE jako správce.
 2. Spusťte následující skript.

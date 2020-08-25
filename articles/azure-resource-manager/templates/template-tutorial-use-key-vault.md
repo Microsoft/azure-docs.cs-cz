@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
 ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86119272"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablony ARM
@@ -31,9 +31,9 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -190,7 +190,7 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
 
 Po úspěšném nasazení virtuálního počítače testujte přihlašovací údaje pomocí hesla uloženého v trezoru klíčů.
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**.
 1. V horní části vyberte **připojit** .

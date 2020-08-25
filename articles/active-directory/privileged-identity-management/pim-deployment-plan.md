@@ -14,12 +14,12 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008082"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783208"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -100,7 +100,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který má za následek definování způsobu, jakým se tato změna rovná, s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou klíčem k rozhodování a přispívání Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -110,7 +110,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Zúčastněné strany: Privileged Identity Management pro role prostředků Azure
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |
@@ -291,7 +291,7 @@ V této tabulce Identifikujte testovací uživatele, kteří budou ověřovat, �
 
 ### <a name="test-implementation"></a>Implementace testu
 
-Teď, když jste identifikovali testovací uživatele, použijte tento krok ke konfiguraci Privileged Identity Management pro vaše testovací uživatele. Pokud chce vaše organizace začlenit Privileged Identity Management pracovní postup do vlastní interní aplikace namísto použití Privileged Identity Management v Azure Portal, jsou všechny operace v Privileged Identity Management podporované i prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root).
+Teď, když jste identifikovali testovací uživatele, použijte tento krok ke konfiguraci Privileged Identity Management pro vaše testovací uživatele. Pokud chce vaše organizace začlenit Privileged Identity Management pracovní postup do vlastní interní aplikace namísto použití Privileged Identity Management v Azure Portal, jsou všechny operace v Privileged Identity Management podporované i prostřednictvím [rozhraní Graph API](/graph/api/resources/privilegedidentitymanagement-root).
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Konfigurace Privileged Identity Management pro role Azure AD
 
@@ -351,7 +351,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-ad-roles"></a>Role Azure AD
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a potom klikněte na **role**.
 1. U každé role, kterou jste nakonfigurovali, klikněte na tři tečky (**...**) pro všechny uživatele s oprávněným přiřazením.
@@ -359,7 +359,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-resource-roles"></a>Role prostředků Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **prostředky Azure** a pak klikněte na předplatné nebo prostředek, který chcete vrátit zpět.
 1. Klikněte na **role**.
@@ -374,7 +374,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 K lepší ochraně vaší organizace byste měli využívat funkci integrovaného upozorňování Privileged Identity Management. Další informace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a pak na **výstrahy**.
 

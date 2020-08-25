@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
 ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85368103"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Rychlý Start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
@@ -18,7 +18,7 @@ V tomto rychlém startu vytvoříte vlastního poskytovatele prostředků a nasa
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - K dokončení kroků v tomto rychlém startu je potřeba volat `REST` operace. Existují [různé způsoby, jak odesílat žádosti REST](/rest/api/azure/).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

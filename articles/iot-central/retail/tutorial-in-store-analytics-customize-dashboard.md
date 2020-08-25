@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000116"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Kurz: přizpůsobení řídicího panelu operátora a Správa zařízení v Azure IoT Central
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Přidat dlaždice vlastností pro zobrazení podrobností o zařízení
 > * Přidání dlaždic příkazů ke spuštění příkazů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tvůrce by měl dokončit kurz pro vytvoření aplikace Azure IoT Central in-Store Analytics a přidat zařízení:
 
@@ -148,11 +148,11 @@ Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů Ruuv
 
 1. Vyberte **Upravit**.
 
-1. V `RuuviTag` seznamu **Šablona zařízení** vyberte. 
+1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
 1. Vyberte **instanci zařízení** jednoho ze dvou senzorů RuuviTag. V ukázkovém obchodě contoso vyberte `Zone 1 Ruuvi` vytvořit dlaždici telemetrie pro zóna 1. 
 
-1. V `Relative humidity` seznamu `temperature` **telemetrie** vyberte a. Jedná se o položky telemetrie, které se zobrazují pro každou zónu na dlaždici.
+1. `Relative humidity` `temperature` V seznamu **telemetrie** vyberte a. Jedná se o položky telemetrie, které se zobrazují pro každou zónu na dlaždici.
 
 1. Vyberte **kombinovat**. 
 
@@ -203,7 +203,7 @@ Chcete-li přidat dlaždici vlastností pro jednotlivé RuuviTag:
 
 1. Vyberte **Upravit**.
 
-1. V `RuuviTag` seznamu **Šablona zařízení** vyberte. 
+1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
 1. Vyberte **instanci zařízení** jednoho ze dvou senzorů RuuviTag. V ukázkovém obchodě contoso vyberte `Zone 1 Ruuvi` vytvořit dlaždici telemetrie pro zóna 1. 
 
@@ -232,7 +232,7 @@ Chcete-li přidat dlaždici příkazu pro restartování brány:
 
 1. Vyberte **Upravit**. 
 
-1. V `C500` seznamu **Šablona zařízení** vyberte. Jedná se o šablonu pro bránu Rigado C500. 
+1. `C500`V seznamu **Šablona zařízení** vyberte. Jedná se o šablonu pro bránu Rigado C500. 
 
 1. Vyberte instanci brány v **instanci zařízení**.
 

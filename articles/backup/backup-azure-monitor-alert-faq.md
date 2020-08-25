@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28645311328a2e2054851af6bacf07927eaa88aa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989565"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761113"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
 
@@ -47,22 +47,6 @@ Ano, sestavy můžete zobrazit v rámci trezorů a odběrů i oblastí. Vaše da
 ### <a name="can-i-view-reports-across-tenants"></a>Můžu zobrazit sestavy v klientech?
 
 Pokud jste uživatelem [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) , který má delegovaný přístup k pracovním prostorům pro vaše zákazníky nebo k pracovním prostorům La, můžete pomocí sestav zálohování zobrazit data ve všech klientech.
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta Azure Backup projeví na portálu?
-
-Azure Portal může trvat až 15 minut, než bude odpovídat stavu úlohy agenta Azure Backup.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Když úloha zálohování selže, jak dlouho trvá aktivace upozornění?
-
-Výstraha se vyvolá do 20 minut od selhání zálohování Azure.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy se e-mail neposílá, pokud jsou nakonfigurovaná oznámení?
-
-Ano. V následujících situacích se oznámení neodesílají.
-
-* Pokud jsou oznámení konfigurována každou hodinu a je vyvolána a vyřešena v průběhu hodiny
-* Při zrušení úlohy
-* Pokud druhá úloha zálohování neproběhne úspěšně, protože probíhá původní úloha zálohování
 
 ## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 

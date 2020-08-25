@@ -6,10 +6,10 @@ ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85373233"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Kurz: nastavení fyzicky vycházejících materiálů pro vykreslování v Maya
@@ -33,7 +33,7 @@ Ukázková scéna v tomto kurzu obsahuje počet objektů mnohoúhelníkového po
 * **Normal (normální**), který přidává podrobnosti na povrch bez nutnosti přidávat další mnohoúhelníky Příkladem podrobností může být prodleva a odsazení na kovové ploše nebo zrnitosti ve dřevě.
 * **Ambientní překrytí**, který se používá k přidání jemných stínování a stínů kontaktu do modelu. Jedná se o mapu ve stupních šedi, která označuje, které oblasti modelu získají plné osvětlení (bílá) nebo úplné stínování (černá). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Autodesk Maya 2017 nebo novější
 
 ## <a name="set-up-materials-in-the-scene"></a>Nastavení materiálů na scéně

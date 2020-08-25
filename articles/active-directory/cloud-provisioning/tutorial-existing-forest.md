@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86146824"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
@@ -28,7 +28,7 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro účely tes
 
 V tomto scénáři je existující doménová struktura synchronizovaná pomocí Azure AD Connect synchronizace s tenant služby Azure AD. A máte novou doménovou strukturu, kterou chcete synchronizovat do stejného tenanta služby Azure AD. Nastavíte zřízení cloudu pro novou doménovou strukturu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
 1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
@@ -53,7 +53,7 @@ V tomto scénáři je existující doménová struktura synchronizovaná pomocí
    - Pro ověření certifikátu Odblokujte následující adresy URL: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**a **www \. Microsoft.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
-1. Přihlaste se k serveru připojenému k doméně.  Pokud používáte základní kurz pro [prostředí AD a Azure](tutorial-basic-ad-azure.md) , bude to DC1.
+1. Přihlaste se k serveru připojenému k doméně.  Pokud používáte základní kurz pro  [prostředí AD a Azure](tutorial-basic-ad-azure.md) , bude to DC1.
 2. Přihlaste se k Azure Portal pomocí přihlašovacích údajů globálního správce jenom pro Cloud.
 3. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
@@ -80,7 +80,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)**.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -125,7 +125,7 @@ Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli syn
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na[https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
    ![Ověříte](media/tutorial-single-forest/verify1.png)</br>
 

@@ -4,10 +4,10 @@ description: Pomocí vzorů můžete zvýšit záměr a předpověď entit a v t
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86039496"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Kurz: Přidání běžných formátů šablon vzorků utterance ke zlepšení předpovědi
@@ -33,7 +33,7 @@ V aplikaci LUIS jsou uložené dva typy projevy:
 
 Přidání šablony projevy jako vzor umožňuje poskytnout méně ukázkového projevy jako celku záměru.
 
-Vzor se použije jako kombinace porovnávání textu a strojového učení.  Šablonu utterance ve vzorci společně s příkladem projevy v záměru dejte LUIS lepší znalosti o tom, co projevy přizpůsobení záměru.
+Vzor se implementuje jako kombinace párování textů a strojového učení.  Šablona promluvy ve vzoru spolu s ukázkovými promluvami v záměru umožňují službě LUIS lépe porozumět tomu, jaké promluvy odpovídají určitému záměru.
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>Importovat ukázkovou aplikaci a klonovat ji do nové verze
 
@@ -193,7 +193,7 @@ Toto druhé okno prohlížeče ponechte otevřené. Později ji budete používa
 ## <a name="template-utterances"></a>Šablony promluv
 Vzhledem k povaze domény subjektu lidských zdrojů existuje několik běžných způsobů, jak v organizacích zeptat se na vztahy zaměstnanců. Příklad:
 
-|Projevy|
+|Výroky|
 |--|
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
@@ -204,8 +204,8 @@ Tyto projevy jsou příliš blízko k určení kontextové jedinečnosti každé
 
 |Šablony příkladů promluv|význam syntaxe|
 |--|--|
-|`Who does {EmployeeListEntity} report to[?]`|zaměnitelné`{EmployeeListEntity}`<br>ohled`[?]`|
-|`Who reports to {EmployeeListEntity}[?]`|zaměnitelné`{EmployeeListEntity}`<br>ohled`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|zaměnitelné `{EmployeeListEntity}`<br>ohled `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|zaměnitelné `{EmployeeListEntity}`<br>ohled `[?]`|
 
 Syntaxe `{EmployeeListEntity}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe, `[?]` , označuje slova nebo [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) , která jsou volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
 
@@ -249,7 +249,7 @@ Aby se model shodoval s utterance, musí _nejdřív_ entity v rámci utterance o
 
 Teď, když se do aplikace přidají vzory, naučit se, zveřejňují a dotazují aplikaci na předpokládaném koncovém bodu modulu runtime.
 
-1. Vyberte **vlak**. Po dokončení školení vyberte **publikovat** a vyberte **produkční** slot a potom vyberte **Hotovo**.
+1. Vyberte **Train** (Trénování). Po dokončení školení vyberte **publikovat** a vyberte **produkční** slot a potom vyberte **Hotovo**.
 
 1. Po dokončení publikování přepněte karty prohlížeče zpátky na kartu Adresa URL koncového bodu.
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75553510"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Kurz: vytvoření clusterů Azure HDInsight pomocí Azure Automation
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Existující [účet Azure Automation](../automation/automation-quickstart-create-account.md).
 * Existující [účet Azure Storage](../storage/common/storage-account-create.md), který se použije jako úložiště clusteru.
@@ -66,7 +66,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     | Potvrzení hesla | `SECURE_PASSWORD` |
 
 1. Vyberte **Vytvořit**.
-1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským `sshuser` jménem a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
+1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským jménem `sshuser` a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
 
     ![vytvoření přihlašovacích údajů](./media/manage-clusters-runbooks/create-credentials.png)
 
@@ -74,7 +74,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. V části **Automatizace procesu**vyberte **Runbooky** .
 1. Vyberte **vytvořit Runbook**.
-1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create` . V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 
     ![vytvořit Runbook](./media/manage-clusters-runbooks/create-runbook.png)
@@ -130,7 +130,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. V části **Automatizace procesu**vyberte **Runbooky** .
 1. Vyberte **vytvořit Runbook**.
-1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-delete`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-delete` . V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 1. Na obrazovce **Upravit powershellový Runbook** zadejte následující kód a vyberte **publikovat**:
 
@@ -153,7 +153,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ### <a name="create-a-cluster"></a>Vytvoření clusteru
 
 1. Seznam runbooků pro váš účet Automation zobrazíte tak, že v části **Automatizace procesu**vyberete **Runbooky** .
-1. Vyberte `hdinsight-cluster-create`nebo název, který jste použili při vytváření Runbooku pro vytváření clusterů.
+1. Vyberte `hdinsight-cluster-create` nebo název, který jste použili při vytváření Runbooku pro vytváření clusterů.
 1. Vyberte **Spustit** , aby se Runbook spustil hned. Můžete také naplánovat pravidelné spouštění Runbooků. Viz [plánování Runbooku v Azure Automation](../automation/shared-resources/schedules.md)
 1. Zadejte požadované parametry skriptu a vyberte **OK**. Tím se vytvoří nový cluster HDInsight s názvem, který jste zadali v parametru **název_clusteru** .
 
@@ -161,7 +161,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="delete-a-cluster"></a>Odstranění clusteru
 
-Odstraňte cluster tak, že vyberete `hdinsight-cluster-delete` Runbook, který jste vytvořili. Vyberte **Start**, zadejte parametr **název_clusteru** a sselect **OK**.
+Odstraňte cluster tak `hdinsight-cluster-delete` , že vyberete Runbook, který jste vytvořili. Vyberte **Start**, zadejte parametr **název_clusteru** a sselect **OK**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

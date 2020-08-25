@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75614090"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při selhání a škálování služeb kontejneru pomocí Service Fabric
@@ -21,7 +21,7 @@ Tento kurz je třetí částí série. V tomto kurzu se dozvíte, jak se v aplik
 > * Seznámili jste se s převzetím služeb při selhání kontejneru v clusteru Service Fabric.
 > * Škálovali jste v aplikaci kontejnery webového front-endu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aplikace z [části 2](service-fabric-tutorial-package-containers.md) je spuštěná na aktivním clusteru Service Fabric.
 

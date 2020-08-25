@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539070"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761402"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -33,7 +33,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | AlertUniqueId_s |Text |Jedinečný identifikátor vygenerované výstrahy |
 | AlertType_s |Text |Typ výstrahy, například zálohování |
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
-| AlertOccurrenceDateTime_s |Datum/Čas |Datum a čas vytvoření výstrahy |
+| AlertOccurrenceDateTime_s |Datum/čas |Datum a čas vytvoření výstrahy |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritická |
 |AlertTimeToResolveInMinutes_s    | Číslo        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
 |AlertConsolidationStatus_s   |Text         |Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
@@ -152,7 +152,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | JobOperation_s |Text |Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobStatus_s |Text |Stav dokončené úlohy, například dokončeno, neúspěšné |
 | JobFailureCode_s |Text |Řetězec kódu chyby, protože došlo k selhání úlohy |
-| JobStartDateTime_s |Datum/Čas |Datum a čas spuštění úlohy |
+| JobStartDateTime_s |Datum/čas |Datum a čas spuštění úlohy |
 | BackupStorageDestination_s |Text |Cíl úložiště zálohování, třeba Cloud, disk  |
 | AdHocOrScheduledJob_s |Text | Pole, které určuje, jestli má být úloha ad hoc nebo plánovaná |
 | JobDurationInSecs_s | Číslo |Celková doba trvání úlohy v sekundách |
@@ -461,35 +461,37 @@ Níže najdete několik ukázek, které vám pomohou při psaní dotazů na Azur
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>Schéma v1 schématu vs v2
-Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká ***schématu v1***. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a diagnostická data byla vložena do nového schématu, které se říká jako ***schéma v2***. 
 
-Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1. 
+Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká ***schématu v1***. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a diagnostická data byla vložena do nového schématu, které se říká jako ***schéma v2***.  
+
+Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1.
 
 Pokud chcete zjistit, které sloupce patří pouze ke schématu V1, podívejte se do třetího sloupce "Description" v [datovém modelu](#using-azure-backup-data-model) popsaném výše.
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Úprava dotazů na použití schématu v2
+
 Vzhledem k tomu, že je schéma V1 na cestě pro vyřazení, doporučuje se použít ve všech vašich vlastních dotazech na Azure Backup diagnostických dat pouze schéma v2. Níže je uveden příklad, jak aktualizovat dotazy pro odebrání závislostí na schématu V1:
 
 1. Určete, jestli dotaz používá jakékoli pole, které se dá použít jenom pro schéma v1. Předpokládejme, že máte dotaz na výpis všech zálohovaných položek a jejich přidružených chráněných serverů následujícím způsobem:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-Výše uvedený dotaz používá pole ProtectedServerUniqueId_s, které se vztahuje pouze na schéma v1. Ekvivalent schématu v2 tohoto pole je ProtectedContainerUniqueId_s (odkazuje na tabulky výše). Pole BackupItemUniqueId_s platí i pro schéma v2 a v tomto dotazu lze použít stejné pole.
+    Výše uvedený dotaz používá pole ProtectedServerUniqueId_s, které se vztahuje pouze na schéma v1. Ekvivalent schématu v2 tohoto pole je ProtectedContainerUniqueId_s (odkazuje na tabulky výše). Pole BackupItemUniqueId_s platí i pro schéma v2 a v tomto dotazu lze použít stejné pole.
 
 2. Aktualizujte dotaz tak, aby používal názvy polí schématu v2. Doporučuje se použít filtr "Where SchemaVersion_s = =" v2 "" ve všech dotazech, takže dotaz bude analyzovat jenom záznamy odpovídající schématu v2:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>Další kroky
 

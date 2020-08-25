@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828502"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782936"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -80,6 +80,10 @@ Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumán�
 
 ### <a name="how-do-i-retrieve-log-data"></a>Návody načíst data protokolu?
 Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protokolu napsaného pomocí dotazovacího jazyka KQL (Kusto Query Language). Můžete napsat vlastní dotazy nebo využít řešení a přehledy, které obsahují dotazy protokolu pro konkrétní aplikaci nebo službu. Další informace najdete [v tématu Přehled dotazů protokolu v Azure monitor](log-query/log-query-overview.md).
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Můžu odstranit data z Log Analyticsho pracovního prostoru?
+Data se z pracovního prostoru odeberou podle [doby jejich uchování](platform/manage-cost-storage.md#change-the-data-retention-period). Můžete odstranit konkrétní data z důvodů ochrany osobních údajů nebo dodržování předpisů. Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Co je pracovní prostor služby Log Analytics?
 Všechna data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics. Pracovní prostor je v podstatě kontejner, ve kterém jsou data protokolu shromažďována z nejrůznějších zdrojů. Můžete mít jeden Log Analytics pracovní prostor pro všechna data monitorování nebo mohou mít požadavky na více pracovních prostorů. Přečtěte si téma [navrhování Azure Monitorch protokolů nasazení](platform/design-logs-deployment.md).
@@ -171,7 +175,7 @@ Použijte postup popsaný v tématu [Vytvoření nového upozornění protokolu]
 - **Definovat podmínku výstrahy**: Zadejte svůj pracovní prostor Log Analytics jako cíl prostředku.
 - **Kritéria výstrahy** 
    - **Název signálu**: *prohledávání vlastního protokolu*
-   - **Vyhledávací dotaz**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Vyhledávací dotaz**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Logika výstrahy**: **na základě** *počtu výsledků*, **podmínky** *větší než*, **prahová hodnota** *0*
    - **Vyhodnoceno na základě**: **perioda (v minutách)** *30*, **frekvence (v minutách)** *10*
 - **Definice podrobností o upozornění** 
@@ -272,14 +276,14 @@ Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejno
 
 Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a které vám pomůžou nakonfigurovat Application Insights ve webových aplikacích. Neshromažďuje telemetrii: když aplikaci nekonfigurujete, můžete ji zastavit. 
 
-[Další informace](app/monitor-performance-live-website-now.md#questions).
+[Přečtěte si další informace](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Jaká telemetrie se shromažďuje pomocí Application Insights?
 
 Z webových aplikací serveru:
 
 * Požadavky HTTP
-* [Závislosti](app/asp-net-dependencies.md). Volání: databáze SQL; Volání HTTP do externích služeb; Azure Cosmos DB, tabulka, úložiště objektů BLOB a fronta. 
+* [Závislosti:](app/asp-net-dependencies.md) Volání: databáze SQL; Volání HTTP do externích služeb; Azure Cosmos DB, tabulka, úložiště objektů BLOB a fronta. 
 * [Výjimky](app/asp-net-exceptions.md) a trasování zásobníku.
 * [Čítače výkonu](app/performance-counters.md) – pokud používáte [monitorování stavu](app/monitor-performance-live-website-now.md), [monitorování Azure pro App Services](app/azure-web-apps.md), [monitorování Azure pro virtuální počítače nebo sadu škálování virtuálního počítače](app/azure-vm-vmss-apps.md)nebo [Application Insights shromážděného zapisovače](app/java-collectd.md).
 * [Vlastní události a metriky](app/api-custom-events-metrics.md) , které kódujete.
@@ -318,7 +322,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Přečtěte si další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -371,7 +375,7 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 * Pokud se vaše lokalita používá v různých prohlížečích nebo v rámci anonymním nebo v různých počítačích, bude se tato síť počítat více než jednou.
 * Chcete-li identifikovat přihlášeného uživatele v počítačích a prohlížečích, přidejte volání [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
-### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Jsem povolil vše v Application Insights?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Jsem povolil vše v Application Insights?
 | Co byste měli vidět | Jak ho získat | Proč to chcete |
 | --- | --- | --- |
 | Grafy dostupnosti |[Webové testy](app/monitor-web-app-availability.md) |Informace o tom, že vaše webová aplikace je zapnutá |
@@ -430,9 +434,9 @@ Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](app/api
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Můžu monitorovat intranetový webový server?
 
 Ano, ale budete muset pro naše služby povolený provoz buď pomocí výjimek brány firewall, nebo přesměrování proxy.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 [Tady si můžete](app/ip-addresses.md)projít úplný seznam služeb a IP adres.
@@ -714,7 +718,7 @@ K tomu může dojít z několika důvodů.  V případech, kdy existuje mezera v
 Ano, Jakmile nainstalujete agenta závislostí, shromáždíme informace z virtuálních počítačů pro zobrazení skupin na základě předplatného, skupiny prostředků, sady škálování virtuálních počítačů a cloudových služeb.  Pokud jste používali Service Map a vytvořili jste skupiny počítačů, zobrazí se také.  Skupiny počítačů se zobrazí také ve filtru skupiny, pokud jste je vytvořili pro pracovní prostor, který si prohlížíte. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Návody se zobrazí podrobnosti o tom, co řídí řádek 95. percentilu v agregovaných grafech výkonu?
-Ve výchozím nastavení je seznam seřazený tak, aby se zobrazily virtuální počítače s nejvyšší hodnotou 95. percentilu pro vybranou metriku, s výjimkou dostupného grafu paměti, který zobrazuje počítače s nejnižší hodnotou 5. percentilu.  Když kliknete na graf, otevře se zobrazení **horních seznamů** s odpovídající vybranou metrikou.
+Ve výchozím nastavení je seznam seřazený tak, aby se zobrazily virtuální počítače s nejvyšší hodnotou 95. percentilu pro vybranou metriku, s výjimkou dostupného grafu paměti, který zobrazuje počítače s nejnižší hodnotou 5. percentilu.  Když kliknete na graf, otevře se zobrazení **horních seznamů**  s odpovídající vybranou metrikou.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Jak funkce map zpracovává duplicitní IP adresy napříč různými virtuální sítě a podsítěmi?
 Pokud duplikujete rozsahy IP adres buď pomocí virtuálních počítačů, nebo virtuálních počítačů Azure pro škálování v podsítích a virtuální sítě, může to způsobit, že Azure Monitor pro virtuální počítače mapa zobrazí nesprávné informace. Jedná se o známý problém a chystáme se prozkoumat možnosti pro zlepšení tohoto prostředí.

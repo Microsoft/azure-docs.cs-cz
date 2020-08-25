@@ -4,10 +4,10 @@ description: Extrahujte strukturovaná data z utterance pomocí entity Machine-L
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045599"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v Language Understanding (LUIS)
@@ -114,9 +114,9 @@ Přidání seznamu známých velikostí, které klientská aplikace rozpozná, p
 
     |Normalizovaná hodnota|Synonyma|
     |--|--|
-    |Malá|SM, SML, malý, nejmenší|
+    |Malý|SM, SML, malý, nejmenší|
     |Střední|MD, MDM, Regular, Average, prostřední|
-    |Velká|LG, LRG, velký|
+    |Velký|LG, LRG, velký|
     |XLarge|XL, největší, Obří|
 
 

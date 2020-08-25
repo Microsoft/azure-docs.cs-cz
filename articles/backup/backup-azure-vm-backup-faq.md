@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262768"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761504"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -23,7 +23,7 @@ Když vytváříte virtuální počítač, můžete povolit zálohování pro vi
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Jsou náklady na zálohování zahrnuty do nákladů na virtuální počítače?
 
-No. Náklady na zálohování jsou oddělené od nákladů na virtuální počítače. Přečtěte si další informace o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+Ne. Náklady na zálohování jsou oddělené od nákladů na virtuální počítače. Přečtěte si další informace o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Která oprávnění jsou nutná k povolení zálohování pro virtuální počítač?
 
@@ -43,7 +43,7 @@ Pokud má váš Recovery Services trezor a virtuální počítač jiné skupiny 
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Používá úloha zálohování na vyžádání stejný plán uchovávání dat jako plánované zálohy?
 
-No. Zadejte rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se po aktivaci z portálu uchovávají po dobu 30 dnů.
+Ne. Zadejte rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se po aktivaci z portálu uchovávají po dobu 30 dnů.
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Na některých virtuálních počítačích byla nedávno povolena služba Azure Disk Encryption. Budou moje zálohy stále fungovat?
 
@@ -59,11 +59,11 @@ Průvodce zobrazí jenom virtuální počítače ve stejné oblasti jako trezor,
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuální počítač je vypnutý. Bude aplikace na vyžádání nebo plánované zálohování fungovat?
 
-Yes. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
+Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžu zrušit probíhající úlohu zálohování?
 
-Yes. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
+Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například `AzureBackupRG_<geo>_<number>` ). Budou moje zálohy stále fungovat?
 
@@ -135,7 +135,7 @@ V případě obnovení spravovaného virtuálního počítače i v případě, �
 
 ### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Můžu obnovit odstraněný virtuální počítač?
 
-Yes. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
+Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Návody obnovit virtuální počítač do stejných skupin dostupnosti?
 
@@ -195,8 +195,8 @@ Ano, existuje limit 100 virtuálních počítačů, které se dají přidružit 
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Jak si můžu zobrazit nastavení uchovávání záloh?
 
-V současné době můžete nastavení uchování zobrazit na úrovni zálohované položky na základě zásady zálohování, která je přiřazená k virtuálnímu počítači. 
+V současné době můžete nastavení uchování zobrazit na úrovni zálohované položky na základě zásady zálohování, která je přiřazená k virtuálnímu počítači.
 
 Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Kliknutím na odkaz na zásady zálohování můžete zobrazit dobu uchování všech denních, týdenních, měsíčních a ročních bodů uchovávání dat přidružených k virtuálnímu počítači.
 
-Pomocí [Průzkumníka služby Backup](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.  
+Pomocí [Průzkumníka služby Backup](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.

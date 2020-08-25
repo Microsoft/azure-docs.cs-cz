@@ -8,10 +8,10 @@ ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: d7ddb286285de9be089c0a5176e33b7108021c77
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75459946"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kurz: návrh serveru Azure Database for PostgreSQL-Single pomocí Azure Portal
@@ -28,15 +28,15 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 > * Aktualizace dat
 > * Obnovení dat
 
-## <a name="prerequisites"></a>Požadavky
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+## <a name="prerequisites"></a>Předpoklady
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Vytvoření Azure Database for PostgreSQL
 
 Server Azure Database for PostgreSQL se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Server se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
 
 Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1. V levém horním rohu Azure Portal klikněte na **vytvořit prostředek** .
+1. V levém horním rohu Azure Portal klikněte na **vytvořit prostředek**  .
 2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
    ![Azure Database for PostgreSQL – vytvoření databáze](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
@@ -53,11 +53,11 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. K zadanému názvu serveru se připojí název domény *postgres.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.
-    Zdroj dat | *Žádné* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *žádný* . (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
-    Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_**.
+    Zdroj dat | *Žádný* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *žádný* . (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
+    Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **Administrator**, **root**, **Guest**ani **Public**. Nemůže začínat na **pg_**.
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Umístění|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
-    Version|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
+    Verze|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
     Výpočty + úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. V dalším kroku vyberte kartu **pro obecné účely** . *5*, *4 virtuální jádra*, *100 GB*a *7 dní* jsou výchozími hodnotami pro **výpočetní generaci**, **Vcore**, **úložiště**a **dobu uchovávání záloh**. Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    > [!NOTE]
@@ -128,7 +128,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    ```
 
    > [!TIP]
-   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl,
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40` . Například připojovací řetězec pro psql by byl,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```

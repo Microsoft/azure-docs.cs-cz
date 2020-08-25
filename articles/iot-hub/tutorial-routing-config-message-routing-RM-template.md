@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084394"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Kurz: použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub
@@ -30,7 +30,7 @@ ms.locfileid: "74084394"
 
 Druhá část tohoto kurzu vám umožní stáhnout a spustit aplikaci Visual Studio pro posílání zpráv do IoT Hub. V tomto souboru se nachází složka, která obsahuje Azure Resource Manager šablona a soubor parametrů, a také skripty Azure CLI a PowerShell.
 
-Pokračujte a Stáhněte si [ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) hned teď. Rozbalte hlavní soubor. zip. Šablona Správce prostředků a soubor parametrů jsou v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **template_iothub. JSON** a **template_iothub_parameters. JSON**.
+Pokračujte a Stáhněte si [ukázky pro Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) hned teď. Rozbalte soubor master.zip. Šablona Správce prostředků a soubor parametrů jsou v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **template_iothub.jszapnuté** a **template_iothub_parameters.js**.
 
 ## <a name="create-your-resources"></a>Vytvoření prostředků
 
@@ -195,7 +195,7 @@ Další část je oddíl konfigurace směrování zpráv pro službu IoT Hub. Pr
 
 Pro vytvoření připojovacího řetězce pro frontu potřebujete queueAuthorizationRulesResourcedId, který se načte jako vložený. Pokud chcete vytvořit připojovací řetězec pro účet úložiště, načtěte primární klíč úložiště a pak ho použijte ve formátu připojovacího řetězce.
 
-Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo. `JSON`
+Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo `JSON` .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -231,7 +231,7 @@ Konfigurace koncového bodu taky nastavuje formát objektu BLOB na `AVRO` nebo. 
 
 Tato další část je určena pro směrování zpráv do koncových bodů. U každého koncového bodu je nastavená jedna sada, takže je k dispozici pro frontu Service Bus a jednu pro kontejner účtu úložiště.
 
-Pamatujte, že podmínka dotazu pro zprávy směrované do úložiště je `level="storage"`a podmínka dotazu pro zprávy směrované do fronty Service Bus je. `level="critical"`
+Pamatujte, že podmínka dotazu pro zprávy směrované do úložiště je `level="storage"` a podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"` .
 
 ```json
 "routes": [

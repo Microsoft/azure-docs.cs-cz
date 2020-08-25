@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77565574"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Hromadná Správa připojených zařízení
@@ -31,7 +31,7 @@ V tomto kurzu jste:
 > * Nasaďte konfiguraci do zařízení ve skupině zařízení.
 > * Monitorování nasazení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -39,7 +39,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 -->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení pro vzdálené monitorování.
 
@@ -99,7 +99,7 @@ Rozšíření [Azure IoT Workbench](https://marketplace.visualstudio.com/items?i
 
 Počáteční verze firmwaru zařízení je 1.0.0. Nový firmware by měl mít vyšší číslo verze.
 
-1. V VS Code otevřete soubor **FirmwareOTA. ino** a změňte `currentFirmwareVersion` z `1.0.0` na: `1.0.1`
+1. V VS Code otevřete soubor **FirmwareOTA. ino** a změňte `currentFirmwareVersion` z `1.0.0` na `1.0.1` :
 
     ![Změnit verzi firmwaru](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -135,7 +135,7 @@ Použijte svůj účet služby Azure Storage k hostování nového souboru firmw
 
 ### <a name="build-and-upload-the-original-firmware-to-the-iot-devkit-device"></a>Sestavte a nahrajte původní firmware do zařízení IoT DevKit.
 
-1. V VS Code otevřete soubor **FirmwareOTA. ino** a změňte `currentFirmwareVersion` zpět na `1.0.0`:
+1. V VS Code otevřete soubor **FirmwareOTA. ino** a změňte `currentFirmwareVersion` zpět na `1.0.0` :
 
     ![1.0.0 verze](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -153,7 +153,7 @@ Použijte svůj účet služby Azure Storage k hostování nového souboru firmw
 
 Konfigurace zařízení určuje požadovaný stav vašich zařízení. Obvykle vývojář [vytvoří konfiguraci](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) na stránce **Konfigurace zařízení IoT** v Azure Portal. Konfigurace zařízení je dokument JSON, který určuje požadovaný stav vašich zařízení a sadu metrik.
 
-Do místního počítače uložte následující konfigurační soubor s názvem **Firmware – Update. JSON** . Nahraďte `YOURSTRORAGEACCOUNTNAME`zástupné `YOURPACKAGESIZE` znaky, a jako hodnoty, `YOURCHECKSUM`které jste si poznamenali dříve:
+Do místního počítače uložte následující konfigurační soubor s názvem **firmware-update.js** . Nahraďte `YOURSTRORAGEACCOUNTNAME` `YOURCHECKSUM` `YOURPACKAGESIZE` zástupné znaky, a jako hodnoty, které jste si poznamenali dříve:
 
 ```json
 {
@@ -210,7 +210,7 @@ V této části naimportujete konfiguraci zařízení jako balíček do akceler�
 
     ![Nový balíček](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. Na panelu **nový balíček** vyberte možnost **Konfigurace zařízení** jako typ balíčku a jako typ konfigurace zadejte **firmware** . Klikněte na **Procházet** a vyhledejte soubor **Firmware – Update. JSON** na místním počítači a pak klikněte na **nahrát**:
+1. Na panelu **nový balíček** vyberte možnost **Konfigurace zařízení** jako typ balíčku a jako typ konfigurace zadejte **firmware** . Klikněte na **Procházet** a vyhledejte **firmware-update.jsv** souboru na místním počítači a pak klikněte na **nahrát**:
 
     ![Nahrát balíček](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -231,7 +231,7 @@ V této části vytvoříte a spustíte nasazení, které aplikuje konfiguraci z
     |Název|Nasadit aktualizaci firmwaru|
     |Typ balíčku|Konfigurace zařízení|
     |Typ konfigurace|Firmware|
-    |Balíček|Firmware – Update. JSON|
+    |Balíček|firmware-update.jsna|
     |Skupina zařízení|Zařízení IoT DevKit|
     |Priorita|10|
 

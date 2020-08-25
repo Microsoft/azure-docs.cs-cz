@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74049222"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány pomocí brány firewall webových aplikací pomocí Azure Portal
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
 > * Vytvoření virtuálních počítačů používaných jako servery back-end
 > * Vytvoření účtu úložiště a konfigurace diagnostiky
-> * Testování brány Application Gateway
+> * Otestování aplikační brány
 
 ![Příklad firewallu webových aplikací](../media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
@@ -32,13 +32,13 @@ V tomto kurzu se naučíte:
 
 <!---If you prefer, you can complete this tutorial using [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) or [Azure CLI](tutorial-restrict-web-traffic-cli.md).--->
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Aby mohl Azure komunikovat mezi prostředky, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
@@ -209,7 +209,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Pro účely tohoto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí.
 
@@ -240,11 +240,11 @@ Všechna přizpůsobení a nastavení WAF se nacházejí v samostatném objektu,
 
 ![Přidružené aplikační brány](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 I když služba IIS není nutná k vytvoření aplikační brány, nainstalujete ji, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
 
-1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu. ![Záznam veřejné IP adresy aplikační brány](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
+1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu. ![ Záznam veřejné IP adresy aplikační brány](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
    Nebo můžete vybrat **všechny prostředky**, do vyhledávacího pole zadat *myAGPublicIPAddress* a pak ho vybrat ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
 1. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.

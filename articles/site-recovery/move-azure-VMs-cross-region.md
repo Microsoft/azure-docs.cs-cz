@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86135426"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti Azure
@@ -32,7 +32,7 @@ Možná budete chtít přesunout virtuální počítače infrastruktury Azure ja
 > [!IMPORTANT]
 > Tento článek popisuje, jak přesunout virtuální počítače Azure z jedné oblasti do jiné *, jak je*to. Pokud je vaším cílem zlepšit dostupnost infrastruktury přesunutím virtuálních počítačů do zón dostupnosti, přečtěte si téma [přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že máte virtuální počítače Azure ve zdrojové oblasti Azure, *ze*které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](./azure-to-azure-support-matrix.md#region-support)oblasti a pečlivě vyberte cílovou oblast.

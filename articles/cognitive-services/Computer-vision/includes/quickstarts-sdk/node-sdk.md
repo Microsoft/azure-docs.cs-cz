@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d025057cf8992e1dc54a0fd4a07814c7cbb13d3
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841950"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748744"
 ---
 <a name="HOLTop"></a>
 
 [Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze [Node.js](https://nodejs.org/)
@@ -208,9 +208,9 @@ Definujte pomocnou funkci `describeType` :
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
+## <a name="extract-text-ocr-with-read"></a>Extrakce textu (OCR) pomocí čtení
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků.
+Počítačové zpracování obrazu může viditelný text extrahovat v obrázku a převést jej na datový proud. Tato ukázka používá operace čtení.
 
 > [!NOTE]
 > Můžete si také přečíst text z místní image. Scénáře týkající se místních imagí najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) .
@@ -221,17 +221,17 @@ Uložte odkaz na adresu URL obrázků, ze kterých chcete extrahovat text.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>Volání rozhraní API pro rozpoznávání
+### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
-Přidejte následující kód, který volá `recognizeText` funkci pro dané obrázky.
+Přidejte následující kód, který zavolá `readTextFromURL` funkce a `readTextFromFile` pro dané obrázky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Definujte `recognizeText` funkci. Tím se zavolá metoda **recognizeText** na objektu klienta, který vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Pak použije ID operace ke kontrole operace v intervalu sekund, dokud se nevrátí výsledky. Pak vrátí extrahované výsledky.
+Definujte `readTextFromURL` funkce a `readTextFromFile` . Tyto volají metody **Read** a **readInStream** v objektu klienta, které vracejí ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Poté pomocí ID operace zkontroluje stav operace, dokud nebudou vráceny výsledky. Pak vrátí extrahované výsledky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Pak definujte pomocnou funkci `printRecText` , která vytiskne výsledky operace rozpoznávání do konzoly.
+Pak definujte pomocnou funkci `printRecText` , která vytiskne výsledky operací čtení do konzoly.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 

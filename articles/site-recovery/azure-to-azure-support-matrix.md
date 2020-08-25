@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 6cb2f3d099c328f00fab335e1cbe9ea146c0fc55
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c648387547e9543c9e509344aa86285504dced7a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653643"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761368"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -267,7 +267,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 ## <a name="replicated-machines---networking"></a>Replikované počítače – sítě
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-NIC | Maximální podporovaný počet pro konkrétní velikost virtuálního počítače Azure | Síťové karty se vytvoří, když se virtuální počítač vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na VIRTUÁLNÍm počítači s podporou převzetí služeb při selhání závisí na počtu síťových adaptérů ve zdrojovém virtuálním počítači, když je replikace povolená. Pokud po povolení replikace přidáte nebo odeberete síťovou kartu, nebude to mít vliv na počet síťových adaptérů v replikovaném virtuálním počítači po převzetí služeb při selhání. <br/><br/> Pořadí síťových adaptérů po převzetí služeb při selhání není zaručené jako původní pořadí. <br/><br/> Síťové karty můžete přejmenovat v cílové oblasti na základě zásad vytváření názvů vaší organizace.
+NIC | Maximální podporovaný počet pro konkrétní velikost virtuálního počítače Azure | Síťové karty se vytvoří, když se virtuální počítač vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na VIRTUÁLNÍm počítači s podporou převzetí služeb při selhání závisí na počtu síťových adaptérů ve zdrojovém virtuálním počítači, když je replikace povolená. Pokud po povolení replikace přidáte nebo odeberete síťovou kartu, nebude to mít vliv na počet síťových adaptérů v replikovaném virtuálním počítači po převzetí služeb při selhání. <br/><br/> Pořadí síťových adaptérů po převzetí služeb při selhání není zaručené jako původní pořadí. <br/><br/> Síťové karty můžete přejmenovat v cílové oblasti na základě zásad vytváření názvů vaší organizace. Přejmenování síťových adaptérů se podporuje pomocí prostředí PowerShell.
 Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
 Veřejná IP adresa | Podporováno | Přidružte existující veřejnou IP adresu k síťovému rozhraní. Případně vytvořte veřejnou IP adresu a přidružte ji k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.

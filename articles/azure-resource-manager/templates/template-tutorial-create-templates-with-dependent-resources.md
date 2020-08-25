@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86102068"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: vytvoření šablon ARM se závislými prostředky
@@ -27,9 +27,9 @@ Tento kurz se zabývá následujícími úkony:
 > * Prozkoumání šablony
 > * Nasazení šablony
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 

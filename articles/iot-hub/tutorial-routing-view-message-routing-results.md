@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73890393"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
@@ -96,7 +96,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="create-the-stream-analytics-job"></a>Vytvoření úlohy služby Stream Analytics
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohu**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu**.
 
 2. Zadejte o úloze následující informace.
 
@@ -162,7 +162,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **Topologie úlohy** vyberte **Dotaz**.
+1. V části **topologie úlohy**vyberte možnost **dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy. Tento kurz používá **contosoinputs**.
 
@@ -176,7 +176,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **Spustit** > **nyní** > **.** Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V Stream Analytics úlohy vyberte **Spustit**  >  **nyní**  >  **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 K vytvoření sestavy Power BI potřebujete data, takže Power BI je potřeba po vytvoření zařízení a spuštění aplikace simulace zařízení nastavit.
 
@@ -280,7 +280,7 @@ Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přej
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Vyčištění prostředků pomocí PowerShellu
 
-Pokud chcete odebrat skupinu prostředků, použijte příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) . `$resourceGroup`byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
+Pokud chcete odebrat skupinu prostředků, použijte příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) . `$resourceGroup` byl nastaven na **ContosoResources** zpět na začátku tohoto kurzu.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

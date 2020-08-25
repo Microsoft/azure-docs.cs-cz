@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "66117588"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: zjištění anomálií na hraničních zařízeních pomocí akcelerátoru řešení vzdáleného monitorování
@@ -45,7 +45,7 @@ Na IoT Edge zařízení:
 
 Tento kurz používá virtuální počítač Linux jako zařízení IoT Edge. Nainstalujete také hraniční modul pro simulaci čerpacího zařízení olejového čerpadla.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -82,8 +82,8 @@ Aby bylo snazší spravovat IoT Edge zařízení v řešení, vytvořte skupinu 
     | ------- | ----- |
     | Úloha     | Značky  |
     | Název úlohy | AddEdgeTag |
-    | Key     | IsOilPump |
-    | Hodnota   | Ano     |
+    | Klíč     | IsOilPump |
+    | Hodnota   | Y     |
     | Typ    | Text  |
 
     [![Přidat značku](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
@@ -99,7 +99,7 @@ Aby bylo snazší spravovat IoT Edge zařízení v řešení, vytvořte skupinu 
     | Název    | OilPumps |
     | Pole   | Tags. IsOilPump |
     | Operátor | = Equals |
-    | Hodnota    | Ano |
+    | Hodnota    | Y |
     | Typ     | Text |
 
     [![Vytvořit skupinu zařízení](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
@@ -203,7 +203,7 @@ Dále vytvoříte manifest nasazení IoT Edge, který definuje moduly, které ma
 
 1. V Azure Portal přejděte do služby IoT Hub v řešení vzdáleného monitorování. Centrum IoT můžete najít ve skupině prostředků, která má stejný název jako řešení vzdáleného monitorování.
 
-1. Ve službě IoT Hub klikněte na **IoT Edge** v části **Automatická správa zařízení** . Klikněte na **přidat IoT Edge nasazení**.
+1. Ve službě IoT Hub klikněte na **IoT Edge** v části **Automatická správa zařízení** . Klikněte na  **přidat IoT Edge nasazení**.
 
 1. Na stránce **vytvořit > název a popisek pro nasazení** zadejte název **oleje – pumpa zařízení**. Klikněte na **Další**.
 
@@ -243,7 +243,7 @@ Dále vytvoříte manifest nasazení IoT Edge, který definuje moduly, které ma
 
 1. Na hlavní **IoT Edge** stránce klikněte na **IoT Edge nasazení**. V seznamu nasazení si můžete prohlédnout **zařízení v olejovém pumpě** .
 
-1. Klikněte na kartu **olej-pumpa zařízení** a pak klikněte na **Stáhnout IoT Edge manifest**. Uložte soubor jako **olejový Pump – Device. JSON** do vhodného umístění na místním počítači. Tento soubor budete potřebovat v další části tohoto kurzu.
+1. Klikněte na kartu **olej-pumpa zařízení** a pak klikněte na **Stáhnout IoT Edge manifest**. Uložte soubor jako **oil-pump-device.js** do vhodného umístění v místním počítači. Tento soubor budete potřebovat v další části tohoto kurzu.
 
 Nyní jste vytvořili manifest IoT Edge pro import do řešení vzdáleného monitorování jako balíček. Vývojář obvykle vytváří IoT Edge moduly a soubor manifestu.
 
@@ -255,11 +255,11 @@ V této části importujete manifest Edge jako balíček do řešení vzdálené
 
     [![Nový balíček](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. Na panelu **nový balíček** jako typ balíčku vyberte **manifest Edge** , klikněte na **Procházet** , na místním počítači Najděte soubor **olej-pumpa-Device. JSON** a klikněte na **nahrát**:
+1. Na panelu **nový balíček** jako typ balíčku vyberte **manifest Edge** , klikněte na **Procházet** , vyhledejte **oil-pump-device.jsv** souboru na místním počítači a klikněte na **nahrát**:
 
     [![Nahrát balíček](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    Seznam balíčků teď obsahuje balíček **olej-Pump-Device. JSON** .
+    Seznam balíčků teď obsahuje **oil-pump-device.jsv** balíčku.
 
 V další části vytvoříte nasazení, které balíček aplikuje na hraniční zařízení.
 
@@ -277,7 +277,7 @@ Teď jste připraveni nasadit balíček do svého zařízení.
     | ------ | ----- |
     | Název   | OilPumpDevices |
     | Typ balíčku | Hraniční manifest |
-    | Balíček | olej – pumpa-zařízení. JSON |
+    | Balíček | oil-pump-device.jsna |
     | Skupina zařízení | OilPumps |
     | Priorita | 10 |
 
@@ -317,7 +317,7 @@ Pokud chcete po dosažení prahové hodnoty oznamovat operátory, můžete vytvo
     | Název pravidla | Teplota olejového čerpadla |
     | Popis | Teplota olejového čerpadla překročila 300. |
     | Skupina zařízení | OilPumps |
-    | Výpočet | Okamžitý |
+    | Výpočet | Okamžitě |
     | Pole | teplota |
     | Operátor | > |
     | Hodnota | 300 |

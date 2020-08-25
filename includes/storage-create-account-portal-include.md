@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76759840"
 ---
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
@@ -32,9 +32,9 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
    |---------|---------|
    |Model nasazení     |Resource Manager         |
    |Výkon     |Standard         |
-   |Account kind (Druh účtu)     |StorageV2 (obecné účely v2)         |
+   |Druh účtu     |StorageV2 (obecné účely v2)         |
    |Replikace     |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)         |
-   |Access tier (Vrstva přístupu)     |Hot         |
+   |Úroveň přístupu     |Horká         |
 
 8. Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zvolte kartu **Upřesnit** a pak nastavte **hierarchický obor názvů** na **Enabled**.
 9. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.

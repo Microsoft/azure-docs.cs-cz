@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 8c3c0f4f57d21e5c07867a2c43ce3c3114f79a9b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80058859"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Obnovení webové aplikace ze zálohy pomocí rozhraní příkazového řádku

@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74976770"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
@@ -25,7 +25,7 @@ V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke sl
 > * Spuštění zařízení
 > * Ověření registrace zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, nezapomeňte nakonfigurovat své zařízení a *modul hardwarového zabezpečení*, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80082311"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Získat uživatelské jméno pro SendGrid
 > * Konfigurace e-mailových oznámení Apache Ambari
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * SendGrid e-mailový účet. Pokyny najdete v tématu [odeslání e-mailu pomocí SendGrid s Azure](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) .
 
@@ -48,7 +48,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="configure-ambari-e-mail-notification"></a>Konfigurace e-mailových oznámení Ambari
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. V rozevíracím seznamu **Akce** vyberte **spravovat oznámení**.
 
@@ -62,7 +62,7 @@ V tomto kurzu se naučíte:
     |---|---|
     |Název|Zadejte název oznámení.|
     |Skupiny|Nakonfigurujte podle potřeby.|
-    |Severity|Nakonfigurujte podle potřeby.|
+    |Závažnost|Nakonfigurujte podle potřeby.|
     |Popis|Nepovinný parametr.|
     |Metoda|Ponechte v **e-mailu**.|
     |E-mail na|Zadejte e-maily pro příjem oznámení, oddělené čárkou.|

@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75971967"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
@@ -36,13 +36,13 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > [!NOTE]
 > Ověřování Azure Active Directory pro Azure Storage je ve veřejné verzi Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -60,7 +60,7 @@ V této části vytvoříte účet úložiště.
 3. V části **Název** zadejte název účtu úložiště.
 4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)**.
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -69,7 +69,7 @@ V této části vytvoříte účet úložiště.
 Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kontejner objektů blob, do kterého soubor uložíte. Potom soubor nahrajete do kontejneru objektů blob v novém účtu úložiště.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
-2. V části **Blob Service** klikněte na **Kontejnery**.
+2. V části **BLOB Service**klikněte na **kontejnery**.
 3. Nahoře na stránce klikněte na **+ Kontejner**.
 4. V části **Nový kontejner** zadejte název kontejneru a v části **Úroveň veřejného přístupu** nechte výchozí hodnotu.
 

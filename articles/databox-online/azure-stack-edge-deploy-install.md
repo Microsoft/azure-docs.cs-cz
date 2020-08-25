@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82570997"
 ---
 # <a name="tutorial-install-azure-stack-edge"></a>Kurz: instalace Azure Stack Edge
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Pro správnou operaci musí být zařízení Azure Stack Edge připojená k racku.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.

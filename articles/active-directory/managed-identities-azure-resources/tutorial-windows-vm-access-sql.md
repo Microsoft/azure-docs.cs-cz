@@ -15,10 +15,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85920378"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak používat identitu přiřazenou systémem pro vi
 > * Vytvoření uživatele v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování Azure SQL Database
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

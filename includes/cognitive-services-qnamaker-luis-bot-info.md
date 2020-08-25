@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "67438439"
 ---
 ## <a name="more-information-about-bots"></a>Další informace o roboty

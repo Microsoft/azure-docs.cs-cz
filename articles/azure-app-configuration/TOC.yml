@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: Integrace s kanálem CI/CD
-      href: integrate-ci-cd-pipeline.md
+    - name: Integrace kanál§ CI/CD
+      items:
+        - name: Nasdílení změn s využitím Azure Pipelines
+          href: push-kv-devops-pipeline.md
+        - name: Nasdílení změn s využitím GitHub Actions
+          href: concept-github-action.md
+        - name: Sestavení projektu pomocí vyexportované konfigurace
+          href: integrate-ci-cd-pipeline.md
     - name: Integrace s nasazením Kubernetes s využitím Helmu
       href: integrate-kubernetes-deployment-helm.md
 - name: ukázky
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: Správa funkcí
       href: concept-feature-management.md
-    - name: Synchronizace s využitím GitHub Actions
-      href: concept-github-action.md
     - name: Zpracování událostí
       href: concept-app-configuration-event.md
     - name: Zabezpečení

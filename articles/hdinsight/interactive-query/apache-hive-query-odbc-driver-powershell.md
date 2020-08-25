@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73494326"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
@@ -42,7 +42,7 @@ Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://www.microsoft.com
 
 Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
 
-1. V systému Windows přejděte k **Možnosti spustit** > **nástroje** > pro správu systému Windows**ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
+1. V systému Windows přejděte k **Start**  >  **Možnosti spustit nástroje pro správu systému Windows**  >  **ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
 
     ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
 
@@ -57,7 +57,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
    |  Název zdroje dat |Zadejte název zdroje dat. |
    |  Hostitelé: |Zadejte `CLUSTERNAME.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. |
    |  Port |Použijte **443**.|
-   |  databáze |Použijte **výchozí nastavení**. |
+   |  Databáze |Použijte **výchozí nastavení**. |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
    |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin**. |
    |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)**.|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589414"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761810"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Základní plán zabezpečení Azure pro zálohování
 

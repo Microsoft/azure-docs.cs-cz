@@ -7,10 +7,10 @@ ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79082808"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
@@ -27,13 +27,13 @@ Následuje video, které zobrazuje rozsáhlejší scénář, než postup uveden�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="open-metrics-explorer-and-select-a-scope"></a>Otevřete Průzkumníka metrik a vyberte obor.
 Můžete otevřít Průzkumníka metrik buď z nabídky Azure Monitor, nebo z nabídky prostředku v Azure Portal. Metriky ze všech prostředků jsou dostupné bez ohledu na to, kterou možnost používáte. 

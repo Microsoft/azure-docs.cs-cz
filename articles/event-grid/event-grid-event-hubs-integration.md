@@ -4,10 +4,10 @@ description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86117555"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
@@ -33,13 +33,13 @@ V tomto článku proveďte následující kroky:
 > * Spusťte aplikaci, která odesílá data do centra událostí.
 > * Zobrazení migrovaných dat v datovém skladu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 K dokončení tohoto kurzu potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a vývoj webů Node.js, vývoj a vývoj v Pythonu
 * Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
 
@@ -55,7 +55,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
     ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -81,7 +81,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
         ```
     2. Stiskněte klávesu **ENTER**. 
 
-        Zde naleznete příklad:
+        Tady je příklad:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp

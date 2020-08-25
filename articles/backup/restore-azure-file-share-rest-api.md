@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure pomocí REST API
 description: Naučte se používat REST API k obnovení sdílených složek Azure nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538152"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761793"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Obnovení sdílených složek Azure pomocí REST API
 
@@ -64,7 +64,7 @@ Identifikátor URI GET má všechny požadované parametry. Není potřeba dalš
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
 ```
 
-### <a name="example-response"></a>Příklad odpovědi
+### <a name="example-response-for-fetch-recovery-points"></a>Příklad odpovědi pro načtení bodů obnovení
 
 Po odeslání identifikátoru URI GET se vrátí odpověď 200:
 
@@ -168,7 +168,7 @@ Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
 ### <a name="restore-to-original-location"></a>Obnovit do původního umístění
 
-#### <a name="request-body-example"></a>Příklad textu žádosti
+#### <a name="request-body-example-for-restore-to-original-location"></a>Příklad textu žádosti o obnovení do původního umístění
 
 Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení sdílené složky Azure:
 
@@ -192,7 +192,7 @@ Zadejte následující parametry pro obnovení do alternativního umístění:
 * **název**: sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
 * **targetFolderPath**: složka ve sdílené složce, do které se budou data obnovovat.
 
-#### <a name="request-body-example"></a>Příklad textu žádosti
+#### <a name="request-body-example-for-restore-to-alternate-location"></a>Příklad textu žádosti o obnovení do alternativního umístění
 
 Následující text žádosti obnoví sdílenou složku *azurefiles* v účtu úložiště *afsaccount* do sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
 
@@ -366,7 +366,7 @@ Hodnoty {Containers} a {protectedItemName} se [tady](#fetch-containername-and-pr
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>Vytvořit text žádosti
+### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>Vytvoření textu žádosti pro obnovení na úrovni položky pomocí REST API
 
 Chcete-li aktivovat obnovení sdílené složky Azure, jsou zde uvedené součásti textu žádosti:
 
@@ -376,7 +376,7 @@ Vlastnosti | AzureFileShareRestoreRequest | Vlastnosti RestoreRequestResource
 
 Úplný seznam definic těla žádosti a další podrobnosti najdete v [dokumentu Trigger Restore REST API](/rest/api/backup/restores/trigger#request-body).
 
-### <a name="restore-to-original-location"></a>Obnovit do původního umístění
+### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>Obnovit do původního umístění pro obnovení na úrovni položky pomocí REST API
 
 Následující text požadavku slouží k obnovení souboru *Restoretest.txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* .
 
@@ -402,7 +402,7 @@ Vytvořit text žádosti
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>Obnovit do alternativního umístění
+### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>Obnovit do alternativního umístění pro obnovení na úrovni položky pomocí REST API
 
 Následující text žádosti o obnovení souboru *Restoretest.txt* ve sdílené složce *azurefiles* v účtu úložiště *afsaccount* do složky *restoredata* sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
 

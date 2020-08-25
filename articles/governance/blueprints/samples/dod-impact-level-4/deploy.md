@@ -4,10 +4,10 @@ description: Nasaďte kroky pro ukázku podrobného plánu na úrovni DoD – 4,
 ms.date: 06/30/2020
 ms.topic: sample
 ms.openlocfilehash: bb2599399284b2be5a9a7f88ef1d0244812ec4b2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86044970"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>Nasazení ukázky podrobného plánu úrovně dopadu DoD. 4
@@ -19,7 +19,7 @@ Pro nasazení ukázky podrobného plánu úrovně dopadu na IL4 (DoD. 4) pro Azu
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -91,44 +91,44 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Povolená umístění|Přiřazení zásad|Povolené lokality|Tyto zásady umožňují omezit umístění, která může vaše organizace zadat při nasazování prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.|
 |Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené lokality|Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.|
-|Nasazení auditování na SQL serverech|Přiřazení zásad|Hodnota v dnech doby uchování (0 označuje neomezené uchovávání)|Počet dnů uchování (volitelné, 180 dní, pokud není zadaný)|
-|Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro auditování SQL serveru|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti). Důležité: kvůli správnému fungování auditu neodstraňujte ani neměňte skupinu prostředků ani účty úložiště.|
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásad|Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě|Tato předpona bude kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště.|
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat)|Skupina prostředků, ve které se bude účet úložiště vytvořit. Tato skupina prostředků už musí existovat.|
-|Nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|Nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače se systémem Linux|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|Nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Windows VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|Nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Členové, kteří mají být zahrnuti do místní skupiny Administrators|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Členové, kteří mají být vyloučeni v místní skupině Administrators|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty úložiště by mělo být povoleno geograficky redundantní úložiště.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Webová aplikace by měla být přístupná jen přes protokol HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Function App by měl být přístupný jenom přes HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Zastaralé účty by se měly odebírat z předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|CORS by neměl všem prostředkům umožňovat přístup k vaší webové aplikaci|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásad|Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|Nasazení auditování na SQL serverech|Přiřazení zásady|Hodnota v dnech doby uchování (0 označuje neomezené uchovávání)|Počet dnů uchování (volitelné, 180 dní, pokud není zadaný)|
+|Nasazení auditování na SQL serverech|Přiřazení zásady|Název skupiny prostředků pro účet úložiště pro auditování SQL serveru|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti). Důležité: kvůli správnému fungování auditu neodstraňujte ani neměňte skupinu prostředků ani účty úložiště.|
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásady|Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě|Tato předpona bude kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště.|
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásady|Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat)|Skupina prostředků, ve které se bude účet úložiště vytvořit. Tato skupina prostředků už musí existovat.|
+|Nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásady|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|Nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux|Přiřazení zásady|Log Analytics pracovní prostor pro virtuální počítače se systémem Linux|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|Nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásady|Log Analytics pracovní prostor pro Windows VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|Nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásady|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
+|Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Členové, kteří mají být zahrnuti do místní skupiny Administrators|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Členové, kteří mají být vyloučeni v místní skupině Administrators|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro účty úložiště by mělo být povoleno geograficky redundantní úložiště.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Webová aplikace by měla být přístupná jen přes protokol HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Function App by měl být přístupný jenom přes HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Zastaralé účty by se měly odebírat z předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|CORS by neměl všem prostředkům umožňovat přístup k vaší webové aplikaci|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Náhled \] : úroveň dopadu DoD 4|Přiřazení zásady|Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
 
 ## <a name="next-steps"></a>Další kroky
 

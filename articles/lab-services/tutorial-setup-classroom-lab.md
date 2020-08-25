@@ -4,10 +4,10 @@ description: V tomto kurzu použijete Azure Lab Services k nastavení testovací
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445130"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
@@ -21,7 +21,7 @@ V tomto kurzu provedete následující akce:
 > * Nastavit plán pro testovací prostředí
 > * Poslat e-mail pozvánky studentům
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro vaši třídu. Pokud chcete nastavit prostředí učebny v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo přispěvatele. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka. K vytvoření testovacího prostředí učebny můžete použít uživatelský účet, který jste použili k vytvoření účtu testovacího prostředí. 
 
 Toto je typický pracovní postup při použití Azure Lab Services:

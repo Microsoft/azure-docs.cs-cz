@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 5a3e6d918f4ab94c4533e930ea73b5267deb53a4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0b6a6eac04711b564d602408a57b92f833fb5d5d
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115522"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782426"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -27,16 +27,16 @@ Tento článek popisuje registraci aplikace, aplikační objekty a instanční o
 ## <a name="application-registration"></a>Registrace aplikací
 Aby bylo možné delegovat funkce pro správu identit a přístupu do služby Azure AD, musí být aplikace zaregistrovaná v [Tenantovi](developer-glossary.md#tenant)Azure AD. Při registraci aplikace ve službě Azure AD vytváříte konfiguraci identity pro vaši aplikaci, která umožňuje integraci se službou Azure AD. Při registraci aplikace v [Azure Portal][AZURE-Portal]zvolíte, zda se jedná o jediného tenanta (k dispozici pouze ve vašem tenantovi) nebo k víceklientskému přístupu (k dispozici v jiných klientech), a volitelně můžete nastavit identifikátor URI přesměrování (kam se přístupový token posílá).
 
-![Registrace aplikací](./media/app-objects-and-service-principals/app-registration.png)
+:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Snímek obrazovky s podoknem registru aplikace Azure Portal":::
 
 Po dokončení registrace aplikace budete mít globálně jedinečnou instanci aplikace (objekt aplikace), která je umístěná v rámci vašeho domovského tenanta nebo adresáře.  Máte také globálně jedinečné ID vaší aplikace (ID aplikace nebo klienta).  Na portálu můžete přidat tajné klíče, certifikáty a obory, aby vaše aplikace fungovala, přizpůsobení značky vaší aplikace v dialogovém okně přihlášení a další.
 
 Pokud zaregistrujete aplikaci na portálu, objekt aplikace a objekt instančního objektu se automaticky vytvoří v domovském tenantovi.  Pokud zaregistrujete nebo vytvoříte aplikaci pomocí rozhraní Microsoft Graph API, vytvoří se objekt instančního objektu jako samostatný krok.
 
 ## <a name="application-object"></a>Objekt aplikace
-Aplikace služby Azure AD je definována jejím jedním a jediným objektem aplikace, který se nachází v tenantovi Azure AD, kde byla aplikace zaregistrovaná (označovaná jako "domovský" tenant aplikace).  Objekt aplikace se používá jako šablona nebo podrobný plán k vytvoření jednoho nebo více objektů instančního objektu.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá. Podobně jako u třídy v objektově orientovaném programování má objekt aplikace některé statické vlastnosti, které jsou aplikovány na všechny vytvořené instanční objekty (nebo instance aplikace). 
+Aplikace služby Azure AD je definována jejím jedním a jediným objektem aplikace, který se nachází v tenantovi Azure AD, kde byla aplikace zaregistrovaná (označovaná jako "domovský" tenant aplikace).  Objekt aplikace se používá jako šablona nebo podrobný plán k vytvoření jednoho nebo více objektů instančního objektu.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá. Podobně jako u třídy v objektově orientovaném programování má objekt aplikace některé statické vlastnosti, které jsou aplikovány na všechny vytvořené instanční objekty (nebo instance aplikace).
 
-Aplikační objekt popisuje tři aspekty aplikace: Jak může služba vystavovat tokeny pro přístup k aplikaci, prostředků, ke kterým může aplikace potřebovat přístup, a akcí, které může aplikace provádět. 
+Aplikační objekt popisuje tři aspekty aplikace: Jak může služba vystavovat tokeny pro přístup k aplikaci, prostředků, ke kterým může aplikace potřebovat přístup, a akcí, které může aplikace provádět.
 
 Okno **Registrace aplikací** v [Azure Portal][AZURE-Portal] slouží k vypsání a správě objektů aplikace v domovském tenantovi.
 
@@ -47,7 +47,7 @@ Entita Microsoft Graph [aplikace][MS-Graph-App-Entity] definuje schéma pro vlas
 ## <a name="service-principal-object"></a>Instanční objekt služby
 Aby bylo možné získat přístup k prostředkům, které jsou zabezpečeny klientem služby Azure AD, musí být entita, která vyžaduje přístup, reprezentovaná objektem zabezpečení. Tento požadavek platí pro uživatele (objekt zabezpečení uživatele) i aplikace (instanční objekt). Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tenantovi Azure AD. To umožňuje základní funkce, jako je ověřování uživatelů nebo aplikací během přihlašování, a autorizaci během přístupu k prostředkům.
 
-Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat. 
+Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat.
 
 Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), Azure CLI, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
 

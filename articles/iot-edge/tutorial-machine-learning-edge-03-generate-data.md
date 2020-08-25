@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76722361"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
@@ -67,9 +67,9 @@ Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývoj
 
    ![Výzva k obnovení VS Code](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-   Pokud tato oznámení neobdržíte, zavřete Visual Studio Code, odstraňte adresáře bin a obj v `C:\source\IoTEdgeAndMlSample\DeviceHarness`, otevřete Visual Studio Code a znovu otevřete složku DeviceHarness.
+   Pokud tato oznámení neobdržíte, zavřete Visual Studio Code, odstraňte adresáře bin a obj v `C:\source\IoTEdgeAndMlSample\DeviceHarness` , otevřete Visual Studio Code a znovu otevřete složku DeviceHarness.
 
-1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL** + **SHIFT** + **B**nebo**úlohy sestavení pro spuštění** **terminálu** > .
+1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL**  +  **SHIFT**  +  **B**nebo **Terminal**  >  **úlohy sestavení pro spuštění**terminálu.
 
 1. Zobrazí se výzva k výběru úlohy sestavení, která se má spustit. Vyberte **sestavení**.
 
@@ -77,7 +77,7 @@ Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývoj
 
    ![Výstupní zpráva o úspěšném sestavení](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Můžete nastavit, aby se toto sestavení nastavilo jako výchozí, a to tak, že vyberete **terminál** > **konfigurovat výchozí sestavení úloha...** a z příkazového řádku zvolíte **sestavit** .
+1. Můžete nastavit, aby se toto sestavení nastavilo jako výchozí, a to tak, že vyberete **terminál**  >  **konfigurovat výchozí sestavení úloha...** a z příkazového řádku zvolíte **sestavit** .
 
 ## <a name="connect-to-iot-hub-and-run-deviceharness"></a>Připojení k IoT Hub a spuštění DeviceHarness
 
@@ -85,7 +85,7 @@ Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli p
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Přihlaste se k Azure v Visual Studio Code
 
-1. Přihlaste se k předplatnému Azure v Visual Studio Code tak, `Ctrl + Shift + P` že otevřete paletu příkazů nebo **zobrazíte** > **paletu příkazů**.
+1. Přihlaste se k předplatnému Azure v Visual Studio Code tak, že otevřete paletu příkazů `Ctrl + Shift + P` nebo **zobrazíte**  >  **paletu příkazů**.
 
 1. Vyhledejte příkaz **Azure: Sign in** .
 
@@ -105,7 +105,7 @@ Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli p
 
 ### <a name="run-the-deviceharness-project"></a>Spuštění projektu DeviceHarness
 
-1. Vyberte **Zobrazit** > **terminál** a otevřete Visual Studio Code terminálu.
+1. Vyberte **Zobrazit**  >  **terminál** a otevřete Visual Studio Code terminálu.
 
    Pokud se výzva nezobrazí, stiskněte klávesu ENTER.
 
@@ -145,7 +145,7 @@ Data, která jsme právě poslali do služby IoT Hub, byla směrována do kontej
 
 1. V Navigátoru účtu úložiště vyberte **Průzkumník služby Storage (Preview)**.
 
-1. V Průzkumníku služby Storage vyberte **kontejnery objektů BLOB** a `devicedata`potom.
+1. V Průzkumníku služby Storage vyberte **kontejnery objektů BLOB** a potom `devicedata` .
 
 1. V podokně Obsah klikněte na složku pro název centra IoT a potom na rok, měsíc, den a hodinu. Zobrazí se několik složek představujících minuty, kdy byla data zapsána.
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77471325"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box Heavy k importu dat jako spravovaných disků v Azure
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu Heavy](data-box-heavy-deploy-set-up.md).
 2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
 3. Jste připojení k síti s vysokou rychlostí. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
 4. Zkontrolovali jste:
@@ -77,7 +77,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na tlačítko **OK**.
+2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -116,7 +116,7 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
     ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na tlačítko **OK**.
+2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
     ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -126,7 +126,7 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Následující příklad ukazuje, jak se připojit přes systém souborů NFS k Data Box nebo Data Box Heavy sdílet. Data Box nebo Data Box Heavy IP adresa zařízení je `169.254.250.200`, sdílená `mydbmdrg1_MDisk` složka je připojená k ubuntuVM, přípojnému `/home/databoxubuntuhost/databox`bodu.
+    Následující příklad ukazuje, jak se připojit přes systém souborů NFS k Data Box nebo Data Box Heavy sdílet. Data Box nebo Data Box Heavy IP adresa zařízení je `169.254.250.200` , sdílená složka `mydbmdrg1_MDisk` je připojená k ubuntuVM, přípojnému bodu `/home/databoxubuntuhost/databox` .
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 

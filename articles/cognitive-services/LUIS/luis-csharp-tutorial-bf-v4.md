@@ -4,10 +4,10 @@ description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se s
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.openlocfilehash: b9da1d1fecbb251ebf27833cc381eb658a9df46b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445895"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: použití robota webové aplikace s povoleným Language Understanding v jazyce C #
@@ -22,7 +22,7 @@ Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumě
 > * Spustit robota a emulátor místně na počítači
 > * Zobrazit výsledky promluv v robotovi
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Emulátor robota](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -42,7 +42,7 @@ Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumě
     |Skupina prostředků|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-csharp-bot-resource-group`.|
     |Umístění|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
     |Cenová úroveň|Slouží pro limity žádostí o služby a fakturaci.|`F0` je bezplatná úroveň.
-    |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
+    |Název aplikace|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
     |Plán/umístění služby App Service|Neměňte z poskytnuté výchozí hodnoty.|
@@ -74,7 +74,7 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
 |Getpočasí|`what's the weather like?`|
-|Žádná|Cokoli mimo doménu aplikace|
+|Žádné|Cokoli mimo doménu aplikace|
 
 ## <a name="test-the-bot-in-web-chat"></a>Testování robota ve webovém chatu
 

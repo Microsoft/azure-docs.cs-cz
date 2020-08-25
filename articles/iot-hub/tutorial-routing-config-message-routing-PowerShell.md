@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084442"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Kurz: použití Azure PowerShell ke konfiguraci směrování zpráv IoT Hub
@@ -26,7 +26,7 @@ ms.locfileid: "74084442"
 
 Druhá část tohoto kurzu vám umožní stáhnout a spustit aplikaci Visual Studio pro posílání zpráv do IoT Hub. V souboru ke stažení je složka, která obsahuje Azure Resource Manager šablona a soubor parametrů, a také skripty Azure CLI a PowerShell. 
 
-Pokud chcete zobrazit dokončený skript, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte hlavní soubor. zip. Skript rozhraní příkazového řádku Azure CLI je v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **iothub_routing_psh. ps1**.
+Pokud chcete zobrazit dokončený skript, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Skript rozhraní příkazového řádku Azure CLI je v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **iothub_routing_psh.ps1**.
 
 ## <a name="create-your-resources"></a>Vytvoření prostředků
 
@@ -148,7 +148,7 @@ skupina **prostředků: existují**dva výskyty tohoto pole – nastavení obou 
 
 **koncový bod**: Toto pole je název identifikující koncový bod. 
 
-**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `azurestoragecontainer`.
+**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer` , `eventhub` , `servicebusqueue` nebo `servicebustopic` . Pro vaše účely ho nastavte na `azurestoragecontainer` .
 
 **SubscriptionId**: Toto pole je nastavené na SubscriptionId účtu Azure.
 
@@ -156,13 +156,13 @@ skupina **prostředků: existují**dva výskyty tohoto pole – nastavení obou 
 
 **ContainerName**: Toto pole je název kontejneru v účtu úložiště, do kterého se budou zapisovat data.
 
-**Encoding**: nastavte toto pole na buď `AVRO` nebo `JSON`. Tím se určí formát uložených dat. Výchozí hodnota je AVRO.
+**Encoding**: nastavte toto pole na buď `AVRO` nebo `JSON` . Tím se určí formát uložených dat. Výchozí hodnota je AVRO.
 
 **Route**: Toto pole je název trasy, kterou nastavujete. 
 
-**Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do úložiště je `level="storage"`.
+**Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do úložiště je `level="storage"` .
 
-**povoleno**: Toto pole je standardně nastaveno na `true`hodnotu, což znamená, že po vytvoření by mělo být povoleno směrování zpráv.
+**povoleno**: Toto pole je standardně nastaveno na hodnotu `true` , což znamená, že po vytvoření by mělo být povoleno směrování zpráv.
 
 Zkopírujte tento skript a vložte ho do okna Cloud Shell.
 
@@ -208,7 +208,7 @@ Add-AzIotHubRoute `
 
 ### <a name="route-to-a-service-bus-queue"></a>Směrování do fronty Service Bus
 
-Nyní nastavte směrování pro frontu Service Bus. Chcete-li načíst připojovací řetězec pro frontu Service Bus, je nutné vytvořit autorizační pravidlo, které má definováno správné právo. Následující skript vytvoří autorizační pravidlo pro volanou `sbauthrule`Service Busovou frontu a nastaví práva na. `Listen Manage Send` Jakmile je toto autorizační pravidlo nastavené, můžete ho použít k načtení připojovacího řetězce pro tuto frontu.
+Nyní nastavte směrování pro frontu Service Bus. Chcete-li načíst připojovací řetězec pro frontu Service Bus, je nutné vytvořit autorizační pravidlo, které má definováno správné právo. Následující skript vytvoří autorizační pravidlo pro volanou Service Busovou frontu `sbauthrule` a nastaví práva na `Listen Manage Send` . Jakmile je toto autorizační pravidlo nastavené, můžete ho použít k načtení připojovacího řetězce pro tuto frontu.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -236,11 +236,11 @@ Nyní nastavte koncový bod směrování a zprávu trasy pro Service Bus frontu.
 
 **koncový bod**: Toto pole je název identifikující koncový bod. 
 
-**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer`, `eventhub`, `servicebusqueue`nebo `servicebustopic`. Pro vaše účely ho nastavte na `servicebusqueue`.
+**endpointType**: Toto pole je typ koncového bodu. Tato hodnota musí být nastavena na `azurestoragecontainer` , `eventhub` , `servicebusqueue` nebo `servicebustopic` . Pro vaše účely ho nastavte na `servicebusqueue` .
 
 **Route**: Toto pole je název trasy, kterou nastavujete. 
 
-**Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"`.
+**Podmínka**: Toto pole je dotaz použitý k filtrování zpráv odesílaných do tohoto koncového bodu. Podmínka dotazu pro zprávy směrované do fronty Service Bus je `level="critical"` .
 
 Tady je Azure PowerShell směrování zpráv pro Service Busovou frontu.
 

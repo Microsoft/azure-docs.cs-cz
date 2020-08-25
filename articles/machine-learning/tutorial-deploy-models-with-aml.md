@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
 ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86025671"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
@@ -35,9 +35,9 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.83 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
+Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok  *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
 
 Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete použít ve svém vlastním [místním prostředí](how-to-configure-environment.md#local).  Ujistěte se, že máte nainstalované `matplotlib` a `scikit-learn` ve vašem prostředí. 
 
