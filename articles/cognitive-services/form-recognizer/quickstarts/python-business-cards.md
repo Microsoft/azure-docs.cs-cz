@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: aa16952d2b2dff6f69abfc37090a9e00b7d48a27
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751133"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823900"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce dat z vizitky pomocí REST API pro rozpoznávání formulářů pomocí Pythonu
 
@@ -27,10 +27,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Adresa URL obrázku vizitky Pro tento rychlý Start můžete použít [ukázkový obrázek](../media/business-card-english.jpg) .
+- Obrázek vizitky. Pro tento rychlý Start můžete použít [ukázkový obrázek](../media/business-card-english.jpg) .
 
 > [!NOTE]
-> V tomto rychlém startu se používá k získání obrázku na vzdálené vizitce z adresy URL. Chcete-li místo toho použít místní soubory, přečtěte si [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
+> V tomto rychlém startu se používá místní soubor. Pokud chcete místo toho použít k použití image vzdáleného obchodu na vizitce, přečtěte si [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -41,7 +41,7 @@ K dokončení tohoto rychlého startu musíte mít:
 Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** pomocí následujícího skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `<your business card URL>` adresou URL obrázku vizitky.
+1. Nahraďte `<path to your business card>` cestou k místnímu dokumentu formuláře.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
     ```python
@@ -54,7 +54,7 @@ Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýz
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
     
     headers = {

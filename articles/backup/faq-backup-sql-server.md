@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762840"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827235"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -30,7 +30,7 @@ Za určitých okolností služba Azure Backup spustí znovu média zálohování
 - Pokud se rozhodnete přepsat databázi během obnovení, další zálohování protokolu nebo rozdílové zálohy se nezdařila a místo toho se spustí úplné zálohování.
 - V případech, kdy je potřeba k resetování řetězů protokolů z důvodu změny v modelu obnovení databáze, se úplná aktivace automaticky aktivuje v dalším plánu.
 
-Automatické zaretušování je ve výchozím nastavení povolené pro všechny uživatele. Pokud se ale rozhodnete, že se odhlásíte, postupujte takto:
+Automatické zaretušování je ve výchozím nastavení povolené pro všechny uživatele. Pokud se ale rozhodnete, že ho chcete odhlásit, proveďte následující kroky:
 
 - V SQL Server instanci ve složce *C:\Program Files\Azure úlohy Backup\bin* vytvořte nebo upravte **ExtensionSettingsOverrides.jsv** souboru.
 - V **ExtensionSettingsOverrides.jsna**, nastavte *{"EnableAutoHealer": false}*.
@@ -56,7 +56,7 @@ Výchozí hodnota DefaultBackupTasksThreshold je **20**.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Můžu spustit úplnou zálohu ze sekundární repliky?
 
-Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohování na sekundární replice; Úplné zálohování se ale nepovoluje.
+Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohování na sekundární replice. Úplná záloha však není povolena.
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Můžu chránit skupiny dostupnosti místně?
 
@@ -92,7 +92,7 @@ Pokud **zálohování ukončíte pomocí odstranit data**, nebudou probíhat ž�
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Když změním název databáze poté, co byla chráněna, jaký bude chování?
 
-Přejmenovaná databáze je považována za novou databázi. Takže se služba bude považovat za tuto situaci, jako kdyby nebyla nalezena databáze a selhala zálohování.
+Přejmenovaná databáze je považována za novou databázi. Takže se služba bude považovat za tuto situaci, jako kdyby se databáze nenašla a selhala v zálohování.
 
 Můžete vybrat databázi, která je teď přejmenovaná, a nakonfigurovat na ni ochranu. V případě, že je v instanci povolena Automatická ochrana, přejmenovaná databáze bude automaticky rozpoznána a chráněna.
 

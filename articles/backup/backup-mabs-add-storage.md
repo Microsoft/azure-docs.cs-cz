@@ -3,12 +3,12 @@ title: Použití Moderní úložiště zálohování s Azure Backup Server
 description: Seznamte se s novými funkcemi v Azure Backup Server. Tento článek popisuje, jak upgradovat instalaci záložního serveru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762432"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825864"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -97,7 +97,7 @@ Změny, které provedete pomocí PowerShellu, se projeví v konzole správce zá
 
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrace starší verze úložiště do Moderní úložiště zálohování
 
-Po upgradu na nebo instalaci záložního serveru v2 a upgradu operačního systému na Windows Server 2016 aktualizujte skupiny ochrany tak, aby používaly Moderní úložiště zálohování. Ve výchozím nastavení se skupiny ochrany nemění. Budou i nadále fungovat, jak byly původně nastaveny.
+Po upgradu na nebo instalaci záložního serveru v2 a upgradu operačního systému na Windows Server 2016 aktualizujte skupiny ochrany tak, aby používaly Moderní úložiště zálohování. Ve výchozím nastavení se skupiny ochrany nezměnily. Budou i nadále fungovat, jak byly původně nastaveny.
 
 Aktualizace skupin ochrany na používání moderního úložiště záloh je volitelná. Chcete-li aktualizovat skupinu ochrany, zastavte ochranu všech zdrojů dat pomocí možnosti zachovat data. Pak přidejte zdroje dat do nové skupiny ochrany.
 

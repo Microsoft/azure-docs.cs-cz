@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757196"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827388"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -214,7 +214,7 @@ Ano. Data v Azure jsou v klidovém stavu zašifrovaná.
 - V případě místního zálohování se šifrování v klidovém stavu zajišťuje pomocí hesla, které zadáte při zálohování do Azure.
 - Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE).
 
-Microsoft nikdy nedešifruje zálohovaná data.
+Společnost Microsoft v žádném okamžiku nešifruje zálohovaná data.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Jaká je minimální délka šifrovacího klíče použitého k šifrování zálohovaných dat?
 
@@ -222,7 +222,7 @@ Microsoft nikdy nedešifruje zálohovaná data.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Co se stane, když ztratím šifrovací klíč? Můžu data obnovit? Může je obnovit Microsoft?
 
-Klíč, pomocí kterého se šifrují zálohovaná data, je k dispozici jenom u vás. Microsoft neudržuje jeho kopii v Azure a nemá ke klíči žádný přístup. Pokud tento klíč ztratíte, Microsoft nemůže zálohovaná data obnovit.
+Klíč, pomocí kterého se šifrují zálohovaná data, je k dispozici jenom u vás. Microsoft neuchovává kopii v Azure a nemá žádný přístup k tomuto klíči. Pokud tento klíč ztratíte, Microsoft nemůže zálohovaná data obnovit.
 
 ## <a name="next-steps"></a>Další kroky
 

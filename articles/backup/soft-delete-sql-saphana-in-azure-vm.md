@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro SQL Server na virtuálním počítači Azur
 description: Přečtěte si, jak obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure zajišťuje větší zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757468"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825167"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure
 
@@ -17,7 +17,7 @@ Azure Backup nyní poskytuje obnovitelné odstranění pro SQL Server na virtuá
 [Obnovitelné odstranění](backup-azure-security-feature-cloud.md) je funkce zabezpečení, která umožňuje chránit zálohovaná data i po jejím odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu databáze (nebo se data zálohují omylem), se zálohovaná data uchovávají po dobu 14 dalších dnů. To umožňuje obnovení této zálohované položky bez ztráty dat. Tato dodatečná doba uchovávání dat ze zálohy 14 dnů ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
 
 >[!NOTE]
->Po povolení Preview pro předplatné není možné deaktivovat obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a současně zachovat virtuální počítače ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
+>Po povolení verze Preview pro předplatné není možné deaktivovat možnost obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
 
 ## <a name="steps-to-enroll-in-preview"></a>Postup pro registraci ve verzi Preview
 
@@ -99,7 +99,7 @@ Pořadí kroků použití Azure PowerShell je stejné jako v Azure Portal popsan
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Odstraňte zálohovanou položku pomocí Azure PowerShell
 
-Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS.
+Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) prostředí PowerShell.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS.
+Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) prostředí PowerShell.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

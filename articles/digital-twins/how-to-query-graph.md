@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905584"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824946"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -187,7 +187,7 @@ Změny ve vaší instanci se projeví v dotazech až na 10 sekund. Například p
 
 Při používání ve verzi Preview jsou k dispozici další omezení `JOIN` .
 * V rámci příkazu nejsou podporovány žádné poddotazy `FROM` .
-* `OUTER JOIN`Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
+* `OUTER JOIN` Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
 * Během období Preview je hloubka procházení grafu omezená na pět `JOIN` úrovní na jeden dotaz.
 * Zdroj pro `JOIN` operace je omezený: dotaz musí deklarovat vlákna, kde začíná dotaz.
 
@@ -222,7 +222,6 @@ Níže najdete několik tipů pro dotazování pomocí digitálních vláken Azu
         AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
         ```
 * V názvech vlastností a hodnotách se rozlišují malá a velká písmena, proto je potřeba se starat o použití přesně názvů definovaných v modelech. Pokud jsou názvy vlastností špatně napsané nebo nesprávně použita, je sada výsledků prázdná a nevrátí se žádné chyby.
-
 
 ## <a name="next-steps"></a>Další kroky
 

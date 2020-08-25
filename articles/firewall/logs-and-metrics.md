@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827218"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -115,17 +115,17 @@ Pro Azure Firewall jsou k dispozici následující metriky:
   - Stav: možné hodnoty jsou *v pořádku*, *snížené*, *není v pořádku.*
   - Důvod: označuje důvod pro odpovídající stav brány firewall. 
 
-     Pokud se používají porty SNAT > 95%, považují se za vyčerpané a stav je 50% se stavem =**degradované** a důvod =**SNAT port**. Brána firewall zajišťuje zpracování provozu a stávající připojení nejsou ovlivněná. Nová připojení ale nemusí být navázána občas.
+     Pokud se používají porty SNAT > 95%, považují se za vyčerpané a stav je 50% se stavem =**degradované** a důvod =**SNAT port**. Brána firewall dál zpracovává provoz a stávající připojení nejsou ovlivněná. Občas však není možné navazovat nová připojení.
 
      Pokud se používají porty SNAT < 95%, považuje se brána firewall za v pořádku a stav se zobrazí jako 100%.
 
-     Pokud se neoznamuje žádné použití portů SNAT, stav se zobrazí jako 0%. 
+     Pokud se nehlásí žádné využití portů SNAT, zobrazí se 0% stav. 
 
 - **Využití portů SNAT** – procento portů SNAT využívaných bránou firewall.
 
     Jednotka: procenta
 
-   Když do brány firewall přidáte další veřejné IP adresy, budou k dispozici další porty SNAT, čímž se sníží využití portů SNAT. Kromě toho, když se brána firewall škáluje z různých důvodů (například CPU nebo propustnost), budou k dispozici i další porty SNAT. Vzhledem k tomu, že procento využití portů SNAT může být efektivní, aniž byste museli přidávat žádné veřejné IP adresy, a to jenom proto, že se služba škáluje. Můžete přímo řídit počet dostupných veřejných IP adres a zvýšit tak porty, které jsou k dispozici v bráně firewall. Škálování brány firewall ale nemůžete přímo ovládat. V současné době se porty SNAT přidávají jenom pro prvních pět veřejných IP adres.   
+   Když do brány firewall přidáte další veřejné IP adresy, zvýší se počet dostupných portů SNAT a sníží se jejich využití. Další porty SNAT budou k dispozici také po škálování brány firewall na více instancí z jiných důvodů (například kvůli procesoru nebo propustnosti). Vzhledem k tomu, že procento využití portů SNAT může být efektivní, aniž byste museli přidávat žádné veřejné IP adresy, a to jenom proto, že se služba škáluje. Můžete přímo řídit počet dostupných veřejných IP adres a zvýšit tak porty, které jsou k dispozici v bráně firewall. Škálování brány firewall ale nemůžete přímo ovládat.
 
 
 ## <a name="next-steps"></a>Další kroky

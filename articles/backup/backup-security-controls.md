@@ -3,12 +3,12 @@ title: Ovládací prvky zabezpečení
 description: Seznamte se s ovládacími prvky zabezpečení použitými ve službě Azure Backup. Tyto ovládací prvky umožňují službě zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4a59ab0edeeba480475ac593d2721f95c7b5f48a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371715"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827286"
 ---
 # <a name="security-controls-for-azure-backup"></a>Ovládací prvky zabezpečení pro Azure Backup
 
@@ -22,7 +22,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 |---|---|--|--|
 | Podpora koncového bodu služby| Ne |  |  |
 | Podpora vkládání virtuální sítě| Ne |  |  |
-| Izolace sítě a podpora brány firewall| Ano | Pro zálohování virtuálního počítače se podporuje vynucené tunelování. Pro úlohy běžící uvnitř virtuálních počítačů se vynucené tunelování nepodporuje. |  |
+| Izolace sítě a podpora brány firewall| Ano | Pro zálohování virtuálního počítače se podporuje vynucené tunelování. Vynucené tunelování se nepodporuje pro úlohy běžící uvnitř virtuálních počítačů. |  |
 | Podpora vynuceného tunelování| Ne |  |  |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
@@ -37,7 +37,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace
 |---|---|--|--|
-| Authentication| Ano | Ověřování probíhá prostřednictvím Azure Active Directory. |  |
+| Ověřování| Ano | Ověřování probíhá prostřednictvím Azure Active Directory. |  |
 | Autorizace| Ano | Používají se vytvořené zákazníky a předdefinované role Azure. Další informace najdete v tématu [použití Access Control na základě rolí ke správě Azure Backup bodů obnovení](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Ochrana dat
@@ -50,7 +50,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ne | Pomocí protokolu HTTPS. |  |
 | Zašifrovaná volání rozhraní API| Ano |  |  |
 
-## <a name="configuration-management"></a>Správa konfigurací
+## <a name="configuration-management"></a>Správa konfigurace
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace
 |---|---|--|--|

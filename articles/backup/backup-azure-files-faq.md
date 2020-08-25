@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382708"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824725"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -28,7 +28,7 @@ Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná
 
 ### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>Můžu chránit sdílené složky připojené ke skupině synchronizace ve službě Azure File Sync?
 
-Yes. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
+Ano. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
 
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem kliknul/a na účet úložiště, abych zjistil/a, které sdílené složky obsahuje. Nechrání se však. Návody chránit tyto sdílené složky pomocí jiného trezoru?
 
@@ -36,11 +36,11 @@ Při pokusu o zálohování vyberte účet úložiště, ve kterém se budou obj
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Proč nemohu změnit trezor, aby se nakonfigurovala záloha pro sdílenou složku?
 
-Pokud je účet úložiště už zaregistrovaný v trezoru nebo jiné sdílené složky v účtu úložiště jsou chráněné pomocí trezoru, nebudete mít možnost ho změnit, protože všechny sdílené složky v účtu úložiště je možné chránit jenom pomocí stejného trezoru. V případě, že chcete změnit trezor, budete muset [Zastavit ochranu všech sdílených složek v účtu úložiště](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) účtu úložiště a pak zvolit jiný trezor pro ochranu.
+Pokud je účet úložiště už zaregistrovaný v trezoru nebo jiné sdílené složky v účtu úložiště jsou chráněné pomocí trezoru, nebudete mít možnost ho změnit. Všechny sdílené složky v účtu úložiště je možné chránit jenom pomocí stejného trezoru. Pokud chcete změnit trezor, budete muset [Zastavit ochranu všech sdílených složek v účtu úložiště](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, [zrušit registraci](manage-afs-backup.md#unregister-a-storage-account) účtu úložiště a pak zvolit jiný trezor pro ochranu.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 
-Yes. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
+Ano. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 
@@ -60,7 +60,7 @@ Pokud je sdílená složka ve stavu tichého odstranění, je třeba nejprve zru
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure?
 
-Yes. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
+Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 
@@ -70,7 +70,7 @@ Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví 
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Můžu ke konfiguraci/správě a obnovení záloh sdílených složek Azure použít PowerShell?
 
-Yes. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
+Ano. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Můžu získat přístup k snímkům pořízeným službou Azure Backup a připojit je?
 
@@ -97,13 +97,13 @@ Tady je příklad toho, jak to funguje:
 
 |Typ uchování |Plán |Uchovávání  |
 |---------|---------|---------|
-|Každý den    |    Každý den v 8 ODP.    |  100 dní       |
+|Denně    |    Každý den v 8 ODP.    |  100 dní       |
 
 #### <a name="new-policy-modified-p1"></a>Nové zásady [upraveno P1]
 
 | Typ uchování | Plán                       | Uchovávání |
 | -------------- | ------------------------------ | --------- |
-| Každý den          | Každý den v 9 ODP.              | 50 dní   |
+| Denně          | Každý den v 9 ODP.              | 50 dní   |
 | Každý týden         | V neděli v 9 ODP.              | 3 týdny   |
 | Měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
 | Ročně         | V lednu na třetí neděli v 9 ODP. | 4 roky   |
@@ -131,14 +131,14 @@ Tady je příklad toho, jak to funguje:
 
 | Typ uchování | Plán           | Uchovávání |
 | -------------- | ------------------ | --------- |
-| Každý den          | Každý den v 8 ODP. | 50 dní   |
+| Denně          | Každý den v 8 ODP. | 50 dní   |
 | Každý týden         | V pondělí po 8 ODP.  | 3 týdny   |
 
 #### <a name="new-policy-modified-p2"></a>Nové zásady [upraveno P2]
 
 | Typ uchování | Plán               | Uchovávání |
 | -------------- | ---------------------- | --------- |
-| Každý den          | Každý den v 9 ODP.     | 10 dní   |
+| Denně          | Každý den v 9 ODP.     | 10 dní   |
 | Každý týden         | V pondělí v 9 ODP.      | 2 týdny   |
 | Měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
 

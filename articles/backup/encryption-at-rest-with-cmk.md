@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827337"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -39,7 +39,7 @@ Tento článek popisuje následující:
 
 - Tato funkce se teď dá konfigurovat jenom z Azure Portal.
 
-Pokud jste trezor Recovery Services nevytvořili a nenakonfigurujete, můžete si ho [přečíst zde](backup-create-rs-vault.md).
+Pokud jste úložiště Recovery Services nevytvořili a nenakonfigurujete, můžete [si ho přečíst zde](backup-create-rs-vault.md).
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurace trezoru pro šifrování pomocí klíčů spravovaných zákazníkem
 
@@ -60,7 +60,7 @@ Aby se dosáhlo zamýšlených výsledků, je nutné, aby všechny tyto kroky n�
 Azure Backup používá spravovanou identitu přiřazenou systémem k ověření trezoru Recovery Services pro přístup k šifrovacím klíčům uloženým v Azure Key Vault. Pokud chcete pro svůj Recovery Services trezor povolit spravovanou identitu, postupujte podle níže uvedených kroků.
 
 >[!NOTE]
->Po povolení nesmí být spravovaná identita zakázaná (ještě dočasně). Zakázání spravované identity může vést k nekonzistentnímu chování.
+>Po povolení nesmí být spravovaná identita zakázaná **(ještě dočasně** ). Zakázání spravované identity může vést k nekonzistentnímu chování.
 
 1. Přejít na váš Recovery Services trezor – > **Identita**
 
@@ -138,7 +138,7 @@ Pomocí následujícího postupu můžete povolit ochranu pomocí obnovitelného
 > - Všechny výše uvedené kroky byly úspěšně dokončeny:
 >   - Byla povolena spravovaná identita Recovery Servicesového trezoru a byla mu přiřazena požadovaná oprávnění.
 >   - Azure Key Vault má zapnutou ochranu proti odstranění a vyprázdnění
-> - U trezoru Recovery Services, pro který chcete povolit šifrování CMK, nejsou žádné položky chráněné nebo zaregistrované.
+> - U trezoru Recovery Services, pro který chcete povolit šifrování CMK, **nejsou** žádné položky chráněné nebo zaregistrované.
 
 Jakmile budou tyto možnosti zajištěny, pokračujte výběrem šifrovacího klíče pro váš trezor.
 
@@ -220,7 +220,7 @@ Sada šifrování disků je zadaná v části nastavení šifrování v podokně
 1. V rozevíracím seznamu vyberte algoritmus DES, který chcete použít pro obnovené disky. **Ujistěte se, že máte přístup k DES.**
 
 >[!NOTE]
->Možnost zvolit algoritmus DES při obnovení není k dispozici, pokud obnovujete virtuální počítač, který používá Azure Disk Encryption.
+>Možnost zvolit algoritmus DES během obnovování není k dispozici, pokud obnovujete virtuální počítač, který používá Azure Disk Encryption.
 
 ![Šifrování disku pomocí klíče](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
 

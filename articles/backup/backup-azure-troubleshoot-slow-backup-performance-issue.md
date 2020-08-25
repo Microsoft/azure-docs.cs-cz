@@ -3,12 +3,12 @@ title: Řešení potíží s pomalým zálohováním souborů a složek
 description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou diagnostikovat příčinu potíží s výkonem Azure Backup.
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513828"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824011"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 

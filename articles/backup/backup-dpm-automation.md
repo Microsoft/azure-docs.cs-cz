@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování úloh DPM
 description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762735"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825966"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
@@ -69,7 +69,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Zadejte typ redundance úložiště, který se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testVault je nastavená na geograficky redundantní.
+4. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testVault je nastavená na geograficky redundantní.
 
    > [!TIP]
    > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
@@ -177,7 +177,7 @@ Po registraci serveru DPM v trezoru Recovery Services se spustí výchozí nasta
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-V tomto místním objektu prostředí PowerShell jsou provedeny všechny úpravy ```$setting```  a potom je celý objekt potvrzen do aplikace DPM a Azure Backup jej uložit pomocí rutiny [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . K ```–Commit``` zajištění trvalého uložení změn je nutné použít příznak. Nastavení nebude použito a Azure Backup bude použito, pokud není potvrzeno.
+V tomto místním objektu prostředí PowerShell jsou provedeny všechny úpravy ```$setting```  a potom je celý objekt potvrzen do aplikace DPM a Azure Backup jej uložit pomocí rutiny [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . K ```–Commit``` zajištění trvalého uložení změn je nutné použít příznak. Nastavení se nepoužijí a Azure Backup použít, pokud se nepotvrdí.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -262,7 +262,7 @@ Každý agent DPM ví seznam zdrojů dat na serveru, na kterém je nainstalován
 3. Načte seznam všech zdrojů dat na serveru.
 4. Vyberte jeden nebo více zdrojů dat a přidejte je do skupiny ochrany.
 
-Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PS s názvem *productionserver01* , který se má zálohovat.
+Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PowerShell s názvem *productionserver01* , který se bude zálohovat.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

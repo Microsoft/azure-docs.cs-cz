@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: c9d54bb8e9875bcd622c5ce5343dc6f8baa3f2be
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763571"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827405"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 
@@ -62,7 +62,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 
    * Chci krátkodobou ochranu pomocí disku.
    * Chci online ochranu.
-6. Klikněte na **Další**.
+6. Klikněte na **Next** (Další).
 7. Zaškrtněte možnost **Spustit Eseutil pro kontrolu integrity dat** , pokud chcete ověřit integritu databází serveru Exchange.
 
     Po výběru této možnosti se kontrola konzistence zálohy spustí na serveru DPM, aby se zabránilo vstupně-výstupnímu přenosu generovanému spuštěním příkazu **eseutil** na serveru Exchange.
@@ -72,7 +72,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
    > ![Chyba programu Eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Klikněte na **Další**.
+8. Klikněte na **Next** (Další).
 9. Vyberte databázi pro **zálohování kopírováním**a pak klikněte na **Další**.
 
    > [!NOTE]

@@ -3,12 +3,12 @@ title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému počítačů s Windows serverem do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263040"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824458"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
@@ -98,7 +98,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
 > [!NOTE]
-> Povolení zálohování prostřednictvím webu Azure Portal ještě není dostupné. Pro zálohování stavu systému Windows Server použijte agenta Microsoft Azure Recovery Services.
+> Povolení zálohování prostřednictvím Azure Portal není k dispozici. Pro zálohování stavu systému Windows Server použijte agenta Microsoft Azure Recovery Services.
 >
 
 1. Ve složce Stažené soubory (nebo ve složce, kterou jste vybrali pro stahování) vyhledejte soubor **MARSagentinstaller.exe** a dvakrát na něj klikněte.
@@ -116,7 +116,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
    * Uložit šifrovací heslo na bezpečné místo.
 
      > [!NOTE]
-     > Pokud heslo ztratíte nebo zapomenete, Microsoft vám nemůže pomoci obnovit zálohovaná data. Uložte soubor na bezpečné místo. Je požadováno pro obnovení zálohy.
+     > Pokud heslo ztratíte nebo zapomenete, Microsoft nemůže získat zálohu zálohovaných dat. Uložte soubor na bezpečné místo. Je nutné obnovit zálohu.
      >
      >
 
@@ -132,7 +132,7 @@ Počáteční záloha zahrnuje dvě úlohy:
 K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery Services.
 
 > [!NOTE]
-> Stav systému systému Windows Server 2008 R2 můžete zálohovat pomocí systému Windows Server 2016. Zálohování stavu systému není podporováno u klientských SKU klienta. Stav systému se nezobrazuje jako možnost pro klienty Windows nebo pro počítače s Windows Serverem 2008 SP2.
+> Stav systému systému Windows Server 2008 R2 můžete zálohovat pomocí systému Windows Server 2016. Zálohování stavu systému není podporováno u klientských SKU klienta. Stav systému není zobrazen jako možnost pro klienty se systémem Windows nebo pro počítače s Windows Serverem 2008 SP2.
 >
 >
 

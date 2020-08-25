@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757740"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827354"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -57,7 +57,7 @@ Pro tento proces se na úrovni úložiště účtují cenové dopady.
 >- Funkce obnovení mezi oblastmi (CRR) je teď v současnosti zobrazená ve všech veřejných oblastech Azure.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
->- Aktuálně se podporuje jenom CRR typu správy zálohování – ARM Azure (klasický virtuální počítač Azure se nepodporuje).  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
+>- V současné době se CRR podporuje jenom pro správu zálohování. virtuální počítač Azure (klasický virtuální počítač Azure se nepodporuje)  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
 >- Obnovení mezi oblastmi se v tuto chvíli nedá vrátit zpátky na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi

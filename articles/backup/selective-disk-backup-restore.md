@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757434"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824742"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
@@ -190,7 +190,7 @@ Když tyto příkazy spustíte, uvidíte `"diskExclusionProperties": null` .
 
 ## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ujistěte se, že používáte Azure PS verze 3.7.0 nebo novější.
+Ujistěte se, že používáte Azure PowerShell verze 3.7.0 nebo novější.
 
 ### <a name="enable-backup-with-powershell"></a>Povolení zálohování pomocí PowerShellu
 
@@ -277,7 +277,7 @@ Možnost obnovení selektivního disku je přidaná funkce, která se zobrazí p
 - Funkce obnovení selektivního disku je podporovaná jenom pro body obnovení, které se vytvořily po povolení možnosti vyloučení disku.
 - Zálohy **s nastavením vyloučení** disku podporují jenom možnost **obnovení disku** . Existující možnosti obnovení **virtuálního počítače** nebo **nahrazení** nejsou v tomto případě podporované.
 
-![Možnost obnovení virtuálního počítače a nahradit existující nejsou během operace obnovení k dispozici.](./media/selective-disk-backup-restore/options-not-available.png)
+![Možnost obnovit virtuální počítač a nahradit existující nejsou během operace obnovení k dispozici.](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>Omezení
 

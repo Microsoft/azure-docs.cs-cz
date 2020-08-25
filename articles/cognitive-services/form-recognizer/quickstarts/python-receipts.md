@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: c93f4f3976e4e036aa47144618145461ac37ad4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a93ec3157900a83e799f845e868546cbf5ef6ca9
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755615"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823859"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -27,10 +27,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Adresa URL obrázku účtenky Pro tento rychlý Start můžete použít [ukázkový obrázek](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) .
+- Obrázek účtenky. Pro tento rychlý Start můžete použít [ukázkový obrázek](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) .
 
 > [!NOTE]
-> V tomto rychlém startu se používá vzdálená příjem adresovaná pomocí adresy URL. Chcete-li místo toho použít místní soubory, přečtěte si [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
+> V tomto rychlém startu se používá místní soubor. Chcete-li místo toho použít k používání obrázku účtenky pomocí adresy URL, přečtěte si [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -41,7 +41,7 @@ K dokončení tohoto rychlého startu musíte mít:
 Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
+1. Nahraďte `<path to your receipt>` cestou k místnímu dokumentu formuláře.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)

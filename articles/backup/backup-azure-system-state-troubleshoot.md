@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763384"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824266"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -37,7 +37,7 @@ Než začnete s odstraňováním potíží se zálohováním stavu systému, dop
 
 ### <a name="limitation"></a>Omezení
 
-- Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
+- Obnovení na jiný hardware pomocí obnovení stavu systému nedoporučuje Microsoft
 - Zálohování stavu systému aktuálně podporuje místní servery Windows. Tato funkce není k dispozici pro virtuální počítače Azure.
 
 ## <a name="prerequisites"></a>Předpoklady
