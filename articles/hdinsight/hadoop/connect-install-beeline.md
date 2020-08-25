@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076772"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754952"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Připojte se k Apache Beeline ve službě HDInsight nebo ji nainstalujte místně.
 
@@ -146,7 +146,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
 
 1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by měla být `/mnt/c/Users/user/` , kde `user` je vaše uživatelské jméno.
 
-    1. Otevřete soubor:`nano ~/.bashrc`
+    1. Otevřete soubor: `nano ~/.bashrc`
 
     1. Níže uvedené příkazy upravte podle příslušné cesty a pak je zadejte na konci souboru bashrc:
 

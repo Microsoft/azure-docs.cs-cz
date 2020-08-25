@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422402"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798155"
 ---
 # <a name="what-is-the-my-account-portal"></a>Co je portál Můj účet?
 
@@ -33,11 +33,11 @@ Můžete získat přístup k portálu **můj účet** ( https://myaccount.micros
 ![Portál Můj účet, stránka přehled](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí získat na portál Můj účet, aby aktualizovali své bezpečnostní údaje, informace o zařízení, heslo, připojené organizace, nastavení jazyka, ochranu osobních údajů nebo předchozí přihlašovací údaje. Pokud jste správcem a hledáte informace o tom, jak zapnout ověřování a další funkce Azure Active Directory (Azure AD) pro vaše zaměstnance a jiné účely, přečtěte si téma [dokumentace k Azure AD pro správce](https://docs.microsoft.com/azure/active-directory/).
+>Tento článek je určený pro uživatele, kteří se pokoušejí získat na portál Můj účet, aby aktualizovali své bezpečnostní údaje, informace o zařízení, heslo, připojené organizace, nastavení jazyka, ochranu osobních údajů nebo předchozí přihlašovací údaje. Pokud jste správcem a hledáte informace o tom, jak zapnout ověřování a další funkce Azure Active Directory (Azure AD) pro vaše zaměstnance a jiné účely, přečtěte si téma [dokumentace k Azure AD pro správce](../index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat svoje [bezpečnostní údaje](user-help-security-info-overview.md) .
+- Tuto možnost vyberte, pokud chcete zobrazit nebo spravovat svoje [bezpečnostní údaje](./security-info-setup-signin.md) .
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md) .
 

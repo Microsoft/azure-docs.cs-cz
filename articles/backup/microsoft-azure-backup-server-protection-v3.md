@@ -3,12 +3,12 @@ title: Co může zálohovat Azure Backup Server V3 RTM
 description: Tento článek obsahuje matrici ochrany, kde najdete seznam všech úloh, datových typů a instalací, které Azure Backup zajišťují ochranu pomocí v3 RTM.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661278"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763605"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM – matice ochrany
 
@@ -92,7 +92,7 @@ S veřejným partnerským vztahem: Zajistěte přístup k následujícím domén
 * `.microsoftonline.com`
 * `.windows.net`
 
-S partnerským vztahem Microsoftu vyberte prosím následující služby nebo oblasti a příslušné hodnoty komunity:
+S partnerským vztahem Microsoftu vyberte následující služby nebo oblasti a příslušné hodnoty komunity:
 
 * Azure Active Directory (12076:5060)
 * Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)

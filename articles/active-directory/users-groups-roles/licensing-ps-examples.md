@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797679"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady PowerShellu a grafu pro licencování na základě skupin ve službě Azure AD
 
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Odebrání přímých licencí pro uživatele s licencemi skupin
 
-Účelem tohoto skriptu je odebrat zbytečné přímé licence pro uživatele, kteří už stejnou licenci zdědili od skupiny. například jako součást [přechodu na licencování na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
+Účelem tohoto skriptu je odebrat zbytečné přímé licence pro uživatele, kteří už stejnou licenci zdědili od skupiny. například jako součást [přechodu na licencování na základě skupin](./licensing-groups-migrate-users.md).
 > [!NOTE]
 > Nejdřív je důležité ověřit, že přímé licence, které se mají odebrat, neumožňují více funkcím služby než děděné licence. V opačném případě může odebrání přímé licence zakázat přístup ke službám a datům pro uživatele. V současné době není možné kontrolovat prostřednictvím prostředí PowerShell, které služby jsou povolené prostřednictvím zděděných licencí vs Direct. Ve skriptu určíme minimální úroveň služeb, které ví, že se dědí ze skupin a kontrolujeme, že uživatelé neočekávaně ztratí přístup ke službám.
 

@@ -1,18 +1,18 @@
 ---
 title: Koncepty – úložiště
-description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VMware Solution (AVS) ve verzi Preview privátních cloudů.
+description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VMware Preview v privátních cloudech.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604112"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752215"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Solution (AVS) Preview
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Preview
 
-Soukromé cloudy služby AVS poskytují nativní úložiště v rámci clusteru s VMware síti vSAN. V úložišti dat síti vSAN se používá všechny místní úložiště z každého hostitele v clusteru a šifrování na základě dat je k dispozici a je ve výchozím nastavení povolené. Prostředky Azure Storage můžete použít k rozšiřování možností úložiště privátních cloudů.
+Privátní cloudy řešení Azure VMware poskytují nativní prostředí pro úložiště v rámci clusteru s VMware síti vSAN. V úložišti dat síti vSAN se používá všechny místní úložiště z každého hostitele v clusteru a šifrování na základě dat je k dispozici a je ve výchozím nastavení povolené. Prostředky Azure Storage můžete použít k rozšiřování možností úložiště privátních cloudů.
 
 ## <a name="vsan-clusters"></a>clustery síti vSAN
 

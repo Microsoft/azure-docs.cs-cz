@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611284"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799549"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -107,7 +107,7 @@ Pokud používáte Exchange Online, někteří uživatelé ve vaší organizaci 
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Další informace o tomto problému naleznete v části ["adresa proxy se už používá" v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Článek obsahuje také informace o [tom, jak se připojit k Exchangi Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
+> Další informace o tomto problému naleznete v části ["adresa proxy se už používá" v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Článek obsahuje také informace o [tom, jak se připojit k Exchangi Online pomocí vzdáleného prostředí PowerShell](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps).
 
 Po vyřešení všech problémů s adresou proxy pro ovlivněné uživatele nezapomeňte vynutit zpracování licencí ve skupině, aby bylo zajištěno, že se licence budou nyní moci použít.
 

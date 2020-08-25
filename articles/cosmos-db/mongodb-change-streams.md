@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036704"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798886"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -21,26 +21,6 @@ Podpora [kanálů změn](change-feed.md) v rozhraní Azure Cosmos DB API pro Mon
 
 > [!NOTE]
 > Chcete-li použít změnu datových proudů, vytvořte účet s verzí 3,6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady pro Stream změn v předchozí verzi, může se zobrazit `Unrecognized pipeline stage name: $changeStream` Chyba.
-
-## <a name="current-limitations"></a>Aktuální omezení
-
-Při použití datových proudů změn platí následující omezení:
-
-* `operationType`Vlastnosti a `updateDescription` se zatím nepodporují ve výstupním dokumentu.
-* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. 
-* Operace odstranění nebo jiné události ještě nejsou podporované.
-
-V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
-
-Na rozdíl od kanálu změn v rozhraní SQL API Azure Cosmos DB není k dispozici samostatná [Knihovna pro změny kanálu](change-feed-processor.md) , která by mohla využívat datové proudy změn, nebo vyžaduje kontejner zapůjčení. V současné době není podporovaná podpora pro [Azure Functions triggery](change-feed-functions.md) pro zpracování datových proudů změn.
-
-## <a name="error-handling"></a>Zpracování chyb
-
-Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
-
-* **Kód chyby HTTP 16500** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
-
-* **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, `NamespaceNotFound` vrátí se chyba. Vzhledem k tomu, že `operationType` vlastnost nemůže být vrácena ve výstupním dokumentu, místo `operationType Invalidate` chyby se `NamespaceNotFound` vrátí chyba.
 
 ## <a name="examples"></a>Příklady
 
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 Při použití datových proudů změn platí následující omezení:
 
 * `operationType`Vlastnosti a `updateDescription` se zatím nepodporují ve výstupním dokumentu.
-* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. Operace odstranění nebo jiné události ještě nejsou podporované.
+* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. Operace odstranění nebo jiné události se ale ještě nepodporují.
 
 V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
+
+Na rozdíl od kanálu změn v rozhraní SQL API Azure Cosmos DB není k dispozici samostatná [Knihovna pro změny kanálu](change-feed-processor.md) , která by mohla využívat datové proudy změn, nebo vyžaduje kontejner zapůjčení. V současné době není podporovaná podpora pro [Azure Functions triggery](change-feed-functions.md) pro zpracování datových proudů změn.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
 Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
 
-* **Kód chyby HTTP 429** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
+* **Kód chyby HTTP 16500** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
 
 * **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, `NamespaceNotFound` vrátí se chyba. Vzhledem k tomu, že `operationType` vlastnost nemůže být vrácena ve výstupním dokumentu, místo `operationType Invalidate` chyby se `NamespaceNotFound` vrátí chyba.
 

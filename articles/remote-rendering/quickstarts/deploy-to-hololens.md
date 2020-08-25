@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557046"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796795"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Rychlý Start: nasazení ukázky Unity do HoloLens
 
@@ -44,7 +44,7 @@ Ujistěte se, že vaše přihlašovací údaje jsou ve scéně správně uložen
 1. Změna konfigurace na **release** a **ARM64**
 1. Přepnout režim ladicího programu na **vzdálený počítač**\
     ![Konfigurace řešení](media/unity-deploy-config.png)
-1. Sestavení řešení (F7)
+1. Sestavení řešení
 1. Pro projekt ' Start ', přejít na *vlastnosti > ladění*
     1. Ujistěte se, že je *verze* konfigurace aktivní.
     1. Nastavit *ladicí program ke spuštění* na **vzdáleném počítači**

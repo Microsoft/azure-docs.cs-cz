@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761759"
+ms.locfileid: "88763299"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -44,7 +44,7 @@ Níže jsou uvedené běžné problémy se selháním zálohování virtuálníc
 Kód chyby: VMRestorePointInternalError
 
 Pokud v době zálohování se v **protokolu Prohlížeč událostí aplikace** zobrazí **název aplikace s chybou: IaaSBcdrExtension.exe** pak se potvrdí, že antivirová ochrana nakonfigurovaná ve virtuálním počítači omezuje spuštění rozšíření zálohování.
-Pokud chcete tento problém vyřešit, vylučte v konfiguraci antivirové ochrany níže uvedené adresáře a zkuste operaci zálohování zopakovat.
+Pokud chcete tento problém vyřešit, vylučte v konfiguraci antivirové ochrany adresáře a zkuste operaci zálohování zopakovat.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -93,8 +93,8 @@ Operace zálohování se nezdařila z důvodu problému se **systémovou aplikac
 * Pokud službu nemůžete restartovat, přeinstalujte **DTC (Distributed Transaction Coordinator)** službu pomocí následujících kroků:
   * Zastavte službu DTC (Distributed Transaction Coordinator).
   * Otevřete příkazový řádek (cmd).
-  * Spustit příkaz "MSDTC-Uninstall"
-  * Spusťte příkaz "MSDTC-install"
+  * Spusťte příkaz `msdtc -uninstall`.
+  * Spusťte příkaz `msdtc -install`.
   * Spusťte službu DTC (Distributed Transaction Coordinator).
 * Spusťte **systémovou aplikaci modelu COM+** služby systému Windows. Po spuštění **aplikace systému com+** spusťte úlohu zálohování z Azure Portal.</ol>
 
@@ -165,7 +165,7 @@ Operace zálohování se nezdařila z důvodu nekonzistentního stavu záložní
 Kód chyby: ExtensionFailedSnapshotLimitReachedError  <br/>
 Chybová zpráva: operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky.
 
-Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte níže uvedené kroky pro řešení potíží a potom operaci opakujte.
+Operace snímku se nezdařila, protože byl překročen limit počtu snímků pro některé připojené disky. Proveďte následující kroky pro řešení potíží a potom operaci opakujte.
 
 * Odstraňte objekty blob disku – snímky, které nejsou povinné. Buďte opatrní, abyste neodstranili objekt BLOB disku, měli byste odstranit jenom objekty blob snímků.
 * Pokud je v účtech úložiště disků virtuálního počítače povolené obnovitelné odstranění, nakonfigurujte zachování obnovitelného odstranění tak, aby existující snímky byly menší než maximální povolený počet v libovolném časovém okamžiku.
@@ -183,7 +183,7 @@ Operace zálohování virtuálního počítače selhala kvůli zpoždění při 
 
 **Krok 1**: vytvoření snímku pomocí hostitele
 
-Na příkazovém řádku se zvýšenými oprávněními (správce) spusťte následující příkaz:
+Z příkazového řádku se zvýšenými oprávněními (admin) spusťte následující příkaz:
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f

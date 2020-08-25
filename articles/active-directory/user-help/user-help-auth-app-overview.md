@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741177"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799430"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 
@@ -33,11 +33,11 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 > [!Important]
 > Aplikace Microsoft Authenticator pracuje s jakýmkoli účtem, který používá dvojúrovňové ověřování a podporuje standardy založené na čase na základě hesla (TOTP).
 >
->Tento článek je určený pro uživatele, kteří se pokoušejí stáhnout a používat aplikaci Microsoft Authenticator jako metodu ověření zabezpečení. Pokud jste správcem a hledáte informace o tom, jak zapnout přihlášení bez hesla pomocí ověřovací aplikace pro vaše zaměstnance a jiné účely, přečtěte si téma [Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
+>Tento článek je určený pro uživatele, kteří se pokoušejí stáhnout a používat aplikaci Microsoft Authenticator jako metodu ověření zabezpečení. Pokud jste správcem a hledáte informace o tom, jak zapnout přihlášení bez hesla pomocí ověřovací aplikace pro vaše zaměstnance a jiné účely, přečtěte si téma [Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)](../authentication/howto-authentication-passwordless-phone.md).
 
 ## <a name="terminology"></a>Terminologie
 
-| Pojem|Popis|
+| Termín|Popis|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |

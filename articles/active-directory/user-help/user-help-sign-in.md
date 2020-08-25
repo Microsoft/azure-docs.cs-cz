@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: c7e2b522d475a49f694a8cb57bf57f62900948b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743194"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799379"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlášení pomocí dvoustupňového ověřování nebo bezpečnostních údajů
 
@@ -90,9 +90,9 @@ Pokud z nějakého důvodu nemůžete použít vaši primární metodu přihlaš
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
+- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](./security-info-setup-signin.md) .
 
-- Další informace o dvoustupňovém ověřování najdete v článku [Přehled ověřování dvou kroků](user-help-two-step-verification-overview.md) .
+- Další informace o dvoustupňovém ověřování najdete v článku [Přehled ověřování dvou kroků](./multi-factor-authentication-end-user-first-time.md) .
 
 - Resetování hesla, pokud jste ho ztratili nebo zapomněli, na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/)
 

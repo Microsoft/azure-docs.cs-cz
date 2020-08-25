@@ -3,22 +3,23 @@ title: Aktivita vyhledávání v Azure Data Factory
 description: Naučte se používat aktivitu vyhledávání k vyhledání hodnoty z externího zdroje. Na tento výstup můžete dál odkazovat pomocí úspěšných aktivit.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: linda33wj
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417994"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795877"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita vyhledávání může načíst datovou sadu z libovolného zdroje dat podporovaného Azure Data Factory. Použijte ho v následujícím scénáři:
@@ -36,25 +37,24 @@ Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. Největ
 
 ```json
 {
-    "name": "LookupActivity",
-    "type": "Lookup",
-    "typeProperties": {
-        "source": {
-            "type": "<source type>"
-            <additional source specific properties (optional)>
+    "name":"LookupActivity",
+    "type":"Lookup",
+    "typeProperties":{
+        "source":{
+            "type":"<source type>"
         },
-        "dataset": { 
-            "referenceName": "<source dataset name>",
-            "type": "DatasetReference"
+        "dataset":{
+            "referenceName":"<source dataset name>",
+            "type":"DatasetReference"
         },
-        "firstRowOnly": false
+        "firstRowOnly":<true or false>
     }
 }
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Name | Popis | Typ | Povinné?
+Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
 source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
@@ -66,23 +66,24 @@ firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechn
 > * **Struktura** není v definicích datových sad podporována. Pro textové soubory formátu použijte řádek záhlaví k zadání názvu sloupce.
 > * Pokud je zdrojem vyhledávání soubor JSON, `jsonPathDefinition` nastavení pro změnu tvaru objektu JSON se nepodporuje. Budou načteny všechny objekty.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Použití aktivity vyhledávání v důsledku následné aktivity
+## <a name="use-the-lookup-activity-result"></a>Použít výsledek aktivity vyhledávání
 
 Výsledek vyhledávání se vrátí v `output` části výsledku spuštění aktivity.
 
-* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor `@{activity('MyLookupActivity').output.firstRow.TableName}` .
+* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor  `@{activity('LookupActivity').output.firstRow.table` .
 
     ```json
     {
         "firstRow":
         {
             "Id": "1",
-            "TableName" : "Table1"
+            "schema":"dbo",
+            "table":"Table1"
         }
     }
     ```
 
-* **Pokud `firstRowOnly` je nastaven na `false` **, výstupní formát je znázorněn v následujícím kódu. `count`Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte pole `value` aktivity ForEach `items` pomocí vzoru `@activity('MyLookupActivity').output.value` . Chcete-li získat přístup k prvkům v `value` poli, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Příklad: `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Pokud `firstRowOnly` je nastaven na `false` **, výstupní formát je znázorněn v následujícím kódu. `count`Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte pole `value` aktivity ForEach `items` pomocí vzoru `@activity('MyLookupActivity').output.value` . Chcete-li získat přístup k prvkům v `value` poli, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Příklad: `@{activity('lookupActivity').output.value[0].schema}`.
 
     ```json
     {
@@ -90,23 +91,26 @@ Výsledek vyhledávání se vrátí v `output` části výsledku spuštění akt
         "value": [
             {
                 "Id": "1",
-                "TableName" : "Table1"
+                "schema":"dbo",
+                "table":"Table1"
             },
             {
                 "Id": "2",
-                "TableName" : "Table2"
+                "schema":"dbo",
+                "table":"Table2"
             }
         ]
     } 
     ```
 
-### <a name="copy-activity-example"></a>Příklad aktivity kopírování
-V tomto příkladu aktivita kopírování kopíruje data z tabulky SQL ve vaší instanci Azure SQL Database do úložiště objektů BLOB v Azure. Název tabulky SQL je uložený v souboru JSON v úložišti objektů BLOB. Aktivita vyhledávání vyhledá název tabulky za běhu. Formát JSON se dynamicky upravuje pomocí tohoto přístupu. Nemusíte znovu nasazovat kanály ani datové sady. 
+## <a name="example"></a>Příklad
+
+V tomto příkladu kanál obsahuje dvě aktivity: **vyhledávání** a **kopírování**. Aktivita kopírování kopíruje data z tabulky SQL ve vaší instanci Azure SQL Database do úložiště objektů BLOB v Azure. Název tabulky SQL je uložený v souboru JSON v úložišti objektů BLOB. Aktivita vyhledávání vyhledá název tabulky za běhu. Formát JSON se dynamicky upravuje pomocí tohoto přístupu. Nemusíte znovu nasazovat kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledávání pouze pro první řádek. Chcete-li vyhledat všechny řádky a zřetězit výsledky pomocí aktivity ForEach, přečtěte si ukázky v [hromadném kopírování více tabulek pomocí Azure Data Factory](tutorial-bulk-copy.md).
 
+
 ### <a name="pipeline"></a>Kanál
-Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování. 
 
 - Aktivita vyhledávání je nakonfigurovaná tak, aby používala **LookupDataset**, která odkazuje na umístění v úložišti objektů BLOB v Azure. Aktivita vyhledávání přečte název tabulky SQL ze souboru JSON v tomto umístění. 
 - Aktivita kopírování používá výstup aktivity vyhledávání, což je název tabulky SQL. Vlastnost **TableName** v **SourceDataset** je nakonfigurována tak, aby používala výstup z aktivity vyhledávání. Aktivita kopírování kopíruje data z tabulky SQL do umístění v úložišti objektů BLOB v Azure. Umístění je určeno vlastností **SinkDataset** . 
@@ -119,161 +123,241 @@ Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování.
             {
                 "name": "LookupActivity",
                 "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource"
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
                     },
-                    "dataset": { 
-                        "referenceName": "LookupDataset", 
-                        "type": "DatasetReference" 
-                    }
+                    "dataset": {
+                        "referenceName": "LookupDataset",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": true
                 }
             },
             {
                 "name": "CopyActivity",
                 "type": "Copy",
-                "typeProperties": {
-                    "source": { 
-                        "type": "SqlSource", 
-                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.firstRow.tableName}" 
-                    },
-                    "sink": { 
-                        "type": "BlobSink" 
+                "dependsOn": [
+                    {
+                        "activity": "LookupActivity",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
                     }
-                },                
-                "dependsOn": [ 
-                    { 
-                        "activity": "LookupActivity", 
-                        "dependencyConditions": [ "Succeeded" ] 
-                    }
-                 ],
-                "inputs": [ 
-                    { 
-                        "referenceName": "SourceDataset", 
-                        "type": "DatasetReference" 
-                    } 
                 ],
-                "outputs": [ 
-                    { 
-                        "referenceName": "SinkDataset", 
-                        "type": "DatasetReference" 
-                    } 
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "select * from [@{activity('LookupActivity').output.firstRow.schema}].[@{activity('LookupActivity').output.firstRow.table}]",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SourceDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schemaName": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "tableName": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SinkDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schema": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "table": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
                 ]
             }
-        ]
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-08-17T10:48:25Z"
     }
 }
 ```
 
 ### <a name="lookup-dataset"></a>Vyhledávací datová sada
-**Vyhledávací** datová sada je **sourcetable.jsv** souboru ve složce pro vyhledávání Azure Storage určené typem **AzureStorageLinkedService** . 
+
+**Vyhledávací** datová sada je **sourcetable.jsv** souboru ve složce pro vyhledávání Azure Storage určené typem **AzureBlobStorageLinkedService** . 
 
 ```json
 {
     "name": "LookupDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "lookup",
-            "fileName": "sourcetable.json",
-            "format": {
-                "type": "JsonFormat",
-                "filePattern": "SetOfObjects"
-            }
-        },
         "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
+            "referenceName": "AzureBlobStorageLinkedService",
             "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "sourcetable.json",
+                "container": "lookup"
+            }
         }
     }
 }
 ```
 
 ### <a name="source-dataset-for-copy-activity"></a>**Zdrojová** datová sada pro aktivitu kopírování
+
 **Zdrojová** datová sada používá výstup aktivity vyhledávání, což je název tabulky SQL. Aktivita kopírování kopíruje data z této tabulky SQL do umístění v úložišti objektů BLOB v Azure. Umístění je určené datovou sadou **jímky** . 
 
 ```json
 {
     "name": "SourceDataset",
     "properties": {
-        "type": "AzureSqlTable",
-        "typeProperties":{
-            "tableName": "@{activity('LookupActivity').output.firstRow.tableName}"
-        },
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "AzureSqlDatabase",
             "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schemaName": {
+                "type": "string"
+            },
+            "tableName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": {
+                "value": "@dataset().schemaName",
+                "type": "Expression"
+            },
+            "table": {
+                "value": "@dataset().tableName",
+                "type": "Expression"
+            }
         }
     }
 }
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Datová sada **jímky** pro aktivitu kopírování
-Aktivita kopírování kopíruje data z tabulky SQL do souboru **filebylookup.csv** ve složce **CSV** v Azure Storage. Soubor je určen vlastností **AzureStorageLinkedService** . 
+
+Aktivita kopírování kopíruje data z tabulky SQL do souboru **filebylookup.csv** ve složce **CSV** v Azure Storage. Soubor je určen vlastností **AzureBlobStorageLinkedService** . 
 
 ```json
 {
     "name": "SinkDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "csv",
-            "fileName": "filebylookup.csv",
-            "format": {
-                "type": "TextFormat"                                                                    
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schema": {
+                "type": "string"
+            },
+            "table": {
+                "type": "string"
             }
         },
-        "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
-            "type": "LinkedServiceReference"
-        }
-    }
-}
-```
-
-### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Tento účet úložiště obsahuje soubor JSON s názvy tabulek SQL. 
-
-```json
-{
-    "properties": {
-        "type": "AzureStorage",
+        "annotations": [],
+        "type": "DelimitedText",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
-        }
-    },
-        "name": "AzureStorageLinkedService"
-}
-```
-
-### <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database
-Tato instance Azure SQL Database obsahuje data, která se mají zkopírovat do úložiště objektů BLOB. 
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
-        }
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@{dataset().schema}_@{dataset().table}.csv",
+                    "type": "Expression"
+                },
+                "container": "csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
     }
 }
 ```
 
 ### <a name="sourcetablejson"></a>sourcetable.jsna
 
+Pro **sourcetable.jsv** souboru můžete použít následující dva druhy formátů:
+
 #### <a name="set-of-objects"></a>Sada objektů
 
 ```json
 {
-  "Id": "1",
-  "tableName": "Table1"
+   "Id":"1",
+   "schema":"dbo",
+   "table":"Table1"
 }
 {
-   "Id": "2",
-  "tableName": "Table2"
+   "Id":"2",
+   "schema":"dbo",
+   "table":"Table2"
 }
 ```
 
@@ -283,11 +367,13 @@ Tato instance Azure SQL Database obsahuje data, která se mají zkopírovat do �
 [ 
     {
         "Id": "1",
-        "tableName": "Table1"
+        "schema":"dbo",
+        "table":"Table1"
     },
     {
         "Id": "2",
-        "tableName": "Table2"
+        "schema":"dbo",
+        "table":"Table2"
     }
 ]
 ```

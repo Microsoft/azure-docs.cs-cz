@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: adc6fdf144927d10f811a00aa33f244cfdc25042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871761"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795775"
 ---
 # <a name="configure-database-settings"></a>Konfigurovat nastavení databáze 
 
@@ -26,7 +26,10 @@ Aby bylo zajištěno, že pro vaši databázi jsou neustále k dispozici dostate
 > Jelikož různé operace spotřebovávají jiný počet RU, vrátíme v hlavičce odpovědi skutečný počet ru spotřebovaných při každém volání rozhraní API. Tímto způsobem můžete profilovat počet ru spotřebovaných vaší aplikací.
 
 ## <a name="update-throughput"></a>Aktualizace propustnosti
+
 Pokud chcete toto nastavení v Azure Portal změnit, přejděte do rozhraní Azure API pro FHIR a otevřete okno databáze. Dále v závislosti na vašich požadavcích na výkon změňte zřízenou propustnost na požadovanou hodnotu. Hodnotu můžete změnit na maximálně 10 000 RU/s. Pokud potřebujete vyšší hodnotu, obraťte se na podporu Azure.
+
+Je-li propustnost databáze větší než 10 000 RU/s nebo pokud jsou data uložená v databázi více než 50 GB, musí být klientská aplikace schopna zpracovat tokeny pokračování. V databázi se vytvoří nový oddíl pro každou zvýšení propustnosti 10 000 RU/s, nebo pokud je objem uložených dat větší než 50 GB. Více oddílů vytvoří odpověď s více stránkami, při které je stránkování implementováno pomocí tokenů pro pokračování.
 
 > [!NOTE] 
 > Vyšší hodnota znamená vyšší propustnost FHIR a vyšší náklady na službu Azure API.

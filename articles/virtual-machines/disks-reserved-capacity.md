@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701497"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752061"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Snížení nákladů pomocí rezervovaného disku Azure
 
@@ -31,7 +31,7 @@ Rezervace disku je provedena na diskovou jednotku. V důsledku toho je vyhrazen�
 Předpokládejme například, že rezervujete jeden disk P40, který má 2 TiBy zřízené kapacity úložiště. Předpokládejme také, že přidělíte pouze dva P30 disky. V takovém případě P40 rezervace nevytváří účet pro P30 spotřebu a platíte sazbu průběžných plateb na disky P30.
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>Důležité informace o nákupu
 
@@ -55,7 +55,7 @@ Ve výjimečných případech Azure omezuje nákup nových rezervací na podmno�
 
 ## <a name="buy-a-disk-reservation"></a>Nákup rezervovaného disku
 
-Můžete zakoupit Azure Disk Storage rezervace prostřednictvím [Azure Portal](https://portal.azure.com/). Můžete zaplatit za rezervaci buď předem, nebo s měsíčními platbami. Další informace o nákupu s měsíčními platbami najdete v tématu [Nákup rezervací s měsíčními platbami](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md).
+Můžete zakoupit Azure Disk Storage rezervace prostřednictvím [Azure Portal](https://portal.azure.com/). Můžete zaplatit za rezervaci buď předem, nebo s měsíčními platbami. Další informace o nákupu s měsíčními platbami najdete v tématu [Nákup rezervací s měsíčními platbami](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments).
 
 K zakoupení rezervované kapacity použijte následující postup:
 
@@ -103,5 +103,5 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co jsou rezervace Azure?](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Principy uplatnění slevy za rezervaci ve službě Azure Disk Storage](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [Co jsou rezervace Azure?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Principy uplatnění slevy za rezervaci ve službě Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)

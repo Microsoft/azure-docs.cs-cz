@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206414"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763656"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 
@@ -37,6 +37,9 @@ Tento článek představuje úvod do Azure Database for MySQL základních konce
 Řadu ukázek v Azure CLI najdete tady:
 
 - [Ukázky v Azure CLI pro službu Azure Database for MySQL](sample-scripts-azure-cli.md)
+
+## <a name="automated-patching"></a>Automatizované opravy
+Služba provádí automatizované opravy základního hardwaru, operačního systému a databázového stroje. Opravy zahrnují zabezpečení a aktualizace softwaru pro základní hardware, operační systém a databázový stroj. V případě stroje MySQL jsou upgrady podverze automaticky a zahrnuty v rámci vydání opravy. Když komunita uvolní dílčí verzi, je automaticky integrovaná jako součást cyklu testování pro službu. Testování dílčí verze se provádí na některých kanonických úlohách pro MySQL. Verze modulu MySQL pro podverze se vyhodnocuje pro spolehlivost (bez havárií), dostupnost, zabezpečení a výkon. Ne všechny podverze jsou vydané do produkčního prostředí v rámci služby, ale vyhodnotí se na základě závažnosti oprav chyb a nové přírůstkové hodnoty. To znamená, že se jedná o správné vyrovnání mezi novou přírůstkovou hodnotou a minimalizací proměnných v systému na stabilitu. Pro opravy není nutná žádná akce uživatele nebo nastavení konfigurace. Frekvence oprav je spravovaná služba na základě závažnosti datové části. Obecně platí, že služba dodržuje plán měsíčního vydání jako součást průběžné integrace a vydání. Uživatelé se můžou přihlásit k odběru [oznámení o plánované údržbě](concepts-monitoring.md) , aby obdrželi oznámení o nadcházející údržbě 72 hodin před událostí.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 Služba Azure Database for MySQL nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-service-tiers.md) .

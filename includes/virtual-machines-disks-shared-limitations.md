@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4a204be0730a0ce4edcd2e343364ed8fc724430e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655168"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88809781"
 ---
 Povolení sdílených disků je dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
@@ -30,7 +30,7 @@ Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím
 
 ### <a name="premium-ssds"></a>Disky SSD úrovně Premium
 
-- V současné době se podporuje jenom v Středozápadní USA oblasti.
+- V současné době se podporuje jenom v [podmnožině oblastí](#regional-availability).
 - V současné době omezena na Azure Resource Manager nebo podporu sady SDK. 
 - Dá se povolit jenom na datových discích, ne na discích s operačním systémem.
 - Mezipaměť dostupnosti hostitele **jen pro čtení** není k dispozici pro prémiové SSD s `maxShares>1` .
@@ -39,5 +39,22 @@ Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím
 - Při použití [skupin umístění blízkosti (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md)musí být všechny virtuální počítače sdílející disk součástí stejného PPG.
 - V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)
 - Podpora Azure Backup a Azure Site Recovery ještě není dostupná.
+
+#### <a name="regional-availability"></a>Regionální dostupnost
+
+Shared Premium SSD se podporuje jenom v těchto oblastech:
+
+- East US
+- USA – východ 2
+- USA – západ
+- Západní USA 2
+- USA – středozápad
+- Středojižní USA
+- Střední USA
+- Jižní Korea – střed
+- Střední Kanada
+- Kanada – východ
+- USA (Gov) – Virginia
+- USA (Gov) – Arizona
 
 Pokud vás zajímá, že budete chtít vyzkoušet Shared Premium SSD, [Zaregistrujte si přístup](https://aka.ms/AzureSharedDiskGASignUp).

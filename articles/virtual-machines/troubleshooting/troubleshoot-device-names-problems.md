@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084388"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756822"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží se změnami názvu zařízení virtuálních počítačů se systémem Linux
 
@@ -42,7 +42,7 @@ K tomuto problému dochází, protože subsystém SCSI naplánoval kontrolu zař
 
 Chcete-li tento problém vyřešit, použijte trvalé pojmenování. Existují čtyři způsoby použití trvalého pojmenovávání: podle popisku systému souborů, podle identifikátoru UUID, podle ID nebo podle cesty. Pro virtuální počítače Azure Linux doporučujeme použít popisek systému souborů nebo UUID.
 
-Většina distribucí poskytuje `fstab` parametry **neúspěšné** nebo **nobootwait** . Tyto parametry umožňují spuštění systému v případě, že se nepodaří připojit disk při spuštění. Další informace o těchto parametrech najdete v dokumentaci k distribuci. Informace o tom, jak nakonfigurovat virtuální počítač Linux pro použití UUID při přidávání datového disku, najdete v tématu [připojení k virtuálnímu počítači se systémem Linux a připojení nového disku](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+Většina distribucí poskytuje `fstab` parametry **neúspěšné** nebo **nobootwait** . Tyto parametry umožňují spuštění systému v případě, že se nepodaří připojit disk při spuštění. Další informace o těchto parametrech najdete v dokumentaci k distribuci. Informace o tom, jak nakonfigurovat virtuální počítač Linux pro použití UUID při přidávání datového disku, najdete v tématu [připojení k virtuálnímu počítači se systémem Linux a připojení nového disku](../linux/add-disk.md#format-and-mount-the-disk).
 
 Když je agent Azure Linux nainstalovaný na virtuálním počítači, používá agent udev pravidla k vytvoření sady symbolických odkazů pod cestou/dev/disk/Azure. Aplikace a skripty používají pravidla udev k identifikaci disků, které jsou připojené k virtuálnímu počítači, spolu s typem disku a logickými jednotkami.
 
