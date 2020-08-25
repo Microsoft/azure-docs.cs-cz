@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81758129"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
@@ -79,7 +79,7 @@ Přidání nové šablony zařízení brány do vaší aplikace:
 
 1. Na stránce **vytvořit model schopností** vyberte **vlastní** dlaždici.
 
-1. Tuto **+** možnost vyberte, pokud chcete přidat rozhraní.  Vyberte standardní rozhraní **informace o zařízení** .
+1. Tuto možnost vyberte **+** , pokud chcete přidat rozhraní.  Vyberte standardní rozhraní **informace o zařízení** .
 
 ### <a name="add-relationships"></a>Přidat relace
 
@@ -95,7 +95,7 @@ Dále přidáte relace do šablon pro šablony zařízení pro příjem dat:
 
 ![Šablona zařízení inteligentního sestavování, zobrazení relací](./media/tutorial-define-gateway-device-type/relationships.png)
 
-### <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
+### <a name="add-cloud-properties"></a>Přidání vlastností cloudu
 
 Šablona zařízení brány může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají.
 
@@ -107,8 +107,8 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádná          | Datum   |
-    | Jméno zákazníka     | Žádná          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Date (Datum)   |
+    | Název zákazníka     | Žádné          | String |
 
 2. Vyberte **Uložit**.
 
@@ -139,7 +139,7 @@ Publikování šablony zařízení brány:
 
 3. V dialogovém okně **publikovat šablonu zařízení** klikněte na tlačítko **publikovat**.
 
-Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat** , aby se tyto změny převedly do vašeho operátoru.
+Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat**  , aby se tyto změny převedly do vašeho operátoru.
 
 ## <a name="create-the-simulated-devices"></a>Vytvoření simulovaných zařízení
 
@@ -149,7 +149,7 @@ Postup vytvoření simulovaného zařízení brány:
 
 1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **zařízení inteligentního sestavení brány** .
 
-1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
+1. Tuto možnost vyberte **+** , pokud chcete začít přidávat nové zařízení.
 
 1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
@@ -157,13 +157,13 @@ Postup vytvoření simulovaných zařízení pro příjem dat:
 
 1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor obsazenosti RS40** .
 
-1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
+1. Tuto možnost vyberte **+** , pokud chcete začít přidávat nové zařízení.
 
 1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
 1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor S1** .
 
-1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
+1. Tuto možnost vyberte **+** , pokud chcete začít přidávat nové zařízení.
 
 1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 

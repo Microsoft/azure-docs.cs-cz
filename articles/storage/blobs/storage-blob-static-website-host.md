@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78330391"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -55,8 +55,8 @@ Prvním krokem je konfigurace účtu úložiště pro hostování statického we
 1. Vyhledejte svůj účet úložiště a zobrazte přehled účtu.
 1. Vyberte možnost **statický web** pro zobrazení konfigurační stránky pro statické weby.
 1. Vyberte **povoleno** , pokud chcete povolit statické hostování webů pro účet úložiště.
-1. V poli **název dokumentu indexu** zadejte výchozí indexovou stránku *index. html*. Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře vašeho statického webu.  
-1. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku *404. html*. Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na vašem statickém webu neexistuje.
+1. V poli **název dokumentu indexu** zadejte výchozí stránku indexu *index.html*. Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře vašeho statického webu.  
+1. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku *404.html*. Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na vašem statickém webu neexistuje.
 1. Klikněte na **Uložit**. Azure Portal teď zobrazuje váš koncový bod statického webu. 
 
     ![Povolení hostování statických webů pro účet úložiště](media/storage-blob-static-website-host/enable-static-website-hosting.png)
@@ -70,18 +70,18 @@ Dále vytvořte webovou stránku Hello World s Visual Studio Code a nasaďte ji 
 
     ![Otevřít složku v Visual Studio Code](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. Ve složce *mywebsite* Vytvořte výchozí indexový soubor a pojmenujte ho *index. html*.
+1. Ve složce *mywebsite* Vytvořte výchozí indexový soubor a pojmenujte ho *index.html*.
 
     ![Vytvořte výchozí indexový soubor v Visual Studio Code](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
-1. V editoru otevřete soubor *index. html* , do souboru vložte následující text a uložte ho:
+1. V editoru otevřete *index.html* , do souboru vložte následující text a uložte ho:
 
     ```
     <h1>Hello World!</h1>
     ```
 
-1. Vytvořte výchozí chybový soubor a pojmenujte ho *404. html*.
-1. V editoru otevřete soubor *404. html* a vložte do něj následující text a uložte ho:
+1. Vytvořte výchozí chybový soubor a pojmenujte ho *404.html*.
+1. V editoru otevřete *404.html* , do souboru vložte následující text a uložte ho:
 
     ```
     <h1>404</h1>

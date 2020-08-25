@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77426356"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
@@ -20,7 +20,7 @@ ms.locfileid: "77426356"
 
 Tento kurz vás provede vytvořením aplikace pro správu nepřipojeného odpadu v Azure IoT Central ze šablony IoT Central **připojené aplikace pro správu odpadu** . 
 
-V tomto kurzu se naučíte: 
+V tomto kurzu se naučíte, jak: 
 
 > [!div class="checklist"]
 
@@ -145,8 +145,8 @@ Postup zobrazení šablony zařízení:
 
 Zkuste upravit následující:
 1. V nabídce šablona zařízení přejděte na **přizpůsobení** .
-2. Najít typ `Odor meter` telemetrie
-3. Aktualizovat **zobrazované jméno** `Odor meter` na`Odor level`
+2. Najít `Odor meter` typ telemetrie
+3. Aktualizovat **zobrazované jméno** `Odor meter` na `Odor level`
 4. Můžete také zkusit aktualizovat měrnou jednotku nebo nastavit *minimální hodnotu* a *maximální hodnotu* .
 5. **Uložit** všechny změny 
 
@@ -185,7 +185,7 @@ Aplikace **pro správu propojených odpadů** má dvě simulovaná zařízení n
 
      ![Zařízení 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. Přejděte na kartu **vlastnosti cloudu** , zkuste aktualizovat `Bin full alert threshold` hodnotu z `95` na `100`. 
+3. Přejděte na kartu **vlastnosti cloudu** , zkuste aktualizovat `Bin full alert threshold` hodnotu z `95` na `100` . 
 * Prozkoumejte kartu **vlastnosti zařízení** a **řídicí panel zařízení** . 
 
 > [!NOTE]
@@ -210,9 +210,9 @@ Aplikace **pro správu propojených odpadů** má čtyři vzorová pravidla.
 
      ![Přihrádka – úplná výstraha](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. `Bin full alert` Kontroluje **podmínky** `Fill level is greater than or equal to Bin full alert threshold`.
+ 3. `Bin full alert`Kontroluje **podmínky** `Fill level is greater than or equal to Bin full alert threshold` .
 
-    `Bin full alert threshold` Je *cloudová vlastnost* definovaná v šabloně `Connected waste bin` zařízení. 
+    `Bin full alert threshold`Je *cloudová vlastnost* definovaná v `Connected waste bin` šabloně zařízení. 
 
 Nyní vytvoříme akci e-mailu.
 

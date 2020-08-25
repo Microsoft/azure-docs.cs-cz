@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77565464"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Kurz: Analýza hlavní příčiny pro upozornění
@@ -30,7 +30,7 @@ V tomto kurzu jste:
 > * Provést analýzu hlavní příčiny
 > * Vytvořit nové pravidlo na základě vašich poznatků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -52,7 +52,7 @@ Pokud chcete zobrazit telemetrická data o teplotě nákladních vozů, kliknět
 
 [![Řídicí panel RM s nízkou dočasnou výstrahou](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
-## <a name="explore-the-data"></a>Zkoumání dat
+## <a name="explore-the-data"></a>Prozkoumání dat
 
 Pokud chcete identifikovat příčinu varování týkajícího se nízké teploty, otevřete telemetrická data nákladního vozu v průzkumníku služby Time Series Insights. Na řídicím panelu klikněte na jakýkoli odkaz pro **prozkoumání ve službě Time Series Insights**:
 

@@ -3,12 +3,12 @@ title: O procesu obnovení virtuálního počítače Azure
 description: Přečtěte si, jak služba Azure Backup obnovuje virtuální počítače Azure.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a604e146dbe387675e9ed82030639921cfc03167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067461"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761385"
 ---
 # <a name="about-azure-vm-restore"></a>Informace o obnovení virtuálních počítačů Azure
 
@@ -46,12 +46,6 @@ Tento článek popisuje, jak [služba Azure Backup](./backup-overview.md) obnovu
 | [Obnovte konkrétní soubory v rámci virtuálního počítače.](./backup-azure-restore-files-from-vm.md) | Zvolte bod obnovení, Procházet, vyberte soubory a obnovte je do stejného (nebo kompatibilního) operačního systému jako zálohovaný virtuální počítač. |  Pokud víte, které konkrétní soubory se mají obnovit, použijte tuto možnost namísto obnovení celého virtuálního počítače. |
 | [Obnovení šifrovaného virtuálního počítače](./backup-azure-vms-encryption.md) | Z portálu obnovte disky a pak použijte PowerShell k vytvoření virtuálního počítače. | <li> [Šifrovaný virtuální počítač s Azure Active Directory (AAD)](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Zašifrovaný virtuální počítač bez AAD](../virtual-machines/windows/disk-encryption-windows.md) <li> [Zašifrovaný virtuální počítač *s AAD* migrován do *bez AAD*](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [Obnovení mezi oblastmi](./backup-azure-arm-restore-vms.md#cross-region-restore) | Vytvoření nového virtuálního počítače nebo obnovení disků do sekundární oblasti (spárovaná oblast Azure) | <li> **Úplný výpadek**: Díky funkci obnovení mezi oblastmi není doba čekání na obnovu dat v sekundární oblasti k dispozici. Obnovení v sekundární oblasti můžete zahájit i před tím, než Azure deklaruje výpadek. <li> **Částečný výpadek**: výpadky se můžou vyskytovat v konkrétních clusterech úložiště, kde Azure Backup ukládá vaše Zálohovaná data nebo dokonce i v síti, propojuje Azure Backup a clustery úložiště přidružené k zálohovaným datům. Díky obnovení mezi oblastmi můžete provést obnovení v sekundární oblasti pomocí repliky zálohovaných dat v sekundární oblasti. <li> **Bez výpadku**: pro účely auditování a dodržování předpisů pomocí dat sekundární oblasti můžete využít podrobné analýzy pro provozní kontinuitu a zotavení po havárii (BCDR). Díky tomu můžete provést obnovení zálohovaných dat v sekundární oblasti i v případě, že v primární oblasti nehrozí úplný nebo částečný výpadek pro provozní kontinuitu a přechody na zotavení po havárii.  |
-
-------
-
-
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

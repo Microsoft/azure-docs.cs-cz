@@ -11,10 +11,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77279717"
 ---
 Klientská aplikace musí znát, jestli utterance není smysluplná nebo vhodná pro aplikaci. Záměr **none** se do každé aplikace přidá jako součást procesu vytváření, aby se zjistilo, jestli klientská aplikace nemůže odpovědět na utterance.
@@ -27,9 +27,9 @@ Pokud necháte žádný záměr **none** prázdný, utterance, který by měl b�
 
 1. Vyberte záměr **None** (Žádný). Přidejte tři projevy, které může uživatel zadat, ale nesouvisejí s vaší aplikací pro objednávání pizza:
 
-    |`None`Příklad projevy|
+    |`None` Příklad projevy|
     |--|
     |`Barking dogs are annoying`|
     |`Penguins in the ocean`|
 
-    Tyto příklady nemůžou používat slova, která očekáváte v doméně předmětu `pizza`, `cheese`například `crust`, `pickup` `deliver`,,.
+    Tyto příklady nemůžou používat slova, která očekáváte v doméně předmětu `pizza` , například, `cheese` , `crust` , `pickup` `deliver` .

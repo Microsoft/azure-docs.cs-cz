@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86109571"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
@@ -25,7 +25,7 @@ Tento kurz je první v řadě, ve kterém se dozvíte, jak vyhodnocovat a migrov
 > [!NOTE]
 > Kurzy ukazují nejjednodušší cestu k nasazení scénáře. Jsou užitečné pro rychlé ověření konceptu. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prepare-azure"></a>Příprava Azure
@@ -160,7 +160,7 @@ Zařízení Azure Migrate se připojí k vCenter Server a zjistí a migruje virt
 Případně můžete vytvořit účet. Pak vytvořte roli a přiřaďte ji k účtu následujícím způsobem:
 
 1. Přihlaste se do webového klienta sphere jako správce vCenter Server.
-2. Vyberte instanci vCenter Server > **vytvořit roli**.
+2. Vyberte instanci vCenter Server >  **vytvořit roli**.
 3. Zadejte název role, například <em>Azure_Migrate</em>, a přiřaďte roli [požadovaná oprávnění](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) .
 
     ![oprávnění účtu vCenter Server](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)

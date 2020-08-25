@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82583075"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
@@ -41,7 +41,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 - Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)
 
 
-## <a name="enable"></a>Povolení
+## <a name="enable"></a>Povolit
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -59,7 +59,7 @@ Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok mů
 3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
 4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-a-collection"></a>Vytvoření kolekce 
 
@@ -204,6 +204,6 @@ Tento příkaz rozhraní příkazového řádku vrátí podrobnosti o kolekci:
 V tomto kurzu jste zjistili, jak použít identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup ke Cosmos DB.  Další informace o službě Cosmos DB najdete tady:
 
 > [!div class="nextstepaction"]
->[Přehledu databáze Azure Cosmos DB](/azure/cosmos-db/introduction)
+>[Přehled Azure Cosmos DB](/azure/cosmos-db/introduction)
 
 

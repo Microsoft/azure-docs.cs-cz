@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
 ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86085714"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
@@ -49,9 +49,9 @@ V tomto kurzu vytvoříte kanál, který provede následující operace:
    2. Vytvořte **podmínku if** , která zkontroluje, jestli existují změněné záznamy, a pokud ano, vyvolejte aktivitu kopírování.
    3. Vytvořte **aktivitu kopírování** pro zkopírování vložených/aktualizovaných nebo odstraněných dat mezi tabulkami CDC do Azure Blob Storage.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Azure SQL Database spravovaná instance**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte Azure SQL Database spravovanou instanci, přečtěte si článek [vytvoření Azure SQL Database spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) , kde najdete kroky pro jeho vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **raw**. 
 
@@ -124,7 +124,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zrušte výběr **Povolit Git**.     
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 8. Po dokončení nasazení klikněte na **Přejít k prostředku** .
 
    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)

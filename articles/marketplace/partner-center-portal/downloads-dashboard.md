@@ -1,31 +1,55 @@
 ---
-title: Řídicí panel ke stažení v Microsoft Commercial Marketplace Analytics na partnerském centru
+title: Řídicí panel ke stažení v Microsoft Commercial Marketplace Analytics na partnerském centru – Azure Marketplace
 description: Přečtěte si, jak získat přístup k žádostem o stažení pro nabídky na webu Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
+ms.topic: article
+ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245668"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750272"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Stahování v analýzách komerčního marketplace
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel ke stažení v komerčních obchodech Marketplace
 
 Tento článek poskytuje informace o řídicím panelu ke stažení v partnerském centru. Tento řídicí panel zobrazuje seznam žádostí o stažení za posledních 30 dní.
 
-Přístup k řídicímu panelu ke stažení otevřete tak, že v části komerční web Marketplace otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** .
+Pokud chcete získat přístup k řídicímu panelu ke stažení, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** na komerčním webu Marketplace.
 
 >[!NOTE]
 > Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="downloads-dashboard"></a>Řídicí panel stahování
 
-Řídicí panel **ke stažení** v nabídce **analyzovat** zobrazuje požadavky na všechny soubory ke stažení, které obsahují více než 1000 řádků dat zákazníků nebo objednávek. Tyto soubory ke stažení budou k dispozici po dobu 30 dnů a pak se odeberou.
+Řídicí panel **ke stažení** v nabídce **analyzovat** zobrazuje požadavky na všechny soubory ke stažení, které obsahují více než 1000 řádků dat zákazníků nebo objednávek.
+
+Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místní oznámení obsahující odkaz na řídicí panel **ke stažení** . Tyto soubory ke stažení budou k dispozici po dobu 30 dnů a pak se odeberou.
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Doba života při exportu sestav analytického komerčního tržiště
+
+Na stránce soubory ke stažení může koncový uživatel provést následující akce:
+
+- Celoživotní Export sestav analytické analýzy komerčních tržišť ve formátu CSV a TSV
+- Export analytických sestav komerčních tržišť pro libovolný rozsah kalendářních dat.
+- Export analytických sestav komerčních tržišť na dobu 6 nebo 12 měsíců.
+
+Podpora možností exportu pro účely životního cyklu analytických sestav:
+
+| Sestava | Exportovat život | Jakékoli trvání na základě data |
+| - | - | - |
+| Orders (Objednávky) | ![Zelené zatržítko](media/check-green-yes.png) | ![Zelené zatržítko](media/check-green-yes.png) |
+| Zákazníci | ![Zelené zatržítko](media/check-green-yes.png) | ![Zelené zatržítko](media/check-green-yes.png) |
+| Přehledy Marketplace | ![Zelené zatržítko](media/check-green-yes.png) | ![Zelené zatržítko](media/check-green-yes.png) |
+| Využití | ![Černá Značka X](media/check-black-no.png) | Maximálně jeden rok |
+|
+
+Uživatel může naplánovat asynchronní stahování sestav z části soubory ke stažení:
+
+[![plánování asynchronních stahování sestav z oddílu Ke_stažení](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

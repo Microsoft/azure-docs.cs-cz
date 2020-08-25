@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828655"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795588"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Vlastní role správců v Azure Active Directory (Preview)
 
@@ -46,7 +46,7 @@ Níže jsou uvedené kroky vysoké úrovně, které Azure AD používá k určen
 
 1. V závislosti na okolnostech využívá Azure AD jednu z následujících akcí:
 
-    - Vyhodnotí členství uživatelů v rolích na základě [deklarace identity WIDS](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) v přístupovém tokenu uživatele.
+    - Vyhodnotí členství uživatelů v rolích na základě [deklarace identity WIDS](../develop/access-tokens.md) v přístupovém tokenu uživatele.
     - Načte všechna přiřazení rolí, která platí pro uživatele, a to buď přímo, nebo prostřednictvím členství ve skupině, na prostředek, na kterém se akce provádí.
 
 1. Azure AD určuje, jestli je akce v volání rozhraní API zahrnutá v rolích, které má uživatel pro tento prostředek.
@@ -77,7 +77,7 @@ Definice role neboli role je kolekce oprávnění. Definice role obsahuje seznam
 - Předdefinované role vytvořené Microsoftem, které se nedají změnit.
 - Vlastní role vytvořené a spravované vaší organizací.
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 
 Obor je omezení povolených akcí pro určitý prostředek služby Azure AD v rámci přiřazení role. Když přiřadíte roli, můžete zadat obor, který omezí přístup správce ke konkrétnímu prostředku. Pokud například chcete vývojářům udělit vlastní roli, ale jenom ke správě konkrétní registrace aplikace, můžete do přiřazení role zahrnout konkrétní registraci aplikace jako obor.
 

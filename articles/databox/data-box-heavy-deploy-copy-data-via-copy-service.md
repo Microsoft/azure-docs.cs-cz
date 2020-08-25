@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77560216"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Kurz: použití služby kopírování dat ke kopírování dat do Azure Data Box Heavy (Preview)
@@ -48,7 +48,7 @@ Až budete připojeni k zařízení se serverem NAS, je dalším krokem kopírov
 
 Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit úlohu:
 
-1. V místním webovém uživatelském rozhraní zařízení s data box Heavy můžete přejít na **Správa** > **kopírování dat**.
+1. V místním webovém uživatelském rozhraní zařízení s data box Heavy můžete přejít na **Správa**  >  **kopírování dat**.
 2. Na stránce **Kopírovat data** vyberte **vytvořit**.
 
     ![Na stránce kopírovat data vyberte vytvořit.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -57,14 +57,14 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
     
     |Pole                          |Hodnota    |
     |-------------------------------|---------|
-    |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povoleny v názvu úlohy: \<, \>, \|, \?, \*, \\, \:, a \/\\\.         |
-    |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo. `\\<ServerName>\<ShareName>`        |
-    |**Jmen**                       |Uživatelské jméno `\\<DomainName><UserName>` ve formátu pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
+    |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povoleny v názvu úlohy: \<, \> , \| , \? , \* , \\ , \: , \/ a \\\.         |
+    |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>` .        |
+    |**Uživatelské jméno**                       |Uživatelské jméno ve `\\<DomainName><UserName>` formátu pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
     |**Heslo**                       |Heslo pro přístup ke zdroji dat.           |
     |**Cílový účet úložiště**    |Vyberte cílový účet úložiště, do kterého se mají nahrát data ze seznamu.         |
     |**Cílový typ**       |V seznamu vyberte typ cílového úložiště: **objekt blob bloku**, **objekt blob stránky**nebo **soubory Azure**.        |
-    |**Cílový kontejner/sdílená složka**    |Do cílového účtu úložiště zadejte název kontejneru nebo sdílené složky, do které chcete data nahrát. Název může být název sdílené složky nebo název kontejneru. Můžete například použít `myshare` nebo `mycontainer`. Můžete také zadat název ve formátu `sharename\directory_name` nebo. `containername\virtual_directory_name`        |
-    |**Kopírovat soubory, které odpovídají vzoru**    | Následující dva způsoby můžete zadat podle názvu souboru a odpovídajícího vzoru:<ul><li>**Použít výrazy se zástupnými znaky:** Ve `*` výrazech se zástupnými znaky jsou podporovány pouze a `?` . Například výraz `*.vhd` odpovídá všem souborům, které mají `.vhd` rozšíření. Podobně se `*.dl?` shoduje se všemi soubory buď s příponou `.dl` , nebo začínající `.dl`, například `.dll`. Podobně odpovídá všem `*foo` souborům, jejichž názvy končí na `foo`.<br>Zástupný výraz můžete přímo zadat do pole. Ve výchozím nastavení je hodnota, kterou zadáte do pole, považována za zástupný výraz.</li><li>**Použít regulární výrazy:** Jsou podporovány regulární výrazy založené na standardu POSIX. Například regulární výraz `.*\.vhd` bude odpovídat všem souborům, které mají `.vhd` rozšíření. Pro regulární výrazy poskytněte `<pattern>` přímo jako. `regex(<pattern>)` Další informace o regulárních výrazech naleznete v [jazyce regulárních výrazů – stručná referenční](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)dokumentace.</li><ul>|
+    |**Cílový kontejner/sdílená složka**    |Do cílového účtu úložiště zadejte název kontejneru nebo sdílené složky, do které chcete data nahrát. Název může být název sdílené složky nebo název kontejneru. Můžete například použít `myshare` nebo `mycontainer`. Můžete také zadat název ve formátu `sharename\directory_name` nebo `containername\virtual_directory_name` .        |
+    |**Kopírovat soubory, které odpovídají vzoru**    | Následující dva způsoby můžete zadat podle názvu souboru a odpovídajícího vzoru:<ul><li>**Použít výrazy se zástupnými znaky:** `*` `?` Ve výrazech se zástupnými znaky jsou podporovány pouze a. Například výraz `*.vhd` odpovídá všem souborům, které mají `.vhd` rozšíření. Podobně se `*.dl?` shoduje se všemi soubory buď s příponou, `.dl` nebo začínající `.dl` , například `.dll` . Podobně `*foo` odpovídá všem souborům, jejichž názvy končí na `foo` .<br>Zástupný výraz můžete přímo zadat do pole. Ve výchozím nastavení je hodnota, kterou zadáte do pole, považována za zástupný výraz.</li><li>**Použít regulární výrazy:** Jsou podporovány regulární výrazy založené na standardu POSIX. Například regulární výraz `.*\.vhd` bude odpovídat všem souborům, které mají `.vhd` rozšíření. Pro regulární výrazy poskytněte `<pattern>` přímo jako `regex(<pattern>)` . Další informace o regulárních výrazech naleznete v [jazyce regulárních výrazů – stručná referenční](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)dokumentace.</li><ul>|
     |**Optimalizace souborů**              |Když je tato funkce povolená, během příjmu se zabalí soubory menší než 1 MB. Toto balení zrychluje kopírování dat pro malé soubory. Šetří také významné množství času, kdy počet souborů mnohem překračuje počet adresářů.        |
  
 4. Vyberte **Spustit**. Vstupy jsou ověřeny a v případě úspěšného ověření se spustí úloha. Spuštění úlohy může trvat několik minut.
@@ -113,8 +113,8 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
 
     - Ve sloupci **stav** můžete zobrazit stav úlohy kopírování. Stav může být následující:
         - **Spuštěno**
-        - **Failed**
-        - **Úspěch**
+        - **Neúspěšný**
+        - **Úspěšný**
         - **Pozastaveno**
         - **Pozastaveno**
         - **Probíhá zrušení**

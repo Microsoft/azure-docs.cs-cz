@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c18977807d8cdca264a27d7fcff37aec7a61eb55
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bad21297c5174c107a8eb03da0e2ed57ee7355d3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690647"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750219"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -37,11 +37,12 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 * Nyní můžete dosáhnout vysokého výkonu přenosu dat mezi živým analýzou videa na IoT Edge a vlastním rozšířením pomocí rozhraní gRPC Framework. Začněte [tím](analyze-live-video-use-your-grpc-model-quickstart.md) , že se zobrazí.
 * Širší regionální nasazení živé analýzy videí a aktualizace jenom cloudové služby.  
 * Live video Analytics je teď k dispozici v 25 dalších oblastech po celém světě. Tady je [seznam](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) všech oblastí, které jsou k dispozici.  
-* [Nastavení](https://aka.ms/lva-edge/setup-resources-for-samples) pro rychlé spuštění bylo aktualizováno také. 
+* [Nastavení](https://aka.ms/lva-edge/setup-resources-for-samples) pro rychlé spuštění se aktualizovalo i v případě podpory nových oblastí.
+    * Neexistuje žádné volání akce pro kohokoli, kdo již nastavil prostředky.
 
 ## <a name="bug-fixes"></a>Opravy chyb 
 
-Žádné 
+* Odebrání použití zastaralého rozšíření Azure ve skriptu pro nastavení
 
 ## <a name="july-13-2020"></a>13. července 2020
 

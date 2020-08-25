@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489499"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762398"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -19,7 +19,7 @@ V tomto dokumentu se předpokládá, že už máte na virtuálním počítači A
 
 > [!div class="checklist"]
 >
-> * Vytvoření trezoru služby Recovery Services
+> * Vytvoření trezoru Služeb zotavení
 > * Registrovat instanci SAP HANA a vyhledat v ní databáze
 > * Povolení zálohování v databázi SAP HANA
 > * Aktivace zálohování na vyžádání
@@ -30,7 +30,7 @@ Podívejte se na [scénáře, které aktuálně podporujeme](./sap-hana-backup-s
 
 Pokud chcete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze xx. xxx. x nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Recovery Services trezor je logický kontejner, ve kterém jsou uložena zálohovaná data pro každý chráněný prostředek, jako jsou například virtuální počítače Azure nebo úlohy běžící na virtuálních počítačích Azure, jako jsou databáze SQL nebo HANA. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 V případě instance SAP HANA (virtuální počítač s SAP HANA nainstalované), který mají být zjištěny službami Azure, musí být na SAP HANA počítači spuštěn [skript před registrací](https://aka.ms/scriptforpermsonhana) . Před spuštěním skriptu se ujistěte, že jsou splněné všechny [požadavky](./tutorial-backup-sap-hana-db.md#prerequisites) . Další informace o tom, co skript dělá, najdete v části [co je to skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) předběžného zápisu.
 
-Po spuštění skriptu se instance SAP HANA dá zaregistrovat v trezoru služby Recovery Services, který jsme vytvořili dříve. Pokud chcete instanci zaregistrovat, použijte rutinu [AZ Backup Container Registry](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) . *VMResourceId* je ID prostředku virtuálního počítače, který jste vytvořili pro instalaci SAP HANA.
+Po spuštění skriptu se instance SAP HANA dá zaregistrovat v trezoru Recovery Services, který jsme vytvořili dříve. Pokud chcete instanci zaregistrovat, použijte rutinu [AZ Backup Container Registry](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) . *VMResourceId* je ID prostředku virtuálního počítače, který jste vytvořili pro instalaci SAP HANA.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \

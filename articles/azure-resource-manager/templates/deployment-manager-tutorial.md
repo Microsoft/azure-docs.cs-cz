@@ -6,10 +6,10 @@ ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86056884"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
@@ -43,11 +43,11 @@ Další prostředky:
 * [Reference k Azure Deployment Manager REST API](/rest/api/deploymentmanager/).
 * [Kurz: použití kontroly stavu v Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -186,7 +186,7 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
@@ -334,7 +334,7 @@ K nasazení šablon je možné použít Azure PowerShell.
     Spouštíte-li tento skript z jiné relace prostředí PowerShell než z toho, který jste spustili skript [Příprava artefaktů](#prepare-the-artifacts) , je třeba nejprve přeplnit proměnné, které zahrnují **$resourceGroupName** a **$FilePath**.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment`je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, viz krok 2 a krok 4 tohoto postupu.
+    > `New-AzResourceGroupDeployment` je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, viz krok 2 a krok 4 tohoto postupu.
 
 2. Pomocí webu Azure Portal ověřte úspěšné vytvoření topologie služby a prostředků:
 
@@ -427,7 +427,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 

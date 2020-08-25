@@ -3,12 +3,12 @@ title: Nastavení Azure Backup Server pro řešení Azure VMware
 description: Nastavte prostředí pro řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079532"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750620"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Nastavení Azure Backup Server pro řešení Azure VMware
 
@@ -56,7 +56,7 @@ Chcete-li nastavit Azure Backup Server pro řešení Azure VMware, je nutné dok
 
 Azure Backup Server je nasazen jako virtuální počítač IaaS (infrastruktura jako služba) Azure pro ochranu virtuálních počítačů řešení Azure VMware.
 
-:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Architektura nasazení AVS" border="false":::
+:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Azure Backup Server je nasazen jako virtuální počítač IaaS (infrastruktura jako služba) Azure pro ochranu virtuálních počítačů řešení Azure VMware." border="false":::
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Předpoklady pro prostředí Azure Backup Server
 
@@ -140,7 +140,7 @@ Recovery Services trezor je entita úložiště, která ukládá body obnovení 
 
 1. V nabídce vlevo vyberte **všechny služby**.
 
-   ![Vybrat všechny služby](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![V nabídce vlevo vyberte všechny služby.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. V dialogovém okně **všechny služby** zadejte **Recovery Services** a v seznamu vyberte **Recovery Services trezory** .
 
@@ -150,13 +150,13 @@ Recovery Services trezor je entita úložiště, která ukládá body obnovení 
 
 1. Na řídicím panelu **trezorů Recovery Services** vyberte **Přidat**.
 
-   ![Přidání trezoru Recovery Services](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
+   ![Přidejte Recovery Services trezor.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
    Otevře se dialogové okno **Recovery Services trezor** .
 
 1. Zadejte hodnoty pro **název**, **předplatné**, **skupinu prostředků**a **umístění**.
 
-   ![Konfigurace trezoru Recovery Services](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
+   ![Nakonfigurujte trezor Recovery Services.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Název**: zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný pro předplatné Azure. Zadejte název, který má alespoň dva, ale ne více než 50 znaků. Název musí začínat písmenem a obsahovat jenom písmena, číslice a spojovníky.
    - **Předplatné**: vyberte předplatné, které chcete použít. Pokud jste členem jenom jednoho předplatného, uvidíte tento název. Pokud si nejste jistí, které předplatné se má použít, použijte výchozí (navrhované) předplatné. K dispozici je více možností pouze v případě, že je váš pracovní nebo školní účet spojen s více než jedním předplatným Azure.
@@ -165,7 +165,7 @@ Recovery Services trezor je entita úložiště, která ukládá body obnovení 
 
 1. Až budete připraveni k vytvoření trezoru Recovery Services, vyberte **vytvořit**.
 
-   ![Vytvoření trezoru Recovery Services](../backup/media/backup-create-rs-vault/click-create-button.png)
+   ![Vytvořte Trezor Recovery Services.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
    Vytvoření trezoru Recovery Services může chvíli trvat. Sledujte oznámení o stavu v oblasti **oznámení** v pravém horním rohu portálu. Když je trezor vytvořený, zobrazí se v seznamu trezorů Recovery Services. Pokud váš trezor nevidíte, vyberte **aktualizovat**.
 
@@ -184,7 +184,7 @@ Možnost replikace úložiště vám umožní vybrat mezi geograficky redundantn
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
-   ![Nastavení konfigurace úložiště pro nový trezor](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+   ![Nastavte konfiguraci úložiště pro nový trezor.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>Stažení a instalace softwarového balíčku
 
@@ -192,7 +192,7 @@ Postupujte podle kroků v této části ke stažení, extrakci a instalaci softw
 
 ### <a name="download-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Pokud už máte otevřený trezor Recovery Services, pokračujte k dalšímu kroku. Pokud nemáte Recovery Services trezor otevřený, ale jste v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
@@ -206,15 +206,15 @@ Postupujte podle kroků v této části ke stažení, extrakci a instalaci softw
 
    Otevře se řídicí panel vybraného trezoru.
 
-   ![Otevření řídicího panelu trezoru](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+   ![Otevře se řídicí panel vybraného trezoru.](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
    Ve výchozím nastavení se otevře možnost **Nastavení** . Pokud jste zavřeli, vyberte **Nastavení** a otevřete ho.
 
-   ![Otevřít možnost nastavení trezoru](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
+   ![Ve výchozím nastavení se otevře možnost nastavení. Pokud jste zavřeli, vyberte nastavení a otevřete ho.](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
 1. Vyberte **zálohování** a otevřete tak průvodce **Začínáme** .
 
-   ![Průvodce zálohováním otevře Začínáme](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![Vyberte zálohování a otevřete tak Průvodce Začínáme.](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. V okně, které se otevře, udělejte toto:
 
@@ -241,7 +241,7 @@ Postupujte podle kroků v této části ke stažení, extrakci a instalaci softw
    > [!NOTE]
    > Všechny soubory je nutné stáhnout do stejné složky. Vzhledem k tomu, že velikost stahovaných souborů je zároveň větší než 3 GB, může stahování trvat až 60 minut. 
 
-   ![Vybrat soubory ve službě Stažení softwaru](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+   ![Na stránce pro stažení vyberte všechny soubory a vyberte Další.](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
 ### <a name="extract-the-software-package"></a>Extrakce softwarového balíčku
 
@@ -256,7 +256,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 
 1. Vyberte **extrahovat** a zahajte proces extrakce.
 
-   ![Průvodce instalací Microsoft Azure Backup](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
+   ![Vyberte extrahovat a zahajte proces extrakce.](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
 1. Po extrakci vyberte možnost **spuštění setup.exe** a pak vyberte **Dokončit**.
 
@@ -267,17 +267,17 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 
 1. V okně nastavení v části **instalovat**vyberte možnost **Microsoft Azure Backup** . otevře se Průvodce instalací nástroje.
 
-   ![Tlačítko nainstalovat Průvodce instalací Microsoft Azure Backup](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
+   ![V okně nastavení v části instalovat vyberte možnost Microsoft Azure Backup. otevře se Průvodce instalací nástroje.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. Na **úvodní** obrazovce klikněte na tlačítko **Další** a pokračujte na stránku **kontroly požadovaných součástí** .
 
 1. Zaškrtnutím **políčka znovu** určete, zda jsou splněny požadavky na hardware a software pro Azure Backup Server. V případě úspěšného splnění vyberte **Další**.
 
-   ![Azure Backup Server kontroly předpokladů](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ Zaškrtnutím políčka znovu určete, zda jsou splněny požadavky na hardware a software pro Azure Backup Server. V případě úspěšného splnění vyberte Další.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. Instalační balíček Azure Backup Server obsahuje balíčky s příslušnými SQL Server binárních souborů, které jsou potřeba. Po spuštění nové instalace Azure Backup Server vyberte možnost **instalovat novou instanci SQL Server s touto možností instalace** . Pak vyberte **Vyhledat a nainstalovat**.
 
-   ![Kontrolní SQL Server Azure Backup Server](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
+   ![Instalační balíček Azure Backup Server obsahuje balíčky s příslušnými SQL Server binárních souborů, které jsou potřeba.](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
    > Pokud chcete použít vlastní instanci SQL Server, podporované SQL Server verze jsou SQL Server 2014 SP1 nebo vyšší, 2016 a 2017. Všechny SQL Server verze by měly být Standard nebo Enterprise 64-bit. Azure Backup Server nefunguje s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní. Použijete-li pro Azure Backup Server existující instanci SQL Server, instalace podporuje pouze *pojmenované instance* SQL Server.
@@ -321,18 +321,18 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
    > [!NOTE]
    > Pro zálohování do Azure se vyžaduje pomocné umístění. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je třeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
-   ![Nastavení instalace Microsoft Azure Backup instalace](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
+   ![Zadejte umístění instalace souborů Microsoft Azure Backup serveru a vyberte Další.](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
 1. Zadejte silné heslo pro omezené místní uživatelské účty a vyberte **Další**.
 
-   ![Nastavení zabezpečení instalace Microsoft Azure Backup](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
+   ![Zadejte silné heslo pro omezené místní uživatelské účty a vyberte Další.](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 1. Vyberte, zda chcete vyhledat aktualizace pomocí Microsoft Update a vyberte možnost **Další**.
 
    > [!NOTE]
    > Doporučujeme, abyste web Windows Update přesměrování na Microsoft Update, což nabízí zabezpečení a důležité aktualizace pro Windows a další produkty, jako je Azure Backup Server.
 
-   ![Microsoft Azure Backup nastavení Microsoft Update výslovný souhlas](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   ![Vyberte, zda chcete vyhledat aktualizace pomocí Microsoft Update a vyberte možnost Další.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 1. Zkontrolujte **Souhrn nastavení**a vyberte **nainstalovat**.
 
@@ -352,7 +352,7 @@ Pokud jste balíček softwaru stáhli na jiný server, zkopírujte soubory do vi
 
    Po dokončení instalace agenta Microsoft Azure Recovery Services se krok instalace přesune k instalaci a konfiguraci SQL Server a Azure Backup Server komponenty.
 
-   ![Instalace instalace Microsoft Azure Backup](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+   ![Po dokončení instalace agenta Microsoft Azure Recovery Services se krok instalace přesune k instalaci a konfiguraci SQL Server a Azure Backup Server komponenty.](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 1. Po dokončení kroku instalace vyberte **Zavřít**.
 

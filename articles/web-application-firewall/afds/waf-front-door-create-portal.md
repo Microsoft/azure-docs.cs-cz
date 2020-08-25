@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "79475837"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Kurz: Vytvoření zásad brány firewall webových aplikací na frontách Azure pomocí Azure Portal
@@ -79,5 +79,5 @@ Výchozí sada pravidel spravovaná v Azure je ve výchozím nastavení povolen�
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o bráně firewall](../overview.md)
-> webových aplikací Azure další[informace o službě Azure front-dveří](../../frontdoor/front-door-overview.md)
+> [Přečtěte si o bráně firewall](../overview.md) 
+>  webových aplikací Azure [Další informace o službě Azure front-dveří](../../frontdoor/front-door-overview.md)

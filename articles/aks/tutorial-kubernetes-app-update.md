@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593372"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
@@ -24,7 +24,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 > * Odeslání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS.
 
@@ -50,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Uložte soubor a zavřete ho. V `vi`použijte `:wq`.
+Uložte soubor a zavřete ho. V `vi` použijte `:wq` .
 
 ## <a name="update-the-container-image"></a>Aktualizace image kontejneru
 
@@ -149,7 +149,7 @@ Nyní otevřete místní webový prohlížeč na IP adresu vaší služby:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste aktualizovali aplikaci a tuto aktualizaci zavedli do clusteru AKS. Naučili jste se tyto postupy:
+V tomto kurzu jste aktualizovali aplikaci a tuto aktualizaci zavedli do clusteru AKS. Naučili jste se:
 
 > [!div class="checklist"]
 > * Aktualizace kódu front-endu aplikace

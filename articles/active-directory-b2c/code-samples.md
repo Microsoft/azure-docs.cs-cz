@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181154"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
@@ -46,7 +46,7 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 
 | Ukázka | Popis |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL. js. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. |
 
 ## <a name="saml-test-application"></a>Testovací aplikace SAML
 

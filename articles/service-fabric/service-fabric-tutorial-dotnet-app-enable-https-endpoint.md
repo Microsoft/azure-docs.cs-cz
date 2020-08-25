@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82780194"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
@@ -36,7 +36,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -152,8 +152,8 @@ serviceContext =>
 
 Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  
 
-Pokud jste&lt;vytvořili&gt;certifikát podepsaný svým držitelem pomocí předchozího příkazu prostředí PowerShell, nahraďte "your_CN_value" pomocí "mytestcert", nebo použijte CN certifikátu.
-Pamatujte na to, že v případě místního nasazení `localhost` je vhodnější použít "CN = localhost", aby nedocházelo k výjimkám ověřování.
+&lt; &gt; Pokud jste vytvořili certifikát podepsaný svým držitelem pomocí předchozího příkazu prostředí PowerShell, nahraďte "your_CN_value" pomocí "mytestcert", nebo použijte CN certifikátu.
+Pamatujte na to, že v případě místního nasazení je `localhost` vhodnější použít "CN = localhost", aby nedocházelo k výjimkám ověřování.
 
 ```csharp
 private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
@@ -348,11 +348,11 @@ Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **
 </ApplicationManifest>
 ```
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 
-V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **Adresa URL aplikace** na https:\//localhost: 443.
+V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **Adresa URL aplikace** na https: \/ /localhost: 443.
 
-Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https:\//localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
+Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https: \/ /localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
 ![Hlasovací aplikace][image2]
 
@@ -360,7 +360,7 @@ Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  
 
 Před nasazením aplikace do Azure nainstalujte certifikát do `Cert:\LocalMachine\My` úložiště všech uzlů vzdáleného clusteru.  Služby se můžou přesunout do různých uzlů clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
-Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci Certlm. msc a přejděte k **osobním**>**certifikátům**.  Klikněte pravým tlačítkem na certifikát *mytestcert* a vyberte **všechny úkoly**>**exportovat**.
+Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci Certlm. msc a přejděte k **osobním** > **certifikátům**.  Klikněte pravým tlačítkem na certifikát *mytestcert* a vyberte **všechny úkoly** > **exportovat**.
 
 ![Export certifikátu][image4]
 
@@ -396,7 +396,7 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 
 Uložte všechny soubory, přepněte z režimu Ladění do Vydání a stisknutím klávesy F6 znovu spusťte sestavení.  V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Vyberte koncový bod připojení clusteru vytvořeného v tématu [Nasazení aplikace do clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md) nebo vyberte jiný cluster.  Kliknutím na **Publikovat** publikujte aplikaci do vzdáleného clusteru.
 

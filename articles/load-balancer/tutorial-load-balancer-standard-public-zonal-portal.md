@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78251898"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
@@ -47,17 +47,17 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a bude automaticky zónově redundantní.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **Load Balancer**.
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
 2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
+    | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupZLB* .|
     | Název                   | *myLoadBalancer*                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Standard**.                          |
+    | Region         | Vyberte **Západní Evropa**.                                        |
+    | Typ          | Vyberte **Veřejný**.                                        |
+    | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **1**.    |
@@ -73,12 +73,12 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroupZLB (vyberte existující skupinu prostředků) |
-| **\<název virtuální sítě>** | myVNet          |
-| **\<název oblasti>**          | Západní Evropa      |
-| **\<IPv4 –>adresního prostoru**   | 10.0.0.0 \ 16          |
-| **\<>názvů podsítí**          | myBackendSubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.0.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupZLB (vyberte existující skupinu prostředků) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | West Europe      |
+| **\<IPv4-address-space>**   | 10.0.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -124,7 +124,7 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **COMPUTE** > **Windows Server 2016 Datacenter**. Zadejte pro virtuální počítač tyto hodnoty:
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **Windows Server 2016 Datacenter**. Zadejte pro virtuální počítač tyto hodnoty:
     - **myVM1**pro název virtuálního počítače.        
     - **azureuser** – uživatelské jméno správce.    
     - **myResourceGroupZLB** – název **skupiny prostředků**. Vyberte **Použít existující** a pak vyberte **myResourceGroupZLB**.
@@ -137,7 +137,7 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
     - **myBackendSubnet** – zkontrolujte, že je vybraná tato podsíť.
     - **myNetworkSecurityGroup** – název existující skupiny zabezpečení sítě (brány firewall).
 5. Vybráním možnosti **Zakázáno** zakažte diagnostiku spouštění.
-6. Vyberte **OK**. Zkontrolujte nastavení na souhrnné stránce. Pak vyberte **vytvořit**.
+6. Vyberte **OK**. Zkontrolujte nastavení na souhrnné stránce. Potom vyberte **Vytvořit**.
 7. Opakováním kroků 1 až 6 vytvořte v zóně 1 druhý virtuální počítač s názvem **myVM2**. Jako virtuální síť zadejte **myVnet**. Jako standardní veřejnou IP adresu zadejte **myVM2PIP**. Jako podsíť zadejte **myBackendSubnet**. Jako skupinu zabezpečení sítě zadejte **myNetworkSecurityGroup**.
 
     ![Vytvoření virtuálních počítačů](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png) 
@@ -146,8 +146,8 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. V seznamu prostředků vyberte **myVM1**. Virtuální počítač se nachází ve skupině prostředků **myResourceGroupZLB**.
 2. Na stránce **Přehled** vyberte **Připojit** a pro připojení k virtuálnímu počítači použijte protokol RDP.
-3. Přihlaste se k virtuálnímu počítači pod uživatelským jménem a heslem, které jste zadali při vytváření virtuálního počítače. Pokud chcete zadat přihlašovací údaje, které jste zadali při vytvoření virtuálního počítače, možná budete muset vybrat **další možnosti**. Dále vyberte **Použít jiný účet**. A pak vyberte **OK**. Při přihlášení se může zobrazit upozornění na certifikát. Vyberte **Ano** a pokračujte v připojování.
-4. Na ploše serveru přejděte do části >  **Nástroje pro správu Windows****Windows PowerShell**.
+3. Přihlaste se k virtuálnímu počítači pod uživatelským jménem a heslem, které jste zadali při vytváření virtuálního počítače. Pokud chcete zadat přihlašovací údaje, které jste zadali při vytvoření virtuálního počítače, možná budete muset vybrat **další možnosti**. Pak vyberte **Použít jiný účet**. A pak vyberte **OK**. Při přihlášení se může zobrazit upozornění na certifikát. Vyberte **Ano** a pokračujte v připojování.
+4. Na ploše serveru přejděte do části **Nástroje pro správu Windows**  >  **Windows PowerShell**.
 6. V okně **PowerShell** spusťte následující příkazy, kterými nainstalujete server IIS. Těmito příkazy také odeberete výchozí soubor iisstart.htm a přidáte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
 
    ```azurepowershell-interactive
@@ -186,7 +186,7 @@ Aby bylo možné distribuovat provoz do virtuálních počítačů, obsahuje fon
 Sonda stavu slouží monitorování stavu vaší aplikace nástrojem pro vyrovnávání zatížení. Sonda stavu dynamicky přidává virtuální počítače do oběhu nástroje pro vyrovnávání zatížení nebo je z něj odebírá na základě jejich reakce na kontroly stavu. Vytvořte sondu stavu **myHealthProbe** pro monitorování stavu virtuálních počítačů.
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
-2. V části **Nastavení** vyberte **Sondy stavu**. Pak vyberte **Přidat**.
+2. V oblasti **Nastavení** vyberte **Sondy stavu**. Pak vyberte **Přidat**.
 3. K vytvoření sondy stavu použijte tyto hodnoty:
     - **myHealthProbe**pro název sondy stavu.
     - **Http**pro typ protokolu.
@@ -202,7 +202,7 @@ Sonda stavu slouží monitorování stavu vaší aplikace nástrojem pro vyrovn�
 Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distribuuje do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení **myLoadBalancerRuleWeb**, které naslouchá portu 80 front-endu **FrontendLoadBalancer**. Toto pravidlo posílá vyrovnaný síťový provoz fondu back-endových adres **myBackEndPool**. Používá k tomu také port 80. 
 
 1. V nabídce úplně vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myLoadBalancer**.
-2. V části **Nastavení** vyberte **Pravidla vyrovnávání zatížení**. Pak vyberte **Přidat**.
+2. V oblasti **Nastavení** vyberte **Pravidla vyrovnávání zatížení**. Pak vyberte **Přidat**.
 3. Ke konfiguraci pravidla vyrovnávání zatížení použijte tyto hodnoty:
     - **myHTTPRule** – název pravidla vyrovnávání zatížení.
     - **TCP**pro typ protokolu.
@@ -214,7 +214,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distri
     
     ![Přidání pravidla vyrovnávání zatížení](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)
 
-## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
+## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 1. Vyhledejte veřejnou IP adresu nástroje pro vyrovnávání zatížení na obrazovce **Přehled** . Vyberte **Všechny prostředky**. Pak vyberte **myPublicIP**. 
 
 2. Zkopírujte veřejnou IP adresu a vložte ji do adresního řádku prohlížeče. V prohlížeči se zobrazí výchozí stránka, která obsahuje název stránky webového serveru.

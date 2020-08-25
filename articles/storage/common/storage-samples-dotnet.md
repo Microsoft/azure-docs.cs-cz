@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81010490"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 .NET
@@ -23,7 +23,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
@@ -66,7 +66,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Objekt blob
+### <a name="blob"></a>Blob
 
 :::row:::
    :::column span="":::
@@ -94,7 +94,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
@@ -147,7 +147,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 :::row:::
    :::column span="":::
       [Nahrání souboru](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -180,7 +180,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="azure-files-samples"></a>Ukázky souborů Azure
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="queue-samples"></a>Ukázky front
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 :::row:::
    :::column span="":::
@@ -335,5 +335,5 @@ Informace o ukázkách pro jiné jazyky:
 
 * Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

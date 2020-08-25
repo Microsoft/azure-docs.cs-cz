@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78402845"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
 
 Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují automatické sestavení imagí kontejneru Docker v cloudu, když potvrdíte zdrojový kód do úložiště Git. Podporované kontexty Git pro úlohy ACR zahrnují veřejné nebo soukromé úložiště GitHubu nebo Azure.
 
@@ -65,7 +65,7 @@ az acr task create \
 > [!IMPORTANT]
 > Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
 
-Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. K sestavení image se `--file` používá souboru Dockerfile určený z kořenu úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
+Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. `--file`K sestavení image se používá souboru Dockerfile určený z kořenu úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
 
 Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podobný následujícímu:
 

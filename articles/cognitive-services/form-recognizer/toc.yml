@@ -34,6 +34,10 @@
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+        - name: Použití předem připraveného modelu vizitek
+          items:
+            - name: Python
+              href: quickstarts/python-business-cards.md
         - name: Získání informací o rozložení textu
           items:
             - name: Python
@@ -44,6 +48,12 @@
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
     - name: Použití Rozpoznávání formulářů se službou AI Builder
       href: tutorial-ai-builder.md
+- name: Koncepty
+  items:
+    - name: Účtenky
+      href: concept-receipts.md
+    - name: Vizitky
+      href: concept-business-cards.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
@@ -64,6 +74,8 @@
       href: disaster-recovery.md
 - name: Referenční informace
   items:
+    - name: Rozhraní API služby Rozpoznávání formulářů v2.1 Preview
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
     - name: Rozhraní API služby Rozpoznávání formulářů v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: Sady SDK

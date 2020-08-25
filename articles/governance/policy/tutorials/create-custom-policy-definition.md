@@ -4,10 +4,10 @@ description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86044613"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
@@ -33,7 +33,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="identify-requirements"></a>Identifikace požadavků
 
@@ -465,7 +465,7 @@ Pokud jste dokončili práci s prostředky z tohoto kurzu, pomocí následujíc�
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

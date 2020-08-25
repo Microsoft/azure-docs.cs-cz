@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735245"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Ukázky sady SDK pro Vyhledávání na webu Bingu
@@ -32,8 +32,8 @@ Tyto odkazy použijte pro přístup k sadě SDK pro váš preferovaný jazyk.
 
 * Začínáme s [ukázkami Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
   * Definice a závislosti najdete v [knihovnách Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-websearch).
-* Začínáme s [ukázkami Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-  * Viz také [vyhledávání na webu Node. js](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
+* Začínáme s [ ukázkamiNode.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+  * Viz také [Node.js vyhledávání na webu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
 * Začínáme s [ukázkami .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
   * Definice a závislosti najdete v [knihovnách .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingWebSearch).
