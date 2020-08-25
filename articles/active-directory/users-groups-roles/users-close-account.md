@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374572"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798325"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Zavřete svůj pracovní nebo školní účet v nespravované organizaci Azure AD.
 
@@ -32,9 +32,9 @@ Uživatelé v nespravované organizaci se často vytvářejí při registraci sa
 
 Než budete moct účet zavřít, zkontrolujte, že máte následující položky:
 
-* Ujistěte se, že jste uživatelem nespravované organizace Azure AD. Pokud patříte do spravované organizace, účet nemůžete zavřít. Pokud patříte do spravované organizace a chcete účet zavřít, musíte se obrátit na správce. Informace o tom, jak určit, zda patříte do nespravované organizace, najdete v tématu [odstranění uživatele z nespravovaného tenanta](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Ujistěte se, že jste uživatelem nespravované organizace Azure AD. Pokud patříte do spravované organizace, účet nemůžete zavřít. Pokud patříte do spravované organizace a chcete účet zavřít, musíte se obrátit na správce. Informace o tom, jak určit, zda patříte do nespravované organizace, najdete v tématu [odstranění uživatele z nespravovaného tenanta](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
-* Uložte všechna data, která chcete zachovat. Informace o tom, jak odeslat žádost o export, najdete v tématu [přístup k systémem generovaným protokolům a jejich export pro nespravované klienty](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
+* Uložte všechna data, která chcete zachovat. Informace o tom, jak odeslat žádost o export, najdete v tématu [přístup k systémem generovaným protokolům a jejich export pro nespravované klienty](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 
 > [!WARNING]
 > Zavření účtu je nevratné. Po zavření účtu se odeberou všechny osobní údaje. Už nebudete mít přístup k vašemu účtu a datům přidruženým k vašemu účtu.
@@ -56,5 +56,5 @@ Pokud chcete zavřít nespravovaný pracovní nebo školní účet, postupujte p
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
-- [Odstranění uživatele z nespravovaného tenanta](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [Přístup k systémem generovaným protokolům pro nespravované tenanty a jejich export](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [Odstranění uživatele z nespravovaného tenanta](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [Přístup k systémem generovaným protokolům pro nespravované tenanty a jejich export](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

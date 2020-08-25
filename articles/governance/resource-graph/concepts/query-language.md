@@ -1,14 +1,14 @@
 ---
 title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723430"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798546"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -64,6 +64,25 @@ Resources
 > [!NOTE]
 > Při omezení `join` výsledků pomocí `project` vlastnosti, kterou používá `join` pro relaci obou tabulek, je nutné v rámci výše uvedeného příkladu použít vlastnost _SubscriptionId_ `project` .
 
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Rozšířené vlastnosti (Preview)
+
+Jako funkce ve _verzi Preview_ mají některé typy prostředků v grafu zdrojů k dispozici další vlastnosti související s typem, které jsou dostupné pro dotaz nad vlastnostmi poskytovanými Azure Resource Manager. Tato sada hodnot známá jako _Rozšířené vlastnosti_existuje v podporovaném typu prostředku v `properties.extended` . Chcete-li zjistit, které typy prostředků mají _Rozšířené vlastnosti_, použijte následující dotaz:
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+Příklad: získání počtu virtuálních počítačů pomocí `instanceView.powerState.code` :
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
 ## <a name="resource-graph-custom-language-elements"></a>Prvky vlastního jazyka grafu prostředků
 
 ### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Syntaxe sdíleného dotazu (Preview)
@@ -116,15 +135,14 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[take](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `limit` |
 |[top](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
 |[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[,](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
+|[kde:](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>Rozsah dotazu
 
 Rozsah předplatných, ze kterých jsou vráceny prostředky, závisí na metodě přístupu ke grafu zdrojů. Azure CLI a Azure PowerShell naplní seznam předplatných, která se mají zahrnout do žádosti na základě kontextu oprávněného uživatele. Seznam předplatných lze pro každou z nich ručně definovat pomocí parametrů předplatné a **předplatného** **v uvedeném** pořadí.
 V REST API a všech ostatních sadách SDK musí být seznam předplatných, které mají být zahrnuté prostředky, explicitně definován jako součást požadavku.
 
-Ve verzi **Preview**verze REST API `2020-04-01-preview` přidá vlastnost pro určení oboru dotazu do [skupiny pro správu](../../management-groups/overview.md). Toto rozhraní API ve verzi Preview také umožňuje volitelnou vlastnost Subscription. Pokud není definována skupina pro správu ani seznam předplatných, obor dotazu je všechny prostředky, ke kterým má ověřený uživatel přístup. Nová `managementGroupId` vlastnost převezme ID skupiny pro správu, které se liší od názvu skupiny pro správu.
-`managementGroupId`Je-li parametr zadán, jsou zde zahrnuty prostředky z prvních 5000 předplatných v rámci nebo pod určenou hierarchií skupin pro správu. `managementGroupId` nelze použít ve stejnou dobu jako `subscriptions` .
+Ve verzi **Preview**verze REST API `2020-04-01-preview` přidá vlastnost pro určení oboru dotazu do [skupiny pro správu](../../management-groups/overview.md). Toto rozhraní API ve verzi Preview také umožňuje volitelnou vlastnost Subscription. Pokud není definována skupina pro správu nebo seznam předplatných, obor dotazu je všechny prostředky, ke kterým má ověřený uživatel přístup. Nová `managementGroupId` vlastnost převezme ID skupiny pro správu, které se liší od názvu skupiny pro správu. `managementGroupId`Je-li parametr zadán, jsou zde zahrnuty prostředky z prvních 5000 předplatných v rámci nebo pod určenou hierarchií skupin pro správu. `managementGroupId` nelze použít ve stejnou dobu jako `subscriptions` .
 
 Příklad: dotazování všech prostředků v rámci hierarchie skupiny pro správu s názvem moje skupina pro správu s ID ' myMG '.
 

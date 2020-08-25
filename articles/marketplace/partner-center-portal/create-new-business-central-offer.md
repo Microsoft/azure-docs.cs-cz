@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606141"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817047"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -182,16 +182,16 @@ Poskytněte aspoň jeden (a až tři) související marketingové dokumenty, jak
 
 ### <a name="marketplace-images"></a>Image Marketplace
 
-Poskytněte loga a obrázky pro vaši nabídku. Všechny obrázky musí být ve formátu PNG. 
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto, aby se vytvořilo **malé** logo. Volitelně můžete tuto položku nahradit jinou imagí později.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Malý** (48 x 48 px, volitelné)
 
-Nahrajte logo vaší nabídky ve dvou velikostech:
-
-* **Malý** (48 x 48 pixelů)
-* **Velký** (216 x 216 pixelů)
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje `https://upload.xboxlive.com` službu používanou partnerským centrem.
@@ -300,7 +300,7 @@ Pokud je vaše nabídka doplňkovou aplikací, je nutné nahrát soubor **testů
 
 Pokud je potřeba testovací účet, aby mohl náš Certifikační tým správně zkontrolovat vaši nabídku, nahrajte soubor. PDF,. doc nebo. docx pomocí informací o **testovacích účtech** .
 
-## <a name="publish"></a>Publikovat
+## <a name="publish"></a>Publikování
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

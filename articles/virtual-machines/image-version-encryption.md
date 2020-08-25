@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245549"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816486"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,13 +23,13 @@ Pro šifrování vašich imagí můžete spoléhat na klíče spravované platfo
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek vyžaduje, abyste už měli k dispozici sadu Encryption disk pro použití pro vaši image.
 
-- Pokud chcete použít jenom klíč spravovaný zákazníkem, přečtěte si téma **Povolení klíčů spravovaných zákazníkem pomocí šifrování na straně serveru** pomocí [Azure Portal](./windows/disks-enable-customer-managed-keys-portal.md) nebo [PowerShellu](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Pokud chcete použít jenom klíč spravovaný zákazníkem, přečtěte si téma **Povolení klíčů spravovaných zákazníkem pomocí šifrování na straně serveru** pomocí [Azure Portal](./disks-enable-customer-managed-keys-portal.md) nebo [PowerShellu](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
-- Pokud chcete použít jak klíče spravované platformou, tak i zákaznickou správu (pro dvojité šifrování), přečtěte si téma **Povolení dvojitého šifrování v klidovém** provozu pomocí [Azure Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) nebo [PowerShellu](./windows/disks-enable-double-encryption-at-rest-powershell.md).
+- Pokud chcete použít jak klíče spravované platformou, tak i zákaznickou správu (pro dvojité šifrování), přečtěte si téma **Povolení dvojitého šifrování v klidovém** provozu pomocí [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) nebo [PowerShellu](./windows/disks-enable-double-encryption-at-rest-powershell.md).
     > [!IMPORTANT]
     > Tento odkaz je nutné použít [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) pro přístup k Azure Portal. Dvojité šifrování v klidovém umístění není aktuálně viditelné ve veřejném Azure Portal bez použití odkazu.
 
@@ -113,7 +113,7 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
+### <a name="create-a-vm"></a>Vytvořit virtuální počítač
 
 Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí klíčů spravovaných zákazníkem zašifrovat disky. Syntaxe je stejná jako vytvoření [zobecněného](vm-generalized-image-version-powershell.md) nebo [specializovaného](vm-specialized-image-version-powershell.md) virtuálního počítače z image, musíte použít rozšířenou sadu parametrů a přidat `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` ji do konfigurace virtuálního počítače.
 

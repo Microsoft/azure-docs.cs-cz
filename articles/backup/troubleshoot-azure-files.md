@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524484"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763673"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -22,10 +22,10 @@ Tento článek obsahuje informace o řešení potíží, které řeší všechny
 - Ověřte, jestli je už žádná sdílená složka v účtu úložiště chráněná jiným úložištěm Recovery Services.
 
   >[!NOTE]
-  >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
+  >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít Recovery Services trezor, ve kterém je váš účet úložiště zaregistrovaný.
 
 - Ujistěte se, že sdílená složka není přítomna v žádném z nepodporovaných účtů úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
-- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků nepřesáhla 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště. 
+- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků nepřesáhla 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště.
 - Zkontrolujte nastavení brány firewall účtu úložiště, abyste měli jistotu, že je povolená možnost Povolit důvěryhodné služby Microsoftu přístup k účtu úložiště.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo
@@ -54,7 +54,7 @@ Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště** infrastruktury zálohování trezoru a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
 
 >[!NOTE]
->Trezor služby Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
+>Trezor Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
 
 ## <a name="common-backup-or-restore-errors"></a>Běžné chyby zálohování nebo obnovení
 

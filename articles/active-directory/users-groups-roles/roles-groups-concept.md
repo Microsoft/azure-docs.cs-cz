@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183203"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798308"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -33,7 +33,7 @@ Vytvořte novou sadu Office 365 nebo skupinu zabezpečení s vlastností ' isAss
 Pokud nechcete, aby členové skupiny měli stálý přístup k této roli, můžete použít Azure AD Privileged Identity Management. Přiřaďte skupinu jako oprávněného člena role Azure AD. Každý člen skupiny pak má nárok na aktivaci jejich přiřazení pro roli, ke které je skupina přiřazená. Pak můžou aktivovat přiřazení rolí po dobu trvání pevného času.
 
 > [!Note]
-> Aby bylo možné přiřadit skupinu k roli Azure AD prostřednictvím PIM, musíte být v aktualizované verzi Privileged Identity Management. Můžete být na starší verzi PIM, protože vaše organizace Azure AD využívá rozhraní Privileged Identity Management API. Pokud chcete pim_preview@microsoft.com svou organizaci přesunout a aktualizovat své rozhraní API, kontaktujte prosím alias. Další informace najdete v informacích o [rolích a funkcích Azure AD v PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features).
+> Aby bylo možné přiřadit skupinu k roli Azure AD prostřednictvím PIM, musíte být v aktualizované verzi Privileged Identity Management. Můžete být na starší verzi PIM, protože vaše organizace Azure AD využívá rozhraní Privileged Identity Management API. Pokud chcete pim_preview@microsoft.com svou organizaci přesunout a aktualizovat své rozhraní API, kontaktujte prosím alias. Další informace najdete v informacích o [rolích a funkcích Azure AD v PIM](../privileged-identity-management/azure-ad-roles-features.md).
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Proč vynutili vytvoření speciální skupiny pro přiřazení k roli
 
@@ -65,7 +65,7 @@ Následující scénáře se teď nepodporují:
   - Na portálu PIM můžou **Moje role** zobrazovat jenom jedno přiřazení role bez ohledu na to, kolik metod má přiřazení uděleno (přes jednu nebo víc skupin a přímo).
 - *Jenom licencovaní zákazníci Azure AD P2* I po odstranění skupiny se stále zobrazuje oprávněný člen role v uživatelském rozhraní PIM. Funkční není žádný problém. je to jen problém s mezipamětí v Azure Portal.  
 - Centrum pro správu Exchange nerozpozná členství v rolích pomocí skupiny, ale rutina prostředí PowerShell bude fungovat.
-- Portál Azure Information Protection (portál Classic) nerozpozná členství v rolích prostřednictvím skupiny. Můžete [migrovat na sjednocenou platformu označování citlivostí](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) a potom použít Centrum kompatibility Office 365 Security & k použití přiřazení skupin pro správu rolí.
+- Portál Azure Information Protection (portál Classic) nerozpozná členství v rolích prostřednictvím skupiny. Můžete [migrovat na sjednocenou platformu označování citlivostí](/azure/information-protection/configure-policy-migrate-labels) a potom použít Centrum kompatibility Office 365 Security & k použití přiřazení skupin pro správu rolí.
 
 Opravujeme tyto problémy.
 

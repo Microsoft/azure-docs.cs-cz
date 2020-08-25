@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505304"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754799"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
@@ -38,6 +38,8 @@ Tyto služby a funkce **Azure nebudou** ovlivněny tímto vyřazením:
 ## <a name="what-actions-should-i-take"></a>Jaké akce mám provést? 
 
 - Začněte plánovat migraci na Azure Resource Manager dnes. 
+
+- Vytvořte seznam všech ovlivněných virtuálních počítačů. Typ virtuálního počítače "Virtual Machines (Classic)" v okně [virtuálního počítače Azure Portal](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) jsou všechny ovlivněné virtuální počítače v rámci předplatného. 
 
 - [Přečtěte si další informace](./windows/migration-classic-resource-manager-overview.md) o migraci klasických virtuálních počítačů se systémy [Linux](./linux/migration-classic-resource-manager-plan.md) a [Windows](./windows/migration-classic-resource-manager-plan.md) do Azure Resource Manager.
 

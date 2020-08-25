@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797917"
+ms.locfileid: "88814446"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -68,7 +68,7 @@ Pro účet úložiště můžete vytvořit jeden nebo víc rozsahů šifrování
 Po vytvoření oboru šifrování můžete zadat obor šifrování pro požadavek na vytvoření kontejneru nebo objektu BLOB. Další informace o tom, jak vytvořit rozsah šifrování, najdete v tématu [Vytvoření a Správa oborů šifrování (Preview)](../blobs/encryption-scope-manage.md).
 
 > [!NOTE]
-> Obory šifrování nejsou ve verzi Preview podporované pomocí geograficky redundantního úložiště s přístupem pro čtení (RA-GRS).
+> Obory šifrování nejsou podporovány v geograficky redundantním úložišti s přístupem pro čtení (RA-GRS) a v geograficky redundantním úložišti s přístupem pro čtení (RA-GZRS) ve verzi Preview.
 
 > [!IMPORTANT]
 > Obory šifrování ve verzi Preview jsou určené jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
