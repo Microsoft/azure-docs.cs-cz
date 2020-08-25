@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81000102"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
@@ -24,7 +24,7 @@ ms.locfileid: "81000102"
 
 V obou předchozích kurzech jste vytvořili a přizpůsobili IoT Central aplikaci pomocí šablony aplikace v rámci služby **Store Analytics** . V tomto kurzu nakonfigurujete IoT Central aplikaci pro export telemetrie shromážděných ze zařízení. Pak použijete Power BI k vytvoření vlastního řídicího panelu pro správce úložiště, který bude vizualizovat přehledy odvozené z telemetrie.
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
 > * Nakonfigurujte aplikaci IoT Central pro export telemetrie do centra událostí.
 > * Pomocí Logic Apps můžete odesílat data z centra událostí do datové sady streamování Power BI.
@@ -35,14 +35,14 @@ V tomto kurzu se naučíte:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Pokud chcete dokončit předchozí dva kurzy, [vytvořte v Azure aplikaci pro analýzu v obchodě IoT Central](./tutorial-in-store-analytics-create-app.md) a [Přizpůsobte řídicí panel operátora a spravujte zařízení ve službě Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet Power BI. Pokud nemáte účet Power BI, zaregistrujte si [bezplatnou zkušební verzi Power BI pro](https://app.powerbi.com/signupredirect?pbi_source=web) , než začnete.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit skupinu prostředků pro jejich správu. Skupina prostředků by měla být ve stejném umístění jako vaše aplikace IoT Central pro **analýzu v rámci služby Store** . Vytvoření skupiny prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
 1. V poli **předplatné**vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.
@@ -66,7 +66,7 @@ Předtím, než budete moci nakonfigurovat aplikaci maloobchodního monitorován
     * Vyberte skupinu prostředků **Retail-Store-Analysis** .
     * Vyberte stejné umístění, které jste použili pro vaši aplikaci IoT Central.
     * Vyberte **Vytvořit**. Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
-1. Na portálu přejděte do skupiny prostředků **Retail-Store-Analysis** . Počkejte, než se nasazení dokončí. Možná budete muset vybrat možnost **aktualizovat** , aby se aktualizoval stav nasazení. V **oznámeních**můžete taky zjistit stav vytvoření oboru názvů centra událostí.
+1. Na portálu přejděte do skupiny prostředků **Retail-Store-Analysis** . Počkejte, až se nasazení dokončí. Možná budete muset vybrat možnost **aktualizovat** , aby se aktualizoval stav nasazení. V **oznámeních**můžete taky zjistit stav vytvoření oboru názvů centra událostí.
 1. Ve skupině prostředků **Retail-Store-Analysis** vyberte **obor názvů Event Hubs**. Na portálu se zobrazí domovská stránka **oboru názvů Event Hubs** .
 
 Teď máte **Event Hubs obor názvů**, můžete vytvořit **centrum událostí** pro použití s vaší aplikací IoT Central:
@@ -110,7 +110,7 @@ Export dat může trvat několik minut, než se zahájí odesílání telemetrie
 
     | Název hodnoty  | Typ hodnoty |
     | ----------- | ---------- |
-    | Časové razítko   | DateTime   |
+    | Timestamp   | DateTime   |
     | Vlhkost    | Číslo     |
     | Teplota | Číslo     |
 
@@ -133,7 +133,7 @@ Také potřebujete datovou sadu streamování pro telemetrii obsazení:
 
     | Název hodnoty     | Typ hodnoty |
     | -------------- | ---------- |
-    | Časové razítko      | DateTime   |
+    | Timestamp      | DateTime   |
     | Délka fronty 1 | Číslo     |
     | Délka fronty 2 | Číslo     |
     | Doba bydlení 1   | Číslo     |
@@ -179,11 +179,11 @@ Následující kroky ukazují, jak vytvořit aplikaci logiky v Azure Portal:
     * V **název centra událostí**vyberte **Store-telemetrie**.
     * V **typu obsahu**vyberte **Application/JSON**.
     * Nastavte **interval** na tři a **četnost** na sekundy.
-1. Vyberte **Uložit** a uložte svoji aplikaci logiky.
+1. Výběrem možnosti **Uložit** aplikaci logiky uložte.
 
 Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**:
 
-1. Nahraďte `"actions": {},` následujícím kódem JSON. Nahraďte dva `[YOUR RUUVITAG DEVICE ID 1]` zástupné `[YOUR RUUVITAG DEVICE ID 2]` symboly a identifikátory, které jste si poznamenali u svých dvou zařízení RuuviTag:
+1. Nahraďte `"actions": {},` následujícím kódem JSON. Nahraďte dva zástupné symboly `[YOUR RUUVITAG DEVICE ID 1]` a `[YOUR RUUVITAG DEVICE ID 2]` identifikátory, které jste si poznamenali u svých dvou zařízení RuuviTag:
 
     ```json
     "actions": {
@@ -384,7 +384,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
     * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
-    * Vyberte **Uložit** a uložte tak provedené změny. Akce **zóna 1 prostředí** vypadá jako na následujícím snímku obrazovky: ![zóna 1 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * Vyberte **Uložit** a uložte tak provedené změny. Akce **zóna 1 prostředí** vypadá jako na následujícím snímku obrazovky: ![ zóna 1 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
 1. Vyberte akci **zóna 2 prostředí** a vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
@@ -396,7 +396,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
     * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
-    Vyberte **Uložit** a uložte tak provedené změny.  Akce **zóna 2 prostředí** vypadá jako na následujícím snímku obrazovky: ![zóna 2 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    Vyberte **Uložit** a uložte tak provedené změny.  Akce **zóna 2 prostředí** vypadá jako na následujícím snímku obrazovky: ![ zóna 2 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. Vyberte akci **obsazení** a pak vyberte akci **Přepnout podle ID rozhraní** .
 1. Vyberte akci **rozhraní pro dobu bydlení** a vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
@@ -409,7 +409,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Doba obydlí 1** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime1**.
     * Vyberte pole **Doba obydlí 2** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime2**.
-    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní s časem bydlení** vypadá jako na následujícím snímku obrazovky ![: obsazená akce](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní s časem bydlení** vypadá jako na následujícím snímku obrazovky: ![ obsazená akce](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Vyberte akci **rozhraní počtu osob** a pak vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
@@ -421,7 +421,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Délka fronty 1** a pak vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count1**.
     * Vyberte pole **Délka fronty 2** a potom vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count2**.
-    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní počtu osob** vypadá jako na následujícím snímku obrazovky: ![obsazená akce](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní počtu osob** vypadá jako na následujícím snímku obrazovky: ![ obsazená akce](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
 Aplikace logiky se spustí automaticky. Pokud chcete zobrazit stav každého spuštění, přejděte na stránku **Přehled** aplikace logiky v Azure Portal:
 
@@ -442,7 +442,7 @@ Přidejte čtyři dlaždice spojnicového grafu pro zobrazení teploty a vlhkost
 | ------- | -------- | -------- | -------- | -------- |
 | Datová sada | Senzor Zóna 1 | Senzor Zóna 1 | Senzor Zóna 2 | Senzor Zóna 2 |
 | Typ vizualizace | Spojnicový graf | Spojnicový graf | Spojnicový graf | Spojnicový graf |
-| Osa | Časové razítko | Časové razítko | Časové razítko | Časové razítko |
+| Osa | Timestamp | Timestamp | Timestamp | Timestamp |
 | Hodnoty | Teplota | Vlhkost | Teplota | Vlhkost |
 | Časové okno | 60 minut | 60 minut | 60 minut | 60 minut |
 | Nadpis | Teplota (1 hodina) | Vlhkost (1 hodina) | Teplota (1 hodina) | Vlhkost (1 hodina) |
@@ -476,9 +476,9 @@ Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trván�
 | ------- | ------- | ------- | ------- | ------- |
 | Datová sada | Senzor obsazení | Senzor obsazení | Senzor obsazení | Senzor obsazení |
 | Typ vizualizace | Skupinový sloupcový graf | Skupinový sloupcový graf | Měřidlo | Měřidlo |
-| Osa    | Časové razítko | Časové razítko | – | – |
+| Osa    | Timestamp | Timestamp | N/A | N/A |
 | Hodnota | Doba bydlení 1 | Doba bydlení 2 | Délka fronty 1 | Délka fronty 2 |
-| Časové okno | 60 minut | 60 minut |  – | – |
+| Časové okno | 60 minut | 60 minut |  N/A | N/A |
 | Nadpis | Doba obydlí | Doba obydlí | Délka fronty | Délka fronty |
 | Podnadpis | Rezervace 1 | Rezervace 2 | Rezervace 1 | Rezervace 2 |
 

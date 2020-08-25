@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c3f964032d10988bf7ae615eb64d3b56b99a7747
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513111"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757298"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -65,7 +65,7 @@ Po odeslání žádosti o získání se vrátí odpověď 200 (úspěšné).
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Aktualizovat stav obnovitelného odstranění pomocí REST API
 
-Chcete-li aktualizovat stav obnovitelného odstranění trezoru služby Recovery Services pomocí REST API, použijte následující operaci *patch*
+Pokud chcete aktualizovat stav obnovitelného odstranění trezoru Recovery Services pomocí REST API, použijte následující operaci *patch* .
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
@@ -83,7 +83,7 @@ K vytvoření textu žádosti se použijí tyto společné definice.
 
 Další podrobnosti najdete [v dokumentaci k REST API](/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
@@ -103,7 +103,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 }
 ```
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses-for-the-patch-operation"></a>Odpovědi na operaci opravy
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 
@@ -111,7 +111,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
-##### <a name="example-response"></a>Příklad odpovědi
+##### <a name="example-response-for-the-patch-operation"></a>Příklad odpovědi na operaci opravy
 
 Po odeslání žádosti o opravu se vrátí odpověď 200 (úspěšné).
 

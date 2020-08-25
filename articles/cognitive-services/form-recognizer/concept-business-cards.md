@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 8519daffd8ee0ad6c12be2f40fd8030caaaf34c8
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724973"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749285"
 ---
 # <a name="business-card-concepts"></a>Koncepce obchodních karet
 
@@ -69,6 +69,8 @@ Druhým krokem je zavolat operaci [získat výsledky analýzy obchodních karet]
 | |  | úspěch: operace analýzy byla úspěšná. |
 
 Když pole **Status (stav** ) má hodnotu **úspěch** , odpověď JSON bude obsahovat informace o porozumění a výsledcích rozpoznávání textu na vizitce. Výsledek porozumění vizitce se organizuje jako slovník hodnot pojmenovaných polí, kde každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
+
+![Výsledky smample společnosti Contoso](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Ukázkový výstup JSON
 
@@ -374,7 +376,7 @@ Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "read
 }
 ```
 
-Postupujte podle pokynů v části rychlý Start pro extrakci [dat obchodních karet](./QuickStarts/python-business-cards.md) a implementujte extrakci dat vizitky pomocí Pythonu a REST API.
+Postupujte podle pokynů pro rychlý Start k [extrakci dat](./QuickStarts/python-business-cards.md) vizitky pomocí Pythonu a REST API k implementaci extrakce dat na vizitce.
 
 ## <a name="customer-scenarios"></a>Scénáře zákazníků  
 

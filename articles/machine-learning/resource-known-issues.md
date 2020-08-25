@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190509"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757281"
 ---
-# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
 Tento článek vám pomůže vyřešit známé problémy, se kterými se můžete setkat při použití Azure Machine Learning. 
 
@@ -121,6 +121,18 @@ V některých případech může být užitečné, pokud při dotazování na n�
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Instalace sady SDK Azure Machine Learning se nezdařila s výjimkou: ModuleNotFoundError: žádný modul s názvem "ruamel" nebo "Chyba při importu: není k dispozici modul s názvem ruamel. yaml"**
+   
+   K tomuto problému dochází s instalací sady Azure Machine Learning SDK pro Python na nejnovější verzi PIP (>20.1.1) v základním prostředí conda pro všechny vydané verze sady Azure Machine Learning SDK pro Python. Přečtěte si následující alternativní řešení:
+
+    * Neinstalujte sadu Python SDK do základního prostředí Conda, místo toho vytvořte prostředí conda a nainstalujte sadu SDK na nově vytvořené uživatelské prostředí. Nejnovější PIP by měl na tomto novém conda prostředí fungovat.
+
+    * Pro vytváření imagí v Docker, kde nemůžete opustit základní prostředí Conda, připnout prosím PIP<= 20.1.1 v souboru Docker.
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **Při instalaci balíčků došlo k chybě datacihly.**
 
     Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil` , můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
@@ -214,7 +226,7 @@ Omezení a známé problémy pro sledování posunu dat:
 * Monitory datové sady budou fungovat jenom u datových sad, které obsahují 50 nebo více řádků.
 * Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo číselné na základě podmínek v následující tabulce. Pokud tato funkce nesplňuje tyto podmínky – například sloupec typu řetězec s >100 jedinečnými hodnotami, funkce je vyřazena z našeho algoritmu pro posun dat, ale je stále profilovaná. 
 
-    | Typ funkce | Datový typ | Podmínka | Omezení | 
+    | Typ funkce | Datový typ | Stav | Omezení | 
     | ------------ | --------- | --------- | ----------- |
     | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
     | Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud >15% hodnot mají hodnotu null. | 

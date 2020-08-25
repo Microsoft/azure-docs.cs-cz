@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81733013"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
@@ -33,13 +33,13 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 1. Přihlaste se ke svému vývojářskému VIRTUÁLNÍmu počítači.
 
-2. Vytvořte novou složku s cestou a názvem `c:\edgeCertificates`.
+2. Vytvořte novou složku s cestou a názvem `c:\edgeCertificates` .
 
 3. Pokud ještě není spuštěný, spusťte **Docker for Windows** v nabídce Start systému Windows.
 
-4. Otevřete Visual Studio Code.
+4. Otevřete nástroj Visual Studio Code.
 
-5. Vyberte **soubor** > **Otevřít složku...** a zvolte **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates**.
+5. Vyberte **soubor**  >  **Otevřít složku...** a zvolte **C: \\ source \\ IoTEdgeAndMlSample \\ CreateCertificates**.
 
 6. V podokně Průzkumník klikněte pravým tlačítkem na **souboru Dockerfile** a vyberte **sestavit image**.
 
@@ -58,17 +58,17 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker vás vyzve pro přístup k jednotce **c:\\ ** . Vyberte možnost **sdílet**.
+10. Docker vás vyzve pro přístup k jednotce **c: \\ ** . Vyberte možnost **sdílet**.
 
 11. Po zobrazení výzvy zadejte své přihlašovací údaje.
 
-12. Po dokončení kontejneru vyhledejte v **c:\\edgeCertificates**následující soubory:
+12. Po dokončení kontejneru vyhledejte v **c: \\ edgeCertificates**následující soubory:
 
-    * c:\\edgeCertificates\\certifikáty\\Azure-IoT-test-Only. root. ca. CERT. pem
-    * c:\\edgeCertificates\\certifikáty\\New-Edge-Device-full-Chain. CERT. pem
-    * c:\\edgeCertificates\\certifikáty\\New-Edge-Device. CERT. pem
-    * c:\\edgeCertificates\\certifikáty\\New-Edge-Device. CERT. pfx
-    * c:\\edgeCertificates\\Private\\New-Edge-Device. Key. pem
+    * c: \\ edgeCertificates \\ certifikáty \\ Azure-IoT-test-Only. root. ca. CERT. pem
+    * c: \\ edgeCertificates \\ certifikáty \\ New-Edge-Device-full-Chain. CERT. pem
+    * c: \\ edgeCertificates \\ certifikáty \\ New-Edge-Device. CERT. pem
+    * c: \\ edgeCertificates \\ certifikáty \\ New-Edge-Device. CERT. pfx
+    * c: \\ edgeCertificates \\ Private \\ New-Edge-Device. Key. pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrání certifikátů do Azure Key Vault
 
@@ -80,7 +80,7 @@ K bezpečnému uložení certifikátů a jejich zpřístupnění z více zaříz
 
     ![Kopírovat název trezoru klíčů](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
-3. Na svém vývojovém počítači nahrajte certifikáty do Key Vault. Nahraďte ** \<\> SubscriptionId** a ** \<trezoru\> ** klíčů údaji o prostředku.
+3. Na svém vývojovém počítači nahrajte certifikáty do Key Vault. Nahraďte **\<subscriptionId\>** a **\<keyvaultname\>** informacemi o prostředcích.
 
     ```powershell
     c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
@@ -112,13 +112,13 @@ V tomto kurzu vytvoříme novou identitu zařízení pomocí Visual Studio Code.
 
 ## <a name="deploy-azure-virtual-machine"></a>Nasazení virtuálního počítače Azure
 
-K vytvoření našeho IoT Edge zařízení pro tento kurz používáme image [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) z Azure Marketplace. Azure IoT Edge image Ubuntu nainstaluje nejnovější modul runtime Azure IoT Edge a jeho závislosti při spuštění. Virtuální počítač nasadíme pomocí skriptu PowerShellu `Create-EdgeVM.ps1`. Šablona Správce prostředků, `IoTEdgeVMTemplate.json`; a skript prostředí, `install packages.sh`.
+K vytvoření našeho IoT Edge zařízení pro tento kurz používáme image [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) z Azure Marketplace. Azure IoT Edge image Ubuntu nainstaluje nejnovější modul runtime Azure IoT Edge a jeho závislosti při spuštění. Virtuální počítač nasadíme pomocí skriptu PowerShellu, a `Create-EdgeVM.ps1` Správce prostředků šablony, `IoTEdgeVMTemplate.json` a skriptu prostředí `install packages.sh` .
 
 ### <a name="enable-programmatic-deployment"></a>Povolit programové nasazení
 
 Pro použití image z webu Marketplace ve skriptovém nasazení musíme pro Image povolit programové nasazení.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 1. Vyberte **Všechny služby**.
 
@@ -187,7 +187,7 @@ V následujících částech se konfiguruje virtuální počítač Azure, který
 
 3. Po zobrazení výzvy zadejte heslo.
 
-4. Ubuntu zobrazí uvítací zprávu a pak by se měla zobrazit výzva jako `<username>@<machinename>:~$`.
+4. Ubuntu zobrazí uvítací zprávu a pak by se měla zobrazit výzva jako `<username>@<machinename>:~$` .
 
 ## <a name="download-key-vault-certificates"></a>Stažení Key Vault certifikátů
 
@@ -254,7 +254,7 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
     sudo nano /etc/iotedge/config.yaml
     ```
 
-2. Aktualizujte část certifikáty souboru config. yaml tak, že odeberete `#` úvodní cestu a nastavíte cestu tak, aby soubor vypadal jako v následujícím příkladu:
+2. Aktualizujte část certifikáty souboru config. yaml tak, že odeberete úvodní `#` cestu a nastavíte cestu tak, aby soubor vypadal jako v následujícím příkladu:
 
     ```yaml
     certificates:
@@ -275,7 +275,7 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
     hostname: '<machinename>.<region>.cloudapp.azure.com'
     ```
 
-5. Uložte a zavřete soubor (`Ctrl + X`, `Y`, `Enter`).
+5. Uložte a zavřete soubor ( `Ctrl + X` , `Y` , `Enter` ).
 
 6. Restartujte démon iotedge.
 
@@ -289,7 +289,7 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
     systemctl status iotedge
     ```
 
-8. Pokud se zobrazí chyby (barevný text s předponou "\[Error\]") v protokolech démona stavu prozkoumávat stav, kde najdete podrobné informace o chybě.
+8. Pokud se zobrazí chyby (barevný text s předponou " \[ Error \] ") v protokolech démona stavu prozkoumávat stav, kde najdete podrobné informace o chybě.
 
     ```bash
     journalctl -u iotedge --no-pager --no-full

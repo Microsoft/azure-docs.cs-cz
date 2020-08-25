@@ -2,18 +2,18 @@
 title: Kurz pro objednání Azure Data Box | Microsoft Docs
 description: V tomto kurzu se dozvíte o Azure Data Box hybridní řešení, které umožňuje importovat místní data do Azure a jak objednat Azure Data Box.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.author: v-grpr
-ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: twooley
+ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926361"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783565"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -322,7 +322,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
    |výstup – o| Nastaví výstupní formát.  Povolené hodnoty: JSON, jsonc, None, Table, TSV, YAML, yamlc. Výchozí hodnota je JSON. | --Output "JSON" |
-   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
+   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
 2. V příkazovém řádku příkazu Choice nebo terminálu pomocí [úlohy AZ data box Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
@@ -509,7 +509,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
    |výstup – o| Nastaví výstupní formát.  Povolené hodnoty: JSON, jsonc, None, Table, TSV, YAML, yamlc. Výchozí hodnota je JSON. | --Output "JSON" |
-   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
+   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
    Tady je příklad příkazu s výstupním formátem nastaveným na tabulka:
@@ -550,7 +550,7 @@ V následující tabulce jsou uvedeny informace o parametrech pro `az databox jo
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
    |výstup – o| Nastaví výstupní formát.  Povolené hodnoty: JSON, jsonc, None, Table, TSV, YAML, yamlc. Výchozí hodnota je JSON. | --Output "JSON" |
-   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
+   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
    Tady je příklad příkazu s výstupním formátem nastaveným na tabulka:
@@ -580,7 +580,7 @@ V následující tabulce jsou uvedeny informace o parametrech pro `az databox jo
 Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte rutinu [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
 > [!NOTE]
-> `Get-AzDataBoxJob`slouží k zobrazení jedné i vícenásobné objednávky. Rozdílem je, že zadáváte název objednávky pro jednotlivé objednávky.
+> `Get-AzDataBoxJob` slouží k zobrazení jedné i vícenásobné objednávky. Rozdílem je, že zadáváte název objednávky pro jednotlivé objednávky.
 
    ```azurepowershell
     Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
@@ -671,7 +671,7 @@ Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job 
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
    |výstup – o| Nastaví výstupní formát.  Povolené hodnoty: JSON, jsonc, None, Table, TSV, YAML, yamlc. Výchozí hodnota je JSON. | --Output "JSON" |
-   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
+   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
    Tady je příklad příkazu s výstupem:
@@ -708,7 +708,7 @@ Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuště
    |Nápověda| Zobrazí informace o nápovědě pro tento příkaz. | --Help-h |
    |pouze – zobrazit – chyby| Zobrazí pouze chyby, potlačení upozornění. | --pouze-show-Errors |
    |výstup – o| Nastaví výstupní formát.  Povolené hodnoty: JSON, jsonc, None, Table, TSV, YAML, yamlc. Výchozí hodnota je JSON. | --Output "JSON" |
-   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz<string>|
+   |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
 Tady je příklad příkazu s výstupem:

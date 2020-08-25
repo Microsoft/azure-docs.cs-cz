@@ -3,20 +3,20 @@ title: Zálohování sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat Azure CLI k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 273c8fadc25ed60ba9fb57ec69bda0b59f155f87
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514437"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763214"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku
 
 Rozhraní příkazového řádku Azure (CLI) poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek podrobně popisuje, jak zálohovat sdílené složky Azure pomocí Azure CLI. K provedení těchto kroků můžete také využít [Azure PowerShell](./backup-azure-afs-automation.md) nebo [Azure Portal](backup-afs.md).
 
-Na konci tohoto kurzu se dozvíte, jak pomocí Azure CLI provádět následující operace:
+Na konci tohoto kurzu se naučíte, jak pomocí Azure CLI provádět následující operace:
 
-* Vytvoření trezoru služby Recovery Services
+* Vytvoření trezoru Služeb zotavení
 * Povolit zálohování sdílených složek Azure
 * Aktivace zálohování na vyžádání pro sdílené složky
 
@@ -24,11 +24,11 @@ Na konci tohoto kurzu se dozvíte, jak pomocí Azure CLI provádět následujíc
 
 Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Chcete-li zjistit verzi rozhraní příkazového řádku, `run az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Trezor služby Recovery Services je entita, která poskytuje konsolidovanou možnost zobrazení a správy napříč všemi zálohovanými položkami. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
+Recovery Services trezor je entita, která poskytuje konsolidovanou možnost zobrazení a správy napříč všemi zálohovanými položkami. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 
-Pomocí těchto kroků vytvořte Trezor služby Recovery Services:
+Pomocí těchto kroků vytvořte Recovery Services trezor:
 
 1. Trezor se umístí do skupiny prostředků. Pokud nemáte existující skupinu prostředků, vytvořte ji pomocí [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) . V tomto kurzu vytvoříme novou skupinu prostředků *azurefiles* v oblasti východní USA.
 
@@ -44,7 +44,7 @@ Pomocí těchto kroků vytvořte Trezor služby Recovery Services:
 
 1. Pomocí rutiny [AZ Backup trezor Create](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) vytvořte Trezor. Zadejte stejné umístění pro trezor, které bylo použito pro skupinu prostředků.
 
-    Následující příklad vytvoří trezor služby Recovery Services s názvem *azurefilesvault* v oblasti východní USA.
+    Následující příklad vytvoří Recovery Services trezor s názvem *azurefilesvault* v oblasti východní USA.
 
     ```azurecli-interactive
     az backup vault create --resource-group azurefiles --name azurefilesvault --location eastus --output table

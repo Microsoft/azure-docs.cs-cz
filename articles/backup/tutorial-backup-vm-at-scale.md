@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263414"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757502"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -24,7 +24,7 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -136,7 +136,7 @@ Spuštění úlohy zálohování na vyžádání:
 
 1. V místní nabídce vyberte **Zálohovat nyní**.
 
-    ![Místní nabídka](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Místní nabídka – vybrat zálohování hned](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Otevře se nabídka Zálohovat nyní.
 
@@ -166,7 +166,7 @@ Pokud máte v úmyslu pokračovat v práci s dalšími kurzy, neprovádějte či
 
 1. V nabídce **zálohované položky** vyberte tři tečky a otevřete tak kontextovou nabídku.
 
-    ![Místní nabídka](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![V nabídce zálohované položky otevřete místní nabídku.](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. V místní nabídce vyberte **Zastavit zálohování** a otevřete nabídku zastavit zálohování.
 

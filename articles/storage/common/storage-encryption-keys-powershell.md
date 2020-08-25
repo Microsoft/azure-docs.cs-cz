@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a3fdde755a5e024efead5c8861a1d5cd769b6d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c928056ec0e7b101d991c8d8c8db3bd659251ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036824"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799124"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault s využitím PowerShellu
 
@@ -81,13 +81,16 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. V tomto kroku nakonfigurujte Azure Storage účet tak, aby používal klíče spravované zákazníkem s Azure Key Vault, a pak zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Když konfigurujete šifrování s použitím klíčů spravovaných zákazníkem, můžete při změně verze v přidruženém trezoru klíčů automaticky otočit klíč používaný k šifrování. Alternativně můžete explicitně zadat verzi klíče, která se má použít pro šifrování, dokud se verze klíče ručně neaktualizuje.
+Když konfigurujete šifrování s použitím klíčů spravovaných zákazníkem, můžete automaticky aktualizovat klíč používaný k šifrování při změně verze klíče v přidruženém trezoru klíčů. Alternativně můžete explicitně zadat verzi klíče, která se má použít pro šifrování, dokud se verze klíče ručně neaktualizuje.
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Konfigurace šifrování pro automatické otočení klíčů spravovaných zákazníkem
+> [!NOTE]
+> Pokud chcete klíč otočit, vytvořte v Azure Key Vault novou verzi klíče. Azure Storage nezpracovává rotaci klíče v Azure Key Vault, takže budete muset klíč otočit ručně nebo vytvořit funkci, která ho otočí podle plánu.
 
-Pokud chcete nakonfigurovat šifrování pro automatické rotaci klíčů spravovaných zákazníkem, nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) , verze 2.0.0 nebo novější.
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>Konfigurace šifrování pro automatickou aktualizaci verze klíče
 
-Pokud chcete automaticky otáčet klíče spravované zákazníkem, vynechejte verzi klíče při konfiguraci klíčů spravovaných zákazníkem pro účet úložiště. Voláním [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizujte nastavení šifrování účtu úložiště, jak je znázorněno v následujícím příkladu, a zahrňte možnost **-KeyvaultEncryption** pro povolení klíčů spravovaných zákazníkem pro účet úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Pokud chcete nakonfigurovat šifrování pomocí klíčů spravovaných zákazníkem, aby se automaticky aktualizovala verze klíče, nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) , verze 2.0.0 nebo novější.
+
+Pokud chcete automatickou aktualizaci verze klíče pro klíč spravovaný zákazníkem, vynechejte verzi klíče při konfiguraci šifrování s použitím klíčů spravovaných zákazníkem pro účet úložiště. Voláním [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizujte nastavení šifrování účtu úložiště, jak je znázorněno v následujícím příkladu, a zahrňte možnost **-KeyvaultEncryption** pro povolení klíčů spravovaných zákazníkem pro účet úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -97,7 +100,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Konfigurace šifrování pro ruční otočení klíčových verzí
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>Konfigurace šifrování pro ruční aktualizace verzí klíčů
 
 Pokud chcete explicitně zadat verzi klíče, která se má použít pro šifrování, poskytněte klíčovou verzi při konfiguraci šifrování pomocí klíčů spravovaných zákazníkem pro účet úložiště. Voláním [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizujte nastavení šifrování účtu úložiště, jak je znázorněno v následujícím příkladu, a zahrňte možnost **-KeyvaultEncryption** pro povolení klíčů spravovaných zákazníkem pro účet úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
@@ -110,7 +113,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-Při ručním otočení této verze klíče budete muset aktualizovat nastavení šifrování účtu úložiště, aby používala novou verzi. Nejdřív zavolejte [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) , abyste získali nejnovější verzi klíče. Pak zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
+Když ručně aktualizujete verzi klíče, budete muset aktualizovat nastavení šifrování účtu úložiště tak, aby používalo novou verzi. Nejdřív zavolejte [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) , abyste získali nejnovější verzi klíče. Pak zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
 
 ## <a name="use-a-different-key"></a>Použít jiný klíč
 

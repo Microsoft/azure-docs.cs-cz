@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681813"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
@@ -21,7 +21,7 @@ Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se sy
 
 Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do clusteru Kafka. Rozhraní Kafka Consumer API umožňuje aplikacím číst datové proudy z clusteru.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Požadavky
@@ -31,7 +31,7 @@ V tomto kurzu:
 
 Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer API](https://kafka.apache.org/documentation/#producerapi) a [Consumer API](https://kafka.apache.org/documentation/#consumerapi) na webu Apache.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
@@ -135,7 +135,7 @@ Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z `Prebui
     mvn clean package
     ```
 
-    Tento příkaz vytvoří adresář s názvem `target`, který bude obsahovat soubor s názvem `kafka-producer-consumer-1.0-SNAPSHOT.jar`. Pro clustery ESP bude soubor`kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
+    Tento příkaz vytvoří adresář s názvem `target`, který bude obsahovat soubor s názvem `kafka-producer-consumer-1.0-SNAPSHOT.jar`. Pro clustery ESP bude soubor `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadejte následující příkaz, který zkopíruje `kafka-producer-consumer-1.0-SNAPSHOT.jar` soubor do clusteru HDInsight. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
@@ -143,7 +143,7 @@ Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z `Prebui
     scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a name="run-the-example"></a><a id="run"></a>Spustit příklad
+## <a name="run-the-example"></a><a id="run"></a> Spustit příklad
 
 1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadáním následujícího příkazu otevřete připojení SSH ke clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
 

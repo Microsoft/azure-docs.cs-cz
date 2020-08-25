@@ -1,18 +1,18 @@
 ---
 title: Partnerských místních prostředí do privátního cloudu
-description: V tomto kurzu Azure VMware Solution (AVS) vytvoříte ExpressRoute Global Reach partnerský vztah k privátnímu cloudu v rámci služby AVS.
+description: V tomto kurzu řešení Azure VMware vytvoříte partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101560"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750446"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
-ExpressRoute Global Reach připojuje vaše místní prostředí k vašim privátním cloudům. Připojení ExpressRoute Global Reach je navázáno mezi ExpressRoute okruh privátního cloudu a stávající připojení ExpressRoute k místním prostředím.  K dispozici jsou pokyny pro konfiguraci Global Reach ExpressRoute pomocí rozhraní příkazového řádku Azure CLI a prostředí PowerShell a vylepšili jsme [příkazy rozhraní příkazového řádku](../expressroute/expressroute-howto-set-global-reach-cli.md) s konkrétními podrobnostmi a příklady, které vám pomůžou nakonfigurovat Global REACH ExpressRoute partnerský vztah mezi místními prostředími do privátního cloudu řešení Azure VMware (AVS).   
+ExpressRoute Global Reach připojuje vaše místní prostředí k vašim privátním cloudům. Připojení ExpressRoute Global Reach je navázáno mezi ExpressRoute okruh privátního cloudu a stávající připojení ExpressRoute k místním prostředím.  K dispozici jsou pokyny pro konfiguraci Global Reach ExpressRoute pomocí Azure CLI a PowerShellu a vylepšili jsme [příkazy rozhraní příkazového řádku](../expressroute/expressroute-howto-set-global-reach-cli.md) s konkrétními podrobnostmi a příklady, které vám pomůžou nakonfigurovat Global REACH ExpressRoute partnerský vztah mezi místními prostředími do privátního cloudu řešení Azure VMware.   
 
 Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute Global Reach, přečtěte si dokumentaci, jak [Povolit připojení v různých předplatných Azure](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  Okruh ExpressRoute, který použijete při [konfiguraci cloudových sítí Azure-to-Private](tutorial-configure-networking.md) , vyžaduje vytvoření a používání autorizačních klíčů při zapojení do bran ExpressRoute nebo k jiným okruhům ExpressRoute pomocí Global REACH. Už budete používat jeden autorizační klíč ze okruhu ExpressRoute a vytvoříte druhý pro partnerský vztah s vaším místním okruhem ExpressRoute.
 
@@ -33,19 +33,19 @@ Předpoklady pro tento kurz:
 - Samostatný fungující okruh ExpressRoute, který slouží k připojení místních prostředí k Azure – jedná se o _okruh 1_ z perspektivy partnerských postupů.
 - A/29 překrývající se [blok síťových adres](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) pro ExpressRoute Global REACH partnerský vztah.
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>Vytvoření autorizačního klíče ExpressRoute v privátním cloudu služby AVS
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>Vytvoření autorizačního klíče ExpressRoute v privátním cloudu řešení Azure VMware
 
 1. V **přehledu**privátní cloud vyberte v části spravovat možnost **připojení > ExpressRoute > vyžádejte si autorizační klíč**.
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Výběr možnosti připojení > ExpressRoute > vyžádání autorizačního klíče pro spuštění nové žádosti":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
 
 2. Zadejte název autorizačního klíče a vyberte **vytvořit**. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Kliknutím na vytvořit vytvořte nový autorizační klíč.":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Kliknutím na vytvořit vytvořte nový autorizační klíč. ":::
 
    Po vytvoření se nový klíč zobrazí v seznamu autorizačních klíčů pro privátní cloud. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Potvrďte, že se nový autorizační klíč zobrazuje v seznamu klíčů pro privátní cloud.":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Potvrďte, že se nový autorizační klíč zobrazuje v seznamu klíčů pro privátní cloud. ":::
 
 3. Poznamenejte si autorizační klíč a ID ExpressRoute spolu s blokem adresy/29. Použijete je v dalším kroku k dokončení partnerského vztahu. 
 

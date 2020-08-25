@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "83006488"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>Vyhledání prostorového kotvícího kotvy
@@ -18,4 +18,4 @@ Vyhledávání dříve uloženého cloudového kotvy je jedním z hlavních dův
 
 Pokud vyhledáváte cloudové kotvy podle identifikátoru, budete chtít uložit identifikátor prostorové kotvy cloudu do back-endové služby vaší aplikace a zpřístupnit ho pro všechna zařízení, která se k němu můžou správně ověřit. Příklad najdete v tématu [kurz: sdílení prostorových ukotvení napříč zařízeními](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
 
-Vytvořte instanci `AnchorLocateCriteria` objektu, nastavte identifikátory, které hledáte, a volejte `CreateWatcher` metodu v relaci tím, že poskytnete. `AnchorLocateCriteria`
+Vytvořte instanci `AnchorLocateCriteria` objektu, nastavte identifikátory, které hledáte, a volejte `CreateWatcher` metodu v relaci tím, že poskytnete `AnchorLocateCriteria` .

@@ -3,12 +3,12 @@ title: Offline zálohování s Azure Data Box pro DPM a MABS
 description: Azure Data Box můžete použít k počátečnímu počátečnímu zálohování dat v režimu offline z aplikace DPM a MABS.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186947"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762449"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
 
@@ -131,7 +131,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
     ![Zvolit úvodní online replikaci](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > Možnost výběru **přenosu pomocí disků vlastněných společností Microsoft** není pro MABS V3 k dispozici, protože tato funkce je ve verzi Preview. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Pokud chcete tuto funkci použít pro MABS v3, obraťte se na nás.
+    > Možnost výběru **přenosu pomocí disků vlastněných společností Microsoft** není pro MABS V3 k dispozici, protože tato funkce je ve verzi Preview. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Pokud chcete používat tuto funkci pro MABS v3, dostanete se na nás.
 
 12. Přihlaste se k Azure po zobrazení výzvy pomocí přihlašovacích údajů uživatele, které mají oprávnění vlastníka v předplatném Azure. Po úspěšném přihlášení se zobrazí následující obrazovka:
 
@@ -143,10 +143,10 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
      > Při prvním přihlášení trvá déle než obvykle. Modul Azure PowerShell se nainstaluje na pozadí a taky je zaregistrovaná aplikace Azure AD.
      >
      >  - Jsou nainstalovány následující moduly prostředí PowerShell:<br>
-          – AzureRM. Profile *5.8.3*<br>
-          – AzureRM. Resources *6.7.3*<br>
-          – AzureRM. Storage *5.2.0*<br>
-          – Azure. Storage *4.6.1*<br>
+          – AzureRM. Profile     *5.8.3*<br>
+          – AzureRM. Resources   *6.7.3*<br>
+          – AzureRM. Storage     *5.2.0*<br>
+          – Azure. Storage       *4.6.1*<br>
      >  - Aplikace Azure AD je registrovaná jako *AzureOfflineBackup_ \<object GUID of the user> *.
 
 13. Vyberte správné pořadí datových polí, pro které jste nebaleni, připojili a odemkli Data Box disk. Vyberte **Další**.
@@ -215,7 +215,7 @@ V době konfigurace offline zálohování z důvodu vady známého kódu v rutin
 
 Chcete-li zajistit, aby chyba byla způsobena [problémem](#issue) výše, proveďte jeden z následujících kroků:
 
-#### <a name="step-1"></a>Step 1
+#### <a name="step-1"></a>Krok 1
 
 Zkontrolujte, jestli se v konzole DPM/MABS v době konfigurace offline zálohování zobrazuje následující chybová zpráva:
 
@@ -243,7 +243,7 @@ Chcete-li vyřešit tento problém, proveďte následující kroky a opakujte ko
 Ze serveru DPM nebo MABS, který se pokoušíte nakonfigurovat offline zálohování, proveďte následující akce:
 
 1. Otevřete kartu **Správa aplikace certifikát počítače**  >  **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
-2. Vyberte výše uvedený certifikát, klikněte pravým tlačítkem na **všechny úlohy** a **exportujte** bez privátního klíče ve formátu. cer.
+2. Vyberte certifikát výše, klikněte pravým tlačítkem na **všechny úlohy** a **exportujte** bez privátního klíče ve formátu. cer.
 3. Přejděte na aplikaci Azure offline Backup uvedenou v **bodě 2**. V části **Nastavení**  >  **klíče**  >  **nahrávání veřejného klíče** Nahrajte certifikát exportovaný v kroku výše.
 
    ![Odeslat veřejné klíče](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
@@ -258,9 +258,9 @@ Ze serveru DPM nebo MABS, který se pokoušíte nakonfigurovat offline zálohov�
     > - Přejděte do cesty k registru `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` s názvem *CurrentUserId*.
 
 6. Klikněte pravým tlačítkem na řetězec přidaný v kroku výše a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v **bodě 2** , a vyberte **OK**.
-7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát a pak vyberte **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk** a zkopírujte hodnotu.
+7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát a pak vyberte **Podrobnosti**  a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk** a zkopírujte hodnotu.
 
-   ![Certifikát](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![Hodnota kryptografického otisku](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
 ## <a name="next-steps"></a>Další kroky
 

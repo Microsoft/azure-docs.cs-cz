@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: aa35f93e23a369381341aade32d877477e40e8a8
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589380"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757400"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -16,7 +16,7 @@ Jedním z nejdůležitějších kroků, které můžete provést při ochraně d
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Správa a řízení identit a přístupu uživatelů
 
-Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [řízení přístupu na základě role Azure (RBAC)](./backup-rbac-rs-vault.md). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
+Účty úložiště, které používá služba Recovery Services trezory, jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [řízení přístupu na základě role Azure (RBAC)](./backup-rbac-rs-vault.md). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
 
 Azure Backup poskytuje tři [předdefinované role](../role-based-access-control/built-in-roles.md) pro řízení operací správy zálohování:
 
@@ -64,7 +64,7 @@ Azure Backup poskytuje [integrované možnosti monitorování a upozorňování]
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy
 
-Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Mezi tyto funkce patří:
+Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure. MARS nyní poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Patří k nim:
 
 * Další úroveň ověřování se přidá vždy, když se provede kritická operace, jako je změna hesla. Ověření je zajištěno, že tyto operace mohou provádět pouze uživatelé, kteří mají platné přihlašovací údaje Azure. [Přečtěte si další informace o funkcích, které zabraňují útokům](./backup-azure-security-feature.md#prevent-attacks).
 

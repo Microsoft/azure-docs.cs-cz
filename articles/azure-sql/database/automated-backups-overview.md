@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921941"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756720"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -36,14 +36,12 @@ Při obnovení databáze služba Určuje, které zálohy úplného, rozdílovéh
 
 ### <a name="backup-storage-redundancy"></a>Redundance úložiště zálohování
 
-> [!IMPORTANT]
-> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
+Ve výchozím nastavení SQL Database a SQL Managed instance ukládají data v geograficky redundantních objektech [BLOB úložiště](../../storage/common/storage-redundancy.md) (RA-GRS), které se replikují do [spárované oblasti](../../best-practices-availability-paired-regions.md). To pomáhá chránit před výpadky, které mají vliv na úložiště zálohování v primární oblasti a umožňují obnovit server do jiné oblasti v případě havárie. 
 
-Možnost konfigurovat redundanci úložiště zálohy poskytuje flexibilitu pro výběr místně redundantních (LRS), ZRS () nebo geograficky redundantních [objektů BLOB úložiště](../../storage/common/storage-redundancy.md)(RA-GRS). Mechanismy redundance úložiště ukládají více kopií vašich dat, aby byly chráněné před plánovanými i neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy. Tato funkce je v tuto chvíli dostupná jenom pro spravovanou instanci SQL.
+Služba SQL Managed instance zavádí možnost změnit redundanci úložiště na místně redundantní (LRS) nebo objekty blob redundantní pro zóny (ZRS) úložiště, aby se zajistilo, že vaše data zůstanou ve stejné oblasti, ve které je nasazená vaše spravovaná instance. Mechanismy redundance úložiště ukládají více kopií vašich dat, aby byly chráněné před plánovanými i neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy. 
 
-Objekty blob úložiště RA-GRS se replikují do [spárované oblasti](../../best-practices-availability-paired-regions.md) a chrání proti výpadkům, které mají vliv na úložiště zálohování v primární oblasti a umožňují obnovit server do jiné oblasti v případě havárie. 
+Možnost konfigurace redundance záložního úložiště poskytuje flexibilitu pro výběr mezi LRS, ZRS a GRS BLOB úložiště pro spravovanou instanci SQL. Konfigurace redundance úložiště zálohování během procesu vytváření spravované instance, když je prostředek zřízený, už není možné změnit redundanci úložiště. (Zóna – redundantní úložiště (ZRS) je v tuto chvíli dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
 
-V opačném případě objekty blob úložiště LRS a ZRS zajistí, že vaše data zůstanou ve stejné oblasti, ve které je nasazená vaše SQL Database nebo spravovaná instance SQL. Zóna – redundantní úložiště (ZRS) je v tuto chvíli dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
 
 > [!IMPORTANT]
 > Ve spravované instanci SQL se nakonfigurovaná redundance zálohy používá pro nastavení krátkodobého uchovávání záloh, které se používá pro obnovení v časovém intervalu (PITR) a dlouhodobé zálohy uchovávání informací používané pro dlouhodobé zálohování (LTR).
@@ -194,7 +192,7 @@ Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **
 
 ## <a name="encrypted-backups"></a>Šifrovaná zálohování
 
-Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Všechny nové databáze v Azure SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu [transparentní šifrování dat s SQL Database & spravované instance SQL](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Všechny nové databáze v Azure SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu  [transparentní šifrování dat s SQL Database & spravované instance SQL](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Integrita zálohy
 

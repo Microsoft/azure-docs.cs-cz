@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86118915"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
@@ -31,9 +31,9 @@ Tento kurz se zabývá následujícími úkony:
 > * Aktualizujte šablonu a znovu nasaďte
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -83,8 +83,8 @@ Složka **CreateWebApp** je složka, ve které je šablona uložena. Příkaz **
 
 Místo vytváření šablon můžete stáhnout šablony a uložit je do složky **CreateWebApp** .
 
-* Hlavní Šablona:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Odkazovaná Šablona:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Hlavní Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Odkazovaná Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Název složky i názvy souborů se používají tak, jak jsou v kanálu.  Pokud tyto názvy změníte, je nutné aktualizovat názvy používané v kanálu.
 
@@ -121,7 +121,7 @@ Aby bylo možné přejít k dalšímu postupu, je nutné, aby byla DevOps organi
     ![Azure Resource Manager Azure DevOps Azure Pipelines vytvoření projektu Azure DevOps](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
 1. Vyberte **Nový projekt**. Pokud nemáte žádné projekty, otevře se stránka vytvořit projekt automaticky.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     * **Název projektu**: zadejte název projektu. Můžete použít název projektu, který jste vybrali na začátku kurzu.
     * **Správa verzí**: vyberte **Git**. Pro zobrazení **správy verzí**možná budete muset rozbalit možnost **Upřesnit** .
@@ -135,10 +135,10 @@ Vytvořte připojení služby, které se používá k nasazení projektů do Azu
 1. V části **kanály**vyberte **připojení služby** .
 1. Vyberte možnost **nové připojení služby**, vyberte možnost **Azure Resource Manager**a potom vyberte možnost **Další**.
 1. Vyberte **instanční objekt**a pak vyberte **Další**.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     * **Úroveň oboru**: vyberte **předplatné**.
-    * **Předplatné**: vyberte své předplatné.
+    * **Předplatné**: Vyberte předplatné.
     * **Skupina prostředků**: ponechte pole prázdné.
     * **Název připojení**: zadejte název připojení. Například **AzureRmPipeline-připojeno**. Poznamenejte si tento název. při vytváření kanálu budete potřebovat název.
     * **Udělte přístupová oprávnění všem kanálům**. Vyberte
@@ -165,7 +165,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 1. Přesuňte kurzor na řádek za **kroků:**.
 1. Vyberte **Zobrazit pomocníka** na pravé straně obrazovky a otevřete podokno **úlohy** .
 1. Vyberte **nasazení šablony ARM**.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     * **deploymentScope**: vyberte **skupinu prostředků**... Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
     * **Azure Resource Manager připojení**: vyberte název připojení služby, který jste vytvořili dříve.
@@ -182,7 +182,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
     ![Krok Azure Resource Manager Azure DevOps Azure Pipelines](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
     Další informace o úloze najdete v tématu [Úloha nasazení skupiny prostředků Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)a [úloha nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) .
 
@@ -198,7 +198,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **Vlastnosti**. Všimněte si, že **replikace** je **místně redundantní úložiště (LRS)**.

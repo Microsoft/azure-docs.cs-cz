@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192714"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795360"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Co je samoobslužná registrace do služby Azure Active Directory?
 
@@ -64,7 +64,7 @@ Pokud jsou předchozí podmínky splněné, vytvoří se v domovském adresáři
 Další informace o službě Flow a PowerApps zkušebního přihlášení najdete v následujících článcích:
 
 * [Jak můžu stávajícím uživatelům zabránit v tom, aby začali používat Power BI?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Otázky a odpovědi týkající se Flow ve vaší organizaci](https://docs.microsoft.com/flow/organization-q-and-a)
+* [Otázky a odpovědi týkající se Flow ve vaší organizaci](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Jak fungují společné ovládací prvky?
 Tyto dva parametry lze použít společně k definování přesnější kontroly nad samoobslužnou registrací. Například následující příkaz umožní uživatelům provádět samoobslužné registrace, ale pouze v případě, že uživatelé již mají účet ve službě Azure AD (jinými slovy, uživatelé, kteří by potřebovali vytvořit účet ověřený e-mailem, nemůže provést samoobslužné přihlášení):

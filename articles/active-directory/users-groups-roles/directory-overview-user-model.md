@@ -14,16 +14,16 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a752eb8f38c5a2ccc88d7ceed3d3b342d20d3f51
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223818"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795312"
 ---
 # <a name="what-is-enterprise-user-management"></a>Co je Správa uživatelů v podniku?
 
-Tento článek představuje správce Azure Active Directory ve vztahu k hlavním úkolům [správy identit](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) pro uživatele z hlediska jejich skupin, licencí, nasazených podnikových aplikací a rolí správců. Když vaše organizace roste, můžete skupiny Azure Active Directory a role správců používat k následujícímu:
+Tento článek představuje správce Azure Active Directory ve vztahu k hlavním úkolům [správy identit](../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) pro uživatele z hlediska jejich skupin, licencí, nasazených podnikových aplikací a rolí správců. Když vaše organizace roste, můžete skupiny Azure Active Directory a role správců používat k následujícímu:
 
 * přiřazení licencí ke skupinám místo k jednotlivcům,
 * delegování oprávnění pro distribuci práce při správě Azure Active Directory na méně privilegované role,
@@ -37,7 +37,7 @@ Pokud chcete zvýšit flexibilitu a omezit práci spojenou se správou členstv�
 
 ## <a name="assign-licenses-to-groups"></a>Přiřazení licencí ke skupinám
 
-Přiřazování a odebírání licencí jednotlivým uživatelům může být náročné na čas i na pozornost. Pokud místo toho [přiřadíte licence ke skupinám](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), můžete si správu licencí ve velkém měřítku značně zjednodušit.
+Přiřazování a odebírání licencí jednotlivým uživatelům může být náročné na čas i na pozornost. Pokud místo toho [přiřadíte licence ke skupinám](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), můžete si správu licencí ve velkém měřítku značně zjednodušit.
 
 Když se uživatelé v Azure Active Directory připojí k licencované skupině, budou jim automaticky přiřazeny příslušné licence. Když uživatelé skupinu opustí, Azure Active Directory jim přiřazené licence odebere. Bez skupin Azure Active Directory budete muset napsat powershellový skript nebo použít rozhraní Graph API, abyste mohli hromadně přidat nebo odebrat uživatelské licence uživatelům, které do organizace přicházejí, nebo z ní odcházejí.
 
@@ -60,7 +60,7 @@ Nové role správce Azure Active Directory neustále přidáváme. Aktuální do
 
 ## <a name="assign-app-access"></a>Přiřazení přístup k aplikacím
 
-Pomocí Azure AD můžete přiřadit přístup skupin k [podnikovým aplikacím, které jsou nasazené ve vaší organizaci Azure AD](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
+Pomocí Azure AD můžete přiřadit přístup skupin k [podnikovým aplikacím, které jsou nasazené ve vaší organizaci Azure AD](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
 
 Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a skupinami, kterým přiřadíte přístup. V možnosti [Podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) otevřete aplikaci a vyberte **Zřizování**, poté můžete provést následující:
 
@@ -72,6 +72,6 @@ Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste začínající správce Azure AD, přečtěte si základní informací v článku [Základní dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
+Pokud jste začínající správce Azure AD, přečtěte si základní informací v článku [Základní dokumentace ke službě Azure Active Directory](../fundamentals/index.yml).
 
-Popřípadě můžete začít [vytvářet skupiny](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat licence](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat přístup k aplikaci](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) nebo [přiřazovat role správce](directory-assign-admin-roles.md).
+Popřípadě můžete začít [vytvářet skupiny](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [přiřazovat licence](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [přiřazovat přístup k aplikaci](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) nebo [přiřazovat role správce](directory-assign-admin-roles.md).

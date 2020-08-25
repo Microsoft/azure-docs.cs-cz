@@ -6,10 +6,10 @@ ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86058023"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Deployment Manager (Public Preview)
@@ -38,9 +38,9 @@ Další prostředky:
 * [Reference k Azure Deployment Manager REST API](/rest/api/deploymentmanager/).
 * [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -73,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Ověření a otestování funkce Azure Functions:
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků.  Výchozí název je název projektu s připojeným **RG** .
 1. Vyberte službu App Service ze skupiny prostředků.  Výchozím názvem služby App Service je název projektu s připojenou **WebApp** .
 1. Rozbalte položku **funkce**a pak vyberte **HttpTrigger1**.
@@ -265,7 +265,7 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, použijte `Get-AZDeploymentManagerRollout` .  Podívejte se na další postup.
+> `New-AzResourceGroupDeployment` je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, použijte `Get-AZDeploymentManagerRollout` .  Podívejte se na další postup.
 
 Postup kontroly zavedení pomocí následujícího skriptu prostředí PowerShell:
 
@@ -348,7 +348,7 @@ Zopakováním této části znovu nasaďte zavedení do stavové adresy URL stav
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 

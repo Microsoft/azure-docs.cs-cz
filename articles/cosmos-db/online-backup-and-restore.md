@@ -1,18 +1,18 @@
 ---
 title: Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
-description: Tento článek popisuje, jak funguje automatické obnovení dat online zálohování a na vyžádání v Azure Cosmos DB.
+description: Tento článek popisuje, jak funguje automatické zálohování a obnovení dat na vyžádání, jak nakonfigurovat interval zálohování a uchování v Azure Cosmos DB.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112918"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799504"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -22,19 +22,17 @@ Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných in
 
 Díky Azure Cosmos DB, nejen k datům, ale také zálohování dat je vysoce redundantní a odolné vůči regionálním katastrofám. Následující kroky ukazují, jak Azure Cosmos DB provádí zálohování dat:
 
-* Azure Cosmos DB automaticky vytváří zálohy vaší databáze každé 4 hodiny a vždy se uchovávají pouze poslední 2 zálohy. Pokud se však kontejner nebo databáze odstraní, Azure Cosmos DB zachová stávající snímky daného kontejneru nebo databáze po dobu 30 dnů.
+* Azure Cosmos DB automaticky provede zálohování databáze každé 4 hodiny a v jakémkoli okamžiku, budou ve výchozím nastavení uloženy pouze nejnovější dva zálohy. Pokud výchozí intervaly pro vaše úlohy nestačí, můžete změnit interval zálohování a dobu uchování z Azure Portal. Konfiguraci zálohování můžete změnit během nebo po vytvoření účtu Azure Cosmos. Pokud dojde k odstranění kontejneru nebo databáze, Azure Cosmos DB zachová existující snímky daného kontejneru nebo databáze po dobu 30 dnů.
 
 * Azure Cosmos DB ukládá tyto zálohy do úložiště objektů BLOB v Azure, zatímco skutečná data se nacházejí lokálně v rámci Azure Cosmos DB.
 
-*  Aby se zajistila nízká latence, je snímek zálohy uložený ve službě Azure Blob Storage ve stejné oblasti jako aktuální oblast zápisu (nebo jedna z oblastí zápisu pro případ, že máte k dispozici více hlavních konfigurací) účtu databáze Azure Cosmos. Z důvodu odolnosti proti regionální havárii se každý snímek zálohovaných dat ve službě Azure Blob Storage znovu replikuje do jiné oblasti prostřednictvím geograficky redundantního úložiště (GRS). Oblast, do které je záloha replikována, je založena na zdrojové oblasti a na místní páru přidružené ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K této záloze nemůžete přistupovat přímo. Azure Cosmos DB použije tuto zálohu pouze v případě, že je zahájeno obnovení zálohy.
+*  Aby se zajistila nízká latence, je snímek zálohy uložený ve službě Azure Blob Storage ve stejné oblasti jako aktuální oblast zápisu (nebo **jedna** z oblastí zápisu pro případ, že máte konfiguraci s více hlavními servery). Z důvodu odolnosti proti regionální havárii se každý snímek zálohovaných dat ve službě Azure Blob Storage znovu replikuje do jiné oblasti prostřednictvím geograficky redundantního úložiště (GRS). Oblast, do které je záloha replikována, je založena na zdrojové oblasti a na místní páru přidružené ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K této záloze nemůžete přistupovat přímo. Azure Cosmos DB tým obnovuje zálohu, když si vyžádáte žádost o podporu.
+
+   Následující obrázek ukazuje, jak se kontejner Azure Cosmos se všemi třemi primárními fyzickými oddíly v Západní USA zálohuje do vzdáleného účtu Azure Blob Storage v Západní USA a pak se replikuje do Východní USA:
+
+  :::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="false":::
 
 * Zálohy budou provedeny, aniž by to ovlivnilo výkon nebo dostupnost vaší aplikace. Azure Cosmos DB provádí zálohování dat na pozadí bez toho, aby využívala žádnou další zřízenou propustnost (ru) nebo ovlivnila výkon a dostupnost vaší databáze.
-
-* Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy.
-
-Následující obrázek ukazuje, jak se kontejner Azure Cosmos se všemi třemi primárními fyzickými oddíly v Západní USA zálohuje do vzdáleného účtu Azure Blob Storage v Západní USA a pak se replikuje do Východní USA:
-
-:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>Možnosti správy vlastních záloh
 
@@ -42,48 +40,69 @@ Pomocí Azure Cosmos DB účtů rozhraní SQL API můžete také spravovat vlast
 
 * Pomocí [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) můžete data pravidelně přesouvat do úložiště podle vašeho výběru.
 
-* Pomocí Azure Cosmos DBho [kanálu změny](change-feed.md) můžete pravidelně číst data pro úplné zálohování a také pro přírůstkové změny a ukládat je do vlastního úložiště.
+* Pomocí Azure Cosmos DB [Změna kanálu](change-feed.md) můžete pravidelně číst data pro úplné zálohování nebo pro přírůstkové změny a ukládat je do vlastního úložiště.
 
-## <a name="backup-retention-period"></a>Doba uchování zálohy
+## <a name="backup-interval-and-retention-period"></a>Interval zálohování a doba uchování
 
-Azure Cosmos DB přebírá snímky dat každé čtyři hodiny. V jednom okamžiku se zachová jenom poslední dva snímky. Pokud se však kontejner nebo databáze odstraní, Azure Cosmos DB zachová stávající snímky daného kontejneru nebo databáze po dobu 30 dnů.
+Azure Cosmos DB automaticky vytvoří zálohu dat pro každé 4 hodiny a v jakémkoli časovém okamžiku jsou uloženy nejnovější dva zálohy. Tato konfigurace je výchozí možností a je nabízena bez jakýchkoli dalších nákladů. Pokud máte úlohy, které mají výchozí interval zálohování a dobu uchování nedostatečné, můžete je změnit. Tyto hodnoty můžete změnit během vytváření účtu Azure Cosmos nebo po vytvoření účtu. Konfigurace zálohování je nastavená na úrovni účtu Azure Cosmos a musíte ji nakonfigurovat na každém účtu. Když nakonfigurujete možnosti zálohování pro účet, použije se u všech kontejnerů v rámci tohoto účtu. V současné době můžete tyto možnosti zálohování změnit jenom z Azure Portal.
 
-## <a name="restoring-data-from-online-backups"></a>Obnovení dat z online zálohování
+Pokud jste data omylem odstranili nebo jste poškodili, **před vytvořením žádosti o podporu pro obnovení dat nezapomeňte zvýšit dobu uchovávání záloh vašeho účtu aspoň na sedm dní. Je nejlepší zvýšit své uchovávání do 8 hodin od této události.** Díky tomu má tým Azure Cosmos DB dostatek času na obnovení účtu.
 
-Náhodné odstranění nebo změna dat může nastat v jednom z následujících scénářů:  
+Pro změnu výchozích možností zálohování pro existující účet Azure Cosmos použijte následující postup:
 
-* Celý účet Azure Cosmos se odstraní.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
+1. Přejděte k účtu Azure Cosmos a otevřete podokno **zálohování & obnovení** . Aktualizujte interval zálohování a dobu uchování zálohy podle potřeby.
 
-* Nejméně jedna databáze Azure Cosmos se odstranila.
+   * **Interval zálohování** – jedná se o interval, při kterém se Azure Cosmos DB pokusy o zálohování dat. Zálohování trvá nenulovou dobu a v některých případech to může způsobit selhání z důvodu navazujících závislostí. Azure Cosmos DB se pokusí provést zálohování v nakonfigurovaném intervalu, ale nezaručuje, že se zálohování dokončí v tomto časovém intervalu. Tuto hodnotu můžete nakonfigurovat v hodinách nebo minutách. Interval zálohování nemůže být kratší než 1 hodina a větší než 24 hodin. Změníte-li tento interval, projeví se nové intervaly od doby, kdy byla provedena poslední záloha.
 
-* Jeden nebo více kontejnerů Azure Cosmos se odstranilo.
+   * **Uchovávání záloh** – představuje období, ve kterém je každá záloha zachována. Můžete ji nakonfigurovat v hodinách nebo dnech. Minimální doba uchovávání nesmí být kratší než dvojnásobek intervalu zálohování (v hodinách) a nemůže být delší než 720 hodin.
 
-* Položky Azure Cosmos (například dokumenty) v rámci kontejneru se odstraní nebo upraví. Tento konkrétní případ se obvykle označuje jako "poškození dat".
+   * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete další kopie, musíte vytvořit žádost o podporu prostřednictvím Azure Portal a budou se účtovat další kopie. V části spotřebované úložiště na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) se dozvíte, jak přesně pocenou za další kopie.
 
-* Sdílená databáze nabídek nebo kontejnery v rámci sdílené databáze nabídek se odstranily nebo jsou poškozené.
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurace intervalu zálohování a uchování pro existující účet Azure Cosmos" border="true":::
 
-Azure Cosmos DB může obnovit data ve všech výše uvedených scénářích. V rámci procesu obnovení se vždy vytvoří nový účet služby Azure Cosmos DB pro uložení obnovených dat. Název nového účtu, pokud není zadán, bude mít formát `<Azure_Cosmos_account_original_name>-restored1` . Poslední číslice se zvýší, pokud dojde k pokusu o více obnovení. Nemůžete obnovit data na předem vytvořený účet Azure Cosmos.
+Pokud při vytváření účtu konfigurujete možnosti zálohování, můžete nakonfigurovat **zásady zálohování**, které jsou buď **periodické** , nebo **průběžné**. Pravidelné zásady vám umožní nakonfigurovat interval zálohování a uchovávání záloh. Průběžné zásady jsou aktuálně k dispozici pouze pomocí registrace. Tým Azure Cosmos DB vyhodnotí vaše zatížení a schválí vaši žádost.
 
-Když se odstraní účet Azure Cosmos, můžeme data obnovit na účet se stejným názvem, za předpokladu, že se název účtu nepoužívá. V takových případech se po odstranění doporučuje účet znovu vytvořit, protože to neumožňuje, aby obnovená data používala stejný název, ale také usnadňuje zjišťování správného účtu pro obnovení z obtížnější. 
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurace pravidelné nebo nepřetržité zásady zálohování pro nové účty Azure Cosmos" border="true":::
 
-Po odstranění databáze Azure Cosmos je možné obnovit celou databázi nebo podmnožinu kontejnerů v této databázi. Je také možné vybrat kontejnery napříč databázemi a obnovit je a všechna obnovená data se umístí do nového účtu Azure Cosmos.
+## <a name="restore-data-from-an-online-backup"></a>Obnovení dat z online zálohování
 
-Když se jedna nebo víc položek v rámci kontejneru omylem odstraní nebo změní (případ poškození dat), budete muset zadat dobu, po kterou se má obnovit. Čas je pro tento případ podstatou. Vzhledem k tomu, že je kontejner živý, je zálohování stále spuštěné, takže pokud počkáte mimo dobu uchování (výchozí nastavení je osm hodin), zálohy se přepíší. V případě odstranění již nejsou data nadále ukládána, protože nejsou přepsána cyklem zálohování. Zálohy pro odstraněné databáze nebo kontejnery se ukládají po dobu 30 dnů.
+Data můžete omylem odstranit nebo upravit v jednom z následujících scénářů:  
 
-Pokud zřizujete propustnost na úrovni databáze (tj. kde sada kontejnerů sdílí zřízenou propustnost), proces zálohování a obnovení v tomto případě proběhne na úrovni celé databáze, a ne na úrovni jednotlivých kontejnerů. V takových případech výběr podmnožiny kontejnerů k obnovení není možnost.
+* Odstraňte celý účet Azure Cosmos.
 
-## <a name="migrating-data-to-the-original-account"></a>Migrace dat do původního účtu
+* Odstraňte jednu nebo více databází Azure Cosmos.
 
-Primárním cílem obnovování dat je poskytnout způsob, jak obnovit jakákoli neúmyslná data, která odstraníte nebo upravíte. Proto doporučujeme, abyste nejdřív zkontrolovali obsah obnovených dat, abyste se ujistili, že obsahuje, co očekáváte. Pak můžete pracovat na migraci dat zpět do primárního účtu. I když je možné použít obnovený účet jako živý účet, není doporučená možnost, pokud máte produkční úlohy.  
+* Odstraňte jeden nebo více kontejnerů Azure Cosmos.
+
+* Odstraňte nebo upravte položky Azure Cosmos (například dokumenty) v rámci kontejneru. Tento konkrétní případ se obvykle označuje jako poškození dat.
+
+* Sdílená databáze nabídek nebo kontejnery v rámci sdílené databáze nabídek jsou odstraněné nebo poškozené.
+
+Azure Cosmos DB může obnovit data ve všech výše uvedených scénářích. Při obnovení se vytvoří nový účet Azure Cosmos, který bude obsahovat obnovená data. Název nového účtu, pokud není zadaný, bude mít formát `<Azure_Cosmos_account_original_name>-restored1` . Poslední číslice je zvýšena při pokusu o provedení několika obnovení. Nemůžete obnovit data na předem vytvořený účet Azure Cosmos.
+
+Když účet Azure Cosmos omylem odstraníte, můžeme data obnovit do nového účtu se stejným názvem, za předpokladu, že se název účtu nepoužívá. Proto doporučujeme, abyste účet po jeho odstranění znovu nevytvořili. Protože to nejen brání obnoveným datům v použití stejného názvu, ale také umožňuje zjistit správný účet pro obnovení z obtížného.
+
+Když databázi Azure Cosmos omylem odstraníte, můžeme obnovit celou databázi nebo podmnožinu kontejnerů v této databázi. Je také možné vybrat konkrétní kontejnery napříč databázemi a obnovit je do nového účtu Azure Cosmos.
+
+Pokud omylem odstraníte nebo upravíte jednu nebo více položek v rámci kontejneru (případ poškození dat), je nutné zadat dobu, po kterou má být obnovena. Čas je důležitý, pokud dojde k poškození dat. Vzhledem k tomu, že je kontejner živý, je zálohování stále spuštěno, takže pokud počkáte mimo dobu uchování (výchozí nastavení je osm hodin), zálohy budou přepsány. **Aby nedošlo k přepsání zálohy, zvyšte dobu uchovávání záloh účtu na alespoň sedm dní. Je nejlepší zvýšit své uchování do 8 hodin od poškození dat.**
+
+Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy. Tímto způsobem bude mít tým podpory Azure Cosmos DB dostatek času na obnovení účtu.
+
+Pokud zřizujete propustnost na úrovni databáze, proces zálohování a obnovení v tomto případě proběhne na úrovni celé databáze, nikoli na úrovni jednotlivých kontejnerů. V takových případech nemůžete vybrat podmnožinu kontejnerů k obnovení.
+
+## <a name="migrate-data-to-the-original-account"></a>Migrace dat na původní účet
+
+Primárním cílem obnovování dat je obnovení dat, která jste omylem odstranili nebo upravili. Proto doporučujeme, abyste nejdřív zkontrolovali obsah obnovených dat, abyste se ujistili, že obsahuje, co očekáváte. Později můžete migrovat data zpátky na primární účet. I když je možné použít obnovený účet jako nový aktivní účet, není doporučená možnost, pokud máte produkční úlohy.  
 
 Níže jsou různé způsoby, jak migrovat data zpátky na původní účet Azure Cosmos:
 
-* Použití [Nástroje pro migraci dat Cosmos DB](import-data.md)
-* Použití [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
-* Použití [kanálu změn](change-feed.md) v Azure Cosmos DB 
-* Napsat vlastní kód
+* Použijte [Nástroj pro migraci dat Azure Cosmos DB](import-data.md).
+* Použijte [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+* Použijte [kanál změn](change-feed.md) v Azure Cosmos DB.
+* Můžete napsat vlastní kód.
 
-Odstraňte obnovené účty hned po dokončení migrace, protože budou platit průběžné poplatky.
+Nezapomeňte odstranit obnovené účty, jakmile budete migrováni data, protože se účtují průběžné poplatky.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Upgrade agenta Microsoft Azure Recovery Services (MARS)
 description: Přečtěte si, jak upgradovat agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 782975583547bb5b51c3816d815ae1129c979509
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672937"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757332"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Upgrade agenta Microsoft Azure Recovery Services (MARS)
 

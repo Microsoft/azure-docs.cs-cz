@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798745"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783548"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD
 
 V části Správa opravňujících k Azure AD se můžete podívat, kdo byl přiřazený k balíčkům, zásadám a stavům. Pokud má přístupový balíček odpovídající zásady, můžete také přímo přiřadit uživatele k balíčku pro přístup. Tento článek popisuje, jak zobrazit, přidat a odebrat přiřazení pro balíčky přístupu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat správu nároků Azure AD a přiřazovat uživatelům přístup k balíčkům, musíte mít jednu z těchto licencí:
 
@@ -58,7 +58,7 @@ Pokud chcete používat správu nároků Azure AD a přiřazovat uživatelům p�
 
 ### <a name="viewing-assignments-programmatically"></a>Zobrazení přiřazení prostřednictvím kódu programu
 
-Můžete také načíst přiřazení v balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API k [vypsání accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Můžete také načíst přiřazení v balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API k [vypsání accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Přímo přiřadit uživatele
 
@@ -90,7 +90,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 ### <a name="directly-assigning-users-programmatically"></a>Přímé přiřazování uživatelů prostřednictvím kódu programu
 
-Můžete také přímo přiřadit uživatele k balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Můžete také přímo přiřadit uživatele k balíčku přístupu pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API a [vytvořit accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Odebrání přiřazení
 

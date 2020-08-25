@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: d0ae5165fc13193737ec75cf06060123ca4a13d4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564023"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756992"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro 
 
 Začněte tím, [že nainstalujete nejnovější verzi PowerShellu](/powershell/azure/install-az-ps).
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Následující kroky vás provedou vytvořením trezoru Recovery Services. Recovery Services trezor se liší od trezoru záloh.
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 K dispozici jsou tyto možnosti:
 
-| Parametr | Podrobnosti | Výchozí |
+| Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
 | /q |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |

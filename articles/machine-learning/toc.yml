@@ -150,41 +150,45 @@
       href: concept-ml-pipelines.md
     - name: Zabezpečení a připravenost na úrovni podniku
       items:
+        - name: Přehled zabezpečení podniku
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-        - name: Podnikové zabezpečení a zásady správného řízení
+        - name: Správa identit a přístupu
           items:
-            - name: Přehled zabezpečení podniku
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: Nastavení ověřování
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: Správa uživatelů a skupin
               href: how-to-assign-roles.md
+            - name: Použití identity Azure AD v nasazeních AKS
+              href: how-to-use-azure-ad-identity.md
+        - name: Zabezpečení sítě
+          items:
             - name: Použití virtuálních sítí
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Použití Private Linku
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Zabezpečení webových služeb s využitím TLS
-              displayName: ssl
+            - name: Konfigurace zabezpečených webových služeb
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: Konfigurace brány firewall
+              href: how-to-access-azureml-behind-firewall.md
+        - name: Ochrana dat
+          items:
             - name: Zvýšení odolnosti
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: Použití identity Azure AD v nasazeních AKS
-              href: how-to-use-azure-ad-identity.md
             - name: Opětovné vygenerování přístupových klíčů k úložišti
               href: how-to-change-storage-access-key.md
-            - name: Použití Azure Firewallu
-              href: how-to-access-azureml-behind-firewall.md
-            - name: Zabezpečené kódování
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: Nastavení ověřování
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: Monitorování Azure Machine Learningu
           href: monitor-azure-machine-learning.md
+        - name: Zabezpečené kódování
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: Zodpovědné strojové učení
       items:
         - name: Přehled zodpovědného strojového učení

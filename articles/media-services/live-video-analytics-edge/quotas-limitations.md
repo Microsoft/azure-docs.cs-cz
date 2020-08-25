@@ -3,12 +3,12 @@ title: Live video Analytics o kvótách IoT Edge – Azure
 description: Tento článek popisuje Live video Analytics o IoT Edge kvót a omezeních.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091806"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750220"
 ---
 # <a name="quotas-and-limitations"></a>Kvóty a omezení
 
@@ -36,21 +36,23 @@ V rámci verze Preview existují omezení různých uzlů, která se dají vzáj
    * Pro každou topologii grafu je povolený jenom jeden zdroj RTSP.
 * Procesor filtru snímkové rychlosti
    * Musí být okamžitě podřízená se zdrojem RTSP nebo procesorem detekce pohybu.
-   * Nelze použít pro procesor rozšíření HTTP.
+   * Nelze použít pro procesor rozšíření HTTP nebo gRPC.
    * Z procesoru detekce pohybu nelze vytvořit nadřazený datový proud.
 * Procesor rozšíření HTTP
+   * U každé topologie grafu může existovat maximálně jeden takový procesor.
+* procesor rozšíření gRPC
    * U každé topologie grafu může existovat maximálně jeden takový procesor.
 * Procesor detekce pohybu
    * Musí být okamžitě podřízené zdroji RTSP.
    * U každé topologie grafu může existovat maximálně jeden takový procesor.
-   * Nelze použít pro procesor rozšíření HTTP.
+   * Nelze použít pro procesor rozšíření HTTP nebo gRPC.
 * Procesor brány signálu
    * Musí být okamžitě podřízené zdroji RTSP.
 * Jímka assetu 
    * Musí být okamžitě podřízená se zdrojem nebo procesorem brány signálu pro RTSP.
 * Jímka souborů
    * Musí být okamžitě podřízená z procesoru brány signálu.
-   * Nejde hned za procesor rozšíření HTTP nebo procesor pro detekci pohybu.
+   * Nemůže být okamžitě podřízená procesoru rozšíření HTTP nebo gRPC nebo procesoru pro detekci pohybu.
 * IoT Hub jímka
    * Nemůže být okamžitě podřízená IoT Hub zdroji.
 

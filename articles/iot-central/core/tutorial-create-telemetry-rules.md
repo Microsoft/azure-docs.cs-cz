@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80999056"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
@@ -23,7 +23,7 @@ Pomocí služby Azure IoT Central můžete vzdáleně monitorovat připojená za
 
 Zařízení využívají telemetrii k posílání číselných dat ze zařízení. Pravidlo se aktivuje, když vybraná telemetrie zařízení přebírá určenou prahovou hodnotu.
 
-V tomto kurzu vytvoříte pravidlo k odeslání e-mailu v případě, že teplota v simulovaném zařízení snímače prostředí překračuje&deg; 70 F.
+V tomto kurzu vytvoříte pravidlo k odeslání e-mailu v případě, že teplota v simulovaném zařízení snímače prostředí překračuje 70 &deg; F.
 
 V tomto kurzu se naučíte:
 
@@ -46,7 +46,7 @@ Aby bylo možné vytvořit pravidlo telemetrie, musí šablona zařízení obsah
 
     ![Dosud žádná pravidla](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
 
-1. Tuto **+** možnost vyberte, pokud chcete přidat nové pravidlo.
+1. Tuto možnost vyberte **+** , pokud chcete přidat nové pravidlo.
 
 1. Zadejte název _monitorování teploty_ pro identifikaci pravidla a stiskněte klávesu ENTER.
 
@@ -56,13 +56,13 @@ Aby bylo možné vytvořit pravidlo telemetrie, musí šablona zařízení obsah
 
 ### <a name="configure-the-rule-conditions"></a>Konfigurace podmínek pravidla
 
-Podmínky definují kritéria, která pravidla monitorují. V tomto kurzu nakonfigurujete pravidlo, které se aktivuje, když teplota&deg; překročí 70 F.
+Podmínky definují kritéria, která pravidla monitorují. V tomto kurzu nakonfigurujete pravidlo, které se aktivuje, když teplota překročí 70 &deg; F.
 
 1. V rozevíracím seznamu **telemetrie** vyberte možnost **teplota** .
 
 1. V dalším kroku vyberte **je větší než** jako **operátor** a jako **hodnotu**zadejte _70_ .
 
-    ![Podmínka](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
+    ![Stav](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Volitelně můžete nastavit **časovou agregaci**. Když vyberete časovou agregaci, musíte také v rozevíracím seznamu agregace vybrat typ agregace, například Average nebo Sum.
 

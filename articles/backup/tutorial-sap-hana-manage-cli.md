@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte Spravovat zálohované SAP HANA databáz
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489431"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757349"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: Správa databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>Ochrana nových databází přidaných do instance SAP HANA
 
-Při [registraci instance SAP HANA s trezorem služby Recovery Services se](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) automaticky zjistí všechny databáze v této instanci.
+Při [registraci instance SAP HANA s Recovery Services trezorem](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) se automaticky zjistí všechny databáze v této instanci.
 
 V případě, že se do instance SAP HANA později přidají nové databáze, použijte rutinu [AZ Backup Protected-Item Initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) . Tato rutina zjišťuje nově přidané databáze.
 
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
+Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace  [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \

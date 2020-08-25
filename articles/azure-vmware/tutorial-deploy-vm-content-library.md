@@ -1,16 +1,16 @@
 ---
-title: 'Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware (AVS)'
-description: V tomto kurzu Azure VMware Solution (AVS) vytvoříte knihovnu obsahu pro nasazení virtuálního počítače v privátním cloudu služby AVS.
+title: 'Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware'
+description: V tomto kurzu řešení Azure VMware vytvoříte knihovnu obsahu pro nasazení virtuálního počítače v privátním cloudu řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612788"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750552"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware (AVS)
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Kurz: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware
 
 Knihovna obsahu uchovává a spravuje obsah ve formě položek knihovny. Jedna položka knihovny se skládá z jednoho nebo více souborů, které použijete k nasazení virtuálních počítačů (VM). 
  
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu je nutný segment logického přepínače NSX-T a spravovaná služba DHCP.  Podrobnosti najdete v tématu [Správa DHCP v řešení Azure VMware (AVS) ve verzi Preview](manage-dhcp.md) .
+K dokončení tohoto kurzu je nutný segment logického přepínače NSX-T a spravovaná služba DHCP.  Podrobnosti najdete v tématu [Správa DHCP v řešení Azure VMware Preview](manage-dhcp.md) .
 
 ## <a name="create-a-content-library"></a>Vytvoření knihovny obsahu
 

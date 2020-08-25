@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735483"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure PowerShell
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Výpis přístupu
 > * Odebrání přístupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Tady jsou dvě přiřazení rolí, která v tomto kurzu provedete:
 
-| Objekt zabezpečení | Definice role | Rozsah |
+| Objekt zabezpečení | Definice role | Obor |
 | --- | --- | --- |
 | Uživatel<br>(RBAC Tutorial User) | [Čtenář](built-in-roles.md#reader) | Předplatné |
 | Uživatel<br>(RBAC Tutorial User)| [Přispěvatel](built-in-roles.md#contributor) | Skupina prostředků<br>(rbac-tutorial-resource-group) |

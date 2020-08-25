@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252752"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
@@ -60,7 +60,7 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     ```
 2. Zadejte text „TestContainer“ a pojmenujte svoji aplikaci.
 3. Zadejte text „azurevotefront“ a pojmenujte svoji aplikační službu.
-4. Zadejte cestu k imagi kontejneru v ACR pro front-endové úložiště – například \<acrName>.azurecr.io/azure-vote-front:v1. Pole \<acrName> musí mít stejnou hodnotu jako v předchozím kurzu.
+4. Zadejte cestu k imagi kontejneru v ACR pro úložiště front-endu – například \<acrName> . azurecr.IO/Azure-vote-front:v1. \<acrName>Pole musí být stejné jako hodnota, která se použila v předchozím kurzu.
 5. Část Commands ponechte prázdnou a stisknutím klávesy Enter přejděte dál.
 6. Pro počet instancí zadejte hodnotu 1.
 
@@ -83,7 +83,7 @@ Následující kód zobrazuje vstup a výstup spuštění příkazu yo:
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomanu, proveďte následující kroky:
 
 1. Změňte adresář o jednu úroveň nad adresářem **TestContainer**, například *./TestContainer*.
-2. Spusťte `yo azuresfcontainer:AddService`.
+2. Spuštěním příkazu `yo azuresfcontainer:AddService`
 3. Službu pojmenujte azurevoteback.
 4. Zadejte cestu k imagi kontejneru pro Redis – alpine:redis.
 5. Část Commands ponechte prázdnou a stisknutím klávesy Enter přejděte dál.
@@ -272,11 +272,11 @@ Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContain
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http: \/ /containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 
-Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http:\//containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
+Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
 ![aplikacevoting][votingapp]
 

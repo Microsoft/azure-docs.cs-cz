@@ -3,12 +3,12 @@ title: Offline zálohování pro DPM a Azure Backup Server
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067351"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757264"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS)
 
@@ -102,7 +102,7 @@ Informace v této části vám pomůžou dokončit pracovní postup offline zál
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>Příprava jednotek SATA a odeslání do Azure
 
-Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Azure Backup (v následující cestě):`*\Microsoft Azure Recovery Services Agent\Utils\\*`
+Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Azure Backup (v následující cestě): `*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Přejít do adresáře a zkopírovat adresář **AzureOfflineBackupDiskPrep** do jiného počítače, kde jsou připojeny jednotky SATA. V počítači s připojenými jednotkami SATA zajistěte:
 

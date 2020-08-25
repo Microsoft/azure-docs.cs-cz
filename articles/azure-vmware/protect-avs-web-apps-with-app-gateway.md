@@ -1,39 +1,39 @@
 ---
 title: Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
-description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware (AVS).
+description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: dfe55ab6b32e9c7b73b8501a16fa6cfaad5bbabe
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d4e193c58c5eccb29f603c3b4d56a09d26686975
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514277"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750599"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
-[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) je nástroj pro vyrovnávání zatížení webového provozu vrstvy 7, který umožňuje spravovat provoz do webových aplikací. Nabízí spoustu možností: spřažení relace na základě souborů cookie, směrování na základě adresy URL a firewall webových aplikací (WAF) pro pojmenování. (Úplný seznam funkcí najdete v tématu [funkce Azure Application Gateway](../application-gateway/features.md).) Je nabízená ve dvou verzích, V1 a v2. Byly testovány s využitím webových aplikací spuštěných v řešení Azure VMware (AVS).
+[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) je nástroj pro vyrovnávání zatížení webového provozu vrstvy 7, který umožňuje spravovat provoz do webových aplikací. Nabízí spoustu možností: spřažení relace na základě souborů cookie, směrování na základě adresy URL a firewall webových aplikací (WAF) pro pojmenování. (Úplný seznam funkcí najdete v tématu [funkce Azure Application Gateway](../application-gateway/features.md).) Je nabízená ve dvou verzích, V1 a v2. Byly testovány s využitím webových aplikací spuštěných v řešení Azure VMware.
 
-V tomto článku Vás provedeme běžným scénářem, který používá Application Gateway před webovou farmou a sadou konfigurací a doporučení pro ochranu webové aplikace běžící na řešení Azure VMware (AVS). 
+V tomto článku Vás provedeme běžným scénářem, který používá Application Gateway před webovou farmou a sadou konfigurací a doporučení pro ochranu webové aplikace běžící na řešení Azure VMware. 
 
 ## <a name="topology"></a>Topologie
-Jak je znázorněno na následujícím obrázku, Application Gateway lze použít k ochraně virtuálních počítačů Azure s IaaS, služby Azure Virtual Machine Scale Sets nebo místních serverů. Virtuální počítače se službou AVS budou na místních serverech považovat za Application Gateway.
+Jak je znázorněno na následujícím obrázku, Application Gateway lze použít k ochraně virtuálních počítačů Azure s IaaS, služby Azure Virtual Machine Scale Sets nebo místních serverů. Virtuální počítače řešení Azure VMware se budou považovat za místní servery Application Gateway.
 
-![Application Gateway chrání virtuální počítače AVS.](media/protect-avs-web-apps-with-app-gw/app-gateway-protects.png)
+![Application Gateway chrání virtuální počítače s řešeními Azure VMware.](media/protect-avs-web-apps-with-app-gw/app-gateway-protects.png)
 
 > [!IMPORTANT]
-> Služba Azure Application Gateway je aktuálně jedinou podporovanou metodou pro vystavování webových aplikací běžících na virtuálních počítačích se službou AVS.
+> Služba Azure Application Gateway je aktuálně jedinou podporovanou metodou pro vystavování webových aplikací běžících na virtuálních počítačích řešení Azure VMware.
 
-Následující diagram znázorňuje scénář testování, který se používá k ověření Application Gateway u webových aplikací se službou AVS.
+Následující diagram znázorňuje scénář testování, který se používá k ověření Application Gateway s webovými aplikacemi řešení Azure VMware.
 
-![Application Gateway integrace se službou AVS běžící webové aplikace](media/protect-avs-web-apps-with-app-gw/app-gateway-avs-scenario.png)
+![Application Gateway integrace s řešením Azure VMware, které spouští webové aplikace.](media/protect-avs-web-apps-with-app-gw/app-gateway-avs-scenario.png)
 
-Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure; doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný na privátním cloudu služby AVS za NSX T0 a T1. K povolení komunikace s rozbočovačem a místními systémy používá funkci [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) .
+Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure; doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný v rámci privátního cloudu řešení Azure VMware za NSX T0 a T1. Řešení Azure VMware využívá [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným.
-- Je nasazený a spuštěný privátní cloud služby AVS.
+- Je nasazený a spuštěný privátní cloud řešení Azure VMware.
 
 ## <a name="deployment-and-configuration"></a>Nasazení a konfigurace
 
@@ -48,7 +48,7 @@ Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má ve
     > [!NOTE]
     > U privátních front-endu se podporují jenom SKU Standard a firewall webových aplikací (WAF).
 
-4. Dále přidejte back-end fond, který popisuje sadu instancí, které jsou součástí aplikace nebo služby (v tomto případě virtuální počítače spuštěné na infrastruktuře služby AVS). Zadejte podrobnosti o webových serverech, které běží na privátním cloudu služby AVS, a vyberte **Přidat**; pak vyberte **Další:>konfigurace **.
+4. Dále přidejte back-end fond, který popisuje sadu instancí, které jsou součástí aplikace nebo služby (v tomto případě virtuální počítače běžící v infrastruktuře řešení Azure VMware). Zadejte podrobnosti o webových serverech, které běží na privátním cloudu řešení Azure VMware, a vyberte **Přidat**; pak vyberte **Další:>konfigurace **.
 
 1. Na kartě **Konfigurace** vyberte **Přidat pravidlo směrování**.
 
@@ -56,7 +56,7 @@ Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má ve
 
 7. Vyberte kartu **cílení na back-end** a vyberte back-end fond, který jste dříve vytvořili. V poli **nastavení protokolu HTTP** vyberte **Přidat nový**.
 
-8. Nakonfigurujte parametry pro nastavení protokolu HTTP. Vyberte možnost **Přidat**.
+8. Nakonfigurujte parametry pro nastavení protokolu HTTP. Vyberte **Přidat**.
 
 9. Pokud chcete nakonfigurovat pravidla na základě cest, vyberte **Přidat více cílů pro vytvoření pravidla založeného na cestách**. 
 
@@ -70,18 +70,18 @@ Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má ve
 
 ## <a name="configuration-examples"></a>Příklady konfigurace
 
-V této části se dozvíte, jak nakonfigurovat Application Gateway s virtuálními počítači služby AVS jako back-endové fondy pro tyto případy použití: 
+V této části se dozvíte, jak nakonfigurovat Application Gateway s virtuálními počítači řešení VMware Azure jako back-endové fondy pro tyto případy použití: 
 
 - [Hostování více webů](#hosting-multiple-sites)
 - [Směrování podle adresy URL](#routing-by-url)
 
 ### <a name="hosting-multiple-sites"></a>Hostování více webů
 
-Můžete použít Azure Portal ke konfiguraci hostování více webů při vytváření aplikační brány. V tomto kurzu nadefinujete fondy adres back-endu pomocí virtuálních počítačů, které jsou spuštěné v privátním cloudu služby AVS v existující aplikační bráně. Application Gateway je součástí virtuální sítě rozbočovače, jak je popsáno v tématu [integrace služby AVS v architektuře hub a paprsků](concepts-avs-hub-and-spoke-integration.md). V tomto kurzu se předpokládá, že vlastníte více domén a použijete příklady www.contoso.com a www.fabrikam.com.
+Můžete použít Azure Portal ke konfiguraci hostování více webů při vytváření aplikační brány. V tomto kurzu definujete fondy back-end adres pomocí virtuálních počítačů, které jsou spuštěné v privátním cloudu řešení Azure VMware v existující aplikační bráně. Application Gateway je součástí virtuální sítě rozbočovače, jak je popsáno v tématu [integrace řešení Azure VMware v architektuře hub a paprsků](concepts-avs-hub-and-spoke-integration.md). V tomto kurzu se předpokládá, že vlastníte více domén a použijete příklady www.contoso.com a www.fabrikam.com.
 
-1. Vytvořte virtuální počítače. V privátním cloudu pro funkci AVS vytvořte dva různé fondy virtuálních počítačů. Ten bude představovat společnost Contoso a druhou společnost Fabrikam. 
+1. Vytvořte virtuální počítače. V privátním cloudu řešení Azure VMware vytvořte dva různé fondy virtuálních počítačů. Ten bude představovat společnost Contoso a druhou společnost Fabrikam. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs.png" alt-text="Fond webového serveru na funkci AVS":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs.png" alt-text="Vytvořte virtuální počítače.":::
 
     K ilustraci tohoto kurzu jsme použili Windows Server 2016 s nainstalovanou rolí služby Internetová informační služba (IIS). Po instalaci virtuálních počítačů spusťte následující příkazy PowerShellu ke konfiguraci služby IIS na každém virtuálním počítači. 
 
@@ -90,31 +90,31 @@ Můžete použít Azure Portal ke konfiguraci hostování více webů při vytv�
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-2. Přidejte back-end fondy. V existující instanci služby Application Gateway vyberte v nabídce vlevo možnost **back-end fondy** , vyberte **Přidat**a zadejte podrobnosti o nových fondech. V pravém podokně vyberte **Přidat** .
+2. Přidejte back-end fondy. V existující instanci služby Application Gateway vyberte v nabídce vlevo možnost **back-end fondy** , vyberte  **Přidat**a zadejte podrobnosti o nových fondech. V pravém podokně vyberte **Přidat** .
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png" alt-text="Konfigurace fondu back-endu" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png" alt-text="Přidejte back-end fondy." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png":::
 
 3. V části **naslouchací procesy** vytvořte nový naslouchací proces pro každý web. Zadejte podrobnosti každého naslouchacího procesu a vyberte **Přidat**.
 
 4. Na levém navigačním panelu vyberte **Nastavení http** a v levém podokně vyberte **Přidat** . Vyplňte podrobnosti a vytvořte nové nastavení HTTP a vyberte **Uložit**.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="Konfigurace nastavení HTP" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="Vyplňte podrobnosti a vytvořte nové nastavení HTTP a vyberte Uložit." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
 
-5. V levé nabídce v části **pravidla** vytvořte pravidla. Přidružte každé pravidlo k odpovídajícímu naslouchacího procesu. Vyberte možnost **Přidat**.
+5. V levé nabídce v části **pravidla** vytvořte pravidla. Přidružte každé pravidlo k odpovídajícímu naslouchacího procesu. Vyberte **Přidat**.
 
-6. Nakonfigurujte odpovídající back-end fond a nastavení HTTP. Vyberte možnost **Přidat**.
+6. Nakonfigurujte odpovídající back-end fond a nastavení HTTP. Vyberte **Přidat**.
 
-7. Otestujte připojení. Otevřete preferovaný prohlížeč a přejděte do různých webů hostovaných ve vašem prostředí služby AVS, například http://www.fabrikam.com .
+7. Otestujte připojení. Otevřete preferovaný prohlížeč a přejděte na různé weby hostované ve vašem prostředí řešení Azure VMware, například http://www.fabrikam.com .
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-07.png" alt-text="Konfigurace back-endu pravidla":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-07.png" alt-text="Otestujte připojení.":::
 
 ### <a name="routing-by-url"></a>Směrování podle adresy URL
 
-Pomocí Azure Application Gateway můžete nakonfigurovat pravidla směrování na základě cest URL. V tomto kurzu nadefinujete fondy adres back-endu pomocí virtuálních počítačů, které jsou spuštěné v privátním cloudu služby AVS v existující aplikační bráně. Application Gateway je součástí virtuální sítě rozbočovače, jak je popsáno v [dokumentaci ke službě AVS Azure Native Integration](concepts-avs-hub-and-spoke-integration.md). Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
+Pomocí Azure Application Gateway můžete nakonfigurovat pravidla směrování na základě cest URL. V tomto kurzu definujete fondy back-end adres pomocí virtuálních počítačů, které jsou spuštěné v privátním cloudu řešení Azure VMware v existující aplikační bráně. Application Gateway je součástí virtuální sítě rozbočovače, jak je popsáno v [dokumentaci k Azure VMware Solution Native Integration](concepts-avs-hub-and-spoke-integration.md). Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
 
-1. Vytvořte virtuální počítače. V privátním cloudu pro funkci AVS vytvořte fond virtuálních počítačů, které budou představovat webovou farmu. 
+1. Vytvořte virtuální počítače. V privátním cloudu řešení Azure VMware vytvořte fond virtuálních počítačů, které reprezentují webovou farmu. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs.png" alt-text="Fond webového serveru na funkci AVS":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs.png" alt-text="Vytvořte fond virtuálních počítačů v řešení Azure VMware.":::
 
     K ilustraci tohoto kurzu jsme použili Windows Server 2016 s nainstalovanou rolí IIS. Po instalaci virtuálních počítačů spusťte následující příkazy PowerShellu ke konfiguraci služby IIS pro kurz v každém virtuálním počítači. 
 
@@ -141,9 +141,9 @@ Pomocí Azure Application Gateway můžete nakonfigurovat pravidla směrování 
     Add-Content -Path C:\inetpub\wwwroot\video\test.htm -Value $($env:computername)
     ```
 
-2. Přidejte back-end fondy. V existující instanci aplikační brány budete muset přidat tři nové back-endové fondy. V nabídce vlevo vyberte **back-endové fondy** . Vyberte **Přidat** a zadejte podrobnosti o prvním fondu, **Contoso-web**. Přidejte jako cíl jeden virtuální počítač. Vyberte možnost **Přidat**. Tento postup opakujte pro **společnosti Contoso-image** a **Contoso-video**a přidejte do každého cíle jeden jedinečný virtuální počítač. 
+2. Přidejte back-end fondy. V existující instanci aplikační brány budete muset přidat tři nové back-endové fondy. V nabídce vlevo vyberte **back-endové fondy** . Vyberte **Přidat** a zadejte podrobnosti o prvním fondu, **Contoso-web**. Přidejte jako cíl jeden virtuální počítač. Vyberte **Přidat**. Tento postup opakujte pro **společnosti Contoso-image** a **Contoso-video**a přidejte do každého cíle jeden jedinečný virtuální počítač. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Vytvoření fondu back-endu" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Přidejte tři nové back-end fondy." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png":::
 
 3. V části **naslouchací procesy** vytvořte nový naslouchací proces typu Basic pomocí portu 8080.
 
@@ -151,21 +151,21 @@ Pomocí Azure Application Gateway můžete nakonfigurovat pravidla směrování 
 
     :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-04.png" alt-text="Konfigurace nastavení HTP":::
 
-5. V levé nabídce v části **pravidla** vytvořte pravidla. Přidružte každé pravidlo k dříve vytvořenému naslouchacího procesu. Pak nakonfigurujte hlavní back-end fond a nastavení HTTP. Vyberte možnost **Přidat**.
+5. V levé nabídce v části **pravidla** vytvořte pravidla. Přidružte každé pravidlo k dříve vytvořenému naslouchacího procesu. Pak nakonfigurujte hlavní back-end fond a nastavení HTTP. Vyberte **Přidat**.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="Konfigurace back-endu pravidla":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="V levé nabídce v části pravidla vytvořte pravidla.":::
 
 6. Otestujte konfiguraci. Přístup k aplikační bráně na Azure Portal a v části **Přehled** ZKOPÍRUJTE veřejnou IP adresu. Pak otevřete nové okno prohlížeče a zadejte adresu URL `http://<app-gw-ip-address>:8080` . 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Test konfigurace":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Otestujte konfiguraci z Azure Portal.":::
 
     Změňte adresu URL na `http://<app-gw-ip-address>:8080/images/test.htm`.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Test konfigurace":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Změňte adresu URL.":::
 
     Změňte adresu URL znovu na `http://<app-gw-ip-address>:8080/video/test.htm` .
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Test konfigurace":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Změňte adresu URL znovu.":::
 
 ## <a name="next-steps"></a>Další kroky
 

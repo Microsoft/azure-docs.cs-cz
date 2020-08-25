@@ -1,16 +1,16 @@
 ---
 title: Koncepty – identita a přístup
-description: Seznamte se s principy identit a přístupu k řešení Azure VMware (AVS).
+description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740951"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750588"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Koncepty identity řešení Azure VMware (AVS)
+# <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
 Server vCenter a správce NSX-T se zřídí při nasazení privátního cloudu. Pomocí vCenter můžete spravovat úlohy virtuálních počítačů a správce NSX-T a rozšíříte tak síť definovanou v privátním cloudovém softwaru.
 

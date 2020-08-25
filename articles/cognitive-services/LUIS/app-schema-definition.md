@@ -2,13 +2,13 @@
 title: Definice schématu aplikace
 description: Aplikace LUIS je reprezentovaná v rámci `.json` nebo `.lu` zahrnuje všechny záměry, entity, příklad projevy, funkce a nastavení.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/22/2020
+ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684357"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756784"
 ---
 # <a name="app-schema-definition"></a>Definice schématu aplikace
 
@@ -55,12 +55,30 @@ Při importu a exportu aplikace vyberte možnost `.json` nebo `.lu` .
   "tokenizerVersion": "1.0.0",
   "patternAnyEntities": [],
   "regex_entities": [],
-  "phraselists": [],
+  "phraselists": [
+  ],
   "regex_features": [],
   "patterns": [],
   "settings": []
 }
 ```
+
+|  – element                  | Komentář                              |
+|--------------------------|--------------------------------------|
+| "hierarchické": [],     | Zastaralé, použijte [entity strojového učení](luis-concept-entity-types.md).   |
+| "složené": [],        | Zastaralé, použijte [entity strojového učení](luis-concept-entity-types.md). Odkaz na [složenou entitu](reference-entity-composite.md) |
+| "closedLists": [],       | [Seznam](reference-entity-list.md) odkazů na entity, které se primárně používají jako funkce entit.    |
+| "versionId": "0,1",      | Verze aplikace LUIS|
+| "název": "priklad-App";   | Název aplikace LUIS |
+| "desc": "",              | Volitelný popis aplikace LUIS  |
+| "Culture": "en-US",      | [Jazyk](luis-language-support.md) aplikace, ovlivňuje základní funkce, jako jsou předem připravené entity, strojové učení a provádějících tokenizaci.  |
+| "tokenizerVersion": "1.0.0", | [Provádějících tokenizaci](luis-language-support.md#tokenization)  |
+| "patternAnyEntities": [],   | [Entita Pattern.any](reference-entity-pattern-any.md)    |
+| "regex_entities": [],    |  [Entiay regulárního výrazu](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [Seznamy frází (funkce)](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  Zastaralé, použijte [entity strojového učení](luis-concept-entity-types.md). |
+| "vzory": [],          |  [Vzorce zlepšují přesnost předpovědi](luis-concept-patterns.md) pomocí [syntaxe vzoru](reference-pattern-syntax.md)   |
+| "nastavení": []           | [Nastavení aplikace](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>Verze 6. x
 

@@ -1,25 +1,25 @@
 ---
 title: Kurz – nasazení clusteru vSphere v Azure
-description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
+description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare.
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 4f3b33ea401c62124ae5f8a4c881d86d2f19b40c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079413"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750482"
 ---
-# <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
-Řešení Azure VMware (AVS) poskytuje možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
+Řešení Azure VMware nabízí možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
 
-Protože aplikace AVS neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba další konfigurace a připojení k místní instanci vCenter, virtuální síti a další. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
+Vzhledem k tomu, že řešení Azure VMware vám neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba další konfigurace a připojení k místní instanci vCenter, virtuální síti a další. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření privátního cloudu AVS
+> * Vytvoření privátního cloudu řešení Azure VMware
 > * Ověření nasazení privátního cloudu
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-Pokud chcete používat funkci AVS, musíte nejdřív zaregistrovat poskytovatele prostředků s vaším předplatným.
+Pokud chcete používat řešení Azure VMware, musíte nejdřív zaregistrovat poskytovatele prostředků s vaším předplatným.
 
 ```
 azurecli-interactive
@@ -42,11 +42,11 @@ Další způsoby registrace poskytovatele prostředků najdete v tématu [poskyt
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
-Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-portal) nebo pomocí [Azure CLI](#azure-cli).
+Privátní cloud řešení Azure VMware můžete vytvořit pomocí [Azure Portal](#azure-portal) nebo pomocí [Azure CLI](#azure-cli).
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution` a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
 
@@ -57,14 +57,14 @@ Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-po
    | **Předplatné** | Předplatné, které plánujete použít pro nasazení.|
    | **Skupina prostředků** | Skupina prostředků pro prostředky privátního cloudu. |
    | **Umístění** | Vyberte umístění, jako je například **východní USA**.|
-   | **Název prostředku** | Název vašeho privátního cloudu služby AVS |
+   | **Název prostředku** | Název vašeho privátního cloudu řešení Azure VMware. |
    | **Skladová jednotka (SKU)** | Vyberte následující hodnotu SKU: AV36 |
    | **Dvou** | Počet hostitelů, kteří mají být přidáni do clusteru privátního cloudu. Výchozí hodnota je 3, což může být vyvoláno nebo sníženo po nasazení.  |
    | **heslo správce vCenter** | Zadejte heslo správce cloudu. |
    | **Heslo správce NSX-T** | Zadejte heslo správce NSX-T. |
    | **Blok adresy** | Zadejte blok IP adres pro síť CIDR privátního cloudu, například 10.175.0.0/22. |
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Vytvoření privátního cloudu" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Na kartě základy zadejte hodnoty polí." border="true":::
 
 1. Po dokončení vyberte **zkontrolovat + vytvořit**. Na další obrazovce ověřte zadané informace. Pokud jsou informace správné, vyberte **vytvořit**.
 
@@ -73,11 +73,11 @@ Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-po
 
 1. Ověřte, že nasazení proběhlo úspěšně. Přejděte do skupiny prostředků, kterou jste vytvořili, a vyberte svůj privátní cloud.  Po dokončení nasazení se zobrazí stav **dokončeno** . 
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ověření nasazení privátního cloudu" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ověřte, že nasazení proběhlo úspěšně." border="true":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Místo Azure Portal vytvoření privátního cloudu služby AVS můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell. Je to bezplatné interaktivní prostředí s předinstalovanými a nakonfigurovanými běžnými nástroji Azure pro použití s vaším účtem. 
+Místo Azure Portal vytvoření privátního cloudu řešení Azure VMware můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell. Je to bezplatné interaktivní prostředí s předinstalovanými a nakonfigurovanými běžnými nástroji Azure pro použití s vaším účtem. 
 
 #### <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
@@ -99,7 +99,7 @@ Zadejte název skupiny prostředků, název privátního cloudu, umístění a v
 | Vlastnost  | Popis  |
 | --------- | ------------ |
 | **-g** (název skupiny prostředků)     | Název skupiny prostředků pro prostředky privátního cloudu.        |
-| **-n** (název privátního cloudu)     | Název vašeho privátního cloudu služby AVS        |
+| **-n** (název privátního cloudu)     | Název vašeho privátního cloudu řešení Azure VMware.        |
 | **--umístění**     | Umístění používané pro váš privátní cloud.         |
 | **--cluster-Size**     | Velikost clusteru. Minimální hodnota je 3.         |
 | **--Network-Block**     | Blok IP adres CIDR pro síť, který se má použít pro privátní cloud. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích.        |
@@ -112,7 +112,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-a-private-cloud-azure-portal"></a>Odstranění privátního cloudu (Azure Portal)
 
-Pokud máte privátní cloud služby AVS, který už nepotřebujete, můžete ho odstranit. Při odstranění privátního cloudu se odstraní všechny clustery společně se všemi svými součástmi.
+Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Při odstranění privátního cloudu se odstraní všechny clustery společně se všemi svými součástmi.
 
 Provedete to tak, že v Azure Portal přejdete do svého privátního cloudu a vyberete **Odstranit**. Na stránce potvrzení potvrďte název privátního cloudu a vyberte **Ano**.
 
@@ -124,7 +124,7 @@ Provedete to tak, že v Azure Portal přejdete do svého privátního cloudu a v
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření privátního cloudu AVS
+> * Vytvoření privátního cloudu řešení Azure VMware
 > * Ověření nasazení privátního cloudu
 
 Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit virtuální síť pro použití s privátním cloudem v rámci nastavení místní správy pro clustery privátních cloudů.

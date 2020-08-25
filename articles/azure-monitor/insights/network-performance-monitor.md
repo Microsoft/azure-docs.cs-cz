@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326082"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798903"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -37,8 +37,10 @@ Další informace o různých funkcích podporovaných nástrojem [Network Perfo
 ## <a name="supported-regions"></a>Podporované oblasti
 NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části světa, a to z pracovního prostoru hostovaného v jedné z následujících oblastí:
 * Severní Evropa
-* Západní Evropa
+* West Europe
+* Švýcarsko – sever
 * Francie – střed
+* Jižní Afrika – sever
 * Střední Kanada
 * USA – západ
 * USA – středozápad
@@ -56,8 +58,9 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Jižní Korea – střed
-* Indie – střed
+* Střed Indie
 * ) – Virginia vlády USA
+* Arizona vlády USA
 * Čína – východ 2
 
 

@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82086653"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
@@ -29,15 +29,15 @@ Pomocí Azure blockchain Development Kit pro Ethereem:
 * Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x nebo vyšší](https://nodejs.org/download)
+* [Node.js 10.15. x nebo vyšší](https://nodejs.org/download)
 * [Git 2.10. x nebo vyšší](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte Python. exe do cesty. Pro Azure blockchain Development Kit se vyžaduje Python verze 2.7.15 ve vaší cestě.
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte python.exe k cestě. Pro Azure blockchain Development Kit se vyžaduje Python verze 2.7.15 ve vaší cestě.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Ve Windows se pro modul gyp vyžaduje nainstalovaný kompilátor C++. Můžete použít nástroje MSBuild:
 
-* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem`npm config set msvs_version 2017 -g`
+* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem `npm config set msvs_version 2017 -g`
 * Pokud je nainstalována sada Visual Studio 2019, nastavte cestu k nástrojům pro sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
 * V opačném případě nainstalujte samostatné nástroje VS Build Tools pomocí `npm install --global windows-build-tools` příkazu v příkazovém okně *Spustit jako správce* .
 
@@ -106,7 +106,7 @@ Funkce SendRequest nastaví pole **RequestMessage** a **State** . Aktuální sta
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete prostředky odstranit tak, že `myResourceGroup` odstraníte skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
+Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
 
 Odstranění skupiny prostředků:
 

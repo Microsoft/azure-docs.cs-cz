@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735585"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Aktualizace vlastní role
 > * Odstranění vlastní role
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -221,7 +221,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Chcete-li `PSRoleDefintion` použít objekt k aktualizaci vlastní role, nejprve použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , abyste získali roli.
+1. Chcete-li použít `PSRoleDefintion` objekt k aktualizaci vlastní role, nejprve použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , abyste získali roli.
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"
