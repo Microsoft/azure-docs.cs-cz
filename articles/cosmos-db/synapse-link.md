@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034174"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814386"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -27,7 +27,7 @@ Na následujícím obrázku vidíte integraci Azure Synapseu s využitím Azure 
 
 :::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Diagram architektury pro integraci Azure synapse Analytics s Azure Cosmos DB" border="false":::
 
-## <a name="benefits"></a><a id="synapse-link-benefits"></a>Výhodnější
+## <a name="benefits"></a><a id="synapse-link-benefits"></a> Výhodnější
 
 Aby bylo možné analyzovat velké provozní datové sady a zároveň minimalizovat dopad na výkon důležitých transakčních úloh, tradičně jsou provozní data v Azure Cosmos DB extrahována a zpracována pomocí kanálů extrakce, transformace a načítání (ETL). Kanály ETL vyžadují mnoho vrstev přesunu dat, což má za následek mnohem náročnou provozní složitost a dopad na výkon vašich transakčních úloh. Zároveň se tím zvyšuje latence, která analyzuje provozní data od času počátku.
 

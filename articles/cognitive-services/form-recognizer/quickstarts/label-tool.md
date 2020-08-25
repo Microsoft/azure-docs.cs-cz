@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 13c54b548a507043fda7ff230cf7641c26f471d1
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b7c41d96e9817c548dbf52d4e56a78df4a88d696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724029"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815736"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -265,7 +265,7 @@ Tato funkce je aktuálně dostupná v v 2.1. Tisk.
 
 Při vytváření modelu můžete sestavit až 100 modelů pro jediné ID modelu. Při volání funkce analyzovat pomocí tohoto složeného ID modelu, nástroj pro rozpoznávání formulářů nejprve klasifikuje formulář, který jste odeslali, přiřadí ho k nejlépe odpovídajícímu modelu a vrátí výsledky pro tento model. To je užitečné, když příchozí formuláře mohou patřit do jedné z několika šablon.
 
-Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (dvě šipky) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
+Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
 
@@ -296,7 +296,7 @@ Pokud chcete pokračovat v projektu, musíte nejprve vytvořit připojení ke st
 
 ### <a name="resume-a-project"></a>Pokračování projektu
 
-Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít cloudový projekt. Pak vyberte připojení úložiště objektů BLOB a vyberte soubor *. vott* vašeho projektu. Aplikace načte všechna nastavení projektu, protože má token zabezpečení.
+Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít cloudový projekt. Pak vyberte připojení úložiště objektů BLOB a vyberte soubor *. Fott* vašeho projektu. Aplikace načte všechna nastavení projektu, protože má token zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky
 

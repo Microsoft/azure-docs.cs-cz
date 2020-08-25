@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 8996673cf8f01334e3dcd35aab8544643bd37360
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88802182"
+ms.locfileid: "88815840"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Postupy: spuštění aplikace pomocí Fortanix enklávy Manageru 
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
  Pro podporu specifickou pro Fortanix se připojte k [komunitě pracovní rezervy Fortanix](https://fortanix.com/community/) a použijte #enclavemanager kanálu.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud nemáte účet správce Fortanix enklávy, [Zaregistrujte](https://em.fortanix.com/auth/sign-up) se před tím, než začnete.
 1. Soukromý registr [Docker](https://docs.docker.com/) pro nabízení převedených imagí aplikace
@@ -46,7 +46,6 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
 1. Přihlaste se k [FORTANIX em](https://fortanix.com)
 1. Přejděte na stránku **účty** a vyberte **Přidat účet** a vytvořte nový účet. 
     
-[!div class="mx-imgBorder"]
 ![Vytvoření účtu](media/how-to-fortanix-enclave-manager/create-account.png)
 
 1. Po vytvoření účtu klikněte na **Vybrat** a vyberte nově vytvořený účet. Nyní můžeme zahájit registraci výpočetních uzlů a vytváření aplikací. 

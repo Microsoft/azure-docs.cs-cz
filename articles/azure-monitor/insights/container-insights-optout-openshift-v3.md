@@ -3,16 +3,16 @@ title: Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3 | Mi
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru Azure Red Hat OpenShift pomocí Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091211"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815432"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3 
 
-Po povolení monitorování clusteru Azure Red Hat OpenShift verze 3. x můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak toho dosáhnout pomocí Azure Resource Manager šabloně.  
+Po povolení monitorování clusteru Azure Red Hat OpenShift verze 3. x můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak toho dosáhnout pomocí Azure Resource Manager šabloně. 
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 

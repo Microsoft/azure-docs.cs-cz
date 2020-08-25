@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139109"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816435"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift
 
 V kontejnerové platformě OpenShift se projekty používají k seskupení a izolaci souvisejících objektů. Jako správce můžete vývojářům udělit přístup ke konkrétním projektům, umožnit jim vytvářet vlastní projekty a udělovat jim práva správce pro jednotlivé projekty.
 
@@ -45,7 +45,7 @@ Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoo
    oc edit template project-request -n openshift
    ```
 
-3. Odeberte výchozí šablonu projektu z procesu aktualizace služby Azure Red Hat OpenShift (ARO) přidáním následující poznámky:`openshift.io/reconcile-protect: "true"`
+3. Odeberte výchozí šablonu projektu z procesu aktualizace služby Azure Red Hat OpenShift (ARO) přidáním následující poznámky: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -112,7 +112,7 @@ Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v `openshift`
    oc edit namespace openshift
    ```
 
-3. Odeberte `openshift` obor názvů z procesu aktualizace ARO a přidejte následující poznámku:`openshift.io/reconcile-protect: "true"`
+3. Odeberte `openshift` obor názvů z procesu aktualizace ARO a přidejte následující poznámku: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...

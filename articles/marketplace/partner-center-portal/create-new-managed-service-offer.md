@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606065"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816979"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -135,18 +135,19 @@ V této části můžete zadat loga a obrázky, které se použijí při zobraze
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
-#### <a name="marketplace-logos"></a>Loga Marketplace
+#### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte logo vaší nabídky ve velikosti čtyř pixelů:
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto k vytvoření **malého** a **středního** loga. Případně je můžete později nahradit různými obrázky.
 
-- **Malé** (48 x 48)
-- **Střední** (90 × 90)
-- **Velký** (216 x 216)
-- **Roztažitelné** (255 × 115)
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Střední** (90 x 90 px, volitelné)
+- **Malý** (48 x 48 px, volitelné)
 
-Tato loga se používají na různých místech Azure Marketplace:
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -244,7 +245,7 @@ Až dokončíte všechny oddíly pro svůj plán, můžete vybrat **+ vytvořit 
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikovat
+## <a name="publish"></a>Publikování
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

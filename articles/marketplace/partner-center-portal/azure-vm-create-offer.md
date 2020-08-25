@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166701"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816520"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -196,7 +196,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -249,16 +249,17 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="azure-marketplace-logos"></a>Loga Azure Marketplace
 
-Zadejte soubory PNG pro logo vaší nabídky s následujícími čtyřmi rozměry obrázků:
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto k vytvoření **malého** a **středního** loga. Případně je můžete později nahradit různými obrázky.
 
-- **Malý** (48 &times; 48 pixelů)
-- **Střední** (90 &times; 90 pixelů)
-- **Velký** (216 &times; 216 pixelů)
-- **Roztažitelné** (255 &times; 115 pixelů)
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Střední** (90 x 90 px, volitelné)
+- **Malý** (48 x 48 px, volitelné)
 
-Všechny čtyři loga jsou povinná a zobrazují se v různých Azure Marketplacech seznamech.
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -540,7 +541,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Description
+7. Popis
 8. Užitečné odkazy
 9. Snímky obrazovky a videa
 

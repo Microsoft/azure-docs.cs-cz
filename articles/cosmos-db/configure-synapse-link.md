@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653133"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815568"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
@@ -19,7 +19,7 @@ Synapse odkaz pro Azure Cosmos DB je cloudová funkce hybridního transakčního
 
 
 > [!IMPORTANT]
-> Pokud chcete použít Azure synapse Link, nezapomeňte zřídit účet Azure Cosmos & pracovní prostor Azure synapse Analytics v jedné z výše uvedených podporovaných oblastí. Seznam podporovaných oblastí najdete v tématu [aktualizace služby Azure](https://azure.microsoft.com/updates/). 
+> Pokud chcete použít Azure synapse Link, ujistěte se, že jste zřídili účet Azure Cosmos & pracovní prostor Azure synapse Analytics v některé z podporovaných oblastí. Odkaz na Azure synapse je v současnosti dostupný v následujících oblastech Azure: USA – středozápad, Východní USA, západ USA 2, Severní Evropa, Západní Evropa, Střed USA – jih, jihovýchodní Asie, Austrálie – východ, východní U2, Velká Británie – jih.
 
 Pomocí následujících kroků spusťte analytické dotazy s odkazem na synapse pro Azure Cosmos DB:
 

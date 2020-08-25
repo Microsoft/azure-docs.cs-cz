@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507429"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815048"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -39,6 +39,7 @@ Tato rizika se počítají v režimu offline pomocí interních a externích zdr
 | Detekce rizik | Popis |
 | --- | --- |
 | Uniklé přihlašovací údaje | Tento typ detekce rizika označuje, že došlo k úniku platných přihlašovacích údajů uživatele. Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. Toto sdílení se obvykle provádí publikováním veřejně na tmavém webu, vložením webů nebo obchodováním a prodejem přihlašovacích údajů na černém trhu. Když služba nevrácených přihlašovacích údajů od Microsoftu Získá přihlašovací údaje uživatele z tmavého webu, vloží weby nebo jiné zdroje, vyhledá platné shody pomocí aktuálních platných přihlašovacích údajů uživatelů Azure AD. Další informace o nevrácených přihlašovacích údajích najdete v tématu [Nejčastější dotazy](#common-questions). |
+| Sprej hesla | Útok na postřik hesla je v případě, kdy je více uživatelských jmen napadeno pomocí běžných hesel v rámci sjednoceného hrubou silou, k získání neoprávněného přístupu. Toto zjišťování rizik se aktivuje, když se provedl útok na spreje hesla. |
 | Analýza hrozeb v Azure AD | Tento typ detekce rizika označuje aktivitu uživatele, která je pro daného uživatele neobvyklá nebo je konzistentní se známými vzorci útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu. |
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení

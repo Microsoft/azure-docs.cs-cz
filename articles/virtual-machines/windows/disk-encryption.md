@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448926"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815585"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Šifrování Azure Disk Storage pro PowerShell na straně serveru
 
 Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích Azure (s operačním systémem a datových discích) ve výchozím nastavení při uchování do cloudu. 
 
@@ -84,8 +84,8 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="next-steps"></a>Další kroky
 
-- Povolení kompletního šifrování pomocí šifrování na hostiteli s využitím [PowerShellu](disks-enable-host-based-encryption-powershell.md) nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
-- U spravovaných disků buď pomocí [PowerShellu](disks-enable-double-encryption-at-rest-powershell.md) , nebo [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
-- Povolte klíče spravované zákazníkem pro spravované disky buď pomocí [PowerShellu](disks-enable-customer-managed-keys-powershell.md) , nebo [Azure Portal](disks-enable-customer-managed-keys-portal.md).
+- Povolení kompletního šifrování pomocí šifrování na hostiteli s využitím [PowerShellu](disks-enable-host-based-encryption-powershell.md) nebo [Azure Portal](../disks-enable-host-based-encryption-portal.md).
+- U spravovaných disků buď pomocí [PowerShellu](disks-enable-double-encryption-at-rest-powershell.md) , nebo [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
+- Povolte klíče spravované zákazníkem pro spravované disky buď pomocí [PowerShellu](disks-enable-customer-managed-keys-powershell.md) , nebo [Azure Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Prozkoumejte šablony Azure Resource Manager pro vytváření šifrovaných disků pomocí klíčů spravovaných zákazníkem](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)

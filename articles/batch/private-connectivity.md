@@ -4,12 +4,12 @@ description: Naučte se připojit soukromě k účtu Azure Batch pomocí soukrom
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004251"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814106"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Použití privátních koncových bodů s účty Azure Batch
 
@@ -19,7 +19,8 @@ Pomocí [privátního propojení Azure](../private-link/private-link-overview.md
 
 Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtuální sítě nebo z jakékoli partnerské virtuální sítě. Prostředky namapované na soukromé odkazy jsou k dispozici i místně přes privátní partnerský vztah prostřednictvím sítě VPN nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md). K účtu Azure Batch nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí [metody automatického nebo ručního schválení](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
-Podpora pro privátní připojení v Azure Batch je aktuálně dostupná v následujících oblastech Azure: Středozápadní USA, Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie, US Gov – Arizona, Východní Asie, Francii a Velká Británie – jih.
+> [!IMPORTANT]
+> Podpora pro privátní připojení v Azure Batch je aktuálně dostupná v následujících oblastech Azure: Střed USA, Střed USA – sever, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Východní Asie, Francie Central, Velká Británie – jih, Severní Evropa, Západní Evropa, Japonsko – východ, Japonsko – západ, Austrálie – východ a všechny US Gov a US DoD oblasti.
 
 Tento článek popisuje kroky pro vytvoření privátního účtu Batch a přístup k němu pomocí privátního koncového bodu.
 

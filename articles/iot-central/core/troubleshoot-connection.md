@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 98d7566d5e9339ea2ac5d81d91f1d9f8ace5b0f4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719634"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816061"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží s tím, proč se data z vašich zařízení nezobrazuje v Azure IoT Central
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 K monitorování telemetrie, kterou vaše zařízení odesílá, použijte následující příkaz:
 
 ```cmd/bash
-az iot central app monitor-events -n <app-id> -d <device-name>
+az iot central app monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud se zařízení úspěšně připojilo k IoT Central, zobrazí se výstup podobný následujícímu:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Pokud chcete monitorovat aktualizace vlastností, které zařízení vyměňuje pomocí IoT Central, použijte následující příkaz Preview:
 
 ```cmd/bash
-az iot central app monitor-properties -n <app-id> -d <device-name>
+az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud zařízení úspěšně odesílá aktualizace vlastností, zobrazí se výstup podobný následujícímu:
@@ -108,7 +108,7 @@ Pokud stále nevidíte žádná data v terminálu, je pravděpodobný, že vaše
 Pokud se data na monitoru nezobrazují, ověřte stav zřizování vašeho zařízení spuštěním následujícího příkazu:
 
 ```cmd/bash
-az iot central app device registration-info -n <app-id> -d <device-id>
+az iot central app device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Následující výstup ukazuje příklad zařízení, u kterého se zablokuje připojení:
@@ -133,7 +133,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Stav zřizování zařízení | Popis | Možné zmírnění |
 | - | - | - |
-| Zřízené | Žádný okamžitě rozpoznatelný problém. | – |
+| Zřízené | Žádný okamžitě rozpoznatelný problém. | Není k dispozici |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
 | Blokované | Zařízení je zablokované v připojení k IoT Central. | Zařízení je zablokované v připojení k aplikaci IoT Central. Odblokovat zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [blokování zařízení](concepts-get-connected.md#device-status-values). |
 | Neschválených | Zařízení není schváleno. | Zařízení není schváleno pro připojení k aplikaci IoT Central. Schvalte zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [schválení zařízení](concepts-get-connected.md#connect-without-registering-devices) . |
@@ -178,13 +178,13 @@ Chcete-li zjistit, na kterých kategoriích je váš problém, spusťte nejvhodn
 - K ověření telemetrie použijte příkaz Preview:
 
     ```cmd/bash
-    az iot central app validate-messages -n <app-id> -d <device-name>
+    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Chcete-li ověřit aktualizace vlastností, použijte příkaz Preview
 
     ```cmd/bash
-    az iot central app validate-properties -n <app-id> -d <device-name>
+    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 - Pokud dáváte přednost použití grafického uživatelského rozhraní, použijte zobrazení IoT Central **nezpracovaná data** , abyste viděli, jestli není něco namodelované. Zobrazení **nezpracovaná data** nezjistí, jestli zařízení odesílá nesprávně vytvořený kód JSON.

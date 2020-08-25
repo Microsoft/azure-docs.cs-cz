@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757910"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799277"
 ---
-# <a name="business-card-concepts"></a>Koncepce obchodních karet
+# <a name="business-card-concepts"></a>Principy vizitek
 
 Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat a extrahovat páry klíčových hodnot z obchodních karet pomocí jednoho z předem připravených modelů. Rozhraní API pro vizitky kombinuje výkonné funkce optického rozpoznávání znaků (OCR) s využitím modelu porozumění naší firmou pro extrakci klíčových informací z vizitek v angličtině. Extrahuje osobní kontaktní údaje, název společnosti, pracovní zařazení a další. Předem připravené rozhraní API na vizitce je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview. 
 
@@ -70,7 +70,7 @@ Druhým krokem je zavolat operaci [získat výsledky analýzy obchodních karet]
 
 Když pole **Status (stav** ) má hodnotu **úspěch** , odpověď JSON bude obsahovat informace o porozumění a výsledcích rozpoznávání textu na vizitce. Výsledek porozumění vizitce se organizuje jako slovník hodnot pojmenovaných polí, kde každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
 
-![Výsledky smample společnosti Contoso](./media/business-card-results.png)
+![výstup ukázkové vizitky](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Ukázkový výstup JSON
 
@@ -90,8 +90,8 @@ Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "read
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,

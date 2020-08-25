@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80281778"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816350"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
@@ -69,6 +69,5 @@ K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jup
 
 * Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
 * Přečtěte si o Azure Machine Learning tak, že si přečtete, [co je Azure Machine Learning?](../overview-what-is-azure-ml.md) a vyzkoušíte si [kurzy](../index.yml).
-* Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
-* Podívejte se na [Azure AI Gallery](https://gallery.cortanaintelligence.com) pro ukázkové strojové učení a analýzu dat, které používají Azure Machine Learning a související datové služby v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
+* Přečtěte si článek [data vědu s Windows Data Science Virtual Machine v Azure](./vm-do-ten-things.md) .
 

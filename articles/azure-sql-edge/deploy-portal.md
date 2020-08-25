@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233246"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816860"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Nasazení Azure SQL Edge (Preview) 
 
@@ -22,8 +22,8 @@ Azure SQL Edge (Preview) je relační databázový stroj optimalizovaný pro nas
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
 * Zaregistruje [zařízení IoT Edge z Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Připravte zařízení IoT Edge, aby se [IoT Edge modul nasadil z Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
@@ -111,12 +111,117 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 9. V podokně **IoT Edge vlastní moduly** klikněte na **Uložit**.
 10. Na stránce **nastavit moduly** klikněte na **Další**.
 11. Na stránce **Zadání trasy (volitelné)** na stránce **nastavit moduly** určete trasy pro modul a modul pro IoT Edge komunikaci s rozbočovačem, viz [nasazení modulů a vytváření tras v IoT Edge](../iot-edge/module-composition.md).
-12. Klikněte na **Další**.
+12. Klikněte na **Next** (Další).
 13. Klikněte na **Odeslat**.
 
-V tomto rychlém startu jste nasadili modul SQL Edge na zařízení IoT Edge.
+## <a name="connect-to-azure-sql-edge"></a>Připojení k Edge SQL Azure
+
+V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd**v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
+
+> [!NOTE]
+> Nástroj Sqlcmd není k dispozici ve verzi ARM64 kontejnerů SQL Edge.
+
+1. Pomocí `docker exec -it` příkazu spusťte interaktivní prostředí bash v běžícím kontejneru. V následujícím příkladu `azuresqledge` je název určený `Name` parametrem modulu IoT Edge.
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. V rámci kontejneru se připojte místně pomocí nástroje Sqlcmd. Nástroj Sqlcmd není ve výchozím nastavení v cestě, takže musíte zadat úplnou cestu.
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > Na příkazovém řádku můžete vynechat heslo, aby se zobrazila výzva k jeho zadání.
+
+3. V případě úspěchu byste se měli dostat do příkazového řádku **Sqlcmd** : `1>` .
+
+## <a name="create-and-query-data"></a>Vytvoření a dotazování dat
+
+V následujících částech se dozvíte, jak pomocí nástroje **Sqlcmd** a Transact-SQL vytvořit novou databázi, přidat data a spustit jednoduchý dotaz.
+
+### <a name="create-a-new-database"></a>Vytvoření nové databáze
+
+V následujících krocích se vytvoří nová databáze s názvem `TestDB` .
+
+1. Z příkazového řádku **Sqlcmd** vložte následující příkaz Transact-SQL k vytvoření testovací databáze:
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. Na dalším řádku napište dotaz, který vrátí název všech databází na serveru:
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>Vložení dat
+
+Dále vytvořte novou tabulku, `Inventory` a vložte dva nové řádky.
+
+1. Z příkazového řádku **Sqlcmd** přepněte kontext do nové `TestDB` databáze:
+
+   ```sql
+   USE TestDB
+   ```
+
+2. Vytvořit novou tabulku s názvem `Inventory` :
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. Vložte data do nové tabulky:
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. Zadejte `GO` , chcete-li provést předchozí příkazy:
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>Výběr dat
+
+Nyní spusťte dotaz, který vrátí data z `Inventory` tabulky.
+
+1. Z příkazového řádku **Sqlcmd** zadejte dotaz, který vrátí řádky z tabulky, `Inventory` kde je množství větší než 152:
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. Spusťte příkaz:
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>Ukončení příkazového řádku Sqlcmd
+
+1. Pokud chcete ukončit relaci **Sqlcmd** , zadejte `QUIT` :
+
+   ```sql
+   QUIT
+   ```
+
+2. K ukončení interaktivního příkazového řádku ve vašem kontejneru zadejte `exit` . Váš kontejner bude i nadále běžet po ukončení interaktivního prostředí bash.
+
+## <a name="connect-from-outside-the-container"></a>Připojení mimo kontejner
+
+Můžete připojit a spustit dotazy SQL pro vaši instanci Azure SQL Edge ze všech externích nástrojů pro Linux, Windows nebo macOS, které podporují připojení SQL. Další informace o připojení k kontejneru SQL Edge z vnějšku najdete v tématu [připojení a dotazování Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+
+V tomto rychlém startu jste nasadili modul SQL Edge na zařízení IoT Edge. 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Machine Learning a uměle inteligentní informace s ONNXem v SQL Edge](onnx-overview.md).
 - [Vytvoření kompletního řešení IoT pomocí SQL Edge pomocí IoT Edge](tutorial-deploy-azure-resources.md).
+- [Streamování dat ve službě Azure SQL Edge](stream-data.md)

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388114"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816078"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -47,11 +47,7 @@ Tento článek obsahuje přehled sestavy přihlášení.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
 
-- Sestava přihlašovací aktivita je dostupná ve [všech edicích Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data).
-
-- Pokud chcete získat přístup k přihlašovacím údajům pomocí rozhraní API, musí mít váš tenant přiřazenou licenci [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) .
-
-
+Sestava aktivit přihlašování je dostupná ve [všech edicích Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) a dá se k nim dostat taky prostřednictvím rozhraní Microsoft Graph API.
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení
 
@@ -128,7 +124,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 **Umístění** – umístění, ze kterého bylo připojení iniciováno:
 
-- Město
+- City
 
 - Kraj
 
@@ -146,7 +142,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Název|Moderní ověřování|Popis|
+|Name|Moderní ověřování|Popis|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
@@ -238,7 +234,7 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Umístění
 - IP adresa
-- Datum
+- Date (Datum)
 - Vyžaduje se MFA
 - Stav přihlášení
 
@@ -267,7 +263,7 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Vytváření sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
+![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 

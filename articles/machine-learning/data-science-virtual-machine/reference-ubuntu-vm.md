@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816299"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -248,14 +248,12 @@ Zprovoznění modely strojového učení, které jste vytvořili, jejich zabalen
 
 Můžete také sestavit modely v R nebo Pythonu na virtuálním počítači a pak je nasadit v produkčním prostředí na Azure Machine Learning. Pro povolení této funkce jsme nainstalovali knihovny v R (**AzureML**) a Pythonu (**AzureML**).
 
-Informace o tom, jak nasadit modely v R a Pythonu do Azure Machine Learning, najdete v článku [o deseti akcích, které můžete na data Science Virtual Machine dělat](vm-do-ten-things.md).
-
 > [!NOTE]
 > Tyto pokyny byly napsány pro verzi Data Science Virtual Machine Windows. Informace, které jsou k dispozici na nasazení modelů pro Azure Machine Learning, se vztahují i na virtuální počítač se systémem Linux.
 
 ## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
 
-Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Mezi ně patří:
+Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Zde jsou některé z nich:
 
 * **Pro dostupné**: rychlý online algoritmus pro učení.
 * **xgboost**: nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
@@ -282,7 +280,7 @@ cd vwdemo
 vw house_dataset
 ```
 
-V tomto adresáři jsou jiné, větší ukázky. Další informace o pro dostupné najdete v [této části GitHubu](https://github.com/JohnLangford/vowpal_wabbit) a na [wikiwebu pro dostupné](https://github.com/JohnLangford/vowpal_wabbit/wiki).
+V tomto adresáři jsou jiné, větší ukázky. Další informace o pro dostupné najdete v  [této části GitHubu](https://github.com/JohnLangford/vowpal_wabbit) a na [wikiwebu pro dostupné](https://github.com/JohnLangford/vowpal_wabbit/wiki).
 
 ### <a name="xgboost"></a>xgboost
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654425"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815330"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače se systémem Linux z nespravovaných disků na Managed disks
 
@@ -21,7 +21,7 @@ Pokud máte existující virtuální počítače s Linuxem, které používají 
 V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure CLI. Pokud ho potřebujete nainstalovat nebo upgradovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Než začnete
-* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](faq-for-disks.md#migrate-to-managed-disks).
+* Přečtěte si [Nejčastější dotazy týkající se migrace na Managed disks](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

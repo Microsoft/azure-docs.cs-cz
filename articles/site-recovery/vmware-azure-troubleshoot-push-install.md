@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185209"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816158"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Řešení potíží s nabízenou instalací služby mobility
 
@@ -41,8 +41,8 @@ V případě systému Windows (**chyba 95107**) ověřte, zda uživatelský úč
 * Ruční přidání klíče registru, který zakazuje vzdálené řízení přístupu uživatele:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Přidat nový `DWORD` :`LocalAccountTokenFilterPolicy`
-  * Nastavte hodnotu na`1`
+  * Přidat nový `DWORD` : `LocalAccountTokenFilterPolicy`
+  * Nastavte hodnotu na `1`
 
 * Chcete-li přidat klíč registru, spusťte z příkazového řádku následující příkaz:
 
@@ -130,6 +130,28 @@ Konfigurační server/procesový Server se škálováním na více instancí se 
 
 K této chybě dojde, pokud se síť, která se nachází na zdrojovém počítači, nenašla, je možná Odstraněná nebo už není dostupná. Jediným způsobem, jak chybu vyřešit, je zajistit, aby síť existovala.
 
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>Zkontroluje přístup pro síťové sdílené složky na zdrojovém počítači (ErrorID: 95105, 95523).
+
+Ověřte, jestli jsou sdílené síťové složky na virtuálním počítači dostupné ze procesového serveru (PS) vzdáleně pomocí zadaných přihlašovacích údajů. Pro potvrzení přístupu: 
+
+1. Přihlaste se k počítači procesového serveru.
+2. Otevřete Průzkumníka souborů. Do adresního řádku zadejte `\\<SOURCE-MACHINE-IP>\C$` a klikněte na ENTER.
+
+    ![Otevřít složku v PS](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. Průzkumník souborů zobrazí výzvu k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo a klikněte na OK. <br><br/>
+
+    ![Zadat přihlašovací údaje](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > Pokud je zdrojový počítač připojený k doméně, zadejte název domény společně s uživatelským jménem `<domainName>\<username>` . Pokud je zdrojový počítač v pracovní skupině, zadejte jenom uživatelské jméno.
+
+4. Pokud je připojení úspěšné, složky zdrojového počítače se budou na procesovém serveru zobrazovat vzdáleně.
+
+    ![Viditelné složky ze zdrojového počítače](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+Pokud připojení neproběhne úspěšně, zkontrolujte prosím, jestli jsou splněné všechny požadavky.
+
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Ověření služby sdílení souborů a tiskáren (ErrorID: 95105 & 95106)
 
 Po kontrole připojení zkontrolujte, jestli je ve vašem virtuálním počítači povolená služba sdílení souborů a tiskáren. Tato nastavení jsou nutná ke zkopírování agenta mobility na zdrojový počítač.
@@ -204,7 +226,7 @@ Před verzí 9,20 byl kořenový oddíl nebo nastavení svazku na více discích
 
 Konfigurační soubory Grand Unified zaváděcího programu (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení místo univerzálně jedinečného identifikátoru (UUID). Site Recovery zmocňuje přístup k identifikátoru UUID, protože názvy zařízení se můžou v rámci restartování virtuálního počítače změnit. Například virtuální počítač nemusí být online se stejným názvem při převzetí služeb při selhání a bude mít za následek problémy.
 
-Například:
+Příklad:
 
 - Následující řádek je ze souboru GRUB _/boot/grub2/grub.cfg_:
 
@@ -223,7 +245,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
 
 1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>` .
 
-   Například:
+   Příklad:
 
    ```shell
    blkid /dev/sda1
@@ -260,7 +282,7 @@ Po zkopírování agenta mobility na zdrojový počítač se vyžaduje aspoň 10
 
 ## <a name="low-system-resources"></a>Nedostatek systémových prostředků
 
-K tomuto problému dochází, když má systém nedostatek dostupné paměti a nemůže přidělit paměť pro instalaci služby mobility. Zajistěte, aby byla pro instalaci dokončena dostatek paměti, aby bylo možné pokračovat v jejím dokončení.
+Možné ID chyb zjištěné pro tento problém jsou 95572 a 95573. K tomuto problému dochází, když má systém nedostatek dostupné paměti a nemůže přidělit paměť pro instalaci služby mobility. Zajistěte, aby byla pro instalaci dokončena dostatek paměti, aby bylo možné pokračovat v jejím dokončení.
 
 ## <a name="vss-installation-failures"></a>Selhání instalace VSS
 

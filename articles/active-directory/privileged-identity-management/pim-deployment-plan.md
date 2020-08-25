@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783208"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815976"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -30,7 +30,7 @@ V tomto podrobném průvodci se dozvíte, jak naplánovat nasazení Privileged I
 >
 > : heavy_check_mark: Společnost **Microsoft doporučuje**
 >
-> Toto jsou obecná doporučení a měli byste je implementovat jenom v případě, že se vztahují na vaše konkrétní podnikové potřeby.
+> Jedná se o obecná doporučení a měli byste je implementovat jenom v případě, že se vztahují k vašim konkrétním podnikovým potřebám.
 
 ## <a name="learn-about-privileged-identity-management"></a>Informace o Privileged Identity Management
 
@@ -100,7 +100,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který má za následek definování způsobu, jakým se tato změna rovná, s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou klíčem k rozhodování a přispívání Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -110,16 +110,16 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Zúčastněné strany: Privileged Identity Management pro role prostředků Azure
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |
 | Jméno a e-mail | **Správce podpory IT/Helpdesk**<br/>Zástupce oddělení IT, který může poskytnout vstup na základě podpory této změny z perspektivy technické podpory. | R/I |
 | Jména a e-maily pro uživatele pilotního nasazení | **Uživatelé role Azure**<br/>Skupina uživatelů, pro kterou je implementována Privileged Identity Management. Po implementaci Privileged Identity Management budou muset znát, jak aktivovat své role. | I |
 
-### <a name="enable-privileged-identity-management"></a>Povolit Privileged Identity Management
+### <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
 
-V rámci procesu plánování musíte nejdřív odsouhlasit a povolit Privileged Identity Management podle našeho článku [Začínáme s Privileged Identity Management](pim-getting-started.md) . Povolením Privileged Identity Management získáte přístup k některým funkcím, které jsou speciálně navržené k tomu, aby vám pomohly vaše nasazení.
+V rámci procesu plánování byste měli připravit Privileged Identity Management podle článku [Začínáme s Privileged Identity Management](pim-getting-started.md) . Privileged Identity Management vám poskytne přístup k některým funkcím, které jsou navržené speciálně pro pomoc s vaším nasazením.
 
 Pokud je vaším cílem nasazení Privileged Identity Management pro prostředky Azure, měli byste postupovat podle našich [prostředků zjišťování Azure pro správu v Privileged Identity Management](pim-resource-roles-discover-resources.md) článku. Na Privileged Identity Management můžou tyto prostředky zjišťovat a začlenit jenom vlastníci předplatných a skupin pro správu. Po zprovoznění jsou funkce PIM k dispozici pro vlastníky na všech úrovních, včetně skupiny pro správu, předplatného, skupiny prostředků a prostředku. Pokud jste globálním správcem, který se pokouší nasadit Privileged Identity Management vašich prostředků Azure, můžete [zvýšit přístup ke správě všech předplatných Azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , abyste měli přístup ke všem prostředkům Azure v adresáři pro zjišťování. Doporučuje se ale od každého vlastního vlastníka předplatného získat schválení před správou svých prostředků pomocí Privileged Identity Management.
 

@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642210"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816401"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 V prostředí PowerShell existuje koncept profilu PowerShellu. Pokud nejste obeznámeni s profily PowerShellu, přečtěte si téma [o profilech](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-Ve funkcích PowerShellu se skript profilu spustí při spuštění aplikace Function App. Aplikace Function App se spustí při prvním nasazení a po nečinnosti (při[studeném startu](#cold-start)).
+Ve funkcích PowerShellu se skript profilu spustí jednou za instanci pracovního procesu PowerShellu v aplikaci při prvním nasazení a po nečinnosti ([spuštění](#cold-start)po ukončení). Pokud je souběžnost povolená nastavením hodnoty [PSWorkerInProcConcurrencyUpperBound](#concurrency) , skript profilu se spustí pro každé vytvořené prostředí runspace.
 
 Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visual Studio Code a Azure Functions Core Tools, vytvoří `profile.ps1` se pro vás výchozí hodnota. Výchozí profil se udržuje [v úložišti GitHub Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) a obsahuje:
 
@@ -417,7 +417,10 @@ Když vytvoříte nový projekt PowerShell Functions, Správa závislostí je ve
 Když aktualizujete soubor requirements.psd1, po restartování se nainstalují aktualizované moduly.
 
 > [!NOTE]
-> Spravované závislosti vyžadují přístup k www.powershellgallery.com, aby bylo možné stahovat moduly. Pokud spouštíte místně, ujistěte se, že modul runtime má k této adrese URL přístup přidáním požadovaných pravidel brány firewall. 
+> Spravované závislosti vyžadují přístup k www.powershellgallery.com, aby bylo možné stahovat moduly. Pokud spouštíte místně, ujistěte se, že modul runtime má k této adrese URL přístup přidáním požadovaných pravidel brány firewall.
+
+> [!NOTE]
+> Spravované závislosti aktuálně nepodporují moduly, které vyžadují, aby uživatel přijal licenci, a to buď prostřednictvím interaktivního přijetí licence, nebo zadáním `-AcceptLicense` přepínače při vyvolání `Install-Module` .
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
@@ -435,6 +438,7 @@ Ve funkcích `PSModulePath` obsahuje dvě cesty:
 
 * `Modules`Složka, která existuje v kořenu aplikace Function App.
 * Cesta ke `Modules` složce, kterou řídí pracovní proces jazyka PowerShell.
+
 
 ### <a name="function-app-level-modules-folder"></a>Složka na úrovni aplikace Function App `Modules`
 
@@ -502,17 +506,22 @@ Ve výchozím nastavení může běhový modul PowerShellu funkcí zpracovat pou
 * Při pokusu o zpracování velkého počtu vyvolání současně.
 * Pokud máte funkce, které vyvolávají jiné funkce v rámci stejné aplikace Function App.
 
-Toto chování můžete změnit nastavením následující proměnné prostředí na celočíselnou hodnotu:
+Existuje několik modelů souběžnosti, které byste mohli prozkoumat v závislosti na typu úlohy:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Zvýšit ```FUNCTIONS_WORKER_PROCESS_COUNT``` . To umožňuje zpracování volání funkcí ve více procesech v rámci stejné instance, což přináší určité nároky na procesor a paměť. Obecně platí, že funkce vázané na vstupně-výstupní operace nebudou z této režie ovlivněny. V případě funkcí vázaných na procesor může být dopad významný.
 
-Tuto proměnnou prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) Function App.
+* Zvyšte ```PSWorkerInProcConcurrencyUpperBound``` hodnotu nastavení aplikace. To umožňuje vytvoření více prostředí runspace v rámci stejného procesu, což významně snižuje nároky na procesor a paměť.
+
+Tyto proměnné prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) vaší aplikace Function App.
+
+V závislosti na vašem případu použití může Durable Functions významně zlepšit škálovatelnost. Další informace najdete v tématu [Durable Functions vzorech aplikací](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+
+>[!NOTE]
+> Je možné, že se "požadavky zařadí do fronty z důvodu žádného dostupného upozornění prostředí runspace". Upozorňujeme, že se nejedná o chybu. Zpráva oznamuje, že požadavky se zařadí do fronty a budou zpracovány po dokončení předchozích požadavků.
 
 ### <a name="considerations-for-using-concurrency"></a>Předpoklady pro použití souběžnosti
 
-PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Vytvořené množství prostředí runspace se bude shodovat s nastavením aplikace PSWorkerInProcConcurrencyUpperBound. Propustnost bude mít vliv na množství CPU a paměti, které jsou k dispozici ve vybraném plánu.
+PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Vytvořené množství prostředí runspace se bude shodovat s ```PSWorkerInProcConcurrencyUpperBound``` nastavením aplikace. Propustnost bude mít vliv na množství CPU a paměti, které jsou k dispozici ve vybraném plánu.
 
 Azure PowerShell používá některé kontexty _na úrovni procesu_ a stav, které vám pomůžou ušetřit nadměrné typování. Pokud však zapnete souběžnost ve vaší aplikaci Function App a vyvoláte akce, které mění stav, můžete se zaměřit na konflikty časování. Tyto konflikty časování je obtížné ladit, protože jedno vyvolání spoléhá na určitý stav a druhé vyvolání změnilo stav.
 

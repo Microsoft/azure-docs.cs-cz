@@ -2,20 +2,20 @@
 title: Povolit dvojité šifrování v REST – Azure CLI – spravované disky
 description: Pro data spravovaného disku pomocí rozhraní příkazového řádku Azure zapněte dvojité šifrování v klidovém formátu.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 25f4f99d2bd80034d2f337aa649417d2d06026be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76e5ab49e354faac085be533fed1ff16c0315a5e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082524"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816826"
 ---
-# <a name="azure-cli---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure CLI – povolení dvojitého šifrování v klidovém prostředí na spravovaných discích
+# <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Použití rozhraní příkazového řádku Azure pro povolení dvojitého šifrování v klidovém umístění pro spravované disky
 
 Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro spravované disky. Koncepční informace o šifrovaném šifrování v klidovém umístění a dalších typech šifrování spravovaného disku naleznete v části [dvojité šifrování v klidovém oddílu v](disk-encryption.md#double-encryption-at-rest) článku o šifrování disku.
 

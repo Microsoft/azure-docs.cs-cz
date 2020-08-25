@@ -1,6 +1,6 @@
 ---
 title: Šifrování na straně serveru Azure Managed Disks – Azure CLI
-description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pro šifrování svých spravovaných disků můžete spoléhat na klíče spravované Microsoftem, případně můžete pomocí klíčů spravovaných zákazníkem spravovat šifrování pomocí vlastních klíčů.
+description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování pomocí vlastních klíčů, nebo můžete spoléhat na klíče spravované Microsoftem pro šifrování svých spravovaných disků.
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449155"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816894"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -80,7 +80,7 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="next-steps"></a>Další kroky
 
-- Povolení kompletního šifrování pomocí šifrování na hostiteli s použitím rozhraní příkazového [řádku](disks-enable-host-based-encryption-cli.md) nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
-- U spravovaných disků buď pomocí rozhraní příkazového [řádku](disks-enable-double-encryption-at-rest-cli.md) nebo [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
-- Povolte pro spravované disky klíče spravované zákazníkem buď pomocí rozhraní příkazového [řádku](disks-enable-customer-managed-keys-cli.md) , nebo [Azure Portal](disks-enable-customer-managed-keys-portal.md).
+- Povolení kompletního šifrování pomocí šifrování na hostiteli s použitím rozhraní příkazového [řádku](disks-enable-host-based-encryption-cli.md) nebo [Azure Portal](../disks-enable-host-based-encryption-portal.md).
+- U spravovaných disků buď pomocí rozhraní příkazového [řádku](disks-enable-double-encryption-at-rest-cli.md) nebo [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md)povolte dvojité šifrování v klidovém umístění.
+- Povolte pro spravované disky klíče spravované zákazníkem buď pomocí rozhraní příkazového [řádku](disks-enable-customer-managed-keys-cli.md) , nebo [Azure Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)

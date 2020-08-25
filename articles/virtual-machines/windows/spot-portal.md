@@ -1,6 +1,6 @@
 ---
 title: Nasazení virtuálních počítačů Azure na místě pomocí portálu
-description: Naučte se používat Azure PowerShell k nasazení virtuálních počítačů na místě za účelem úspory nákladů.
+description: Jak používat Azure PowerShell k nasazení virtuálních počítačů na místě, aby se ušetřily náklady.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef5fa0aafca1312480f51614a1ba1692c09a13b8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074165"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816571"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Nasazení virtuálních počítačů na místě pomocí Azure Portal
 
-Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
+Použití [přímých virtuálních počítačů](../spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
-Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
+Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](../spot-vms.md#pricing).
 
 Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota by měla být například `0.05701` maximální cena $0,05701 USD za hodinu. Pokud nastavíte maximální cenu `-1` , nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
 
@@ -35,7 +35,7 @@ Na kartě **základy** se v části **Podrobnosti instance** **nejedná o** výc
 
 ![Snímek obrazovky pro výběr ne, nepoužívat instanci bodu Azure](media/spot-portal/no.png)
 
-Vyberete-li možnost **Ano**, oddíl se rozšíří a můžete zvolit [Typ vyřazení a zásadu vyřazení](spot-vms.md#eviction-policy). 
+Vyberete-li možnost **Ano**, oddíl se rozšíří a můžete zvolit [Typ vyřazení a zásadu vyřazení](../spot-vms.md#eviction-policy). 
 
 ![Snímek obrazovky pro výběr Ano, použití instance bodu Azure](media/spot-portal/yes.png)
 

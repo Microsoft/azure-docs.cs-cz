@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607455"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814718"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -72,40 +72,40 @@ Další informace o kompetencích najdete na stránce [Microsoft Partner Network
 
 Partneři se systémovým integrátorem mohou odesílat konzultační nabídky na následujících 20 zemí nebo oblastí:
 
-| Země  | (pokračuje...)   | (pokračuje...)  | (pokračuje...)  |
+| Země | (pokračování) |  (pokračování) |  (pokračování) |
 |---------|----------|----------|----------|
 | Austrálie | Belgie | Kanada | Dánsko |
 | Finsko  | Francie | Německo  | Indie   |
 | Itálie    | Japonsko  |  Mexiko  |  Nizozemsko  |
 |  Nový Zéland  |  Norsko  |  Polsko  | Jižní Afrika |
 |  Švédsko  | Švýcarsko  |  USA  | Spojené království  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Zaregistrujte se na konzultační služby na komerčním webu Marketplace.
 
-Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](become-publisher.md). 
+Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](become-publisher.md).
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
 Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi. 
 
 |Nastavení pro nové vydavatele  |
-|---------|
-|ID MPN     |
-|Loga společnosti (48 x 48, 216 × 216 pixelů)     |
-|Cíl zájemce     |
-||
+| - |
+| ID MPN |
+| Loga společnosti (48 x 48, 216 × 216 pixelů) |
+| Cíl zájemce |
+|
 
 |Nastavení pro nové nabídky  |
-|---------|
-|Název nabídky (200 znaků) a popis (2 000 znaků)    |
-|Kompetence     |
-|Dostupnost země nebo oblasti     |
-|Trvání zapojení     |
-|Příslušné obory, kategorie a klíčová slova pro hledání     |
-|Video s přehledem produktu    |
-|Snímky obrazovky (maximálně 5, 1280 × 720 pixelů)     |
-|Marketingové dokumenty (maximálně 3)     |
-||
+| - |
+| Název nabídky (200 znaků) a popis (2 000 znaků) |
+| Kompetence  |
+| Dostupnost země nebo oblasti |
+| Trvání zapojení  |
+| Příslušné obory, kategorie a klíčová slova pro hledání |
+| Video s přehledem produktu |
+| Snímky obrazovky (maximálně 5, 1280 × 720 pixelů) |
+| Marketingové dokumenty (maximálně 3) |
+|
 
 ## <a name="the-publishing-process"></a>Proces publikování
 

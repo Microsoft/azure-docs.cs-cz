@@ -7,15 +7,15 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: ae9a421a165d6c8bda688819c5233ae5bb1a8562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38686ba35285159d7a27724b5402a6b6e2f3a696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139092"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815517"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Role správce zákazníka pro Azure Red Hat OpenShift
-
+ 
 Jste správcem clusteru Azure Red Hat OpenShift clusteru. Váš účet má zvýšená oprávnění a přístup ke všem uživatelsky vytvořeným projektům.
 
 Pokud má váš účet na něj vazbu role pro autorizaci zákazníka-správce a clusteru, může automaticky spravovat projekt.
@@ -37,7 +37,7 @@ Pomocí příznaku můžete nakonfigurovat roli Customer-admin-clustering jenom 
 
 ## <a name="confirm-membership-in-the-customer-administrator-role"></a>Potvrdit členství v roli správce zákazníka
 
-Pokud chcete potvrdit členství ve skupině pro správu zákazníka, zkuste použít příkazy CLI OpenShift `oc get nodes` nebo `oc projects` . `oc get nodes`Zobrazí seznam uzlů, pokud máte roli Customer-admin-cluster, a chybu oprávnění, pokud máte pouze roli Customer-admin-Project. `oc projects`zobrazí všechny projekty v clusteru na rozdíl od pouze projektů, ve kterých pracujete.
+Pokud chcete potvrdit členství ve skupině pro správu zákazníka, zkuste použít příkazy CLI OpenShift `oc get nodes` nebo `oc projects` . `oc get nodes` Zobrazí seznam uzlů, pokud máte roli Customer-admin-cluster, a chybu oprávnění, pokud máte pouze roli Customer-admin-Project. `oc projects` zobrazí všechny projekty v clusteru na rozdíl od pouze projektů, ve kterých pracujete.
 
 Chcete-li dále prozkoumat role a oprávnění v clusteru, můžete použít [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) příkaz.
 

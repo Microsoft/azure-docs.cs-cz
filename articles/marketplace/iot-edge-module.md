@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750246"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816248"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -40,13 +40,13 @@ Typ nabídky IoT Edge modul je konkrétní typ kontejneru, který je spuštěný
 
 **Výběr správného online obchodu**
 
-IoT Edge moduly jsou publikovány pouze do Azure Marketplace, AppSource se nevztahují.  Další informace o rozdílech a cílové skupině v online obchodech najdete v tématu [Určení možnosti publikování](determine-your-listing-type.md).
- 
+Moduly IoT Edge jsou publikovány pouze do Azure Marketplace; AppSource se nedá použít. Další informace o rozdílech a cílové skupině v online obchodech najdete v tématu [Určení možnosti publikování](determine-your-listing-type.md).
+
 **Možnosti fakturace**
 
 Web Marketplace v současnosti podporuje **bezplatné** možnosti fakturace a přináší **vlastní licenci (BYOL)** pro moduly IoT Edge.
- 
-**Možnosti publikování**
+
+### <a name="publishing-options"></a>Možnosti publikování
 
 Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v režimu **Transact** .  Další podrobnosti o možnostech publikování najdete v tématu Volba [Možnosti publikování](determine-your-listing-type.md) .  
 
@@ -54,22 +54,22 @@ Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v r
 
 Všechny podmínky Microsoft Azure Marketplace smluv a zásad se vztahují na nabídky modulu IoT Edge.  Kromě toho existují požadavky a technické požadavky pro IoT Edge moduly.  
 
-**Předpoklady**
+### <a name="prerequisites"></a>Předpoklady
 
 Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit následující požadavky:
 
 - Přístup k partnerskému centru. Další informace najdete v tématu [Příručka pro publikování Azure Marketplace a AppSource](marketplace-publishers-guide.md).
-- Hostování modulu IoT Edge v Azure Container Registry. 
-- Připravte si metadata modulu IoT Edge, například (nevyčerpávající seznam): 
+- Hostování modulu IoT Edge v Azure Container Registry.
+- Připravte si metadata modulu IoT Edge, například (nevyčerpávající seznam):
     - Název
     - Popis (ve formátu HTML)
-    - Obrázek loga (formát PNG a pevné velikosti obrázků, včetně 40x40px, 90x90px, 115x115px, 255x115px)
+    - Obrázek loga (v velikostech 48 x 48 (volitelné), 90 x 90 (volitelné) a od 216 x 216 do 350 x 350 px, All ve formátu PNG)
     - Podmínky použití a zásad ochrany osobních údajů
     - Výchozí konfigurace modulu (trasa, nevlákenovaná požadovaná vlastnost, createOptions, proměnné prostředí)
     - Dokumentace
     - Kontaktní údaje podpory
 
-**Technické požadavky**
+### <a name="technical-requirements"></a>Technické požadavky
 
 Hlavní technické požadavky pro modul IoT Edge, aby bylo možné získat certifikaci a publikovat ho v Azure Marketplace, je podrobně popsáno v [technickém assetu příprava IoT Edge modulu](./partner-center-portal/create-iot-edge-module-asset.md).
 

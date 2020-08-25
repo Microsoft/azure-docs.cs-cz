@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757145"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763452"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -206,7 +206,7 @@ Ujistěte se, že jsou aktivní skupiny svazků odpovídající svazkům skriptu
 vgdisplay -a
 ```  
 
-Jinak aktivujte skupinu svazků pomocí příkazu níže.
+Jinak aktivujte skupinu svazků pomocí následujícího příkazu.
 
 ```bash
 #!/bin/bash
@@ -215,7 +215,7 @@ vgchange –a y  <volume-group-name>
 
 ##### <a name="listing-logical-volumes-within-volume-groups"></a>Výpis logických svazků v rámci skupin svazků
 
-Jakmile získáme jedinečný a aktivní seznam VGs týkajících se skriptu, logické svazky přítomné v těchto skupinách svazků můžou být uvedené pomocí příkazu níže.
+Jakmile získáme jedinečný a aktivní seznam VGs týkajících se skriptu, logické svazky přítomné v těchto skupinách svazků můžou být uvedené pomocí následujícího příkazu.
 
 ```bash
 #!/bin/bash

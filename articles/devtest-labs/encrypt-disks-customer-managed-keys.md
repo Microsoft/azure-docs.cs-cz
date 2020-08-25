@@ -3,17 +3,17 @@ title: Šifrování disků s operačním systémem pomocí klíčů spravovanýc
 description: Naučte se šifrovat disky operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566195"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815917"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Šifrování disků operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
 Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích v Azure (s operačním systémem a datovými disky) ve výchozím nastavení, když je trvale ukládá do cloudu. Přečtěte si další informace o [šifrování disků](../virtual-machines/windows/disk-encryption.md) v Azure. 
 
-V rámci DevTest Labs se všechny disky s operačním systémem a datové disky vytvořené jako součást testovacího prostředí šifrují pomocí klíčů spravovaných platformou. Jako vlastník testovacího prostředí se ale můžete rozhodnout pro šifrování disků s operačním systémem virtuálního počítače testovacího prostředí pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat **klíč spravovaný zákazníkem** , který se použije k šifrování dat v testovacích discích s operačním systémem. Další informace o šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem a dalších typů šifrování spravovaného disku najdete v tématu [klíče spravované zákazníkem](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Viz také [omezení s použitím klíčů spravovaných zákazníkem](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+V rámci DevTest Labs se všechny disky s operačním systémem a datové disky vytvořené jako součást testovacího prostředí šifrují pomocí klíčů spravovaných platformou. Jako vlastník testovacího prostředí se ale můžete rozhodnout pro šifrování disků s operačním systémem virtuálního počítače testovacího prostředí pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat **klíč spravovaný zákazníkem** , který se použije k šifrování dat v testovacích discích s operačním systémem. Další informace o šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem a dalších typů šifrování spravovaného disku najdete v tématu [klíče spravované zákazníkem](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Viz také [omezení s použitím klíčů spravovaných zákazníkem](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 
 ## <a name="pre-requisites"></a>Požadavky
 
-1. Pokud nemáte sadu šifrování disku nastavenou, postupujte podle pokynů v tomto článku [a nastavte Key Vault a sadu šifrování disku](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Všimněte si následujících požadavků pro sadu Disk Encryption: 
+1. Pokud nemáte sadu šifrování disku nastavenou, postupujte podle pokynů v tomto článku [a nastavte Key Vault a sadu šifrování disku](../virtual-machines/disks-enable-customer-managed-keys-portal.md). Všimněte si následujících požadavků pro sadu Disk Encryption: 
 
     - Sada Encryption disk musí být **ve stejné oblasti a předplatném jako vaše testovací prostředí**. 
     - Ujistěte se, že (vlastník testovacího prostředí) má alespoň **přístup na úrovni čtenáře** ke sadě Encryption disk, která bude použita k šifrování disků testovacího prostředí. 

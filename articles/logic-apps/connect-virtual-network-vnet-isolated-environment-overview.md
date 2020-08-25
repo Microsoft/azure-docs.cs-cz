@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816013"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -117,7 +117,14 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 > [!IMPORTANT]
 > Koncový bod přístupu můžete vybrat jenom během vytváření ISE a tuto možnost nemůžete později změnit.
 
-* **Interní**: soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*. Ujistěte se, že máte síťové připojení mezi soukromými koncovými body a počítačem, ze kterého chcete získat přístup k historii spuštění. Například klientský počítač může existovat uvnitř virtuální sítě ISE nebo uvnitř virtuální sítě, která je připojená k virtuální síti ISE, například prostřednictvím partnerského vztahu nebo virtuální privátní sítě.
+* **Interní**: soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*.
+
+  > [!IMPORTANT]
+  > Ujistěte se, že máte síťové připojení mezi soukromými koncovými body a počítačem, ze kterého chcete získat přístup k historii spuštění. V opačném případě se při pokusu o zobrazení historie spuštění vaší aplikace logiky zobrazí chybová zpráva oznamující, že došlo k neočekávané chybě. Nepovedlo se načíst.
+  >
+  > ![Azure Storage chyba akce, která způsobila neschopnost odesílat přenosy přes bránu firewall](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > Například klientský počítač může existovat uvnitř virtuální sítě ISE nebo uvnitř virtuální sítě, která je připojená k virtuální síti ISE prostřednictvím partnerského vztahu nebo virtuální privátní sítě. 
 
 * **External**: veřejné koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *z vnějšku vaší virtuální sítě*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 

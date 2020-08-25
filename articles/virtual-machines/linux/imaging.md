@@ -1,6 +1,6 @@
 ---
 title: Přehled vytváření imagí pro Linux pro Azure
-description: Přehled toho, jak přenést image virtuálních počítačů se systémem Linux nebo vytvořit nové image pro použití v Azure.
+description: Postup převedení imagí virtuálních počítačů se systémem Linux nebo vytvoření nových imagí pro použití v Azure
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502176"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815296"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -25,7 +25,7 @@ V tomto článku se seznámíte s rozhodovacími body a požadavky na image, vys
 ## <a name="difference-between-managed-disks-and-images"></a>Rozdíl mezi spravovanými disky a obrázky
 
 
-Azure umožňuje převést virtuální pevný disk na platformu, použít ho jako [spravovaný disk](../windows/faq-for-disks.md#managed-disks)nebo použít jako zdroj pro image. 
+Azure umožňuje převést virtuální pevný disk na platformu, použít ho jako [spravovaný disk](../faq-for-disks.md#managed-disks)nebo použít jako zdroj pro image. 
 
 Azure Managed disks jsou jediné virtuální pevné disky. Můžete buď převzít existující virtuální pevný disk a vytvořit z něj spravovaný disk, nebo vytvořit prázdný spravovaný disk od začátku. Virtuální počítače můžete vytvořit ze spravovaných disků tak, že disk připojíte k virtuálnímu počítači, ale můžete použít jenom virtuální pevný disk s jedním virtuálním počítačem. Nemůžete změnit žádné vlastnosti operačního systému, Azure se jenom pokusí zapnout virtuální počítač a spustit ho pomocí tohoto disku. 
 
@@ -58,7 +58,7 @@ Jedná se o [předpoklady](./create-upload-generic.md) pro vytvoření image.
 ### <a name="specialized-images"></a>Specializované obrázky
 Jedná se o zcela nakonfigurované image, které nevyžadují virtuální počítače a speciální parametry. platforma bude jenom zapnout virtuální počítač. v rámci tohoto virtuálního počítače je potřeba zpracovat jedinečnost, jako je třeba nastavení názvu hostitele, aby nedocházelo ke konfliktům DNS ve stejné virtuální síti. 
 
-Zřizovací agenti se pro tyto image nevyžadují, ale možná budete chtít mít funkce pro zpracování rozšíření. Můžete nainstalovat agenta pro Linux, ale zakázat možnost zřizování. I když nepotřebujete zřizovacího agenta, image musí splňovat [požadavky](./create-upload-generic.md) pro Image Azure.
+Zřizovací agenti se pro tyto image nevyžadují, ale možná budete chtít mít funkce pro zpracování rozšíření. Můžete nainstalovat agenta pro Linux, ale zakázat možnost zřizování. I když nepotřebujete zřizovacího agenta, image musí splňovat [požadavky](./create-upload-generic.md)  pro Image Azure.
 
 
 ## <a name="image-storage-options"></a>Možnosti úložiště obrázků

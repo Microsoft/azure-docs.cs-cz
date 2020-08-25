@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606110"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816996"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -21,7 +21,7 @@ Toto téma vysvětluje, jak vytvořit novou nabídku Dynamics 365 for Operations
 Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 >[!NOTE]
-> Po publikování nabídky se úpravy nabídky provedené v partnerském centru aktualizují jenom v systému a po opětovném publikování se uloží i přední. Po provedení změn zajistěte odeslání nabídky k publikování.
+> Po publikování nabídky se úpravy nabídky aktualizují v partnerském centru a v online obchodě po opětovném odeslání nabídky k publikování.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
@@ -193,12 +193,16 @@ V této části můžete zadat loga a obrázky, které se použijí při zobraze
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte logo vaší nabídky ve dvou velikostech v pixelech:
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto, aby se vytvořilo **malé** logo. Volitelně můžete tuto položku nahradit jinou imagí později.
 
-- **Malé** (48 x 48)
-- **Velký** (216 x 216)
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Malý** (48 x 48 px, volitelné)
+
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -286,7 +290,7 @@ Odpovězte na **Ano** , pokud se text v řešení dá přeložit do jiných jazy
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikovat
+## <a name="publish"></a>Publikování
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d63c1517c025b9d7a3fd5523c6184eb5f43aad90
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bf56f1fac1f12f9e4994221d672410715393ae9f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825306"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815134"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows
 
@@ -22,7 +22,7 @@ Další podrobnosti najdete v tématu [velikosti virtuálních počítačů s Wi
 
 ## <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 
-Velikosti označené hvězdičkou jsou momentálně ve verzi Preview. V našich [nejčastějších dotazech](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
+Velikosti označené hvězdičkou jsou momentálně ve verzi Preview. V našich [nejčastějších dotazech](../faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 

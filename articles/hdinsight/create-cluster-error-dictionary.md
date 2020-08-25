@@ -7,13 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/19/2019
-ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186630"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816452"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -24,19 +24,17 @@ Tento článek popisuje řešení chyb, ke kterým může dojít při vytvářen
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
-### <a name="error"></a>Chyba
+**Chyba**: "umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
 
-"Umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
-
-#### <a name="error-message"></a>Chybová zpráva
+### <a name="error-message-1"></a>Chybová zpráva 1
 
 "Vzdálený server vrátil chybu: (404) Nenalezeno."
 
-### <a name="cause"></a>Příčina
+#### <a name="cause"></a>Příčina
 
 Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
-### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Řešení
 
 - V případě adresy URL protokolu HTTP nebo HTTPS Ověřte adresu URL tak, že se pokusíte přejít z okna prohlížeče anonymním.
 - V případě adresy URL WASB se ujistěte, že tento skript existuje v účtu úložiště, který v žádosti udělíte. Ujistěte se také, že klíč úložiště pro tento účet úložiště je správný.
@@ -44,37 +42,29 @@ Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali 
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
-
-### <a name="error"></a>Chyba
-
-"Umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT_ACTION_URL\> "
-
-#### <a name="error-message"></a>Chybová zpráva
+### <a name="error-message-2"></a>Chybová zpráva 2
 
 "Daný identifikátor URI skriptu \<SCRIPT_URI\> je v adls, ale tento cluster nemá žádný objekt zabezpečení Data Lake Storage".
 
-### <a name="cause"></a>Příčina
+#### <a name="cause"></a>Příčina
 
 Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali v rámci žádosti o vytvoření clusteru. Služba obdrží předchozí chybovou zprávu, když se pokusí o přístup k akci skriptu.
 
-### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Řešení
 
 Přidejte odpovídající Azure Data Lake Storage účet 1. generace do clusteru. Přidejte taky instanční objekt, který přistupuje k Data Lake Storage účtu 1. generace ke clusteru.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
-
-### <a name="error"></a>Chyba
+### <a name="error-message-3"></a>Chybová zpráva 3
 
 Velikost virtuálního počítače \<CUSTOMER_SPECIFIED_VM_SIZE\> poskytnutá v žádosti je neplatná nebo není podporovaná pro roli \<ROLE\> . Platné hodnoty jsou: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
-### <a name="cause"></a>Příčina
+#### <a name="cause"></a>Příčina
 
 Velikost virtuálního počítače, kterou jste zadali, není pro tuto roli povolená. K této chybě může dojít, protože hodnota velikosti virtuálního počítače nefunguje podle očekávání nebo není vhodná pro roli počítače.
 
-### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Řešení
 
 Chybová zpráva obsahuje seznam platných hodnot pro velikost virtuálního počítače. Vyberte jednu z těchto hodnot a opakujte požadavek na vytvoření clusteru.
 
@@ -94,7 +84,7 @@ Hodnota **VirtualNetworkId** , kterou jste zadali během vytváření clusteru, 
 
 Ujistěte se, že hodnoty **VirtualNetworkId** a Subnet jsou ve správném formátu. Pokud chcete získat hodnotu **VirtualNetworkId** :
 
-1. Přejděte na web Azure Portal.
+1. Přejděte na Azure Portal.
 1. Vyberte svou virtuální síť.
 1. Vyberte položku nabídky **vlastnosti** . Hodnota vlastnosti **ResourceID** je hodnota **VirtualNetworkId** .
 
@@ -230,7 +220,7 @@ Pokud používáte vlastní skupinu zabezpečení sítě VNet (skupin zabezpeče
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: nasazení selhala kvůli porušení zásad: prostředek <Resource URI> byl zakázán zásadami. Identifikátory zásad: [{"policyAssignment": {"název": " <Policy Name> ", "ID": "/Providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: nasazení selhala kvůli porušení zásad: prostředek <Resource URI> byl zakázán zásadami. Identifikátory zásad: [{"policyAssignment": {"název": " <Policy Name> ", "ID": "/Providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition": <Policy Definition>
 
 ### <a name="cause"></a>Příčina
 

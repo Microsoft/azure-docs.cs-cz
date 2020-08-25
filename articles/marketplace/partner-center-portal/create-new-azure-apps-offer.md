@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606173"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815657"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -249,16 +249,17 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky v následujících třech velikostech v pixelech:
+Zadejte soubor PNG pro logo **velké** velikosti. Partnerské centrum použije toto k vytvoření **malého** a **středního** loga. Případně je můžete později nahradit různými obrázky.
 
-- **Malé** (48 x 48)
-- **Střední** (90 × 90)
-- **Velký** (216 x 216)
-- **Roztažitelné** (255 × 115)
+- **Velký** (od 216 x 216 do 350 × 350 px, požadováno)
+- **Střední** (90 x 90 px, volitelné)
+- **Malý** (48 x 48 px, volitelné)
 
-Všechny tři loga jsou povinná a používají se na různých místech v seznamu.
+Tato loga se používají na různých místech v seznamu:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -578,7 +579,7 @@ Popište možnosti prostředí Test Drive.
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikovat
+## <a name="publish"></a>Publikování
 
 Po dokončení všech požadovaných částí nabídky vyberte v pravém horním rohu portálu možnost **zkontrolovat a publikovat** .
 

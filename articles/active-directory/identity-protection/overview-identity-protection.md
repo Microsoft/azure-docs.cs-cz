@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509106"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815177"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -52,8 +52,9 @@ Identity Protection identifikuje rizika v následujících klasifikacích:
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
 | Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
-| Propojená IP adresa pro malware | Přihlášení z IP adresy propojené s malwarem |
-| Nevrácená pověření | Toto zjišťování rizik indikuje, že došlo k úniku platných přihlašovacích údajů uživatele. |
+| Propojená IP adresa pro malware | Přihlaste se přes propojenou IP adresu malwaru. |
+| Nevrácená pověření | Toto zjišťování rizik indikuje, že byly Nevráceny platné přihlašovací údaje uživatele. |
+| Sprej hesla | Označuje, že více uživatelských jmen se při útoku pomocí běžných hesel v rámci sjednoceného hrubou silou nepoužívá. |
 | Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
 
 Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).

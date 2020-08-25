@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277583"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816758"
 ---
 # <a name="read-and-write-spatial-data"></a>Čtení a zápis prostorových dat
 
@@ -150,9 +150,15 @@ Následující kód ukazuje čtení a zápis dobře známého textu zpátky a zp
 GML je specifikace prostorového souboru XML, která se často používá jako rozšíření jiných specifikací XML. Data o injson se dají zapsat jako XML pomocí značek GML pomocí `atlas.io.core.GmlWriter.write` funkce. XML obsahující GML lze číst pomocí `atlas.io.core.GmlReader.read` funkce. Funkce Read má dvě možnosti:
 
 - `isAxisOrderLonLat`Možnost – pořadí osy souřadnic "Zeměpisná šířka, délka" nebo "Zeměpisná šířka" se může v datových sadách lišit a není vždy správně definovaná. Ve výchozím nastavení čtecí modul GML čte data souřadnic jako zeměpisná šířka, zeměpisná délka, ale při nastavení této možnosti na hodnotu true se tato možnost načtou jako Zeměpisná délka, zeměpisná šířka.
-- `propertyTypes`Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou: `string` , `number` , a `boolean` `date` . Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
+- `propertyTypes`Možnost – tato možnost je vyhledávací tabulka hodnot klíče, kde klíč je název vlastnosti v datové sadě. Hodnota je typ objektu, na který se má přetypování hodnota při analýze. Podporované hodnoty typu jsou: `string` , `number` , a `boolean`  `date` . Pokud vlastnost není ve vyhledávací tabulce nebo není definován typ, bude vlastnost analyzována jako řetězec.
 
 `atlas.io.read`Funkce bude ve výchozím nastavení `atlas.io.core.GmlReader.read` fungovat, když zjistí, že vstupní data jsou XML, ale data nejsou jedním z formátů prostorového formátu XML.
+
+`GmlReader`Provede analýzu souřadnic, které mají jednu z následujících identifikátory SRID:
+
+- EPSG: 4326 (upřednostňovaný)
+- EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674, případně s malým okrajem chyby.
+- EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
 
 ## <a name="next-steps"></a>Další kroky
 

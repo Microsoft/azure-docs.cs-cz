@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551978"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816877"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Konfigurace Edge Azure SQL (Preview)
 
@@ -157,6 +157,60 @@ Předchozí verze CTP služby Azure SQL Edge byla nakonfigurovaná tak, aby bě�
   - Aktualizujte možnosti vytvoření kontejneru a `*"User": "user_name | user_id*` v části vytvoření kontejneru Určete možnost Přidat dvojici klíč-hodnota. Nahraďte user_name nebo user_id skutečným user_namem nebo user_idm v hostiteli Docker. 
   - Změňte oprávnění pro adresář nebo přípojný svazek.
 
+## <a name="persist-your-data"></a>Uchování dat
+
+Změny konfigurace vašeho okraje Azure SQL Edge a databázové soubory jsou uložené v kontejneru i v případě, že kontejner restartujete pomocí `docker stop` a `docker start` . Pokud ale kontejner odeberete pomocí `docker rm` , odstraní se všechno z kontejneru, včetně Edge Azure SQL a vašich databází. V následující části se dozvíte, jak používat **datové svazky** k uchování souborů databáze i v případě, že jsou přidružené kontejnery smazány.
+
+> [!IMPORTANT]
+> Pro Azure SQL Edge je velmi důležité, abyste porozuměli Trvalost dat v Docker. Kromě diskuze v této části najdete informace v dokumentaci Docker o tom, [jak spravovat data v kontejnerech Docker](https://docs.docker.com/engine/tutorials/dockervolumes/).
+
+### <a name="mount-a-host-directory-as-data-volume"></a>Připojit hostitelský adresář jako datový svazek
+
+První možností je připojit adresář na svém hostiteli jako datový svazek ve vašem kontejneru. K tomu použijte `docker run` příkaz s `-v <host directory>:/var/opt/mssql` příznakem. To umožňuje obnovení dat mezi provedeními kontejneru.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+Tato technika také umožňuje sdílet a zobrazovat soubory na hostiteli mimo Docker.
+
+> [!IMPORTANT]
+> Mapování svazků hostitele pro **Docker ve Windows v** současné době nepodporuje mapování úplného `/var/opt/mssql` adresáře. Můžete ale mapovat podadresář, jako je například `/var/opt/mssql/data` na hostitelský počítač.
+
+> [!IMPORTANT]
+> Mapování svazků hostitele pro **Docker v počítači Mac** s IMAGÍ Azure SQL Edge se v tuto chvíli nepodporuje. Místo toho použijte kontejnery datových svazků. Toto omezení je specifické pro `/var/opt/mssql` adresář. Čtení z připojeného adresáře funguje správně. Například můžete připojit hostitelský adresář pomocí-v na Macu a obnovit zálohu ze souboru. bak, který se nachází na hostiteli.
+
+### <a name="use-data-volume-containers"></a>Použití kontejnerů datových svazků
+
+Druhou možností je použít kontejner datových svazků. Kontejner objemu dat můžete vytvořit zadáním názvu svazku místo hostitelského adresáře s `-v` parametrem. Následující příklad vytvoří sdílený datový svazek s názvem **sqlvolume**.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> Tato technika pro implicitní vytváření datových svazků v příkazu Run nefunguje se staršími verzemi Docker. V takovém případě použijte explicitní postup popsaný v dokumentaci k Docker, který [vytváří a připojuje kontejner datových svazků](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container).
+
+I v případě, že tento kontejner zastavíte a odstraníte, datový svazek přetrvává. Můžete ji zobrazit pomocí `docker volume ls` příkazu.
+
+```bash
+docker volume ls
+```
+
+Pokud vytvoříte další kontejner se stejným názvem svazku, bude nový kontejner používat stejná data Azure SQL Edge obsažená ve svazku.
+
+K odebrání kontejneru datových svazků použijte `docker volume rm` příkaz.
+
+> [!WARNING]
+> Pokud odstraníte kontejner datových svazků, všechna data z Edge SQL Azure v kontejneru se *trvale* odstraní.
 
 
 ## <a name="next-steps"></a>Další kroky

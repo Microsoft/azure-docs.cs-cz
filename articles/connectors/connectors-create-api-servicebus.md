@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461588"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815721"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -77,6 +77,9 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
    Všechny triggery Service Bus jsou triggery *s dlouhým dotazem* . Tento popis znamená, že když se Trigger aktivuje, Trigger zpracuje všechny zprávy a potom počká 30 sekund, než se další zprávy zobrazí v předplatném fronty nebo tématu. Pokud se během 30 sekund nezobrazí žádné zprávy, spuštění triggeru se přeskočí. V opačném případě bude aktivační událost dál číst zprávy, dokud není předplatné fronty nebo tématu prázdné. Dotaz na další Trigger vychází z intervalu opakování zadaného ve vlastnostech triggeru.
 
    Některé triggery, například **když přijde jedna nebo více zpráv do aktivační události Queue (AutoComplete)** , můžou vracet jednu nebo více zpráv. Když se tyto triggery aktivují, vrátí se mezi sebou a počtem zpráv, které jsou zadané ve vlastnosti **maximální počet zpráv** triggeru.
+
+    > [!NOTE]
+    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování proběhne pouze při dalším spuštění triggeru. Toto chování může ovlivnit návrh aplikace logiky. Pokud například nastavíte aktivační událost AutoComplete tak, aby kontrolovala zprávy každou minutu, ale doba trvání zámku je nastavená na 30 sekund na straně Service Bus, výsledkem je selhání "zámek vypršel", ke kterému dojde při dokončování zprávy. Je nutné nastavit dobu trvání zámku na hodnotu, která je delší než interval dotazování.
 
 1. Pokud se Trigger připojuje k vašemu Service Bus oboru názvů poprvé, postupujte podle těchto kroků, když vás návrhář aplikace logiky vyzve k zadání informací o připojení.
 
