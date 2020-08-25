@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84343757"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
@@ -61,7 +61,7 @@ V následujících pokynech vás provedete kroky 1 až 4 z tématu [Vytvoření 
    | **Typ** |**Vnitřních** |
    | **Virtuální síť** |Výchozí virtuální síť, která byla vytvořena, by měla mít název **VM1VNET**. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. Výchozí hodnota by měla být **VM1Subnet**.|
-   | **Přiřazení IP adresy** |**Tras** |
+   | **Přiřazení IP adresy** |**staticky**. |
    | **Privátní IP adresa** |Použijte `virtualip` IP adresu, která byla vytvořena v clusteru. |
    | **Předplatné** |Použijte předplatné, které se použilo pro vaši skupinu prostředků. |
    | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
@@ -84,7 +84,7 @@ Azure volá *fond back*-end fondu adres back-endu. V tomto případě je fond ba
 
     :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-backend-pool.png" alt-text="Přidat back-end fond":::
 
-7. Klikněte na tlačítko **Add** (Přidat). 
+7. Klikněte na **Přidat**. 
 
 ### <a name="create-a-probe"></a>Vytvoření testu paměti
 
@@ -99,12 +99,12 @@ Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlast
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
-   | **Protocol (Protokol)** |**TCP** |
-   | **Přístavní** |Můžete použít libovolný dostupný port. Například *59999*. |
-   | **Doba** |*5* |
+   | **Protokol** |**TCP** |
+   | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
+   | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
 
-4.  Klikněte na tlačítko **OK**. 
+4.  Klikněte na **OK**. 
 
 5. Přihlaste se ke všem virtuálním počítačům a otevřete zkušební port pomocí následujících příkazů:
 
@@ -128,17 +128,17 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
-   | **Protocol (Protokol)** |**TCP** |
-   | **Přístavní** |*1433* |
-   | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
+   | **Protokol** |**TCP** |
+   | **Port** |*1433* |
+   | **Back-endový port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
-   | **Trvalost relace** |**Žádné** |
+   | **Trvalost relace** |**Žádný** |
    | **Časový limit nečinnosti (minuty)** |*4* |
-   | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Enabled** (Povoleno) |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Povoleno** |
 
    :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Přidat pravidlo vyrovnávání zatížení":::
 
-4. Klikněte na tlačítko **OK**. 
+4. Klikněte na **OK**. 
 5. Azure nakonfiguruje pravidlo vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení teď má nakonfigurované směrování provozu do SQL Server instance, která hostuje naslouchací proces pro skupinu dostupnosti. 
 
 V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížení, který se připojuje ke všem počítačům s SQL Server. Nástroj pro vyrovnávání zatížení obsahuje také IP adresu pro naslouchací proces skupiny dostupnosti Always On SQL Server, aby každý počítač mohl reagovat na žádosti pro skupiny dostupnosti.

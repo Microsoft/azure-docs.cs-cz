@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74007660"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: streamování Azure Active Directorych protokolů do centra událostí Azure
@@ -39,9 +39,9 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory** > **monitorování** > **protokolů auditu**. 
+2. Vyberte **Azure Active Directory**  >  **monitorování**  >  **protokolů auditu**. 
 
 3. Vyberte **Exportovat nastavení**.  
     

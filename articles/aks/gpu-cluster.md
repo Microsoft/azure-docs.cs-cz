@@ -3,13 +3,15 @@ title: Použití GPU ve službě Azure Kubernetes Service (AKS)
 description: Naučte se používat GPU pro vysoce výkonné úlohy náročné na výpočetní výkon nebo grafiku ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213184"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749143"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
@@ -117,6 +119,65 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>Použití specializované image GPU AKS (Preview)
+
+Jako alternativu k těmto krokům AKS poskytuje plně nakonfigurovanou AKS bitovou kopii, která již obsahuje [modul plug-in zařízení NVIDIA pro Kubernetes][nvidia-github].
+
+> [!WARNING]
+> Neměli byste ručně instalovat sadu démonů modulu plug-in pro zařízení NVIDIA pro clustery pomocí nové AKSy specializované image GPU.
+
+
+Zaregistrujte `GPUDedicatedVHDPreview` funkci:
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+K instalaci rozšíření AKS-Preview rozhraní příkazového řádku použijte následující příkazy rozhraní příkazového řádku Azure:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Použití specializované image GPU AKS pro nové clustery (Preview)
+
+Nakonfigurujte cluster tak, aby při vytvoření clusteru používal image AKS specializovaného grafického procesoru. Pomocí `--aks-custom-headers` příznaku v uzlech agentů GPU na novém clusteru použijte k použití AKS specializované image GPU.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Pokud chcete vytvořit cluster pomocí běžných imagí AKS, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. Můžete se také rozhodnout přidat další specializované fondy uzlů GPU podle níže uvedených pokynů.
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>Použití specializované image GPU AKS na existujících clusterech (Preview)
+
+Konfigurace nového fondu uzlů pro použití specializované image GPU AKS Použijte `--aks-custom-headers` příznak Flag pro uzly agenta GPU v novém fondu uzlů, aby se použila AKS specializovaná image GPU.
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Pokud chcete vytvořit fond uzlů pomocí běžných imagí AKS, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. 
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Potvrďte, že jsou plánovatelná GPU.
 

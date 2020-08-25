@@ -7,63 +7,58 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 4d2beeb93922d826ca57d7ea1c3fecc69166b266
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: b7ee606ab17171c5f2fcf20d94ff18de8b05b773
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246322"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752988"
 ---
+> [!IMPORTANT]
+> * Sada SDK pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
+
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451).
 * [Python 2,7 nebo 3,5 nebo novější](https://www.python.org/)
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Vytvoření prostředku Azure pro rozpoznávání formulářů
-
-[!INCLUDE [create resource](../create-resource.md)]
-
-### <a name="create-environment-variables"></a>Vytvoření proměnných prostředí
-
-[!INCLUDE [environment-variables](../environment-variables.md)]
-
-
-### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
-
-Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovaném vývojovém prostředí. Pak importujte následující knihovny.
-
-```python
-import os
-import azure.ai.formrecognizer
-from azure.core.credentials import AzureKeyCredential
-from azure.core.exceptions import ResourceNotFoundError
-```
-
-Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí pro přístup k proměnné.
-
-```python
-endpoint = os.environ["FORM_RECOGNIZER_ENDPOINT"]
-key = os.environ["FORM_RECOGNIZER_KEY"]
-```
-
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Po instalaci Pythonu můžete nainstalovat klientskou knihovnu pomocí nástroje:
+Po instalaci Pythonu můžete nainstalovat nejnovější verzi klientské knihovny pro rozpoznávání formulářů pomocí:
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-<!-- 
-tbd object model
--->
+### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
+
+Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovaném vývojovém prostředí. Pak importujte následující knihovny. Mějte na paměti, že importujeme knihovny potřebné pro rozpoznávání pro školení i formu.
+
+```python
+import os
+from azure.core.exceptions import ResourceNotFoundError
+from azure.ai.formrecognizer import FormRecognizerClient
+from azure.ai.formrecognizer import FormTrainingClient
+from azure.core.credentials import AzureKeyCredential
+```
+
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku. 
+
+```python
+endpoint = "<paste-your-form-recognizer-endpoint-here>"
+key = "<paste-your-form-recognizer-key-here>"
+```
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -79,143 +74,111 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Tady ověříte dva klientské objekty pomocí proměnných předplatného, které jste definovali výše. Použijete objekt **AzureKeyCredential** , takže v případě potřeby můžete aktualizovat klíč rozhraní API bez vytváření nových objektů klienta.
+Tady ověříte dva klientské objekty pomocí proměnných předplatného, které jste definovali výše. Použijete `AzureKeyCredential` objekt, takže v případě potřeby můžete aktualizovat klíč rozhraní API bez vytváření nových objektů klienta.
 
 ```python
-form_recognizer_client = FormRecognizerClient(endpoint=endpoint, credential=AzureKeyCredential(key))
-
+form_recognizer_client = FormRecognizerClient(endpoint, AzureKeyCredential(key))
 form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ```
 
-## <a name="define-variables"></a>Definování proměnných
+## <a name="assets-for-testing"></a>Prostředky pro testování
 
-> [!NOTE]
-> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-* Chcete-li získat adresu URL formuláře k otestování, můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. Nebo si Převezměte adresu URL dokumentu, který se nachází jinde.
-* Použijte výše uvedenou metodu k získání adresy URL obrázku účtenky nebo použijte poskytnutou adresu URL ukázkového obrázku.
+* Použijte ukázku z obrázků a příjemů obsažených v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) nebo můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB). 
 
-```python
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
-formUrl = "<SAS-URL-of-a-form-in-blob-storage>"
-receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
-```
+> [!NOTE]
+> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Chcete-li místo toho zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
 ## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model.
 
-Pro rozpoznání obsahu souboru v dané adrese URL použijte metodu **begin_recognize_content** .
+Pro rozpoznání obsahu souboru v dané adrese URL použijte `begin_recognize_content` metodu. Vrácená hodnota je kolekce `FormPage` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód projde tyto objekty a vytiskne extrahované páry klíč/hodnota a data tabulky.
 
 ```Python
+formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf"
+
 poller = form_recognizer_client.begin_recognize_content_from_url(formUrl)
-contents = poller.result()
+page = poller.result()
+
+table = page[0].tables[0] # page 1, table 1
+print("Table found on page {}:".format(table.page_number))
+for cell in table.cells:
+    print("Cell text: {}".format(cell.text))
+    print("Location: {}".format(cell.bounding_box))
+    print("Confidence score: {}\n".format(cell.confidence))
 ```
 
-Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku v odeslaném dokumentu. Následující kód projde tyto objekty a vytiskne extrahované páry klíč/hodnota a data tabulky.
+### <a name="output"></a>Výstup
 
-```python
-for idx, content in enumerate(contents):
-    print("----Recognizing content from page #{}----".format(idx))
-    print("Has width: {} and height: {}, measured with unit: {}".format(
-        content.width,
-        content.height,
-        content.unit
-    ))
-    for table_idx, table in enumerate(content.tables):
-        print("Table # {} has {} rows and {} columns".format(table_idx, table.row_count, table.column_count))
-        for cell in table.cells:
-            print("...Cell[{}][{}] has text '{}' within bounding box '{}'".format(
-                cell.row_index,
-                cell.column_index,
-                cell.text,
-                format_bounding_box(cell.bounding_box)
-            ))
-    for line_idx, line in enumerate(content.lines):
-        print("Line # {} has word count '{}' and text '{}' within bounding box '{}'".format(
-            line_idx,
-            len(line.words),
-            line.text,
-            format_bounding_box(line.bounding_box)
-        ))
-    print("----------------------------------------")
-```
+```console
+Table found on page 1:
+Cell text: Invoice Number
+Location: [Point(x=0.5075, y=2.8088), Point(x=1.9061, y=2.8088), Point(x=1.9061, y=3.3219), Point(x=0.5075, y=3.3219)]
+Confidence score: 1.0
 
-Výše uvedený kód používá pomocnou funkci `format_bounding_box` pro zjednodušení souřadnic ohraničovacího rámečku. Definovat samostatně:
+Cell text: Invoice Date
+Location: [Point(x=1.9061, y=2.8088), Point(x=3.3074, y=2.8088), Point(x=3.3074, y=3.3219), Point(x=1.9061, y=3.3219)]
+Confidence score: 1.0
 
-```python
-def format_bounding_box(bounding_box):
-    if not bounding_box:
-        return "N/A"
-    return ", ".join(["[{}, {}]".format(p.x, p.y) for p in bounding_box])
+Cell text: Invoice Due Date
+Location: [Point(x=3.3074, y=2.8088), Point(x=4.7074, y=2.8088), Point(x=4.7074, y=3.3219), Point(x=3.3074, y=3.3219)]
+Confidence score: 1.0
+
+Cell text: Charges
+Location: [Point(x=4.7074, y=2.8088), Point(x=5.386, y=2.8088), Point(x=5.386, y=3.3219), Point(x=4.7074, y=3.3219)]
+Confidence score: 1.0
+
+...
+
 ```
 
 ## <a name="recognize-receipts"></a>Rozpoznávání příjmů
 
-V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů. Chcete-li rozpoznat účtenky z adresy URL, použijte metodu **begin_recognize_receipts_from_url** . 
+V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů. Chcete-li rozpoznat účtenky z adresy URL, použijte `begin_recognize_receipts_from_url` metodu. 
 
 ```python
+receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
+
 poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
-receipts = poller.result()
+result = poller.result()
+
+for receipt in result:
+    for name, field in receipt.fields.items():
+        if name == "Items":
+            print("Receipt Items:")
+            for idx, items in enumerate(field.value):
+                print("...Item #{}".format(idx + 1))
+                for item_name, item in items.value.items():
+                    print("......{}: {} has confidence {}".format(item_name, item.value, item.confidence))
+        else:
+            print("{}: {} has confidence {}".format(name, field.value, field.confidence))
 ```
 
-Vrácená hodnota je kolekce objektů **RecognizedReceipt** : jedna pro každou stránku v odeslaném dokumentu. Následující blok kódu vytiskne základní informace o příjemce do konzoly.
+### <a name="output"></a>Výstup
 
-```python
-for idx, receipt in enumerate(receipts):
-    print("--------Recognizing receipt #{}--------".format(idx))
-    receipt_type = receipt.fields.get("ReceiptType")
-    if receipt_type:
-        print("Receipt Type: {} has confidence: {}".format(receipt_type.value, receipt_type.confidence))
-    merchant_name = receipt.fields.get("MerchantName")
-    if merchant_name:
-        print("Merchant Name: {} has confidence: {}".format(merchant_name.value, merchant_name.confidence))
-    transaction_date = receipt.fields.get("TransactionDate")
-    if transaction_date:
-        print("Transaction Date: {} has confidence: {}".format(transaction_date.value, transaction_date.confidence))
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
 ```
-
-Další blok kódu prochází jednotlivé položky zjištěné na účtence a tiskne jejich podrobnosti do konzoly.
-
-
-```python
-    print("Receipt items:")
-    for idx, item in enumerate(receipt.fields.get("Items").value):
-        print("...Item #{}".format(idx))
-        item_name = item.value.get("Name")
-        if item_name:
-            print("......Item Name: {} has confidence: {}".format(item_name.value, item_name.confidence))
-        item_quantity = item.value.get("Quantity")
-        if item_quantity:
-            print("......Item Quantity: {} has confidence: {}".format(item_quantity.value, item_quantity.confidence))
-        item_price = item.value.get("Price")
-        if item_price:
-            print("......Individual Item Price: {} has confidence: {}".format(item_price.value, item_price.confidence))
-        item_total_price = item.value.get("TotalPrice")
-        if item_total_price:
-            print("......Total Item Price: {} has confidence: {}".format(item_total_price.value, item_total_price.confidence))
-```
-
-Nakonec poslední blok kódu vytiskne zbytek detailů o hlavních příjmech.
-
-```python
-    subtotal = receipt.fields.get("Subtotal")
-    if subtotal:
-        print("Subtotal: {} has confidence: {}".format(subtotal.value, subtotal.confidence))
-    tax = receipt.fields.get("Tax")
-    if tax:
-        print("Tax: {} has confidence: {}".format(tax.value, tax.confidence))
-    tip = receipt.fields.get("Tip")
-    if tip:
-        print("Tip: {} has confidence: {}".format(tip.value, tip.confidence))
-    total = receipt.fields.get("Total")
-    if total:
-        print("Total: {} has confidence: {}".format(total.value, total.confidence))
-    print("--------------------------------------")
-```
-
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
@@ -228,62 +191,152 @@ Tato část ukazuje, jak vytvořit model s vlastními daty. Vycvičený model m�
 
 Výukové vlastní modely vám poznají všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů.
 
-Následující kód používá školicího klienta s funkcí **begin_training** k výuce modelu v dané sadě dokumentů.
+Následující kód používá školicího klienta s `begin_training` funkcí k výuce modelu v dané sadě dokumentů. Vrácený `CustomFormModel` objekt obsahuje informace o typech formulářů, které může model rozpoznat, a pole, která může extrahovat z každého typu formuláře. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
 
 ```python
+# To train a model you need an Azure Storage account.
+# Use the SAS URL to access your training files.
+trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+
 poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
 model = poller.result()
-```
 
-Vrácený objekt **CustomFormSubmodel** obsahuje informace o typech formulářů, které může model rozpoznat, a o polích, která může extrahovat z každého typu formuláře. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
-
-```python
-# Custom model information
 print("Model ID: {}".format(model.model_id))
 print("Status: {}".format(model.status))
-print("Created on: {}".format(model.requested_on))
-print("Last modified: {}".format(model.completed_on))
+print("Training started on: {}".format(model.training_started_on))
+print("Training completed on: {}".format(model.training_completed_on))
 
-print("Recognized fields:")
-# Looping through the submodels, which contains the fields they were trained on
+print("\nRecognized fields:")
 for submodel in model.submodels:
-    print("...The submodel has form type '{}'".format(submodel.form_type))
-    for name, field in submodel.fields.items():
-        print("...The model found field '{}' to have label '{}'".format(
-            name, field.label
-        ))
+    print(
+        "The submodel with form type '{}' has recognized the following fields: {}".format(
+            submodel.form_type,
+            ", ".join(
+                [
+                    field.label if field.label else name
+                    for name, field in submodel.fields.items()
+                ]
+            ),
+        )
+    )
+
+# Training result information
+for doc in model.training_documents:
+    print("Document name: {}".format(doc.name))
+    print("Document status: {}".format(doc.status))
+    print("Document page count: {}".format(doc.page_count))
+    print("Document errors: {}".format(doc.errors))
+```
+
+### <a name="output"></a>Výstup
+
+Toto je výstup pro model vyškolený pomocí školicích dat dostupných v [sadě Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training).
+
+```console
+Model ID: 628739de-779c-473d-8214-d35c72d3d4f7
+Status: ready
+Training started on: 2020-08-20 23:16:51+00:00
+Training completed on: 2020-08-20 23:16:59+00:00
+
+Recognized fields:
+The submodel with form type 'form-0' has recognized the following fields: Additional Notes:, Address:, Company Name:, Company Phone:, Dated As:, Details, Email:, Hero Limited, Name:, Phone:, Purchase Order, Purchase Order #:, Quantity, SUBTOTAL, Seattle, WA 93849 Phone:, Shipped From, Shipped To, TAX, TOTAL, Total, Unit Price, Vendor Name:, Website:
+Document name: Form_1.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_2.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_3.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_4.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_5.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
 ```
 
 ### <a name="train-a-model-with-labels"></a>Výuka modelu s popisky
 
-Vlastní modely můžete také vyškolit ručním popiskem školicích dokumentů. Školení s popisky vede k lepšímu výkonu v některých scénářích. 
+Vlastní modely můžete také vyškolit ručním popiskem školicích dokumentů. Školení s popisky vede k lepšímu výkonu v některých scénářích. Vrácená `CustomFormModel` položka znamená, že pole, která model může extrahovat, spolu s odhadovanou přesností v každém poli. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
 
 > [!IMPORTANT]
-> Pro výuku s popisky musíte mít v kontejneru úložiště objektů BLOB vedle školicích dokumentů speciální soubory s informacemi o popisku (* \<filename\>.pdf.labels.json*). [Nástroj pro rozpoznávání popisů vzorků pro rozpoznávání formulářů](../../quickstarts/label-tool.md) poskytuje uživatelské rozhraní, které vám pomůžou vytvořit tyto soubory popisků. Jakmile je máte, můžete zavolat funkci **begin_training** s parametrem *use_training_labels* nastaveným na `true` .
+> Pro výuku pomocí popisků musíte mít `\<filename\>.pdf.labels.json` v kontejneru úložiště objektů BLOB společně s školicími dokumenty speciální soubory s informacemi o popisku (). [Nástroj pro rozpoznávání popisů vzorků pro rozpoznávání formulářů](../../quickstarts/label-tool.md) poskytuje uživatelské rozhraní, které vám pomůžou vytvořit tyto soubory popisků. Jakmile je máte, můžete zavolat `begin_training` funkci s parametrem *use_training_labels* nastaveným na `true` .
 
 ```python
+# To train a model you need an Azure Storage account.
+# Use the SAS URL to access your training files.
+trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+
 poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
 model = poller.result()
-```
 
-Vrácený **CustomFormSubmodel** označuje pole, která model může extrahovat, spolu s odhadovanou přesností v každém poli. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
-
-```python
-# Custom model information
 print("Model ID: {}".format(model.model_id))
 print("Status: {}".format(model.status))
-print("Created on: {}".format(model.created_on))
-print("Last modified: {}".format(model.last_modified))
+print("Training started on: {}".format(model.training_started_on))
+print("Training completed on: {}".format(model.training_completed_on))
 
-print("Recognized fields:")
-# looping through the submodels, which contains the fields they were trained on
-# The labels are based on the ones you gave the training document.
+print("\nRecognized fields:")
 for submodel in model.submodels:
-    print("...The submodel with form type {} has accuracy '{}'".format(submodel.form_type, submodel.accuracy))
-    for name, field in submodel.fields.items():
-        print("...The model found field '{}' to have name '{}' with an accuracy of {}".format(
-            name, field.name, field.accuracy
-        ))
+    print(
+        "The submodel with form type '{}' has recognized the following fields: {}".format(
+            submodel.form_type,
+            ", ".join(
+                [
+                    field.label if field.label else name
+                    for name, field in submodel.fields.items()
+                ]
+            ),
+        )
+    )
+
+# Training result information
+for doc in model.training_documents:
+    print("Document name: {}".format(doc.name))
+    print("Document status: {}".format(doc.status))
+    print("Document page count: {}".format(doc.page_count))
+    print("Document errors: {}".format(doc.errors))
+```
+
+### <a name="output"></a>Výstup
+
+Toto je výstup pro model vyškolený pomocí školicích dat dostupných v [sadě Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training).
+
+```console
+Model ID: ae636292-0b14-4e26-81a7-a0bfcbaf7c91
+
+Status: ready
+Training started on: 2020-08-20 23:20:56+00:00
+Training completed on: 2020-08-20 23:20:57+00:00
+
+Recognized fields:
+The submodel with form type 'form-ae636292-0b14-4e26-81a7-a0bfcbaf7c91' has recognized the following fields: CompanyAddress, CompanyName, CompanyPhoneNumber, DatedAs, Email, Merchant, PhoneNumber, PurchaseOrderNumber, Quantity, Signature, Subtotal, Tax, Total, VendorName, Website
+Document name: Form_1.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_2.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_3.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_4.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
+Document name: Form_5.jpg
+Document status: succeeded
+Document page count: 1
+Document errors: []
 ```
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
@@ -293,37 +346,50 @@ V této části se dozvíte, jak extrahovat informace o klíčích a hodnotách 
 > [!IMPORTANT]
 > Aby bylo možné tento scénář implementovat, je nutné již vyškolet model, abyste mohli předat jeho ID do níže uvedené metody. Viz část [výuka modelu](#train-a-model-without-labels) .
 
-Použijete metodu **begin_recognize_custom_forms_from_url** . Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou stránku v odeslaném dokumentu.
+<<<<<<< HEAD budete používat `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
+= = = = = = = Použijte metodu **begin_recognize_custom_forms_from_url** . Vrácená hodnota je kolekce objektů **RecognizedForm** . Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
+>>>>>>> 4c76de6b4e93d2a4669953300c5686837b3be13c
 
 ```python
-# Make sure your form's type is included in the list of form types the custom model can recognize
+# Model ID from when you trained your model.
+model_id = "<your custom model id>"
+
 poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model.model_id, form_url=formUrl)
-forms = poller.result()
+    model_id=model_id, form_url=formUrl)
+result = poller.result()
+
+for recognized_form in result:
+    print("Form type: {}".format(recognized_form.form_type))
+    for name, field in recognized_form.fields.items():
+        print("Field '{}' has label '{}' with value '{}' and a confidence score of {}".format(
+            name,
+            field.label_data.text if field.label_data else name,
+            field.value,
+            field.confidence
+        ))
 ```
 
-Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
+### <a name="output"></a>Výstup
 
-```python
-for idx, form in enumerate(forms):
-    print("--------Recognizing Form #{}--------".format(idx))
-    print("Form {} has type {}".format(idx, form.form_type))
-    for name, field in form.fields.items():
-        # each field is of type FormField
-        # The value of the field can also be a FormField, or a list of FormFields
-        # In our sample, it is just a FormField.
-        print("...Field '{}' has value '{}' with a confidence score of {}".format(
-            name, field.value, field.confidence
-        ))
-        # label data is populated if you are using a model trained with unlabeled data, since the service needs to make predictions for
-        # labels if not explicitly given to it.
-        if field.label_data:
-            print("...Field '{}' has label '{}' with a confidence score of {}".format(
-                name,
-                field.label_data.text,
-                field.confidence
-            ))
-    print("-----------------------------------")
+Pomocí modelu z předchozího příkladu je k dispozici následující výstup.
+
+```console
+Form type: form-ae636292-0b14-4e26-81a7-a0bfcbaf7c91
+Field 'Merchant' has label 'Merchant' with value 'Invoice For:' and a confidence score of 0.116
+Field 'CompanyAddress' has label 'CompanyAddress' with value '1 Redmond way Suite 6000 Redmond, WA' and a confidence score of 0.258
+Field 'Website' has label 'Website' with value '99243' and a confidence score of 0.114
+Field 'VendorName' has label 'VendorName' with value 'Charges' and a confidence score of 0.145
+Field 'CompanyPhoneNumber' has label 'CompanyPhoneNumber' with value '$56,651.49' and a confidence score of 0.249
+Field 'CompanyName' has label 'CompanyName' with value 'PT' and a confidence score of 0.245
+Field 'DatedAs' has label 'DatedAs' with value 'None' and a confidence score of None
+Field 'Email' has label 'Email' with value 'None' and a confidence score of None
+Field 'PhoneNumber' has label 'PhoneNumber' with value 'None' and a confidence score of None
+Field 'PurchaseOrderNumber' has label 'PurchaseOrderNumber' with value 'None' and a confidence score of None
+Field 'Quantity' has label 'Quantity' with value 'None' and a confidence score of None
+Field 'Signature' has label 'Signature' with value 'None' and a confidence score of None
+Field 'Subtotal' has label 'Subtotal' with value 'None' and a confidence score of None
+Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
+Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
 
 ## <a name="manage-your-custom-models"></a>Správa vlastních modelů
@@ -335,11 +401,16 @@ Tato část ukazuje, jak spravovat vlastní modely uložené ve vašem účtu.
 Následující blok kódu kontroluje, kolik modelů jste uložili v účtu pro rozpoznávání formulářů a porovnává je s limitem účtu.
 
 ```python
-# First, we see how many custom models we have, and what our limit is
 account_properties = form_training_client.get_account_properties()
 print("Our account has {} custom models, and we can have at most {} custom models".format(
     account_properties.custom_model_count, account_properties.custom_model_limit
 ))
+```
+
+### <a name="output"></a>Výstup
+
+```console
+Our account has 5 custom models, and we can have at most 5000 custom models
 ```
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>Vypíše modely, které jsou aktuálně uložené v účtu prostředků.
@@ -359,17 +430,42 @@ for model in custom_models:
     print(model.model_id)
 ```
 
+### <a name="output"></a>Výstup
+
+Toto je ukázkový výstup testovacího účtu.
+
+```console
+We have models with the following ids:
+453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
+628739de-779c-473d-8214-d35c72d3d4f7
+ae636292-0b14-4e26-81a7-a0bfcbaf7c91
+b4b5df77-8538-4ffb-a996-f67158ecd305
+c6309148-6b64-4fef-aea0-d39521452699
+```
+
 ### <a name="get-a-specific-model-using-the-models-id"></a>Získat konkrétní model pomocí ID modelu
 
 Následující blok kódu používá ID modelu uložené z předchozí části a používá ho k načtení podrobností o modelu.
 
 ```python
-# Now we'll get the first custom model in the paged list
-custom_model = form_training_client.get_custom_model(model_id=first_model.model_id)
+model_id = "<model_id from the Train a Model sample>"
+
+custom_model = form_training_client.get_custom_model(model_id=model_id)
 print("Model ID: {}".format(custom_model.model_id))
 print("Status: {}".format(custom_model.status))
-print("Created on: {}".format(custom_model.requested_on))
-print("Last modified: {}".format(custom_model.completed_on))
+print("Training started on: {}".format(custom_model.training_started_on))
+print("Training completed on: {}".format(custom_model.training_completed_on))
+```
+
+### <a name="output"></a>Výstup
+
+Toto je ukázkový výstup vlastního modelu vytvořeného v předchozím příkladu.
+
+```console
+Model ID: ae636292-0b14-4e26-81a7-a0bfcbaf7c91
+Status: ready
+Training started on: 2020-08-20 23:20:56+00:00
+Training completed on: 2020-08-20 23:20:57+00:00
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Odstranění modelu z účtu zdroje
@@ -379,12 +475,10 @@ Z vašeho účtu můžete také odstranit model odkazem na jeho ID. Tento kód o
 ```python
 form_training_client.delete_model(model_id=custom_model.model_id)
 
-# Confirm deletion:
 try:
     form_training_client.get_custom_model(model_id=custom_model.model_id)
 except ResourceNotFoundError:
     print("Successfully deleted model with id {}".format(custom_model.model_id))
-}
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
@@ -448,5 +542,6 @@ V tomto rychlém startu jste použili klientskou knihovnu pro rozpoznávání fo
 > [!div class="nextstepaction"]
 > [Vytvoření trénovací sady dat](../../build-training-data-set.md)
 
+## <a name="see-also"></a>Viz také
+
 * [Co je služba Rozpoznávání formulářů?](../../overview.md)
-* Vzorový kód z této příručky (a další) najdete na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).

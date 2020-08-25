@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85252657"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
@@ -26,7 +26,7 @@ V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure 
 
 Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -226,7 +226,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     ![Portál](media/lab-data-flow-data-share/join1.png)
 1. Pojmenujte transformaci JOIN ' InnerJoinWithTripFares '. V rozevíracím seznamu pravý datový proud vyberte ' TripFaresSQL '. Jako typ spojení vyberte **vnitřní** . Další informace o různých typech spojení v mapování toku dat najdete v tématu [typy spojení](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types).
 
-    V rozevíracím seznamu **podmínky připojení** vyberte, na kterých sloupcích si chcete u každého streamu souhlasit. Chcete-li přidat další podmínku spojení, klikněte na ikonu plus vedle existující podmínky. Ve výchozím nastavení jsou všechny podmínky spojení kombinovány s operátorem AND, což znamená, že všechny podmínky musí být splněny pro shodu. V tomto testovacím prostředí chceme odpovídat na sloupce `medallion` ,, `hack_license` `vendor_id` a.`pickup_datetime`
+    V rozevíracím seznamu **podmínky připojení** vyberte, na kterých sloupcích si chcete u každého streamu souhlasit. Chcete-li přidat další podmínku spojení, klikněte na ikonu plus vedle existující podmínky. Ve výchozím nastavení jsou všechny podmínky spojení kombinovány s operátorem AND, což znamená, že všechny podmínky musí být splněny pro shodu. V tomto testovacím prostředí chceme odpovídat na sloupce `medallion` ,, `hack_license` `vendor_id` a. `pickup_datetime`
 
     ![Portál](media/lab-data-flow-data-share/join2.png)
 1. Ověřte, že jste úspěšně připojili 25 sloupců spolu s náhledem dat.
@@ -336,7 +336,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Sdílet podrobnosti](media/lab-data-flow-data-share/ads-details.png)
 
-1. Vyberte **Pokračovat**. 
+1. Vyberte **pokračovat**. 
 
 1. Vyberte **přidat datové sady** . 
 
@@ -372,7 +372,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Přidat datovou sadu](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. Vybrat **Další**
+1. Vyberte **Další**.
 
 1. Rozbalte *wwtaxidata*. Rozbalte položku *Boston taxislužby data*. Všimněte si, že můžete sdílet až na úrovni souboru. 
 
@@ -382,7 +382,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
 1. Zkontrolujte datové sady, které byly přidány. Do sdílené složky dat byste měli mít přidanou tabulku SQL a složku ADLSGen2. 
 
-1. Vybrat **pokračovat**
+1. Vyberte **Pokračovat**.
 
 1. Na této obrazovce můžete přidat příjemce do sdílené složky dat. Příjemci, které přidáte, budou dostávat pozvánky do sdílené složky dat. Pro účely tohoto testovacího prostředí musíte přidat dvě e-mailové adresy:
 

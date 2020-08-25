@@ -6,13 +6,13 @@ manager: barbkess
 ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447904"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763554"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -52,7 +52,7 @@ Obecné strategie pro zmírnění vyčerpání portů SNAT jsou popsány v [čá
 
 Tady je kolekce odkazů pro implementaci sdružování připojení pomocí jiného zásobníku řešení.
 
-#### <a name="node"></a>Uzel
+#### <a name="node"></a>Node
 
 Ve výchozím nastavení nejsou připojení pro NodeJS udržována v neaktivním stavu. Níže jsou uvedené oblíbené databáze a balíčky pro sdružování připojení, které obsahují příklady pro jejich implementaci.
 
@@ -64,7 +64,7 @@ Ve výchozím nastavení nejsou připojení pro NodeJS udržována v neaktivním
 Keep-Alive HTTP
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Dokumentace kNode.js v 13.9.0](https://nodejs.org/api/http.html)
+* [ Dokumentace kNode.js v 13.9.0](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -120,7 +120,7 @@ Pro další prostředí si projděte téma poskytovatel nebo dokumentace pro kon
 * [Zátěžový test](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) by měl simulovat reálné celosvětové údaje při ustálené rychlosti krmení. Testování aplikací a funkcí v rámci reálného zatížení dokáže identifikovat a vyřešit problémy s vyčerpáním portů SNAT před časem.
 * Ujistěte se, že back-endové služby můžou odpovědi vracet rychle. Řešení potíží s výkonem pomocí Azure SQL Database najdete v tématu [řešení potíží s Azure SQL Database problémy s výkonem Intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
 * Horizontální navýšení kapacity App Service naplánování na více instancí. Další informace o škálování najdete v tématu horizontální navýšení [kapacity aplikace v Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up). Každá instance pracovního procesu v plánu služby App Service má přidělený počet portů SNAT. Pokud rozšíříte své využití napříč více instancemi, můžete získat využití portu SNAT na instanci níže doporučeným limitem 100 odchozích připojení na jedinečné vzdálené koncové body.
-* Zvažte přesunutí na [App Service Environment (POmocného mechanismu)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), kde se přiděluje jedna odchozí IP adresa a omezení pro připojení a porty SNAT jsou mnohem vyšší.
+* Zvažte přesunutí na [App Service Environment (POmocného mechanismu)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), kde se přiděluje jedna odchozí IP adresa a omezení pro připojení a porty SNAT jsou mnohem vyšší. V pomocném objektu pro čtení je počet portů SNAT na instanci založený na tabulce předdefinovaných [Vyrovnávání zatížení Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) . například služba pomocného procesu s 1-50 instancemi pracovních procesů má 1024 předběžně přidělených portů na 512 51-100 instanci
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 

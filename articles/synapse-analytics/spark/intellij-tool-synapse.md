@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85194930"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí IntelliJ pomocí pracovního prostoru synapse
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > - Vývoj aplikací Apache Spark
 > - Odeslat aplikaci do fondů Spark
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Komunita INTELLIJ nápadu](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
 - Modul plug-in Azure Toolkit 3.27.0-2019.2 – instalace z [úložiště modulu plug-in IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -172,7 +172,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
     - Proměnné prostředí a WinUtils.exe umístění jsou pouze pro uživatele systému Windows.
     - Proměnné prostředí: proměnná prostředí systému může být automaticky rozpoznána, pokud jste ji nastavili před a není nutné ji přidat ručně.
-    - [UmístěníWinUtils.exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat kliknutím na ikonu složky na pravé straně.
+    - [ UmístěníWinUtils.exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat kliknutím na ikonu složky na pravé straně.
 
 2. Pak klikněte na tlačítko místní přehrávání.
 

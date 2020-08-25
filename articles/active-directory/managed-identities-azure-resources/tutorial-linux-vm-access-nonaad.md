@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` použití spravované identity pro přístup k Azure Key Vault-Linux – Azure AD
+title: Kurz `:` použití spravované identity pro přístup k Azure Key Vault-Linux – Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74232173"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu 
@@ -44,7 +44,7 @@ Když použijete spravované identity služby pro prostředky Azure, může kód
 
 Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup spravované identitě přiřazené systémem virtuálního počítače.   
 
-1. V horní části levého navigačního panelu vyberte **vytvořit prostředek** > **zabezpečení a identita** > **Key Vault**.  
+1. V horní části levého navigačního panelu vyberte **vytvořit prostředek**  >  **zabezpečení a identita**  >  **Key Vault**.  
 2. Zadejte **název** nového trezoru klíčů. 
 3. Umístěte trezor klíčů do stejného předplatného a stejné skupiny prostředků jako virtuální počítač, který jste vytvořili dříve. 
 4. Vyberte **Zásady přístupu** a klikněte na **Přidat novou**. 

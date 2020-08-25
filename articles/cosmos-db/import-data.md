@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118759"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
@@ -31,7 +31,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat z různých zdrojů dat
 > * Export ze služby Azure Cosmos DB do formátu JSON
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provedete následující kroky:
 
@@ -74,7 +74,7 @@ Po instalaci nástroje je čas importovat data. Jaký druh dat chcete importovat
 * [Soubory CSV](#CSV)
 * [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
-* [Příznaky](#BlobImport)
+* [Objekt blob](#BlobImport)
 * [Kontejnery Azure Cosmos DB](#SQLSource)
 * [HBase](#HBaseSource)
 * [Hromadný import Azure Cosmos DB](#SQLBulkTarget)

@@ -9,17 +9,17 @@ ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85296198"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure
 
 V tomto kurzu se dozvíte, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -227,6 +227,6 @@ Nyní připravujeme kód, který bude vyvolán, když se na něj nachází kotva
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-A je to! [Opětovným nasazením](#trying-it-out) aplikace z poslední doby můžete vyzkoušet celý scénář a ukončit ho. Pohybujte kolem zařízení a umístěte černou koule. Pak můžete pokračovat ve svém zařízení a zachytit snímky z kamery, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku ještě jednou, aby se vaše místní kotva odebrala, a pak se podíváme na svůj cloudový protějšek. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a můžete ji vypláchněte & opakujte celý scénář.
+A to je vše! [Opětovným nasazením](#trying-it-out) aplikace z poslední doby můžete vyzkoušet celý scénář a ukončit ho. Pohybujte kolem zařízení a umístěte černou koule. Pak můžete pokračovat ve svém zařízení a zachytit snímky z kamery, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku ještě jednou, aby se vaše místní kotva odebrala, a pak se podíváme na svůj cloudový protějšek. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a můžete ji vypláchněte & opakujte celý scénář.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 48b5a8c596ec5b23d2962acb9c1f95a1d5aafbc0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761674"
+ms.locfileid: "88762874"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -445,9 +445,9 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 
 |202 přijato     |         |     Přijato    |
 
 > [!IMPORTANT]
-> Aby byla zajištěna ochrana před náhodným odstraněním scénářů, je [k dispozici funkce obnovitelného odstranění](use-restapi-update-vault-properties.md#soft-delete-state) pro Recovery Services trezor. Pokud je stav obnovitelného odstranění trezoru nastavený na povoleno, operace odstranění data okamžitě neodstraní. Bude se uchovávat 14 dní a pak se trvale vyprázdní. Zákazníkovi se za tento 14 dnů neúčtují žádné úložiště. Chcete-li operaci odstranění vrátit zpět, přečtěte si [část věnované vrácení zpět a odstranění](#undo-the-stop-protection-and-delete-data).
+> Aby byla zajištěna ochrana před náhodným odstraněním scénářů, je [k dispozici funkce obnovitelného odstranění](use-restapi-update-vault-properties.md#soft-delete-state) pro Recovery Services trezor. Pokud je stav obnovitelného odstranění trezoru nastavený na povoleno, operace odstranění data okamžitě neodstraní. Bude se uchovávat 14 dní a pak se trvale vyprázdní. Zákazníkovi se za tento 14 dnů neúčtují žádné úložiště. Chcete-li operaci odstranění vrátit zpět, přečtěte si [část věnované vrácení zpět a odstranění](#undo-the-deletion).
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>Vrátit zpět ochranu a odstranit data
+### <a name="undo-the-deletion"></a>Zrušit odstranění
 
 Zrušení nechtěného odstranění je podobné jako vytvoření zálohované položky. Po odstranění se položka zachová, ale nespustí se žádné budoucí zálohy.
 

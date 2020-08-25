@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/18/2020
 ms.author: aahi
 ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84141241"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
@@ -23,13 +23,13 @@ Funkce Analýza mínění rozhraní API pro analýzu textu vyhodnotí text a vr�
 
 Po odeslání požadavku na analýzu mínění vrátí rozhraní API popisky mínění (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu.
 
-Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
+Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v tématu [podporované jazyky](../text-analytics-supported-languages.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Analýza mínění verze a funkce
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
+| Funkce                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Metody pro jednotlivé a dávkové požadavky    | X                     | X                                 |
 | Mínění skóre a popisky             | X                     | X                                 |
@@ -68,7 +68,7 @@ Chcete-li získat výsledky dolování v rámci vašich výsledků, je nutné p�
 
 ### <a name="preparation"></a>Příprava
 
-Analýza mínění přináší vyšší kvalitu, když dáte menší množství textu, na kterém bude pracovat. Je to tedy přesně naopak než u extrakce klíčových frází, která vrací lepší výsledky pro větší bloky textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
+Analýza mínění přináší vyšší kvalitu, když dáte menší množství textu, na kterém bude pracovat. Je to tedy přesně naopak než u extrakce klíčových frází, která vrací lepší výsledky pro větší bloky textu. Pokud chcete mít v obou operacích optimální výsledky, měli byste uvažovat o změně struktury vstupů.
 
 Je nutné mít dokumenty JSON v tomto formátu: ID, text a jazyk.
 
@@ -278,7 +278,7 @@ Analýza mínění v 3.1 nabízí kromě objektu Response na kartě **verze 3,0*
 
 ---
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro analýzu mínění pomocí rozhraní API pro analýzu textu. Souhrn:
 
@@ -289,6 +289,6 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 
 ## <a name="see-also"></a>Viz také
 
-* [Přehled Analýza textu](../overview.md)
+* [Přehled analýzy textu](../overview.md)
 * [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
 * [Co je nového](../whats-new.md)

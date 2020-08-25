@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522840"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763486"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -17,7 +17,7 @@ Informace v následujících tabulkách použijte k řešení chyb, ke kterým d
 
 ## <a name="basic-troubleshooting"></a>Základní řešení potíží
 
-Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporučujeme provést níže uvedené ověření:
+Před zahájením řešení potíží s Microsoft Azure Backup serverem (MABS) doporučujeme provést následující ověření:
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Obnovení | **Kód chyby**: Chyba přihlašovacích údajů CBPServerRegisteredVaultDontMatchWithCurrent/trezoru: 100110 <br/> <br/>**Chybová zpráva**: původní a externí servery DPM musí být zaregistrované ve stejném trezoru. | **Příčina**: k tomuto problému dochází, když se pokoušíte obnovit soubory na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a pokud se server, který obnovujete, a původní server, ze kterého se zálohují data, nepřidruží ke stejnému trezoru služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
+| Obnovení | **Kód chyby**: Chyba přihlašovacích údajů CBPServerRegisteredVaultDontMatchWithCurrent/trezoru: 100110 <br/> <br/>**Chybová zpráva**: původní a externí servery DPM musí být zaregistrované ve stejném trezoru. | **Příčina**: k tomuto problému dochází, když se pokoušíte obnovit soubory na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a pokud se server, který obnovujete, a původní server, ze kterého se zálohují data, nevztahují ke stejnému trezoru Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Úlohy Vytvoření bodu obnovení online pro virtuální počítač VMware selžou
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Konfigurace skupin ochrany | Aplikaci DPM se nepodařil výčet součásti aplikace v chráněném počítači (název chráněného počítače). | Na příslušné úrovni zdroje dat a součásti vyberte **aktualizovat** na obrazovce uživatelské rozhraní skupiny ochrany. |
 | Konfigurace skupin ochrany | Ochranu nejde nakonfigurovat. | Pokud je chráněný server SQL Server, ověřte, jestli je na chráněném počítači k dispozici oprávnění role sysadmin k systémovému účtu (Ntauthority\system.), jak je popsáno v [tomto článku](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019).
 | Konfigurace skupin ochrany | Ve fondu úložiště není pro tuto skupinu ochrany dostatek volného místa. | Disky, které se přidají do fondu úložiště, [by neměly obsahovat oddíl](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Odstraňte všechny existující svazky na discích. Pak je přidejte do fondu úložiště.|
-| Změna zásad |Zásady zálohování nešlo změnit. Chyba: aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Po uplynutí určité doby zkuste operaci zopakovat. Pokud potíže trvají, obraťte se na podporu Microsoftu. | **Způsobit**<br/>K této chybě dochází za tři podmínky: Pokud je povolené nastavení zabezpečení, pokusíte se zmenšit rozsah uchování pod minimálními hodnotami uvedenými dříve a v případě nepodporované verze. (Nepodporované verze jsou Microsoft Azure Backup 2.0.9052 serveru verze a Azure Backup Server Update 1.) <br/>**Doporučená akce:**<br/> Pokud chcete pokračovat s aktualizacemi souvisejícími s zásadami, nastavte dobu uchování nad určenou minimální dobu uchování. (Minimální doba uchovávání je sedm dní denně, čtyři týdny pro každý týden, tři týdny pro každý měsíc nebo jeden rok pro roční.) <br><br>Dalším upřednostňovaným přístupem je volitelně aktualizace agenta Zálohování a Azure Backup Server pro využití všech aktualizací zabezpečení. |
+| Změna zásad |Zásady zálohování nešlo změnit. Chyba: aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Po uplynutí určité doby zkuste operaci zopakovat. Pokud potíže trvají, obraťte se na podporu Microsoftu. | **Způsobit**<br/>K této chybě dochází za tři podmínky: Pokud je povolené nastavení zabezpečení, pokusíte se zmenšit rozsah uchování pod minimálními hodnotami uvedenými dříve a v případě nepodporované verze. (Nepodporované verze jsou nižší než Microsoft Azure Backup Server verze 2.0.9052 a Azure Backup Server Update 1.) <br/>**Doporučená akce:**<br/> Pokud chcete pokračovat s aktualizacemi souvisejícími s zásadami, nastavte dobu uchování nad určenou minimální dobu uchování. (Minimální doba uchovávání je sedm dní denně, čtyři týdny pro každý týden, tři týdny pro každý měsíc nebo jeden rok pro roční.) <br><br>Dalším upřednostňovaným přístupem je volitelně aktualizace agenta Zálohování a Azure Backup Server pro využití všech aktualizací zabezpečení. |
 
 ## <a name="backup"></a>Backup
 

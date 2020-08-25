@@ -2,18 +2,18 @@
 title: Microsoft Azure Stack technické specifikace napájení na hraničních zařízeních na základě umístění | Microsoft Docs
 description: Seznamte se s technickými specifikacemi pro napájecí šňůry Azure Stack hraničních zařízeních.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: v-grpr
-ms.openlocfilehash: 2fb28bcb1edb9a18b4d1628e211f87f2c772ef80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664652"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783973"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Specifikace napájecí šňůry Azure Stack Edge
 
@@ -76,7 +76,7 @@ Pomocí následující tabulky můžete najít správné specifikace kabelů pro
 |Indie|250|10|IS694 3x 0,75|JE 1293|C13|1830|
 |Indonésie|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|
 |Irsko|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
-|Izrael|250|2.5|H05VV-F 3x 1,00|V 32|C13|2000|
+|Izrael|250|2,5|H05VV-F 3x 1,00|V 32|C13|2000|
 |Itálie|250|10|H05VV-F 3x 0,75|CEI 23-50|C13|1800|
 |Jamajka|125|10|SVE 18/3|NEMA 5 – 15P|C13|1830|
 |Japan|125|15|VCTF 3x 2,00|JIS B 8303|C13|2300|

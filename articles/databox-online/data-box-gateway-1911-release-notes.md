@@ -2,18 +2,18 @@
 title: Azure Stack Edge & zpráva k vydání verze Azure Data Box Gateway 1911 | Microsoft Docs
 description: Popisuje kritické otevřené problémy a řešení pro Azure Stack Edge a Data Box Gateway spuštění 1911 verze.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
-ms.author: v-grpr
-ms.openlocfilehash: c22ba44c3d567d363b1fec702fecb81ca203a48b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 4c5c6b423c9013719a703b5112e2a897d35454d1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322468"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783956"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Zpráva k vydání verze Azure Stack Edge a Azure Data Box Gateway 1911
 

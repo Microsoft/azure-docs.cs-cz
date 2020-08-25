@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84417538"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
@@ -28,15 +28,15 @@ V tomto kurzu se naučíte:
 > * Vytvoření zařízení IoT Edge v IoT Central
 > * Nasazení simulovaného zařízení IoT Edge do virtuálního počítače se systémem Linux
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
 K dokončení kroků v tomto kurzu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Stáhněte soubor manifestu IoT Edge z GitHubu. Klikněte pravým tlačítkem na následující odkaz a vyberte **Uložit odkaz jako**: [EnvironmentalSensorManifest. JSON.](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+Stáhněte soubor manifestu IoT Edge z GitHubu. Klikněte pravým tlačítkem na následující odkaz a vyberte **Uložit odkaz jako**: [EnvironmentalSensorManifest.jszapnuto](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) .
 
 ## <a name="create-device-template"></a>Vytvořit šablonu zařízení
 
@@ -50,7 +50,7 @@ Vytvoření šablony zařízení z IoT Edge manifestu:
 
 1. Na stránce **Vybrat typ šablony** vyberte dlaždici **Azure IoT Edge** . Pak vyberte **Další: přizpůsobit**.
 
-1. Na stránce **nahrát manifest nasazení Azure IoT Edge** jako název šablony zařízení zadejte *hraniční zařízení snímače prostředí* . Pak vyberte **Procházet** a nahrajte **EnvironmentalSensorManifest. JSON** , který jste předtím stáhli. Pak vyberte **Další: zkontrolovat**.
+1. Na stránce **nahrát manifest nasazení Azure IoT Edge** jako název šablony zařízení zadejte *hraniční zařízení snímače prostředí* . Pak vyberte **Procházet** a nahrajte **EnvironmentalSensorManifest.js** , který jste předtím stáhli. Pak vyberte **Další: zkontrolovat**.
 
 1. Na stránce **Kontrola** vyberte **vytvořit**.
 
@@ -152,7 +152,7 @@ Nyní jste dokončili konfiguraci aplikace IoT Central, aby bylo možné zaříz
 
 V tomto kurzu použijete virtuální počítač se systémem Linux Azure IoT Edge, který se vytvoří v Azure a simuluje IoT Edge zařízení. Pokud chcete vytvořit virtuální počítač s povolenou IoT Edge ve vašem předplatném Azure, klikněte na:
 
-[![Tlačítko nasadit do Azure pro iotedge-VM-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+[![Tlačítko Nasazení do Azure pro iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 Na stránce **vlastní nasazení** :
 
@@ -228,7 +228,7 @@ Konfigurace IoT Edge na virtuálním počítači pro použití DPS k registraci 
     ```
 
     > [!TIP]
-    > Zajistěte, aby před ním zůstala žádná mezera.`provisioning:`
+    > Zajistěte, aby před ním zůstala žádná mezera. `provisioning:`
 
 1. Nahraďte `{scope_id}` **rozsahem ID** , který jste si poznamenali dříve.
 

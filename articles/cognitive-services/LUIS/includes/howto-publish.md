@@ -11,10 +11,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 0e00845684ab44b94b3c6823452e85c967cb9e3c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "87336361"
 ---
 Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu předpovědi.

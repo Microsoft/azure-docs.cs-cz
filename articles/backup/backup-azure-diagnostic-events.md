@@ -3,12 +3,12 @@ title: Použít nastavení diagnostiky pro trezory Recovery Services
 description: Tento článek popisuje, jak používat staré a nové diagnostické události pro Azure Backup.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612618"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763520"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Použít nastavení diagnostiky pro trezory Recovery Services
 
@@ -29,7 +29,7 @@ Azure Backup poskytuje následující diagnostické události. Každá událost 
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-Pokud používáte [starší verzi Event](#legacy-event) AzureBackupReport, doporučuje se přepnout na použití výše uvedených událostí v nejbližší části.
+Pokud stále používáte [starší verzi Event](#legacy-event) AzureBackupReport, doporučujeme přepnout na použití výše uvedených událostí.
 
 Další informace najdete v tématu [datový model pro události diagnostiky Azure Backup](./backup-azure-reports-data-model.md).
 

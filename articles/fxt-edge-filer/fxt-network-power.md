@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84692967"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Kurz: vytvoření síťových připojení a napájení do uzlu Azure FXT Edge souborového
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte:
 > * Postup směrování kabelů přes ARM pro správu kabelů (CMA)
 > * Jak připojit napájení k zamontovanému zařízení a zapnout ho
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu by se Azure FXT Edge souborového měl nainstalovat do racku Standard Equipment. CMA by měl být nainstalovaný na uzlu souborového. 
 

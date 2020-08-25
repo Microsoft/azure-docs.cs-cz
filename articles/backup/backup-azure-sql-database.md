@@ -3,12 +3,12 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 92097f4be02e81d3a8d306f6dc00bb0e8c939005
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: edcc77c98737b9f4e76ade0471d273f5e0070969
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612533"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763418"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -30,14 +30,14 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 * Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet vytvoří `NT SERVICE\AzureWLBackupPluginSvc` . Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. `NT SERVICE\AzureWLBackupPluginSvc`Účet je [účet virtuální služby](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup využívá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
-* Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
+* Modul plug-in odesílá data přímo do trezoru Recovery Services, čímž eliminuje nutnost pracovní polohy. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
 * Po dokončení přenosu dat koordinátor potvrdí potvrzení u služby zálohování.
 
   ![Architektura zálohování SQL](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než začnete, ověřte následující:
+Než začnete, ověřte následující požadavky:
 
 1. Ujistěte se, že máte spuštěnou instanci SQL Server v Azure. Na webu Marketplace můžete [rychle vytvořit instanci SQL Server](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md) .
 2. Seznamte se s [požadavky na funkce](sql-support-matrix.md#feature-considerations-and-limitations) a s [podporou scénářů](sql-support-matrix.md#scenario-support).

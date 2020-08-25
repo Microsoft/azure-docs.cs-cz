@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: a673f02af9d92b7135e47961f13e0899a1f0e02f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "67174706"
 ---
 Pokud přístupový token není nastavený, musíte `TokenRequired` událost zpracovat nebo implementovat `tokenRequired` metodu na protokol delegáta.

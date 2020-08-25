@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374844"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749182"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -92,7 +92,7 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 * HDInsight 4,0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
 * HDInsight 4,0 nepodporuje Apache Storm.
 * HDInsight 4,0 nepodporuje typ clusteru ML Services.
-* Zobrazení podregistru už není dostupné v HDInsight 4,0.
+* Zobrazení podregistru je dostupné jenom u clusterů HDInsight 4,0 s číslem verze rovným nebo větším než 4,1. Toto číslo verze je dostupné ve verzích Ambari admin->.
 * Překladač prostředí v Apache Zeppelin se nepodporuje v clusterech Spark a interaktivních dotazech.
 * V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.
 * Azure Data Lake Storage Gen2 v clusteru Spark nemůžou ukládat poznámkové bloky Jupyter.
@@ -102,5 +102,5 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace ke službě HDInsight](index.yml)
+* [Dokumentace ke službě Azure HDInsight](index.yml)
 * [Zpráva k vydání verze](hdinsight-release-notes.md)

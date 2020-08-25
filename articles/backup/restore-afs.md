@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure
 description: Naučte se používat Azure Portal k obnovení celé sdílené složky nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761844"
+ms.locfileid: "88762818"
 ---
 # <a name="restore-azure-file-shares"></a>Obnovení sdílených složek Azure
 
@@ -59,7 +59,7 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
     ![Vybrat bod obnovení](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >Ve výchozím nastavení má podokno **Vybrat bod obnovení** seznam bodů obnovení za posledních 30 dní. Pokud se chcete podívat na body obnovení vytvořené během určité doby trvání, zadejte rozsah tak, že vyberete příslušný **čas spuštění** a **čas ukončení** a kliknete na tlačítko **aktualizovat** .
+    >Ve výchozím nastavení má podokno **Vybrat bod obnovení** seznam bodů obnovení za posledních 30 dní. Chcete-li se podívat na body obnovení vytvořené během určité doby trvání, určete rozsah tak, že vyberete příslušný **čas spuštění** a **čas ukončení** a kliknete na tlačítko **aktualizovat** .
 
 1. Dalším krokem je výběr **umístění pro obnovení**. V části **cíl obnovení** určete, kde nebo jak mají být data obnovena. Pomocí přepínacího tlačítka vyberte jednu z následujících dvou možností:
 

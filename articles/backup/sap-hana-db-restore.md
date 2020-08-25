@@ -3,12 +3,12 @@ title: Obnovení databází SAP HANA na virtuálních počítačích Azure
 description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503587"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763282"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Obnovení databází SAP HANA na virtuálních počítačích Azure
 
@@ -161,7 +161,7 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         chown -R <SID>adm:sapsys <directory>
         ```
 
-    1. Spusťte další sadu příkazů jako`<SID>adm`
+    1. Spusťte další sadu příkazů jako `<SID>adm`
 
         ```bash
         su - <sid>adm
@@ -173,11 +173,11 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
         ```
 
-        Ve výše uvedeném příkazu:
+        V příkazu výše:
 
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<PathToPlaceCatalogFile>`– Složka, ve které se musí umístit vygenerovaný katalogový soubor
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<PathToPlaceCatalogFile>` – Složka, ve které se musí umístit vygenerovaný katalogový soubor
 
     1. Obnovte pomocí nově vygenerovaného souboru katalogu přes HANA Studio nebo spusťte dotaz HDBSQL Restore s tímto nově vygenerovaným katalogem. Dotazy na HDBSQL jsou uvedeny níže:
 
@@ -191,13 +191,13 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
         ```
 
-        * `<DatabaseName>`– Název nové databáze nebo existující databáze, kterou chcete obnovit.
-        * `<Timestamp>`– Přesné časové razítko obnovení bodu v čase
-        * `<DatabaseName@HostName>`– Název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém je umístěna Tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Takže není potřeba ho zadat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
-        * `<PathToGeneratedCatalogInStep3>`-Cesta k souboru katalogu vygenerovanému v **kroku C**
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku C**
+        * `<DatabaseName>` – Název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>` – Přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>` – Název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém je umístěna Tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Takže není potřeba ho zadat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>` -Cesta k souboru katalogu vygenerovanému v **kroku C**
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>` – **BackupId** extrahovaný v **kroku C**
 
     * Postup obnovení do konkrétního úplného nebo rozdílového zálohování:
 
@@ -207,13 +207,13 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
         ```
 
-        * `<DatabaseName>`– název nové databáze nebo existující databáze, kterou chcete obnovit.
-        * `<Timestamp>`– přesné časové razítko obnovení bodu v čase
-        * `<DatabaseName@HostName>`– název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém se nachází tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
-        * `<PathToGeneratedCatalogInStep3>`– Cesta k souboru katalogu vygenerovanému v **kroku C**
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku C**
+        * `<DatabaseName>` – název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>` – přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>` – název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém se nachází tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>` – Cesta k souboru katalogu vygenerovanému v **kroku C**
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>` – **BackupId** extrahovaný v **kroku C**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Obnovení k určitému bodu v čase
 

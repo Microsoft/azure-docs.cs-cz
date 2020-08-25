@@ -4,10 +4,10 @@ description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do 
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85315607"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -172,7 +172,7 @@ Teď můžete streamovat data do svého centra událostí. Pokud chcete tato dat
 
    **Název úlohy:** Použijte **contosoEHjob**. Toto pole obsahuje název úlohy, který musí být globálně jedinečný.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte předplatné.
 
    **Skupina prostředků:** Použijte stejnou skupinu prostředků jako pro centrum událostí (**ContosoResourcesEH**).
 
@@ -180,7 +180,7 @@ Teď můžete streamovat data do svého centra událostí. Pokud chcete tato dat
 
    ![Snímek obrazovky předvádějící vytvoření nové úlohy Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Pro zbývající pole můžete použít výchozí hodnoty. Klikněte na **Vytvořit**. 
+    Pro zbývající pole můžete použít výchozí hodnoty. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -197,7 +197,7 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
    **Alias pro vstup:** Použijte **contosoinputs**. Toto pole obsahuje název vstupního datového proudu, který se používá při definování dotazu na data.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte předplatné.
 
    **Obor názvů služby Event Hubs:** Vyberte obor názvů vašeho centra událostí ($**eventHubNamespace**). 
 
@@ -322,7 +322,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
     > Když spustíte ukázkovou aplikaci a data streamu do centra událostí, číslo této dlaždice se rychle změní (každou sekundu). Je to proto, že Stream Analytics dotaz skutečně aktualizuje hodnotu **každou sekundu**. Aktualizujte dotaz na 3 minuty bubnového okna, abyste viděli součet za posledních několik minut. 
 11. Přidejte další vizualizaci. Zopakujte prvních několik kroků:
 
-    * Klikněte na **Přidat dlaždici**.
+    * Klikněte na **Add Tile** (Přidat dlaždici).
     * Vyberte **Vlastní streamovaná data**. 
     * Klikněte na **Další**.
     * Vyberte vaši datovou sadu a klikněte na **Další**. 

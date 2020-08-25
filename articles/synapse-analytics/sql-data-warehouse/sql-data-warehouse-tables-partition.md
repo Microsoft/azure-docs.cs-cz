@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075729"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763129"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Dělení tabulek v synapse fondu SQL
 
@@ -30,7 +30,7 @@ Dělení může přinést údržbu dat a výkon dotazů. Bez ohledu na to, jestl
 
 ### <a name="benefits-to-loads"></a>Výhody načtení
 
-Hlavní výhodou dělení v synapse fondu SQL je zlepšení efektivity a výkonu načítání dat pomocí odstranění oddílu, přepínání a sloučení. Ve většině případů jsou data rozdělená na sloupec data, který je úzce svázaný s pořadím, ve kterém jsou data načtena do databáze. Jednou z největších výhod používání oddílů pro zachování dat, která brání protokolování transakcí. I když stačí vkládat, aktualizovat nebo odstraňovat data, může být nejjednodušším přístupem, přičemž při vytváření oddílů během procesu načítání může podstatně dojít k výraznému zlepšení výkonu.
+Hlavní výhodou dělení v synapse fondu SQL je zlepšení efektivity a výkonu načítání dat pomocí odstranění oddílu, přepínání a sloučení. Ve většině případů jsou data rozdělená na sloupec data, který je úzce svázaný s pořadím, ve kterém jsou data načtena do databáze. Jednou z největších výhod používání oddílů pro zachování dat je zamezení protokolování transakcí. I když stačí vkládat, aktualizovat nebo odstraňovat data, může být nejjednodušším přístupem, přičemž při vytváření oddílů během procesu načítání může podstatně dojít k výraznému zlepšení výkonu.
 
 Přepínání oddílů lze použít pro rychlé odebrání nebo nahrazení oddílu tabulky.  Například tabulka faktů prodeje může obsahovat jenom data za posledních 36 měsíců. Na konci každého měsíce se z tabulky odstraní nejstarší měsíc prodejních dat.  Tato data je možné odstranit pomocí příkazu DELETE a odstranit data po nejstarší měsíc. 
 
@@ -303,7 +303,7 @@ Chcete-li se vyhnout definici tabulky z **rusting** v systému správy zdrojové
     ;
     ```
 
-1. `SPLIT`tabulka v rámci procesu nasazení:
+1. `SPLIT` tabulka v rámci procesu nasazení:
 
     ```sql
      -- Create a table containing the partition boundaries

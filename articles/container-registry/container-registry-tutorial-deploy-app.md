@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74456106"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
@@ -50,7 +50,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci 
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.

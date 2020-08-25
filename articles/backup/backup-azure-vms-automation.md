@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652742"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763367"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -206,7 +206,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00"
+> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V předchozím příkladu může být jen "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00"
 
 V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. V příkladu se tyto proměnné používají k definování parametrů při vytváření zásad ochrany, *NewPolicy*.
 
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>Obnovení disků
 
-Pomocí rutiny [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) obnovte data a konfiguraci zálohované položky do bodu obnovení. Jakmile identifikujete bod obnovení, použijte jej jako hodnotu parametru **-RecoveryPoint** . Ve výše uvedeném příkladu byl **$RP [0]** bod obnovení, který se má použít. V následujícím ukázkovém kódu **$RP [0]** bod obnovení, který se má použít pro obnovení disku.
+Pomocí rutiny [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) obnovte data a konfiguraci zálohované položky do bodu obnovení. Jakmile identifikujete bod obnovení, použijte jej jako hodnotu parametru **-RecoveryPoint** . V ukázce výše byl **$RP [0]** bod obnovení, který se má použít. V následujícím ukázkovém kódu **$RP [0]** bod obnovení, který se má použít pro obnovení disku.
 
 Postup obnovení disků a informací o konfiguraci:
 
@@ -638,7 +638,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
     * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok není pro datový objekt BLOB vyžadován). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
-    Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
+    Následující skript se musí provést, jenom když není k dispozici zdrojový Trezor klíčů nebo tajný kód.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -652,7 +652,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
     Po **zpřístupnění tajných** kódů a zadání podrobností o šifrování také v objektu BLOB operačního systému připojte disky pomocí skriptu uvedeného níže.
 
-    Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nutné provést tento skript.
+    Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nutné spustit skript výše.
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -680,7 +680,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
     Až **budou klíče a tajné klíče k dispozici** a podrobnosti o šifrování jsou nastaveny v objektu BLOB operačního systému, připojte disky pomocí skriptu uvedeného níže.
 
-    Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné spustit výše uvedený skript.
+    Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné spustit skript výše.
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"

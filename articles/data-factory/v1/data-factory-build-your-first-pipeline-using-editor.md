@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85254969"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
@@ -42,7 +42,7 @@ Kanál v tomto kurzu obsahuje jednu aktivitu: aktivitu Azure HDInsight Hive. Tat
 > 
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [Plánování a spouštění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Přečtěte si [Přehled kurzu](data-factory-build-your-first-pipeline.md) a proveďte kroky v části Požadavky.
 
 Tento článek neposkytuje koncepční přehled služby Data Factory. Další informace o této službě najdete v tématu [Úvod do služby Azure Data Factory](data-factory-introduction.md).  
@@ -52,7 +52,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
 
 Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **Nový**  >  **data a analýzy**  >  **Data Factory**.
 
@@ -208,7 +208,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     ```
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON.
 
-   | Vlastnost | Vnořeno pod | Description |
+   | Vlastnost | Vnořeno pod | Popis |
    |:--- |:--- |:--- |
    | typ | properties |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
    | linkedServiceName | formát |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
@@ -421,7 +421,7 @@ K monitorování kanálů můžete použít také aplikaci pro monitorování a 
 
     ![Seznam Okna aktivit](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí skriptu Hive v clusteru HDInsight Hadoop. Pomocí editoru služby Data Factory na webu Azure Portal jste provedli následující:  
 
 * Vytvoření datové továrny
@@ -435,7 +435,7 @@ V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z úložiště objektů blob do Azure SQL Database, přečtěte si téma [kurz: kopírování dat z úložiště objektů blob do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
-| Téma | Description |
+| Téma | Popis |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Data Factory. |
