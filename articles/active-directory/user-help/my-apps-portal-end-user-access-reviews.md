@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741926"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798019"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu moje aplikace
 
@@ -28,7 +28,7 @@ Pokud nemáte přístup k portálu **Moje aplikace** , obraťte se na helpdesk, 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/index.yml).
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
@@ -58,7 +58,7 @@ Pokud vám správce udělil oprávnění k provádění vlastních kontrol pří
     ![Stránka pro kontrolu přístupu se zobrazenými podrobnostmi o kontrole](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](../governance/perform-access-review.md).
 
 6. Vyberte **Ano** , pokud chcete zachovat přístup nebo **ne** pro odebrání přístupu.
 

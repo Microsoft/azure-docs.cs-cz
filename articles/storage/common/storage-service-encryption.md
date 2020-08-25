@@ -4,21 +4,21 @@ description: Azure Storage chrání vaše data tím, že je před trvalým nasaz
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/16/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089392"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756805"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
-Azure Storage automaticky šifruje vaše data při jejich trvalém uložení do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
+Azure Storage automaticky šifruje vaše data, když se trvale uloží do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
 
 ## <a name="about-azure-storage-encryption"></a>O šifrování Azure Storage
 
@@ -43,7 +43,7 @@ Data v novém účtu úložiště se šifrují pomocí klíčů spravovaných Mi
 
 Následující tabulka porovnává možnosti správy klíčů pro Azure Storage šifrování.
 
-| Parametr správy klíčů | Klíče spravované společností Microsoft | Klíče spravované zákazníkem | Klíče poskytované zákazníky |
+| Parametr správy klíčů | Klíče spravované Microsoftem | Klíče spravované zákazníkem | Klíče poskytované zákazníky |
 |--|--|--|--|
 | Operace šifrování a dešifrování | Azure | Azure | Azure |
 | Podporované služby Azure Storage Services | Vše | BLOB Storage, soubory Azure<sup>1, 2</sup> | Blob Storage |

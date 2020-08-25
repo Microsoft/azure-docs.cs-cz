@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850896"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798954"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -36,7 +36,7 @@ Moji zaměstnanci vycházejí z jednotek pro správu (Austrálie), což je konte
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
 
   * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému.
@@ -64,7 +64,7 @@ Po nakonfigurování jednotky Austrálie můžete tento obor použít pro uživa
 
 Portál My personál můžete chránit pomocí zásad podmíněného přístupu Azure AD. Použijte ho pro úkoly, jako je třeba ověřování Multi-Factor Authentication, než přistoupíte k zaměstnancům.
 
-Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/). Pokud chcete, aby se zásady podmíněného přístupu používaly pro moje pracovníky, musíte ručně vytvořit instanční objekt služby my personál pomocí PowerShellu.
+Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného přístupu Azure AD](../conditional-access/index.yml). Pokud chcete, aby se zásady podmíněného přístupu používaly pro moje pracovníky, musíte ručně vytvořit instanční objekt služby my personál pomocí PowerShellu.
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Použití zásad podmíněného přístupu u mých zaměstnanců
 
@@ -119,7 +119,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 V organizaci můžete hledat oddělení Austrálie a uživatele ve vaší organizaci pomocí panelu hledání v části Moji zaměstnanci. Můžete vyhledávat ve všech centrech a uživatelích ve vaší organizaci, ale můžete provádět změny jenom pro uživatele, kteří jsou ve AU, přes který jste měli oprávnění správce.
 

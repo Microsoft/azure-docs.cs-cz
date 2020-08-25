@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro SQL Server na virtuálním počítači Azur
 description: Přečtěte si, jak obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure zajišťuje větší zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538186"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757468"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a SAP HANA v úlohách virtuálních počítačů Azure
 
@@ -62,7 +62,7 @@ Azure Backup nyní poskytuje obnovitelné odstranění pro SQL Server na virtuá
 >[!NOTE]
 >Tyto pokyny platí také pro SAP HANA na virtuálním počítači Azure.
 
-1. Chcete-li odstranit data zálohy databáze v systému SQL Server, je nutné zálohování zastavit. V Azure Portal přejdete do trezoru služby Recovery Services, přejdete na položku zálohování a kliknete na **Zastavit zálohování**.
+1. Chcete-li odstranit data zálohy databáze v systému SQL Server, je nutné zálohování zastavit. V Azure Portal přejdete do svého trezoru Recovery Services, přejdete na položku zálohování a kliknete na **Zastavit zálohování**.
 
    ![Zastavit zálohování](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 

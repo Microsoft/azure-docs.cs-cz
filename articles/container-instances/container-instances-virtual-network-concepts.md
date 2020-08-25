@@ -2,14 +2,14 @@
 title: Scénáře použití virtuální sítě
 description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů do služby Azure Virtual Network.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259541"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797852"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -42,6 +42,8 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * [Spravovanou identitu](container-instances-managed-identity.md) nemůžete použít ve skupině kontejnerů nasazené do virtuální sítě.
 * V rámci skupiny kontejnerů nasazených do virtuální sítě nemůžete povolit [test živého provozu](container-instances-liveness-probe.md) nebo test [připravenosti](container-instances-readiness-probe.md) .
 * Kvůli dalším zapojení síťových prostředků jsou nasazení do virtuální sítě obvykle pomalejší než nasazení standardní instance kontejneru.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>Místo nasazení
 

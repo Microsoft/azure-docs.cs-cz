@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741968"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798036"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Přihlášení a spouštění aplikací z portálu moje aplikace
 
@@ -33,7 +33,7 @@ Pokud nemáte přístup k portálu **Moje aplikace** , obraťte se na helpdesk, 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Tento obsah je určený pro uživatele mých aplikací. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Tento obsah je určený pro uživatele mých aplikací. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/index.yml).
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
 
@@ -59,7 +59,7 @@ Toto rozšíření vám pomůže:
 
 - Podívejte se na poslední aplikace, které jste použili v části **naposledy použité** .
 
-- Používejte interní adresy URL společnosti při vzdáleném připojení k [proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
+- Používejte interní adresy URL společnosti při vzdáleném připojení k [proxy aplikací](../manage-apps/application-proxy.md).
 
 ### <a name="to-download-and-install-the-extension"></a>Stažení a instalace rozšíření
 

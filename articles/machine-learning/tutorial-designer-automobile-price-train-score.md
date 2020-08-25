@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290295"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812980"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -104,13 +104,7 @@ Návrhář obsahuje několik ukázkových datových sad, které můžete experim
 
 Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
-1. Vyberte modul **cena za automobilový data (RAW)** .
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokol**.
-
-1. Vyberte ikonu grafu pro vizualizaci dat.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Sem zadejte alternativní text.":::
+1. Klikněte pravým tlačítkem myši na **data o cenách automobilu (hrubá)** a vyberte **vizualizovat**.
 
 1. Výběrem různých sloupců v okně data zobrazíte informace o každém z nich.
 
@@ -140,7 +134,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. V podokně podrobností modulu napravo od plátna vyberte **Upravit sloupec**.
 
-1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout**a vyberte možnost **všechny sloupce**.
+1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout**a vyberte možnost  **všechny sloupce**.
 
 1. Pokud **+** chcete přidat nové pravidlo, vyberte.
 
@@ -291,9 +285,7 @@ Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění ka
 
 Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se podívejte na předpovědi vygenerovaný regresním modelem.
 
-1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. Klikněte pravým tlačítkem na modul **bodového modelu** a vyberte **vizualizovat** a zobrazte jeho výstup.
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
@@ -303,9 +295,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
 Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený model proveden na testovací datové sadě.
 
-1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
-
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. Klikněte pravým tlačítkem na modul **vyhodnotit model** a výběrem **vizualizovat** zobrazte jeho výstup.
 
 Pro váš model se zobrazí následující statistiky:
 

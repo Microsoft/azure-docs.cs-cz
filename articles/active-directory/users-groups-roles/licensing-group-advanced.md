@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209463"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799056"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -211,7 +211,7 @@ Pokud používáte licencování na základě skupin, je vhodné se seznámit s 
 
 - Když se licence přiřadí nebo upraví pro velkou skupinu (například 100 000 uživatelů), může to mít vliv na výkon. Konkrétně objem změn generovaných službou Azure AD Automation může negativně ovlivnit výkon synchronizace adresářů mezi Azure AD a místními systémy.
 
-- Pokud spravujete členství uživatelů pomocí dynamických skupin, zkontrolujte, jestli je daný uživatel součástí skupiny, což je k přiřazení licence nezbytné. V opačném případě [zkontrolujte stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) dané dynamické skupiny.
+- Pokud spravujete členství uživatelů pomocí dynamických skupin, zkontrolujte, jestli je daný uživatel součástí skupiny, což je k přiřazení licence nezbytné. V opačném případě [zkontrolujte stav zpracování pravidla členství](./groups-create-rule.md) dané dynamické skupiny.
 
 - V některých situacích s vysokým zatížením může trvat dlouhou dobu, než se změny licencí pro skupiny nebo změny členství ve skupinách s existujícími licencemi změní. Pokud se vám změny velikosti skupiny procesů 60K nebo méně projeví u svých změn, [otevřete prosím lístek podpory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) , který nám umožní prozkoumat. 
 

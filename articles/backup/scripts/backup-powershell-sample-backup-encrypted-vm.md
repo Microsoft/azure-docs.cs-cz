@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak pomocí ukázkového skriptu Azur
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: a60320c165499ed1fb02fa544deec0e304d447df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c45ee26bef0f9afbb0b9d03f1dcafee21a894f8a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513638"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757553"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrovaného virtuálního počítače Azure pomocí PowerShellu
 
@@ -40,7 +40,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Vytvoří trezor služby Recovery Services pro ukládání záloh. |
+| [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Vytvoří Recovery Services trezor pro ukládání záloh. |
 | [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Nastaví vlastnosti úložiště zálohování v trezoru Recovery Services. |
 | [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Vytvoří zásady ochrany pomocí zásad plánování a zásad uchovávání v Recovery Services trezoru. |
 | [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) | Nastaví oprávnění ke službě Key Vault tak, že instančnímu objektu udělí přístup k šifrovacím klíčům. |

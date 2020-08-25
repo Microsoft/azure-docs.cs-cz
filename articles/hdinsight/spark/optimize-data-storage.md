@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737627"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757808"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalizace úložiště dat pro Apache Spark
 
@@ -43,7 +44,7 @@ Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 za
     * Přidá režii serializace/deserializace.
     * Vysoká režie GC.
     * Zruší generování kódu na celé fázi.
-* **RDD**
+* **Sady RDD**
     * Nemusíte používat RDD, pokud nepotřebujete vytvářet nové vlastní RDD.
     * Žádná optimalizace dotazů prostřednictvím Catalyst.
     * Nevytváření celého připraveného kódu.
@@ -56,11 +57,11 @@ Když vytváříte nový cluster Spark, můžete jako výchozí úložiště clu
 
 | Store Type | Systém souborů | Rychlost | Dočasný | Případy použití |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Přechodný cluster |
-| Azure Blob Storage (zabezpečení) | **wasbs:**//URL/ | **Standard** | Yes | Přechodný cluster |
-| Azure Data Lake Storage Gen2| **ABFS:**//URL/ | **Zrychlení** | Yes | Přechodný cluster |
-| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Zrychlení** | Yes | Přechodný cluster |
-| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | No | Interaktivní cluster 24/7 |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Ano | Přechodný cluster |
+| Azure Blob Storage (zabezpečení) | **wasbs:**//URL/ | **Standard** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen2| **ABFS:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | Ne | Interaktivní cluster 24/7 |
 
 Úplný popis možností úložiště najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](../hdinsight-hadoop-compare-storage-options.md).
 
@@ -77,7 +78,7 @@ Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které 
     * Používá ukládání do mezipaměti SSD v paměti a SSD.
 
 * Místní HDFS (doporučeno)
-    * `hdfs://mycluster`dílčí.
+    * `hdfs://mycluster` dílčí.
     * Používá ukládání do mezipaměti SSD.
     * Po odstranění clusteru dojde ke ztrátě dat uložených v mezipaměti, které vyžaduje opětovné sestavení mezipaměti.
 
@@ -86,7 +87,7 @@ Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které 
 Úlohy Sparku jsou distribuované, takže pro nejlepší výkon je důležité, aby byla vhodná serializace dat.  Pro Spark existují dvě možnosti serializace:
 
 * Výchozím nastavením je serializace Java.
-* `Kryo`serializace je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  `Kryo`vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
+* `Kryo` serializace je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  `Kryo` vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
 
 ## <a name="use-bucketing"></a>Použití rozdělování do kbelíků
 

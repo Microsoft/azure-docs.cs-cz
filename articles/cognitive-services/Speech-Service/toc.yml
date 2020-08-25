@@ -3,10 +3,8 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je služba Speech?
+    - name: Přehled služby Speech
       href: overview.md
-    - name: Vyzkoušejte si službu Speech zdarma
-      href: get-started.md
     - name: Podpora jazyka a hlasu
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

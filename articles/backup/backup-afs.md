@@ -3,12 +3,12 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: e0d9edbcb89dbdcac51893eb720da880a150bc7b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532649"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757791"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak:
 * Konfigurace zálohování v podokně sdílení souborů
 * Spuštění úlohy zálohování na vyžádání pro vytvoření bodu obnovení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Přečtěte si](azure-file-share-backup-overview.md) o řešení zálohování založeném na snímku Azure File Share.
 * Ujistěte se, že se sdílená složka nachází v jednom z [podporovaných typů účtů úložiště](azure-file-share-support-matrix.md).
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Konfigurace zálohování z trezoru Recovery Services
 
-Následující kroky vysvětlují, jak můžete v podokně trezoru služby Recovery Services nakonfigurovat zálohování pro víc sdílených složek:
+Následující postup vysvětluje, jak můžete v podokně Recovery Services trezoru nakonfigurovat zálohování pro více sdílených složek:
 
 1. V [Azure Portal](https://portal.azure.com/)otevřete trezor Recovery Services, který chcete použít pro konfiguraci zálohování sdílené složky.
 
@@ -123,16 +123,16 @@ Následující postup vysvětluje, jak můžete nakonfigurovat zálohování pro
 
 1. Pro výběr trezoru Recovery Services proveďte jednu z následujících akcí:
 
-    * Pokud už máte trezor, vyberte přepínač **Vybrat existující** trezor služby Recovery Services a z rozevírací nabídky **název trezoru** zvolte jednu z existujících trezorů.
+    * Pokud už máte trezor, vyberte přepínač **Vybrat existující** Recovery Services trezor a v rozevírací nabídce **název trezoru** zvolte jednu z existujících trezorů.
 
        ![Vybrat existující trezor](./media/backup-afs/select-existing-vault.png)
 
-    * Pokud nemáte trezor, vyberte přepínač **vytvořit nový** trezor služby Recovery Services. Zadejte název trezoru. Vytvoří se ve stejné oblasti jako sdílená složka. Ve výchozím nastavení se trezor vytvoří ve stejné skupině prostředků jako sdílená složka. Pokud chcete zvolit jinou skupinu prostředků, vyberte **vytvořit nový** odkaz pod rozevíracím tlačítkem **typ prostředku** a zadejte název skupiny prostředků. Pokračujte výběrem tlačítka **OK**.
+    * Pokud nemáte trezor, vyberte přepínač **vytvořit nový** Recovery Services trezor. Zadejte název trezoru. Vytvoří se ve stejné oblasti jako sdílená složka. Ve výchozím nastavení se trezor vytvoří ve stejné skupině prostředků jako sdílená složka. Pokud chcete zvolit jinou skupinu prostředků, vyberte **vytvořit nový** odkaz pod rozevíracím tlačítkem **typ prostředku** a zadejte název skupiny prostředků. Pokračujte výběrem tlačítka **OK**.
 
        ![Vytvořit nový trezor](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >Pokud je účet úložiště zaregistrovaný v trezoru nebo pokud je v rámci účtu úložiště hostující sdílená složka, kterou se pokoušíte chránit, název trezoru služby Recovery Services se předběžně vyplní a nebudete [ho moct dál upravovat.](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)
+      >Pokud je účet úložiště zaregistrovaný v trezoru nebo pokud je v rámci účtu úložiště hostující sdílená složka, kterou chcete chránit, název Recovery Services trezoru se předem vyplní a nebudete ho moct upravit. [Další informace najdete tady](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
 
 1. Pro výběr **zásad zálohování** proveďte jednu z následujících akcí:
 
@@ -168,7 +168,7 @@ Následující postup vysvětluje, jak můžete nakonfigurovat zálohování pro
 
 V některých případech můžete chtít vytvořit snímek zálohy nebo bod obnovení mimo čas naplánovaný v zásadách zálohování. Běžným důvodem pro vygenerování zálohy na vyžádání je napravo od nakonfigurované zásady zálohování. Na základě plánu v zásadách zálohování může být hodiny nebo dny až do chvíle, kdy se snímek povede. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje předtím, než provedete plánované změny sdílených složek.
 
-### <a name="from-the-recovery-services-vault"></a>Z trezoru služby Recovery Services
+### <a name="from-the-recovery-services-vault"></a>Z trezoru Recovery Services
 
 1. Otevřete Recovery Services trezor, který jste použili k zálohování sdílené složky. V podokně **Přehled** vyberte **položky zálohování** v části **chráněné položky** .
 

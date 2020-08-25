@@ -2,19 +2,19 @@
 title: Zásady restartování pro úlohy běhu
 description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261344"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798937"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úkolů se zásadami restartování
 
 Nasazení kontejnerů ve službě Azure Container Instances je jednoduché a rychlé. Proto je tato platforma vhodná pro úkoly, které se spouští jen jednou, jako je sestavení, testování nebo vykreslení image v instanci kontejneru.
 
-Konfigurovatelné zásady restartování umožňují nastavit, aby se kontejnery po dokončení procesů zastavily. Instance kontejnerů se účtují po sekundách. Proto se vám účtují jenom výpočetní prostředky používané po dobu spuštění kontejneru, když plní vaši úlohu.
+Konfigurovatelné zásady restartování umožňují nastavit, aby se kontejnery po dokončení procesů zastavily. Instance kontejnerů se účtují po sekundách. Proto se vám účtují jenom výpočetní prostředky používané po dobu, kdy kontejner běží a provádí vaši úlohu.
 
 Příklady uvedené v tomto článku používají rozhraní příkazového řádku Azure CLI. Musíte mít [místně nainstalovanou][azure-cli-install]verzi Azure CLI 2.0.21 nebo novější, nebo můžete použít rozhraní příkazového řádku v [Azure Cloud Shell](../cloud-shell/overview.md).
 
@@ -22,11 +22,13 @@ Příklady uvedené v tomto článku používají rozhraní příkazového řád
 
 Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) v Azure Container Instances můžete zadat jedno ze tří nastavení zásad restartování.
 
-| Zásady restartování   | Popis |
+| Zásada restartování   | Popis |
 | ---------------- | :---------- |
 | `Always` | Kontejnery ve skupině kontejnerů se restartují vždy. Jde o **výchozí** nastavení, které se použije vždy, když při vytvoření kontejneru nezadáte zásadu restartování. |
 | `Never` | Kontejnery ve skupině kontejnerů se nerestartují nikdy. Kontejnery se spouštějí nejvýše jednou. |
 | `OnFailure` | Kontejnery ve skupině se restartují jen v případě, že proces spuštěný v kontejneru nebude úspěšný (když skončí nenulovým ukončovacím kódem). Kontejnery se spouštějí aspoň jednou. |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>Zadat zásady restartování
 

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b263d5394d642301c5fc53e169186e4aea56ecab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1105665296c7319c32995d1f83cb25b559abf997
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497456"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756142"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Trezor služby Recovery Services je logický kontejner, který uchovává zálohovaná data pro každý chráněný prostředek, například virtuální počítače Azure. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 

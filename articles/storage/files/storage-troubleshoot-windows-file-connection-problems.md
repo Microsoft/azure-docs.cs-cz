@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927211"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752331"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -364,6 +364,16 @@ Při pokusu o konfiguraci seznamů řízení přístupu k Windows pomocí Průzk
 ### <a name="solution"></a>Řešení
 
 Doporučujeme použít [nástroj Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) ke konfiguraci oprávnění na úrovni adresáře nebo souboru jako alternativní řešení. 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Chyby při spuštění rutiny JOIN-AzStorageAccountForAuth
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Chyba: adresářové službě se nepodařilo přidělit relativní identifikátor.
+
+K tomuto chyby může dojít v případě, že řadič domény, který obsahuje roli FSMO hlavního serveru RID, není k dispozici nebo byl odebrán z domény a obnoven ze zálohy.  Potvrďte, že jsou všechny řadiče domény spuštěné a dostupné.
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Chyba: Nejde vytvořit vazbu pozičních parametrů, protože se nezadaly žádné názvy
+
+Nejpravděpodobnější příčinou této chyby je chyba syntaxe v příkazu Join-AzStorageAccountforAuth.  V příkazu zkontrolujte chyby v pravopisu nebo chyby syntaxe a ověřte, jestli je nainstalovaná nejnovější verze modulu AzFilesHybrid ( https://github.com/Azure-Samples/azure-files-samples/releases) .  
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

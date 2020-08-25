@@ -4,16 +4,16 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654153"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757145"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
-Azure Backup poskytuje možnost obnovení [virtuálních počítačů Azure a disků](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, označovaných také jako body obnovení. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovování souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněny do trezoru služby Recovery Services.
+Azure Backup poskytuje možnost obnovení [virtuálních počítačů Azure a disků](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, označovaných také jako body obnovení. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovování souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněny do trezoru Recovery Services.
 
 > [!NOTE]
 > Tato funkce je k dispozici pro virtuální počítače Azure nasazené pomocí modelu Správce prostředků a chráněných do trezoru Recovery Services.
@@ -68,7 +68,7 @@ V části [požadavky na přístup](#access-requirements) se ujistěte, že se s
 
 Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být shodná s písmeny, která jsou v původním virtuálním počítači. Název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E: `\` )", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ': `\` ). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory nebo složku.  
 
-   ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Připojené svazky pro obnovení](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Pro Linux
 
@@ -302,7 +302,7 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
 
 - `download.microsoft.com`
-- Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
+- Adresy URL služby obnovení (GEO-Name) odkazují na oblast, ve které se nachází trezor Recovery Services.)
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Pro veřejné oblasti Azure)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Pro státní správu USA Azure)
@@ -332,7 +332,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
     - Ujistěte se, že operační systém je WS 2012 nebo vyšší.
     - Zajistěte, aby byly na serveru pro obnovení nastaveny klíče registru, jak je navrženo, a nezapomeňte restartovat server. Číslo vedle identifikátoru GUID může být v rozsahu od 0001-0005. V následujícím příkladu je to 0,0004. Procházejte cestou klíče registru do části Parameters (parametry).
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![Změny klíčů registru](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 
 - Pokud je server pro obnovení virtuálním počítačem se systémem Linux:
   - V souboru/etc/iSCSI/iscsid.conf změňte nastavení z:
-    - Node. [0]. Timeo. noop_out_timeout = 5 na Node. Timeo. [0].. noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5`  schopn `node.conn[0].timeo.noop_out_timeout = 30`
 - Po provedení změny výše spusťte skript znovu. U těchto změn je vysoce pravděpodobné, že obnovení souboru bude úspěšné.
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.

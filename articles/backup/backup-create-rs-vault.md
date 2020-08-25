@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586184"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757740"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -20,7 +20,7 @@ ms.locfileid: "88586184"
 Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit způsob replikace tohoto úložiště.
 
 > [!NOTE]
-> Změna **typu replikace úložiště** (místně redundantní/geograficky redundantní) pro trezor služby Recovery Services je potřeba provést před konfigurací záloh v trezoru. Když nakonfigurujete zálohování, možnost změnit je zakázaná.
+> Změna **typu replikace úložiště** (místně redundantní/geograficky redundantní) pro Recovery Services trezoru je potřeba provést před konfigurací záloh v trezoru. Když nakonfigurujete zálohování, možnost změnit je zakázaná.
 >
 >- Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](#set-storage-redundancy) .
 >- Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, [Přečtěte si tato alternativní řešení](#how-to-change-from-grs-to-lrs-after-configuring-backup).

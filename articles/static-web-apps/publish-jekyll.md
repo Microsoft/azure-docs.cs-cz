@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563566"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797696"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Jekyll ve službě Azure static Web Apps Preview
 
@@ -96,7 +96,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Klikněte na možnost **statické Web Apps (Preview)**.
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 1. U **předplatného**přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
@@ -124,7 +124,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Kliknutím na tlačítko **Další: >sestavení** Upravte konfiguraci sestavení.
+1. Kliknutím na tlačítko **Další: >sestavení ** Upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/_SITE**.
 
@@ -132,7 +132,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 
-### <a name="review-and-create"></a>Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 

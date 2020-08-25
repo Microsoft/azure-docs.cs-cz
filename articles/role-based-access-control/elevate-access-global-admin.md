@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791992"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799328"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu
 
@@ -145,6 +145,22 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele pro sebe nebo
 
 ## <a name="azure-cli"></a>Azure CLI
 
+### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
+
+Pomocí následujících základních kroků můžete zvýšit přístup pro globálního správce pomocí Azure CLI.
+
+1. Pomocí příkazu [AZ REST](/cli/azure/reference-index?view=azure-cli-latest#az-rest) zavolejte `elevateAccess` koncový bod, který uděluje roli správce přístupu uživatele v kořenovém oboru ( `/` ).
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. Proveďte změny, které potřebujete k zajištění vyššího přístupu.
+
+    Informace o přiřazování rolí najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md).
+
+1. Provedením kroků v pozdější části odeberte váš přístup se zvýšenými oprávněními.
+
 ### <a name="list-role-assignment-at-root-scope-"></a>Vypsat přiřazení role v kořenovém oboru (/)
 
 Chcete-li zobrazit seznam přiřazení role správce přístupu uživatele pro uživatele v kořenovém oboru ( `/` ), použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) .
@@ -183,7 +199,7 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele pro sebe nebo
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 
@@ -275,7 +291,7 @@ Když zavoláte `elevateAccess` , vytvoříte přiřazení role sami, takže odv
     ```
         
     >[!NOTE] 
-    >Správce adresáře by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, můžete také zadat dotaz na všechna přiřazení pouze v úrovni oboru adresáře a následně vyfiltrovat výsledky:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Správce adresáře by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, můžete také zadat dotaz na všechna přiřazení pouze v úrovni oboru adresáře a následně vyfiltrovat výsledky: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
 1. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde je rozsah `"/"` a `roleDefinitionId` končí s ID názvu role, které jste našli v kroku 1 a `principalId` odpovídá objectID Správce adresáře. 
     

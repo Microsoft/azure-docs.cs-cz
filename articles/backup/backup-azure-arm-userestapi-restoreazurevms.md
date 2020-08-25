@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761470"
+ms.locfileid: "88763537"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -115,11 +115,16 @@ X-Powered-By: ASP.NET
 
 Bod obnovení je označený `{name}` polem ve výše uvedené reakci.
 
-## <a name="restore-disks"></a>Obnovit disky
+## <a name="restore-operations"></a>Operace obnovení
 
-Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště.
+Po výběru [relevantního bodu obnovení](#select-recovery-point)pokračujte a aktivujte operaci obnovení.
 
-Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](/rest/api/backup/restores/trigger).
+***Všechny operace obnovení v zálohovaných položkách se provádějí se stejným rozhraním API pro *odeslání* . V rámci scénářů obnovení se mění pouze tělo žádosti.***
+
+> [!IMPORTANT]
+> Všechny podrobnosti o různých možnostech obnovení a jejich závislostech jsou uvedeny [zde](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options). Než budete pokračovat v aktivaci těchto operací, přečtěte si je.
+
+Aktivace operací obnovení je požadavek *post* . Pokud chcete získat další informace o rozhraní API, přečtěte si [téma "Trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -127,41 +132,15 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 `{containerName}`A `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` je "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [výše](#example-response).
 
-### <a name="create-request-body"></a>Vytvořit text žádosti
+Po získání bodu obnovení musíme pro příslušný scénář obnovení vytvořit text žádosti. Následující části popisují tělo žádosti pro každý scénář.
 
-Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
+- [Obnovit disky](#restore-disks)
+- [Nahradit disky](#replace-disks-in-a-backed-up-virtual-machine)
+- [Obnovit jako nový virtuální počítač](#restore-as-another-virtual-machine)
 
-|Název  |Typ  |Popis  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>Odpověď na obnovení
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](/rest/api/backup/restores/trigger#request-body).
-
-#### <a name="example-request"></a>Příklad požadavku
-
-Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení disku.
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>Odpověď
-
-Aktivace disku pro obnovení je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Triggerem jakékoli operace obnovení je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
@@ -227,15 +206,90 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, měla by být sledována tak, jak je vysvětleno v tématu [Monitorování úloh pomocí REST API dokumentu](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+Vzhledem k tomu, že úloha obnovení je dlouhodobě spuštěná operace, měla by být sledována, jak je vysvětleno v tématu [Monitorování úloh pomocí REST API dokumentu](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
-Po dokončení dlouho spuštěné úlohy budou na daném účtu úložiště k dispozici disky a konfigurace zálohovaného virtuálního počítače (VMConfig.json).
+### <a name="restore-disks"></a>Obnovit disky
 
-## <a name="restore-as-another-virtual-machine"></a>Obnovit jako jiný virtuální počítač
+Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("vmconfig.jszapnuté") se uloží do daného účtu úložiště. Jak je vysvětleno [výše](#restore-operations), níže je uveden relevantní text žádosti o obnovení disků.
 
-[Vyberte bod obnovení](#select-recovery-point) a vytvořte text žádosti, jak je uvedeno níže, aby se vytvořil jiný virtuální počítač Azure s daty z bodu obnovení.
+#### <a name="create-request-body"></a>Vytvořit text žádosti
 
-Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení virtuálního počítače.
+Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
+
+|Název  |Typ  |Popis  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](/rest/api/backup/restores/trigger#request-body).
+
+##### <a name="example-request"></a>Příklad požadavku
+
+Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení disku.
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+Jakmile Vysledujete odpověď, jak je vysvětleno [výše](#responses), a je dokončena dlouho spuštěná úloha, budou na daném účtu úložiště k dispozici disky a konfigurace zálohovaného virtuálního počítače ("VMConfig.json").
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Nahrazení disků v zálohovaném virtuálním počítači
+
+I když obnovení disků vytvoří disky z bodu obnovení, nahradí disky aktuální disky zálohovaného virtuálního počítače disky z bodu obnovení. Jak je vysvětleno [výše](#restore-operations), je níže uveden příslušný text žádosti o nahrazení disků.
+
+#### <a name="create-request-body"></a>Vytvořit text žádosti
+
+Chcete-li aktivovat nahrazení disku ze zálohy virtuálního počítače Azure, je nutné, aby tyto součásti textu žádosti byly.
+
+|Název  |Typ  |Popis  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](/rest/api/backup/restores/trigger#request-body).
+
+#### <a name="example-request"></a>Příklad požadavku
+
+Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení disku.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>Obnovit jako jiný virtuální počítač
+
+Jak je vysvětleno [výše](#restore-operations), následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení virtuálního počítače.
 
 ```json
 {
@@ -271,7 +325,7 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
 }
 ```
 
-Odpověď by měla být zpracována stejným způsobem, jak [je vysvětleno výše pro obnovení disků](#response).
+Odpověď by měla být zpracována stejným způsobem, jak [je vysvětleno výše pro obnovení disků](#responses).
 
 ## <a name="next-steps"></a>Další kroky
 

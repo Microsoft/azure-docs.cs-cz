@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 351fe5acd8d607b5b60817c235161ac09e530e99
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25ee5d389bc70d82730c7056c752de393a6bf4c5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495008"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799141"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure CLI
 
@@ -94,13 +94,16 @@ az keyvault key create \
 
 Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. V tomto kroku nakonfigurujte Azure Storage účet tak, aby používal klíče spravované zákazníkem s Azure Key Vault, a pak zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Když konfigurujete šifrování s použitím klíčů spravovaných zákazníkem, můžete při změně verze v přidruženém trezoru klíčů automaticky otočit klíč používaný k šifrování. Alternativně můžete explicitně zadat verzi klíče, která se má použít pro šifrování, dokud se verze klíče ručně neaktualizuje.
+Když konfigurujete šifrování s použitím klíčů spravovaných zákazníkem, můžete automaticky aktualizovat klíč používaný k šifrování při změně verze klíče v přidruženém trezoru klíčů. Alternativně můžete explicitně zadat verzi klíče, která se má použít pro šifrování, dokud se verze klíče ručně neaktualizuje.
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Konfigurace šifrování pro automatické otočení klíčů spravovaných zákazníkem
+> [!NOTE]
+> Pokud chcete klíč otočit, vytvořte v Azure Key Vault novou verzi klíče. Azure Storage nezpracovává rotaci klíče v Azure Key Vault, takže budete muset klíč otočit ručně nebo vytvořit funkci, která ho otočí podle plánu.
 
-Pokud chcete nakonfigurovat šifrování pro automatické rotaci klíčů spravovaných zákazníkem, nainstalujte [Azure CLI verze 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>Konfigurace šifrování pro automatickou aktualizaci verze klíče
 
-Pokud chcete automaticky otáčet klíče spravované zákazníkem, vynechejte verzi klíče při konfiguraci klíčů spravovaných zákazníkem pro účet úložiště. Chcete-li aktualizovat nastavení šifrování účtu úložiště, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) , jak je znázorněno v následujícím příkladu. Zahrňte `--encryption-key-source` parametr a nastavte ho tak, aby `Microsoft.Keyvault` umožňoval pro tento účet klíče spravované zákazníkem. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
+Pokud chcete nakonfigurovat šifrování pomocí klíčů spravovaných zákazníkem k automatické aktualizaci verze klíče, nainstalujte [Azure CLI verze 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+Pokud chcete automatickou aktualizaci verze klíče pro klíč spravovaný zákazníkem, vynechejte verzi klíče při konfiguraci šifrování s použitím klíčů spravovaných zákazníkem pro účet úložiště. Chcete-li aktualizovat nastavení šifrování účtu úložiště, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) , jak je znázorněno v následujícím příkladu. Zahrňte `--encryption-key-source` parametr a nastavte ho tak, aby `Microsoft.Keyvault` umožňoval pro tento účet klíče spravované zákazníkem. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -116,7 +119,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Konfigurace šifrování pro ruční otočení klíčových verzí
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>Konfigurace šifrování pro ruční aktualizace verzí klíčů
 
 Pokud chcete explicitně zadat verzi klíče, která se má použít pro šifrování, poskytněte klíčovou verzi při konfiguraci šifrování pomocí klíčů spravovaných zákazníkem pro účet úložiště. Chcete-li aktualizovat nastavení šifrování účtu úložiště, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) , jak je znázorněno v následujícím příkladu. Zahrňte `--encryption-key-source` parametr a nastavte ho tak, aby `Microsoft.Keyvault` umožňoval pro tento účet klíče spravované zákazníkem. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
@@ -140,7 +143,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-Při ručním otočení této verze klíče budete muset aktualizovat nastavení šifrování účtu úložiště, aby používala novou verzi. Nejdřív dotaz na identifikátor URI trezoru klíčů zavoláním [AZ klíčů show](/cli/azure/keyvault#az-keyvault-show)a pro verzi klíče zavoláním [AZ Key trezor Key list-versionss](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Pak zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
+Když ručně aktualizujete verzi klíče, budete muset aktualizovat nastavení šifrování účtu úložiště tak, aby používalo novou verzi. Nejdřív dotaz na identifikátor URI trezoru klíčů zavoláním [AZ klíčů show](/cli/azure/keyvault#az-keyvault-show)a pro verzi klíče zavoláním [AZ Key trezor Key list-versionss](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Pak zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozím příkladu.
 
 ## <a name="use-a-different-key"></a>Použít jiný klíč
 

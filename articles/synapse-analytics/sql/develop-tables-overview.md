@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494821"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799226"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Návrh tabulek pomocí synapse SQL
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim 
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
 |:-----|:-----|:------|:-----|
-| Město | Dimenze | WWI. DimCity |
+| City | Dimenze | WWI. DimCity |
 | Objednání | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -96,7 +96,7 @@ Dočasná tabulka existuje pouze po dobu trvání relace. Můžete použít doč
 
 SQL na vyžádání podporuje dočasné tabulky. Ale jeho použití je omezené, protože můžete vybrat z dočasné tabulky, ale nemůžete se k nim připojit pomocí souborů v úložišti.
 
-Další informace najdete v tématu [dočasné tabulky](develop-tables-temporary.md).
+Další informace najdete v tématu  [dočasné tabulky](develop-tables-temporary.md).
 
 ### <a name="external-table"></a>Externí tabulka
 
@@ -106,7 +106,7 @@ Importujte data z externích tabulek do fondu SQL pomocí příkazu [CREATE TABL
 
 V případě SQL na vyžádání můžete pomocí [CETAS](develop-tables-cetas.md) uložit výsledek dotazu do externí tabulky v Azure Storage.
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
 Fond SQL podporuje nejběžněji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy v CREATE TABLE odkaz](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) v příkazu CREATE TABLE. Další informace o použití datových typů najdete v tématu [datové typy](../sql/develop-tables-data-types.md).
 
@@ -360,6 +360,9 @@ SELECT *
 FROM size
 ;
 ```
+
+>[!TIP]
+> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Souhrn prostoru tabulky
 

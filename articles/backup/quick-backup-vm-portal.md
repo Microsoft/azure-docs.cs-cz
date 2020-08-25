@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656953"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757604"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 
@@ -20,11 +20,11 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 
-Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services.
+Vytvořte jednoduché naplánované každodenní zálohování do trezoru Recovery Services.
 
 1. V nabídce na levé straně vyberte **Virtuální počítače**.
 2. V seznamu zvolte virtuální počítač, který chcete zálohovat. Pokud jste použili ukázkové příkazy z rychlého úvodu k virtuálním počítačům, virtuální počítač má název *myVM* a je ve skupině prostředků *myResourceGroup*.

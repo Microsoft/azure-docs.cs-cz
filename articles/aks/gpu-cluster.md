@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749143"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757638"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
@@ -158,12 +158,12 @@ Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následujíc�
 az extension update --name aks-preview
 ```
 
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Použití specializované image GPU AKS pro nové clustery (Preview)
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Použití specializované image GPU AKS pro nové clustery (Preview)    
 
 Nakonfigurujte cluster tak, aby při vytvoření clusteru používal image AKS specializovaného grafického procesoru. Pomocí `--aks-custom-headers` příznaku v uzlech agentů GPU na novém clusteru použijte k použití AKS specializované image GPU.
 
 ```azure-cli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
 Pokud chcete vytvořit cluster pomocí běžných imagí AKS, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. Můžete se také rozhodnout přidat další specializované fondy uzlů GPU podle níže uvedených pokynů.
@@ -178,6 +178,12 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```
 
 Pokud chcete vytvořit fond uzlů pomocí běžných imagí AKS, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. 
+
+> [!NOTE]
+> Pokud vaše SKU GPU vyžaduje virtuální počítače generace 2, můžete vytvořit tento postup:
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Potvrďte, že jsou plánovatelná GPU.
 

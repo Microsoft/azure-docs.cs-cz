@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f4cf9e2d02030021d3092629731fcd8b77566907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213937"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798563"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Návrh tabulek v synapse fondu SQL
 
@@ -46,7 +46,7 @@ Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim 
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
 |:-----|:-----|:------|:-----|
-| Město | Dimenze | WWI. DimCity |
+| City | Dimenze | WWI. DimCity |
 | Objednání | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -65,7 +65,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 Dočasná tabulka existuje pouze po dobu trvání relace. Můžete použít dočasnou tabulku a zabránit tak ostatním uživatelům v prohlížení dočasných výsledků a také k omezení nutnosti vyčištění.  
 
-Dočasné tabulky využívají místní úložiště, které nabízí rychlý výkon.  Další informace najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
+Dočasné tabulky využívají místní úložiště, které nabízí rychlý výkon.  Další informace najdete v tématu  [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externí tabulka
 
@@ -144,7 +144,7 @@ PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom nec
 
 Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz T-SQL | Description |
+| Příkaz T-SQL | Popis |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří externí tabulku. Definice tabulky je uložena ve fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Store. |
@@ -294,6 +294,9 @@ SELECT *
 FROM size
 ;
 ```
+
+>[!TIP]
+> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Souhrn prostoru tabulky
 

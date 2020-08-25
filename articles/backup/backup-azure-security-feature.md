@@ -4,12 +4,12 @@ description: Naučte se používat funkce zabezpečení v Azure Backup k zajišt
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 03bbcef2ce408a1b1f5e2c2d909728d3ed8e7e19
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611241"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757026"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 
@@ -39,7 +39,7 @@ Pokud vytváříte Recovery Services trezor, můžete použít všechny funkce z
 
     ![Snímek obrazovky s možností procházení Azure Portal](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    Objeví se seznam trezorů Recovery Services. V tomto seznamu vyberte trezor. Otevře se řídicí panel vybraného trezoru.
+    Objeví se seznam trezorů Služeb zotavení. V tomto seznamu vyberte trezor. Otevře se řídicí panel vybraného trezoru.
 3. Ze seznamu položek, které se zobrazí v trezoru, v části **Nastavení**vyberte **vlastnosti**.
 
     ![Snímek obrazovky s možnostmi úložiště Recovery Services](./media/backup-azure-security-feature/vault-list-properties.png)

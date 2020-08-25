@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fb3113b02d20355e3ac9ede593bf8fc4136461
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705958"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799294"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Microsoft 365
 
@@ -110,7 +110,7 @@ Pokud skupina, kterou obnovujete, obsahuje dokumenty, weby SharePointu nebo jin�
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Jak načíst datum vypršení platnosti skupiny Microsoft 365
 
-Kromě přístupového panelu, kde mohou uživatelé zobrazit podrobnosti o skupině včetně data vypršení platnosti a data posledního obnovení, může být datum vypršení Microsoft 365 skupiny načteno z Microsoft Graph REST API beta. v Microsoft Graph Beta byla povolena vlastnost expirationDateTime jako skupina. Dá se načíst pomocí žádosti o získání. Další podrobnosti najdete v [tomto příkladu](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
+Kromě přístupového panelu, kde mohou uživatelé zobrazit podrobnosti o skupině včetně data vypršení platnosti a data posledního obnovení, může být datum vypršení Microsoft 365 skupiny načteno z Microsoft Graph REST API beta. v Microsoft Graph Beta byla povolena vlastnost expirationDateTime jako skupina. Dá se načíst pomocí žádosti o získání. Další podrobnosti najdete v [tomto příkladu](/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Aby bylo možné spravovat členství ve skupinách na přístupovém panelu, musí být v obecném nastavení skupiny Azure Active Directory nastavení omezit přístup ke skupinám v přístupovém panelu.
@@ -172,7 +172,7 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-Následující rutiny se dají použít ke konfiguraci zásad podrobněji. Další informace najdete v [dokumentaci k prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
+Následující rutiny se dají použít ke konfiguraci zásad podrobněji. Další informace najdete v [dokumentaci k prostředí PowerShell](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

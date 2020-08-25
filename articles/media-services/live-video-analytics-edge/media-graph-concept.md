@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690676"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798835"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -83,7 +83,7 @@ Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k
 
 #### <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
 
-Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu gRPC vystaveného vaším modulem. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu [gRPC](terminology.md#grpc) vystaveného vaším modulem. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
 
 #### <a name="signal-gate-processor"></a>Procesor brány signálu  
 
@@ -105,7 +105,7 @@ Uzel jímky zpráv IoT Hub umožňuje publikovat události do centra IoT Edge. C
 
 ## <a name="rules-on-the-use-of-nodes"></a>Pravidla pro použití uzlů
 
-Další pravidla týkající se použití různých uzlů v mediálním grafu najdete v tématu [kvóty](quotas-limitations.md#limitations-on-graph-topologies-at-preview) .
+Viz [omezení pro topologie grafů](quotas-limitations.md#limitations-on-graph-topologies-at-preview) pro další pravidla, jak lze v mediálním grafu použít různé uzly.
 
 ## <a name="scenarios"></a>Scénáře
 

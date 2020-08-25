@@ -10,18 +10,18 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318823"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812933"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning (Preview)
 
 Pomocí vestavěných příkladů v Návrháři Azure Machine Learning můžete rychle začít vytvářet vlastní kanály strojového učení. [Úložiště GitHub](https://github.com/Azure/MachineLearningDesigner) návrháře Azure Machine Learning obsahuje podrobnou dokumentaci, která vám pomůže pochopit některé běžné scénáře strojového učení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 * Pracovní prostor Azure Machine Learning s SKU Enterprise.
@@ -55,9 +55,9 @@ Tady je postup použití ukázkového návrháře:
 
 1. Až se kanál dokončí, můžete si projít kanál a zobrazit výstup pro každý modul a získat další informace. Výstupy modulu můžete zobrazit pomocí následujících kroků:
 
-   1. Vyberte modul na plátně.
+   1. Klikněte pravým tlačítkem na modul na plátně, jehož výstup chcete vidět.
+   1. Vyberte **vizualizovat**.
 
-   1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**. Pokud ![ ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) chcete zobrazit výsledky každého modulu, vyberte ikonu vizualizace ikony grafu. 
 
    Použijte ukázky jako výchozí body pro některé z nejběžnějších scénářů strojového učení.
 

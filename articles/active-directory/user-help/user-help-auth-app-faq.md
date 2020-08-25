@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423622"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799464"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -64,6 +64,6 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 
 - Pokud chcete získat další informace o dvoustupňovém ověřování, přečtěte si téma [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
-- Pokud chcete získat další informace o zabezpečení, přečtěte si téma [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md) .
+- Pokud chcete získat další informace o zabezpečení, přečtěte si téma [Přehled informací o zabezpečení (Preview)](./security-info-setup-signin.md) .
 
 - Pokud vám vaše otázka neodpověděla, chceme vás od vás. Pokud chcete odeslat svůj dotaz a získat pomoc od komunity nebo si na této stránce ponechte komentář, navštivte [fórum Microsoft Authenticator aplikace](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) .

@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090973"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762840"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -39,7 +39,7 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
 
-Yes. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
 1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
 2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
@@ -52,7 +52,7 @@ Výchozí hodnota DefaultBackupTasksThreshold je **20**.
  I když tato metoda pomáhá, pokud zálohovací aplikace spotřebovává velké množství prostředků, je SQL Server [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor) obecnější způsob, jak určit omezení pro procesor, fyzickou/v/a paměť, které mohou používat příchozí žádosti o aplikace.
 
 > [!NOTE]
-> V uživatelském prostředí můžete stále pokračovat a naplánovat tolik záloh v daném čase, ale budou zpracovány v posuvných intervalech, 5, podle výše uvedeného příkladu.
+> V uživatelském prostředí můžete pořád pokračovat a naplánovat tolik záloh v daném okamžiku. Budou se ale zpracovávat v posuvných intervalech, tedy 5, podle výše uvedeného příkladu.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Můžu spustit úplnou zálohu ze sekundární repliky?
 

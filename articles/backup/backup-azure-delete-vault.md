@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652824"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757213"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -294,7 +294,7 @@ Odstranění trezoru Recovery Services:
       [<CommonParameters>]
    ```
 
-[Přečtěte si další informace](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) o odstranění trezoru služby Recovery Services.
+[Přečtěte si další informace](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) o odstranění trezoru Recovery Services.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>Odstranění Recovery Servicesho trezoru pomocí rozhraní příkazového řádku
 
@@ -303,7 +303,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 > [!NOTE]
 > V současné době Azure Backup CLI podporuje správu jenom záloh virtuálních počítačů Azure, takže následující příkaz k odstranění trezoru funguje jenom v případě, že trezor obsahuje zálohy virtuálních počítačů Azure. Trezor nelze odstranit pomocí Azure Backup CLI, pokud trezor obsahuje libovolnou zálohovanou položku jiného typu než virtuální počítače Azure.
 
-Pokud chcete odstranit existující trezor služby Recovery Services, udělejte toto:
+Pokud chcete odstranit existující trezor Recovery Services, proveďte následující kroky:
 
 - Zastavení ochrany a odstranění zálohovaných dat
 
@@ -320,7 +320,7 @@ Pokud chcete odstranit existující trezor služby Recovery Services, udělejte 
 
     Další informace najdete v tomto [článku](/cli/azure/backup/protection#az-backup-protection-disable).
 
-- Odstranit existující trezor služby Recovery Services:
+- Odstranit existující trezor Recovery Services:
 
     ```azurecli
     az backup vault delete [--force]
@@ -357,13 +357,13 @@ Další informace o příkazu ARMClient najdete v tématu [soubor Readme pro ARM
 1. Spusťte následující příkaz pomocí ID vašeho předplatného, názvu skupiny prostředků a názvu trezoru. Pokud nemáte žádné závislosti, odstraní se trezor, když spustíte následující příkaz:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
 2. Pokud trezor není prázdný, zobrazí se tato chybová zpráva: *trezor se nedá odstranit, protože v tomto trezoru existují nějaké prostředky.* Chcete-li odebrat chráněnou položku nebo kontejner v rámci trezoru, spusťte následující příkaz:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
 3. V Azure Portal se ujistěte, že je trezor odstraněný.

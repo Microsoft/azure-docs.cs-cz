@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130184"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797815"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 
@@ -56,7 +56,7 @@ Azure Monitor pro Azure Cosmos DB je založen na [funkci sešitů Azure monitor]
 > [!NOTE]
 > Při vytváření kontejnerů se ujistěte, že nevytvoříte dva kontejnery se stejným názvem, ale s různou velikostí písmen. Důvodem je to, že některé části platformy Azure nerozlišují velká a malá písmena a to může vést k nejasnostem/kolizi telemetrie a akcí na kontejnerech s takovými názvy.
 
-## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a>Monitorování dat shromážděných z portálu Azure Cosmos DB
+## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a> Monitorování dat shromážděných z portálu Azure Cosmos DB
 
 Azure Cosmos DB shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Cosmos DB najdete v tématu [referenční informace k datům monitorování Azure Cosmos DB](monitor-cosmos-db-reference.md) .
 
@@ -64,7 +64,7 @@ Stránka **Přehled** v Azure Portal pro každou databázi Azure Cosmos obsahuje
 
 :::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Stránka Přehled":::
 
-## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Analýza dat metriky
+## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Analýza dat metriky
 
 Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami. Podrobnosti o používání tohoto prostředí a analýze různých Azure Cosmos DBch scénářů najdete v tématu [monitorování a ladění Azure Cosmos DB metriky z Azure monitor](cosmos-db-azure-monitor-metrics.md) .
 
@@ -73,12 +73,12 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 * Název kolekce
 * DatabaseName
 * Typem operace OperationType
-* Oblast
+* Region
 * StatusCode
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
@@ -104,7 +104,7 @@ Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Napříkl
 
 :::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Přidat použít dělicí filtr":::
 
-## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Analýza dat protokolu
+## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a> Analýza dat protokolu
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností. Azure Cosmos DB ukládá data v následujících tabulkách.
 
@@ -147,7 +147,7 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat databáze Azure C
     | summarize count() by Resource
     ```
 
-## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a>Monitorování Azure Cosmos DB programově
+## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a> Monitorování Azure Cosmos DB programově
 
 Metriky na úrovni účtu dostupné na portálu, jako je například využití úložiště účtů a celkový počet požadavků, nejsou k dispozici prostřednictvím rozhraní SQL API. Data o využití na úrovni kolekce ale můžete načíst pomocí rozhraní SQL API. Chcete-li načíst data na úrovni kolekce, postupujte následovně:
 
@@ -158,14 +158,16 @@ Metriky na úrovni účtu dostupné na portálu, jako je například využití �
 Pro přístup k dalším metrikám použijte [sadu Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Dostupné definice metriky lze načíst voláním:
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01
 ```
 
-Dotazy k načtení jednotlivých metrik používají následující formát:
+Chcete-li načíst jednotlivé metriky, použijte následující formát:
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metrics?timespan={StartTime}/{EndTime}&interval={AggregationInterval}&metricnames={MetricName}&aggregation={AggregationType}&`$filter={Filter}&api-version=2018-01-01
 ```
+
+Další informace najdete v článku [REST API monitorování Azure](../azure-monitor/platform/rest-api-walkthrough.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

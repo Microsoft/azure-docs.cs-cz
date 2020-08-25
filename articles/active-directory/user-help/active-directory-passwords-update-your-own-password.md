@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266113"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799039"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
 
-Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a [resetovat svoje vlastní heslo](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
+Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a [resetovat svoje vlastní heslo](./active-directory-passwords-reset-register.md).
 
-Pokud znáte heslo a chcete ho změnit, přečtěte si část [Změna kroků hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) v tomto článku.
+Pokud znáte heslo a chcete ho změnit, přečtěte si část [Změna kroků hesla](#how-to-change-your-password) v tomto článku.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](../authentication/howto-sspr-deployment.md).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Resetování nebo odemknutí hesla pro pracovní nebo školní účet
 
@@ -155,7 +155,7 @@ Pokud správce zapnul funkci, uvidíte odkaz na **resetování hesla** na přihl
 
 Tady jsou některé běžné chybové případy a jejich řešení:
 
-|Problém|Description|Řešení|
+|Problém|Popis|Řešení|
 | --- | --- | --- |
 |Při pokusu o změnu mého hesla se zobrazí chyba. |Heslo obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo.| Zkuste to znovu s silnějším heslem.|
 |Když zadáte moje ID uživatele, přejdete na stránku s oznámením "kontaktujte správce."|Společnost Microsoft určila, že vaše heslo účtu uživatele spravuje správce v místním prostředí. V důsledku toho nemůžete resetovat heslo z odkazu "nepřístup k vašemu účtu". |Další nápovědu získáte od správce.|
@@ -164,6 +164,6 @@ Tady jsou některé běžné chybové případy a jejich řešení:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
+- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](./security-info-setup-signin.md) .
 
 - Pokud se pokoušíte vrátit se k osobnímu účtu, jako je Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoft článku](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

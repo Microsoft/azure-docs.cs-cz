@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118408"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757927"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
 
@@ -32,6 +32,17 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuáln�
 Účty s hierarchickými obory názvů povolené pro Data Lake Storage podporují transakce pomocí rozhraní API služby Azure Blob Storage i Data Lake Storage rozhraní API. Azure File Shares podporuje transakce přes SMB.
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+
+Následující seznam shrnuje dostupnost rozšířené ochrany před internetovými útoky pro Azure Storage:
+
+- Stav vydaných verzí:
+  - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
+  - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview podporuje transakce SMB a REST)
+  - Azure Data Lake Storage Gen2 (Preview)
+- Cloud<br>
+    ✔ Komerční cloudy<br>
+    ✔ US Gov<br>
+    ✘ Čína gov, ostatní gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky
 

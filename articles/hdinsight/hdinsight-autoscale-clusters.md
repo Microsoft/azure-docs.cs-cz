@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/29/2020
-ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: 4c4b9c60eb967b5791af724e5c15bba887263d44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612703"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757859"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -74,10 +74,10 @@ Následující tabulka popisuje typy clusterů a verze, které jsou kompatibiln�
 
 | Verze | Spark | Hive | LLAP | HBase | Kafka | Bouře | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
 
 \* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 

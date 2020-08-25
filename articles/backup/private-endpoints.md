@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654697"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762908"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -192,7 +192,7 @@ V tématu [ruční schválení privátních koncových bodů pomocí klienta Azu
 ## <a name="adding-dns-records"></a>Přidávání záznamů DNS
 
 >[!NOTE]
-> Tento krok není nutný, pokud používáte integrovanou zónu DNS. Pokud jste ale vytvořili vlastní zónu Azure Privátní DNS nebo používáte vlastní privátní zónu DNS, zajistěte, aby byly záznamy popsané v této části.
+> Tento krok není nutný, pokud používáte integrovanou zónu DNS. Pokud jste však vytvořili vlastní zónu Azure Privátní DNS nebo používáte vlastní privátní zónu DNS, zajistěte, aby byly záznamy vytvořeny podle pokynů v této části.
 
 Po vytvoření volitelné privátní zóny DNS a privátních koncových bodů pro váš trezor budete muset do zóny DNS přidat záznamy DNS. To můžete provést ručně nebo pomocí skriptu PowerShellu. To je potřeba udělat jenom pro zálohu zóny DNS, ta se automaticky aktualizuje pro objekty BLOB a fronty.
 
@@ -239,7 +239,7 @@ To vyžaduje, abyste v rámci vašeho privátního koncového bodu v zóně Priv
 Po schválení privátních koncových bodů vytvořených pro trezor ve vaší virtuální síti je můžete začít používat pro zálohování a obnovení.
 
 >[!IMPORTANT]
->Než budete pokračovat, ujistěte se prosím, že jste úspěšně dokončili všechny kroky uvedené výše v dokumentu. K rekapitulace je nutné provést kroky v následujícím kontrolním seznamu:
+>Než budete pokračovat, ujistěte se, že jste úspěšně dokončili všechny kroky uvedené výše v dokumentu. K rekapitulace je nutné provést kroky v následujícím kontrolním seznamu:
 >
 >1. Vytvořil se (nový) Recovery Services trezor.
 >1. Povolit trezor pro použití spravované identity přiřazené systémem

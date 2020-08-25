@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d35b7309a161d790131b0040b9ebf113a3c061fc
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ebeea9cd6e928a9d9d77a8475cee774f3d33b28e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186378"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752964"
 ---
 <a name="HOLTop"></a>
 
@@ -211,7 +211,7 @@ Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedn
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Další informace o rozpoznávání textu naleznete v koncepčním dokumentu [optického rozpoznávání znaků (OCR)](../../concept-recognizing-text.md#read-api) . Kód v této části definuje metodu, `BatchReadFileUrl` která používá objekt klienta ke zjištění a extrakci textu v obrázku.
+Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Další informace o rozpoznávání textu naleznete v koncepčním dokumentu [optického rozpoznávání znaků (OCR)](../../concept-recognizing-text.md#read-api) . Kód v této části používá nejnovější [verzi sady počítačové zpracování obrazu SDK pro čtení 3,0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) a definuje metodu, `BatchReadFileUrl` která používá objekt klienta ke zjištění a extrakci textu v obrázku.
 
 Přidejte volání metody do `Main` metody.
 

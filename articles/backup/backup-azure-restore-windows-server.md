@@ -3,12 +3,12 @@ title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263397"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757077"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
@@ -72,7 +72,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
 9. Až budete hotovi, na stránce **Procházet a obnovit soubory** vyberte **Odpojit**. Pak vyberte **Ano** a potvrďte tak, že chcete odpojit svazek.
 
-    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do stejného počítače) – potvrzení odpojení svazku pro obnovení](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.

@@ -4,19 +4,19 @@ description: Tento článek popisuje, jak obnovit Azure Cosmos DB data ze záloh
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/01/2019
+ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9956ca0ca9c0957557e7ee74883a75c074ff22f8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261728"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797968"
 ---
-# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovení dat ze zálohy v Azure Cosmos DB 
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovení dat ze zálohy v Azure Cosmos DB
 
-Pokud databázi nebo kontejner omylem odstraníte, můžete si [vytvořit lístek podpory]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [zavolat podporu Azure]( https://azure.microsoft.com/support/options/) a obnovit data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je **Standard**, **vývojář**a plány vyšší než. Podpora Azure není k dispozici u plánu **Basic** . Další informace o různých plánech podpory najdete na stránce [plány podpory Azure](https://azure.microsoft.com/support/plans/) . 
+Pokud databázi nebo kontejner omylem odstraníte, můžete si [vytvořit lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [zavolat podporu Azure](https://azure.microsoft.com/support/options/) , která obnoví data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je **Standard**, **vývojář**a plány vyšší než. Podpora Azure není k dispozici u plánu **Basic** . Další informace o různých plánech podpory najdete na stránce [plány podpory Azure](https://azure.microsoft.com/support/plans/) .
 
 Aby bylo možné obnovit konkrétní snímek zálohy, Azure Cosmos DB vyžaduje, aby data byla k dispozici po dobu trvání cyklu zálohování pro daný snímek.
 
@@ -34,12 +34,9 @@ Před vyžádáním obnovení byste měli mít následující podrobnosti:
 
 * Pokud se odstraní aspoň jeden kontejner, měli byste zadat název účtu Azure Cosmos, názvy databází a názvy kontejnerů. A určete, zda kontejner se stejným názvem existuje.
 
-* Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy.
-  
-  * Pokud jste databázi nebo kontejner omylem odstranili, otevřete případ podpory Azure závažnost B nebo závažnost C. 
-  * Pokud jste omylem odstranili nebo poškodili některé dokumenty v rámci kontejneru, otevřete závažnost A případ podpory. 
+* Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy. **Před vytvořením žádosti o podporu pro obnovení dat nezapomeňte [zvýšit dobu uchovávání záloh](online-backup-and-restore.md) vašeho účtu aspoň na sedm dní. Je nejlepší zvýšit své uchovávání do 8 hodin od této události.** Tímto způsobem bude mít tým podpory Azure Cosmos DB dostatek času na obnovení účtu.
 
-Pokud dojde k poškození dat a pokud se dokumenty v rámci kontejneru upravují nebo odstraňují, **odstraňte kontejner co nejdříve**. Odstraněním kontejneru se můžete vyhnout Azure Cosmos DB přepsání záloh. Pokud z nějakého důvodu není odstranění možné, měli byste považovat lístek za co nejdříve. Kromě názvu účtu Azure Cosmos, názvů databází a názvů kontejnerů byste měli určit bod v čase, do kterého lze data obnovit. Je důležité, aby bylo co nejpřesněji možné určit nejlepší dostupné zálohy v daném čase. Je také důležité zadat čas ve standardu UTC. 
+Kromě názvu účtu Azure Cosmos, názvů databází a názvů kontejnerů byste měli určit bod v čase, do kterého lze data obnovit. Je důležité, aby bylo co nejpřesněji možné určit nejlepší dostupné zálohy v daném čase. **Je také důležité zadat čas ve standardu UTC.**
 
 Následující snímek obrazovky ukazuje, jak vytvořit žádost o podporu pro kontejner (kolekce/graf/tabulka) pro obnovení dat pomocí Azure Portal. Zadejte další podrobnosti, jako je například typ dat, účel obnovení, čas odstranění dat, který nám pomůžete určit prioritu žádosti.
 

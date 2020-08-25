@@ -4,12 +4,12 @@ description: Přečtěte si, jak funkce šifrování v Azure Backup pomůžou ch
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586643"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763639"
 ---
 # <a name="encryption-in-azure-backup"></a>Šifrování ve službě Azure Backup
 
@@ -27,7 +27,7 @@ Azure Backup zahrnuje šifrování na dvou úrovních:
   - **Zálohování virtuálních počítačů Azure**: Azure Backup podporuje zálohování virtuálních počítačů s disky šifrovanými pomocí [klíčů spravovaných platformou](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)a také vlastních [klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) , které vlastníte a spravujete sami. Kromě toho můžete také zálohovat virtuální počítače Azure, které mají své operační systémy nebo datové disky šifrované pomocí [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade). ADE používá pro virtuální počítače s Windows nástroj BitLocker a pro virtuální počítače s podporou DM-crypt k provádění šifrování v hostovi.
 
 >[!NOTE]
->Šifrování infrastruktury je momentálně ve verzi omezené verze Preview a je dostupné v oblastech USA – východ, US West2, USA (střed) – jih, US Gov – Arizona a US GOV) – Virginia. Pokud chcete funkci používat v některé z těchto oblastí, vyplňte prosím [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) a pošlete nám e-mail na adresu [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Šifrování infrastruktury je momentálně ve verzi omezené verze Preview a je dostupné v oblastech USA – východ, US West2, USA (střed) – jih, US Gov – Arizona a US GOV) – Virginia. Pokud chcete funkci používat v kterékoli z těchto oblastí, vyplňte [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) a pošlete nám e-mail na adresu [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="next-steps"></a>Další kroky
 

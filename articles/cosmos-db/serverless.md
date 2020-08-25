@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608743"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757893"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
 
@@ -82,7 +82,7 @@ Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde]
 Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytovaných prostředků propustnosti:
 
 - **Dostupnost**: až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
-- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládají z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
+- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
 - Prostupnost **: po**zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
 
 > [!NOTE]
@@ -93,5 +93,5 @@ Prostředky bez serveru poskytují specifické charakteristiky výkonu, které s
 Začněte používat bez serveru s následujícími články:
 
 - [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)
-- [Volba mezi zřízenou propustností a bez serveru](throughput-serverless.md)
+- [Volba mezi zřízenou propustností a bezserverovým využitím](throughput-serverless.md)
 - [Cenový model ve službě Azure Cosmos DB](how-pricing-works.md)

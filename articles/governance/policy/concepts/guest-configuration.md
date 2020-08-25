@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717572"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756686"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -111,25 +111,16 @@ Pokud má počítač nyní uživatelsky přiřazenou identitu systému, platí n
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
-Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . Definice zásad **DeployIfNotExists** spravují závislosti pro provádění auditů na každém počítači.
+Zásady konfigurace hostů používají **AuditIfNotExists** efekt. Po přiřazení definice služba back-end automaticky zpracuje životní cyklus všech požadavků v `Microsoft.GuestConfiguration` poskytovateli prostředků Azure.
 
-Definice zásad **DeployIfNotExists** ověří a opraví následující položky:
+Zásady **AuditIfNotExists** nevrátí výsledky dodržování předpisů, dokud nebudou všechny požadavky splněny v počítači. Službu jsou popsané v části [požadavky na nasazení pro virtuální počítače Azure](#deploy-requirements-for-azure-virtual-machines)
 
-- Ověřte, že počítač má přiřazenou konfiguraci k vyhodnocení. Pokud aktuálně není k dispozici žádné přiřazení, načtěte přiřazení a připravte počítač podle:
-  - Ověřování na počítači pomocí [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md)
-  - Instalace nejnovější verze rozšíření **Microsoft. GuestConfiguration**
-  - Instalace [ověřovacích nástrojů](#validation-tools) a závislostí, pokud je to potřeba
+> [!IMPORTANT]
+> V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a intiaitives jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále.
+>
+> Je vyžadován ruční krok. Pokud jste dříve přiřadili iniciativy zásad v kategorii `Guest Configuration` , odstraňte přiřazení zásady a přiřaďte novou definici. Zásady konfigurace hosta mají následující vzor názvů: `Audit <Windows/Linux> machines that <non-compliant condition>`
 
-Pokud přiřazení **DeployIfNotExists** nedodržuje předpisy, lze použít [úlohu nápravy](../how-to/remediate-resources.md#create-a-remediation-task) .
-
-Jakmile je přiřazení **DeployIfNotExists** kompatibilní, přiřazení zásady **AuditIfNotExists** určí, jestli je přiřazení hostů kompatibilní nebo nekompatibilní. Nástroj pro ověření poskytuje výsledky pro klienta konfigurace hosta. Klient předává výsledky do rozšíření hosta, které je zpřístupní prostřednictvím poskytovatele prostředků konfigurace hosta.
-
-Azure Policy používá k hlášení dodržování předpisů v uzlu **dodržování** předpisů vlastnost poskytovatelů prostředků konfigurace hosta ( **complianceStatus** ). Další informace najdete v tématu [získání dat o dodržování předpisů](../how-to/get-compliance-data.md).
-
-> [!NOTE]
-> Zásady **DeployIfNotExists** se vyžadují, aby zásady **AuditIfNotExists** vracely výsledky. Bez **DeployIfNotExists**se v zásadách **AuditIfNotExists** zobrazuje "0 z 0" prostředků jako stav.
-
-V iniciativě jsou zahrnuty všechny předdefinované zásady pro konfiguraci hosta, aby bylo možné seskupit definice pro použití v přiřazeních. Integrovaná iniciativa s názvem _ \[ Preview \] : audit zabezpečení hesel uvnitř počítačů se systémy Linux a Windows_ obsahuje 18 zásad. Pro systém Linux existuje šest párů **DeployIfNotExists** a **AuditIfNotExists** pro Windows a tři páry. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+Azure Policy používá vlastnost **complianceStatus** zprostředkovatele prostředků konfigurace hosta k hlášení dodržování předpisů v uzlu **dodržování předpisů** . Další informace najdete v tématu [získání dat o dodržování předpisů](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
 

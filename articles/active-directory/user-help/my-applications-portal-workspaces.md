@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742056"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798053"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Použití kolekcí na portálu moje aplikace
 
@@ -26,7 +26,7 @@ Kolekce jsou různá zobrazení aplikací, která vidíte na portálu **Moje apl
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/access-panel-collections.md).
 
 ## <a name="access-apps-using-collections"></a>Přístup k aplikacím pomocí kolekcí
 
