@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531158"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856114"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
@@ -24,7 +24,7 @@ Tento článek pojednává o dvou typech zásad přístupu Azure Time Series Ins
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Přihlášení k Azure Time Series Insights
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Zadejte `Time Series Insights environments` do **vyhledávacího** pole své prostředí Azure Time Series Insights. `Time Series Insights environments`Ve výsledcích hledání vyberte.
 1. Ze seznamu vyberte prostředí Azure Time Series Insights.
 
@@ -64,7 +64,7 @@ Tato `Guest` role není rolí správy. Jedná se o termín, který se používá
 
 Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k Azure Time Series Insights prostředí z jiného tenanta.
 
-1. Přejděte na Azure Portal, klikněte na **Azure Active Directory**, přejděte dolů na kartu **Přehled** a pak vyberte **uživatel typu Host**.
+1. Přejděte na Azure Portal, klikněte na  **Azure Active Directory**, přejděte dolů na kartu **Přehled** a pak vyberte **uživatel typu Host**.
 
     [![Vyberte zásady přístupu k datům, potom + pozvání.](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k A
 
 1. Správce [nasdílí adresu URL prostředí](time-series-insights-parameterized-urls.md) s jejich hostem.
 
-1. Jakmile je uživatel typu Host přihlášený k e-mailové adrese, kterou jste použili k jejich pozvání, a pozvánku přijme, budou přesměrováni na Azure Portal. 
+1. Jakmile je uživatel typu Host přihlášený k e-mailové adrese, kterou jste použili k jejich pozvání, a pozvánku přijme, budou přesměrováni na Azure Portal.
 
 1. Host teď může přistupovat ke sdílenému prostředí pomocí adresy URL prostředí poskytnuté správcem. Můžou zadat tuto adresu URL do svého webového prohlížeče pro okamžitý přístup.
 
@@ -114,14 +114,14 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k A
 
     [![Výběr avataru na insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    Jakmile uživatel typu host vybere tenanta správce, bude mít možnost vybrat sdílené prostředí Azure Time Series Insights.
 
-    Jakmile uživatel typu host vybere tenanta správce, bude mít možnost vybrat sdílené prostředí Azure Time Series Insights. 
-    
     Nyní mají všechny možnosti spojené s rolí, které jste jim poskytli v **kroku 5**.
 
     [![Uživatel typu host vybere z rozevíracího seznamu klienta Azure.](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
+
 * Přečtěte si téma [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) pro Azure Active Directory kroky registrace aplikace.
 
-* Zobrazte [si prostředí v Azure Time Series Insights Průzkumníku Gen2](./time-series-insights-update-explorer.md).
+* Zobrazte [si prostředí v průzkumníkovi Azure Time Series Insights TSI](./time-series-insights-update-explorer.md).

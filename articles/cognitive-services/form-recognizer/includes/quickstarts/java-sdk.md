@@ -10,13 +10,17 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 9af48feb0156fefb59dd99a504a571adf9ecffc0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7ddf72fdf49bf8fede369b67b639d13b6230e9f4
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753044"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864877"
 ---
+> [!IMPORTANT]
+> * Sada SDK pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
+
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Předpoklady

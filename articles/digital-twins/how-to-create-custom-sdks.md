@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420035"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855957"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
@@ -41,10 +41,10 @@ npm install -g autorest@2.0.4413
 Pokud chcete spustit AutoRest proti souboru Swagger digitálních vláken Azure, použijte následující postup:
 1. Zkopírujte soubor Swagger digitálních vláken Azure a jeho doprovodnou složku příkladů do pracovního adresáře.
 2. Pomocí okna příkazového řádku přepněte do tohoto pracovního adresáře.
-3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `--python` , `--java` , `--go` a tak dále. (Můžete najít úplný seznam možností v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
+3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `python` , `java` , `go` a tak dále. (Můžete najít úplný seznam možností v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
 V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít obor názvů *ADTApi*. Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
@@ -83,7 +83,7 @@ Nyní můžete sestavit projekt a zahrnout ho jako odkaz na projekt v libovolné
 
 ## <a name="general-guidelines-for-generated-sdks"></a>Obecné pokyny pro vygenerované sady SDK
 
-Tato část obsahuje obecné informace o nástroji a pokyny pro používání vygenerované sady SDK.
+Tato část obsahuje obecné informace a pokyny pro používání vygenerované sady SDK.
 
 ### <a name="synchronous-and-asynchronous-calls"></a>Synchronní a asynchronní volání
 

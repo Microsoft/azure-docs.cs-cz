@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: dpalled
-ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167993"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856109"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Přidání podpory pro typ Long data v Azure Time Series Insights Gen2
 
@@ -33,7 +33,7 @@ Pokud máte vliv na některý z následujících případů, proveďte doporuče
 
 V případě, že se na vás vztahují nějaké případy, proveďte změny v modelu. Aktualizujte výraz Time Series (TSX) v definici proměnné o doporučené změny. Aktualizovat obojí:
 
-- Azure Time Series Insights Průzkumník Gen2
+- Průzkumník TSI Azure Time Series Insights
 - Libovolný vlastní klient používající naše rozhraní API
 
 V závislosti na vašem řešení a omezeních IoT možná nebudete mít přehled o datech, která se odesílají do prostředí Azure Time Series Insights Gen2. Pokud si nejste jistí, jestli jsou vaše data celočíselná nebo integrální i neintegrální, máte několik možností:

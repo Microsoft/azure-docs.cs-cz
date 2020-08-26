@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829675"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856020"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -27,7 +27,7 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 > * Přidání grafu vlastní metriky v Application Insights na řídicí panel
 > * Přidání výsledků dotazu log (Analytics) na řídicí panel
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -40,6 +40,9 @@ Pro absolvování tohoto kurzu potřebujete:
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-new-dashboard"></a>Vytvoření nového řídicího panelu
+> [!WARNING]
+> Pokud přesunete prostředek Application Insights do jiné skupiny prostředků nebo předplatného, budete muset ručně aktualizovat řídicí panel tak, že odeberete staré dlaždice a připnete nové dlaždice ze stejného prostředku Application Insights na nové místo. 
+
 Jeden řídicí panel může obsahovat prostředky z více aplikací, skupin prostředků a předplatných.  Tento kurz začněte vytvořením nového řídicího panelu pro vaši aplikaci.  
 
 1. V podokně řídicí panel vyberte **nový řídicí panel**.

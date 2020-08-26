@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81007863"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864802"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
 
@@ -95,7 +95,7 @@ Novější přístup má řadu výhod (ve srovnání s používáním certifiká
     Zobrazí se obrazovka **vytvořit nový certifikát** .
 
     > [!NOTE]
-    > Tento kurz používá vývojový certifikát. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
+    > V tomto kurzu se používá vývojový certifikát, který vaše aplikace používá k vygenerování jedinečného tokenu zařízení. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
 
 3. Vyberte **zvolit soubor**, přejděte do umístění, kam jste ULOŽILI soubor CSR z prvního úkolu, a potom dvakrát klikněte na název certifikátu a načtěte ho. Potom vyberte **Pokračovat**.
 
@@ -183,7 +183,7 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
     2. V části **software** vyberte možnost **vývoj pro Apple**. Potom vyberte **Pokračovat**.
     3. Na obrazovce **vytvořit nový certifikát** vyberte **zvolit soubor**.
     4. Přejděte na certifikát **žádosti o podepsání certifikátu** , který jste vytvořili dříve, vyberte ho a pak vyberte **otevřít**.
-    5. Vyberte **Pokračovat**.
+    5. Vyberte **pokračovat**.
     6. Stáhněte si vývojový certifikát a zapamatujte si umístění, do kterého se uložilo.
 
 1. Vraťte se na stránku **certifikáty, identifikátory & profily** , v nabídce vlevo vyberte **profily** a pak vyberte **+** Vytvoření nového profilu. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .
@@ -211,7 +211,7 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte podle příslušných kroků na základě postupu, který jste zvolili dříve v části [Vytvoření certifikátu pro Notification Hubs](#creating-a-certificate-for-notification-hubs) .  
 
 > [!NOTE]
-> Pro **režim aplikace** použijte **pouze v případě, že chcete** odesílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci ze Storu.
+> Pokud sestavíte aplikaci pomocí App Storu nebo distribučního profilu ad hoc, použijte režim **produkčního** prostředí pro **aplikaci**. To umožní vašemu zařízení odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu.
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>MOŽNOST 1: použití nabízeného certifikátu. P12
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135806"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855796"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -123,31 +123,17 @@ Provoz vašeho překladu adres (NAT) můžete monitorovat prostřednictvím mult
 
 V obecné dostupnosti je k dispozici alespoň 99,9% cesta k datům NAT.
 
-
 ## <a name="pricing"></a>Ceny
 
-Brána NAT se účtuje se dvěma samostatnými měřiči:
-
-| Měřič | Sazba |
-| --- | --- |
-| Hodiny prostředků | $0.045 za hodinu |
-| Zpracovaná data | $0.045/GB |
-
-Účty hodin prostředků po dobu, po kterou existuje prostředek brány NAT.
-Účty zpracované daty pro veškerý provoz zpracovaných prostředkem brány NAT
+Podrobnosti o cenách najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="availability"></a>Dostupnost
 
-Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici ve všech [oblastech](https://azure.microsoft.com/global-infrastructure/regions/)veřejného cloudu Azure.
-
-## <a name="support"></a>Podpora
-
-Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
+Virtual Network překlad adres (NAT) a prostředek brány NAT jsou k dispozici ve všech oblastech všech [oblastí](https://azure.microsoft.com/global-infrastructure/regions/)cloudu Azure.
 
 ## <a name="suggestions"></a>Návrhy
 
 Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
-
 
 ## <a name="limitations"></a>Omezení
 

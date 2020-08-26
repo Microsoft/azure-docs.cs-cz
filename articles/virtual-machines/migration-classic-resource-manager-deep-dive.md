@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513107"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855922"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
 
@@ -33,7 +33,7 @@ Nejdřív je důležité pochopit rozdíl mezi operacemi na úrovni datové rovi
 
 Rovina dat je stejná mezi modelem nasazení Classic a zásobníky Správce prostředků. Rozdílem je to, že během procesu migrace společnost Microsoft překládá reprezentace prostředků z modelu nasazení Classic na rozhraní Správce prostředků Stack. V důsledku toho je potřeba použít nové nástroje, rozhraní API a sady SDK ke správě prostředků v Správce prostředkůovém zásobníku.
 
-![Diagram, který ukazuje rozdíl mezi rovinou správy/řízení a rovinou dat](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Diagram, který ukazuje rozdíl mezi rovinou správy/řízení a rovinou dat](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Než zahájíte migraci:
 
 Pracovní postup migrace je následující:
 
-![Diagram znázorňující pracovní postup migrace](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Diagram znázorňující pracovní postup migrace](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > Operace popsané v následujících částech jsou všechny idempotentní. Pokud máte jiný problém než Nepodporovaná funkce nebo chybu konfigurace, zkuste operaci příprava, přerušení nebo potvrzení zopakovat. Azure se o akci pokusí znovu.
@@ -94,17 +94,17 @@ Azure potom spustí migraci metadat z modelu nasazení Classic na Správce prost
 Po dokončení operace přípravy máte možnost vizualizovat prostředky v modelu nasazení Classic i Správce prostředků. Pro každou cloudovou službu v modelu nasazení Classic vytvoří platforma Azure název skupiny prostředků ve tvaru `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tj. "-migrované"). Po dokončení migrace ale můžete použít funkci přesunout Azure Resource Manager k přesunutí prostředků do jakékoli skupiny prostředků, kterou požadujete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](~/articles/resource-group-move-resources.md).
+> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tj. "-migrované"). Po dokončení migrace ale můžete použít funkci přesunout Azure Resource Manager k přesunutí prostředků do jakékoli skupiny prostředků, kterou požadujete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Následující dva snímky obrazovky znázorňují výsledek po úspěšné operaci přípravy. První z nich zobrazuje skupinu prostředků, která obsahuje původní cloudovou službu. Druhá z nich ukazuje novou skupinu prostředků "-migrované", která obsahuje ekvivalentní Azure Resource Manager prostředky.
 
-![Snímek obrazovky, který zobrazuje původní cloudovou službu](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Snímek obrazovky, který zobrazuje původní cloudovou službu](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Snímek obrazovky zobrazující Azure Resource Manager prostředky v operaci Prepare](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Snímek obrazovky zobrazující Azure Resource Manager prostředky v operaci Prepare](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 Tady je pohled na pozadí po skončení fáze přípravy. Všimněte si, že zdroj v rovině dat je stejný. Je reprezentován jak v rovině správy (model nasazení Classic), tak i rovině ovládacího prvku (Správce prostředků).
 
-![Diagram fáze přípravy](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Diagram fáze přípravy](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > Virtuální počítače, které nejsou ve virtuální síti v modelu nasazení Classic, se v této fázi migrace zastaví a oddělují.
@@ -124,7 +124,7 @@ Pokud nastanou nějaké problémy, vždycky můžete migraci přerušit a vráti
 ### <a name="abort"></a>Přerušení
 Tento krok je volitelný, pokud chcete vrátit změny v modelu nasazení Classic a zastavit migraci. Tato operace odstraní metadata Správce prostředků (vytvořená v kroku Příprava) pro vaše prostředky. 
 
-![Diagram kroku přerušení](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagram kroku přerušení](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ Po dokončení ověření můžete migraci potvrdit. Prostředky se již v model
 >
 >
 
-![Diagram kroku potvrzení](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagram kroku potvrzení](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Vývojový diagram migrace
 
 Tady je vývojový diagram, který ukazuje, jak pokračovat v migraci:
 
-![Snímek obrazovky, který ukazuje kroky migrace](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Snímek obrazovky, který ukazuje kroky migrace](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Překlad modelu nasazení Classic na prostředky Správce prostředků
 Model nasazení Classic a Správce prostředků reprezentace prostředků najdete v následující tabulce. Jiné funkce a prostředky se aktuálně nepodporují.

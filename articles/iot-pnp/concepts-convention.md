@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475664"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856043"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
@@ -127,10 +127,10 @@ Zařízení musí přidat `{"__t": "c"}` značku, aby označovala, že element o
 
 Zařízení by mělo potvrdit, že obdržel vlastnost odesláním hlášené vlastnosti. Vykazovaná vlastnost by měla zahrnovat:
 
-- `value`– hodnota, kterou zařízení přijalo.
-- `ac`– potvrzovací kód, který používá stavový kód HTTP.
-- `av`– verze potvrzení, která odkazuje na `$version` požadovanou vlastnost.
-- `ad`– volitelný popis potvrzení.
+- `value` – Skutečná hodnota vlastnosti (obvykle přijatá hodnota, ale zařízení se může rozhodnout, že nahlásí jinou hodnotu).
+- `ac` – potvrzovací kód, který používá stavový kód HTTP.
+- `av` – verze potvrzení, která odkazuje na `$version` požadovanou vlastnost.
+- `ad` – volitelný popis potvrzení.
 
 ### <a name="sample-no-component-writable-property"></a>Ukázka vlastnosti bez zapisovatelného prvku
 

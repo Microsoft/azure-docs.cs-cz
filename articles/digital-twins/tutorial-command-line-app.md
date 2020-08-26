@@ -1,5 +1,5 @@
 ---
-title: Seznámení se základy prostřednictvím ukázkové klientské aplikace
+title: 'Kurz: zkoumání základních informací pomocí ukázkové klientské aplikace'
 titleSuffix: Azure Digital Twins
 description: Kurz k prozkoumání sad SDK digitálních vláken Azure s využitím ukázkové aplikace příkazového řádku
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 58013ba84e1ede36ed54284af4d20b943d63436f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986267"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855858"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
 Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci příkazového řádku pro interakci s instancí digitálních vláken Azure. Klientská aplikace je podobná té, kterou jste napsali v [*kurzu: Code a klientská aplikace*](tutorial-code.md).
 
@@ -314,12 +314,5 @@ Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do svého m�
 V tomto kurzu jste začali s digitálními podmnožinami Azure pomocí nastavení instance a klientské aplikace pro interakci s instancí. Klientská aplikace se používá k prozkoumávání digitálních vláken Azure, vytváření modelů, digitálních vláken a vztahů. V řešení jste také spustili nějaké dotazy, abyste získali představu o druzích otázek, které může Azure Digital revláken využít k zodpovězení prostředí.
 
 Přejděte k dalšímu kurzu a použijte ukázkovou aplikaci příkazového řádku v kombinaci s jinými službami Azure a dokončete tak kompletní scénář založený na datech:
-
 > [!div class="nextstepaction"]
 > [*Kurz: připojení kompletního řešení*](tutorial-end-to-end.md)
-
-Případně můžete začít hledat v dokumentaci k konceptu, kde najdete další informace o prvcích, se kterými jste pracovali v tomto kurzu:
-* [*Koncepty: vlastní modely*](concepts-models.md)
-
-Další podrobné informace o procesech v tomto kurzu můžete také zahájit pomocí článků s postupy:
-* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)

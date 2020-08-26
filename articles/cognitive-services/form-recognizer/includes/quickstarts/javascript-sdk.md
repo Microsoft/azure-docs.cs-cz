@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 34f972624d1b7dd56fd6271baeaa855627eb870c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1c24eba79c26c4540e9d97a3e2b6646fd0b5439c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753032"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864800"
 ---
 > [!IMPORTANT]
 > * Sada SDK pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
@@ -66,6 +66,8 @@ Soubor vaší aplikace `package.json` bude aktualizován pomocí závislostí.
 
 ## <a name="object-model"></a>Objektový model 
 
+Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různé typy klientů. První `FormRecognizerClient` slouží k dotazování služby na rozpoznaná pole a obsah formuláře. Druhá možnost slouží `FormTrainingClient` k vytváření a správě vlastních modelů, které můžete použít ke zlepšení rozpoznávání. 
+
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` poskytuje operace pro:
 
@@ -76,12 +78,12 @@ Soubor vaší aplikace `package.json` bude aktualizován pomocí závislostí.
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` poskytuje operace pro:
 
-* Školením vlastních modelů můžete rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích. `CustomFormModel`Je vrácena indikace typu formuláře, který model rozpozná, a pole, která se budou extrahovat pro každý typ formuláře. Podrobnější vysvětlení vytváření školicích dat najdete v dokumentaci [služba pro školení k neoznačenému modelu] [fr-vlak-bez popisků].
-* Školením vlastních modelů můžete rozpoznat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře. `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole. Podrobnější vysvětlení použití popisků pro školicí datovou sadu najdete v dokumentaci [služba na popisku modelu školení] [fr-vlak-with-labels].
+* Školením vlastních modelů můžete rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích. `CustomFormModel`Je vrácena indikace typu formuláře, který model rozpozná, a pole, která se budou extrahovat pro každý typ formuláře. Podrobnější vysvětlení vytváření školicích dat najdete v [dokumentaci ke službě školení k neoznačenému modelu](#train-a-model-without-labels) .
+* Školením vlastních modelů můžete rozpoznat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře. `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole. Podrobnější vysvětlení použití popisků pro školicí sadu dat najdete v [dokumentaci ke službě s popsaným školením modelu](#train-a-model-with-labels) .
 * Správa modelů vytvořených ve vašem účtu.
 * Zkopírování vlastního modelu z jednoho prostředku na rozpoznávání formulářů do jiného.
 
-Počítejte s tím, že modely lze také vyškole pomocí grafického uživatelského rozhraní, jako je například [Nástroj pro označování ve formě rozpoznávání formulářů] [ https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool ].
+Počítejte s tím, že modely lze také vyškole pomocí grafického uživatelského rozhraní, jako je například [Nástroj pro rozpoznávání popisů formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -256,7 +258,7 @@ Následující funkce naplňuje model v dané sadě dokumentů a vytiskne stav m
 ```javascript
 async function trainModel() {
 
-    const containerSasUrl = "https://formtraningiron.blob.core.windows.net/form-training-data";
+    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
     const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
     const poller = await trainingClient.beginTraining(containerSasUrl, false, {
@@ -342,7 +344,7 @@ Vlastní modely můžete také vyškolit ručním popiskem školicích dokument�
 ```javascript
 async function trainModelLabels() {
 
-    const containerSasUrl = "https://formtraningiron.blob.core.windows.net/form-training-data";
+    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
     const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
     const poller = await trainingClient.beginTraining(containerSasUrl, true, {

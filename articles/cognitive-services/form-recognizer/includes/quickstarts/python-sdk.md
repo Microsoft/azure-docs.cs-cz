@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: b7ee606ab17171c5f2fcf20d94ff18de8b05b773
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b178a0b347888f22d9a3c0ee88a203e377cb15be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752988"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864955"
 ---
 > [!IMPORTANT]
 > * Sada SDK pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
@@ -30,6 +30,27 @@ ms.locfileid: "88752988"
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+
+## <a name="object-model"></a>Objektový model 
+
+Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různé typy klientů. První `form_recognizer_client` slouží k dotazování služby na rozpoznaná pole a obsah formuláře. Druhá možnost slouží `form_training_client` k vytváření a správě vlastních modelů, které můžete použít ke zlepšení rozpoznávání. 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+`form_recognizer_client` poskytuje operace pro:
+
+ * Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů vyškolených pro rozpoznávání vlastních formulářů. 
+ * Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model. 
+ * Rozpoznávání společných polí z příjmů pomocí předem připraveného modelu příjmu ve službě rozpoznávání formulářů.
+
+### <a name="formtrainingclient"></a>FormTrainingClient
+`form_training_client` poskytuje operace pro:
+
+* Školením vlastních modelů můžete rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích. Podrobnější vysvětlení vytváření školicích dat najdete v [dokumentaci ke službě školení k neoznačenému modelu](#train-a-model-without-labels) .
+* Školením vlastních modelů můžete rozpoznat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře. Podrobnější vysvětlení použití popisků pro školicí sadu dat najdete v [dokumentaci ke službě s popsaným školením modelu](#train-a-model-with-labels) .
+* Správa modelů vytvořených ve vašem účtu.
+* Zkopírování vlastního modelu z jednoho prostředku na rozpoznávání formulářů do jiného.
+
+Počítejte s tím, že modely lze také vyškole pomocí grafického uživatelského rozhraní, jako je například [Nástroj pro rozpoznávání popisů formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -346,9 +367,7 @@ V této části se dozvíte, jak extrahovat informace o klíčích a hodnotách 
 > [!IMPORTANT]
 > Aby bylo možné tento scénář implementovat, je nutné již vyškolet model, abyste mohli předat jeho ID do níže uvedené metody. Viz část [výuka modelu](#train-a-model-without-labels) .
 
-<<<<<<< HEAD budete používat `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
-= = = = = = = Použijte metodu **begin_recognize_custom_forms_from_url** . Vrácená hodnota je kolekce objektů **RecognizedForm** . Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
->>>>>>> 4c76de6b4e93d2a4669953300c5686837b3be13c
+Použijete `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
 
 ```python
 # Model ID from when you trained your model.
@@ -483,7 +502,7 @@ except ResourceNotFoundError:
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `python` příkazu v souboru rychlého startu.
+Aplikaci můžete kdykoli spustit s libovolným počtem funkcí, o které jste si v tomto rychlém startu seznámili pomocí tohoto příkazu:
 
 ```console
 python quickstart-file.py

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 24f92443acddb17c0a2d337f51dbf9183996c49f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520514"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864880"
 ---
 Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, transakce optimalizované, horké a studené, aby bylo možné přizpůsobit své sdílené složky na požadavky na výkon a cenu vašeho scénáře:
 
@@ -32,7 +32,22 @@ Horké a studené sdílené složky jsou momentálně dostupné v následující
 - Austrálie – jihovýchod
 - Francie – střed
 - Francie – jih
+- Německo – sever (veřejné)
+- Německo – středozápad (veřejné)
+- Indie – střed
+- Indie – jih
+- Indie – západ
+- Japonsko – východ
+- Japonsko – západ
 - Jižní Korea – střed
 - Jižní Korea – jih
+- Norsko – východ
+- Norsko – západ
+- Jižní Afrika – sever
+- Jižní Afrika – západ
+- Spojené arabské emiráty – střed
+- Spojené arabské emiráty sever
+- Spojené království – jih
+- Spojené království – západ
 
 Chcete-li nasadit horkou nebo studenou sdílenou složku, přečtěte si téma [Vytvoření horké nebo studené sdílené složky](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

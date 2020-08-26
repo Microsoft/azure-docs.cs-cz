@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78669260"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864946"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které hlavičky jsou pro každou službu podporované:
 
@@ -26,13 +26,13 @@ Když použijete `Ocp-Apim-Subscription-Key` hlavičku, budete muset zadat svůj
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Když použijete `Authorization: Bearer` hlavičku, je nutné, abyste si nahlásili požadavek `issueToken` na koncový bod. V této žádosti vyměňujete klíč předplatného pro přístupový token, který je platný po dobu 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
+Když použijete `Authorization: Bearer` hlavičku, je nutné, abyste si nahlásili požadavek na `issueToken` koncový bod. V této žádosti vyměňujete klíč předplatného pro přístupový token, který je platný po dobu 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
 
 ### <a name="how-to-get-an-access-token"></a>Získání přístupového tokenu
 
-K získání přístupového tokenu budete muset na `issueToken` koncový bod vytvořit žádost pomocí klíče `Ocp-Apim-Subscription-Key` a vašeho předplatného.
+K získání přístupového tokenu budete muset na `issueToken` koncový bod vytvořit žádost pomocí `Ocp-Apim-Subscription-Key` klíče a vašeho předplatného.
 
-`issueToken` Koncový bod má tento formát:
+`issueToken`Koncový bod má tento formát:
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -82,7 +82,7 @@ $OAuthToken
 kudrlinkou je nástroj příkazového řádku, který je dostupný v systému Linux (a v subsystému Windows pro Linux). Tento příkaz složeného příkazu ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčovým předplatným služby Speech. Ujistěte se, že používáte správný koncový bod pro oblast, která odpovídá vašemu předplatnému. Tento příklad je aktuálně nastaven na Západní USA.
 
 ```console
-curl -v -X POST
+curl -v -X POST \
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
  -H "Content-Length: 0" \
@@ -149,7 +149,7 @@ def get_token(subscription_key):
 
 ### <a name="how-to-use-an-access-token"></a>Používání přístupového tokenu
 
-Přístupový token by měl být službě odeslán jako `Authorization: Bearer <TOKEN>` hlavička. Každý přístupový token je platný po dobu 10 minut. Nový token můžete kdykoli získat, ale k minimalizaci síťového provozu a latence doporučujeme použít stejný token po dobu devíti minut.
+Přístupový token by měl být službě odeslán jako `Authorization: Bearer <TOKEN>` Hlavička. Každý přístupový token je platný po dobu 10 minut. Nový token můžete kdykoli získat, ale k minimalizaci síťového provozu a latence doporučujeme použít stejný token po dobu devíti minut.
 
 Tady je ukázka požadavku HTTP na REST API převodu textu na řeč:
 

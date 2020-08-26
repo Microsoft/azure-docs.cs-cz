@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ef221ea068f2786a4a84f20a29e80dd7176f06c6
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337411"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856037"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>Příručka pro vývojáře pro IoT technologie Plug and Play Preview
 
@@ -52,8 +52,18 @@ Oznámení ID modelu bylo přidáno do následujících verzí sad SDK.
 |C-SDK|1.3.9|
 |.NET|1.27.0|
 |Java|1.14.0|
-|Uzel|1.17.0|
+|Node|1.17.0|
 |Python|2.1.4|
+
+## <a name="dps-payload"></a>Datová část DPS
+
+Zařízení, která používají [službu Device Provisioning (DPS)](/iot-dps/) , můžou zahrnovat, `modelId` aby se během procesu zřizování používala tato datová část JSON.
+
+```json
+{
+    "modelId" : "dtmi:com:example:Thermostat;1"
+}
+```
 
 ## <a name="implement-telemetry-properties-and-commands"></a>Implementace telemetrie, vlastností a příkazů
 

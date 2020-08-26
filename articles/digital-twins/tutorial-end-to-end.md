@@ -1,5 +1,5 @@
 ---
-title: Připojení kompletního řešení
+title: 'Kurz: připojení kompletního řešení'
 titleSuffix: Azure Digital Twins
 description: Kurz pro sestavení uceleného řešení digitálních vláken Azure, které je založené na datech zařízení
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f4155c479151c5af64049e0cf9a6a1c4dc4a553
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827311"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855902"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
 K nastavení kompletního řešení založeného na živých datech z vašeho prostředí můžete propojit instanci digitálních vláken Azure s dalšími službami Azure za účelem správy zařízení a dat.
 
@@ -277,7 +277,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 Nyní chcete-li zobrazit výsledky simulace dat, kterou jste nastavili, spusťte projekt **DeviceSimulator** pomocí tohoto tlačítka na panelu nástrojů:
 
@@ -455,7 +455,5 @@ Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli z místního
 V tomto kurzu jste vytvořili kompletní scénář, který zobrazuje digitální vlákna Azure, která se řídí daty živého zařízení.
 
 Pak začněte hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste pracovali v tomto kurzu:
-* [*Koncepty: vlastní modely*](concepts-models.md)
-
-Případně můžete v tomto kurzu podrobněji podrobnější informace o procesech, a to spuštěním článků s postupy:
-* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Koncepty: vlastní modely*](concepts-models.md)

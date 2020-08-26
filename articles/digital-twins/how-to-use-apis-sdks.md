@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587558"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855879"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -63,7 +63,7 @@ Rozhraní API roviny dat můžete také využít k interakci s digitálními pod
 Sada Azure Digital revlákens .NET (C#) SDK je součástí sady Azure SDK for .NET. Je to open source a je založený na rozhraních API roviny dat digitálních vláken Azure.
 
 > [!NOTE]
-> Podrobné informace o návrhu sady SDK najdete v tématu Obecné [Principy návrhu pro sadu Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) a konkrétní pokyny pro [Návrh .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+> Další informace o návrhu sady SDK najdete v tématu Obecné [Principy návrhu pro sadu Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) a konkrétní [pokyny pro návrh .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
 Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat balíček **Azure. identity** (verze 1.1.1).
 
@@ -143,7 +143,7 @@ Další ukázky můžete najít také v [úložišti GitHub pro sadu .NET (C#) S
 
 #### <a name="serialization-helpers"></a>Pomocníka serializace
 
-Jak je popsáno výše, základní metody sady SDK vrací vlákna data jako JSON. Sada SDK však obsahuje také pomocné třídy pro serializaci. Tyto pomocné funkce umožňují rychle vytvořit nebo deserializovat vlákna dat pro přístup k základním informacím.
+Pomocné rutiny serializace jsou pomocné funkce dostupné v sadě SDK pro rychlé vytvoření nebo deserializaci dvojitě dostupných dat pro přístup k základním informacím. Vzhledem k tomu, že základní metody sady SDK vracejí ve výchozím nastavení ve výchozím nastavení hodnoty ve formátu JSON, může být užitečné tyto pomocné třídy použít k dalšímu přerušení dat.
 
 Dostupné pomocné třídy jsou:
 * `BasicDigitalTwin`: Představuje základní data digitálního vlákna.
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>Vytvoření relace
 
-Pomocí `BasicDigitalTwin` třídy můžete také připravit data pro vytváření relací na instance s dvojitou platností:
+Pomocí `BasicRelationship` třídy můžete také připravit data pro vytváření relací na instance s dvojitou platností:
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

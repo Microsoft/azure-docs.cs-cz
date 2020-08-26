@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c1550b941c6d0f58feba7d505c7206993e14226b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817013"
+ms.locfileid: "88856073"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nabídky SaaS na komerčním webu Marketplace
 
@@ -133,7 +133,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
+8. Souhrn
 9. Popis
 10. Snímky obrazovky a videa
 11. Dokumenty
@@ -234,7 +234,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 
 #### <a name="terms-and-conditions"></a>podmínky a ujednání
 
-Pokud chcete zadat vlastní podmínky a ujednání, můžete je vybrat do pole podmínky a ujednání. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde se dají podmínky a ujednání najít. Zobrazí se zákazníkům jako aktivní odkaz.
+Pokud chcete zadat vlastní podmínky a ujednání, můžete je vybrat do pole podmínky a ujednání. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde se dají podmínky a ujednání najít.
 
 Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
