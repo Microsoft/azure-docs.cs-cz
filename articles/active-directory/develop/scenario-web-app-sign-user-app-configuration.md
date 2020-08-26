@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 30b90b89300d6ca63255a000c7a6f7723f648056
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118754"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855424"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -132,7 +132,7 @@ V ASP.NET Core obsahuje jiný soubor ([properties\launchSettings.json](https://g
 }
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. Pro dva předchozí konfigurační soubory by to bylo `https://localhost:44321/signin-oidc` . Důvodem je, že `applicationUrl` je `http://localhost:3110` , ale `sslPort` je zadaný (44321). `CallbackPath`je `/signin-oidc` , jak je definováno v `appsettings.json` .
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. Pro dva předchozí konfigurační soubory by to bylo `https://localhost:44321/signin-oidc` . Důvodem je, že `applicationUrl` je `http://localhost:3110` , ale `sslPort` je zadaný (44321). `CallbackPath` je `/signin-oidc` , jak je definováno v `appsettings.json` .
 
 Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na hodnotu `https://localhost:44321/signout-oidc` .
 
@@ -225,7 +225,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
 
 1. Do svého projektu přidejte balíčky NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) a [Microsoft. identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) . Odeberte balíček NuGet Microsoft. AspNetCore. Authentication. AzureAD. UI, pokud je k dispozici.
 
-2. Aktualizujte kód `ConfigureServices` tak, aby používal `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` metody a.
+2. Aktualizujte kód `ConfigureServices` tak, aby používal `AddMicrosoftIdentityWebAppAuthentication` `AddMicrosoftIdentityUI` metody a.
 
    ```c#
    public class Startup
@@ -234,7 +234,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
+     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -245,7 +245,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
      }).AddMicrosoftIdentityUI();
     ```
 
-3. V `Configure` metodě v *Startup.cs*povolte ověřování pomocí volání`app.UseAuthentication();`
+3. V `Configure` metodě v *Startup.cs*povolte ověřování pomocí volání `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -259,20 +259,20 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
    ```
 
 Ve výše uvedeném kódu:
-- `AddMicrosoftWebAppAuthentication`Metoda rozšíření je definována v **Microsoft. identity. Web**. Její
+- `AddMicrosoftIdentityWebAppAuthentication`Metoda rozšíření je definována v **Microsoft. identity. Web**. Její
   - Přidá ověřovací službu.
   - Konfiguruje možnosti pro čtení konfiguračního souboru (zde z části "AzureAD").
   - Nakonfiguruje možnosti připojení OpenID, aby autorita byla koncovým bodem Microsoft Identity Platform.
   - Ověří vystavitele tokenu.
   - Zajistí, aby deklarace odpovídající názvu byly namapovány z `preferred_username` deklarace identity v tokenu ID.
 
-- Kromě objektu konfigurace můžete zadat název konfiguračního oddílu při volání `AddMicrosoftWebAppAuthentication` . Ve výchozím nastavení je to `AzureAd` .
+- Kromě objektu konfigurace můžete zadat název konfiguračního oddílu při volání `AddMicrosoftIdentityWebAppAuthentication` . Ve výchozím nastavení je to `AzureAd` .
 
-- `AddMicrosoftWebAppAuthentication`obsahuje další parametry pro pokročilé scénáře. Například trasování událostí middlewaru OpenID Connect může pomoct při odstraňování potíží s webovou aplikací, pokud ověřování nefunguje. Nastavením volitelného parametru zobrazíte `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` informace o tom, jak jsou zpracovány sadou ASP.NET Core middleware v průběhu reakce http na identitu uživatele v nástroji `HttpContext.User` .
+- `AddMicrosoftIdentityWebAppAuthentication` obsahuje další parametry pro pokročilé scénáře. Například trasování událostí middlewaru OpenID Connect může pomoct při odstraňování potíží s webovou aplikací, pokud ověřování nefunguje. Nastavením volitelného parametru zobrazíte `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` informace o tom, jak jsou zpracovány sadou ASP.NET Core middleware v průběhu reakce http na identitu uživatele v nástroji `HttpContext.User` .
 
 - `AddMicrosoftIdentityUI`Metoda rozšíření je definována v **Microsoft. identity. Web. UI**. Poskytuje výchozí kontroler pro zpracování přihlášení a odhlášení.
 
-Další informace o tom, jak Microsoft. identity. Web umožňuje vytvářet webové aplikace, najdete v tématu.<https://aka.ms/ms-id-web/webapp>
+Další informace o tom, jak Microsoft. identity. Web umožňuje vytvářet webové aplikace, najdete v tématu. <https://aka.ms/ms-id-web/webapp>
 
 > [!WARNING]
 > V současné době Microsoft. identity. Web nepodporuje scénář **individuálních uživatelských účtů** (při ukládání uživatelských účtů v aplikaci) při použití Azure AD jako a externího poskytovatele přihlášení. Podrobnosti najdete zde: [AzureAD/Microsoft-Identity-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)

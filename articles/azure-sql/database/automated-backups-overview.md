@@ -5,18 +5,18 @@ description: Azure SQL Database a Azure SQL Managed instance automaticky vytvoř
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756720"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853205"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -46,7 +46,14 @@ Možnost konfigurace redundance záložního úložiště poskytuje flexibilitu 
 > [!IMPORTANT]
 > Ve spravované instanci SQL se nakonfigurovaná redundance zálohy používá pro nastavení krátkodobého uchovávání záloh, které se používá pro obnovení v časovém intervalu (PITR) a dlouhodobé zálohy uchovávání informací používané pro dlouhodobé zálohování (LTR).
 
+
+> [!NOTE]
+> Azure SQL Database konfigurovatelný redundance úložiště záloh je aktuálně k dispozici jako omezená privátní verze Preview pro určité zákazníky v oblasti jihovýchodní Asie v Azure. Pokud se chcete v této privátní verzi Preview považovat za registraci, kontaktujte prosím [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
+
+Pokud vaše pravidla ochrany dat vyžadují, aby vaše zálohy byly dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](long-term-retention-overview.md) pro databáze s jednou i ve fondu.
+
 ### <a name="backup-usage"></a>Využití zálohy
+
 
 Tyto zálohy rovněž umožňují:
 

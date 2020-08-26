@@ -10,12 +10,12 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: f6d128ace64f7c100a974883bff82435a496be97
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815449"
+ms.locfileid: "88855062"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony ARM
 
@@ -37,12 +37,17 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Úplná šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit úplnou šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Část definující konkrétní DSVM se zobrazí zde:
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/).
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
+:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 V šabloně jsou definované následující prostředky:
 
+* [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Vytvořte cloudový virtuální počítač. V této šabloně je virtuální počítač nakonfigurovaný jako Data Science Virtual Machine se systémem Ubuntu 18,04.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony

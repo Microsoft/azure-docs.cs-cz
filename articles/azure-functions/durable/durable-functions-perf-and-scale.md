@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033577"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853712"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -224,6 +224,10 @@ Existují dva potenciální downsides tohoto nastavení, které je potřeba mít
 Příklad: Pokud `durableTask/extendedSessionIdleTimeoutInSeconds` je nastavené na 30 sekund, pak krátká nestálá funkce Orchestrator nebo entity, která se provede za méně než 1 sekundou, zabírá paměť po dobu 30 sekund. Také se počítá oproti `durableTask/maxConcurrentOrchestratorFunctions` výše uvedené kvótě, která potenciálně brání spuštění dalších funkcí Orchestrator nebo entity.
 
 Konkrétní účinky rozšířených relací na nástroje Orchestrator a funkce entit jsou popsány v následujících částech.
+
+> [!NOTE]
+> Rozšířené relace jsou aktuálně podporované jenom v jazycích .NET, jako je C# nebo F #. Nastavení `extendedSessionsEnabled` na `true` pro jiné platformy může vést k problémům za běhu, jako je například tiché selhání při provádění aktivit a funkcí aktivovaných pro orchestraci.
+
 
 ### <a name="orchestrator-function-replay"></a>Funkce Orchestrator – přehrání
 
