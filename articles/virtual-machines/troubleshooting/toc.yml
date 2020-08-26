@@ -195,7 +195,7 @@
     - name: Přehled
       href: ../managed-disks-overview.md
     - name: Nejčastější dotazy
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: Chyby při odstraňování prostředků úložiště
       href: storage-resource-deletion-errors.md
     - name: Chyby při odstraňování klasických prostředků úložiště

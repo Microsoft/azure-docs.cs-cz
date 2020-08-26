@@ -1,68 +1,87 @@
-### YamlMime:Landing
-title: Azure Arc
-summary: Azure ARC rozšiřuje možnosti Azure Resource Manageru na servery se systémy Linux a Windows a také clustery Kubernetes na jakékoli infrastruktuře napříč místním prostředím, několika cloudy a hraničními zařízeními. Se službou Azure Arc mohou zákazníci také kdekoli spouštět datové služby Azure a využívat přitom výhody cloudových inovací, včetně vždy aktuálních datových funkcí, nasazování v řádu sekund (ne hodin) a dynamické škálovatelnosti na jakékoli infrastruktuře.
+### YamlMime:Hub
+title: Dokumentace ke službě Azure Arc
+summary: Zjednodušení složitých a distribuovaných prostředí napříč místními, hraničními a vícecloudovými prostředími
+brand: azure
 metadata:
   title: Azure Arc
-  description: Další informace o správě místních počítačů v Azure
-  author: mgoedtel
+  description: Zjistěte, jak nasazovat prostředky do složitých a distribuovaných prostředí napříč místními, hraničními a vícecloudovými prostředími. Azure Arc umožňuje nasazení služeb Azure kdekoli a rozšíření správy Azure na jakoukoli infrastrukturu.
   ms.service: azure-arc
-  ms.topic: landing-page
-  ms.date: 08/13/2020
+  ms.topic: hub-page
+  author: MGoedtel
   ms.author: magoedte
-  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.date: 08/21/2020
+  ms.openlocfilehash: 961d8b892841f2d8761053279f053afe3b859798
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212768"
-landingContent:
-- title: Informace o službě Azure Arc
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763322"
+highlightedContent:
+  items:
+  - title: Servery s podporou služby Azure Arc (Preview)
+    itemType: overview
+    url: ./servers/overview.md
+  - title: Kubernetes s podporou Azure Arc (Preview)
+    itemType: overview
+    url: ./kubernetes/overview.md
+  - title: Informace o službě Azure Arc
+    itemType: overview
+    url: https://azure.microsoft.com/en-us/services/azure-arc
+productDirectory:
+  title: Služby s podporou služby Azure Arc
+  summary: Podívejte se, jak spouštět služby odkudkoli.
+  items:
+  - title: Servery s podporou služby Azure Arc
+    imageSrc: ./media/manage-450-machines-azure-arc.svg
     links:
-    - text: Co je Azure Arc?
-      url: https://aka.ms/Azure-Arc-Info
-- title: Připojení počítačů k Azure s využitím serverů s podporou služby Azure Arc
-  linkLists:
-  - linkListType: overview
+    - url: ./servers/onboard-portal.md
+      text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+    - url: ./servers/onboard-service-principal.md
+      text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+    - url: ./servers/onboard-dsc.md
+      text: Připojení počítačů k Azure s využitím DSC PowerShellu
+    - url: ./servers/index.yml
+      text: Zobrazit víc...
+  - title: Kubernetes s podporou Azure Arc
+    imageSrc: ./media/containers-101-kubernetes-services.svg
     links:
-    - text: Co jsou servery s podporou služby Azure Arc?
-      url: ./servers/overview.md
-  - linkListType: quickstart
+    - url: ./kubernetes/connect-cluster.md
+      text: Připojení clusteru
+    - url: ./kubernetes/use-gitops-connected-cluster.md
+      text: Nasazení konfigurací s využitím GitOps
+    - url: ./kubernetes/index.yml
+      text: Zobrazit víc...
+conceptualContent:
+  title: Začínáme
+  items:
+  - title: Servery s podporou služby Azure Arc (Preview)
     links:
-    - text: Povolení agenta Servery s podporou služby Arc
-      url: ./servers/learn/quick-enable-hybrid-vm.md
-  - linkListType: how-to-guide
+    - url: ./servers/learn/quick-enable-hybrid-vm.md
+      itemType: get-started
+      text: Povolení agenta Servery s podporou služby Arc
+    - url: ./servers/learn/tutorial-enable-vm-insights.md
+      itemType: tutorial
+      text: Monitorování hybridního počítače s využitím Azure Monitoru pro virtuální počítače
+    - url: ./servers/policy-samples.md
+      itemType: learn
+      text: Zásady řízení přístupu s využitím Azure Policy
+    - url: ./servers/manage-vm-extensions.md
+      itemType: how-to-guide
+      text: Správa a použití rozšíření virtuálních počítačů Azure
+  - title: Kubernetes s podporou Azure Arc (Preview)
     links:
-    - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
-      url: ./servers/onboard-portal.md
-    - text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
-      url: ./servers/onboard-service-principal.md
-    - text: Připojení počítačů k Azure s využitím DSC PowerShellu
-      url: ./servers/onboard-dsc.md
-    - text: Správa a použití rozšíření virtuálních počítačů Azure
-      url: ./servers/manage-vm-extensions.md
-- title: Připojení clusterů Kubernetes k Azure s využitím služby Azure Arc
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Co je Kubernetes s podporou Azure Arc?
-      url: ./kubernetes/overview.md
-  - linkListType: quickstart
-    links:
-    - text: Připojení clusteru
-      url: ./kubernetes/connect-cluster.md
-  - linkListType: how-to-guide
-    links:
-    - text: Nasazení konfigurací s využitím GitOps
-      url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: Nasazení diagramů Helmu s využitím GitOps
-      url: ./kubernetes/use-gitops-with-helm.md
-    - text: Vynucení GitOps s využitím Azure Policy
-      url: ./kubernetes/use-azure-policy.md
-    - text: Monitorování s využitím Azure Monitoru pro kontejnery
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
-    - text: Zásady řízení přístupu s využitím Azure Policy
-      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-    - text: Nasazení úloh Azure IoT Edge
-      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - url: ./kubernetes/use-gitops-with-helm.md
+      itemType: deploy
+      text: Nasazení diagramů Helmu s využitím GitOps
+    - url: ./kubernetes/use-azure-policy.md
+      itemType: how-to-guide
+      text: Vynucení GitOps s využitím Azure Policy
+    - url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+      itemType: tutorial
+      text: Monitorování s využitím Azure Monitoru pro kontejnery
+    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
+      itemType: learn
+      text: Zásady řízení přístupu s využitím Azure Policy
+    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+      itemType: deploy
+      text: Nasazení úloh Azure IoT Edge

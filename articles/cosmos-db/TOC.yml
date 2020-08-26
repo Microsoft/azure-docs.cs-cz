@@ -510,6 +510,8 @@
           href: unique-keys.md
         - name: Řízení optimistické souběžnosti a transakce
           href: database-transactions-optimistic-concurrency.md
+        - name: Přílohy
+          href: attachments.md
     - name: Změna kanálu
       items:
         - name: Přehled kanálů změn

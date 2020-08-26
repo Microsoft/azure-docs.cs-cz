@@ -76,6 +76,8 @@
           href: hpccompute-amd-gpu-windows.md
     - name: Azure Monitor
       items:
+        - name: Agent Azure Monitoru
+          href: ../../azure-monitor/platform/azure-monitor-agent-overview.md?#install-the-azure-monitor-agent
         - name: Rozšíření diagnostiky
           items:
             - name: Linux

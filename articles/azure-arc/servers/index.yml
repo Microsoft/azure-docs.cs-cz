@@ -1,0 +1,32 @@
+### YamlMime:Landing
+title: Servery Azure Arc (Preview)
+summary: Servery Azure Arc
+metadata:
+  title: Servery Azure Arc
+  description: Další informace o správě místních počítačů v Azure
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763761"
+landingContent:
+- title: Připojení počítačů k Azure s využitím serverů s podporou služby Azure Arc
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou servery s podporou služby Azure Arc?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+      url: onboard-portal.md
+    - text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+      url: onboard-service-principal.md
+    - text: Připojení počítačů k Azure s využitím DSC PowerShellu
+      url: onboard-dsc.md

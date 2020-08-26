@@ -1,0 +1,51 @@
+- name: Dokumentace k serverům s podporou služby Azure Arc
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o serverech s podporou služby Azure Arc
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Povolení agenta Servery s podporou služby Arc
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: Kurzy
+  items:
+    - name: Přiřazení zásad pro posouzení dodržování předpisů
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: Monitorování počítače
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      items:
+        - name: Servery s podporou služby Arc
+          href: policy-samples.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+- name: Návody
+  items:
+    - name: Připojení ke službě Azure Arc
+      items:
+        - name: Přehled agenta připojeného počítače
+          href: agent-overview.md
+        - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
+          href: onboard-portal.md
+        - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
+          href: onboard-service-principal.md
+        - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
+          href: onboard-dsc.md
+    - name: Spravovat
+      items:
+        - name: Správa a použití rozšíření virtuálních počítačů Azure
+          href: manage-vm-extensions.md
+        - name: Správa agenta
+          href: manage-agent.md
+    - name: Řešení potíží
+      items:
+        - name: Problémy s připojením agentů
+          href: troubleshoot-agent-onboard.md

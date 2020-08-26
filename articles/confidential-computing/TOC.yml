@@ -12,6 +12,11 @@
   items:
     - name: Řešení na virtuálních počítačích
       href: virtual-machine-solutions.md
+- name: Postupy
+  expanded: true
+  items:
+    - name: Fortanix Enclave Manager
+      href: how-to-fortanix-enclave-manager.md
 - name: Zdroje a prostředky
   expanded: true
   items:

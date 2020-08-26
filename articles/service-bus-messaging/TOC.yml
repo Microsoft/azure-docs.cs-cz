@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -117,6 +117,8 @@
           href: network-security.md
 - name: Návody
   items:
+    - name: Přesun mezi oblastmi
+      href: move-across-regions.md
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
       href: deprecate-service-bus-management.md
     - name: Vytvoření oboru názvů
