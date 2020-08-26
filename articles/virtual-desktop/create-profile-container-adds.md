@@ -6,18 +6,18 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007705"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825609"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
 Tento článek vám ukáže, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a Azure Active Directory Domain Services (služba AD DS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nastavili instanci služby Azure služba AD DS. Pokud ho ještě nemáte, postupujte podle pokynů v části [Vytvoření základní spravované domény](../active-directory-domain-services/tutorial-create-instance.md) a potom se vraťte sem.
 
@@ -107,25 +107,31 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
 
-    Například:
+    Příklad:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Spuštěním následujícího příkazu Udělte uživateli úplný přístup ke sdílené složce služby soubory Azure.
+8. Spuštěním následujících příkazů Umožněte uživatelům virtuálních počítačů s Windows vytvářet vlastní kontejner profilů a přitom blokovat přístup k kontejnerům profilů z jiných uživatelů.
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou má uživatel používat.
-    - Nahraďte `<user-email>` hlavní název uživatele (UPN), který bude používat tento profil pro přístup k virtuálním počítačům hostitele relace.
+    - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou jste použili k namapování jednotky.
+    - Nahraďte `<user-email>` hlavní název uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou potřebovat přístup ke sdílené složce.
 
-    Například:
+    Příklad:
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>Vytvoření kontejneru profilů
@@ -200,7 +206,7 @@ Přiřazení uživatelů:
 
     Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>` , `<wvd-pool>` a `<user-principal>` s odpovídajícími hodnotami.
 
-    Například:
+    Příklad:
 
      ```powershell
      $pool1 = "contoso"

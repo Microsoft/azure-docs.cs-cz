@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816112"
+ms.locfileid: "88825252"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -49,7 +49,7 @@ Zálohy za den (přes DPM/MABS) | Dvě naplánované zálohy za den.
 Měsíční nebo roční záloha| Při zálohování s rozšířením virtuálního počítače Azure se nepodporuje. Podporuje se jenom každodenní a týdenní.<br/><br/> Můžete nastavit zásady pro uchovávání každodenních a týdenních záloh pro měsíční a roční dobu uchování.
 Automatické úpravy hodin | Nepodporováno<br/><br/> Azure Backup se při zálohování virtuálního počítače automaticky nezmění na letní čas při ukládání.<br/><br/>  Zásadu podle potřeby upravte ručně.
 [Funkce zabezpečení pro hybridní zálohování](./backup-azure-security-feature.md) |Zákaz funkcí zabezpečení není podporován.
-Zálohování virtuálního počítače, u kterého se změnil čas počítače | Nepodporováno<br/><br/> Pokud se čas počítače změní na budoucí datum a čas, po povolení zálohování pro tento virtuální počítač; Nicméně i v případě, že se změna času vrátí zpět, není zaručeno úspěšné zálohování.
+Zálohování virtuálního počítače, u kterého se změnil čas počítače | Nepodporováno<br/><br/> Pokud se čas počítače změní na budoucí datum a čas po povolení zálohování pro tento virtuální počítač, ale i když se změna času vrátí zpět, není zaručena úspěšná záloha.
 Virtuální počítače Azure ve službě [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) | Zálohování a obnovení se podporuje pro virtuální počítače s [režimem orchestrace](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) nastavenou na 3. <br><br>Skupiny dostupnosti nejsou podporované.
 
 ## <a name="operating-system-support-windows"></a>Podpora operačního systému (Windows)

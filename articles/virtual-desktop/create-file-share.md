@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009218"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825439"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure ověřenou �
 
 Tento proces používá Active Directory Domain Services (služba AD DS), což je adresářová služba Prem. Pokud hledáte informace o tom, jak vytvořit kontejner profilu FSLogix pomocí Azure služba AD DS, přečtěte si téma [vytvoření kontejneru profilu FSLogix se soubory Azure](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že je váš řadič domény synchronizovaný do Azure a je možné ho přeložit ze služby Azure Virtual Network (VNET), ke které jsou hostitelé relace připojení.
 
@@ -33,9 +33,9 @@ Nastavení účtu úložiště:
 
 2. Na panelu hledání vyhledejte **účet úložiště** .
 
-3. Vyberte **+ Přidat**.
+3. Vyberte **+Přidat**.
 
-4. Do stránky **vytvořit účet úložiště** zadejte následující informace:
+4. Do stránky  **vytvořit účet úložiště** zadejte následující informace:
 
     - Vytvoříte novou skupinu prostředků.
     - Zadejte jedinečný název účtu úložiště.
@@ -127,7 +127,7 @@ Tady je postup, jak získat cestu UNC:
 
 5. Po zkopírování identifikátoru URI proveďte následující kroky a změňte je na cestu UNC:
 
-    - Odebrat `https://` a nahradit za`\\`
+    - Odebrat `https://` a nahradit za `\\`
     - Místo lomítka nahraďte zpětným `/` lomítkem `\` .
     - Přidejte název sdílené složky, kterou jste vytvořili v části [Vytvoření sdílené složky Azure](#create-an-azure-file-share) , na konec názvu UNC.
 
@@ -151,15 +151,15 @@ Konfigurace oprávnění systému souborů NTFS:
 
 1. Otevřete příkazový řádek na virtuálním počítači připojeném k doméně.
 
-2. Spuštěním následující rutiny připojte sdílenou složku Azure a přiřaďte jí písmeno jednotky: .
+2. Spusťte následující příkaz pro připojení sdílené složky Azure a přiřazení písmene jednotky:
 
-     ```powershell
+     ```cmd
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. Spuštěním následující rutiny zkontrolujte přístupová oprávnění ke sdílené složce Azure:
+3. Spuštěním následujícího příkazu zkontrolujte přístupová oprávnění ke sdílené složce Azure:
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -167,9 +167,9 @@ Konfigurace oprávnění systému souborů NTFS:
 
     Pro *uživatele NT AUTHORITY\Authenticated Users* a *BUILTIN\Users* mají ve výchozím nastavení určitá oprávnění. Tato výchozí oprávnění umožňují těmto uživatelům číst kontejnery profilů jiných uživatelů. Oprávnění popsaná v tématu [Konfigurace oprávnění pro úložiště pro použití s kontejnery profilů a kontejnery Office](/fslogix/fslogix-storage-config-ht) ale neumožňují uživatelům číst kontejnery profilů pro všechny ostatní.
 
-4. Spuštěním následujících rutin umožníte uživatelům virtuálních počítačů s Windows vytvářet vlastní kontejnery profilů a zablokovat přístup ke svému kontejneru profilů z jiných uživatelů.
+4. Spusťte následující příkazy, aby uživatelé virtuálních počítačů s Windows mohli vytvořit vlastní kontejner profilu a zároveň blokovat přístup k jejich kontejnerům profilů z jiných uživatelů.
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -179,9 +179,9 @@ Konfigurace oprávnění systému souborů NTFS:
      - Nahraďte <připojeného písmene> písmenem jednotky, kterou jste použili k namapování jednotky.
      - Nahraďte <uživatelem-e-mailem> pomocí hlavního názvu uživatele (UPN) uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou vyžadovat přístup ke sdílené složce.
 
-     Například:
+     Příklad:
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"

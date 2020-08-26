@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756006"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827371"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -170,7 +170,7 @@ Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou 
 
     >[!NOTE]
     >Pokud chcete použít vlastní SQL Server, podporované verze SQL Server jsou SQL Server 2014 SP1 nebo vyšší, 2016 a 2017.  Všechny SQL Server verze by měly být Standard nebo Enterprise 64-bit.
-    >Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní. Pokud používáte stávající SQL Server pro MABS, instalace MABS podporuje pouze použití *pojmenovaných instancí* systému SQL Server.
+    >Azure Backup Server nebude fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní. Pokud používáte stávající SQL Server pro MABS, instalace MABS podporuje pouze použití *pojmenovaných instancí* systému SQL Server.
 
     ![Kontroly Azure Backup Server-SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -343,7 +343,7 @@ K upgradu MABS použijte následující postup:
 
    > [!NOTE]
    >
-   > Neukončujte během upgradu instance SQL, ukončení odinstaluje instanci generování sestav SQL, takže pokus o opětovné provedení upgradu MABS se nezdaří.
+   > Neukončím během upgradu instance SQL. Ukončením dojde k odinstalaci instance SQL Reporting, takže pokus o opětovné provedení upgradu MABS se nezdaří.
 
    > [!IMPORTANT]
    >
@@ -353,7 +353,7 @@ K upgradu MABS použijte následující postup:
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
-5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md).
+5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Přečtěte si další informace](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
