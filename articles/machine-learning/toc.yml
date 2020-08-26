@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: Reference YAML ke kanálu strojového učení
       href: reference-pipeline-yaml.md
+    - name: Parita suverénního cloudu
+      href: reference-machine-learning-cloud-parity.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"

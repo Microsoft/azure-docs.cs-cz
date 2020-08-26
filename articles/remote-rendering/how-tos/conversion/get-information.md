@@ -1,20 +1,40 @@
 ---
-title: Získání informací o převedeném modelu
-description: Popis všech parametrů převodu modelu
+title: Získat informace o převodech
+description: Získat informace o převodech
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509293"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870285"
 ---
-# <a name="get-information-about-a-converted-model"></a>Získání informací o převedeném modelu
+# <a name="get-information-about-conversions"></a>Získat informace o převodech
 
-Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Proto služba převodu umístí soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku `buggy.arrAsset` . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
+## <a name="information-about-a-conversion-the-result-file"></a>Informace o převodu: soubor výsledků
+
+Když převodní služba převede určitý Asset, zapíše souhrn všech problémů do "souboru výsledků". Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.result.json` .
+
+Výsledný soubor obsahuje seznam chyb a upozornění, ke kterým došlo během převodu a poskytuje souhrn výsledků, což je jedna z těchto `succeeded` `failed` nebo `succeeded with warnings` .
+Výsledný soubor je strukturovaný jako pole JSON objektů, z nichž každý má řetězcovou vlastnost, která je jedna z `warning` ,,, `error` `internal warning` `internal error` a `result` . K dispozici je jenom jedna chyba ( `error` nebo `internal error` ) a bude vždycky jedna `result` .
+
+## <a name="example-result-file"></a>Ukázkový soubor *výsledků*
+
+Následující příklad popisuje převod, který úspěšně vygeneroval arrAsset. Vzhledem k tomu, že došlo k chybějící textuře, výsledná arrAsset možná nebude zamýšlená.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Informace o převedeném modelu: informační soubor
+
+Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Pro podporu tohoto pracovního postupu umístí služba převodu soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud `buggy.gltf` je soubor převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku `buggy.arrAsset` . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
 
 ## <a name="example-info-file"></a>Příklad souboru s *informacemi*
 
@@ -124,6 +144,11 @@ V této části jsou zaznamenány informace vypočítané z převedeného prost�
 * `numMeshPartsInstanced`: Počet sítí, které se znovu používají v arrAsset.
 * `recenteringOffset`: Když `recenterToOrigin` je povolená možnost v [ConversionSettings](configure-model-conversion.md) , je tato hodnota překlad, který by převedl převedený model zpátky do původní pozice.
 * `boundingBox`: Hranice modelu.
+
+## <a name="deprecated-features"></a>Zastaralé funkce:
+
+Převodní služba zapisuje soubory `stdout.txt` a `stderr.txt` do výstupního kontejneru a ta byla jediným zdrojem upozornění a chyb.
+Tyto soubory jsou nyní zastaralé. Místo toho prosím použijte [soubory výsledků](#information-about-a-conversion-the-result-file) pro tento účel.
 
 ## <a name="next-steps"></a>Další kroky
 

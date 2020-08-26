@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794302"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870013"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
@@ -23,7 +23,7 @@ Tento článek pokračuje v kurzu Stream Analytics [rozpoznávání podvodů v r
 Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA)  , které znázorňuje tento scénář.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste provedli následující akce:
 
@@ -160,7 +160,7 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Podrobnosti vizualizace pro novou dlaždici](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. Klikněte na **Další**.
+7. Klikněte na **Next** (Další).
 
 8. Vyplňte podrobnosti dlaždice jako název a podnadpis.
 
@@ -194,7 +194,7 @@ Pomocí následující rovnice můžete vypočítat hodnotu a poskytnout tak okn
 
 ![Rovnice k výpočtu hodnoty za účelem poskytnutí okna v sekundách](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Například:
+Příklad:
 
 * Máte 1 000 zařízení odesílajících data v sekundách za sekundu.
 * Používáte Power BI Pro SKU, který podporuje 1 000 000 řádků za hodinu.

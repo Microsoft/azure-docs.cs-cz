@@ -5,14 +5,14 @@ keywords: app service, azure app service, domain mapping, domain name, existing 
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bbf8eb507e534c938ab98eb6a354e1051592fd8e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782307"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870920"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -138,38 +138,34 @@ Po přidání záznamů CNAME a TXT bude stránka záznamů DNS vypadat jako v n
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
 
-V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
+1. V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
-![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Na stránce **Vlastní domény** aplikace přidejte do seznamu plně kvalifikovaný vlastní název DNS (`www.contoso.com`).
+1. Na stránce **Vlastní domény** aplikace přidejte do seznamu plně kvalifikovaný vlastní název DNS (`www.contoso.com`).
 
-Vyberte **+** ikonu vedle **Přidat vlastní doménu**.
+1. Vyberte **Přidat vlastní doménu**.
 
-![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CNAME, například `www.contoso.com`.
+1. Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CNAME, například `www.contoso.com`.
 
-Vyberte **Ověřit**.
+1. Vyberte **Ověřit**. Zobrazí se stránka **Přidat vlastní doménu** .
 
-Zobrazí se stránka **Přidat vlastní doménu** .
+1. Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **CNAME (webová \. example.com nebo libovolná subdoména)**. Vyberte **Přidat vlastní doménu**.
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **CNAME (webová \. example.com nebo libovolná subdoména)**.
+    ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Vyberte **Přidat vlastní doménu**.
+    Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
-![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+    > [!NOTE]
+    > Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
 
-![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
-> [!NOTE]
-> **Nezabezpečený** popisek pro vaši vlastní doménu znamená, že ještě není vázaný na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
-
-Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
-
-![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -223,33 +219,29 @@ Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujíc�
 
 Zpět na stránce **Vlastní domény** aplikace na webu Azure Portal přidejte do seznamu plně kvalifikovaný vlastní název DNS (například `contoso.com`).
 
-Vyberte **+** ikonu vedle **Přidat vlastní doménu**.
+1. Vyberte **Přidat vlastní doménu**.
 
-![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, pro který jste nakonfigurovali záznam A, například `contoso.com`.
+1. Zadejte plně kvalifikovaný název domény, pro který jste nakonfigurovali záznam A, například `contoso.com`. 
 
-Vyberte **Ověřit**.
+1. Vyberte **Ověřit**. Zobrazí se stránka **Přidat vlastní doménu** .
 
-Zobrazí se stránka **Přidat vlastní doménu** .
+1. Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)**. Vyberte **Přidat vlastní doménu**.
 
-Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)**.
+    ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Vyberte **Přidat vlastní doménu**.
+    Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
-![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
-
-![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
-
-> [!NOTE]
-> **Nezabezpečený** popisek pro vaši vlastní doménu znamená, že ještě není vázaný na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
-
-Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
-
-![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error.png)
-
+    > [!NOTE]
+    > Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
+    
+    Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
+    
+    ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    
 <a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
@@ -279,33 +271,31 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 Nyní můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` , `sub2.contoso.com` a `*.contoso.com` obě shody `*.contoso.com` ).
 
-V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
+1. V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
-![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Vyberte **+** ikonu vedle **Přidat vlastní doménu**.
+1. Vyberte **Přidat vlastní doménu**.
 
-![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, který odpovídá zástupné doméně (například `sub1.contoso.com`), a pak vyberte **Ověřit**.
+1. Zadejte plně kvalifikovaný název domény, který odpovídá zástupné doméně (například `sub1.contoso.com`), a pak vyberte **Ověřit**.
 
-Aktivuje se tlačítko **Přidat vlastní doménu** .
+    Aktivuje se tlačítko **Přidat vlastní doménu** .
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **záznam CNAME (webová \. example.com nebo libovolná subdoména)**.
+1. Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **záznam CNAME (webová \. example.com nebo libovolná subdoména)**. Vyberte **Přidat vlastní doménu**.
 
-Vyberte **Přidat vlastní doménu**.
+    ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
-Může trvat nějakou dobu, než se nová vlastní doména projeví na stránce **vlastní domény** aplikace. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+1. **+** Opětovným výběrem této ikony přidejte další vlastní doménu, která odpovídá zástupné doméně. Přidejte například `sub2.contoso.com`.
 
-**+** Opětovným výběrem této ikony přidejte další vlastní doménu, která odpovídá zástupné doméně. Přidejte například `sub2.contoso.com`.
+    ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
-![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
-
-> [!NOTE]
-> **Poznámka zabezpečený** popisek pro vaši vlastní doménu znamená, že ještě není vázaný na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
-
+    > [!NOTE]
+    > Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL, a v závislosti na prohlížeči se zobrazí chyba nebo upozornění všech požadavků HTTPS z prohlížeče na vaši vlastní doménu. Pokud chcete přidat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
+    
 ## <a name="test-in-browser"></a>Test v prohlížeči
 
 Přejděte na názvy DNS, které jste předtím nakonfigurovali (například `contoso.com`, `www.contoso.com`, `sub1.contoso.com` a `sub2.contoso.com`).

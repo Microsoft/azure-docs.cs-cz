@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: Zpracování souběžných aktualizací
           href: search-howto-concurrency.md
-    - name: Ingestování dat Azure
+    - name: Ingestování dat jenom z Azure
       items:
         - name: Konfigurace indexerů
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: Databáze SQL
               href: search-howto-managed-identities-sql.md
-    - name: Ingestování s využitím AI
+    - name: Použití dovedností (AI)
       items:
         - name: Připojení prostředku služeb Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Mapování na pole indexu
               href: cognitive-search-output-field-mapping.md
-            - name: Extrahování informací z obrázků
+            - name: Zpracování obrázkových souborů
               href: cognitive-search-concept-image-scenarios.md
             - name: Obohacení mezipaměti (přírůstkové)
               href: search-howto-incremental-index.md

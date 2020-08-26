@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: Spouštění úloh ve službě IoT Edge
           href: stream-analytics-edge.md
+        - name: Spouštění úloh v Azure Stacku
+          href: on-azure-stack.md
         - name: Analýza dat snímačů z mýtných bran
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: Vysokofrekvenční obchodování

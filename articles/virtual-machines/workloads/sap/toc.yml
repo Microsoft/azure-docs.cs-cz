@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP s několika SID
           items:
+            - name: Windows se sdíleným diskem Azure pro instanci (A)SCS
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows se sdíleným diskem pro instanci (A)SCS
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS

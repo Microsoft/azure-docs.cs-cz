@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: Použití prostředí Data Science Virtual Machine s Linuxem
       href: linux-dsvm-walkthrough.md
-    - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
-      href: dsvm-pools.md
-    - name: Integrace se službou Active Directory
-      href: dsvm-common-identity.md
-    - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
-      href: dsvm-secure-access-keys.md
+    - name: Integrace s Azure Machine Learningem
+      items:
+        - name: Sledování experimentů
+          href: how-to-track-experiments.md
+    - name: Pokyny Enterprise
+      items:
+        - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
+          href: dsvm-pools.md
+        - name: Integrace se službou Active Directory
+          href: dsvm-common-identity.md
+        - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
+          href: dsvm-secure-access-keys.md
 - name: Zdroje a prostředky
   items:
     - name: Stránka s dotazy na Microsoft Q&A

@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Dostupnost Storage Exploreru
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Fórum Azure Storage
+        - name: Azure Storage na webu Microsoft Q&A
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Azure Storage na webu Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Ceny služby Blob Storage
+        - name: Ceny pro objekty blob bloku
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: Ceny pro objekty blob stránky
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Cenová kalkulačka Azure
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Videa

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074038"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871475"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Čas synchronizace pro virtuální počítače s Windows v Azure
 
@@ -60,7 +60,7 @@ Ve výchozím nastavení jsou image virtuálních počítačů s operačním sys
 - Zprostředkovatel klienta NTP, který získává informace z time.windows.com.
 - Služba VMICTimeSync, která slouží ke komunikaci času hostitele s virtuálními počítači a provádí opravy po pozastavení virtuálního počítače za účelem údržby. Hostitelé Azure používají zařízení vrstvy 1 vlastněná společností Microsoft k udržení přesného času.
 
-Služba W32Time upřednostňuje poskytovatele času v následujícím pořadí: úroveň vrstvy, zpoždění kořene, odmocninu a časový posun. Ve většině případů by služba W32Time chtěla time.windows.com na hostitele, protože time.windows.com sestavuje nižší úroveň. 
+Služba W32Time upřednostňuje poskytovatele času v následujícím pořadí: úroveň vrstvy, zpoždění kořene, odmocninu a časový posun. Ve většině případů by služba W32Time na virtuálním počítači Azure chtěla preferovat čas hostitele z důvodu vyhodnocení, že by to vedlo k porovnání obou zdrojů času. 
 
 V případě počítačů připojených k doméně doména sama o sobě naváže časovou hierarchii synchronizace, ale kořen doménové struktury pořád potřebuje čas od někam a následující požadavky by pořád obsahovaly hodnotu true.
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 Tady je výstup, který vidíte a co by to znamenalo:
     
-- **time.Windows.com** – ve výchozí konfiguraci služba W32Time Získá čas od time.Windows.com. Kvalita synchronizace času závisí na připojení k Internetu a je ovlivněná zpožděními paketů. Toto je obvyklý výstup z výchozího nastavení.
-- **Zprostředkovatel synchronizace pro vnitropodnikový čas virtuálního počítače** – virtuální počítač se synchronizuje od hostitele. To je obvykle způsobeno tím, že se přihlásíte k synchronizaci jenom pro hostitele, nebo když NtpServer není v současnosti k dispozici. 
+- **time.Windows.com** – ve výchozí konfiguraci služba W32Time Získá čas od time.Windows.com. Kvalita synchronizace času závisí na připojení k Internetu a je ovlivněná zpožděními paketů. Toto je obvyklý výstup, který byste získali na fyzickém počítači.
+- **Zprostředkovatel synchronizace pro vnitropodnikový čas virtuálního počítače**  – virtuální počítač se synchronizuje od hostitele. Toto je obvyklý výstup, který byste získali na virtuálním počítači běžícím na Azure. 
 - *Váš doménový server* – aktuální počítač je v doméně a doména definuje časovou hierarchii synchronizace.
 - *Některý jiný server* – služba W32Time byla explicitně nakonfigurovaná tak, aby získala čas od jiného serveru. Kvalita synchronizace času závisí na tomto časovém serveru.
 - **Místní paměť CMOS** – hodiny jsou nesynchronizovány. Tento výstup můžete získat v případě, že služba W32Time nemá dostatek času na spuštění po restartování nebo když nejsou k dispozici všechny nakonfigurované zdroje času.
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-Aby služba W32Time mohla používat nové intervaly cyklického dotazování, je NtpServers označit jako používané. Pokud jsou servery opatřené příponou 0x1 bitflag, které by tento mechanismus potlačily a služba W32Time místo toho použila SpecialPollInterval. Zajistěte, aby zadané servery NTP buď používaly příznak 0x8, nebo příznak bez příznaku.
+Aby služba W32Time mohla používat nové intervaly cyklického dotazování, musí být NtpServers označeny jako používané. Pokud jsou servery opatřené příponou 0x1 bitflag, které by tento mechanismus potlačily a služba W32Time místo toho použila SpecialPollInterval. Zajistěte, aby zadané servery NTP buď používaly příznak 0x8, nebo příznak bez příznaku.
 
 Ověřte, jaké příznaky se používají pro používané servery NTP.
 
@@ -173,6 +173,6 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 Níže jsou uvedeny odkazy na Další informace o čase synchronizace:
 
 - [Nástroje a nastavení služby Systémový čas](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [Vylepšení Windows serveru 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Vylepšení Windows serveru 2016 ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Přesný čas pro Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
 - [Podpora hranice pro konfiguraci služby Systémový čas pro prostředí s vysokou přesností](/windows-server/networking/windows-time-service/support-boundary)

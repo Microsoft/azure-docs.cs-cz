@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 11/05/2019
-ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/25/2020
+ms.openlocfilehash: c812dfa0be3e5ced40b7f347639aeb2540b75351
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014127"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871526"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>transparentní šifrování dat ve spravované instanci SQL pomocí vlastního klíče z Azure Key Vault
 
@@ -39,7 +39,7 @@ Použití prostředí PowerShell místně nebo pomocí Azure Cloud Shell vyžadu
 
 Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="sample-scripts"></a>Ukázkové skripty
+## <a name="sample-scripts"></a>Ukázkové skripty 
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 

@@ -4,12 +4,12 @@ description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870761"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -80,6 +80,7 @@ V následujícím diagramu byly nasazeny některé skupiny kontejnerů do podsí
 * Příklady nasazení pomocí Azure CLI najdete v tématu [nasazení instancí kontejnerů do služby Azure Virtual Network](container-instances-vnet.md).
 * Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny kontejnerů pomocí šablony Správce prostředků najdete v tématu [Vytvoření skupiny kontejnerů Azure s virtuální](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )sítí.
+* Při použití [Azure Portal](container-instances-quickstart-portal.md) k vytvoření instance kontejneru můžete zadat také nastavení pro novou nebo exsting virtuální síť na kartě **síť** .
 
 
 <!-- IMAGES -->

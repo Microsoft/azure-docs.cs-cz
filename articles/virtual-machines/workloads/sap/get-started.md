@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749661"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871373"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -88,7 +88,10 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
-- 08/21/2020: Přidání nového vydání operačního systému do [kompatibilních operačních systémů pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) jako dostupný operační systém pro jednotky HLI typu i a II
+- 08/25/2020: Změna v [Průvodci ha pro SAP ASCS/SCS se službou WSFC a sdíleným diskem](./sap-high-availability-guide-wsfc-shared-disk.md), [Příprava infrastruktury Azure pro SAP ASCS/SCS pomocí služby WSFC a sdíleného disku](./sap-high-availability-infrastructure-wsfc-shared-disk.md) a [instalace SAP NW ha s WSFC a sdíleným diskem](./sap-high-availability-guide-wsfc-shared-disk.md) , který přináší možnost použití architektury Azure Shared disk a Document ERS2 pro SAP
+- 08/25/2020: vydání [příručky multi-SID ha pro SAP ASCS/SCS s WSFC a sdíleným diskem Azure](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
+- 08/25/2020: Změna v [Průvodci ha pro SAP ASCS/SCS s WSFC a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md), [Příprava infrastruktury Azure pro SAP ASCS/SCS se službou WSFC a sdílenými složkami](./sap-high-availability-infrastructure-wsfc-file-share.md), [Průvodce vysokou SID pro SAP ASCS/SCS s WSFC a sdíleným diskem](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) a [průvodcem pro SAP ASCS/SCS se službou WSFC a SOFS sdílenou složkou](./sap-ascs-ha-multi-sid-wsfc-file-share.md) v případě aktualizací obsahu a restrukturalizace v průvodcích ha pro SAP ASCS/SCS pomocí WFC a sdíleného disku 
+- 08/21/2020: Přidání nového vydání operačního systému do [kompatibilních operačních systémů pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) jako dostupný operační systém pro jednotky HLI typu I a II
 - 08/18/2020: vydání [ha pro SAP HANA navýšení kapacity pomocí ANF na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020: přidejte informace o použití Azure Site Recovery pro přesun systémů SAP NetWeaver z místního prostředí do Azure v článku [azure Virtual Machines plánování a implementace pro SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: Přidání rad konfigurace disku pro Db2 v článku [IBM Db2 Azure Virtual Machines DBMS nasazení pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

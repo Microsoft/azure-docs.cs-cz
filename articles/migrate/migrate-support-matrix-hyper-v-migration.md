@@ -3,12 +3,12 @@ title: Podpora migrace Hyper-V v Azure Migrate
 description: Přečtěte si o podpoře migrace Hyper-V s Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1ea7d139b3d3cc8c14e43ccfb7c233fcbe4c564c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122060"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871492"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -25,7 +25,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | :-------------------       | :------------------- |
 | **Nasazení**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. <br/>Na hostitelích Hyper-V je nainstalovaný software pro replikaci Azure Migrate (Zprostředkovatel replikace technologie Hyper-V).|
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. |
-| **Operační systém hostitele** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2. |
+| **Operační systém hostitele** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2 s nejnovějšími aktualizacemi. Upozorňujeme, že instalace jádra serveru těchto operačních systémů je taky podporovaná. |
 | **Přístup k portu** |  Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.
 
 
@@ -38,7 +38,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 **Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> – CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8. Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#linux-machines) ručně.
 | **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure. Před migrací proveďte úpravy ručně. Příslušné články obsahují pokyny k tomu, jak to provést. |
 | **Spouštění ze systému Linux**                 | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky. |
-| **Spouštění UEFI**                  | Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.|
+| **Spouštění UEFI**                  | Podporuje se. Ujistěte se, že jste vybrali velikost virtuálního počítače, kterou virtuální počítač Azure Generation 2 podporuje.  |
 | **Velikost disku**                  | 2 TB pro disk s operačním systémem, 4 TB pro datové disky.|
 | **Číslo disku** | Maximálně 16 disků na virtuální počítač.|
 | **Šifrované disky/svazky**    | Migrace se nepodporuje.|
@@ -47,16 +47,16 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **NFS**                        | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.|
 | **ISCSI**                      | Virtuální počítače s cíli iSCSI se nepodporují pro migraci.
 | **Cílový disk**                | Můžete migrovat jenom na virtuální počítače Azure se spravovanými disky. |
-| **IPv6** | Není podporováno.|
-| **Seskupování síťových adaptérů** | Není podporováno.|
+| **IPv6** | Nepodporováno|
+| **Seskupování síťových adaptérů** | Nepodporováno|
 | **Azure Site Recovery** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nejde replikovat pomocí Azure Migrate migrace serveru.|
-| **Přístavu** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.|
+| **Porty** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.|
 
 ### <a name="url-access-public-cloud"></a>Přístup k adrese URL (veřejný cloud)
 
 Software zprostředkovatele replikace na hostitelích Hyper-V bude potřebovat přístup k těmto adresám URL.
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 login.microsoftonline.com | Řízení přístupu a Správa identit pomocí služby Active Directory.
 backup.windowsazure.com | Přenos a koordinace dat replikace.
@@ -69,7 +69,7 @@ time.windows.com | Ověřuje časovou synchronizaci mezi systémovým a globáln
 
 Software zprostředkovatele replikace na hostitelích Hyper-V bude potřebovat přístup k těmto adresám URL.
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 login.microsoftonline.us | Řízení přístupu a Správa identit pomocí služby Active Directory.
 backup.windowsazure.us | Přenos a koordinace dat replikace.
@@ -89,11 +89,11 @@ Počet disků s operačním systémem | 1 | Pokud je tato operace Nepodporovaná
 Počet datových disků | 16 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílený virtuální pevný disk | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán.
+Sdílený virtuální pevný disk | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Nepodporováno | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> – Pro přístup typu Site-to-Site VPN Povolte protokol RDP a povolte RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> – Pro přístup typu Site-to-Site VPN Povolte protokol RDP a povolte RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](prepare-for-migration.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/><br/> – Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/><br/> – Po migraci povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525411"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869214"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Infrastruktura aktualizace Red Hat pro virtuální počítače na vyžádání Red Hat Enterprise Linux v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -49,7 +49,7 @@ Od dubna 2019 nabízí Azure image RHEL připojené k úložištím rozšířen�
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Image připojené k úložištím bez EUS
 
-Pokud zřídíte virtuální počítač z image RHEL, která je připojená k EUS úložištích, budete při spuštění upgradu na nejnovější podverzi RHEL `sudo yum update` . Pokud například zřídíte virtuální počítač z image RHEL 7,4 PAYG a spustíte `sudo yum update` ji, skončíte s virtuálním počítačem RHEL 7,7 (nejnovější podverze v rodině RHEL7).
+Pokud zřídíte virtuální počítač z image RHEL, která je připojená k EUS úložištích, budete při spuštění upgradu na nejnovější podverzi RHEL `sudo yum update` . Pokud například zřídíte virtuální počítač z image RHEL 7,4 PAYG a spustíte `sudo yum update` ji, skončíte s virtuálním počítačem RHEL 7,8 (nejnovější podverze v rodině RHEL7).
 
 Obrázky, které jsou připojené k úložištím, která nejsou EUS, v SKU nebudou obsahovat číslo dílčí verze. SKU je třetí prvek v názvu URN (celý název obrázku). Například všechny následující image jsou připojené k úložištím bez EUS:
 

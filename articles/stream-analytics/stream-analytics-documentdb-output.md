@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848037"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870829"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
 Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
@@ -95,7 +95,7 @@ Míra příchozích událostí v Event Hubs je dvakrát větší než Azure Cosm
 
 ![Porovnání metrik Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-S 1,2 je Stream Analytics více inteligentních procesů, které využívají 100 procent dostupné propustnosti v Azure Cosmos DB s velmi malým počtem opětovného odeslání od omezení nebo omezení rychlosti. To poskytuje lepší možnosti pro jiné úlohy, jako jsou dotazy běžící na kontejneru ve stejnou dobu. Pokud chcete zjistit, jak Stream Analytics škálovat s Azure Cosmos DB jako jímku pro 1 000 až 10 000 zpráv za sekundu, vyzkoušejte [Tento ukázkový projekt Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
+S 1,2 je Stream Analytics více inteligentních procesů, které využívají 100 procent dostupné propustnosti v Azure Cosmos DB s velmi malým počtem opětovného odeslání od omezení nebo omezení rychlosti. To poskytuje lepší možnosti pro jiné úlohy, jako jsou dotazy běžící na kontejneru ve stejnou dobu. Pokud chcete zjistit, jak Stream Analytics škálovat s Azure Cosmos DB jako jímku pro 1 000 až 10 000 zpráv za sekundu, vyzkoušejte  [Tento ukázkový projekt Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
 
 Propustnost výstupu Azure Cosmos DB je shodná s 1,0 a 1,1. *Důrazně doporučujeme* , abyste v Stream Analytics s Azure Cosmos DB používali úroveň kompatibility 1,2.
 
@@ -105,13 +105,13 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 
 ![Informační pole pro výstupní datový proud Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Pole           | Description|
+|Pole           | Popis|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu Stream Analytics.|
 |Předplatné    | Předplatné Azure.|
 |Account ID      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
-|databáze        | Azure Cosmos DB název databáze.|
+|Databáze        | Azure Cosmos DB název databáze.|
 |Název kontejneru | Název kontejneru, například `MyContainer` . Musí existovat jeden kontejner s názvem `MyContainer` .  |
 |ID dokumentu     | Nepovinný parametr. Název sloupce ve výstupních událostech použitý jako jedinečný klíč, na kterém musí být operace INSERT nebo Update založená. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
 

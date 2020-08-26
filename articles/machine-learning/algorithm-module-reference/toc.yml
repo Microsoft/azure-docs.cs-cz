@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: Chyby modulů a řešení potíží
   href: designer-error-codes.md
+- name: Syntaxe dotazů prohledávání grafů
+  href: graph-search-syntax.md

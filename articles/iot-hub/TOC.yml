@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: Automatické směrování zpráv pomocí šablony ARM
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: Kurzy
   items:
     - name: Směrování zpráv

@@ -23,7 +23,7 @@
       href: storage-sync-files-extend-servers.md
 - name: Koncepty
   items:
-    - name: Azure Files
+    - name: Soubory Azure
       items:
         - name: Plánování nasazení služby Soubory Azure
           href: storage-files-planning.md
@@ -296,12 +296,12 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Poznámky k verzi Synchronizace souborů Azure
       href: storage-files-release-notes.md
-    - name: Fórum Azure Storage
-      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
+    - name: Azure Storage na webu Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
     - name: Azure Storage na webu Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Ceny služby Azure Storage
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Ceny služby Azure Files
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Cenová kalkulačka Azure
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videa

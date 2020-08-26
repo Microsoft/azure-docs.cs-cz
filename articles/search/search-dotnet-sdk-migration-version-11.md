@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688347"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870200"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -70,7 +70,7 @@ Kromě rozdílů klientů (uvedených dříve a tedy vynechán) bylo přejmenov�
 
 | Verze 10 | Ekvivalent verze 11 |
 |------------|-----------------------|
-| [Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
+| [Indexovacím](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
 | [Pole](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [Seachfield](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Programátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
@@ -153,6 +153,8 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
    using Azure.Search.Documents.Indexes.Models;
    using Azure.Search.Documents.Models;
    ```
+
+1. Pro třídy, které vyžadují serializaci JSON, nahraďte parametrem `using Newtonsoft.Json` `using System.Text.Json.Serialization` .
 
 1. Opravte kód ověřování klienta. V předchozích verzích byste pomocí vlastností objektu klienta nastavili klíč rozhraní API (například vlastnost [SearchServiceClient. credentialss](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) ). V aktuální verzi použijte třídu [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) a předejte klíč jako přihlašovací údaje, takže v případě potřeby můžete klíč rozhraní API aktualizovat bez vytváření nových objektů klienta.
 

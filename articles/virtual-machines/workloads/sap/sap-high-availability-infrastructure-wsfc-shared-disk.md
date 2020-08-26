@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6eaabac35676e9c836d07ffe6942ef9fc8c20cd8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855401"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871512"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -540,7 +540,7 @@ Po instalaci s DataKeeper na oba uzly spusťte konfiguraci. Cílem konfigurace j
 
    ![Obrázek 43: vyberte Ano a nastavte replikovaný svazek jako svazek clusteru.][sap-ha-guide-figure-3043]
 
-   _ Pokud chcete nastavit replikovaný svazek jako volume_ clusteru, vyberte **Ano** .
+   _Vyberte **Ano** a nastavte replikovaný svazek jako svazek clusteru._
 
    Po vytvoření svazku se v nástroji pro správu a konfiguraci datakeepu zobrazí, že je úloha replikace aktivní.
 

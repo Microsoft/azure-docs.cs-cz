@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d7d0979a52b4762ec4cc2fa82f507e8ce2b083c9
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86056884"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870642"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
@@ -61,7 +61,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="understand-the-scenario"></a>Vysvětlení scénáře
 
-Šablona topologie služby popisuje prostředky Azure, ze kterých se skládá vaše služba, a kam se mají nasadit. Definice topologie služby má následující hierarchii:
+Šablona topologie služby popisuje prostředky Azure, které tvoří vaši službu a kam je nasazovat. Definice topologie služby má následující hierarchii:
 
 * Topologie služby
   * Služby

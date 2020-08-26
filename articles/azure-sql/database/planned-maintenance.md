@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
-ms.date: 01/30/2019
-ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 08/25/2020
+ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661142"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869113"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Plánování událostí údržby Azure v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,15 +29,15 @@ Pro každou databázi, Azure SQL Database a Azure SQL Managed instance udržují
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Co očekávat během plánované události údržby
 
-Rekonfigurace/převzetí služeb při selhání se většinou dokončí do 30 sekund. Průměr je 8 sekund. Pokud už je vaše aplikace připojená, musí se znovu připojit ke správné kopii nové primární repliky vaší databáze. Pokud dojde k pokusu o nové připojení, zatímco se databáze předá novou primární replikou v online režimu, zobrazí se chyba 40613 (databáze není k dispozici): "databáze {DatabaseName} na serveru {ServerName}" není aktuálně k dispozici. Opakujte pokus o připojení později.“ Pokud má vaše databáze dlouhotrvající dotaz, bude tento dotaz během opakované konfigurace přerušen a bude nutné ho restartovat.
+Událost údržby může způsobit jedno nebo několik převzetí služeb při selhání v závislosti na Constellation primárních a sekundárních replik na začátku události údržby. V průměru 1,7 dojde k převzetí služeb při selhání za plánovanou událost údržby. Rekonfigurace/převzetí služeb při selhání se většinou dokončí do 30 sekund. Průměr je 8 sekund. Pokud už je vaše aplikace připojená, musí se znovu připojit k nové primární replice vaší databáze. Pokud dojde k pokusu o nové připojení, zatímco se databáze předá novou primární replikou v online režimu, zobrazí se chyba 40613 (databáze není k dispozici): *"databáze {DatabaseName} na serveru {ServerName}" není aktuálně k dispozici. Zkuste prosím připojení znovu později. "* Pokud má vaše databáze dlouhotrvající dotaz, bude tento dotaz během opakované konfigurace přerušen a bude nutné ho restartovat.
+
+## <a name="how-to-simulate-a-planned-maintenance-event"></a>Postup simulace plánované události údržby
+
+Zajištění odolnosti klientských aplikací proti událostem údržby před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací a přispěje k dostupnosti aplikací pro koncové uživatele. Při provádění [ručního převzetí služeb při selhání](https://aka.ms/mifailover-techblog) prostřednictvím PowerShellu, CLI nebo REST API můžete testovat chování klientské aplikace během plánovaných událostí údržby. Vytvoří stejné chování jako událost údržby při převedení primární repliky do offline režimu.
 
 ## <a name="retry-logic"></a>Logika opakování
 
-Každá provozní aplikace klienta, která se připojuje ke cloudové databázové službě, by měla implementovat robustní [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)připojení. To vám pomůže zmírnit tyto situace a obvykle by měly být chyby transparentní pro koncového uživatele.
-
-## <a name="frequency"></a>Frequency
-
-V průměru se v každém měsíci vyskytují plánované události údržby 1,7.
+Každá provozní aplikace klienta, která se připojuje ke cloudové databázové službě, by měla implementovat robustní [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)připojení. To pomůže zajistit, aby převzetí služeb při selhání bylo transparentní pro koncové uživatele nebo alespoň v negativních dopadech.
 
 ## <a name="resource-health"></a>Stav prostředků
 

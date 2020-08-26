@@ -155,6 +155,18 @@
       items:
         - name: Problémy s latencí
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Azure Storage na webu Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
+    - name: Azure Storage na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Ceny služby Table Storage
+      href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
+    - name: Cenová kalkulačka Azure
+      href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: Referenční informace
   items:
     - name: Škálovatelnost a cíle výkonnosti

@@ -3,12 +3,12 @@ title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827065"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871254"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
@@ -50,7 +50,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
    > Možnost obnovení jednotlivých souborů a složek vyžaduje .NET Framework 4.5.2 nebo novější. Pokud nevidíte možnost **jednotlivé soubory a složky** , musíte upgradovat .NET Framework na verzi 4.5.2 nebo novější. potom to zkuste znovu.
 
    > [!TIP]
-   > Možnost **jednotlivé soubory a složky** umožňuje rychlý přístup k datům bodů obnovení. Je vhodný pro obnovení jednotlivých souborů, jejichž velikost se celkově nepřekračuje 80 GB, a během obnovování nabízí rychlost přenosu nebo kopírování až 6 MB/s. Možnost **svazek** obnoví všechna zálohovaná data v zadaném svazku. Tato možnost nabízí rychlejší přenosovou rychlost (až 40 MB/s), která je ideální pro obnovování velkých objemů dat nebo celých svazků.
+   > Možnost **jednotlivé soubory a složky** umožňuje rychlý přístup k datům bodů obnovení. Je vhodný pro obnovování jednotlivých souborů a doporučuje se pro celkovou velikost menší než 80 GB. Během obnovení nabízí rychlost přenosu nebo kopírování až do 6 MB/s. Možnost **svazek** obnoví všechna zálohovaná data v zadaném svazku. Tato možnost poskytuje rychlejší přenosovou rychlost (až 40 MB/s) a doporučuje se pro obnovu velkých objemů dat nebo celých svazků.
 
 5. Na stránce **Vybrat svazek a datum** vyberte svazek, který obsahuje soubory a složky, které chcete obnovit.
 

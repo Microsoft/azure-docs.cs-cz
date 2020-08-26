@@ -3,12 +3,12 @@ title: Správa certifikátů v clusteru Azure Service Fabric
 description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z Service Fabricho clusteru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658381"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869741"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů clusteru Service Fabric v Azure
 Doporučujeme, abyste se seznámili s tím, jak Service Fabric využívá certifikáty X. 509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Než budete pokračovat, musíte pochopit, co je certifikát clusteru a k čemu se používá.
@@ -260,7 +260,7 @@ Kromě certifikátů clusteru můžete přidat klientské certifikáty k provád
 
 Můžete přidat dva typy klientských certifikátů – správce nebo jen pro čtení. Ty pak můžete použít k řízení přístupu k operacím správy a operacím dotazů v clusteru. Ve výchozím nastavení se certifikáty clusteru přidají do seznamu povolených certifikátů správců.
 
-můžete zadat libovolný počet klientských certifikátů. Každé přidání nebo odstranění má za následek aktualizaci konfigurace Service Fabric clusteru.
+Můžete zadat libovolný počet klientských certifikátů. Každé přidání nebo odstranění má za následek aktualizaci konfigurace clusteru Service Fabric.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Přidání klientských certifikátů – správce nebo jen pro čtení přes portál
