@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 08f5829eb624f13be44bba633f3188d8d9876058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547456"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -32,12 +32,12 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-- JIRA Core a software 6,4 8.11.0 nebo JIRA Service Desk 3,0 na 4.8.0 by se měly nainstalovat a nakonfigurovat v systému Windows 64-bit verze
+- JIRA Core a software 6,4 8.11.0 nebo JIRA Service Desk 3,0 na 4.11.1 by se měly nainstalovat a nakonfigurovat v systému Windows 64-bit verze
 - Server JIRA je povolený pomocí HTTPS.
 - Poznámka: podporované verze pro modul plug-in JIRA jsou uvedené v následující části.
 - JIRA Server je dosažitelný na internetu, zejména na přihlašovací stránce Azure AD pro ověřování a měl by být schopný získat token z Azure AD.
@@ -59,7 +59,7 @@ Chcete-li začít, potřebujete následující položky:
 ## <a name="supported-versions-of-jira"></a>Podporované verze JIRA
 
 * JIRA Core a software: 6,4 až 8.11.0
-* JIRA oddělení služeb 3.0.0 na 4.8.0
+* JIRA oddělení služeb 3.0.0 na 4.11.1
 * JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](jira52microsoft-tutorial.md) .
 
 > [!NOTE]

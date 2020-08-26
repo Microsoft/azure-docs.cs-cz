@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 505c4502281f4d32e1e28d913ed5a040e533cfb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbf50a9b1fa33e86777c25dcbeee9681aa2dda62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890559"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Rutina [seznam úloh AZ Backup](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) obsahuje seznam všech úloh zálohování (plánovaných i na vyžádání), které jsou v současné době spuštěny nebo aktuálně spuštěné v chráněné databázi. Kromě dalších operací, jako je registrace, konfigurace zálohování, odstraňování zálohovaných dat atd.
+Rutina [seznam úloh AZ Backup](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) obsahuje seznam všech úloh zálohování (plánovaných i na vyžádání), které se spouštějí nebo jsou aktuálně spuštěné v chráněné databázi, kromě jiných operací, jako je registrace, konfigurace zálohování a odstranění zálohovaných dat.
 
 >[!NOTE]
 >Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827252"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890038"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -17,7 +17,7 @@ Tento článek popisuje, jak aktualizovat konfigurace související s zálohová
 
 ## <a name="soft-delete-state"></a>Stav obnovitelného odstranění
 
-Odstranění záloh chráněné položky je významnou operací, kterou je třeba monitorovat. Pro zajištění ochrany před náhodným odstraněním má Azure Recovery Services trezor možnost obnovitelného odstranění. Tato možnost umožňuje zákazníkům obnovit odstraněné zálohy, pokud je to nutné, do časového období po odstranění.
+Odstranění záloh chráněné položky je významnou operací, kterou je třeba monitorovat. Pro zajištění ochrany před náhodným odstraněním má Azure Recovery Services trezor možnost obnovitelného odstranění. Tato funkce umožňuje obnovit odstraněné zálohy, pokud je to nutné, do časového období po odstranění.
 
 Ale v některých případech se tato možnost nevyžaduje. Trezor služby Azure Recovery Services nejde odstranit, pokud v něm existují zálohované položky, a to i obnovitelné odstranění. Může to představovat problém, pokud je potřeba trezor okamžitě odstranit. Například: operace nasazení často vyčistí vytvořené prostředky ve stejném pracovním postupu. Nasazení může vytvořit trezor, nakonfigurovat zálohování pro položku, provést test obnovení a pak pokračovat v odstraňování zálohovaných položek a trezoru. Pokud odstranění trezoru selže, může dojít k selhání celého nasazení. Vypnutí obnovitelného odstranění je jediným způsobem, jak zaručit okamžité odstranění.
 
@@ -85,8 +85,8 @@ Další podrobnosti najdete [v dokumentaci k REST API](/rest/api/backup/backupre
 
 |Název  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|značk     |         |   String      |  Volitelné eTag       |
-|location     |  true       |String         |   Umístění prostředku      |
+|značk     |         |   Řetězec      |  Volitelné eTag       |
+|location     |  true       |Řetězec         |   Umístění prostředku      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
 |tags     |         | Objekt        |     Značky prostředků    |
 

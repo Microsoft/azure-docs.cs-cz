@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálo
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b9f69b8815cc8d508d5a10dda82803581216a4eb
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761623"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890276"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
@@ -41,7 +41,7 @@ Operace, jako je například aktivace zálohování, vždy vrátí jobID. Přík
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}`Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
+`{jobName}`Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude dokončená nebo CompletedWithWarnings, oddíl extendedInfo odhalí další podrobnosti o úloze.
 
 ### <a name="response"></a>Odpověď
 

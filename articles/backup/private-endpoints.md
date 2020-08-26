@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871543"
+ms.locfileid: "88890888"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -99,7 +99,7 @@ Existují dvě povinné zóny DNS, které je třeba vytvořit:
 
 ### <a name="optional-dns-zone"></a>Volitelná zóna DNS
 
-Zákazníci si můžou vybrat integraci svých privátních koncových bodů s privátními zónami DNS pro Azure Backup (popsaná v části vytváření privátních koncových bodů) pro komunikaci se službou. Pokud nechcete integrovat s privátní zónou DNS, můžete se rozhodnout použít vlastní server DNS nebo vytvořit privátní zónu DNS samostatně. To je kromě těchto dvou povinných privátních zón DNS popsaných v předchozí části.
+Můžete si vybrat integraci privátních koncových bodů s privátními zónami DNS pro Azure Backup (popsaná v části [vytváření a používání privátních koncových bodů pro zálohování](#creating-and-using-private-endpoints-for-backup)) pro komunikaci se službou. Pokud nechcete integrovat s privátní zónou DNS, můžete se rozhodnout použít vlastní server DNS nebo vytvořit privátní zónu DNS samostatně. To je kromě těchto dvou povinných privátních zón DNS popsaných v předchozí části.
 
 Pokud chcete vytvořit samostatnou privátní zónu DNS v Azure, můžete stejný postup použít stejný postup jako při vytváření závazných zón DNS. Podrobnosti o pojmenování a předplatném jsou sdílené níže:
 

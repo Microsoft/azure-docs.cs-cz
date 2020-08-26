@@ -4,12 +4,12 @@ description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální poč�
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890663"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače s využitím Azure CLI
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Obnovení disku virtuálního počítače
 
 > [!IMPORTANT]
-> Důrazně se doporučuje použít AZ CLI verze 2.0.74 nebo novější, abyste získali všechny výhody rychlého obnovení, včetně obnovení spravovaného disku. Je nejvhodnější, pokud uživatel vždycky používá nejnovější verzi.
+> Pro získání všech výhod rychlého obnovení, včetně obnovení spravovaného disku, se velmi důrazně doporučuje použít AZ CLI verze 2.0.74 nebo novější. Je to nejlepší, pokud vždycky používáte nejnovější verzi.
 
 ### <a name="managed-disk-restore"></a>Obnovení spravovaného disku
 
@@ -88,7 +88,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
     ```
 
     > [!WARNING]
-    > Pokud není zadaná **cílová skupina prostředků** , pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Zákazníci získají výhodu okamžitého obnovení jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
+    > Pokud není zadaná **cílová skupina prostředků** , pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Výhody okamžitého obnovení získáte jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -105,7 +105,7 @@ Tato akce obnoví spravované disky jako nespravované disky do daného účtu �
 
 ### <a name="unmanaged-disks-restore"></a>Obnovení nespravovaných disků
 
-Pokud má zálohovaný virtuální počítač nespravované disky a záměr obnovovat disky z bodu obnovení, nejprve zadáte účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení se nespravované disky obnoví do původních účtů úložiště. Pokud si uživatel přeje obnovit na jednom místě všechny nespravované disky, pak se daný účet úložiště dá také použít jako pracovní umístění pro tyto disky.
+Pokud má zálohovaný virtuální počítač nespravované disky a záměr obnovovat disky z bodu obnovení, nejprve zadáte účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení se nespravované disky obnoví do původních účtů úložiště. Pokud chcete obnovit všechny nespravované disky na jediném místě, můžete daný účet úložiště použít také jako pracovní umístění pro tyto disky.
 
 V dalších krocích se obnovený disk použije k vytvoření virtuálního počítače.
 

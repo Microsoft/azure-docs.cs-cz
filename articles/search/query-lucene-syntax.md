@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564080"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891091"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
@@ -65,7 +65,7 @@ Další příklady najdete v tématu [Příklady syntaxe dotazů Lucene pro vytv
 > [!NOTE]  
 >  Azure Kognitivní hledání podporuje také [jednoduchou syntaxi dotazů](query-simple-syntax.md), jednoduchý a robustní dotazovací jazyk, který je možné použít pro jednoznačné hledání klíčových slov.  
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a>Základy syntaxe  
+##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Základy syntaxe  
 
 Následující Základy syntaxe se vztahují na všechny dotazy, které používají syntaxi Lucene.  
 
@@ -95,7 +95,7 @@ Ujistěte se prosím, že všechny nebezpečné a rezervované znaky jsou v adre
 
 Nezabezpečené znaky jsou ``" ` < > # % { } | \ ^ ~ [ ]`` . Vyhrazené znaky jsou `; / ? : @ = + &` .
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Omezení velikosti dotazů
+###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Omezení velikosti dotazů
 
  Existuje omezení velikosti dotazů, které můžete odeslat do služby Azure Kognitivní hledání. Konkrétně můžete mít maximálně 1024 klauzulí (výrazy oddělené a, nebo a tak dále). Velikost jakéhokoli jednotlivého výrazu v dotazu je také omezena na přibližně 32 KB. Pokud vaše aplikace generuje vyhledávací dotazy programově, doporučujeme ji navrhovat takovým způsobem, že negeneruje dotazy na neohraničenou velikost.  
 
@@ -105,31 +105,31 @@ Nezabezpečené znaky jsou ``" ` < > # % { } | \ ^ ~ [ ]`` . Vyhrazené znaky js
 
 Seskupení polí je podobné, ale obor seskupení do jednoho pole. Například `hotelAmenities:(gym+(wifi||pool))` vyhledá pole "hotelAmenities" pro "posilovně" a "WiFi" nebo "posilovně" a "Pool".  
 
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a>Logické hledání
+##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> Logické hledání
 
  Vždy zadejte text Boolean Operators (AND, OR, NOT) All CAPS.  
 
-### <a name="or-operator-or-or-"></a>OR – operátor `OR` or`||`
+### <a name="or-operator-or-or-"></a>OR – operátor `OR` or `||`
 
-Operátor OR je znak svislého pruhu nebo svislé čáry. Například: `wifi || luxury` vyhledá dokumenty obsahující buď "WiFi", nebo "luxus" nebo obojí. Vzhledem k tomu, že nebo je výchozím operátorem spojení, můžete jej také opustit, což `wifi luxury` je ekvivalent `wifi || luxury` .
+Operátor OR je znak svislého pruhu nebo svislé čáry. Například: `wifi || luxury` vyhledá dokumenty obsahující buď "WiFi", nebo "luxus" nebo obojí. Vzhledem k tomu, že nebo je výchozím operátorem spojení, můžete jej také opustit, což `wifi luxury` je ekvivalent  `wifi || luxury` .
 
-### <a name="and-operator-and--or-"></a>AND – `AND` operátor `&&` or`+`
+### <a name="and-operator-and--or-"></a>AND – `AND` operátor `&&` or `+`
 
 Operátor AND je znak ampersand nebo znaménko plus. Například: `wifi && luxury` vyhledá dokumenty obsahující obě "WiFi" i "luxus". Znak plus (+) se používá pro požadované podmínky. Například `+wifi +luxury` stanoví, že oba výrazy se musí objevit někde v poli jediného dokumentu.
 
-### <a name="not-operator-not--or--"></a>NOT – `NOT` operátor `!` nebo`-`
+### <a name="not-operator-not--or--"></a>NOT – `NOT` operátor `!` nebo `-`
 
 Operátor NOT je symbol mínus. Vyhledá například `wifi –luxury` dokumenty, které mají `wifi` podmínky a/nebo nemají `luxury` .
 
 Parametr **searchMode** v požadavku na dotaz řídí, zda je výraz s operátorem NOT ANDed nebo ORed s jinými podmínkami v dotazu (za předpokladu, že se nejedná `+` `|` o operátor jiné podmínky). Platné hodnoty jsou `any` nebo `all` .
 
-`searchMode=any`zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují termín `luxury` .
+`searchMode=any` zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují termín `luxury` .
 
-`searchMode=all`zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste měli zvážit použití `searchMode=all` místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.
+`searchMode=all` zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste měli zvážit použití `searchMode=all` místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.
 
 Při rozhodování o nastavení **searchMode** zvažte vzory interakce uživatele pro dotazy v různých aplikacích. Uživatelům, kteří hledají informace, je pravděpodobnější, že v dotazu zařadí operátor, a to na rozdíl od webů elektronického obchodování, které mají více integrovaných navigačních struktur.
 
-##  <a name="fielded-search"></a><a name="bkmk_fields"></a>Hledání v poli
+##  <a name="fielded-search"></a><a name="bkmk_fields"></a> Hledání v poli
 
 Můžete definovat operaci vyhledávání v poli s `fieldName:searchExpression` syntaxí, kde výraz vyhledávání může být jedno slovo nebo fráze nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:  
 
@@ -144,7 +144,7 @@ Pole zadané v `fieldName:searchExpression` musí být `searchable` pole.  Podro
 > [!NOTE]
 > Při použití vyhledávacích výrazů v poli není nutné používat `searchFields` parametr, protože každý výraz vyhledávání v poli má explicitně zadaný název pole. Tento parametr však lze použít i v `searchFields` případě, že chcete spustit dotaz, ve kterém jsou některé části vymezeny na konkrétní pole, a zbytek by se mohl vztahovat na několik polí. Dotaz by se například `search=genre:jazz NOT history&searchFields=description` shodoval pouze s `jazz` `genre` polem, zatímco by `NOT history` se shodoval s `description` polem. Název pole `fieldName:searchExpression` , který je k dispozici vždy, má přednost před `searchFields` parametrem, což znamená, že v tomto příkladu není nutné zahrnout `genre` do `searchFields` parametru.
 
-##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a>Hledání přibližných výsledků
+##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> Hledání přibližných výsledků
 
 Hledání přibližných výsledků vyhledává shody v termínech, které mají podobnou konstrukci, rozšíří pojem až do maximálního počtu 50 podmínek, které splňují kritéria vzdálenosti dvě nebo méně. Další informace najdete v tématu [hledání přibližných výsledků](search-query-fuzzy.md).
 
@@ -152,27 +152,27 @@ Hledání přibližných výsledků vyhledává shody v termínech, které mají
 
  Hledání přibližných hodnot lze použít pouze pro termíny, nikoli pro fráze, ale můžete přidat vlnovku k jednotlivým termínům jednotlivě v názvu nebo frázi s více částmi. Například "Unviersty ~ ~" Wshington ~ "by se shodovala s" University of Washington ".
  
-##  <a name="proximity-search"></a><a name="bkmk_proximity"></a>Hledání blízkosti
+##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> Hledání blízkosti
 
 Hledání v blízkosti se používá k vyhledání podmínek, které jsou poblíž sebe v dokumentu. Vložte symbol tildy "~" na konec fráze následovaný počtem slov, která vytvářejí hranice blízkosti. Například `"hotel airport"~5` nalezne termíny "Hotel" a "letiště" do 5 slov navzájem v dokumentu.  
 
 
-##  <a name="term-boosting"></a><a name="bkmk_termboost"></a>Zvyšování termínů
+##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> Zvyšování termínů
 
 Termín zvyšování skóre označuje, že dokument je vyšší, pokud obsahuje posílený termín vzhledem k dokumentům, které neobsahují termín. To se liší od profilů vyhodnocování v tom, že profily vyhodnocování zvyšují určitá pole, nikoli konkrétní výrazy.  
 
-Následující příklad pomáhá ilustrovat rozdíly. Předpokládejme, že existuje profil vyhodnocování, který zvyšuje shodu v určitém poli, řekněme jako *Žánr* v [musicstoreindex příkladu](index-add-scoring-profiles.md#bkmk_ex). Za účelem dalšího zvýšení úrovně hledaného výrazu, který je vyšší než jiné, se dá použít zvyšování skóre termínu. Například `rock^2 electronic` bude zvyšovat dokumenty, které obsahují hledané výrazy v poli žánru, vyšší než jiná hledaná pole v indexu. V důsledku hodnoty zvýšení skóre (2) jsou dokumenty, které obsahují hledaný výraz *Rock* , řazeny vyšší než jiné hledané podmínky *elektronického* výrazu.  
+Následující příklad pomáhá ilustrovat rozdíly. Předpokládejme, že existuje profil vyhodnocování, který zvyšuje shodu v určitém poli, řekněme jako *Žánr* v  [musicstoreindex příkladu](index-add-scoring-profiles.md#bkmk_ex). Za účelem dalšího zvýšení úrovně hledaného výrazu, který je vyšší než jiné, se dá použít zvyšování skóre termínu. Například `rock^2 electronic` bude zvyšovat dokumenty, které obsahují hledané výrazy v poli žánru, vyšší než jiná hledaná pole v indexu. V důsledku hodnoty zvýšení skóre (2) jsou dokumenty, které obsahují hledaný výraz *Rock* , řazeny vyšší než jiné hledané podmínky *elektronického* výrazu.  
 
  Chcete-li zvýšit pojem, použijte blikající kurzor "^", symbol s faktorem zvýšení (číslo) na konci hledaného výrazu. Můžete také posílit fráze. Čím vyšší je faktor zvýšení, tím důležitější je, že výraz bude relativní vzhledem k ostatním hledaným podmínkám. Ve výchozím nastavení je faktor zvýšení 1. I když faktor zvýšení musí být kladný, může být menší než 1 (například 0,20).  
 
-##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Hledání regulárních výrazů  
+##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> Hledání regulárních výrazů  
  Hledání regulárního výrazu vyhledá shodu na základě vzorů, které jsou platné v rámci Apache Lucene, jak je uvedeno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html). V Azure Kognitivní hledání je regulární výraz uzavřený mezi lomítky `/` .
 
  Pokud například chcete najít dokumenty obsahující "Motel" nebo "Hotel", zadejte `/[mh]otel/` . Hledání regulárních výrazů se shoduje s jedním slovem.
 
 Některé nástroje a jazyky ukládají další požadavky na řídicí znaky. V případě JSON jsou řetězce, které obsahují lomítko, uvozeny zpětným lomítkem: "microsoft.com/azure/" se změní `search=/.*microsoft.com\/azure\/.*/` `search=/.* <string-placeholder>.*/` regulární výraz a jedná se o `microsoft.com\/azure\/` řetězec s řídicím lomítkem.
 
-##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Hledání pomocí zástupných znaků
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> Hledání pomocí zástupných znaků
 
 Můžete použít obecně rozpoznanou syntaxi pro hledání zástupných znaků vícenásobného () `*` nebo Single ( `?` ). Například výraz dotazu `search=alpha*` vrátí "alfanumerický" nebo "abecední". Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jedním výrazem a nikoli frází.
 
@@ -183,9 +183,18 @@ Shoda přípony, kde `*` nebo `?` předchází řetězec (as in `search=/.*numer
 > [!NOTE]  
 > Porovnávání vzorů je jako pravidlo pomalé, takže byste mohli chtít prozkoumat alternativní metody, jako je například Edge n-gram, který vytváří tokeny pro sekvence znaků v termínu. Index bude větší, ale dotazy mohou být provedeny rychleji v závislosti na konstrukci vzoru a délce indexovaných řetězců.
 >
-> Během analýzy dotazů jsou dotazy, které jsou formulované jako předpona, přípona, zástupný znak nebo regulární výrazy, předány tak, jak jsou do stromu dotazu, obcházení [lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis). Shody budou nalezeny pouze v případě, že index obsahuje řetězce ve formátu, který určuje dotaz. Ve většině případů budete během indexování potřebovat alternativní analyzátor, který zachovává integritu řetězce, aby bylo úspěšné porovnávání částečného a vzorového kódu. Další informace najdete v tématu [částečné hledání ve službě Azure kognitivní hledání dotazy](search-query-partial-matching.md).
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a>Vyhodnocování zástupných znaků a dotazů Regex
+### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>Dopad analyzátoru na zástupné dotazy
+
+Během analýzy dotazů jsou dotazy, které jsou formulované jako předpona, přípona, zástupný znak nebo regulární výrazy, předány tak, jak jsou do stromu dotazu, obcházení [lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis). Shody budou nalezeny pouze v případě, že index obsahuje řetězce ve formátu, který určuje dotaz. Ve většině případů budete během indexování potřebovat analyzátor, který zachová integritu řetězce, aby bylo úspěšné porovnávání částečného a vzorového kódu. Další informace najdete v tématu [částečné hledání ve službě Azure kognitivní hledání dotazy](search-query-partial-matching.md).
+
+Vezměte v úvahu situaci, kdy budete chtít, aby vyhledávací dotaz "terminat *" vracel výsledky, které obsahují podmínky jako "ukončení", "ukončení" a "ukončení".
+
+Pokud byste chtěli použít analyzátor en. Lucene (English Lucene), uplatní se tím agresivní lemmatizátor každého období. Například "ukončení", "ukončení", "ukončení" budou v indexu vyraženy do tokenu ' terms '. Na druhé straně se neanalyzují všechny výrazy v dotazech využívajících zástupné znaky nebo přibližné vyhledávání. proto by nedocházelo k žádným výsledkům, které by odpovídaly dotazu "terminat *".
+
+Na druhé straně analyzátory Microsoftu (v tomto případě je to v tomto případě en. Microsoft Analyzer) trochu pokročilejší a používají lemmatizátor nebo předzpracování místo odvozování. To znamená, že všechny vygenerované tokeny by měly být platná anglická slova. Například klíčové slovo "ukončit", "ukončeno" a "ukončení" většinou zachová celý index a může být vhodnější pro scénáře, které jsou závislé na zástupných znacích a přibližném vyhledávání.
+
+##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Vyhodnocování zástupných znaků a dotazů Regex
 
 Azure Kognitivní hledání používá pro textové dotazy hodnocení založené na kmitočtech ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). U dotazů se zástupným znakem a regulárních výrazů, u kterých může být obor pojmů potenciálně rozsáhlý, se ale četnost frekvencí ignoruje, aby nedocházelo k tomu, aby se zabránilo vyřazení shody směrem k Všechny shody jsou zpracovány stejně pro hledání pomocí zástupných znaků a Regex.
 

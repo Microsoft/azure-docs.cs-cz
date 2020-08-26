@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825456"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889804"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -25,7 +25,7 @@ Tento článek obsahuje informace o řešení potíží, které řeší všechny
   >Všechny sdílené složky v účtu úložiště je možné chránit jenom v rámci jednoho trezoru Recovery Services. Pomocí [tohoto skriptu](scripts/backup-powershell-script-find-recovery-services-vault.md) můžete najít Recovery Services trezor, ve kterém je váš účet úložiště zaregistrovaný.
 
 - Ujistěte se, že sdílená složka není přítomna v žádném z nepodporovaných účtů úložiště. Podporované účty úložiště můžete najít v tématu [Podpora pro zálohování sdílených složek Azure](azure-file-share-support-matrix.md) .
-- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků nepřesáhla 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště.
+- Zajistěte, aby celková délka názvu účtu úložiště a názvu skupiny prostředků překročila 84 znaků v případě nových účtů úložiště a 77 znaků v případě klasických účtů úložiště.
 - Zkontrolujte nastavení brány firewall účtu úložiště, abyste měli jistotu, že je povolená možnost Povolit důvěryhodné služby Microsoftu přístup k účtu úložiště.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Chyba na portálu hlásí, že zjišťování účtů úložiště selhalo
@@ -300,7 +300,7 @@ Chybová zpráva: uvedené body obnovení nejsou k dispozici, protože se trvale
 Ověřte, zda je odstraněna zálohovaná sdílená složka. Pokud byl ve stavu undeleteded, ověřte, zda je doba uchování měkkého odstranění vyšší a nebyla obnovena zpět. V obou těchto případech ztratíte všechny snímky trvale a nebudete moct data obnovit.
 
 >[!NOTE]
-> Doporučujeme neodstraňovat zálohovanou sdílenou složku, nebo pokud je v nepodmíněném stavu odstranění, zrušit před uplynutím doby uchování krátkého odstranění, aby nedošlo ke ztrátě všech bodů obnovení.
+> Nedoporučujeme odstranit zálohovanou sdílenou složku, nebo pokud je v tichém odstraněných stavech, neodstraňujte před uplynutím doby uchování krátkého odstranění, abyste se vyhnuli ztrátě všech bodů obnovení.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState – zálohování se nepovedlo, protože sdílená složka Azure je ve stavu nepodmíněného odstranění.
 

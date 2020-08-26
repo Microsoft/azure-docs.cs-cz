@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287223"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890910"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -52,7 +52,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + Na webu:
-    + [Azure Machine Learning Studio](https://ml.azure.com) 
+    + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning Designer (Preview)](concept-designer.md) – dostupné jenom v pracovních prostorech [Enterprise Edition](overview-what-is-azure-ml.md#sku) .
 + V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + V jakémkoli prostředí R s [Azure Machine Learning SDK pro R (Preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
@@ -87,9 +87,9 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 > [!WARNING]
 > Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>Vytvořit pracovní prostor
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> Vytvořit pracovní prostor
 
-Když vytváříte pracovní prostor, rozhodujete se, jestli se má vytvořit se systémem [Basic nebo Enterprise Edition](overview-what-is-azure-ml.md#sku). Edice určuje funkce, které jsou k dispozici v pracovním prostoru. Kromě dalších funkcí vám edice Enterprise dává přístup k [Azure Machine Learning designeru](concept-designer.md) a verzi studia pro vytváření [automatizovaných experimentů strojového učení](tutorial-first-experiment-automated-ml.md).  Další podrobnosti a informace o cenách najdete v článku [Azure Machine Learning ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
+Když vytváříte pracovní prostor, rozhodujete se, jestli se má vytvořit se systémem [Basic nebo Enterprise Edition](overview-what-is-azure-ml.md#sku). Edice určuje funkce, které jsou k dispozici v pracovním prostoru. Kromě dalších funkcí vám edice Enterprise dává přístup k [Azure Machine Learning designeru](concept-designer.md) a verzi studia pro vytváření [automatizovaných experimentů strojového učení](tutorial-first-experiment-automated-ml.md).  Další informace a informace o cenách najdete v článku [Azure Machine Learning ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Existuje několik způsobů, jak vytvořit pracovní prostor:  
 
@@ -101,11 +101,11 @@ Existuje několik způsobů, jak vytvořit pracovní prostor:
 > [!NOTE]
 > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Upgrade na Enterprise Edition
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Upgrade na Enterprise Edition
 
 [Pracovní prostor můžete upgradovat ze sady Basic na Enterprise Edition](how-to-manage-workspace.md#upgrade) pomocí Azure Portal. Pracovní prostor Enterprise Edition nelze downgradovat na pracovní prostor edice Basic. 
 
-## <a name="associated-resources"></a><a name="resources"></a>Přidružené prostředky
+## <a name="associated-resources"></a><a name="resources"></a> Přidružené prostředky
 
 Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik prostředků Azure, které pracovní prostor používá:
 
@@ -117,8 +117,16 @@ Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik pro
 > [!NOTE]
 > Kromě vytváření nových verzí můžete používat i existující služby Azure.
 
+### <a name="azure-storage-account"></a>Účet služby Azure Storage
+
+Účet Azure Storage vytvořený ve výchozím nastavení v pracovním prostoru je účet pro obecné účely v1. Po vytvoření pracovního prostoru podle kroků v článku [upgrade na účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) můžete tento krok upgradovat na obecné účely verze 2.
+
 > [!IMPORTANT]
-> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
+> Po upgradu na obecné účely v2 nepovolujte v účtu úložiště hierarchický obor názvů.
+
+Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Offline zálohování pro Data Protection Manager (DPM) a server pro Micr
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro předchozí verze aplikace DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826595"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890089"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (předchozí verze)
 
@@ -203,7 +203,7 @@ Nástroj *AzureOfflineBackupDiskPrep* se používá k přípravě jednotek SATA,
 
 1. Zadejte písmeno jednotky bez koncové dvojtečky pro připojený disk, který chcete připravit na přenos do Azure. Po zobrazení výzvy zadejte potvrzení formátování jednotky.
 
-    Nástroj pak začne připravovat disk a kopírovat zálohovaná data. Po zobrazení výzvy nástrojem může být nutné připojit další disky pro případ, že na poskytnutém disku není dostatek místa pro data záloh. <br/>
+    Nástroj pak začne připravovat disk a kopírovat zálohovaná data. Pokud na poskytnutém disku není dostatek místa pro zálohovaná data, může být nutné připojit další disky po zobrazení výzvy nástrojem. <br/>
 
     Po úspěšném dokončení nástroje se k odeslání do Azure připraví jeden nebo víc disků, které jste zadali. V Azure se také vytvoří úloha importu s názvem, který jste zadali během pracovního postupu v části "iniciování offline zálohování". Nástroj nakonec zobrazí dodací adresu v datovém centru Azure, kde je potřeba dodat disky.
 

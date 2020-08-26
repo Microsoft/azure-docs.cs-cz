@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 58013ba84e1ede36ed54284af4d20b943d63436f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fc79cab5868ec7d676c956581407dce308d80ad
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855858"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891486"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -288,24 +288,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 Projekt v tomto kurzu je základem pro další kurz, [*kurz: připojení uceleného řešení*](tutorial-end-to-end.md). Pokud máte v plánu pokračovat k dalšímu kurzu, můžete zde nastavené prostředky zachovat, abyste mohli dál používat tuto instanci digitálních vláken Azure a nakonfigurovanou ukázkovou aplikaci.
 * V takovém případě můžete použít ukázkové aplikace `DeleteAllTwins` a `DeleteAllModels` příkazy k vymazání nevláken a modelů v instanci, v uvedeném pořadí. V dalším kurzu vám poskytneme čistou SLAT.
 
-Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků.
-
-Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím se odebere skupina prostředků a instance digitálního vlákna Azure.
-
-> [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
-
-Otevřete Azure Cloud Shell a spuštěním následujícího příkazu odstraňte skupinu prostředků a vše, co obsahuje.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do svého místního počítače.
 
