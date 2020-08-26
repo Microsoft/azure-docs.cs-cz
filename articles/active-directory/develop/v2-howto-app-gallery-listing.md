@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271239"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891857"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -61,7 +61,7 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 6. Připojte se k programu Microsoft Partner Network.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
@@ -78,9 +78,9 @@ V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřo
 | Jednotné odhlašování na základě webu| √| √ |
 | Jednotné přihlašování prostřednictvím mobilního telefonu| √| √* |
 | Jednotné odhlašování pomocí mobilních zařízení| √| √* |
-| Zásady podmíněného přístupu pro mobilní aplikace| √| X |
-| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| X |
-| Přístup Microsoft Graph| √| X |
+| Zásady podmíněného přístupu pro mobilní aplikace| √| × |
+| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| × |
+| Přístup Microsoft Graph| √| × |
 
 *, Ale Microsoft neposkytuje ukázky ani doprovodné materiály.
 
@@ -98,7 +98,7 @@ OAuth 2,0 je [standardní](https://oauth.net/2/) protokol pro autorizaci. OpenID
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2,0 nebo WS-dodávání
 
-SAML je vyspělý a široce přijatý Standard jednotného přihlašování pro webové aplikace. Další informace o tom, jak Azure používá SAML, najdete v tématu [jak Azure používá protokol SAML](active-directory-saml-protocol-reference.md). 
+SAML je vyspělý a široce přijatý [Standard jednotného přihlašování](https://www.oasis-open.org/standards#samlv2.0) pro webové aplikace. Další informace o tom, jak Azure používá SAML, najdete v tématu [jak Azure používá protokol SAML](active-directory-saml-protocol-reference.md). 
 
 Specifikace Web Services Federation (WS-dodávání) je [Standardní obor](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) obecně používaný pro webové aplikace vyvinuté pomocí platformy .NET.
 

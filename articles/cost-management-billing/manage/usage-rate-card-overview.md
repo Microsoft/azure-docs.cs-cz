@@ -5,16 +5,17 @@ author: tonguyen
 ms.reviewer: mumami
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 3ed655ed419e3be378a68b26b9f14b03c1af4796
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 18ef6b9f813ee2decdd416fe53b7247591eec11f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039510"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686237"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programové získání přehledu o využití Azure pomocí rozhraní API pro fakturaci Azure
 Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití a prostředcích do vašeho upřednostňovaného nástroje pro datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Tato rozhraní API se implementují jako poskytovatel prostředků a jsou součástí řady rozhraní API, která zveřejňuje Azure Resource Manager.  

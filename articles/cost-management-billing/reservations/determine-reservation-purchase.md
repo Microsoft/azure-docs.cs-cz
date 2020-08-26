@@ -4,15 +4,16 @@ description: Tento článek vám pomůže určit, kterou rezervaci byste měli k
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759885"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684741"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Určení rezervace k zakoupení
 
@@ -38,7 +39,7 @@ Pokud chcete upřesnit odpovídající využití virtuálních počítačů, na 
 
 Ignorujte prostředky, které mají méně než 24 hodin využití za den.
 
-Pokud chcete provést analýzu na úrovni skupiny velikostí instance, můžete získat hodnoty flexibilní velikosti instance tady: [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Zkombinujte tyto hodnoty s vašimi daty a proveďte analýzu. Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Pokud chcete provést analýzu na úrovni skupiny velikostí instance, můžete získat hodnoty flexibilní velikosti instance tady: [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Zkombinujte tyto hodnoty s vašimi daty a proveďte analýzu. Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Analýza využití pro nákup rezervované instance služby Azure Synapse Analytics
 
