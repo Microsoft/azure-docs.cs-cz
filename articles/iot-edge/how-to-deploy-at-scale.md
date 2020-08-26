@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512006"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855381"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Azure Portal
 
@@ -61,7 +61,7 @@ Existuje pět kroků k vytvoření nasazení. V následujících částech si pr
 
 ### <a name="step-2-modules"></a>Krok 2: moduly
 
-Do nasazení můžete přidat až 30 modulů. Pokud vytvoříte nasazení bez modulů, odebere všechny aktuální moduly z cílových zařízení.
+Do nasazení můžete přidat až 50 modulů. Pokud vytvoříte nasazení bez modulů, odebere všechny aktuální moduly z cílových zařízení.
 
 V nasazeních můžete spravovat nastavení pro IoT Edge agenta a IoT Edge moduly centra. Vyberte **nastavení modulu runtime** a nakonfigurujte dva běhové moduly. V vrstveném nasazení nejsou moduly runtime zahrnuty, takže není možné je nakonfigurovat.
 
@@ -175,7 +175,7 @@ Když upravíte nasazení, změny se okamžitě replikují na všechna cílová 
 
 * Cílové podmínky
 * Vlastní metriky
-* Štítky
+* Popisky
 * Značky
 * Požadované vlastnosti
 

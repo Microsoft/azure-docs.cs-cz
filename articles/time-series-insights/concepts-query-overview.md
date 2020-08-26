@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163165"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855142"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Dotazování na data z Azure Time Series Insights Gen2
 
-Azure Time Series Insights Gen2 umožňuje dotazování dat na události a metadata uložená v prostředí prostřednictvím rozhraní API pro veřejná Surface. Tato rozhraní API jsou také používána v [Azure Time Series Insights Průzkumníku Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+Azure Time Series Insights Gen2 umožňuje dotazování dat na události a metadata uložená v prostředí prostřednictvím rozhraní API pro veřejná Surface. Tato rozhraní API se používají také v [průzkumníkovi Azure Time Series Insights TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
 
 V Azure Time Series Insights Gen2 jsou k dispozici tři primární kategorie rozhraní API:
 
@@ -73,4 +73,4 @@ Tato rozhraní API jsou v našem řešení úložiště s více vrstvami k dispo
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o různých proměnných, které lze definovat v [modelu časové řady](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm).
-* Přečtěte si další informace o dotazování dat z [Azure Time Series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* Přečtěte si další informace o tom, jak zadávat dotazy na data z [průzkumníka Azure Time Series Insights TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

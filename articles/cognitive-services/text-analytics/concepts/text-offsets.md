@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219233"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855650"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Posunutí textu ve výstupu rozhraní API pro analýzu textu
 
@@ -40,10 +40,20 @@ V rozhraní .NET zvažte použití třídy [StringInfo](https://docs.microsoft.c
 
 Rozhraní API pro analýzu textu vrátí tyto textové prvky také pro usnadnění práce.
 
+## <a name="offsets-in-api-version-31-preview"></a>Posuny v rozhraní API verze 3,1-Preview
+
+Počínaje rozhraním API verze 3,1-Preview. 1 všechny koncové body rozhraní API pro analýzu textu, které vracejí posun, budou podporovat `stringIndexType` parametr. Tento parametr upravuje `offset` `length` atributy a ve výstupu rozhraní API tak, aby odpovídaly požadovanému schématu iterace řetězce. V současné době podporujeme tři typy:
+
+1. `textElement_v8` (výchozí): Iteruje přes graphemes, jak je definované standardem [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) .
+2. `unicodeCodePoint`: iterace přes [body kódu Unicode](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564), výchozí schéma pro Python 3
+3. `utf16CodeUnit`: iterace přes [jednotky kódu UTF-16](https://unicode.org/faq/utf_bom.html#UTF16), výchozí schéma pro JavaScript, Java a .NET.
+
+Pokud `stringIndexType` požadované odpovídá programovacímu prostředí volby, extrakce dílčích řetězců lze provést pomocí standardních metod substring nebo Slice. 
+
 ## <a name="see-also"></a>Viz také
 
-* [Přehled Analýza textu](../overview.md)
+* [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
+* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

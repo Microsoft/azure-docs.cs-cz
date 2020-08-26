@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554069"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Azure Active Directory integrace s Palo Alto Networks – uživatelské rozhraní pro správu
 
@@ -30,7 +30,7 @@ Integrace Palo Alto Networks – uživatelské rozhraní pro správu s Azure AD 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s uživatelským rozhraním Palo Alto Networks-admin, budete potřebovat následující položky:
 
@@ -43,6 +43,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Palo Alto Networks – uživatelské rozhraní pro správu podporuje jednotné přihlašování se spuštěným **SP**
 * Palo Alto Networks – uživatelské rozhraní pro správu podporuje **pouze dobu** zřizování uživatelů
+* Po nakonfigurování Palo Alto Networks – uživatelské rozhraní správce můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Přidání sítě Palo Alto – uživatelské rozhraní správce z Galerie
 
@@ -55,8 +56,7 @@ Pokud chcete nakonfigurovat integraci Palo Alto Networks – uživatelské rozhr
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Palo Alto Networks-admin UI** .
 1. Vyberte **Palo Alto Networks – uživatelské rozhraní pro správu** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Palo Alto Networks – uživatelské rozhraní správce založené na testovacím uživateli s názvem **B. Simon**.
 Aby jednotné přihlašování fungovalo, musí se vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Palo Alto Networks – uživatelské rozhraní pro správu.
 
@@ -111,11 +111,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Palo Alt
 
 1. Kromě toho očekává aplikace Palo Alto Networks-admin UI několik atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | --- | --- |
     | username | User. userPrincipalName |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > Hodnota _adminrole_ by měla být stejná jako název role, která je nakonfigurovaná v **Palo Alto Networks** , jak je uvedeno v kroku 9. 
 
     > [!NOTE]
     > Další informace o atributech naleznete v následujících článcích:
@@ -272,5 +275,3 @@ Po kliknutí na dlaždici uživatelského rozhraní Palo Alto Networks – sprá
 - [Vyzkoušejte Palo Alto Networks – uživatelské rozhraní pro správu s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit sítě Palo Alto – uživatelské rozhraní pro správu s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

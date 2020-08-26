@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782834"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852158"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Následující příklady vám ukážou, jak:
 * Konfigurace určitých parametrů časových řad v [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektu
 * Spuštění předpovědi s daty časových řad
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete, 
 
@@ -178,6 +178,7 @@ Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe naj
 |`enable_dnn`|[Povolte prognózování hluboké]().||
 |`time_series_id_column_names`|Názvy sloupců, které slouží k jednoznačné identifikaci časových řad v datech s více řádky se stejným časovým razítkem. Pokud nejsou definovány identifikátory časových řad, předpokládá se, že datová sada bude jedna časová řada. Další informace o jednotlivých časových řadách najdete v [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
 |`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Prodleva je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislou proměnnou se ve výchozím nastavení neshoduje nebo koreluje. ||
+|`feature_lags`| Funkce pro prodlevu se automaticky určí pomocí automatického ML, pokud `target_lags` jsou nastavené a `feature_lags` nastavené na `auto` . Povolení funkcí prodlevy může pomoci zlepšit přesnost. Funkce prodlevy jsou ve výchozím nastavení zakázané. ||
 |`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, <= velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie. Přečtěte si další informace o [agregaci cílového souhrnného okna](#target-rolling-window-aggregation).||
 
 

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141529"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853367"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Description |
+| Sada deklarací identity | Popis |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -143,7 +143,6 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | onprem_sid |
 | openid2_id |
 | heslo |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 
 **Shrnutí:** Tato vlastnost určuje, jestli je v tokenech ovlivněných touto zásadou zahrnutá základní sada deklarací identity.
 
-- Pokud je nastavená hodnota true, všechny deklarace v základní sadě deklarací identity se vysílají v tokenech ovlivněných touto zásadou. 
+- Pokud je nastavená hodnota true, všechny deklarace v základní sadě deklarací identity se vysílají v tokenech ovlivněných touto zásadou.
 - Pokud je hodnota nastavena na false, deklarace v základní sadě deklarací identity nejsou v tokenech, pokud se nepřidaly do vlastnosti schématu deklarací ve stejné zásadě.
 
-> [!NOTE] 
-> Deklarace identity v základních deklaracích jsou přítomny v každém tokenu bez ohledu na to, jaká vlastnost je nastavená na. 
+> [!NOTE]
+> Deklarace identity v základních deklaracích jsou přítomny v každém tokenu bez ohledu na to, jaká vlastnost je nastavená na.
 
 ### <a name="claims-schema"></a>Schéma deklarací identity
 
@@ -267,14 +266,14 @@ Pro každou položku schématu deklarace identity definovanou v této vlastnosti
 
 **Hodnota:** Element Value definuje statickou hodnotu jako data, která se mají v deklaraci identity vypouštět.
 
-**Dvojice ID a zdroje:** Prvky zdroje a ID definují, z nichž jsou data v deklaraci identity zdrojová.  
+**Dvojice ID a zdroje:** Prvky zdroje a ID definují, z nichž jsou data v deklaraci identity zdrojová.
 
 **ExtensionID pár zdrojů:** Elementy source a ExtensionID definují atribut rozšíření schématu adresáře, ze kterého jsou zdrojová data v deklaraci identity. Další informace najdete v tématu [použití atributů rozšíření schématu adresáře v deklaracích identity](active-directory-schema-extensions.md).
 
-Nastavte zdrojový element na jednu z následujících hodnot: 
+Nastavte zdrojový element na jednu z následujících hodnot:
 
-- "User": data v deklaraci identity jsou vlastnost objektu User. 
-- "Application": data v deklaraci identity jsou vlastnost objektu služby aplikace (klienta). 
+- "User": data v deklaraci identity jsou vlastnost objektu User.
+- "Application": data v deklaraci identity jsou vlastnost objektu služby aplikace (klienta).
 - "prostředek": data v deklaraci identity jsou vlastnost objektu služby prostředku.
 - "cílová skupina": data v deklaraci identity jsou vlastnost objektu služby, která je cílovou skupinou tokenu (buď klient nebo instanční objekt služby).
 - "společnost": data v deklaraci identity jsou vlastností objektu společnosti tenanta prostředku.
@@ -286,7 +285,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Description |
+| Zdroj | ID | Popis |
 |-----|-----|-----|
 | Uživatel | surname | Název rodiny |
 | Uživatel | givenname | jméno |
@@ -322,8 +321,8 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
-| Uživatel | city | Město |
-| Uživatel | state | State |
+| Uživatel | city | City |
+| Uživatel | state | Stav |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
@@ -349,7 +348,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 **Řetězec:** ClaimsTransformation
 
-**Datový typ:** Objekt BLOB JSON s jednou nebo více položkami transformace 
+**Datový typ:** Objekt BLOB JSON s jednou nebo více položkami transformace
 
 **Shrnutí:** Tato vlastnost slouží k aplikování běžných transformací na zdrojová data, aby se vygenerovala výstupní data pro deklarace identity zadané ve schématu deklarací identity.
 
@@ -361,14 +360,14 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail nebo hlavní název uživatele|extrahovaný řetězec|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** je spojen s elementem ID položky schématu deklarace identity, aby bylo možné najít odpovídající vstupní deklaraci identity. 
+- **ClaimTypeReferenceId** je spojen s elementem ID položky schématu deklarace identity, aby bylo možné najít odpovídající vstupní deklaraci identity.
 - **TransformationClaimType** slouží k udělení jedinečného názvu tomuto vstupu. Tento název musí odpovídat jednomu z očekávaných vstupů pro metodu transformace.
 
 **Vstupní parametry:** K předání konstantní hodnoty transformaci použijte prvek s parametry. Má dva atributy: **hodnota** a **ID**.
@@ -387,7 +386,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Description|
+|Zdroj|ID|Popis|
 |-----|-----|-----|
 | Uživatel | pošta|E-mailová adresa|
 | Uživatel | třídy|Hlavní název uživatele|
@@ -420,7 +419,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete pomocí rutiny Azure PowerShell `new-azureadapplicationkeycredential` vytvořit pověření symetrického klíče pro objekt aplikace. Další informace o této rutině Azure PowerShell najdete v článku [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
-Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít: 
+Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -464,20 +463,20 @@ Začněte tím, že provedete následující kroky:
 V tomto příkladu vytvoříte zásadu, která odebere základní sadu deklarací identity z tokenů vydaných pro propojené objekty služby.
 
 1. Vytvořte zásadu mapování deklarací identity. Tato zásada propojená s konkrétními instančními objekty odstraní základní sadu deklarací identity z tokenů.
-   1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
-    
+   1. Chcete-li vytvořit zásadu, spusťte tento příkaz:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. Chcete-li zobrazit nové zásady a získat ObjectId zásad, spusťte následující příkaz:
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby.
    1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
-   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
-     
+   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ V tomto příkladu vytvoříte zásadu, která odebere základní sadu deklarac�
 V tomto příkladu vytvoříte zásadu, která přidá ČísloZaměstnance a TenantCountry k tokenům vydaným pro propojené objekty služby. Pole ČísloZaměstnance je vygenerováno jako název deklarace identity v tokenech SAML a v JWTs. TenantCountry je vygenerován jako typ deklarace země nebo oblasti v tokenech SAML a v JWTs. V tomto příkladu budeme v tokenech dál zahrnovat základní sady deklarací identity.
 
 1. Vytvořte zásadu mapování deklarací identity. Tato zásada propojená s konkrétními instančními objekty přidá deklarace ČísloZaměstnance a TenantCountry do tokenů.
-   1. Chcete-li vytvořit zásadu, spusťte následující příkaz:  
-     
+   1. Chcete-li vytvořit zásadu, spusťte následující příkaz:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. Chcete-li zobrazit nové zásady a získat ObjectId zásad, spusťte následující příkaz:
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
+1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby.
    1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
-   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:  
-     
+   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
 
 1. Vytvořte zásadu mapování deklarací identity. Tato zásada propojená s konkrétními instančními objekty přidá deklarace ČísloZaměstnance a TenantCountry do tokenů.
    1. Chcete-li vytvořit zásadu, spusťte následující příkaz:
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. Chcete-li zobrazit nové zásady a získat ObjectId zásad, spusťte následující příkaz: 
-     
+
+   2. Chcete-li zobrazit nové zásady a získat ObjectId zásad, spusťte následující příkaz:
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby. 
+1. Přiřaďte zásadu k instančnímu objektu. Také je nutné získat ObjectId objektu služby.
    1. Pokud chcete zobrazit všechny instanční objekty vaší organizace, můžete zadat [dotaz na rozhraní Microsoft Graph API](/graph/traverse-the-graph). Nebo v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)se přihlaste k účtu služby Azure AD.
-   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz: 
-     
+   2. Pokud máte identifikátor ObjectId objektu služby, spusťte následující příkaz:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```

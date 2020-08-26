@@ -9,14 +9,14 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337649"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855624"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT technologie Plug and Play Preview?
+# <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT Plug and Play Preview?
 
 IoT technologie Plug and Play Preview umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který zařízení používá k inzerování svých schopností k aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada elementů, které definují:
 
@@ -62,6 +62,10 @@ Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podpo
 > [!Important]
 > Zařízení IoT technologie Plug and Play musí používat MQTT nebo MQTT přes objekty WebSockets. Jiné protokoly jako AMQP nebo HTTP nejsou platné k implementaci zařízení IoT technologie Plug and Play.
 
+## <a name="device-certification"></a>Certifikace zařízení
+
+[Program pro certifikaci zařízení iot technologie Plug and Play](howto-certify-device.md) ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
+
 ## <a name="regional-availability"></a>Regionální dostupnost
 
 Tato aktualizace IoT technologie Plug and Play Preview je dostupná na rozbočovačích IoT vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko.
@@ -71,5 +75,5 @@ Tato aktualizace IoT technologie Plug and Play Preview je dostupná na rozbočov
 Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
 
 - [Připojení zařízení k IoT Hub (C)](./quickstart-connect-device-c.md)
-- [Interakce se zařízením z vašeho řešení (Node.js)](./quickstart-service-node.md)
+- [Interakce se zařízením z vašeho řešení (Node. js)](./quickstart-service-node.md)
 

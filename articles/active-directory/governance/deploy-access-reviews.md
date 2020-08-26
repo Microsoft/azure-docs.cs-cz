@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783599"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853027"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -283,7 +283,7 @@ Externím identitám je možné udělit přístup k prostředkům společnosti p
 
 * Přiřazená privilegovaná role v Azure AD nebo v předplatném Azure
 
-Viz [ukázkový skript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). Skript zobrazí, kde se použijí externí identity přizvaní do tenanta. V Azure AD můžete zobrazit členství ve skupině externích uživatelů, přiřazení rolí a přiřazení aplikací. Skript nebude zobrazovat žádná přiřazení mimo Azure AD, například přímé přiřazování práv k prostředkům služby SharePoint bez použití skupin.
+Viz [ukázkový skript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). Skript zobrazí, kde se použijí externí identity přizvaní do tenanta. V Azure AD můžete zobrazit členství ve skupině externích uživatelů, přiřazení rolí a přiřazení aplikací. Skript nebude zobrazovat žádná přiřazení mimo Azure AD, například přímé přiřazování práv k prostředkům služby SharePoint bez použití skupin.
 
 Když vytváříte kontrolu přístupu pro skupiny nebo aplikace, můžete se rozhodnout, že se má kontrolor soustředit na všechny uživatele s přístupem nebo jenom uživatelům typu Host. Když vyberete jenom uživatele typu Host, kontroloré mají k tomuto prostředku přiřazený seznam externích identit z Azure AD B2B.
 

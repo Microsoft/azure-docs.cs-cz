@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853199"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852090"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
 
 Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři síťové virtuální zařízení je cílem směrovat provoz prostřednictvím síťové virtuální zařízení (síťového virtuálního zařízení) pro větev do virtuální sítě a virtuální sítě do větve. Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Některé možnosti směrování se pořád můžou vyvádět. Pokud ve vaší oblasti ještě nedošlo k zavedení, použijte prosím následující postup v těchto verzích těchto článků:
+> Pokud už máte nastavení s trasami, které se před novými funkcemi, [jak nakonfigurovat směrování virtuálního centra, co](how-to-virtual-hub-routing.md) je k dispozici, použijte prosím postup v těchto verzích těchto článků:
 >* [Azure Portal článek](virtual-wan-route-table-nva-portal.md)
 >* [Článek o PowerShellu](virtual-wan-route-table-nva.md)
 >

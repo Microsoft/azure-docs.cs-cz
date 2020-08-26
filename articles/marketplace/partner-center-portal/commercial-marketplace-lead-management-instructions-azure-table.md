@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120836"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855719"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
@@ -28,19 +28,19 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
     1. V podokně **Nový** vyberte **úložiště** . Na pravé straně se zobrazí **vybraný** seznam.
     1. Vyberte **účet úložiště** a začněte vytvářet účet. Postupujte podle pokynů v části [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
-        ![Postup vytvoření účtu úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Postup vytvoření účtu služby Azure Storage.":::
 
         Další informace o účtech úložiště najdete v [kurzu rychlý Start](../../storage/index.yml). Další informace o cenách služby Storage najdete v tématu [ceny služby Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Počkejte, než se zřídí účet úložiště. Tento proces obvykle trvá několik minut. 
+1. Počkejte, než se zřídí účet úložiště. Tento proces obvykle trvá několik minut.
 
 ## <a name="create-a-table-in-your-storage-account"></a>Vytvoření tabulky v účtu úložiště
 
 1. Na **domovské** stránce Azure Portal vyberte **Zobrazit všechny prostředky** pro přístup k účtu úložiště. Můžete také vybrat **všechny prostředky** z levého řádku nabídky Azure Portal.
 
-    ![Přístup k účtu služby Azure Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Přístup k účtu služby Azure Storage.":::
 
-1. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu **připojovacího řetězce** pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu **připojovacího řetězce účtu úložiště** , kterou budete muset zadat na portálu pro publikování a získat tak zájemce pro vaši nabídku Azure Marketplace. 
+1. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu **připojovacího řetězce** pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu **připojovacího řetězce účtu úložiště** , kterou budete muset zadat na portálu pro publikování a získat tak zájemce pro vaši nabídku Azure Marketplace.
 
     Tady je příklad připojovacího řetězce.
 
@@ -48,13 +48,14 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Klíč úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Klíč úložiště Azure.":::
+
 
 1. V podokně účtu úložiště vyberte **tabulky**a vyberte **+ tabulka** pro vytvoření tabulky. Zadejte název tabulky a vyberte **OK**. Tuto hodnotu uložte, protože ji budete potřebovat, pokud chcete nakonfigurovat tok, který bude dostávat e-mailová oznámení při přijetí zájemců.
 
     ![Tabulky Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    Data v tabulce úložiště můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jakéhokoli jiného nástroje. Data můžete také exportovat v tabulce Azure. 
+    Data v tabulce úložiště můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jakéhokoli jiného nástroje. Data můžete také exportovat v tabulce Azure.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Volitelné Použití Power Automate k získání oznámení o potenciálních zákazníků
 
@@ -66,7 +67,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
 1. Přihlaste se ke svému účtu Power automat.
 1. Na levém panelu vyberte **Moje toky**.
-1. V horním panelu vyberte **+ Nový**. 
+1. V horním panelu vyberte **+ Nový**.
 1. V rozevíracím seznamu vyberte **+ naplánováno--od prázdné**.
 
    ![Moje toky + naplánované – od prázdného](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
@@ -90,7 +91,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
     ![Nastavit interval získání minulého časového intervalu](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >Tok můžete kdykoli zkontrolovat, abyste ověřili, jestli je každý krok správně nakonfigurovaný. Pokud chcete tok kontrolovat, vyberte v řádku nabídek **Flow** možnost **Kontrola toku** .
 
    V další sadě kroků se připojíte k tabulce a nastavíte logiku zpracování pro zpracování nových potenciálních zákazníků.
@@ -111,7 +112,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
      ![Získat okno s entitami](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Dotaz filtru**: zaškrtněte toto políčko a vložte tuto funkci do pole:`Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Dotaz filtru**: zaškrtněte toto políčko a vložte tuto funkci do pole: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Získat entity, filtrovat pole dotazu](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -123,7 +124,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
 1. V okně **Podmínka** vyberte **možnost zvolit hodnotu**. Pak v automaticky otevíraném okně vyberte **výraz** .
 
-1. Vložte `length(body('Get_entities')?['value'])` do pole **FX** . Pro přidání této funkce vyberte **OK** . 
+1. Vložte `length(body('Get_entities')?['value'])` do pole **FX** . Pro přidání této funkce vyberte **OK** .
 
 1. Dokončení nastavení podmínky:
     1. Příkaz Select **je větší než** z rozevíracího seznamu.
@@ -134,7 +135,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
    V několika dalších krocích jste nastavili akci, která se má provést na základě výsledku podmínky:
 
    * Pokud se podmínka vyřeší na **ne**, neprovádějte nic.
-   * Pokud se podmínka přeloží na **hodnotu Ano**, spustí se akce, která připojí váš účet Office 365 k odeslání e-mailu. 
+   * Pokud se podmínka přeloží na **hodnotu Ano**, spustí se akce, která připojí váš účet Office 365 k odeslání e-mailu.
 
 1. **Pokud ano**, vyberte **přidat akci** .
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 77616afa95b61d5a0ca726db0d66734fc57133f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495359"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855118"
 ---
 # <a name="data-storage"></a>Úložiště dat
 
@@ -24,7 +24,7 @@ Když vytvoříte prostředí Azure Time Series Insights Gen2, vytvoříte dva p
 * Prostředí Azure Time Series Insights Gen2, které se dá nakonfigurovat pro úložiště dat s teplou.
 * Účet Azure Storage pro úložiště studených dat.
 
-Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní API pro dotazy Time Series](./time-series-insights-update-tsq.md) a [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Azure Time Series Insights Gen2.
+Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní API pro dotazování časové řady](./time-series-insights-update-tsq.md) a v [Průzkumníkovi Azure Time Series Insights TSI](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Azure Time Series Insights Gen2.
 
 Azure Time Series Insights Gen2 ukládá data z chladírny do úložiště objektů BLOB v Azure ve [formátu souboru Parquet](#parquet-file-format-and-folder-structure). Azure Time Series Insights Gen2 spravuje tato data studeného úložiště výhradně, ale je k dispozici pro čtení přímo jako standardních souborů Parquet.
 
@@ -58,7 +58,7 @@ Aby se zajistil výkon dotazů a dostupnost dat, neupravujte ani neodstraňujte 
 
 #### <a name="accessing-cold-store-data"></a>Přístup k datům z chladírenského úložiště
 
-Kromě přístupu k datům z [Azure Time Series Insights Průzkumníku Gen2](./time-series-insights-update-explorer.md) a [rozhraní API pro dotazování časové řady](./time-series-insights-update-tsq.md)můžete také chtít přistupovat k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
+Kromě přístupu ke svým datům z rozhraní API pro [Azure Time Series Insights TSI](./time-series-insights-update-explorer.md) a [dotazů časových řad](./time-series-insights-update-tsq.md)můžete také chtít získat přístup k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
 
 Pokud chcete získat přístup k datům přímo z účtu Azure Storage, potřebujete přístup pro čtení k účtu, který se používá k ukládání dat Azure Time Series Insights Gen2. Následně si můžete přečíst vybraná data na základě doby vytvoření souboru Parquet ve `PT=Time` složce popsané níže v části [Formát souboru Parquet](#parquet-file-format-and-folder-structure) .  Další informace o povolení přístupu pro čtení k vašemu účtu úložiště najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 
@@ -82,17 +82,17 @@ Azure Time Series Insights Gen2 ukládá kopie vašich dat následujícím způs
 
   `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
 
-Časové razítko v názvech objektů BLOB ve `PT=Time` složce odpovídá době příchodu dat, aby Azure Time Series Insights Gen2, a ne časové razítko událostí.
+Časové razítko v názvech objektů BLOB ve `PT=Time` složce odpovídá času příchodu dat, Azure Time Series Insights Gen2 a nikoliv k časovému razítku událostí.
 
-Data ve `PT=TsId` složce budou optimalizována pro dotazy v průběhu času a nejsou statická. Během změny oddílů můžou být některé události přítomné ve více objektech blob. Pojmenování objektů BLOB v této složce není zaručeno, aby zůstalo stejné. 
+Data ve `PT=TsId` složce budou optimalizována pro dotazy v průběhu času a nejsou statická. Během změny oddílů můžou být některé události přítomné ve více objektech blob. Pojmenování objektů BLOB v této složce není zaručeno, aby zůstalo stejné.
 
-Obecně platí, že pokud potřebujete získat přístup k datům přímo pomocí souborů Parquet, použijte `PT=Time` složku.  Budoucí funkce umožní efektivní přístup ke `PT=TsId` složce. 
+Obecně platí, že pokud potřebujete získat přístup k datům přímo pomocí souborů Parquet, použijte `PT=Time` složku.  Budoucí funkce umožní efektivní přístup ke `PT=TsId` složce.
 
 > [!NOTE]
 >
-> * `<YYYY>`provede mapování na vyjádření roku se čtyřmi číslicemi.
-> * `<MM>`provede mapování na vyjádření měsíčních číslic.
-> * `<YYYYMMDDHHMMSSfff>`mapuje se na časovou reprezentaci se čtyřmi číslicemi (), měsíčním číslem (), dvěma číslicemi `YYYY` (), dvěma číslicemi (), dvěma číslicemi (), dvěma číslicemi `MM` `DD` () a třemi číslicemi `HH` `MM` `SS` milisekund ( `fff` ).
+> * `<YYYY>` provede mapování na vyjádření roku se čtyřmi číslicemi.
+> * `<MM>` provede mapování na vyjádření měsíčních číslic.
+> * `<YYYYMMDDHHMMSSfff>` mapuje se na časovou reprezentaci se čtyřmi číslicemi (), měsíčním číslem (), dvěma číslicemi `YYYY` (), dvěma číslicemi (), dvěma číslicemi (), dvěma číslicemi `MM` `DD` () a třemi číslicemi `HH` `MM` `SS` milisekund ( `fff` ).
 
 Azure Time Series Insights události Gen2 jsou namapovány na obsah souboru Parquet následujícím způsobem:
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658079"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855510"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů
 
-Když si koupíte rezervovanou instanci virtuálního počítače, můžete se rozhodnout optimalizovat pro flexibilitu velikosti instance nebo prioritu kapacity. Další informace o nastavení a změně nastavení optimalizace pro rezervované instance virtuálních počítačů najdete v tématu [Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+Když si koupíte rezervovanou instanci virtuálního počítače, můžete se rozhodnout optimalizovat pro flexibilitu velikosti instance nebo prioritu kapacity. Další informace o nastavení a změně nastavení optimalizace pro rezervované instance virtuálních počítačů najdete v tématu [Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 
 U rezervované instance virtuálního počítače, která je optimalizovaná pro flexibilitu velikosti instance, se rezervace, kterou koupíte, může vztahovat na velikosti virtuálních počítačů ve stejné skupině flexibility velikosti instance. Pokud třeba koupíte rezervaci pro velikost virtuálního počítače, která je uvedená v DSv2 řadě, například Standard_DS5_v2, sleva rezervace se může vztahovat na ostatní čtyři velikosti, které jsou uvedené ve stejné skupině flexibility velikosti instance:
 
@@ -52,4 +52,4 @@ Adresa URL souboru a schéma budeme uchovávat, aby bylo možné tento soubor zp
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [co je Azure reservations](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md).
+Další informace najdete v tématu [co je Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md).

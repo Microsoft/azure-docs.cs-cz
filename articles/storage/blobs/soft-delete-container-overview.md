@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 47582f941c314933baf378478b1380cb8316935b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066606"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854537"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Obnovitelné odstranění pro kontejnery (Preview)
 
@@ -27,8 +27,8 @@ V rámci koncové ochrany dat objektů BLOB doporučuje společnost Microsoft po
 - Pro zajištění ochrany před náhodným odstraněním nebo přepsáním jednotlivého objektu BLOB se jedná o obnovitelné odstranění objektu BLOB. Další informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
 - Správa verzí objektů BLOB (Preview) k automatické údržbě předchozích verzí objektu BLOB. Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila. Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
 
-> [!IMPORTANT]
-> Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+> [!WARNING]
+> Odstranění účtu úložiště se nedá vrátit zpátky. Obnovitelné odstranění nechrání před odstraněním účtu úložiště. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>Jak funguje obnovitelné odstranění kontejneru
 

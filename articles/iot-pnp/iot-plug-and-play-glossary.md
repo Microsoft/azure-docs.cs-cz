@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475460"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854215"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -44,7 +44,7 @@ K dispozici jsou sady SDK pro zařízení, které můžete použít k vytvořen�
 
 Příkazy definované v [rozhraní](#interface) představuje metody, které lze provést na základě [digitálního vlákna](#digital-twin). Například příkaz pro restartování zařízení.
 
-## <a name="component"></a>Komponenta
+## <a name="component"></a>Součást
 
 Komponenty umožňují vytvořit model [rozhraní](#interface) jako sestavení jiných rozhraní. [Model zařízení](#device-model) může kombinovat více rozhraní jako komponenty. Model může například zahrnovat komponentu Switch a termostat. Více komponent v modelu může také používat stejný typ rozhraní. Model může například zahrnovat dvě komponenty termostatu.
 
@@ -54,6 +54,10 @@ Připojovací řetězec zapouzdřuje informace potřebné pro připojení ke kon
 
 - Připojovací řetězce zařízení umožňují [zařízením iot technologie Plug and Play](#iot-plug-and-play-device) připojit se k koncovým bodům připojeným k zařízení ve službě IoT Hub. Klientský kód v zařízení používá připojovací řetězec k navázání zabezpečeného připojení ke službě IoT Hub.
 - Připojovací řetězce IoT Hub umožňují zabezpečené připojení k koncovým bodům pro služby v centru IoT. Tato řešení a nástroje spravují centrum IoT a zařízení, která jsou k němu připojená.
+
+## <a name="device-certification"></a>Certifikace zařízení
+
+Program pro certifikaci zařízení IoT technologie Plug and Play ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Model zařízení
 

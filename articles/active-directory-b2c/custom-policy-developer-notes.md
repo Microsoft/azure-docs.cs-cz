@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 255e0e38d8dc434843452308d2eebc2fd4774c50
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116515"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852041"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -112,20 +112,20 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md#200) |  | X |  |  |
-| [1.2.0](page-layout.md#120) |  | X |  |  |
-| [1.1.0](page-layout.md#110) |  |  | X |  |
-| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [2.0.0](page-layout.md) |  | X |  |  |
+| [1.2.0](page-layout.md) |  | X |  |  |
+| [1.1.0](page-layout.md) |  |  | X |  |
+| [1.0.0](page-layout.md) |  |  | X |  |
 | [Podpora JavaScriptu](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>Integrace aplikací – IEF
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Parametr řetězce dotazu`domain_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
-| Parametr řetězce dotazu`login_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
-| Vložení formátu JSON do cesty uživatele prostřednictvím`client_assertion` | X |  |  | Bude zastaralá. |
-| Vložení formátu JSON do cesty uživatele jako`id_token_hint` |  | X |  | Přejít k předávanému přístupu a předávat JSON. |
+| Parametr řetězce dotazu `domain_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Parametr řetězce dotazu `login_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Vložení formátu JSON do cesty uživatele prostřednictvím `client_assertion` | X |  |  | Bude zastaralá. |
+| Vložení formátu JSON do cesty uživatele jako `id_token_hint` |  | X |  | Přejít k předávanému přístupu a předávat JSON. |
 | [Předání tokenu identity provider do aplikace](idp-pass-through-custom.md) |  | X |  | Například z Facebooku do aplikace. |
 
 ### <a name="session-management"></a>Správa relací

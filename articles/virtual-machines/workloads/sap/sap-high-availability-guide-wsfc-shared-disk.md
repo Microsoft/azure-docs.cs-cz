@@ -13,26 +13,26 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982951"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854402"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Operační systém Windows][Logo_Windows] Windows
 >
 
 Clustering s podporou převzetí služeb při selhání ve Windows serveru je základem instalace ASCS/SCS SAP s vysokou dostupností a DBMS ve Windows.
 
 Cluster s podporou převzetí služeb při selhání je skupina s jedním nebo více než nezávisle servery (uzly), které vzájemně spolupracují za účelem zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání ve Windows serveru vypočítá počet selhání, ke kterým může dojít, a udržujte cluster v pořádku, aby poskytoval aplikace a služby. Pro zajištění clusteringu s podporou převzetí služeb při selhání můžete vybrat z různých režimů kvora.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s úlohami v tomto článku, přečtěte si následující článek:
 
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
@@ -40,7 +40,7 @@ Než začnete s úlohami v tomto článku, přečtěte si následující článe
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Clustering s podporou převzetí služeb při selhání Windows serveru v Azure
 
-V porovnání s nasazením z holého nebo privátního cloudu vyžaduje Azure Virtual Machines další kroky ke konfiguraci clusteringu s podporou převzetí služeb při selhání Windows serveru. Při sestavování clusteru je potřeba nastavit několik IP adres a názvy virtuálních hostitelů pro instanci SAP ASCS/SCS.
+Clustering s podporou převzetí služeb při selhání ve Windows serveru s Azure Virtual Machines vyžaduje další kroky konfigurace. Při sestavování clusteru je potřeba nastavit několik IP adres a názvy virtuálních hostitelů pro instanci SAP ASCS/SCS.
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Překlad názvů v Azure a název virtuálního hostitele clusteru
 
@@ -52,7 +52,7 @@ Nasaďte interní nástroj pro vyrovnávání zatížení ve skupině prostředk
 
 ![Obrázek 1: Konfigurace clusteringu s podporou převzetí služeb při selhání Windows v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
 
-_**Obrázek 1:** Konfigurace clusteringu s podporou převzetí služeb při selhání Windows serveru v Azure bez sdíleného disku_
+_Konfigurace clusteringu s podporou převzetí služeb při selhání Windows serveru v Azure bez sdíleného disku_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA pomocí sdílených disků clusteru
 V systému Windows instance SAP ASCS/SCS obsahuje službu SAP Central Services, server zpráv SAP, procesy serveru fronty a soubory globálního hostitele SAP. Soubory globálního hostitele SAP ukládají centrální soubory pro celý systém SAP.
@@ -73,30 +73,104 @@ Instance SAP ASCS/SCS má následující komponenty:
 
 ![Obrázek 2: procesy, struktura souborů a globální sapmnt sdílené složky hostitele instance SAP ASCS/SCS][sap-ha-guide-figure-8001]
 
-_**Obrázek 2:** Procesy, struktury souborů a globální sdílená složka hostitele sapmnt instance SAP ASCS/SCS_
+_Procesy, struktury souborů a globální sdílená složka hostitele sapmnt instance SAP ASCS/SCS_
 
 V nastavení vysoké dostupnosti můžete clusterovat instance SAP ASCS/SCS. V našem příkladu používáme *sdílené disky v clusteru* (jednotky S, v našem příkladu) k umístění souborů SAP ASCS/SCS a SAP Global Hosts.
 
 ![Obrázek 3: architektura SAP ASCS/SCS HA se sdíleným diskem][sap-ha-guide-figure-8002]
 
-_**Obrázek 3:** Architektura SAP ASCS/SCS HA se sdíleným diskem_
+_Architektura SAP ASCS/SCS HA se sdíleným diskem_
 
-> [!IMPORTANT]
-> Tyto dvě komponenty běží pod stejnou instancí SAP ASCS/SCS:
->* Stejný \<ASCS/SCS virtual host name> postup se používá pro přístup k procesům zpráv SAP a zařazování do fronty a k souborům globálního hostitele SAP prostřednictvím sdílené složky sapmnt.
->* Mezi nimi se sdílí stejná jednotka sdíleného disku clusteru.
->
 
+S architekturou replikace serveru fronty 1:
+* Stejný \<ASCS/SCS virtual host name> postup se používá pro přístup k procesům zpráv SAP a zařazování do fronty a k souborům globálního hostitele SAP prostřednictvím sdílené složky sapmnt.
+* Mezi nimi se sdílí stejná jednotka sdíleného disku clusteru.  
+
+S architekturou replikace serveru fronty 2: 
+* Stejný postup \<ASCS/SCS virtual host name> se používá pro přístup k procesu serveru zpráv SAP a k globálním hostitelům SAP přes sdílenou složku systému souborů sapmnt.
+* Mezi nimi se sdílí stejná jednotka sdíleného disku clusteru.
+* \<ERS virtual host name>Pro přístup k procesu serveru fronty je k dispozici samostatné oddělení.  
 
 ![Obrázek 4: architektura SAP ASCS/SCS HA se sdíleným diskem][sap-ha-guide-figure-8003]
 
-_**Obrázek 4:** Architektura SAP ASCS/SCS HA se sdíleným diskem_
+_Architektura SAP ASCS/SCS HA se sdíleným diskem_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>Replikační Server sdíleného disku a fronty 
+
+1. Sdílený disk se podporuje s architekturou replikace serveru fronty 1, kde je instance serveru služby Replication Server (OLAJÍCÍCH):   
+
+   - není clusterovaný
+   - používá `localhost` název
+   - je nasazen na místních discích na jednotlivých uzlech clusteru.
+
+2. Sdílený disk je také podporován s architekturou replikace serveru fronty 2, kde je instance serveru fronty replikace 2 (ERS2).  
+
+   - je clusterovaný
+   - používá vyhrazený název virtuálního nebo síťového hostitele
+   - vyžaduje, aby byla IP adresa virtuálního hostitele OLAJÍCÍCH nakonfigurovaná na interním Load Balancer Azure, kromě IP adresy SCS (A).
+   - aplikace je nasazená na **místních discích** na každém z clusterovaných uzlů, takže není potřeba sdílet disk.
+
+   > [!TIP]
+   > Další informace o zařazování serveru replikace 1 a 2 (ERS1 a ERS2) najdete tady:  
+   > [Zařazování replikačního serveru v clusteru s podporou převzetí služeb při selhání Microsoftu](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [Nový Replikátor fronty v prostředích clusteru s podporou převzetí služeb](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>Možnosti sdíleného disku v Azure pro úlohy SAP
+
+V clusteru s podporou převzetí služeb při selhání systému Windows v Azure jsou k dispozici dvě možnosti pro sdílený disk:
+
+- [Sdílené disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) – funkce, které umožňují připojení spravovaného disku Azure ke více virtuálním počítačům současně. 
+- Vytvoření zrcadleného úložiště, které simuluje sdílené úložiště clusteru, pomocí softwaru třetí strany s [Clusterovou edicí DataKeeper](https://us.sios.com/products/datakeeper-cluster) 
+
+Při výběru technologie pro sdílený disk mějte na paměti následující skutečnosti:
+
+**Sdílený disk Azure pro úlohy SAP**
+- Umožňuje připojit Azure Managed disk k několika virtuálním počítačům současně bez nutnosti dalšího softwaru udržovat a provozovat. 
+- Budete pracovat s jedním sdíleným diskem Azure na jednom úložném clusteru. To má vliv na spolehlivost řešení SAP.
+- V současné době je jediným podporovaným nasazením disk Azure Shared Premium v sadě dostupnosti. Sdílený disk Azure není podporován v nasazení Zona.     
+- Ujistěte se, že zřizujete disk Azure Premium s minimální velikostí disku určenou v [SSD úrovně Premium rozsahy](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) , aby bylo možné se připojit k požadovanému počtu virtuálních počítačů současně (obvykle 2 pro cluster s podporou převzetí služeb při selhání s Windows SAP ASCS Windows). 
+- Azure Shared Ultra disk není podporován pro úlohy SAP, protože nepodporuje nasazení v rámci skupiny dostupnosti nebo nasazení v rámci prostředí.  
+ 
+**FINÁL**
+- Řešení s poskytuje synchronní replikaci dat v reálném čase mezi dvěma disky.
+- S řešením s pracujete se dvěma spravovanými disky a pokud používáte buď skupiny dostupnosti nebo zóny dostupnosti, budou spravované disky na různé clustery úložiště. 
+- Nasazení v zónách dostupnosti je podporováno.
+- Vyžaduje instalaci a provozování softwaru třetích stran, které budete muset koupit navíc.
+
+### <a name="shared-disk-using-azure-shared-disk"></a>Sdílený disk pomocí sdíleného disku Azure
+
+Microsoft nabízí [sdílené disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared), které se dají použít k implementaci vysoké dostupnosti SAP ASCS/SCS s možností sdíleného disku.
+
+#### <a name="prerequisites-and-limitations"></a>Požadavky a omezení
+
+V současné době můžete pro instanci SAP ASCS/SCS použít disky Azure SSD úrovně Premium jako sdílený disk Azure. V současné době jsou k dismístě tato omezení:
+
+-  [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) se nepodporuje jako sdílený disk Azure pro úlohy SAP. V současné době není možné umístit virtuální počítače Azure pomocí Azure Ultra disk v sadě dostupnosti.
+-  [Sdílený disk Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) s SSD úrovně Premium disky se podporuje jenom s virtuálními počítači ve skupině dostupnosti. V nasazení Zóny dostupnosti se nepodporuje. 
+-  Hodnota sdíleného disku Azure [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) určuje, kolik uzlů clusteru může používat sdílený disk. V případě instance SAP ASCS/SCS nakonfigurujete dva uzly v clusteru s podporou převzetí služeb při selhání systému Windows, takže hodnota vlastnosti `maxShares` musí být nastavena na hodnotu dvě.
+-  Všechny virtuální počítače s clustery SAP ASCS/SCS musí být nasazené ve stejné [skupině umístění služby Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups).   
+   I když můžete nasadit virtuální počítače clusterů Windows ve skupině dostupnosti se sdíleným diskem Azure bez PPG, PPG zajistí uzavření fyzické blízkosti sdílených disků Azure a virtuálních počítačů clusteru, čímž se dosáhne nižší latence mezi virtuálními počítači a vrstvou úložiště.    
+
+Další podrobnosti o omezeních pro sdílený disk Azure najdete v části s přehledem [omezení](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) v dokumentaci ke sdíleným diskům Azure.
+
+> [!IMPORTANT]
+> Při nasazování clusteru SAP ASCS/SCS Windows s podporou převzetí služeb při selhání se sdíleným diskem Azure Pamatujte na to, že nasazení bude pracovat s jedním sdíleným diskem v jednom úložném clusteru. V případě problémů s clusterem úložiště, do kterého se nasadí sdílený disk Azure, by se měla ovlivnit instance SAP ASCS/SCS.    
+
+> [!TIP]
+> Při plánování nasazení SAP si přečtěte téma [Průvodce plánováním SAP NetWeaver v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) a [Příručka pro Azure Storage pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) , kde najdete důležité požadavky.
+
+### <a name="supported-os-versions"></a>Podporované verze operačního systému
+
+Podporovány jsou systémy Windows Server 2016 a 2019 (použijte nejnovější obrázky datového centra).
+
+Důrazně doporučujeme používat **Windows Server 2019 Datacenter**, jako je:
+- Clusterová služba s podporou převzetí služeb při selhání systému Windows 2019 podporuje Azure
+- Monitorování pro události plánu Azure vám přidává integraci a povědomí o údržbě hostitelů Azure a zlepšení prostředí.
+- Je možné použít název distribuované sítě (Jedná se o výchozí možnost). Proto není nutné mít vyhrazenou IP adresu pro síťový název clusteru. Kromě toho není potřeba konfigurovat tuto IP adresu v interních Load Balancer Azure. 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Sdílené disky v Azure s využitím DataKeeper
 
-Pro instanci SAP ASCS/SCS pro vysokou dostupnost potřebujete sdílené úložiště clusteru.
-
-K vytvoření zrcadleného úložiště, které simuluje sdílené úložiště clusteru, můžete použít software třetí strany s clusterem DataKeeper Edition. Řešení s poskytuje synchronní replikaci dat v reálném čase.
+Další možností pro sdílený disk je použití softwaru třetí strany s procesorem DataKeeper Edition k vytvoření zrcadleného úložiště, které simuluje sdílené úložiště clusteru. Řešení s poskytuje synchronní replikaci dat v reálném čase.
 
 Vytvoření prostředku sdíleného disku pro cluster:
 
@@ -108,7 +182,7 @@ Získejte další informace o [Datakeepu](https://us.sios.com/products/datakeepe
 
 ![Obrázek 5: Konfigurace clusteringu s podporou převzetí služeb při selhání Windows serveru v Azure s využitím][sap-ha-guide-figure-1002]
 
-_**Obrázek 5:** Konfigurace clusteringu s podporou převzetí služeb při selhání Windows v Azure s využitím_
+_Konfigurace clusteringu s podporou převzetí služeb při selhání Windows v Azure s využitím_
 
 > [!NOTE]
 > Pro zajištění vysoké dostupnosti s některými produkty DBMS, jako je SQL Server, nepotřebujete sdílené disky. SQL Server AlwaysOn replikuje DBMS data a soubory protokolu z místního disku jednoho uzlu clusteru na místní disk jiného uzlu clusteru. V takovém případě konfigurace clusteru Windows nepotřebuje sdílený disk.

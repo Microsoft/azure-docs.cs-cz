@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4c005bc49780edcb7f322455e37163e78d87619f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752082"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852692"
 ---
 # <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 
@@ -31,7 +31,7 @@ Disky Azure Ultra nabízejí vysokou propustnost, vysoké IOPS a konzistentní d
 
 K využití disků Ultra je potřeba určit, kterou zónu dostupnosti máte. Ne každá oblast podporuje všechny velikosti virtuálních počítačů pomocí Ultra disks. Pokud chcete zjistit, jestli vaše oblast, zóna a velikost virtuálního počítače podporují disky Ultra, spusťte některý z následujících příkazů, abyste nejdřív nahradili hodnoty **region**, **vmSize**a **Subscription** :
 
-#### <a name="cli"></a>CLI
+#### <a name="cli"></a>Rozhraní příkazového řádku
 
 ```azurecli
 subscription="<yourSubID>"
@@ -128,7 +128,7 @@ Po zřízení virtuálního počítače můžete rozdělit a naformátovat datov
 
 ## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>Nasazení Ultra disku pomocí Azure Portal
 
-Tato část popisuje nasazení virtuálního počítače vybaveného diskem Ultra jako datový disk. Předpokládá se, že máte zkušenosti s nasazením virtuálního počítače, a pokud to neuděláte, přečtěte si náš [rychlý Start: Vytvoření virtuálního počítače s Windows v Azure Portal](~/articles/virtual-machines/windows/quick-create-portal.md).
+Tato část popisuje nasazení virtuálního počítače vybaveného diskem Ultra jako datový disk. Předpokládá se, že máte zkušenosti s nasazením virtuálního počítače, a pokud to neuděláte, přečtěte si náš [rychlý Start: Vytvoření virtuálního počítače s Windows v Azure Portal](./windows/quick-create-portal.md).
 
 - Přihlaste se k [Azure Portal](https://portal.azure.com/) a přejděte k nasazení virtuálního počítače (VM).
 - Ujistěte se, že jste zvolili [podporovanou velikost virtuálního počítače a oblast](#ga-scope-and-limitations).

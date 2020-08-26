@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192282"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853276"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
@@ -78,8 +78,8 @@ V okně Přehled prostředků služby signalizace Azure jsme už pro vás zvolil
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Jaký je význam režimu služby `Default` / `Serverless` / `Classic` ? Jak si můžu vybrat?
 
 Druzí
-* `Default` režim **vyžaduje** Server hub. Pokud není pro centrum k dispozici žádné připojení k serveru, klient se pokusí připojit k tomuto rozbočovači, který se nezdařil.
-* `Serverless` režim **nepovoluje žádné** připojení k serveru, to znamená, že bude odmítat všechna připojení serveru, všichni klienti musí být v režimu bez serveru.
+* `Default` režim *vyžaduje* Server hub. V tomto režimu služba Azure Signal směruje provoz klienta na jeho připojená připojení hub serveru. Azure Signal vyhledává připojený hub Server. Pokud se nenalezne připojený hub Server, nástroj Azure Signal odmítne příchozí připojení klientů. **Rozhraní API pro správu** v tomto režimu můžete použít také ke správě připojených klientů přímo prostřednictvím služby Azure Signal.
+* `Serverless` režim *nepovoluje žádné* připojení k serveru, to znamená, že budou všechna připojení serveru odmítnuta. Všichni klienti musí být v režimu bez serveru. Klienti se připojují ke službě Azure Signal a uživatelé obvykle používají pro zpracování logiky centra technologie bez serveru, jako je třeba **funkce Azure Functions** . Podívejte se na [jednoduchý příklad](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) , který využívá režim bez serveru v Azure Signal.
 * `Classic` režim je smíšený stav. Pokud má rozbočovač připojení k serveru, bude nový klient směrován do serveru hub, pokud ne, klient přejde do režimu bez serveru.
 
   To může způsobit nějaký problém, například všechna připojení serveru budou ztracena za chvíli, někteří klienti místo směrování do serveru hub zadají režim bez serveru.

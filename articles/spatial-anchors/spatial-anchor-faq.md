@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091483"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854948"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -51,7 +51,7 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 
 **Otázka: jak Azure prostorové kotvy ukládají data?**
 
-**A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem.
+**A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem a všechna data jsou pro každý z těchto prostředků ukládána do regionu.
 
 **Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
 

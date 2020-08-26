@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815721"
+ms.locfileid: "88853292"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -85,23 +85,23 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
    1. Zadejte název připojení a vyberte svůj obor názvů Service Bus.
 
-      ![Vytvoření připojení Service Bus, část 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![Snímek obrazovky, který ukazuje zadání názvu připojení a výběr Service Bus oboru názvů](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       Chcete-li místo toho zadat připojovací řetězec ručně, vyberte možnost **ručně zadat informace o připojení**. Pokud nemáte připojovací řetězec, přečtěte si, [Jak najít připojovací řetězec](#permissions-connection-string).
 
    1. Vyberte zásady Service Bus a vyberte **vytvořit**.
 
-      ![Vytvoření připojení Service Bus, 2. část](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![Snímek obrazovky zobrazující výběr zásady Service Bus](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. Vyberte požadovanou entitu zasílání zpráv, například frontu nebo téma. V tomto příkladu vyberte frontu Service Bus.
    
-      ![Vybrat Service Bus frontu](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![Snímek obrazovky zobrazující výběr Service Bus fronty](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. Zadejte potřebné informace pro vybraný Trigger. Chcete-li přidat k akci další dostupné vlastnosti, otevřete seznam **Přidat nový parametr** a vyberte požadované vlastnosti.
 
    Pro tento příklad triggeru vyberte interval cyklického dotazování a četnost kontroly fronty.
 
-   ![Nastavení intervalu dotazování](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Snímek obrazovky zobrazující nastavení intervalu dotazování v aktivační události Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    Další informace o dostupných triggerech a vlastnostech najdete na [referenční stránce](/connectors/servicebus/)konektoru.
 
@@ -123,29 +123,29 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
    V tomto příkladu vyberte akci **Odeslat zprávu** .
 
-   ![Vybrat Service Bus akci](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![Snímek obrazovky zobrazující výběr akce Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. Pokud se vaše akce připojuje k vašemu Service Bus oboru názvů poprvé, postupujte podle těchto kroků, když vás návrhář aplikace logiky vyzve k zadání informací o připojení.
 
    1. Zadejte název připojení a vyberte svůj obor názvů Service Bus.
 
-      ![Vytvoření připojení Service Bus, část 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![Snímek obrazovky, který ukazuje zadání názvu připojení a výběr Service Bus oboru názvů](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       Chcete-li místo toho zadat připojovací řetězec ručně, vyberte možnost **ručně zadat informace o připojení**. Pokud nemáte připojovací řetězec, přečtěte si, [Jak najít připojovací řetězec](#permissions-connection-string).
 
    1. Vyberte zásady Service Bus a vyberte **vytvořit**.
 
-      ![Vytvoření připojení Service Bus, 2. část](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Snímek obrazovky zobrazující výběr zásady Service Bus a výběr tlačítka vytvořit](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. Vyberte požadovanou entitu zasílání zpráv, například frontu nebo téma. V tomto příkladu vyberte frontu Service Bus.
 
-      ![Vybrat Service Bus frontu](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Snímek obrazovky, který zobrazuje výběr fronty Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. Zadejte potřebné podrobnosti pro vybranou akci. Chcete-li přidat k akci další dostupné vlastnosti, otevřete seznam **Přidat nový parametr** a vyberte požadované vlastnosti.
 
    Vyberte například vlastnosti **obsah** a **typ obsahu** , abyste je přidali do akce. Pak zadejte obsah zprávy, kterou chcete odeslat.
 
-   ![Zadání obsahu zprávy a podrobností](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![Snímek obrazovky, který ukazuje zadání typu obsahu zprávy a podrobností](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    Další informace o dostupných akcích a jejich vlastnostech najdete na [referenční stránce](/connectors/servicebus/)konektoru.
 

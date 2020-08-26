@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719660"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855251"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Řešení problémů s dostupností prostředků prostředků, front-endu a back-endu 
 
@@ -30,6 +30,9 @@ Metrika dostupnosti dat je vygenerována při každém 25 sekundách na všech p
 
 ## <a name="health-probe-status"></a>Stav sondy stavu
 Metrika stavu sondy stavu je vygenerována pomocí testu paměti protokolu definovaného v testu stavu. Tento test se pošle do každé instance ve fondu back-end a na portu definovaném v testu stavu. V případě sond HTTP a HTTPS vyžaduje úspěšný příkaz k odeslání odpovědi HTTP 200 OK, zatímco s sondami TCP jsou všechny odpovědi považovány za úspěšné. Po sobě jdoucí úspěchy nebo chyby každé sondy pak určí, jestli je instance back-endu v pořádku a dokáže přijímat přenosy pro pravidla vyrovnávání zatížení, ke kterým je fond back-endu přiřazený. Podobně jako dostupnost cesty k datům používáme průměrnou agregaci, která nám oznamuje průměrný počet úspěšných a celkových příkazů testu dostupnosti během intervalu vzorkování. Tato hodnota stavu sondy stavu udává stav back-endu v izolaci od vašeho nástroje pro vyrovnávání zatížení, a to tak, že se vaše instance back-endu vystavuje bez posílání provozu
+
+>[!IMPORTANT]
+>Stav sondy stavu se vzorkuje po jedné minutě. To může vést k menším výkyvům v jiné ustálené hodnotě. Například pokud existují dvě instance back-endu, jedna sonda a jedna sonda, služba sondy stavu může zachytit 7 vzorků pro bezproblémovou instanci a 6 pro instanci, která není v pořádku. To povede k dřív ustálené hodnotě 50, která se zobrazí jako 46,15 po dobu jednoho minutového intervalu. 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>Diagnostika degradované a nedostupné nástroje pro vyrovnávání zatížení
 Jak je uvedeno v článku o [stavu prostředků](load-balancer-standard-diagnostics.md#resource-health-status), je nástroj pro vyrovnávání zatížení, který se zobrazuje mezi 25% a 90% dostupností cesty k datům, a nedostupný Nástroj pro vyrovnávání zatížení je o jednu, která má méně než 25% dostupnost cesty k datům, po dobu dvou minut. Tyto stejné kroky je možné provést k prozkoumání chyby, která se zobrazí v jakémkoli upozornění na stav testu stavu nebo v výstrahách dostupnosti dat, která jste nakonfigurovali. Podíváme se na případ, kde jsme kontrolovali náš stav prostředků, a zjistili jsme, že náš nástroj pro vyrovnávání zatížení nebude k dispozici s dostupnou datovou cestou 0% – naše služba je mimo provoz.

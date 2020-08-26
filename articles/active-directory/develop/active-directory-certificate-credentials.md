@@ -13,16 +13,16 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163658"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853387"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v toku [udělení přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) OAuth 2,0 a toku spouštěného [za běhu (OBO](v2-oauth2-on-behalf-of-flow.md) ).
+Platforma Microsoft Identity Platform umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v toku  [udělení přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) OAuth 2,0 a toku spouštěného [za běhu (OBO](v2-oauth2-on-behalf-of-flow.md) ).
 
 Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz [JSON web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (Jwt) podepsaný certifikátem, který vlastní aplikace.
 
@@ -36,13 +36,13 @@ Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihove
 | --- | --- |
 | `alg` | By měl být **RS256** |
 | `typ` | Měla by být **JWT** |
-| `x5t` | Hodnota hash certifikátu X. 509 (označovaná také jako *kryptografický otisk*SHA-1 certifikátu) kódovaná jako řetězcová hodnota base64. Například kvůli hodnotě hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` `x5t` by deklarace identity byla `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
+| `x5t` | Šestnáctková reprezentace certifikátu X. 509 (označovaná také jako *kryptografický otisk*SHA-1 certifikátu) kódovaná jako řetězcová hodnota base64. Například pokud je zadána hodnota hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex), `x5t` deklarace by byla `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64). |
 
 ### <a name="claims-payload"></a>Deklarace identity (datová část)
 
 | Parametr |  Poznámky |
 | --- | --- |
-| `aud` | Cílová skupina: by měla být`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `aud` | Cílová skupina: by měla být `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
 | `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy platnost tokenu vyprší. Doporučujeme používat krátký čas vypršení platnosti – 10 minut až jednu hodinu.|
 | `iss` | Vystavitel: mělo by se jednat o client_id (*ID aplikace (klienta)* služby klienta). |
 | `jti` | GUID: ID JWT |
@@ -103,8 +103,8 @@ V registraci aplikace Azure pro klientskou aplikaci:
 
 Po uložení certifikátu je potřeba vypočítat:
 
-- `$base64Thumbprint`-Hodnota hash certifikátu zakódovaná pomocí Base64
-- `$base64Value`-Hodnota kódovaná pro nezpracované údaje certifikátu v kódování Base64
+- `$base64Thumbprint` -Hodnota hash certifikátu zakódovaná pomocí Base64
+- `$base64Value` -Hodnota kódovaná pro nezpracované údaje certifikátu v kódování Base64
 
 Také je nutné zadat identifikátor GUID k identifikaci klíče v manifestu aplikace ( `$keyId` ).
 

@@ -7,15 +7,15 @@ author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 4f3a417eca837778f2222d92d09b191082c8b195
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b86dd714bdd7f28ba5946e23c21b601e3336211c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276175"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855280"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure Policy předdefinované definice pro Azure SQL Database & spravované instance SQL
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro Azure SQL Database a SQL Managed instance. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
 

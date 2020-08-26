@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 6e90a8bc0998b43a84658958215e4b7977f8fdd0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a35d9c48dd46d5d220699589f4ed758d21feca8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461302"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854280"
 ---
 # <a name="use-fqdn-filtering-in-network-rules-preview"></a>Použít filtrování plně kvalifikovaného názvu domény v pravidlech sítě (Preview)
 
@@ -21,6 +21,9 @@ ms.locfileid: "87461302"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Plně kvalifikovaný název domény (FQDN) představuje název domény hostitele nebo IP adresy. V závislosti na rozlišení DNS v Azure Firewall a zásadách brány firewall můžete použít plně kvalifikované názvy domén v pravidlech sítě. Tato funkce umožňuje filtrovat odchozí přenosy s jakýmkoli protokolem TCP/UDP (včetně NTP, SSH, RDP a dalších). Aby bylo možné ve svých síťových pravidlech používat plně kvalifikované názvy domény, musíte povolit proxy serveru DNS. Další informace najdete v tématu [Azure firewall nastavení DNS (Preview)](dns-settings.md).
+
+> [!NOTE]
+> Filtrování plně kvalifikovaného názvu domény v takovém případě nepodporuje zástupné znaky.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035974"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855219"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Operační systém Windows][Logo_Windows] Windows
 >
 
 Pomocí [interního nástroje pro vyrovnávání zatížení Azure][load-balancer-multivip-overview]můžete spravovat víc virtuálních IP adres. 
@@ -61,6 +61,7 @@ _**Obrázek 1:** Instance SAP ASCS/SCS a SOFS nasazené ve dvou clusterech_
 > * Různé sdílené složky SAP Global Hosts patřící do různých identifikátorů SID SAP musí sdílet stejný cluster SOFS.
 > * Každý identifikátor SID systému správy databáze (DBMS) musí mít vlastní vyhrazený cluster WSFC.
 > * Aplikační servery SAP, které patří k jednomu identifikátoru zabezpečení systému SAP, musí mít vlastní vyhrazené virtuální počítače.
+> * Kombinace replikačního serveru fronty 1 a fronty replikačního serveru 2 ve stejném clusteru není podporovaná.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura SAP ASCS/SCS s více identifikátory SID se sdílenou složkou
 

@@ -11,14 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541120"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855261"
 ---
-# <a name="deploy-a-model-to-azure-container-instances"></a>Nasazení modelu pro Azure Container Instances
+# <a name="deploy-a-model-to-azure-container-instances"></a>Nasazení modelu do služby Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby v Azure Container Instances (ACI). Použijte Azure Container Instances, pokud je splněna jedna z následujících podmínek:
@@ -31,9 +31,9 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 > [!IMPORTANT]
 > Důrazně doporučujeme ladit místně před nasazením do webové služby, další informace najdete v tématu [ladění místně](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally) .
 >
-> Můžete se také podívat na Azure Machine Learning – [nasazení do místního poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) .
+> Můžete využít také [poznámkový blok služby Azure Machine Learning pro místní nasazení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -43,9 +43,9 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 
 - Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastavené následující proměnné:
 
-    * `ws`– Nastavte na svůj pracovní prostor.
-    * `model`– Nastavte na registrovaný model.
-    * `inference_config`– Nastavte na odvození konfigurace pro model.
+    * `ws` – Nastavte na svůj pracovní prostor.
+    * `model` – Nastavte na registrovaný model.
+    * `inference_config` – Nastavte na odvození konfigurace pro model.
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
@@ -56,8 +56,9 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 Pokud chcete nasadit model, který se Azure Container Instances, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 > [!NOTE]
-> * ACI je vhodný jenom pro malé modely <1 GB. 
+> * ACI je vhodný jenom pro malé modely, které jsou menší než 1 GB. 
 > * Pro vývoj a testování větších modelů doporučujeme použít AKS s jedním uzlem.
+> * Počet modelů, které se mají nasadit, je omezený na 1 000 modelů na jedno nasazení (na kontejner). 
 
 ### <a name="using-the-sdk"></a>Použití sady SDK
 
@@ -102,7 +103,7 @@ Viz [nasazení modelů pomocí vs Code](tutorial-train-deploy-image-classificati
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

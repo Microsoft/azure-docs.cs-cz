@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 5a0c9d1888f1efbd90ef345cecabe244422abe95
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2d8ac3775021c574d3c03e44b06d6b5e689070e7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763622"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852668"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
@@ -128,11 +128,11 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="view-the-latest-feature-updates"></a><a name="new"></a>Zobrazit nejnovější aktualizace funkcí
+## <a name="whats-new"></a><a name="new"></a>Co je nového?
 
 Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější aktualizace funkcí Virtual WAN na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) .
 

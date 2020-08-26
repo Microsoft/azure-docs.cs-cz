@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141716"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855196"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
@@ -24,9 +24,9 @@ Tento článek popisuje model časových řad, možnosti a způsob, jak začít 
 > [!TIP]
 >
 > * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
-> * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Azure Time Series Insights Gen2 Explorer.
+> * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Průzkumníka Azure Time Series Insights TSI.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Data shromážděná ze zařízení IoT neobsahují kontextové informace, což usnadňuje rychlé vyhledání a analýzu senzorů. Hlavním motivací pro model časových řad je zjednodušení hledání a analýza dat IoT nebo časových řad. Tento cíl dosahuje tím, že umožňuje zpracovat, udržovat a zdokonalovat data časových řad, což vám usnadní přípravu datových sad připravených pro zákazníky pro účely analýzy.
 
@@ -75,7 +75,7 @@ Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspoř�
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
+Model časových řad se dá vytvořit a spravovat pomocí [průzkumníka Azure Time Series Insights TSI](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -87,7 +87,7 @@ Instance obsahují popisné informace spojené s názvem *vlastnosti instance*, 
 
 *Pole instancí* jsou kolekce popisných informací, které mohou obsahovat hodnoty pro úrovně hierarchie, a také výrobce, operátor a tak dále.
 
-Po nakonfigurování zdroje událostí pro prostředí Azure Time Series Insights Gen2 jsou instance automaticky zjišťovány a vytvořeny v modelu časové řady. Instance se dají vytvořit nebo aktualizovat prostřednictvím Azure Time Series Insights Průzkumníku Gen2 pomocí dotazů na model časových řad.
+Po nakonfigurování zdroje událostí pro prostředí Azure Time Series Insights Gen2 jsou instance automaticky zjišťovány a vytvořeny v modelu časové řady. Instance se dají vytvořit nebo aktualizovat prostřednictvím Průzkumníka Azure Time Series Insights TSI pomocí dotazů na model časových řad.
 
 [Ukázková farma společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) nabízí několik příkladů instancí za provozu.
 
@@ -102,7 +102,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | timeSeriesId | Jedinečné ID časové řady, ke které je instance přidružena. Ve většině případů jsou instance jednoznačně identifikované vlastností, jako je deviceId nebo assetId. V některých případech lze použít více specifických IDENTIFIKÁTORů s kombinací až tří vlastností. |
 | typeId | Jedinečné ID řetězce s rozlišením velkých a malých písmen pro typ modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
 | name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](time-series-insights-update-explorer.md#4-time-series-well) |
-| description | Textový popis instance. |
+| Popis | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |
 
@@ -182,8 +182,8 @@ Hierarchie se ve formátu JSON reprezentují jako:
 
 V předchozím příkladu JSON:
 
-* `Location`definuje hierarchii s nadřazenou `states` a podřízenou položkou `cities` . Každý `location` může mít více `states` , což může mít více `cities` .
-* `ManufactureDate`definuje hierarchii s nadřazenou `year` a podřízenou položkou `month` . Každý `ManufactureDate` může mít více `years` , což může mít více `months` .
+* `Location` definuje hierarchii s nadřazenou `states` a podřízenou položkou `cities` . Každý `location` může mít více `states` , což může mít více `cities` .
+* `ManufactureDate` definuje hierarchii s nadřazenou `year` a podřízenou položkou `month` . Každý `ManufactureDate` může mít více `years` , což může mít více `months` .
 
 > [!TIP]
 > Pro podporu rozhraní API pro vytváření, čtení, aktualizaci a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API pro rozhraní API pro hierarchii](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
@@ -216,7 +216,7 @@ Vzhledem k polím instance použitým v předchozí definici a několika časov�
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastaven žádný z "budova", "patra" ani "místnost". |
 
-Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Průzkumníku Azure Time Series Insights Gen2](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry pro *sestavování*, *podlah*a *místností* .
+Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Průzkumníkovi Azure Time Series Insights TSI](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry *sestavení*, *podlah*a *místností* .
 
 Ostatní jsou klasifikovány v rámci *nenadřazených instancí* , protože neodpovídají zadané hierarchii dat.
 
@@ -241,7 +241,7 @@ Typy modelů časových řad jsou definovány podle **ID**, **názvu**, **popisu
 | ---| ---|
 | id | Jedinečné ID řetězce rozlišující velká a malá písmena pro daný typ. |
 | name | Řetězec, který slouží k zadání názvu pro typ. |
-| description | Popis řetězce pro typ. |
+| Popis | Popis řetězce pro typ. |
 | proměnné | Zadejte proměnné přidružené k typu. |
 
 Typy odpovídají následujícímu příkladu JSON:

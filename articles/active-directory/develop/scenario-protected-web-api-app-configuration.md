@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 992c29cb8380cf6acbe970b2fd5e958b6b2b33dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 50de800c94bd0a65fafcff3ef6613d6f063a3797
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026709"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855493"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -144,7 +144,19 @@ using Microsoft.Identity.Web;
 public void ConfigureServices(IServiceCollection services)
 {
  // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
- services.AddMicrosoftWebApiAuthentication(Configuration, "AzureAd");
+ services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+Můžete také zapsat následující (což je ekvivalentní)
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
 
  services.AddControllers();
 }
@@ -152,11 +164,11 @@ public void ConfigureServices(IServiceCollection services)
 
 > [!NOTE]
 > Pokud používáte Microsoft. identity. Web a nenastavíte `Audience` v *appsettings.jsna*, použije se následující:
-> -  `$"{ClientId}"`Pokud jste nastavili [verzi přístupového tokenu](scenario-protected-web-api-app-registration.md#accepted-token-version) na `2` nebo pro Azure AD B2C webová rozhraní API.
-> - `$"api://{ClientId}`ve všech ostatních případech (pro [přístupové tokeny](access-tokens.md)v 1.0).
+> -  `$"{ClientId}"` Pokud jste nastavili [verzi přístupového tokenu](scenario-protected-web-api-app-registration.md#accepted-token-version) na `2` nebo pro Azure AD B2C webová rozhraní API.
+> - `$"api://{ClientId}` ve všech ostatních případech (pro [přístupové tokeny](access-tokens.md)v 1.0).
 > Podrobnosti najdete v tématu Microsoft. identity. Web [Source Code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Předchozí fragment kódu je extrahován z [přírůstkového kurzu ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Podrobnosti o **AddMicrosoftWebApiAuthentication** jsou k dispozici v [Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27). Tato metoda volá [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58), která sám instruuje middleware k ověření tokenu. Podrobnosti najdete ve [zdrojovém kódu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
+Předchozí fragment kódu je extrahován z [přírůstkového kurzu ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Podrobnosti o **AddMicrosoftIdentityWebApiAuthentication** jsou k dispozici v [Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27). Tato metoda volá [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58), která sám instruuje middleware k ověření tokenu. Podrobnosti najdete ve [zdrojovém kódu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
 
 ## <a name="token-validation"></a>Ověření tokenu
 
@@ -194,7 +206,8 @@ Ve většině případů nemusíte měnit parametry. Mezi aplikace, které nejso
 Pokud chcete přizpůsobit parametry ověření tokenu, v ASP.NET Core použijte následující fragment kódu v *Startup.cs*:
 
 ```c#
-services.AddMicrosoftWebApiAuthentication(Configuration);
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApi(Configuration);
 services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
 {
   var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;

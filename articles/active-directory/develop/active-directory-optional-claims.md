@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794667"
+ms.locfileid: "88853589"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | Není k dispozici         | Podporováno   |
+| Osobní účet Microsoft | –         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -54,7 +54,6 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 | `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| TOKEN        |           |  |
 | `tenant_region_scope`      | Oblast tenanta prostředků | TOKEN        |           | |
 | `sid`                      | ID relace, která se používá pro odhlášení uživatele na relaci. | TOKEN        |  Osobní účty a účty Azure AD.   |         |
-| `platf`                    | Platforma zařízení    | TOKEN        |           | Omezeno na spravovaná zařízení, která můžou ověřit typ zařízení.|
 | `verified_primary_email`   | Zdroj z PrimaryAuthoritativeEmail uživatele      | TOKEN        |           |         |
 | `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | TOKEN        |           |        |
 | `vnet`                     | Informace o specifikátoru virtuální sítě | TOKEN        |           |      |
@@ -258,7 +257,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "Zabezpečení"
    - "DirectoryRole"
 
-   Například:
+   Příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fa99acda5f1c8edac3026961c426257bb74d92
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808832"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853649"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -27,7 +27,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 **Odhadovaný čas dokončení:** 45 minut
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Azure Storage společnou klientskou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
@@ -49,7 +49,7 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 
 1. Vybrat **soubor**  >  **Nový**  >  **projekt**
 2. Vybrat **Platform**  >  **okna** platformy
-3. Vyberte **Aplikace konzoly (.NET Framework)**.
+3. Vybrat **konzolovou aplikaci (.NET Framework)**
 4. Vyberte **Další**.
 5. Do pole **název projektu** zadejte název vaší aplikace.
 6. Vyberte **Vytvořit**.
@@ -154,6 +154,8 @@ Pokud chcete cílit na emulátor úložiště Azurite, můžete použít zástup
 ```
 
 ### <a name="add-using-directives"></a>Přidání direktiv using
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Přidejte na začátek souboru `Program.cs` následující direktivy `using`:
 

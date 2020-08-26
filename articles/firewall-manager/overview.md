@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590400"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855053"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -86,7 +86,7 @@ Azure Firewall Manager má následující známé problémy:
 |Provoz větví do větvení s povoleným filtrováním privátních přenosů|Komunikace větví s větví není podporovaná, pokud je povolené filtrování privátních přenosů. |Zkoumání.<br><br>Nezabezpečte privátní provoz, pokud je připojení větví k pobočce kritické.|
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
 |Přidání hromadné IP adresy se nezdařilo.|Brána firewall zabezpečeného centra přejde do stavu selhání, pokud přidáte více veřejných IP adres.|Přidejte menší zvýšení veřejných IP adres. Přidejte například 10 po dobu.|
-|Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Proxy server DNS/vlastní DNS (Preview) nefungují ve scénářích, kde je nakonfigurovaná síťová karta pro správu brány firewall. To zahrnuje zabezpečená nasazení centra a případy, kdy je povolené vynucené tunelování.|Opravte šetření.|
+|Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Vlastní DNS (Preview) nefunguje v nasazeních zabezpečeného centra a v nasazeních virtuálních sítí rozbočovače, kde je povolené vynucené tunelování.|Opravte šetření.|
 
 ## <a name="next-steps"></a>Další kroky
 

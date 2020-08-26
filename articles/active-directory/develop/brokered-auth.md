@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697893"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853858"
 ---
 # <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v Androidu
 
@@ -58,7 +58,7 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()` ) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException`je vyvolána z několika důvodů a je třeba je přeložit interaktivně. Jedná se o některé běžné důvody:
+Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` je vyvolána z několika důvodů a je třeba je přeložit interaktivně. Jedná se o některé běžné důvody:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.
@@ -76,7 +76,7 @@ Pokud je nainstalovaná služba Portál společnosti Intune a pracuje jako aktiv
 
 Je nutné zaregistrovat identifikátor URI pro přesměrování, který je kompatibilní se zprostředkovatelem. Identifikátor URI přesměrování pro zprostředkovatele musí zahrnovat název balíčku vaší aplikace, stejně jako reprezentace signatury vaší aplikace v kódování Base64.
 
-Formát identifikátoru URI pro přesměrování je:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+Formát identifikátoru URI pro přesměrování je: `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
 Vygenerujte podpis kódovaný v adrese URL Base64 pomocí podpisových klíčů vaší aplikace. Tady je několik příkladů příkazů, které používají vaše podpisové klíče pro ladění:
 
@@ -122,3 +122,12 @@ Pokud `MsalClientException` se zobrazí kód chyby `"BROKER_BIND_FAILURE"` , jso
 
 - Požádejte uživatele, aby zakázal optimalizaci výkonu pro aplikaci Microsoft Authenticator a Portál společnosti Intune.
 - Požádat uživatele o udělení `"READ_CONTACTS"` oprávnění
+
+## <a name="verifying-broker-integration"></a>Ověřování integrace zprostředkovatele
+
+Nemusí být okamžitě jasné, že integrace zprostředkovatele funguje, ale můžete použít následující kroky a ověřit:
+
+1. Na zařízení s Androidem dokončete požadavek pomocí zprostředkovatele.
+1. V nastavení zařízení s Androidem vyhledejte nově vytvořený účet odpovídající účtu, pomocí kterého jste ověřili. Účet by měl být typu *pracovní účet*.
+
+Účet můžete odebrat z nastavení, pokud chcete opakovat test.

@@ -3,20 +3,20 @@ title: Použití softwarových prostředí
 titleSuffix: Azure Machine Learning
 description: Vytvářejte a spravujte prostředí pro školení a nasazení modelů. Spravujte balíčky Pythonu a další nastavení pro prostředí.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: saachigopal
+ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a08575ac118f38361d82198ccc86a09f7b2558d6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783735"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853247"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Příklady v tomto článku ukazují, jak:
 
 Základní informace o tom, jak prostředí pracují v Azure Machine Learning, najdete v tématu [co jsou ml prostředí](concept-environments.md) . Informace o konfiguraci vývojových prostředí najdete [tady](how-to-configure-environment.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -153,7 +153,7 @@ Přidejte balíčky do prostředí pomocí souborů Conda, PIP nebo privátního
 
 Pokud je balíček k dispozici v úložišti balíčků Conda, doporučujeme použít instalaci conda spíše než instalaci PIP. Balíčky conda se typicky dodávají s předem vytvořenými binárními soubory, které zajistí spolehlivější instalaci.
 
-Následující příklad přidá do prostředí. Přidá 1.17.0 verze `numpy` . Přidá také `pillow` balíček, `myenv` . V příkladu se používá [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) Metoda a [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) metoda, v uvedeném pořadí.
+Následující příklad přidá do prostředí `myenv` . Přidá 1.17.0 verze `numpy` . Přidá také `pillow` balíček. V příkladu se používá [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) Metoda a [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) metoda, v uvedeném pořadí.
 
 ```python
 from azureml.core.environment import Environment
@@ -245,7 +245,7 @@ build.wait_for_completion(show_output=True)
 Je vhodné nejprve sestavit image místně pomocí [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) metody. A nastavením volitelného parametru `pushImageToWorkspaceAcr = True` se zobrazí výsledný obrázek do registru kontejneru v pracovním prostoru Azure ml. 
 
 > [!WARNING]
->  Změna pořadí závislostí nebo kanálů v prostředí bude mít za následek nové prostředí a bude vyžadovat nové sestavení image.
+>  Změna pořadí závislostí nebo kanálů v prostředí bude mít za následek nové prostředí a bude vyžadovat nové sestavení image. Kromě toho volání `build()` metody pro existující image aktualizuje své závislosti, pokud existují nové verze. 
 
 ## <a name="enable-docker"></a>Povolit Docker
 
@@ -323,7 +323,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 V případě registrovaného prostředí můžete načíst podrobnosti o imagi pomocí následujícího kódu, kde `details` je instance [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) (AzureML Python SDK >= 1,11) a poskytuje všechny informace o imagi prostředí, jako je například souboru Dockerfile, registr a název bitové kopie.
 
 ```python
-details = environment.get_image_details()
+details = environment.get_image_details(workspace=ws)
 ```
 
 ## <a name="use-environments-for-training"></a>Použití prostředí pro školení

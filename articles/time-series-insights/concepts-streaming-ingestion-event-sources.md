@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.date: 08/25/2020
+ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163964"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855102"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -64,7 +64,7 @@ Použití kanálu streamování k importu historických dat se v současnosti v 
 
 ## <a name="event-source-timestamp"></a>Časové razítko zdroje události
 
-Při konfiguraci zdroje událostí budete požádáni o zadání vlastnosti ID časového razítka. Vlastnost timestamp se používá ke sledování událostí v průběhu času, což je čas, který se použije jako $event. $ts v [rozhraních API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) a pro vykreslování řad v Azure Time Series Insights Gen2 Exploreru. Pokud není v době vytvoření k dispozici žádná vlastnost nebo pokud v události chybí vlastnost timestamp, bude jako výchozí použita událost IoT Hub nebo centra událostí. Hodnoty vlastnosti časového razítka jsou uloženy ve formátu UTC.
+Při konfiguraci zdroje událostí budete požádáni o zadání vlastnosti ID časového razítka. Vlastnost timestamp se používá ke sledování událostí v průběhu času, což je čas, který se použije jako $event. $ts v [rozhraních API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) a pro vykreslování řad v průzkumníkovi TSI Azure Time Series Insights. Pokud není v době vytvoření k dispozici žádná vlastnost nebo pokud v události chybí vlastnost timestamp, bude jako výchozí použita událost IoT Hub nebo centra událostí. Hodnoty vlastnosti časového razítka jsou uloženy ve formátu UTC.
 
 Obecně platí, že uživatelé budou chtít přizpůsobit vlastnost časového razítka a použít čas, kdy senzor nebo značka vygenerovala čtení místo použití výchozího centra ve frontě. To je vhodné zejména v případě, že zařízení mají přerušovanou ztrátu připojení a dávka zpožděných zpráv se předává Azure Time Series Insights Gen2.
 

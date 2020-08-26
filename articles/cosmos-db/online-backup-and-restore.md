@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799504"
+ms.locfileid: "88853917"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Díky Azure Cosmos DB, nejen k datům, ale také zálohování dat je vysoce red
 
 * Azure Cosmos DB ukládá tyto zálohy do úložiště objektů BLOB v Azure, zatímco skutečná data se nacházejí lokálně v rámci Azure Cosmos DB.
 
-*  Aby se zajistila nízká latence, je snímek zálohy uložený ve službě Azure Blob Storage ve stejné oblasti jako aktuální oblast zápisu (nebo **jedna** z oblastí zápisu pro případ, že máte konfiguraci s více hlavními servery). Z důvodu odolnosti proti regionální havárii se každý snímek zálohovaných dat ve službě Azure Blob Storage znovu replikuje do jiné oblasti prostřednictvím geograficky redundantního úložiště (GRS). Oblast, do které je záloha replikována, je založena na zdrojové oblasti a na místní páru přidružené ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K této záloze nemůžete přistupovat přímo. Azure Cosmos DB tým obnovuje zálohu, když si vyžádáte žádost o podporu.
+* Aby se zajistila nízká latence, je snímek zálohy uložený ve službě Azure Blob Storage ve stejné oblasti jako aktuální oblast zápisu (nebo **jedna** z oblastí zápisu pro případ, že máte konfiguraci s více hlavními servery). Z důvodu odolnosti proti regionální havárii se každý snímek zálohovaných dat ve službě Azure Blob Storage znovu replikuje do jiné oblasti prostřednictvím geograficky redundantního úložiště (GRS). Oblast, do které je záloha replikována, je založena na zdrojové oblasti a na místní páru přidružené ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K této záloze nemůžete přistupovat přímo. Azure Cosmos DB tým obnovuje zálohu, když si vyžádáte žádost o podporu.
 
    Následující obrázek ukazuje, jak se kontejner Azure Cosmos se všemi třemi primárními fyzickými oddíly v Západní USA zálohuje do vzdáleného účtu Azure Blob Storage v Západní USA a pak se replikuje do Východní USA:
 
@@ -42,15 +42,15 @@ Pomocí Azure Cosmos DB účtů rozhraní SQL API můžete také spravovat vlast
 
 * Pomocí Azure Cosmos DB [Změna kanálu](change-feed.md) můžete pravidelně číst data pro úplné zálohování nebo pro přírůstkové změny a ukládat je do vlastního úložiště.
 
-## <a name="backup-interval-and-retention-period"></a>Interval zálohování a doba uchování
+## <a name="modify-the-backup-interval-and-retention-period"></a>Úprava intervalu zálohování a doby uchování
 
-Azure Cosmos DB automaticky vytvoří zálohu dat pro každé 4 hodiny a v jakémkoli časovém okamžiku jsou uloženy nejnovější dva zálohy. Tato konfigurace je výchozí možností a je nabízena bez jakýchkoli dalších nákladů. Pokud máte úlohy, které mají výchozí interval zálohování a dobu uchování nedostatečné, můžete je změnit. Tyto hodnoty můžete změnit během vytváření účtu Azure Cosmos nebo po vytvoření účtu. Konfigurace zálohování je nastavená na úrovni účtu Azure Cosmos a musíte ji nakonfigurovat na každém účtu. Když nakonfigurujete možnosti zálohování pro účet, použije se u všech kontejnerů v rámci tohoto účtu. V současné době můžete tyto možnosti zálohování změnit jenom z Azure Portal.
+Azure Cosmos DB automaticky vytvoří zálohu dat pro každé 4 hodiny a v jakémkoli časovém okamžiku jsou uloženy nejnovější dva zálohy. Tato konfigurace je výchozí možností a je nabízena bez jakýchkoli dalších nákladů. Můžete změnit výchozí interval zálohování a dobu uchování během vytváření účtu Azure Cosmos nebo po vytvoření účtu. Konfigurace zálohování je nastavená na úrovni účtu Azure Cosmos a musíte ji nakonfigurovat na každém účtu. Když nakonfigurujete možnosti zálohování pro účet, použije se u všech kontejnerů v rámci tohoto účtu. V současné době můžete tyto možnosti zálohování změnit jenom z Azure Portal.
 
 Pokud jste data omylem odstranili nebo jste poškodili, **před vytvořením žádosti o podporu pro obnovení dat nezapomeňte zvýšit dobu uchovávání záloh vašeho účtu aspoň na sedm dní. Je nejlepší zvýšit své uchovávání do 8 hodin od této události.** Díky tomu má tým Azure Cosmos DB dostatek času na obnovení účtu.
 
 Pro změnu výchozích možností zálohování pro existující účet Azure Cosmos použijte následující postup:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
+1. Přihlaste se k [Azure Portal.](https://portal.azure.com/)
 1. Přejděte k účtu Azure Cosmos a otevřete podokno **zálohování & obnovení** . Aktualizujte interval zálohování a dobu uchování zálohy podle potřeby.
 
    * **Interval zálohování** – jedná se o interval, při kterém se Azure Cosmos DB pokusy o zálohování dat. Zálohování trvá nenulovou dobu a v některých případech to může způsobit selhání z důvodu navazujících závislostí. Azure Cosmos DB se pokusí provést zálohování v nakonfigurovaném intervalu, ale nezaručuje, že se zálohování dokončí v tomto časovém intervalu. Tuto hodnotu můžete nakonfigurovat v hodinách nebo minutách. Interval zálohování nemůže být kratší než 1 hodina a větší než 24 hodin. Změníte-li tento interval, projeví se nové intervaly od doby, kdy byla provedena poslední záloha.

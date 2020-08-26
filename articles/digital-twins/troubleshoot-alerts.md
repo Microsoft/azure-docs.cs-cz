@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1b296cd942e36817da2832467ab603ebd833f825
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908868"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854865"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Řešení potíží se službou Azure Digital vlákna: výstrahy
 
@@ -28,13 +28,17 @@ Tady je postup, jak povolit upozornění pro instanci digitálních vláken Azur
 
 2. V nabídce vyberte **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
 
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Snímek obrazovky se stránkou s výstrahami a tlačítkem, který se má přidat Zatím nejsou nakonfigurované žádné výstrahy." lightbox="media/troubleshoot-alerts/alerts-pre.png":::
-
 3. Na následující stránce *vytvořit pravidlo výstrahy* můžete podle pokynů definovat podmínky, akce, které se mají aktivovat, a podrobnosti výstrahy.     
     * Podrobnosti **oboru** by měly být automaticky vyplněny podrobnostmi pro vaši instanci.
-    * Určíte podrobnosti o **podmínkách** a **skupině akcí** pro přizpůsobení triggerů a odpovědí výstrah.
+    * Určíte podrobnosti o **podmínkách** a **skupině akcí** pro přizpůsobení aktivačních událostí a odpovědí.
+    * V části **Podrobnosti pravidla výstrahy** zadejte _název pravidla upozornění_, _Popis (volitelné)_. Pokud chcete, aby se výstraha stala aktivní, jakmile se vytvoří, můžete zaškrtnout políčko _Povolit pravidlo výstrahy po vytvoření_ .
+    * Na základě některých podmínek a akcí, které přidáte, bude nutné vybrat možnost _Uložit pravidlo výstrahy do skupiny prostředků_ a _závažnost_ z příslušných rozevíracích seznamů.
 
-    :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro rozsah, podmínku a skupinu akcí" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+4. Vyberte tlačítko _vytvořit pravidlo upozornění_ a vytvořte pravidlo upozornění.
+
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro rozsah, podmínku a skupinu akcí" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+
+:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Snímek obrazovky s oddílem podrobností pravidla výstrahy týkající se vytvoření pravidla výstrahy" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
 
 Návod k vyplnění těchto polí najdete v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/platform/alerts-overview.md). Níže jsou uvedeny některé příklady, jak budou tyto kroky vypadat jako u digitálních vláken Azure.
 

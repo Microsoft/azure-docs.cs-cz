@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827490"
+ms.locfileid: "88855590"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Nasazování šablon Azure Resource Manageru pro Azure Logic Apps
 
@@ -119,7 +119,9 @@ Tady jsou obecné kroky vysoké úrovně pro použití Azure Pipelines:
 
 ## <a name="authorize-oauth-connections"></a>Autorizovat připojení OAuth
 
-Po nasazení aplikace logiky funguje na konci až po platné parametry. K vygenerování platných přístupových tokenů pro [ověřování vašich přihlašovacích údajů](../active-directory/develop/authentication-vs-authorization.md)ale pořád musíte autorizovat nebo použít předdefinovaná připojení OAuth. Tady je několik návrhů:
+Po nasazení vaše aplikace logiky funguje na konci s platnými parametry, ale pro vygenerování platných přístupových tokenů pro [ověřování vašich přihlašovacích údajů](../active-directory/develop/authentication-vs-authorization.md)je stále nutné autorizovat nebo používat předem vytvořená připojení OAuth. Stačí ale nasadit a ověřit prostředky připojení rozhraní API jenom jednou, což znamená, že je nemusíte zahrnovat do následujících nasazení, pokud nepotřebujete aktualizovat informace o připojení. Pokud používáte kanál průběžné integrace a průběžného nasazování, nasadíte jenom aktualizované Logic Apps prostředky a nemusíte je pokaždé znovu autorizovat.
+
+Tady je několik návrhů pro zpracování autorizačních připojení:
 
 * Předběžně autorizovat a sdílejte prostředky připojení rozhraní API napříč Logic Apps, které jsou ve stejné oblasti. Připojení rozhraní API existují jako prostředky Azure nezávisle na Logic Apps. I když aplikace logiky mají závislosti na prostředcích připojení rozhraní API, prostředky připojení rozhraní API nemají závislosti na Logic Apps a zůstávají i po odstranění závislých aplikací logiky. Logic Apps taky můžou používat připojení rozhraní API, která existují v jiných skupinách prostředků. Návrhář aplikace logiky ale podporuje vytváření připojení rozhraní API jenom ve stejné skupině prostředků jako vaše aplikace logiky.
 

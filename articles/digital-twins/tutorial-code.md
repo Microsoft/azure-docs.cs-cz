@@ -1,5 +1,5 @@
 ---
-title: Kódování klientské aplikace
+title: 'Kurz: vytvoření kódu klientské aplikace'
 titleSuffix: Azure Digital Twins
 description: Kurz pro zápis minimálního kódu pro klientskou aplikaci pomocí sady .NET (C#) SDK.
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 282c506f509adce4c616615e8b8e3580166052e6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723465"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854667"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Kódování pomocí rozhraní API digitálních vláken Azure
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
 Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+
+> [!div class="checklist"]
+> * Nastavit projekt
+> * Začínáme s kódem projektu   
+> * Ukázka kompletního kódu
+> * Vyčištění prostředků
+> * Další kroky
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -561,7 +568,3 @@ Pokračujte k dalšímu kurzu, abyste prozkoumali věci, které můžete s touto
 
 > [!div class="nextstepaction"]
 > [*Kurz: zkoumání základních informací pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md)
-
-Do kódu, který jste napsali v tomto kurzu, můžete přidat také informace o více operacích správy v článcích s postupy, nebo můžete začít hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste se v tomto kurzu pracovali.
-* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
-* [*Koncepty: vlastní modely*](concepts-models.md)

@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 09/18/2019
+ms.date: 08/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607108"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852945"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navazovat připojení ke cloudovým službám Microsoftu, jako je Microsoft Azure nebo Office 365.
@@ -109,8 +109,12 @@ Můžete si vybrat fakturační model, který vám nejlépe vyhovuje. Zvolte si 
   * Globální připojení pro služby. Okruh ExpressRoute vytvořený v libovolné oblasti (s výjimkou národních cloudů) bude mít přístup k prostředkům v libovolné jiné oblasti na světě. Například virtuální sítě vytvořené v oblasti Západní Evropa budou přístupné prostřednictvím okruhu ExpressRoute zřízeného ze Silicon Valley.
   * Zvýšení počtu propojení virtuálních sítí na jeden okruh ExpressRoute z 10 na vyšší limit, v závislosti na šířce pásma okruhu.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Nejčastější dotazy týkající se ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+
+## <a name="whats-new"></a><a name="new"></a>Co je nového?
+
+Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější aktualizace funkcí ExpressRoute na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) .
 
 ## <a name="next-steps"></a>Další kroky
 * Seznamte se s [modely připojení ExpressRoute](expressroute-connectivity-models.md).

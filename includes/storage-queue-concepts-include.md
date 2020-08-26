@@ -2,15 +2,15 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 08/21/2020
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 23b93f507ef6abe19a0202b28afa31d28490b2b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa21fb99ac5ab24674bf5d4b62fd3fca98de632
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80151149"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853667"
 ---
 ## <a name="what-is-queue-storage"></a>Co je Queue Storage?
 
@@ -22,13 +22,11 @@ Služba front Azure obsahuje následující komponenty:
 
 ![Součásti Azure Služba front](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http:// `<storage account>` . Queue.Core.Windows.NET/`<queue>`
-  
-    Následující adresa URL odkazuje na frontu v diagramu:  
-  
-    `http://myaccount.queue.core.windows.net/incoming-orders`
-
 * **Účet úložiště:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
 * **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 * **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní. V případě verze 2017-07-29 nebo novější může být maximální doba do živého kladného čísla nebo-1, což znamená, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí hodnota TTL (Time to Live) je sedm dní.
+* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http:// `<storage account>` . Queue.Core.Windows.NET/`<queue>`
 
+    Následující adresa URL odkazuje na frontu v diagramu:
+
+    `http://myaccount.queue.core.windows.net/incoming-orders`

@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431975"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854827"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
 
@@ -162,7 +162,7 @@ Teď, když máme nějaká data v Machine Learning Studio (Classic), musíme vyt
 1. V levém dolním rohu vyberte **+ Nový** a vyberte **experiment**a pak **prázdný experiment**.
 1. Experiment můžete pojmenovat tak, že vyberete a upravíte v horní části stránky název experimentu, který jste **vytvořili...** . Například změna na **analýzu mléčných mléka certifikační autority**.
 1. Na levé straně stránky experimentu rozbalte **uložené datové sady**a pak **Moje datové sady**. Měl by se zobrazit **cadairydata.csv** , který jste nahráli dříve.
-1. Přetáhněte **datovou saducsdairydata.csv** do experimentu.
+1. Přetáhněte ** datovou saducsdairydata.csv** do experimentu.
 1. Do pole **Hledat položky experimentu** v horní části levého podokna zadejte [Execute Script script][execute-r-script]. V seznamu hledání se zobrazí modul.
 1. Přetáhněte na paletu modul [spuštění skriptu jazyka R][execute-r-script] .  
 1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo (**DataSet1.**) [skriptu Execute jazyka R][execute-r-script].
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 Již jsme probrali načítání datových sad v [načtení datové](#loading)sady. Jakmile vytvoříte a otestujete skript R zobrazený v předchozí části, udělejte toto:
 
-1. Uložte skript R do. Soubor R. Já jsem volat můj soubor skriptu "simpleplot. R. Tady je obsah.
+1. Uložte skript R do. Soubor R. Já jsem volat můj soubor skriptu "simpleplot. R. Tady je co je v souboru:
 
    ```r
    ## Only one of the following two lines should be used
@@ -250,7 +250,7 @@ Již jsme probrali načítání datových sad v [načtení datové](#loading)sad
 
 1. Zadejte `source()` funkci s názvem souboru zip do okna Code pro modul [spouštění skriptu jazyka R][execute-r-script] . V `source("src/simpleplot.R")` mém zadaném případu  
 
-1. Ujistěte se, že jste vybrali **Uložit**.
+1. Ujistěte se, že jste vybrali možnost **Uložit**.
 
 Po dokončení těchto kroků se v souboru ZIP při spuštění experimentu spustí modul [skriptu Run r][execute-r-script] . V tomto okamžiku by experiment měl vypadat přibližně jako obrázek 5.
 
@@ -570,11 +570,11 @@ Vypadá to, že všechno funguje. V našem dataframe máme nový sloupec s oček
 
 V této části provedeme některé jednoduché transformace na hodnoty v některých sloupcích našeho datového rámce. Jazyk R podporuje skoro libovolné transformace hodnot. [Níže uvedené](#appendixb) odkazy níže obsahují rozsáhlé příklady.
 
-Pokud se podíváte na hodnoty v souhrnech našeho dataframe, měla by se tady zobrazit něco odlišného. Je zmrzlina zmrzlina než mléko vyráběná v Kalifornii? Ne, samozřejmě nemusíte mít žádný smysl, jako by se jednalo o tento fakt jako na některém ze smetany zmrzliny Lovers. Jednotky se liší. Cena je v jednotkách USA – libry, mléko v jednotkách 1 – US libry, zmrzlina v jednotkách 1 000 amerických a domáckých sýrů je v jednotkách 1 000 amerických Libr. Za předpokladu, že zmrzlina v 6,5 librách za galon, můžeme jednoduše provést násobení, aby se tyto hodnoty převedly na stejné jednotky 1 000 Libr.
+Pokud se podíváte na hodnoty v souhrnech našeho datového rámce, měli byste vidět něco, co je tady. Je zmrzlina zmrzlina než mléko vyráběná v Kalifornii? Ne, samozřejmě nemusíte mít žádný smysl, jako by se jednalo o tento fakt jako na některém ze smetany zmrzliny Lovers. Jednotky se liší. Cena je v jednotkách USA – libry, mléko v jednotkách 1 – US libry, zmrzlina v jednotkách 1 000 amerických a domáckých sýrů je v jednotkách 1 000 amerických Libr. Za předpokladu, že Ice zmrzlina váží přibližně 6,5 libry za galon, můžeme jednoduše provést násobení, aby se tyto hodnoty převedly, takže jsou všechny stejné jako jednotky 1 000 libry.
 
 Pro náš model prognózy používáme model multiplikativní pro vývoj a sezónní úpravu těchto dat. Transformace protokolu nám umožňuje použít lineární model a zjednodušit tento proces. Transformaci protokolu můžeme použít ve stejné funkci, kde se aplikuje násobitel.
 
-V následujícím kódu definujeme novou funkci, `log.transform()` a použijete ji na řádky obsahující číselné hodnoty. Funkce jazyka R `Map()` se používá pro použití `log.transform()` funkce na vybrané sloupce datového rámce. `Map()`je podobná, `apply()` ale umožňuje více než jednomu seznamu argumentů funkce. Všimněte si, že seznam násobitelů poskytuje druhý argument `log.transform()` funkci. `na.omit()`Funkce se používá jako bitová kopie, aby nedošlo k chybějícím nebo nedefinovaným hodnotám v dataframe.
+V následujícím kódu definujeme novou funkci, `log.transform()` a použijete ji na řádky obsahující číselné hodnoty. Funkce jazyka R `Map()` se používá pro použití `log.transform()` funkce na vybrané sloupce datového rámce. `Map()` je podobná, `apply()` ale umožňuje více než jednomu seznamu argumentů funkce. Všimněte si, že seznam násobitelů poskytuje druhý argument `log.transform()` funkci. `na.omit()`Funkce se používá jako bitová kopie, aby nedošlo k chybějícím nebo nedefinovaným hodnotám v dataframe.
 
 ```r
 log.transform <- function(invec, multiplier = 1) {
@@ -773,7 +773,7 @@ Mezi těmito proměnnými jsou některé struktury s lichým vzhledem. To může
 
 ### <a name="correlation-analysis"></a>analýza korelací.
 
-Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít `scale()` funkci R, která obě středy a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
+Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít `scale()` funkci R, která obě středy a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Ale chci zobrazit příklad programování obrannou linií v jazyce R.
 
 `ts.detrend()`Níže uvedená funkce provádí obě tyto operace. Následující dva řádky kódu detrendují data a pak tyto hodnoty standardizovat.
 
@@ -828,7 +828,7 @@ V transformacích hodnot jsme už probrali příklad programování v obrannou l
 
 Všimněte si, že lineární regrese, která se používá pro detrendování, je regrese časové řady. Proměnná prediktivního je objekt časové řady.  
 
-Jakmile `ts.detrend()` je tato definice definovaná, použijeme ji pro proměnné zájmu v našem dataframe. Výsledný seznam vytvořený pomocí `lapply()` pro datový rámec data musí být převeden pomocí `as.data.frame()` . Kvůli obrannou linií aspektům pro `ts.detrend()` neúspěšné zpracování jedné z proměnných nebrání správnému zpracování ostatních.  
+Jakmile `ts.detrend()` je definováno, použijeme ho pro proměnné zájmu v našem dataframe. Výsledný seznam vytvořený pomocí `lapply()` pro datový rámec data musí být převeden pomocí `as.data.frame()` . Kvůli obrannou linií aspektům pro `ts.detrend()` neúspěšné zpracování jedné z proměnných nebrání správnému zpracování ostatních.  
 
 Poslední řádek kódu vytvoří scatterplot. Po spuštění kódu R se výsledky scatterplot zobrazí na obrázku 17.
 
@@ -1136,7 +1136,7 @@ Vypadá to, že model trendu přesně odpovídá datům. Dále se zdá, že se n
 
 S modelem trendu je potřeba nasdílet a zahrnovat sezónní účinky. Měsíc v roce použijeme jako fiktivní proměnnou v lineárním modelu pro zachycení měsíčního efektu. Všimněte si, že při zavedení proměnných faktoru do modelu nesmí být zachytávání vypočítáno. Pokud to neuděláte, vzorec se zachová a R vynechá jeden z požadovaných faktorů, ale ponechá termín zachytávání.
 
-Vzhledem k tomu, že máme uspokojivý model trendů, můžeme k `update()` Přidání nových podmínek do existujícího modelu použít funkci. Výraz-1 ve vzorci aktualizace zruší termín zachycení. Pokračuje se v RStudio a teď:
+Vzhledem k tomu, že máme k dispozici uspokojivý model trendu, můžeme pomocí této `update()` funkce Přidat nové podmínka do existujícího modelu. Výraz-1 ve vzorci aktualizace zruší termín zachycení. Pokračuje se v RStudio a teď:
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1333,7 +1333,7 @@ RStudio je poměrně dobře zdokumentovaná. Tady jsou některé odkazy na klí�
 * **Úprava a spuštění kódu r** -RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Podrobnosti najdete v tématu [Úpravy a spouštění kódu](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) .
 * **Ladění** – RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích najdete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) . Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
-## <a name="further-reading"></a><a id="appendixb"></a>Další čtení
+## <a name="further-reading"></a><a id="appendixb"></a>Další materiály
 
 Tento kurz programování v R se zabývá základními informacemi o tom, co potřebujete k používání jazyka R s Azure Machine Learning Studio (Classic). Pokud R neznáte, jsou v CRAN k dispozici dva úvody:
 
@@ -1355,7 +1355,8 @@ Katalog balíčků časových řad R se dá najít v [zobrazení úloh Cran: ana
 Tady je několik skvělých internetových prostředků:
 
 * DataCamp učí R v pohodlí vašeho prohlížeče s využitím lekcí a výukových cvičení. K dispozici jsou interaktivní kurzy k nejnovějším technikám a balíčkům jazyka R. Využijte bezplatný [Interaktivní kurz jazyka R](https://www.datacamp.com/courses/introduction-to-r).
-* [Naučte se programování v jazyce R, což je konečný průvodce](https://www.programiz.com/r-programming) z Programiz.
+* [Přečtěte si informace o programování R, konečné příručce](https://www.datamentor.io/r-programming/) od datainstruktora.
+* [programátor jazyka R](https://r-coder.com/). Podrobné kurzy R a bezplatný kurz R pro začátečníky.
 * Rychlý [kurz R](https://www.cyclismo.org/tutorial/R/) od irské černé z Clarkson University.
 * K dispozici jsou více než 60 prostředků R [, které jsou v horních prostředcích jazyka r k dispozici pro zlepšení dovedností dat](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)
 

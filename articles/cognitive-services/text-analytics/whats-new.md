@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192037"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854728"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -28,6 +28,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 * Verze modelu `2020-07-01` pro v3 `/keyphrases` `/pii` a `/languages` koncové body, které přidávají:
     * Další [kategorie entit](named-entity-types.md?tabs=personal) a specifických pro zemi pro státní správu pro rozpoznávání pojmenovaných entit
 * V případě požadavků V3 API, které překračují omezení publikovaných [dat](concepts/data-limits.md), se teď vrátí chyba HTTP 400. 
+* Koncové body, které vrací posun, teď podporují volitelný `stringIndexType` parametr, který upraví vrácené `offset` `length` hodnoty a hodnot tak, aby odpovídaly podporovanému [schématu řetězcového indexu](concepts/text-offsets.md).
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>Aktualizace kontejneru stavů Analýza textu. srpna
 
@@ -192,6 +193,6 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Co je rozhraní API pro analýzu textu?](overview.md)  
 * [Ukázkové uživatelské scénáře](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání jazyka,](how-tos/text-analytics-how-to-language-detection.md)
+* [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
 * [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
-* [extrakce klíčových frází,](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)

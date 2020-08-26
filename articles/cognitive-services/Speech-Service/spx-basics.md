@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854902"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -31,10 +31,18 @@ V této části najdete několik základních příkazů SPX, které jsou často
 spx
 ```
 
-Všimněte si, že **Viz také** témata nápovědy uvedená vpravo od parametrů příkazu. Můžete také Hledat témata podle klíčového slova. Zadejte například následující příkaz, který zobrazí seznam témat nápovědy o příkladech rozhraní příkazového řádku pro rozpoznávání řeči:
+Všimněte si **:** témata nápovědy uvedená vpravo od parametrů příkazu. Tyto příkazy můžete zadat, chcete-li získat podrobnou nápovědu k dílčím příkazům.
+
+Témata nápovědy můžete hledat podle klíčového slova. Zadejte například následující příkaz, který zobrazí seznam příkladů použití funkce Speech CLI:
 
 ```shell
 spx help find --topics "examples"
+```
+
+Zadejte následující příkaz pro zobrazení možností příkazu rozpoznat:
+
+```shell
+spx help recognize
 ```
 
 Teď použijte službu Speech k provedení některých funkcí rozpoznávání řeči pomocí výchozího mikrofonu, a to spuštěním následujícího příkazu.

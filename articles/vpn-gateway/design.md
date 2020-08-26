@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300320"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852704"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway návrh
 
@@ -27,6 +27,8 @@ Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN pr
 
 ![Příklad propojení Site-to-Site pomocí Azure VPN Gateway](./media/design/vpngateway-site-to-site-connection-diagram.png)
 
+V aktivním pohotovostním režimu můžete VPN Gateway nakonfigurovat pomocí jedné veřejné IP adresy nebo v režimu aktivní-aktivní pomocí dvou veřejných IP adres. V aktivním pohotovostním režimu je jeden tunel IPsec aktivní a druhý tunel je v pohotovostním režimu. V tomto nastavení přenos toků přes aktivní tunel a pokud s tímto tunelem dojde k nějakému problému, přepíná přenos do úsporného tunelu. Nastavení VPN Gateway v režimu aktivní-aktivní se *doporučuje* , protože tunely IPSec jsou současně aktivní a data se přenášejí mezi tunely současně. Další výhodou režimu aktivní-aktivní je to, že se zákazníci setkávají s vyšší propustností.
+
 ### <a name="multi-site"></a><a name="Multi"></a>Více lokalit
 
 Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma. Tento typ připojení se často označuje jako připojení „s více lokalitami“ (multi-site).
@@ -37,7 +39,7 @@ Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="point-to-site-vpn"></a><a name="P2S"></a>Point-to-site VPN
+## <a name="point-to-site-vpn"></a><a name="P2S"></a>SÍŤ VPN typu Point-to-site
 
 Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující z domova, které se chtějí k virtuálním sítím Azure připojit ze vzdáleného umístění, například z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti.
 
