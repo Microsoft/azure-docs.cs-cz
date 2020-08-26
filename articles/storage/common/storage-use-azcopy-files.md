@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871237"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat s použitím AzCopy a úložiště souborů 
 
@@ -306,7 +306,8 @@ Pokud jste příznak nastavili `--delete-destination` tak, aby `true` AzCopy ods
 >
 > |Scénář|Příznak|
 > |---|---|
-> |Určete, jak mají být při stahování ověřovány striktní hodnoty hash MD5.|**--check-MD5** = \[ Kontrolujte \| \| FailIfDifferent FailIfDifferentOrMissing přihlášení \|\]|
+> |Zkopírujte seznamy řízení přístupu (ACL) spolu se soubory.|**--Preserve-SMB-Permissions** = \[ true \| false\]|
+> |Zkopírujte informace o vlastnostech protokolu SMB spolu se soubory.|**--Preserve-SMB-info** = \[ true \| false\]|
 > |Vyloučení souborů na základě vzoru.|**--Exclude-Path**|
 > |Zadejte, jak chcete, aby byly položky protokolu související s synchronizací.|**--úroveň protokolu** = \[ \| \| informace o chybě upozornění \| none\]|
 > 

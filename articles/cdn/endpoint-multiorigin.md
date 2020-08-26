@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 8/20/2020
 ms.author: allensu
-ms.openlocfilehash: ed6c60b4f66361e87f67f3c64bb60846b2df757b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817435"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870444"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN koncový bod s více zdroji
 
@@ -66,6 +66,7 @@ Nastavte jednu nebo více skupin původu a vyberte výchozí skupinu původní. 
 
    | Nastavení           | Hodnota                                                                 |
    |-------------------|-----------------------------------------------------------------------|
+   | Název        | Zadejte název původu.        |
    | Typ zdroje | Vyberte **úložiště**, **cloudovou službu**, **webovou aplikaci**nebo **vlastní zdroj**.                                   |
    | Název počátečního hostitele        | Vyberte nebo zadejte název hostitele původu.  Rozevírací seznam obsahuje všechny dostupné zdroje typu, který jste zadali v předchozím nastavení. Pokud jste jako typ zdroje vybrali možnost **vlastní zdroj** , zadejte doménu zdrojového serveru zákazníka. |
    | Hlavička počátečního hostitele    | Zadejte hlavičku hostitele, kterou má Azure CDN odeslat s každou žádostí, nebo ponechte výchozí nastavení.                        |
@@ -114,6 +115,34 @@ Až budete mít několik zdrojů původu a skupinu původních, můžete přidat
 2. Chcete-li odebrat počátek ze skupiny původ, vyberte ikonu odpadkového koše vedle zdroje a vyberte **Uložit**:
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Počátek aktualizace zdroje původní skupiny" border="true":::
+
+## <a name="override-origin-group-with-rules-engine"></a>Přepsat původovou skupinu pomocí stroje pravidel
+
+Pomocí modulu Standard Rules můžete přizpůsobit způsob distribuce provozu do různých skupin zdrojů.
+
+Distribuci provozu do jiné skupiny podle adresy URL požadavku.
+
+1. V koncovém bodě CDN vyberte v části **Nastavení**možnost **modul pravidel** :
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Modul pravidel" border="true":::
+
+2. Vyberte **+ Přidat pravidlo**.
+
+3. Do pole **název**zadejte název pravidla.
+
+4. Vyberte **+ Podmínka**a pak vyberte **cesta URL**.
+
+5. V rozevíracím seznamu **operátora** vyberte **Contains**.
+
+6. Do **hodnoty**zadejte **/images**.
+
+7. Vyberte **+ přidat akci**a pak vyberte **přepsání původní skupiny**.
+
+8. V části **Skupina původ**vyberte skupinu původ v rozevíracím seznamu.
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Podmínky stroje pravidel" border="true":::
+
+Pro všechny příchozí požadavky, pokud cesta URL obsahuje **/images**, se požadavek přiřadí do skupiny původ v části akce **(myorigingroup)**. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste povolili Azure CDN koncového bodu s více zdroji.

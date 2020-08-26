@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345355"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869860"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamování dat do Azure SQL Database pomocí Integrace Azure Stream Analytics (Preview)
 
@@ -31,26 +31,26 @@ Uživatelé teď můžou ingestovat, zpracovávat, zobrazovat a analyzovat strea
 - Další snadné použití s daty verze Preview: náhled příchozích dat ze zdroje událostí (centrum událostí/IoT Hub) v kontextu vybrané tabulky
 
 > [!IMPORTANT]
-> Azure Stream Analytics úloha může mít výstup do Azure SQL Database, spravované instance Azure SQL nebo analýzy Azure synapse (dříve Azure SQL Data Warehouse). Další informace najdete v tématu [výstupy](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
+> Azure Stream Analytics úloha může mít výstup do Azure SQL Database, spravované instance Azure SQL nebo analýzy Azure synapse (dříve Azure SQL Data Warehouse). Další informace najdete v tématu [výstupy](../../stream-analytics/sql-database-output.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku budete potřebovat následující:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 - Databáze v Azure SQL Database. Podrobnosti najdete v tématu [Vytvoření izolované databáze v Azure SQL Database](single-database-create-quickstart.md).
 - Pravidlo brány firewall, které umožňuje počítači připojit se k serveru. Podrobnosti najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](firewall-create-server-level-portal-quickstart.md).
 
 ## <a name="configure-stream-analytics-integration"></a>Konfigurace integrace Stream Analytics
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejděte do databáze, do které chcete ingestovat streamovaná data. Vyberte **Stream Analytics (Preview)**.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
 3. Pokud chcete začít ingestovat vaše streamovaná data do této databáze, vyberte **vytvořit** a pojmenujte úlohu streamování a potom vyberte **Další: vstup**.
 
-    ![vytvořit úlohu Stream Analytics](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![Konfigurace základy úloh Stream Analytics](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. Zadejte podrobnosti o zdroji událostí a potom vyberte **Další: výstup**.
 
@@ -64,7 +64,7 @@ K provedení kroků v tomto článku budete potřebovat následující:
 
       Doporučujeme vytvořit skupinu příjemců a zásadu pro každou novou Azure Stream Analytics úlohu, kterou vytvoříte tady. Skupiny uživatelů umožňují jenom pět současných čtecích zařízení, takže pokud pro každou úlohu zadáte vyhrazenou skupinu uživatelů, vyhnete se případným chybám, které by mohly vzniknout nad rámec tohoto omezení. Vyhrazená zásada vám umožní otočit klíč nebo odvolat oprávnění, aniž by to mělo vliv na jiné prostředky.
 
-     ![vytvořit úlohu Stream Analytics](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Konfigurace výstupu úlohy Stream Analytics](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. Vyberte, do které tabulky chcete ingestovat streamovaná data. Po dokončení vyberte **vytvořit**.
 

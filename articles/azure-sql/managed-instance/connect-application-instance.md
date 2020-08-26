@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706371"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871441"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Připojení aplikace ke spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Připojení aplikace v případě, že se nachází v jiné virtuální síti z 
 
 Pro připojení virtuálních sítí existují dvě možnosti:
 
-- [Partnerský vztah Azure VPN](../../virtual-network/virtual-network-peering-overview.md)
+- [Partnerský vztah virtuální sítě Azure](../../virtual-network/virtual-network-peering-overview.md)
 - Brána VPN typu VNet-to-VNet ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 Partnerský vztah je vhodnější, protože používá páteřní síť Microsoftu, takže z perspektivy připojení nedochází k znatelnému rozdílu mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Partnerský vztah virtuálních sítí je omezený na sítě ve stejné oblasti.  
@@ -63,13 +63,13 @@ Pokud jste úspěšně navázali připojení místního prostředí k Azure a ne
 
 ## <a name="connect-the-developer-box"></a>Připojení pole pro vývojáře
 
-Také je možné připojit pole pro vývojáře k spravované instanci SQL. K spravované instanci SQL se dá získat přístup jenom přes soukromou IP adresu, takže pokud k ní chcete přistupovat z pole pro vývojáře, musíte nejdřív vytvořit připojení mezi vaším polem pro vývojáře a virtuální sítí spravované instance SQL. Provedete to tak, že nakonfigurujete připojení typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure. Další informace najdete v tématu [Konfigurace připojení typu Point-to-site pro připojení ke spravované instanci Azure SQL z místního počítače](point-to-site-p2s-configure.md).
+Také je možné připojit pole pro vývojáře k spravované instanci SQL. K spravované instanci SQL se dá získat přístup jenom přes soukromou IP adresu, takže pokud k ní chcete přistupovat z pole pro vývojáře, musíte nejdřív vytvořit připojení mezi vaším polem pro vývojáře a virtuální sítí spravované instance SQL. Provedete to tak, že nakonfigurujete připojení typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure. Další informace najdete v tématu  [Konfigurace připojení typu Point-to-site pro připojení ke spravované instanci Azure SQL z místního počítače](point-to-site-p2s-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>Připojení s partnerským vztahem virtuální sítě
 
 Dalším scénářem implementovaným zákazníky je, že je Brána VPN nainstalovaná v samostatné virtuální síti a v rámci předplatného, které je hostitelem spravované instance SQL. Tyto dvě virtuální sítě jsou pak partnerského vztahu. Následující příklad diagramu architektury ukazuje, jak to lze provést.
 
-![Partnerské vztahy virtuálních sítí](./media/connect-application-instance/vnet-peering.png)
+![Partnerský vztah virtuální sítě](./media/connect-application-instance/vnet-peering.png)
 
 Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu**provedete následující velmi specifické změny.
 

@@ -4,14 +4,14 @@ description: Naučte se migrovat vlastní název domény DNS, který je už při
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871390"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS na Azure App Service
 
@@ -21,7 +21,7 @@ Když migrujete živý web a název domény DNS na App Service, tento název DNS
 
 Pokud se vám Neobáváte o výpadkech v překladu DNS, přečtěte si téma [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení tohoto postupu:
 
@@ -59,31 +59,27 @@ Na stránce záznamy DNS si poznamenejte typ záznamu názvu DNS, který chcete 
 
 ### <a name="enable-the-domain-for-your-app"></a>Povolení domény pro vaši aplikaci
 
-V [Azure Portal](https://portal.azure.com)v levém navigačním panelu na stránce aplikace vyberte **vlastní domény**. 
+1. V [Azure Portal](https://portal.azure.com)v levém navigačním panelu na stránce aplikace vyberte **vlastní domény**. 
 
-![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Na stránce **vlastní domény** vyberte **+** ikonu vedle **Přidat název hostitele**.
+1. Na stránce **vlastní domény** vyberte **Přidat vlastní doménu**.
 
-![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, který chcete migrovat, který odpovídá vytvořenému záznamu TXT, například `contoso.com` , `www.contoso.com` nebo `*.contoso.com` .
+1. Zadejte plně kvalifikovaný název domény, který chcete migrovat, který odpovídá vytvořenému záznamu TXT, například `contoso.com` , `www.contoso.com` nebo `*.contoso.com` . Vyberte **Ověřit**.
 
-Vyberte **Ověřit**.
+    Aktivuje se tlačítko **Přidat vlastní doménu** . 
 
-Aktivuje se tlačítko **Přidat název hostitele**. 
+1. Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na typ záznamu DNS, který chcete migrovat. Vyberte **Přidat název hostitele**.
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na typ záznamu DNS, který chcete migrovat.
+    ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Vyberte **Přidat název hostitele**.
+    Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace může nějakou dobu trvat. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
-![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace může nějakou dobu trvat. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
-
-![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-Ve vaší aplikaci Azure je teď povolený vlastní název DNS. 
+    Ve vaší aplikaci Azure je teď povolený vlastní název DNS. 
 
 ## <a name="remap-the-active-dns-name"></a>Přemapovat aktivní název DNS
 
@@ -96,8 +92,6 @@ Jediná věc, kterou je potřeba udělat, je přemapování aktivního záznamu 
 Pokud přemapujete záznam CNAME, přeskočte tuto část. 
 
 K přemapování záznamu A potřebujete externí IP adresu aplikace App Service, která se zobrazí na stránce **vlastní domény** .
-
-Kliknutím na **X** v pravém horním rohu zavřete stránku **Přidat název hostitele** . 
 
 Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 

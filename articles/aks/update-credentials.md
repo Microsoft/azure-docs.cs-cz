@@ -5,12 +5,12 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386924"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871220"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
@@ -31,7 +31,8 @@ Pokud chcete aktualizovat přihlašovací údaje pro cluster AKS, můžete zvoli
 * Aktualizujte přihlašovací údaje pro existující instanční objekt.
 * Vytvořte nový instanční objekt a aktualizujte cluster tak, aby používal tyto nové přihlašovací údaje. 
 
-> ! Upozornění Pokud se rozhodnete vytvořit *Nový* instanční objekt, může trvat delší dobu, než se dokončí aktualizace velkého clusteru AKS na použití těchto přihlašovacích údajů.
+> [!WARNING]
+> Pokud se rozhodnete vytvořit *Nový* instanční objekt, může trvat delší dobu, než se dokončí aktualizace velkého clusteru AKS na použití těchto přihlašovacích údajů.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Kontroluje datum vypršení platnosti instančního objektu.
 

@@ -4,23 +4,25 @@ description: Naučte se vytvořit rozsah šifrování pro izolaci dat objektů b
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/04/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564142"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870251"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Vytváření a Správa oborů šifrování (Preview)
 
-Obory šifrování (Preview) umožňují spravovat šifrování na úrovni jednotlivých objektů BLOB nebo kontejnerů. Obor šifrování izoluje data objektů BLOB v zabezpečeném enklávy v rámci účtu úložiště. Obory šifrování můžete použít k vytvoření zabezpečených hranic mezi daty, která se nacházejí ve stejném účtu úložiště, ale patří různým zákazníkům. Další informace o oborech šifrování najdete v tématu [obory šifrování pro úložiště objektů BLOB (Preview)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
+Obory šifrování (Preview) umožňují spravovat šifrování na úrovni jednotlivých objektů BLOB nebo kontejnerů. Obor šifrování izoluje data objektu blob v zabezpečené enklávě v rámci účtu úložiště. Obory šifrování můžete použít k vytvoření zabezpečených hranic mezi daty, která se nacházejí ve stejném účtu úložiště, ale patří různým zákazníkům. Další informace o oborech šifrování najdete v tématu [obory šifrování pro úložiště objektů BLOB (Preview)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
 
 Tento článek ukazuje, jak vytvořit rozsah šifrování. Také ukazuje, jak určit rozsah šifrování při vytváření objektu BLOB nebo kontejneru.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Vytvoření oboru šifrování
 

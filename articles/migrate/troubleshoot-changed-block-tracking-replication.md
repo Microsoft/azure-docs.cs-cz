@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796931"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871172"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -30,13 +30,36 @@ K monitorování stavu replikace virtuálních počítačů použijte následuj�
 
   1. Přejít na stránku servery v Azure Migrate na Azure Portal.
   2. Kliknutím na replikace serverů na dlaždici migrace serveru přejděte na stránku replikace počítačů.
-  3. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota upozornění Critical'or ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
+  3. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota "kritická" nebo "Warning" ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
   4. Kliknutím na nedávné události zobrazíte předchozí selhání cyklu replikace pro virtuální počítač. Na stránce události vyhledejte nejnovější událost typu "cyklus replikace selhala" nebo "cyklus replikace pro disk" virtuálního počítače "selhal.
   5. Kliknutím na událost pochopíte možné příčiny chyby a doporučené kroky k nápravě. Použijte informace, které jsou k dispozici k řešení potíží, a opravte chybu.
     
 ## <a name="common-replication-errors"></a>Běžné chyby replikace
 
 Tato část popisuje některé běžné chyby a jejich řešení.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>Při pokusu o replikaci virtuálních počítačů došlo k chybě operace Key Vault.
+
+**Chyba:** Operace Key Vault se nezdařila. Operace: konfigurace spravovaného účtu úložiště Key Vault: klíč-trezor-Name, účet úložiště: název účtu úložiště se nezdařil s chybou: "
+
+**Chyba:** Operace Key Vault se nezdařila. Operace: generování definice sdíleného přístupového podpisu, Key Vault: klíč-trezor-Name, účet úložiště: název účtu úložiště se nezdařil s chybou: "
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+K této chybě obvykle dochází, protože zásady přístupu uživatele pro Key Vault nedávají aktuálně přihlášenému uživateli potřebná oprávnění ke konfiguraci účtů úložiště, které se mají Key Vault spravovat. Pokud chcete vyhledat zásady přístupu uživatele v trezoru klíčů, přejděte na stránku trezoru klíčů na portálu pro Trezor klíčů a vyberte zásady přístupu. 
+
+Když portál vytvoří Trezor klíčů, přidá taky zásadu přístupu uživatele, která uděluje aktuálně přihlášeným uživatelským oprávněním ke konfiguraci účtů úložiště, které se mají Key Vault spravovat. To může selhat ze dvou důvodů
+
+- Přihlášený uživatel je vzdáleným hlavním objektem na zákaznících Azure tenant (předplatné CSP – a přihlášený uživatel je správcem partnera). Alternativním řešením v tomto případě je odstranit Trezor klíčů, odhlaste se z portálu a pak se přihlaste pomocí uživatelského účtu z tenanta Customers (ne vzdáleného objektu zabezpečení) a zkuste operaci zopakovat. Partner CSP má obvykle uživatelský účet ve Azure Active Directory klienta, který mohou používat. Pokud ne, může vytvořit nový uživatelský účet pro sebe ve Azure Active Directory zákazníky, přihlaste se k portálu jako nový uživatel a pak zkuste operaci replikace zopakovat. Účet, který se používá, musí mít oprávnění správce vlastníka nebo přispěvatel + správce přístupu uživatele k účtu ve skupině prostředků (migrace skupiny prostředků projektu).
+
+- Druhý případ, kdy k tomu může dojít, nastane, když se jeden uživatel (uživatel1) pokusil nastavit replikaci zpočátku a narazil na chybu, ale Trezor klíčů už je vytvořený (a zásady přístupu uživatele jsou správně přiřazené tomuto uživateli). Nyní se teď jiný uživatel (uživatel2) pokusí nastavit replikaci, ale operace konfigurace spravovaného účtu úložiště nebo vygenerování definice SAS se nezdařila, protože neexistují žádné zásady přístupu uživatele, které by v trezoru klíčů odpovídaly.
+
+**Řešení**: Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
+
+$userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Účet
+
+Set-AzureRmKeyVaultAccessPolicy-trezor "" trezoru klíčů "-ObjectId $userPrincipalId-PermissionsToStorage Get, list, DELETE, set, Update, RegenerateKey, getsas, listsas, deletesas, setsas, Recovery, Backup, Restore, vyprázdnit
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 
