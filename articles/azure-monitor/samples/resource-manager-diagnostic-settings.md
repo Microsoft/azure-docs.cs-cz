@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 07/17/2020
-ms.openlocfilehash: cd58df3936092310e1a26aeedc3ba7599849359c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 1e5d0e37b939715eed84447ea637a0e7880ca115
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024091"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892265"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Ukázky Správce prostředků šablon pro nastavení diagnostiky v Azure Monitor
 Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytvoření nastavení diagnostiky pro prostředek Azure. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -466,6 +466,88 @@ Následující ukázka vytvoří nastavení diagnostiky pro trezor služby Azure
       },
       "recoveryServicesName": {
         "value": "my-vault"
+      },
+      "workspaceId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyWorkspace"
+      },
+      "storageAccountId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
+      },
+      "eventHubAuthorizationRuleId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNameSpace/authorizationrules/RootManageSharedAccessKey"
+      },
+      "eventHubName": {
+        "value": "my-eventhub"
+      }
+  }
+}
+```
+
+## <a name="diagnostic-setting-for-log-analytics-workspace"></a>Nastavení diagnostiky pro pracovní prostor Log Analytics
+Následující ukázka vytvoří nastavení diagnostiky pro trezor pracovního prostoru Log Analytics přidáním prostředku typu `Microsoft.OperationalInsights/workspaces/providers/diagnosticSettings` do šablony. Tento příklad odesílá data auditu o dotazech provedených v pracovním prostoru do stejného pracovního prostoru.
+
+### <a name="template-file"></a>Soubor šablony
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String"
+        },
+        "settingName": {
+            "type": "String"
+        },
+        "workspaceId": {
+            "type": "String"
+        },
+        "storageAccountId": {
+            "type": "String"
+        },
+        "eventHubAuthorizationRuleId": {
+            "type": "String"
+        },
+        "eventHubName": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/diagnosticSettings",
+            "apiVersion": "2017-05-01-preview",
+            "name": "[concat(parameters('workspaceName'), '/Microsoft.Insights/', parameters('settingName'))]",
+            "dependsOn": [],
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "storageAccountId": "[parameters('storageAccountId')]",
+                "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+                "eventHubName": "[parameters('eventHubName')]",
+                "metrics": [],
+                "logs": [
+                    {
+                        "category": "LAQueryLogs",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>Soubor parametrů
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "settingName": {
+          "value": "Send to all locations"
+      },
+      "workspaceName": {
+        "value": "MyWorkspace"
       },
       "workspaceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyWorkspace"

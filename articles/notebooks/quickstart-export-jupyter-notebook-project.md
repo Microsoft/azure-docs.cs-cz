@@ -1,22 +1,23 @@
 ---
-title: Export projektu Jupyterového bloku z verze Preview služby Azure Notebooks
-description: Rychle exportujte projekt Jupyter poznámkového bloku.
+title: Export Jupyter Notebook projektu z Azure Notebooks Preview
+description: Rychle exportujte Jupyter Notebook projekt.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832028"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892095"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Rychlý Start: Export projektu poznámkového bloku Jupyter v Azure Notebooks Preview
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Rychlý Start: Export Jupyter Notebook projektu v Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-V tomto rychlém startu stáhnete Azure Notebooks projekt pro použití v jiných řešeních poznámkových bloků Jupyter. 
+V tomto rychlém startu stáhnete Azure Notebooks projekt pro použití v jiných Jupyter Notebook řešení. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
 Existující projekt Azure Notebooks.
 
 ## <a name="export-an-azure-notebooks-project"></a>Exportovat Azure Notebooks projekt

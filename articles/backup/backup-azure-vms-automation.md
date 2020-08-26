@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826442"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892401"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -104,7 +104,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
     ```
 
    > [!TIP]
-   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Backup Recovery Services do proměnné.
    >
    >
 
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> Pokud používáte cloud Azure Government, použijte hodnotu ff281ffe-705c-4F53-9f37-a40e6f2c68f3 pro parametr ServicePrincipalName v rutině [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
+> Pokud používáte cloud Azure Government, pak použijte hodnotu `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` parametru **servicePrincipalName** v rutině [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
 >
 
 ## <a name="monitoring-a-backup-job"></a>Monitorování úlohy zálohování
@@ -294,7 +294,7 @@ Při vytváření zásad ochrany je ve výchozím nastavení přiřazen počáte
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that you want to start the backup)
 $UtcTime = $UtcTime.ToUniversalTime()
 $SchPol.ScheduleRunTimes[0] = $UtcTime
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -323,7 +323,7 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Výchozí hodnota bude 2, uživatel může nastavit hodnotu minimálně 1 a maximálně 5. Pro týdenní zásady zálohování je Tato perioda nastavená na 5 a nedá se změnit.
+Výchozí hodnota bude 2. Můžete nastavit hodnotu minimálně 1 a maximálně 5. Pro týdenní zásady zálohování je Tato perioda nastavená na 5 a nedá se změnit.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Vytváření skupiny prostředků Azure Backup během uchování snímku
 
@@ -365,7 +365,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Uživatel může buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
+Můžete buď upravit existující zásady, nebo změnit zásadu zálohované položky z Policy1 na Policy2. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 Zadejte další parametr **TargetResourceGroupName** a určete tak RG, na které se budou spravované disky obnovovat.
 
 > [!IMPORTANT]
-> Pro obnovení spravovaných disků se důrazně doporučuje použít parametr **TargetResourceGroupName** , protože výsledkem je výrazné zlepšení výkonu. Pokud tento parametr není zadaný, nemůžete využít výhod funkce okamžitého obnovení a operace obnovení bude v porovnání pomalejší. Pokud je účelem obnovení spravovaných disků jako nespravovaných disků, Neposkytněte tento parametr a udělejte záměr jasným zadáním `-RestoreAsUnmanagedDisks` parametru. `-RestoreAsUnmanagedDisks`Parametr je k dispozici z Azure PowerShell 3.7.0 a vyšší. V budoucích verzích bude povinná zadat jeden z těchto parametrů pro správné prostředí obnovení.
+> Pro obnovení spravovaných disků se důrazně doporučuje použít parametr **TargetResourceGroupName** , protože to vede k výraznému zlepšení výkonu. Pokud tento parametr není zadaný, nemůžete využít výhod funkce okamžitého obnovení a operace obnovení bude v porovnání pomalejší. Pokud je účelem obnovení spravovaných disků jako nespravovaných disků, Neposkytněte tento parametr a udělejte záměr jasným zadáním `-RestoreAsUnmanagedDisks` parametru. `-RestoreAsUnmanagedDisks`Parametr je k dispozici z Azure PowerShell 3.7.0 a vyšší. V budoucích verzích bude povinná zadat jeden z těchto parametrů pro správné prostředí obnovení.
 >
 >
 
@@ -544,7 +544,7 @@ Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Šablona není přímo přístupná, protože je v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
+Šablona není přímo přístupná, protože je pod účtem úložiště zákazníka a zadaným kontejnerem. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
 
 1. Nejprve rozbalte název šablony z templateBlobURI. Formát je uveden níže. K extrakci konečné název šablony z této adresy URL můžete použít operaci rozdělit v prostředí PowerShell.
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054120"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892112"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -200,7 +200,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Příklad najdete níže:
 
-    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+    `Set-HcsIpAddress –Name Ethernet0 –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
 9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojíte k webovému uživatelskému rozhraní vašeho virtuálního zařízení a dokončíte místní nastavení a aktivaci.
 

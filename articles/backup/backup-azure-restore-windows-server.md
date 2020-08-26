@@ -3,12 +3,12 @@ title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871254"
+ms.locfileid: "88892503"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
@@ -75,7 +75,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
     ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do stejného počítače) – potvrzení odpojení svazku pro obnovení](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
+    > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě průběžného kopírování souborů prodlouží na maximálně 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Obnovení dat na alternativním počítači pomocí okamžitého obnovení
@@ -138,7 +138,7 @@ Tyto kroky zahrnují následující terminologii:
     ![Odpojte svazek (obnovit do alternativního počítače).](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
+    > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě průběžného kopírování souborů prodlouží na maximálně 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
     >
 
 ## <a name="next-steps"></a>Další kroky

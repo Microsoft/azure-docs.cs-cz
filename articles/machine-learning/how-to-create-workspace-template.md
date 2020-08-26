@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751712"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892860"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 Ve výchozím nastavení jsou všechny prostředky vytvořené jako součást šablony nové. Můžete ale také využít možnost použít stávající prostředky. Zadáním dalších parametrů do šablony můžete použít stávající prostředky. Pokud třeba chcete použít existující účet úložiště, nastavte hodnotu **storageAccountOption** na **stávající** a v parametru **storageAccountName** zadejte název svého účtu úložiště.
 
 > [!IMPORTANT]
-> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve výchozím účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů.
+> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve výchozím účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -545,7 +545,7 @@ New-AzResourceGroupDeployment `
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

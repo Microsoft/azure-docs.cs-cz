@@ -4,17 +4,17 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825847"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892622"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
 > [!NOTE]
-> Na základě zpětné vazby od uživatelů přejmenováváme **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nejasnosti s funkcemi Azure Stack.
+> Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nutnost Azure Stack funkcí.
 > Všichni uživatelé Azure Backup se teď upgradují na **okamžité obnovení**.
 
 Nový model pro okamžité obnovení nabízí následující vylepšení funkcí:
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Výchozí uchování snímku pro každou zásadu je nastavené na dva dny. Uživatel může hodnotu změnit na minimálně 1 a maximálně na pět dní. Pro týdenní zásady je uchování snímku pevně nastavené na pět dní.
+Výchozí uchování snímku pro každou zásadu je nastavené na dva dny. Hodnotu můžete změnit na minimálně 1 a maximálně na pět dní. Pro týdenní zásady je uchování snímku pevně nastavené na pět dní.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

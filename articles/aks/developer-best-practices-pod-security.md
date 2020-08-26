@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320676"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893121"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod zabezpečením ve službě Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Kontext zabezpečení pod může také definovat další možnosti nebo oprávn�
 Následující příklad pod YAML manifest nastaví nastavení kontextu zabezpečení k definování:
 
 * Pod se spustí jako ID uživatele *1000* a část id skupiny *2000* .
-* Nejde eskalovat oprávnění k použití.`root`
+* Nejde eskalovat oprávnění k použití. `root`
 * Umožňuje systémům Linux přístup k síťovým rozhraním a hodinám v reálném čase hostitele.
 
 ```yaml
@@ -85,7 +85,7 @@ Následující [přidružené open source projekty AKS][aks-associated-projects]
 
 Spravovaná identita pro prostředky Azure umožňuje sám sebe ověřit vůči službám Azure, které je podporují, jako je například Storage nebo SQL. Pod je přiřazena identita Azure, která umožňuje ověření pro Azure Active Directory a příjem digitálního tokenu. Tento digitální token se dá předkládat ostatním službám Azure, které kontrolují, jestli má oprávnění k přístupu ke službě a provádění požadovaných akcí. Tento přístup znamená, že pro připojovací řetězce databáze nejsou vyžadovány tajné klíče. Zjednodušený pracovní postup pro spravovanou identitu pod je zobrazený v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro spravovanou identitu pod Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Zjednodušený pracovní postup pro spravovanou identitu pod Azure":::
 
 Pomocí spravované identity nemusí kód vaší aplikace zahrnovat přihlašovací údaje pro přístup ke službě, jako je například Azure Storage. Každý pod se ověřuje s vlastní identitou, takže můžete auditovat a kontrolovat přístup. Pokud se vaše aplikace připojuje k jiným službám Azure, využijte spravované identity k omezení opakovaného použití přihlašovacích údajů a rizika expozice.
 
@@ -97,7 +97,7 @@ Použití projektu identity pod umožňuje ověřování v rámci podpory služe
 
 Když aplikace potřebuje přihlašovací údaje, komunikují s digitálním trezorem, načtou nejnovější tajný obsah a pak se připojí k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Azure Key Vault pomocí spravované identity se zobrazuje v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod":::
 
 Pomocí Key Vault ukládáte a pravidelně otáčíte tajné klíče, jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí [zprostředkovatele Azure Key Vault pro ovladač pro úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Ovladač CSI úložiště tajných kódů umožňuje, aby cluster AKS nativně načetl obsah tajných kódů z Key Vault a bezpečně poskytoval pouze žadatelům nacházející se pod ním. Spolupracujte se svým operátorem clusteru, abyste nasadili ovladač do AKS pracovních uzlů pro úložiště tajných klíčů. Pomocí spravované identity pod ní můžete požádat o přístup k Key Vault a načíst obsah v tajnosti potřebný prostřednictvím ovladače v úložišti tajných kódů.
 

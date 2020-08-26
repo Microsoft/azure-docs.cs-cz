@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: e018f2320b505a174850472d85ec2ebd59310560
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 9978137edb7874a8b93e0c9a5f1f9979ce449277
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406567"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893166"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux 
 
@@ -110,10 +110,10 @@ Svazky NetApp Azure jsou v samostatné podsíti, [delegované na Azure NetApp Fi
 
 V tomto příkladu konfigurace jsou podsítě:  
 
-  - `client`10.9.1.0/26  
-  - `storage`10.9.3.0/26  
-  - `hana`10.9.2.0/26  
-  - `anf`10.9.0.0/26 (delegovaná podsíť pro Azure NetApp Files)
+  - `client` 10.9.1.0/26  
+  - `storage` 10.9.3.0/26  
+  - `hana` 10.9.2.0/26  
+  - `anf` 10.9.0.0/26 (delegovaná podsíť pro Azure NetApp Files)
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
@@ -239,7 +239,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
 3. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `storage` podsíť virtuální sítě (v tomto příkladu **hanadb1-Storage**, **hanadb2-Storage**a **hanadb3-Storage**).  
 
-4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana` podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
+4. Vytvořte tři síťová rozhraní, jednu pro každý virtuální počítač, pro `hana`  podsíť virtuální sítě (v tomto příkladu **hanadb1-Hana**, **hanadb2-Hana**a **hanadb3-Hana**).  
 
 5. Připojte nově vytvořená virtuální síťová rozhraní k odpovídajícím virtuálním počítačům pomocí následujících kroků:  
 
@@ -253,7 +253,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
     
     e. Vyberte **Uložit**. 
  
-    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
+    f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu  **hanadb2** a **hanadb3**).
  
     například Virtuální počítače teď ponechte v zastaveném stavu. V dalším kroku povolíte [urychlené síťové služby](../../../virtual-network/create-vm-accelerated-networking-cli.md) pro všechna nově připojená síťová rozhraní.  
 
@@ -349,7 +349,9 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     net.core.optmem_max = 16777216
     net.ipv4.tcp_rmem = 65536 16777216 16777216
     net.ipv4.tcp_wmem = 65536 16777216 16777216
-    net.core.netdev_max_backlog = 300000 net.ipv4.tcp_slow_start_after_idle=0 net.ipv4.tcp_no_metrics_save = 1
+    net.core.netdev_max_backlog = 300000 
+    net.ipv4.tcp_slow_start_after_idle=0 
+    net.ipv4.tcp_no_metrics_save = 1
     net.ipv4.tcp_moderate_rcvbuf = 1
     net.ipv4.tcp_window_scaling = 1
     net.ipv4.tcp_timestamps = 1
@@ -563,7 +565,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
      * V části chcete **Přidat hostitele do systému?**: zadejte **y** .
      * Pro **názvy hostitelů oddělených čárkami, které se mají přidat**: zadejte **hanadb2, hanadb3**
      * Pro **kořenové uživatelské jméno** [root]: stisknutím klávesy Enter přijměte výchozí nastavení.
-     * Pro role pro hostitele hanadb2: zadejte **1** (pro pracovního procesu).
+     * Pro role pro hostitele hanadb2: zadejte **1**  (pro pracovního procesu).
      * Pro **skupinu převzetí služeb při selhání hostitele** pro hostitele hanadb2 [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **číslo oddílu úložiště** pro hostitele hanadb2 [<<assign automatically>>]: stisknutím klávesy Enter přijměte výchozí nastavení.
      * Pro **skupinu Worker** pro hanadb2 hostitele [výchozí]: stisknutím klávesy Enter přijměte výchozí nastavení.

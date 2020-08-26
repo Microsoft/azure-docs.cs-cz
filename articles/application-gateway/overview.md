@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/04/2020
+ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a4395801218409fe77d1081689ba80b495fcfad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ccc83a61ac4ffe6e1bb6767a9c611bd3fcc0edf
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78302572"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892775"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -39,6 +39,10 @@ Další informace o funkcích Application Gateway najdete v tématu [funkce Azur
 Informace o cenách Application Gateway najdete v tématu [Application Gateway ceny](https://azure.microsoft.com/pricing/details/application-gateway/).
 
 Informace o Application Gateway smlouvě SLA najdete v tématu [Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_2/).
+
+## <a name="whats-new"></a>Co je nového
+
+Informace o tom, co je nového u Azure Application Gateway, najdete v tématu [Aktualizace Azure](https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway).
 
 ## <a name="next-steps"></a>Další kroky
 

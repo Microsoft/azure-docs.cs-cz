@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827371"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892282"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -355,7 +355,7 @@ K upgradu MABS použijte následující postup:
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
 5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Přečtěte si další informace](backup-mabs-add-storage.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud Microsoft Azure Backup server selhává s chybami během fáze nastavení (nebo zálohování nebo obnovení), najdete další informace v [dokumentu s kódy chyb](https://support.microsoft.com/kb/3041338)  .
 Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.md) dotazech.

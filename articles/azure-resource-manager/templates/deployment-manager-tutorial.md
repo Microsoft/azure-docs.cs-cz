@@ -2,15 +2,15 @@
 title: Použití Azure Deployment Manager k nasazení šablon
 description: Naučte se používat Správce prostředků šablony s Azure Deployment Manager k nasazení prostředků Azure.
 author: mumian
-ms.date: 12/04/2019
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7d0979a52b4762ec4cc2fa82f507e8ce2b083c9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 49465f05b5484dfd358136866b67ce35f789799f
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870642"
+ms.locfileid: "88892928"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 

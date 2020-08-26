@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování úloh DPM
 description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 91fd8559b1561ae83967c7fc74a2390ce2460c95
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825966"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892316"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
@@ -72,7 +72,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
 4. Zadejte typ redundance úložiště, který se má použít. Můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testVault je nastavená na geograficky redundantní.
 
    > [!TIP]
-   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Backup Recovery Services do proměnné.
    >
    >
 
@@ -220,7 +220,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> Po nastavení ponechte informace pro heslo bezpečně a zabezpečené. Nebudete moct obnovit data z Azure bez tohoto přístupového hesla.
+> Ponechte informace o heslu v bezpečí a zabezpečení po jeho nastavení. Nebudete moct obnovit data z Azure bez tohoto přístupového hesla.
 >
 >
 
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>Nastavení rozsahu uchování
 
-Nastavte uchovávání bodů zálohy pomocí rutiny [set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) . I když se může stát, že nastavení uchovávání před definováním plánu zálohování je liché, pomocí ```Set-DPMPolicyObjective``` rutiny se automaticky nastaví výchozí plán zálohování, který se dá upravit. Plán zálohování je vždy možné nastavit jako první a zásady uchovávání informací po.
+Nastavte uchovávání bodů zálohy pomocí rutiny [set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) . I když se může stát, že nastavení uchovávání před definováním plánu zálohování je liché, pomocí ```Set-DPMPolicyObjective``` rutiny se automaticky nastaví výchozí plán zálohování, který se dá upravit. Je vždycky možné nastavit plán zálohování jako první a zásady uchovávání informací po.
 
 V následujícím příkladu rutina nastavuje parametry uchovávání pro zálohy disku. Tím se uchovávají zálohy po dobu 10 dnů a data se synchronizují každých 6 hodin mezi provozním serverem a serverem DPM. ```SynchronizationFrequencyMinutes```Nedefinuje, jak často se vytvoří bod zálohování, ale jak často se data zkopírují na server DPM.  Toto nastavení zabrání nadměrnému navracení záloh.
 

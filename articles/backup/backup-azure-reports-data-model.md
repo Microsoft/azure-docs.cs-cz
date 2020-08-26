@@ -3,12 +3,12 @@ title: Datový model pro události diagnostiky Azure Backup
 description: Tento datový model se odkazuje na režim konkrétní prostředek odeslání diagnostických událostí na Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538866"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892520"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datový model pro události diagnostiky Azure Backup
 
@@ -16,7 +16,7 @@ ms.locfileid: "86538866"
 
 Tato tabulka poskytuje informace o základních entitách zálohování, jako jsou trezory a zálohované položky.
 
-| **Pole**                         | **Typ dat** | **Popis**                                              |
+| **Pole**                         | **Datový typ** | **Popis**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                        | Text          | Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services. |
 | OperationName                     | Text          | Toto pole představuje název aktuální operace – BackupItem, BackupItemAssociation nebo ProtectedContainer. |
@@ -53,7 +53,7 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | ProtectedContainerWorkloadType    | Text          | Typ zálohovaného chráněného kontejneru. Například IaaSVMContainer |
 | ProtectionGroupName               | Text          | Název skupiny ochrany, ve které je chráněná položka zálohy, pro SC DPM a MABS, pokud je k dispozici |
 | ResourceGroupName                 | Text          | Skupina prostředků prostředku (například trezor Recovery Services) pro shromažďovaná data |
-| SchemaVersion                     | Text          | Toto pole označuje aktuální verzi schématu. je **v2** |
+| SchemaVersion                     | Text          | Toto pole označuje aktuální verzi schématu. Je **v2** |
 | SecondaryBackupProtectionState    | Text          | Zda je pro zálohovanou položku povolena sekundární ochrana  |
 | Stav                             | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
 | StorageReplicationType            | Text          | Typ replikace úložiště pro trezor Například Neredundantní |
@@ -67,7 +67,7 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 
-| **Pole**                      | **Typ dat** | **Popis**                                              |
+| **Pole**                      | **Datový typ** | **Popis**                                              |
 | :----------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | Jedinečný identifikátor prostředku, pro který se shromažďují data Například ID prostředku úložiště Recovery Services |
 | OperationName                  | Text          | Název aktuální operace Například výstraha            |
@@ -97,7 +97,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 
 Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 
-| **Pole**                      | **Typ dat** | **Popis**                                              |
+| **Pole**                      | **Datový typ** | **Popis**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | Jedinečný identifikátor prostředku, pro který se shromažďují data Například ID prostředku úložiště Recovery Services |
 | OperationName                  | Text          | Název operace, například ProtectedInstance         |
@@ -116,7 +116,7 @@ Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 
-| **Pole**                      | **Typ dat** | **Popis**                                              |
+| **Pole**                      | **Datový typ** | **Popis**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | OperationName                  | Text          | Toto pole představuje název aktuální operace – úloha    |
@@ -147,7 +147,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
-| **Pole**                       | **Typ dat**  | **Popis**                                              |
+| **Pole**                       | **Datový typ**  | **Popis**                                              |
 | ------------------------------- | -------------- | ------------------------------------------------------------ |
 | ResourceId                      | Text           | Jedinečný identifikátor prostředku, pro který se shromažďují data Například ID prostředku úložiště Recovery Services |
 | OperationName                   | Text           | Název operace, například zásada nebo PolicyAssociation |
@@ -165,12 +165,12 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | DiffBackupTime                  | Čas           | Čas rozdílového zálohování SQL v zálohování virtuálních počítačů Azure     |
 | LogBackupFrequency              | Desetinné číslo | Frekvence zálohování protokolů pro SQL                            |
 | LogBackupRetentionDuration      | Desetinné číslo | Doba uchování pro zálohování protokolů pro SQL v zálohování virtuálních počítačů Azure |
-| MonthlyRetentionDaysOfTheMonth  | Text           | Týdny v měsíci, kdy je nastaveno měsíční uchovávání.  Například First, Last atd. |
+| MonthlyRetentionDaysOfTheMonth  | Text           | Týdny v měsíci, kdy je nastaveno měsíční uchovávání.  Například First, Last |
 | MonthlyRetentionDaysOfTheWeek   | Text           | Dny v týdnu vybrané pro měsíční uchování              |
 | MonthlyRetentionDuration        | Text           | Celková doba uchování v měsících pro nakonfigurované zálohy    |
 | MonthlyRetentionFormat          | Text           | Typ konfigurace pro měsíční uchování. Například denně pro každý den v týdnu na základě týdne |
 | MonthlyRetentionTimes           | Text           | Datum a čas, kdy se nakonfiguruje měsíční uchování           |
-| MonthlyRetentionWeeksOfTheMonth | Text           | Týdny v měsíci, kdy je nastaveno měsíční uchovávání.   Například First, Last atd. |
+| MonthlyRetentionWeeksOfTheMonth | Text           | Týdny v měsíci, kdy je nastaveno měsíční uchovávání.   Například First, Last |
 | PolicyName                      | Text           | Název definované zásady                                   |
 | PolicyUniqueId                  | Text           | Jedinečné ID pro identifikaci zásad                             |
 | PolicyTimeZone                  | Text           | Časové pásmo, ve kterém se v protokolech mají pole s časem zásad zadávat |
@@ -196,7 +196,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 
-| **Pole**                      | **Typ dat** | **Popis**                                              |
+| **Pole**                      | **Datový typ** | **Popis**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services |
 | OperationName                  | Text          | Toto pole představuje název aktuální operace – Storage nebo StorageAssociation. |

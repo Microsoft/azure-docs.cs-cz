@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309150"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892605"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
 
@@ -183,7 +183,8 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    |int getNumberOfDocumentsUpdated ()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány z dokumentů dodaných do volání hromadné aktualizace rozhraní API.      |
    |Dvojitá getTotalRequestUnitsConsumed () |  Celkový počet jednotek žádosti (RU) spotřebovaných voláním rozhraní API hromadné aktualizace.       |
    |Doba trvání getTotalTimeTaken ()  |   Celková doba, kterou zabere volání rozhraní API hromadné aktualizace k dokončení provádění.      |
-   |Výpis \<Exception> GetErrors ()   |       Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadné aktualizace.      |
+   |Výpis \<Exception> GetErrors ()   |       Načte seznam provozních nebo síťových problémů souvisejících s operací aktualizace.      |
+   |Seznam \<BulkUpdateFailure> getFailedUpdates ()   |       Získá seznam aktualizací, které nemohly být dokončeny spolu s konkrétními výjimkami vedoucími k selhání.|
 
 3. Po dokončení aplikace hromadné aktualizace Sestavte nástroj příkazového řádku ze zdroje pomocí příkazu ' MVN Cleanup Package '. Tento příkaz vygeneruje soubor JAR v cílové složce:  
 

@@ -3,12 +3,12 @@ title: Zálohování SQL Server databází do Azure
 description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826918"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892435"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -51,7 +51,7 @@ Než začnete, ověřte následující požadavky:
 * Vytvoří účet NT SERVICE\AzureWLBackupPluginSvc pro zjišťování databází na virtuálním počítači. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
 * Zjišťuje databáze, které běží na virtuálním počítači, Azure Backup používá účet NT AUTHORITY\SYSTEM. Tento účet musí být veřejným přihlašováním v SQL.
 
-Pokud jste virtuální počítač SQL Server v Azure Marketplace nevytvořili nebo pokud jste na SQL 2008 a 2008 R2, může se zobrazit chyba **UserErrorSQLNoSysadminMembership** .
+Pokud jste virtuální počítač SQL Server v Azure Marketplace nevytvořili nebo pokud jste na SQL 2008 nebo 2008 R2, může se zobrazit chyba **UserErrorSQLNoSysadminMembership** .
 
 Informace o udělení oprávnění v případě **SQL 2008** a **2008 R2** běžících ve Windows 2008 R2 najdete [tady](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
 

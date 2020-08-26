@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 9238a65643c9ff24166e9a9b9a05e8c924abfb37
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544469"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -32,7 +32,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian Confluence. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace Confluence. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování Confluence SAML od Microsoftu budete potřebovat následující položky:
 
@@ -63,7 +63,7 @@ Od této chvíle jsou podporovány následující verze Confluence:
 
 - Confluence: 5,0 až 5,10
 - Confluence: 6.0.1 na 6.15.9
-- Confluence: 7.0.1 na 7.6.1
+- Confluence: 7.0.1 na 7.7.2
 
 > [!NOTE]
 > Upozorňujeme, že náš modul plug-in Confluence funguje taky na Ubuntu verze 16,04.

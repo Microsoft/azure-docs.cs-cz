@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c646c750cb54228211fadb0a4f6733d495e9219
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311275"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892061"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak nasadit modul zabezpečení na zařízení IoT
 
 Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
 
@@ -47,7 +47,7 @@ Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpe
     - Ověřte, že je audit aktivní, spuštěním následujícího příkazu:
 
     `sudo systemctl status auditd`<br>
-    - Očekávaná odpověď:`active (running)`
+    - Očekávaná odpověď: `active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Nasazení pomocí Azure Portal
 
@@ -93,9 +93,21 @@ Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Azure Security
 
 1. Na kartě **nastavení s dvojitým modulem** přidejte následující konfiguraci:
 
-    ``` json
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
-    ```
+   Vlastnost vlákna modulu:
+   
+   ``` json
+     "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
+   ```
+
+   Obsah s dvojitou vlastností modulu: 
+
+   ```json
+     {
+
+     }
+   ```
+    
+   Další informace o konfiguraci agenta najdete v tématu [Konfigurace agentů zabezpečení](https://docs.microsoft.com/azure/asc-for-iot/how-to-agent-configuration).
 
 1. Vyberte **Aktualizovat**.
 
@@ -165,7 +177,7 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
 
 1. Ověřte, zda jsou spuštěny následující kontejnery:
 
-   | Name | OBRÁZEK |
+   | Název | OBRÁZEK |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

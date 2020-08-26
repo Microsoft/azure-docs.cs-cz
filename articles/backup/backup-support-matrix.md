@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825184"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892180"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -145,11 +145,11 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 ## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
 
-Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost dat a schopnost odolnosti, což zákazníkům umožňuje úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
+Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat a schopností odolnosti, což vám umožní úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
+| Virtuální počítač Azure               | Yes.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
 | Agent MARS/místní | Ne                                                           | –               |
 | SQL/SAP HANA          | Ne                                                           | –               |
 | BUŇK                    | Ne                                                           | –               |

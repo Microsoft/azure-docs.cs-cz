@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892979"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Vytvoření rolí pracovního procesu a webu PHP
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat webovou roli, aby používala modul runtime PHP, kte
 
 1. Vytvořte projekt služby Azure a přidejte webovou roli PHP, jak je popsáno dříve v tomto tématu.
 2. Vytvořte `php` složku ve `bin` složce, která se nachází v kořenovém adresáři webové role, a přidejte do složky modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.) `php` .
-3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat webovou roli tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Chcete-li to provést, přidejte [instalační programsqlncli.msi x64] do `bin` složky v kořenovém adresáři webové role. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
+3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat webovou roli tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Chcete-li to provést, přidejte [ instalační programsqlncli.msi x64] do `bin` složky v kořenovém adresáři webové role. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
 
    ```console
    msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
@@ -114,7 +114,7 @@ Chcete-li nakonfigurovat roli pracovního procesu tak, aby používala modul run
 
 1. Vytvořte projekt služby Azure a přidejte roli pracovního procesu PHP, jak je popsáno dříve v tomto tématu.
 2. `php`V kořenovém adresáři role pracovního procesu vytvořte složku a přidejte do ní modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.) `php` .
-3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat roli pracovního procesu tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Pokud to chcete provést, přidejte [instalační programsqlncli.msi x64] do kořenového adresáře role pracovního procesu. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
+3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat roli pracovního procesu tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Pokud to chcete provést, přidejte [ instalační programsqlncli.msi x64] do kořenového adresáře role pracovního procesu. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
 
    ```console
    msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
@@ -153,7 +153,7 @@ Chcete-li nakonfigurovat roli pracovního procesu tak, aby používala modul run
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Spuštění aplikace v emulátorech výpočtů a úložiště
 
-Emulátory Azure poskytují místní prostředí, ve kterém můžete otestovat aplikaci Azure před tím, než ji nasadíte do cloudu. Mezi emulátory a prostředím Azure dochází k nějakým rozdílům. Pro lepší pochopení si přečtěte téma [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
+Emulátory Azure poskytují místní prostředí, ve kterém můžete otestovat aplikaci Azure před tím, než ji nasadíte do cloudu. Mezi emulátory a prostředím Azure dochází k nějakým rozdílům. Pro lepší pochopení najdete informace v tématu [použití emulátoru Azure Storage pro vývoj a testování](storage/common/storage-use-emulator.md).
 
 Všimněte si, že musíte mít nainstalovaný PHP místně pro použití emulátoru Compute. Emulátor služby COMPUTE bude používat vaši místní instalaci PHP ke spuštění vaší aplikace.
 
@@ -194,4 +194,4 @@ Další informace najdete v tématu [středisko pro vývojáře PHP](https://azu
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[Instalační programsqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648
+[ Instalační programsqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648

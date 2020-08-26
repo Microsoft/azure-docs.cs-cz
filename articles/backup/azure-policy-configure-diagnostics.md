@@ -3,12 +3,12 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824045"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892231"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
@@ -20,9 +20,9 @@ Pro zjednodušení vytváření nastavení diagnostiky se škálováním (s LA j
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, který přiřazuje zásadu, musí mít oprávnění Owner (Vlastník) k předplatnému, ke kterému je zásada přiřazená.
+* Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, kterému se přiřadí zásada, musí mít přístup **vlastníka** k předplatnému, ke kterému je zásada přiřazená.
 
-* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup čtenářů, přispěvatel nebo Owner k předplatnému, ve kterém zadaný pracovní prostor LA existuje.
+* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup **čtenářů**, **přispěvatele** nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
 
 * Obor skupiny pro správu se momentálně nepodporuje.
 

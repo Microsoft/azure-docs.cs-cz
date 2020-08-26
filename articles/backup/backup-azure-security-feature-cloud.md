@@ -3,18 +3,18 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826969"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892469"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
 Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění.
 
-Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu (nebo se data záloh nechtěně odstraní), uchovávají data zálohy 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
+Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu (nebo se data záloh nechtěně odstraní), uchovávají data zálohy 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady.
 
 Ochrana před odstraněním je k dispozici pro tyto služby:
 
@@ -160,7 +160,7 @@ Ne, chcete-li obnovit, je nutné obnovit neodstraněný prostředek. Operace zru
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Budou se moje snímky řídit stejným životním cyklem jako body obnovení v trezoru?
 
-Ano.
+Yes.
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak můžu znovu aktivovat naplánované zálohy u prostředku odstraněného z nějakého obnovitelného?
 
@@ -172,7 +172,7 @@ Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohov
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Můžu odstranit data starší než 14 dní, po jejichž uplynutí bude období obnovitelného odstranění?
 
-Ne. Odstranit neodstraněné položky nelze vynutit. Automaticky se odstraní po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Před provedením jakékoli jiné akce s položkou byste měli počkat na 14 dní.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu nastavit ochranu položek označených pro obnovitelné odstranění do 14 dní v novém trezoru, obraťte se na podporu Microsoftu.
+No. Odstranit neodstraněné položky nelze vynutit. Automaticky se odstraní po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Před provedením jakékoli jiné akce s položkou byste měli počkat na 14 dní.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu nastavit ochranu položek označených pro obnovitelné odstranění do 14 dní v novém trezoru, obraťte se na podporu Microsoftu.
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Může dojít k obnovitelnému odstranění operací v PowerShellu nebo rozhraní příkazového řádku?
 

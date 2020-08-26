@@ -4,12 +4,12 @@ description: Naučte se, jak můžete pomocí Azure Backup posílat data mimo s�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187825"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892010"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování v Azure Backup
 
@@ -42,7 +42,7 @@ Následující Azure Backup funkce nebo úlohy podporují použití offline zál
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
   > [!NOTE]
   > Následující předpoklady a pracovní postup platí jenom pro offline zálohování souborů a složek pomocí [nejnovějšího agenta Azure Recovery Services](https://aka.ms/azurebackup_agent). Pokud chcete provádět offline zálohování pro úlohy pomocí nástroje System Center DPM nebo Azure Backup Server, přečtěte si téma [pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export.md).
@@ -148,7 +148,7 @@ Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesí
 
     ![Přihlášení k předplatnému Azure](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
-    Nástroj pak začne připravovat disk a kopírovat zálohovaná data. Po zobrazení výzvy nástrojem může být nutné připojit další disky pro případ, že na poskytnutém disku není dostatek místa pro data záloh. <br/>
+    Nástroj pak začne připravovat disk a kopírovat zálohovaná data. Pokud na poskytnutém disku není dostatek místa pro zálohovaná data, může být nutné připojit další disky po zobrazení výzvy nástrojem. <br/>
 
     Na konci úspěšného provedení tohoto nástroje příkazový řádek poskytuje tři informace:
 
