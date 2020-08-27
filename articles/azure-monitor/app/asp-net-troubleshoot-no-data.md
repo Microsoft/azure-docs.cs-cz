@@ -2,13 +2,14 @@
 title: Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563071"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936465"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -66,7 +67,7 @@ Vypadá to, že při instalaci Application Insights nebo možná protokolovacíh
 
 V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Application Insights > konfigurovat Application Insights**. Zobrazí se dialogové okno, které vás vyzve, abyste se přihlásili do Azure a vytvořili prostředek Application Insights, nebo znovu použít už existující.
 
-## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a>Na mém serveru sestavení chybí tento počet balíčků NuGet:
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> Na mém serveru sestavení chybí tento počet balíčků NuGet:
 *Při ladění na svém vývojovém počítači se všechno vytvoří, ale na serveru sestavení se zobrazí chyba NuGet.*
 
 Přečtěte si prosím [balíček NuGet obnovení](https://docs.nuget.org/Consume/Package-Restore) a [Automatické obnovení balíčků](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -120,7 +121,7 @@ Opravit
   Zobrazí se některé souhrnné grafy. Kliknutím na ně můžete zobrazit další podrobnosti.
 * V aplikaci Visual Studio při ladění aplikace klikněte na tlačítko Application Insights.
 
-## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>Žádná data serveru (nebo žádná data vůbec)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> Žádná data serveru (nebo žádná data vůbec)
 *Spustil (a) jsem aplikaci Application Insights v Microsoft Azure, ale v grafu se zobrazila informace o tom, jak shromažďovat... nebo není nakonfigurováno.* Nebo, *jenom zobrazení stránky a uživatelská data, ale žádná data serveru.*
 
 * Spusťte aplikaci v režimu ladění v aplikaci Visual Studio (F5). Použijte aplikaci, aby se vygenerovala nějaká telemetrie. Zkontrolujte, zda jsou události zaznamenané v okně výstup sady Visual Studio.  
@@ -185,7 +186,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje.`Microsoft.ApplicationInsighs`
+1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje. `Microsoft.ApplicationInsighs`
 
 2. Upravte soubor applicationinsights.config tak, aby zahrnoval následující:
 
@@ -227,7 +228,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 4. Po dokončení tyto změny vraťte.
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>Shromažďování protokolů pomocí PerfView
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> Shromažďování protokolů pomocí PerfView
 [PerfView](https://github.com/Microsoft/perfview) je bezplatný nástroj pro diagnostiku a analýzu výkonu, který vám pomůže izolovat procesor, paměť a další problémy tím, že shromažďuje a vizualizuje diagnostické informace z mnoha zdrojů.
 
 Protokol Application Insights SDK s protokolem EventSource s protokolem, který může zachytit protokol PerfView.
@@ -249,7 +250,7 @@ Další informace
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
 
-Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore

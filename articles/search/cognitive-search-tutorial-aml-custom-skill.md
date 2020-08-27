@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245326"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924584"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
-V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
+V tomto kurzu použijete [datovou sadu přezkoumání hotelu](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuovanou v rámci licence Creative-4,0 License [CC-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) a vytvoříte [vlastní dovednost](./cognitive-search-aml-skill.md) pomocí Azure Machine Learning k extrakci mínění založených na aspektech z revizí. To umožňuje, aby přiřazení pozitivních a záporných mínění v rámci stejné revize bylo správně přiřazené k identifikovaným entitám, jako jsou například zaměstnanci, místnosti, předsálí nebo fondy.
 
 Pro výuku modelu mínění založeného na aspektech v Azure Machine Learning budete používat [úložiště recepty NLP](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Model se pak nasadí jako koncový bod v clusteru Azure Kubernetes. Po nasazení se koncový bod přidá do kanálu pro rozšíření jako AML dovednost pro použití službou Kognitivní hledání.
 
@@ -33,13 +33,13 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 > [!IMPORTANT] 
 > Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – Získejte [bezplatné předplatné](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Služba Kognitivní hledání](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Prostředek Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Pracovní prostor služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Služba Kognitivní hledání](./search-get-started-arm.md)
+* [Prostředek Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Pracovní prostor služby Azure Machine Learning](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Nastavení
 
@@ -47,9 +47,9 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 * Extrahuje obsah, pokud je stahování souborem zip. Ujistěte se, že jsou soubory pro čtení i zápis.
 * Při nastavování účtů a služeb Azure zkopírujte názvy a klíče do snadno dostupného textového souboru. Názvy a klíče budou přidány do první buňky v poznámkovém bloku, kde jsou definovány proměnné pro přístup ke službám Azure.
 * Pokud nejste obeznámeni s Azure Machine Learning a jejími požadavky, budete si chtít tyto dokumenty před začátkem začít:
- * [Konfigurace vývojového prostředí pro Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * Při konfiguraci vývojového prostředí pro Azure Machine Learning zvažte použití [cloudové výpočetní instance](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance) pro rychlost a usnadnění práce v části Začínáme.
+ * [Konfigurace vývojového prostředí pro Azure Machine Learning](../machine-learning/how-to-configure-environment.md)
+ * [Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](../machine-learning/how-to-manage-workspace.md)
+ * Při konfiguraci vývojového prostředí pro Azure Machine Learning zvažte použití [cloudové výpočetní instance](../machine-learning/how-to-configure-environment.md#compute-instance) pro rychlost a usnadnění práce v části Začínáme.
 * Nahrajte soubor DataSet do kontejneru v účtu úložiště. Větší soubor je nutný, pokud chcete provést krok školení v poznámkovém bloku. Pokud budete chtít přeskočit krok školení, je doporučeno zmenšit soubor.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Otevřete Poznámkový blok a připojte se ke službám Azure.
@@ -68,9 +68,9 @@ Oddíl 2 obsahuje šest buněk, které stáhnou soubor vkládání šetrnější
 
 Část 3 poznámkového bloku bude vytvářet modely vytvořené v části 2, registrovat tyto modely a nasazovat je jako koncový bod v clusteru Azure Kubernetes. Pokud nejste obeznámeni s Azure Kubernetes, důrazně doporučujeme před pokusem o vytvoření clusteru odvození zkontrolovat následující články:
 
-* [Přehled služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Přehled služby Azure Kubernetes](../aks/intro-kubernetes.md)
+* [Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)](../aks/concepts-clusters-workloads.md)
+* [Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)](../aks/quotas-skus-regions.md)
 
 Vytvoření a nasazení clusteru odvození může trvat až 30 minut. Při testování webové služby před přechodem k posledním krokům se doporučuje aktualizovat dovednosti a spustit indexer.
 
@@ -108,5 +108,5 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kontrola webového rozhraní API](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api) 
->  pro vlastní dovednosti [Další informace o přidání vlastních dovedností do kanálu pro obohacení](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Kontrola webového rozhraní API](./cognitive-search-custom-skill-web-api.md) 
+>  pro vlastní dovednosti [Další informace o přidání vlastních dovedností do kanálu pro obohacení](./cognitive-search-custom-skill-interface.md)

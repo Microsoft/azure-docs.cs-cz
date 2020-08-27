@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761810"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890497"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Základní plán zabezpečení Azure pro zálohování
 
@@ -186,7 +186,7 @@ Kromě toho Azure Backup odesílá diagnostické události, které je možné sh
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Doprovodné**materiály: Azure Backup poskytuje integrované funkce monitorování a upozorňování v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav pomocí Azure Monitor.
+**Doprovodné**materiály: Azure Backup poskytuje integrované funkce monitorování a upozorňování v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav pomocí Azure Monitor.
 
 Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do pracovního prostoru Log Analytics. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě dat protokolu aktivit, která se mohla shromažďovat pro Recovery Services trezory.
 
@@ -202,7 +202,7 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
-**Doprovodné**materiály: Azure Backup poskytuje integrované funkce monitorování a upozorňování v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav pomocí Azure Monitor.
+**Doprovodné**materiály: Azure Backup poskytuje integrované funkce monitorování a upozorňování v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav pomocí Azure Monitor.
 
 Výstrahy jsou primárně ve scénářích, kdy se uživatelům pošle oznámení, aby mohli provádět příslušné akce. Část výstrahy zálohování zobrazuje výstrahy vygenerované službou Azure Backup. Tyto výstrahy definuje služba a nemůžete vytvářet vlastní výstrahy.
 
@@ -426,7 +426,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: při zálohování virtuálních počítačů Azure IaaS poskytuje Azure Backup nezávislé a izolované zálohy pro ochranu před náhodným zničením původních dat. Zálohy jsou uloženy v Recovery Services trezoru s integrovanou správou bodů obnovení.
+**Pokyny**: při zálohování virtuálních počítačů Azure IaaS poskytuje Azure Backup nezávislé a izolované zálohy pro ochranu před náhodným zničením původních dat. Zálohy jsou uloženy v trezoru služby Recovery Services s integrovanou správou bodů obnovení.
 
 Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a produkční úložiště Recovery Services. Prostředky by měly být oddělené podle virtuální sítě a podsítě, musí se vhodně označit a zabezpečit pomocí NSG nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být dostatečně izolované. Pokud Virtual Machines ukládáte nebo zpracováváte citlivá data, implementujte zásady a postupy pro jejich vypnutí, pokud se nepoužívají.
 
@@ -580,7 +580,7 @@ Nadřazená platforma byla zkontrolována a opravena společností Microsoft. P�
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
-**Pokyny**: pomocí grafu prostředků Azure můžete v rámci vašich předplatných dotazovat a zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť, porty a protokoly atd.).  Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se v rámci předplatných mohli vytvořit výčet všech předplatných Azure i prostředků
+**Pokyny**: pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť, porty a protokoly).  Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se v rámci předplatných mohli vytvořit výčet všech předplatných Azure i prostředků
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
@@ -860,7 +860,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure Backup), ale neběží na vašem obsahu.
 
-Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, například App Service, Data Lake Storage, Blob Storage atd.
+Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage a Blob Storage.
 
 K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Azure Security Center pro datové služby.
 

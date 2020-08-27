@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci fyzických ser
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420783"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927370"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
@@ -40,6 +40,7 @@ Nastavte Azure pro práci s Azure Migrate.
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka. 
 **Registrovat poskytovatele prostředků (jenom posouzení)** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení počítačů pomocí Azure Migrate: posouzení serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
 **Vytvoření aplikace Azure AD (jenom posouzení)** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
+**Vytvoření trezoru klíčů** | Key Vault se vytvoří jako součást registrace zařízení a používá se ke správě certifikátu staženého na zařízení během jeho konfigurace.<br/><br/>Aby bylo možné Azure Migrate vytvořit Key Vault, váš účet Azure potřebuje oprávnění přispěvatele ve skupině prostředků, ve které se nachází projekt Azure Migrate.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu 

@@ -27,13 +27,13 @@
     - name: Odesílání a příjem událostí
       items:
         - name: .NET Core (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub verze 5)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs verze 5)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Přejít
           href: event-hubs-go-get-started-send.md
         - name: C (jenom odesílání)
@@ -43,13 +43,9 @@
     - name: Odesílání a příjem událostí (staré verze/balíčky)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub verze 1)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs verze 2)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Zachycení událostí
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Použití šablony Resource Manageru k povolení funkce Event Hubs Capture
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Čtení zachycených dat pomocí Pythonu (azure-eventhub verze 5)
-          href: get-started-capture-python-v2.md
-        - name: Čtení zachycených dat pomocí Pythonu (azure-eventhub verze 1)
+        - name: Čtení zachycených dat pomocí Pythonu
           href: event-hubs-capture-python.md
     - name: Streamování do služby Event Hubs pro Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

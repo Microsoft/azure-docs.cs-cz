@@ -4,8 +4,6 @@
   items:
     - name: Informace o službách Application Gateway
       href: overview.md
-    - name: Co je nového?
-      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:

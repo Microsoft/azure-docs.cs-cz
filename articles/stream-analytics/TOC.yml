@@ -73,12 +73,34 @@
         - name: Přehled výstupů
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: Výstup do Cosmos DB
-          href: stream-analytics-documentdb-output.md
-        - name: Výstup do Azure SQL DB
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: Azure SQL Database
+          href: sql-database-output.md
+        - name: Výkon SQL Database
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage a Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: Vzory vlastních cest objektů blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: Úložiště Table
+          href: table-storage-output.md
+        - name: Fronty služby Service Bus
+          href: service-bus-queues-output.md
+        - name: Témata služby Service Bus
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Optimalizace Cosmos DB
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: Rozšiřování dotazů pomocí funkcí
       items:
         - name: Přehled funkcí

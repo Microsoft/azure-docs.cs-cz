@@ -6,7 +6,11 @@
       href: overview.md
     - name: Rozdíly oproti předchozím verzím
       href: overview-differences.md
-- name: Kurzy
+- name: Rychlé zprovoznění
+  items:
+    - name: Prozkoumání ukázkového scénáře
+      href: quickstart-adt-explorer.md
+- name: Výukové kurzy
   items:
     - name: Kódování klientské aplikace
       href: tutorial-code.md
@@ -76,6 +80,8 @@
       items:
         - name: Ingestování telemetrie z IoT Hubu
           href: how-to-ingest-iot-hub-data.md
+        - name: Integrace s Logic Apps
+          href: how-to-integrate-logic-apps.md
     - name: Připojení výstupu
       items:
         - name: Správa koncových bodů a tras
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: Integrace se službou Azure Time Series Insights
           href: how-to-integrate-time-series-insights.md
-        - name: Integrace s Logic Apps
-          href: how-to-integrate-logic-apps.md
     - name: Řešení potíží
       items:
         - name: Zobrazení metrik v Azure Monitoru

@@ -4,12 +4,12 @@ description: Tento kurz podrobně popisuje zálohování několika virtuálních
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46dd6ef15e3b0dad53f029ec722acf0fb5a0df7c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513213"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889800"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure s využitím PowerShellu
 
@@ -52,13 +52,13 @@ Co se v tomto kurzu naučíte:
 
 Trezor vytvořte následujícím způsobem:
 
-1. K vytvoření trezoru použijte [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault). Zadejte název skupiny prostředků a umístění virtuálního počítače, který chcete zálohovat.
+1. K vytvoření trezoru použijte  [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault). Zadejte název skupiny prostředků a umístění virtuálního počítače, který chcete zálohovat.
 
     ```powershell
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
 
-2. Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
+2. Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Backup Recovery Services do proměnné.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
@@ -97,7 +97,7 @@ $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadTyp
 $job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud narazíte na problémy při zálohování virtuálního počítače, přečtěte si tento [článek o řešení potíží](backup-azure-vms-troubleshoot.md).
 

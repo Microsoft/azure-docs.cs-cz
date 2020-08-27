@@ -739,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: Rozhraní příkazového řádku systému souborů Hadoop
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: Rekurzivní nastavení seznamů ACL
+              href: recursive-access-control-lists.md
         - name: Dotaz
           items:
             - name: Filtrování dat s využitím akcelerace dotazů

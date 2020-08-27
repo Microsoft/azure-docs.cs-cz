@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496480"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932878"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Vytvoření základního vyhledávacího indexu v Azure Kognitivní hledání
 
@@ -26,10 +26,10 @@ Fyzická struktura indexu je určena schématem s poli, která jsou označena ja
 Index můžete vytvořit pomocí následujících nástrojů a rozhraní API:
 
 * V Azure Portal použijte průvodce **přidáním indexu** nebo **importovat data** .
-* Použití [indexu Create (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)
-* Používání [sady .NET SDK](search-create-index-dotnet.md)
+* Použití [indexu Create (REST API)](/rest/api/searchservice/create-index)
+* Používání [sady .NET SDK](./search-get-started-dotnet.md)
 
-Seznamte se s portálem, který se snadno učí. Portál vynutil požadavky a pravidla schématu pro konkrétní datové typy, jako je například zákaz funkcí fulltextového vyhledávání u číselných polí. Jakmile budete mít index s příznakem, můžete přejít ke kódu načtením definice JSON ze služby pomocí [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) a jeho přidáním do vašeho řešení.
+Seznamte se s portálem, který se snadno učí. Portál vynutil požadavky a pravidla schématu pro konkrétní datové typy, jako je například zákaz funkcí fulltextového vyhledávání u číselných polí. Jakmile budete mít index s příznakem, můžete přejít ke kódu načtením definice JSON ze služby pomocí [Get index (REST API)](/rest/api/searchservice/get-index) a jeho přidáním do vašeho řešení.
 
 ## <a name="recommended-workflow"></a>Doporučený pracovní postup
 
@@ -59,7 +59,7 @@ Doručení v konečném návrhu indexu je iterativní proces. Je běžné začí
 
    ![Přidat stránku indexu zobrazující atributy podle datového typu](media/search-what-is-an-index//field-definitions.png "Přidat stránku indexu zobrazující atributy podle datového typu")
 
-1. Stáhněte schéma indexu pomocí [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) a nástroje pro testování webu, jako je například [post](search-get-started-postman.md). Nyní máte reprezentaci JSON indexu, kterou můžete přizpůsobit pro kód.
+1. Stáhněte schéma indexu pomocí [Get index (REST API)](/rest/api/searchservice/get-index) a nástroje pro testování webu, jako je například [post](search-get-started-postman.md). Nyní máte reprezentaci JSON indexu, kterou můžete přizpůsobit pro kód.
 
 1. [Načtěte index s daty](search-what-is-data-import.md). Azure Kognitivní hledání přijímá dokumenty JSON. Chcete-li načíst data prostřednictvím kódu programu, můžete použít příkaz post s dokumenty JSON v datové části požadavku. Pokud vaše data nejsou snadno vyjádřena jako JSON, bude tento krok nejvíce náročný na práci. 
 
@@ -167,9 +167,9 @@ Index musí mít název a jedno označené pole klíče (typu EDM. String) v kol
 
 Pole mají název, typ, který klasifikuje uložená data a atributy, které určují, jak se pole používá.
 
-### <a name="data-types"></a>Datové typy
+### <a name="data-types"></a>Typy dat
 
-| Typ | Description |
+| Typ | Popis |
 |------|-------------|
 | Edm.String |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | Collection(Edm.String) |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
@@ -180,7 +180,7 @@ Pole mají název, typ, který klasifikuje uložená data a atributy, které ur�
 | Edm.DateTimeOffset |Hodnoty data a času reprezentované ve formátu OData v4 (například `yyyy-MM-ddTHH:mm:ss.fffZ` nebo `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | Edm.GeographyPoint |Bod představující geografické umístění na zeměkouli. |
 
-Další informace najdete v tématu [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Další informace najdete v tématu [podporované datové typy](/rest/api/searchservice/Supported-data-types).
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ Pole řetězců jsou často označena jako "prohledávatelné" a "získatelné".
 |prohledávatelná |Fulltextově prohledávatelné, lze provést lexikální analýzu, jako je dělení slov během indexování. Pokud nastavíte prohledávatelné pole na hodnotu jako „slunečný den“, interně se rozdělí na jednotlivé tokeny „slunečný“ a „den“. Podrobnosti najdete v článku [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md).|  
 |Filterable |Odkazované v dotazech $filter. Ve filtrovatelných polích typu `Edm.String` nebo `Collection(Edm.String)` nejdou dělit slova, takže se dají porovnávat jenom na přesné shody. Pokud například nastavíte takové pole f na „sunny day“, `$filter=f eq 'sunny'` nenajde žádné shody, ale `$filter=f eq 'sunny day'` ano. |  
 |seřaditelné |Ve výchozím nastavení systém řadí výsledky podle skóre (bodů), můžete ale nakonfigurovat řazení na základě polí v dokumentech. Pole typu `Collection(Edm.String)` nelze seřadit. |  
-|kategorizovatelné |Obvykle se používá v prezentaci výsledků hledání, která obsahuje počet nalezených položek podle kategorie (například hotely v konkrétním městě). Tuto možnost nejde použít s poli typu `Edm.GeographyPoint`. Pole typu `Edm.String` , která jsou filtrovatelné, "seřaditelné" nebo "FACET" mohou mít délku maximálně 32 kilobajtů. Podrobnosti najdete v článku [Vytvoření indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
+|kategorizovatelné |Obvykle se používá v prezentaci výsledků hledání, která obsahuje počet nalezených položek podle kategorie (například hotely v konkrétním městě). Tuto možnost nejde použít s poli typu `Edm.GeographyPoint`. Pole typu `Edm.String` , která jsou filtrovatelné, "seřaditelné" nebo "FACET" mohou mít délku maximálně 32 kilobajtů. Podrobnosti najdete v článku [Vytvoření indexu (REST API)](/rest/api/searchservice/create-index).|  
 |zkrat |Jedinečný identifikátor pro dokumenty v indexu. Jako pole key se musí zvolit právě jedno pole a musí být typu `Edm.String`.|  
 |Retrievable |Určuje, jestli může být pole vrácené ve výsledku hledání. To je užitečné, když chcete použít pole (například *zisková marže*) jako filtrovací, řadicí a bodovací mechanismus, ale nechcete, aby pole bylo viditelné pro koncového uživatele. Tento atribut musí být `true` pro pole typu `key`.|  
 
 I když můžete nová pole přidat kdykoliv, jsou existující definice polí zamknuté v indexu po dobu jeho existence. Z tohoto důvodu vývojáři obvykle používají portál k vytváření jednoduchých indexů, testování nápadů nebo k vyhledání nastavení pomocí stránek portálu. Časté změny návrhu indexu jsou efektivnější, pokud budete postupovat pomocí kódu, aby bylo možné index snadno znovu sestavit.
 
 > [!NOTE]
-> Rozhraní API, která použijete k vytvoření indexu, mají proměnlivé výchozí chování. Pro [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)je ve výchozím nastavení povolená většina atributů (například "prohledávatelné" a "získatelné" jsou pro řetězcová pole pravdivá) a často je stačí nastavit, jenom pokud je chcete vypnout. Pro sadu .NET SDK má opak hodnotu true. U jakékoli vlastnosti, kterou explicitně nenastavíte, je ve výchozím nastavení zakázáno odpovídající chování hledání, pokud ho výslovně nepovolíte.
+> Rozhraní API, která použijete k vytvoření indexu, mají proměnlivé výchozí chování. Pro [rozhraní REST API](/rest/api/searchservice/Create-Index)je ve výchozím nastavení povolená většina atributů (například "prohledávatelné" a "získatelné" jsou pro řetězcová pole pravdivá) a často je stačí nastavit, jenom pokud je chcete vypnout. Pro sadu .NET SDK má opak hodnotu true. U jakékoli vlastnosti, kterou explicitně nenastavíte, je ve výchozím nastavení zakázáno odpovídající chování hledání, pokud ho výslovně nepovolíte.
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Element analyzers nastaví název analyzátoru jazyka, který se má použít pr
 
 ## `suggesters`
 
-Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se používají k podpoře automatického dokončování nebo dotazování typu dopředu v hledáních. V případě, že uživatel zadává vyhledávací dotaz a rozhraní API vrací sadu navrhovaných dokumentů nebo frází, jsou obvykle odesílány do [návrhů (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) částečné vyhledávací řetězce. 
+Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se používají k podpoře automatického dokončování nebo dotazování typu dopředu v hledáních. V případě, že uživatel zadává vyhledávací dotaz a rozhraní API vrací sadu navrhovaných dokumentů nebo frází, jsou obvykle odesílány do [návrhů (REST API)](/rest/api/searchservice/suggestions) částečné vyhledávací řetězce. 
 
 Pole přidaná do modulu pro návrhy se používají k sestavení podmínek vyhledávání typu dopředu. Všechny hledané výrazy se vytvoří při indexování a ukládají se samostatně. Další informace o vytváření struktury návrhů najdete v tématu [Přidání návrhů](index-add-suggesters.md).
 
@@ -242,7 +242,7 @@ Následující snímek obrazovky znázorňuje vzory úložiště indexů, které
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Yes.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? No. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Yes.
 
 Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je to, že operace filtrování a řazení prohledají přesné shody a vyžadují přítomnost doslovnéch textových řetězců. Naopak vyhledávací pole podporující fulltextové dotazy používají obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
 

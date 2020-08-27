@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: Nasazení několika veřejných IP adres – PowerShell
       href: multiple-public-ip-powershell.md
+    - name: Definování hierarchie pravidel
+      href: rule-hierarchy.md
 - name: Referenční informace
   items:
     - name: Azure CLI

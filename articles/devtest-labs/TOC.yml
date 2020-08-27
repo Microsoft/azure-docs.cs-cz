@@ -8,10 +8,10 @@
       href: lab-services-overview.md
 - name: Rychlý start
   items:
-    - name: Vytvoření testovacího prostředí – šablona ARM
+    - name: Vytvoření testovacího prostředí – šablona Resource Manageru
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
-- name: Kurzy
+- name: Výukové kurzy
   items:
     - name: Nastavení testovacího prostředí
       href: tutorial-create-custom-lab.md
@@ -75,6 +75,8 @@
       items:
         - name: Vytvoření testovacího prostředí
           href: devtest-lab-create-lab.md
+        - name: Vytvoření testovacího prostředí s izolací sítě
+          href: network-isolation.md
         - name: Vytvoření nebo úprava testovacích prostředí pomocí šablony Resource Manageru
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí

@@ -2,17 +2,17 @@
 title: Nasazení specifikace šablony jako propojené šablony
 description: Přečtěte si, jak nasadit stávající specifikaci šablony v propojeném nasazení.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096680"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918379"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Kurz: nasazení specifikace šablony jako propojené šablony (Náhled)
 
-Přečtěte si, jak nasadit stávající [specifikaci šablony](template-specs.md) pomocí [propojeného nasazení](linked-templates.md#linked-template). Pomocí specifikací šablon můžete sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Po vytvoření specifikace šablony můžete nasadit specifikaci šablony pomocí Azure PowerShell. Můžete také nasadit specifikaci šablony jako součást řešení pomocí propojené šablony.
+Přečtěte si, jak nasadit stávající [specifikaci šablony](template-specs.md) pomocí [propojeného nasazení](linked-templates.md#linked-template). Pomocí specifikací šablon můžete sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Po vytvoření specifikace šablony můžete nasadit specifikaci šablony pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Můžete také nasadit specifikaci šablony jako součást řešení pomocí propojené šablony.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -117,9 +117,22 @@ K nasazení specifikace šablony v šabloně ARM přidejte do hlavní šablony [
 
 ID specifikace šablony se generuje pomocí [`resourceID()`](template-functions-resource.md#resourceid) funkce. Argument skupiny prostředků ve funkci resourceID () je volitelný, pokud je templateSpec ve stejné skupině prostředků aktuálního nasazení.  ID prostředku můžete také přímo předat jako parametr. ID získáte pomocí:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> Došlo k známému problému s získáním ID specifikace šablony a jeho přiřazením k proměnné ve Windows PowerShellu.
+
+---
 
 Syntaxe pro předávání parametrů do specifikace šablony je:
 
@@ -138,6 +151,8 @@ Syntaxe pro předávání parametrů do specifikace šablony je:
 
 Když nasadíte propojenou šablonu, nasadí jak webovou aplikaci, tak i účet úložiště. Nasazení je stejné jako nasazení jiných šablon ARM.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -147,6 +162,21 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 
