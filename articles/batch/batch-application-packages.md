@@ -3,13 +3,13 @@ title: Nasazení balíčků aplikací do výpočetních uzlů
 description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spravovat víc aplikací a verzí pro instalaci na výpočetních uzlech služby Batch.
 ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147221"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922000"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -180,7 +180,7 @@ Po kliknutí na tlačítko **aktualizovat**se zobrazí okna **aktualizace balí�
 
 Po kliknutí na **Odstranit**se zobrazí výzva k potvrzení odstranění verze balíčku a dávka odstraní balíček z Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro aplikaci odebrána **výchozí nastavení verze** .
 
-![Odstranit aplikaci][12]
+![Odstranit aplikaci ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
 Teď, když jste se naučili, jak spravovat balíčky aplikací pomocí Azure Portal, můžeme diskutovat o tom, jak je nasadit do výpočetních uzlů a jak je spouštět s úkoly Batch.
@@ -255,7 +255,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`a `version` jsou hodnoty, které odpovídají verzi aplikace a balíčku, který jste zadali pro nasazení. Pokud jste například zadali, že by měla být na uzlech systému Windows nainstalována verze 2,7 nástroje *Blend* pro aplikace, budou příkazové řádky úlohy používat pro přístup ke svým souborům tuto proměnnou prostředí:
+`APPLICATIONID` a `version` jsou hodnoty, které odpovídají verzi aplikace a balíčku, který jste zadali pro nasazení. Pokud jste například zadali, že by měla být na uzlech systému Windows nainstalována verze 2,7 nástroje *Blend* pro aplikace, budou příkazové řádky úlohy používat pro přístup ke svým souborům tuto proměnnou prostředí:
 
 ```
 Windows:

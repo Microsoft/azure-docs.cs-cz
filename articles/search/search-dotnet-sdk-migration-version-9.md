@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db2017a3bb1a8910049527796f422227b741b960
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562342"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923190"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
-Pokud používáte verzi 7,0-Preview nebo starší [sadu Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 9.
+Pokud používáte verzi 7,0-Preview nebo starší [sadu Azure Search .NET SDK](/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 9.
 
 > [!NOTE]
 > Pokud chcete použít verzi 8,0-Preview k vyhodnocení funkcí, které nejsou všeobecně dostupné, můžete postupovat podle pokynů v tomto článku a upgradovat na 8,0-Preview z předchozích verzí.
@@ -106,12 +106,12 @@ Konstruktor bez parametrů `Field` byl proveden `internal` . Od `Field` této ch
 
 Ve verzi 7,0-Preview a dříve byly různé třídy, které zapouzdřují skupiny dokumentů, strukturované do paralelních hierarchií tříd:
 
-  -  `DocumentSearchResult`a `DocumentSearchResult<T>` Zděděno od`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`a `DocumentSuggestResult<T>` Zděděno od`DocumentSuggestResultBase`
-  -  `IndexAction`a `IndexAction<T>` Zděděno od`IndexActionBase`
-  -  `IndexBatch`a `IndexBatch<T>` Zděděno od`IndexBatchBase`
-  -  `SearchResult`a `SearchResult<T>` Zděděno od`SearchResultBase`
-  -  `SuggestResult`a `SuggestResult<T>` Zděděno od`SuggestResultBase`
+  -  `DocumentSearchResult` a `DocumentSearchResult<T>` Zděděno od `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` a `DocumentSuggestResult<T>` Zděděno od `DocumentSuggestResultBase`
+  -  `IndexAction` a `IndexAction<T>` Zděděno od `IndexActionBase`
+  -  `IndexBatch` a `IndexBatch<T>` Zděděno od `IndexBatchBase`
+  -  `SearchResult` a `SearchResult<T>` Zděděno od `SearchResultBase`
+  -  `SuggestResult` a `SuggestResult<T>` Zděděno od `SuggestResultBase`
 
 Odvozené typy bez parametru obecného typu by se měly používat ve scénářích s dynamickým zadáním a s předpokládaným využitím tohoto `Document` typu.
 

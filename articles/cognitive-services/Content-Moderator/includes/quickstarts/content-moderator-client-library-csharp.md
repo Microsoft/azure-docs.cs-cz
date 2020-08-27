@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: b064f6515c8ff4b3be4219cc6516ef25dabf0679
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 65465c97f4457756fb376219caeb9cb066a2ec77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929108"
 ---
 Začněte s klientskou knihovnou Content Moderator pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Content Moderator je služba rozpoznávání, která kontroluje text, obrázky a obsah videa pro materiál, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může zpracovávat obsah označený příznakem v dodržování předpisů nebo spravovat zamýšlené prostředí pro uživatele.
 
@@ -27,7 +28,7 @@ Pomocí klientské knihovny Content Moderator pro .NET:
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Ukázky](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553076"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917971"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Nastavení připojení k účtu Azure Storage pomocí spravované identity (Preview)
 
@@ -68,7 +68,7 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
 
 ### <a name="3---create-the-data-source"></a>3. vytvoření zdroje dat
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
 
 Při indexování z účtu úložiště musí mít zdroj dat následující požadované vlastnosti:
 
@@ -83,7 +83,7 @@ Při indexování z účtu úložiště musí mít zdroj dat následující pož
         * *ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/název vaší**skupiny prostředků**/Providers/Microsoft.Storage/storageAccounts/**název vašeho účtu úložiště**/;*
 * **kontejner** Určuje název kontejneru nebo tabulky v účtu úložiště. Ve výchozím nastavení jsou všechny objekty BLOB v kontejneru navýšené. Pokud chcete indexovat objekty blob pouze v konkrétním virtuálním adresáři, můžete tento adresář zadat pomocí volitelného parametru **dotazu** .
 
-Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](/rest/api/searchservice/create-data-source):
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +118,7 @@ Tady je postup, jak vytvořit index s `content` polem, které lze prohledávat a
     }
 ```
 
-Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Další informace o vytváření indexů najdete v tématu [vytvoření indexu](/rest/api/searchservice/create-index) .
 
 ### <a name="5---create-the-indexer"></a>5. vytvoření indexeru
 
@@ -143,7 +143,7 @@ Příklad definice indexeru pro indexer objektů BLOB:
 
 Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
 
-Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 

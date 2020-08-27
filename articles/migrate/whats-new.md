@@ -4,41 +4,32 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927166"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+
+## <a name="update-august-2020"></a>Aktualizace (srpen 2020)
+
+- Vylepšené prostředí pro připojování, kde se vygeneruje Azure Migrate klíč projektu z portálu a používá se k dokončení registrace zařízení.
+- Možnost stažení souborů vajíček/VHD nebo skriptů instalačního programu z portálu a nastavení zařízení VMware a Hyper-V v uvedeném pořadí.
+- Aktualizovaný Správce konfigurace zařízení s pokročilým uživatelským prostředím
+- Podpora více přihlašovacích údajů pro zjišťování virtuálních počítačů Hyper-V.
+- Vylepšené možnosti vyhledávání, řazení a filtrování pro přidané přihlašovací údaje a zdroje zjišťování.
+- Vstup jedné položky, vícenásobné zadání a import možností sdíleného svazku clusteru pro uživatele přidání zdrojů zjišťování pro hostitele nebo clustery Hyper-V & fyzických serverech.
+- Vylepšené chybové prostředí s aktualizacemi stavu pro operace ověřování a zjišťování u jednotlivých přidaných zdrojů v tabulce. 
 
 ## <a name="update-june-2020"></a>Aktualizace (červen 2020)
 
 - Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
 - Podpora více přihlašovacích údajů na zařízení pro zjištění fyzického serveru.
 - Podpora pro povolení přihlášení Azure ze zařízení pro tenanta, ve kterém je nakonfigurované omezení tenanta.
-- Nové verze Azure Migrate zařízení, jak je uvedeno níže.
-
-### <a name="azure-public-cloud"></a>Veřejný cloud Azure
-
-**Scénář** | **Stáhnout** | **SHA256**
---- | --- | ---
-Hyper-V (8,93 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10,9 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**Scénář** | **Stáhnout** | **SHA256**
---- | --- | ---
-Hyper-V (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>Aktualizace (duben 2020)
@@ -47,7 +38,7 @@ Azure Migrate podporuje nasazení v Azure Government.
 
 - Můžete zjišťovat a hodnotit virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
 - Do Azure můžete migrovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
-- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Další informace](server-migrate-overview.md).
+- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Přečtěte si další informace](server-migrate-overview.md).
 - [Kontrola](migrate-support-matrix.md#supported-geographies-azure-government) podporovaných geografických oblastí a oblastí pro Azure Government.
 - [Analýza závislostí založená na agentech](concepts-dependency-visualization.md#agent-based-analysis) není v Azure Government podporovaná.
 - Funkce ve verzi Preview jsou podporované v Azure Government, konkrétně v případě [analýzy závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis)a [zjišťování aplikací](how-to-discover-applications.md).

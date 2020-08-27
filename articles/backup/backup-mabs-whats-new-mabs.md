@@ -3,12 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648747"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893183"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Novinky ve Microsoft Azure Backup serveru (MABS)
 
@@ -37,7 +37,7 @@ Pomocí MABS V3 UR1 můžete zálohovat svazky a úlohy ReFS nasazené na svazku
 >[!NOTE]
 > Zálohování virtuálních počítačů Hyper-V uložených na svazku s více instancemi je podporované v MABS v3.
 
->VÝZNAMNÁ Zjistili jsme několik problémů se zálohováním svazků ReFS s odstraněnými duplicitními daty. Pracujeme na jejich opravách a aktualizujeme tuto část, jakmile bude k dispozici oprava. Až pak odebereme podporu pro zálohování svazků ReFS s odstraněnými duplicitními daty z MABSv3 UR1.
+>VÝZNAMNÁ Zjistili jsme několik problémů se zálohováním svazků ReFS s odstraněnými duplicitními daty. Pracujeme na jejich opravě a aktualizujeme tuto část, jakmile bude k dispozici oprava. Až pak odebereme podporu pro zálohování svazků ReFS s odstraněnými duplicitními daty z MABSv3 UR1.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Podpora ochrany řešení Azure VMware
 

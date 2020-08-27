@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9b08dff01ad125fb7e0a52674e25a4a973df7c16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905419"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927047"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Jak používat Microsoft. Azure. Search (v10 za účelem) v aplikaci .NET
 
-Tento článek vysvětluje, jak vytvořit a spravovat vyhledávací objekty pomocí jazyka C# a [sady Azure kognitivní hledání (v10 za účelem) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Verze 10 je poslední verzí balíčku Microsoft. Azure. Search. V [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) od týmu Azure SDK se budou zavádět nové funkce.
+Tento článek vysvětluje, jak vytvořit a spravovat vyhledávací objekty pomocí jazyka C# a [sady Azure kognitivní hledání (v10 za účelem) .NET SDK](/dotnet/api/overview/azure/search). Verze 10 je poslední verzí balíčku Microsoft. Azure. Search. V [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) od týmu Azure SDK se budou zavádět nové funkce.
 
 Pokud máte existující nebo vývojové projekty pro vývoj, pokračujte v používání verze 10. Pro nové projekty nebo pro použití nových funkcí byste měli převést existující řešení hledání na novou knihovnu.
 
@@ -36,14 +36,14 @@ Ostatní balíčky NuGet v sadě SDK jsou:
 
 Různé klientské knihovny definují třídy jako `Index` , `Field` , a `Document` i operace jako `Indexes.Create` a `Documents.Search` v `SearchServiceClient` `SearchIndexClient` třídách a. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
-* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft. Azure. Search. Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft. Azure. Search](/dotnet/api/microsoft.azure.search)
+* [Microsoft. Azure. Search. Models](/dotnet/api/microsoft.azure.search.models)
 
 Pokud chcete poskytnout zpětnou vazbu k budoucí aktualizaci sady SDK, přečtěte si naši [zpětnou vazbu](https://feedback.azure.com/forums/263029-azure-search/) nebo vytvořte problém na [GitHubu](https://github.com/azure/azure-sdk-for-net/issues) a uveďte "Azure kognitivní hledání" v názvu problému.
 
-Sada .NET SDK cílí `2019-05-06` na verzi [Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/). Tato verze zahrnuje podporu [komplexních typů](search-howto-complex-data-types.md), funkce [rozšíření AI](cognitive-search-concept-intro.md), [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete)a [režimu analýzy JsonLines](search-howto-index-json-blobs.md) při indexování objektů blob Azure. 
+Sada .NET SDK cílí `2019-05-06` na verzi [Azure kognitivní hledání REST API](/rest/api/searchservice/). Tato verze zahrnuje podporu [komplexních typů](search-howto-complex-data-types.md), funkce [rozšíření AI](cognitive-search-concept-intro.md), [automatického dokončování](/rest/api/searchservice/autocomplete)a [režimu analýzy JsonLines](search-howto-index-json-blobs.md) při indexování objektů blob Azure. 
 
-Tato sada SDK nepodporuje [operace správy](https://docs.microsoft.com/rest/api/searchmanagement/) , jako je vytváření a škálování vyhledávacích služeb a Správa klíčů rozhraní API. Pokud potřebujete spravovat svoje prostředky hledání z aplikace .NET, můžete použít [sadu SDK pro správu Azure kognitivní hledání .NET](https://aka.ms/search-mgmt-sdk).
+Tato sada SDK nepodporuje [operace správy](/rest/api/searchmanagement/) , jako je vytváření a škálování vyhledávacích služeb a Správa klíčů rozhraní API. Pokud potřebujete spravovat svoje prostředky hledání z aplikace .NET, můžete použít [sadu SDK pro správu Azure kognitivní hledání .NET](https://aka.ms/search-mgmt-sdk).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Upgrade na nejnovější verzi sady SDK
 Pokud už používáte starší verzi sady Azure Kognitivní hledání .NET SDK a chcete upgradovat na nejnovější verzi, která je obecně dostupná, [Tento článek](search-dotnet-sdk-migration-version-9.md) vysvětluje, jak.
@@ -138,7 +138,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> V typické aplikaci vyhledávání může být Správa a naplnění indexu zpracována samostatnou komponentou z vyhledávacích dotazů. `Indexes.GetClient`je vhodný pro naplnění indexu, protože vám ušetří problémy s dalším `SearchCredentials` . Dělá to pomocí předání klíče správce, který jste použili pro vytvoření `SearchServiceClient`, službě `SearchIndexClient`. V části aplikace, která spouští dotazy, je ale lepší vytvořit `SearchIndexClient` přímo, abyste mohli předat klíč dotazu, který umožňuje číst jenom data namísto klíče správce. To je konzistentní s principem minimálního oprávnění a pomůže vám to lépe zabezpečit vaši aplikaci. Další informace o klíčích pro správu a klíčích dotazů najdete [tady](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
+> V typické aplikaci vyhledávání může být Správa a naplnění indexu zpracována samostatnou komponentou z vyhledávacích dotazů. `Indexes.GetClient` je vhodný pro naplnění indexu, protože vám ušetří problémy s dalším `SearchCredentials` . Dělá to pomocí předání klíče správce, který jste použili pro vytvoření `SearchServiceClient`, službě `SearchIndexClient`. V části aplikace, která spouští dotazy, je ale lepší vytvořit `SearchIndexClient` přímo, abyste mohli předat klíč dotazu, který umožňuje číst jenom data namísto klíče správce. To je konzistentní s principem minimálního oprávnění a pomůže vám to lépe zabezpečit vaši aplikaci. Další informace o klíčích pro správu a klíčích dotazů najdete [tady](/rest/api/searchservice/#authentication-and-authorization).
 > 
 > 
 
@@ -264,7 +264,7 @@ Tato metoda vytvoří nový `Index` objekt se seznamem `Field` objektů, které 
 >
 > 
 
-Kromě polí můžete také do indexu přidat profily vyhodnocování, moduly pro návrhy a možnosti CORS (tyto parametry jsou vynechány v ukázce pro zkrácení). Další informace o objektu index a jeho částech najdete v [Referenční příručce k sadě SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)a také v referenčních informacích k [Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/).
+Kromě polí můžete také do indexu přidat profily vyhodnocování, moduly pro návrhy a možnosti CORS (tyto parametry jsou vynechány v ukázce pro zkrácení). Další informace o objektu index a jeho částech najdete v [Referenční příručce k sadě SDK](/dotnet/api/microsoft.azure.search.models.index)a také v referenčních informacích k [Azure kognitivní hledání REST API](/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Naplnění indexu
 V dalším kroku `Main` naplníte nově vytvořený index. Tento index naplnění se provádí v následující metodě: (kód se nahradil znakem "...". pro ilustrační účely.  Kompletní kód pro naplnění dat najdete v úplném ukázkovém řešení.)
@@ -395,7 +395,7 @@ Druhá část vytvoří `IndexBatch` dokumenty obsahující. Určete operaci, kt
 Třetí část této metody je blok catch, který zpracovává důležitý chybový případ pro indexování. Pokud se službě Azure Kognitivní hledání nepovede indexování některých dokumentů v dávce, `IndexBatchException` vyvolá se `Documents.Index` . Tato výjimka se může vyskytnout, pokud indexování dokumentů probíhá v případě velkého zatížení služby. **Důrazně doporučujeme v kódu explicitně zpracovávat tento případ.** Indexování dokumentů, které selhaly, můžete odložit a poté zkusit znovu, nebo v závislosti na požadavcích vaší aplikace na konzistenci dat provést něco jiného.
 
 > [!NOTE]
-> Metodu lze použít [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) k vytvoření nové dávky obsahující pouze akce, které selhaly v předchozím volání `Index` . Existuje diskuzi o tom, jak ho správně používat [na StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Metodu lze použít [`FindFailedActionsToRetry`](/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) k vytvoření nové dávky obsahující pouze akce, které selhaly v předchozím volání `Index` . Existuje diskuzi o tom, jak ho správně používat [na StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -470,7 +470,7 @@ První věc, kterou je třeba si všimnout, je, že název každé veřejné vla
 
 Druhá věc k oznámení je, že každá vlastnost je upravena s atributy `IsFilterable` , jako například, `IsSearchable` , `Key` a `Analyzer` . Tyto atributy jsou mapovány přímo k [odpovídajícím atributům polí v indexu služby Azure kognitivní hledání](/rest/api/searchservice/create-index). `FieldBuilder`Třída pomocí těchto vlastností vytvoří definice polí pro index.
 
-Třetí důležitou věcí o této `Hotel` třídě jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Existují podobné mapování typů mezi `bool?` , `Edm.Boolean` , a a `DateTimeOffset?` `Edm.DateTimeOffset` tak dále. Konkrétní pravidla pro mapování typů jsou zdokumentována pomocí `Documents.Get` metody v [referenčních informacích k sadě Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder`Tato třída se pro vás postará o toto mapování, ale přesto může být užitečné pochopit, jak potřebujete řešit problémy s serializací.
+Třetí důležitou věcí o této `Hotel` třídě jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Existují podobné mapování typů mezi `bool?` , `Edm.Boolean` , a a `DateTimeOffset?` `Edm.DateTimeOffset` tak dále. Konkrétní pravidla pro mapování typů jsou zdokumentována pomocí `Documents.Get` metody v [referenčních informacích k sadě Azure kognitivní hledání .NET SDK](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder`Tato třída se pro vás postará o toto mapování, ale přesto může být užitečné pochopit, jak potřebujete řešit problémy s serializací.
 
 Nedošlo k tomu, abyste si poznamenali `SmokingAllowed` vlastnost?
 
@@ -481,7 +481,7 @@ public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => 
 
 `JsonIgnore`Atribut v této vlastnosti říká, že `FieldBuilder` ho neserializovat do indexu jako pole.  Toto je skvělý způsob, jak vytvořit počítané vlastnosti na straně klienta, které můžete použít jako pomocníky ve vaší aplikaci.  V tomto případě `SmokingAllowed` vlastnost odráží, zda některý `Room` z `Rooms` kolekcí umožňuje kouření.  Pokud jsou všechny hodnoty false, znamená to, že celý Hotel nedovoluje kouření.
 
-Některé vlastnosti, jako `Address` `Rooms` jsou a jsou instancemi tříd .NET.  Tyto vlastnosti reprezentují složitější datové struktury a v důsledku toho vyžadují pole se [složitým datovým typem](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) v indexu.
+Některé vlastnosti, jako `Address` `Rooms` jsou a jsou instancemi tříd .NET.  Tyto vlastnosti reprezentují složitější datové struktury a v důsledku toho vyžadují pole se [složitým datovým typem](./search-howto-complex-data-types.md) v indexu.
 
 `Address`Vlastnost představuje sadu více hodnot ve `Address` třídě, která je definována níže:
 
@@ -562,7 +562,7 @@ Váš datový model v .NET a odpovídající schéma indexu by měly být navrž
 Tato možnost použití vlastních tříd k interakci s dokumenty v indexu funguje v obou směrech. Můžete také načíst výsledky hledání a nechat sadu SDK automaticky deserializovat podle vámi zvoleného typu, jak je uvedeno v následující části.
 
 > [!NOTE]
-> Sada Azure Kognitivní hledání .NET SDK také podporuje dynamicky typové dokumenty pomocí `Document` třídy, což je mapování klíč/hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. V ukázkovém kódu v tomto kurzu se používá jenom ta druhá. [ `Document` Třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) dědí z `Dictionary<string, object>` .
+> Sada Azure Kognitivní hledání .NET SDK také podporuje dynamicky typové dokumenty pomocí `Document` třídy, což je mapování klíč/hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. V ukázkovém kódu v tomto kurzu se používá jenom ta druhá. [ `Document` Třída](/dotnet/api/microsoft.azure.search.models.document) dědí z `Dictionary<string, object>` .
 > 
 >
 
@@ -649,12 +649,12 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Pokaždé, když spustí dotaz, tato metoda nejprve vytvoří nový `SearchParameters` objekt. Tento objekt se používá k určení dalších možností pro dotaz, jako je řazení, filtrování, stránkování a omezující vlastnosti. V této metodě nastavujeme `Filter` `Select` vlastnost,, `OrderBy` a `Top` pro různé dotazy. Všechny `SearchParameters` vlastnosti jsou popsány [zde](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
+Pokaždé, když spustí dotaz, tato metoda nejprve vytvoří nový `SearchParameters` objekt. Tento objekt se používá k určení dalších možností pro dotaz, jako je řazení, filtrování, stránkování a omezující vlastnosti. V této metodě nastavujeme `Filter` `Select` vlastnost,, `OrderBy` a `Top` pro různé dotazy. Všechny `SearchParameters` vlastnosti jsou popsány [zde](/dotnet/api/microsoft.azure.search.models.searchparameters).
 
 Dalším krokem je ve skutečnosti spustit vyhledávací dotaz. Spuštění vyhledávání je provedeno pomocí `Documents.Search` metody. Pro každý dotaz předáte hledaný text, který se má použít jako řetězec (nebo `"*"` Pokud není k dispozici žádný hledaný text) a také parametry hledání, které jste vytvořili dříve. Také určujeme `Hotel` jako parametr typu pro `Documents.Search` , který dává sadě SDK pokyn k deserializaci dokumentů ve výsledcích hledání do objektů typu `Hotel` .
 
 > [!NOTE]
-> Další informace o syntaxi výrazu vyhledávacího dotazu najdete [tady](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search).
+> Další informace o syntaxi výrazu vyhledávacího dotazu najdete [tady](/rest/api/searchservice/Simple-query-syntax-in-Azure-Search).
 > 
 > 
 
@@ -709,7 +709,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Tento dotaz používá výraz OData `$filter` `Rooms/any(r: r/BaseRate lt 100)` pro filtrování dokumentů v indexu. Pomocí [operátoru any](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) se v kolekci místností aplikuje ' BaseRate lt 100 ' na všechny položky. Další informace o syntaxi OData, kterou Azure Kognitivní hledání podporuje, najdete [tady](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax).
+Tento dotaz používá výraz OData `$filter` `Rooms/any(r: r/BaseRate lt 100)` pro filtrování dokumentů v indexu. Pomocí [operátoru any](./search-query-odata-collection-operators.md) se v kolekci místností aplikuje ' BaseRate lt 100 ' na všechny položky. Další informace o syntaxi OData, kterou Azure Kognitivní hledání podporuje, najdete [tady](./query-odata-filter-orderby-syntax.md).
 
 Tady jsou výsledky dotazu:
 
@@ -769,6 +769,6 @@ A tady jsou výsledky, které zahrnují všechna pole, protože jsme neurčili `
 Tento krok dokončí kurz, ale nezastaví se zde. * * Další kroky poskytují další zdroje informací, které vám pomůžou získat další informace o Azure Kognitivní hledání.
 
 ## <a name="next-steps"></a>Další kroky
-* Projděte si referenční materiály pro [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [REST API](https://docs.microsoft.com/rest/api/searchservice/).
-* Přečtěte si [zásady vytváření názvů](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) a Naučte se pravidla pro pojmenovávání různých objektů.
-* Zkontrolujte [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) v Azure kognitivní hledání.
+* Projděte si referenční materiály pro [.NET SDK](/dotnet/api/microsoft.azure.search) a [REST API](/rest/api/searchservice/).
+* Přečtěte si [zásady vytváření názvů](/rest/api/searchservice/Naming-rules) a Naučte se pravidla pro pojmenovávání různých objektů.
+* Zkontrolujte [podporované datové typy](/rest/api/searchservice/Supported-data-types) v Azure kognitivní hledání.

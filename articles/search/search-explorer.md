@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488201"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929784"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Rychlý Start: použití Průzkumníka pro hledání ke spouštění dotazů na portálu
 
 **Průzkumník služby Search** je vestavěný dotazovací nástroj, který se používá ke spouštění dotazů na vyhledávacím indexu v Azure kognitivní hledání. Tento nástroj usnadňuje seznámení s syntaxí dotazů, testování dotazu nebo výrazu filtru nebo potvrzení aktualizace dat tím, že zkontroluje, jestli v indexu existuje nový obsah.
 
-V tomto rychlém startu se k předvedení Průzkumníka služby Search použije existující index. Žádosti se formulují pomocí [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
+V tomto rychlém startu se k předvedení Průzkumníka služby Search použije existující index. Žádosti se formulují pomocí [REST API vyhledávání](/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -133,7 +133,7 @@ Přidejte [**$OrderBy**](search-query-odata-orderby.md) pro řazení výsledků 
 
    ![Výraz OrderBy](./media/search-explorer/search-explorer-example-ordery.png "Změna pořadí řazení")
 
-**$Filter** i **$OrderBy** výrazy jsou konstrukce OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+**$Filter** i **$OrderBy** výrazy jsou konstrukce OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="start-search-explorer"></a>
 
@@ -147,11 +147,11 @@ V tomto rychlém startu jste použili **Průzkumníka služby Search** k dotazov
 
 + Dotazy na volném formuláři, podobně jako to, co byste mohli zadat do komerčního webového prohlížeče, jsou užitečné při testování činnosti koncového uživatele. Předpokládejme například, že jste zavedli integrovaný vzorový index realestate, mohli byste zadat "Seattle Apartments Lake Washington" a potom můžete pomocí kombinace kláves CTRL-F vyhledat výrazy ve výsledcích hledání. 
 
-+ Výrazy dotazů a filtrů jsou kloubem v syntaxi podporované službou Azure Kognitivní hledání. Výchozí hodnota je [Jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
++ Výrazy dotazů a filtrů jsou kloubem v syntaxi podporované službou Azure Kognitivní hledání. Výchozí hodnota je [Jednoduchá syntaxe](/rest/api/searchservice/simple-query-syntax-in-azure-search), ale pro výkonnější dotazy můžete použít také [úplné Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) . [Výrazy filtru](/rest/api/searchservice/odata-expression-syntax-for-azure-search) jsou syntaxí OData.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -159,7 +159,7 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li získat další informace o strukturách a syntaxech dotazů, použijte metodu post nebo ekvivalentní nástroj k vytvoření výrazů dotazů, které využívají více částí rozhraní API. [REST API hledání](https://docs.microsoft.com/rest/api/searchservice/) je užitečné zejména pro učení a průzkum.
+Chcete-li získat další informace o strukturách a syntaxech dotazů, použijte metodu post nebo ekvivalentní nástroj k vytvoření výrazů dotazů, které využívají více částí rozhraní API. [REST API hledání](/rest/api/searchservice/) je užitečné zejména pro učení a průzkum.
 
 > [!div class="nextstepaction"]
 > [Vytvoření základního dotazu v post](search-query-simple-examples.md)

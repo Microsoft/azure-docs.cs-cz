@@ -210,33 +210,13 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Pracovní prostory
-          items:
-            - name: Návrh nasazení pracovního prostoru
-              href: platform/design-logs-deployment.md
-            - name: Vytvoření pracovního prostoru
-              items:
-                - name: Použití webu Azure Portal
-                  href: learn/quick-create-workspace.md
-                - name: Použití Azure CLI
-                  href: learn/quick-create-workspace-cli.md
-                - name: Použití prostředí PowerShell
-                  href: platform/powershell-workspace-configuration.md
-                - name: Použití šablony Resource Manageru
-                  href: platform/template-workspace-configuration.md
-            - name: Odstranění a obnovení pracovního prostoru
-              href: platform/delete-workspace.md
-            - name: Přesunutí pracovního prostoru
-              href: platform/move-workspace.md
-            - name: Návrh pro poskytovatele služeb
-              href: platform/service-providers.md
-            - name: Správa přístupu
-              href: platform/manage-access.md
         - name: Přehled dotazů na protokoly
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
         - name: Jednoduché prostředí protokolů
           href: log-query/simple-logs.md
+        - name: Dotazy na protokoly auditu
+          href: log-query/query-audit.md
         - name: Kurzy
           items:
             - name: Kurz Log Analytics
@@ -315,6 +295,26 @@
               href: log-query/query-optimization.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
+        - name: Pracovní prostory
+          items:
+            - name: Návrh nasazení pracovního prostoru
+              href: platform/design-logs-deployment.md
+            - name: Vytvoření pracovního prostoru
+              items:
+                - name: Použití webu Azure Portal
+                  href: learn/quick-create-workspace.md
+                - name: Použití Azure CLI
+                  href: learn/quick-create-workspace-cli.md
+                - name: Použití prostředí PowerShell
+                  href: platform/powershell-workspace-configuration.md
+            - name: Odstranění a obnovení pracovního prostoru
+              href: platform/delete-workspace.md
+            - name: Přesunutí pracovního prostoru
+              href: platform/move-workspace.md
+            - name: Návrh pro poskytovatele služeb
+              href: platform/service-providers.md
+            - name: Správa přístupu
+              href: platform/manage-access.md
     - name: Průzkumník metrik
       items:
         - name: Začínáme s Průzkumníkem metrik
@@ -1132,24 +1132,28 @@
           href: platform/workbooks-visualizations.md
         - name: Zdroje dat
           href: platform/workbooks-data-sources.md
-        - name: Nasazení s využitím Azure Resource Manageru
-          href: platform/workbooks-automate.md
+        - name: Parametry
+          items:
+            - name: Souhrn parametrů
+              href: platform/workbooks-parameters.md
+            - name: Parametry rozevíracího seznamu
+              href: platform/workbooks-dropdowns.md
+            - name: Interaktivní parametry
+              href: platform/workbooks-interactive.md
+            - name: Parametry času
+              href: platform/workbooks-time.md
+            - name: Parametry textu
+              href: platform/workbooks-text.md
         - name: Konfigurace
           items:
             - name: Řízení přístupu
               href: platform/workbooks-access-control.md
-            - name: Parametry
-              items:
-                - name: Souhrn parametrů
-                  href: platform/workbooks-parameters.md
-                - name: Parametry rozevíracího seznamu
-                  href: platform/workbooks-dropdowns.md
-                - name: Interaktivní parametry
-                  href: platform/workbooks-interactive.md
-                - name: Parametry času
-                  href: platform/workbooks-time.md
-                - name: Parametry textu
-                  href: platform/workbooks-text.md
+            - name: Nasazení s využitím Azure Resource Manageru
+              href: platform/workbooks-automate.md
+            - name: Přesun sešitů do jiné oblasti
+              href: platform/workbooks-move-region.md
+            - name: Přesun šablon sešitů do jiné oblasti
+              href: platform/workbook-templates-move-region.md
         - name: Převod zobrazení na sešity
           items:
             - name: Přehled převodů

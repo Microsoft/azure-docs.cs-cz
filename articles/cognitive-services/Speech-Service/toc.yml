@@ -520,17 +520,11 @@
           href: speech-container-faq.md
 - name: Speech SDK
   items:
-    - name: Přehled
-      items:
-        - name: Informace o sadě Speech SDK
-          href: speech-sdk.md
-        - name: Dostupnost scénáře
-          href: scenario-availability.md
-    - name: Rychlý start
-      items:
-        - name: Nastavení sady Speech SDK
-          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-          href: quickstarts/setup-platform.md
+    - name: Přehled sady Speech SDK
+      href: speech-sdk.md
+    - name: Nastavení sady Speech SDK
+      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+      href: quickstarts/setup-platform.md
     - name: Návody
       items:
         - name: Povolit protokolování

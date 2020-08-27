@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922729"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Shromažďování dat telemetrie pro vyhledávání analýz provozu
 
 Prohledat analýzu provozu je vzor pro shromažďování telemetrie o interakcích uživatelů s vaší aplikací Azure Kognitivní hledání, jako jsou události kliknutí iniciované uživatelem a vstupy na klávesnici. Pomocí těchto informací můžete zjistit efektivitu svého řešení hledání, včetně oblíbených hledaných výrazů, míry úspěšnosti a toho, které vstupy dotazů dávají žádné výsledky.
 
-Tento model získá závislost na [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) (funkce [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)) ke shromažďování uživatelských dat. Vyžaduje přidání instrumentace do klientského kódu, jak je popsáno v tomto článku. Nakonec budete potřebovat mechanismus vytváření sestav k analýze dat. Doporučujeme, abyste Power BI, ale můžete použít řídicí panel aplikace nebo jakýkoli nástroj, který se připojuje k Application Insights.
+Tento model získá závislost na [Application Insights](../azure-monitor/app/app-insights-overview.md) (funkce [Azure monitor](../azure-monitor/index.yml)) ke shromažďování uživatelských dat. Vyžaduje přidání instrumentace do klientského kódu, jak je popsáno v tomto článku. Nakonec budete potřebovat mechanismus vytváření sestav k analýze dat. Doporučujeme, abyste Power BI, ale můžete použít řídicí panel aplikace nebo jakýkoli nástroj, který se připojuje k Application Insights.
 
 > [!NOTE]
 > Vzor popsaný v tomto článku je pro pokročilé scénáře a navštívených data generovaná kódem, který přidáte do svého klienta. Naproti tomu protokoly služeb se snadno nastavují, poskytují rozsah metrik a můžou se dělat na portálu bez nutnosti kódu. Povolení protokolování se doporučuje pro všechny scénáře. Další informace najdete v tématu [shromažďování a analýza dat protokolu](search-monitor-logs.md).
@@ -43,9 +43,9 @@ Na stránce [portálu](https://portal.azure.com) pro vaši službu Azure kogniti
 
 ## <a name="1---set-up-application-insights"></a>1. nastavení Application Insights
 
-Vyberte existující prostředek Application Insights nebo [ho vytvořte](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) , pokud ho ještě nemáte. Pokud použijete stránku Analýza provozu hledání, můžete zkopírovat klíč instrumentace, který aplikace potřebuje pro připojení k Application Insights.
+Vyberte existující prostředek Application Insights nebo [ho vytvořte](../azure-monitor/app/create-new-resource.md) , pokud ho ještě nemáte. Pokud použijete stránku Analýza provozu hledání, můžete zkopírovat klíč instrumentace, který aplikace potřebuje pro připojení k Application Insights.
 
-Jakmile budete mít prostředek Application Insights, můžete podle [pokynů pro podporované jazyky a platformy](https://docs.microsoft.com/azure/azure-monitor/app/platforms) zaregistrovat vaši aplikaci. Registrace jednoduše přidá klíč instrumentace z Application Insights do kódu, který nastaví přidružení. Klíč můžete najít na portálu nebo na stránce Analýza provozu hledání, když vyberete existující prostředek.
+Jakmile budete mít prostředek Application Insights, můžete podle [pokynů pro podporované jazyky a platformy](../azure-monitor/app/platforms.md) zaregistrovat vaši aplikaci. Registrace jednoduše přidá klíč instrumentace z Application Insights do kódu, který nastaví přidružení. Klíč můžete najít na portálu nebo na stránce Analýza provozu hledání, když vyberete existující prostředek.
 
 Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, se projeví v následujících krocích. Vytvoří prostředek a zaregistruje aplikaci během několika kliknutí.
 
@@ -55,7 +55,7 @@ Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, s
 
 1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **Zaregistrovat**.
 
-V tuto chvíli je vaše aplikace nastavená pro monitorování aplikací, což znamená, že všechny načtené stránky jsou sledovány s výchozími metrikami. Další informace o předchozích krocích najdete v tématu [Povolení telemetrie Application Insights na straně serveru](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio).
+V tuto chvíli je vaše aplikace nastavená pro monitorování aplikací, což znamená, že všechny načtené stránky jsou sledovány s výchozími metrikami. Další informace o předchozích krocích najdete v tématu [Povolení telemetrie Application Insights na straně serveru](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
 ## <a name="2---add-instrumentation"></a>2. Přidání instrumentace
 
@@ -63,11 +63,11 @@ V tomto kroku Instrumentujte svoji vlastní aplikaci pro hledání pomocí Appli
 
 ### <a name="step-1-create-a-telemetry-client"></a>Krok 1: Vytvoření klienta telemetrie
 
-Vytvoří objekt, který odesílá události do Application Insights. Instrumentaci můžete přidat do kódu aplikace na straně serveru nebo kódu na straně klienta běžícího v prohlížeči, který je zde vyjádřen jako varianty jazyka C# a JavaScriptu (pro jiné jazyky, viz úplný seznam [podporovaných platforem a architektur](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)). Vyberte přístup, který poskytuje požadovanou hloubku informací.
+Vytvoří objekt, který odesílá události do Application Insights. Instrumentaci můžete přidat do kódu aplikace na straně serveru nebo kódu na straně klienta běžícího v prohlížeči, který je zde vyjádřen jako varianty jazyka C# a JavaScriptu (pro jiné jazyky, viz úplný seznam [podporovaných platforem a architektur](../azure-monitor/app/platforms.md)). Vyberte přístup, který poskytuje požadovanou hloubku informací.
 
 Telemetrie na straně serveru zachycuje metriky na aplikační vrstvě, například v aplikacích, které běží jako webová služba v cloudu, nebo jako místní aplikace v podnikové síti. Telemetrie na straně serveru zachycuje hledání a kliknutí na události, umístění dokumentu ve výsledcích a informace o dotazech, ale vaše kolekce dat bude vymezená na jakékoli dostupné informace v této vrstvě.
 
-Na straně klienta můžete mít další kód, který zpracovává vstupy dotazů, přidává navigaci nebo zahrnuje kontext (například dotazy iniciované z domovské stránky oproti stránce produktu). Pokud to popisuje vaše řešení, můžete se rozhodnout pro instrumentaci na straně klienta, aby vaše telemetrie odráželo další podrobnosti. Způsob shromažďování těchto dalších podrobností překračuje rozsah tohoto vzoru, ale můžete si prohlédnout [Application Insights pro webové stránky](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) a zobrazit tak další směr. 
+Na straně klienta můžete mít další kód, který zpracovává vstupy dotazů, přidává navigaci nebo zahrnuje kontext (například dotazy iniciované z domovské stránky oproti stránce produktu). Pokud to popisuje vaše řešení, můžete se rozhodnout pro instrumentaci na straně klienta, aby vaše telemetrie odráželo další podrobnosti. Způsob shromažďování těchto dalších podrobností překračuje rozsah tohoto vzoru, ale můžete si prohlédnout [Application Insights pro webové stránky](../azure-monitor/app/javascript.md#explore-browserclient-side-data) a zobrazit tak další směr. 
 
 **Použití jazyka C#**
 
@@ -238,6 +238,6 @@ Následující snímek obrazovky ukazuje, co může předdefinovaná sestava vyp
 
 Instrumentujte svoji vyhledávací aplikaci, abyste získali výkonná a přehledné data o vaší vyhledávací službě.
 
-Další informace o [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-insights/) , kde najdete další informace o různých úrovních služeb.
+Další informace o [Application Insights](../azure-monitor/app/app-insights-overview.md) najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-insights/) , kde najdete další informace o různých úrovních služeb.
 
-Přečtěte si další informace o vytváření úžasnéch sestav. Podrobnosti najdete v tématu [Začínáme s Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) .
+Přečtěte si další informace o vytváření úžasnéch sestav. Podrobnosti najdete v tématu [Začínáme s Power BI Desktop](/power-bi/fundamentals/desktop-getting-started) .

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366923"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918583"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -91,7 +91,7 @@ Další informace o spravovaných identitách najdete v tématu [spravované ide
 | Prostředek | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel |
-| Účet úložiště | Přispěvatel dat objektu BLOB služby Storage |
+| Účet úložiště | Přispěvatel dat v objektech blob služby Storage |
 | Trezor klíčů | Přístup ke všem klíčům, tajným klíčům, certifikátům |
 | Azure Container Registry | Přispěvatel |
 | Skupina prostředků, která obsahuje pracovní prostor | Přispěvatel |
@@ -119,19 +119,14 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 ### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 
 > [!IMPORTANT]
-> Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . 
+> Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . `hbi_workspace`Příznak lze nastavit pouze v případě, že je vytvořen pracovní prostor. Nedá se změnit pro existující pracovní prostor.
 
-`hbi_workspace`Příznak řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování v prostředích spravovaných Microsoftem. Kromě toho umožňují následující akce:
+`hbi_workspace`Příznak řídí množství dat, která [Microsoft shromažďuje pro účely diagnostiky](#microsoft-collected-data) , a umožňuje [Další šifrování v prostředích spravovaných Microsoftem](../security/fundamentals/encryption-atrest.md). Kromě toho umožňují následující akce:
 
 * Spustí šifrování místního pomocného disku ve vašem Azure Machine Learning výpočetním clusteru, protože jste v tomto předplatném nevytvořili žádné předchozí clustery. V opačném případě je potřeba vyvolat lístek podpory, který umožní šifrování pomocného disku vašich výpočetních clusterů. 
 * Čištění místního pomocného disku mezi jednotlivými spuštěními
 * Zabezpečeně předává přihlašovací údaje pro účet úložiště, registr kontejnerů a účet SSH z vrstvy spouštění do výpočetních clusterů pomocí vašeho trezoru klíčů.
 * Povolí filtrování protokolu IP, aby se zajistilo, že se nadřazené fondy dávek nedají volat v jiných externích službách než AzureMachineLearningService.
-
-> [!WARNING]
-> `hbi_workspace`Příznak lze nastavit pouze v případě, že je vytvořen pracovní prostor. Nedá se změnit pro existující pracovní prostor.
-
-Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -204,7 +199,7 @@ Další informace o vytváření a používání konfigurace nasazení najdete v
 
 * Odkaz na [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Kde a jak nasadit](how-to-deploy-and-where.md)
-* [Nasazení modelu pro Azure Container Instances](how-to-deploy-azure-container-instance.md)
+* [Nasazení modelu do služby Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
 Další informace o používání klíče spravovaného zákazníkem v ACI najdete v tématu [šifrování dat pomocí klíče spravovaného zákazníkem](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key).
 

@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 85c6d58d78f095f2f221476a91ecae8da0213963
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502082"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928594"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -23,7 +23,7 @@ Když v účtu úložiště povolíte velké sdílené složky, sdílené složk
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+- Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Omezení
 
@@ -35,7 +35,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **účty úložiště**.
 1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.

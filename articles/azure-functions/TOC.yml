@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: Vývoj s využitím základních nástrojů
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: Vytváření funkcí
           items:
             - name: Trigger HTTP

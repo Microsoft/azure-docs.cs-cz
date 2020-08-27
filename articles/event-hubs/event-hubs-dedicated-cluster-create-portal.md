@@ -3,12 +3,12 @@ title: Vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Azure Event Hubs pomocí Azure Portal.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323096"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927761"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal 
 Clustery Event Hubs nabízejí nasazení s jedním nájemcem pro zákazníky s nejnáročnějšími požadavky na streamování. Tato nabídka má garantovanou smlouvu SLA 99,99% a je dostupná jenom na naší vyhrazené cenové úrovni. [Cluster Event Hubs](event-hubs-dedicated-overview.md) může příchozí miliony událostí za sekundu se zaručenou kapacitou a latencí druhé sekundy. Obory názvů a centra událostí vytvořené v rámci clusteru obsahují všechny funkce standardní nabídky a další, ale bez omezení příchozího přenosu dat. Vyhrazená nabídka také zahrnuje oblíbenou funkci [Event Hubs Capture](event-hubs-capture-overview.md) bez dalších poplatků, což vám umožní automaticky dávkovat a zasílat datové proudy do [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md).
@@ -19,10 +19,10 @@ Vyhrazené clustery se zřídí a účtují podle **kapacitních jednotek (kapac
 > Toto samoobslužné prostředí je teď dostupné ve verzi Preview na webu [Azure Portal](https://aka.ms/eventhubsclusterquickstart). Pokud máte nějaké dotazy týkající se vyhrazené nabídky, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Účet Azure. Pokud ho ještě nemáte, [Zakupte si účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) ještě před tím, než začnete. Tato funkce není podporována s bezplatným účtem Azure. 
+- Účet Azure: Pokud ho ještě nemáte, [Zakupte si účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) ještě před tím, než začnete. Tato funkce není podporována s bezplatným účtem Azure. 
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 Update 3 (verze 15,3, 26730,01) nebo novější.
 - [NET Standard SDK](https://dotnet.microsoft.com/download) verze 2.0 nebo novější.
 - [Vytvořila se skupina prostředků](../event-hubs/event-hubs-create.md#create-a-resource-group).
@@ -100,9 +100,9 @@ Pokud chcete změnit velikost clusteru po vytvoření nebo když vaše upřednos
 V tomto článku jste vytvořili cluster Event Hubs. Podrobné pokyny k posílání a přijímání událostí z centra událostí a zachycení událostí do úložiště Azure nebo Azure Data Lake Store najdete v následujících kurzech:
 
 - Odesílání a příjem událostí 
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 - [Povolit Event Hubs zachycení pomocí Azure Portal](event-hubs-capture-enable-through-portal.md)
 - [Použít Azure Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

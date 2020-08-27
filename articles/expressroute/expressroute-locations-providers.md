@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/26/2020
 ms.author: cherylmc
-ms.openlocfilehash: 73a22efdc43911869c27a15c3f6918be4e35bc38
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 30d41729aaf5301d28186c87ce3684c2fcd5d6f5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225559"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927659"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -43,7 +43,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | --- | --- | --- |
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
-| **Severní Amerika** | USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon sedla, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
+| **Severní Amerika** | USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexiko), Quincy, San Antonio, Seattle, Silicon sedl, Silicon Valley2, Toronto, Vancouver, Washington DC, Washington DC2 |
 | **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
@@ -77,8 +77,8 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 ### <a name="global-commercial-azure"></a>Globální komerční Azure
 | **Umístění** | **Adresa** | **Zóna** | **Místní oblasti Azure** | **ER Direct** | **Poskytovatelé služeb** |
 | --- | --- | --- | --- | --- | --- |
-| **Smlouv** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | West Europe | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, spolucloud, Interxion, KPN, IX dosažitelný, Level 3 Communications, Megaport, NTT Communications, oranžová, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
-| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | West Europe | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, euNetworks, GÉANT, Interxion, čísla, oranžová, Vodafone |
+| **Smlouv** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | Západní Evropa | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, spolucloud, Interxion, KPN, IX dosažitelný, Level 3 Communications, Megaport, NTT Communications, oranžová, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
+| **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | Západní Evropa | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, euNetworks, GÉANT, Interxion, čísla, oranžová, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | Není k dispozici | 10G, 100G | Equinix, Megaport |
 | **Auckland** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | Není k dispozici | 10G | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
 | **Bangkok** | [SYSTÉMEM](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | Není k dispozici | 10G | AIS, UIH |
@@ -133,8 +133,8 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Soul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Jižní Korea – střed | 10G, 100G | KINX, KT, LG CNS, Sejong Telecom |
 | **Silicon Valley** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | USA – západ | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Comcastu, Coresite, Equinix, spolucloud, Internet2, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, pomeranč, Sprint, Tata Communications, Telia, Verizon, Zayo |
 | **Silicon Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | USA – západ | 10G, 100G | Colt, Coresite | 
-| **Singapur** | [Equinix sz1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Southeast Asia | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, Čína Mobile International, Epsilon celosvětová komunikace, Equinix, spolucloudu, Level 3 Communications, Megaport, NTT Communications, pomeranče, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
-| **Singapur2** | [Globální přepínač – Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | Southeast Asia | 10G, 100G | Čína UNICOM Global, Colt, Epsilon Global Communications, Megaport, PCCW Globaled, SingTel |
+| **Singapur** | [Equinix sz1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Jihovýchodní Asie | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, Čína Mobile International, Epsilon celosvětová komunikace, Equinix, spolucloudu, Level 3 Communications, Megaport, NTT Communications, pomeranče, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
+| **Singapur2** | [Globální přepínač – Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | Jihovýchodní Asie | 10G, 100G | Čína UNICOM Global, Colt, Epsilon Global Communications, Megaport, PCCW Globaled, SingTel |
 | **Stavanger** | [Zelený horská oblast DC1](https://greenmountain.no/dc1-stavanger/) | 1 | Norsko – západ | 10G, 100G |Globální připojení, Megaport |
 | **Stockholm** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | Není k dispozici | 10G | Equinix, Telia dopravce |
 | **Sydney** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | Austrálie – východ | 10G, 100G | Equinix, v&T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, oranžová, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus Group NZ |

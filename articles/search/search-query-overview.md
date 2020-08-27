@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130802"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928832"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
 V Azure Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip. V žádosti jsou k dispozici parametry, které poskytují pokyny k provedení modulu, a také parametry, které tvarující odpověď vrací. Neurčeno ( `search=*` ), bez kritérií shody a použití hodnot null nebo výchozích parametrů, dotaz se spustí pro všechna hledaná pole jako operace fulltextového vyhledávání a vrátí sadu výsledků bez skóre v libovolném pořadí.
 
-Následující příklad je reprezentativní dotaz vytvořený v [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Tento příklad cílí na [index ukázky hotelů](search-get-started-portal.md) a obsahuje společné parametry, které vám pomohou získat představu o tom, co dotaz vypadá.
+Následující příklad je reprezentativní dotaz vytvořený v [REST API](/rest/api/searchservice/search-documents). Tento příklad cílí na [index ukázky hotelů](search-get-started-portal.md) a obsahuje společné parametry, které vám pomohou získat představu o tom, co dotaz vypadá.
 
 ```
 {
@@ -55,7 +55,7 @@ V Azure Kognitivní hledání je provádění dotazů vždy na jednom indexu a j
 
 Před zápisem kódu můžete pomocí nástrojů dotazů zjistit syntaxi a experimentovat s různými parametry. Nejrychlejší přístup je integrovaný nástroj portál, který je v [Průzkumníkovi vyhledávání](search-explorer.md).
 
-Pokud jste postupovali podle tohoto rychlého startu a [vytvořili ukázkový index hotelů](search-get-started-portal.md), můžete vložit tento řetězec dotazu do panelu hledání v Průzkumníkovi a spustit tak první dotaz:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Pokud jste postupovali podle tohoto rychlého startu a [vytvořili ukázkový index hotelů](search-get-started-portal.md), můžete vložit tento řetězec dotazu do panelu hledání v Průzkumníkovi a spustit tak první dotaz: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak index povoluje operace dotazů
 
@@ -65,7 +65,7 @@ Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole m
 
 ![Definice indexu pro ukázku hotelu](./media/search-query-overview/hotel-sample-index-definition.png "Definice indexu pro ukázku hotelu")
 
-Výše uvedený snímek obrazovky je částečný seznam atributů indexu pro ukázku hotelů. Celé schéma indexu můžete zobrazit na portálu. Další informace o atributech indexu naleznete v tématu [Create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Výše uvedený snímek obrazovky je částečný seznam atributů indexu pro ukázku hotelů. Celé schéma indexu můžete zobrazit na portálu. Další informace o atributech indexu naleznete v tématu [Create index REST API](/rest/api/searchservice/create-index).
 
 > [!Note]
 > Některé funkce dotazů jsou povoleny v rámci indexu, nikoli podle jednotlivých polí. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [konstrukce návrhu (pro automatické dokončování a navrhované dotazy)](index-add-suggesters.md), [logika bodování pro výsledky řazení](index-add-scoring-profiles.md).
@@ -76,24 +76,24 @@ Dotazy jsou vždy směrovány na jeden index. Nemůžete spojit indexy nebo vytv
 
 Požadované prvky pro požadavek na dotaz obsahují následující komponenty:
 
-+ Kolekce koncových dokumentů a dokumentů v rámci služby vyjádřené jako adresa URL obsahující pevné a uživatelem definované komponenty:**`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`**(Pouze REST) je nutné, protože je vždy k dispozici více než jedna verze rozhraní API. 
++ Kolekce koncových dokumentů a dokumentů v rámci služby vyjádřené jako adresa URL obsahující pevné a uživatelem definované komponenty: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Pouze REST) je nutné, protože je vždy k dispozici více než jedna verze rozhraní API. 
 + **`api-key`**, buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
 + **`queryType`**, a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
 + **`search`** nebo **`filter`** poskytuje kritéria shody, která je možné neurčit, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popsány v souvislosti s jednoduchým analyzátorem, ale i pokročilé dotazy vyžadují pro předávání složitých výrazů dotazů parametr Search.
 
-Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Bližší informace o tom, jak se používají parametry během zpracování, najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
+Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index). Bližší informace o tom, jak se používají parametry během zpracování, najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
 
 ## <a name="choose-apis-and-tools"></a>Výběr rozhraní API a nástrojů
 
 Následující tabulka uvádí rozhraní API a postupy založené na nástrojích pro odesílání dotazů.
 
-| Metodologie | Description |
+| Metodologie | Popis |
 |-------------|-------------|
 | [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. Doporučuje se pro zkoumání, testování a ověřování. <br/>[Další informace](search-get-started-portal.md#query-index) | 
 | [Post nebo jiné nástroje REST](search-get-started-postman.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Kognitivní hledání. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Kognitivní hledání.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Hledat dokumenty (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Metoda GET nebo POST pro index s použitím parametrů dotazu pro další vstup.  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Hledat dokumenty (REST API)](/rest/api/searchservice/search-documents) | Metoda GET nebo POST pro index s použitím parametrů dotazu pro další vstup.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Zvolit analyzátor: jednoduché | kompletní
 
@@ -123,7 +123,7 @@ Azure Kognitivní hledání podporuje širokou škálu typů dotazů.
 |------------|--------|-------------------------------|
 | Hledání textu bezplatného formuláře | Vyhledávací parametr a buď analyzátor| Fulltextové vyhledávání vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu a funguje tak, jak byste očekávali, že vyhledávací stroj, jako je Google nebo Bing, funguje. Příkladem v úvodu je fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání: nastala lexikální analýza pomocí standardního analyzátoru Lucene (ve výchozím nastavení), aby se snížila velikost písmen, jako je "a". Můžete přepsat výchozí pomocí [analyzátorů](index-add-language-analyzers.md#language-analyzer-list) , které nejsou v angličtině, nebo [specializované nezávislá analyzátory jazyka](index-add-custom-analyzers.md#AnalyzerTable) , které upraví lexikální analýzu. Příkladem je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. | 
 | Filtrované hledání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátor | Filtrovat dotazy vyhodnotit logický výraz nad všemi *filtrovanými* poli v indexu. Na rozdíl od hledání dotaz filtru odpovídá přesnému obsahu pole, včetně rozlišování velkých a malých písmen v polích řetězců. Dalším rozdílem je, že dotazy filtru jsou vyjádřené v syntaxi OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
-| Geografické vyhledávání | [Typ EDM. GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) pro pole, výraz filtru a buď analyzátor | Souřadnice uložené v poli s EDM. GeographyPoint se používají pro ovládací prvky hledání v blízkosti nebo mapování na základě map. <br/>[Příklad geografického hledání](search-query-simple-examples.md#example-5-geo-search)|
+| Geografické vyhledávání | [Typ EDM. GeographyPoint](/rest/api/searchservice/supported-data-types) pro pole, výraz filtru a buď analyzátor | Souřadnice uložené v poli s EDM. GeographyPoint se používají pro ovládací prvky hledání v blízkosti nebo mapování na základě map. <br/>[Příklad geografického hledání](search-query-simple-examples.md#example-5-geo-search)|
 | Hledání rozsahu | výraz filtru a jednoduchý analyzátor | V Azure Kognitivní hledání jsou dotazy Range sestaveny pomocí parametru Filter. <br/>[Příklad filtru rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
 | [Hledání v poli](query-lucene-syntax.md#bkmk_fields) | Parametr Search a úplný analyzátor | Sestavení složeného výrazu dotazu zaměřeného na jedno pole. <br/>[Příklad hledání v poli](search-query-lucene-examples.md#example-2-fielded-search) |
 | [hledání přibližných výsledků](query-lucene-syntax.md#bkmk_fuzzy) | Parametr Search a úplný analyzátor | Odpovídá podmínkám, které mají podobnou konstrukci nebo pravopis. <br/>[Příklad přibližného hledání](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -169,5 +169,5 @@ V Azure Kognitivní hledání zvýraznění přesné části výsledků hledán�
 
 + [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
 + [Průzkumník vyhledávání](search-explorer.md)
-+ [Dotazování v .NET](search-query-dotnet.md)
-+ [Dotazování v REST](search-create-index-rest-api.md)
++ [Dotazování v .NET](./search-get-started-dotnet.md)
++ [Dotazování v REST](./search-get-started-powershell.md)

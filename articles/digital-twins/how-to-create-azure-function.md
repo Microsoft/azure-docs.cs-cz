@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723703"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930158"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -84,7 +84,7 @@ Další informace najdete v tématu [*ladění Event Grid triggeru místně*](..
 
 Aplikace Function App spolupracuje s digitálními interakcemi Azure pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Aby bylo možné použít sadu SDK, musíte do projektu zahrnout následující balíčky:
 * `Azure.DigitalTwins.Core` (verze `1.0.0-preview.2` )
-* `Azure.Identity` (verze `1.1.1` )
+* `Azure.Identity`
 
 Pro konfiguraci kanálu Azure SDK, který se má pro Azure Functions správně nastavit, budete potřebovat:
 * `Azure.Net.Http`
