@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207220"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929189"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -141,7 +141,7 @@ Operace čtení aktuálně podporuje extrakci rukopisného textu výhradně v an
 [REST API pro čtení 3. x](./QuickStarts/CSharp-hand-text.md) je upřednostňovanou možností pro většinu zákazníků kvůli snadné integraci a rychlé produktivitě mimo pole. Azure a služba Počítačové zpracování obrazu obsluhují požadavky na škálování, výkon, zabezpečení dat a dodržování předpisů a přitom se soustředit na splnění potřeb vašich zákazníků.
 
 ### <a name="use-containers-for-on-premise-deployment"></a>Použití kontejnerů pro místní nasazení
-[Kontejner Read 2,0 Docker (Preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) umožňuje nasadit nové možnosti optického rozpoznávání OCR ve vlastním místním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat.
+[Kontejner Read 2,0 Docker (Preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) umožňuje nasadit nové možnosti optického rozpoznávání OCR ve vlastním místním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
 ## <a name="read-ocr-examples"></a>Číst příklady OCR
 

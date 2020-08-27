@@ -10,12 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: d9d69d4550a5cd4a162795261b7ab3d8b59b7297
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c69fec46a6d1c8b177e5602ae24a6cbf0654dc20
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848936"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929206"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a C #
 
@@ -23,7 +24,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) s dalšími zpracováním chyb, funkcemi a poznámkami ke kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).

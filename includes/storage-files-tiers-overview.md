@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: cace61739e13514bb4aba1169c51ea670a167c9d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864880"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944366"
 ---
 Služba soubory Azure nabízí čtyři různé úrovně úložiště, Premium, transakce optimalizované, horké a studené, aby bylo možné přizpůsobit své sdílené složky na požadavky na výkon a cenu vašeho scénáře:
 
@@ -30,6 +30,8 @@ Horké a studené sdílené složky jsou momentálně dostupné v následující
 - Austrálie – střed 2
 - Austrálie – východ
 - Austrálie – jihovýchod
+- Kanada – východ
+- Střední Kanada
 - Francie – střed
 - Francie – jih
 - Německo – sever (veřejné)
@@ -45,6 +47,8 @@ Horké a studené sdílené složky jsou momentálně dostupné v následující
 - Norsko – západ
 - Jižní Afrika – sever
 - Jižní Afrika – západ
+- Švýcarsko – sever
+- Švýcarsko – západ
 - Spojené arabské emiráty – střed
 - Spojené arabské emiráty sever
 - Spojené království – jih

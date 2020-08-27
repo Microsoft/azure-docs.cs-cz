@@ -3,13 +3,13 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245940"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929325"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -253,7 +253,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 

@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420851"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917886"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node.js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Azure Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -84,7 +84,7 @@ Začněte tím, že otevřete konzolu prostředí PowerShell nebo jiné prostře
     npm install --save-dev eslint eslint-config-prettier eslint-config-airbnb-base eslint-plugin-import prettier
     ```
 
-4. Ověřte, že jste nakonfigurovali projekty a její závislosti tím, že zkontrolujete, že **package.jsv** souboru vypadá podobně jako v následujícím příkladu:
+4. Ověřte, že jste nakonfigurovali projekty a její závislosti tím, že zkontrolujete, že  **package.jsv** souboru vypadá podobně jako v následujícím příkladu:
 
     ```json
     {
@@ -130,7 +130,7 @@ Nahraďte `[SERVICE_NAME]` hodnotu názvem vaší vyhledávací služby. `[ADMIN
 
 ## <a name="1---create-index"></a>1. vytvoření indexu 
 
-Vytvořte soubor **hotels_quickstart_index.jsv**.  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [atributech indexu](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes). 
+Vytvořte soubor **hotels_quickstart_index.jsv**.  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](/rest/api/searchservice/supported-data-types) a [atributech indexu](./search-what-is-an-index.md#index-attributes). 
 
 Přidejte následující **hotels_quickstart_index.js** nebo [Stáhněte soubor](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
@@ -346,8 +346,8 @@ static throwOnHttpError(response) {
 Nakonec přidejte metody pro detekci, odstranění a vytvoření indexu služby Azure Kognitivní hledání. Všechny tyto metody mají stejnou strukturu:
 
 * Získejte koncový bod, na který bude požadavek proveden.
-* Vygenerujte požadavek s příslušným koncovým bodem, příkazem HTTP, klíčem rozhraní API a v případě potřeby text JSON. `indexExistsAsync()`a neobsahují `deleteIndexAsync()` tělo JSON, ale `createIndexAsync(definition)` má.
-* `await`odpověď na požadavek.  
+* Vygenerujte požadavek s příslušným koncovým bodem, příkazem HTTP, klíčem rozhraní API a v případě potřeby text JSON. `indexExistsAsync()` a neobsahují `deleteIndexAsync()` tělo JSON, ale `createIndexAsync(definition)` má.
+* `await` odpověď na požadavek.  
 * Pracovat s kódem stavu odpovědi.
 * Vrátí příslib nějaké vhodné hodnoty (logická hodnota, `this` nebo výsledky dotazu). 
 
@@ -610,7 +610,7 @@ Spusťte program znovu s `node index.js` . Měla by se zobrazit trochu odlišná
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-Vraťte se na kartu **indexy** v **přehledu** služby vyhledávání na Azure Portal. Index teď obsahuje čtyři dokumenty a spotřebovává určitou velikost úložiště (může trvat několik minut, než uživatelské rozhraní správně odrážejí základní stav indexu). Klikněte na název indexu, který se má považovat do **Průzkumníka hledání**. Tato stránka umožňuje experimentovat s dotazy na data. Zkuste hledat v řetězci dotazu `*&$count=true` a měli byste získat zpátky všechny své dokumenty a počet výsledků. Zkuste s řetězcem dotazu `historic&highlight=Description&$filter=Rating gt 4` a měli byste se vrátit do jednoho dokumentu, ve kterém je Word "historické" zabalený do `<em></em>` značek. Přečtěte si další informace o [tom, jak vytvořit dotaz v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-query-overview). 
+Vraťte se na kartu **indexy** v **přehledu** služby vyhledávání na Azure Portal. Index teď obsahuje čtyři dokumenty a spotřebovává určitou velikost úložiště (může trvat několik minut, než uživatelské rozhraní správně odrážejí základní stav indexu). Klikněte na název indexu, který se má považovat do **Průzkumníka hledání**. Tato stránka umožňuje experimentovat s dotazy na data. Zkuste hledat v řetězci dotazu `*&$count=true` a měli byste získat zpátky všechny své dokumenty a počet výsledků. Zkuste s řetězcem dotazu `historic&highlight=Description&$filter=Rating gt 4` a měli byste se vrátit do jednoho dokumentu, ve kterém je Word "historické" zabalený do `<em></em>` značek. Přečtěte si další informace o [tom, jak vytvořit dotaz v Azure kognitivní hledání](./search-query-overview.md). 
 
 Reprodukování těchto dotazů v kódu otevřením **index.js** a přidáním tohoto kódu poblíž horního okraje:
 
@@ -693,7 +693,7 @@ Celkové chování `run` funkce je odstranit index služby Azure kognitivní hle
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

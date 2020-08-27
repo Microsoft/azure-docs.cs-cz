@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e969520e226999bc2b104fb4f757619832eaa165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056009"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944413"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -39,9 +39,7 @@ Než začnete, musíte mít následující:
 + [Python 3,8 (64)](https://www.python.org/downloads/release/python-382/), [python 3,7 (64-bit)](https://www.python.org/downloads/release/python-375/), [Python 3,6 (64-bit)](https://www.python.org/downloads/release/python-368/), které jsou podporovány nástrojem Azure Functions. 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
-
-+ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
++ [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 + [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8. 

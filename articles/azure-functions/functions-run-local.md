@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505712"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929481"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -37,9 +37,9 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 + **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
-Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
+V daném počítači můžete nainstalovat jenom jednu verzi základních nástrojů. Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -257,20 +257,21 @@ I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možn�
 
   ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 
-+ Použijte základní nástroje ke stažení připojovacího řetězce z Azure pomocí jednoho z následujících příkazů:
++ Použijte základní nástroje z kořenového adresáře projektu ke stažení připojovacího řetězce z Azure pomocí jednoho z následujících příkazů:
 
   + Stáhnout všechna nastavení z existující aplikace Function App:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + Získání připojovacího řetězce pro konkrétní účet úložiště:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Pokud jste se ještě přihlásili k Azure, budete vyzváni k tomu.
+    Pokud jste se ještě přihlásili k Azure, budete vyzváni k tomu. Tyto příkazy přepíšou všechna existující nastavení v local.settings.jssouboru. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Vytvoření funkce
 
