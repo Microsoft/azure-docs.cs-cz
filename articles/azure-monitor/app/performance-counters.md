@@ -3,12 +3,13 @@ title: Čítače výkonu v Application Insights | Microsoft Docs
 description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET v Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322512"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918515"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -59,11 +60,11 @@ Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete h
 > [!NOTE]
 > Aplikace ASP.NET Core neobsahují `ApplicationInsights.config` , takže výše uvedená metoda není platná pro ASP.NET Core aplikace.
 
-Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes`je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold`je příkladem vlastního čítače, který může být implementován ve webové službě.
+Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes` je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold` je příkladem vlastního čítače, který může být implementován ve webové službě.
 
 Formát je `\Category(instance)\Counter"` nebo pro kategorie, které nemají instance, stačí `\Category\Counter` .
 
-`ReportAs`je vyžadován u názvů čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítko, pomlčka, podtržítko, mezera, tečka.
+`ReportAs` je vyžadován u názvů čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítko, pomlčka, podtržítko, mezera, tečka.
 
 Pokud zadáte instanci, bude shromažďována jako dimenze "CounterInstanceName" hlášené metriky.
 

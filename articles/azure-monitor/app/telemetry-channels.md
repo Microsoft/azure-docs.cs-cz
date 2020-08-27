@@ -3,13 +3,14 @@ title: Kanály telemetrie v Azure Application Insights | Microsoft Docs
 description: Postup přizpůsobení kanálů telemetrie v Azure Application Insights SDK pro .NET a .NET Core
 ms.topic: conceptual
 ms.date: 05/14/2019
+ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918396"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanály telemetrie v Application Insights
 
@@ -19,7 +20,7 @@ Kanály telemetrie jsou nedílnou součástí [sad Azure Application Insights SD
 
 Kanály telemetrie jsou zodpovědné za ukládání položek telemetrie do vyrovnávací paměti a jejich posílání do služby Application Insights, kde jsou uložené pro dotazování a analýzu. Kanál telemetrie je libovolná třída, která implementuje [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) rozhraní.
 
-`Send(ITelemetry item)`Metoda kanálu telemetrie se volá po volání všech inicializátorů telemetrie a procesorů telemetrie. Všechny položky vynechané procesorem telemetrie tak nedosáhnou kanálu. `Send()`obvykle neodesílá položky do back-endu okamžitě. Obvykle je ukládá do vyrovnávací paměti a odesílá je v dávkách za účelem efektivního přenosu.
+`Send(ITelemetry item)`Metoda kanálu telemetrie se volá po volání všech inicializátorů telemetrie a procesorů telemetrie. Všechny položky vynechané procesorem telemetrie tak nedosáhnou kanálu. `Send()` obvykle neodesílá položky do back-endu okamžitě. Obvykle je ukládá do vyrovnávací paměti a odesílá je v dávkách za účelem efektivního přenosu.
 
 [Live Metrics Stream](live-stream.md) má také vlastní kanál, který využívá živé streamování telemetrie. Tento kanál je nezávislý na běžném kanálu telemetrie a tento dokument se na něj nevztahuje.
 
@@ -39,7 +40,7 @@ Sady SDK Application Insights .NET a .NET Core jsou dodávány se dvěma integro
 
 Kanál telemetrie nakonfigurujete nastavením na aktivní konfiguraci telemetrie. V případě aplikací ASP.NET zahrnuje konfigurace nastavení instance kanálu telemetrie na `TelemetryConfiguration.Active` nebo úpravou `ApplicationInsights.config` . Pro ASP.NET Core aplikace konfigurace zahrnuje přidání kanálu do kontejneru vkládání závislostí.
 
-V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` Nastavení kanálu v různých typech aplikací. `StorageFolder`je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](#configurable-settings-in-channels) dále v tomto článku.
+V následujících částech jsou uvedeny příklady konfigurace `StorageFolder` Nastavení kanálu v různých typech aplikací. `StorageFolder` je pouze jedním z konfigurovatelných nastavení. Úplný seznam nastavení konfigurace najdete v [části nastavení](#configurable-settings-in-channels) dále v tomto článku.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurace pomocí ApplicationInsights.config pro aplikace ASP.NET
 
@@ -108,9 +109,9 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="operational-details-of-servertelemetrychannel"></a>Provozní podrobnosti o ServerTelemetryChannel
 
-`ServerTelemetryChannel`ukládá položky přicházející do vyrovnávací paměti. Položky jsou serializovány, komprimovány a uloženy do `Transmission` instance jednou za 30 sekund, nebo když byly položky 500 uloženy do vyrovnávací paměti. Jedna `Transmission` instance obsahuje až 500 položek a představuje dávku telemetrie, která se pošle přes jedno volání https do služby Application Insights.
+`ServerTelemetryChannel` ukládá položky přicházející do vyrovnávací paměti. Položky jsou serializovány, komprimovány a uloženy do `Transmission` instance jednou za 30 sekund, nebo když byly položky 500 uloženy do vyrovnávací paměti. Jedna `Transmission` instance obsahuje až 500 položek a představuje dávku telemetrie, která se pošle přes jedno volání https do služby Application Insights.
 
-Ve výchozím nastavení `Transmission` lze současně odeslat maximálně 10 instancí. Pokud se telemetrie dorazí za rychlejší, nebo pokud je síť nebo Application Insights back-end pomalé, `Transmission` instance se ukládají do paměti. Výchozí kapacita této `Transmission` vyrovnávací paměti je 5 MB. Po překročení kapacity v paměti se `Transmission` instance ukládají na místní disk až do limitu 50 MB. `Transmission`instance se ukládají na místní disk, i když dojde k problémům se sítí. Pouze ty položky, které jsou uloženy na místním disku, budou mít při selhání aplikace. Odesílají se při každém spuštění aplikace.
+Ve výchozím nastavení `Transmission` lze současně odeslat maximálně 10 instancí. Pokud se telemetrie dorazí za rychlejší, nebo pokud je síť nebo Application Insights back-end pomalé, `Transmission` instance se ukládají do paměti. Výchozí kapacita této `Transmission` vyrovnávací paměti je 5 MB. Po překročení kapacity v paměti se `Transmission` instance ukládají na místní disk až do limitu 50 MB. `Transmission` instance se ukládají na místní disk, i když dojde k problémům se sítí. Pouze ty položky, které jsou uloženy na místním disku, budou mít při selhání aplikace. Odesílají se při každém spuštění aplikace.
 
 ## <a name="configurable-settings-in-channels"></a>Konfigurovatelná nastavení v kanálech
 
@@ -130,7 +131,7 @@ Tady jsou nejčastěji používaná nastavení pro `ServerTelemetryChannel` :
 
 ## <a name="which-channel-should-i-use"></a>Který kanál mám použít?
 
-`ServerTelemetryChannel`se doporučuje pro většinu produkčních scénářů, které zahrnují dlouhotrvající aplikace. `Flush()`Metoda implementovaná `ServerTelemetryChannel` není synchronní a zároveň nezaručuje posílání všech položek, které čekají na vyřízení z paměti nebo disku. Pokud použijete tento kanál ve scénářích, kdy se má aplikace vypnout, doporučujeme, abyste po volání zavedli nějaké zpoždění `Flush()` . Přesné množství prodlevy, které možná budete potřebovat, není předvídatelné. Závisí na faktorech, jako je počet položek nebo `Transmission` instancí v paměti, kolik je na disku, kolik se přenáší do back-endu a zda je kanál uprostřed exponenciálních scénářů regrese.
+`ServerTelemetryChannel` se doporučuje pro většinu produkčních scénářů, které zahrnují dlouhotrvající aplikace. `Flush()`Metoda implementovaná `ServerTelemetryChannel` není synchronní a zároveň nezaručuje posílání všech položek, které čekají na vyřízení z paměti nebo disku. Pokud použijete tento kanál ve scénářích, kdy se má aplikace vypnout, doporučujeme, abyste po volání zavedli nějaké zpoždění `Flush()` . Přesné množství prodlevy, které možná budete potřebovat, není předvídatelné. Závisí na faktorech, jako je počet položek nebo `Transmission` instancí v paměti, kolik je na disku, kolik se přenáší do back-endu a zda je kanál uprostřed exponenciálních scénářů regrese.
 
 Pokud potřebujete provést synchronní vyprázdnění, doporučujeme použít `InMemoryChannel` .
 
@@ -138,7 +139,7 @@ Pokud potřebujete provést synchronní vyprázdnění, doporučujeme použít `
 
 ### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>Garantuje Application Insights kanál záruku doručení telemetrie? Pokud ne, jaké jsou scénáře, ve kterých může dojít ke ztrátě telemetrie?
 
-Krátká odpověď znamená, že žádný z vestavěných kanálů nenabízí záruku doručení telemetrie do back-endu typu transakce. `ServerTelemetryChannel`je v porovnání s nástrojem `InMemoryChannel` spolehlivé doručování mnohem rozšířené, ale také se snaží poslat telemetrii jenom na nejvyšší úsilí. Telemetrii je stále možné ztratit v několika situacích, včetně těchto běžných scénářů:
+Krátká odpověď znamená, že žádný z vestavěných kanálů nenabízí záruku doručení telemetrie do back-endu typu transakce. `ServerTelemetryChannel` je v porovnání s nástrojem `InMemoryChannel` spolehlivé doručování mnohem rozšířené, ale také se snaží poslat telemetrii jenom na nejvyšší úsilí. Telemetrii je stále možné ztratit v několika situacích, včetně těchto běžných scénářů:
 
 1. Položky v paměti jsou ztraceny, když dojde k chybě aplikace.
 

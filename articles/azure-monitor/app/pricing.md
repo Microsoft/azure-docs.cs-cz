@@ -2,16 +2,17 @@
 title: Správa využití a nákladů pro Azure Application Insights | Microsoft Docs
 description: Spravujte svazky telemetrie a sledujte náklady na Application Insights.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309677"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930481"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -79,7 +80,7 @@ Pokud chcete získat další informace o vašich datových svazcích, vyberte **
 
 ### <a name="queries-to-understand-data-volume-details"></a>Dotazy pro pochopení podrobností o objemu dat
 
-Existují dva způsoby, jak prozkoumat datové svazky pro Application Insights. První používá agregované informace v `systemEvents` tabulce a druhá používá `_BilledSize` vlastnost, která je k dispozici na všech přijatých událostech. `systemEvents`nebude mít informace o velikosti dat pro [Application-Insights založené na pracovních prostorech](#data-volume-for-workspace-based-application-insights-resources).
+Existují dva způsoby, jak prozkoumat datové svazky pro Application Insights. První používá agregované informace v `systemEvents` tabulce a druhá používá `_BilledSize` vlastnost, která je k dispozici na všech přijatých událostech. `systemEvents` nebude mít informace o velikosti dat pro [Application-Insights založené na pracovních prostorech](#data-volume-for-workspace-based-application-insights-resources).
 
 #### <a name="using-aggregated-data-volume-information"></a>Použití informací agregovaného objemu dat
 
@@ -215,7 +216,7 @@ Přečtěte si Application Insights využití a odhadované náklady, abyste por
 
 ### <a name="set-the-daily-cap"></a>Nastavení denního limitu
 
-Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Application Insights klikněte na stránce **využití a odhadované náklady** na **denní limit**.
+Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Application Insights klikněte na stránce **využití a odhadované náklady** na  **denní limit**.
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-003.png)
 
@@ -239,7 +240,7 @@ Existuje několik forem vzorkování.
 * [Adaptivní vzorkování](./sampling.md) je výchozím nastavením pro sadu ASP.NET SDK. Adaptivní vzorkování se automaticky přizpůsobí objemu telemetrie, kterou vaše aplikace posílá. Funguje automaticky v sadě SDK ve vaší webové aplikaci, aby se snížil provoz telemetrie v síti. 
 * *Vzorkování* ingestování je alternativou, která funguje v okamžiku, kdy telemetrie z vaší aplikace vstoupí do služby Application Insights. Vzorkování ingestování nemá vliv na objem telemetrie odeslané z vaší aplikace, ale snižuje objem, který služba zachovává. Pomocí vzorkování pro příjem dat můžete omezit kvótu, která se využívala telemetriem z prohlížečů a dalších sad SDK.
 
-Pokud chcete nastavit vzorkování ingestování, použijte v podokně s **cenami** :
+Pokud chcete nastavit vzorkování ingestování, použijte v podokně s  **cenami** :
 
 ![V podokně kvóta a ceny vyberte dlaždici ukázky a potom vyberte zlomek vzorkování.](./media/pricing/pricing-004.png)
 
@@ -279,7 +280,7 @@ Odesílání dat do Application Insights může mít za následek poplatky za š
 
 ## <a name="disable-daily-cap-e-mails"></a>Zakázat e-maily denního Cap
 
-Pokud chcete zakázat e-maily denního limitu objemu, v části **Konfigurace** prostředku Application Insights v podokně **využití a odhadované náklady** vyberte **denní limit**. K dispozici je nastavení pro odeslání e-mailu, když je dosaženo limitu, a také při dosažení nastavitelné úrovně upozornění. Pokud chcete zakázat všechny e-maily s velkým objemem, zrušte zaškrtněte obě políčka.
+Pokud chcete zakázat e-maily denního limitu objemu, v části **Konfigurace** prostředku Application Insights v podokně **využití a odhadované náklady** vyberte  **denní limit**. K dispozici je nastavení pro odeslání e-mailu, když je dosaženo limitu, a také při dosažení nastavitelné úrovně upozornění. Pokud chcete zakázat všechny e-maily s velkým objemem, zrušte zaškrtněte obě políčka.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Cenová úroveň starší verze Enterprise (na jeden uzel)
 

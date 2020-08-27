@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: f9670733f8aa040b87cec20ac28aacc636c04698
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056206"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918651"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Přepis konverzace v reálném čase (Preview)
 
@@ -35,7 +36,7 @@ Sada Speech SDK pro zařízení nabízí vzorový kód v jazyce Java pro záznam
 - [Vzorový kód zařízení ROOBO](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
 - [Vzorový kód pro Azure Kinect dev Kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné služby Speech. [Bezplatný účet Azure](https://azure.microsoft.com/free/cognitive-services/) si můžete vytvořit, pokud ho nemáte.
 
@@ -108,7 +109,7 @@ Následující vzorový kód ukazuje, jak přepisovat konverzace v reálném ča
 
 Příklady ukázek kódu zahrnují:
 
-- Vytvoření `Conversation` objektu z `SpeechConfig` objektu pomocí identifikátoru schůzky generovaného pomocí`Guid.NewGuid()`
+- Vytvoření `Conversation` objektu z `SpeechConfig` objektu pomocí identifikátoru schůzky generovaného pomocí `Guid.NewGuid()`
 - Vytvoření `ConversationTranscriber` objektu a zapojení do konverzace s nástrojem `JoinConversationAsync()` ke spuštění přepisu
 - Registrace událostí zájmu
 - Přidání nebo odebrání účastníků konverzace pomocí objektu konverzace

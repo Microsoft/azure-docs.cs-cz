@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8143149332a4a493a9a4d8d4a0d403420b87f75a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 0e85537e0791c8364442484582eee6da26c66581
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719474"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919637"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
 
@@ -25,7 +25,11 @@ Pokud používáte službu AD FS (Active Directory Federation Services) a chcete
 V tomto článku se podíváme na to, jak používat Azure Multi-Factor Authentication Server s AD FS v systému Windows Server 2012 R2 nebo Windows Server 2016. Další informace najdete v tématu [Zabezpečení cloudových a lokálních prostředků pomocí Microsoft Azure Multi-Factor Authentication Serveru s AD FS 2.0](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí během přihlašování vyžadovat vícefaktorové ověřování (MFA), by měli použít cloudové Multi-Factor Authentication Azure.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Zabezpečení Windows Serveru AD FS pomocí Azure Multi-Factor Authentication Serveru
 
@@ -51,8 +55,8 @@ Před zahájením se ujistěte, že znáte následující informace:
 
    ![Instalace adaptéru ADFS z konzoly MFA serveru](./media/howto-mfaserver-adfs-2012/server.png)
 
-5. Pokud se zobrazí okno služby Active Directory, znamená to dvě věci. Počítač je připojený k doméně a konfigurace Active Directory pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci služby Active Directory a konfigurovat nastavení ručně**. Klikněte na **Další**.
-6. Pokud se zobrazí okno místní skupiny, znamená to dvě věci. Počítač není připojený k doméně a konfigurace místní skupiny pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci místní skupiny a konfigurovat nastavení ručně**. Klikněte na **Další**.
+5. Pokud se zobrazí okno služby Active Directory, znamená to dvě věci. Počítač je připojený k doméně a konfigurace Active Directory pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci služby Active Directory a konfigurovat nastavení ručně**. Klikněte na **Next** (Další).
+6. Pokud se zobrazí okno místní skupiny, znamená to dvě věci. Počítač není připojený k doméně a konfigurace místní skupiny pro zabezpečení komunikace mezi adaptérem AD FS a ověřovací službou Multi-Factor Authentication není kompletní. Kliknutím na možnost **Další** konfiguraci automaticky dokončíte. Nebo můžete zaškrtnout políčko **Vynechat automatickou konfiguraci místní skupiny a konfigurovat nastavení ručně**. Klikněte na **Next** (Další).
 7. V průvodci instalací klikněte na tlačítko **Další**. Azure Multi-Factor Authentication Server vytvoří skupinu PhoneFactor Admins a přidá do ní účet služby AD FS.
 8. V kroku **Spustit instalační program** klikněte na **Další**.
 9. V instalačním programu adaptéru Multi-Factor Authentication AD FS klikněte na **Další**.

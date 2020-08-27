@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525645"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930668"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -32,12 +32,12 @@ Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otá
 
 Další informace o těchto třech volbách najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Sdílené složky Azure se nasazují do *účtů úložiště*, což jsou objekty nejvyšší úrovně, které představují sdílený fond úložiště. Tento fond úložiště se dá použít k nasazení několika sdílených složek. 
 
 Azure podporuje více typů účtů úložiště pro různé scénáře úložiště, které mohou mít zákazníci, ale existují dva hlavní typy účtů úložiště pro soubory Azure. Typ účtu úložiště, který chcete vytvořit, závisí na tom, jestli chcete vytvořit standardní sdílenou složku nebo sdílenou složku prémiových souborů: 
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> Možnost nastavit a změnit úrovně prostřednictvím PowerShellu je k dispozici ve verzi Preview AZ. Storage PowerShell Module. Tyto rutiny nebo jejich výstup se můžou před vydáním v všeobecně dostupném modulu AZ. Storage PowerShellu změnit, takže si můžete vytvořit skripty.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Funkce pro vytvoření nebo přesunutí sdílené složky na určitou úroveň je k dispozici v nejnovější aktualizaci Azure CLI. Aktualizace rozhraní příkazového řádku Azure CLI je specifická pro distribuci operačního systému nebo Linux, kterou používáte. Pokyny, jak aktualizovat rozhraní příkazového řádku Azure CLI v systému, najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> Možnost nastavit úroveň s `--access-tier` parametrem se poskytuje ve verzi Preview v nejnovějším balíčku Azure CLI. Tento příkaz nebo jeho výstup se může změnit před označením jako všeobecně k dispozici, takže Vytvořte skripty s ohledem na tyto skutečnosti.
+
 ---
 
 ## <a name="next-steps"></a>Další kroky

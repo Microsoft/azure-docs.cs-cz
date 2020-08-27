@@ -3,13 +3,13 @@ title: Otázky, které jsou navržené aktivními kurzy – QnA Maker
 description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9bed80ac8c80fb4cecf06b979e0403e34645db01
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406975"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919127"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -132,8 +132,8 @@ Content-Type: application/json
 |--|--|--|--|
 |Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
 |Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host` .|
-|Hlavička|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je:`application/json`|
-|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Záhlaví|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
+|Záhlaví|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:

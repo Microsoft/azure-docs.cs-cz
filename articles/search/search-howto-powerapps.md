@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751067"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918039"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -250,7 +250,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -261,5 +261,4 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 Power Apps umožňuje rychlý vývoj aplikací pro vlastní aplikace. Teď, když víte, jak se připojit k indexu hledání, se dozvíte víc o vytváření bohatých vizualizací v rámci vlastní aplikace Power.
 
 > [!div class="nextstepaction"]
-> [Katalog kurzů pro Power Apps](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
-
+> [Katalog kurzů pro Power Apps](/powerapps/learning-catalog/get-started)
