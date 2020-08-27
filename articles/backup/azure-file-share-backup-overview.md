@@ -3,16 +3,16 @@ title: Zálohování Azure File Share
 description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823876"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892248"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
-Zálohování sdílené složky Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a odstraňuje další režijní náklady spojené s místními řešeními zálohování. Služba Azure Backup hladce integruje s Azure File Sync a umožňuje centralizovat vaše data sdílené složky i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu firemních sdílených složek v několika jednoduchých krocích s jistotou, že můžete obnovit data v případě jakéhokoli scénáře havárie.
+Zálohování sdílené složky Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a odstraňuje další režijní náklady spojené s místními řešeními zálohování. Služba Azure Backup hladce integruje s Azure File Sync a umožňuje centralizovat vaše data sdílené složky i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu firemních sdílených složek v několika jednoduchých krocích s jistotou, že můžete data obnovit v jakémkoli scénáři havárie.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Klíčové výhody zálohování Azure File Share
 

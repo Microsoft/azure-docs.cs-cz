@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827354"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892350"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -144,7 +144,7 @@ Pokud potřebujete zachovat aktuální chráněná data v trezoru GRS a pokračo
 
 - U virtuálního počítače Azure můžete [Zastavit ochranu pomocí zachování dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač v trezoru GRS, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v trezoru LRS. Přečtěte si [doprovodné materiály a omezení](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) pro přesun virtuálního počítače do jiné skupiny prostředků.
 
-  Virtuální počítač se dá v jednom okamžiku chránit jenom v jednom trezoru. Virtuální počítač v nové skupině prostředků ale můžete chránit v LRS trezoru, protože se považuje za jiný virtuální počítač.
+  Virtuální počítač se dá v jednom okamžiku chránit jenom v jednom trezoru. Virtuální počítač v nové skupině prostředků se ale dá chránit v LRS trezoru, protože se považuje za jiný virtuální počítač.
 
   - Služba Azure Backup zachová body obnovení, které byly zálohovány v trezoru GRS.
   - Abyste zachovali body obnovení v trezoru GRS, bude nutné platit za to, že se budou Azure Backup zobrazovat informace o [cenách](azure-backup-pricing.md) .

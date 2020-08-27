@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b3909281cf475a003ffaaef6f6f48441337728e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892656"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Rychlý Start: nasazení nativní ukázky C++ na HoloLens
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak:
 >* Změňte přihlašovací údaje ARR ve zdrojovém kódu.
 >* Nasaďte a spusťte na zařízení ukázku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup ke službě vzdáleného vykreslování Azure, musíte nejdřív [vytvořit účet](../../../how-tos/create-an-account.md).
 
@@ -63,7 +63,6 @@ Přepněte konfiguraci buildu na *Debug* (nebo *release*) a *ARM64*. Také se uj
 
 Vzhledem k tomu, že přihlašovací údaje účtu jsou pevně zakódované ve zdrojovém kódu kurzu, změňte je na platné přihlašovací údaje. V takovém případě otevřete soubor `HolographicAppMain.cpp` v aplikaci Visual Studio a změňte část, kde se vytvoří front-end uvnitř konstruktoru třídy `HolographicAppMain` :
 
-
 ```cpp
 // 2. Create front end
 {
@@ -79,8 +78,8 @@ Vzhledem k tomu, že přihlašovací údaje účtu jsou pevně zakódované ve z
 ```
 
 Konkrétně změňte následující hodnoty:
-* `init.AccountId`a `init.AccountKey` k používání dat účtu. Přečtěte si článek o tom, jak [načíst informace o účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* Část `init.AccountDomain` řetězce pro jiné oblasti `westus2` , než například, např.`"westeurope.mixedreality.azure.com"`
+* `init.AccountId` a `init.AccountKey` k používání dat účtu. Přečtěte si článek o tom, jak [načíst informace o účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* Část `init.AccountDomain` řetězce pro jiné oblasti `westus2` , než například, např. `"westeurope.mixedreality.azure.com"`
 * Kromě toho se `m_sessionOverride` dá změnit na existující ID relace. Relace je možné vytvořit mimo tuto ukázku, například pomocí [skriptu PowerShellu](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) nebo přímo pomocí [REST API relace](../../../how-tos/session-rest-api.md#create-a-session) .
 Vytvoření relace mimo ukázku se doporučuje, když by se vzorek spouštěl víckrát. Pokud není předána žádná relace, ukázka při každém spuštění vytvoří novou relaci, která může trvat několik minut.
 

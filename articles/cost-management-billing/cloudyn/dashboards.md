@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03d5e3959b85a2b0bd9ae30744051895ff026b77
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79464219"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691220"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Zobrazení klíčových metrik nákladů pomocí řídicích panelů
 
@@ -102,7 +103,7 @@ Duplikování (klonování) vlastního řídicího panelu:
 1. Na řídicím panelu, který chcete duplikovat, klikněte na **Save As** (Uložit jako). Otevře se nový řídicí panel se stejným názvem a číslem.
 2. Duplikovaný řídicí panel přejmenujte a upravte ho podle svých potřeb.
 
-\- nebo -
+- nebo -
 
 1. V části Dashboard Settings (Nastavení řídicího panelu) klikněte na **Save As** (Uložit jako) na řádku řídicího panelu, který chcete duplikovat.
 2. Otevře se duplikovaný řídicí panel.
@@ -114,7 +115,7 @@ Jako výchozí můžete nastavit libovolný řídicí panel. Když řídicí pan
 
 - Klikněte na kartu řídicího panelu, který chcete nastavit jako výchozí, a pak na pravé straně klikněte na **Default** (Výchozí).
 
-\- nebo -
+- nebo -
 
 1. Kliknutím na **Dashboard Settings** (Nastavení řídicího panelu) zobrazíte seznam dostupných řídicích panelů a vyberete řídicí panel, který chcete nastavit jako výchozí.  
     ![Možnosti řídicího panelu pro výchozí řídicí panel](./media/dashboards/dashboard-options.png)

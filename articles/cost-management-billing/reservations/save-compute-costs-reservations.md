@@ -4,15 +4,16 @@ description: Informace o rezervacích Azure a úsporách nákladů na virtuáln�
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.subservice: reservations
+ms.topic: overview
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760035"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682582"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -109,7 +110,6 @@ Softwarové plány:
 - **Azure Red Hat OpenShift** – Rezervace se vztahuje na náklady na OpenShift, ne na infrastrukturu Azure.
 
 U virtuálních počítačů s Windows a SQL Database se sleva za rezervaci nevztahuje na náklady na software. Licenční náklady můžete pokrýt pomocí programu [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

@@ -4,15 +4,16 @@ description: Zjistěte, proč se vám za bezplatný účet Azure účtují popla
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200944"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682905"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Jak se vyhnout poplatkům na bezplatném účtu Azure
 
@@ -23,7 +24,6 @@ Teď se podíváme na některé důvody, kvůli kterým se vám na bezplatném �
 ## <a name="your-credit-runs-out-or-is-expired"></a>Dojde vám kredit nebo vyprší jeho platnost
 
 Pokud vám dojde kredit nebo po uplynutí 30 dnů jeho platnost vyprší, vaše předplatné a služby se deaktivují. Pokud chcete dál využívat služby Azure, musíte upgradovat svůj účet. Další informace najdete v tématu [Upgrade bezplatného účtu Azure](upgrade-azure-subscription.md). Po upgradu stále budete mít 12měsíční přístup k bezplatným službám a bude se vám účtovat pouze využití nad rámec bezplatných služeb a množství.
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Využití překračuje limity bezplatných služeb
 

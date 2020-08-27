@@ -6,14 +6,15 @@ ms.author: banders
 ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563938"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683534"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
