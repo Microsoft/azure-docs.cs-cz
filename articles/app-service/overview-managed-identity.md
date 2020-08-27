@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211881"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961580"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -52,7 +52,7 @@ K nastavení spravované identity pomocí Azure CLI budete muset použít `az we
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější). 
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2.0.31 nebo novější). 
 
 Následující kroky vás provedou vytvořením webové aplikace a přiřazením identity pomocí rozhraní příkazového řádku:
 
@@ -109,7 +109,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/?view=azps-4.1.0#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/?view=azps-4.1.0#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -326,12 +326,12 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 > | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
-> | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
+> | prostředek          | Dotazy  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
+> | verze-api       | Dotazy  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY – HLAVIČKA | Záhlaví | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
-> | client_id         | Dotaz  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
-> | principal_id      | Dotaz  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
-> | mi_res_id         | Dotaz  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
+> | client_id         | Dotazy  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
+> | principal_id      | Dotazy  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
+> | mi_res_id         | Dotazy  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
 
 > [!IMPORTANT]
 > Pokud se pokoušíte získat tokeny pro uživatelsky přiřazené identity, musíte zahrnout jednu z volitelných vlastností. V opačném případě se služba tokenů pokusí získat token pro identitu přiřazenou systémem, která může nebo nemusí existovat.
@@ -347,7 +347,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > | prostředek      | Prostředek, pro který byl požadován přístupový token, který odpovídá `resource` parametru řetězce dotazu žádosti.                                                                                                                               |
 > | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který Azure AD podporuje, je FBearer. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 ### <a name="rest-protocol-examples"></a>Příklady protokolu REST
 

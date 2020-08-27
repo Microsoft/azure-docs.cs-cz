@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dea07e8a2dd0f70c714c6213408db9264bd30750
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48ef1344a76444af23fd462175a8087af2724d3e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826952"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961937"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto článku se dozvíte, jak vytvořit, nahrát nebo importovat privátní certifikát nebo veřejný certifikát do App Service. 
 
-Po přidání certifikátu do aplikace App Service aplikace nebo [aplikace Function App](https://docs.microsoft.com/azure/azure-functions/)můžete [ZABEZPEČIT vlastní název DNS](configure-ssl-bindings.md) nebo ho [použít ve svém kódu aplikace](configure-ssl-certificate-in-code.md).
+Po přidání certifikátu do aplikace App Service aplikace nebo [aplikace Function App](../azure-functions/index.yml)můžete [ZABEZPEČIT vlastní název DNS](configure-ssl-bindings.md) nebo ho [použít ve svém kódu aplikace](configure-ssl-certificate-in-code.md).
 
 V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů v App Service:
 
@@ -25,7 +25,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 |-|-|
 | Vytvoření bezplatného App Service spravovaného certifikátu (Preview) | Privátní certifikát, který se dá snadno použít, pokud potřebujete zabezpečit svoji `www` [vlastní doménu](app-service-web-tutorial-custom-domain.md) nebo jakoukoli doménu, která není v App Service. |
 | Koupit certifikát App Service | Privátní certifikát, který spravuje Azure. Kombinuje jednoduchost automatizované správy certifikátů a flexibility možností obnovení a exportu. |
-| Importovat certifikát z Key Vault | Užitečné v případě, že ke správě [certifikátů PKCS12](https://wikipedia.org/wiki/PKCS_12)používáte [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) . Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
+| Importovat certifikát z Key Vault | Užitečné v případě, že ke správě [certifikátů PKCS12](https://wikipedia.org/wiki/PKCS_12)používáte [Azure Key Vault](../key-vault/index.yml) . Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 
 Postup při použití tohoto průvodce:
 
-- [Vytvořte aplikaci App Service](/azure/app-service/).
+- [Vytvořte aplikaci App Service](./index.yml).
 - Jenom bezplatný certifikát: namapujte subdoménu (například `www.contoso.com` ) na App Service se [záznamem CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
 
 ## <a name="private-certificate-requirements"></a>Požadavky na privátní certifikát
@@ -135,7 +135,7 @@ Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.
 
 ![Konfigurace Key Vaultho úložiště certifikátu App Service](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Je to úložiště, které je vhodné pro App Service certifikátů.
+[Key Vault](../key-vault/general/overview.md) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Je to úložiště, které je vhodné pro App Service certifikátů.
 
 Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvořte nový trezor nebo vyberte existující trezor. Pokud se rozhodnete vytvořit nový trezor, použijte následující tabulku, která vám pomůžete nakonfigurovat trezor a kliknout na vytvořit. Vytvoří novou Key Vault v rámci stejného předplatného a skupiny prostředků jako aplikace App Service.
 
@@ -252,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 Po zobrazení výzvy definujte heslo pro export. Toto heslo budete používat při nahrávání certifikátu TLS/SSL do App Service později.
 
-Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo nástroj _Certreq.exe_, nainstalujte certifikát na místním počítači a pak [exportujte certifikát do formátu PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
+Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo nástroj _Certreq.exe_, nainstalujte certifikát na místním počítači a pak [exportujte certifikát do formátu PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
 ### <a name="upload-certificate-to-app-service"></a>Nahrát certifikát do App Service
 
@@ -331,9 +331,9 @@ Po dokončení operace obnovení klikněte na **synchronizovat**. Operace synchr
 
 ### <a name="export-certificate"></a>Export certifikátu
 
-Vzhledem k tomu, že App Service Certificate je [Key Vault tajný klíč](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), můžete exportovat kopii PFX a použít ji pro jiné služby Azure nebo mimo Azure.
+Vzhledem k tomu, že App Service Certificate je [Key Vault tajný klíč](../key-vault/general/about-keys-secrets-certificates.md), můžete exportovat kopii PFX a použít ji pro jiné služby Azure nebo mimo Azure.
 
-Chcete-li exportovat App Service Certificate jako soubor PFX, spusťte v [Cloud Shell](https://shell.azure.com)následující příkazy. Pokud jste [nainstalovali Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), můžete ho také spustit místně. Zástupné symboly nahraďte názvy, které jste použili při [vytváření certifikátu App Service](#start-certificate-order).
+Chcete-li exportovat App Service Certificate jako soubor PFX, spusťte v [Cloud Shell](https://shell.azure.com)následující příkazy. Pokud jste [nainstalovali Azure CLI](/cli/azure/install-azure-cli), můžete ho také spustit místně. Zástupné symboly nahraďte názvy, které jste použili při [vytváření certifikátu App Service](#start-certificate-order).
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -380,4 +380,4 @@ Nyní můžete certifikát App Service odstranit. V levém navigačním panelu v
 * [Vynucení protokolu HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Použijte certifikát TLS/SSL v kódu v Azure App Service](configure-ssl-certificate-in-code.md)
-* [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

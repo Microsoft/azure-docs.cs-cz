@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211984"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958707"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
-V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](https://go.microsoft.com/fwlink/?LinkId=529714), spuštění v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
+V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](https://go.microsoft.com/fwlink/?LinkId=529714), spuštění v [režimu ladění](/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
 
 Naučíte se:
 
@@ -680,7 +680,7 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
   Nástroj pro zobrazení dat v protokolech webového serveru (soubory*protokolu* ).
 * [Řešení potíží s výkonem služby IIS nebo chyb aplikací pomocí LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
-* [Blogové příspěvky od Robert blog o použití LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
+* [Blogové příspěvky od Robert blog o použití LogParser](/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [Stavový kód HTTP ve službě IIS 7,0, IIS 7,5 a IIS 8,0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analýza protokolů pro trasování neúspěšných požadavků

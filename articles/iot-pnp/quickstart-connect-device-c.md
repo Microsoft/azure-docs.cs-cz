@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352903"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959285"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview spuštěné v systému Linux nebo Windows do IoT Hub (C)
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT techn
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý Start můžete spustit v systému Linux nebo Windows. Příkazy prostředí v tomto rychlém startu se řídí konvencí pro oddělovače cest pro Linux `/` , pokud sledujete v systému Windows, nezapomeňte tyto oddělovače pro použít `\` .
 
@@ -117,7 +117,10 @@ Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód:
 
 Pokud chcete spustit ukázkovou aplikaci v sadě SDK, která simuluje zařízení IoT technologie Plug and Play odesílající telemetrii do služby IoT Hub:
 
-Vytvořte proměnnou prostředí s názvem **IOTHUB_DEVICE_CONNECTION_STRING** pro uložení připojovacího řetězce zařízení, který jste si poznamenali dříve.
+Vytvořte dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub pomocí připojovacího řetězce:
+
+- **IOTHUB_DEVICE_SECURITY_TYPE** s hodnotou `"connectionString"`
+- **IOTHUB_DEVICE_CONNECTION_STRING** Uložit připojovací řetězec zařízení, který jste si poznamenali dříve.
 
 Ve složce _cmake_ přejděte do složky, která obsahuje spustitelný soubor, a spusťte ho:
 

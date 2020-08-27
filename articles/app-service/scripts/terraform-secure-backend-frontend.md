@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065433"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962226"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Bezpečné vytvoření dvou webových aplikací s privátním koncovým bodem a integrací virtuální sítě
 
-Tento článek ukazuje příklad použití [privátního koncového bodu](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) a regionální [Integrace virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítě k bezpečnému připojení dvou webových aplikací (front-endu a back-endu) pomocí následujících kroků:
+Tento článek ukazuje příklad použití [privátního koncového bodu](../networking/private-endpoint.md) a regionální [Integrace virtuální](../web-sites-integrate-with-vnet.md) sítě k bezpečnému připojení dvou webových aplikací (front-endu a back-endu) pomocí následujících kroků:
 - Nasazení virtuální sítě
 - Vytvoření první podsítě pro integraci
 - Vytvořte druhou podsíť pro soukromý koncový bod, musíte nastavit konkrétní parametr pro zakázání zásad sítě.
 - Nasazení jednoho App Service plánu typu PremiumV2, minimální SKU požadovaná pro funkci privátního koncového bodu
-- Vytvoření webové aplikace front-end se specifickým nastavením aplikace pro využívání privátní zóny DNS, [Další podrobnosti](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- Vytvoření webové aplikace front-end se specifickým nastavením aplikace pro využívání privátní zóny DNS, [Další podrobnosti](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Připojení webové aplikace front-end k podsíti integrace
 - Vytvoření back-end webové aplikace
 - Vytvoření privátní zóny DNS s názvem zóny privátního propojení pro webovou aplikaci privatelink.azurewebsites.net
@@ -31,7 +31,7 @@ Tento článek ukazuje příklad použití [privátního koncového bodu](https:
 
 ## <a name="how-to-use-terraform-in-azure"></a>Jak používat terraformu v Azure
 
-Přejděte k [dokumentaci Azure](https://docs.microsoft.com/azure/developer/terraform/) , kde se dozvíte, jak používat Terraformu s Azure.
+Přejděte k [dokumentaci Azure](/azure/developer/terraform/) , kde se dozvíte, jak používat Terraformu s Azure.
 
 ## <a name="the-complete-terraform-file"></a>Úplný soubor terraformu
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>Další kroky
 
 
-> [Další informace o používání Terraformu v Azure](https://docs.microsoft.com/azure/developer/terraform/)
+> [Další informace o používání Terraformu v Azure](/azure/developer/terraform/)

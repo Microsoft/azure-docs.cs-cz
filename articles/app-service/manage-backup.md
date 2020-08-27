@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075475"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961920"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -42,7 +42,7 @@ Funkce zálohování podporuje následující databázová řešení:
 
 ## <a name="requirements-and-restrictions"></a>Požadavky a omezení
 * Funkce zálohování a obnovení vyžaduje, aby App Service plán byl v úrovni **Standard**, **Premium** nebo **Isolated** . Další informace o škálování plánu App Service pro použití vyšší úrovně najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md). Úrovně **Premium** a **izolované** umožňují větší počet denních zdrojů pro zálohování než úroveň **Standard** .
-* Potřebujete účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, kterou chcete zálohovat. Další informace o účtech Azure Storage najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+* Potřebujete účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, kterou chcete zálohovat. Další informace o účtech Azure Storage najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md).
 * Zálohy můžou mít až 10 GB obsahu aplikace a databáze. Pokud velikost zálohy překročí tento limit, zobrazí se chyba.
 * Zálohy Azure Database for MySQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
 * Zálohy Azure Database for PostgreSQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
@@ -169,4 +169,4 @@ Ukázky najdete v těchto tématech:
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Informace o obnovení aplikace ze zálohy najdete v tématu [obnovení aplikace v Azure](web-sites-restore.md). 
+Informace o obnovení aplikace ze zálohy najdete v tématu [obnovení aplikace v Azure](web-sites-restore.md).

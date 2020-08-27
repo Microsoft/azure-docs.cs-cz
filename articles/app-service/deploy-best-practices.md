@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081047"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961869"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
@@ -127,7 +127,7 @@ V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal` a 
 
 ### <a name="java"></a>Java
 
-Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](../jenkins/execute-cli-jenkins-pipeline.md).
+Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
 ### <a name="node"></a>Node
 
@@ -149,7 +149,7 @@ V kombinaci s [sloty nasazení](deploy-staging-slots.md) vždy používejte mís
 
 Pokud váš App Service plán používá více než 90% dostupného procesoru nebo paměti, může mít základní virtuální počítač potíže se zpracováním nasazení. Pokud k tomu dojde, dočasná velikost počtu instancí proveďte v případě nasazení. Po dokončení nasazení můžete počet instancí vrátit do předchozí hodnoty.
 
-Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](./overview-diagnostics.md) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
 
 - Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
 - Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.

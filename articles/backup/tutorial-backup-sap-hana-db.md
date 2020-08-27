@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 65f2a7ba51fcf811e36839d3998902ba37a90fc4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 063cd04ecfc67d5f0f761bb0159ab80dcff40030
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889987"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958809"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -36,7 +36,9 @@ Před konfigurací zálohování se ujistěte, že jste provedli následující 
   * Měl by se nacházet ve výchozím **hdbuserstore**. Výchozí je účet, `<sid>adm` pod kterým je nainstalovaná SAP HANA.
   * V případě MDC by měl klíč ukazovat na port SQL **názvový server**. V případě SDC by měl odkazovat na port SQL **INDEXSERVER**
   * Měl by obsahovat přihlašovací údaje k přidávání a odstraňování uživatelů.
+  * Upozorňujeme, že tento klíč se dá po úspěšném spuštění předzálohovacího skriptu odstranit.
 * Spusťte skript konfigurace zálohování SAP HANA (předregistrující skript) ve virtuálním počítači, kde je nainstalovaná verze HANA, jako uživatel root. [Tento skript](https://aka.ms/scriptforpermsonhana) NAČTE systém Hana, který je připravený k zálohování. Další informace o skriptu před registrací najdete v části [co je to skript](#what-the-pre-registration-script-does) pro předběžnou registraci.
+* Pokud vaše instalace HANA používá soukromé koncové body, spusťte [předregistrační skript](https://aka.ms/scriptforpermsonhana) s parametrem *-sn* nebo *--Skip-Network-Checks* .
 
 >[!NOTE]
 >Skript předregistrování nainstaluje SAP HANA **unixODBC234** pro úlohy, které běží na RHEL (7,4, 7,6 a 7,7), a **unixODBC** pro RHEL 8,1. [Tento balíček je umístěný v RHEL for SAP Hana (pro úložiště RPM (RHEL 7 Server) Update Services for SAP Solutions ()](https://access.redhat.com/solutions/5094721).  Pro bitovou kopii Azure Marketplace RHEL úložiště **rhui-RHEL-SAP-HANA-for-RHEL-7-Server-rhui-e4s-RPM**.
@@ -103,7 +105,7 @@ Spuštění předregistračního skriptu provede následující funkce:
 
 * Na základě distribuce systému Linux skript nainstaluje nebo aktualizuje všechny potřebné balíčky, které vyžaduje agent Azure Backup.
 * Provádí odchozí kontroly připojení k síti pomocí Azure Backup serverů a závislých služeb, jako je Azure Active Directory a Azure Storage.
-* Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Uživatelský klíč se používá k vytvoření zálohovacího uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a klíč uživatele lze odstranit po úspěšném spuštění skriptu před registrací.
+* Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Uživatelský klíč se používá k vytvoření zálohovacího uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a **klíč uživatele lze odstranit po úspěšném spuštění skriptu před registrací**.
 * K AZUREWLBACKUPHANAUSER se přiřazují tyto požadované role a oprávnění:
   * Správce databáze (v případě MDC) a správce zálohování (v případě SDC): k vytvoření nových databází během obnovování.
   * ČTENÍ katalogu: pro čtení katalogu záloh.

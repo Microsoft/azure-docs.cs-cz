@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962464"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -146,7 +146,7 @@ App Service předá do vaší aplikace deklarace identity uživatelů pomocí sp
 
 Kód, který je napsán v libovolném jazyce nebo v rozhraní, může získat informace, které potřebuje z těchto hlaviček. Pro aplikace ASP.NET 4,6 se **ClaimsPrincipal** automaticky nastaví s příslušnými hodnotami. ASP.NET Core ale neposkytuje middleware ověřování, který se integruje s deklaracemi identity uživatelů App Service. Alternativní řešení najdete v tématu [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Pokud je [úložiště tokenů](overview-authentication-authorization.md#token-store) pro vaši aplikaci povoleno, můžete také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Pokud je [úložiště tokenů](overview-authentication-authorization.md#token-store) pro vaši aplikaci povoleno, můžete také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Načtení tokenů v kódu aplikace
 
@@ -489,7 +489,7 @@ Aktuální verzi middlewaru pro ověření platformy můžete zobrazit buď pomo
 
 ##### <a name="from-the-azure-cli"></a>Z Azure CLI
 
-Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
+Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ K zobrazení aktuální verze middlewaru, na které je aplikace spuštěná, mů
 
 #### <a name="update-the-current-runtime-version"></a>Aktualizace aktuální verze modulu runtime
 
-Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
+Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +530,7 @@ az webapp auth update --name <my_app_name> \
 
 Nahraďte `<my_app_name>` názvem vaší aplikace. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace. Nahraďte také `<version>` platnou verzí modulu runtime 1. x nebo `~1` nejnovější verzí. Poznámky k verzi najdete v různých verzích modulu runtime [zde] (aby bylo možné https://github.com/Azure/app-service-announcements) určit verzi, ke které se má připnout).
 
-Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) pro přihlášení.
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 

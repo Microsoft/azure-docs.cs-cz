@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080279"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962566"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -28,7 +28,7 @@ V případě pracovního postupu Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování uživatelů** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
+|**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte webovou aplikaci. |
 |**Nasazení** | 1. Nasaďte webovou aplikaci. |
 
@@ -36,7 +36,7 @@ V případě pracovního postupu Azure App Service má soubor tři části:
 
 # <a name="user-level-credentials"></a>[Přihlašovací údaje na úrovni uživatele](#tab/userlevel)
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -75,7 +75,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
 ```yaml
 - uses: azure/login@v1
@@ -89,7 +89,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Zadejte tajný kód jako název `azureWebAppPublishProfile` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `publish-profile` akce nasazení webové aplikace Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `publish-profile` akce nasazení webové aplikace Azure. Příklad:
     
 ```yaml
 - uses: azure/webapps-deploy@v2

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220809"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962549"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
 
@@ -104,7 +104,7 @@ IP adresa pro váš interního nástroje je uvedena ve vašich vlastnostech jako
 #### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
 INTERNÍHO nástroje pomocného mechanismu umožňuje izolaci sítě pro vaše aplikace. Aplikace nejsou přístupné nebo ani známy v Internetu. Tento přístup je skvělý pro hostování intranetových webů, jako jsou třeba obchodní aplikace. Pokud potřebujete přístup ještě více omezit, můžete k řízení přístupu na úrovni sítě dál používat skupiny zabezpečení sítě (skupin zabezpečení sítě). 
 
-Pokud chcete k dalšímu omezení přístupu použít skupin zabezpečení sítě, musíte se ujistit, že jste nepřerušili komunikaci, kterou vyžaduje pomocný přístup k provozu. I když přístup HTTP/HTTPS je jenom prostřednictvím interního nástroje, který používá přístupový modul pro zápis, pořád závisí na prostředcích mimo virtuální síť. Informace o tom, jaký přístup k síti stále potřebujete, najdete v tématu [řízení příchozího provozu do App Service Environment][ControlInbound] a [podrobností konfigurace sítě pro App Service prostředí pomocí ExpressRoute][ExpressRoute]. 
+Pokud chcete k dalšímu omezení přístupu použít skupin zabezpečení sítě, musíte se ujistit, že jste nepřerušili komunikaci, kterou vyžaduje pomocný přístup k provozu. I když přístup HTTP/HTTPS je jenom prostřednictvím interního nástroje, který používá přístupový modul pro zápis, pořád závisí na prostředcích mimo virtuální síť. Informace o tom, jaký přístup k síti stále potřebujete, najdete v tématu [řízení příchozího provozu do App Service Environment][ControlInbound] a  [podrobností konfigurace sítě pro App Service prostředí pomocí ExpressRoute][ExpressRoute]. 
 
 Abyste mohli nakonfigurovat skupin zabezpečení sítě, musíte znát IP adresu, kterou Azure používá ke správě vašeho pomocného mechanismu. Tato IP adresa je také odchozí IP adresa z vašeho přimocného mechanismu, pokud vytváří internetové požadavky. Odchozí IP adresa pro pomocného správce sítě zůstane po celou dobu životnosti vašeho pomocného mechanismu. Pokud odstraníte a znovu vytvoříte správce přidaných mechanismů, zobrazí se nová IP adresa. IP adresu najdete tak, že přejdete na **Nastavení-> vlastnosti** a vyhledáte **odchozí IP adresu**. 
 
@@ -140,9 +140,9 @@ Pokud chcete začít pracovat se App Service prostředími, přečtěte si téma
 [WhatisASE]: app-service-app-service-environment-intro.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

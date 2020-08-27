@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327340"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961971"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -54,11 +54,11 @@ Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech pře
 
 ### <a name="overview-workbook"></a>Sešit s přehledem
 
-V sešitě s **přehledem** pro vybrané předplatné tabulka zobrazuje interaktivní metriky úložiště a stav dostupnosti služby pro až 10 účtů úložiště seskupených v rámci předplatného. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
+V sešitě s **přehledem** pro vybrané předplatné tabulka zobrazuje interaktivní metriky úložiště a stav dostupnosti služby pro až 5 účtů úložiště seskupených v rámci předplatného. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
 
 * V seznamu **předplatných** jsou uvedena pouze předplatná, která mají účty úložiště.  
 
-* **Účty úložiště** – ve výchozím nastavení jsou předem vybrané 10 účtů úložiště. Pokud v voliči oboru vyberete všechny nebo víc účtů úložiště, vrátí se až 200 účtů úložiště. Pokud jste například v rámci tří předplatných vybrali celkem 573 účtů úložiště, zobrazí se pouze 200 účty. 
+* **Účty úložiště** – ve výchozím nastavení se předem vyberou 5 účtů úložiště. Pokud v voliči oboru vyberete všechny nebo víc účtů úložiště, vrátí se až 200 účtů úložiště. Pokud jste například v rámci tří předplatných vybrali celkem 573 účtů úložiště, zobrazí se pouze 200 účty. 
 
 * **Časový rozsah** – ve výchozím nastavení zobrazí poslední 4 hodiny informací na základě odpovídajících výběrů.
 

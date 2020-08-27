@@ -4,18 +4,18 @@ description: Přečtěte si, jak Azure App Service aktualizovat operační syst�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961512"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
 V tomto článku se dozvíte, jak získat určité informace o verzi pro operační systém nebo software v [App Service](overview.md). 
 
-App Service je platforma jako služba, což znamená, že pro vás Azure spravuje operační systém a zásobník aplikací. Spravujte jenom svou aplikaci a její data. Větší kontrola nad operačním systémem a zásobníkem aplikací je k dispozici v [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/). V takovém případě je užitečné, abyste byli App Servicei uživateli, který vám pomůže získat další informace, například:
+App Service je platforma jako služba, což znamená, že pro vás Azure spravuje operační systém a zásobník aplikací. Spravujte jenom svou aplikaci a její data. Větší kontrola nad operačním systémem a zásobníkem aplikací je k dispozici v [Azure Virtual Machines](../virtual-machines/index.yml). V takovém případě je užitečné, abyste byli App Servicei uživateli, který vám pomůže získat další informace, například:
 
 -   Jak a kdy se používají aktualizace operačního systému?
 -   Jak se App Serviceují opravy s významnými ohroženími zabezpečení (například Zero-Day)?
@@ -25,7 +25,7 @@ Z bezpečnostních důvodů nejsou publikované určité konkrétní informace o
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Jak a kdy se používají aktualizace operačního systému?
 
-Azure spravuje opravy operačního systému na dvou úrovních, fyzických serverech a hostovaných virtuálních počítačích, které spouštějí App Service prostředky. Obě aktualizace se aktualizují měsíčně, což se zarovnává s plánem úterý v rámci měsíčních [oprav](https://technet.microsoft.com/security/bulletins.aspx) . Tyto aktualizace se aplikují automaticky tak, že garantuje smlouvu SLA pro vysokou dostupnost služeb Azure. 
+Azure spravuje opravy operačního systému na dvou úrovních, fyzických serverech a hostovaných virtuálních počítačích, které spouštějí App Service prostředky. Obě aktualizace se aktualizují měsíčně, což se zarovnává s plánem úterý v rámci měsíčních [oprav](/security-updates/) . Tyto aktualizace se aplikují automaticky tak, že garantuje smlouvu SLA pro vysokou dostupnost služeb Azure. 
 
 Podrobné informace o tom, jak se aktualizace aplikují, najdete v tématu [Demystifying The magic App Service Updates for OS](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
@@ -55,7 +55,7 @@ Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikuj�
 
 ### <a name="new-major-and-minor-versions"></a>Nové hlavní a dílčí verze
 
-Když se přidá nová hlavní nebo dílčí verze, nainstaluje se souběžně s existujícími verzemi. Aplikaci můžete ručně upgradovat na novou verzi. Pokud jste nakonfigurovali verzi modulu runtime v konfiguračním souboru (například `web.config` a `package.json` ), musíte upgradovat se stejnou metodou. Pokud jste pro konfiguraci běhové verze použili App Service nastavení, můžete ji změnit v [Azure Portal](https://portal.azure.com) nebo spuštěním příkazu rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Cloud Shell](../cloud-shell/overview.md), jak je znázorněno v následujících příkladech:
+Když se přidá nová hlavní nebo dílčí verze, nainstaluje se souběžně s existujícími verzemi. Aplikaci můžete ručně upgradovat na novou verzi. Pokud jste nakonfigurovali verzi modulu runtime v konfiguračním souboru (například `web.config` a `package.json` ), musíte upgradovat se stejnou metodou. Pokud jste pro konfiguraci běhové verze použili App Service nastavení, můžete ji změnit v [Azure Portal](https://portal.azure.com) nebo spuštěním příkazu rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli) v [Cloud Shell](../cloud-shell/overview.md), jak je znázorněno v následujících příkladech:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -86,7 +86,7 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Verze Java | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  
-> Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
+> Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , kde jsou uložené informace o [opravách KB](/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
 >
 >
 

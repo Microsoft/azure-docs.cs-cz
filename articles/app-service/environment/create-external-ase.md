@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430510"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961784"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího prostředí App Service
 
@@ -63,7 +63,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
     ![Vytvoření webové aplikace][1]
 
-2. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
+2. Vyberte předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
 3. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat související prostředky Azure jako jednotku. Skupiny prostředků jsou také užitečné, když vytváříte pravidla Access Control založená na rolích pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
@@ -101,7 +101,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
     ![Vytvoření webové aplikace][7]
 
-1. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
+1. Vyberte předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
 1. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat související prostředky Azure jako jednotku. Skupiny prostředků jsou také užitečné, když vytváříte pravidla Access Control založená na rolích pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
@@ -147,7 +147,7 @@ Pokud vytvoříte samostatného pomocného mechanismu řízení, nemá nic v ně
 
     ![Pojmenování pomocného mechanismu][5]
 
-1. Vyberte své předplatné. Toto předplatné je zároveň ta, kterou používají všechny aplikace v pomocném formuláři. Do virtuální sítě, která je v jiném předplatném, nemůžete dát svůj příhlasu.
+1. Vyberte předplatné. Toto předplatné je zároveň ta, kterou používají všechny aplikace v pomocném formuláři. Do virtuální sítě, která je v jiném předplatném, nemůžete dát svůj příhlasu.
 
 1. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro pomocného správce musí být stejná jako ta, která se používá ve vaší virtuální síti. Když vyberete existující virtuální síť, aktualizuje se výběr skupiny prostředků pro pomocného mechanismu, aby odrážela vaši virtuální síť. *Pokud použijete šablonu Správce prostředků, můžete vytvořit pomocné služby se skupinou prostředků, která se liší od skupiny prostředků virtuální sítě.* Informace o vytvoření služby pomocného mechanismu ze šablony najdete v tématu [vytvoření App Serviceho prostředí ze šablony][MakeASEfromTemplate].
 
@@ -196,7 +196,7 @@ Další informace o ASEv1 najdete v tématu [Úvod do App Service Environment v1
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md

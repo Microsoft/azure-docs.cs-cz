@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097110"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961563"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Podpora zón dostupnosti pro App Service prostředí
 
@@ -77,7 +77,7 @@ Příklad fragmentu šablony ARM dole ukazuje vlastnost nové ***zóny*** , kter
     ]
 ```
 
-Aby bylo možné zónu aplikace redundantní, je nutné nasadit dvě oblasti interního nástroje služby ase. Dvě oblasti interního nástroje služby ASE musí být v samostatných zónách dostupnosti. Pak budete muset své aplikace nasadit do všech interního nástroje služby ase. Po vytvoření vašich aplikací je potřeba nakonfigurovat řešení vyrovnávání zatížení. Doporučeným řešením je nasadit [zónu redundantní Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) , která je v oblasti Zona interního nástroje služby ase. 
+Aby bylo možné zónu aplikace redundantní, je nutné nasadit dvě oblasti interního nástroje služby ase. Dvě oblasti interního nástroje služby ASE musí být v samostatných zónách dostupnosti. Pak budete muset své aplikace nasadit do všech interního nástroje služby ase. Po vytvoření vašich aplikací je potřeba nakonfigurovat řešení vyrovnávání zatížení. Doporučeným řešením je nasadit [zónu redundantní Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) , která je v oblasti Zona interního nástroje služby ase. 
 
 ## <a name="in-region-data-residency"></a>V oblasti data zasídlí ##
 
@@ -90,5 +90,3 @@ Zákazníci můžou ověřit, jestli je App Service Environment správně nakonf
 1. Pomocí [Průzkumník prostředků](https://resources.azure.com)přejděte k prostředku ARM pro App Service Environment.  Služby ASE jsou uvedena v části *poskytovatelé/Microsoft. Web/hostingEnvironments*.
 2. Pokud vlastnost *Zones* existuje v zobrazení syntaxe JSON pro ARM a obsahuje jedno ohodnocené pole JSON s hodnotou "1", "2" nebo "3", pak je pomocného zonally nasazený a zákaznická data zůstanou ve stejné oblasti.
 2. Pokud vlastnost *zóny* neexistuje nebo vlastnost nemá platnou hodnotu zóny, jak je uvedeno výše, pak není zonally nasazený a zákaznická data se neukládají výhradně ve stejné oblasti.
-
-

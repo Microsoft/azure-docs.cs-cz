@@ -6,25 +6,25 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084985"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961325"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Vytvoření aplikace v Ruby na železnici v App Service
 
-[Azure App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která App Service na Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Azure App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která App Service na Linux pomocí [Cloud Shell](../cloud-shell/overview.md).
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít nepodporovanou verzi Ruby, je nutné [ji spustit ve vlastním kontejneru](containers/quickstart-docker-go.md).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít nepodporovanou verzi Ruby, je nutné [ji spustit ve vlastním kontejneru](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
 
 ![Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Nainstalovat Ruby 2,6 nebo vyšší</a>
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.

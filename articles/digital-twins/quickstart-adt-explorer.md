@@ -1,5 +1,5 @@
 ---
-title: Prozkoumat vzorový scénář
+title: Prozkoumání ukázkového scénáře
 titleSuffix: Azure Digital Twins
 description: Pomocí ukázky aplikace ADT Explorer Vizualizujte a prozkoumejte předem připravený scénář.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88894321"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959809"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -170,7 +170,7 @@ V poli *zobrazení grafu* stiskněte ikonu *Import grafu* .
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="V poli zobrazení grafu je zvýrazněna ikona. Zobrazuje šipku ukazující na Cloud." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-V poli pro výběr souboru znovu přejděte do složky *klient/příklady* a vyberte _**buildingScenario.xlsx**_ soubor tabulky. Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
+V poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
 
 Po několika sekundách otevře Průzkumník aplikace ADT zobrazení pro *Import* , ve kterém se zobrazí náhled grafu, který se bude načítat.
 

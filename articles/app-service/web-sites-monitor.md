@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079667"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959787"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -35,7 +35,7 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
-| **Memory (Paměť)** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
+| **Paměť** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
 | **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Filesystem** | Celková velikost povoleného úložiště. |
 
@@ -152,14 +152,14 @@ Pokud chcete najít kvóty, vyberte **Nastavení**  >  **kvóty**. V grafu můž
 
 Kliknutím na některý z těchto grafů přejdete k zobrazení metrik, kde můžete vytvářet vlastní grafy, dotazovat se na různé metriky a mnohem víc. 
 
-Další informace o metrikách najdete v tématu [monitorování metrik služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Další informace o metrikách najdete v tématu [monitorování metrik služby](../azure-monitor/platform/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
-Metriky pro aplikaci nebo plán App Service můžete připojit k výstrahám. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Metriky pro aplikaci nebo plán App Service můžete připojit k výstrahám. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../azure-monitor/platform/alerts-classic-portal.md).
 
 App Service aplikace hostované v plánech Basic a vyšší App Service podporují automatické škálování. Díky automatickému škálování můžete nakonfigurovat pravidla, která monitorují metriky App Service plánu. Pravidla mohou zvýšit nebo snížit počet instancí, což může poskytovat další prostředky podle potřeby. Pravidla vám také pomůžou ušetřit peníze při zřizování aplikace.
 
-Další informace o automatickém škálování najdete v tématu [Jak škálovat](../monitoring-and-diagnostics/insights-how-to-scale.md) a [osvědčené postupy pro Azure monitor automatického škálování](../azure-monitor/platform/autoscale-best-practices.md).
+Další informace o automatickém škálování najdete v tématu [Jak škálovat](../azure-monitor/platform/autoscale-get-started.md) a [osvědčené postupy pro Azure monitor automatického škálování](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

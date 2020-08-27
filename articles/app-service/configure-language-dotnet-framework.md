@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211860"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961699"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET pro Azure App Service
 
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Například:
+Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Příklad:
 
 ```xml
 <system.web>
@@ -95,7 +95,7 @@ Znovu nasaďte aplikaci s aktualizovaným *Web.config*. Teď byste měli vidět 
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). Například: 
+Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace). Příklad: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668020"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958384"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
 
@@ -88,7 +88,7 @@ K tomuto problému může dojít z některého z následujících důvodů:
 
     **Řešení**: Pokud je certifikát označený jako podvod a za 24 hodin se nevyřešil, postupujte podle těchto kroků:
 
-    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com).
     2. Přejít na **App Service certifikáty**a vyberte certifikát.
     3. Vyberte **Konfigurace certifikátu**  >  **Krok 2: ověření**  >  **domény ověření**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
 
@@ -131,7 +131,7 @@ Do aplikace nelze přidat nový název hostitele, aby bylo možné přiřadit su
 #### <a name="solution"></a>Řešení
 
 - Obraťte se na správce předplatného a ujistěte se, že máte oprávnění k přidání názvu hostitele do aplikace.
-- Pokud potřebujete více subdomén, doporučujeme změnit hostování domény ve službě Azure Domain Name Service (DNS). Pomocí Azure DNS můžete do aplikace přidat názvy hostitelů 500. Další informace najdete v tématu [Přidání subdomény](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Pokud potřebujete více subdomén, doporučujeme změnit hostování domény ve službě Azure Domain Name Service (DNS). Pomocí Azure DNS můžete do aplikace přidat názvy hostitelů 500. Další informace najdete v tématu [Přidání subdomény](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
 
 ### <a name="dns-cant-be-resolved"></a>DNS se nedá přeložit.
 
@@ -190,7 +190,7 @@ App Service automaticky synchronizuje certifikát během 48 hodin. Při otočen�
 
 Můžete vynutit synchronizaci certifikátu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
 2. Vyberte opětovné vytvoření klíče **a synchronizaci**a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
 3. Po dokončení synchronizace se zobrazí následující oznámení: "úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem".
 
@@ -306,11 +306,11 @@ Když si koupíte doménu, nebudete se vám účtovat po dobu pěti dnů, během
 
 **Můžu v předplatném použít doménu v jiné aplikaci Azure App Service?**
 
-Ano. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
+Yes. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
 
 **Můžu přenést doménu z jednoho předplatného do jiného předplatného?**
 
-Doménu můžete přesunout do jiného předplatného nebo skupiny prostředků pomocí rutiny [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) prostředí PowerShell.
+Doménu můžete přesunout do jiného předplatného nebo skupiny prostředků pomocí rutiny [Move-AzResource](/powershell/module/az.Resources/Move-azResource) prostředí PowerShell.
 
 **Jak můžu spravovat vlastní doménu, pokud teď nemám aplikaci Azure App Service?**
 

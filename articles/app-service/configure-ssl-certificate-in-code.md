@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811692"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962124"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát TLS/SSL v kódu v Azure App Service
 
@@ -20,11 +20,11 @@ Tento přístup k používání certifikátů v kódu využívá funkci TLS v Ap
 
 Když necháte App Service spravovat certifikáty TLS/SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
-- [Vytvořit aplikaci App Service](/azure/app-service/)
+- [Vytvořit aplikaci App Service](./index.yml)
 - [Přidání certifikátu do aplikace](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>Najít kryptografický otisk
@@ -164,4 +164,4 @@ Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP
 * [Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md)
 * [Vynucení protokolu HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Nejčastější dotazy: App Service certifikátů](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

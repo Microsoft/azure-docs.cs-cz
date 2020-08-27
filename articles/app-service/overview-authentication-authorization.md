@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271018"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962821"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -31,7 +31,7 @@ Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabe
 > [!NOTE]
 > Povolení této funkce způsobí, že **všechny** nezabezpečené požadavky HTTP na vaši aplikaci budou automaticky přesměrovány na https bez ohledu na nastavení konfigurace App Service pro [vymáhání protokolu HTTPS](configure-ssl-bindings.md#enforce-https). V případě potřeby ho můžete zakázat prostřednictvím `requireHttps` nastavení v [konfiguračním souboru nastavení ověřování](app-service-authentication-how-to.md#configuration-file-reference), ale je potřeba se ujistit, že se žádné tokeny zabezpečení nikdy nepřenášejí přes nezabezpečená připojení HTTP.
 
-Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
+Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](/previous-versions/azure/app-service-mobile/app-service-mobile-auth).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -52,7 +52,7 @@ Modul se spouští odděleně od kódu aplikace a je nakonfigurovaný pomocí na
 
 ### <a name="on-containers"></a>V kontejnerech
 
-Modul ověřování a autorizace se spouští v samostatném kontejneru izolovaném z kódu vaší aplikace. Pomocí toho, co je známo jako [vzorek velvyslanců](https://docs.microsoft.com/azure/architecture/patterns/ambassador), komunikuje s příchozím provozem, aby prováděl podobné funkce jako ve Windows. Protože se nespustí v procesu, není možné žádná přímá integrace s konkrétními jazykovými rozhraními. relevantní informace, které vaše aplikace potřebuje, se ale předávají pomocí hlaviček požadavků, jak je vysvětleno níže.
+Modul ověřování a autorizace se spouští v samostatném kontejneru izolovaném z kódu vaší aplikace. Pomocí toho, co je známo jako [vzorek velvyslanců](/azure/architecture/patterns/ambassador), komunikuje s příchozím provozem, aby prováděl podobné funkce jako ve Windows. Protože se nespustí v procesu, není možné žádná přímá integrace s konkrétními jazykovými rozhraními. relevantní informace, které vaše aplikace potřebuje, se ale předávají pomocí hlaviček požadavků, jak je vysvětleno níže.
 
 ### <a name="userapplication-claims"></a>Deklarace identity uživatele nebo aplikace
 
@@ -150,7 +150,7 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 ## <a name="more-resources"></a>Další zdroje informací
 
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](tutorial-auth-aad.md)  
-[Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
+[Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 [Přizpůsobení ověřování a autorizace v App Service](app-service-authentication-how-to.md) 
  [Integrace .NET Core pro Azure AppService EasyAuth (třetí strana)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
  [Získání Azure App Service ověřování v práci s .NET Core (třetí strana)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -171,8 +171,8 @@ Návody pro konkrétního poskytovatele:
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

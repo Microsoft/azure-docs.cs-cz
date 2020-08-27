@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959050"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
 
@@ -184,7 +184,7 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
    `QueueTrigger`Atribut říká modulu runtime, aby tuto funkci volal při zápisu nové zprávy ve frontě Azure Storage s názvem `queue` . Obsah zprávy fronty je k dispozici pro kód metody v `message` parametru. Tělo metody je místo, kde se zpracovávají data triggeru. V tomto příkladu kód pouze protokoluje zprávu.
 
-   `message`Parametr nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
+   `message`Parametr nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
@@ -280,7 +280,7 @@ V této části sestavíte a spustíte projekt místně a aktivujete funkci vytv
 
    Vzhledem k tomu, že jste `QueueTrigger` ve `ProcessQueueMessage` funkci použili atribut, modul runtime sady WeJobs SDK při spuštění naslouchá zprávám ve frontě. Najde novou zprávu fronty ve frontě s názvem *Queue* a zavolá funkci.
 
-   Z důvodu [cyklického dotazování exponenciálního omezení rychlosti](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)může trvat až 2 minuty, než modul runtime tuto zprávu najde a vyvolá funkci. Tato čekací doba se dá snížit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
+   Z důvodu [cyklického dotazování exponenciálního omezení rychlosti](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)může trvat až 2 minuty, než modul runtime tuto zprávu najde a vyvolá funkci. Tato čekací doba se dá snížit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
 
    Výstup konzoly vypadá takto:
 
@@ -444,7 +444,7 @@ Během nasazování vytvoříte instanci služby App Service, ve které se budou
 1. Aktualizujte stránku **fronty** a nová zpráva zmizí, protože byla zpracována funkcí spuštěnou v Azure.
 
    > [!TIP]
-   > Při testování v Azure použijte [vývojový režim](webjobs-sdk-how-to.md#host-development-settings) k zajištění toho, aby se funkce triggeru fronty vyvolala hned, a aby se předešlo prodlevám v důsledku [cyklického dotazování exponenciálního omezení rychlostiu do fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm).
+   > Při testování v Azure použijte [vývojový režim](webjobs-sdk-how-to.md#host-development-settings) k zajištění toho, aby se funkce triggeru fronty vyvolala hned, a aby se předešlo prodlevám v důsledku [cyklického dotazování exponenciálního omezení rychlostiu do fronty](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm).
 
 ### <a name="view-logs-in-application-insights"></a>Zobrazit protokoly v Application Insights
 

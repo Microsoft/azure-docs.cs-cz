@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077424"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962141"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
@@ -120,7 +120,7 @@ Nativní klienty můžete registrovat, aby bylo možné v aplikaci hostovat ově
 1. V části **identifikátor URI pro přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL `<app-url>/.auth/login/aad/callback` . Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > V případě aplikace Microsoft Store použijte místo toho identifikátor [SID balíčku](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) .
+    > V případě aplikace Microsoft Store použijte místo toho identifikátor [SID balíčku](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) .
 1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace Zkopírujte hodnotu **ID aplikace (klienta)**.
 1. Vyberte **oprávnění API**  >  **Přidat oprávnění**  >  **Moje rozhraní API**.

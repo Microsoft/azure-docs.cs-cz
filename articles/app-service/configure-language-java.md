@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 30d5fa329131cdfd380a84843b3ba202b2e22e39
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5d94da91428da2270e0f690df4dcd43ae43d8597
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080126"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961648"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -31,8 +31,8 @@ K nasazení souborů. War můžete použít [modul plug-in webové aplikace Azur
 
 V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
-- K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
-- Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
+- K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#deploy-war-file).
+- Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#rest).
 
 Nesaďte své. War nebo. jar pomocí FTP. Nástroj FTP je určen pro nahrávání spouštěcích skriptů, závislostí nebo jiných souborů modulu runtime. Nejedná se o optimální volbu pro nasazování webových aplikací.
 
@@ -56,7 +56,7 @@ Další informace najdete v referenčních informacích k [příkazům Jcmd](htt
 
 #### <a name="analyze-jfr-files"></a>Analyzovat `.jfr` soubory
 
-Použijte [FTPS](deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v [pokynech k instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+Použijte [FTPS](deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v [pokynech k instalaci](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ### <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
@@ -68,7 +68,7 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](trou
 
 Povolte [protokolování aplikací](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Logfiles/Application/* .
 
-Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](../azure-monitor/app/java-trace-logs.md).
 
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a ladění
@@ -100,9 +100,9 @@ Pokud chcete nakonfigurovat nastavení aplikace z modulu plug-in Maven, přidejt
 
 Vývojáři, kteří spouštějí jednu aplikaci s jedním slotem nasazení v plánu App Service, mohou použít následující možnosti:
 
-- Instance B1 a S1:`-Xms1024m -Xmx1024m`
-- Instance B2 a S2:`-Xms3072m -Xmx3072m`
-- Instance B3 a S3:`-Xms6144m -Xmx6144m`
+- Instance B1 a S1: `-Xms1024m -Xmx1024m`
+- Instance B2 a S2: `-Xms3072m -Xmx3072m`
+- Instance B3 a S3: `-Xms6144m -Xmx6144m`
 
 Při ladění nastavení haldy aplikace zkontrolujte podrobnosti plánu App Service a vezměte v úvahu více aplikací a slot nasazení potřebuje k vyhledání optimálního přidělení paměti.
 
@@ -144,7 +144,7 @@ Chcete-li zlepšit výkon aplikací Tomcat, můžete před nasazením do App Ser
 
 ## <a name="secure-applications"></a>Zabezpečené aplikace
 
-Aplikace Java běžící v App Service mají stejnou sadu [osvědčených postupů zabezpečení](/azure/security/security-paas-applications-using-app-services) jako u jiných aplikací.
+Aplikace Java běžící v App Service mají stejnou sadu [osvědčených postupů zabezpečení](../security/fundamentals/paas-applications-using-app-services.md) jako u jiných aplikací.
 
 ### <a name="authenticate-users-easy-auth"></a>Ověřování uživatelů (snadné ověřování)
 
@@ -172,7 +172,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Pokud chcete uživatele podepsat, použijte `/.auth/ext/logout` cestu. Chcete-li provést další akce, přečtěte si dokumentaci k [App Service ověřování a používání autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentace k [rozhraní Tomcat HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a jeho metodám. V závislosti na konfiguraci App Service jsou také vycházející následující metody servlet:
+Pokud chcete uživatele podepsat, použijte `/.auth/ext/logout` cestu. Chcete-li provést další akce, přečtěte si dokumentaci k [App Service ověřování a používání autorizace](./app-service-authentication-how-to.md). K dispozici je také oficiální dokumentace k [rozhraní Tomcat HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a jeho metodám. V závislosti na konfiguraci App Service jsou také vycházející následující metody servlet:
 
 ```java
 public boolean isSecure()
@@ -235,7 +235,7 @@ Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly bud
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java Persistence (JPA), nejprve upravte `CATALINA_OPTS` proměnnou prostředí, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -321,7 +321,7 @@ Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](ht
 
 Hlavní aktualizace verze se poskytnou prostřednictvím nových možností modulu runtime v Azure App Service pro Windows. Zákazníci aktualizují tyto novější verze Java tím, že nakonfigurují nasazení App Service a zodpovídá za testování a zajištění významné aktualizace, které vyhovují jejich potřebám.
 
-Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, dubnu, červenci a říjnu každého roku. Další informace o jazyce Java v Azure najdete v [tomto dokumentu podpory](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, dubnu, červenci a říjnu každého roku. Další informace o jazyce Java v Azure najdete v [tomto dokumentu podpory](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 
@@ -343,14 +343,14 @@ Podpora produktů pro [JDK Zulu s podporou Azure Azul](https://www.azul.com/down
 
 ### <a name="runtime-support"></a>Podpora modulu runtime
 
-Vývojáři mohou [otevřít problém](/azure/azure-portal/supportability/how-to-create-azure-support-request) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
+Vývojáři mohou [otevřít problém](../azure-portal/supportability/how-to-create-azure-support-request.md) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Další kroky
 
 Toto téma poskytuje příkaz Java Runtime, který podporuje Azure App Service ve Windows.
 
 - Další informace o hostování webových aplikací pomocí Azure App Service naleznete v tématu [App Service Overview](overview.md).
-- Informace o vývoji Java v prostředí Azure najdete v tématu [Azure for Java Dev Center](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Informace o vývoji Java v prostředí Azure najdete v tématu [Azure for Java Dev Center](/java/azure/?view=azure-java-stable).
 
 ::: zone-end
 
@@ -366,8 +366,8 @@ K nasazení souborů. jar i. War můžete použít [modul plug-in Maven pro Azur
 
 V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
-- K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
-- Chcete-li nasadit soubory. jar na obrázcích Java SE systémem, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
+- K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#deploy-war-file).
+- Chcete-li nasadit soubory. jar na obrázcích Java SE systémem, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#rest).
 
 Nesaďte své. War nebo. jar pomocí FTP. Nástroj FTP je určen pro nahrávání spouštěcích skriptů, závislostí nebo jiných souborů modulu runtime. Nejedná se o optimální volbu pro nasazování webových aplikací.
 
@@ -390,9 +390,9 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](trou
 Povolte [protokolování aplikací](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
 >[!NOTE]
->Protokolování do místního systému souborů App Service se stane neaktivním až 12 hodin se týká pouze App Services založených na systému Windows. Protokolování Azure Blob Storage pro App Services na bázi Linux se dá nakonfigurovat jenom pomocí [Azure monitor (Preview)](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) . 
+>Protokolování do místního systému souborů App Service se stane neaktivním až 12 hodin se týká pouze App Services založených na systému Windows. Protokolování Azure Blob Storage pro App Services na bázi Linux se dá nakonfigurovat jenom pomocí [Azure monitor (Preview)](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) . 
 
-Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
 
@@ -439,7 +439,7 @@ Další informace najdete v referenčních informacích k [příkazům Jcmd](htt
 
 ### <a name="analyzing-recordings"></a>Analýza záznamů
 
-Použijte [FTPS](deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v [pokynech k instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+Použijte [FTPS](deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v [pokynech k instalaci](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a ladění
 
@@ -470,9 +470,9 @@ Pokud chcete nakonfigurovat nastavení aplikace z modulu plug-in Maven, přidejt
 
 Vývojáři, kteří spouštějí jednu aplikaci s jedním slotem nasazení v plánu App Service, mohou použít následující možnosti:
 
-- Instance B1 a S1:`-Xms1024m -Xmx1024m`
-- Instance B2 a S2:`-Xms3072m -Xmx3072m`
-- Instance B3 a S3:`-Xms6144m -Xmx6144m`
+- Instance B1 a S1: `-Xms1024m -Xmx1024m`
+- Instance B2 a S2: `-Xms3072m -Xmx3072m`
+- Instance B3 a S3: `-Xms6144m -Xmx6144m`
 
 Při ladění nastavení haldy aplikace zkontrolujte podrobnosti plánu App Service a vezměte v úvahu více aplikací a slot nasazení potřebuje k vyhledání optimálního přidělení paměti.
 
@@ -520,7 +520,7 @@ Chcete-li zlepšit výkon aplikací Tomcat, můžete před nasazením do App Ser
 
 ## <a name="secure-applications"></a>Zabezpečené aplikace
 
-Aplikace Java běžící v App Service pro Linux mají stejnou sadu [osvědčených postupů zabezpečení](/azure/security/security-paas-applications-using-app-services) jako u jiných aplikací.
+Aplikace Java běžící v App Service pro Linux mají stejnou sadu [osvědčených postupů zabezpečení](../security/fundamentals/paas-applications-using-app-services.md) jako u jiných aplikací.
 
 ### <a name="authenticate-users-easy-auth"></a>Ověřování uživatelů (snadné ověřování)
 
@@ -548,7 +548,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Pokud chcete uživatele podepsat, použijte `/.auth/ext/logout` cestu. Chcete-li provést další akce, přečtěte si dokumentaci k [App Service ověřování a používání autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentace k [rozhraní Tomcat HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a jeho metodám. V závislosti na konfiguraci App Service jsou také vycházející následující metody servlet:
+Pokud chcete uživatele podepsat, použijte `/.auth/ext/logout` cestu. Chcete-li provést další akce, přečtěte si dokumentaci k [App Service ověřování a používání autorizace](./app-service-authentication-how-to.md). K dispozici je také oficiální dokumentace k [rozhraní Tomcat HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a jeho metodám. V závislosti na konfiguraci App Service jsou také vycházející následující metody servlet:
 
 ```java
 public boolean isSecure()
@@ -583,7 +583,7 @@ Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nah
 Pro šifrování připojení JDBC k certifikátům v úložišti klíčů Java může být potřeba další konfigurace. Další informace najdete v dokumentaci pro zvolený ovladač JDBC.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
-- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
@@ -668,7 +668,7 @@ Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly bud
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java Persistence (JPA), nejprve upravte `CATALINA_OPTS` proměnnou prostředí, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
@@ -831,7 +831,7 @@ Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Použití Redis jako mezipaměti relace s Tomcat
 
-Tomcat můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](/azure/azure-cache-for-redis/). To umožňuje zachovat stav uživatelské relace (například data nákupního košíku), když se uživatel přenese do jiné instance aplikace, například když dojde k automatickému škálování, restartování nebo převzetí služeb při selhání.
+Tomcat můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](../azure-cache-for-redis/index.yml). To umožňuje zachovat stav uživatelské relace (například data nákupního košíku), když se uživatel přenese do jiné instance aplikace, například když dojde k automatickému škálování, restartování nebo převzetí služeb při selhání.
 
 Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby používala implementaci [PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) . Následující kroky vysvětlují tento proces pomocí [správce relací Pivot: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako příklad.
 
@@ -861,7 +861,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
     Informace o názvu, portu a přístupu k informacím o Azure Portal najdete v částech **vlastnosti** nebo **přístupové klíče** vaší instance služby.
 
-2. Vytvořte nebo aktualizujte soubor *Src/Main/WebApp nebo meta-context.xmlINF* vaší aplikace následujícím obsahem:
+2. Vytvořte nebo aktualizujte soubor *Src/Main/WebApp nebo meta-context.xmlINF * vaší aplikace následujícím obsahem:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -883,7 +883,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
     Tento soubor určuje a nakonfiguruje implementaci správce relací pro vaši aplikaci. Používá proměnné prostředí, které jste nastavili v předchozím kroku, abyste zachovali informace o svém účtu ze zdrojových souborů.
 
-3. Pomocí FTP nahrajte soubor JAR správce relací do instance App Service a umístěte ho do adresáře */Home/Tomcat/lib* . Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+3. Pomocí FTP nahrajte soubor JAR správce relací do instance App Service a umístěte ho do adresáře */Home/Tomcat/lib* . Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](./deploy-ftp.md).
 
 4. Zakažte [soubor cookie spřažení relace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) pro vaši instanci App Service. To můžete provést z Azure Portal tak, že přejdete do aplikace a pak **nakonfigurujete nastavení konfigurace > obecná nastavení > spřažení ARR** na **off**. Alternativně můžete použít následující příkaz:
 

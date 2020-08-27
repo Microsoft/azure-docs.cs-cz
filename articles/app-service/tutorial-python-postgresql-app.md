@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: d9d8694c8ac81352ab36f3d610f02f3751090b27
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120588"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959404"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -121,7 +121,7 @@ Tyto změny jsou specifické pro konfiguraci Django, aby běžely v jakémkoli p
 ## <a name="create-postgres-database-in-azure"></a>Vytvoření databáze Postgres v Azure
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
 Nainstalovat `db-up` rozšíření pro rozhraní příkazového řádku Azure:
 
@@ -184,7 +184,7 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 <!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
 <!-- No it doesn't. az webapp up doesn't respect --resource-group -->
 - Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md#terminology) , pokud ještě neexistuje. (V tomto příkazu použijete stejnou skupinu prostředků, ve které jste databázi vytvořili dříve.)
-- Pokud neexistuje, vytvořte plán [App Service](overview-hosting-plans.md) *DjangoPostgres-tutorial* v cenové úrovni Basic (B1). `--plan`a `--sku` jsou volitelné.
+- Pokud neexistuje, vytvořte plán [App Service](overview-hosting-plans.md) *DjangoPostgres-tutorial* v cenové úrovni Basic (B1). `--plan` a `--sku` jsou volitelné.
 - Pokud neexistuje, vytvořte aplikaci App Service.
 - Povolí výchozí protokolování pro aplikaci, pokud ještě není povolené.
 - Nahrajte úložiště pomocí nasazení ZIP s povoleným automatizací buildu.
@@ -414,7 +414,7 @@ Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**
 > [!NOTE]
 > Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 >
-> `az webapp up`zapne pro vás výchozí protokolování. Z důvodu výkonu se toto protokolování po určitou dobu vypne, ale zase se `az webapp up` znovu spustí. Pokud ho chcete zapnout ručně, spusťte následující příkaz:
+> `az webapp up` zapne pro vás výchozí protokolování. Z důvodu výkonu se toto protokolování po určitou dobu vypne, ale zase se `az webapp up` znovu spustí. Pokud ho chcete zapnout ručně, spusťte následující příkaz:
 >
 > ```azurecli
 > az webapp log config --docker-container-logging filesystem

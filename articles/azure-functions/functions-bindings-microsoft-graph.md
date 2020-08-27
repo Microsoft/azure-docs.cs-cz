@@ -6,14 +6,17 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 9dd4067d066362f5842b504971afbc59fd0717a3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d10b36047959299f5b66da5fb16beef8a591a983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212205"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962838"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Tento článek vysvětluje, jak nakonfigurovat a pracovat s Microsoft Graph triggery a vazbami v Azure Functions. V těchto případech můžete použít Azure Functions pro práci s daty, přehledy a událostmi z [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -38,6 +41,9 @@ Vstupní vazba tokenu ověřování je k dispozici v balíčku NuGet [Microsoft.
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>Nastavení rozšíření
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Vazby Microsoft Graph jsou k dispozici prostřednictvím _rozšíření vazby_. Rozšíření vazby jsou volitelné součásti modulu runtime Azure Functions. V této části se dozvíte, jak nastavit Microsoft Graph a rozšíření ověřovacích tokenů.
 
@@ -71,6 +77,9 @@ Pokud používáte Azure Portal, zobrazí se upozornění pod výzvou k instalac
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Ověřovací token
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Vstupní vazba tokenu ověřování získá token Azure AD pro daný prostředek a poskytne ho vašemu kódu jako řetězec. Prostředek může být libovolný, pro který má aplikace oprávnění. 
 
@@ -230,6 +239,9 @@ Token se vždy prezentuje kódu jako řetězec.
 <a name="excel-input"></a>
 ## <a name="excel-input"></a>Vstup v Excelu
 
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Vstupní vazba tabulky Excelu přečte obsah excelové tabulky uložené na OneDrivu.
 
 Tato část obsahuje následující pododdíly:
@@ -349,7 +361,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code> – Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> – Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
-|**program**|**Cesta**|Požadováno – cesta k sešitu aplikace Excel v OneDrivu|
+|**dílčí**|**Cesta**|Požadováno – cesta k sešitu aplikace Excel v OneDrivu|
 |**list**|**List**|List, ve kterém se tabulka nachází|
 |**tableName**|**Tabulky**|Název tabulky Pokud není zadaný, použije se obsah listu.|
 
@@ -511,7 +523,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code> – Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> – Používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
-|**program**|**Cesta**|Požadováno – cesta k sešitu aplikace Excel v OneDrivu|
+|**dílčí**|**Cesta**|Požadováno – cesta k sešitu aplikace Excel v OneDrivu|
 |**list**|**List**|List, ve kterém se tabulka nachází|
 |**tableName**|**Tabulky**|Název tabulky Pokud není zadaný, použije se obsah listu.|
 |**Typ aktualizace**|**Typ aktualizace**|Required – typ změny, která se má provést v tabulce Může to být jedna z následujících hodnot:<ul><li><code>update</code> – Nahradí obsah tabulky na OneDrivu.</li><li><code>append</code> – Datovou část přidá na konec tabulky na OneDrivu tím, že se vytvoří nové řádky.</li></ul>|
@@ -537,6 +549,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 <a name="onedrive-input"></a>
 ## <a name="file-input"></a>Vstup souboru
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Vazba vstupu na soubor na OneDrivu čte obsah souboru uloženého na OneDrivu.
 
@@ -657,7 +672,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code> – Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> – Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
-|**program**|**Cesta**|Požadováno – cesta k souboru na OneDrivu|
+|**dílčí**|**Cesta**|Požadováno – cesta k souboru na OneDrivu|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>Vstup ze souboru – použití
@@ -681,6 +696,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 <a name="onedrive-output"></a>
 ## <a name="file-output"></a>Výstup souboru
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Vazba výstupu souboru na OneDrivu upraví obsah souboru uloženého na OneDrivu.
 
@@ -805,7 +823,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code> – Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> – Používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
-|**program**|**Cesta**|Požadováno – cesta k souboru na OneDrivu|
+|**dílčí**|**Cesta**|Požadováno – cesta k souboru na OneDrivu|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>Výstup souboru – využití
@@ -828,6 +846,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Výstup aplikace Outlook
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Výstupní vazba zprávy Outlooku pošle e-mailovou zprávu přes Outlook.
 
@@ -979,6 +1000,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 ## <a name="webhooks"></a>Webhooky
 
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Webhooky umožňují reagovat na události v Microsoft Graph. Pro podporu webhooků jsou funkce potřeba k vytváření, aktualizaci a reakci na _odběry Webhooku_. Kompletní řešení Webhooku vyžaduje kombinaci následujících vazeb:
 - [Aktivační událost webhooku Microsoft Graph](#webhook-trigger) umožňuje reagovat na příchozí Webhook.
 - [Vstupní vazba předplatného webhooku Microsoft Graph](#webhook-input) umožňuje zobrazit seznam existujících předplatných a volitelně je aktualizovat.
@@ -993,6 +1017,9 @@ Další informace o webhookech najdete v tématu [práce s Webhooky v Microsoft 
 
 
 ## <a name="webhook-trigger"></a>Trigger Webhooku
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Trigger Microsoft Graph Webhooku umožňuje funkci reagovat na příchozí Webhook z Microsoft Graph. Každá instance této aktivační události může reagovat na jeden typ prostředku služby Microsoft Graph.
 
@@ -1112,6 +1139,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 <a name="webhook-input"></a>
 ## <a name="webhook-input"></a>Vstup Webhooku
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Vstupní vazba Webhooku Microsoft Graph umožňuje načíst seznam předplatných spravovaných touto aplikací Function App. Vazba se přečte z App App Storage, takže neodráží jiná předplatná vytvořená mimo aplikaci.
 
@@ -1264,6 +1294,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 ## <a name="webhook-output"></a>Výstup Webhooku
 
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Výstupní vazba předplatného Webhooku umožňuje vytvořit, odstranit a aktualizovat odběry Webhooku v Microsoft Graph.
 
 Tato část obsahuje následující pododdíly:
@@ -1407,6 +1440,9 @@ Vazba zpřístupňuje následující typy pro funkce .NET:
 
 <a name="webhook-examples"></a>
 ## <a name="webhook-subscription-refresh"></a>Aktualizace předplatného Webhooku
+
+> [!IMPORTANT]
+> Vazby Microsoft Graph ve verzi Preview jsou nyní zastaralé. Podrobnosti o tom, jak používat Microsoft Graph s Azure Functions, najdete v kurzu [Azure Functions sestavení pomocí Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Existují dva přístupy k aktualizaci předplatných:
 

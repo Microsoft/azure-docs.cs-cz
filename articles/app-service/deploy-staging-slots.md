@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236739"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962158"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
 
 6. Vyberte adresu URL aplikace na stránce prostředku slotu. Slot nasazení má svůj vlastní název hostitele a zároveň je to živá aplikace. Pokud chcete omezit veřejný přístup k slotu nasazení, přečtěte si téma [Azure App Service omezení IP adres](app-service-ip-restrictions.md).
 
-Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](app-service-deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště.
+Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](./deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produ
 
 1. Pokud je povolena [místní mezipaměť](overview-local-cache.md) , spusťte inicializaci místní mezipaměti tím, že na každou instanci zdrojové patice nastavíte požadavek HTTP na kořen aplikace ("/"). Počkejte, dokud každá instance nevrátí žádnou odpověď HTTP. Inicializace místní mezipaměti způsobí další restartování každé instance.
 
-1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
+1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
 
     Pokud `applicationInitialization` není zadaný, spusťte požadavek HTTP do kořenového adresáře aplikace zdrojové patice každé instance. 
     
@@ -222,7 +222,7 @@ Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zah
 
 ## <a name="monitor-a-swap"></a>Monitorování swapu
 
-Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../azure-monitor/platform/platform-logs-overview.md).
 
 Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatizace pomocí šablon Správce prostředků
 
-[Šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON používané k automatizaci nasazení a konfigurace prostředků Azure. K prohození slotů pomocí Správce prostředků šablon nastavíte dvě vlastnosti na prostředky *Microsoft. Web/Sites/sloty* a *Microsoft. Web/Web* :
+[Šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) jsou DEKLARATIVNÍ soubory JSON používané k automatizaci nasazení a konfigurace prostředků Azure. K prohození slotů pomocí Správce prostředků šablon nastavíte dvě vlastnosti na prostředky *Microsoft. Web/Sites/sloty* a *Microsoft. Web/Web* :
 
 - `buildVersion`: Jedná se o řetězcovou vlastnost, která představuje aktuální verzi aplikace nasazené ve slotu. Například: "v1", "1.0.0.1" nebo "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: Jedná se o řetězcovou vlastnost, která určuje, co `buildVersion` má slot mít. Pokud se targetBuildVersion neshoduje s aktuálním `buildVersion` , aktivuje se operace přepnutí tím, že najde pozici zadané patice `buildVersion` .

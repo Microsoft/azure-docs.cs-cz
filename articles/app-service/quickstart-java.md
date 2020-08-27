@@ -10,19 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a3067972dc42db6644006e33797fc44c2f494693
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182693"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961240"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor webového archivu Java (War).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor webového archivu Java (War).
 
 > [!NOTE]
-> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Totéž můžete také udělat pomocí oblíbených prostředí, jako je IntelliJ a zatmění. Podívejte se na naše podobné dokumenty při [Azure Toolkit for IntelliJ rychlý Start](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) nebo v [rychlém startu Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app).
@@ -235,13 +235,13 @@ Spuštění tohoto příkazu může trvat přibližně minut.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Připojení k Azure SQL Database pomocí Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Připojení k Azure SQL Database pomocí Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Připojení k Azure DB for MySQL pomocí Java](/azure/mysql/connect-java)
+> [Připojení k Azure DB for MySQL pomocí Java](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [Připojení k Azure DB pro PostgreSQL pomocí Java](/azure/postgresql/connect-java)
+> [Připojení k Azure DB pro PostgreSQL pomocí Java](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v jazyce Java – prostředky](/java/azure/)
@@ -250,7 +250,7 @@ Spuštění tohoto příkazu může trvat přibližně minut.
 > [Konfigurace aplikace Java](configure-language-java.md)
 
 > [!div class="nextstepaction"]
-> [CI/CD s využitím Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [CI/CD s využitím Jenkinse](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
 
 > [!div class="nextstepaction"]
 > [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

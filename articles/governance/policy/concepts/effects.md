@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544719"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958758"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -19,7 +19,7 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Připojit](#append)
 - [Auditovat](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Deny](#deny)
+- [Odepřít](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Zakázáno](#disabled)
 - [Upravit](#modify)
@@ -479,14 +479,33 @@ Příklad: pravidlo pro Admission Control pro gatekeeper v2, které povoluje pou
 
 ## <a name="modify"></a>Modify
 
-Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání značek prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Zásada úprav by měla být vždy `mode` nastavená na hodnotu _indexováno_ , pokud cílový prostředek není skupina prostředků. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
+Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání vlastností nebo značek prostředku během vytváření nebo aktualizace.
+Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
+
+Následující operace jsou podporovány úpravou:
+
+- Přidání, nahrazení nebo odebrání značek prostředků. U značek by měly být zásady úprav `mode` nastavené na _indexované_ , pokud cílový prostředek není skupina prostředků.
+- Přidejte nebo nahraďte hodnotu spravovaného typu identity ( `identity.type` ) virtuálních počítačů a sady škálování virtuálních počítačů.
+- Přidejte nebo nahraďte hodnoty určitých aliasů (Preview).
+  - Použití `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
+    v části Azure PowerShell získáte seznam aliasů, které lze použít s úpravou.
 
 > [!IMPORTANT]
-> Upravit je aktuálně pouze pro použití s značkami. Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Pokud ale nemůžete vytvořit spravovanou identitu, doporučuje se připojení.
+> Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Připojení se ale doporučuje, pokud nemůžete vytvořit spravovanou identitu nebo upravit ještě nepodporují alias pro vlastnost prostředku.
 
 ### <a name="modify-evaluation"></a>Upravit vyhodnocení
 
-Úprava je vyhodnocena před tím, než je žádost zpracována poskytovatelem prostředků během vytváření nebo aktualizace prostředku. Upravit přidá nebo aktualizuje značky prostředku, pokud je splněna podmínka **if** pravidla zásad.
+Úprava je vyhodnocena před tím, než je žádost zpracována poskytovatelem prostředků během vytváření nebo aktualizace prostředku. Operace změny se aplikují na obsah požadavku, pokud je splněna podmínka **if** pravidla zásad. Každá operace úprav může určovat podmínku, která určuje, kdy se použije. Operace s podmínkami, které jsou vyhodnocovány na _hodnotu false_ , se přeskočí.
+
+Když se zadá alias, provedou se následující další kontroly, aby se zajistilo, že operace změny nemění obsah žádosti způsobem, který způsobí, že ho poskytovatel prostředků odmítne:
+
+- Vlastnost, na kterou se alias mapuje, je ve verzi rozhraní API žádosti označená jako "upravitelná".
+- Typ tokenu v operaci Modify odpovídá očekávanému typu tokenu pro vlastnost ve verzi rozhraní API žádosti.
+
+Pokud některá z těchto kontrol selže, hodnocení zásad se vrátí zpět na zadaný **conflictEffect**.
+
+> [!IMPORTANT]
+> Jedná se o doporučená, který mění definice, které obsahují aliasy, pomocí **efektu konfliktu** _auditu_ , aby nedocházelo k chybám pomocí verzí rozhraní API, kde mapovaná vlastnost není upravitelná. Pokud se stejný alias chová odlišně mezi verzemi rozhraní API, můžete k určení operace změny používané pro jednotlivé verze rozhraní API použít operace podmíněného provádění změn.
 
 Když se v rámci zkušebního cyklu spustí definice zásady pomocí efektu změny, neprovádí změny prostředků, které už existují. Místo toho označí všechny prostředky, které splňují podmínku **if** jako nevyhovující.
 
@@ -498,7 +517,7 @@ Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které 
   - Tato vlastnost musí zahrnovat pole řetězců, které odpovídají ID role řízení přístupu na základě rolí přístupné pro předplatné. Další informace najdete v tématu [náprava – konfigurace definice zásad](../how-to/remediate-resources.md#configure-policy-definition).
   - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **conflictEffect** (volitelné)
-  - Určuje, která definice zásad "WINS" v případě, že více než jedna definice zásad upravuje stejnou vlastnost.
+  - Určuje, která definice zásad "WINS" v případě, že více než jedna definice zásad upravuje stejnou vlastnost nebo když operace úpravy nefunguje na zadaném aliasu.
     - U nových nebo aktualizovaných prostředků má přednost definice zásad s _odepřením_ . Definice zásad s _auditem_ přeskočí všechny **operace**. Pokud má _zamítnutí_více než jedna definice zásady, je žádost zamítnuta jako konflikt. Pokud všechny definice zásad mají _audit_, nezpracovávají se žádné **operace** pro konfliktní definice zásad.
     - V případě existujících prostředků, pokud více než jedna definice zásad má _odepření_, je stav dodržování předpisů _konflikt_. Pokud jeden nebo více definic zásad má _zamítnutí_, každé přiřazení vrátí stav dodržování předpisů jako _nevyhovující_.
   - Dostupné hodnoty: _audit_, _Deny_, _zakázáno_.
@@ -513,6 +532,9 @@ Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které 
     - **hodnota** (nepovinná)
       - Hodnota, na kterou má být značka nastavena.
       - Tato vlastnost je povinná, pokud je **operace** _addOrReplace_ nebo _Add_.
+    - **Podmínka** (volitelné)
+      - Řetězec obsahující Azure Policy výraz jazyka s [funkcemi zásad](./definition-structure.md#policy-functions) , které jsou vyhodnoceny na _hodnotu true_ nebo _false_.
+      - Nepodporuje následující funkce zásad: `field()` , `resourceGroup()` , `subscription()` .
 
 ### <a name="modify-operations"></a>Úpravy operací
 
@@ -548,9 +570,9 @@ Vlastnost **Operation** má následující možnosti:
 
 |Operace |Popis |
 |-|-|
-|addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
-|Přidat |Přidá do prostředku definovanou značku a hodnotu. |
-|Odebrat |Odebere z prostředku definovanou značku. |
+|addOrReplace |Přidá do prostředku definovanou vlastnost nebo značku a hodnotu, a to i v případě, že vlastnost nebo značka již existuje s jinou hodnotou. |
+|Přidat |Přidá do prostředku definovanou vlastnost nebo značku a hodnotu. |
+|Odebrat |Odebere definovanou vlastnost nebo značku z prostředku. |
 
 ### <a name="modify-examples"></a>Upravit příklady
 
@@ -593,6 +615,28 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+Příklad 3: Ujistěte se, že účet úložiště nepovoluje veřejný přístup k objektu blob, operace úpravy se použije jenom při vyhodnocování požadavků s rozhraním API, které je větší nebo rovno hodnotě 2019-04-01:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 21019917f37ad95dc15056daa51b3d9e53ec06fa
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083005"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962600"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -27,13 +27,13 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování uživatelů** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
+|**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -62,7 +62,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Vložte obsah výstupu JSON z části [vytvořit instanční objekt](#create-a-service-principal) jako hodnotu pro tajnou proměnnou. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
 ```yaml
 - uses: azure/login@v1

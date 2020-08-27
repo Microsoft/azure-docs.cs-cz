@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213572"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962889"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -44,7 +44,7 @@ Další jazykové zásobníky také získají nastavení aplikace jako proměnn�
 Nastavení aplikace jsou při ukládání vždy zašifrovaná (zašifrovaná po klidové době).
 
 > [!NOTE]
-> Nastavení aplikace je také možné vyřešit z [Key Vault](/azure/key-vault/) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
+> Nastavení aplikace je také možné vyřešit z [Key Vault](../key-vault/index.yml) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Zobrazit skryté hodnoty
 
@@ -115,7 +115,7 @@ Například připojovací řetězec MySql s názvem *ConnectionString1* je k dis
 Připojovací řetězce jsou při uložení vždy zašifrované (zašifrované – při REST).
 
 > [!NOTE]
-> Připojovací řetězce je také možné přeložit z [Key Vault](/azure/key-vault/) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
+> Připojovací řetězce je také možné přeložit z [Key Vault](../key-vault/index.yml) pomocí [Key Vaultch odkazů](app-service-key-vault-references.md).
 
 ### <a name="show-hidden-values"></a>Zobrazit skryté hodnoty
 

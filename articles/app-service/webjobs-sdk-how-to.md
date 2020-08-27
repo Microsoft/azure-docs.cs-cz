@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208628"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962005"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -815,7 +815,7 @@ Pokud chcete zajistit, aby se jenom jedna instance funkce spouštěla i v příp
 
 ## <a name="filters"></a>Filtry
 
-Filtry funkcí (Preview) poskytují způsob přizpůsobení kanálu spuštění webové úlohy pomocí vlastní logiky. Filtry jsou podobné [filtrům ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters). Můžete je implementovat jako deklarativní atributy, které jsou použity pro vaše funkce nebo třídy. Další informace najdete v tématu [filtry funkcí](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+Filtry funkcí (Preview) poskytují způsob přizpůsobení kanálu spuštění webové úlohy pomocí vlastní logiky. Filtry jsou podobné [filtrům ASP.NET Core](/aspnet/core/mvc/controllers/filters). Můžete je implementovat jako deklarativní atributy, které jsou použity pro vaše funkce nebo třídy. Další informace najdete v tématu [filtry funkcí](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 

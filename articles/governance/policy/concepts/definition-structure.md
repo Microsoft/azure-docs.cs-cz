@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547796"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958775"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady: [https://schema.management.azure.com/schem
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- description
+- Popis
 - režim
 - zprostředkovatele identity
 - parameters
@@ -430,7 +430,7 @@ Místo toho použijte funkci [if ()](../../../azure-resource-manager/templates/t
 
 S revidovaným pravidlem zásad `if()` před tím, než **name** se pokusíte získat `substring()` hodnotu s méně než třemi znaky, zkontroluje délku názvu. Pokud je **název** příliš krátký, je místo toho vrácena hodnota "nezačíná na ABC" a porovnána s **ABC**. Prostředek s krátkým názvem, který nezačíná na **ABC** , se stále neúspěšně stane pravidlem zásad, ale během vyhodnocování se nestane příčinou chyby.
 
-### <a name="count"></a>Count
+### <a name="count"></a>Počet
 
 Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečný_ výsledek, který je pak porovnán s operátorem výrazu. Výrazy **Count** můžou být do jedné definice **policyRule** přidány až třikrát.
 
@@ -540,7 +540,7 @@ Příklad 5: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
-### <a name="effect"></a>Účinek
+### <a name="effect"></a>Efekt
 
 Azure Policy podporuje následující typy účinku:
 
@@ -651,6 +651,13 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
   # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
+
+  > [!NOTE]
+  > Chcete-li najít aliasy, které lze použít s efektem [změny](./effects.md#modify) , použijte následující příkaz:
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
 
 - Azure CLI
 

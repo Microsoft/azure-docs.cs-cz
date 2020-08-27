@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: 7515fe7b7e3d2a9d0f1e0497aa226ceb3e6be16c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084949"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961631"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -21,7 +21,7 @@ Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a s
 Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v Pythonu, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle kurzu [rychlý Start](quickstart-python.md) a [Pythonu v](tutorial-python-postgresql-app.md) Pythonu.
 
 > [!NOTE]
-> Linux je aktuálně doporučenou možností pro spouštění aplikací v Pythonu v App Service. Informace o možnostech Windows najdete v tématu věnovaném jazyku [Python na App Service systému Windows](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> Linux je aktuálně doporučenou možností pro spouštění aplikací v Pythonu v App Service. Informace o možnostech Windows najdete v tématu věnovaném jazyku [Python na App Service systému Windows](/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Zobrazit verzi Pythonu
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
 1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
-1. Spusťte příkaz `pip install -r requirements.txt`.
+1. Spusťte `pip install -r requirements.txt`.
 1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště, spusťte *Manage.py collectstatic*. Pokud je však `DISABLE_COLLECTSTATIC` Tento krok nastaven na hodnotu `true` , bude tento krok přeskočen.
 1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
@@ -181,7 +181,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - **Výchozí aplikaci uvidíte po nasazení kódu vlastní aplikace.** Výchozí aplikace se zobrazí, protože buď nemáte nasazený kód aplikace App Service, nebo App Service se nepovedlo najít kód vaší aplikace a místo toho se spustila výchozí aplikace.
 - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.

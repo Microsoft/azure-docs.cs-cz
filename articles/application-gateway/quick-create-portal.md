@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý Start: směrování webového provozu pomocí portálu'
 titleSuffix: Azure Application Gateway
-description: Naučte se, jak pomocí Azure Portal vytvořit Azure Application Gateway, který směruje webový provoz do virtuálních počítačů v back-endu fondu.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit službu Azure Application Gateway, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/21/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779433"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961954"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -28,7 +28,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,7 +36,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Aplikační bránu vytvoříte pomocí karet na stránce **vytvořit Aplikační bránu** .
 
@@ -205,7 +205,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 I když služba IIS není nutná k vytvoření služby Application Gateway, nainstalujete ji v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
 

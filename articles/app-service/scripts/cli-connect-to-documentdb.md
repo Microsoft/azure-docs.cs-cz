@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d2afcc19c5c2e67321ec24847dc9a6f0129eec8e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80058670"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962311"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Připojení aplikace App Service k Cosmos DB pomocí rozhraní příkazového řádku
 
@@ -47,6 +47,6 @@ Tento skript k vytvoření skupiny prostředků, App Service aplikace, Cosmos DB
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro službu App Service najdete v [dokumentaci ke službě Azure App Service](../samples-cli.md).

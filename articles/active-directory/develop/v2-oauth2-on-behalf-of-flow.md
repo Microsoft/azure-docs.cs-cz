@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987031"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958656"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -64,11 +64,11 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 | Parametr | Typ | Popis |
 | --- | --- | --- |
 | `grant_type` | Povinné | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
-| `client_id` | Vyžadováno | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
-| `client_secret` | Vyžadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
-| `assertion` | Vyžadováno | Přístupový token, který se odeslal do rozhraní API střední vrstvy.  Tento token musí mít `aud` deklaraci identity cílové skupiny () aplikace, která tuto žádost OBO (aplikace označuje `client-id` pole). Aplikace nemůžou uplatnit token pro jinou aplikaci (takže pokud klient pošle token API, který je určený pro MS Graph, rozhraní API ho nemůže uplatnit pomocí OBO.  Místo toho by se měl token zamítnout.  |
-| `scope` | Vyžadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
-| `requested_token_use` | Vyžadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavena na `on_behalf_of` . |
+| `client_id` | Požadováno | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_secret` | Požadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
+| `assertion` | Požadováno | Přístupový token, který se odeslal do rozhraní API střední vrstvy.  Tento token musí mít `aud` deklaraci identity cílové skupiny () aplikace, která tuto žádost OBO (aplikace označuje `client-id` pole). Aplikace nemůžou uplatnit token pro jinou aplikaci (takže pokud klient pošle token API, který je určený pro MS Graph, rozhraní API ho nemůže uplatnit pomocí OBO.  Místo toho by se měl token zamítnout.  |
+| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
+| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavena na `on_behalf_of` . |
 
 #### <a name="example"></a>Příklad
 
@@ -96,12 +96,12 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 | Parametr | Typ | Popis |
 | --- | --- | --- |
 | `grant_type` | Povinné | Typ požadavku tokenu Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
-| `client_id` | Vyžadováno |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
-| `client_assertion_type` | Vyžadováno | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
-| `client_assertion` | Vyžadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o tom, jak zaregistrovat certifikát a formát kontrolního výrazu, najdete v tématu [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md). |
-| `assertion` | Vyžadováno |  Přístupový token, který se odeslal do rozhraní API střední vrstvy.  Tento token musí mít `aud` deklaraci identity cílové skupiny () aplikace, která tuto žádost OBO (aplikace označuje `client-id` pole). Aplikace nemůžou uplatnit token pro jinou aplikaci (takže pokud klient pošle token API, který je určený pro MS Graph, rozhraní API ho nemůže uplatnit pomocí OBO.  Místo toho by se měl token zamítnout.  |
-| `requested_token_use` | Vyžadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavena na `on_behalf_of` . |
-| `scope` | Vyžadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md).|
+| `client_id` | Požadováno |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_assertion_type` | Požadováno | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
+| `client_assertion` | Požadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o tom, jak zaregistrovat certifikát a formát kontrolního výrazu, najdete v tématu [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md). |
+| `assertion` | Požadováno |  Přístupový token, který se odeslal do rozhraní API střední vrstvy.  Tento token musí mít `aud` deklaraci identity cílové skupiny () aplikace, která tuto žádost OBO (aplikace označuje `client-id` pole). Aplikace nemůžou uplatnit token pro jinou aplikaci (takže pokud klient pošle token API, který je určený pro MS Graph, rozhraní API ho nemůže uplatnit pomocí OBO.  Místo toho by se měl token zamítnout.  |
+| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavena na `on_behalf_of` . |
+| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md).|
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného kódu s tím rozdílem, že `client_secret` parametr je nahrazen dvěma parametry: `client_assertion_type` a a `client_assertion` .
 
@@ -153,7 +153,7 @@ Následující příklad ukazuje odpověď na úspěch na žádost o přístupov
 ```
 
 > [!NOTE]
-> Výše přístupový token je token ve formátu v 1.0 pro Microosft graf. Důvodem je to, že formát tokenu je založený na **prostředku** , ke kterému se přistupoval a který nesouvisí s koncovými body použitými k vyžádání. Microsoft Graph je instalační program, který přijímá tokeny v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. Jiné aplikace mohou značit, že mají tokeny formátu v 2.0, tokeny formátu v 1.0 nebo dokonce speciální nebo šifrované formáty tokenů.  Koncové body v 1.0 a v 2.0 můžou emitovat buď formát tokenu – tímto způsobem může prostředek vždycky získat správný formát tokenu bez ohledu na to, jak nebo kde byl token vyžádán klientem. 
+> Výše přístupový token je ve formátu Microsoft Graph v 1.0. Důvodem je to, že formát tokenu je založený na **prostředku** , ke kterému se přistupoval a který nesouvisí s koncovými body použitými k vyžádání. Microsoft Graph je instalační program, který přijímá tokeny v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. Jiné aplikace mohou značit, že mají tokeny formátu v 2.0, tokeny formátu v 1.0 nebo dokonce speciální nebo šifrované formáty tokenů.  Koncové body v 1.0 a v 2.0 můžou emitovat buď formát tokenu – tímto způsobem může prostředek vždycky získat správný formát tokenu bez ohledu na to, jak nebo kde byl token vyžádán klientem. 
 >
 > V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti je **nesmí** kontrolovat. Kontrola přístupových tokenů pro jiné aplikace ve vašem kódu způsobí neočekávané porušení vaší aplikace, když se změní formát svých tokenů nebo začne jejich šifrování. 
 

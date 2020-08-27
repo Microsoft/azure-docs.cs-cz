@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159996"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962345"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -65,7 +65,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
     * Hodnota = *časové pásmo, které chcete*
 3. Vyberte **Uložit**.
 
-Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
+Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
@@ -147,7 +147,7 @@ Výjimka byla způsobena problémem s Správce hybridního připojení, která o
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Návody přidat pravidlo pro přepsání adresy URL?
 
-Chcete-li přidat pravidlo přepsání adresy URL, vytvořte web.config soubor s odpovídajícími konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+Chcete-li přidat pravidlo přepsání adresy URL, vytvořte web.config soubor s odpovídajícími konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Návody řízení příchozího provozu do App Service?
 
@@ -222,7 +222,7 @@ Chcete-li tento problém vyřešit, ujistěte se, že není splněna žádná z 
 * Nesprávná skupina zabezpečení sítě brání požadavkům na připojení k síti App Service Environment.
 * Vynucené tunelování je zapnuté.
 
-Další informace najdete v tématu [časté problémy při nasazení (vytvoření) nového Azure App Service Environment](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+Další informace najdete v tématu [časté problémy při nasazení (vytvoření) nového Azure App Service Environment](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Proč nemůžu odstranit plán App Service?
 
@@ -286,7 +286,7 @@ Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se př
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Návody určit, která verze rozhraní .NET je nainstalovaná v App Service?
 
-Nejrychlejší způsob, jak najít verzi rozhraní Microsoft .NET, která je nainstalovaná v App Service, je použití konzoly Kudu. Ke konzole Kudu můžete přistupovat z portálu nebo pomocí adresy URL vaší aplikace App Service. Podrobné pokyny najdete v tématu [určení nainstalované verze rozhraní .NET v App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+Nejrychlejší způsob, jak najít verzi rozhraní Microsoft .NET, která je nainstalovaná v App Service, je použití konzoly Kudu. Ke konzole Kudu můžete přistupovat z portálu nebo pomocí adresy URL vaší aplikace App Service. Podrobné pokyny najdete v tématu [určení nainstalované verze rozhraní .NET v App Service](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Proč automatické škálování nefunguje podle očekávání?
 

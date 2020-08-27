@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816061"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958095"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží s tím, proč se data z vašich zařízení nezobrazuje v Azure IoT Central
 
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>Interpretace výstupu terminálu
-
 Pokud se zobrazí data v terminálu, data se tak budou zobrazovat stejně jako aplikace IoT Central.
 
 Pokud se nezobrazí žádná data po několika minutách, zkuste stisknout klávesu `Enter` nebo `return` na klávesnici, pokud je výstup zablokovaný.
@@ -133,7 +131,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Stav zřizování zařízení | Popis | Možné zmírnění |
 | - | - | - |
-| Zřízené | Žádný okamžitě rozpoznatelný problém. | Není k dispozici |
+| Zřízené | Žádný okamžitě rozpoznatelný problém. | – |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
 | Blokované | Zařízení je zablokované v připojení k IoT Central. | Zařízení je zablokované v připojení k aplikaci IoT Central. Odblokovat zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [blokování zařízení](concepts-get-connected.md#device-status-values). |
 | Neschválených | Zařízení není schváleno. | Zařízení není schváleno pro připojení k aplikaci IoT Central. Schvalte zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [schválení zařízení](concepts-get-connected.md#connect-without-registering-devices) . |
@@ -187,8 +185,6 @@ Chcete-li zjistit, na kterých kategoriích je váš problém, spusťte nejvhodn
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- Pokud dáváte přednost použití grafického uživatelského rozhraní, použijte zobrazení IoT Central **nezpracovaná data** , abyste viděli, jestli není něco namodelované. Zobrazení **nezpracovaná data** nezjistí, jestli zařízení odesílá nesprávně vytvořený kód JSON.
-
 Při prvním spuštění příkazu se může zobrazit výzva k instalaci `uamqp` knihovny `validate` .
 
 Následující výstup ukazuje ukázkovou zprávu o chybách a upozorněních z příkazu ověřit:
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Snímek obrazovky se zobrazením nezpracovaných dat":::
+Pokud dáváte přednost použití grafického uživatelského rozhraní, použijte zobrazení IoT Central **nezpracovaná data** , abyste viděli, jestli není něco namodelované. Zobrazení **nezpracovaná data** nezjistí, jestli zařízení odesílá nesprávně vytvořený kód JSON.
 
-### <a name="interpreting-terminal-output"></a>Interpretace výstupu terminálu
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Snímek obrazovky se zobrazením nezpracovaných dat":::
 
 Když zjistíte problém, možná budete muset aktualizovat firmware zařízení nebo vytvořit novou šablonu zařízení, která modeloval dříve nemodelovaná data.
 
@@ -215,9 +211,6 @@ Pokud se rozhodnete vytvořit novou šablonu, která správně modeluje data, mi
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se vám nedaří vyřešit potíže a vyřešit problém pomocí této příručky, otevřete lístek podpory. Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal:
-
-- [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [Azure Portal pro vládu USA](https://portal.azure.us/)
+Pokud potřebujete další informace, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Případně můžete zasouborovat [lístek podpory Azure](https://portal.azure.com/#create/Microsoft.Support).
 
 Další informace najdete v tématu [Podpora a možnosti pomoci pro Azure IoT](../../iot-fundamentals/iot-support-help.md).

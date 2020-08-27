@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961716"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
 
@@ -35,7 +35,7 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 | Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
-| .NET Core       | název zkompilované knihovny DLL jako`dotnet <myapp>.dll`                                 |
+| .NET Core       | název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skript Ruby, se kterým chcete aplikaci inicializovat                     |
 
 Tyto příkazy nebo skripty se spustí po spuštění předdefinovaného kontejneru Docker, ale před spuštěním kódu aplikace.
@@ -66,7 +66,7 @@ Ano, pokud chcete nastavit průběžnou integraci a nasazování pro Azure Conta
 
 **Podporujete pracovní prostředí?**
 
-Ano.
+Yes.
 
 **Můžu k nasazení webové aplikace použít *WebDeploy/MSDeploy* ?**
 
@@ -100,7 +100,7 @@ const io = require('socket.io')(server,{
 
 **Podporujete nekompilované aplikace .NET Core?**
 
-Ano.
+Yes.
 
 **Podporujete skladatele jako správce závislostí pro aplikace PHP?**
 
@@ -122,7 +122,7 @@ Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://` .
 
 **Jaký je formát názvu bitové kopie v možnosti privátního registru?**
 
-Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Můžu na vlastní imagi kontejneru zobrazit víc než jeden port?**
 
@@ -130,7 +130,7 @@ Nepodporujeme vystavení více než jednoho portu.
 
 **Můžu přinášet vlastní úložiště?**
 
-Ano, [Přineste si vlastní úložiště](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) ve verzi Preview.
+Ano, [Přineste si vlastní úložiště](./configure-connect-to-azure-storage.md) ve verzi Preview.
 
 **Proč nemůžu procházet systém souborů vlastního kontejneru nebo spuštěné procesy z webu SCM?**
 

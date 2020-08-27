@@ -1,5 +1,5 @@
 ---
-title: Použít soukromé balíčky Pythonu
+title: Použití soukromých balíčků Pythonu
 titleSuffix: Azure Machine Learning
 description: Z Azure Machine Learningch prostředí se bezpečně přistupuje k soukromým balíčkům Pythonu.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 580525b2e8e408949ce1d8f2d1b8241c431fc755
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209366"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958146"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Použití privátních balíčků Pythonu s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Soukromé balíčky se používají přes třídu [prostředí](https://docs.mic
  * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
  * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
-### <a name="use-small-number-of-packages-for-development-and-testing"></a>Použití malého počtu balíčků pro vývoj a testování
+## <a name="use-small-number-of-packages-for-development-and-testing"></a>Použití malého počtu balíčků pro vývoj a testování
 
 Pro malý počet privátních balíčků pro jeden pracovní prostor použijte statickou [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) metodu. Tento přístup umožňuje rychle přidat do pracovního prostoru soukromý balíček a je vhodný pro účely vývoje a testování.
 
@@ -50,7 +50,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Interně Azure Machine Learning služba nahrazuje adresu URL zabezpečenou adresou URL SAS, takže váš soubor kolečka zůstane privátní a zabezpečený.
 
-### <a name="consume-a-repository-of-packages-from-azure-devops-feed"></a>Využití úložiště balíčků z Azure DevOps feed
+## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Použití úložiště balíčků z Azure DevOps feed
 
 Pokud aktivně vyvíjíte balíčky Pythonu pro vaši aplikaci Machine Learning, můžete je hostovat do úložiště Azure DevOps jako artefakty a publikovat je jako informační kanál. Tento přístup umožňuje integrovat pracovní postup DevOps pro vytváření balíčků s vaším pracovní prostor Azure Machine Learning. Informace o tom, jak nastavit kanály Pythonu pomocí Azure DevOps, najdete [v článku Začínáme s balíčky Pythonu v Azure Artifacts](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops)
 
@@ -87,18 +87,22 @@ Tento přístup používá k ověření v úložišti token Personal Access. Ste
 
 Prostředí je teď připravené k použití v rámci školicích běhů nebo nasazení koncových bodů webové služby. Při sestavování prostředí používá služba Azure Machine Learning službu PAT k ověřování na informačním kanálu pomocí odpovídajícího základního URL.
 
-### <a name="consume-a-repository-of-packages-from-private-storage"></a>Využití úložiště balíčků z privátního úložiště
+## <a name="use-a-repository-of-packages-from-private-storage"></a>Použít úložiště balíčků z privátního úložiště
 
-Balíčky můžete využívat z účtu služby Azure Storage v rámci brány firewall vaší organizace. Takový účet úložiště může obsahovat uspořádanou sadu balíčků pro podnikové použití nebo interní zrcadlo veřejně dostupných balíčků.
+Balíčky můžete využívat z účtu služby Azure Storage v rámci brány firewall vaší organizace. Účet úložiště může obsahovat uspořádanou sadu balíčků nebo interní zrcadlo veřejně dostupných balíčků.
 
 Nastavení takového privátního úložiště:
 
- 1. [Umístěte pracovní prostor do virtuální sítě (VNET)](how-to-enable-virtual-network.md).
- 2. Vytvořte účet úložiště a [zakažte veřejný přístup](https://docs.microsoft.com/azure/storage/common/storage-network-security).
- 2. Umístěte balíčky Pythonu, které chcete použít, do kontejneru v rámci účtu úložiště. 
- 3. [Povolení přístupu účtu úložiště z virtuální sítě pracovního prostoru](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network) 
+1. [Umístěte pracovní prostor do virtuální sítě (VNET)](how-to-enable-virtual-network.md).
+1. Vytvořte účet úložiště a [zakažte veřejný přístup](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+1. Umístěte balíčky Pythonu, které chcete použít, do kontejneru v rámci účtu úložiště. 
+1. [Povolení přístupu účtu úložiště z virtuální sítě pracovního prostoru](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
+1. [Do pracovního prostoru za virtuální sítí umístěte Azure Container Registry (ACR)](how-to-enable-virtual-network.md#azure-container-registry).
 
-Pak můžete odkazovat na balíčky v definici prostředí Azure Machine Learning jejich úplnou adresou URL v úložišti objektů BLOB v Azure.
+    > [!IMPORTANT]
+    > Tento krok je nutné provést, aby bylo možné procházet nebo nasazovat modely pomocí soukromého úložiště balíčků.
+
+Po dokončení těchto konfigurací můžete na balíčky v definici prostředí Azure Machine Learning odkazovat jejich úplnou adresou URL v úložišti objektů BLOB v Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
