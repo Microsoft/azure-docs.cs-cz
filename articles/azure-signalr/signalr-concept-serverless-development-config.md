@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387145"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928560"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
 
@@ -109,20 +109,20 @@ Všechny funkce, které chtějí využít model založený na třídách, musí 
 
 ### <a name="define-hub-method"></a>Definovat metodu centra
 
-Všechny metody centra **musí** mít `[SignalRTrigger]` atribut a **musí** používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
+Všechny metody centra **musí**  mít `[SignalRTrigger]` atribut a **musí** používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
 
 Ve výchozím nastavení, `category=messages` s výjimkou názvu metody, je jedním z následujících názvů:
 
-* **Připojeno**: zpracovává se jako`category=connections, event=connected`
-* **Odpojeno**: zpracovává se jako`category=connections, event=disconnected`
+* **Připojeno**: zpracovává se jako `category=connections, event=connected`
+* **Odpojeno**: zpracovává se jako `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>Prostředí vazeb parametrů
 
 V modelu založeném na třídě `[SignalRParameter]` není nutné, protože všechny argumenty jsou označeny jako `[SignalRParameter]` výchozí, s výjimkou jedné z následujících situací:
 
 * Argument je upraven atributem vazby.
-* Typ argumentu je `ILogger` nebo`CancellationToken`
-* Argument je upraven podle atributu.`[SignalRIgnore]`
+* Typ argumentu je `ILogger` nebo `CancellationToken`
+* Argument je upraven podle atributu. `[SignalRIgnore]`
 
 ### <a name="negotiate-experience-in-class-based-model"></a>Vyjednávat prostředí v modelu založeném na třídě
 
@@ -218,8 +218,8 @@ Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení p
 
 Při spuštění aplikace Function App na místním počítači můžete přidat `Host` část, do které se *local.settings.js* pro povolení CORS. V `Host` části přidejte dvě vlastnosti:
 
-* `CORS`-Zadejte základní adresu URL, která je zdrojem klientské aplikace.
-* `CORSCredentials`– nastavte ho tak, aby `true` povoloval žádosti "withCredentials".
+* `CORS` -Zadejte základní adresu URL, která je zdrojem klientské aplikace.
+* `CORSCredentials` – nastavte ho tak, aby `true` povoloval žádosti "withCredentials".
 
 Příklad:
 

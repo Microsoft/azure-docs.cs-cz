@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9de803789b7ec11a971cf9a79a5c4665ac372cb4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84986734"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928135"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Příklad: Analýza videí v reálném čase
 

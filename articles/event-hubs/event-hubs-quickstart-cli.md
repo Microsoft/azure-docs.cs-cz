@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: acdeb1e176be1676bd531eca33faf1e0e18f3ecd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: efb00d35d2b12e6b6a577483257debf4e797c0a0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502337"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934034"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rychlý start: Vytvoření centra událostí pomocí Azure CLI
 
@@ -18,7 +18,7 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 
 V tomto rychlém startu vytvoříte centrum událostí pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -65,16 +65,16 @@ Spuštěním následujícího příkazu vytvořte centrum událostí:
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-Gratulujeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
+Blahopřejeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste vytvořili skupinu prostředků, obor názvů služby Event Hubs a centrum událostí. Podrobné pokyny k odesílání událostí do (nebo) přijímání událostí z centra událostí najdete v tématu kurzy pro **odesílání a příjem** : 
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)

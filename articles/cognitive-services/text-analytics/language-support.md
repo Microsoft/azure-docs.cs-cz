@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986164"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932963"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
@@ -27,7 +27,7 @@ ms.locfileid: "87986164"
 
 | Jazyk              | Kód jazyka | Podpora v2 | Podpora V3 | Spouští se verze modelu V3: |              Poznámky |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Čínština (zjednodušená)    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh`také přijato |
+| Čínština (zjednodušená)    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` také přijato |
 | Čínština (tradiční)   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Dánština               |     `da`      |     ✓      |            |                            |                    |
 | Nizozemština                 |     `nl`      |     ✓      |            |                            |                    |
@@ -39,13 +39,13 @@ ms.locfileid: "87986164"
 | Italština               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japonština              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Korejština                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norština (Bokmål)   |     `no`      |     ✓      |            |                            |                    |
+| Norština (Bokmål)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
 | Polština                |     `pl`      |     ✓      |            |                            |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt`také přijato |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` také přijato |
 | Ruština               |     `ru`      |     ✓      |            |                            |                    |
 | Španělština               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Švédština               |     `sv`      |     ✓      |            |                            |                    |
-| Turečtina               |     `tr`      |     ✓      |            |                            |                    |
+| Turečtina               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Dolování stanovisek (verze 3.1 – Preview)
 
@@ -64,7 +64,7 @@ ms.locfileid: "87986164"
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabština                |     `ar`      |     ✓      |            |                                 |                    |
 | Čeština                 |     `cs`      |     ✓      |            |                                 |                    |
-| Čínština (zjednodušená)     |   `zh-hans`   |     ✓      |            |                                 | `zh`také přijato |
+| Čínština (zjednodušená)     |   `zh-hans`   |     ✓      |            |                                 | `zh` také přijato |
 | Čínština (tradiční)   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Dánština                |     `da`      |     ✓      |            |                                 |                    |
 | Nizozemština                 |     `nl`      |     ✓      |            |                                 |                    |
@@ -77,9 +77,9 @@ ms.locfileid: "87986164"
 | Italština               |     `it`      |     ✓      |            |                                 |                    |
 | Japonština              |     `ja`      |     ✓      |            |                                 |                    |
 | Korejština                |     `ko`      |     ✓      |            |                                 |                    |
-| Norština (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb`také přijato |
+| Norština (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` také přijato |
 | Polština                |     `pl`      |     ✓      |            |                                 |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |            |                                 | `pt`také přijato |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |            |                                 | `pt` také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Ruština              |     `ru`      |     ✓      |            |                                 |                    |
 | Španělština               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
@@ -98,9 +98,9 @@ ms.locfileid: "87986164"
 | Italština               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Japonština              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Korejština                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norština (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb`také přijato |
+| Norština (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` také přijato |
 | Polština                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt`také přijato |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Ruština               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Španělština               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -115,7 +115,7 @@ ms.locfileid: "87986164"
 
 #### <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language-detection)
 
-Rozhraní API pro analýzu textu může detekovat široké spektrum jazyků, variant, dialektů a některých regionálních/kulturních jazyků.  Rozpoznávání jazyka vrátí "skript" jazyka. Například pro frázi "Mám k dispozici pes" se vrátí `en` místo `en-US` . Jediným zvláštním případem je čínština, kde se vrátí funkce pro detekci jazyka, `zh_CHS` nebo `zh_CHT` Pokud se může určit skript, který daný text zadal. V situacích, kdy se konkrétní skript nedá identifikovat pro čínský dokument, vrátí se jednoduše `zh` .
+Rozhraní API pro analýzu textu může detekovat široké spektrum jazyků, variant, dialektů a některých regionálních/kulturních jazyků.  Rozpoznávání jazyka vrátí "skript" jazyka. Například pro frázi "Mám k dispozici pes" se vrátí  `en` místo  `en-US` . Jediným zvláštním případem je čínština, kde se vrátí funkce pro detekci jazyka, `zh_CHS` nebo `zh_CHT` Pokud se může určit skript, který daný text zadal. V situacích, kdy se konkrétní skript nedá identifikovat pro čínský dokument, vrátí se jednoduše `zh` .
 
 Nezveřejňujeme vám přesný seznam jazyků pro tuto funkci, ale dokáže detekovat široké spektrum jazyků, variant, dialektů a některých regionálních/kulturních jazyků. 
 

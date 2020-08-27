@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488949"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935394"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
 
@@ -21,7 +21,7 @@ Dovednosti je funkce založená na AI, která extrahuje informace a strukturu z 
 
 V tomto rychlém startu spojíte služby a data v cloudu Azure, abyste mohli vytvořit dovednosti. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** v Azure Portal, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -29,7 +29,7 @@ Než začnete, musíte mít následující:
 
 + Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
-+ Účet Azure Storage s [úložištěm objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/).
++ Účet Azure Storage s [úložištěm objektů BLOB](../storage/blobs/index.yml).
 
 > [!NOTE]
 > V tomto rychlém startu se také pro AI používá [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) . Vzhledem k tomu, že úloha je tak malá, Cognitive Services po dobu bezplatného zpracování po dobu až 20 transakcí klepnuli na pozadí. To znamená, že můžete dokončit toto cvičení, aniž byste museli vytvořit další prostředek Cognitive Services.
@@ -40,7 +40,7 @@ V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, ab
 
 1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. Soubory rozbalte.
 
-1. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+1. [Vytvořte si účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal) nebo [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    + Vyberte stejnou oblast jako Azure Kognitivní hledání, abyste se vyhnuli poplatkům za šířku pásma. 
 
@@ -169,11 +169,11 @@ Dalším důležitým konceptem je, že dovednosti působí nad typy obsahu a p�
 
 Výstup je směrován na index vyhledávání a existuje mapování mezi páry název-hodnota vytvořené během indexování a jednotlivých polí v indexu. Vnitřně portál nastaví [poznámky](cognitive-search-concept-annotations-syntax.md) a definuje [sadu dovedností](cognitive-search-defining-skillset.md), čímž určuje pořadí operací v obecném toku. Tyto kroky jsou na portálu skryté, ale až začnete psát kód, budou tyto koncepty důležité.
 
-Nakonec jste se dozvěděli, že by bylo možné ověřit obsah pomocí dotazu na index. V tomto případě je to, co Azure Kognitivní hledání poskytuje, prohledávatelný index, pomocí kterého se můžete dotazovat pomocí [jednoduché](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) nebo [plně rozšířené syntaxe dotazu](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Index, který obsahuje rozšířená pole, se v ničem neliší od ostatních indexů. Pokud chcete zahrnout standardní nebo [vlastní analyzátory](search-analyzers.md), [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synonyma](search-synonyms.md), [omezující filtry](search-filters-facets.md), geografické vyhledávání nebo jakékoli jiné funkce Azure kognitivní hledání, můžete to určitě udělat.
+Nakonec jste se dozvěděli, že by bylo možné ověřit obsah pomocí dotazu na index. V tomto případě je to, co Azure Kognitivní hledání poskytuje, prohledávatelný index, pomocí kterého se můžete dotazovat pomocí [jednoduché](/rest/api/searchservice/simple-query-syntax-in-azure-search) nebo [plně rozšířené syntaxe dotazu](/rest/api/searchservice/lucene-query-syntax-in-azure-search). Index, který obsahuje rozšířená pole, se v ničem neliší od ostatních indexů. Pokud chcete zahrnout standardní nebo [vlastní analyzátory](search-analyzers.md), [profily vyhodnocování](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synonyma](search-synonyms.md), [omezující filtry](search-filters-facets.md), geografické vyhledávání nebo jakékoli jiné funkce Azure kognitivní hledání, můžete to určitě udělat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -184,7 +184,7 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 Dovednosti můžete vytvořit pomocí portálu, sady .NET SDK nebo REST API. Pokud chcete pokračovat ve své znalosti, zkuste REST API pomocí post a dalších ukázkových dat.
 
 > [!div class="nextstepaction"]
-> [Kurz: extrakce textu a struktury z objektů BLOB JSON pomocí rozhraní REST API](cognitive-search-tutorial-blob.md)
+> [Kurz: extrakce textu a struktury z objektů BLOB JSON pomocí rozhraní REST API ](cognitive-search-tutorial-blob.md)
 
 > [!Tip]
 > Pokud chcete tento cvičení zopakovat nebo vyzkoušet jiný návod k rozšíření AI, odstraňte indexer na portálu. Odstranění indexeru resetuje čítač bezplatných denních transakcí zpět na nulu pro zpracování Cognitive Services.

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554018"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927115"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -96,7 +96,7 @@ Azure Kognitivní hledání je k dispozici ve většině oblastí. Seznam podpor
 
  Pokud používáte rozšíření AI, vytvořte vyhledávací službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
 
- Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
+ Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](../best-practices-availability-paired-regions.md#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
 
 ### <a name="recommendations"></a>Doporučení
 
@@ -160,7 +160,7 @@ Většina zákazníků používá jenom jednu službu zřízenou v úrovni, kter
 
 I když většina zákazníků používá jenom jednu službu, redundance služby může být nutná v případě následujících provozních požadavků:
 
-+ [Provozní kontinuita a zotavení po havárii (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Azure Kognitivní hledání v případě výpadku neposkytuje okamžité převzetí služeb při selhání.
++ [Provozní kontinuita a zotavení po havárii (BCDR)](../best-practices-availability-paired-regions.md). Azure Kognitivní hledání v případě výpadku neposkytuje okamžité převzetí služeb při selhání.
 
 + [Víceklientské architektury](search-modeling-multitenant-saas-applications.md) se někdy volají na dvě nebo více služeb.
 

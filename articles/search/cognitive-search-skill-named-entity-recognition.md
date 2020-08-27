@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080035"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935938"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 
@@ -32,28 +32,28 @@ Dovednost pro **rozpoznávání pojmenovaných entit** extrahuje pojmenované en
 Microsoft. dovednosti. text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru     | Description |
+| Název parametru     | Popis |
 |--------------------|-------------|
 | categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"` , `"Location"` , `"Organization"` . Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky:`de, en, es, fr, it`|
+|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky: `de, en, es, fr, it`|
 | minimumPrecision  | Číslo mezi 0 a 1. Pokud je přesnost nižší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Description                   |
+| Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | languageCode  | Nepovinný parametr. Výchozí je `"en"`.  |
 | text          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu     | Description                   |
+| Název výstupu     | Popis                   |
 |---------------|-------------------------------|
 | obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
 | polohy  | Pole řetězců, kde každý řetězec představuje umístění. |
@@ -81,7 +81,7 @@ U parametrů se rozlišují malá a velká písmena.
     ]
   }
 ```
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {

@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd6b64f118460a115963ed0bf105641d80334348
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552238"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934986"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (Preview) v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
 > Tato funkce je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2020-06-30-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
-`moreLikeThis=[key]`je parametr dotazu v [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , který najde dokumenty podobné dokumentu určenému klíčem dokumentu. Když se vytvoří požadavek na hledání `moreLikeThis` , vygeneruje se dotaz s hledanými výrazy z daného dokumentu, které tento dokument nejlépe popisují. Vygenerovaný dotaz se pak použije k vytvoření žádosti o vyhledávání. Ve výchozím nastavení se považuje obsah všech prohledávatelných polí, mínus všechna pole s omezením, která jste zadali pomocí `searchFields` parametru. `moreLikeThis`Parametr nelze použít společně s parametrem Search `search=[string]` .
+`moreLikeThis=[key]` je parametr dotazu v [rozhraní API pro hledání dokumentů](/rest/api/searchservice/search-documents) , který najde dokumenty podobné dokumentu určenému klíčem dokumentu. Když se vytvoří požadavek na hledání `moreLikeThis` , vygeneruje se dotaz s hledanými výrazy z daného dokumentu, které tento dokument nejlépe popisují. Vygenerovaný dotaz se pak použije k vytvoření žádosti o vyhledávání. Ve výchozím nastavení se považuje obsah všech prohledávatelných polí, mínus všechna pole s omezením, která jste zadali pomocí `searchFields` parametru. `moreLikeThis`Parametr nelze použít společně s parametrem Search `search=[string]` .
 
 Ve výchozím nastavení se považuje obsah všech vyhledávacích polí na nejvyšší úrovni. Chcete-li místo toho zadat konkrétní pole, můžete použít `searchFields` parametr. 
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
 
 ### <a name="apply-filters"></a>Použití filtrů
 
-`MoreLikeThis`lze kombinovat s dalšími společnými parametry dotazů, jako je `$filter` . Dotaz lze například omezit pouze na hotely, jejichž kategorie je "rozpočet" a kde je hodnocení vyšší než 3,5:
+`MoreLikeThis` lze kombinovat s dalšími společnými parametry dotazů, jako je `$filter` . Dotaz lze například omezit pouze na hotely, jejichž kategorie je "rozpočet" a kde je hodnocení vyšší než 3,5:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview

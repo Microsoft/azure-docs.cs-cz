@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aa2357e31bf2fba97ae8547948cacdffc70cc741
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: e4141bc4887a166876d1fc4590b73f382abd0b95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705006"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936669"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)](./search-get-started-powershell.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Post (REST)](search-get-started-postman.md)
 > * [Azure Portal](search-get-started-portal.md)
 > 
 
-Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -93,7 +93,7 @@ V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok používá [REST API vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) k odeslání schématu indexu do služby.
+Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok používá [REST API vytvoření indexu](/rest/api/searchservice/create-index) k odeslání schématu indexu do služby.
 
 Požadované prvky indexu zahrnují název, kolekci polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se pole používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo dá být možné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
 
@@ -149,7 +149,7 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
 
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API je [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
+K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API je [Přidání, aktualizace nebo odstranění dokumentů](/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
 
 1. V nové buňce poskytněte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci odeslání pro každý dokument.
 
@@ -251,7 +251,7 @@ K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy 
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](/rest/api/searchservice/search-documents).
 
 1. V buňce zadejte výraz dotazu, který spustí prázdné vyhledávání (Search = *) a vrátí Neseřazený seznam (hledání skóre = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte $count = true pro získání počtu všech dokumentů ve výsledcích.
 

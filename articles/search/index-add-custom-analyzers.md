@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9f8b02d8821c76b2a7766f35244834934db1d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511394"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935904"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání vlastních analyzátorů do polí řetězců v indexu služby Azure Kognitivní hledání
 
@@ -53,7 +53,7 @@ ms.locfileid: "86511394"
 
  `tokenizer_name`Je název provádějících tokenizaci, `token_filter_name_1` a `token_filter_name_2` jsou názvy filtrů tokenů a `char_filter_name_1` a `char_filter_name_2` jsou názvy filtrů znaků (pro platné hodnoty viz tabulka [tokenizátory musíte nejdřív](#Tokenizers), [filtry tokenů](#TokenFilters) a filtry znaků).
 
-Definice analyzátoru je součástí většího indexu. Informace o zbývajících částech indexu najdete v tématu [Vytvoření rozhraní API pro index](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Definice analyzátoru je součástí většího indexu. Informace o zbývajících částech indexu najdete v tématu [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index) .
 
 ```
 "analyzers":(optional)[
@@ -133,9 +133,9 @@ Definice pro filtry znaků, tokenizátory musíte nejdřív a filtry tokenů jso
 
 ## <a name="test-custom-analyzers"></a>Testování vlastních analyzátorů
 
-Můžete použít **operaci analyzátoru testů** v [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) k zobrazení, jak analyzátor přerušuje daný text na tokeny.
+Můžete použít **operaci analyzátoru testů** v [REST API](/rest/api/searchservice/test-analyzer) k zobrazení, jak analyzátor přerušuje daný text na tokeny.
 
-**Request**
+**Žádost**
 ```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
@@ -302,7 +302,7 @@ V následující tabulce jsou tokenizátory musíte nejdřív implementované po
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**Popis a možnosti**|  
 |-|-|-|  
-|[standardním](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Gramatika založená na provádějících tokenizaci, která je vhodná pro zpracování většiny dokumentů v evropském jazyce.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
+|[klasický](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Gramatika založená na provádějících tokenizaci, která je vhodná pro zpracování většiny dokumentů v evropském jazyce.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Tokenizes vstup z okraje do n-gramů dané velikosti (y).<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram.<br /><br /> tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: <br />"Letter", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
 |[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Vygeneruje celý vstup jako jeden token.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 256, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[jednotky](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Vydělí text bez písmen. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  
@@ -331,7 +331,7 @@ V následující tabulce jsou filtry tokenů implementované pomocí Apache Luce
 |[asciifolding](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html)|AsciiFoldingTokenFilter|Převede abecední, číselné a symbolické znaky Unicode, které nejsou v prvních 127 znacích ASCII (blok "Basic Latin" Unicode) na své ekvivalenty standardu ASCII, pokud jeden existuje.<br /><br /> **Možnosti**<br /><br /> preserveOriginal (typ: bool) – Pokud je nastaveno na true, původní token se zachová. Výchozí hodnotou je hodnota false.|  
 |[cjk_bigram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/cjk/CJKBigramFilter.html)|CjkBigramTokenFilter|Forms bigrams výrazy CJK, které se generují z StandardTokenizer.<br /><br /> **Možnosti**<br /><br /> ignoreScripts (typ: pole řetězců) – skripty, které mají být ignorovány. Mezi povolené hodnoty patří: "Han", "Hiragana", "Katakana", "hangul". Výchozí hodnota je prázdný seznam.<br /><br /> outputUnigrams (typ: bool) – nastavte na hodnotu true, pokud chcete vždy vytvořit výstup unigrams i bigrams. Výchozí hodnotou je hodnota false.|  
 |[cjk_width](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/cjk/CJKWidthFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Normalizuje rozdíly v šířce CJK. Přeloží varianty standardu ASCII s plnou šířkou do ekvivalentních variant jazyka Katakana v latince a poloviční šířky do ekvivalentních znaků kana. |  
-|[standardním](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Odstraní anglické possessives a tečky z akronymů. |  
+|[klasický](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Odstraní anglické possessives a tečky z akronymů. |  
 |[common_grams](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/commongrams/CommonGramsFilter.html)|CommonGramTokenFilter|Při indexování Sestavte bigrams, kde se často vyskytují výrazy. Jednoduché výrazy jsou pořád indexované, přičemž bigrams překrývají.<br /><br /> **Možnosti**<br /><br /> commonWords (typ: pole řetězců) – sada běžných slov. Výchozí hodnota je prázdný seznam. Povinná hodnota.<br /><br /> ignoreCase (typ: bool) – Pokud je nastaveno na true, porovnávání rozlišuje malá a velká písmena. Výchozí hodnotou je hodnota false.<br /><br /> queryMode (typ: bool) – vygeneruje bigrams a pak odebere společná slova a jednoduché výrazy následované běžným slovem. Výchozí hodnotou je hodnota false.|  
 |[dictionary_decompounder](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/compound/DictionaryCompoundWordTokenFilter.html)|DictionaryDecompounderTokenFilter|Deformuluje složená slova nalezená v mnoha Germanic jazycích.<br /><br /> **Možnosti**<br /><br /> seznam slov (typ: pole řetězců) – seznam slov, která mají být shodná s. Výchozí hodnota je prázdný seznam. Povinná hodnota.<br /><br /> minWordSize (typ: int) – jsou zpracována pouze slova delší než tato zpráva. Výchozí hodnota je 5.<br /><br /> minSubwordSize (typ: int) – výstupy jsou delší než ty, které jsou na výstupu. Výchozí hodnota je 2.<br /><br /> maxSubwordSize (typ: int) – pouze podslovo kratší, než je výstup. Výchozí hodnota je 15.<br /><br /> onlyLongestMatch (typ: bool) – přidejte do výstupu pouze nejdelší vyhovující podslovo. Výchozí hodnotou je hodnota false.|  
 |[edgeNGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter.html)|EdgeNGramTokenFilterV2|Generuje n-gramů dané velikosti od začátku dopředu nebo zpět od konce vstupního tokenu.<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum 300. Musí být větší než minGram.<br /><br /> Side (typ: String) – určuje, která strana vstupu, z něhož má být n-gram vygenerována. Povolené hodnoty: "front", "back" |  
@@ -372,6 +372,6 @@ V následující tabulce jsou filtry tokenů implementované pomocí Apache Luce
 
 
 ## <a name="see-also"></a>Viz také  
- [Rozhraní REST API pro Azure Kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Rozhraní REST API pro Azure Kognitivní hledání](/rest/api/searchservice/)   
  [Příklady analyzátorů v Azure Kognitivní hledání >](search-analyzers.md#examples)    
- [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/create-index)

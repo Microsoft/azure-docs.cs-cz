@@ -3,13 +3,13 @@ title: Filtrování a předzpracování v sadě Application Insights SDK | Micro
 description: Zapište procesory telemetrie a Inicializátory telemetrie pro sadu SDK, aby bylo možné filtrovat nebo přidat vlastnosti dat před odesláním telemetrie na Application Insights portál.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.custom: devx-track-javascript
-ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: c42b3a79e1c816e92c71e41a738bbb116a39aee1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366751"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936550"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 

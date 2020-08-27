@@ -10,18 +10,18 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935581"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Profilace modelu a určení využití prostředků
 
 V tomto článku se dozvíte, jak profilovat strojové učení s modelem, abyste zjistili, kolik CPU a paměti budete potřebovat pro model při jeho nasazování jako webové služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste provedli školení a zaregistrovali model pomocí Azure Machine Learning. Příklad školení a registrace modelu scikit-učení s Azure Machine Learning najdete v tomto [ukázkovém kurzu](how-to-train-scikit-learn.md) .
 
@@ -36,6 +36,9 @@ Aby bylo možné profilovat model, budete potřebovat:
 
 > [!IMPORTANT]
 > V tuto chvíli podporujeme profilaci služeb, které očekávají, že data požadavku jsou řetězcem, například: řetězec serializovaného JSON, text, String serializovaná image atd. Obsah každého řádku datové sady (řetězce) bude vložen do těla požadavku HTTP a odeslán do služby zapouzdřující model pro účely bodování.
+
+> [!IMPORTANT]
+> Podporujeme jenom profilaci až 2 procesorů v oblasti ChinaEast2 a USGovArizona.
 
 Níže je uveden příklad, jak můžete vytvořit vstupní datovou sadu pro profilování služby, která očekává, že data příchozího požadavku obsahují serializované JSON. V tomto případě jsme vytvořili instance 100 na základě datové sady, která má stejný obsah dat požadavků. V reálných scénářích doporučujeme používat větší datové sady obsahující různé vstupy, zejména v případě, že využití prostředků modelu/chování je závislé na vstupu.
 
@@ -127,9 +130,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
-* [Aktualizovat webovou službu](how-to-deploy-update-web-service.md)
+* [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

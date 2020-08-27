@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-dotnet
+ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209177"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928186"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Rychlý Start: extrakce textu pomocí operace Počítačové zpracování obrazu 2,0 REST API OCR a jazyka C #
 

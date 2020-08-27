@@ -3,12 +3,13 @@ title: Použít přizpůsobování v programu chat robot – Přizpůsobte
 description: Přizpůsobte si robota chatu v C# .NET se smyčkou pro přizpůsobení a poskytněte tak správnému obsahu uživatele na základě akcí (s funkcemi) a funkcí kontextu.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131663"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935649"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot
 
@@ -191,8 +192,8 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Použití robota v emulátoru bot
 
 1. Požádejte o zobrazení nabídky zadáním `I would like to see the menu` . Robot pro chat zobrazí položky.
-1. Umožněte, aby robot navrhl položku zadáním `Please suggest a drink for me.` emulátoru. v okně chatu se zobrazí požadavek a odpověď pořadí, takže uvidíte úplný formát JSON. A robot vytvoří nějaký návrh, např.`How about Latte?`
-1. Podle toho, co byste chtěli přijmout, což znamená, že přijměte horní seřazený výběr, `I like it.` emulátor zobrazí požadavek na odměnu s hodnotou 1 a odpověď v okně chatu, takže uvidíte úplný formát JSON. A robot odpoví `That’s great! I’ll keep learning your preferences over time.` a`Would you like to get a new suggestion or reset the simulated context to a new day?`
+1. Umožněte, aby robot navrhl položku zadáním `Please suggest a drink for me.` emulátoru. v okně chatu se zobrazí požadavek a odpověď pořadí, takže uvidíte úplný formát JSON. A robot vytvoří nějaký návrh, např. `How about Latte?`
+1. Podle toho, co byste chtěli přijmout, což znamená, že přijměte horní seřazený výběr, `I like it.` emulátor zobrazí požadavek na odměnu s hodnotou 1 a odpověď v okně chatu, takže uvidíte úplný formát JSON. A robot odpoví `That’s great! I’ll keep learning your preferences over time.` a `Would you like to get a new suggestion or reset the simulated context to a new day?`
 
     Pokud odpovíte na výběr, bude do přizpůsobeného přizpůsobené `no` skóre pro odměnu 0.
 
@@ -201,9 +202,9 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 
 Řešení .NET je jednoduchý robot na chatu pro robot Framework. Kód související s přizpůsobením je v následujících složkách:
 * `/samples/ChatbotExample/Bots`
-    * `PersonalizerChatbot.cs`soubor pro interakci mezi robotem a přizpůsobením
-* `/samples/ChatbotExample/ReinforcementLearning`– spravuje akce a funkce pro model přizpůsobeného přizpůsobování.
-* `/samples/ChatbotExample/Model`– soubory pro akce a funkce přizpůsobeného přizpůsobování a pro LUIS záměry
+    * `PersonalizerChatbot.cs` soubor pro interakci mezi robotem a přizpůsobením
+* `/samples/ChatbotExample/ReinforcementLearning` – spravuje akce a funkce pro model přizpůsobeného přizpůsobování.
+* `/samples/ChatbotExample/Model` – soubory pro akce a funkce přizpůsobeného přizpůsobování a pro LUIS záměry
 
 ### <a name="personalizerchatbotcs---working-with-personalizer"></a>PersonalizerChatbot.cs – práce s přizpůsobením
 

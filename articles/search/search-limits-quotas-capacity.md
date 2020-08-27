@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749484"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926860"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -37,15 +37,15 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Zdarma | Základní &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | Paměť |
+| Prostředek | Free | Základní &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | Paměť |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
 | Maximální počet jednoduchých polí na index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Maximální složitá pole kolekce na index |40 |40 |40 |40 |40 |40 |40 |40 |
 | Maximální počet prvků napříč všemi komplexními kolekcemi na dokument &nbsp; <sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maximální hloubka složitých polí |10 |10 |10 |10 |10 |10 |10 |10 |
-| Maximální počet modulu pro [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |1 |1 |1 |1 |1 |1 |1 |1 |
-| Maximální počet [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na index |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maximální počet modulu pro [návrhy](/rest/api/searchservice/suggesters) na index |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximální počet [profilů vyhodnocování](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximální počet funkcí na profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> základní služby vytvořené před prosince 2017 mají nižší limity (5 namísto 15) na indexech. Úroveň Basic je jediná SKU s nižším limitem 100 polí na jeden index.
@@ -58,7 +58,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 Od října 2018 již neplatí žádné omezení počtu dokumentů pro žádnou novou službu vytvořenou v jakékoli Fakturovatelné úrovni (Basic, S1, S2, S3, S3 HD) v jakékoli oblasti. Starším službám vytvořeným před říjnu 2018 může i nadále platit omezení počtu dokumentů.
 
-Pokud chcete zjistit, jestli vaše služba má omezení dokumentů, použijte [REST API získat statistiku služby](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Omezení dokumentů se odrazí v odpovědi, `null` což znamená, že nejsou nijak omezeny žádné limity.
+Pokud chcete zjistit, jestli vaše služba má omezení dokumentů, použijte [REST API získat statistiku služby](/rest/api/searchservice/get-service-statistics). Omezení dokumentů se odrazí v odpovědi, `null` což znamená, že nejsou nijak omezeny žádné limity.
 
 > [!NOTE]
 > I když služba neukládá žádná omezení, má horizontálních oddílů limit přibližně 24 000 000 000 dokumentů na index v rámci služeb vyhledávání Basic, S1, S2 a S3. V případě S3 HD je limit horizontálních oddílů 2 000 000 000 dokumentů na jeden index. Každý prvek komplexní kolekce se počítá jako samostatný dokument z hlediska horizontálních oddílů omezení.
@@ -105,7 +105,7 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 Maximální počet mapování synonym se liší podle úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je ekvivalentní termín. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Prostředek | Zdarma | Základní | S1 | S2 | S3 | S3-HD |L1 | Paměť |
+| Prostředek | Free | Základní | S1 | S2 | S3 | S3-HD |L1 | Paměť |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -120,7 +120,7 @@ Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat ni�
 
 ## <a name="data-limits-ai-enrichment"></a>Omezení pro data (rozšíření AI)
 
-[Kanál pro obohacení AI](cognitive-search-concept-intro.md) , který umožňuje volat prostředek analýza textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu míněníí](cognitive-search-skill-sentiment.md)a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md)a [zjišťování osobních údajů](cognitive-search-skill-pii-detection.md) podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+[Kanál pro obohacení AI](cognitive-search-concept-intro.md) , který umožňuje volat prostředek analýza textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu míněníí](cognitive-search-skill-sentiment.md)a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md)a [zjišťování osobních údajů](cognitive-search-skill-pii-detection.md) podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Omezení omezování
 
@@ -141,7 +141,7 @@ Omezení požadavků na statickou rychlost pro operace související s indexem:
 * Maximálně 32 polí v klauzuli $orderby
 * Maximální velikost hledaného výrazu je 32 766 bajtů (32 KB minus 2 bajty) textu kódovaného v kódování UTF-8.
 
-<sup>1</sup> v Azure kognitivní hledání, tělo požadavku podléhá hornímu limitu 16 MB a zaznamenání praktického limitu obsahu jednotlivých polí nebo kolekcí, které nejsou jinak omezeny teoretickými limity (Další informace o složení polí a omezeních najdete v tématu [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ).
+<sup>1</sup> v Azure kognitivní hledání, tělo požadavku podléhá hornímu limitu 16 MB a zaznamenání praktického limitu obsahu jednotlivých polí nebo kolekcí, které nejsou jinak omezeny teoretickými limity (Další informace o složení polí a omezeních najdete v tématu [podporované datové typy](/rest/api/searchservice/supported-data-types) ).
 
 ## <a name="api-response-limits"></a>Omezení odezvy rozhraní API
 * Maximální počet 1000 dokumentů vrácených na stránku výsledků hledání

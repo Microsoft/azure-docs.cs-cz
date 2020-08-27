@@ -5,12 +5,12 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 66c53c7485041ec9abaf72396efcfa3325a13732
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0c2811b6bed3d02a9689f3b9e49a4c3888dff6c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799902"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935564"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 
@@ -62,6 +62,7 @@ service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s).
 service.update(models=[new_model], inference_config=inference_config)
+service.wait_for_deployment(show_output=True)
 print(service.state)
 print(service.get_logs())
 ```
@@ -88,7 +89,7 @@ Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.micr
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

@@ -7,14 +7,15 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 11f80a000f386e661f3eb3f0ffb4969701704c90
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dff5c7c7018945bb93ce492ee3205f3567dff1d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226073"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925881"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 

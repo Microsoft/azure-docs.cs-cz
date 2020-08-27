@@ -10,12 +10,13 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650270"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936822"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka C #
 
@@ -24,7 +25,7 @@ Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu
 I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 
@@ -32,7 +33,7 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 
    1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
    2. Vyberte **Spravovat balíčky NuGet**.
-   3. Vyhledejte a vyberte *Newtonsoft. JSON*a pak balíček nainstalujte.
+   3. Vyhledejte a vyberte *Newtonsoft.Jsna*a pak balíček nainstalujte.
 
 - Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 

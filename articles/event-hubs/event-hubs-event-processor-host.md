@@ -3,12 +3,12 @@ title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002518"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936176"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
@@ -43,7 +43,7 @@ Namísto sestavování vlastního řešení pro tento Event Hubs poskytuje tuto 
 
 ## <a name="ieventprocessor-interface"></a>Rozhraní IEventProcessor
 
-Nejprve spotřebovávají aplikace, které implementují rozhraní [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) , které má čtyři metody: [openAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Toto rozhraní obsahuje skutečný kód pro využití událostí, které Event Hubs odesílá. Následující kód ukazuje jednoduchou implementaci:
+Nejprve spotřebovávají aplikace, které implementují rozhraní  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) , které má čtyři metody: [openAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Toto rozhraní obsahuje skutečný kód pro využití událostí, které Event Hubs odesílá. Následující kód ukazuje jednoduchou implementaci:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -192,10 +192,10 @@ Nedoporučujeme používat aplikace, kde jste vytvořili přijímač s epocha a 
 Teď, když jste obeznámeni s hostitelem procesoru událostí, přečtěte si následující články, kde se dozvíte víc o Event Hubs:
 
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

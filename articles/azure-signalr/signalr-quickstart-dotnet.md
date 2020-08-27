@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dee6b0b1635880fb50b8d35f1f91ad2bce569cff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74158172"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928475"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby ASP.NET and Signal Service
 
@@ -24,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak začít s ASP.NET a službou Azure Sign
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
@@ -62,7 +63,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
 
 1. Vyberte a zkopírujte primární připojovací řetězec.
 
-1. Nyní nastavte připojovací řetězec v souboru Web. config.
+1. Nyní nastavte připojovací řetězec v souboru web.config.
 
     ```xml
     <configuration>
@@ -73,7 +74,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     </configuration>
     ```
 
-1. V *Startup.cs*, namísto volání `MapSignalR()`, je třeba volat `MapAzureSignalR({your_applicationName})` a předávat připojovací řetězec, aby se aplikace připojovala ke službě namísto samotného hostitelského signálu. Nahraďte `{YourApplicationName}` názvem vaší aplikace. Tento název je jedinečný název, který rozlišuje tuto aplikaci od ostatních aplikací. Můžete použít `this.GetType().FullName` jako hodnotu.
+1. V *Startup.cs*, namísto volání `MapSignalR()` , je třeba volat `MapAzureSignalR({your_applicationName})` a předávat připojovací řetězec, aby se aplikace připojovala ke službě namísto samotného hostitelského signálu. Nahraďte `{YourApplicationName}` názvem vaší aplikace. Tento název je jedinečný název, který rozlišuje tuto aplikaci od ostatních aplikací. Můžete použít `this.GetType().FullName` jako hodnotu.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -92,7 +93,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     Kromě těchto změn zůstane vše ostatní, ale stále je možné používat rozhraní rozbočovače, které už znáte, a vytvořit obchodní logiku.
 
     > [!NOTE]
-    > V implementaci je vystavený `/signalr/negotiate` koncový bod pro vyjednávání pomocí sady SDK služby Azure Signal. Při pokusu klienta o připojení a přesměrování klientů na koncový bod služby definovaný v připojovacím řetězci vrátí speciální odpověď na vyjednávání.
+    > V implementaci `/signalr/negotiate` je vystavený koncový bod pro vyjednávání pomocí sady SDK služby Azure Signal. Při pokusu klienta o připojení a přesměrování klientů na koncový bod služby definovaný v připojovacím řetězci vrátí speciální odpověď na vyjednávání.
 
 1. Stisknutím klávesy **F5** spusťte projekt v režimu ladění. Můžete vidět, že se aplikace spouští místně. Místo hostování modulu runtime signálu pomocí samotné aplikace se nyní připojí ke službě Azure Signal.
 

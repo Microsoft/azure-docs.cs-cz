@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ff56a3e9c15d6f4bf04765c30084a9ca68df0e73
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544753"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934782"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
@@ -34,7 +35,7 @@ Kompletní vzorový kód je k dispozici v [ukázkách úložiště moderování 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - Počítačové zpracování obrazu klíč předplatného (stejné pokyny jako výše).

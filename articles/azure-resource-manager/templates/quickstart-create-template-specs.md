@@ -2,34 +2,34 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: aaceac9fccf21074732c4b6c4b3e72cc09552a65
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924321"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936380"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
 V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager (šablonu ARM) do [specifikace šablony](template-specs.md) a pak nasadit tuto specifikaci šablony. Vaše specifikace šablony obsahuje šablonu ARM, která nasazuje účet úložiště.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít, musíte se [zaregistrovat v seznamu čekání](https://aka.ms/templateSpecOnboarding).
 >
-> Po získání schválení ze seznamu čekání se zobrazí pokyny k instalaci modulu PowerShell Preview.
+> Po schválení ze seznamu čekání získáte pokyny k instalaci modulu PowerShell Preview a modulu CLI verze Preview.
 
 ## <a name="create-template-spec"></a>Vytvořit specifikaci šablony
 
-Specifikace šablony je nový typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure PowerShell nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
+Specifikace šablony je nový typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure PowerShell, Azure CLI nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
 
-V prostředí PowerShell je šablona ARM předána jako parametr příkazu. Šablona ARM, která se zabalí v rámci specifikace šablony, je vložená do definice specifikace šablony.
+Pomocí PowerShellu a rozhraní příkazového řádku je šablona ARM předána jako parametr příkazu. Šablona ARM, která se zabalí v rámci specifikace šablony, je vložená do definice specifikace šablony.
 
 Níže jsou uvedené možnosti.
 
@@ -37,144 +37,169 @@ Níže jsou uvedené možnosti.
 
 1. Když vytvoříte specifikaci šablony pomocí PowerShellu, můžete předat místní šablonu. Zkopírujte následující šablonu a uložte ji místně do souboru s názvem **azuredeploy.jsv**. Tento rychlý Start předpokládá, že jste uložili do cesty **c:\Templates\azuredeploy.js** , ale můžete použít libovolnou cestu.
 
-   :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
 1. Vytvořte novou skupinu prostředků, která bude obsahovat specifikaci šablony.
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name templateSpecRG `
-     -Location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name templateSpecRG `
+      -Location westus2
+    ```
 
 1. Pak vytvořte v této skupině prostředků specifikaci šablony. Dáte nové šabloně specifikace název **storageSpec**.
 
-   ```powershell
-   New-AzTemplateSpec `
-     -ResourceGroupName templateSpecRG `
-     -Name storageSpec `
-     -Version "1.0" `
-     -Location westus2 `
-     -TemplateJsonFile "c:\Templates\azuredeploy.json"
-   ```
+    ```azurepowershell
+    New-AzTemplateSpec `
+      -Name storageSpec `
+      -Version "1.0" `
+      -ResourceGroupName templateSpecRG `
+      -Location westus2 `
+      -TemplateJsonFile "c:\Templates\azuredeploy.json"
+    ```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+1. Když vytvoříte specifikaci šablony pomocí rozhraní příkazového řádku, můžete předat místní šablonu. Zkopírujte následující šablonu a uložte ji místně do souboru s názvem **azuredeploy.jsv**. Tento rychlý Start předpokládá, že jste uložili do cesty **c:\Templates\azuredeploy.js** , ale můžete použít libovolnou cestu.
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+1. Vytvořte novou skupinu prostředků, která bude obsahovat specifikaci šablony.
+
+    ```azurecli
+    az group create \
+      --name templateSpecRG \
+      --location westus2
+    ```
+
+1. Pak vytvořte v této skupině prostředků specifikaci šablony. Dáte nové šabloně specifikace název **storageSpec**.
+
+    ```azurecli
+    az template-specs create \
+      --name storageSpec \
+      --version "1.0" \
+      --resource-group templateSpecRG \
+      --location "westus2" \
+      --template-file "c:\Templates\azuredeploy.json"
+    ```
 
 # <a name="arm-template"></a>[Šablona ARM](#tab/azure-resource-manager)
 
 1. Když použijete šablonu ARM k vytvoření specifikace šablony, šablona je vložena do definice prostředků. Zkopírujte následující šablonu a uložte ji místně jako **azuredeploy.jsna**. Tento rychlý Start předpokládá, že jste uložili do cesty **c:\Templates\azuredeploy.js** , ale můžete použít libovolnou cestu.
 
-   > [!NOTE]
-   > V vložené šabloně musí být všechny levé hranaté závorky uvozené druhou levou hranatou závorkou. `[[`Místo použijte `[` .
+    > [!NOTE]
+    > V vložené šabloně musí být všechny levé hranaté závorky uvozené druhou levou hranatou závorkou. `[[`Místo použijte `[` .
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {},
-       "functions": [],
-       "variables": {},
-       "resources": [
-           {
-               "type": "Microsoft.Resources/templateSpecs",
-               "apiVersion": "2019-06-01-preview",
-               "name": "storageSpec",
-               "location": "westus2",
-               "properties": {
-                   "displayName": "Storage template spec"
-               },
-               "tags": {},
-               "resources": [
-                   {
-                       "type": "versions",
-                       "apiVersion": "2019-06-01-preview",
-                       "name": "1.0",
-                       "location": "westus2",
-                       "dependsOn": [ "storageSpec" ],
-                       "properties": {
-                           "template": {
-                               "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                               "contentVersion": "1.0.0.0",
-                               "parameters": {
-                                   "storageAccountType": {
-                                       "type": "string",
-                                       "defaultValue": "Standard_LRS",
-                                       "allowedValues": [
-                                           "Standard_LRS",
-                                           "Standard_GRS",
-                                           "Standard_ZRS",
-                                           "Premium_LRS"
-                                       ],
-                                       "metadata": {
-                                           "description": "Storage Account type"
-                                       }
-                                   },
-                                   "location": {
-                                       "type": "string",
-                                       "defaultValue": "[[resourceGroup().location]",
-                                       "metadata": {
-                                           "description": "Location for all resources."
-                                       }
-                                   }
-                               },
-                               "variables": {
-                                   "storageAccountName": "[[concat('store', uniquestring(resourceGroup().id))]"
-                               },
-                               "resources": [
-                                   {
-                                       "type": "Microsoft.Storage/storageAccounts",
-                                       "apiVersion": "2019-04-01",
-                                       "name": "[[variables('storageAccountName')]",
-                                       "location": "[[parameters('location')]",
-                                       "sku": {
-                                           "name": "[[parameters('storageAccountType')]"
-                                       },
-                                       "kind": "StorageV2",
-                                       "properties": {}
-                                   }
-                               ],
-                               "outputs": {
-                                   "storageAccountName": {
-                                       "type": "string",
-                                       "value": "[[variables('storageAccountName')]"
-                                   }
-                               }
-                           }
-                       },
-                       "tags": {}
-                   }
-               ]
-           }
-       ],
-       "outputs": {}
-   }
-   ```
+    ```json
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "functions": [],
+      "variables": {},
+      "resources": [
+        {
+          "type": "Microsoft.Resources/templateSpecs",
+          "apiVersion": "2019-06-01-preview",
+          "name": "storageSpec",
+          "location": "westus2",
+          "properties": {
+            "displayName": "Storage template spec"
+          },
+          "tags": {},
+          "resources": [
+            {
+              "type": "versions",
+              "apiVersion": "2019-06-01-preview",
+              "name": "1.0",
+              "location": "westus2",
+              "dependsOn": [ "storageSpec" ],
+              "properties": {
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {
+                    "storageAccountType": {
+                      "type": "string",
+                      "defaultValue": "Standard_LRS",
+                      "allowedValues": [
+                        "Standard_LRS",
+                        "Standard_GRS",
+                        "Standard_ZRS",
+                        "Premium_LRS"
+                      ],
+                      "metadata": {
+                        "description": "Storage Account type"
+                      }
+                    },
+                    "location": {
+                      "type": "string",
+                      "defaultValue": "[[resourceGroup().location]",
+                      "metadata": {
+                        "description": "Location for all resources."
+                      }
+                    }
+                  },
+                  "variables": {
+                    "storageAccountName": "[[concat('store', uniquestring(resourceGroup().id))]"
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[[variables('storageAccountName')]",
+                      "location": "[[parameters('location')]",
+                      "sku": {
+                        "name": "[[parameters('storageAccountType')]"
+                      },
+                      "kind": "StorageV2",
+                      "properties": {}
+                    }
+                  ],
+                  "outputs": {
+                    "storageAccountName": {
+                      "type": "string",
+                      "value": "[[variables('storageAccountName')]"
+                    }
+                  }
+                }
+              },
+              "tags": {}
+            }
+          ]
+        }
+      ],
+      "outputs": {}
+    }
+    ```
 
 1. Pomocí Azure CLI nebo PowerShellu vytvořte novou skupinu prostředků.
 
-   ```azurecli
-   az group create \
-     --name templateSpecRG \
-     --location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name templateSpecRG `
+      -Location westus2
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name templateSpecRG `
-     -Location westus2
-   ```
+    ```azurecli
+    az group create \
+      --name templateSpecRG \
+      --location westus2
+    ```
 
 1. Nasaďte šablonu pomocí Azure CLI nebo PowerShellu.
 
-   ```azurecli
-   az deployment group create \
-     --name templateSpecRG \
-     --template-file "c:\Templates\azuredeploy.json"
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -ResourceGroupName templateSpecRG `
+      -TemplateFile "c:\Templates\azuredeploy.json"
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -ResourceGroupName templateSpecRG `
-     -TemplateFile "c:\Templates\azuredeploy.json"
-   ```
+    ```azurecli
+    az deployment group create \
+      --name templateSpecRG \
+      --template-file "c:\Templates\azuredeploy.json"
+    ```
 
 ---
 
@@ -186,92 +211,128 @@ Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je s
 
 1. Vytvořte skupinu prostředků, která bude obsahovat nový účet úložiště.
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name storageRG `
-     -Location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name storageRG `
+      -Location westus2
+    ```
 
 1. Získejte ID prostředku specifikace šablony.
 
-   ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
-   ```
+    ```azurepowershell
+    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
+    ```
 
 1. Nasaďte specifikaci šablony.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -TemplateSpecId $id `
-     -ResourceGroupName storageRG
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -TemplateSpecId $id `
+      -ResourceGroupName storageRG
+    ```
 
 1. Zadejte parametry přesně stejně jako u šablony ARM. Znovu nasaďte specifikaci šablony s parametrem pro typ účtu úložiště.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -TemplateSpecId $id `
-     -ResourceGroupName storageRG `
-     -StorageAccountType Standard_GRS
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -TemplateSpecId $id `
+      -ResourceGroupName storageRG `
+      -storageAccountType Standard_GRS
+    ```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+1. Vytvořte skupinu prostředků, která bude obsahovat nový účet úložiště.
+
+    ```azurecli
+    az group create \
+      --name storageRG \
+      --location westus2
+    ```
+
+1. Získejte ID prostředku specifikace šablony.
+
+    ```azurecli
+    id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+    ```
+
+    > [!NOTE]
+    > Došlo k známému problému s získáním ID specifikace šablony a jeho přiřazením k proměnné ve Windows PowerShellu.
+
+1. Nasaďte specifikaci šablony.
+
+    ```azurecli
+    az deployment group create \
+      --resource-group storageRG \
+      --template-spec $id
+    ```
+
+1. Zadejte parametry přesně stejně jako u šablony ARM. Znovu nasaďte specifikaci šablony s parametrem pro typ účtu úložiště.
+
+    ```azurecli
+    az deployment group create \
+      --resource-group storageRG \
+      --template-spec $id \
+      --parameters storageAccountType='Standard_GRS'
+    ```
 
 # <a name="arm-template"></a>[Šablona ARM](#tab/azure-resource-manager)
 
 1. Zkopírujte následující šablonu a uložte ji místně do souboru s názvem **storage.jsv**.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {},
-       "functions": [],
-       "variables": {},
-       "resources": [
-           {
-               "type": "Microsoft.Resources/deployments",
-               "apiVersion": "2020-06-01",
-               "name": "demo",
-               "properties": {
-                   "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
-                   },
-                   "parameters": {
-                   },
-                   "mode": "Incremental"
-               }
-           }
-       ],
-       "outputs": {}
-   }
-   ```
+    ```json
+       {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "functions": [],
+      "variables": {},
+      "resources": [
+        {
+          "type": "Microsoft.Resources/deployments",
+          "apiVersion": "2020-06-01",
+          "name": "demo",
+          "properties": {
+            "templateLink": {
+              "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+            },
+            "parameters": {
+            },
+            "mode": "Incremental"
+          }
+        }
+      ],
+      "outputs": {}
+    }
+    ```
 
 1. Pomocí Azure CLI nebo PowerShellu vytvořte novou skupinu prostředků pro účet úložiště.
 
-   ```azurecli
-   az group create \
-     --name storageRG \
-     --location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name storageRG `
+      -Location westus2
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name storageRG `
-     -Location westus2
-   ```
+    ```azurecli
+    az group create \
+      --name storageRG \
+      --location westus2
+    ```
 
 1. Nasaďte šablonu pomocí Azure CLI nebo PowerShellu.
 
-   ```azurecli
-   az deployment group create \
-     --name storageRG \
-     --template-file "c:\Templates\storage.json"
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -ResourceGroupName storageRG `
+      -TemplateFile "c:\Templates\storage.json"
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -ResourceGroupName storageRG `
-     -TemplateFile "c:\Templates\storage.json"
-   ```
+    ```azurecli
+    az deployment group create \
+      --name storageRG \
+      --template-file "c:\Templates\storage.json"
+    ```
 
 ---
 

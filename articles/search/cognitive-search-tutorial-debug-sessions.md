@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290686"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935972"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Kurz: Diagnostika, oprava a potvrzení změn ve vašem dovednosti
 
@@ -25,7 +25,7 @@ V tomto článku použijete Azure Portal k přístupu k relacím ladění, abyst
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Předplatné Azure. Vytvoření [bezplatného účtu](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nebo použití aktuálního předplatného
@@ -39,7 +39,7 @@ Tento kurz používá služby Azure Kognitivní hledání a Azure Storage.
 
 * [Stáhněte si ukázková data](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19) skládající se z 19 souborů.
 
-* [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+* [Vytvořte si účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal) nebo [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    Vyberte stejnou oblast jako Azure Kognitivní hledání, abyste se vyhnuli poplatkům za šířku pásma.
    
@@ -249,7 +249,7 @@ Po skončení běhu indexeru by mělo být zelené zaškrtnutí a slovo úspěš
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -258,5 +258,5 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o dovednosti](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets) 
->  [Další informace o přírůstkovém obohacení a ukládání do mezipaměti](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [Další informace o dovednosti](./cognitive-search-working-with-skillsets.md) 
+>  [Další informace o přírůstkovém obohacení a ukládání do mezipaměti](./cognitive-search-incremental-indexing-conceptual.md)

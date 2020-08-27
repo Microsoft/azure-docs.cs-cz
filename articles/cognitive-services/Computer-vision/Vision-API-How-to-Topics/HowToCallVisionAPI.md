@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 085da17a29e1d5ff1fa69a62e0029fb917d56bb1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85957898"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936329"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
 
@@ -182,7 +182,7 @@ Pole | Typ | Obsah
 Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | `string`    | Klíčové slovo z třídění značek.
 tags[].Score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
-description     | `object`    | Objekt nejvyšší úrovně pro popis.
+Popis     | `object`    | Objekt nejvyšší úrovně pro popis.
 description.tags[] |    `string`    | Seznam značek.  Pokud není dostatečná důvěra v možnosti vytvoření titulku, mohou být značky jedinou informací, které jsou k dispozici volajícímu.
 description.captions[].text    | `string`    | Výraz, který popisuje obrázek.
 description.captions[].confidence    | `number`    | Skóre spolehlivosti fráze.

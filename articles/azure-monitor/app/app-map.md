@@ -3,13 +3,14 @@ title: Mapa aplikace v Azure Application Insights | Microsoft Docs
 description: Monitorování složitých topologií aplikace s mapou aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421293"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936601"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -254,7 +255,7 @@ Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, m�
 
 Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkuste postupovat takto:
 

@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109616"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928917"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -36,8 +36,9 @@ Tabulka shrnuje úkoly, které je potřeba provést v Azure. Postupujte podle po
 **Úkol** | **Podrobnosti** | **Oprávnění**
 --- | --- | ---
 **Vytvoření projektu Azure Migrate** | Azure Migrate projekt poskytuje centrální umístění pro orchestraci a správu hodnocení a migrace pomocí nástrojů Azure Migrate, nástrojů společnosti Microsoft a nabídek třetích stran. | Váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka ve skupině prostředků, ve které se projekt nachází.
-**Registrovat zařízení** | Azure Migrate používá ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V odlehčené zařízení Azure Migrate. [Další informace](migrate-appliance-architecture.md#appliance-registration). | Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka v předplatném Azure.
+**Registrovat zařízení** | Azure Migrate používá ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V odlehčené zařízení Azure Migrate. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration). | Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 **Vytvoření aplikace Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá pro komunikaci mezi agenty běžícími na zařízení a Azure Migrate. | Váš účet Azure potřebuje oprávnění k vytváření aplikací Azure AD.
+**Vytvoření trezoru klíčů** | Key Vault se vytvoří jako součást registrace zařízení a používá se ke správě certifikátu staženého na zařízení během jeho konfigurace.| Aby bylo možné Azure Migrate vytvořit Key Vault, váš účet Azure potřebuje oprávnění přispěvatele ve skupině prostředků, ve které se nachází projekt Azure Migrate.
 **Vytvoření virtuálního počítače** | Potřebujete oprávnění k vytvoření virtuálního počítače ve skupině prostředků a virtuální síti a pro zápis na spravovaný disk Azure. | Účet Azure potřebuje roli Přispěvatel virtuálních počítačů.
 
 
@@ -74,13 +75,14 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+
 
 ### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
 

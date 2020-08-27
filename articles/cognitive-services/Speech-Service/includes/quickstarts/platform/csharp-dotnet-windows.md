@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: b47fd90a3fc92234d95ddc9d9f4f14b5af67d757
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925808"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926637"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro .NET Framework (Windows). Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
@@ -41,7 +42,7 @@ Budete muset nainstalovat [balíček NuGet sady Speech SDK](https://aka.ms/csspe
 
 1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění**a pak vyberte **vytvořit**.
 
-1. V řádku nabídek sady Visual Studio vyberte **nástroje** > **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
+1. V řádku nabídek sady Visual Studio vyberte **nástroje**  >  **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 
 1. Ověřte, zda je k dispozici úloha **vývoj desktopových** aplikací pro .NET. Pokud se úloha nenainstalovala, zaškrtněte políčko vedle ní a pak výběrem **změnit** spusťte instalaci. Stažení a instalace může trvat několik minut.
 
@@ -75,7 +76,7 @@ Budete muset nainstalovat [balíček NuGet sady Speech SDK](https://aka.ms/csspe
 
 Chcete-li sestavit a spustit konzolovou aplikaci, vytvořte konfiguraci platformy, která odpovídá architektuře vašeho počítače.
 
-1. V řádku nabídek vyberte **sestavení** > **Configuration Manager**. Zobrazí se dialogové okno **Configuration Manager** .
+1. V řádku nabídek vyberte **sestavení**  >  **Configuration Manager**. Zobrazí se dialogové okno **Configuration Manager** .
 
    ![Configuration Manager – dialogové okno](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

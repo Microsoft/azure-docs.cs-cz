@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b8fd25e209316e828e234b4c64c8b2a2152de6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080489"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928577"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Kognitivní hledání Azure pomocí identit služby Active Directory
 
@@ -30,7 +30,7 @@ Tento článek se zabývá následujícími úkony:
 > [!NOTE]
 > Ukázky fragmentů kódu v tomto článku jsou napsané v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Váš index v Azure Kognitivní hledání musí mít [pole zabezpečení](search-security-trimming-for-azure-search.md) pro uložení seznamu identit skupin, které mají k dokumentu přístup pro čtení. Tento případ použití předpokládá, že se jedná o korespondenci mezi zabezpečenou položkou (jako je aplikace školních aplikací jednotlivce) a bezpečnostní pole určující, kdo má přístup k této položce (zaměstnancům pro přijímání).
 
@@ -40,7 +40,7 @@ Vaše aplikace musí být také zaregistrovaná v AAD, jak je popsáno v násled
 
 ### <a name="register-your-application-with-aad"></a>Registrace aplikace pomocí AAD
 
-Tento krok integruje vaši aplikaci s AAD pro účely přijímání přihlášení uživatelů a skupinových účtů. Pokud nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového tenanta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) , abyste mohli provést následující kroky.
+Tento krok integruje vaši aplikaci s AAD pro účely přijímání přihlášení uživatelů a skupinových účtů. Pokud nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového tenanta](../active-directory/develop/quickstart-create-new-tenant.md) , abyste mohli provést následující kroky.
 
 1. Přejít na aplikaci na [**portál pro registraci aplikací**](https://apps.dev.microsoft.com)  >   **Converged app**  >  **Přidat aplikaci**
 2. Zadejte název aplikace a pak klikněte na **vytvořit**. 
@@ -63,7 +63,7 @@ Pokud ale existující uživatele nemáte, můžete k vytvoření objektů zabez
 
 Členství uživatele a skupiny může být velmi kapalina, zejména ve velkých organizacích. Kód, který sestavuje identity uživatelů a skupin, by měl být často spuštěný dostatečně, aby bylo možné vybírat změny v členství organizace. Stejně tak váš index služby Azure Kognitivní hledání vyžaduje podobný plán aktualizace, který odráží aktuální stav povolených uživatelů a prostředků.
 
-### <a name="step-1-create-aad-group"></a>Krok 1: vytvoření [skupiny AAD](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-group"></a>Krok 1: vytvoření [skupiny AAD](/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>Krok 2: vytvoření [uživatele AAD](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-user"></a>Krok 2: vytvoření [uživatele AAD](/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -98,9 +98,9 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: ukládání identifikátorů skupin do mezipaměti
-Pokud chcete snížit latenci sítě, můžete přidružení skupin uživatelů ukládat do mezipaměti, aby při vydání žádosti o vyhledávání byly skupiny vráceny z mezipaměti a ukládaly do AAD zpětný převod. Pomocí [rozhraní API pro AAD Batch](https://developer.microsoft.com/graph/docs/concepts/json_batching) můžete odeslat jednu žádost HTTP s více uživateli a sestavit mezipaměť.
+Pokud chcete snížit latenci sítě, můžete přidružení skupin uživatelů ukládat do mezipaměti, aby při vydání žádosti o vyhledávání byly skupiny vráceny z mezipaměti a ukládaly do AAD zpětný převod. Pomocí [rozhraní API pro AAD Batch](/graph/json-batching) můžete odeslat jednu žádost HTTP s více uživateli a sestavit mezipaměť.
 
-Microsoft Graph je navržena tak, aby zpracovávala velký objem požadavků. Pokud dojde k zahlcení počtu požadavků, Microsoft Graph požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [omezení Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
+Microsoft Graph je navržena tak, aby zpracovávala velký objem požadavků. Pokud dojde k zahlcení počtu požadavků, Microsoft Graph požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [omezení Microsoft Graph](/graph/throttling).
 
 ## <a name="index-document-with-their-permitted-groups"></a>Indexovat dokument s povolenými skupinami
 
@@ -138,7 +138,7 @@ Pokud chcete filtrovat dokumenty vrácené ve výsledcích hledání na základ�
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: načtení identifikátorů skupin uživatelů
 
-Pokud skupiny uživatelů ještě nejsou uložené v mezipaměti nebo vypršela platnost mezipaměti, vydejte požadavek [skupin](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) .
+Pokud skupiny uživatelů ještě nejsou uložené v mezipaměti nebo vypršela platnost mezipaměti, vydejte požadavek [skupin](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) .
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

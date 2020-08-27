@@ -3,12 +3,12 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172108"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936227"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -37,7 +37,7 @@ Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS
 
 Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má při inicializaci relace vyšší náklady na síť, ale protokol HTTPS vyžaduje pro každý požadavek další režii TLS. AMQP má pro často používané zdroje vyšší výkon.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![Klíče oddílu](./media/event-hubs-features/partition_keys.png)
 
 Služba Event Hubs zajišťuje, aby se všechny události, které sdílejí hodnotu klíče oddílu, v pořádku doručily do stejného oddílu. Pokud se klíče oddílů používají společně se zásadami zdroje, musí si identita zdroje a hodnota klíče oddílu odpovídat. V opačném případě dojde k chybě.
 
@@ -86,13 +86,13 @@ Následující příklady znázorňují konvenci identifikátoru URI pro skupinu
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Architektura Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>Posuny datového proudu
 
 *Posun* je pozice události v rámci oddílu. Posun si můžete představit jako kurzor na straně klienta. Posun je číslo bajtu události. Tento posun umožňuje příjemci události (čtenáři) určit bod v datovém proudu událostí, od kterého chce události začít číst. Posun můžete zadat v podobě časového razítka nebo hodnoty posunu. Příjemci si sami zodpovídají za uložení svých hodnot posunu mimo službu Event Hubs. Každá událost v rámci oddílu zahrnuje posun.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Posun oddílu](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Vytváření kontrolních bodů
 
@@ -104,7 +104,7 @@ Pokud se čtenář z oddílu odpojí, začne při opětovném připojení číst
 > Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
 > - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>Běžné úlohy příjemce
@@ -138,10 +138,10 @@ Správa posunu je na vás.
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 - Začínáme se službou Event Hubs
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

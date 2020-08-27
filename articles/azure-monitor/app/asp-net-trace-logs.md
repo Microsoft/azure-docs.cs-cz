@@ -2,13 +2,14 @@
 title: Prozkoumejte protokoly trasování .NET v Application Insights
 description: Hledání v protokolech vygenerovaných trasováním, NLog nebo Log4Net.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: c192ae8fad6cf463af892018fcac385b3bdcd345
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c17f1f4eb8d2fb680f31a42009247b25c74941c9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321322"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936448"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
 
@@ -135,7 +136,7 @@ Pro každý zdroj můžete nastavit následující parametry:
 ## <a name="use-the-trace-api-directly"></a>Přímé použití rozhraní API trasování
 Rozhraní API pro trasování Application Insights můžete volat přímo. Toto rozhraní API používají adaptéry protokolování.
 
-Například:
+Příklad:
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -144,7 +145,7 @@ telemetry.TrackTrace("Slow response - database01");
 
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.
 
-Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
+Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
   ```csharp
   var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -188,7 +189,7 @@ Můžete například:
 >Pokud vaše aplikace odesílá spoustu dat a používáte sadu SDK Application Insights pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce *adaptivního vzorkování* fungovat a odesílat jenom část telemetrie. [Další informace o vzorkování.](./sampling.md)
 >
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="how-do-i-do-this-for-java"></a>Návody to udělat pro Java?
 V případě instrumentace bez kódu Java (doporučeno) protokoly se shromažďují mimo pole, použijte [agenta Java 3,0](./java-in-process-agent.md).
 

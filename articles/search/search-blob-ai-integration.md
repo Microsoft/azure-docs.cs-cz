@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73496442"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936737"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>Použití AI k pochopení dat služby Blob Storage
 
@@ -112,7 +112,7 @@ Obohacený dokument na konci kanálu se od původní vstupní verze liší pří
 
 Díky obohacení AI se můžete dostat na maximum, abyste mohli co nejvíc využít data v Azure Storage, včetně kombinování Cognitive Services různých způsobů a vytváření vlastních dovedností pro případy, kdy pro daný scénář neexistuje žádná stávající služba pro rozpoznávání. Další informace najdete na následujících odkazech.
 
-+ [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [Nastavení indexeru objektů BLOB (Azure Kognitivní hledání)](search-howto-indexing-azure-blob-storage.md) 
 + [Přehled rozšíření AI (Azure Kognitivní hledání)](cognitive-search-concept-intro.md) 
 + [Vytvoření dovednosti (Azure Kognitivní hledání)](cognitive-search-defining-skillset.md)

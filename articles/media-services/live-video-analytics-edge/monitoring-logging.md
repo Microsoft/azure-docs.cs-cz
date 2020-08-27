@@ -3,12 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled živé analýzy videí na IoT Edge monitorování a protokolování.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060456"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934289"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -100,13 +100,32 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
    ```
 Události generované modulem jsou odesílány do [centra IoT Edge](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)a v takovém případě je lze směrovat do jiných cílů. 
 
+### <a name="timestamps-in-analytic-events"></a>Časová razítka v analytických událostech
+Jak je uvedeno výše, události vygenerované jako součást analýzy videa mají přidružené časové razítko. Pokud jste jako součást vaší topologie grafu [nahráli živé video](video-recording-concept.md) , toto časové razítko vám pomůže najít, kde v zaznamenaném videu došlo k určité události. V následující části najdete pokyny k mapování časového razítka v analytické události na časovou osu videa zaznamenaného v [prostředku Azure Media Service](terminology.md#asset).
+
+Nejprve rozbalte `eventTime` hodnotu. Tuto hodnotu použijte v rámci [filtru časového rozsahu](playback-recordings-how-to.md#time-range-filters) k načtení vhodné části záznamu. Například můžete chtít načíst video, které spustí 30 sekund před `eventTime` a končí 30 sekund. U výše uvedeného příkladu, kde `eventTime` je 2020-05-12T23:33:09.381 z, požadavek na manifest HLS pro okno +/-30 s by vypadal takto:
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+Výše uvedená adresa URL by vrátila [hlavní seznam](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)testů s názvem, který obsahuje adresy URL pro seznamy skladeb multimédií. Seznam stop média obsahuje následující položky:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+Ve výše uvedeném záznamu se zobrazí zpráva, že je k dispozici fragment videa, který začíná hodnotou časového razítka `143039375031270` . `timestamp`Hodnota v analytické události používá stejnou časovou osu jako seznam stop média a lze ji použít k identifikaci relevantního fragmentu videa a k hledání správného rámce.
+
+Další informace najdete v tématu o tom, jak se dá v HLS přečíst jeden z mnoha [článků](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) o snímku přesně.
+
 ## <a name="controlling-events"></a>Řízení událostí
 
 Pro řízení provozních a diagnostických událostí, které jsou publikovány ve službě Live video Analytics v modulu IoT Edge, můžete použít následující funkční vlastnosti modulu, jak je popsáno v [modulu s dvojitým](module-twin-configuration-schema.md)zápisem do schématu JSON.
 
-`diagnosticsEventsOutputName`– Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat diagnostické události. Vynechejte nebo ponechte prázdné, aby modul zastavil publikování diagnostických událostí.
+`diagnosticsEventsOutputName` – Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat diagnostické události. Vynechejte nebo ponechte prázdné, aby modul zastavil publikování diagnostických událostí.
    
-`operationalEventsOutputName`– Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat provozní události. Vynechejte, nebo ponechte prázdné, aby se modul zastavil od publikování provozních událostí.
+`operationalEventsOutputName` – Zahrňte a poskytněte (any) hodnotu pro tuto vlastnost, aby bylo možné z modulu získat provozní události. Vynechejte, nebo ponechte prázdné, aby se modul zastavil od publikování provozních událostí.
    
 Události analýzy jsou generovány uzly, jako je například procesor detekce pohybu nebo procesor rozšíření HTTP, a jímka centra IoT slouží k jejich posílání do centra IoT Edge. 
 
@@ -184,7 +203,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle následujícího schémat
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které pomáhají diagnostikovat problémy a výkon.|
-|Funkční    |Události generované jako součást operace prostředků|
+|Provoz    |Události generované jako součást operace prostředků|
 
 Typy událostí jsou specifické pro každou třídu Event.
 
@@ -198,7 +217,7 @@ Příklady:
 
 Čas události je popsán v ISO8601 String a v čase, kdy k události došlo.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které jsou zapsány v protokolech, mohou být řízeny [následujícími dvojitými vlastnostmi modulu](module-twin-configuration-schema.md) :
 
@@ -239,7 +258,7 @@ Výše vám umožní, aby modul Edge zapisoval protokoly do cesty úložiště (
 
 Modul pak bude zapisovat protokoly ladění v binárním formátu do cesty úložiště (zařízení)/var/local/MediaServices/debuglogs/, kterou můžete sdílet s podporou Azure.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 [Nejčastější dotazy](faq.md#monitoring-and-metrics)
 

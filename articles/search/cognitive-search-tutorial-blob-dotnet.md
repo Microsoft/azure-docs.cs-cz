@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b5b27e201242f87e15af780bc26328dbdc5eb7fc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705890"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935955"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
 
 Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. V tomto kurzu C# použijte na obrázcích použití optického rozpoznávání znaků (OCR) a proveďte zpracování v přirozeném jazyce, abyste vytvořili nová pole, která můžete využít v dotazech, omezujících vlastnostech a filtrech.
 
-Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) k provádění následujících úloh:
+Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Začněte s aplikačními soubory a obrázky v úložišti objektů BLOB v Azure.
@@ -127,7 +127,7 @@ Začněte otevřením sady Visual Studio a vytvořením nového projektu konzolo
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-[Sada Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) se skládá z několika klientských knihoven, které vám umožní spravovat vaše indexy, zdroje dat, indexery a dovednosti a také nahrávat a spravovat dokumenty a provádět dotazy, a to vše bez nutnosti zabývat se podrobnostmi o protokolech HTTP a JSON. Tyto klientské knihovny jsou distribuovány jako balíčky NuGet.
+[Sada Azure kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search) se skládá z několika klientských knihoven, které vám umožní spravovat vaše indexy, zdroje dat, indexery a dovednosti a také nahrávat a spravovat dokumenty a provádět dotazy, a to vše bez nutnosti zabývat se podrobnostmi o protokolech HTTP a JSON. Tyto klientské knihovny jsou distribuovány jako balíčky NuGet.
 
 Pro tento projekt nainstalujte verzi 9 nebo novější `Microsoft.Azure.Search` balíčku NuGet.
 
@@ -680,7 +680,7 @@ Přidejte následující příkaz using pro vyřešení odkazu jednoznačného p
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-Další informace o definování indexu najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Další informace o definování indexu najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: vytvoření a spuštění indexeru
 
@@ -905,7 +905,7 @@ catch (Exception e)
 }
 ```
 
-Opakujte pro další pole: obsah, languageCode, klíčová fráze a organizace v tomto cvičení. Můžete vrátit více polí prostřednictvím vlastnosti [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) pomocí seznamu odděleného čárkami.
+Opakujte pro další pole: obsah, languageCode, klíčová fráze a organizace v tomto cvičení. Můžete vrátit více polí prostřednictvím vlastnosti [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) pomocí seznamu odděleného čárkami.
 
 <a name="reset"></a>
 

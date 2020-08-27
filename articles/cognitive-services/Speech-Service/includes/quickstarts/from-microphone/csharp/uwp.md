@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1068f715eb80eb5b7991a5b25c71c81d26d9f3c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3d169ac42e03f0c57ea1c23247fd0daa1cf51d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102560"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926400"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -52,7 +53,7 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 Než budete moct inicializovat `SpeechRecognizer` objekt, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do `SpeechRecognitionFromMicrophone_ButtonClicked()` metody.
 
 > [!NOTE]
-> Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/) .[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/) . [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
 ## <a name="initialize-a-speechrecognizer"></a>Inicializovat SpeechRecognizer
 

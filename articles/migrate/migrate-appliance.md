@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122128"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927495"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -40,14 +40,14 @@ Zařízení je možné nasadit pomocí několika metod:
 
 Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMware.
 
-**Požadavek** | **Hostiteli** 
+**Požadavek** | **VMware** 
 --- | ---
 **Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
-**Součásti zařízení** | Zařízení má následující součásti:<br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).<br/>- **Agent DRA**: orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi replikovanými počítači a Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.<br/>- **Brána**: odesílá replikovaná data do Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.
+**Součásti zařízení** | Zařízení má následující součásti:<br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).<br/>- **Agent DRA**: orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi replikovanými počítači a Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.<br/>- **Brána**: odesílá replikovaná data do Azure. Používá se jenom při replikaci virtuálních počítačů VMware do Azure pomocí migrace bez agentů.
 **Podporované nasazení** | Nasaďte jako virtuální počítač VMware pomocí šablony vajíček.<br/><br/> Nasaďte jako virtuální počítač VMware nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
-**Šablona vajíček** | Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/vmware .<br/><br/> Velikost ke stažení je 10,9 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona vajíček** | Stáhnout z portálu nebo [odsud](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> Velikost ke stažení je 11,6 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | Informace najdete v tomto [článku](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.
 **Požadavky VMware** | Pokud zařízení nasadíte jako virtuální počítač VMware, musí být nasazen na hostiteli ESXi se spuštěnou verzí 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
@@ -60,14 +60,14 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 
 ## <a name="appliance---hyper-v"></a>Zařízení – Hyper-V
 
-**Požadavek** | **Technologie Hyper-V** 
+**Požadavek** | **Hyper-V** 
 --- | ---
 **Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
-**Součásti zařízení** | Zařízení má následující součásti:<br/><br/>- **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
+**Součásti zařízení** | Zařízení má následující součásti:<br/><br/>- **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
 **Podporované nasazení** | Nasaďte jako virtuální počítač Hyper-V pomocí šablony VHD.<br/><br/> Nasaďte jako virtuální počítač Hyper-V nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
-**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/hyperv .<br/><br/> Velikost ke stažení je 10 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si ho z portálu nebo [tady](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> Velikost ke stažení je 10,4 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | Informace najdete v tomto [článku](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
 **Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
 **Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
@@ -77,14 +77,14 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 
 ## <a name="appliance---physical"></a>Zařízení – fyzické
 
-**Požadavek** | **Fyzické** 
+**Požadavek** | **Fyzický** 
 --- | ---
 **Oprávnění** | Pokud chcete přistupovat k webové aplikaci místně nebo vzdáleně, musíte být správcem domény nebo místním správcem na počítači zařízení.
-**Součásti zařízení** | Zařízení má následující součásti: <br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent hodnocení**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
+**Součásti zařízení** | Zařízení má následující součásti: <br/><br/> - **Aplikace pro správu**: Toto je webová aplikace pro vstup uživatele během nasazování zařízení. Používá se při posuzování počítačů pro migraci do Azure.<br/> - **Agent zjišťování**: Agent shromáždí data konfigurace počítače. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Agent kolektoru**: Agent shromažďuje údaje o výkonu. Používá se při posuzování počítačů pro migraci do Azure.<br/>- **Služba automatické aktualizace**: aktualizuje součásti zařízení (spouští se každých 24 hodin).
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 1000 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip na portálu. [Další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si přímo Stáhněte](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost ke stažení je 63,1 MB.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Přečtěte si další informace](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance).<br/><br/> Velikost ke stažení je 85 MB.
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/> Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.
 **Hodnota hash** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
@@ -98,7 +98,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 ### <a name="public-cloud-urls"></a>Adresy URL veřejného cloudu
 
-**URL** | **Podrobnosti**  
+**Adresa URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Povolí stahování ze služby Stažení softw
 
 ### <a name="government-cloud-urls"></a>Adresy URL cloudu pro státní správu
 
-**URL** | **Podrobnosti**  
+**Adresa URL** | **Podrobnosti**  
 --- | --- |
 *. portal.azure.us  | Přejděte na Azure Portal.
 graph.windows.net | Přihlaste se ke svému předplatnému Azure.
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Name | vnitřního. GetType (). Jméno
+Název | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -215,7 +215,7 @@ Funkce zjišťování aplikací shromažďuje nainstalované aplikace a data ope
 
 Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každého virtuálního počítače povoleného pro zjišťování aplikací. Tato data se odesílají do Azure.
 
-**Data** | **Umístění registru** | **Zkrat**
+**Data** | **Umístění registru** | **Klíč**
 --- | --- | ---
 Název aplikace  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 Verze  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -227,7 +227,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Name  | Get – WindowsFeature  | Name
+Název  | Get – WindowsFeature  | Název
 Typ funkce | Get – WindowsFeature  | FeatureType
 Nadřazený  | Get – WindowsFeature  | Nadřazený
 
@@ -235,9 +235,9 @@ Nadřazený  | Get – WindowsFeature  | Nadřazený
 
 Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních počítačů se systémem Microsoft SQL Server, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
 
-**Data**  | **Umístění registru**  | **Zkrat**
+**Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -248,7 +248,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Name  | Win32_operatingsystem  | Titulek
+Název  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Name | ot./min., bázi dpkg – dotaz, přichycení
+Název | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -268,7 +268,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 
@@ -394,7 +394,7 @@ Architektura operačního systému | Win32_OperatingSystem | OSArchitecture
 Počet disků | Win32_DiskDrive | Model, velikost, DeviceID, název média, název
 Velikost disku | Win32_DiskDrive | Velikost
 Seznam síťových karet | Win32_NetworkAdapterConfiguration | Popis, index
-IP adresa NIC | Win32_NetworkAdapterConfiguration | IP adresa
+IP adresa NIC | Win32_NetworkAdapterConfiguration | IPAddress
 Adresa MAC síťové karty | Win32_NetworkAdapterConfiguration | MACAddress
 
 ### <a name="linux-metadata"></a>Metadata pro Linux
@@ -416,7 +416,7 @@ Spouštěcí disk | DF/Boot \| SED-n 2p \| awk mají {Print $1}
 Velikost disku | fdisk-l \| egrep ' disk. * bytes ' \| egrep $disk: \| awk mají ' {Print $5} '
 Seznam síťových karet | IP-o-4 addr show \| awk mají {print $2}
 IP adresa NIC | IP adresa show $nic \| grep inet \| awk mají ' {Print $2} ' \| Vyjmout-F1-d "/" 
-Adresa MAC síťové karty | IP adresa show $nic \| grep ether \| awk mají {Print $2}
+Adresa MAC síťové karty | IP adresa show $nic \| grep ether  \| awk mají {Print $2}
 
 ### <a name="windows-performance-data"></a>Údaje o výkonu systému Windows
 
@@ -465,7 +465,7 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 Automatické aktualizace můžete zapnout pomocí některé z těchto metod:
 
 - Odstraněním klíče registru AutoUpdate z HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance.
-- Po dokončení zjišťování se v Configuration Manager zařízení.
+- Pokud chcete zapnout automatické aktualizace, klikněte na **Zobrazit služby zařízení** z nejnovějších kontrol aktualizací na panelu **nastavit předpoklady** .
 
 Postup odstranění klíče registru:
 
@@ -475,24 +475,24 @@ Postup odstranění klíče registru:
 
 Zapnutí z Configuration Manager zařízení po dokončení zjišťování:
 
-1. Na počítači zařízení otevřete Configuration Manager zařízení.
-2. V části **zařízení služby**  >  **Azure Migrate automatické aktualizace komponent jsou**vypnuté. Kliknutím zapnete automatickou aktualizaci.
+1. V nástroji Správce konfigurace zařízení, přejít na panel **nastavení požadavků**
+2. V části nejnovější aktualizace klikněte na **Zobrazit služby zařízení** a kliknutím na odkaz zapněte automatické aktualizace.
 
-    ![Zapnout automatické aktualizace](./media/migrate-appliance/turn-on.png)
+    ![Zapnout automatické aktualizace](./media/migrate-appliance/autoupdate-off.png)
 
 ### <a name="check-the-appliance-services-version"></a>Ověřit verzi služby zařízení
 
 Verzi služby zařízení můžete ověřit pomocí některé z těchto metod:
 
-- V Configuration Manager zařízení po dokončení zjišťování.
+- V nástroji Configuration Manager pro zařízení klikněte na panel **nastavit požadované součásti** .
 - Na počítači zařízení v **Ovládacích panelech**  >  **programy a funkce**.
 
-Postup vrácení Configuration Manager zařízení:
+Vrácení se změnami do Správce konfigurace zařízení:
 
-1. Po dokončení zjišťování otevřete Configuration Manager zařízení (ve webové aplikaci zařízení).
-2. Ve **službě zařízení**ověřte verze služeb zařízení.
+1. V nástroji Správce konfigurace zařízení, přejít na panel **nastavení požadavků**
+2. V části nejnovější aktualizace klikněte na **Zobrazit služby zařízení**.
 
-    ![Ověřit verzi](./media/migrate-appliance/version.png)
+    ![Ověřit verzi](./media/migrate-appliance/versions.png)
 
 Chcete-li se vrátit do ovládacích panelů, postupujte takto:
 
@@ -514,7 +514,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 4.    Stáhněte si nejnovější verzi zastaralé služby pomocí odkazu ke stažení v souboru.
 5. Po stažení spusťte následující příkaz v okně příkazového řádku správce, abyste ověřili integritu staženého souboru MSI.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ``` Příklad: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
 
 5. Ověřte, že výstup příkazu odpovídá položce hodnoty hash pro službu v souboru (například hodnota hash MD5 výše).
 6. Nyní spusťte instalační službu MSI a nainstalujte ji. Je to tichá instalace a po dokončení se okno instalace zavře.

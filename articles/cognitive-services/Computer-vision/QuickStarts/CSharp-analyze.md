@@ -10,19 +10,19 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: dc6ec5f440efef153273f8678bd1a55400a1235b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e086f0a02849b568c932aab0b01e6168631422e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835421"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928288"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: analýza místní Image pomocí Počítačové zpracování obrazu REST API a C #
 
 V tomto rychlém startu budete analyzovat místně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [analyzovat image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat informace o vizuálních funkcích z obsahu obrázku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.

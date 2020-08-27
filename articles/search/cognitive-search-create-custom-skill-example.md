@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935479"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
 V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
 
@@ -31,7 +31,7 @@ V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhr
 
 I když tento příklad používá funkci Azure k hostování webového rozhraní API, nevyžaduje se.  Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **Nový**  >  **projekt** .
 
@@ -476,10 +476,10 @@ Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

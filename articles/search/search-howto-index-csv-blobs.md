@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084088"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935836"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu CSV pomocí režimu analýzy delimitedText a indexerů objektů BLOB v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak analyzovat objekty blob ve formátu CSV pomoc�
 > Při indexování několika dokumentů hledání z jednoho objektu blob Azure postupujte podle doporučení pro konfiguraci indexeru v indexu [1: n](search-howto-index-one-to-many-blobs.md) .
 
 ## <a name="setting-up-csv-indexing"></a>Nastavení indexování CSV
-Chcete-li indexovat objekty blob ve formátu CSV, vytvořte nebo aktualizujte definici indexeru s `delimitedText` režimem analýzy u žádosti [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
+Chcete-li indexovat objekty blob ve formátu CSV, vytvořte nebo aktualizujte definici indexeru s `delimitedText` režimem analýzy u žádosti [vytvořit indexer](/rest/api/searchservice/create-indexer) :
 
 ```http
     {
@@ -42,7 +42,7 @@ Chcete-li indexovat objekty blob ve formátu CSV, vytvořte nebo aktualizujte de
     }
 ```
 
-`firstLineContainsHeaders`označuje, že první (neprázdný) řádek každého objektu BLOB obsahuje hlavičky.
+`firstLineContainsHeaders` označuje, že první (neprázdný) řádek každého objektu BLOB obsahuje hlavičky.
 Pokud objekty blob neobsahují počáteční řádek záhlaví, hlavičky by se měly zadat v konfiguraci indexeru: 
 
 ```http
@@ -98,4 +98,3 @@ Indexer
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Pomozte nám zdokonalit Azure Kognitivní hledání
 Pokud máte na vylepšení žádosti o funkce nebo nápady, poskytněte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
-

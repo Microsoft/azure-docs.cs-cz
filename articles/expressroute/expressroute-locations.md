@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/13/2020
+ms.date: 08/26/2020
 ms.author: cherylmc
-ms.openlocfilehash: 55bf91a0f01c66d43d87b734ce66b68f3995c1c3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: e47f555e33b9b6d3548f82485767184c89236731
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225593"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927625"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění partnerského vztahu
 
@@ -44,7 +44,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | --- | --- | --- |
 | **Australská vláda** |Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
-| **Severní Amerika** |USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon sedla, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
+| **Severní Amerika** |USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexiko), Quincy, San Antonio, Seattle, Silicon sedl, Silicon Valley2, Toronto, Vancouver, Washington DC, Washington DC2 |
 | **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
