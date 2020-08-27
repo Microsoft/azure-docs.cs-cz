@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056648"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934459"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -53,7 +54,7 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 > * Přidat vlastní aktivaci klíčového slova
 > * Naučte se změnit jazyk rozpoznaného a mluveného řeči.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
@@ -68,7 +69,7 @@ Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
 Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služeb Azure. Aby se snížila doba odezvy pro odpovědi z bot, měli byste se ujistit, že tyto služby jsou umístěné ve stejné oblasti Azure. V této části vytvoříte skupinu prostředků v oblasti **západní USA** . Tato skupina prostředků se bude používat při vytváření individuálních prostředků pro rozhraní bot, kanálu pro přímý vstup řeči a službu pro rozpoznávání řeči.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Vytvoření skupiny prostředků<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Vytvoření skupiny prostředků <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * Zadejte název vaší **skupiny prostředků**. Doporučujeme **SpeechEchoBotTutorial-Resource**.
@@ -94,7 +95,7 @@ Teď, když máte skupinu prostředků v podporované oblasti, je dalším kroke
 
 Pomocí těchto pokynů vytvořte prostředek řeči:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku služby Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku služby Speech <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zobrazí se výzva k zadání některých informací:
    * Zadejte **název**prostředku. Doporučujeme **SpeechEchoBotTutorial** řeč.
    * U **předplatného**se ujistěte, že je vybraná možnost **bezplatná zkušební verze** .
@@ -114,7 +115,7 @@ V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-re
 
 Dalším krokem je vytvoření plánu App Service. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Vytvoření plánu Azure App Service<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Vytvoření plánu Azure App Service <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource**.
@@ -235,7 +236,7 @@ Budete muset udělat malou změnu konfigurace, aby robot mohl komunikovat s př�
 
 Teď, když jste vytvořili Azure App Service pro hostování robota, je dalším krokem vytvoření **registrace kanálů robota**. Vytvoření registrace kanálu je předpokladem pro registraci robota s kanály pro bot Framework, včetně kanálu Direct line Speech. Pokud se chcete dozvědět víc o tom, jak roboty používají kanály, přečtěte si téma [připojení robota k kanálům](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Zobrazí se výzva k zadání některých informací:
    * Jako **popisovač robota**zadejte **SpeechEchoBotTutorial-BotRegistration-# # # #** a nahraďte **####** je číslem podle vaší volby. Poznámka: popisovač robota musí být globálně jedinečný. Pokud zadáte popisovač robota, ale zobrazí se chybová zpráva _požadované ID robota není k dispozici_, vyberte jiné číslo. V níže uvedených příkladech jsme použili 8726.
    * V případě **předplatného**vyberte **bezplatná zkušební verze**.
@@ -329,14 +330,14 @@ Pokud se zobrazí chybová zpráva v hlavním okně aplikace, použijte tuto tab
 |Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1002. Podrobnosti o chybě: Server vrátil stavový kód "503", pokud byl očekáván stavový kód "101" | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky** ](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
 |Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: kód stavu odpovědi neindikuje úspěch: 500 (Nenalezeno)| Vaše robot zadal neuronové hlas do výstupního pole [speaking](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) Activity, ale oblast Azure přidružená k vašemu klíči předplatného pro rozpoznávání řeči nepodporuje hlasy neuronové. Viz [hlasy Standard a neuronové](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Pokud se problém nevyřeší v tabulce, přečtěte si téma [asistenti hlasu: nejčastější dotazy](faq-voice-assistants.md). Pokud vaše potíže ještě nepůjde vyřešit po splnění všech kroků v tomto kurzu, zadejte prosím nový problém na [stránce GitHubu hlasového pomocníka](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
+Pokud se problém nevyřeší v tabulce, přečtěte si téma [asistenti hlasu: nejčastější dotazy](faq-voice-assistants.md). Pokud vaše potíže ještě nepůjde vyřešit po splnění všech kroků v tomto kurzu, zadejte prosím nový problém na  [stránce GitHubu hlasového pomocníka](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
 #### <a name="a-note-on-connection-time-out"></a>Poznámka k vypršení časového limitu připojení
 
 Pokud jste připojení ke robotovi a za posledních 5 minut nedošlo k žádné aktivitě, služba automaticky ukončí připojení protokolu WebSocket k klientovi a s robotem. Toto chování je úmyslné. Na dolním panelu se zobrazí zpráva: *vypršel časový limit aktivního připojení, ale jeho Příprava na vyžádání znovu připojit*. Nemusíte stisknout tlačítko "znovu připojit" – Stačí stisknout tlačítko mikrofonu a začít mluvit, zadat textovou zprávu nebo vyslovit klíčové slovo (Pokud je povolené). Připojení se automaticky znovu vytvoří.  
 ### <a name="view-bot-activities"></a>Zobrazit aktivity robota
 
-Každý robot odesílá a přijímá zprávy o **aktivitách** . V okně **Protokol aktivit** klienta Windows Voice Assistant uvidíte protokoly s časovým razítkem s každou aktivitou, kterou klient přijal od robota. Můžete také zobrazit aktivity, které klient poslal do robota pomocí [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) metody. Když vyberete položku protokolu, zobrazí se podrobnosti související aktivity jako JSON.
+Každý robot odesílá a přijímá zprávy o **aktivitách** . V okně **Protokol aktivit** klienta Windows Voice Assistant uvidíte protokoly s časovým razítkem s každou aktivitou, kterou klient přijal od robota. Můžete také zobrazit aktivity, které klient poslal do robota pomocí [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)  metody. Když vyberete položku protokolu, zobrazí se podrobnosti související aktivity jako JSON.
 
 Tady je ukázkový JSON aktivity, kterou klient přijal:
 
@@ -379,8 +380,8 @@ Další informace o tom, co se vrátilo ve výstupu JSON, najdete v tématu [pol
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Zobrazit zdrojový kód klienta pro volání sady Speech SDK
 
 Klient Windows Voice Assistant používá balíček NuGet [Microsoft. cognitiveservices Account. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), který obsahuje sadu Speech SDK. Dobrým místem, kde začít kontrolovat vzorový kód, je metoda InitSpeechConnector () v souboru [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) , která vytváří tyto dva objekty sady Speech SDK:
-- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig)– Pro konfigurační nastavení (například klíč předplatného pro rozpoznávání řeči, klíčová oblast)
-- [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor)– Ke správě připojení kanálu a událostí odběru klienta pro zpracování rozpoznaných odpovědí na řeč a robotů.
+- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) – Pro konfigurační nastavení (například klíč předplatného pro rozpoznávání řeči, klíčová oblast)
+- [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) – Ke správě připojení kanálu a událostí odběru klienta pro zpracování rozpoznaných odpovědí na řeč a robotů.
 
 ## <a name="add-custom-keyword-activation"></a>Přidat vlastní aktivaci klíčového slova
 
@@ -411,8 +412,8 @@ Pomocí těchto kroků můžete vytvořit model klíčových slov, nakonfigurova
 
 Ve zdrojovém kódu klienta Windows Voice Assistant si prohlédněte tyto soubory a zkontrolujte kód, který se používá k povolení rozpoznávání klíčových slov:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , která se používá k vytvoření instance modelu z místního souboru na disku.
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)obsahuje volání metody sady Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) , které aktivuje funkci zjišťování nepřetržitého klíčového slova.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , která se používá k vytvoření instance modelu z místního souboru na disku.
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) obsahuje volání metody sady Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) , které aktivuje funkci zjišťování nepřetržitého klíčového slova.
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Volitelné Změna jazyka a hlasu robota
 
@@ -471,7 +472,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní klientské aplikace pomocí sady Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * Nasazení do [oblasti Azure v blízkosti,](https://azure.microsoft.com/global-infrastructure/locations/) abyste viděli vylepšení doby odezvy robota
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

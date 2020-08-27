@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109571"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927302"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
 
@@ -36,8 +36,8 @@ Tabulka shrnuje úkoly, které je potřeba provést v Azure. Pokyny pro každý 
 --- | --- | ---
 **Vytvoření projektu Azure Migrate** | Azure Migrate projekt poskytuje centrální umístění pro orchestraci a správu hodnocení a migrace pomocí nástrojů Azure Migrate, nástrojů společnosti Microsoft a nabídek třetích stran. | Váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka ve skupině prostředků, ve které se projekt nachází.
 **Registrovat zařízení** | Azure Migrate pro zjišťování virtuálních počítačů používá odlehčené Azure Migrate zařízení, které je vyhodnocuje pomocí nástroje pro vyhodnocení serveru a migruje je pomocí nástroje pro migraci serveru pomocí bez agenta. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration) o registraci. | Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-**Vytváření aplikací Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikace Azure Active Directory (Azure AD). <br/><br/> – První aplikace se používá ke komunikaci mezi agenty, které běží na zařízení a Azure Migrate. <br/><br/> – Druhá aplikace se používá výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci virtuálních počítačů VMware bez agentů.   | Váš účet Azure potřebuje oprávnění k vytváření aplikací Azure AD.
-**Vytvoření trezoru klíčů** | Pokud chcete migrovat virtuální počítače VMware pomocí migrace bez agentů, Azure Migrate vytvoří Key Vault pro správu přístupových klíčů k účtu replikace v rámci vašeho předplatného. | Chcete-li Azure Migrate vytvořit Key Vault, nastavte oprávnění (vlastník nebo přispěvatel a správce přístupu uživatele) ve skupině prostředků, ve které se nachází projekt Azure Migrate.
+**Vytváření aplikací Azure AD** | Při registraci zařízení Azure Migrate vytvoří dvě aplikace Active Directory (Azure AD) pro Azure. <br/><br/> – První aplikace se používá ke komunikaci mezi agenty, které běží na zařízení a Azure Migrate. <br/><br/> – Druhá aplikace se používá výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci virtuálních počítačů VMware bez agentů.   | Váš účet Azure potřebuje tato [oprávnění](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps) k vytváření aplikací Azure AD.
+**Vytvoření trezoru klíčů** | – První Key Vault se vytvoří jako součást registrace zařízení a používá se ke správě certifikátu staženého na zařízení během jeho konfigurace. <br/><br/> – Pokud chcete migrovat virtuální počítače VMware pomocí migrace bez agentů, Azure Migrate vytvoří další Key Vault ke správě přístupových klíčů k účtu replikace v rámci vašeho předplatného.| Chcete-li Azure Migrate vytvořit Key Vault, nastavte oprávnění (vlastník nebo přispěvatel a správce přístupu uživatele) ve skupině prostředků, ve které se nachází projekt Azure Migrate.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
@@ -64,7 +64,7 @@ Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje opráv
 Udělte účtu oprávnění následujícím způsobem:
 
 1. Ujistěte se, že jste tenant nebo globální správce. Pak ve službě Azure AD přejděte na **Azure Active Directory**  >  **Users**  >  **uživatelských nastavení**uživatelů.
-2. Nastavte **Registrace aplikací** na **Ano**. Toto je výchozí nastavení, které není citlivé. [Další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. Nastavte **Registrace aplikací** na **Ano**. Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-vmware/aad.png)
 

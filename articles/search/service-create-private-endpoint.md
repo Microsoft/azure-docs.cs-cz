@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206889"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935751"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -22,11 +22,11 @@ V tomto článku použijete Azure Portal k vytvoření nové instance služby Az
 Soukromé koncové body poskytuje služba [Azure Private Link](../private-link/private-link-overview.md)jako samostatnou službu. Další informace o nákladech najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
-> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
+> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Proč používat privátní koncový bod pro zabezpečený přístup?
 
-[Privátní koncové body](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňují klientovi ve virtuální síti zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního odkazu](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z [adresního prostoru virtuální sítě](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) pro vaši vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Seznam dalších služeb PaaS Services, které podporují privátní propojení, najdete v [části dostupnost](../private-link/private-link-overview.md#availability) v dokumentaci k produktu.
+[Privátní koncové body](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňují klientovi ve virtuální síti zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního odkazu](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z [adresního prostoru virtuální sítě](../virtual-network/private-ip-addresses.md) pro vaši vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Seznam dalších služeb PaaS Services, které podporují privátní propojení, najdete v [části dostupnost](../private-link/private-link-overview.md#availability) v dokumentaci k produktu.
 
 Soukromé koncové body vaší vyhledávací služby vám umožní:
 
@@ -63,7 +63,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | URL | Zadejte jedinečný název. |
@@ -83,7 +83,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | Umístění | Vyberte **západní USA**.|
     | Název | Zadejte *myPrivateEndpoint*.  |
@@ -117,7 +117,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |

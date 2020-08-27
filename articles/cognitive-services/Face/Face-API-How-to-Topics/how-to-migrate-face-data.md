@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986673"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929070"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
@@ -23,7 +24,7 @@ V této příručce se dozvíte, jak přesunout data obličeje, jako je uložen�
 
 Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientskou knihovnu rozhraní .NET s jazykem C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete následující položky:
 

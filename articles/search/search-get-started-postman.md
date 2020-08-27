@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510908"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929767"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Tento článek vysvětluje, jak pomocí [rozhraní REST API služby Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice) a klienta API pro posílání a přijímání požadavků formulovat požadavky na REST API. Pomocí klienta rozhraní API a těchto pokynů můžete odesílat žádosti a zobrazovat odpovědi před zápisem kódu.
+Tento článek vysvětluje, jak pomocí [rozhraní REST API služby Azure kognitivní hledání](/rest/api/searchservice) a klienta API pro posílání a přijímání požadavků formulovat požadavky na REST API. Pomocí klienta rozhraní API a těchto pokynů můžete odesílat žádosti a zobrazovat odpovědi před zápisem kódu.
 
 Tento článek používá aplikaci post. Můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) , pokud chcete použít předdefinované požadavky. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
@@ -74,7 +74,7 @@ V poli pro odeslání si formulujte požadavek, který vypadá jako na následuj
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-V Azure Kognitivní hledání obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) . 
+V Azure Kognitivní hledání obvykle index vytvoříte předtím, než ho načtete s daty. Pro tento úkol se používá [REST API pro vytvoření indexu](/rest/api/searchservice/create-index) . 
 
 Adresa URL je rozšířena tak, aby obsahovala `hotels` název indexu.
 
@@ -128,7 +128,7 @@ Po odeslání této žádosti byste měli získat odpověď HTTP 201, která zna
 
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-Vytvoření indexu a jeho naplnění jsou samostatné kroky. V Azure Kognitivní hledání index obsahuje všechna hledaná data. V tomto scénáři se data poskytují jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . 
+Vytvoření indexu a jeho naplnění jsou samostatné kroky. V Azure Kognitivní hledání index obsahuje všechna hledaná data. V tomto scénáři se data poskytují jako dokumenty JSON. Pro tento úkol se používá [REST API přidat, aktualizovat nebo odstranit dokumenty](/rest/api/searchservice/addupdate-or-delete-documents) . 
 
 Adresa URL je rozšířena tak, aby zahrnovala `docs` kolekce a `index` operace.
 
@@ -236,12 +236,12 @@ Během několika sekund by se v seznamu relace měla zobrazit odpověď HTTP 201
 Pokud se zobrazí kód 207, nejméně jeden dokument nešel nahrát. Pokud se zobrazí kód 404, hlavička nebo text žádosti obsahuje syntaktickou chybu. Ověřte, že jste změnili koncový bod tak, aby zahrnoval `/docs/index`.
 
 > [!Tip]
-> Pro vybrané zdroje dat můžete zvolit přístup s použitím alternativního *indexeru*, který zjednodušuje a snižuje množství kódu vyžadovaného pro indexování. Další informace najdete v tématu [Operace indexeru](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
+> Pro vybrané zdroje dat můžete zvolit přístup s použitím alternativního *indexeru*, který zjednodušuje a snižuje množství kódu vyžadovaného pro indexování. Další informace najdete v tématu [Operace indexeru](/rest/api/searchservice/indexer-operations).
 
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-Teď, když je načtený index a sada dokumentů, můžete pro ně vystavovat dotazy pomocí [hledání dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Teď, když je načtený index a sada dokumentů, můžete pro ně vystavovat dotazy pomocí [hledání dokumentů REST API](/rest/api/searchservice/search-documents).
 
 Adresa URL je rozšířena tak, aby zahrnovala výraz dotazu, zadaný pomocí operátoru hledání.
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>Získat vlastnosti indexu
-K dotazování na počty dokumentů a velikost indexu můžete použít také možnost [získat statistiku](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) : 
+K dotazování na počty dokumentů a velikost indexu můžete použít také možnost [získat statistiku](/rest/api/searchservice/get-index-statistics) : 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30

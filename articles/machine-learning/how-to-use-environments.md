@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853247"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927540"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -242,7 +242,11 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-Je vhodné nejprve sestavit image místně pomocí [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) metody. A nastavením volitelného parametru `pushImageToWorkspaceAcr = True` se zobrazí výsledný obrázek do registru kontejneru v pracovním prostoru Azure ml. 
+Je vhodné nejprve sestavit image místně pomocí [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) metody. Pokud chcete vytvořit image Docker, nastavte volitelný parametr `useDocker=True` . Pokud chcete výsledný obrázek nasdílet do registru kontejneru AzureML pracovního prostoru, nastavte `pushImageToWorkspaceAcr=True` .
+
+```python
+build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
+```
 
 > [!WARNING]
 >  Změna pořadí závislostí nebo kanálů v prostředí bude mít za následek nové prostředí a bude vyžadovat nové sestavení image. Kromě toho volání `build()` metody pro existující image aktualizuje své závislosti, pokud existují nové verze. 

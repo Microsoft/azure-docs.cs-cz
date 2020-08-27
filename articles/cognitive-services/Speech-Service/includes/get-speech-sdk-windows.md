@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400022"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944496"
 ---
 :::row:::
     :::column span="3":::
@@ -27,9 +28,9 @@ ms.locfileid: "81400022"
 
 Sada Speech SDK ve Windows vyžaduje <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ distribuovatelné pro Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v systému.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Instalace pro x86<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Instalace pro x64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Nainstalovat pro ARMx64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Instalace pro x86 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Instalace pro x64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Nainstalovat pro ARMx64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ### <a name="c"></a>C#
 
@@ -48,7 +49,7 @@ Požadované soubory sady Speech SDK lze nasadit do stejného adresáře jako va
 > Počínaje verzí 1.3.0 soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dodán v předchozích verzích) už není potřeba. Tato funkce je teď integrovaná v základní sadě SDK.
 
 > [!IMPORTANT]
-> Pro projekt aplikace model Windows Forms App (.NET Framework) se ujistěte, že jsou knihovny zahrnuté v nastavení nasazení vašeho projektu. Můžete to ověřit v části `Properties -> Publish Section`. Klikněte na `Application Files` tlačítko a v rozevíracím seznamu vyhledejte odpovídající knihovny. Ujistěte se, že je hodnota nastavená na `Included`. Visual Studio bude soubor zahrnovat při publikování nebo nasazení projektu.
+> Pro projekt aplikace model Windows Forms App (.NET Framework) se ujistěte, že jsou knihovny zahrnuté v nastavení nasazení vašeho projektu. Můžete to ověřit v části `Properties -> Publish Section` . Klikněte na `Application Files` tlačítko a v rozevíracím seznamu vyhledejte odpovídající knihovny. Ujistěte se, že je hodnota nastavená na `Included` . Visual Studio bude soubor zahrnovat při publikování nebo nasazení projektu.
 
 ### <a name="c"></a>C++
 

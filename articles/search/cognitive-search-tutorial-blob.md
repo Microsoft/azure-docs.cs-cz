@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503298"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936006"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
 Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
 
-V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
+V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
@@ -135,7 +135,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-[Objekt zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec k kontejneru objektů blob, který obsahuje soubory.
+[Objekt zdroje dat](/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec k kontejneru objektů blob, který obsahuje soubory.
 
 1. Použijte **post** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
@@ -165,7 +165,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
-[Objekt dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) je sada kroků rozšíření, které se aplikují na váš obsah. 
+[Objekt dovednosti](/rest/api/searchservice/create-skillset) je sada kroků rozšíření, které se aplikují na váš obsah. 
 
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
@@ -250,7 +250,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-3-create-an-index"></a>Krok 3: vytvoření indexu
 
-[Index](https://docs.microsoft.com/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu ve invertovaných indexech a jiných konstrukcích v Azure kognitivní hledání. Největší součástí indexu je kolekce polí, kde typ dat a atributy určují obsah a chování v Azure Kognitivní hledání.
+[Index](/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu ve invertovaných indexech a jiných konstrukcích v Azure kognitivní hledání. Největší součástí indexu je kolekce polí, kde typ dat a atributy určují obsah a chování v Azure Kognitivní hledání.
 
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby a pojmenujte index.
 
@@ -334,7 +334,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: vytvoření a spuštění indexeru
 
-[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
+[Indexer](/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
 
 1. Použijte příkaz **Put** a následující adresu URL, kde NAHRAĎte název vaší služby skutečným názvem vaší služby a pojmenujte indexer.
 
@@ -486,7 +486,7 @@ Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí 
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí dotazů a filtry pro nová pole vytvořená pomocí rozpoznávání rozpoznávání. Další příklady dotazů naleznete v tématu [Příklady v dokumentu hledání REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [jednoduché příklady dotazů syntaxe](search-query-simple-examples.md)a [úplné příklady dotazů na Lucene](search-query-lucene-examples.md).
+Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí dotazů a filtry pro nová pole vytvořená pomocí rozpoznávání rozpoznávání. Další příklady dotazů naleznete v tématu [Příklady v dokumentu hledání REST API](/rest/api/searchservice/search-documents#bkmk_examples), [jednoduché příklady dotazů syntaxe](search-query-simple-examples.md)a [úplné příklady dotazů na Lucene](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 
@@ -516,7 +516,7 @@ Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro dal�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

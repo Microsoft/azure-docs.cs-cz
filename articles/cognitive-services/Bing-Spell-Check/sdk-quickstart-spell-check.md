@@ -10,12 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1e05ca9b63bda3373afb8a090118953d89ad8f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273535"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934221"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý Start: Kontrola pravopisu pomocí sady Kontrola pravopisu Bingu SDK pro jazyk C #
 
@@ -61,7 +62,7 @@ Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnos
 
 ## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
 
-1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zkontrolovat do `text` parametru, a nastavte režim na `proof`.  
+1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zkontrolovat do `text` parametru, a nastavte režim na `proof` .  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");

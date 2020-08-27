@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084190"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923105"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Postup filtrování podle jazyka v Azure Kognitivní hledání 
 
@@ -37,11 +37,11 @@ Následující příklad pochází z [ukázky reálného majetku](search-get-sta
   ![Snímek obrazovky znázorňující obrazovku s poli pro ukázku reálného majetku. Je zvýrazněna skupina polí, která ukazuje, jak přiřazení analyzátoru jazyka odpovídají jazykům zvýrazněných polí.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Příklady kódu znázorňující definice polí s analyzátory jazyků naleznete v tématu [definice indexu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) a [definice indexu (REST)](search-create-index-rest-api.md).
+> Příklady kódu znázorňující definice polí s analyzátory jazyků naleznete v tématu [definice indexu (.NET)](./search-get-started-dotnet.md) a [definice indexu (REST)](./search-get-started-powershell.md).
 
 ## <a name="build-and-load-an-index"></a>Sestavení a načtení indexu
 
-Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
+Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](./search-get-started-dotnet.md) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>Omezení výsledků dotazu a oříznutí
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>Viz také
 
 + [Filtry v Azure Kognitivní hledání](search-filters.md)
-+ [Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [Analyzátory jazyka](/rest/api/searchservice/language-support)
 + [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [Rozhraní API pro vyhledávání v dokumentech](/rest/api/searchservice/search-documents)

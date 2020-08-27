@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496413"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928519"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Filtry zabezpečení pro oříznutí výsledků v Azure Kognitivní hledání
 
@@ -109,13 +109,13 @@ Pokud potřebujete aktualizovat existující dokument se seznamem skupin, může
 }
 ```
 
-Pokud chcete zobrazit úplné podrobnosti o přidávání nebo aktualizaci dokumentů, můžete si přečíst [dokument upravit](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Pokud chcete zobrazit úplné podrobnosti o přidávání nebo aktualizaci dokumentů, můžete si přečíst [dokument upravit](/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>Použít filtr zabezpečení
 
 Aby bylo možné oříznout dokumenty na základě `group_ids` přístupu, měli byste vydávat vyhledávací dotaz s `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtrem, kde ' group_id1, group_id2,... ' jsou skupiny, do kterých patří Vydavatel žádosti o vyhledávání.
 Tento filtr odpovídá všem dokumentům, pro které `group_ids` pole obsahuje jeden z daných identifikátorů.
-Úplné informace o prohledávání dokumentů pomocí Azure Kognitivní hledání najdete v [dokumentu pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Úplné informace o prohledávání dokumentů pomocí Azure Kognitivní hledání najdete v [dokumentu pro hledání](/rest/api/searchservice/search-documents).
 Všimněte si, že v této ukázce se dozvíte, jak vyhledávat dokumenty pomocí žádosti POST.
 
 Vydejte požadavek HTTP POST:

@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561776"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934969"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Kognitivní hledání)
 
@@ -147,7 +147,7 @@ Můžete definovat operaci vyhledávání pomocí pole s syntaxí **NázevPole: 
 
 Nezapomeňte vložit více řetězců v uvozovkách, pokud chcete, aby byly oba řetězce vyhodnoceny jako jediná entita, jako v tomto případě vyhledávání dvou různých míst v `state` poli. Také se ujistěte, že je operátor velkými písmeny, jak vidíte s ne a a.
 
-Pole zadané v poli **NázevPole: searchExpression** musí být vyhledávací pole. Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Pole zadané v poli **NázevPole: searchExpression** musí být vyhledávací pole. Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](/rest/api/searchservice/create-index) .
 
 > [!NOTE]
 > V předchozím příkladu jsme nemuseli použít `searchFields` parametr, protože každá část dotazu má explicitně zadaný název pole. Tento parametr však lze použít i v `searchFields` případě, že chcete spustit dotaz, ve kterém jsou některé části vymezeny na konkrétní pole, a zbytek by se mohl vztahovat na několik polí. Dotaz by se například `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` shodoval pouze s `senior NOT junior` `business_title` polem, zatímco by odpovídal "externímu" s `posting_type` polem. Název pole zadaný v poli **NázevPole: searchExpression** vždycky má přednost před `searchFields` parametr, což je proč v tomto příkladu nemusíme do `business_title` parametru zahrnout `searchFields` .
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Dotaz Regex](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> Dotazy regulárního výrazu nejsou [analyzovány](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
+> Dotazy regulárního výrazu nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
 >
 
 ## <a name="example-7-wildcard-search"></a>Příklad 7: hledání pomocí zástupných znaků
@@ -278,18 +278,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Zástupný dotaz](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> Dotazy se zástupnými znaky nejsou [analyzovány](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
+> Dotazy se zástupnými znaky nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace provedená v neúplných výrazech dotazu je lowercasing.
 >
 
 ## <a name="next-steps"></a>Další kroky
 Zkuste zadat analyzátor dotazů Lucene ve vašem kódu. Následující odkazy vysvětlují, jak nastavit vyhledávací dotazy pro rozhraní .NET i REST API. Odkazy používají výchozí jednoduchou syntaxi, takže budete muset použít, co jste se naučili v tomto článku, a zadat tak **queryType**.
 
-* [Dotazování indexu pomocí sady .NET SDK](search-query-dotnet.md)
-* [Dotazování indexu pomocí REST API](search-create-index-rest-api.md)
+* [Dotazování indexu pomocí sady .NET SDK](./search-get-started-dotnet.md)
+* [Dotazování indexu pomocí REST API](./search-get-started-powershell.md)
 
 Další informace o syntaxi, architektuře dotazů a příkladech najdete na následujících odkazech:
 
 + [Příklady dotazů jednoduchých syntaxí](search-query-simple-examples.md)
 + [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Úplná syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Jednoduchá syntaxe dotazů](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Úplná syntaxe dotazů Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search)

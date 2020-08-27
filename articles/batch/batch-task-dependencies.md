@@ -3,13 +3,13 @@ title: Vytvoření závislostí úloh pro spouštění úloh
 description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
 ms.topic: how-to
 ms.date: 05/22/2017
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4aad67b4537befd251798aac7601bc4efcc276f2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 05b1bb289c215208be448d8ca7de144c82b313b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965225"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936975"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
@@ -60,7 +60,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Tento fragment kódu vytvoří závislý úkol s ID úlohy "květiny". Úloha "květiny" závisí na úkolech "deště" a "Sun". Úloha "květiny" bude naplánována na výpočetní uzel až po úspěšném dokončení úloh "deště" a "Sun".
 
 > [!NOTE]
-> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0` . V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode]Hodnota vlastnosti ExitCode je `0` . Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
+> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0` . V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode] Hodnota vlastnosti ExitCode je `0` . Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
 
 ## <a name="dependency-scenarios"></a>Scénáře závislosti
 

@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661482"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921065"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -51,7 +51,9 @@ Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Problém s interaktivním ověřováním prohlížeče
 
-Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure pomocí nejnovější verze (verze **1.2.0**) **knihovny [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
+Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
+
+Nejedná se o nejnovější verzi knihovny. Nejnovější verze je **1.2.2**.
 
 Ovlivněná metoda se používá v následujících článcích: 
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
@@ -62,10 +64,7 @@ Tento problém při pokusu o ověření v okně prohlížeče obsahuje chybovou 
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Chcete-li řešení vyřešit, aplikace explicitně používají Azure. identity verze **1.1.1**. V této verzi knihovny by měl prohlížeč načíst a ověřit podle očekávání.
-
->[!NOTE]
-> Nestačí přidat knihovnu bez zadání jakékoli verze, protože to bude i nadále výchozí pro nejnovější **1.2.0**. Je nutné explicitně zadat verzi **1.1.1** .
+Pokud chcete řešení vyřešit, aktualizujte své aplikace tak, aby používaly Azure. identity verze **1.2.2**. V této verzi knihovny by měl prohlížeč načíst a ověřit podle očekávání.
 
 ### <a name="possible-causes"></a>Možné příčiny
 

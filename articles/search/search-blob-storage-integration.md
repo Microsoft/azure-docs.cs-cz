@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fd405513f8bdef09e6d3ab996fc2c04bd397db13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659439"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935241"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Přidání fulltextového vyhledávání do dat objektů BLOB v Azure pomocí Azure Kognitivní hledání
 
@@ -27,7 +27,7 @@ Služba Azure Kognitivní hledání se integruje se službou Azure Blob Storage 
 
 Po vytvoření a naplnění indexu existuje nezávisle na vašem kontejneru objektů blob, ale můžete znovu znovu spustit operace indexování a aktualizovat index změnami v podkladovém kontejneru. Informace o časovém razítku jednotlivých objektů BLOB se používají ke zjištění změn. Jako mechanismus obnovení můžete zvolit plánované spuštění nebo indexování na vyžádání.
 
-Vstupy jsou vaše objekty BLOB v jednom kontejneru v úložišti objektů BLOB v Azure. Objekty blob můžou být skoro libovolný druh textových dat. Pokud objekty blob obsahují obrázky, můžete [do indexování objektů BLOB přidat rozšíření AI](search-blob-ai-integration.md) a vytvořit a extrahovat text z imagí.
+Vstupy jsou vaše objekty BLOB v jednom kontejneru v úložišti objektů BLOB v Azure. Objekty blob můžou být skoro libovolný druh textových dat. Pokud objekty blob obsahují obrázky, můžete [do indexování objektů BLOB přidat rozšíření AI ](search-blob-ai-integration.md) a vytvořit a extrahovat text z imagí.
 
 Výstupem je vždy index služby Azure Kognitivní hledání, který se používá pro rychlé vyhledávání textu, načítání a průzkum v klientských aplikacích. V mezi je samotná architektura kanálu indexování. Kanál je založen na funkci *indexeru* , která je popsána dále v tomto článku.
 
@@ -75,5 +75,5 @@ Dalším trvalým řešením je shromáždit vstupy dotazů a prezentovat odpov�
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [Nastavení indexeru objektů BLOB (Azure Kognitivní hledání)](search-howto-indexing-azure-blob-storage.md) 
++ [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](../storage/blobs/storage-quickstart-blobs-portal.md)
++ [Nastavení indexeru objektů BLOB (Azure Kognitivní hledání)](search-howto-indexing-azure-blob-storage.md)

@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 1c24eba79c26c4540e9d97a3e2b6646fd0b5439c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864800"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934343"
 ---
 > [!IMPORTANT]
 > * Sada SDK pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
@@ -659,7 +660,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="enable-logs"></a>Povolení protokolů
 

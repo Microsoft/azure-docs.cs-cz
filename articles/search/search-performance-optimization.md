@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212390"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934952"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -30,7 +30,7 @@ Než budete mít větší úsilí na nasazení, ujistěte se, že víte, jak vyp
 
 1. Začněte s nízkým počtem dotazů za sekundu (QPS) a pak postupně zvyšujte počet provedených v testu, dokud latence dotazu neklesne pod předdefinovaný cíl. Toto je důležitý srovnávací test, který vám pomůže při plánování škálování, protože vaše aplikace roste v používání.
 
-1. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Kognitivní hledání .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
+1. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Kognitivní hledání .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
 
 1. Lišící se v závislosti na požadavcích na dotazy, takže vyhledávání probíhá přes různé části indexu. Variace je důležitá, protože pokud průběžně spouštíte stejné požadavky na hledání, zahájí ukládání dat do mezipaměti lepší výkon, než může s více různými množinami dotazů.
 
@@ -43,7 +43,7 @@ Při vytváření těchto testovacích úloh jsou k dispozici některé charakte
 + Azure Kognitivní hledání nespouští úlohy indexování na pozadí. Pokud vaše služba současně zpracovává úlohy dotazů a indexování, vezměte tuto možnost v úvahu tím, že zavedete indexování úloh do testů dotazů nebo prozkoumáte možnosti spouštění úloh indexování v době mimo špičku.
 
 > [!Tip]
-> Můžete simulovat reálné zatížení dotazů pomocí nástrojů pro zátěžové testování. Vyzkoušejte [zátěžové testování pomocí Azure DevOps](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) nebo použijte některou z těchto [alternativ](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
+> Můžete simulovat reálné zatížení dotazů pomocí nástrojů pro zátěžové testování. Vyzkoušejte [zátěžové testování pomocí Azure DevOps](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) nebo použijte některou z těchto [alternativ](/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
 
 ## <a name="scale-for-high-query-volume"></a>Škálování pro velký objem dotazů
 
@@ -99,7 +99,7 @@ Cílem geografické distribuované sady vyhledávacích služeb je mít dva nebo
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Udržování dat synchronizovaných napříč více službami
 
-Existují dvě možnosti, jak udržovat služby distribuované služby Search v synchronizaci, které se skládají buď pomocí služby [azure kognitivní hledání indexer](search-indexer-overview.md) , nebo rozhraní API push (také označovaného jako [kognitivní hledání Azure REST API](https://docs.microsoft.com/rest/api/searchservice/)).  
+Existují dvě možnosti, jak udržovat služby distribuované služby Search v synchronizaci, které se skládají buď pomocí služby [azure kognitivní hledání indexer](search-indexer-overview.md) , nebo rozhraní API push (také označovaného jako [kognitivní hledání Azure REST API](/rest/api/searchservice/)).  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Použití indexerů pro aktualizaci obsahu ve více službách
 
@@ -111,7 +111,7 @@ Tady je přehled toho, co by architektura vypadala jako.
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Použití rozhraní REST API pro doručování aktualizací obsahu ve více službách
 
-Pokud používáte službu Azure Kognitivní hledání REST API k [nabízení obsahu v indexu služby azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/update-index), můžete uchovávat různé služby vyhledávání v synchronizaci tím, že zadáte změny ve všech vyhledávacích službách pokaždé, když se vyžaduje aktualizace. V kódu se ujistěte, že se nezdařily případy, kdy aktualizace jedné služby vyhledávání selže, ale u jiných vyhledávacích služeb je úspěšná.
+Pokud používáte službu Azure Kognitivní hledání REST API k [nabízení obsahu v indexu služby azure kognitivní hledání](/rest/api/searchservice/update-index), můžete uchovávat různé služby vyhledávání v synchronizaci tím, že zadáte změny ve všech vyhledávacích službách pokaždé, když se vyžaduje aktualizace. V kódu se ujistěte, že se nezdařily případy, kdy aktualizace jedné služby vyhledávání selže, ale u jiných vyhledávacích služeb je úspěšná.
 
 ## <a name="leverage-azure-traffic-manager"></a>Využití Azure Traffic Manager
 

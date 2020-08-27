@@ -8,16 +8,16 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562623"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927132"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Upgradovat na nejnovější verzi služby Azure Kognitivní hledání REST API
 
-Pokud používáte předchozí verzi [vyhledávacího REST API](https://docs.microsoft.com/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2020-06-30.
+Pokud používáte předchozí verzi [vyhledávacího REST API](/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2020-06-30.
 
 Verze 2020-06-30 REST API obsahuje některé změny z dřívějších verzí. Jsou to většinou zpětně kompatibilní, takže změna kódu by měla vyžadovat jenom minimální úsilí v závislosti na verzi, kterou jste předtím používali. [Postup upgradu](#UpgradeSteps) popisuje změny kódu, které jsou potřebné pro použití nových funkcí.
 
@@ -32,7 +32,7 @@ Při upgradu na nové verze pravděpodobně nebudete muset provádět žádné z
 
 * Pokud se v odpovědi rozhraní API vrátí nerozpoznané vlastnosti, váš kód se nezdařil. Ve výchozím nastavení by vaše aplikace měla ignorovat vlastnosti, které nerozumí.
 
-* Váš kód uchovává požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. K tomu může dojít například v případě, že vaše aplikace udržuje tokeny pokračování vracené z rozhraní API pro hledání (Další informace najdete `@search.nextPageParameters` v [referenčních informacích rozhraní API hledání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* Váš kód uchovává požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. K tomu může dojít například v případě, že vaše aplikace udržuje tokeny pokračování vracené z rozhraní API pro hledání (Další informace najdete `@search.nextPageParameters` v [referenčních informacích rozhraní API hledání](/rest/api/searchservice/Search-Documents)).
 
 * Váš kód odkazuje na verzi rozhraní API, která předchází datu 2019-05-06 a podléhá jedné nebo více zásadním změnám v této verzi. Další podrobnosti najdete v části [upgrade na 2019-05-06](#upgrade-to-2019-05-06) . 
 
@@ -146,4 +146,4 @@ Pomocí následujících kroků můžete pomocí rozhraní API verze 2017-11-11-
 Projděte si referenční dokumentaci REST API hledání. Pokud narazíte na problémy, požádejte nás, abychom vám pomohli [Stack Overflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)
+> [Odkaz na REST API služby Search](/rest/api/searchservice/)

@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84983503"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933167"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analýza videí téměř v reálném čase
 

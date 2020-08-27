@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: cdf71f939d6e5e1ada0ba141dce3bcba9d7d9b01
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529790"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917988"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -37,7 +37,7 @@ Pro Azure Kognitivní hledání i Azure Storage doporučujeme použít pro niž�
 
 ### <a name="1---prepare-source-data"></a>1. Příprava zdrojových dat
 
-[Přihlaste se k Azure Portal](https://portal.azure.com/) a [vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vaše data. Úroveň veřejného přístupu může být nastavena na libovolnou z jeho platných hodnot.
+[Přihlaste se k Azure Portal](https://portal.azure.com/) a [vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) , který bude obsahovat vaše data. Úroveň veřejného přístupu může být nastavena na libovolnou z jeho platných hodnot.
 
 V průvodci **importem dat** budete potřebovat název účtu úložiště, název kontejneru a přístupový klíč k načtení dat.
 
@@ -77,7 +77,7 @@ Na stránce **index** byste měli vidět seznam polí s datovým typem a řadu z
 
 Atributy můžete hromadně vybírat kliknutím na zaškrtávací políčko v horní části sloupce atributu. Vyberte možnost získatelné a **prohledávatelné** pro každé pole, které by se mělo vrátit do klientské **aplikace a podléhá** fulltextovým zpracování fulltextového vyhledávání. Všimnete si, že celá čísla nejsou fulltextová nebo přibližná prohledávání (čísla jsou vyhodnocována v doslovném znění a jsou často užitečná ve filtrech).
 
-Další informace najdete v popisu [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) a [analyzátorů jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) . 
+Další informace najdete v popisu [atributů indexu](/rest/api/searchservice/create-index#bkmk_indexAttrib) a [analyzátorů jazyka](/rest/api/searchservice/language-support) . 
 
 Věnujte prosím chvíli kontrole vašich výběrů. Po spuštění Průvodce se vytvoří fyzické datové struktury a nebudete moct tato pole upravovat, aniž byste museli odstraňovat a znovu vytvářet všechny objekty.
 
@@ -110,9 +110,9 @@ Na konci této části si můžete prohlédnout [ukázkový kód REST](#rest-exa
 
 Pro indexování JSON založené na kódu použijte příkaz [post](search-get-started-postman.md) a REST API k vytvoření těchto objektů:
 
-+ [indexovacím](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [indexovacím](/rest/api/searchservice/create-index)
++ [zdroj dat](/rest/api/searchservice/create-data-source)
++ [indexer](/rest/api/searchservice/create-indexer)
 
 Pořadí operací vyžaduje, abyste v tomto pořadí vytvořili objekty a volali je. Na rozdíl od pracovního postupu na portálu vyžaduje přístup k kódu dostupný index pro příjem dokumentů JSON odeslaných prostřednictvím žádosti o **Vytvoření indexeru** .
 
@@ -120,9 +120,9 @@ Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokum
 
 | Dokument JSON | parsingMode | Popis | Dostupnost |
 |--------------|-------------|--------------|--------------|
-| Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Víc na objekt BLOB | `jsonLines` | Analyzuje objekt blob, který obsahuje více entit JSON (pole) oddělený novým řádkem, kde se Každá entita stal samostatným dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Víc na objekt BLOB | `jsonLines` | Analyzuje objekt blob, který obsahuje více entit JSON (pole) oddělený novým řádkem, kde se Každá entita stal samostatným dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1. sestavování vstupů pro požadavek
 
@@ -168,7 +168,7 @@ Indexery jsou spárovány se schématem indexu. Pokud používáte rozhraní API
 
 Index ukládá prohledávatelný obsah do Azure Kognitivní hledání. Chcete-li vytvořit index, zadejte schéma, které určuje pole v dokumentu, atributy a další konstrukce, které prohledají možnosti vyhledávání. Pokud vytvoříte index, který má stejné názvy polí a datových typů jako zdroj, indexer bude odpovídat zdrojovému a cílovému poli, takže vám ušetříte práci s explicitním namapováním polí.
 
-Následující příklad ukazuje požadavek [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) . Index bude obsahovat vyhledávací `content` pole pro uložení textu extrahovaého z objektů BLOB:   
+Následující příklad ukazuje požadavek [Create index](/rest/api/searchservice/create-index) . Index bude obsahovat vyhledávací `content` pole pro uložení textu extrahovaého z objektů BLOB:   
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -280,10 +280,10 @@ Vytvoření indexeru na Azure Kognitivní hledání aktivuje import dat. Spustí
 
 Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [Microsoft. Azure. Search. Models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [Microsoft. Azure. Search. Models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. Models. indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 

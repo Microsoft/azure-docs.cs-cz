@@ -8,21 +8,21 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125574"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932793"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurace brány firewall protokolu IP pro Azure Kognitivní hledání
 
 Azure Kognitivní hledání podporuje pravidla protokolu IP pro podporu příchozích bran firewall. Tento model poskytuje další úroveň zabezpečení pro vaši vyhledávací službu podobně jako pravidla protokolu IP, která najdete ve skupině zabezpečení virtuální sítě Azure. Pomocí těchto pravidel IP adres můžete nakonfigurovat vyhledávací službu tak, aby byla dostupná jenom ze schválené sady počítačů a/nebo cloudových služeb. Přístup k datům uloženým ve službě vyhledávání z těchto schválených sad počítačů a služeb bude nadále vyžadovat, aby volající předložil platný autorizační token.
 
 > [!Important]
-> Pravidla protokolu IP ve službě Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/).
+> Pravidla protokolu IP ve službě Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/).
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a>Konfigurace brány firewall protokolu IP pomocí Azure Portal
+## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurace brány firewall protokolu IP pomocí Azure Portal
 
 Pokud chcete nastavit zásadu řízení přístupu k IP adresám v Azure Portal, přejděte na stránku služby Azure Kognitivní hledání a v navigační nabídce vyberte **síť** . Připojení k síti koncového bodu musí být **veřejné**. Pokud je vaše připojení nastaveno na **Private**, můžete ke službě vyhledávání přistupovat jenom přes privátní koncový bod.
 

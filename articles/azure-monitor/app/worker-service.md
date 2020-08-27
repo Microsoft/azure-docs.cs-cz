@@ -2,13 +2,14 @@
 title: Application Insights pro aplikace pracovní služby Worker (jiné aplikace než HTTP)
 description: Monitorování aplikací .NET Core/. NET Framework bez protokolu HTTP pomocí Azure Monitor Application Insights.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325402"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933269"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights pro aplikace služby Worker (aplikace jiného typu než HTTP)
 
@@ -20,7 +21,7 @@ Nová sada SDK nedělá žádné kolekce telemetrie sám o sobě. Místo toho p�
 
 [Služba Application Insights SDK for Worker](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) se nejlépe hodí pro aplikace bez protokolu HTTP bez ohledu na to, kde a jak se spouštějí. Pokud vaše aplikace běží a má síťové připojení k Azure, je možné shromažďovat telemetrii. Monitorování Application Insights je podporováno všude, kde je podporováno rozhraní .NET Core. Tento balíček se dá použít v nově zavedené [službě .NET Core 3,0 Worker](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [úlohy na pozadí v ASP.NET Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konzolové aplikace (.NET Core/.NET Framework) atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
 
@@ -46,7 +47,7 @@ Konkrétní pokyny pro jednotlivé typy aplikací jsou popsány v následující
 Úplný příklad se [tady](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) sdílí.
 
 1. Stažení a instalace [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Vytvoření nového projektu služby pracovního procesu buď pomocí šablony nového projektu sady Visual Studio nebo příkazového řádku`dotnet new worker`
+2. Vytvoření nového projektu služby pracovního procesu buď pomocí šablony nového projektu sady Visual Studio nebo příkazového řádku `dotnet new worker`
 3. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 
 4. Přidejte `services.AddApplicationInsightsTelemetryWorkerService();` do `CreateHostBuilder()` metody ve `Program.cs` třídě, jako v tomto příkladu:
@@ -124,7 +125,7 @@ Případně můžete zadat klíč instrumentace v některé z následujících p
 `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `ApplicationInsights:InstrumentationKey`
 
 Příklad: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-ANI`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+ANI `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Obvykle `APPINSIGHTS_INSTRUMENTATIONKEY` Určuje klíč instrumentace pro aplikace nasazené pro Web Apps jako webové úlohy.
 
@@ -312,7 +313,7 @@ Kolekce závislostí je ve výchozím nastavení povolená. [Tento](asp-net-depe
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
+`EventCounterCollectionModule` je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3,0. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ruční sledování další telemetrie
 
@@ -349,7 +350,7 @@ Můžete upravit několik běžných nastavení tak, že předáte `ApplicationI
 
 Všimněte si, že `ApplicationInsightsServiceOptions` v této sadě SDK je v oboru názvů na `Microsoft.ApplicationInsights.WorkerService` rozdíl od `Microsoft.ApplicationInsights.AspNetCore.Extensions` ASP.NET Core SDK.
 
-Běžně používaná nastavení v`ApplicationInsightsServiceOptions`
+Běžně používaná nastavení v `ApplicationInsightsServiceOptions`
 
 |Nastavení | Popis | Výchozí
 |---------------|-------|-------
@@ -425,7 +426,7 @@ Ve výchozím nastavení jsou povoleny následující moduly automatických kole
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`– (Aktuálně se jedná o problém týkající se tohoto modulu telemetrie. Dočasné řešení najdete v článku věnovaném [problému GitHub 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` – (Aktuálně se jedná o problém týkající se tohoto modulu telemetrie. Dočasné řešení najdete v článku věnovaném [problému GitHub 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 ).)
 * `AzureInstanceMetadataTelemetryModule`
 
@@ -503,7 +504,7 @@ Připojování k integrovanému vývojovému prostředí (IDE) sady Visual Studi
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 

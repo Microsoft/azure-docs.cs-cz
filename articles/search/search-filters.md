@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562305"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923071"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filtry v Azure Kognitivní hledání 
 
@@ -47,9 +47,9 @@ Příklady scénářů zahrnují následující:
 
 Pokud chcete ve výsledcích hledání zúžit efekt, filtry nejsou vaší volbou. V závislosti na vašem cíli můžou být tyto alternativy lépe vyhovující:
 
- + `searchFields`parametr dotazu Pegs hledání na konkrétní pole. Například pokud váš index poskytuje samostatná pole pro anglické a španělské popisy, můžete použít searchFields k určení, která pole se mají použít pro fulltextové vyhledávání. 
+ + `searchFields` parametr dotazu Pegs hledání na konkrétní pole. Například pokud váš index poskytuje samostatná pole pro anglické a španělské popisy, můžete použít searchFields k určení, která pole se mají použít pro fulltextové vyhledávání. 
 
-+ `$select`parametr se používá k určení, která pole se mají zahrnout do sady výsledků, aby se před odesláním do volající aplikace účinně vystřihoval odpověď. Tento parametr neupřesňuje dotaz ani neomezuje kolekci dokumentů, ale pokud je menší odezva na váš cíl, je tento parametr možnost zvážit. 
++ `$select` parametr se používá k určení, která pole se mají zahrnout do sady výsledků, aby se před odesláním do volající aplikace účinně vystřihoval odpověď. Tento parametr neupřesňuje dotaz ani neomezuje kolekci dokumentů, ale pokud je menší odezva na váš cíl, je tento parametr možnost zvážit. 
 
 Další informace o obou parametrech naleznete v tématu [Search documents > Request > dotazu Parameters](/rest/api/searchservice/search-documents#query-parameters).
 
@@ -61,7 +61,7 @@ Analyzátor filtru v době dotazu přijímá kritéria jako vstup, převede výr
 K filtrování dochází v kombinaci se službou Search a je kvalifikováno, které dokumenty zahrnout do zpracování pro příjem dat pro načtení dokumentů a hodnocení relevance. Při párování s hledaným řetězcem filtr efektivně snižuje sadu odvolání následné operace vyhledávání. Při samostatném použití (například při prázdném řetězci dotazu, kde `search=*` ) je kritérium filtru jediným vstupem. 
 
 ## <a name="defining-filters"></a>Definování filtrů
-Filtry jsou výrazy OData kloubované pomocí [podmnožiny syntaxe OData v4 podporované v Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+Filtry jsou výrazy OData kloubované pomocí [podmnožiny syntaxe OData v4 podporované v Azure kognitivní hledání](/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
 Pro každou operaci **hledání** můžete zadat jeden filtr, ale samotný filtr může zahrnovat více polí, více kritérií a pokud použijete funkci **Match** , více výrazů fulltextového vyhledávání. Ve výrazu filtru s více částmi lze predikáty zadat v libovolném pořadí (v souladu s pravidly priority operátoru). V případě, že se pokusíte změnit uspořádání predikátů v určité sekvenci, neexistuje žádný výrazný nárůst výkonu.
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Filtrovat vzorce použití
 
-Následující příklady ilustrují několik vzorů použití pro scénáře filtru. Další nápady najdete v tématu [Syntaxe výrazů OData > příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Následující příklady ilustrují několik vzorů použití pro scénáře filtru. Další nápady najdete v tématu [Syntaxe výrazů OData > příklady](./search-query-odata-filter.md#examples).
 
 + Samostatný **$Filter**bez řetězce dotazu, který je užitečný, když výraz filtru dokáže plně kvalifikovat dokumenty, které vás zajímají. Bez řetězce dotazu neexistují žádné lexikální ani lingvistické analýzy, žádné bodování a žádné hodnocení. Všimněte si, že hledaný řetězec je jenom hvězdička, což znamená "odpovídá všem dokumentům".
 
@@ -135,9 +135,9 @@ V těchto článcích najdete kompletní pokyny pro konkrétní případy použi
 
 ## <a name="field-requirements-for-filtering"></a>Požadavky na pole pro filtrování
 
-V REST API je filtr pro jednoduché pole *ve výchozím nastavení zapnutý* . Filtrovatelné pole zvyšují velikost indexu; Nezapomeňte nastavit `"filterable": false` pro pole, která nechcete ve filtru skutečně použít. Další informace o nastavení definic polí najdete v tématu [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+V REST API je filtr pro jednoduché pole *ve výchozím nastavení zapnutý* . Filtrovatelné pole zvyšují velikost indexu; Nezapomeňte nastavit `"filterable": false` pro pole, která nechcete ve filtru skutečně použít. Další informace o nastavení definic polí najdete v tématu [Create index](/rest/api/searchservice/create-index).
 
-V sadě .NET SDK je filtr ve výchozím nastavení *vypnutý* . Můžete nastavit filtrování pole nastavením [vlastnosti Filter](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) odpovídajícího objektu [pole](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) na `true` . Můžete to provést také deklarativně pomocí [atributu Filter](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). V následujícím příkladu je atribut nastaven na `BaseRate` vlastnost třídy modelu, která je mapována na definici indexu.
+V sadě .NET SDK je filtr ve výchozím nastavení *vypnutý* . Můžete nastavit filtrování pole nastavením [vlastnosti Filter](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) odpovídajícího objektu [pole](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) na `true` . Můžete to provést také deklarativně pomocí [atributu Filter](/dotnet/api/microsoft.azure.search.isfilterableattribute). V následujícím příkladu je atribut nastaven na `BaseRate` vlastnost třídy modelu, která je mapována na definici indexu.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -156,7 +156,7 @@ V textových řetězcích se rozlišují velká a malá písmena. Nejsou k dispo
 
 ### <a name="approaches-for-filtering-on-text"></a>Přístupy k filtrování textu
 
-| Přístup | Description | Kdy je použít |
+| Přístup | Popis | Kdy je použít |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Funkce, která odpovídá poli s odděleným seznamem řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, u kterých je potřeba spárovat mnoho nezpracovaných textových hodnot pomocí pole řetězce. Funkce **Search.in** je navržena pro rychlost a je mnohem rychlejší než explicitní porovnání pole s každým řetězcem pomocí `eq` a `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkce, která umožňuje kombinovat operace fulltextového vyhledávání s přísnými logickými operacemi filtru ve stejném výrazu filtru. | Pokud chcete více kombinací vyhledávacího filtru v jednom požadavku, použijte **Search** . ismatchscoring (nebo jeho ekvivalent pro vyhodnocování, **Search.**). Můžete ji také použít pro filtr *obsahuje* pro filtrování částečného řetězce v rámci většího řetězce. |
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Chcete-li pracovat s dalšími příklady, viz [Příklady syntaxe výrazů filtru OData > příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Chcete-li pracovat s dalšími příklady, viz [Příklady syntaxe výrazů filtru OData > příklady](./search-query-odata-filter.md#examples).
 
 ## <a name="see-also"></a>Viz také
 
 + [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Rozhraní API pro vyhledávání v dokumentech](/rest/api/searchservice/search-documents)
++ [Jednoduchá syntaxe dotazů](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Syntaxe dotazů Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Podporované datové typy](/rest/api/searchservice/supported-data-types)

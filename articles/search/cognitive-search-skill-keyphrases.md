@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080825"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936057"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce klíčových frází vnímání znalostí
 
-**Extrakce klíčových frází** dovednost vyhodnocuje nestrukturovaný text a pro každý záznam vrátí seznam klíčových frází. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+**Extrakce klíčových frází** dovednost vyhodnocuje nestrukturovaný text a pro každý záznam vrátí seznam klíčových frází. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](../cognitive-services/text-analytics/overview.md) .
 
 Tato funkce je užitečná v případě, že potřebujete rychle identifikovat hlavní body konverzace v záznamu. Například daný vstupní text "potravina byla Delicious a existovaly milované zaměstnance", služba vrátí "jídlo" a "dokonalé" personál ".
 
@@ -31,27 +31,27 @@ Tato funkce je užitečná v případě, že potřebujete rychle identifikovat h
 Microsoft. dovednosti. text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Description |
+| Vstupy                | Popis |
 |---------------------|-------------|
-| `defaultLanguageCode` | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)najdete v části. |
+| `defaultLanguageCode` | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)najdete v části. |
 | `maxKeyPhraseCount`   | Volitelné Maximální počet klíčových frází, které mají být vyprodukovány. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Vstup  | Description |
+| Vstup  | Popis |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
-| `languageCode`    |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| `languageCode`    |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Výstup     | Description |
+| Výstup     | Popis |
 |--------------------|-------------|
 | `keyPhrases` | Seznam klíčových frází extrahovaných ze vstupního textu. Klíčové fráze jsou vraceny v pořadí podle důležitosti. |
 

@@ -2,13 +2,13 @@
 title: Vytvoření specifikace šablony s propojenými šablonami
 description: Naučte se vytvořit specifikaci šablony s propojenými šablonami.
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/26/2020
+ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936363"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Kurz: Vytvoření specifikace šablony s propojenými šablonami (Preview)
 
@@ -164,28 +164,59 @@ Odkazovaná šablona se nazývá **linkedTemplate.jsv**a je uložena v podsložc
 
 Specifikace šablon se ukládají do skupin prostředků.  Vytvořte skupinu prostředků a pak vytvořte specifikaci šablony pomocí následujícího skriptu. Název specifikace šablony je **webspec**.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name templateSpecRG `
   -Location westus2
 
 New-AzTemplateSpec `
-  -ResourceGroupName templateSpecRG `
   -Name webSpec `
   -Version "1.0.0.0" `
+  -ResourceGroupName templateSpecRG `
   -Location westus2 `
   -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name templateSpecRG \
+  --location westus2
+
+az template-specs create \
+  --name webSpec \
+  --version "1.0.0.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+```
+
+---
+
 Až budete hotovi, můžete zobrazit specifikaci šablony z Azure Portal nebo pomocí následující rutiny:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 ```
 
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+```
+
+---
+
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
 Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s výjimkou toho, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -198,6 +229,25 @@ New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName webRG
 ```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+
+az deployment group create \
+  --resource-group webRG \
+  --template-spec $id
+```
+
+> [!NOTE]
+> Došlo k známému problému s získáním ID specifikace šablony a jeho přiřazením k proměnné ve Windows PowerShellu.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

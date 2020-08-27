@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052622"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934493"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
@@ -41,7 +42,7 @@ Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a ro
 
 Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů překladu řeči uspořádaných podle jazyka.
 
-| Rychlý start | Platforma | API – referenční informace |
+| Rychlé zprovoznění | Platforma | API – referenční informace |
 |------------|----------|---------------|
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |

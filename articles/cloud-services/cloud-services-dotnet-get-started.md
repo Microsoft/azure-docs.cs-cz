@@ -7,15 +7,16 @@ author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590349"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932538"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -42,7 +43,7 @@ Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure.
 * Odeslání souborů a jejich uložení do služby Azure Blob service.
 * Používání služby front Azure pro komunikaci mezi vrstvami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Kurz předpokládá, že rozumíte [základnímu konceptu cloudových služeb Azure](cloud-services-choose-me.md), například terminologii *webových rolí* a *rolí pracovních procesů*.  Předpokládá také, že víte, jak pracovat s technologií [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) a s projekty [webových formulářů](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) ve Visual Studiu. Ukázková aplikace používá MVC, ale většina kurzu platí i pro webové formuláře.
 
 Aplikaci můžete spustit místně bez předplatného Azure, ale k nasazení aplikace do cloudu budete předplatné potřebovat. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) nebo [si zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
@@ -212,7 +213,7 @@ Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního
     ![Připojovací řetězce](./media/cloud-services-dotnet-get-started/connstrings.png)
 3. V transformačním souboru *Web.Release.config* odstraňte text `{connectionstring}` a na jeho místo vložte připojovací řetězec ADO.NET z portálu Azure Portal.
 4. V připojovacím řetězci, který jste vložili do transformačního souboru*Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
-5. Soubor uložte.  
+5. Uložte soubor.  
 6. Vyberte a zkopírujte připojovací řetězec (bez okolních uvozovek), abyste ho mohli použít v následujících krocích konfigurace projektu role pracovního procesu.
 7. V **Průzkumníku řešení** v části **Role** v projektu cloudové služby klikněte pravým tlačítkem na **ContosoAdsWorker** a potom klikněte na **Vlastnosti**.
 
@@ -739,7 +740,7 @@ Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na
 >
 >
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
