@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: devx-track-python
-ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843620"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933354"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -210,11 +210,11 @@ Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.
 
 | Application Insights                   | OpenTracing                                        |
 |------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span`řetězce`span.kind = server`                    |
-| `Dependency`                           | `Span`řetězce`span.kind = client`                    |
-| `Id`z `Request` a`Dependency`     | `SpanId`                                            |
+| `Request`, `PageView`                  | `Span` řetězce `span.kind = server`                    |
+| `Dependency`                           | `Span` řetězce `span.kind = client`                    |
+| `Id` z `Request` a `Dependency`     | `SpanId`                                            |
 | `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference`typu `ChildOf` (nadřazený rozsah)     |
+| `Operation_ParentId`                   | `Reference` typu `ChildOf` (nadřazený rozsah)     |
 
 Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
 
@@ -308,12 +308,12 @@ Data protokolu můžete exportovat pomocí `AzureLogHandler` . Další informace
 
 V průběhu času .NET definovalo několik způsobů, jak sladit protokoly telemetrie a diagnostiky:
 
-- `System.Diagnostics.CorrelationManager`umožňuje sledování [LogicalOperationStack a ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1).
-- `System.Diagnostics.Tracing.EventSource`a trasování událostí pro Windows (ETW) definuje metodu [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
-- `ILogger`používá [rozsahy protokolů](/aspnet/core/fundamentals/logging#log-scopes).
+- `System.Diagnostics.CorrelationManager` umožňuje sledování [LogicalOperationStack a ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1).
+- `System.Diagnostics.Tracing.EventSource` a trasování událostí pro Windows (ETW) definuje metodu [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
+- `ILogger` používá [rozsahy protokolů](/aspnet/core/fundamentals/logging#log-scopes).
 - Windows Communication Foundation (WCF) a kabel HTTP nahoru "aktuální" šíření kontextu.
 
-Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `DiagnosticSource`podporuje automatickou korelaci mezi počítači. Knihovny .NET podporují `DiagnosticSource` a umožňují automatické šíření mezipočítačového kontextu korelace prostřednictvím přenosu, jako je například http.
+Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `DiagnosticSource` podporuje automatickou korelaci mezi počítači. Knihovny .NET podporují `DiagnosticSource` a umožňují automatické šíření mezipočítačového kontextu korelace prostřednictvím přenosu, jako je například http.
 
 [Příručka pro uživatele aktivity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) v `DiagnosticSource` tématu vysvětluje základy sledování aktivit.
 

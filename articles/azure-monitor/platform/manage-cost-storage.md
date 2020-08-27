@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184648"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933660"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
@@ -135,7 +135,7 @@ Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protok
 Pokud chcete nastavit výchozí dobu uchovávání pro váš pracovní prostor, 
  
 1. V Azure Portal v pracovním prostoru v levém podokně vyberte **využití a odhadované náklady** .
-2. Na stránce **využití a odhadované náklady** klikněte na **uchovávání dat** v horní části stránky.
+2. V horní části stránky **Využití a odhadované náklady** klikněte na **Uchovávání dat**.
 3. Pomocí posuvníku v podokně zvyšte nebo snižte počet dnů a pak klikněte na **OK**.  Pokud jste na *bezplatné* úrovni, nebudete moct upravit dobu uchovávání dat a abyste mohli řídit toto nastavení, musíte upgradovat na placenou úroveň.
 
     ![Změnit nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -199,7 +199,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Správa maximálního denního objemu dat
 
-Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro váš pracovní prostor, ale pečlivě používejte, protože by váš cíl neměl mít denní limit.  Jinak ztratíte data zbývajícího dne, což může mít vliv na další služby a řešení Azure, jejichž funkce můžou záviset na dostupnosti dat v pracovním prostoru.  V důsledku toho ztratíte možnost sledovat a přijímat upozornění při ovlivnění stavu prostředků podporujících IT služby.  Denní limit je určený k použití jako způsob, jak spravovat **neočekávané zvýšení** objemu dat ze spravovaných prostředků a zůstat v rámci vašeho limitu, nebo pokud chcete omezit neplánované poplatky pro váš pracovní prostor. Není vhodné nastavit denní limit tak, aby byl každý den splněn v pracovním prostoru.
+Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro váš pracovní prostor, ale pečlivě používejte, protože by váš cíl neměl mít denní limit.  Jinak ztratíte data zbývajícího dne, což může mít vliv na další služby a řešení Azure, jejichž funkce můžou záviset na dostupnosti dat v pracovním prostoru.  V důsledku toho ztratíte možnost sledovat a přijímat upozornění při ovlivnění stavu prostředků podporujících IT služby.  Denní limit je určený k použití jako způsob, jak spravovat **neočekávané zvýšení** objemu dat ze spravovaných prostředků a zůstat v rámci vašeho limitu, nebo pokud chcete omezit neplánované poplatky pro váš pracovní prostor. Není vhodné pro pracovní prostor nastavit denní limit tak, aby se ho dosáhlo každý den.
 
 Každý pracovní prostor má denní limit, který se aplikuje na jinou hodinu dne. Nulová hodina se zobrazí na stránce **denní limit** (viz níže). Tuto hodinu resetování nelze nakonfigurovat. 
 
@@ -604,7 +604,7 @@ Když se shromažďování dat zastaví, stav OperationStatus je **Upozornění*
 |Kolekce důvodů – zastavení| Řešení| 
 |-----------------------|---------|
 |Dosáhlo se denního limitu pracovního prostoru.|Počkejte na automatické restartování kolekce nebo zvyšte počet denních objemů dat popsaných v tématu Správa maximálního denního objemu dat. Doba obnovení denního limitu se zobrazí na stránce **denní limit** . |
-| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů. Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost přijímání dat i nadále překračuje prahovou hodnotu nebo jste se k tomu již neočekávali, můžete požádat o jeho zvýšení v pracovním prostoru otevřením žádosti o podporu. Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly, zkušebního období 5 minut a frekvence 5 minut. Rychlost příjmu se dosáhla 80% prahové hodnoty: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Prahová hodnota dosažené míry objemu přijímání: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů. Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost přijímání dat i nadále překračuje prahovou hodnotu nebo jste se k tomu již neočekávali, můžete požádat o jeho zvýšení v pracovním prostoru otevřením žádosti o podporu. Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu s logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut. Rychlost příjmu se dosáhla 80% prahové hodnoty: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Prahová hodnota dosažené míry objemu přijímání: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |Dosáhlo se denního limitu starší verze bezplatné cenové úrovně. |Počkejte prosím, než se automaticky restartuje kolekce, nebo se změní na placenou cenovou úroveň.|
 |Předplatné Azure je v pozastaveném stavu z důvodu:<br> Zkušební verze skončila.<br> Platnost Azure Pass vypršela.<br> Dosáhlo se limitu měsíčního útraty (například na předplatném MSDN nebo Visual Studio).|Přechod na placené předplatné<br> Odebrat limit nebo počkat na obnovení limitu|
 

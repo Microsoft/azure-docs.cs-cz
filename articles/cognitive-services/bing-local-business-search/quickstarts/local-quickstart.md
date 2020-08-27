@@ -10,12 +10,13 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 812061bf161a33e4151b7b23265196895e039414
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611233"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925143"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v jazyce C #
 
@@ -23,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak odesílat požadavky do rozhraní API B
 
 Tato ukázková aplikace získá data místních odpovědí z rozhraní API pro vyhledávací dotaz.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
@@ -58,7 +59,7 @@ Následující kód používá rozhraní API Bingu pro místní vyhledávání k
 1. Vytvořte nové řešení konzoly v aplikaci Visual Studio (je dostačující edice Community).
 2. Nahraďte soubor Program.cs níže uvedeným kódem.
 3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+4. Spustíte program.
 
 ```csharp
 using System;

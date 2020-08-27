@@ -4,14 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 21c4f88083fab28ae132379eae1b5d8a2afa5d9f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 313d2717e6e40280ed37322d695a2129d833dd59
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422029"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934089"
 ---
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání `PullAudioInputStream` řeči `PushAudioInputStream`, vytvořte nebo. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Pojďme předpokládat, že máte třídu vstupního datového proudu nazvanou `pushStream` a používáte Opus/OGG. Váš kód může vypadat takto:
 

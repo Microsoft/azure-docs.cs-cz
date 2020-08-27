@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056074"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923734"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -60,9 +60,9 @@ Nespravované disky virtuálních počítačů nejsou podporované v účtech, k
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Podpora systému souborů v sadách SDK, PowerShellu a rozhraní příkazového řádku Azure
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Podpora pro rekurzivní nastavení seznamů řízení přístupu (ACL)
 
-- Operace get a set ACL nejsou aktuálně rekurzivní.
+Možnost použít rekurzivní změny seznamů ACL z nadřazeného adresáře na podřízené položky je ve [verzi Public Preview](recursive-access-control-lists.md). V aktuální verzi této funkce můžete použít změny seznamů ACL pomocí PowerShellu, sady .NET SDK a sady Python SDK. Podpora není ještě dostupná pro sadu Java SDK, Azure CLI, Azure Portal nebo Průzkumník služby Azure Storage.
 
 <a id="known-issues-tools"></a>
 

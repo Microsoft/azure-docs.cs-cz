@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823900"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934323"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce dat z vizitky pomocí REST API pro rozpoznávání formulářů pomocí Pythonu
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Obrázek vizitky. Pro tento rychlý Start můžete použít [ukázkový obrázek](../media/business-card-english.jpg) .
+- Obrázek vizitky Pro tento rychlý Start můžete použít [ukázkový obrázek](../media/business-card-english.jpg) .
 
 > [!NOTE]
 > V tomto rychlém startu se používá místní soubor. Pokud chcete místo toho použít k použití image vzdáleného obchodu na vizitce, přečtěte si [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
@@ -38,33 +38,35 @@ K dokončení tohoto rychlého startu musíte mít:
 
 ## <a name="analyze-a-business-card"></a>Analýza obchodní karty
 
-Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** pomocí následujícího skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
+Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** pomocí následujícího skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `<path to your business card>` cestou k místnímu dokumentu formuláře.
+1. Nahraďte `<endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
+1. Nahraďte `<path to your business card>` místní cestou k obrazu vizitky nebo PDF.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
+1. Nahraďte `<file type>` "image/jpeg", "image/png", "Application/PDF" nebo "image/TIFF".
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýz
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-businesscards.py`.
 
-Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec následuje `operations/` ID operace.
+Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID výsledku, které můžete použít k dotazování na stav dlouhotrvající operace s dlouhou dobou a získání výsledků. V následujícím příkladu hodnoty řetězec následuje za `operations/` ID výsledku.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>Získání výsledků obchodních karet
 
-Po vyvolání rozhraní API pro **analýzu vizitky** zavoláte rozhraní API pro **[získání výsledku analýzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaných dat. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID operace v novém volání rozhraní API. Tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
+Po vyvolání rozhraní API pro **analýzu vizitky** zavoláte rozhraní API pro **[získání výsledku analýzy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** pro získání stavu operace a extrahovaných dat. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID výsledku v novém volání rozhraní API. Tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 ![Firemní karta od společnosti Contoso](../media/business-card-english.jpg)
 
-Tato ukázka znázorňuje výstup JSON vrácený nástrojem pro rozpoznávání formulářů. Z důvodu čitelnosti tohoto příkladu byly tyto ukázky zkráceny.
+Tato ukázka znázorňuje výstup JSON vrácený nástrojem pro rozpoznávání formulářů. Bylo zkráceno pro čtení.
 
 ```json
 {
@@ -243,7 +245,7 @@ Tato ukázka znázorňuje výstup JSON vrácený nástrojem pro rozpoznávání 
 }
 ```
 
-Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat obchodní kartu** . `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je název společnosti, křestní jméno, příjmení, telefon a tak dále.
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat obchodní kartu** . `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je název společnosti, jméno, příjmení, telefonní číslo atd.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -251,4 +253,4 @@ Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat 
 V tomto rychlém startu jste pomocí nástroje pro rozpoznávání formulářů REST API s Pythonem rozbalíte obsah vizitky. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066402"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919705"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou Azure Database for MySQL
 
@@ -62,6 +62,12 @@ Možnosti šifrování, které poskytuje Azure Database for MySQL, lze použít 
 U Azure Database for MySQL podporuje dvojité šifrování infrastruktury pomocí klíče spravovaného službou tato omezení:
 
 * Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
+* Můžete vytvořit Azure Database for MySQL s povoleným šifrováním infrastruktury v následujících oblastech:
+
+   * East US
+   * Středojižní USA
+   * Západní USA 2
+   
 * * Tato funkce je podporována pouze v oblastech a serverech, které podporují úložiště až na 16 TB. Seznam oblastí Azure, které podporují úložiště až o 16 TB, najdete v dokumentaci k [úložišti](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

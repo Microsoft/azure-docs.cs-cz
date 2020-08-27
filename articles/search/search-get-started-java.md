@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6ac8638efc09efe6d74f634c4042346d738d44ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327527"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924193"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87327527"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Azure Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -31,11 +31,11 @@ Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
-+ [IntelliJ IDEA](https://www.jetbrains.com/idea/)
++ [IntelliJ nápad](https://www.jetbrains.com/idea/)
 
 + [Sada SDK pro Java 11](/java/azure/jdk/?view=azure-java-stable)
 
@@ -76,7 +76,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. Vyberte **File**  >  **Nastavení**souboru.
 1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
-1. Zaškrtněte políčko **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
+1. Zaškrtněte políčko  **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
     ![Možnosti importu Maven v nastavení IntelliJ](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
 
@@ -565,13 +565,13 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Při spuštění kódu vyhledejte zprávu "vytvoření indexu" následovaný kódem odpovědi 201. Tento kód odpovědi potvrzuje, že byl index vytvořen. Běh by měl končit zprávou o ÚSPĚŠNÉm sestavení a nulovým (0) ukončovacím kódem.
     
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete  **soubor**a pak zadáte název souboru.
 1. Do souboru vložte následující hotelové dokumenty.
 
     ```json
@@ -685,7 +685,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
 
     Po žádosti o nahrání se vloží pauza o dvou sekundách, abyste zajistili, že se proces načítání dokumentu dokončil před dotazem na index.
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Vzhledem k tomu, že jste v předchozím kroku vytvořili index "hotely-rychlé spuštění", kód ho teď odstraní a znovu ho znovu vytvoří před načtením dokumentů hotelového typu.
 
@@ -814,13 +814,13 @@ Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací do
 
     Existují dva [způsoby, kterými se v dotazu shodují výrazy](search-query-overview.md#types-of-queries): fulltextové vyhledávání a filtry. Fulltextový vyhledávací dotaz vyhledává jeden nebo více podmínek v `IsSearchable` polích indexu. Filtr je logický výraz, který se vyhodnocuje přes `IsFilterable` pole v indexu. Můžete použít fulltextové vyhledávání a filtry společně nebo samostatně.
 
-1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven:`verify exec:java`
+1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java`
 
     Vyhledejte souhrn jednotlivých dotazů a jejich výsledků. Spuštění by mělo být dokončeno se zprávou o ÚSPĚŠNÉm sestavení a nulovým (0) ukončovacím kódem.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

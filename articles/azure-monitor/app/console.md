@@ -3,13 +3,14 @@ title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
 description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310459"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933337"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -36,7 +37,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání `Track()` metod, telemetrie nemůžete odeslat, pokud `Flush()` a `Sleep` / `Delay` není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku. `Sleep`není vyžadováno, pokud používáte `InMemoryChannel` . Existuje aktivní problém týkající se potřeby, `Sleep` které tady sledujeme: [ApplicationInsights-dotnet/problémy/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání `Track()` metod, telemetrie nemůžete odeslat, pokud `Flush()` a `Sleep` / `Delay` není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku. `Sleep` není vyžadováno, pokud používáte `InMemoryChannel` . Existuje aktivní problém týkající se potřeby, `Sleep` které tady sledujeme: [ApplicationInsights-dotnet/problémy/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.

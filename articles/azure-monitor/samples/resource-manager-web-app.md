@@ -3,15 +3,16 @@ title: Ukázky šablon Správce prostředků pro prostředky Azure App Service a
 description: Ukázka Azure Resource Manager šablon k nasazení Azure App Service s Application Insightsm prostředkem.
 ms.subservice: application-insights
 ms.topic: sample
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/06/2020
-ms.openlocfilehash: 20a03720233c276ddb71d53c97252643dce8d557
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 966dc0650d445a2181dc6a7d6ea1c57f223fd6f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927592"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934238"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>Ukázky Správce prostředků šablon pro vytváření webových aplikací Azure App Services s Application Insights monitoring
 

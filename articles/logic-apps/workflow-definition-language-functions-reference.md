@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875451"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932946"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -102,7 +102,7 @@ Chcete-li pracovat s kolekcemi, všeobecně se jedná o pole, řetězce a někdy
 
 | Funkce kolekce | Úkol |
 | ------------------- | ---- |
-| [obsahuje](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontroluje, zda kolekce obsahuje konkrétní položku. |
+| [zobrazí](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontroluje, zda kolekce obsahuje konkrétní položku. |
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Zkontroluje, jestli je kolekce prázdná. |
 | [první](../logic-apps/workflow-definition-language-functions-reference.md#first) | Vrátí první položku z kolekce. |
 | [průnik](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vrátí kolekci, která má v zadaných kolekcích *jenom* společné položky. |
@@ -127,14 +127,14 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
+| [rovná](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
 | [tolik](../logic-apps/workflow-definition-language-functions-reference.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
 | [mění](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
-| [– nebo –](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
+| [ani](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
 |||
 
 <a name="conversion-functions"></a>
@@ -509,7 +509,7 @@ Tento příklad získá `status` hodnotu vlastnosti z akce Twitteru `Get user` z
 actions('Get_user').outputs.body.status
 ```
 
-A vrátí tento výsledek:`"Succeeded"`
+A vrátí tento výsledek: `"Succeeded"`
 
 <a name="add"></a>
 
@@ -539,7 +539,7 @@ V tomto příkladu se přidají zadaná čísla:
 add(1, 1.5)
 ```
 
-A vrátí tento výsledek:`2.5`
+A vrátí tento výsledek: `2.5`
 
 <a name="addDays"></a>
 
@@ -571,7 +571,7 @@ Tento příklad přidá do zadaného časového razítka 10 dní:
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-A vrátí tento výsledek:`"2018-03-25T00:00:0000000Z"`
+A vrátí tento výsledek: `"2018-03-25T00:00:0000000Z"`
 
 *Příklad 2*
 
@@ -581,7 +581,7 @@ Tento příklad odečte pět dní od zadaného časového razítka:
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-A vrátí tento výsledek:`"2018-03-10T00:00:0000000Z"`
+A vrátí tento výsledek: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
@@ -613,7 +613,7 @@ Tento příklad přidá 10 hodin do zadaného časového razítka:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T10:00:0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T10:00:0000000Z"`
 
 *Příklad 2*
 
@@ -623,7 +623,7 @@ Tento příklad odečte pět hodin od zadaného časového razítka:
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T10:00:0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -655,7 +655,7 @@ Tento příklad přidá do zadaného časového razítka 10 minut:
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T00:20:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T00:20:00.0000000Z"`
 
 *Příklad 2*
 
@@ -665,7 +665,7 @@ Tento příklad odečte pět minut od zadaného časového razítka:
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T00:15:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
@@ -681,7 +681,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, do kterého chcete přidat vlastnost |
 | <*majetek*> | Ano | Řetězec | Název vlastnosti, která se má přidat |
-| <*osa*> | Ano | Libovolný | Hodnota vlastnosti |
+| <*osa*> | Ano | Všechny | Hodnota vlastnosti |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -700,7 +700,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*předmětů*> | Ano | Objekt | Objekt JSON, do kterého chcete přidat vlastnost |
 | <*Nadřazená vlastnost*> | Ano | Řetězec | Název pro nadřazenou vlastnost, do které chcete přidat podřízenou vlastnost |
 | <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má přidat |
-| <*osa*> | Ano | Libovolný | Hodnota, která se má nastavit pro zadanou vlastnost |
+| <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -796,7 +796,7 @@ Tento příklad přidá 10 sekund do zadaného časového razítka:
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T00:00:10.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T00:00:10.0000000Z"`
 
 *Příklad 2*
 
@@ -806,7 +806,7 @@ Tento příklad odečte pět sekund na zadané časové razítko:
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-A vrátí tento výsledek:`"2018-03-15T00:00:25.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
@@ -840,7 +840,7 @@ Tento příklad přidá jeden den do zadaného časového razítka:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-A vrátí tento výsledek:`"2018-01-02T00:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-01-02T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -850,7 +850,7 @@ Tento příklad přidá jeden den do zadaného časového razítka:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-A vrátí výsledek pomocí volitelného formátu "D":`"Tuesday, January 2, 2018"`
+A vrátí výsledek pomocí volitelného formátu "D": `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
@@ -934,7 +934,7 @@ Tento příklad vytvoří pole z řetězce "Hello":
 array('hello')
 ```
 
-A vrátí tento výsledek:`["hello"]`
+A vrátí tento výsledek: `["hello"]`
 
 <a name="base64"></a>
 
@@ -967,7 +967,7 @@ Tento příklad převede řetězec "Hello" na řetězec kódovaný v kódování
 base64('hello')
 ```
 
-A vrátí tento výsledek:`"aGVsbG8="`
+A vrátí tento výsledek: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
@@ -1035,7 +1035,7 @@ Tento příklad převede řetězec kódovaný řetězcem Base64 "aGVsbG8 =" na p
 base64ToString('aGVsbG8=')
 ```
 
-A vrátí tento výsledek:`"hello"`
+A vrátí tento výsledek: `"hello"`
 
 <a name="binary"></a>
 
@@ -1120,7 +1120,7 @@ A vrátí tento výsledek:
 
 ### <a name="bool"></a>bool
 
-Vrátí logickou verzi pro hodnotu.
+Vrátí logickou verzi hodnoty.
 
 ```
 bool(<value>)
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | Parametr | Povinné | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | Libovolný | Hodnota, která se má převést |
+| <*osa*> | Ano | Všechny | Hodnota, která má být převedena na logickou hodnotu. |
 |||||
+
+Pokud používáte `bool()` s objektem, hodnota objektu musí být řetězec nebo celé číslo, které lze převést na logickou hodnotu.
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Logická verze zadané hodnoty |
+| `true` nebo `false` | Logická hodnota | Logická verze zadané hodnoty. |
 ||||
 
-*Příklad*
+*Výstupy*
 
-Tyto příklady převádějí zadané hodnoty na logické hodnoty:
+Tyto příklady znázorňují různé podporované typy vstupu pro `bool()` :
 
-```
-bool(1)
-bool(0)
-```
-
-A vrátí tyto výsledky:
-
-* První příklad:`true`
-* Druhý příklad:`false`
+| Vstupní hodnota | Typ | Vrácená hodnota |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Integer | `true` |
+| `bool(0)` | Integer    | `false` |
+| `bool(-1)` | Integer | `true` |
+| `bool('true')` | Řetězec | `true` |
+| `bool('false')` | Řetězec | `false` |
 
 <a name="coalesce"></a>
 
@@ -1168,7 +1168,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*první položka, která není null,*> | Libovolný | První položka nebo hodnota, která není null. Pokud jsou všechny parametry null, tato funkce vrátí hodnotu null. |
+| <*první položka, která není null,*> | Všechny | První položka nebo hodnota, která není null. Pokud jsou všechny parametry null, tato funkce vrátí hodnotu null. |
 ||||
 
 *Příklad*
@@ -1183,9 +1183,9 @@ coalesce(null, null, null)
 
 A vrátí tyto výsledky:
 
-* První příklad:`true`
-* Druhý příklad:`"hello"`
-* Třetí příklad:`null`
+* První příklad: `true`
+* Druhý příklad: `"hello"`
+* Třetí příklad: `null`
 
 <a name="concat"></a>
 
@@ -1215,7 +1215,7 @@ V tomto příkladu jsou kombinovány řetězce "Hello" a "World":
 concat('Hello', 'World')
 ```
 
-A vrátí tento výsledek:`"HelloWorld"`
+A vrátí tento výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
@@ -1293,7 +1293,7 @@ Tento příklad převede časové razítko na zadané časové pásmo:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-A vrátí tento výsledek:`"2018-01-01T00:00:00.0000000"`
+A vrátí tento výsledek: `"2018-01-01T00:00:00.0000000"`
 
 *Příklad 2*
 
@@ -1303,7 +1303,7 @@ Tento příklad převede časové razítko na zadané časové pásmo a formát:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí tento výsledek:`"Monday, January 1, 2018"`
+A vrátí tento výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
@@ -1336,7 +1336,7 @@ Tento příklad převede zdrojové časové pásmo na cílové časové pásmo:
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-A vrátí tento výsledek:`"2018-01-01T00:00:00.0000000"`
+A vrátí tento výsledek: `"2018-01-01T00:00:00.0000000"`
 
 *Příklad 2*
 
@@ -1346,7 +1346,7 @@ Tento příklad převede časové pásmo na zadané časové pásmo a formát:
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí tento výsledek:`"Monday, January 1, 2018"`
+A vrátí tento výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
@@ -1378,7 +1378,7 @@ Tento příklad převede časové razítko na UTC:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-A vrátí tento výsledek:`"2018-01-01T08:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-01-01T08:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -1388,7 +1388,7 @@ Tento příklad převede časové razítko na UTC:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí tento výsledek:`"Monday, January 1, 2018"`
+A vrátí tento výsledek: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
@@ -1419,7 +1419,7 @@ Tento příklad vytvoří pole z těchto vstupů:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-A vrátí tento výsledek:`["h", "e", "l", "l", "o"]`
+A vrátí tento výsledek: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
@@ -1449,7 +1449,7 @@ Tento příklad vytvoří identifikátor URI dat pro řetězec "Hello":
 dataUri('hello')
 ```
 
-A vrátí tento výsledek:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+A vrátí tento výsledek: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
@@ -1516,7 +1516,7 @@ Tento příklad vytvoří řetězec pro tento identifikátor URI dat:
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-A vrátí tento výsledek:`"hello"`
+A vrátí tento výsledek: `"hello"`
 
 <a name="dayOfMonth"></a>
 
@@ -1546,7 +1546,7 @@ Tento příklad vrátí číslo dne v měsíci z tohoto časového razítka:
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-A vrátí tento výsledek:`15`
+A vrátí tento výsledek: `15`
 
 <a name="dayOfWeek"></a>
 
@@ -1576,7 +1576,7 @@ Tento příklad vrátí číslo pro den v týdnu z tohoto časového razítka:
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-A vrátí tento výsledek:`4`
+A vrátí tento výsledek: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1606,7 +1606,7 @@ Tento příklad vrátí číslo dne v roce z tohoto časového razítka:
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-A vrátí tento výsledek:`74`
+A vrátí tento výsledek: `74`
 
 <a name="decodeBase64"></a>
 
@@ -1680,7 +1680,7 @@ Tento příklad nahrazuje řídicí znaky v tomto řetězci pomocí Dekódovatel
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-A vrátí tento výsledek:`"https://contoso.com"`
+A vrátí tento výsledek: `"https://contoso.com"`
 
 <a name="div"></a>
 
@@ -1705,7 +1705,7 @@ div(<dividend>, <divisor>)
 
 *Příklad 1*
 
-Oba příklady vrátí tuto hodnotu s typem Integer:`2`
+Oba příklady vrátí tuto hodnotu s typem Integer: `2`
 
 ```
 div(10,5)
@@ -1714,7 +1714,7 @@ div(11,5)
 
 *Příklad 2*
 
-Oba příklady vrátí tuto hodnotu s typem float:`2.2`
+Oba příklady vrátí tuto hodnotu s typem float: `2.2`
 
 ```
 div(11,5.0)
@@ -1752,7 +1752,7 @@ Tento příklad vytvoří pro tento řetězec verzi kódovanou pomocí identifik
 encodeUriComponent('https://contoso.com')
 ```
 
-A vrátí tento výsledek:`"http%3A%2F%2Fcontoso.com"`
+A vrátí tento výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1821,7 +1821,7 @@ Tento příklad zkontroluje, jestli řetězec "Hello World" končí řetězcem "
 endsWith('hello world', 'world')
 ```
 
-A vrátí tento výsledek:`true`
+A vrátí tento výsledek: `true`
 
 *Příklad 2*
 
@@ -1831,11 +1831,11 @@ Tento příklad zkontroluje, jestli řetězec "Hello World" končí řetězcem "
 endsWith('hello world', 'universe')
 ```
 
-A vrátí tento výsledek:`false`
+A vrátí tento výsledek: `false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>rovná se
 
 Zkontroluje, jestli jsou hodnoty, výrazy nebo objekty ekvivalentní.
 Vrátí hodnotu true, pokud jsou obě ekvivalentní, nebo vrátí hodnotu false, pokud nejsou ekvivalentní.
@@ -1886,7 +1886,7 @@ first([<collection>])
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*první kolekce – položka*> | Libovolný | První položka v kolekci |
+| <*první kolekce – položka*> | Všechny | První položka v kolekci |
 ||||
 
 *Příklad*
@@ -1900,8 +1900,8 @@ first(createArray(0, 1, 2))
 
 A vrátí tyto výsledky:
 
-* První příklad:`"h"`
-* Druhý příklad:`0`
+* První příklad: `"h"`
+* Druhý příklad: `0`
 
 <a name="float"></a>
 
@@ -1932,7 +1932,7 @@ Tento příklad vytvoří verzi řetězce pro toto číslo s plovoucí desetinno
 float('10.333')
 ```
 
-A vrátí tento výsledek:`10.333`
+A vrátí tento výsledek: `10.333`
 
 <a name="formatDateTime"></a>
 
@@ -1963,7 +1963,7 @@ Tento příklad převede časové razítko na určený formát:
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-A vrátí tento výsledek:`"2018-03-15T12:00:00"`
+A vrátí tento výsledek: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
@@ -1994,7 +1994,7 @@ Tento příklad vytvoří pole z hodnoty klíče "Subject" v zadané formě data
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-A vrátí text předmětu v poli, například:`["Hello world"]`
+A vrátí text předmětu v poli, například: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
@@ -2026,7 +2026,7 @@ Tento příklad vytvoří řetězec z hodnoty klíče "Subject" v zadané formě
 formDataValue('Send_an_email', 'Subject')
 ```
 
-A vrátí text předmětu jako řetězec, například:`"Hello world"`
+A vrátí text předmětu jako řetězec, například: `"Hello world"`
 
 <a name="formatNumber"></a>
 
@@ -2113,7 +2113,7 @@ Tento příklad přidá pět dní do tohoto časového razítka:
 getFutureTime(5, 'Day')
 ```
 
-A vrátí tento výsledek:`"2018-03-06T00:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-06T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -2124,7 +2124,7 @@ Tento příklad přidá pět dnů a převede výsledek na formát "D":
 getFutureTime(5, 'Day', 'D')
 ```
 
-A vrátí tento výsledek:`"Tuesday, March 6, 2018"`
+A vrátí tento výsledek: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
@@ -2157,7 +2157,7 @@ Tento příklad odečte pět dní od tohoto časového razítka:
 getPastTime(5, 'Day')
 ```
 
-A vrátí tento výsledek:`"2018-01-27T00:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-01-27T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -2168,7 +2168,7 @@ Tento příklad odečte pět dní a převede výsledek na formát "D":
 getPastTime(5, 'Day', 'D')
 ```
 
-A vrátí tento výsledek:`"Saturday, January 27, 2018"`
+A vrátí tento výsledek: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
@@ -2204,8 +2204,8 @@ greater('apple', 'banana')
 
 A vrátí tyto výsledky:
 
-* První příklad:`true`
-* Druhý příklad:`false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="greaterOrEquals"></a>
 
@@ -2241,8 +2241,8 @@ greaterOrEquals('apple', 'banana')
 
 A vrátí tyto výsledky:
 
-* První příklad:`true`
-* Druhý příklad:`false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="guid"></a>
 
@@ -2278,7 +2278,7 @@ Tento příklad generuje stejný identifikátor GUID, ale jako 32 číslic oddě
 guid('P')
 ```
 
-A vrátí tento výsledek:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+A vrátí tento výsledek: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
@@ -2293,13 +2293,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parametr | Povinné | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*vyjádření*> | Ano | Logická hodnota | Výraz, který se má kontrolovat |
-| <*valueIfTrue*> | Ano | Libovolný | Hodnota, která se má vrátit, když je výraz pravdivý |
-| <*valueIfFalse*> | Ano | Libovolný | Hodnota, která se má vrátit, pokud je výraz nepravdivý |
+| <*valueIfTrue*> | Ano | Všechny | Hodnota, která se má vrátit, když je výraz pravdivý |
+| <*valueIfFalse*> | Ano | Všechny | Hodnota, která se má vrátit, pokud je výraz nepravdivý |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*zadané-návratové hodnoty*> | Libovolný | Zadaná hodnota, která se vrátí na základě toho, zda je výraz true nebo false |
+| <*zadané-návratové hodnoty*> | Všechny | Zadaná hodnota, která se vrátí na základě toho, zda je výraz true nebo false |
 ||||
 
 *Příklad*
@@ -2341,7 +2341,7 @@ Tento příklad najde počáteční hodnotu indexu pro podřetězec "World" v ř
 indexOf('hello world', 'world')
 ```
 
-A vrátí tento výsledek:`6`
+A vrátí tento výsledek: `6`
 
 <a name="int"></a>
 
@@ -2371,7 +2371,7 @@ Tento příklad vytvoří celočíselnou verzi pro řetězec "10":
 int('10')
 ```
 
-A vrátí tento výsledek:`10`
+A vrátí tento výsledek: `10`
 
 <a name="item"></a>
 
@@ -2386,7 +2386,7 @@ item()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktuální pole-položka*> | Libovolný | Aktuální položka v poli pro aktuální iteraci akce |
+| <*aktuální pole-položka*> | Všechny | Aktuální položka v poli pro aktuální iteraci akce |
 ||||
 
 *Příklad*
@@ -2415,7 +2415,7 @@ items('<loopName>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*položkami*> | Libovolný | Položka z aktuálního cyklu v zadaném pro – každou smyčku |
+| <*položkami*> | Všechny | Položka z aktuálního cyklu v zadaném pro – každou smyčku |
 ||||
 
 *Příklad*
@@ -2555,7 +2555,7 @@ Tento příklad převede tento řetězec na hodnotu JSON:
 json('[1, 2, 3]')
 ```
 
-A vrátí tento výsledek:`[1, 2, 3]`
+A vrátí tento výsledek: `[1, 2, 3]`
 
 *Příklad 2*
 
@@ -2627,7 +2627,7 @@ Tento příklad najde společné položky v těchto polích:
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-A vrátí pole *pouze* s následujícími položkami:`[1, 2]`
+A vrátí pole *pouze* s následujícími položkami: `[1, 2]`
 
 <a name="join"></a>
 
@@ -2658,7 +2658,7 @@ Tento příklad vytvoří řetězec ze všech položek v tomto poli se zadaným 
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-A vrátí tento výsledek:`"a.b.c"`
+A vrátí tento výsledek: `"a.b.c"`
 
 <a name="last"></a>
 
@@ -2692,8 +2692,8 @@ last(createArray(0, 1, 2, 3))
 
 A vrátí tyto výsledky:
 
-* První příklad:`"d"`
-* Druhý příklad:`3`
+* První příklad: `"d"`
+* Druhý příklad: `3`
 
 <a name="lastindexof"></a>
 
@@ -2772,7 +2772,7 @@ length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-A vrátí tento výsledek:`4`
+A vrátí tento výsledek: `4`
 
 <a name="less"></a>
 
@@ -2808,8 +2808,8 @@ less('banana', 'apple')
 
 A vrátí tyto výsledky:
 
-* První příklad:`true`
-* Druhý příklad:`false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="lessOrEquals"></a>
 
@@ -2845,8 +2845,8 @@ lessOrEquals('apply', 'apple')
 
 A vrátí tyto výsledky:
 
-* První příklad:`true`
-* Druhý příklad:`false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="listCallbackUrl"></a>
 
@@ -2901,7 +2901,7 @@ max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-A vrátí tento výsledek:`3`
+A vrátí tento výsledek: `3`
 
 <a name="min"></a>
 
@@ -2934,7 +2934,7 @@ min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-A vrátí tento výsledek:`1`
+A vrátí tento výsledek: `1`
 
 <a name="mod"></a>
 
@@ -2966,7 +2966,7 @@ Tento příklad vydělí první číslo druhým číslem:
 mod(3, 2)
 ```
 
-A vrátí tento výsledek:`1`
+A vrátí tento výsledek: `1`
 
 <a name="mul"></a>
 
@@ -3000,8 +3000,8 @@ mul(1.5, 2)
 
 A vrátí tyto výsledky:
 
-* První příklad:`2`
-* Druhý příklad`3`
+* První příklad: `2`
+* Druhý příklad `3`
 
 <a name="multipartBody"></a>
 
@@ -3075,7 +3075,7 @@ A vrátí tyto výsledky:
 
 <a name="or"></a>
 
-### <a name="or"></a>– nebo –
+### <a name="or"></a>nebo
 
 Ověřte, zda je alespoň jeden výraz pravdivý.
 Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true, nebo vrátí hodnotu false, pokud všechny mají hodnotu false.
@@ -3202,7 +3202,7 @@ parameters('<parameterName>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota parametru*> | Libovolný | Hodnota pro zadaný parametr |
+| <*hodnota parametru*> | Všechny | Hodnota pro zadaný parametr |
 ||||
 
 *Příklad*
@@ -3221,7 +3221,7 @@ Tento příklad získá hodnotu pro zadaný parametr:
 parameters('fullName')
 ```
 
-A vrátí tento výsledek:`"Sophia Owen"`
+A vrátí tento výsledek: `"Sophia Owen"`
 
 <a name="rand"></a>
 
@@ -3252,7 +3252,7 @@ Tento příklad získá náhodné celé číslo ze zadaného rozsahu s výjimkou
 rand(1, 5)
 ```
 
-A vrátí jeden z těchto čísel jako výsledek: `1` , `2` , `3` nebo`4`
+A vrátí jeden z těchto čísel jako výsledek: `1` , `2` , `3` nebo `4`
 
 <a name="range"></a>
 
@@ -3283,7 +3283,7 @@ Tento příklad vytvoří celočíselné pole, které začíná od zadaného ind
 range(1, 4)
 ```
 
-A vrátí tento výsledek:`[1, 2, 3, 4]`
+A vrátí tento výsledek: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
@@ -3315,7 +3315,7 @@ Tento příklad najde "starý" podřetězec v "starém řetězci" a nahradí "Ol
 replace('the old string', 'old', 'new')
 ```
 
-A vrátí tento výsledek:`"the new string"`
+A vrátí tento výsledek: `"the new string"`
 
 <a name="removeProperty"></a>
 
@@ -3549,7 +3549,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, jehož vlastnost má být nastavena |
 | <*majetek*> | Ano | Řetězec | Název existující nebo nové vlastnosti, která se má nastavit |
-| <*osa*> | Ano | Libovolný | Hodnota, která se má nastavit pro zadanou vlastnost |
+| <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
 Chcete-li nastavit podřízenou vlastnost v podřízeném objektu, použijte `setProperty()` místo toho vnořené volání. V opačném případě funkce vrátí pouze podřízený objekt jako výstup.
@@ -3563,7 +3563,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*předmětů*> | Ano | Objekt | Objekt JSON, jehož vlastnost má být nastavena |
 | <*Nadřazená vlastnost*> | Ano | Řetězec | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete nastavit |
 | <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má nastavit |
-| <*osa*> | Ano | Libovolný | Hodnota, která se má nastavit pro zadanou vlastnost |
+| <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3656,7 +3656,7 @@ Tento příklad odebere jednu položku, číslo 0, od začátku zadaného pole:
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-A vrátí toto pole se zbývajícími položkami:`[1,2,3]`
+A vrátí toto pole se zbývajícími položkami: `[1,2,3]`
 
 <a name="split"></a>
 
@@ -3687,7 +3687,7 @@ Tento příklad vytvoří pole s podřetězci ze zadaného řetězce založenéh
 split('a_b_c', '_')
 ```
 
-A vrátí toto pole jako výsledek:`["a","b","c"]`
+A vrátí toto pole jako výsledek: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 
@@ -3718,7 +3718,7 @@ Tento příklad najde začátek dne pro toto časové razítko:
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-A vrátí tento výsledek:`"2018-03-15T00:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
@@ -3749,7 +3749,7 @@ Tento příklad najde začátek hodiny pro toto časové razítko:
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-A vrátí tento výsledek:`"2018-03-15T13:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
@@ -3780,7 +3780,7 @@ Tento příklad vrátí začátek měsíce pro toto časové razítko:
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-A vrátí tento výsledek:`"2018-03-01T00:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-03-01T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -3790,7 +3790,7 @@ Tento příklad vrátí začátek měsíce v zadaném formátu pro toto časové
 startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
 ```
 
-A vrátí tento výsledek:`"2018-03-01"`
+A vrátí tento výsledek: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3823,7 +3823,7 @@ Tento příklad kontroluje, zda řetězec "Hello World" začíná řetězcem "He
 startsWith('hello world', 'hello')
 ```
 
-A vrátí tento výsledek:`true`
+A vrátí tento výsledek: `true`
 
 *Příklad 2*
 
@@ -3833,7 +3833,7 @@ Tento příklad kontroluje, zda řetězec "Hello World" začíná řetězcem "po
 startsWith('hello world', 'greetings')
 ```
 
-A vrátí tento výsledek:`false`
+A vrátí tento výsledek: `false`
 
 <a name="string"></a>
 
@@ -3847,7 +3847,7 @@ string(<value>)
 
 | Parametr | Povinné | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | Libovolný | Hodnota, kterou chcete převést. Pokud je tato hodnota null nebo je vyhodnocena jako null, hodnota je převedena na prázdnou řetězcovou `""` hodnotu (). <p><p>Například pokud přiřadíte proměnnou řetězce k neexistující vlastnosti, ke které máte přístup pomocí `?` operátoru, hodnota null je převedena na prázdný řetězec. Porovnávání hodnoty null však není stejné jako porovnávání prázdného řetězce. |
+| <*osa*> | Ano | Všechny | Hodnota, kterou chcete převést. Pokud je tato hodnota null nebo je vyhodnocena jako null, hodnota je převedena na prázdnou řetězcovou `""` hodnotu (). <p><p>Například pokud přiřadíte proměnnou řetězce k neexistující vlastnosti, ke které máte přístup pomocí `?` operátoru, hodnota null je převedena na prázdný řetězec. Porovnávání hodnoty null však není stejné jako porovnávání prázdného řetězce. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3867,7 +3867,7 @@ Tento příklad vytvoří verzi řetězce pro toto číslo:
 string(10)
 ```
 
-A vrátí tento výsledek:`"10"`
+A vrátí tento výsledek: `"10"`
 
 *Příklad 2*
 
@@ -3877,7 +3877,7 @@ Tento příklad vytvoří řetězec pro zadaný objekt JSON a používá znak zp
 string( { "name": "Sophie Owen" } )
 ```
 
-A vrátí tento výsledek:`"{ \\"name\\": \\"Sophie Owen\\" }"`
+A vrátí tento výsledek: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
@@ -3908,7 +3908,7 @@ Tento příklad odečte druhé číslo od prvního čísla:
 sub(10.3, .3)
 ```
 
-A vrátí tento výsledek:`10`
+A vrátí tento výsledek: `10`
 
 <a name="substring"></a>
 
@@ -3941,7 +3941,7 @@ Tento příklad vytvoří podřetězec s pěti znaky ze zadaného řetězce poč
 substring('hello world', 6, 5)
 ```
 
-A vrátí tento výsledek:`"world"`
+A vrátí tento výsledek: `"world"`
 
 <a name="subtractFromTime"></a>
 
@@ -3975,7 +3975,7 @@ Tento příklad odečte jeden den od tohoto časového razítka:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-A vrátí tento výsledek:`"2018-01-01T00:00:00:0000000Z"`
+A vrátí tento výsledek: `"2018-01-01T00:00:00:0000000Z"`
 
 *Příklad 2*
 
@@ -3985,7 +3985,7 @@ Tento příklad odečte jeden den od tohoto časového razítka:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-A vrátí tento výsledek pomocí volitelného formátu "D":`"Monday, January, 1, 2018"`
+A vrátí tento výsledek pomocí volitelného formátu "D": `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
@@ -4020,8 +4020,8 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 A vrátí tyto výsledky:
 
-* První příklad:`"abc"`
-* Druhý příklad:`[0, 1, 2]`
+* První příklad: `"abc"`
+* Druhý příklad: `[0, 1, 2]`
 
 <a name="ticks"></a>
 
@@ -4071,7 +4071,7 @@ Tento příklad převede tento řetězec na malá písmena:
 toLower('Hello World')
 ```
 
-A vrátí tento výsledek:`"hello world"`
+A vrátí tento výsledek: `"hello world"`
 
 <a name="toUpper"></a>
 
@@ -4101,7 +4101,7 @@ Tento příklad převede tento řetězec na velká písmena:
 toUpper('Hello World')
 ```
 
-A vrátí tento výsledek:`"HELLO WORLD"`
+A vrátí tento výsledek: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
@@ -4170,7 +4170,7 @@ Tento příklad vytvoří pole z hodnoty klíče "feedUrl" v aktivačním formul
 triggerFormDataMultiValues('feedUrl')
 ```
 
-A vrátí toto pole jako výsledek příkladu:`["http://feeds.reuters.com/reuters/topNews"]`
+A vrátí toto pole jako výsledek příkladu: `["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4201,7 +4201,7 @@ Tento příklad vytvoří řetězec z hodnoty klíče "feedUrl" v aktivačním f
 triggerFormDataValue('feedUrl')
 ```
 
-A vrátí tento řetězec jako příklad výsledku:`"http://feeds.reuters.com/reuters/topNews"`
+A vrátí tento řetězec jako příklad výsledku: `"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4268,7 +4268,7 @@ Tento příklad odstraní úvodní a koncové mezery z řetězce "Hello World":
 trim(' Hello World  ')
 ```
 
-A vrátí tento výsledek:`"Hello World"`
+A vrátí tento výsledek: `"Hello World"`
 
 <a name="union"></a>
 
@@ -4300,7 +4300,7 @@ Tento příklad načte *všechny* položky z těchto kolekcí:
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-A vrátí tento výsledek:`[1, 2, 3, 10, 101]`
+A vrátí tento výsledek: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
@@ -4332,7 +4332,7 @@ Tento příklad vytvoří pro tento řetězec verzi kódovanou pomocí identifik
 uriComponent('https://contoso.com')
 ```
 
-A vrátí tento výsledek:`"http%3A%2F%2Fcontoso.com"`
+A vrátí tento výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4397,7 +4397,7 @@ Tento příklad vytvoří dekódovanou verzi řetězce pro tento řetězec kódo
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-A vrátí tento výsledek:`"https://contoso.com"`
+A vrátí tento výsledek: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
@@ -4427,7 +4427,7 @@ Tento příklad najde `host` hodnotu pro tento identifikátor URI:
 uriHost('https://www.localhost.com:8080')
 ```
 
-A vrátí tento výsledek:`"www.localhost.com"`
+A vrátí tento výsledek: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
@@ -4457,7 +4457,7 @@ Tento příklad najde `path` hodnotu pro tento identifikátor URI:
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí tento výsledek:`"/catalog/shownew.htm"`
+A vrátí tento výsledek: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
@@ -4487,7 +4487,7 @@ Tento příklad najde `path` hodnoty a `query` pro tento identifikátor URI:
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí tento výsledek:`"/catalog/shownew.htm?date=today"`
+A vrátí tento výsledek: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
@@ -4517,7 +4517,7 @@ Tento příklad vrátí `port` hodnotu pro tento identifikátor URI:
 uriPort('http://www.localhost:8080')
 ```
 
-A vrátí tento výsledek:`8080`
+A vrátí tento výsledek: `8080`
 
 <a name="uriQuery"></a>
 
@@ -4547,7 +4547,7 @@ Tento příklad vrátí `query` hodnotu pro tento identifikátor URI:
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí tento výsledek:`"?date=today"`
+A vrátí tento výsledek: `"?date=today"`
 
 <a name="uriScheme"></a>
 
@@ -4577,7 +4577,7 @@ Tento příklad vrátí `scheme` hodnotu pro tento identifikátor URI:
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí tento výsledek:`"http"`
+A vrátí tento výsledek: `"http"`
 
 <a name="utcNow"></a>
 
@@ -4611,7 +4611,7 @@ Tento příklad získá aktuální časové razítko:
 utcNow()
 ```
 
-A vrátí tento výsledek:`"2018-04-15T13:00:00.0000000Z"`
+A vrátí tento výsledek: `"2018-04-15T13:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -4622,7 +4622,7 @@ Tento příklad získá aktuální časové razítko pomocí volitelného formá
 utcNow('D')
 ```
 
-A vrátí tento výsledek:`"Sunday, April 15, 2018"`
+A vrátí tento výsledek: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
@@ -4641,7 +4641,7 @@ variables('<variableName>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Proměnná – hodnota*> | Libovolný | Hodnota pro zadanou proměnnou |
+| <*Proměnná – hodnota*> | Všechny | Hodnota pro zadanou proměnnou |
 ||||
 
 *Příklad*
@@ -4653,7 +4653,7 @@ Tento příklad získá celočíselnou hodnotu pro tuto proměnnou:
 variables('numItems')
 ```
 
-A vrátí tento výsledek:`20`
+A vrátí tento výsledek: `20`
 
 <a name="workflow"></a>
 
@@ -4748,14 +4748,14 @@ xpath('<xml>', '<xpath>')
 
 | Parametr | Povinné | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*XML*> | Ano | Libovolný | Řetězec XML pro vyhledání uzlů nebo hodnot, které odpovídají hodnotě výrazu XPath |
-| <*cestou*> | Ano | Libovolný | Výraz XPath, který slouží k vyhledání odpovídajícího uzlu XML nebo hodnot |
+| <*XML*> | Ano | Všechny | Řetězec XML pro vyhledání uzlů nebo hodnot, které odpovídají hodnotě výrazu XPath |
+| <*cestou*> | Ano | Všechny | Výraz XPath, který slouží k vyhledání odpovídajícího uzlu XML nebo hodnot |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
 | <*uzel XML*> | XML | Uzel XML, pokud pouze jeden uzel odpovídá zadanému výrazu XPath |
-| <*osa*> | Libovolný | Hodnota z uzlu XML, pokud je pouze jedna hodnota shodná se zadaným výrazem XPath |
+| <*osa*> | Všechny | Hodnota z uzlu XML, pokud je pouze jedna hodnota shodná se zadaným výrazem XPath |
 | [<*XML-uzel1*>, <*xml-Uzel2*>,...] </br>-nebo- </br>[<*hodnota1*>, <*hodnota2*>,...] | Pole | Pole s uzly XML nebo hodnotami, které odpovídají zadanému výrazu XPath |
 ||||
 
@@ -4781,7 +4781,7 @@ V příkladu 1 Tento příklad předává ve výrazu XPath, `'/produce/item/name
 
 `xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Tady je výsledek:`Gala`
+Tady je výsledek: `Gala`
 
 *Příklad 3*
 
@@ -4789,7 +4789,7 @@ V příkladu 1 Tento příklad přechází ve výrazu XPath, `'/produce/item/nam
 
 `xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-Tady je výsledek:`Honeycrisp`
+Tady je výsledek: `Honeycrisp`
 
 *Příklad 4*
 
@@ -4801,7 +4801,7 @@ Tento příklad projde ve výrazu XPath, `'//name[@expired]'` a najde všechny `
 
 `xpath(xml(parameters('items')), '//name[@expired]')`
 
-Tady je výsledek:`[ Gala, Honeycrisp ]`
+Tady je výsledek: `[ Gala, Honeycrisp ]`
 
 *Příklad 5*
 
@@ -4813,7 +4813,7 @@ Tento příklad projde ve výrazu XPath, `'//name[@expired = 'true']'` a k nalez
 
 `xpath(xml(parameters('items')), '//name[@expired = 'true']')`
 
-Tady je výsledek:`[ Gala ]`
+Tady je výsledek: `[ Gala ]`
 
 *Příklad 6*
 
@@ -4828,7 +4828,7 @@ Tento příklad projde ve výrazu XPath, `'//name[price>35]'` , aby vyhledal vš
 
 `xpath(xml(parameters('items')), '//name[price>35]')`
 
-Tady je výsledek:`Honeycrisp`
+Tady je výsledek: `Honeycrisp`
 
 *Příklad 7*
 
@@ -4840,7 +4840,7 @@ Tento příklad najde uzly, které odpovídají `<count></count>` uzlu, a přid�
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-Tady je výsledek:`30`
+Tady je výsledek: `30`
 
 *Příklad 8*
 
@@ -4863,9 +4863,9 @@ Zde je výsledný uzel, který odpovídá `<location></location>` uzlu:
 > Například je třeba použít řídicí znaky při serializaci výrazu jako řetězce JSON. 
 > Pokud však pracujete v návrháři aplikace logiky nebo editoru výrazů, nemusíte klikat na uvozovky, protože znak zpětného lomítka je automaticky přidán do podkladové definice, například:
 > 
-> * Zobrazení kódu:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Zobrazení kódu: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * Editor výrazů:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * Editor výrazů: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 *Příklad 9*
 
@@ -4873,7 +4873,7 @@ V příkladu 8 Tento příklad používá výraz XPath, `'string(/*[name()="file
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Tady je výsledek:`Paris`
+Tady je výsledek: `Paris`
 
 ## <a name="next-steps"></a>Další kroky
 

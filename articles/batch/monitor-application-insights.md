@@ -2,13 +2,14 @@
 title: Monitorování služby Batch pomocí Application Insights Azure
 description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí knihovny Azure Application Insights.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723608"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933558"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
 
@@ -22,7 +23,7 @@ Ukázkové řešení jazyka C# s kódem, který se doprovází do tohoto článk
 > Jako alternativu můžete nakonfigurovat řešení Batch tak, aby zobrazovalo Application Insightsá data, jako jsou čítače výkonu virtuálních počítačů v Batch Explorer. [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Rychlé kroky pro povolení Application Insights dat v Batch Explorer najdete v části [úložiště Batch-Insights](https://github.com/Azure/batch-insights) . 
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)
 
 * [Účet Batch a propojený účet úložiště](batch-account-create-portal.md)
@@ -56,9 +57,9 @@ Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application
 Do souboru TopNWords.cs také přidejte klíč instrumentace.
 
 Příklad v TopNWords.cs používá následující [volání instrumentace](../azure-monitor/app/api-custom-events-metrics.md) z rozhraní Application Insights API:
-* `TrackMetric()`-Sleduje, jak dlouho potřebuje výpočetní uzel stáhnout požadovaný textový soubor.
-* `TrackTrace()`– Přidá volání ladění do kódu.
-* `TrackEvent()`– Sleduje zajímavé události k zachycení.
+* `TrackMetric()` -Sleduje, jak dlouho potřebuje výpočetní uzel stáhnout požadovaný textový soubor.
+* `TrackTrace()` – Přidá volání ladění do kódu.
+* `TrackEvent()` – Sleduje zajímavé události k zachycení.
 
 Tento příklad záměrně opustí zpracování výjimek. Místo toho Application Insights automaticky hlásí neošetřené výjimky, což významně vylepšuje možnosti ladění. 
 

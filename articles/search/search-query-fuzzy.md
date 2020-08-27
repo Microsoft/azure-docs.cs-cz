@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146137"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934884"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
 
@@ -82,7 +82,7 @@ Pokud jsou výsledky dvojznačné, [zvýrazňování přístupů](search-paginat
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Příklad 1: hledání přibližného vyhledávání s přesným termínem
 
-V `"Description"` poli vyhledávacího dokumentu se předpokládá následující řetězec:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+V `"Description"` poli vyhledávacího dokumentu se předpokládá následující řetězec: `"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Začněte s přibližným hledáním "Special" a přidejte zvýraznění přístupů do pole Popis:
 
@@ -136,5 +136,5 @@ Bodem tohoto rozbaleného příkladu je ilustrovat přehlednost, který zvýraz�
 
 + [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
 + [Průzkumník vyhledávání](search-explorer.md)
-+ [Dotazování v .NET](search-query-dotnet.md)
-+ [Dotazování v REST](search-create-index-rest-api.md)
++ [Dotazování v .NET](./search-get-started-dotnet.md)
++ [Dotazování v REST](./search-get-started-powershell.md)

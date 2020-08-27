@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 8/13/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, devx-track-dotnet
 ms.author: diberry
-ms.openlocfilehash: d0ae5fa41d039be235ff0c9abb4facf95b1f3b2e
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: e29b3dcdaba4fde0782b0fee8c60428b5a824b28
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246168"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934717"
 ---
 Použijte klientské knihovny Language Understanding (LUIS) pro rozhraní .NET pro:
 * Vytvoření aplikace
@@ -25,7 +25,7 @@ Použijte klientské knihovny Language Understanding (LUIS) pro rozhraní .NET p
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)  |  Zdrojový kód knihovny pro [vytváření](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) a [předpovědi](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Vytváření](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) a [předpověď](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) NuGet | [Ukázka jazyka C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/LanguageUnderstanding/sdk-3x//Program.cs)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktuální verze [rozhraní .NET Core](https://dotnet.microsoft.com/download/dotnet-core) a [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/).
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .

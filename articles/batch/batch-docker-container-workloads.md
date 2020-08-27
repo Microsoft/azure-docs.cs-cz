@@ -3,13 +3,13 @@ title: Úlohy kontejneru
 description: Naučte se spouštět a škálovat aplikace z imagí kontejnerů na Azure Batch. Vytvořte fond výpočetních uzlů, které podporují spouštění úloh kontejneru.
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: a26582572302f670010f3038147687b47feef84a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726719"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933541"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
 
@@ -21,7 +21,7 @@ Měli byste být obeznámeni se základními pojmy kontejnerů a vytvářením f
 
 Pomocí kontejnerů můžete snadno spouštět úlohy služby Batch bez nutnosti spravovat prostředí a závislosti pro spouštění aplikací. Kontejnery nasazují aplikace jako odlehčené, přenosné a dostatečné jednotky, které mohou běžet v několika různých prostředích. Můžete například sestavit a otestovat kontejner místně a pak nahrát image kontejneru do registru v Azure nebo jinde. Model nasazení kontejneru zajišťuje, že běhové prostředí aplikace je vždy správně nainstalováno a nakonfigurováno všude, kde je aplikace hostována. Úlohy založené na kontejneru v dávce můžou také využívat funkce nekontejnerových úloh, včetně balíčků aplikací a správy souborů prostředků a výstupních souborů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Verze sady SDK**: sady SDK pro Batch podporují image kontejnerů v následujících verzích:
     * Batch REST API verze 2017 -09-01.6.0
@@ -56,15 +56,15 @@ V případě zatížení kontejnerů pro Linux služba Batch v současné době 
 
 #### <a name="vm-sizes-without-rdma"></a>Velikosti virtuálních počítačů bez RDMA
 
-- Microsoft`microsoft-azure-batch`
-  - Dodání`centos-container`
-  - Dodání`ubuntu-server-container`
+- Microsoft `microsoft-azure-batch`
+  - Dodání `centos-container`
+  - Dodání `ubuntu-server-container`
 
 #### <a name="vm-sizes-with-rdma"></a>Velikosti virtuálních počítačů pomocí RDMA
 
-- Microsoft`microsoft-azure-batch`
-  - Dodání`centos-container-rdma`
-  - Dodání`ubuntu-server-container-rdma`
+- Microsoft `microsoft-azure-batch`
+  - Dodání `centos-container-rdma`
+  - Dodání `ubuntu-server-container-rdma`
 
 Tyto image se podporují jenom pro použití v fondech Azure Batch a jsou zaměřené na spuštění kontejneru Docker. Funkce:
 
@@ -253,7 +253,7 @@ Volitelné [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainer
 
 ### <a name="container-task-working-directory"></a>Pracovní adresář úkolu kontejneru
 
-Úloha služby Batch se spustí v pracovním adresáři v kontejneru, který je velmi podobný jako adresářová dávka pro běžný (nekontejnerový) úkol. Všimněte si, že tento pracovní adresář je jiný než [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , pokud je nakonfigurovaný v imagi, nebo výchozí pracovní adresář kontejneru ( `C:\` v kontejneru Windows nebo `/` v kontejneru Linux).
+Úloha služby Batch se spustí v pracovním adresáři v kontejneru, který je velmi podobný jako adresářová dávka pro běžný (nekontejnerový) úkol. Všimněte si, že tento pracovní adresář je jiný než [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , pokud je nakonfigurovaný v imagi, nebo výchozí pracovní adresář kontejneru ( `C:\`  v kontejneru Windows nebo `/` v kontejneru Linux).
 
 Pro úlohu kontejneru Batch:
 

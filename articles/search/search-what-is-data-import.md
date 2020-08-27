@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202292"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932759"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -34,12 +34,12 @@ Tento přístup je flexibilnější než model Pull, protože můžete nahrávat
 
 Pomocí následujících rozhraní API můžete do indexu načíst jeden nebo několik dokumentů:
 
-+ [Přidávání, aktualizace a odstraňování dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [Třída indexAction](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) nebo [třída indexBatch](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [Přidávání, aktualizace a odstraňování dokumentů (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [Třída indexAction](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) nebo [třída indexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
-Úvod ke každé metodologii najdete v tématu [rychlý Start: vytvoření indexu služby azure kognitivní hledání pomocí prostředí PowerShell](search-create-index-rest-api.md) nebo [jazyka C# Start: vytvoření indexu Azure kognitivní hledání pomocí sady .NET SDK](search-get-started-dotnet.md).
+Úvod ke každé metodologii najdete v tématu [rychlý Start: vytvoření indexu služby azure kognitivní hledání pomocí prostředí PowerShell](./search-get-started-powershell.md) nebo [jazyka C# Start: vytvoření indexu Azure kognitivní hledání pomocí sady .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -61,7 +61,7 @@ V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Za
 
 ### <a name="formulate-your-query"></a>Formulování dotazu
 
-Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
+Existují dva způsoby [vyhledávání v indexu pomocí REST API](/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
 Pro POST i GET musíte zadat *název služby*, *název indexu*a *verzi rozhraní API* v adrese URL požadavku. 
 

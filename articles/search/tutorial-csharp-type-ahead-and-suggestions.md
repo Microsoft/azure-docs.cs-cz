@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dd93ef68b0e0e7ac465584eaecb3b4c8a0c39476
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420596"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934935"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
@@ -145,7 +145,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
  
     ![Zadání "PA" s fuzzy nastavenou na hodnotu true](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Pokud vás zajímá, [syntaxe dotazů Lucene v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/query-lucene-syntax) popisuje logiku použitou v přibližných prohledáních podrobněji.
+    Pokud vás zajímá, [syntaxe dotazů Lucene v Azure kognitivní hledání](./query-lucene-syntax.md) popisuje logiku použitou v přibližných prohledáních podrobněji.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Přidat zvýraznění k návrhům
 
@@ -244,7 +244,7 @@ Další variace, která se mírně liší od návrhů, je automatického dokonč
 
     Všimněte si, že používáme stejnou funkci *návrhy* , která se nazývá "SG", a to při automatickém dokončování hledání jako u návrhů (takže se snažíme jenom provést automatické dokončování názvů hotelů).
 
-    K dispozici je řada nastavení **AutocompleteMode** a používáme **OneTermWithContext**. Popis dalších možností najdete v tématu [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
+    K dispozici je řada nastavení **AutocompleteMode** a používáme **OneTermWithContext**. Popis dalších možností najdete v tématu [rozhraní API pro automatické dokončování](/rest/api/searchservice/autocomplete) .
 
 4. Spusťte aplikaci. Všimněte si, jak je rozsah možností zobrazených v rozevíracím seznamu jedinou slovem. Zkuste zadat slova začínající řetězcem "znovu". Všimněte si, jak se počet možností zkracuje při psaní dalších písmen.
 
@@ -464,5 +464,3 @@ V dalším kurzu jsme si vyhledali jiný způsob, jak zlepšit činnost koncové
 
 > [!div class="nextstepaction"]
 > [Kurz v jazyce C#: použití omezujících vlastností k podpoře navigace – Azure Kognitivní hledání](tutorial-csharp-facets.md)
-
-

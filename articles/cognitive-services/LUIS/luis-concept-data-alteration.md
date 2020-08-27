@@ -3,12 +3,13 @@ title: Změna dat – LUIS
 description: Informace o tom, jak je možné změnit data před předpovědi v Language Understanding (LUIS)
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872246"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934663"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>ALTER data utterance před nebo během předpovědi
 LUIS poskytuje možnosti pro manipulaci s utterance před nebo během předpovědi. Mezi ně patří [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)a řešení problémů s pásmem pro předem sestavené [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -30,7 +31,7 @@ Koncový bod vyžaduje dva parametry pro správné opravy pravopisu:
 
 |Param|Hodnota|
 |--|--|
-|`spellCheck`|Boolean|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|Klíč koncového bodu [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/)|
 
 Když [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) detekuje chybu, původní utterance a opravené utterance se vrátí společně s předpovědi z koncového bodu.
@@ -77,7 +78,7 @@ Když aplikace LUIS používá předem vytvořenou entitu [datetimeV2](luis-refe
 
 ### <a name="v3-prediction-api-to-alter-timezone"></a>Verze v3 rozhraní API pro změnu časového pásma
 
-V hodnotě V3 `datetimeReference` určuje posun časového pásma. Přečtěte si další informace o [předpovědi V3](luis-migration-api-v3.md#v3-post-body).
+V `datetimeReference` hodnotě V3 určuje posun časového pásma. Přečtěte si další informace o [předpovědi V3](luis-migration-api-v3.md#v3-post-body).
 
 ### <a name="v2-prediction-api-to-alter-timezone"></a>V2 prediktivní rozhraní API pro změnu časového pásma
 Časové pásmo se opravuje přidáním časového pásma uživatele do koncového bodu pomocí `timezoneOffset` parametru založeného na verzi rozhraní API. Hodnota parametru by měla být kladné nebo záporné číslo v minutách, aby se změnil čas.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145276"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935190"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Kognitivní hledání
 
@@ -28,8 +28,8 @@ Optimistická souběžnost je implementována prostřednictvím kontrol podmíne
 
 Všechny prostředky mají [*značku entity (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) , která poskytuje informace o verzi objektu. Zaškrtnutím ETag First (získat, upravit místně, aktualizovat) se můžete vyhnout souběžným aktualizacím, a to tak, že zaručíte, že značka ETag prostředku odpovídá vaší místní kopii.
 
-+ REST API používá [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
-+ Sada .NET SDK nastaví značku ETag prostřednictvím objektu accessCondition, nastavení [If-Match | Záhlaví If-Match-None](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) u prostředku Libovolný objekt, který dědí z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) , má objekt accessCondition.
++ REST API používá [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
++ Sada .NET SDK nastaví značku ETag prostřednictvím objektu accessCondition, nastavení [If-Match | Záhlaví If-Match-None](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) u prostředku Libovolný objekt, který dědí z [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) , má objekt accessCondition.
 
 Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest jako `CloudException` `IsAccessConditionFailed()` metoda rozšíření vrátí hodnotu true.
 
@@ -217,6 +217,6 @@ Zkuste upravit některý z následujících vzorků, aby obsahovaly ETag nebo Ac
 
 ## <a name="see-also"></a>Viz také
 
-[Běžné hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
- požadavků a odpovědí protokolu http [Stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
- [Operace s indexem (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Běžné hlavičky](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ požadavků a odpovědí protokolu http [Stavové kódy http](/rest/api/searchservice/http-status-codes) 
+ [Operace s indexem (REST API)](/rest/api/searchservice/index-operations)

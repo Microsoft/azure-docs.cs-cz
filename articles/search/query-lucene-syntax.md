@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891091"
+ms.locfileid: "88923445"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
 Dotazy na Azure Kognitivní hledání můžete zapisovat na základě syntaxe s bohatou syntaxí [analyzátoru dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) pro specializované formuláře dotazů: zástupné vyhledávání, přibližné vyhledávání, vyhledávání blízkých výrazů, regulární výrazy jsou několik příkladů. Většina syntaxe analyzátoru dotazů Lucene se [v azure kognitivní hledání implementuje beze změny](search-lucene-query-architecture.md), s výjimkou *hledání rozsahů* , které jsou vytvořené v Azure kognitivní hledání prostřednictvím `$filter` výrazů. 
 
 > [!NOTE]
-> Úplná syntaxe Lucene se používá pro výrazy dotazů předané v parametru **Search** rozhraní API pro [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , takže se Nezaměňujte se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter](search-filters.md) rozhraní API. Tyto různé syntaxe mají vlastní pravidla pro vytváření dotazů, uvozovacích řetězců a tak dále.
+> Úplná syntaxe Lucene se používá pro výrazy dotazů předané v parametru **Search** rozhraní API pro [hledání dokumentů](/rest/api/searchservice/search-documents) , takže se Nezaměňujte se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter](search-filters.md) rozhraní API. Tyto různé syntaxe mají vlastní pravidla pro vytváření dotazů, uvozovacích řetězců a tak dále.
 
 ## <a name="invoke-full-parsing"></a>Vyvolat úplnou analýzu
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-Další příklady najdete v tématu [Příklady syntaxe dotazů Lucene pro vytváření dotazů v Azure kognitivní hledání](search-query-lucene-examples.md). Podrobnosti o tom, jak zadat úplný odkaz na parametry dotazu, najdete v tématu [Prohledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Další příklady najdete v tématu [Příklady syntaxe dotazů Lucene pro vytváření dotazů v Azure kognitivní hledání](search-query-lucene-examples.md). Podrobnosti o tom, jak zadat úplný odkaz na parametry dotazu, najdete v tématu [Prohledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
 >  Azure Kognitivní hledání podporuje také [jednoduchou syntaxi dotazů](query-simple-syntax.md), jednoduchý a robustní dotazovací jazyk, který je možné použít pro jednoznačné hledání klíčových slov.  
@@ -139,7 +139,7 @@ Můžete definovat operaci vyhledávání v poli s `fieldName:searchExpression` 
 
 Nezapomeňte vložit více řetězců v uvozovkách, pokud chcete, aby oba řetězce byly vyhodnoceny jako jediná entita. v tomto případě vyhledávání dvou různých umělců v `artists` poli.  
 
-Pole zadané v `fieldName:searchExpression` musí být `searchable` pole.  Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) .  
+Pole zadané v `fieldName:searchExpression` musí být `searchable` pole.  Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [Create index](/rest/api/searchservice/create-index) .  
 
 > [!NOTE]
 > Při použití vyhledávacích výrazů v poli není nutné používat `searchFields` parametr, protože každý výraz vyhledávání v poli má explicitně zadaný název pole. Tento parametr však lze použít i v `searchFields` případě, že chcete spustit dotaz, ve kterém jsou některé části vymezeny na konkrétní pole, a zbytek by se mohl vztahovat na několik polí. Dotaz by se například `search=genre:jazz NOT history&searchFields=description` shodoval pouze s `jazz` `genre` polem, zatímco by `NOT history` se shodoval s `description` polem. Název pole `fieldName:searchExpression` , který je k dispozici vždy, má přednost před `searchFields` parametrem, což znamená, že v tomto příkladu není nutné zahrnout `genre` do `searchFields` parametru.
@@ -202,6 +202,6 @@ Azure Kognitivní hledání používá pro textové dotazy hodnocení založené
 
 + [Příklady dotazů pro jednoduché hledání](search-query-simple-examples.md)
 + [Příklady dotazů pro úplné hledání Lucene](search-query-lucene-examples.md)
-+ [Hledat dokumenty](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Hledat dokumenty](/rest/api/searchservice/Search-Documents)
 + [Syntaxe výrazů OData pro filtry a řazení](query-odata-filter-orderby-syntax.md)   
-+ [Jednoduchá syntaxe dotazů v Azure Kognitivní hledání](query-simple-syntax.md)   
++ [Jednoduchá syntaxe dotazů v Azure Kognitivní hledání](query-simple-syntax.md)
