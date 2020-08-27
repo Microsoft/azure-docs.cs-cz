@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 08/25/2020
-ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869113"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948211"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Plánování událostí údržby Azure v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,6 +24,8 @@ ms.locfileid: "88869113"
 Přečtěte si, jak připravit na plánované události údržby ve vaší databázi v Azure SQL Database a v Azure SQL Managed instance.
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Co je plánovaná událost údržby?
+
+Aby bylo možné zajistit Azure SQL Database a služby Azure SQL Managed instance zabezpečené, kompatibilní, stabilní a výkonné, provedou se komponenty služby skoro nepřetržitě. Díky moderní a robustní architektuře služeb a inovativním technologiím, jako jsou [Hot patching](https://aka.ms/azuresqlhotpatching), je většina aktualizací plně transparentní a bez dopadu na dostupnost služeb. Stále se u několika typů aktualizací nezpůsobí krátká přerušení služeb a vyžadují zvláštní zpracování. 
 
 Pro každou databázi, Azure SQL Database a Azure SQL Managed instance udržují kvorum replik databáze, kde jedna replika je primární. V každém okamžiku musí být primární replika online obsluha a aspoň jedna sekundární replika musí být v pořádku. Během plánované údržby se členové kvora databáze po jednom přejdou do offline režimu, s cílem zajistit, aby existovala jedna primární replika a aspoň jedna sekundární replika online, aby nedocházelo k výpadkům klientů. Když se primární replika musí převést do režimu offline, dojde k rekonfiguraci nebo procesu převzetí služeb při selhání, kdy se jedna sekundární replika stane novou primární.  
 

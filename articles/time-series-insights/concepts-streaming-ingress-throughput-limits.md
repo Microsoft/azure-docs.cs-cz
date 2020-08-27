@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb10effce8b94a6443e1daa8dadaa99111da0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097313"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950455"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Omezení propustnosti příjmu streamování
 
@@ -34,7 +34,7 @@ Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat pří
 
 > [!TIP]
 >
-> * Podpora prostředí pro přijímání rychlostí až 16 MB/s může být zajištěna žádostí.
+> * Podpora prostředí pro přijímání rychlostí až 8 MB/s může být poskytnuta požadavkem.
 > * Pokud potřebujete vyšší propustnost odesláním lístku podpory prostřednictvím Azure Portal, kontaktujte nás.
  
 * **Příklad 1:**
@@ -42,16 +42,16 @@ Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat pří
     Při expedici společnosti Contoso je 100 000 zařízení, která generují události třikrát za minutu. Velikost události je 200 bajtů. Používají IoT Hub se čtyřmi oddíly jako se zdrojem událostí Azure Time Series Insights Gen2.
 
     * Rychlost příjmu pro své Azure Time Series Insights prostředí Gen2 by byla: **100 000 zařízení * 200 bajtů/událost * (3/60 události/s) = 1 MB/s**.
-    * Frekvence přijímání zpráv na oddíl by byla 0,25 MB/s.
-    * Míra ingestování společnosti Contoso bude v rámci omezení škálování.
+    * Za předpokladu rovnováhy oddílů by byla míra přijímání dat na oddíl 0,25 MB/s.
+    * Míra ingestování společnosti Contoso by byla v rámci omezení škálování.
 
 * **Příklad 2:**
 
-    Analýza loďstva společnosti Contoso má 60 000 zařízení, která každou sekundu emitují událost. Používají centrum událostí s počtem oddílů 4, Azure Time Series Insights zdroj událostí Gen2. Velikost události je 200 bajtů.
+    Analýza loďstva společnosti Contoso má 40 000 zařízení, která každou sekundu emitují událost. Používají centrum událostí s počtem oddílů 2, který je Azure Time Series Insights zdroj událostí Gen2. Velikost události je 200 bajtů.
 
-    * Frekvence ingestování prostředí by byla: **60 000 zařízení × 200 bajtů/událost * 1 událost/s = 12 MB/** s.
-    * Frekvence za oddíl by byla 3 MB/s.
-    * Míra ingestování infrastruktury společnosti Contoso je nad limity prostředí a oddílů. Můžou odeslat žádost o Azure Time Series Insights Gen2 prostřednictvím Azure Portal, aby se zvýšila rychlost přijímání zpráv pro své prostředí, a vytvořit centrum událostí s dalšími oddíly, které budou v rámci omezení.
+    * Frekvence ingestování prostředí by byla: **40 000 zařízení × 200 bajtů/událost * 1 událost/s = 8 MB/** s.
+    * Za předpokladu rovnováhy oddílů by jejich frekvence na oddíly byla 4 MB/s.
+    * Míra ingestování infrastruktury společnosti Contoso je nad limity prostředí a oddílů. Můžou odeslat žádost o Azure Time Series Insights Gen2 prostřednictvím Azure Portal, aby se zvýšila rychlost příjmu pro své prostředí, a vytvořit centrum událostí s dalšími oddíly, které mají být v rámci omezení.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Omezení oddílů centra a na oddíly
 

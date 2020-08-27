@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935258"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950472"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
@@ -35,7 +35,7 @@ Funkce ve verzi Preview, které se převádějí do všeobecné dostupnosti, se 
 |  [**Azure Data Lake Storage Gen2 indexer**](search-howto-index-azure-data-lake-storage.md) | Zdroj dat indexeru | Indexuje obsah a metadata z Data Lake Storage Gen2.| Vyžaduje se [registrace](https://aka.ms/azure-cognitive-search/indexer-preview) , aby bylo možné povolit podporu pro vaše předplatné na back-endu. Přístup k tomuto zdroji dat pomocí [Vytvoření zdroje dat (REST)](/rest/api/searchservice/create-data-source) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
 | [**moreLikeThis**](search-more-like-this.md) | Dotaz | Vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. | Tento parametr dotazu přidejte do volání [vyhledávacích dokumentů (REST)](/rest/api/searchservice/search-documents) pomocí API-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-preview nebo 2017-11-11-Preview. |
 
-## <a name="calling-preview-rest-apis"></a>Volání rozhraní REST API pro náhled
+## <a name="how-to-call-a-preview-rest-api"></a>Jak volat REST API verze Preview
 
 Azure Kognitivní hledání vždy předem vydává experimentální funkce přes REST API a pak prostřednictvím předprodejní verze sady .NET SDK.
 
@@ -47,12 +47,14 @@ I když některé funkce verze Preview můžou být dostupné na portálu a .NET
 
 + Pro operace správy [**`2019-10-01-Preview`**](/rest/api/searchmanagement/index-2019-10-01-preview) je aktuální verze Preview.
 
-Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2019-05-06-Preview` nebo `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview` , jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními. 
+Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2019-05-06-Preview` nebo `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview` , jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními.
 
 Následující příklad syntaxe znázorňuje volání rozhraní API verze Preview.
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Služba Azure Kognitivní hledání je dostupná ve více verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).

@@ -3,12 +3,12 @@ title: Nastavení diagnostických protokolů – centrum událostí Azure | Micr
 description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521934"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927727"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
@@ -61,18 +61,18 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 Název | Popis
 ------- | -------
-/TN | Popis úlohy, která se nezdařila
-ActivityId | Interní ID, které se používá ke sledování
-trackingId | Interní ID, které se používá ke sledování
-resourceId | ID prostředku Azure Resource Manager
-eventHub | Úplný název centra událostí (zahrnuje název oboru názvů)
-Oddílu | Oddíl centra událostí, do kterého se zapisuje
-archiveStep | možné hodnoty: ArchiveFlushWriter, DestinationInit
-startTime | Čas spuštění chyby
-úspěšně | Počet výskytů chyby
-durationInSeconds | Doba trvání selhání
-zpráva | Chybová zpráva
-category | ArchiveLogs
+`TaskName` | Popis úlohy, která se nezdařila
+`ActivityId` | Interní ID, které se používá ke sledování
+`trackingId` | Interní ID, které se používá ke sledování
+`resourceId` | ID prostředku Azure Resource Manager
+`eventHub` | Úplný název centra událostí (zahrnuje název oboru názvů)
+`partitionId` | Oddíl centra událostí, do kterého se zapisuje
+`archiveStep` | možné hodnoty: ArchiveFlushWriter, DestinationInit
+`startTime` | Čas spuštění chyby
+`failures` | Počet výskytů chyby
+`durationInSeconds` | Doba trvání selhání
+`message` | Chybová zpráva
+`category` | ArchiveLogs
 
 Následující kód je příkladem řetězce JSON protokolu archivu:
 
@@ -99,15 +99,15 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Název | Popis
 ------- | -------
-ActivityId | Interní ID, které se používá pro účely sledování |
-EventName | Název operace |
-resourceId | ID prostředku Azure Resource Manager |
-SubscriptionId | ID předplatného |
-EventTimeString | Čas operace |
-EventProperties | Vlastnosti operace |
-Status | Stav operace |
-Volající | Volající operace (Azure Portal nebo klient pro správu) |
-Kategorie | OperationalLogs |
+`ActivityId` | Interní ID, které se používá pro účely sledování |
+`EventName` | Název operace |
+`resourceId` | ID prostředku Azure Resource Manager |
+`SubscriptionId` | ID předplatného |
+`EventTimeString` | Čas operace |
+`EventProperties` | Vlastnosti operace |
+`Status` | Stav operace |
+`Caller` | Volající operace (Azure Portal nebo klient pro správu) |
+`Category` | OperationalLogs |
 
 Následující kód je příkladem řetězce JSON provozního protokolu:
 
@@ -131,9 +131,9 @@ JSON protokolu automatického škálování obsahuje prvky uvedené v následuj�
 
 | Název | Popis |
 | ---- | ----------- | 
-| TrackingId | Interní ID, které se používá pro účely trasování |
-| ResourceId | ID prostředku Azure Resource Manager. |
-| Zpráva | Informační zpráva, která poskytuje podrobné informace o automatické neploché akci. Zpráva obsahuje předchozí a aktuální hodnotu jednotky propustnosti pro daný obor názvů a, která aktivovala neplochý počet výskytů. |
+| `TrackingId` | Interní ID, které se používá pro účely trasování |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
+| `Message` | Informační zpráva, která poskytuje podrobné informace o automatické neploché akci. Zpráva obsahuje předchozí a aktuální hodnotu jednotky propustnosti pro daný obor názvů a, která aktivovala neplochý počet výskytů. |
 
 Tady je příklad události automatického škálování: 
 
@@ -150,13 +150,13 @@ JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulc
 
 | Název | Popis |
 | ---- | ----------- | 
-| Identifikátor | ID žádosti, která se používá pro účely trasování |
-| ResourceId | ID prostředku Azure Resource Manager |
-| Operace | Název operace, která se má provést během koordinace skupiny |
-| ClientId | ID klienta |
-| NamespaceName | Název oboru názvů | 
-| SubscriptionId | ID předplatného Azure |
-| Zpráva | Informativní nebo varovné zprávy, které poskytují podrobné informace o akcích provedených během koordinace skupiny. |
+| `RequestId` | ID žádosti, která se používá pro účely trasování |
+| `ResourceId` | ID prostředku Azure Resource Manager |
+| `Operation` | Název operace, která se má provést během koordinace skupiny |
+| `ClientId` | ID klienta |
+| `NamespaceName` | Název oboru názvů | 
+| `SubscriptionId` | ID předplatného Azure |
+| `Message` | Informativní nebo varovné zprávy, které poskytují podrobné informace o akcích provedených během koordinace skupiny. |
 
 ### <a name="example"></a>Příklad
 
@@ -178,14 +178,14 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 
 | Název | Popis |
 | ---- | ----------- |
-| TrackingId | ID sledování, které se používá pro účely trasování. |
-| NamespaceName | Název oboru názvů |
-| Eventhub | Název centra událostí |
-| Oddílu | ID oddílu |
-| GroupId | ID skupiny |
-| ClientId | ID klienta |
-| ResourceId | ID prostředku Azure Resource Manager. |
-| Zpráva | Informační zpráva, která poskytuje podrobné informace o chybě |
+| `TrackingId` | ID sledování, které se používá pro účely trasování. |
+| `NamespaceName` | Název oboru názvů |
+| `Eventhub` | Název centra událostí |
+| `PartitionId` | ID oddílu |
+| `GroupId` | ID skupiny |
+| `ClientId` | ID klienta |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
+| `Message` | Informační zpráva, která poskytuje podrobné informace o chybě |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
 
@@ -193,13 +193,13 @@ Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky u
 
 | Název | Popis |
 | ---  | ----------- | 
-| SubscriptionId | ID předplatného Azure |
-| NamespaceName | Název oboru názvů |
-| IPAddress | IP adresa klienta připojujícího se ke službě Event Hubs |
-| Akce | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení**. |
-| Důvod | Poskytuje důvod, proč byla akce dokončena. |
-| Count | Počet výskytů pro danou akci |
-| ResourceId | ID prostředku Azure Resource Manager. |
+| `SubscriptionId` | ID předplatného Azure |
+| `NamespaceName` | Název oboru názvů |
+| `IPAddress` | IP adresa klienta připojujícího se ke službě Event Hubs |
+| `Action` | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení**. |
+| `Reason` | Poskytuje důvod, proč byla akce dokončena. |
+| `Count` | Počet výskytů pro danou akci |
+| `ResourceId` | ID prostředku Azure Resource Manager. |
 
 ### <a name="example"></a>Příklad
 
@@ -221,14 +221,14 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
 
 | Název | Popis |
 | ---- | ----------- | 
-| Kategorie | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
-| ResourceId | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
-| KeyVault | Název prostředku Key Vault |
-| Key | Název Key Vaultho klíče |
-| Verze | Verze Key Vaultho klíče |
-| Operace | Název operace, která byla provedena k obsluze požadavků |
-| Kód | Stavový kód |
-| Zpráva | Zpráva, která poskytuje podrobné informace o chybě nebo informativní zprávě |
+| `Category` | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
+| `ResourceId` | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
+| `KeyVault` | Název prostředku Key Vault |
+| `Key` | Název Key Vaultho klíče |
+| `Version` | Verze Key Vaultho klíče |
+| `Operation` | Název operace, která byla provedena k obsluze požadavků |
+| `Code` | Stavový kód |
+| `Message` | Zpráva, která poskytuje podrobné informace o chybě nebo informativní zprávě |
 
 
 
@@ -236,7 +236,7 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
 - [Úvod do Event Hubs](./event-hubs-about.md)
 - [Ukázky Event Hubs](sdks.md)
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

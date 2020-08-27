@@ -4,12 +4,12 @@ description: V tomto kurzu použijete server modelů AI, který poskytuje Intel,
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 6271eab35be22d04f8ac1c6413f4f965c6800290
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950251"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
@@ -53,7 +53,7 @@ V tomto kurzu provedete následující:
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>O OpenVINO™ modelovém serveru – rozšíření AI od společnosti Intel
 Intel® distribuce sady [nástrojů OpenVINO™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual neuronovéing a optimalizace sítě) je bezplatná softwarová sada, která vývojářům a odborníkům přes data zrychlí úlohy počítačového zpracování obrazu, zjednodušuje rozmístění a nasazení hloubkového učení a umožňuje snadné a heterogenní spouštění napříč platformami Intel® od Edge až po Cloud. Obsahuje sadu nástrojů pro nasazení Intel® pro hloubkové učení s modulem pro optimalizaci a odvozování modelů a [otevřený model](https://github.com/openvinotoolkit/open_model_zoo) úložiště ve více než 40 optimalizovaných předem vyškolených modelů.
 
-Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření OpenVINO™ model Server – AI od společnosti Intel](https://aka.ms/lva-intel-ovms), což je modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. Tento modul serveru odvození obsahuje OpenVINO™ model Server (OVMS), odvozený Server, který využívá sadu OpenVINO™ Toolkit, která je vysoce optimalizovaná pro úlohy počítačové vize a vyvinutá pro architektury Intel®. Do OVMS bylo přidáno rozšíření pro snadné výměny snímků videa a odvozování výsledků mezi odvozeným serverem a živým analýzou videí v IoT Edgem, což vám umožní spustit libovolný model podporovaný OpenVINO™ Toolkit (můžete přizpůsobit modul pro odvození serveru úpravou [kódu)](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper). Můžete dál vybírat z nejrůznějších mechanismů akcelerace, které poskytuje Intel® hardware. Mezi ně patří procesory (Atom, Core, Xeon), FPGA, VPUs.
+Aby bylo možné vytvářet složitá, vysoce výkonná řešení živé analýzy videí, je třeba, aby se analýza živých videí v modulu IoT Edge spojila s výkonným modulem odvození, který může využít škálování na hraničních zařízeních. V tomto kurzu se požadavky na odvození odesílají do [rozšíření OpenVINO™ model Server – AI od společnosti Intel](https://aka.ms/lva-intel-ovms), což je modul Edge, který je navržený tak, aby fungoval s živým analýzou videí v IoT Edge. Tento modul serveru odvození obsahuje OpenVINO™ model Server (OVMS), odvozený Server, který využívá sadu OpenVINO™ Toolkit, která je vysoce optimalizovaná pro úlohy počítačové vize a vyvinutá pro architektury Intel®. Do OVMS bylo přidáno rozšíření pro snadné výměny snímků videa a odvození výsledků mezi odvozeným serverem a živým analýzou videí v IoT Edge modul, takže vám umožní spustit libovolný model podporovaný OpenVINO™ Toolkit (můžete přizpůsobit modul odvození serveru úpravou [kódu](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)). Můžete dál vybírat z nejrůznějších mechanismů akcelerace, které poskytuje Intel® hardware. Mezi ně patří procesory (Atom, Core, Xeon), FPGA, VPUs.
 
 V počáteční verzi tohoto odvozeného serveru máte přístup k následujícím [modelům](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models):
 

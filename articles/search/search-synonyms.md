@@ -7,23 +7,23 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529554"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948636"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
 Synonyma v vyhledávačích spojují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, a to bez toho, aby ho uživatel skutečně neposkytoval. Například s ohledem na pojem "pes" a přidružení synonym typu "Canine" a "Puppy" budou všechny dokumenty obsahující slovo "pes", "Canine" nebo "Puppy" spadat do rozsahu dotazu.
 
-V Azure Kognitivní hledání je rozšíření synonym provedeno v době dotazu. Můžete přidat mapy synonym ke službě bez přerušení pro stávající operace. Do definice pole můžete přidat vlastnost **synonymMaps** , aniž byste museli index znovu sestavit.
+V Azure Kognitivní hledání je rozšíření synonym provedeno v době dotazu. Můžete přidat mapy synonym ke službě bez přerušení pro stávající operace. Do definice pole můžete přidat vlastnost  **synonymMaps** , aniž byste museli index znovu sestavit.
 
 ## <a name="create-synonyms"></a>Vytvořit synonyma
 
-Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro vývojáře v jazyce C# můžete začít [přidáním synonym v Azure rozpoznávání vyhledávání pomocí jazyka c#](search-synonyms-tutorial-sdk.md).
+Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](/rest/api/searchservice/create-synonym-map). Pro vývojáře v jazyce C# můžete začít [přidáním synonym v Azure rozpoznávání vyhledávání pomocí jazyka c#](search-synonyms-tutorial-sdk.md).
 
 Pokud v případě, že používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby, můžete použít i tuto ochranu na obsah vaší mapy synonym.
 
@@ -92,6 +92,21 @@ Explicitní mapování je označeno šipkou "=>". Je-li tento parametr zadán, n
 
 ```
 Washington, Wash., WA => WA
+```
+
+Pokud potřebujete definovat synonyma, která obsahují čárky, můžete je pomocí zpětného lomítka zrušit, jako v tomto příkladu:
+
+```
+WA\, USA, WA, Washington
+```
+
+Vzhledem k tomu, že zpětné lomítko sám o sobě speciální znak v jiných jazycích, jako je JSON a C#, budete ho pravděpodobně muset poklikatě řídicím panelem. Například JSON odeslaný do REST API pro výše uvedené mapování synonym by vypadalo takto:
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Vypíše mapy synonym v rámci vaší služby.
@@ -173,4 +188,4 @@ Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Expe
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Vytvoření mapy synonym](/rest/api/searchservice/create-synonym-map)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948398"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -115,7 +115,7 @@ Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného p�
 
 - Aplikace publikované prostřednictvím [Azure proxy aplikací služby AD](../manage-apps/what-is-application-proxy.md)
 - [Aplikace přidané z Galerie](../manage-apps/add-application-portal.md)
-- [Vlastní aplikace, které nejsou v galerii](../manage-apps/add-non-gallery-app.md)
+- [Vlastní aplikace, které nejsou v galerii](../manage-apps/view-applications-portal.md)
 - [Starší verze aplikací publikované prostřednictvím řadičů pro doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md)
 - Aplikace, které používají [jednotné přihlašování založené na heslech](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 

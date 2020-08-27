@@ -4,14 +4,14 @@ description: Zobrazí seznam typů prostředků Azure, které se dají přesunou
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040952"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948109"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -121,6 +121,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft. Relay](#microsoftrelay)
 > - [Microsoft. ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft. Resources](#microsoftresources)
 > - [Microsoft. SaaS](#microsoftsaas)
 > - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft. Search](#microsoftsearch)
@@ -157,29 +158,29 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- | 
-> | domainservices | No | 
-> | domainservices / replicasets | No | 
+> | domainservices | Ne | 
+> | domainservices / replicasets | Ne | 
 
 ## <a name="microsoftaadiam"></a>Microsoft. aadiam
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | tenantů | No |
+> | tenantů | Ne |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | actionrules | No | 
+> | actionrules | Ne | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | servery | No |
+> | servery | Ne |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
@@ -193,7 +194,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | configurationstores | No | 
+> | configurationstores | Ne | 
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
@@ -201,8 +202,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | apiapps | Ano (pomocí šablony)<br/><br/> [Přesunutí aplikace App Service do jiné oblasti](../../app-service/manage-move-across-regions.md) | 
-> | appidentities | No | 
-> | brány | No | 
+> | appidentities | Ne | 
+> | brány | Ne | 
 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
@@ -210,7 +211,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | policyassignments | No |
+> | policyassignments | Ne |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -218,8 +219,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | automationaccounts | Ano (pomocí šablony) <br/><br/> [Použití geografické replikace](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
-> | automationaccounts/konfigurace | No | 
-> | automationaccounts/Runbooky | No | 
+> | automationaccounts/konfigurace | Ne | 
+> | automationaccounts/Runbooky | Ne | 
 
 
 
@@ -228,21 +229,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | b2cdirectories | No | 
+> | b2cdirectories | Ne | 
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | sqlserverregistrations | No |
+> | sqlserverregistrations | Ne |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | rozpoznávání | No | 
+> | rozpoznávání | Ne | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -256,53 +257,53 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující | No <br/><br/> Služba Azure Batch AI je [vyřazena](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
-> | servery | No | 
-> | úlohy | No | 
-> | pracovní prostory | No | 
+> | existující | Ne <br/><br/> Služba Azure Batch AI je [vyřazena](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
+> | servery | Ne | 
+> | úlohy | Ne | 
+> | pracovní prostory | Ne | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | mapapis | No | 
+> | mapapis | Ne | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft. BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | biztalk | No | 
+> | biztalk | Ne | 
 
 ## <a name="microsoftblockchain"></a>Microsoft. blockchain
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | blockchainmembers | No <br/><br/> Síť blockchain nemůže mít uzly v různých oblastech. 
-> | sledovacích procesů | No | 
+> | blockchainmembers | Ne <br/><br/> Síť blockchain nemůže mít uzly v různých oblastech. 
+> | sledovacích procesů | Ne | 
 
 ## <a name="microsoftblueprint"></a>Microsoft. detail
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | blueprintassignments | No | 
+> | blueprintassignments | Ne | 
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | botservices | No | 
+> | botservices | Ne | 
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | Redis | No | 
+> | Redis | Ne | 
 
 
 ## <a name="microsoftcdn"></a>Microsoft. CDN
@@ -310,16 +311,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | cdnwebapplicationfirewallpolicies | No |
-> | uživatelů | No | 
-> | profily/koncové body | No | 
+> | cdnwebapplicationfirewallpolicies | Ne |
+> | uživatelů | Ne | 
+> | profily/koncové body | Ne | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | certificateorders | No | 
+> | certificateorders | Ne | 
 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
@@ -328,7 +329,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | domainnames | Pro klasické služby se neplánuje žádná práce.
-> | virtualmachines | No | 
+> | virtualmachines | Ne | 
 
 
 
@@ -338,15 +339,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | networksecuritygroups | Pro klasické služby se neplánuje žádná práce.
-> | reservedips | No | 
-> | virtualnetworks | No | 
+> | reservedips | Ne | 
+> | virtualnetworks | Ne | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes |  
+> | storageaccounts | Ano |  
 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. Cognitiveservices Account
@@ -354,7 +355,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 > | Cognitive Search | Podporováno v ručních krocích.<br/><br/> Přečtěte si o [přesunu služby Azure kognitivní hledání do jiné oblasti](../../search/search-howto-move-across-regions.md) .
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
@@ -362,181 +363,181 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | availabilitysets | No | 
-> | diskencryptionsets | No | 
-> | disků | No | 
-> | Galerie | No | 
-> | Galerie/image | No | 
-> | Galerie/image/verze | No | 
-> | hostgroups | No | 
-> | hostgroups/hostitelé | No | 
-> | images | No | 
-> | proximityplacementgroups | No | 
-> | restorepointcollections | No | 
-> | sharedvmimages | No | 
-> | sharedvmimages/verze | No | 
-> | snímky | No | 
-> | virtualmachines | Yes | 
-> | VirtualMachines/rozšíření | No | 
-> | virtualmachinescalesets | No | 
+> | availabilitysets | Ne | 
+> | diskencryptionsets | Ne | 
+> | disků | Ne | 
+> | Galerie | Ne | 
+> | Galerie/image | Ne | 
+> | Galerie/image/verze | Ne | 
+> | hostgroups | Ne | 
+> | hostgroups/hostitelé | Ne | 
+> | images | Ne | 
+> | proximityplacementgroups | Ne | 
+> | restorepointcollections | Ne | 
+> | sharedvmimages | Ne | 
+> | sharedvmimages/verze | Ne | 
+> | snímky | Ne | 
+> | virtualmachines | Ano | 
+> | VirtualMachines/rozšíření | Ne | 
+> | virtualmachinescalesets | Ne | 
 
 ## <a name="microsoftcontainer"></a>Microsoft. Container
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | containergroups | No | 
+> | containergroups | Ne | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | containergroups | No | 
+> | containergroups | Ne | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | registr | No |  
-> | Registry/BuildTasks | No |  
-> | Registry/replikace | No | 
-> | Registry/úlohy | No |  
-> | Registry a Webhooky | No | 
+> | registr | Ne |  
+> | Registry/BuildTasks | Ne |  
+> | Registry/replikace | Ne | 
+> | Registry/úlohy | Ne |  
+> | Registry a Webhooky | Ne | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | containerservices | Ne.<br/><br/> Služba je [Vyřazená](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
-> | managedclusters | No | 
-> | openshiftmanagedclusters | No | 
+> | containerservices | No.<br/><br/> Služba je [Vyřazená](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
+> | managedclusters | Ne | 
+> | openshiftmanagedclusters | Ne | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | aplikace | No | 
+> | aplikace | Ne | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | konektory | No |  
+> | konektory | Ne |  
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft. CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | Hubs | No |  
+> | Hubs | Ne |  
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | resourceproviders | No | 
+> | resourceproviders | Ne | 
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | úlohy | No | 
+> | úlohy | Ne | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | databoxedgedevices | No | 
+> | databoxedgedevices | Ne | 
 
 ## <a name="microsoftdatabricks"></a>Cihly Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | pracovní prostory | No | 
+> | pracovní prostory | Ne | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. datacatalog
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | spustí | No | 
-> | datacatalogs | No | 
+> | spustí | Ne | 
+> | datacatalogs | Ne | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | connectionmanagers | No | 
+> | connectionmanagers | Ne | 
 
 ## <a name="microsoftdataexchange"></a>Microsoft. dataexchange
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | zásilk | No | 
-> | plánují | No | 
+> | zásilk | Ne | 
+> | plánují | Ne | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | objekty DataFactory | No | 
-> | továrny | No |  
+> | objekty DataFactory | Ne | 
+> | továrny | Ne |  
 
 ## <a name="microsoftdatalake"></a>Microsoft. datalake
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | datalakeaccounts | No | 
+> | datalakeaccounts | Ne | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftdatamigration"></a>Migrace Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | services | No | 
-> | služby a projekty | No | 
-> | otvory | No | 
+> | services | Ne | 
+> | služby a projekty | Ne | 
+> | otvory | Ne | 
 
 ## <a name="microsoftdatashare"></a>Microsoft. datashare
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
@@ -557,87 +558,87 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | servergroups | No | 
+> | servergroups | Ne | 
 > | servery | K přesunutí stávajícího serveru můžete použít repliku čtení mezi oblastmi. Další [informace](../../postgresql/howto-move-regions-portal.md).
-> | serversv2 | No | 
+> | serversv2 | Ne | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | artifactsources | No | 
-> | uvádění | No |  
-> | servicetopologies | No | 
-> | servicetopologies/služby | No |  
-> | servicetopologies/služby/serviceunits | No | 
-> | kroky | No | 
+> | artifactsources | Ne | 
+> | uvádění | Ne |  
+> | servicetopologies | Ne | 
+> | servicetopologies/služby | Ne |  
+> | servicetopologies/služby/serviceunits | Ne | 
+> | kroky | Ne | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | elasticpools | Ne. Prostředek není vystavený.
-> | elasticpools / iothubtenants | Ne. Prostředek není vystavený.
+> | elasticpools | No. Prostředek není vystavený.
+> | elasticpools / iothubtenants | No. Prostředek není vystavený.
 > | iothubs | Yes. [Další informace](../../iot-hub/iot-hub-how-to-clone.md)
-> | provisioningservices | No | 
+> | provisioningservices | Ne | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | kontrolery | No | 
-> | Cluster AKS | No<br/><br/> [Přečtěte si další informace](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) o přesunu do jiné oblasti.
+> | kontrolery | Ne | 
+> | Cluster AKS | Ne<br/><br/> [Přečtěte si další informace](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) o přesunu do jiné oblasti.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | labcenters | No | 
-> | Labs | No | 
-> | laboratoře/prostředí | No |  
-> | Labs/servicerunners | No | 
-> | Labs/VirtualMachines | No |  
-> | časových | No |  
+> | labcenters | Ne | 
+> | Labs | Ne | 
+> | laboratoře/prostředí | Ne |  
+> | Labs/servicerunners | Ne | 
+> | Labs/VirtualMachines | Ne |  
+> | časových | Ne |  
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | databaseaccounts | No | 
+> | databaseaccounts | Ne | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | doménu | No | 
+> | doménu | Ne | 
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | services | No |  
+> | services | Ne |  
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | doménu | No |  
-> | popisující | No | 
+> | doménu | Ne |  
+> | popisující | Ne | 
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující | No |  
+> | existující | Ne |  
 > | obsažené | Ano (se šablonou)<br/><br/> [Přesunutí oboru názvů centra událostí do jiné oblasti](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
@@ -645,69 +646,69 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | hanainstances | No | 
-> | sapmonitors | No |  
+> | hanainstances | Ne | 
+> | sapmonitors | Ne |  
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující | No | 
+> | existující | Ne | 
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | services | No |  
+> | services | Ne |  
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | virtuální | No | 
+> | virtuální | Ne | 
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | datamanagery |  No | 
+> | datamanagery |  Ne | 
 
 ## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | úlohy |  No | 
+> | úlohy |  Ne | 
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
-> | actiongroups |  No | 
-> | upozorněníprotokoluaktivit | No | 
-> | alertrules |  No | 
-> | autoscalesettings |  No | 
-> | konstrukční |  No |  
-> | guestdiagnosticsettings | No | 
-> | metricalerts | No | 
-> | notificationgroups | No | 
-> | notificationrules | No | 
-> | scheduledqueryrules |  No | 
-> | webové testy |  No | 
-> | sešity |  No |  
+> | accounts | Ne | 
+> | actiongroups |  Ne | 
+> | upozorněníprotokoluaktivit | Ne | 
+> | alertrules |  Ne | 
+> | autoscalesettings |  Ne | 
+> | konstrukční |  Ne |  
+> | guestdiagnosticsettings | Ne | 
+> | metricalerts | Ne | 
+> | notificationgroups | Ne | 
+> | notificationrules | Ne | 
+> | scheduledqueryrules |  Ne | 
+> | webové testy |  Ne | 
+> | sešity |  Ne |  
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
@@ -715,8 +716,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | checknameavailability |  Ne.<br/><br/> IoT Central pracuje s geografickými oblastmi a ne oblastmi.
-> | zapisovací | No
+> | checknameavailability |  No.<br/><br/> IoT Central pracuje s geografickými oblastmi a ne oblastmi.
+> | zapisovací | Ne
 
 ## <a name="microsoftiothub"></a>Microsoft.IoTHub
 
@@ -730,16 +731,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | checknameavailability |  No |  
-> | zapisovací |  No | 
+> | checknameavailability |  Ne |  
+> | zapisovací |  Ne | 
 
 ## <a name="microsoftkeyvault"></a>Trezor Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | hsmpools | No | 
-> | trezory |  No | 
+> | hsmpools | Ne | 
+> | trezory |  Ne | 
 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -747,21 +748,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující |  No |  
+> | existující |  Ne |  
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | labaccounts | No | 
+> | labaccounts | Ne | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft. LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft. LocationServices
 
@@ -775,67 +776,67 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | hostingenvironments | No | 
-> | integrationaccounts |  No |  
-> | integrationserviceenvironments | No | 
-> | isolatedenvironments | No | 
-> | Zpracovávaný |  No |  
+> | hostingenvironments | Ne | 
+> | integrationaccounts |  Ne |  
+> | integrationserviceenvironments | Ne | 
+> | isolatedenvironments | Ne | 
+> | Zpracovávaný |  Ne |  
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | commitmentplans |  No | 
-> | WebServices |  No | 
-> | pracovní prostory |  No | 
+> | commitmentplans |  Ne | 
+> | WebServices |  Ne | 
+> | pracovní prostory |  Ne | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | operationalizationclusters |  No | 
+> | operationalizationclusters |  Ne | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
-> | účty/pracovní prostory | No | 
-> | účty/pracovní prostory/projekty | No | 
-> | teamaccounts | No | 
-> | teamaccounts/pracovní prostory | No | 
-> | teamaccounts/pracovní prostory/projekty | No | 
+> | accounts | Ne | 
+> | účty/pracovní prostory | Ne | 
+> | účty/pracovní prostory/projekty | Ne | 
+> | teamaccounts | Ne | 
+> | teamaccounts/pracovní prostory | Ne | 
+> | teamaccounts/pracovní prostory/projekty | Ne | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft. MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | hostingaccounts | No | 
+> | hostingaccounts | Ne | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | pracovní prostory | No | 
+> | pracovní prostory | Ne | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | userassignedidentities | No | 
+> | userassignedidentities | Ne | 
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
@@ -856,87 +857,87 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | MediaServices |  No | 
-> | MediaServices/liveevents |  No | 
-> | MediaServices/starají |  No | 
+> | MediaServices |  Ne | 
+> | MediaServices/liveevents |  Ne | 
+> | MediaServices/starají |  Ne | 
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | appclusters | No | 
+> | appclusters | Ne | 
 
 ## <a name="microsoftmigrate"></a>Microsoft. migruje
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | assessmentprojects | No | 
-> | migrateprojects | No | 
-> | projekty | No | 
+> | assessmentprojects | Ne | 
+> | migrateprojects | Ne | 
+> | projekty | Ne | 
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | netappaccounts | No | 
-> | netappaccounts / capacitypools | No | 
-> | netappaccounts/capacitypools/svazky | No | 
-> | netappaccounts/capacitypools/svazky/mounttargets | No | 
-> | netappaccounts/capacitypools/svazky/snímky | No | 
+> | netappaccounts | Ne | 
+> | netappaccounts / capacitypools | Ne | 
+> | netappaccounts/capacitypools/svazky | Ne | 
+> | netappaccounts/capacitypools/svazky/mounttargets | Ne | 
+> | netappaccounts/capacitypools/svazky/snímky | Ne | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | applicationgateways | No | 
-> | applicationgatewaywebapplicationfirewallpolicies | No | 
-> | applicationsecuritygroups |  No |  
-> | azurefirewalls |  No |  
-> | bastionhosts | No | 
-> | připojení |  No | 
-> | ddoscustompolicies |  No | 
-> | ddosprotectionplans | No | 
-> | dnszones |  No | 
-> | expressroutecircuits | No | 
-> | expressroutecrossconnections | No | 
-> | expressroutegateways | No | 
-> | expressrouteports | No | 
-> | frontdoors | No | 
-> | frontdoorwebapplicationfirewallpolicies | No | 
-> | loadbalancers | Yes <br/><br/> Existující konfiguraci můžete exportovat jako šablonu a šablonu nasadit do nové oblasti. Přečtěte si, jak přesunout [externí](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) nebo [interní](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Nástroj pro vyrovnávání zatížení. |
-> | localnetworkgateways |  No | 
-> | natgateways |  No | 
-> | networkintentpolicies |  No | 
-> | networkinterfaces | Yes | 
-> | networkprofiles | No | 
-> | networksecuritygroups | Yes | 
-> | networkwatchers |  No |  
-> | networkwatchers / connectionmonitors |  No | 
-> | networkwatchers/čočky |  No | 
-> | networkwatchers / pingmeshes |  No | 
-> | p2svpngateways | No | 
-> | privatednszones |  No |  
-> | privatednszones / virtualnetworklinks |  No |  
-> | privateendpoints | No | 
-> | privatelinkservices | No | 
-> | publicipaddresses | Yes<br/><br/> Existující konfiguraci veřejné IP adresy můžete exportovat jako šablonu a nasadit šablonu do nové oblasti. [Přečtěte si další informace](../../virtual-network/move-across-regions-publicip-portal.md) o přesunu veřejné IP adresy. |
-> | publicipprefixes | No | 
-> | routefilters | No | 
-> | routetables |  No | 
-> | serviceendpointpolicies |  No | 
-> | trafficmanagerprofiles |  No | 
-> | virtualhubs | No | 
-> | virtualnetworkgateways |  No |  
-> | virtualnetworks |  No | 
-> | virtualnetworktaps | No | 
-> | virtualwans | No | 
-> | vpngateways (virtuální síť WAN) | No | 
-> | vpnsites (virtuální síť WAN) | No | 
-> | webapplicationfirewallpolicies |  No | 
+> | applicationgateways | Ne | 
+> | applicationgatewaywebapplicationfirewallpolicies | Ne | 
+> | applicationsecuritygroups |  Ne |  
+> | azurefirewalls |  Ne |  
+> | bastionhosts | Ne | 
+> | připojení |  Ne | 
+> | ddoscustompolicies |  Ne | 
+> | ddosprotectionplans | Ne | 
+> | dnszones |  Ne | 
+> | expressroutecircuits | Ne | 
+> | expressroutecrossconnections | Ne | 
+> | expressroutegateways | Ne | 
+> | expressrouteports | Ne | 
+> | frontdoors | Ne | 
+> | frontdoorwebapplicationfirewallpolicies | Ne | 
+> | loadbalancers | Ano <br/><br/> Existující konfiguraci můžete exportovat jako šablonu a šablonu nasadit do nové oblasti. Přečtěte si, jak přesunout [externí](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) nebo [interní](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Nástroj pro vyrovnávání zatížení. |
+> | localnetworkgateways |  Ne | 
+> | natgateways |  Ne | 
+> | networkintentpolicies |  Ne | 
+> | networkinterfaces | Ano | 
+> | networkprofiles | Ne | 
+> | networksecuritygroups | Ano | 
+> | networkwatchers |  Ne |  
+> | networkwatchers / connectionmonitors |  Ne | 
+> | networkwatchers/čočky |  Ne | 
+> | networkwatchers / pingmeshes |  Ne | 
+> | p2svpngateways | Ne | 
+> | privatednszones |  Ne |  
+> | privatednszones / virtualnetworklinks |  Ne |  
+> | privateendpoints | Ne | 
+> | privatelinkservices | Ne | 
+> | publicipaddresses | Ano<br/><br/> Existující konfiguraci veřejné IP adresy můžete exportovat jako šablonu a nasadit šablonu do nové oblasti. [Přečtěte si další informace](../../virtual-network/move-across-regions-publicip-portal.md) o přesunu veřejné IP adresy. |
+> | publicipprefixes | Ne | 
+> | routefilters | Ne | 
+> | routetables |  Ne | 
+> | serviceendpointpolicies |  Ne | 
+> | trafficmanagerprofiles |  Ne | 
+> | virtualhubs | Ne | 
+> | virtualnetworkgateways |  Ne |  
+> | virtualnetworks |  Ne | 
+> | virtualnetworktaps | Ne | 
+> | virtualwans | Ne | 
+> | vpngateways (virtuální síť WAN) | Ne | 
+> | vpnsites (virtuální síť WAN) | Ne | 
+> | webapplicationfirewallpolicies |  Ne | 
 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
@@ -944,15 +945,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | obsažené |  No | 
-> | obory názvů/notificationhubs |  No |  
+> | obsažené |  Ne | 
+> | obory názvů/notificationhubs |  Ne |  
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | pracovní prostory |  No | 
+> | pracovní prostory |  Ne | 
 
 
 
@@ -961,57 +962,57 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | managementconfigurations |  No | 
-> | zobrazení |  No | 
+> | managementconfigurations |  Ne | 
+> | zobrazení |  Ne | 
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | partnerské vztahy | No | 
+> | partnerské vztahy | Ne | 
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | řídicí panely | No | 
+> | řídicí panely | Ne | 
 
 ## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | rootresources | No | 
+> | rootresources | Ne | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | workspacecollections |  No | 
+> | workspacecollections |  Ne | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | schopností |  No | 
+> | schopností |  Ne | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft. ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Ne | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | trezory | Ne.<br/><br/> Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br/><br/> V Recovery Services trezory pro Azure Site Recovery můžete [trezor zakázat a znovu vytvořit](../../site-recovery/move-vaults-across-regions.md) v cílové oblasti. | 
+> | trezory | No.<br/><br/> Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br/><br/> V Recovery Services trezory pro Azure Site Recovery můžete [trezor zakázat a znovu vytvořit](../../site-recovery/move-vaults-across-regions.md) v cílové oblasti. | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
@@ -1019,36 +1020,44 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | obsažené |  No | 
+> | obsažené |  Ne | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | odešle |  No |  
+> | odešle |  Ne |  
+
+## <a name="microsoftresources"></a>Microsoft. Resources
+
+> [!div class="mx-tableFixed"]
+> | Typ prostředku | Přesunutí oblasti |
+> | ------------- | ----------- |
+> | deploymentScripts |  Ano<br/><br/>[Přesunout prostředky Microsoft. Resources do nové oblasti](microsoft-resources-move-regions.md) |
+> | templateSpecs |  Ano<br/><br/>[Přesunout prostředky Microsoft. Resources do nové oblasti](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | aplikace |  No | 
+> | aplikace |  Ne | 
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | flows |  No |  
-> | jobcollections |  No | 
+> | flows |  Ne |  
+> | jobcollections |  Ne | 
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | searchservices |  No | 
+> | searchservices |  Ne | 
 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
@@ -1056,145 +1065,145 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | iotsecuritysolutions |  No | 
-> | playbookconfigurations | No | 
+> | iotsecuritysolutions |  Ne | 
+> | playbookconfigurations | Ne | 
 
 ## <a name="microsoftservermanagement"></a>Microsoft. ServerManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | brány | No | 
-> | sortiment | No | 
+> | brány | Ne | 
+> | sortiment | Ne | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | obsažené |  No | 
+> | obsažené |  Ne | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | aplikace | No | 
-> | existující |  No | 
-> | clustery/aplikace | No | 
-> | containergroups | No | 
-> | containergroupsets | No | 
-> | edgeclusters | No | 
-> | sítí | No | 
-> | secretstores | No | 
-> | volumes | No | 
+> | aplikace | Ne | 
+> | existující |  Ne | 
+> | clustery/aplikace | Ne | 
+> | containergroups | Ne | 
+> | containergroupsets | Ne | 
+> | edgeclusters | Ne | 
+> | sítí | Ne | 
+> | secretstores | Ne | 
+> | volumes | Ne | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | aplikace |  No | 
-> | containergroups | No | 
-> | brány |  No | 
-> | sítí |  No | 
-> | záleží |  No | 
-> | volumes |  No |  
+> | aplikace |  Ne | 
+> | containergroups | Ne | 
+> | brány |  Ne | 
+> | sítí |  Ne | 
+> | záleží |  Ne | 
+> | volumes |  Ne |  
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | SignalR |  No |  
+> | SignalR |  Ne |  
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | appliancedefinitions | No | 
-> | zařízení | No | 
-> | applicationdefinitions | No | 
-> | aplikace | No | 
-> | jitrequests | No | 
+> | appliancedefinitions | Ne | 
+> | zařízení | Ne | 
+> | applicationdefinitions | Ne | 
+> | aplikace | Ne | 
+> | jitrequests | Ne | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | instancepools | No | 
-> | managedinstances | Yes | 
-> | managedinstances/databáze | Yes | 
-> | servery | Yes | 
-> | servery/databáze | Yes | 
-> | servery/elasticpools | Yes | 
-> | virtualclusters | Yes | 
+> | instancepools | Ne | 
+> | managedinstances | Ano | 
+> | managedinstances/databáze | Ano | 
+> | servery | Ano | 
+> | servery/databáze | Ano | 
+> | servery/elasticpools | Ano | 
+> | virtualclusters | Ano | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | sqlvirtualmachinegroups |  No |  
-> | sqlvirtualmachines |  No |  
+> | sqlvirtualmachinegroups |  Ne |  
+> | sqlvirtualmachines |  Ne |  
 
 ## <a name="microsoftsqlvm"></a>Microsoft. SqlVM
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | dwvm | No | 
+> | dwvm | Ne | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes<br/><br/> [Přesunutí účtu Azure Storage do jiné oblasti](../../storage/common/storage-account-move.md) | 
+> | storageaccounts | Ano<br/><br/> [Přesunutí účtu Azure Storage do jiné oblasti](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | mezipaměti | No | 
+> | mezipaměti | Ne | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storagesyncservices |  No | 
+> | storagesyncservices |  Ne | 
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storagesyncservices | No | 
+> | storagesyncservices | Ne | 
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft. StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storagesyncservices | No | 
+> | storagesyncservices | Ne | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | jednatel | No | 
+> | jednatel | Ne | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | streamingjobs |  No |  
+> | streamingjobs |  Ne |  
 
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
@@ -1202,51 +1211,51 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | Environment | No | 
-> | prostředí/EventSources | No | 
-> | instance | No | 
-> | instance/prostředí | No | 
-> | instance/prostředí/EventSources | No | 
+> | Environment | Ne | 
+> | prostředí/EventSources | Ne | 
+> | instance | Ne | 
+> | instance/prostředí | Ne | 
+> | instance/prostředí/EventSources | Ne | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft. TerraformOSS
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | providerregistrations | No | 
-> | resources | No | 
+> | providerregistrations | Ne | 
+> | resources | Ne | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | Environment |  No | 
-> | prostředí/EventSources |  No |  
-> | prostředí/referencedatasets |  No | 
+> | Environment |  Ne | 
+> | prostředí/EventSources |  Ne |  
+> | prostředí/referencedatasets |  Ne | 
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | Store | No | 
+> | Store | Ne | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | imagetemplates | No | 
+> | imagetemplates | Ne | 
 
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | account |  No | 
-> | účet/rozšíření |  No | 
-> | účet/projekt |  No | 
+> | account |  Ne | 
+> | účet/rozšíření |  Ne | 
+> | účet/projekt |  Ne | 
 
 
 
@@ -1255,24 +1264,24 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | dedicatedcloudnodes | No | 
-> | dedicatedcloudservices | No | 
-> | virtualmachines | No | 
+> | dedicatedcloudnodes | Ne | 
+> | dedicatedcloudservices | Ne | 
+> | virtualmachines | Ne | 
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | certifikáty | No | 
-> | connectiongateways |  No |  
-> | připojení |  No |  
-> | customapis |  No | 
-> | hostingenvironments | No | 
-> | serverových farem |  No |  
-> | místa |  No | 
-> | lokality/premieraddons |  No |  
-> | lokality/sloty |  No |  
+> | certifikáty | Ne | 
+> | connectiongateways |  Ne |  
+> | připojení |  Ne |  
+> | customapis |  Ne | 
+> | hostingenvironments | Ne | 
+> | serverových farem |  Ne |  
+> | místa |  Ne | 
+> | lokality/premieraddons |  Ne |  
+> | lokality/sloty |  Ne |  
 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
@@ -1280,16 +1289,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | deviceservices | No | 
+> | deviceservices | Ne | 
 
 ## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft. WindowsVirtualDesktop
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | applicationgroups | No | 
-> | hostpools | No | 
-> | pracovní prostory | No | 
+> | applicationgroups | Ne | 
+> | hostpools | Ne | 
+> | pracovní prostory | Ne | 
 
 ## <a name="third-party-services"></a>Služby třetích stran
 

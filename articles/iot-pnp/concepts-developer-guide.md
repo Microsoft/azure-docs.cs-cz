@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856037"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950132"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>Příručka pro vývojáře pro IoT technologie Plug and Play Preview
 
@@ -57,7 +57,7 @@ Oznámení ID modelu bylo přidáno do následujících verzí sad SDK.
 
 ## <a name="dps-payload"></a>Datová část DPS
 
-Zařízení, která používají [službu Device Provisioning (DPS)](/iot-dps/) , můžou zahrnovat, `modelId` aby se během procesu zřizování používala tato datová část JSON.
+Zařízení, která používají [službu Device Provisioning (DPS)](../iot-dps/about-iot-dps.md) , můžou zahrnovat, `modelId` aby se během procesu zřizování používala tato datová část JSON.
 
 ```json
 {

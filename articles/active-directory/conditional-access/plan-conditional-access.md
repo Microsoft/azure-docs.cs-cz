@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339719"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948891"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) analýzy podmíněného přístupu (CA), jako 
 
 Společnost Microsoft poskytuje standardní podmíněné zásady nazývané [výchozí hodnoty zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) , které zajišťují základní úroveň zabezpečení. Vaše organizace ale může potřebovat větší flexibilitu než nabídka výchozích hodnot zabezpečení. Podmíněný přístup můžete použít k přizpůsobení výchozích hodnot zabezpečení s větší členitosti a ke konfiguraci nových zásad, které splňují vaše požadavky.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Informace
 
 Než začnete, ujistěte se, že rozumíte tomu, jak [podmíněný přístup](overview.md) funguje a kdy byste ho měli použít.
 
@@ -52,7 +52,7 @@ Viz [licenční požadavky na podmíněný přístup](overview.md).
 
 Pokud potřebujete další funkce, budete možná potřebovat i související licence. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -162,7 +162,7 @@ Zdokumentujte odpovědi na otázky pro jednotlivé zásady před jejich vytvoře
 
 #### <a name="common-questions-about-access-controls"></a>Běžné dotazy týkající se řízení přístupu
 
-[Udělit nebo blokovat](concept-conditional-access-grant.md) 
+[Udělit nebo blokovat ](concept-conditional-access-grant.md) 
 
 Chcete udělit přístup k prostředkům tím, že vyžadujete jednu nebo více následujících akcí?
 
@@ -240,7 +240,7 @@ Může být obtížné předpovědět počet a jména uživatelů ovlivněných 
 * vyžadování MFA
 * Implementace zásad rizik přihlašování
 
-[Režim pouze pro sestavy](concept-conditional-access-report-only.md) umožňuje správcům vyhodnotit dopad zásad CA ještě předtím, než je povolí ve svém prostředí.
+[Režim pouze pro sestavy ](concept-conditional-access-report-only.md) umožňuje správcům vyhodnotit dopad zásad CA ještě předtím, než je povolí ve svém prostředí.
 
 Naučte se [Konfigurovat režim pouze pro sestavy na základě zásad certifikační autority](howto-conditional-access-report-only.md).
 
@@ -313,7 +313,7 @@ Běžné případy použití pro vyžadování přístupu MFA:
 
 * [Podle správců](howto-conditional-access-policy-admin-mfa.md)
 
-* [Na konkrétní aplikace](app-based-mfa.md)
+* [Na konkrétní aplikace](../authentication/tutorial-enable-azure-mfa.md)
 
 * [Pro všechny uživatele](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -354,7 +354,7 @@ K dalším běžným scénářům, kde můžete zablokovat přístup pro uživat
 
 * [Blokuje určitá síťová umístění](howto-conditional-access-policy-location.md) pro přístup k vašim cloudovým aplikacím. Pomocí této zásady můžete blokovat určité země, ze kterých víte, že by provoz neměl přijít.
 
-* Azure AD podporuje starší verze ověřování. Starší verze ověřování však nepodporují MFA a mnoho prostředí vyžaduje, aby se zabezpečení identity vyvyžadovalo. V takovém případě můžete pro přístup k prostředkům tenanta [blokovat aplikace pomocí staršího ověřování](block-legacy-authentication.md) .
+* Azure AD podporuje starší verze ověřování. Starší verze ověřování však nepodporují MFA a mnoho prostředí vyžaduje, aby se zabezpečení identity vyvyžadovalo. V takovém případě můžete pro přístup k prostředkům tenanta [blokovat aplikace pomocí staršího ověřování ](block-legacy-authentication.md) .
 
 ## <a name="build-and-test-policies"></a>Zásady sestavení a testování
 
@@ -380,22 +380,22 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
 
-| Zásada| Scénář| Očekávaný výsledek |
+| Zásady| Scénář| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |
-| [Vyžadovat MFA (pro správce)](howto-baseline-protect-administrators.md)| Globální správce se přihlásí do aplikace.| Správce je vyzván k ověřování MFA. |
-| [Riziková přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Uživatel se přihlásí do aplikace pomocí neschváleného prohlížeče.| Správce je vyzván k ověřování MFA. |
+| [Vyžadovat MFA (pro správce)](../fundamentals/concept-fundamentals-security-defaults.md)| Globální správce se přihlásí do aplikace.| Správce je vyzván k ověřování MFA. |
+| [Riziková přihlášení](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Uživatel se přihlásí do aplikace pomocí neschváleného prohlížeče.| Správce je vyzván k ověřování MFA. |
 | [Správa zařízení](require-managed-devices.md)| Autorizovaný uživatel se pokusí přihlásit z autorizovaného zařízení.| Udělen přístup |
 | [Správa zařízení](require-managed-devices.md)| Autorizovaný uživatel se pokusí přihlásit z neautorizovaného zařízení.| Přístup zablokován |
-| [Změna hesla pro rizikové uživatele](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| Autorizovaný uživatel se pokusí přihlásit pomocí ohrožených přihlašovacích údajů (přihlašování s vysokým rizikem).| Uživateli se zobrazí výzva ke změně hesla nebo je přístup na základě vašich zásad zablokovaný. |
+| [Změna hesla pro rizikové uživatele](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Autorizovaný uživatel se pokusí přihlásit pomocí ohrožených přihlašovacích údajů (přihlašování s vysokým rizikem).| Uživateli se zobrazí výzva ke změně hesla nebo je přístup na základě vašich zásad zablokovaný. |
 
 
 ### <a name="configure-the-test-policy"></a>Konfigurovat zásady testování
 
 V [Azure Portal](https://portal.azure.com/)konfigurujete zásady certifikační autority v části Azure Active Directory > zabezpečení > podmíněný přístup.
 
-Pokud se chcete dozvědět víc o tom, jak vytvořit zásady certifikační autority, přečtěte si tento příklad: [zásady certifikační autority, které se zobrazí při přihlášení uživatele k Azure Portal pro MFA](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json). Tento rychlý Start vám pomůže:
+Pokud se chcete dozvědět víc o tom, jak vytvořit zásady certifikační autority, přečtěte si tento příklad: [zásady certifikační autority, které se zobrazí při přihlášení uživatele k Azure Portal pro MFA](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Tento rychlý Start vám pomůže:
 
 * Seznámení s uživatelským rozhraním
 
@@ -442,7 +442,7 @@ V případě, že potřebujete vrátit nově implementované zásady, použijte 
 > [!NOTE]
 >  Tato možnost by se měla používat zřídka, jenom v situacích, kdy je uživatel důvěryhodný. Uživatel by měl být do zásady nebo skupiny co nejdříve přidán.
 
-* **Odstraňte zásadu.** Pokud se už zásada nepožaduje, [odstraňte](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) ji.
+* **Odstraňte zásadu.** Pokud se už zásada nepožaduje, [odstraňte](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) ji.
 
 ## <a name="manage-access-to-cloud-apps"></a>Správa přístupu ke cloudovým aplikacím
 
@@ -501,4 +501,4 @@ Jakmile shromáždíte informace, podívejte se na následující zdroje informa
 
 [Další informace o identitě identity](../identity-protection/overview-identity-protection.md)
 
-[Správa zásad certifikační autority pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Správa zásad certifikační autority pomocí rozhraní Microsoft Graph API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

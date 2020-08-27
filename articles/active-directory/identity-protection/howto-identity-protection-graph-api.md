@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019654"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950115"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
-Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . Existují tři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. 
+Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](./overview-identity-protection.md) . Existují tři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **riskDetection**, umožňuje zadat dotaz na Microsoft Graph seznam uživatelů a jejich přihlašování a související informace o detekci. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat **se na**Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. 
 
 Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
 
@@ -39,7 +39,7 @@ Existují čtyři kroky pro přístup k datům Identity Protection prostřednict
 
 ### <a name="retrieve-your-domain-name"></a>Načíst název domény 
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).  
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).  
 1. Vyhledejte **Azure Active Directory**  >  **vlastní názvy domén**. 
 1. Poznamenejte si `.onmicrosoft.com` doménu, budete potřebovat tyto informace v pozdějším kroku.
 
@@ -86,9 +86,9 @@ V tomto okamžiku byste měli mít:
 K ověření odešlete požadavek post `https://login.microsoft.com` s následujícími parametry v těle:
 
 - grant_type: "**client_credentials**"
-- partner`https://graph.microsoft.com`
-- client_id:\<your client ID\>
-- client_secret:\<your key\>
+- partner `https://graph.microsoft.com`
+- client_id: \<your client ID\>
+- client_secret: \<your key\>
 
 V případě úspěchu vrátí tato žádost ověřovací token.  
 Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
@@ -99,7 +99,7 @@ Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
 
 Při ověřování můžete v vráceném tokenu najít typ tokenu a přístupový token.
 
-Poslat tuto hlavičku jako požadavek na následující adresu URL API:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
+Poslat tuto hlavičku jako požadavek na následující adresu URL API: `https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 Odpověď, pokud je úspěšná, je kolekce detekcí rizik identity a přidružených dat ve formátu JSON OData, který se dá analyzovat a zpracovat podle potřeby.
 
@@ -167,8 +167,8 @@ Další informace o Microsoft Graph a o tom, jak sestavovat aplikace pomocí Gra
 
 Související informace najdete v těchto tématech:
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-- [Typy detekce rizik zjištěné Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)
+- [Typy detekce rizik zjištěné Azure Active Directory Identity Protection](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Přehled Microsoft Graphu](https://developer.microsoft.com/graph/docs)
-- [Kořenová služba Azure AD Identity Protection](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Kořenová služba Azure AD Identity Protection](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

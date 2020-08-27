@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ea039526b9434501b60ed6ccf762f45625b26
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83994965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948143"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy
 
@@ -51,8 +51,8 @@ Zobrazení výsledku zásad pouze pro sestavy pro konkrétní přihlášení:
 
 Aby bylo možné zobrazit agregovaný dopad zásad podmíněného přístupu pomocí nového sešitu pro podmíněný přístup, musíte Azure Monitor s Azure AD integrovat a exportovat protokoly přihlášení. Pro nastavení této integrace existují dva kroky: 
 
-1. [Zaregistrujte si předplatné Azure monitor a vytvořte pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exportujte protokoly přihlášení z Azure AD do Azure monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Zaregistrujte si předplatné Azure monitor a vytvořte pracovní prostor](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Exportujte protokoly přihlášení z Azure AD do Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 Další informace o cenách Azure Monitor najdete na [stránce Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/). Prostředky k odhadování nákladů, nastavení denního limitu nebo přizpůsobení období uchovávání dat najdete v článku, [Správa využití a nákladů pomocí Azure Monitorch protokolů](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

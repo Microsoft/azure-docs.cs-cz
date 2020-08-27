@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432473"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950047"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio (Classic)
 
@@ -28,7 +28,10 @@ Aplikace Excel usnadňuje volání webových služeb přímo bez nutnosti psát 
 1. Otevřete [vzorový excelový soubor](https://aka.ms/amlexcel-sample-2), který obsahuje excelový doplněk a data o cestujících na Titanic. 
  
     > [!NOTE]
-    > Zobrazí se seznam webových služeb vztahujících se k souboru a dolní políčko pro automatické předvídání. Pokud povolíte automatické předpovídání, předpovědi **všech** služeb se aktualizuje pokaždé, když dojde ke změně vstupů. Pokud toto políčko nezaškrtnuté, budete muset pro aktualizaci kliknout na možnost předpověď vše. Pro povolení automatické předpovědi na úrovni služby přejít na krok 6.
+    > - Zobrazí se seznam webových služeb vztahujících se k souboru a dolní políčko pro automatické předvídání. Pokud povolíte automatické předpovídání, předpovědi **všech** služeb se aktualizuje pokaždé, když dojde ke změně vstupů. Pokud toto políčko nezaškrtnuté, budete muset pro aktualizaci kliknout na možnost předpověď vše. Pro povolení automatické předpovědi na úrovni služby přejít na krok 6.
+    > - Doplněk Azure Machine Learning Excel bude volat úložiště doplňků Office pro načtení. Pokud vaše organizace zakáže přístup k úložišti doplňků Office, zobrazí se při načítání doplňku chyba. V takovém případě prosím nasaďte Azure Machine Learning excelový doplněk z centra pro správu Microsoft 365. Pak vyvolejte doplněk a přidejte webovou službu ručně tak, že vložíte adresu URL a klíč rozhraní API.
+
+ 
 
 2. Vyberte webovou službu kliknutím na ni – "Titanic pozůstalost prediktivní (Ukázka doplňku Excel) [skore]" v tomto příkladu.
    

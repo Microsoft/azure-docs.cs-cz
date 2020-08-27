@@ -5,34 +5,47 @@ description: Ladění kanálů Azure Machine Learning v Pythonu Seznamte se s b�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: likebupt
-ms.author: keli19
-ms.date: 03/18/2020
+author: lobrien
+ms.author: laobri
+ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904645"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950149"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak ladit a řešit potíže s [kanály strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a v [Návrháři Azure Machine Learning (Preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Informace jsou k dispozici v tématu Postupy:
+V tomto článku se dozvíte, jak řešit a ladit [kanály strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a v [Návrháři Azure Machine Learning (Preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). 
 
-* Ladění pomocí sady Azure Machine Learning SDK
-* Ladění pomocí návrháře Azure Machine Learning
-* Ladění pomocí Application Insights
-* Interaktivní ladění pomocí Visual Studio Code (VS Code) a Python Tools for Visual Studio (PTVSD)
+## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
-Následující části poskytují přehled běžných nástrah při vytváření kanálů a různé strategie pro ladění kódu, který běží v kanálu. Následující tipy použijte, pokud máte potíže se spuštěním kanálu podle očekávání.
+Následující tabulka obsahuje běžné problémy při vývoji kanálů s potenciálními řešeními.
 
-### <a name="testing-scripts-locally"></a>Místní testování skriptů
+| Problém | Možné řešení |
+|--|--|
+| Nejde předat data do `PipelineData` adresáře. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá tomu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a pak adresář vytvoří explicitně. Použijte `os.makedirs(args.output_dir, exist_ok=True)` k vytvoření výstupního adresáře. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
+| Chyby závislostí | Pokud ve svém vzdáleném kanálu dojde k chybám závislostí, které nevznikly při místním testování, potvrďte, že závislosti a verze vzdáleného prostředí odpovídají hodnotám ve vašem testovacím prostředí. (Viz [sestavování prostředí, ukládání do mezipaměti a opakované použití](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| Dvojznačné chyby s cíli výpočtů | Zkuste odstranit a znovu vytvořit výpočetní cíle. Opětovné vytváření výpočetních cílů je rychlé a může vyřešit některé přechodné problémy. |
+| Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané, `allow_reuse` parametr v kroku se nastaví na `False` . |
+| Nenutně funguje kanál. | Aby se zajistilo, že kroky se spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře zdrojového kódu pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
 
-Jedním z nejběžnějších chyb v kanálu je to, že připojený skript (skript pro čištění dat, skript bodování atd.) neběží tak, jak je zamýšlený, nebo obsahuje běhové chyby ve vzdáleném výpočetním kontextu, které se v Azure Machine Learning Studiu obtížně ladí ve vašem pracovním prostoru. 
+
+## <a name="debugging-techniques"></a>Techniky ladění
+
+Existují tři hlavní techniky pro ladění kanálů: 
+
+* Ladění jednotlivých kroků kanálu v místním počítači
+* K izolaci a diagnostice zdroje problému použijte protokolování a Application Insights
+* Připojení vzdáleného ladicího programu k kanálu běžícímu v Azure
+
+### <a name="debug-scripts-locally"></a>Místní ladění skriptů
+
+Jedním z nejběžnějších chyb v kanálu je, že se skript domény nespustí tak, jak má, nebo obsahuje běhové chyby ve vzdáleném výpočetním kontextu, které se obtížně ladí.
 
 Samotné kanály se nedají spouštět místně, ale spuštěné skripty v izolaci na místním počítači vám umožní ladit rychleji, protože nemusíte čekat na proces sestavení výpočtů a prostředí. K tomu je potřeba nějaká vývojová práce:
 
@@ -49,41 +62,9 @@ Jakmile budete mít Instalační program skriptu spuštěný v místním prostř
 > [!TIP] 
 > Jakmile ověříte, že je váš skript spuštěný podle očekávání, dobrým dalším krokem je spuštění skriptu v kanálu s jedním krokem předtím, než se pokusíte spustit v kanálu s více kroky.
 
-### <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
+## <a name="configure-write-to-and-review-pipeline-logs"></a>Konfigurace, zápis a kontrola protokolů kanálu
 
 Místní testování skriptů je skvělým způsobem, jak ladit hlavní fragmenty kódu a složitou logiku předtím, než začnete sestavovat kanál, ale v některých případech bude pravděpodobně nutné ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dojde během interakce mezi jednotlivými kroky kanálu. Doporučujeme, `print()` abyste ve svých skriptech použili možnost použití příkazů, abyste viděli stav objektu a očekávané hodnoty při vzdáleném spuštění, podobně jako při ladění kódu JavaScriptu.
-
-Soubor protokolu `70_driver_log.txt` obsahuje: 
-
-* Všechny tištěné příkazy během provádění skriptu
-* Trasování zásobníku pro skript 
-
-Chcete-li najít tento a další soubory protokolu na portálu, nejprve klikněte na spuštění kanálu ve vašem pracovním prostoru.
-
-![Stránka seznamu spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-Přejděte na stránku s podrobnostmi o spuštění kanálu.
-
-![Stránka s podrobnostmi o spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-Pro konkrétní krok klikněte na modul. Přejděte na kartu **protokoly** . Další protokoly obsahují informace o procesu sestavení image prostředí a kroku přípravy skriptu.
-
-![Karta protokol stránky podrobností spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> Spuštění *publikovaných kanálů* najdete na kartě **koncové body** v pracovním prostoru. Spuštění pro *nepublikované kanály* se dá najít v **experimentech** nebo **kanálech**.
-
-### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
-
-Následující tabulka obsahuje běžné problémy při vývoji kanálů s potenciálními řešeními.
-
-| Problém | Možné řešení |
-|--|--|
-| Nejde předat data do `PipelineData` adresáře. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá tomu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a pak adresář vytvoří explicitně. Použijte `os.makedirs(args.output_dir, exist_ok=True)` k vytvoření výstupního adresáře. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
-| Chyby závislostí | Pokud jste vytvořili a otestovali skripty lokálně, ale při spuštění ve vzdálené výpočetní službě v kanálu zjistíte problémy se závislostmi, ujistěte se, že vaše závislosti a verze prostředí COMPUTE odpovídají vašemu testovacímu prostředí. (Viz [sestavování prostředí, ukládání do mezipaměti a opakované použití](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
-| Dvojznačné chyby s cíli výpočtů | Odstranění a opětovné vytváření výpočetních cílů může vyřešit určité problémy s cíli výpočtů. |
-| Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané, `allow_reuse` parametr v kroku se nastaví na `False` . |
-| Nenutně funguje kanál. | Aby se zajistilo, že se kroky spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
 
 ### <a name="logging-options-and-behavior"></a>Možnosti a chování protokolování
 
@@ -127,9 +108,31 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="azure-machine-learning-designer-preview"></a>Návrhář Azure Machine Learning (Preview)
+### <a name="finding-and-reading-pipeline-log-files"></a>Hledání a čtení souborů protokolu kanálu
 
-Tato část poskytuje přehled o řešení potíží s kanály v návrháři. Pro kanály vytvořené v Návrháři můžete soubor **70_driver_log** najít na stránce pro vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.
+Soubor protokolu `70_driver_log.txt` obsahuje: 
+
+* Všechny tištěné příkazy během provádění skriptu
+* Trasování zásobníku pro skript 
+
+Chcete-li najít tento a další soubory protokolu na portálu, nejprve klikněte na spuštění kanálu ve vašem pracovním prostoru.
+
+![Stránka seznamu spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-01.png)
+
+Přejděte na stránku s podrobnostmi o spuštění kanálu.
+
+![Stránka s podrobnostmi o spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-02.png)
+
+Pro konkrétní krok klikněte na modul. Přejděte na kartu **protokoly** . Další protokoly obsahují informace o procesu sestavení image prostředí a kroku přípravy skriptu.
+
+![Karta protokol stránky podrobností spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-03.png)
+
+> [!TIP]
+> Spuštění *publikovaných kanálů* najdete na kartě **koncové body** v pracovním prostoru. Spuštění pro *nepublikované kanály* se dá najít v **experimentech** nebo **kanálech**.
+
+## <a name="logging-in-azure-machine-learning-designer-preview"></a>Přihlášení v Návrháři Azure Machine Learning (Preview)
+
+Pro kanály vytvořené v Návrháři můžete soubor **70_driver_log** najít na stránce pro vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>Povolit protokolování pro koncové body v reálném čase
 
@@ -140,7 +143,7 @@ Aby bylo možné řešit a ladit koncové body v reálném čase v návrháři, 
 Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu, můžete najít soubory protokolu vygenerované pro každý modul, když se každý modul dokončí.
 
 1. Vyberte modul, který se dokončil na plátně pro tvorbu.
-1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
+1. V pravém podokně modulu otevřete kartu  **výstupy + protokoly** .
 1. Rozbalte pravé podokno a vyberte **70_driver_log.txt** pro zobrazení souboru v prohlížeči. Protokoly také můžete stahovat místně.
 
     ![Rozšířené podokno výstup v Návrháři](./media/how-to-debug-pipelines/designer-logs.png)
@@ -154,7 +157,7 @@ Soubory protokolů pro konkrétní spuštění můžete najít na stránce s pod
     ![Stránka spuštění kanálu](./media/how-to-debug-pipelines/designer-pipelines.png)
 
 1. Vyberte modul v podokně náhledu.
-1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
+1. V pravém podokně modulu otevřete kartu  **výstupy + protokoly** .
 1. Rozbalením pravého podokna zobrazte soubor **70_driver_log.txt** v prohlížeči nebo vyberte soubor pro místní stažení protokolů.
 
 > [!IMPORTANT]
@@ -163,7 +166,7 @@ Soubory protokolů pro konkrétní spuštění můžete najít na stránce s pod
 ## <a name="application-insights"></a>Application Insights
 Další informace o použití knihovny Pythonu OpenCensus tímto způsobem najdete v této příručce: [ladění a řešení potíží s kanály strojového učení v Application Insights](how-to-debug-pipelines-application-insights.md)
 
-## <a name="visual-studio-code"></a>Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí Visual Studio Code (VS Code) a debugpy se můžete připojit ke kódu při jeho spuštění ve školicím prostředí. Další informace najdete [v příručce k interaktivnímu ladění v vs Code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 

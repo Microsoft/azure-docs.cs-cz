@@ -4,19 +4,22 @@ description: Přečtěte si o kvótách vCPU pro Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292315"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949690"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>Ověření vCPU kvót pomocí Azure CLI
 
 Kvóty vCPU pro virtuální počítače a sady škálování virtuálních počítačů jsou seřazené do dvou vrstev pro každé předplatné v každé oblasti. První z nich je celková oblast vCPU a druhá úroveň je různými jádry velikosti virtuálních počítačů, jako je vCPU řady D-Series. Kdykoliv je nasazený nový virtuální počítač, vCPU pro virtuální počítač nesmí překročit kvótu vCPU pro rodinu velikosti virtuálního počítače nebo celkovou kvótu vCPU v oblasti regionálního provozu. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovolí. K dispozici je také kvóta pro celkový počet virtuálních počítačů v dané oblasti. Podrobnosti o každé z těchto kvót najdete v části **využití a kvóty** stránky **předplatné** v [Azure Portal](https://portal.azure.com), nebo můžete zadat dotaz na hodnoty pomocí Azure CLI.
+
+> [!NOTE]
+> Kvóta se počítá na základě celkového počtu jader používaných i přidělených. Pokud potřebujete další jádra, [požádejte o zvýšení kvóty](../../azure-portal/supportability/resource-manager-core-quotas-request.md) nebo odstraňte virtuální počítače, které už nepotřebujete. 
 
 
 ## <a name="check-usage"></a>Kontrola využití

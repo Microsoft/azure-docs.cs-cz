@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546268"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927200"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Nastavení kapacity v Azure Kognitivní hledání
 
@@ -21,7 +21,7 @@ Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamk
 
 Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin. 
 
-Při úpravách přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity vrstvy. Nicméně pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/services) jsou alternativní řešení.
+Při úpravách přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity vrstvy. Nicméně pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](/rest/api/searchmanagement/services) jsou alternativní řešení.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
 
@@ -86,10 +86,10 @@ Všechny služby a služby optimalizované pro úložiště Standard a Storage m
 | **1 replika** |1. SU |2. SU |3. SU |4. SU |6. SU |12. SU |
 | **2 repliky** |2. SU |4. SU |6. SU |8. SU |12. SU |24 SU |
 | **3 repliky** |3. SU |6. SU |9. SU |12. SU |18 SU |36 SU |
-| **4 repliky** |4. SU |8. SU |12. SU |16. SU |24 SU |Není k dispozici |
-| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Není k dispozici |
-| **6 replik** |6. SU |12. SU |18 SU |24 SU |36 SU |Není k dispozici |
-| **12 replik** |12. SU |24 SU |36 SU |Není k dispozici |Není k dispozici |Není k dispozici |
+| **4 repliky** |4. SU |8. SU |12. SU |16. SU |24 SU |– |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |– |
+| **6 replik** |6. SU |12. SU |18 SU |24 SU |36 SU |– |
+| **12 replik** |12. SU |24 SU |36 SU |N/A |N/A |N/A |
 
 Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 

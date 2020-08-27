@@ -2,7 +2,7 @@
 title: Microsoft Identity Platform & tok kontrolního výrazu SAML nosiče | Azure
 description: Naučte se, jak načíst data z Microsoft Graph bez vyzvání uživatele k zadání přihlašovacích údajů pomocí toku kontrolního výrazu SAML.
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114689"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949350"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
 Tok kontrolního výrazu SAML 2,0 OAuth vám umožní požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít stávající vztah důvěryhodnosti. Signatura použitá pro kontrolní výraz SAML zajišťuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný zprostředkovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na jeho obsah, aby identifikoval Předmět kontrolního výrazu pro účely související se zabezpečením.
@@ -35,7 +34,7 @@ Pro uživatele, kteří se ověřují pomocí zprostředkovatelů identity, jako
 ## <a name="call-graph-using-saml-bearer-assertion"></a>Graf volání pomocí kontrolního výrazu SAML nosiče
 Teď nám dejte vědět, jak můžeme skutečně načíst kontrolní výraz SAML programově. Tento přístup se testuje pomocí služby AD FS. To ale funguje u libovolného poskytovatele identity, který podporuje návrat programově kontrolního výrazu SAML. Základní proces je: Získání kontrolního výrazu SAML, získání přístupového tokenu a přístup k Microsoft Graph.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Navažte vztah důvěryhodnosti mezi autorizačním serverem/prostředím (Microsoft 365) a poskytovatelem identity nebo vystavitelem kontrolního výrazu SAML 2,0 (ADFS). Pokud chcete nakonfigurovat službu AD FS pro jednotné přihlašování a jako poskytovatele identity, můžete se na [Tento článek](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)podívat.
 

@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927132"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949027"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Upgradovat na nejnovější verzi služby Azure Kognitivní hledání REST API
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Upgrade na nejnovější REST API v Azure Kognitivní hledání
 
-Pokud používáte předchozí verzi [vyhledávacího REST API](/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2020-06-30.
+Pokud používáte starší verzi [**vyhledávacího REST API**](/rest/api/searchservice/), Tento článek vám pomůže při upgradu aplikace na nejnovější všeobecně dostupnou verzi rozhraní API **2020-06-30**.
 
-Verze 2020-06-30 REST API obsahuje některé změny z dřívějších verzí. Jsou to většinou zpětně kompatibilní, takže změna kódu by měla vyžadovat jenom minimální úsilí v závislosti na verzi, kterou jste předtím používali. [Postup upgradu](#UpgradeSteps) popisuje změny kódu, které jsou potřebné pro použití nových funkcí.
+Verze 2020-06-30 obsahuje důležitou novou funkci ([znalostní báze Knowledge Store](knowledge-store-concept-intro.md)) a zavádí několik menších změn chování. V takovém případě je tato verze většinou zpětně kompatibilní, takže změny kódu by měly být minimální, pokud upgradujete z předchozí verze (2019-05-06).
 
 > [!NOTE]
-> Instance služby Azure Kognitivní hledání podporuje rozsah REST API verzí, včetně předchozích. Tyto verze rozhraní API můžete dál používat, ale doporučujeme migrovat kód na nejnovější verzi, abyste měli přístup k novým funkcím.
+> Vyhledávací služba podporuje řadu REST API verzí, včetně předchozích. Tyto verze rozhraní API můžete dál používat, ale doporučujeme migrovat kód na nejnovější verzi, abyste měli přístup k novým funkcím. V průběhu času budou zastaralé verze REST API zastaralé a [už se nepodporují](search-api-versions.md#unsupported-versions).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>Postup upgradu
 
-Při upgradu na nové verze pravděpodobně nebudete muset provádět žádné změny kódu, a to i v případě, že změníte číslo verze. Jedinými situacemi, ve kterých může být nutné změnit kód, jsou:
+Při upgradu na novou verzi pravděpodobně nebudete muset provádět mnoho změn v kódu, a to i v případě, že změníte číslo verze. Jedinými situacemi, ve kterých může být nutné změnit kód, jsou:
 
 * Pokud se v odpovědi rozhraní API vrátí nerozpoznané vlastnosti, váš kód se nezdařil. Ve výchozím nastavení by vaše aplikace měla ignorovat vlastnosti, které nerozumí.
 
@@ -36,7 +36,7 @@ Při upgradu na nové verze pravděpodobně nebudete muset provádět žádné z
 
 * Váš kód odkazuje na verzi rozhraní API, která předchází datu 2019-05-06 a podléhá jedné nebo více zásadním změnám v této verzi. Další podrobnosti najdete v části [upgrade na 2019-05-06](#upgrade-to-2019-05-06) . 
 
-Pokud se vám některé z těchto situací vztahují, budete možná muset změnit kód odpovídajícím způsobem. V opačném případě by neměly být potřebné žádné změny, pokud nechcete začít používat funkce přidané v nové verzi.
+Pokud se vám některé z těchto situací vztahují, budete možná muset změnit kód odpovídajícím způsobem. V opačném případě by neměly být nutné žádné změny, i když budete chtít začít používat funkce přidané v nové verzi.
 
 ## <a name="upgrade-to-2020-06-30"></a>Upgradovat na 2020-06-30
 
@@ -63,7 +63,7 @@ Verze 2019-05-06 je předchozí všeobecně dostupná verze REST API. K funkcím
 
 ### <a name="breaking-changes"></a>Změny způsobující chyby
 
-Stávající kód napsaný pro předchozí verze rozhraní API se přeruší v rozhraní API-Version = 2019-05-06, pokud kód obsahuje následující funkce:
+Existující kód napsaný pro předchozí verze rozhraní API se přeruší u rozhraní API-Version = 2019-05-06 a novější, pokud kód obsahuje následující funkce:
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexer pro Azure Cosmos DB-DataSource je nyní "Type": "cosmosdb"
 

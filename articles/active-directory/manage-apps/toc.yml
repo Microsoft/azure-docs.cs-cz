@@ -43,7 +43,7 @@
           href: plan-an-application-integration.md
         - name: 'Plánování aplikací, které nejsou uvedené v galerii'
           href: non-gallery-apps.md
-        - name: Plánování nasazení přístupového panelu
+        - name: Plánování nasazení pro Moje aplikace
           href: access-panel-deployment-plan.md
         - name: Pokyny pro vývojáře
           href: developer-guidance-for-integrating-applications.md

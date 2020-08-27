@@ -4,26 +4,26 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263373"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950489"
 ---
-# <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
+# <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
 
 Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery. V případě konkrétních scénářů si Projděte tyto články
 
-- [Dotazy týkající se zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
-- [Dotazy týkající se zotavení po havárii virtuálních počítačů VMware do Azure](vmware-azure-common-questions.md)
-- [Dotazy týkající se zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače VMware do Azure](vmware-azure-common-questions.md)
+- [Dotazy k zotavení po havárii virtuálního počítače Hyper-V do Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Obecné
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
 
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Přečtěte si další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -257,8 +257,6 @@ Zásady replikace definují nastavení pro historii uchovávání bodů obnoven�
 - 24 hodin pro historii uchovávání bodů obnovení.
 - 4 hodiny pro četnost snímků konzistentních vzhledem k aplikacím.
 
-[Přečtěte si další informace o nastavení replikace](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
-
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k selháním?
 
 Bod obnovení konzistentní s chybou obsahuje data na disku, jako kdyby jste ze serveru během snímku vyžádali napájecí kabel. Bod obnovení konzistentní vzhledem k chybě neobsahuje cokoli, co bylo v paměti při pořízení snímku.
@@ -320,7 +318,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?

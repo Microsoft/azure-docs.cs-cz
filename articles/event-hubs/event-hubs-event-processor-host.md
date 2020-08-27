@@ -3,22 +3,20 @@ title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936176"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949078"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
-> Tento článek se týká starší verze sady Azure Event Hubs SDK. Informace o tom, jak migrovat kód do novější verze sady SDK, najdete v těchto příručkách k migraci. 
+> Tento článek se týká starší verze sady Azure Event Hubs SDK. Aktuální verzi sady SDK najdete v tématu [Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace](event-processor-balance-partition-load.md). Informace o tom, jak migrovat kód do novější verze sady SDK, najdete v těchto příručkách k migraci. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Skript Java](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Viz také [Vyrovnávání zatížení oddílu napříč několika instancemi aplikace](event-processor-balance-partition-load.md).
 
 Azure Event Hubs je výkonná služba pro příjem telemetrie, která se dá použít ke streamování milionů událostí s nízkými náklady. Tento článek popisuje, jak používat příjmové události pomocí modulu *Event Processor Host* (EPH); Inteligentní Agent pro příjemce, který zjednodušuje správu kontrolních bodů, leasingu a paralelních čtecích zařízení událostí.  
 

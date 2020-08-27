@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874771"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948262"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -124,7 +124,7 @@ V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlás�
 > [!NOTE]
 > Trvalá konfigurace relace prohlížeče v rámci podmíněného přístupu Azure AD přepíše "zůstat přihlášeni?" nastavení v podokně Branding společnosti v Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
-## <a name="validation"></a>Ověřování vstupů (validace)
+## <a name="validation"></a>Ověřování
 
 Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste nakonfigurovali zásady. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
 
@@ -136,5 +136,5 @@ Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje s
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete zjistit, jak nakonfigurovat zásadu podmíněného přístupu, přečtěte si článek věnované použití [vícefaktorového ověřování pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+* Pokud chcete zjistit, jak nakonfigurovat zásadu podmíněného přístupu, přečtěte si článek věnované použití [vícefaktorového ověřování pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../authentication/tutorial-enable-azure-mfa.md).
 * Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si článek [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

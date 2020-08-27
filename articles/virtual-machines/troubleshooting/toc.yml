@@ -99,10 +99,14 @@
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: Virtuální počítač nereaguje kvůli aktualizaci
           href: unresponsive-vm-apply-windows-update.md
+        - name: Virtuální počítač nereaguje při použití zásad konfigurace auditu
+          href: vm-unresponsive-applying-audit-configuration-policy.md
         - name: Virtuální počítač nereaguje při použití zásad skupiny
           href: unresponsive-vm-apply-group-policy.md
         - name: Virtuální počítač nereaguje při použití zásad zabezpečení
           href: unresponsive-vm-apply-security-policy.md
+        - name: Chyba zastavení Windows – nesprávné informace konfigurace systému
+          href: windows-stop-error-bad-system-config-info.md
         - name: Chyba zastavení Windows – stav nedostatku paměti
           href: troubleshoot-windows-stop-error.md
 - name: Nejde se připojit k virtuálnímu počítači

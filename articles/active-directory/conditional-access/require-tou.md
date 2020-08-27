@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039819"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948857"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití
 
@@ -25,13 +25,13 @@ Než budete mít přístup k určitým cloudovým aplikacím ve vašem prostřed
 - Jednoduchá metoda konfigurace podmínky použití
 - Možnost vyžadovat přijetí podmínek použití prostřednictvím zásad podmíněného přístupu  
 
-V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásadu podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) , která vyžaduje přijetí podmínky použití pro vybranou cloudovou aplikaci ve vašem prostředí.
+V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásadu podmíněného přístupu Azure AD](./overview.md) , která vyžaduje přijetí podmínky použití pro vybranou cloudovou aplikaci ve vašem prostředí.
 
 ![Vytvoření zásad](./media/require-tou/5555.png)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení scénáře v tomto rychlém startu budete potřebovat:
 
@@ -82,7 +82,7 @@ V této části najdete postup vytvoření ukázkové podmínky použití. Při 
    1. Jako **jazyk**vyberte **angličtinu**.
    1. Jak **vyžadují, aby uživatelé rozšířili podmínek použití**, vyberte **zapnuto**.
    1. Jako **Vynutilit šablony zásad podmíněného přístupu**vyberte **vlastní zásady**.
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -105,7 +105,7 @@ V zásadách nastavte:
 
 1. Na **nové** stránce zadejte do textového pole **název** text **vyžadovat podmínky použití pro Isabella**.
 
-   ![Name](./media/require-tou/71.png)
+   ![Název](./media/require-tou/71.png)
 
 1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
 
@@ -146,7 +146,7 @@ V zásadách nastavte:
 
    ![Povolení zásady](./media/require-tou/18.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnotit simulované přihlašování
 
@@ -200,13 +200,13 @@ Pokud už je nepotřebujete, odstraňte testovacího uživatele a zásadu podmí
 - Pokud nevíte, jak odstranit uživatele Azure AD, přečtěte si téma [odstranění uživatelů ze služby Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 - Pokud chcete zásadu odstranit, vyberte zásadu a pak na panelu nástrojů Rychlý přístup klikněte na **Odstranit** .
 
-    ![Ověřování pomocí služby Multi-Factor Authentication](./media/require-tou/33.png)
+    ![Vícefaktorové ověřování](./media/require-tou/33.png)
 
 - Pokud chcete odstranit svoje podmínkami použití, vyberte ji a pak na panelu nástrojů nahoře klikněte na **Odstranit výrazy** .
 
-    ![Ověřování pomocí služby Multi-Factor Authentication](./media/require-tou/29.png)
+    ![Vícefaktorové ověřování](./media/require-tou/29.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyžadování MFA pro specifické aplikace](app-based-mfa.md)
+> [Vyžadování MFA pro specifické aplikace](../authentication/tutorial-enable-azure-mfa.md)

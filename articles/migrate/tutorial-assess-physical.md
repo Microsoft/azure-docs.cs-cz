@@ -3,12 +3,12 @@ title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení se
 description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: a8a7cc3734bc7a36afc307526cd41634ccaf00dc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 21ffc425ff7d04bbb1bc0c3a550133ae5374b1e9
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933813"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950098"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -115,13 +115,13 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
         **Scénář** | **Stáhnout*** | **Hodnota hash**
         --- | --- | ---
-        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
+        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | 6de88e229c2b4836d16ce03fdfac93b5c27274945577bd8a359d598cf3777b24
 
     - Pro Azure Government:
 
         **Scénář** | **Stáhnout*** | **Hodnota hash**
         --- | --- | ---
-        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | 1545f9ce8874cedef6347c1a1332f8b5eabd6811a017440a2382525fb0430309
+        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | 5a4715a9d10e81a5f38192b7d1c6ac0919ae3998afbf2e933c99bafae6bef80e
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
 

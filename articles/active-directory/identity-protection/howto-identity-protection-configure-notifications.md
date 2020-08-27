@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130428"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950387"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -29,7 +29,7 @@ Tento článek poskytuje přehled e-mailů s oznámením.
 
 ## <a name="users-at-risk-detected-email"></a>E-mail zjištěných uživatelů v nebezpečí
 
-V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli s rizikem zjištěným** jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
+V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli s rizikem zjištěným** jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](./overview-identity-protection.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
 
 Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste zadali. Pokud jste například nastavili zásady na výstrahu středně velkému uživateli a skóre rizika uživatele od uživatele Jan se z důvodu rizika přihlášení v reálném čase přesune na střední riziko, obdržíte uživateli zjištěné riziko. Pokud má uživatel následnou detekci rizik, která by způsobila, že výpočet úrovně rizika uživatele bude představovat zadanou úroveň rizika (nebo vyšší), obdržíte při přepočítání skóre uživatele zjištěné e-maily další uživatelé s riziky zjištěnými uživateli. Pokud se například uživatel přesune k střednímu riziku 1. ledna, obdržíte e-mailové oznámení, pokud je u nastavení nastaveno výstrahy na střední riziko. Pokud má stejný uživatel další detekci rizik na 1. lednu, což je také střední riziko, a skóre rizika uživatele se přepočítá a je stále střední, obdržíte další e-mailové oznámení. 
 
@@ -70,4 +70,4 @@ V **Azure Portal** v části **Azure Active Directory**  >  **zabezpečení**  >
 
 ## <a name="see-also"></a>Viz také
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

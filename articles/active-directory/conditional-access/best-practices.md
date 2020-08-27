@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275424"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948449"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
-Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. V tomto článku najdete informace o:
+Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](./overview.md)můžete řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. V tomto článku najdete informace o:
 
 - Co byste měli znát 
 - K tomu byste se měli vyhnout při konfiguraci zásad podmíněného přístupu. 
 
-V tomto článku se předpokládá, že máte zkušenosti s koncepty a terminologie, která je popsaný v tématu [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+V tomto článku se předpokládá, že máte zkušenosti s koncepty a terminologie, která je popsaný v tématu [co je podmíněný přístup v Azure Active Directory?](./overview.md)
 
 ## <a name="whats-required-to-make-a-policy-work"></a>Co je potřeba k práci se zásadami?
 
@@ -154,5 +154,5 @@ Další informace najdete v článku [Migrace zásad z portálu Classic na port�
 
 Chcete-li znát:
 
-- Postup konfigurace zásad podmíněného přístupu najdete v tématu [vyžádání MFA pro konkrétní aplikace s Azure Active Directorym podmíněným přístupem](app-based-mfa.md).
+- Postup konfigurace zásad podmíněného přístupu najdete v tématu [vyžádání MFA pro konkrétní aplikace s Azure Active Directorym podmíněným přístupem](../authentication/tutorial-enable-azure-mfa.md).
 - Postup plánování zásad podmíněného přístupu najdete v tématu [postup plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).

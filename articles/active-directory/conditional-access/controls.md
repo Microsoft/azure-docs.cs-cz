@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922091"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948296"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
@@ -53,7 +53,7 @@ Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovl�
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Vlastní ovládací prvky se nedají použít s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity služby Multi-Factor Authentication, aby bylo možné zvýšit úroveň rolí v Privileged identity Manageru (PIM), nebo jako součást registrace zařízení v Intune.
+Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování, aby se v rámci registrace zařízení v Intune a připojení zařízení k Azure AD připojovaly role v Privileged identity Manageru (PIM).
 
 ## <a name="next-steps"></a>Další kroky
 

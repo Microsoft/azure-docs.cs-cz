@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184342"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948908"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -50,7 +50,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Seznam, který z vašich podmínek použití nebo nepřijal.
 - Pomoc při plnění předpisů týkajících se ochrany osobních údajů.
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
-- Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (aktuálně ve verzi Preview).
+- Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -253,7 +253,7 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Jiné |
+> |  | iOS | Android | Windows 10 | Ostatní |
 > | --- | --- | --- | --- | --- |
 > | **Native app** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |

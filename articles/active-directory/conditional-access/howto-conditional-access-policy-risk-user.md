@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605583"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948058"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizika uživatele
 
@@ -29,7 +29,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
-1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard. Další informace najdete v [Nastavení standardů pojmenovávání zásad](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies).
+1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard. Další informace najdete v [Nastavení standardů pojmenovávání zásad](./plan-conditional-access.md#set-naming-standards-for-your-policies).
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
@@ -42,7 +42,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 ## <a name="enable-through-identity-protection"></a>Povolit prostřednictvím Identity Protection
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se na **Azure Portal**.
 1. Vyberte **všechny služby**a pak vyhledejte **Azure AD Identity Protection**.
 1. Vyberte **zásady rizik uživatelů**.
 1. V části **přiřazení**vyberte **Uživatelé**.
@@ -66,4 +66,4 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Co je Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Co je Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)

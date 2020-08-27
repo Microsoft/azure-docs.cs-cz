@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21ba0193c3f1e19ffc74452aaceee34759c7e606
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82900313"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949010"
 ---
 # <a name="single-page-application-move-to-production"></a>Jednostránkové aplikace: Přesun do produkčního prostředí
 
@@ -30,19 +30,33 @@ Když teď víte, jak získat token pro volání webových rozhraní API, přeč
 
 Otestujte integraci podle [kontrolního seznamu integrace Microsoft Identity Platform](identity-platform-integration-checklist.md).
 
+## <a name="deploy-your-app"></a>Nasazení aplikace
+
+Podívejte se na [ukázku nasazení](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3) a Naučte se, jak nasadit vaše projekty Spa a webové rozhraní API pomocí Azure Storage a Azure App Services, v uvedeném pořadí. 
+
 ## <a name="next-steps"></a>Další kroky
 
-Důkladná podrobně ukázky pro rychlý Start, která vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph pomocí MSAL.js:
+Důkladná podrobně ukázky pro rychlý Start, která vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání **rozhraní API Microsoft Graph** pomocí **MSAL.js**:
 
 > [!div class="nextstepaction"]
 > [Kurz pro JavaScript SPA](./tutorial-v2-javascript-spa.md)
 
-Ukázka, která ukazuje, jak získat tokeny pro vlastní back-endové webové rozhraní API pomocí MSAL.js:
+Ukázka, která ukazuje, jak získat tokeny pro vlastní back-endové webové rozhraní API (ASP.NET Core) pomocí **MSAL.js**:
 
 > [!div class="nextstepaction"]
 > [SPA s back-end ASP.NET](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
-Ukázka, která ukazuje použití MSAL.js k přihlášení uživatelů v aplikaci registrované v Azure Active Directory B2C (Azure AD B2C):
+Ukázka, která ukazuje, jak ověřit přístupové tokeny pro vaše back-end webové rozhraní API (Node.js) pomocí **Passport-Azure-AD**.
+
+> [!div class="nextstepaction"]
+> [Node.js webové rozhraní API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
+
+Ukázka, která ukazuje použití **MSAL.js** k přihlášení uživatelů v aplikaci registrované v **Azure Active Directory B2C** (Azure AD B2C):
 
 > [!div class="nextstepaction"]
 > [SPA s Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+
+Ukázka, která ukazuje použití **služby Passport-Azure-AD** k ověření přístupových tokenů pro aplikace zaregistrované ve službě **Azure Active Directory B2C** (Azure AD B2C)
+
+> [!div class="nextstepaction"]
+> [Node.js webové rozhraní API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)

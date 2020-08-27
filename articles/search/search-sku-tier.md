@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553967"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922799"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -25,7 +25,7 @@ Většina zákazníků začíná na bezplatné úrovni, takže může službu vy
 
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-| Příznak | Omezení |
+| Funkce | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -98,7 +98,7 @@ V případě [obohacení AI](cognitive-search-concept-intro.md)byste měli napl�
 | Operace | Dopad fakturace |
 |-----------|----------------|
 | Trhliny dokumentů, extrakce textu | Free |
-| Trhliny dokumentů, extrakce obrázků | Účtuje se podle počtu imagí extrahovaných z vašich dokumentů. V [konfiguraci indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)je **imageAction** parametr, který aktivuje extrakci imagí. Pokud je **imageAction** nastavené na None (výchozí nastavení), nebudete se vám za extrakci imagí účtovat. Sazba za extrakci imagí je popsána na stránce s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/search/) pro Azure kognitivní hledání.|
+| Trhliny dokumentů, extrakce obrázků | Účtuje se podle počtu imagí extrahovaných z vašich dokumentů. V [konfiguraci indexeru](/rest/api/searchservice/create-indexer#indexer-parameters)je **imageAction** parametr, který aktivuje extrakci imagí. Pokud je **imageAction** nastavené na None (výchozí nastavení), nebudete se vám za extrakci imagí účtovat. Sazba za extrakci imagí je popsána na stránce s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/search/) pro Azure kognitivní hledání.|
 | [Předdefinované kognitivní dovednosti](cognitive-search-predefined-skills.md) | Účtuje se se stejnou sazbou, jako kdyby jste provedli úlohu přímo pomocí Cognitive Services. |
 | Vlastní dovednosti | Vlastní dovednost je funkce, kterou zadáte. Náklady na používání vlastní dovednosti závisí výhradně na tom, jestli vlastní kód volá jiné měřené služby. |
 
@@ -130,7 +130,7 @@ Následující návrhy vám pomůžou snížit náklady nebo efektivněji spravo
 
 + Nahorizontální navýšení operací náročných na prostředky, jako je indexování, a následná změna nastavení pro běžné úlohy dotazů. Začněte s minimální konfigurací pro Azure Kognitivní hledání (jeden SU tvořený jedním oddílem a jednou replikou) a pak sledujte aktivitu uživatelů, abyste mohli identifikovat vzorce používání, které by znamenaly nutnost větší kapacity. Pokud existuje předvídatelný vzor, může být možné synchronizovat škálování s aktivitou (pro automatizaci musíte napsat kód).
 
-Kromě toho si projděte téma [fakturace a Správa nákladů](https://docs.microsoft.com/azure/billing/billing-getting-started) pro integrované nástroje a funkce týkající se útraty.
+Kromě toho si projděte téma [fakturace a Správa nákladů](../cost-management-billing/manage/getting-started.md) pro integrované nástroje a funkce týkající se útraty.
 
 Vypínání vyhledávací služby na dočasné bázi není možné. Vyhrazené prostředky jsou vždycky v provozu a jsou vyhrazené pro vaše výhradní použití po dobu života vaší služby. Odstranění služby je trvalé a zároveň odstraní přidružená data.
 
@@ -175,7 +175,7 @@ V případě hrubého odhadu se může tato částka zdvojnásobit do rozpočtu 
 
 Vyhrazené prostředky můžou sloužit k většímu počtu vzorkování a zpracování za účelem realističtějších odhadů množství indexu, velikosti a svazků dotazů během vývoje. Někteří zákazníci najdou přímo v rámci Fakturovatelné úrovně a pak se znovu vyhodnotí jako vývoj projektu vývoje.
 
-1. [Zkontrolujte omezení služeb na jednotlivých úrovních](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) , abyste zjistili, jestli nižší úrovně můžou podporovat potřebný počet indexů. V úrovních Basic, S1 a S2 jsou limity indexu 15, 50 a 200, v uvedeném pořadí. Optimalizovaná úroveň úložiště má omezení 10 indexů, protože je navržena tak, aby podporovala nízký počet velmi rozsáhlých indexů.
+1. [Zkontrolujte omezení služeb na jednotlivých úrovních](./search-limits-quotas-capacity.md#index-limits) , abyste zjistili, jestli nižší úrovně můžou podporovat potřebný počet indexů. V úrovních Basic, S1 a S2 jsou limity indexu 15, 50 a 200, v uvedeném pořadí. Optimalizovaná úroveň úložiště má omezení 10 indexů, protože je navržena tak, aby podporovala nízký počet velmi rozsáhlých indexů.
 
 1. [Vytvoření služby v Fakturovatelné úrovni](search-create-service-portal.md):
 

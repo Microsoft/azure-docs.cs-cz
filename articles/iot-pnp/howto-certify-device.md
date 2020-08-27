@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: eaae6d90799c11d2475105a30f830db8dfae7fcf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860958"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949894"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Jak certifikovat technologie Plug and Play zařízení IoT
 
@@ -43,7 +43,7 @@ Abyste splnili požadavky na certifikaci, vaše zařízení musí:
 - Popište interakce zařízení s modelem [DTDL v2](https://aka.ms/dtdl) .
 - Publikování modelu a všech požadovaných rozhraní v [úložišti veřejného modelu Azure IoT](https://devicemodels.azureiotsolutions.com/)
 - Odešlete ID modelu během [registrace DPS](concepts-developer-guide.md#dps-payload) v datové části zřizování DPS.
-- Během [připojení MQTT](/concepts-developer-guide.md#model-id-announcement)oznamuje ID modelu.
+- Během [připojení MQTT](concepts-developer-guide.md#model-id-announcement)oznamuje ID modelu.
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testování pomocí rozhraní příkazového řádku rozšíření Azure IoT
 
