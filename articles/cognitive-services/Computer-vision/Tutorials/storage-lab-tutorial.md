@@ -10,12 +10,13 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: f350aae32909de2b9be4384d921f7507a158f6ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 985060d1acb9e3bf0babc8303b997ceddfff8f05
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243849"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931940"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
@@ -33,7 +34,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) nebo vyšší s nainstalovanou úlohou vývoj ASP.NET a web a vývoj pro Azure.
 - Účet Azure Storage s kontejnerem objektů BLOB nastaveným pro úložiště imagí (Pokud potřebujete s tímto krokem nápovědu, postupujte podle [cvičení 1 Azure Storage laboratorního prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) ).

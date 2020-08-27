@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749456"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932011"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
@@ -21,7 +21,7 @@ Azure Kognitivní hledání podporuje [dva základní přístupy](search-what-is
 
 V tomto kurzu se dozvíte, jak efektivně indexovat data pomocí [modelu nabízených oznámení](search-what-is-data-import.md#pushing-data-to-an-index) pomocí dávkování požadavků a pomocí exponenciální strategie omezení rychlosti opakování. Aplikaci si můžete [Stáhnout a spustit](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Tento článek vysvětluje klíčové aspekty aplikace a faktory, které je potřeba vzít v úvahu při indexování dat.
 
-Tento kurz používá jazyk C# a [sadu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) k provádění následujících úloh:
+Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Vytvoření indexu
@@ -111,7 +111,7 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
 ### <a name="creating-the-index"></a>Vytvoření indexu
 
-Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
+Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídu Address. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávat nebo řadit.
 
@@ -162,8 +162,8 @@ Schéma indexu může mít výrazný vliv na rychlosti indexování. Z důvodu t
 
 Azure Kognitivní hledání podporuje následující rozhraní API pro načtení jednoho nebo více dokumentů do indexu:
 
-+ [Přidávání, aktualizace a odstraňování dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [Třída indexAction](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) nebo [třída indexBatch](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Přidávání, aktualizace a odstraňování dokumentů (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [Třída indexAction](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) nebo [třída indexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 Indexování dokumentů v dávkách významně vylepšuje výkon při indexování. Tyto dávky můžou mít až 1000 dokumentů nebo až o 16 MB na jednu dávku.
 
@@ -258,14 +258,14 @@ Abyste plně využili výhod indexování Kognitivní hledání Azure, budete pr
 
 Několik klíčových doporučení uvedených výše má vliv na optimální počet vláken. Tuto ukázku a test můžete upravit pomocí různých počtů vláken, abyste zjistili optimální počet vláken pro váš scénář. Pokud ale máte několik souběžně běžících vláken, měli byste být schopni využít většinu zisků z hlediska efektivity.
 
-Při navýšení požadavků na službu vyhledávání dojde v případě, že se zobrazí [stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) indikující, že požadavek nebyl zcela úspěšný. Při indexování jsou dva běžné stavové kódy HTTP:
+Při navýšení požadavků na službu vyhledávání dojde v případě, že se zobrazí [stavové kódy http](/rest/api/searchservice/http-status-codes) indikující, že požadavek nebyl zcela úspěšný. Při indexování jsou dva běžné stavové kódy HTTP:
 
 + **služba 503 není k dispozici** – Tato chyba znamená, že systém je zatížen velkým zatížením a váš požadavek nejde v tuto chvíli zpracovat.
 + **207 s více stavy** – Tato chyba znamená, že některé dokumenty byly úspěšně dokončeny, ale nejméně jedna se nezdařila.
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>Implementace exponenciální strategie omezení rychlosti opakování
 
-Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
 Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další neúspěšné požadavky, ale budete muset implementovat vlastní logiku a zkusit to znovu 207s. K implementaci strategie opakování můžete také použít Open Source nástroje, jako je [Polly](https://github.com/App-vNext/Polly) . 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Je důležité zachytit [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) , protože tyto výjimky signalizují, že operace indexování se pouze částečně zdařila (207s). Položky, které selhaly, by se měly opakovat pomocí `FindFailedActionsToRetry` metody, která usnadňuje vytvoření nové dávky obsahující pouze neúspěšné položky.
+Je důležité zachytit [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) , protože tyto výjimky signalizují, že operace indexování se pouze částečně zdařila (207s). Položky, které selhaly, by se měly opakovat pomocí `FindFailedActionsToRetry` metody, která usnadňuje vytvoření nové dávky obsahující pouze neúspěšné položky.
 
 Výjimky jiné než `IndexBatchException` by měly být také zachyceny a označovaly, že žádost byla zcela neúspěšná. Tyto výjimky jsou méně běžné, zejména se sadou .NET SDK při opakovaném pokusu o 503s automaticky.
 
@@ -346,7 +346,7 @@ Po spuštění programu programově nebo pomocí [**Průzkumníka vyhledávání
 
 ### <a name="programatically"></a>Programově
 
-Existují dvě hlavní možnosti kontroly počtu dokumentů v indexu: rozhraní [API pro počet dokumentů](https://docs.microsoft.com/rest/api/searchservice/count-documents) a [rozhraní API pro statistiku získání indexu](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Obě cesty můžou vyžadovat nějakou další dobu k aktualizaci, takže se neobjeví alarm, pokud je počet vrácených dokumentů menší, než jste očekávali původně.
+Existují dvě hlavní možnosti kontroly počtu dokumentů v indexu: rozhraní [API pro počet dokumentů](/rest/api/searchservice/count-documents) a [rozhraní API pro statistiku získání indexu](/rest/api/searchservice/get-index-statistics). Obě cesty můžou vyžadovat nějakou další dobu k aktualizaci, takže se neobjeví alarm, pokud je počet vrácených dokumentů menší, než jste očekávali původně.
 
 #### <a name="count-documents"></a>Počet dokumentů
 
@@ -370,7 +370,7 @@ V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **inde
 
   ![Seznam indexů Kognitivní hledání Azure](media/tutorial-optimize-data-indexing/portal-output.png "Seznam indexů Kognitivní hledání Azure")
 
-*Počet dokumentů* a *velikost úložiště* jsou založené na [získání rozhraní API statistiky indexu](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) a aktualizace může trvat několik minut.
+*Počet dokumentů* a *velikost úložiště* jsou založené na [získání rozhraní API statistiky indexu](/rest/api/searchservice/get-index-statistics) a aktualizace může trvat několik minut.
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
@@ -382,7 +382,7 @@ Pomocí portálu můžete také odstranit indexy.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

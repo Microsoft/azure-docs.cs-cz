@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816401"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933493"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -128,7 +128,7 @@ Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
 | Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -384,14 +384,60 @@ Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visua
 
 ## <a name="powershell-versions"></a>Verze PowerShellu
 
-V následující tabulce jsou uvedeny verze prostředí PowerShell podporované každou hlavní verzí modulu runtime functions a požadovaná verze rozhraní .NET:
+V následující tabulce jsou uvedeny verze prostředí PowerShell, které jsou k dispozici pro každou hlavní verzi modulu runtime functions a požadovaná verze rozhraní .NET:
 
 | Verze funkcí | Verze prostředí PowerShell                               | Verze .NET  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné funkce.
+
+### <a name="running-local-on-a-specific-version"></a>Místní spuštění na konkrétní verzi
+
+Při místním spuštění Azure Functions modul runtime standardně používá PowerShell Core 6. Chcete-li místo toho použít prostředí PowerShell 7 při místním spuštění, je nutné přidat nastavení `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` do `Values` pole v local.setting.jssouboru v kořenovém adresáři projektu. Při místním spuštění v prostředí PowerShell 7 vaše local.settings.jsv souboru vypadá jako v následujícím příkladu: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>Změna verze prostředí PowerShell
+
+Vaše aplikace Function App musí běžet na verzi 3. x, aby bylo možné upgradovat z PowerShellu Core 6 na PowerShell 7. Další informace o tom, jak to provést, najdete v tématu [zobrazení a aktualizace aktuální verze modulu runtime](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
+Pomocí následujících kroků můžete změnit verzi prostředí PowerShell, kterou používá aplikace Function App. To můžete provést buď v Azure Portal, nebo pomocí prostředí PowerShell.
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function App.
+
+1. V části **Nastavení**vyberte **Konfigurace**. Na kartě **Obecné nastavení** vyhledejte **verzi prostředí PowerShell**. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Zvolit verzi prostředí PowerShell, kterou používá aplikace Function App"::: 
+
+1. Zvolte požadovanou **verzi PowerShell Core** a vyberte **Uložit**. Pokud se zobrazí upozornění na nedokončené restartování, vyberte **pokračovat**. Aplikace Function App se restartuje ve zvolené verzi prostředí PowerShell. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Spuštěním následujícího skriptu změňte verzi prostředí PowerShell: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+Nahraďte `<SUBSCRIPTION_ID>` , `<RESOURCE_GROUP>` a `<FUNCTION_APP>` číslem ID vašeho předplatného Azure, název vaší skupiny prostředků a aplikace Function App (v uvedeném pořadí).  Nahraďte také `<VERSION>` buď `~6` nebo `~7` . Můžete ověřit aktualizovanou hodnotu `powerShellVersion` nastavení v `Properties` vrácené zatřiďovací tabulce. 
+
+---
+
+Aplikace Function App se restartuje po provedení změny v konfiguraci.
 
 ## <a name="dependency-management"></a>Správa závislostí
 

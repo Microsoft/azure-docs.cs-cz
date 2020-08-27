@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854728"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930906"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -27,6 +27,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 * Verze modelu `2020-07-01` pro v3 `/keyphrases` `/pii` a `/languages` koncové body, které přidávají:
     * Další [kategorie entit](named-entity-types.md?tabs=personal) a specifických pro zemi pro státní správu pro rozpoznávání pojmenovaných entit
+    * Podpora norštiny a turečtiny v Analýza mínění v3.
 * V případě požadavků V3 API, které překračují omezení publikovaných [dat](concepts/data-limits.md), se teď vrátí chyba HTTP 400. 
 * Koncové body, které vrací posun, teď podporují volitelný `stringIndexType` parametr, který upraví vrácené `offset` `length` hodnoty a hodnot tak, aby odpovídaly podporovanému [schématu řetězcového indexu](concepts/text-offsets.md).
 
@@ -150,7 +151,7 @@ Další typy entit jsou teď dostupné ve službě pro rozpoznávání pojmenova
     * Organizace
     * Stáří jako podtyp v rámci množství
     * Datum jako podtyp v hodnotě DateTime
-    * E-mail 
+    * E-mailu 
     * Telefonní číslo (jenom USA)
     * URL
     * IP adresa
@@ -194,5 +195,5 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Ukázkové uživatelské scénáře](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
-* [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
+* [Rozpoznávání entit](how-tos/text-analytics-how-to-entity-linking.md)
 * [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)

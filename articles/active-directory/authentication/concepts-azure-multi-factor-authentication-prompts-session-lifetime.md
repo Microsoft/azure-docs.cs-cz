@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169336"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919671"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Vylepší výzvy k opakovanému ověření a pochopení životnosti relace pro Azure Multi-Factor Authentication
 
@@ -45,6 +45,8 @@ Pro optimalizaci četnosti výzev k ověřování pro vaše uživatele můžete 
 ### <a name="evaluate-session-lifetime-policies"></a>Vyhodnotit zásady životnosti relace
 
 Bez nastavení doby života relace nejsou v relaci prohlížeče žádné trvalé soubory cookie. Pokaždé, když uživatel zavře a otevře prohlížeč, zobrazí výzvu k opakovanému ověření. V klientech Office je výchozím časovým obdobím posuvné okno 90 dnů. V případě této výchozí konfigurace Office, pokud uživatel obnovil heslo, nebo došlo k nečinnosti po dobu více než 90 dní, musí se uživatel znovu ověřit se všemi požadovanými faktory (první a druhý faktor).
+
+Uživatel se může na zařízení, které nemá identitu ve službě Azure AD, zobrazit výzvy s více MFA. Více výzev má za následek, že každá aplikace má vlastní obnovovací token OAuth, který není sdílen s ostatními klientskými aplikacemi. V tomto scénáři MFA dotazuje víckrát, protože každá aplikace vyžaduje, aby byl obnovovací token OAuth ověřený pomocí vícefaktorového ověřování.
 
 Nejvíce omezující zásada pro dobu života relace ve službě Azure AD určuje, kdy se uživatel musí znovu ověřit. Představte si následující scénář:
 

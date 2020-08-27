@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ba53b4a4765a2b3db0aa048a990a0a48f74682d0
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874975"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931178"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -28,7 +28,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 * Analýza mínění
 * Rozpoznávání jazyka
 * rozpoznávání entit,
-* Extrakce klíčových frází
+* extrakce klíčových frází,
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,7 +83,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
-| Přejít       | [Verze 2,1](go-sdk.md) | 
+| Go       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -102,5 +102,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Rozpoznání jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

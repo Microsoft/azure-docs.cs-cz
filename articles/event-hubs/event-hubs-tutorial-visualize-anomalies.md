@@ -3,12 +3,12 @@ title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85315607"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934051"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -308,11 +308,11 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    ![Snímek obrazovky se zadáváním datové sady.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Jako typ vizualizace vyberte **Karta**. V části **Pole** klikněte na **Přidat hodnotu** a vyberte **fraudulentuses**.
+9. Jako typ vizualizace vyberte **Karta**. V části **pole**klikněte na **Přidat hodnotu**a pak vyberte `fraudulentuses` .
 
    ![Snímek obrazovky se zadáváním typu vizualizace a polí.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   Klikněte na **Další**.
+   Klikněte na **Next** (Další).
 
 10. Nastavte nadpis na **Podvodná použití** a podnadpis na **Součet za posledních několik minut**. Klikněte na **Použít**. Dlaždice se uloží na váš řídicí panel.
 
@@ -324,16 +324,16 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
     * Klikněte na **Add Tile** (Přidat dlaždici).
     * Vyberte **Vlastní streamovaná data**. 
-    * Klikněte na **Další**.
+    * Klikněte na **Next** (Další).
     * Vyberte vaši datovou sadu a klikněte na **Další**. 
 
 12. V části **Typ vizualizace** vyberte **Spojnicový graf**.
 
-13. V části **Osy** klikněte na **Přidat hodnotu** a vyberte **windowend**. 
+13. V části **osa**klikněte na **Přidat hodnotu**a vyberte `windowend` . 
 
-14. V části **Hodnoty** klikněte na **Přidat hodnotu** a vyberte **fraudulentuses**.
+14. V části **hodnoty**klikněte na **Přidat hodnotu** a vyberte `fraudulentuses` .
 
-15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Další**.
+15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Next** (Další).
 
 16. Jako nadpis zadejte **Zobrazení podvodných použití v průběhu času**, podnadpis dlaždice ponechte prázdný a klikněte na **Použít**. Vrátíte se na váš řídicí panel.
 
@@ -378,6 +378,6 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu článku, kde najdete další informace o službě Azure Event Hubs.
 
 > [!div class="nextstepaction"]
-> [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](get-started-dotnet-standard-send-v2.md)
+> [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
 [Vytvoření bezplatného účtu]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

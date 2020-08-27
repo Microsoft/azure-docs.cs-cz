@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 408b507ff23a2a20c5ed6d2fc32fd5dbf5dbab5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827507"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930889"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportovat certifikáty z Azure Key Vault
 
@@ -36,10 +36,7 @@ Po vytvoření Key Vault certifikátu ho můžete načíst z adresního tajného
 - **Exportovatelný**: zásady použité k vytvoření certifikátu označují, že klíč se dá exportovat.
 - **Neexportovatelný**: zásady použité k vytvoření certifikátu označují, že klíč není exportovatelný. V takovém případě privátní klíč není součástí hodnoty, když se načte jako tajný kód.
 
-Key Vault podporuje dva typy klíčů:
-
-- **RSA**: exportovatelné
-- **HSM RSA**: nelze exportovat
+Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
 
 Další informace najdete v tématu [o Azure Key Vaultch certifikátech](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) .
 

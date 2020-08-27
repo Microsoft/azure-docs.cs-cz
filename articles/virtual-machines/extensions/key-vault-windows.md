@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c41207bedbea96c76f0a9a6ffd45ea6efa09138b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641768"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932572"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -85,7 +85,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForWindows | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |
@@ -130,6 +130,8 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
 
 
 ## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShell
+> [!WARNING]
+> Klienti PowerShellu se často přidávají `\` do `"` v settings.js, na kterých bude akvvm_service selže s chybou: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního počítače do existujícího virtuálního počítače nebo sady škálování virtuálních počítačů. 
 
@@ -209,7 +211,7 @@ Mějte na paměti následující omezení/požadavky:
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstraňování potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

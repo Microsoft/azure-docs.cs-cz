@@ -3,12 +3,12 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320542"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934068"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
@@ -43,12 +43,12 @@ V tomto článku se používají následující výrazy:
 ## <a name="supported-namespace-pairs"></a>Podporované páry oboru názvů
 Podporovány jsou následující kombinace primárních a sekundárních oborů názvů:  
 
-| Primární obor názvů | Sekundární obor názvů | Podporuje se | 
+| Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Vyhrazená | Yes | 
-| Vyhrazená | Vyhrazená | Yes | 
-| Vyhrazená | Standard | No | 
+| Standard | Standard | Ano | 
+| Standard | Vyhrazená | Ano | 
+| Vyhrazená | Vyhrazená | Ano | 
+| Vyhrazená | Standard | Ne | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -94,7 +94,7 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 - Postup potřebný ke spuštění ukázkového kódu. 
 - Odeslat a přijmout z aktuálního primárního oboru názvů 
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Vezměte v úvahu následující skutečnosti:
 
@@ -167,10 +167,10 @@ Výhodou tohoto přístupu je, že k převzetí služeb při selhání může do
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 * [Ukázkové aplikace, které používají službu Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

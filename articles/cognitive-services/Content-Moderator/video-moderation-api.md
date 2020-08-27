@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516584"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919348"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza obsahu videa pro nevhodný materiál v jazyce C #
 
@@ -23,7 +24,7 @@ V tomto článku najdete informace a ukázky kódu, které vám pomůžou začí
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure

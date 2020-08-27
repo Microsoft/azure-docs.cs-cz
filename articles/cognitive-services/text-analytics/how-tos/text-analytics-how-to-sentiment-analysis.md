@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: e7dca6f74145d1ea50c5a9bfc57b52e1cbdfcab3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869826"
+ms.locfileid: "88933014"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -40,7 +40,7 @@ Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Dalš�
 
 Analýza mínění v v3 aplikuje popisky mínění na text, které se vrátí na úrovni věty a dokumentu s hodnocením spolehlivosti pro každý z nich. 
 
-Popisky jsou `positive` , `negative` a `neutral` . Na úrovni dokumentu `mixed` lze také vrátit popisek mínění. Mínění dokumentu je určena níže:
+Popisky jsou *kladné*, *záporné*a *neutrální*. Na úrovni dokumentu lze také vrátit *smíšený* popisek mínění. Mínění dokumentu je určena níže:
 
 | Mínění věty                                                                            | Popisek vráceného dokumentu |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ Popisky jsou `positive` , `negative` a `neutral` . Na úrovni dokumentu `mixed` 
 | `negative`V dokumentu je alespoň jedna věta a alespoň jedna `positive` věta.    | `mixed`                 |
 | Všechny věty v dokumentu jsou `neutral` .                                                  | `neutral`               |
 
-Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Výsledky spolehlivosti v každé větě (ne dokumentu) přidávají až 1.
+Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. U každého dokumentu nebo každé věty jsou předpovězené skóre spojené s popisky (kladné, záporné a neutrální) přidány až 1.
 
 ### <a name="opinion-mining"></a>Dolování názoru
 
@@ -278,7 +278,7 @@ Analýza mínění v 3.1 nabízí kromě objektu Response na kartě **verze 3,0*
 
 ---
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro analýzu mínění pomocí rozhraní API pro analýzu textu. Souhrn:
 
