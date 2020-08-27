@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 07/16/2020
-ms.openlocfilehash: 16366d9f3be1144a7588ceb9133fb4e2e60db95c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0b914059567e9a513b605ce733407465b625a909
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373704"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950013"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění a řešení potíží s ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,11 +25,11 @@ V tomto článku se dozvíte, jak ladit a řešit potíže se třídou [Parallel
 
 ## <a name="testing-scripts-locally"></a>Místní testování skriptů
 
-Přečtěte si [část testování skriptů místně](how-to-debug-pipelines.md#testing-scripts-locally) pro kanály strojového učení. Vaše ParallelRunStep se spouští jako krok v kanálech ML, takže stejná odpověď platí i pro obě.
+Přečtěte si [část testování skriptů místně](how-to-debug-pipelines.md#debug-scripts-locally) pro kanály strojového učení. Vaše ParallelRunStep se spouští jako krok v kanálech ML, takže stejná odpověď platí i pro obě.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). Informace v této části platí i pro ParallelRunStep.
+Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md#finding-and-reading-pipeline-log-files). Informace v této části platí i pro ParallelRunStep.
 
 Například soubor protokolu `70_driver_log.txt` obsahuje informace z kontroleru, který spouští kód ParallelRunStep.
 

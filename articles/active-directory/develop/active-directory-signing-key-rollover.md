@@ -8,26 +8,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115590"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948126"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
-Tento článek popisuje, co potřebujete znát o veřejných klíčích, které používá platforma Microsoft Identity Platform k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů nebo vytvořit pravidelný proces ručního zpracování. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
+Tento článek popisuje, co potřebujete znát o veřejných klíčích, které používá platforma Microsoft Identity Platform k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
 
 ## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Přehled podpisových klíčů v platformě Microsoft Identity Platform
-Platforma Microsoft Identity Platform používá kryptografii s veřejným klíčem postavená na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají V praktických případech funguje takto: platforma Microsoft Identity Platform používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Microsoft Identity Platform pro ověřování, Microsoft Identity Platform vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný platformou Microsoft identity pomocí jeho privátního klíče, než se pošle zpátky do aplikace. Aby bylo možné ověřit, zda je token platný a pochází z platformy Microsoft Identity Platform, aplikace musí ověřit podpis tokenu pomocí veřejného klíče vystaveného platformou Microsoft identity, která je obsažena v [dokumentu zjišťování klienta OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) nebo v [dokumentu federačních METADAT](../azuread-dev/azure-ad-federation-metadata.md)SAML/WS.
+Platforma Microsoft Identity Platform používá kryptografii s veřejným klíčem postavená na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají V praktických případech funguje takto: platforma Microsoft Identity Platform používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Microsoft Identity Platform pro ověřování, Microsoft Identity Platform vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný platformou Microsoft identity pomocí jeho privátního klíče, než se pošle zpátky do aplikace. Pokud chcete ověřit, jestli je token platný a pochází z platformy Microsoft Identity Platform, musí aplikace ověřit signaturu tokenu pomocí veřejných klíčů vystavených platformou Microsoft identity, která je obsažená v [dokumentu zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) tenanta nebo v [dokumentu federačních METADAT](../azuread-dev/azure-ad-federation-metadata.md)SAML/WS.
 
-Z bezpečnostních důvodů se podpisový klíč platformy Microsoft Identity vystavuje pravidelně a v případě nouze se dá okamžitě navrátit. Každá aplikace, která se integruje s platformou Microsoft identity, by měla být připravená na zpracování události změny klíče bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.
+Z bezpečnostních důvodů se podpisový klíč platformy Microsoft Identity vystavuje pravidelně a v případě nouze se dá okamžitě navrátit. Mezi těmito klíči se neplatí žádné nastavení ani zaručená doba – jakákoliv aplikace, která se integruje s Microsoft Identity platformou, by měla být připravená na zpracování události změny klíče bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.  Kontrola každých 24 hodin pro aktualizace je osvědčeným postupem s omezením (jednou za každých pět minut) okamžitými aktualizacemi klíčového dokumentu, pokud byl nalezen token s neznámým identifikátorem klíče. 
 
-V dokumentu zjišťování OpenID Connect a v dokumentu federačních metadat je vždy k dispozici více než jeden platný klíč. Vaše aplikace by měla být připravená použít některý z klíčů uvedených v dokumentu, protože jeden klíč může být brzy vyměněn, další může být nahrazena a tak dále.
+V dokumentu zjišťování OpenID Connect a v dokumentu federačních metadat je vždy k dispozici více než jeden platný klíč. Vaše aplikace by se měla připravit na použití všech klíčů, které jsou uvedené v dokumentu, a to i v případě, že jeden klíč může být vyměněn brzo, další může být jeho nahrazení a tak dále.  Počet nalezených klíčů se může v průběhu času měnit na základě interní architektury platformy Microsoft identity, která podporuje nové platformy, nové cloudy nebo nové ověřovací protokoly. Ani pořadí klíčů v odpovědi JSON ani pořadí, ve kterém byly vystavené, by mělo být považováno za meaninful vaší aplikace. 
+
+Aplikace, které podporují jenom jeden podpisový klíč, nebo ty, které vyžadují ruční aktualizace podpisových klíčů, jsou z vlastního podstaty méně zabezpečené a spolehlivé.  Měli byste je aktualizovat tak, aby používaly [standardní knihovny](reference-v2-libraries.md) , abyste měli jistotu, že vždycky používají aktuální podpisové klíče, a to mimo jiné osvědčené postupy. 
 
 ## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Jak posoudit, jestli bude vaše aplikace ovlivněná a co s nimi dělat
 Způsob, jakým vaše aplikace zpracovává výměna klíčů, závisí na proměnných, jako je typ aplikace nebo jaký protokol identity a knihovna se použily. Níže uvedené části vyhodnocují, jestli jsou na nejběžnějších typech aplikací ovlivněná výměna klíčů, a poskytuje pokyny k aktualizaci aplikace na podporu automatického přechodu nebo ruční aktualizace klíče.
@@ -58,7 +60,7 @@ Nativní klientské aplikace, ať už se jedná o Desktop nebo mobilní zaříze
 ### <a name="web-applications--apis-accessing-resources"></a><a name="webclient"></a>Webové aplikace/rozhraní API přistupující k prostředkům
 Aplikace, které získávají přístup pouze k prostředkům (tj. Microsoft Graph, Trezor klíčů, rozhraní API pro Outlook a další rozhraní Microsoft API) obecně jenom získají token a předají ho vlastníkovi prostředku. Vzhledem k tomu, že nechrání žádné prostředky, nekontrolují token, a proto není nutné se ujistit, že je správně podepsán.
 
-Webové aplikace a webová rozhraní API používající tok jenom pro aplikace (přihlašovací údaje klienta/klientský certifikát) spadají do této kategorie a neovlivňují je.
+Webové aplikace a webová rozhraní API, které používají tok pouze pro aplikace (pověření klienta/klientský certifikát) k vyžádání tokenů do této kategorie a nejsou tak ovlivněny přejezdem.
 
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services
 Funkce ověřování/autorizace v Azure App Services (EasyAuth) již má potřebnou logiku pro automatické zpracování výměny klíčů.
@@ -148,7 +150,7 @@ Pokud jste vytvořili aplikaci webového rozhraní API v Visual Studio 2013 pomo
 
 Pokud jste ručně nakonfigurovali ověřování, postupujte podle pokynů níže, abyste se dozvěděli, jak nakonfigurovat webové rozhraní API tak, aby automaticky aktualizovalo své klíčové informace.
 
-Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](/previous-versions/dotnet/framework/security/json-web-token-handler) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z platformy Microsoft Identity Platform, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
+Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](https://msdn.microsoft.com/library/dn205065.aspx) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z platformy Microsoft Identity Platform, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
 
 ```
 using System;
@@ -239,7 +241,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012
-Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Microsoft Identity Platform) a klíčů používaných k ověřování tokenů vydaných jimi. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
+Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Microsoft Identity Platform) a klíčů používaných k ověřování tokenů vydaných jimi. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
 
 Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
@@ -288,14 +290,14 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
 Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanismus pro automatickou aktualizaci konfigurace vaší aplikace, aby používal nový klíč.
 
 * *Nejjednodušší způsob* Použijte nástroje soubor FedUtil obsažené v sadě WIF SDK, které mohou načíst nejnovější dokument metadat a aktualizovat konfiguraci.
-* Aktualizujte svou aplikaci na .NET 4,5, která zahrnuje nejnovější verzi WIF, která se nachází v oboru názvů System. Pak můžete pomocí [ověřování názvu vystavitele (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) provádět automatické aktualizace konfigurace aplikace.
+* Aktualizujte svou aplikaci na .NET 4,5, která zahrnuje nejnovější verzi WIF, která se nachází v oboru názvů System. Pak můžete pomocí [ověřování názvu vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) provádět automatické aktualizace konfigurace aplikace.
 * Proveďte ruční výměnu podle pokynů na konci tohoto dokumentu s pokyny.
 
 Pokyny k aktualizaci konfigurace pomocí nástroje soubor FedUtil:
 
 1. Ověřte, že je na vašem vývojovém počítači nainstalována sada WIF v 1.0 pro sadu Visual Studio 2008 nebo 2010. Pokud jste ho ještě nenainstalovali, můžete [si ho stáhnout tady](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
 2. V aplikaci Visual Studio otevřete řešení a klikněte pravým tlačítkem myši na příslušný projekt a vyberte možnost **aktualizovat federační metadata**. Pokud tato možnost není k dispozici, soubor FedUtil a/nebo sada SDK WIF v 1.0 nebyla nainstalována.
-3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))soubor FedUtil.
+3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](https://msdn.microsoft.com/library/ee517272.aspx)soubor FedUtil.
 4. Kliknutím na **Dokončit** dokončete proces aktualizace.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webové aplikace/rozhraní API chrání prostředky pomocí jiných knihoven nebo ručně implementují některé podporované protokoly.

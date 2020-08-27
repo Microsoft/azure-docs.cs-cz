@@ -3,12 +3,13 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310442"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923819"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -84,7 +85,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Poradce při potížích
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 
@@ -140,7 +141,7 @@ Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights
   
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-* Ve výchozím nastavení bude Monitorování stavu výstupem diagnostických protokolů na:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Ve výchozím nastavení bude Monitorování stavu výstupem diagnostických protokolů na: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * Pro výstup podrobných protokolů upravte konfigurační soubor: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` a přidejte `<add key="TraceLevel" value="All" />` do `appsettings` .
 Pak restartujte monitorování stavu.
@@ -243,7 +244,7 @@ Zjistěte, které aplikace se monitorují:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: Název webové aplikace v IIS.
-* `-InstrumentationKey`(Volitelné.) Toto použijte ke změně prostředku, na který se má telemetrie aplikace odeslat.
+* `-InstrumentationKey` (Volitelné.) Toto použijte ke změně prostředku, na který se má telemetrie aplikace odeslat.
 * Tato rutina:
   * Upgrady pojmenované aplikace na verzi sady SDK naposledy stažené v tomto počítači. (Funguje pouze v případě `SdkState==EnabledAfterDeployment`)
   * Pokud jste zadali kód instrumentace, pojmenovaná aplikace se překonfiguruje na odeslání telemetrie do prostředku s tímto klíčem. (Funguje v případě `SdkState != Disabled`)

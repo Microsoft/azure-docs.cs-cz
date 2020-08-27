@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 101fd5298482f2f92e2a3fa4284d6e3fe94989a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905777"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923224"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 10
 
-Pokud používáte verzi [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)verze 9,0 nebo starší, Tento článek vám pomůže při upgradu aplikace na použití verze 10.
+Pokud používáte verzi [.NET SDK](/dotnet/api/overview/azure/search)verze 9,0 nebo starší, Tento článek vám pomůže při upgradu aplikace na použití verze 10.
 
 Azure Search se přejmenuje na Azure Kognitivní hledání ve verzi 10, ale obory názvů a názvy balíčků se nemění. Předchozí verze sady SDK (9,0 a starší) nadále používají dřívější název. Další informace o používání sady SDK, včetně příkladů, najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
@@ -35,13 +35,13 @@ Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úr
 REST API cílů Azure Kognitivní hledání .NET SDK je verze 10 pro `2019-05-06` tyto aktualizace:
 
 * Seznámení se dvěma novými dovednostmi – [podmíněná](cognitive-search-skill-conditional.md) dovednost a [dovednost překladu textu](cognitive-search-skill-text-translation.md)
-* [Shapery odbornosti](cognitive-search-skill-shaper.md) byly restrukturované, aby vyhovovaly konsolidaci z vnořených kontextů. Další informace najdete v tomto [příkladu definice JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
+* [Shapery odbornosti](cognitive-search-skill-shaper.md) byly restrukturované, aby vyhovovaly konsolidaci z vnořených kontextů. Další informace najdete v tomto [příkladu definice JSON](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts).
 * Přidání dvou nových [funkcí mapování polí](search-indexer-field-mappings.md):
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* V některých případech můžou chyby a upozornění, která se zobrazují ve [stavu provádění indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) , získat další podrobnosti, které vám pomůžou při ladění. `IndexerExecutionResult`byla aktualizována, aby odrážela toto chování.
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [urlDecode](./search-indexer-field-mappings.md#urldecode-function)
+* V některých případech můžou chyby a upozornění, která se zobrazují ve [stavu provádění indexeru](/rest/api/searchservice/get-indexer-status) , získat další podrobnosti, které vám pomůžou při ladění. `IndexerExecutionResult` byla aktualizována, aby odrážela toto chování.
 * Jednotlivé dovednosti definované v rámci [dovednosti](cognitive-search-defining-skillset.md) lze volitelně identifikovat zadáním `name` Vlastnosti.
-* `ServiceLimits`Zobrazuje omezení pro [komplexní typy](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) a `IndexerExecutionInfo` zobrazuje relevantní omezení a kvóty indexerů.
+* `ServiceLimits` Zobrazuje omezení pro [komplexní typy](./search-howto-complex-data-types.md) a `IndexerExecutionInfo` zobrazuje relevantní omezení a kvóty indexerů.
 
 <a name="UpgradeSteps"></a>
 
@@ -139,13 +139,13 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`má přiřazený název `#1` , je přiřazen `WebApiSkill` `#2` `ShaperSkill` `#3` a tak dále.
+`SentimentSkill` má přiřazený název `#1` , je přiřazen `WebApiSkill` `#2` `ShaperSkill` `#3` a tak dále.
 
 Pokud se rozhodnete identifikovat dovednosti podle vlastního názvu, nezapomeňte nejdřív aktualizovat všechny instance klientů na verzi 10 sady SDK. V opačném případě existuje možnost, že klient nástroje, který používá starší verzi sady SDK `null` , může mít `Name` vlastnost dovednosti, což způsobí, že se klient vrátí k výchozímu schématu pojmenování.
 
 ## <a name="details-about-errors-and-warnings"></a>Podrobnosti o chybách a upozorněních
 
-`ItemError`a `ItemWarning` modely, které zapouzdřují podrobnosti chyb a varování (v uvedeném pořadí), ke kterým došlo během provádění indexeru, se změnily tak, aby zahrnovaly tři nové vlastnosti s cílem pomoci při ladění indexeru. Tyto vlastnosti jsou:
+`ItemError` a `ItemWarning` modely, které zapouzdřují podrobnosti chyb a varování (v uvedeném pořadí), ke kterým došlo během provádění indexeru, se změnily tak, aby zahrnovaly tři nové vlastnosti s cílem pomoci při ladění indexeru. Tyto vlastnosti jsou:
 
 - `Name`: Název zdroje, ze kterého došlo k chybě. Například může odkazovat na konkrétní dovednosti v připojené dovednosti.
 - `Details`: Další podrobné informace o chybě nebo upozornění.
@@ -159,4 +159,3 @@ Pokud se rozhodnete identifikovat dovednosti podle vlastního názvu, nezapomeň
 - Změny Shaper dovednosti mají největší možný dopad na nový nebo existující kód. V dalším kroku se ujistěte, že tento příklad ilustruje vstupní strukturu: [příklad definice JSON Shaper dovednost](cognitive-search-skill-shaper.md)
 - Projděte si [Přehled rozšíření AI](cognitive-search-concept-intro.md).
 - Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, řekněte nám, abychom vám pomohli [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou [Azure Kognitivní hledání].
-

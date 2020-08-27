@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849925"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948823"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -24,11 +24,11 @@ V cloudu, který je mobilní a celosvětový, Azure Active Directory (Azure AD) 
 
 Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které vyžadují spravovaná zařízení pro přístup k určitým cloudovým aplikacím ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyžadování spravovaných zařízení pro cloudový přístup k Azure AD je spojeno s **podmíněným přístupem** a **správou zařízení Azure AD** . Pokud jste ještě neseznámili s jednou z těchto oblastí, měli byste si nejdřív přečíst následující témata:
 
-- **[Podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** – Tento článek poskytuje koncepční přehled podmíněného přístupu a související terminologie.
+- **[Podmíněný přístup v Azure Active Directory](./overview.md)** – Tento článek poskytuje koncepční přehled podmíněného přístupu a související terminologie.
 - **[Seznámení se správou zařízení v Azure Active Directory](../devices/overview.md)** – Tento článek poskytuje přehled různých možností, které je třeba získat v rámci organizačního řízení. 
 - V případě podpory pro Chrome ve **Windows 10 Creators Update (verze 1703)** nebo novější nainstalujte [rozšíření účtů Windows 10](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Toto rozšíření se vyžaduje, když zásada podmíněného přístupu vyžaduje podrobnosti konkrétního zařízení.
 
@@ -108,7 +108,7 @@ Organizace musí provést následující kroky, aby vyžadovaly použití zaregi
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
 1. V části **podmínky**vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.

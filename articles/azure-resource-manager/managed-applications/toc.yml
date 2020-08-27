@@ -11,7 +11,7 @@
       href: publish-service-catalog-app.md
     - name: Nasazení aplikace katalogu služeb
       href: deploy-service-catalog-quickstart.md
-- name: Kurzy
+- name: Výukové kurzy
   items:
     - name: Publikování aplikace Marketplace
       href: publish-marketplace-app.md
@@ -107,6 +107,8 @@
               href: microsoft-common-checkbox.md
             - name: DropDown
               href: microsoft-common-dropdown.md
+            - name: EditableGrid
+              href: microsoft-common-editablegrid.md
             - name: FileUpload
               href: microsoft-common-fileupload.md
             - name: InfoBox

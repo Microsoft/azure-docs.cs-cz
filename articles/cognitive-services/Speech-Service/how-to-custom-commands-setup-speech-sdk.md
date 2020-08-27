@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027626"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918821"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrace s klientskou aplikací pomocí sady Speech SDK
 
@@ -24,7 +25,7 @@ V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikac
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace Univerzální platforma Windows (UWP) pomocí sady Speech SDK, která vám umožní komunikovat s vlastními aplikacemi příkazů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete postupovat podle těchto rychlých startů:
 > [!div class = "checklist"]
@@ -64,7 +65,7 @@ V tomto kroku přidáme kód XAML, který definuje uživatelské rozhraní aplik
 
 Vytvořte uživatelské rozhraní aplikace přidáním kódu jazyka XAML.
 
-1. V **Průzkumník řešení**otevřete`MainPage.xaml`
+1. V **Průzkumník řešení**otevřete `MainPage.xaml`
 
 1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu:
 
@@ -302,7 +303,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
     > 1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **aktualizace** . 
     > 1. Pokud se v seznamu aktualizace zobrazí **Microsoft. NETCore. UniversalWindowsPlatform** , aktualizujte **Microsoft. NETCore. UniversalWindowsPlatform** na nejnovější verzi.
 
-1. Do těla metody přidejte následující kód`InitializeDialogServiceConnector`
+1. Do těla metody přidejte následující kód `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -319,7 +320,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
 1. Nahraďte řetězce `YourApplicationId` , `YourSpeechSubscriptionKey` a `YourServiceRegion` vlastními hodnotami vaší aplikace, předplatným řeči a [oblastí](regions.md) .
 
-1. Přidejte následující fragment kódu na konec těla metody`InitializeDialogServiceConnector`
+1. Přidejte následující fragment kódu na konec těla metody `InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -403,7 +404,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
 1. V řádku nabídek vyberte **soubor**  >  **Uložit vše** a uložte změny.
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 1. V řádku nabídek vyberte sestavení sestavit **Build**  >  **řešení** a sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
 

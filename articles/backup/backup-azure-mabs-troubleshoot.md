@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763486"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893013"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Konfigurace skupin ochrany | Aplikaci DPM se nepodařil výčet součásti aplikace v chráněném počítači (název chráněného počítače). | Na příslušné úrovni zdroje dat a součásti vyberte **aktualizovat** na obrazovce uživatelské rozhraní skupiny ochrany. |
 | Konfigurace skupin ochrany | Ochranu nejde nakonfigurovat. | Pokud je chráněný server SQL Server, ověřte, jestli je na chráněném počítači k dispozici oprávnění role sysadmin k systémovému účtu (Ntauthority\system.), jak je popsáno v [tomto článku](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019).
 | Konfigurace skupin ochrany | Ve fondu úložiště není pro tuto skupinu ochrany dostatek volného místa. | Disky, které se přidají do fondu úložiště, [by neměly obsahovat oddíl](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Odstraňte všechny existující svazky na discích. Pak je přidejte do fondu úložiště.|
-| Změna zásad |Zásady zálohování nešlo změnit. Chyba: aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Po uplynutí určité doby zkuste operaci zopakovat. Pokud potíže trvají, obraťte se na podporu Microsoftu. | **Způsobit**<br/>K této chybě dochází za tři podmínky: Pokud je povolené nastavení zabezpečení, pokusíte se zmenšit rozsah uchování pod minimálními hodnotami uvedenými dříve a v případě nepodporované verze. (Nepodporované verze jsou nižší než Microsoft Azure Backup Server verze 2.0.9052 a Azure Backup Server Update 1.) <br/>**Doporučená akce:**<br/> Pokud chcete pokračovat s aktualizacemi souvisejícími s zásadami, nastavte dobu uchování nad určenou minimální dobu uchování. (Minimální doba uchovávání je sedm dní denně, čtyři týdny pro každý týden, tři týdny pro každý měsíc nebo jeden rok pro roční.) <br><br>Dalším upřednostňovaným přístupem je volitelně aktualizace agenta Zálohování a Azure Backup Server pro využití všech aktualizací zabezpečení. |
+| Změna zásad |Zásady zálohování nešlo změnit. Chyba: aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Po uplynutí určité doby zkuste operaci zopakovat. Pokud potíže trvají, obraťte se na podporu Microsoftu. | **Způsobit**<br/>K této chybě dochází za tři podmínky: Pokud je povolené nastavení zabezpečení, pokusíte se zmenšit rozsah uchování pod minimálními výše uvedenými minimálními hodnotami a při práci s nepodporovanou verzí. (Nepodporované verze jsou nižší než Microsoft Azure Backup Server verze 2.0.9052 a Azure Backup Server Update 1.) <br/>**Doporučená akce:**<br/> Pokud chcete pokračovat s aktualizacemi souvisejícími s zásadami, nastavte dobu uchování nad určenou minimální dobu uchování. (Minimální doba uchovávání je sedm dní denně, čtyři týdny pro každý týden, tři týdny pro každý měsíc nebo jeden rok pro roční.) <br><br>Dalším upřednostňovaným přístupem je volitelně aktualizace agenta Zálohování a Azure Backup Server pro využití všech aktualizací zabezpečení. |
 
 ## <a name="backup"></a>Backup
 
@@ -135,7 +135,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Změnit heslo |Zadaný kód PIN zabezpečení je nesprávný. Pro dokončení této operace zadejte správný bezpečnostní kód PIN. |**Způsobit**<br/> K této chybě dojde, když při provádění kritické operace (třeba změny hesla) zadáte neplatný nebo vypršelý bezpečnostní kód PIN. <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete **Settings**na  >  **vlastnosti**nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
+| Změnit heslo |Zadaný kód PIN zabezpečení je nesprávný. Pro dokončení této operace zadejte správný bezpečnostní kód PIN. |**Způsobit**<br/> K této chybě dojde, když zadáte neplatný nebo vypršelý PIN kód pro zabezpečení při provádění kritické operace (například změna hesla). <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete **Settings**na  >  **vlastnosti**nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
 | Změnit heslo |Operace se nezdařila. ID: 120002 |**Způsobit**<br/>K této chybě dochází, pokud je povoleno nastavení zabezpečení nebo pokud se pokusíte změnit heslo při použití nepodporované verze.<br/>**Doporučená akce:**<br/> Pokud chcete změnit heslo, musíte nejdřív aktualizovat agenta Zálohování na minimální verzi, která je 2.0.9052. Musíte taky aktualizovat Azure Backup Server na minimum aktualizace 1 a pak zadat platný bezpečnostní PIN kód. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete **Settings**na  >  **vlastnosti**nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení

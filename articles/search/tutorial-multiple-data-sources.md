@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 815709611c0d7985a97ce52584b9e223c6d79aa2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85262204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924108"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
 
@@ -21,7 +21,7 @@ Azure Kognitivní hledání může importovat, analyzovat a indexovat data z ně
 
 V tomto kurzu se dozvíte, jak indexovat data hotelu z Azure Cosmos DB zdroje dat a sloučit je s podrobnostmi o hotelu z Azure Blob Storage dokumentů. Výsledkem bude kombinovaný index vyhledávání hotelu obsahující komplexní datové typy.
 
-V tomto kurzu se používá C# a [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). V tomto kurzu provedete následující úlohy:
+V tomto kurzu se používá C# a [.NET SDK](/dotnet/api/overview/azure/search). V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
 > * Nahrání ukázkových dat a vytváření zdrojů dat
@@ -34,8 +34,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 ## <a name="prerequisites"></a>Předpoklady
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -80,7 +80,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
-1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
+1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
    ![Vytvoření kontejneru objektů blob](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů blob")
 
@@ -171,7 +171,7 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
 ### <a name="create-an-index"></a>Vytvoření indexu
 
-Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
+Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídy Address a Room. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávatelné nebo seřaditelné.
 
@@ -319,7 +319,7 @@ Objekty blob JSON obsahují klíčové pole s názvem **`Id`** , nikoli **`Hotel
 
 Indexery BLOB Storage můžou používat parametry, které identifikují režim analýzy, který se má použít. Režim analýzy se liší u objektů blob, které reprezentují jediný dokument, nebo více dokumentů v rámci stejného objektu BLOB. V tomto příkladu každý objekt BLOB představuje jeden indexový dokument, takže kód používá `IndexingParameters.ParseJson()` parametr.
 
-Další informace o parametrech analýzy indexeru pro objekty blob JSON najdete v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md). Další informace o zadání těchto parametrů pomocí sady .NET SDK naleznete v tématu Třída [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
+Další informace o parametrech analýzy indexeru pro objekty blob JSON najdete v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md). Další informace o zadání těchto parametrů pomocí sady .NET SDK naleznete v tématu Třída [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
 
 Program odstraní všechny existující indexery se stejným názvem před vytvořením nového, pro případ, že chcete spustit tento příklad více než jednou.
 
@@ -365,7 +365,7 @@ Portál můžete také použít k odstranění indexů, indexerů a zdrojů dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 
