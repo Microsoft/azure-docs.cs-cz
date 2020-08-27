@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212673"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961529"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -59,8 +59,8 @@ Pokud chcete publikovat webovou aplikaci, musíte nejdřív vytvořit a nakonfig
 
 Jako součást nastavení App Service vytvoříte:
 
-- Nová [Skupina prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology) , která bude obsahovat všechny prostředky Azure pro službu.
-- Nový [plán hostování](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) , který určuje umístění, velikost a funkce webové serverové farmy, která je hostitelem vaší aplikace.
+- Nová [Skupina prostředků](../azure-resource-manager/management/overview.md#terminology) , která bude obsahovat všechny prostředky Azure pro službu.
+- Nový [plán hostování](./overview-hosting-plans.md) , který určuje umístění, velikost a funkce webové serverové farmy, která je hostitelem vaší aplikace.
 
 Při vytváření App Service a publikování webové aplikace postupujte podle těchto kroků:
 
@@ -160,7 +160,7 @@ V dalším článku se dozvíte, jak vytvořit aplikaci .NET Core a jak ji přip
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci [.NET Core](https://docs.microsoft.com/aspnet/core/) ve službě App Service v Linuxu. Vytvoříte aplikaci pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)a pomocí Gitu nasadíte kód .NET Core do aplikace.
+[App Service v systému Linux](overview.md#app-service-on-linux) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci [.NET Core](/aspnet/core/) ve službě App Service v Linuxu. Vytvoříte aplikaci pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli)a pomocí Gitu nasadíte kód .NET Core do aplikace.
 
 ![Ukázková aplikace spuštěná v Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace ASP.NET Core](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

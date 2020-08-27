@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý Start: přímý webový provoz pomocí prostředí PowerShell'
 titleSuffix: Azure Application Gateway
-description: Naučte se, jak pomocí Azure PowerShell vytvořit Azure Application Gateway, který směruje webový provoz do virtuálních počítačů v back-endu fondu.
+description: V tomto rychlém startu se naučíte, jak pomocí Azure PowerShell vytvořit službu Azure Application Gateway, která směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81406209"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958316"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rychlý Start: směrování webového provozu pomocí Azure Application Gateway pomocí Azure PowerShell
 
@@ -24,18 +24,18 @@ Aplikační brána směruje webový provoz aplikace do konkrétních prostředk�
 
 Tento rychlý Start můžete také dokončit pomocí [Azure CLI](quick-create-cli.md) nebo [Azure Portal](quick-create-portal.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure PowerShell verze 1.0.0 nebo novější](/powershell/azure/install-az-ps) (Pokud Azure PowerShell spustíte místně).
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="connect-to-azure"></a>Připojení k Azure
 
-Pokud se chcete připojit k Azure `Connect-AzAccount`, spusťte.
+Pokud se chcete připojit k Azure, spusťte `Connect-AzAccount` .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -50,9 +50,9 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.  Můžete buď vytvořit novou podsíť pro Application Gateway nebo použít stávající. V tomto příkladu vytvoříte v tomto příkladu dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery. IP adresu front-endu Application Gateway můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
 
-1. Vytvořte konfigurace podsítě pomocí `New-AzVirtualNetworkSubnetConfig`.
-2. Vytvořte virtuální síť s konfiguracemi podsítí pomocí `New-AzVirtualNetwork`. 
-3. Vytvořte veřejnou IP adresu pomocí `New-AzPublicIpAddress`. 
+1. Vytvořte konfigurace podsítě pomocí `New-AzVirtualNetworkSubnetConfig` .
+2. Vytvořte virtuální síť s konfiguracemi podsítí pomocí `New-AzVirtualNetwork` . 
+3. Vytvořte veřejnou IP adresu pomocí `New-AzPublicIpAddress` . 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -74,7 +74,7 @@ New-AzPublicIpAddress `
   -AllocationMethod Static `
   -Sku Standard
 ```
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
@@ -100,7 +100,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 ### <a name="create-the-backend-pool"></a>Vytvoření back-endového fondu
 
 1. Slouží `New-AzApplicationGatewayBackendAddressPool` k vytvoření back-end fondu pro aplikační bránu. Back-end fond bude nyní prázdný. Při vytváření síťových karet serveru back-end v následující části je přidáte do fondu back-end.
-2. Nakonfigurujte nastavení pro fond back-end pomocí `New-AzApplicationGatewayBackendHttpSetting`.
+2. Nakonfigurujte nastavení pro fond back-end pomocí `New-AzApplicationGatewayBackendHttpSetting` .
 
 ```azurepowershell-interactive
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
@@ -166,10 +166,10 @@ Teď, když jste vytvořili Application Gateway, vytvořte back-end virtuální 
 
 #### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
-1. Získejte nedávno vytvořenou konfiguraci Application Gatewayho fondu back `Get-AzApplicationGatewayBackendAddressPool`-Endu.
-2. Vytvořte síťové rozhraní pomocí `New-AzNetworkInterface`.
-3. Vytvořte konfiguraci virtuálního počítače pomocí `New-AzVMConfig`.
-4. Vytvořte virtuální počítač pomocí `New-AzVM`.
+1. Získejte nedávno vytvořenou konfiguraci Application Gatewayho fondu back-endu `Get-AzApplicationGatewayBackendAddressPool` .
+2. Vytvořte síťové rozhraní pomocí `New-AzNetworkInterface` .
+3. Vytvořte konfiguraci virtuálního počítače pomocí `New-AzVMConfig` .
+4. Vytvořte virtuální počítač pomocí `New-AzVM` .
 
 Když spustíte následující ukázku kódu pro vytvoření virtuálních počítačů, Azure vás vyzve k zadání přihlašovacích údajů. Jako uživatelské jméno a heslo zadejte *azureuser* :
     
@@ -220,7 +220,7 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 I když služba IIS není nutná k vytvoření aplikační brány, nainstalovali jste se v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
 

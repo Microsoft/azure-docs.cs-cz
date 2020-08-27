@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611445"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958508"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -57,7 +57,7 @@ Když vytváříte aplikaci v App Service, je umístěna do plánu App Service. 
 
 Tímto způsobem je plán App Service jednotka škálování App Servicech aplikací. Pokud je plán nakonfigurovaný tak, aby spouštěl pět instancí virtuálních počítačů, pak všechny aplikace v plánu běží na všech pěti instancích. Pokud je plán nakonfigurovaný pro automatické škálování, pak se všechny aplikace v plánu škálují společně na základě nastavení automatického škálování.
 
-Informace o škálování aplikace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Informace o škálování aplikace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md).
 
 <a name="cost"></a>
 

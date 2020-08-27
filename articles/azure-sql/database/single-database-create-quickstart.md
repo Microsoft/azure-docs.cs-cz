@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081583"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962685"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
 V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte v Azure SQL Database jednu databázi. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal.
 
-[Jediná databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost Azure SQL Database. Na [serveru](logical-servers.md)můžete spravovat izolovanou databázi, která se nachází v zadané oblasti Azure v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) . V tomto rychlém startu vytvoříte novou skupinu prostředků a server pro novou databázi.
+[Jediná databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost Azure SQL Database. Na [serveru](logical-servers.md)můžete spravovat izolovanou databázi, která se nachází v zadané oblasti Azure v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/manage-resource-groups-portal.md) . V tomto rychlém startu vytvoříte novou skupinu prostředků a server pro novou databázi.
 
 Izolovanou databázi můžete vytvořit na výpočetní úrovni *zřízené* nebo *neserverového serveru* . Zřízená databáze je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](purchasing-models.md). Tento rychlý Start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na Vcore](service-tiers-vcore.md) , ale můžete také zvolit model [založený na DTU](service-tiers-dtu.md) .
 
@@ -30,7 +30,7 @@ Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založen�
 
 ## <a name="prerequisite"></a>Požadavek
 
-- Aktivní předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+- Musíte mít aktivní předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-single-database"></a>Vytvoření izolované databáze
 
@@ -75,7 +75,7 @@ Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azur
 1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
 1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
 
-### <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz rozhraní příkazového řádku Azure a použijte název vaší skupiny prostředků:
 

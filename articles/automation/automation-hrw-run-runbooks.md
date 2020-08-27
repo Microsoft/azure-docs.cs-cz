@@ -3,14 +3,14 @@ title: Spuštění Azure Automation runbooků na Hybrid Runbook Worker
 description: V tomto článku se dozvíte, jak spouštět Runbooky na počítačích v místním datovém centru nebo poskytovatelích cloudu s Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186210"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959565"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -43,7 +43,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-Můžete také použít aktivitu [InlineScript](automation-powershell-workflow.md#use-inlinescript) . `InlineScript`umožňuje spouštět bloky kódu na jiném počítači s přihlašovacími údaji.
+Můžete také použít aktivitu [InlineScript](automation-powershell-workflow.md#use-inlinescript) . `InlineScript` umožňuje spouštět bloky kódu na jiném počítači s přihlašovacími údaji.
 
 ## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Použití ověřování Runbooku u spravovaných identit
 
@@ -70,7 +70,7 @@ Postupujte podle dalších kroků a použijte spravovanou identitu pro prostřed
     ```
 
     > [!NOTE]
-    > `Connect-AzAccount -Identity`funguje pro Hybrid Runbook Worker používající identitu přiřazenou systémem a jedinou identitu přiřazenou uživatelem. Pokud na Hybrid Runbook Worker použijete více uživatelsky přiřazených identit, je nutné, aby sada Runbook určila `AccountId` parametr pro `Connect-AzAccount` výběr konkrétní identity přiřazené uživatelem.
+    > `Connect-AzAccount -Identity` funguje pro Hybrid Runbook Worker používající identitu přiřazenou systémem a jedinou identitu přiřazenou uživatelem. Pokud na Hybrid Runbook Worker použijete více uživatelsky přiřazených identit, je nutné, aby sada Runbook určila `AccountId` parametr pro `Connect-AzAccount` výběr konkrétní identity přiřazené uživatelem.
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Použití ověřování Runbooku s účtem spustit jako
 
@@ -304,6 +304,14 @@ Při spouštění sady Runbook pomocí prostředí PowerShell použijte `RunOn` 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
+
+## <a name="logging"></a>protokolování
+
+V rámci řešení potíží se sadami Runbook, které běží na Hybrid Runbook Worker, jsou protokoly uložené lokálně v následujícím umístění:
+
+* Ve Windows v `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes` pro podrobné protokolování procesů běhu úloh. Události stavu úlohy Runbooku na vysoké úrovni se zapisují do protokolu událostí **Application a Services Logs\Microsoft-Automation\Operations** .
+
+* V systému Linux se protokoly hybridního pracovního procesu uživatele dají najít na adrese `/home/nxautomation/run/worker.log` a na adrese můžete najít protokoly System Runbook Worker `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
 
 ## <a name="next-steps"></a>Další kroky
 

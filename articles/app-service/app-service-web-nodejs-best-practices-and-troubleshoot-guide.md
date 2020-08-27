@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077471"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961886"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Přejít na web konzoly ladění`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Přejít na web konzoly ladění `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Přejdete do adresáře site/Wwwroot. Zobrazí se příkazový řádek, jak je znázorněno v následujícím příkladu:
 
@@ -267,15 +267,15 @@ Povolte FREB pro vaši aplikaci, aby se zobrazil kód chyby Win32 (je třeba pov
 | 503 |1002 |Ověřte kód chyby Win32 ze skutečného důvodu – požadavek nebylo možné odeslat do node.exe. |
 | 503 |1003 |Pojmenovaný kanál je moc zaneprázdněný – ověřte, jestli node.exe spotřebovává nadměrný procesor. |
 
-NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Service je tato hodnota nastavená na 5000. To znamená, že node.exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Service je tato hodnota nastavená na 5000. To znamená, že node.exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Další zdroje informací
 
 Pomocí těchto odkazů se dozvíte více o node.js aplikacích v Azure App Service.
 
 * [Začínáme s webovými aplikacemi Node.js ve službě Azure App Service](quickstart-nodejs.md)
-* [Postup ladění webové aplikace Node.js ve službě Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Postup ladění webové aplikace Node.js ve službě Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Používání modulů Node.js s aplikacemi Azure](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Středisko pro vývojáře Node.js](../nodejs-use-node-modules-azure-apps.md)
 * [Seznámení se supertajnou konzolou pro ladění modulu Kudu](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

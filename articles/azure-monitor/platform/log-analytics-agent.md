@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121523"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960913"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md).
@@ -22,7 +22,7 @@ Tento článek poskytuje podrobný přehled požadavků na agenty, systém a sí
 > Můžete se také podívat na Log Analytics agenta označovaného jako Microsoft Monitoring Agent (MMA) nebo agent OMS Linux.
 
 > [!NOTE]
-> Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) .
+> Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů ](agents-overview.md) .
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Porovnání s rozšířením Azure Diagnostics
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) v Azure monitor můžete použít také ke shromažďování dat monitorování z hostovaného operačního systému virtuálních počítačů Azure. V závislosti na vašich požadavcích se můžete rozhodnout použít buď nebo. Podrobné porovnání agentů Azure Monitor najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) . 
@@ -118,9 +118,9 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
 ### <a name="python-2-requirement"></a>Požadavek Pythonu 2
  Agent Log Analytics vyžaduje Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.
 
- - Red Hat, CentOS, Oracle:`yum install -y python2`
- - Ubuntu, Debian:`apt-get install -y python2`
- - SUSE`zypper install -y python2`
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
 
 Spustitelný soubor python2 musí mít alias na *Python* pomocí následujícího postupu:
 
@@ -130,7 +130,7 @@ Spustitelný soubor python2 musí mít alias na *Python* pomocí následujícíh
     sudo update-alternatives ––display python
     ```
 
-2. Spusťte následující příkaz. Nahraďte *\<priority\>* číslem větším, než má jakákoli priorita stávající vazby, nebo 1, pokud žádné odkazy aktuálně neexistují.
+2. Spusťte následující příkaz: Nahraďte *\<priority\>* číslem větším, než má jakákoli priorita stávající vazby, nebo 1, pokud žádné odkazy aktuálně neexistují.
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
@@ -186,7 +186,7 @@ Agent Windows bude začínat výhradně pomocí podepisování SHA-2 2. listopad
 4. Doporučuje se nakonfigurovat agenta tak, aby [používal protokol TLS 1,2](agent-windows.md#configure-agent-to-use-tls-12). 
 
 
-## <a name="network-requirements"></a>Požadavky sítě
+## <a name="network-requirements"></a>Síťové požadavky
 Agent pro Linux a Windows komunikuje odchozí komunikaci s Azure Monitor službou přes port TCP 443 a pokud se počítač připojí přes Internet přes bránu firewall nebo proxy server, aby se mohl komunikovat přes Internet, Projděte si níže uvedené požadavky, abyste porozuměli požadované konfiguraci sítě. Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače v síti připojovaly k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta tak, aby se připojil přes bránu k Azure monitor protokolů. Agent pak může získat informace o konfiguraci a odesílat shromážděná data v závislosti na tom, jaká pravidla shromažďování dat a řešení pro monitorování jste povolili v pracovním prostoru.
 
 ![Komunikační diagram agenta Log Analytics](./media/log-analytics-agent/log-analytics-agent-01.png)
@@ -213,9 +213,6 @@ Agent systému Windows a Linux podporuje komunikaci buď prostřednictvím proxy
 V případě agenta pro Linux je proxy server zadáno během instalace nebo [po instalaci](agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy. conf.  Hodnota konfigurace proxy agenta pro Linux má následující syntaxi:
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> Pokud vaše proxy server nevyžaduje ověření, agent pro Linux stále vyžaduje zadání pseudo uživatele nebo hesla. Může to být jakékoli uživatelské jméno nebo heslo.
 
 |Vlastnost| Popis |
 |--------|-------------|

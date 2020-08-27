@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874193"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962498"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
 App Service Environment (pomocného programu) má řadu externích závislostí, ke kterým vyžaduje přístup, aby bylo možné správně fungovat. Pomocného uživatele bydlí v rámci zákazníka Azure Virtual Network (VNet). Zákazníci musí povolit provoz závislosti s pomocným mechanismem, což je problém pro zákazníky, kteří chtějí z své virtuální sítě uzamknout veškerý výstup.
 
-K dispozici je několik příchozích koncových bodů, které se používají ke správě pomocného bodu služby. Příchozí provoz správy nelze odeslat přes zařízení brány firewall. Zdrojové adresy tohoto provozu jsou známé a jsou publikovány v dokumentu [adresy pro správu App Service Environment](https://docs.microsoft.com/azure/app-service/environment/management-addresses) . Existuje také značka služby s názvem AppServiceManagement, kterou lze použít se skupinami zabezpečení sítě (skupin zabezpečení sítě) k zabezpečení příchozího provozu.
+K dispozici je několik příchozích koncových bodů, které se používají ke správě pomocného bodu služby. Příchozí provoz správy nelze odeslat přes zařízení brány firewall. Zdrojové adresy tohoto provozu jsou známé a jsou publikovány v dokumentu [adresy pro správu App Service Environment](./management-addresses.md) . Existuje také značka služby s názvem AppServiceManagement, kterou lze použít se skupinami zabezpečení sítě (skupin zabezpečení sítě) k zabezpečení příchozího provozu.
 
 Odchozí závislosti pomocného mechanismu jsou skoro zcela definované s plně kvalifikovanými názvy domén, které nejsou za nimi statické adresy. Nedostatek statických adres znamená, že skupiny zabezpečení sítě nelze použít k uzamknutí odchozího provozu z pomocného mechanismu. Adresy se často mění, takže jedna z nich nemůže nastavit pravidla na základě aktuálního řešení a použít je k vytvoření skupin zabezpečení sítě. 
 
@@ -55,7 +55,7 @@ Postup, jak uzamknout výstup z vašeho stávajícího pomocného programu pomoc
 
    ![Výběr koncových bodů služby][2]
   
-1. Ve virtuální síti, kde se nachází váš správce přihlašování, vytvořte podsíť s názvem AzureFirewallSubnet. Pokud chcete vytvořit Azure Firewall, postupujte podle pokynů v [dokumentaci k Azure firewall](https://docs.microsoft.com/azure/firewall/) .
+1. Ve virtuální síti, kde se nachází váš správce přihlašování, vytvořte podsíť s názvem AzureFirewallSubnet. Pokud chcete vytvořit Azure Firewall, postupujte podle pokynů v [dokumentaci k Azure firewall](../../firewall/index.yml) .
 
 1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel aplikace vyberte přidat kolekci pravidel aplikace. Zadejte název, prioritu a nastavte povoleno. V části značky plně kvalifikovaného názvu domény zadejte název, nastavte zdrojové adresy na * a vyberte App Service Environment značku plně kvalifikovaného názvu domény a web Windows Update. 
    
@@ -69,7 +69,7 @@ Postup, jak uzamknout výstup z vašeho stávajícího pomocného programu pomoc
 
    ![Přidat síťové pravidlo pro značku služby NTP][6]
    
-1. Vytvořte směrovací tabulku s adresami správy z [App Service Environment adres pro správu]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) s dalším segmentem směrování Internetu. Aby se předešlo problémům s asymetrickým směrováním, je třeba zadat položky v tabulce směrování. Přidejte trasy pro závislosti IP adres uvedené níže v závislostech IP adres s dalším segmentem směrování Internetu. Přidejte trasu virtuálního zařízení do směrovací tabulky pro 0.0.0.0/0 s dalším segmentem směrování Azure Firewall privátní IP adresou. 
+1. Vytvořte směrovací tabulku s adresami správy z [App Service Environment adres pro správu]( ./management-addresses.md) s dalším segmentem směrování Internetu. Aby se předešlo problémům s asymetrickým směrováním, je třeba zadat položky v tabulce směrování. Přidejte trasy pro závislosti IP adres uvedené níže v závislostech IP adres s dalším segmentem směrování Internetu. Přidejte trasu virtuálního zařízení do směrovací tabulky pro 0.0.0.0/0 s dalším segmentem směrování Azure Firewall privátní IP adresou. 
 
    ![Vytvoření směrovací tabulky][4]
    
@@ -77,7 +77,7 @@ Postup, jak uzamknout výstup z vašeho stávajícího pomocného programu pomoc
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>Nasazení služby pomocného mechanismu za bránou firewall
 
-Postup nasazení pomocného mechanismu služby za bránou firewall je stejný jako při konfiguraci vašeho stávajícího pomocného objektu s Azure Firewall s tím rozdílem, že budete muset vytvořit podsíť pomocného mechanismu řízení a potom postupovat podle předchozích kroků. Pokud chcete vytvořit správce přihlášený v již existující podsíti, je potřeba použít šablonu Správce prostředků, jak je popsáno v dokumentu o [vytvoření vašeho POmocného programu pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
+Postup nasazení pomocného mechanismu služby za bránou firewall je stejný jako při konfiguraci vašeho stávajícího pomocného objektu s Azure Firewall s tím rozdílem, že budete muset vytvořit podsíť pomocného mechanismu řízení a potom postupovat podle předchozích kroků. Pokud chcete vytvořit správce přihlášený v již existující podsíti, je potřeba použít šablonu Správce prostředků, jak je popsáno v dokumentu o [vytvoření vašeho POmocného programu pomocí šablony Správce prostředků](./create-from-template.md).
 
 ## <a name="application-traffic"></a>Provoz aplikace 
 
@@ -88,7 +88,7 @@ Výše uvedené kroky umožní vašemu pomocnému mechanismu fungovat bez probl�
 
 Pokud vaše aplikace mají závislosti, musí být přidány do Azure Firewall. Vytvořte pravidla aplikací pro povolení přenosů HTTP/HTTPS a síťových pravidel pro všechno ostatní. 
 
-Pokud znáte rozsah adres, ze kterého bude požadavek na provoz vaší aplikace pocházet, můžete ho přidat do směrovací tabulky, která je přiřazena k podsíti přihlášek. Pokud je rozsah adres velký nebo neurčený, můžete použít síťové zařízení, jako je Application Gateway, a získat tak jednu adresu, kterou chcete přidat do směrovací tabulky. Podrobnosti o konfiguraci Application Gateway s pomocným mechanismem interního nástroje najdete v tématu věnovaném [integraci vašich interního nástrojech POmocného mechanismu pro přístup k Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Pokud znáte rozsah adres, ze kterého bude požadavek na provoz vaší aplikace pocházet, můžete ho přidat do směrovací tabulky, která je přiřazena k podsíti přihlášek. Pokud je rozsah adres velký nebo neurčený, můžete použít síťové zařízení, jako je Application Gateway, a získat tak jednu adresu, kterou chcete přidat do směrovací tabulky. Podrobnosti o konfiguraci Application Gateway s pomocným mechanismem interního nástroje najdete v tématu věnovaném [integraci vašich interního nástrojech POmocného mechanismu pro přístup k Application Gateway](./integrate-with-application-gateway.md)
 
 Toto použití Application Gateway je pouze jedním z příkladů konfigurace systému. Pokud jste použili tuto cestu, pak byste museli přidat trasu do tabulky směrování podsítě pomocného mechanismu, aby přenos odpovědí odeslaných do Application Gateway přešel přímo. 
 
@@ -100,7 +100,7 @@ Azure Firewall může odesílat protokoly do Azure Storage, centra událostí ne
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Integrace vašich Azure Firewall s protokoly Azure Monitor je užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Integrace vašich Azure Firewall s protokoly Azure Monitor je užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
  
 ## <a name="dependencies"></a>Závislosti
 
@@ -269,7 +269,7 @@ U Azure Firewall automaticky získáte vše, co je nakonfigurováno pomocí zna�
 
 ## <a name="us-gov-dependencies"></a>US Gov závislosti
 
-V případě služby ASE v oblasti US Gov postupujte podle pokynů v části [konfigurace Azure firewall s vaším dokumentem pro POmocného](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) programu v tomto dokumentu a nakonfigurujte Azure firewall s pomocným mechanismem řízení.
+V případě služby ASE v oblasti US Gov postupujte podle pokynů v části [konfigurace Azure firewall s vaším dokumentem pro POmocného](#configuring-azure-firewall-with-your-ase) programu v tomto dokumentu a nakonfigurujte Azure firewall s pomocným mechanismem řízení.
 
 Pokud chcete použít jiné zařízení než Azure Firewall v US Gov 
 

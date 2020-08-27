@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610237"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962872"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manager
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name.md).
+> Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-Když použijete [Azure Traffic Manager](/azure/traffic-manager/) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí ** \<traffic-manager-endpoint> . trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je například webová \. contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
+Když použijete [Azure Traffic Manager](../traffic-manager/index.yml) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí ** \<traffic-manager-endpoint> . trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je například webová \. contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
 
 V tomto článku se dozvíte, jak nakonfigurovat vlastní název domény pomocí aplikace App Service, která je integrovaná s [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
@@ -55,7 +55,7 @@ Klikněte na **Použít**.
 
 ## <a name="create-traffic-manager-endpoint"></a>Vytvořit Traffic Manager koncový bod
 
-Podle kroků v části [Přidání nebo odstranění koncových bodů](../traffic-manager/traffic-manager-endpoints.md)přidejte do svého profilu Traffic Manager svou aplikaci App Service jako koncový bod.
+Podle kroků v části [Přidání nebo odstranění koncových bodů](../traffic-manager/traffic-manager-manage-endpoints.md)přidejte do svého profilu Traffic Manager svou aplikaci App Service jako koncový bod.
 
 Když je vaše aplikace App Service v podporované cenové úrovni, zobrazí se v seznamu dostupných App Service cílů při přidávání koncového bodu. Pokud vaše aplikace není v seznamu uvedena, [Ověřte cenovou úroveň vaší aplikace](#prepare-the-app).
 

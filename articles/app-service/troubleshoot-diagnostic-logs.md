@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207526"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962175"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -46,12 +46,12 @@ Pokud chcete povolit protokolování aplikací pro aplikace pro Windows v [Azure
 
 Vyberte možnost **zapnuto** buď pro **protokolování aplikace (systém souborů)** , nebo **protokolování aplikace (BLOB)**, nebo pro obojí. 
 
-Možnost **systému souborů** je určena pro dočasné účely ladění a sama se odpíná za 12 hodin. Možnost **BLOB** je určena pro dlouhodobé protokolování a potřebuje kontejner úložiště objektů BLOB k zápisu protokolů do.  Možnost **BLOB** obsahuje taky další informace v protokolových zprávách, jako je ID instance virtuálního počítače v protokolu ( `InstanceId` ), ID vlákna ( `Tid` ) a podrobnější časové razítko ( [`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks) ).
+Možnost **systému souborů** je určena pro dočasné účely ladění a sama se odpíná za 12 hodin. Možnost **BLOB** je určena pro dlouhodobé protokolování a potřebuje kontejner úložiště objektů BLOB k zápisu protokolů do.  Možnost **BLOB** obsahuje taky další informace v protokolových zprávách, jako je ID instance virtuálního počítače v protokolu ( `InstanceId` ), ID vlákna ( `Tid` ) a podrobnější časové razítko ( [`EventTickCount`](/dotnet/api/system.datetime.ticks) ).
 
 > [!NOTE]
 > Do úložiště objektů BLOB se teď dají zapisovat jenom protokoly aplikací .NET. Protokoly aplikací v jazyce Java, PHP, Node.js a Python lze ukládat pouze do systému souborů App Service (bez úprav kódu pro zápis protokolů do externího úložiště).
 >
-> Pokud navíc [znovu vygenerujete přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte resetovat příslušnou konfiguraci protokolování tak, aby používala aktualizované přístupové klíče. Použijte následující postup:
+> Pokud navíc [znovu vygenerujete přístupové klíče účtu úložiště](../storage/common/storage-account-create.md), musíte resetovat příslušnou konfiguraci protokolování tak, aby používala aktualizované přístupové klíče. Použijte následující postup:
 >
 > 1. Na kartě **Konfigurovat** nastavte příslušnou funkci protokolování na **vypnuto**. Uložte nastavení.
 > 2. Znovu povolte protokolování do objektu BLOB účtu úložiště. Uložte nastavení.
@@ -89,7 +89,7 @@ Pro **protokolování webového serveru**vyberte **úložiště** pro ukládán�
 V části **Doba uchování (dny)** nastavte počet dní, po které se mají protokoly uchovávat.
 
 > [!NOTE]
-> Pokud [znovu vygenerujete přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte obnovit příslušnou konfiguraci protokolování tak, aby používala aktualizované klíče. Použijte následující postup:
+> Pokud [znovu vygenerujete přístupové klíče účtu úložiště](../storage/common/storage-account-create.md), musíte obnovit příslušnou konfiguraci protokolování tak, aby používala aktualizované klíče. Použijte následující postup:
 >
 > 1. Na kartě **Konfigurovat** nastavte příslušnou funkci protokolování na **vypnuto**. Uložte nastavení.
 > 2. Znovu povolte protokolování do objektu BLOB účtu úložiště. Uložte nastavení.
@@ -108,15 +108,15 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Ve výchozím nastavení používá ASP.NET Core poskytovatele protokolování [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Další informace najdete v tématu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging/).
+- Ve výchozím nastavení používá ASP.NET Core poskytovatele protokolování [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging/).
 
 ## <a name="stream-logs"></a>Protokoly datových proudů
 
@@ -138,12 +138,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>V místním terminálu
 
-Pokud chcete streamovat protokoly v místní konzole, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Přihlaste se ke svému účtu](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Po přihlášení za ním následují [pokyny Cloud Shell](#in-cloud-shell)
+Pokud chcete streamovat protokoly v místní konzole, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [Přihlaste se ke svému účtu](/cli/azure/authenticate-azure-cli). Po přihlášení za ním následují [pokyny Cloud Shell](#in-cloud-shell)
 
 ## <a name="access-log-files"></a>Přístup k souborům protokolu
 
