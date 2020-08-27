@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/16/2018
+ms.date: 08/26/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27144dcd4c7d7490aba3626264e1cb4b64fbb162
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 348d436d1cb1fa838a34c9ebe86f5e37f0f85803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019195"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930553"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal
 
 Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-V tomto článku se naučíte, jak pomocí webu Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli spravované identitě přiřazené uživateli.
+V tomto článku se naučíte, jak pomocí Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli k spravované identitě přiřazené uživateli.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -40,13 +40,13 @@ K vytvoření spravované identity přiřazené uživatelem potřebuje váš ú�
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a vytvořte spravovanou identitu přiřazenou uživatelem.
 2. Do vyhledávacího pole zadejte *spravované identity*a v části **služby**klikněte na **spravované identity**.
 3. Klikněte na tlačítko **Přidat** a zadejte hodnoty do následujících polí v části **vytvořit uživatelem spravovanou identitu přiřazenou uživateli** :
-   - **Název prostředku**: Jedná se o název vaší uživatelsky přiřazené spravované identity, například UAI1.
-   - **Předplatné**: vyberte předplatné, ve kterém chcete vytvořit spravovanou identitu přiřazenou uživatelem.
-   - **Skupina prostředků**: Vytvořte novou skupinu prostředků, která bude obsahovat vaši uživatelem přiřazenou spravovanou identitu, nebo vyberte **použít existující** a vytvořte spravovanou identitu přiřazenou uživatelem v existující skupině prostředků.
-   - **Umístění**: vyberte umístění pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
-4. Klikněte na **Vytvořit**.
-
-![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+    - **Předplatné**: vyberte předplatné, ve kterém chcete vytvořit spravovanou identitu přiřazenou uživatelem.
+    - **Skupina prostředků**: vyberte skupinu prostředků, ve které chcete vytvořit spravovanou identitu přiřazenou uživatelem, nebo klikněte na **vytvořit nový** a vytvořte novou skupinu prostředků.
+    - **Oblast**: Vyberte oblast pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
+    - **Název**: Jedná se o název vaší uživatelsky přiřazené spravované identity, například UAI1.
+    ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+4. Chcete-li zkontrolovat změny, klikněte na tlačítko **Revize + bedna** .
+5. Klikněte na možnost **Vytvořit**.
 
 ## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem
 
@@ -83,7 +83,7 @@ Pokud chcete přiřadit roli k spravované identitě přiřazené uživateli, v�
 
 5. V okně Přidat přiřazení role nakonfigurujte následující hodnoty a potom klikněte na **Uložit**:
    - **Role** – role, která se má přiřadit
-   - **Přiřazení přístupu k** prostředku k přiřazení spravované identity přiřazené uživatelem
+   - **Přiřazení přístupu k**  prostředku k přiřazení spravované identity přiřazené uživatelem
    - **Vybrat** – člen pro přiřazení přístupu
    
    ![Uživatelsky přiřazená spravovaná identita IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

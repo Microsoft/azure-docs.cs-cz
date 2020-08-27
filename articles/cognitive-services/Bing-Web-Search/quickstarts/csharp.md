@@ -10,13 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873897"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921694"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a C #
 
@@ -24,7 +24,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 Tento ukázkový program v tomto rychlém startu používá pouze třídy .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 

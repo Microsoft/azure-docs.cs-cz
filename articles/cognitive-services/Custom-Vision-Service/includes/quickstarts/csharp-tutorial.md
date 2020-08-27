@@ -3,16 +3,17 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba09deda155ac446693a7e1037390a3f1fd2700f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508511"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919369"
 ---
 Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat Custom Vision klientské knihovny s jazykem C# k sestavení modelu klasifikace imagí. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Použijte tento příklad jako šablonu pro vytvoření vlastní aplikace .NET. Pokud chcete projít procesem sestavování a používání klasifikačního modelu _bez_ kódu, prostudujte si místo toho [pokyny založené na prohlížeči](../../getting-started-build-a-classifier.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]

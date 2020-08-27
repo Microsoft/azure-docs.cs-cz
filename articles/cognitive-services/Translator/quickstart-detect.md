@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 93daa49fd262cd802f217fcda4139039023af2e2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 91603dbe0410b17b4061161b6baef7a9fafd0b6e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876508"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921524"
 ---
 # <a name="quickstart-use-the-translator-to-detect-text-language"></a>Rychlý Start: použití překladatele k detekci jazyka textu
 

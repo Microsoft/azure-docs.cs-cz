@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 75a28f866e901361c184d7f73339743b7e0aa070
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 815cea8043a8f2f00236713499cba355acd85e12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876185"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921460"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku
 

@@ -2,13 +2,14 @@
 title: Připojení virtuálního systému souborů ve fondu
 description: Přečtěte si, jak připojit virtuální systém souborů ve fondu Batch.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921626"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
@@ -167,7 +168,7 @@ Chcete-li získat soubory protokolu pro ladění, použijte [OutputFiles](batch-
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-ADS | Linux – data-věda – virtuální počítač | linuxdsvm | :heavy_check_mark: <br>Poznámka: kompatibilní s CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | CentOS – kontejner | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | CentOS-kontejner – RDMA | 7.4 | :heavy_check_mark: <br>Poznámka: podporuje úložiště A_8 nebo 9.</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Microsoft-Azure-Batch | CentOS-kontejner – RDMA | 7,4 | :heavy_check_mark: <br>Poznámka: podporuje úložiště A_8 nebo 9.</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | Ubuntu-Server-kontejner | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-dsvm | Linux – data-věda-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

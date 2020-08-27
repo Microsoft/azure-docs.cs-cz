@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892333"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -43,7 +43,7 @@ Níže jsou uvedené běžné problémy se selháním zálohování virtuálníc
 
 Kód chyby: VMRestorePointInternalError
 
-Pokud v době zálohování se v **protokolu Prohlížeč událostí aplikace** zobrazí **název aplikace s chybou: IaaSBcdrExtension.exe** pak se potvrdí, že antivirová ochrana nakonfigurovaná ve virtuálním počítači omezuje spuštění rozšíření zálohování.
+Pokud v době zálohování **Prohlížeč událostí protokoly aplikací** zobrazí **název aplikace s chybou: IaaSBcdrExtension.exe** pak se potvrdí, že antivirová ochrana nakonfigurovaná ve virtuálním počítači omezuje spuštění rozšíření zálohování.
 Pokud chcete tento problém vyřešit, vylučte v konfiguraci antivirové ochrany adresáře a zkuste operaci zálohování zopakovat.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta. Zopakujte operaci zálohování.
 
-**Krok 2**: zkuste změnit plán zálohování na čas menšího zatížení virtuálního počítače (méně než procesor/IOps atd.).
+**Krok 2**: zkuste změnit plán zálohování na čas menšího zatížení virtuálního počítače (například méně procesoru nebo IOps).
 
 **Krok 3**: zkuste [zvětšit velikost virtuálního počítače](https://azure.microsoft.com/blog/resize-virtual-machines/) a zkuste operaci zopakovat.
 
@@ -246,7 +246,7 @@ Kód chyby: ExtensionSnapshotFailedNoSecureNetwork <br/> Chybová zpráva: opera
 Kód chyby: ExtensionVCRedistInstallationFailure <br/> Chybová zpráva: operace snímku se nezdařila, protože došlo k chybě při instalaci Distribuovatelné součásti Visual C++ pro Visual Studio 2012.
 
 * Přejděte na `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64 a nainstalujte ji.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastavte **počáteční** hodnotu v **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.
-* Zkontrolujte protokol událostí a ověřte, jestli máte všímáte problémy související s přístupem. Příklad: *produkt: Microsoft Visual C++ 2013 x64 minimální modul runtime-12.0.21005--Error 1401. nelze vytvořit klíč: Software\Classes.  Chyba systému 5.  Ověřte, zda máte dostatečný přístup k tomuto klíči, nebo se obraťte na pracovníky podpory.* <br><br> Zajistěte, aby měl účet správce nebo uživatele dostatečná oprávnění k aktualizaci klíče registru **HKEY_LOCAL_MACHINE \software\classes**. Poskytněte dostatečná oprávnění a restartujte agenta hosta systému Windows Azure.<br><br> <li> Pokud máte antivirové produkty, ujistěte se, že mají správná pravidla vyloučení, která umožňují instalaci.
+* Zkontrolujte protokol událostí a ověřte, jestli jste všímátei problémy související s přístupem. Příklad: *produkt: Microsoft Visual C++ 2013 x64 minimální modul runtime-12.0.21005--Error 1401. nelze vytvořit klíč: Software\Classes.  Chyba systému 5.  Ověřte, zda máte dostatečný přístup k tomuto klíči, nebo se obraťte na pracovníky podpory.* <br><br> Zajistěte, aby měl účet správce nebo uživatele dostatečná oprávnění k aktualizaci klíče registru **HKEY_LOCAL_MACHINE \software\classes**. Poskytněte dostatečná oprávnění a restartujte agenta hosta systému Windows Azure.<br><br> <li> Pokud máte antivirové produkty, ujistěte se, že mají správná pravidla vyloučení, která umožňují instalaci.
 
 ### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – Na virtuálním počítači jsou nakonfigurované neplatné zásady, které brání operaci vytvoření snímku
 
@@ -259,7 +259,7 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení není pro tento typ úlohy podporováno: <br>Počkejte, až se úloha dokončí. |Žádné |
-| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**nebo**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
+| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**ani**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
 | Zálohování nemůže úlohu zrušit, protože neprobíhá: <br>Zrušení je podporováno pouze pro probíhající úlohy. Zkuste zrušit probíhající úlohu. |K této chybě dochází z důvodu přechodného stavu. Počkejte minutu a zkuste operaci zrušit. |
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 

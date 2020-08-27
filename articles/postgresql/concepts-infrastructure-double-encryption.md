@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067490"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918090"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou Azure Database for PostgreSQL
 
@@ -62,6 +62,12 @@ Možnosti šifrování, které poskytuje Azure Database for PostgreSQL, lze pou�
 U Azure Database for PostgreSQL podporuje dvojité šifrování infrastruktury pomocí klíče spravovaného službou tato omezení:
 
 * Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
+* V následujících oblastech můžete vytvořit Azure Database for PostgreSQL s povoleným šifrováním v infrastruktuře:
+
+   * East US
+   * Středojižní USA
+   * Západní USA 2
+   
 * Tato funkce je podporována pouze v oblastech a serverech, které podporují úložiště až na 16 TB. Seznam oblastí Azure, které podporují úložiště až o 16 TB, najdete v dokumentaci k [úložišti](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

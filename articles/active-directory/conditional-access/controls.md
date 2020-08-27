@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922091"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
@@ -33,11 +33,11 @@ Zkopírujte data JSON a pak je vložte do příslušného textového pole. Nepro
 
 Možnost vytvořit vlastní ovládací prvek je v části **Správa** na stránce **podmíněný přístup** .
 
-![Řízení](./media/controls/82.png)
+![Vlastní rozhraní ovládacích prvků v podmíněném přístupu](./media/controls/custom-controls-conditional-access.png)
 
 Kliknutím na **Nový vlastní ovládací prvek**otevře okno s textovým polem pro data JSON ovládacího prvku.  
 
-![Řízení](./media/controls/81.png)
+![Nový vlastní ovládací prvek](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>Odstranění vlastních ovládacích prvků
 
@@ -53,7 +53,7 @@ Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovl�
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování nebo zvýšení úrovně rolí v Privileged identity Manageru (PIM).
+Vlastní ovládací prvky se nedají použít s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity služby Multi-Factor Authentication, aby bylo možné zvýšit úroveň rolí v Privileged identity Manageru (PIM), nebo jako součást registrace zařízení v Intune.
 
 ## <a name="next-steps"></a>Další kroky
 

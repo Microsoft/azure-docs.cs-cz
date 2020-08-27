@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d94e19753a93d2682043d7b67b867325067cee5d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762296"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931960"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
@@ -38,7 +38,7 @@ Plán DDoS Protection definuje sadu virtuálních sítí, které mají povolený
 Pro většinu organizací není nutné vytvářet více než jeden plán. Plán nelze přesunout mezi předplatnými. Pokud chcete změnit předplatné, ve kterém je plán, je nutné [odstranit stávající plán](#work-with-ddos-protection-plans) a vytvořit nový.
 
 1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-2. Vyhledejte *DDoS*. Pokud se ve výsledcích hledání zobrazí **plán DDos Protection** , vyberte ho.
+2. Vyhledejte *DDoS*. Pokud se ve výsledcích hledání zobrazí **plán DDoS Protection** , vyberte ho.
 3. Vyberte **Vytvořit**.
 4. Zadejte nebo vyberte vlastní hodnoty, nebo zadejte nebo vyberte následující příklady hodnot a pak vyberte **vytvořit**:
 
@@ -61,7 +61,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     | Předplatné    | Vyberte předplatné.                                    |
     | Skupina prostředků  | Vyberte **použít existující**a pak vyberte **myResourceGroup** . |
     | Umístění        | USA – východ                                                      |
-    | Ochrana DDos | Vyberte **Standard** a potom v části **DDoS Protection**vyberte **myDdosProtectionPlan**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
+    | DDoS Protection Standard | Vyberte **Povolit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
 
@@ -229,7 +229,7 @@ Výstrahy obsahují obecné informace o veřejné IP adrese, která se nachází
 
 Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Name                                     |
+| Akce                                            | Název                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Přečíst plán DDoS Protection              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Vytvořit nebo aktualizovat plán DDoS Protection  |

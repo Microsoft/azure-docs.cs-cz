@@ -5,15 +5,16 @@ services: cloud-services
 documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142311"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930056"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
 Když vytváříte roli pracovního procesu, rozšíříte třídu [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , která poskytuje metody pro přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.

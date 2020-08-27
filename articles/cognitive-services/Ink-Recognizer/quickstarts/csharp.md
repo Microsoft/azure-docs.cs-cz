@@ -10,12 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25360ec1b5e8cd79c21da426a293c148ac0b1932
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986070"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931450"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a C #
 
@@ -29,7 +30,7 @@ Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V to
 
 Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089502).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
@@ -90,7 +91,7 @@ Vytvořte funkci nazvanou `LoadJson()` , která načte soubor JSON pro tisk dat.
 
 ## <a name="run-the-application-and-view-the-response"></a>Spuštění aplikace a zobrazení odpovědi
 
-Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json).
+Aplikaci spusťte. Ve formátu JSON se vrátí úspěšná odpověď. Můžete také najít odpověď JSON na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,15 +1,15 @@
 ---
 title: Průběžná integrace s využitím Azure Pipelines
 description: Naučte se průběžně sestavovat, testovat a nasazovat šablony Azure Resource Manager.
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86118915"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892673"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -175,8 +175,8 @@ Vytvoření kanálu s krokem pro nasazení šablony:
     * **Umístění**: vyberte umístění pro skupinu prostředků, například **střed USA**.
     * **Umístění šablony**: vyberte **propojený artefakt**, což znamená, že úloha hledá soubor šablony přímo z připojeného úložiště.
     * **Šablona**: zadejte **CreateWebApp/azuredeploy.jsna**. Pokud jste změnili název složky a název souboru, musíte tuto hodnotu změnit.
-    * **Parametry šablony**: nechte toto pole prázdné. Hodnoty parametrů určíte v parametrech * * přepsat šablony.
-    * **overrideParameters**: zadejte **-ProjectName [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Nahraďte název projektu a adresu URL propojené šablony. Adresa URL propojené šablony je to, co jste napsali na konci [vytváření úložiště GitHubu](#create-a-github-repository).
+    * **Parametry šablony**: nechte toto pole prázdné. Hodnoty parametrů budete zadávat v **parametrech přepsání šablony**.
+    * **Přepsání parametrů šablony**: zadejte **-ProjectName [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Nahraďte název projektu a adresu URL propojené šablony. Adresa URL propojené šablony je to, co jste napsali na konci [vytváření úložiště GitHubu](#create-a-github-repository). Začíná na **https://raw.githubusercontent.com** .
     * **Režim nasazení**: vyberte **přírůstkové**.
     * **Název nasazení**: zadejte **DeployPipelineTemplate**. Než uvidíte **název nasazení**, vyberte **Upřesnit** .
 

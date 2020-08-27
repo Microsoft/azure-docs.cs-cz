@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929699"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
 Azure Kognitivní hledání může indexovat dokumenty JSON a pole ve službě Azure Blob Storage s využitím [indexeru](search-indexer-overview.md) , který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
 
-V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
+V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Konfigurace zdroje dat služby Azure Kognitivní hledání pro kontejner objektů blob Azure
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 ## <a name="prerequisites"></a>Předpoklady
 
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Desktopová aplikace Postman](https://www.getpostman.com/)
 + [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -72,7 +72,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Klikněte na služba **BLOB** Service.
 
-1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vzorová data. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
+1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) , který bude obsahovat vzorová data. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** .
 
@@ -116,7 +116,7 @@ Identifikátory URI musí určovat verzi rozhraní API a každé volání by mě
 
 ## <a name="3---create-a-data-source"></a>3. vytvoření zdroje dat
 
-[Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
+[Rozhraní API pro vytvoření zdroje dat](/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
 1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search. 
 
@@ -159,7 +159,7 @@ Identifikátory URI musí určovat verzi rozhraní API a každé volání by mě
 
 ## <a name="4---create-an-index"></a>4. vytvoření indexu
     
-Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
+Druhé volání je [vytvořit index API](/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
 1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search.
 
@@ -234,7 +234,7 @@ Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/sea
 
 ## <a name="5---create-and-run-an-indexer"></a>5. vytvoření a spuštění indexeru
 
-Indexer se připojuje ke zdroji dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Indexer se připojuje ke zdroji dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](/rest/api/searchservice/create-indexer).
 
 1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . Nahraďte `[service name]` názvem vaší služby Search.
 
@@ -340,7 +340,7 @@ Při úspěšném odstranění se vrátí kód stavu 204.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

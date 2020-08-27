@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509599"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922561"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 >[!IMPORTANT]
->Optimalizace médií pro týmy není podporovaná Microsoft 365mi státními prostředími.
+>Optimalizace médií pro týmy je podporovaná pro prostředí Microsoft 365 vládní organizace (RSZ). Pro RSZ-High a DoD není podporována optimalizace médií pro týmy.
 
 >[!NOTE]
 >Optimalizace médií pro Microsoft Teams je k dispozici pouze pro stolního klienta Windows na počítačích s Windows 10. Optimalizace médií vyžadují desktopový klient Windows verze 1.2.1026.0 nebo novější.
@@ -25,14 +25,14 @@ Microsoft Teams na virtuálním počítači s Windows podporuje chat a spoluprá
 
 Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s Windows zpracovává zvuk a video místně pro volání a schůzky týmů. Na virtuálním počítači s Windows můžete dál používat Microsoft Teams s ostatními klienty bez optimalizovaného volání a schůzek. Týmy a funkce pro spolupráci jsou podporované na všech platformách. Pokud chcete přesměrovat místní zařízení ve vzdálené relaci, přečtěte si [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
 - [Připravte síť](/microsoftteams/prepare-network/) pro Microsoft Teams.
 - Nainstalujte [klienta pro stolní počítače Windows](connect-windows-7-10.md) na zařízení s Windows 10 nebo Windows 10 IoT Enterprise, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
-- Nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
+- [Stáhněte](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) a nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 
 ## <a name="install-the-teams-desktop-app"></a>Instalace desktopové aplikace Teams
 
@@ -94,8 +94,8 @@ Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počí
 
         Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
 
-        K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, zobrazí se v nástroji program a funkce v Ovládacích panelech aplikace a také aplikace & funkce v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy. 
-       
+        K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, zobrazí se v nástroji program a funkce v Ovládacích panelech aplikace a také aplikace & funkce v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy.
+
         > [!NOTE]
         > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
 

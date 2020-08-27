@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: dc8afd5a61a40b14792bb564d394604010718888
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d030dc4699c6f1504680d82450cf6c22ea153d2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586706"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921323"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -237,4 +238,4 @@ Nezapomeňte ze zdrojového kódu ukázkové aplikace odebrat všechny důvěrn�
 Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
-> [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

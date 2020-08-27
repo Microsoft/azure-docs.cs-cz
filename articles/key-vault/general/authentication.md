@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589978"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930855"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Ověřování pro Azure Key Vault
 
@@ -112,14 +112,9 @@ V tomto okamžiku máte registrovaný instanční objekt. Můžete ji zobrazit v
 1. Vytvoření certifikátu
 
     * Možnost 1: vytvoření certifikátu pomocí [OpenSSL](https://www.openssl.org/) (pouze pro účely testování nepoužívejte certifikáty podepsané svým držitelem v produkčním prostředí)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * Možnost 2: vytvoření certifikátu pomocí trezoru klíčů. [Vytvoření certifikátu v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. Stažení certifikátu ve formátu PEM
+1. Stáhnout certifikát ve formátu PEM/PFX
 1. Přihlaste se k Azure Portal a přejděte do Azure Active Directory
 1. Klikněte na registrace aplikací.
 1. Vyberte objekt služby, který jste vytvořili v části 1.

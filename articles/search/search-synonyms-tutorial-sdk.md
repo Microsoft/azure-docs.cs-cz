@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922748"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Kognitivní hledání v jazyce C #
 
@@ -22,8 +22,8 @@ Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považovan
 V Azure Kognitivní hledání jsou synonyma definována v *mapě synonym*prostřednictvím *pravidel mapování* , která přidružuje ekvivalentní podmínky. Tento příklad popisuje základní kroky pro přidání a používání synonym s existujícím indexem. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořte mapu synonym pomocí třídy [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
-> * Nastavte vlastnost [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
+> * Vytvořte mapu synonym pomocí třídy  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
+> * Nastavte vlastnost [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
 
 Můžete zadat dotaz na pole s povoleným synonymem, stejně jako normálně. Pro přístup k synonymům není nutná žádná další syntaxe dotazů.
 
@@ -32,14 +32,14 @@ Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrov
 > [!NOTE]
 > Synonyma lze vytvořit programově, ale ne na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky kurzu zahrnují tyto položky:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Služba Azure Kognitivní hledání](search-create-service-portal.md)
-* [Knihovna Microsoft.Azure.Search .NET](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [Jak používat Azure Kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Knihovna Microsoft.Azure.Search .NET](/dotnet/api/overview/azure/search)
+* [Jak používat Azure Kognitivní hledání z aplikace .NET](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>Přehled
 
@@ -77,7 +77,7 @@ Dotazy před a po ukazují význam použití synonym. V tomto příkladu použij
       Console.ReadKey();
   }
 ```
-Postup vytvoření a naplnění ukázkového indexu je vysvětlen v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Postup vytvoření a naplnění ukázkového indexu je vysvětlen v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](./search-howto-dotnet-sdk.md).
 
 ## <a name="before-queries"></a>Dotazy „před“
 
@@ -173,7 +173,7 @@ Nejrychlejší způsob, jak vyčistit po příkladech, odstraněním skupiny pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento příklad ukázal funkci synonym v kódu jazyka C# k vytvoření a odeslání pravidel mapování a volání mapy synonym na dotaz. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
+Tento příklad ukázal funkci synonym v kódu jazyka C# k vytvoření a odeslání pravidel mapování a volání mapy synonym na dotaz. Další informace najdete v referenční dokumentaci [sady .NET SDK](/dotnet/api/microsoft.azure.search) a [rozhraní REST API](/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Jak používat synonyma v Azure Kognitivní hledání](search-synonyms.md)
