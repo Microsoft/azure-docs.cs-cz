@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838254"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935513"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
 
@@ -29,7 +29,7 @@ V rámci odhalující dokumentu je k dispozici nová sada konfiguračních param
 
 Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, očekávají normalizované obrázky. Povolení normalizace imagí u indexeru vyžaduje, aby k tomuto indexeru byl připojen dovednosti.
 
-| Konfigurační parametr | Description |
+| Konfigurační parametr | Popis |
 |--------------------|-------------|
 | imageAction   | Nastavte na None, pokud by se při výskytu vložených obrázků nebo souborů obrázků neměla dělat žádná akce. <br/>Nastavte na "generateNormalizedImages", aby se vygenerovalo pole normalizovaných imagí jako součást odhalujícího dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage", chcete-li generovat pole normalizovaných imagí, kde pro soubory PDF ve zdroji dat jsou jednotlivé stránky vykresleny do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů, které nejsou ve formátu PDF.<br/>V případě jakékoli možnosti, která není "none", budou obrázky zobrazeny v poli *normalized_images* . <br/>Výchozí hodnota je None. Tato konfigurace je relevantní pouze pro zdroje dat objektů blob, pokud je "dataToExtract" nastaven na "contentAndMetadata". <br/>Z daného dokumentu bude extrahováno maximálně 1000 imagí. Pokud je v dokumentu více než 1000 obrázků, bude extrahován první 1000 a bude vygenerováno upozornění. |
 |  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. Maximální povolená hodnota je 10000. | 
@@ -42,7 +42,7 @@ Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt 
 
 Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 
-ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
+ImageAction v [definici indexeru](/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
 
 ```json
 {
@@ -60,11 +60,11 @@ ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchserv
 
 Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
 
-| Člen obrázku       | Description                             |
+| Člen obrázku       | Popis                             |
 |--------------------|-----------------------------------------|
 | data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
 | šířka              | Šířka normalizované image v pixelech |
-| height             | Výška normalizované image v pixelech |
+| výška             | Výška normalizované image v pixelech |
 | originalWidth      | Původní šířka obrázku před normalizací |
 | originalHeight      | Původní výška obrázku před normalizací |
 | rotationFromOriginal |  Rotace proti směru hodinových ručiček ve stupních, ve kterých došlo k vytvoření normalizované bitové kopie. Hodnota v rozmezí 0 stupňů až 360 stupňů. Tento krok přečte metadata z image, která je vygenerovaná fotoaparátem nebo skenerem. Obvykle násobek 90 stupňů. |
@@ -214,7 +214,7 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
 ```
 
 ## <a name="see-also"></a>Viz také
-+ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Vytvořit indexer (REST)](/rest/api/searchservice/create-indexer)
 + [Dovednost analýzy obrázků](cognitive-search-skill-image-analysis.md)
 + [Dovednost OCR](cognitive-search-skill-ocr.md)
 + [Dovednost sloučení textu](cognitive-search-skill-textmerger.md)

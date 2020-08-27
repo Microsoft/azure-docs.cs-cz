@@ -3,12 +3,13 @@ title: Použití aplikace Web App-personalizovat
 description: Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky vlastního nastavení pro poskytnutí správného obsahu uživateli na základě akcí (s funkcemi) a funkcí kontextu.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446370"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935615"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Kurz: Přidání přizpůsobení do webové aplikace .NET
 
@@ -152,7 +153,7 @@ private string GetUsersTastePreference()
 ## <a name="how-does-the-web-app-use-personalizer"></a>Jak Web App používá přizpůsobování?
 
 Webová aplikace používá přidaný nástroj k výběru nejlepší akce ze seznamu možností potravinové služby. Odešle následující informace s každým voláním rozhraní API řazení:
-* **Akce** s jejich funkcemi, jako jsou `taste` a`spiceLevel`
+* **Akce** s jejich funkcemi, jako jsou `taste` a `spiceLevel`
 * **kontextové** funkce, jako jsou například uživatelské `time` `taste` Předvolby a informace o uživatelském agentovi prohlížeče a funkce kontextu
 * **akce, které se mají vyloučit** , jako je například šťáva
 * **ID události**, která se liší pro každé volání rozhraní API řazení.
@@ -248,7 +249,7 @@ Nainstalujte následující software:
 Sestavte a spusťte HttpRequestFeaturesExample pomocí jedné z následujících metod:
 
 * Visual Studio 2019: stiskněte klávesu **F5**
-* .NET Core CLI: `dotnet build` pak`dotnet run`
+* .NET Core CLI: `dotnet build` pak `dotnet run`
 
 Přes webový prohlížeč můžete odeslat žádost o zařazení a žádost o odměnu, zobrazit jejich odpovědi a také funkce žádosti HTTP extrahované z vašeho prostředí.
 

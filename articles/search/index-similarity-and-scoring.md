@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5b3df38e8feef2a7b9bbc090e11a669164010f32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924482"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -21,11 +21,11 @@ Bodování označuje výpočet skóre vyhledávání pro každou položku vráce
 
 Ve výchozím nastavení se v odpovědi vrátí Top 50, ale můžete použít parametr **$Top** k vrácení menšího nebo většího počtu položek (až 1000 v jedné odpovědi) a **$Skip** k získání další sady výsledků.
 
-Skóre hledání je vypočítáno na základě statistických vlastností dat a dotazu. Azure Kognitivní hledání vyhledá dokumenty, které se shodují na hledaných termínech (v závislosti na [searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents#searchmodeany--all-optional)), a upřednostňuje dokumenty, které obsahují mnoho instancí hledaného termínu. Skóre hledání bude ještě vyšší, pokud je v indexu dat zřídka, ale v dokumentu běžné. Základem pro tento přístup k výpočetním významům je známý jako *TF-IDF nebo* četnost termínů – inverzní frekvence dokumentů.
+Skóre hledání je vypočítáno na základě statistických vlastností dat a dotazu. Azure Kognitivní hledání vyhledá dokumenty, které se shodují na hledaných termínech (v závislosti na [searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)), a upřednostňuje dokumenty, které obsahují mnoho instancí hledaného termínu. Skóre hledání bude ještě vyšší, pokud je v indexu dat zřídka, ale v dokumentu běžné. Základem pro tento přístup k výpočetním významům je známý jako *TF-IDF nebo* četnost termínů – inverzní frekvence dokumentů.
 
 Hodnoty skóre hledání je možné opakovat v rámci sady výsledků dotazu. Pokud má více přístupů stejné skóre hledání, řazení stejných položek skóre není definováno a není stabilní. Spusťte dotaz znovu a můžete se podívat na pozici posunu položek, zejména pokud používáte bezplatnou službu nebo fakturovatelnou službu s více replikami. Vzhledem k tomu, že se dvě položky shodují se stejným skóre, neexistuje žádná záruka, která se zobrazí jako první.
 
-Pokud chcete přerušit vazbu mezi opakujícími se výsledky, můžete přidat klauzuli **$OrderBy** do prvního pořadí podle skóre a pak seřadit podle jiného pole, které lze seřadit (například `$orderby=search.score() desc,Rating desc` ). Další informace najdete v tématu [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
+Pokud chcete přerušit vazbu mezi opakujícími se výsledky, můžete přidat klauzuli **$OrderBy** do prvního pořadí podle skóre a pak seřadit podle jiného pole, které lze seřadit (například `$orderby=search.score() desc,Rating desc` ). Další informace najdete v tématu [$OrderBy](./search-query-odata-orderby.md).
 
 > [!NOTE]
 > `@search.score = 1.00`Symbol označuje sadu výsledků bez hodnocení nebo Neseřazený výsledek. Skóre je rovnoměrné napříč všemi výsledky. Pokud je formulář dotazu přibližné vyhledávání, zástupné dotazy nebo výrazy regulárního výrazu nebo výraz **$Filter** , dojde k neskóre výsledků. 
@@ -44,7 +44,7 @@ Z důvodu škálovatelnosti Azure Kognitivní hledání distribuuje každý inde
 
 Ve výchozím nastavení se skóre dokumentu počítá na základě statistických vlastností dat *v rámci horizontálních oddílů*. Tento přístup obecně není problémem pro velké corpusy dat a poskytuje lepší výkon než výpočet skóre na základě informací v rámci všech horizontálních oddílů. To, že použití této optimalizace výkonu může způsobit, že se dva velmi podobné dokumenty (nebo dokonce identické dokumenty) ukončí s různou závažností, pokud končí v různých horizontálních oddílů.
 
-Pokud upřednostňujete výpočet skóre na základě statistických vlastností ve všech horizontálních oddílů, můžete to udělat přidáním *scoringStatistics = Global* jako [parametru dotazu](https://docs.microsoft.com/rest/api/searchservice/search-documents) (nebo přidat *"scoringStatistics": "Global"* jako parametr těla [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
+Pokud upřednostňujete výpočet skóre na základě statistických vlastností ve všech horizontálních oddílů, můžete to udělat přidáním *scoringStatistics = Global* jako [parametru dotazu](/rest/api/searchservice/search-documents) (nebo přidat *"scoringStatistics": "Global"* jako parametr těla [žádosti o dotaz](/rest/api/searchservice/search-documents)).
 
 ```http
 GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
@@ -77,7 +77,7 @@ Následující segment videa se rychle přepošle na vysvětlení algoritmů hod
 
 ## <a name="featuresmode-parameter-preview"></a>parametr featuresMode (Preview)
 
-Požadavky na [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) mají nový parametr [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) , který může poskytnout další podrobnosti o závažnosti na úrovni pole. Vzhledem k tomu `@searchScore` , že se pro dokument počítá vše (jak to je důležité pro tento dokument v kontextu tohoto dotazu), můžete prostřednictvím featuresMode získat informace o jednotlivých polích, jak vyjadřují ve `@search.features` struktuře. Struktura obsahuje všechna pole, která se používají v dotazu (buď určitá pole prostřednictvím **searchFields** v dotazu, nebo všechna pole, která jsou v indexu **vyhledána jako prohledávatelný** ). Pro každé pole získáte následující hodnoty:
+Požadavky na [hledání dokumentů](/rest/api/searchservice/preview-api/search-documents) mají nový parametr [featuresMode](/rest/api/searchservice/preview-api/search-documents#featuresmode) , který může poskytnout další podrobnosti o závažnosti na úrovni pole. Vzhledem k tomu `@searchScore` , že se pro dokument počítá vše (jak to je důležité pro tento dokument v kontextu tohoto dotazu), můžete prostřednictvím featuresMode získat informace o jednotlivých polích, jak vyjadřují ve `@search.features` struktuře. Struktura obsahuje všechna pole, která se používají v dotazu (buď určitá pole prostřednictvím **searchFields** v dotazu, nebo všechna pole, která jsou v indexu **vyhledána jako prohledávatelný** ). Pro každé pole získáte následující hodnoty:
 
 + Počet jedinečných tokenů nalezených v poli
 + Skóre podobnosti nebo míra, jak podobný obsah pole je, relativní vzhledem k termínu dotazu
@@ -107,6 +107,6 @@ Tyto datové body můžete využívat ve [vlastních řešeních bodování](htt
 
 ## <a name="see-also"></a>Viz také
 
- Reference k [profilům vyhodnocování](index-add-scoring-profiles.md) [REST API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents)   
- [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ Reference k [profilům vyhodnocování](index-add-scoring-profiles.md) [REST API](/rest/api/searchservice/)   
+ [Rozhraní API pro hledání dokumentů](/rest/api/searchservice/search-documents)   
+ [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

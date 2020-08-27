@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319044"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935496"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Obohacení AI v Azure Kognitivní hledání
 
@@ -29,7 +29,7 @@ Mezi integrované dovednosti patří tyto kategorie:
 
 ![Diagram kanálu obohacení](./media/cognitive-search-intro/cogsearch-architecture.png "Přehled kanálu obohacení")
 
-Integrované dovednosti v Azure Kognitivní hledání jsou založené na předem vyškolených modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). Prostředek Cognitive Services můžete připojit, pokud chcete během zpracování obsahu tyto prostředky využít.
+Integrované dovednosti v Azure Kognitivní hledání jsou založené na předem vyškolených modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](../cognitive-services/computer-vision/index.yml) a [Analýza textu](../cognitive-services/text-analytics/overview.md). Prostředek Cognitive Services můžete připojit, pokud chcete během zpracování obsahu tyto prostředky využít.
 
 Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s výsledky, které se stanou součástí kompozice dokumentu v prohledávatelných indexech v Azure Kognitivní hledání. Data se nastavují jako datová sada Azure a pak se provedou prostřednictvím kanálu indexování s použitím libovolných [integrovaných dovedností](cognitive-search-predefined-skills.md) , které potřebujete.  
 
@@ -57,9 +57,9 @@ Kromě toho můžete zvážit přidání vlastní dovednosti, pokud máte otevř
 
 ### <a name="more-about-custom-skills"></a>Další informace o vlastních dovednostech
 
-Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/overview), integraci [rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Vlastní dovednosti můžou podporovat složitější scénáře, jako je rozpoznávání formulářů nebo detekce vlastních entit pomocí modelu, který zadáte a zabalíte do [vlastního webového rozhraní s dovednostmi](cognitive-search-custom-skill-interface.md). Mezi vlastní dovednosti patří i [Nástroj pro rozpoznávání formulářů](../cognitive-services/form-recognizer/overview.md), integraci [rozhraní API Bingu pro vyhledávání entit](./cognitive-search-create-custom-skill-example.md)a [rozpoznávání vlastních entit](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-## <a name="steps-in-an-enrichment-pipeline"></a>Kroky v kanálu rozšíření<a name="enrichment-steps"></a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Kroky v kanálu rozšíření <a name="enrichment-steps"></a>
 
 Kanál pro rozšíření je založený na [*indexerech*](search-indexer-overview.md). Indexery naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. Dovednosti, teď připojené k indexerům, zachytit a rozšířit dokumenty podle definovaných dovednostiů. Po indexování můžete k obsahu přistupovat pomocí požadavků na hledání prostřednictvím všech [typů dotazů podporovaných službou Azure kognitivní hledání](search-query-overview.md).  Pokud s indexery začínáte, Tato část vás provede jednotlivými kroky.
 
@@ -83,7 +83,7 @@ Kanál interně vytvoří kolekci obohacených dokumentů. Můžete určit, kter
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Přidat element knowledgeStore pro uložení obohacení
 
-[Search REST API-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) rozšiřuje dovednosti s `knowledgeStore` definicí, která poskytuje připojení a projekce úložiště Azure, které popisují, jak jsou rozšíření uložená. To je navíc k vašemu indexu. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. Další informace najdete v [článku znalostní báze Knowledge Store](knowledge-store-concept-intro.md).
+[Search REST API-Version = 2020-06-30](/rest/api/searchservice/) rozšiřuje dovednosti s `knowledgeStore` definicí, která poskytuje připojení a projekce úložiště Azure, které popisují, jak jsou rozšíření uložená. To je navíc k vašemu indexu. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. Další informace najdete v [článku znalostní báze Knowledge Store](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: hledání indexu a přístupu na základě dotazů
 
@@ -99,13 +99,13 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 
 1. Oddělit vaše zdrojová data Azure do reprezentativního vzorku. Indexování trvá čas, takže začne používat malou reprezentativní datovou sadu a pak ji vytvoří přírůstkově jako vaše řešení.
 
-1. Vytvoření [objektu zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure kognitivní hledání k zadání připojovacího řetězce pro načtení dat.
+1. Vytvoření [objektu zdroje dat](/rest/api/searchservice/create-data-source) v Azure kognitivní hledání k zadání připojovacího řetězce pro načtení dat.
 
-1. Vytvořte [dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) s kroky obohacení.
+1. Vytvořte [dovednosti](/rest/api/searchservice/create-skillset) s kroky obohacení.
 
-1. Definujte [schéma indexu](https://docs.microsoft.com/rest/api/searchservice/create-index). Kolekce *polí* obsahuje pole ze zdrojových dat. Měli byste také odhlásit další pole, která budou obsahovat vygenerované hodnoty pro obsah vytvořený během obohacení.
+1. Definujte [schéma indexu](/rest/api/searchservice/create-index). Kolekce *polí* obsahuje pole ze zdrojových dat. Měli byste také odhlásit další pole, která budou obsahovat vygenerované hodnoty pro obsah vytvořený během obohacení.
 
-1. Definujte [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , který odkazuje na zdroj dat, dovednosti a index.
+1. Definujte [indexer](/rest/api/searchservice/create-indexer) , který odkazuje na zdroj dat, dovednosti a index.
 
 1. V indexeru přidejte *outputFieldMappings*. Tento oddíl mapuje výstup z dovednosti (v kroku 3) na pole vstupy ve schématu indexu (v kroku 4).
 

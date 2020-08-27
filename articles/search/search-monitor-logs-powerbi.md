@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935105"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Vizualizace protokolů a metrik služby Azure Kognitivní hledání pomocí Power BI
-[Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-what-is-azure-search) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
+[Azure kognitivní hledání](./search-what-is-azure-search.md) umožňuje ukládat protokoly operací a metriky služeb o vaší vyhledávací službě v účtu Azure Storage. Tato stránka poskytuje pokyny k vizualizaci těchto informací prostřednictvím aplikace Power BI Template. Aplikace poskytuje podrobné přehledy o vaší vyhledávací službě, včetně informací o vyhledávání, indexování, operacích a metrikách služeb.
 
 Můžete najít Power BI App template **kognitivní hledání Azure: Analýza protokolů a metrik** na [tržišti aplikací pro Power BI](https://appsource.microsoft.com/marketplace/apps).
 
@@ -23,7 +23,7 @@ Můžete najít Power BI App template **kognitivní hledání Azure: Analýza pr
 
 1. Povolit protokolování metrik a prostředků pro vyhledávací službu:
 
-    1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , do kterého můžete archivovat protokoly.
+    1. Umožňuje vytvořit nebo identifikovat existující [účet Azure Storage](../storage/common/storage-account-create.md) , do kterého můžete archivovat protokoly.
     1. Přejděte do služby Azure Kognitivní hledání v Azure Portal
     1. V části monitorování v levém sloupci vyberte **nastavení diagnostiky** .
 
@@ -98,8 +98,8 @@ Pokud zjistíte, že se data nezobrazí, postupujte podle těchto kroků pro ře
 1. Zkontrolujte, jestli se datová sada ještě neaktualizovala. Indikátor stavu aktualizace se zobrazí v kroku 8 výše. Pokud se stále aktualizuje, počkejte, až se aktualizace dokončí, aby se tato sestava otevřela a aktualizovala.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/)
+[Další informace o Azure Kognitivní hledání](./index.yml)
 
-[Co je Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Co je Power BI?](/power-bi/fundamentals/power-bi-overview)
 
-[Základní pojmy pro návrháře ve službě Power BI](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Základní pojmy pro návrháře ve službě Power BI](/power-bi/service-basic-concepts)

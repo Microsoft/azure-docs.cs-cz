@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260980"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935768"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání a vzory s použitím speciálních znaků (zástupné znaky, regulární výrazy, vzory)
 
@@ -51,7 +51,7 @@ Pokud potřebujete hledat fragmenty nebo vzory nebo speciální znaky, můžete 
 + Sestavení a otestování indexu
 
 > [!TIP]
-> Vyhodnocování analyzátorů je iterativní proces, který vyžaduje časté opětovné sestavení indexu. Tento krok můžete usnadnit pomocí metody post, rozhraní REST API pro [vytváření indexů](https://docs.microsoft.com/rest/api/searchservice/create-index), [odstraňování indexů](https://docs.microsoft.com/rest/api/searchservice/delete-index),[načítání dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)a [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents). V případě načtených dokumentů musí tělo žádosti obsahovat malý reprezentativní datový soubor, který chcete otestovat (například pole s telefonními čísly nebo kódy produktů). Pomocí těchto rozhraní API ve stejné kolekci pro publikování můžete tyto kroky rychle procházet.
+> Vyhodnocování analyzátorů je iterativní proces, který vyžaduje časté opětovné sestavení indexu. Tento krok můžete usnadnit pomocí metody post, rozhraní REST API pro [vytváření indexů](/rest/api/searchservice/create-index), [odstraňování indexů](/rest/api/searchservice/delete-index),[načítání dokumentů](/rest/api/searchservice/addupdate-or-delete-documents)a [hledání dokumentů](/rest/api/searchservice/search-documents). V případě načtených dokumentů musí tělo žádosti obsahovat malý reprezentativní datový soubor, který chcete otestovat (například pole s telefonními čísly nebo kódy produktů). Pomocí těchto rozhraní API ve stejné kolekci pro publikování můžete tyto kroky rychle procházet.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Duplicitní pole pro různé scénáře
 
@@ -85,7 +85,7 @@ Při výběru analyzátoru, který vytváří úplné tokeny, jsou běžné mož
 | [typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Odděluje pouze prázdné znaky. Výrazy, které obsahují pomlčky nebo jiné znaky, jsou považovány za jeden token. |
 | [vlastní analyzátor](index-add-custom-analyzers.md) | doporučil Vytvoření vlastního analyzátoru vám umožní zadat provádějících tokenizaci i filtr tokenů. Předchozí analyzátory se musí používat tak, jak jsou. Vlastní analyzátor vám umožní vybrat, které tokenizátory musíte nejdřív a filtry tokenů se mají použít. <br><br>Doporučenou kombinací je [klíčové slovo provádějících tokenizaci](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem malých případových tokenů](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Předem definovaný [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nerozlišuje malá a velká písmena, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru s nižším případem tokenu. |
 
-Pokud používáte nástroj pro testování webového rozhraní API, jako je například post, můžete přidat [volání nástroje Test Analyzer REST](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) pro kontrolu výstupu s vydanými tokeny.
+Pokud používáte nástroj pro testování webového rozhraní API, jako je například post, můžete přidat [volání nástroje Test Analyzer REST](/rest/api/searchservice/test-analyzer) pro kontrolu výstupu s vydanými tokeny.
 
 Abyste mohli pracovat s, musíte mít naplněný index. V případě existujícího indexu a pole obsahujícího pomlčky nebo částečné výrazy můžete vyzkoušet různé analyzátory nad konkrétními podmínkami a zjistit, jaké tokeny jsou vydávané.  
 
@@ -160,7 +160,7 @@ Bez ohledu na to, jestli vyhodnocujete analyzátory nebo přesouváte do konkré
 
 Předdefinované nebo předdefinované analyzátory lze zadat podle názvu u `analyzer` vlastnosti definice pole, přičemž v indexu není vyžadována žádná další konfigurace. Následující příklad ukazuje, jak byste měli nastavit `whitespace` analyzátor v poli. 
 
-Další scénáře a další informace o dalších integrovaných analyzátorech najdete v [seznamu předdefinovaných analyzátorů](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Další scénáře a další informace o dalších integrovaných analyzátorech najdete v [seznamu předdefinovaných analyzátorů](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -222,19 +222,19 @@ Po definování indexu s analyzátory a definicemi polí, které podporují vá�
 
 Předchozí části vysvětlely logiku. Tato část popisuje každé rozhraní API, které byste měli zavolat při testování řešení. Jak bylo uvedeno dříve, pokud používáte interaktivní nástroj webového testu, jako je například post, můžete rychle projít tyto úlohy.
 
-+ Možnost [odstranit index](https://docs.microsoft.com/rest/api/searchservice/delete-index) odebere existující index se stejným názvem, aby jej bylo možné znovu vytvořit.
++ Možnost [odstranit index](/rest/api/searchservice/delete-index) odebere existující index se stejným názvem, aby jej bylo možné znovu vytvořit.
 
-+ Příkaz [vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index) vytvoří strukturu indexů ve vaší vyhledávací službě, včetně definic analyzátoru a polí se specifikací analyzátoru.
++ Příkaz [vytvořit index](/rest/api/searchservice/create-index) vytvoří strukturu indexů ve vaší vyhledávací službě, včetně definic analyzátoru a polí se specifikací analyzátoru.
 
-+ [Načíst dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) importuje dokumenty se stejnou strukturou jako index a také prohledávatelný obsah. Po provedení tohoto kroku je váš index připravený na dotazování nebo testování.
++ [Načíst dokumenty](/rest/api/searchservice/addupdate-or-delete-documents) importuje dokumenty se stejnou strukturou jako index a také prohledávatelný obsah. Po provedení tohoto kroku je váš index připravený na dotazování nebo testování.
 
-+ [Analyzátor testů](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) byl představen v [příkazu zvolit analyzátor](#choose-an-analyzer). Otestujte některé řetězce v indexu pomocí nejrůznějších analyzátorů, abyste pochopili, jak jsou výrazy s tokeny.
++ [Analyzátor testů](/rest/api/searchservice/test-analyzer) byl představen v [příkazu zvolit analyzátor](#choose-an-analyzer). Otestujte některé řetězce v indexu pomocí nejrůznějších analyzátorů, abyste pochopili, jak jsou výrazy s tokeny.
 
-+ [Hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) vysvětluje, jak vytvořit požadavek na dotaz pomocí [jednoduché](query-simple-syntax.md) syntaxe nebo [úplné syntaxe Lucene](query-lucene-syntax.md) pro zástupné znaky a regulární výrazy.
++ [Hledání v dokumentech](/rest/api/searchservice/search-documents) vysvětluje, jak vytvořit požadavek na dotaz pomocí [jednoduché](query-simple-syntax.md) syntaxe nebo [úplné syntaxe Lucene](query-lucene-syntax.md) pro zástupné znaky a regulární výrazy.
 
   U částečných dotazů, jako je například dotazování "3-6214" k vyhledání shody na "+ 1 (425) 703-6214", můžete použít jednoduchou syntaxi: `search=3-6214&queryType=simple` .
 
-  U dotazů vpony a přípon, jako je například dotazování "num" nebo "numeric" k vyhledání shody na "alfanumerické", použijte úplnou syntaxi Lucene a regulární výraz:`search=/.*num.*/&queryType=full`
+  U dotazů vpony a přípon, jako je například dotazování "num" nebo "numeric" k vyhledání shody na "alfanumerické", použijte úplnou syntaxi Lucene a regulární výraz: `search=/.*num.*/&queryType=full`
 
 ## <a name="tune-query-performance"></a>Ladění výkonu dotazů
 
@@ -287,5 +287,5 @@ Tento článek vysvětluje, jak analyzátory přispívat k dotazování na probl
 
 + [Analyzátory jazyka](search-language-support.md)
 + [Analyzátory pro zpracování textu v Azure Kognitivní hledání](search-analyzers.md)
-+ [Analyzovat textové rozhraní API (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Analyzovat textové rozhraní API (REST)](/rest/api/searchservice/test-analyzer)
 + [Jak funguje fulltextové vyhledávání (architektura dotazů)](search-lucene-query-architecture.md)

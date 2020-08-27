@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146186"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934918"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
 Tento článek vysvětluje, jak získat odpověď na dotaz, který se vrátí s celkovým počtem vyhovujících dokumentů, stránkovaných výsledků, seřazených výsledků a podmínek zvýrazněných na začátku.
 
-Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) .
+Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) .
 
 ## <a name="result-composition"></a>Složení výsledku
 
@@ -47,9 +47,9 @@ Chcete-li vrátit jiný počet vyhovujících dokumentů, `$top` přidejte `$ski
 
 + Přidejte `$count=true` , chcete-li získat celkový počet vyhovujících dokumentů v rámci indexu.
 
-+ Vrátí první sadu 15 odpovídajících dokumentů a celkový počet shod:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ Vrátí první sadu 15 odpovídajících dokumentů a celkový počet shod: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15:`$top=15&$skip=30`
++ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15: `$top=15&$skip=30`
 
 V případě změny podkladového indexu není zaručeno, že výsledky stránkovaných dotazů nebudou stabilní. Stránkování změní hodnotu `$skip` pro každou stránku, ale každý dotaz je nezávislý a pracuje s aktuálním zobrazením dat v indexu v době dotazu (jinými slovy, není ukládání do mezipaměti nebo snímku výsledků, jako jsou například ty, které se nacházejí v databázi pro obecné účely).
  
@@ -98,7 +98,7 @@ Další možností je použít [vlastní profil vyhodnocování](index-add-scori
 
 ## <a name="hit-highlighting"></a>Zvýrazňování položek
 
-Zvýrazňování přístupů odkazuje na formátování textu (například tučné nebo žluté světla) použité pro odpovídající výrazy ve výsledku, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Zvýrazňování přístupů odkazuje na formátování textu (například tučné nebo žluté světla) použité pro odpovídající výrazy ve výsledku, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](/rest/api/searchservice/search-documents). 
 
 Pokud chcete povolit zvýrazňování přístupů, přidejte, `highlight=[comma-delimited list of string fields]` abyste určili, která pole budou používat zvýraznění. Zvýrazňování je užitečné pro delší pole obsahu, jako je pole popisu, kde shoda není okamžitě zřejmá. Jenom definice polí s atributem, které jsou s **možností prohledávání** , jsou způsobilé pro zvýrazňování přístupů.
 

@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4569137bc80fc2a9af26d58bb2ba3863325a3368
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922264"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936686"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí klientské knihovny Azure.Search.Documents
 
-Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) k vytvoření konzolové aplikace .NET Core v jazyce C#, která vytvoří, načte a dotazuje index vyhledávání.
+Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) k vytvoření konzolové aplikace .NET Core v jazyce C#, která vytvoří, načte a dotazuje index vyhledávání.
 
 [Stáhněte si zdrojový kód](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) a začněte s dokončeným projektem nebo si vytvořte vlastní postup podle kroků v tomto článku.
 
 > [!NOTE]
 > Hledáte starší verzi? Podívejte [se na téma Vytvoření indexu vyhledávání pomocí Microsoft. Azure. Search v10 za účelem](search-get-started-dotnet-v10.md) místo toho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 
@@ -77,7 +77,7 @@ Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Docum
    using Azure.Search.Documents.Models;
    ```
 
-1. Vytvoření dvou klientů: [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) vytvoří index a [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) funguje s existujícím indexem. Oba potřebují koncový bod služby a klíč rozhraní API Správce pro ověřování pomocí práv pro vytvoření/odstranění.
+1. Vytvoření dvou klientů: [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) vytvoří index a [SearchClient](/dotnet/api/azure.search.documents.searchclient) funguje s existujícím indexem. Oba potřebují koncový bod služby a klíč rozhraní API Správce pro ověřování pomocí práv pro vytvoření/odstranění.
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +99,7 @@ Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Docum
 
 V tomto rychlém startu se vytvoří index hotelů, který načtete pomocí dat o hotelu a spustíte dotazy na. V tomto kroku definujete pole v indexu. Každá definice pole obsahuje název, datový typ a atributy, které určují, jak se pole používá.
 
-V tomto příkladu se synchronní metody knihovny Azure.Search.Documents používají pro jednoduchost a čitelnost. Nicméně v produkčních scénářích byste měli použít asynchronní metody, abyste zachovali škálovatelnou a odezvu vaší aplikace. Například byste použili [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) namísto [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
+V tomto příkladu se synchronní metody knihovny Azure.Search.Documents používají pro jednoduchost a čitelnost. Nicméně v produkčních scénářích byste měli použít asynchronní metody, abyste zachovali škálovatelnou a odezvu vaší aplikace. Například byste použili [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) namísto [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
 
 1. Přidejte do projektu prázdnou definici třídy: **Hotel.cs**
 
@@ -131,7 +131,7 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
     }
     ```
 
-1. V **program.cs**zadejte pole a atributy. [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) a [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) se používají k vytvoření indexu.
+1. V **program.cs**zadejte pole a atributy. [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) se používají k vytvoření indexu.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +154,9 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
 
 Atributy pole určují, jak se používá v aplikaci. Například `IsFilterable` atribut musí být přiřazen každému poli, které podporuje výraz filtru.
 
-Na rozdíl od předchozích verzí sady .NET SDK, které vyžadují [vyhledávání](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) v polích řetězců, které je možné prohledávat, můžete pomocí [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) a [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) zjednodušit definice polí.
+Na rozdíl od předchozích verzí sady .NET SDK, které vyžadují [vyhledávání](/dotnet/api/microsoft.azure.search.models.field.issearchable) v polích řetězců, které je možné prohledávat, můžete pomocí [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) a [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) zjednodušit definice polí.
 
-Podobně jako u předchozích verzí jsou v samotné definici stále vyžadovány další atributy. Například může být [nefiltrovaná](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [nesetříditelné](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)a vlastnost- [Face](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) , jak je znázorněno v ukázce výše. 
+Podobně jako u předchozích verzí jsou v samotné definici stále vyžadovány další atributy. Například může být [nefiltrovaná](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [nesetříditelné](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)a vlastnost- [Face](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) , jak je znázorněno v ukázce výše. 
 
 <a name="load-documents"></a>
 
@@ -166,7 +166,7 @@ Služba Azure Kognitivní hledání prohledává obsah uložený ve službě. V 
 
 V Azure Kognitivní hledání jsou dokumenty datové struktury, které jsou ve dvou vstupech k indexování a výstupy z dotazů. V případě získání z externího zdroje dat můžou být vstupy dokumentů v databázi, objektech blob v úložišti objektů BLOB nebo v dokumentech JSON na disku. V tomto příkladu pořizujeme zástupce a vkládání dokumentů JSON pro pět hotelů v samotném kódu. 
 
-Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) . IndexDocumentsBatch obsahuje kolekci [akcí](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure kognitivní hledání, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) . IndexDocumentsBatch obsahuje kolekci [akcí](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure kognitivní hledání, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. V **program.cs**vytvořte pole dokumentů a indexů a pak předejte pole do `ndexDocumentsBatch` níže uvedených dokumentů, které odpovídají indexu hotelů-Start-V11, jak je definováno třídou hotelu.
 
@@ -185,7 +185,7 @@ Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](htt
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    Po inicializaci objektu [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) jej můžete odeslat do indexu voláním [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) na objekt [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) .
+    Po inicializaci objektu [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) jej můžete odeslat do indexu voláním [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) na objekt [SearchClient](/dotnet/api/azure.search.documents.searchclient) .
 
 1. Vzhledem k tomu, že se jedná o konzolovou aplikaci, která postupně spouští všechny příkazy, přidejte mezi indexováním a dotazy 2 sekundy čekací dobu.
 
@@ -201,9 +201,9 @@ Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](htt
 
 Výsledky dotazu můžete získat ihned po indexování prvního dokumentu, ale skutečný test indexu by měl počkat, dokud nebudou všechny dokumenty indexovány.
 
-V této části se přidávají dvě části funkčnosti: logika dotazů a výsledky. Pro dotazy použijte metodu [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) . Tato metoda přebírá hledaný text (řetězec dotazu) i další [Možnosti](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions).
+V této části se přidávají dvě části funkčnosti: logika dotazů a výsledky. Pro dotazy použijte metodu [Search](/dotnet/api/azure.search.documents.searchclient.search) . Tato metoda přebírá hledaný text (řetězec dotazu) i další [Možnosti](/dotnet/api/azure.search.documents.searchoptions).
 
-Třída [searchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1) představuje výsledky.
+Třída [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1) představuje výsledky.
 
 1. V **program.cs**vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
 
@@ -267,17 +267,17 @@ Tento příklad ukazuje dva [způsoby porovnání podmínek v dotazu](search-que
 
 + Dotazy fulltextového vyhledávání pro jednu nebo více podmínek v rámci vyhledávacích polí v indexu. Prvním dotazem je úplné vyhledávání textu. Fulltextové vyhledávání vytváří skóre, které se používá k řazení výsledků.
 
-+ Filter je logický výraz, který se vyhodnocuje [přes pole](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) s hodnotou v indexu. Filtrovat dotazy buď do zahrnutí, nebo z vyloučení hodnot. V takovém případě není k dotazu filtru přidruženo žádné skóre relevance. Poslední dva dotazy ukazují hledání filtru.
++ Filter je logický výraz, který se vyhodnocuje [přes pole](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) s hodnotou v indexu. Filtrovat dotazy buď do zahrnutí, nebo z vyloučení hodnot. V takovém případě není k dotazu filtru přidruženo žádné skóre relevance. Poslední dva dotazy ukazují hledání filtru.
 
 Můžete použít fulltextové vyhledávání a filtry společně nebo samostatně.
 
-Hledání i filtry se provádějí pomocí metody [SearchClient. Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) . Vyhledávací dotaz může být předán v `searchText` řetězci, zatímco výraz filtru lze předat do vlastnosti [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter) třídy [příznacích searchOptions jsou](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) . Chcete-li filtrovat bez vyhledávání, stačí předat `"*"` `searchText` parametr metody [hledání](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) . Pokud chcete vyhledávat bez filtrování, ponechte `Filter` vlastnost nastavenou na nenastavenou hodnotu, nebo nepředávejte `SearchOptions` vůbec instanci.
+Hledání i filtry se provádějí pomocí metody [SearchClient. Search](/dotnet/api/azure.search.documents.searchclient.search) . Vyhledávací dotaz může být předán v `searchText` řetězci, zatímco výraz filtru lze předat do vlastnosti [Filter](/dotnet/api/azure.search.documents.searchoptions.filter) třídy [příznacích searchOptions jsou](/dotnet/api/azure.search.documents.searchoptions) . Chcete-li filtrovat bez vyhledávání, stačí předat `"*"` `searchText` parametr metody [hledání](/dotnet/api/azure.search.documents.searchclient.search) . Pokud chcete vyhledávat bez filtrování, ponechte `Filter` vlastnost nastavenou na nenastavenou hodnotu, nebo nepředávejte `SearchOptions` vůbec instanci.
 
 ## <a name="run-the-program"></a>Spuštění programu
 
 Stisknutím klávesy F5 znovu sestavte aplikaci a spusťte program v celém rozsahu. 
 
-Výstup obsahuje zprávy ze [Console. WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline)s přidáním informací a výsledků dotazu.
+Výstup obsahuje zprávy ze [Console. WriteLIne](/dotnet/api/system.console.writeline)s přidáním informací a výsledků dotazu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -297,4 +297,4 @@ V tomto rychlém startu v C# jste pracovali pomocí řady úkolů, abyste mohli 
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

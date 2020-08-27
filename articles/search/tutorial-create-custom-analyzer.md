@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021881"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936618"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021881"
 
 V některých případech, například s bezplatným textovým polem, stačí vybrat správný [analyzátor jazyka](index-add-language-analyzers.md) , čímž dojde ke zlepšení výsledků hledání. Některé scénáře, jako je přesně hledání telefonních čísel, adres URL nebo e-mailů, ale mohou vyžadovat použití vlastních analyzátorů.
 
-V tomto kurzu použijeme post a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/) služby Azure kognitivní hledání k těmto akcím:
+V tomto kurzu použijeme post a [rozhraní REST API](/rest/api/searchservice/) služby Azure kognitivní hledání k těmto akcím:
 
 > [!div class="checklist"]
 > * Vysvětlit, jak analyzátory fungují
@@ -201,7 +201,7 @@ Tento dotaz vrátí **tři ze čtyř očekávaných výsledků,** ale vrátí ta
 }
 ```
 
-Nyní vyhledáme číslo bez formátování.`4255550100`
+Nyní vyhledáme číslo bez formátování. `4255550100`
 
 ```http
 GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic-index/docs?api-version=2019-05-06&search=4255550100
@@ -225,7 +225,7 @@ Pokud tyto výsledky zjistíte matoucí, nejste sami. V další části se dig, 
 
 ## <a name="4---debug-search-results"></a>4 – výsledky hledání ladění
 
-Pro pochopení těchto výsledků hledání je důležité nejprve pochopit, jak analyzátory fungují. Odtud můžeme otestovat výchozí analyzátor pomocí [rozhraní analyzovat text API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a pak vytvořit analyzátor, který splňuje naše potřeby.
+Pro pochopení těchto výsledků hledání je důležité nejprve pochopit, jak analyzátory fungují. Odtud můžeme otestovat výchozí analyzátor pomocí [rozhraní analyzovat text API](/rest/api/searchservice/test-analyzer) a pak vytvořit analyzátor, který splňuje naše potřeby.
 
 ### <a name="how-analyzers-work"></a>Jak analyzátory fungují
 
@@ -260,7 +260,7 @@ Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Test Analyzer pomocí rozhraní API pro analýzu textu
 
-Azure Kognitivní hledání poskytuje [rozhraní API pro analýzu textu](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) , které umožňuje testovat analyzátory, abyste porozuměli tomu, jak zpracovávají text.
+Azure Kognitivní hledání poskytuje [rozhraní API pro analýzu textu](/rest/api/searchservice/test-analyzer) , které umožňuje testovat analyzátory, abyste porozuměli tomu, jak zpracovávají text.
 
 Rozhraní API pro analýzu textu se nazývá pomocí následujících požadavků:
 
@@ -404,7 +404,7 @@ I když pro tento scénář nepotřebujeme použít žádný z těchto filtrů, 
 
 [Filtr tokenů nGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html) rozdělí tokeny do n-gramů dané velikosti na základě `minGram` `maxGram` parametrů a.
 
-Pro nástroj Phone Analyzer nastavíme `minGram` `3` , že je to nejkratší podřetězec, který očekáváte, že uživatelé budou hledat. `maxGram`je nastavená na, aby se `20` zajistilo, že všechna telefonní čísla i s rozšířeními se budou vejít do jedné n-gramu.
+Pro nástroj Phone Analyzer nastavíme `minGram` `3` , že je to nejkratší podřetězec, který očekáváte, že uživatelé budou hledat. `maxGram` je nastavená na, aby se `20` zajistilo, že všechna telefonní čísla i s rozšířeními se budou vejít do jedné n-gramu.
 
  Unfortunate vedlejším účinkem n-gramů je, že se vrátí některá falešně pozitivní. V kroku 7 tuto chybu vyřešíme vytvořením samostatné analyzátoru pro hledání, která nezahrnuje filtr tokenů n-gramů.
 
@@ -586,7 +586,7 @@ I když analyzátor definovaný v tomto kurzu nabízí jednoduché řešení pro
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

@@ -3,12 +3,12 @@ title: Plánování aplikace – LUIS
 description: Vyosnovujte relevantní záměry aplikací a entity a pak vytvořte svoje plány aplikací v Language Understanding inteligentní služby (LUIS).
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340228"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892911"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plánování schématu aplikace LUIS s využitím domény a extrakce dat předmětu
 
@@ -64,7 +64,7 @@ Vezměte v úvahu následující dva projevyy, které se velmi blíží výběru
 
 Místo toho, abyste měli dva samostatné záměry, vytvořte jeden záměr s `FlightAction` entitou strojového učení. Entita strojového učení by měla extrahovat podrobnosti o akci pro plánování i zrušení žádosti, a to i v případě původu nebo cílového umístění.
 
-`FlightAction`Entita by byla strukturována v následujícím schématu suedo a entitách strojového učení a podentitami:
+`FlightAction`Entita by byla strukturovaná v následujícím pseudo schématu entity Machine Learning a subentity:
 
 * FlightAction
     * Akce

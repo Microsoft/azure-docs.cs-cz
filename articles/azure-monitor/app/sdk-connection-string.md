@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383626"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936414"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -56,19 +56,19 @@ Připojení má maximální podporovanou délku 4096 znaků.
 
 #### <a name="key-value-pairs"></a>Páry klíč-hodnota
 
-Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako páry klíč-hodnota oddělených středníkem:`key1=value1;key2=value2;key3=value3`
+Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako páry klíč-hodnota oddělených středníkem: `key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntaxe
+#### <a name="syntax"></a>Syntax
 
-- `InstrumentationKey`(např.: 00000000-0000-0000-0000-000000000000)  Připojovací řetězec je **povinné** pole.
-- `Authorization`(např.: ikey) (Toto nastavení je volitelné, protože dnes podporujeme jenom autorizaci ikey.)
-- `EndpointSuffix`(např.: applicationinsights.azure.cn) Nastavením přípony koncového bodu budete dát pokyn k sadě SDK, ke které se cloud Azure připojuje. Sada SDK bude sestavovat zbytek koncového bodu pro jednotlivé služby.
+- `InstrumentationKey` (např.: 00000000-0000-0000-0000-000000000000)  Připojovací řetězec je **povinné** pole.
+- `Authorization` (např.: ikey) (Toto nastavení je volitelné, protože dnes podporujeme jenom autorizaci ikey.)
+- `EndpointSuffix` (např.: applicationinsights.azure.cn) Nastavením přípony koncového bodu budete dát pokyn k sadě SDK, ke které se cloud Azure připojuje. Sada SDK bude sestavovat zbytek koncového bodu pro jednotlivé služby.
 - Explicitní koncové body.
   Jakoukoli službu lze explicitně přepsat v připojovacím řetězci.
-   - `IngestionEndpoint`(např. `https://dc.applicationinsights.azure.com` )
-   - `LiveEndpoint`(např. `https://live.applicationinsights.azure.com` )
-   - `ProfilerEndpoint`(např. `https://profiler.applicationinsights.azure.com` )
-   - `SnapshotEndpoint`(např. `https://snapshot.applicationinsights.azure.com` )
+   - `IngestionEndpoint` (např. `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint` (např. `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint` (např. `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint` (např. `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Schéma koncového bodu
 
@@ -83,15 +83,15 @@ Tady je seznam platných přípon.
 - applicationinsights.us
 
 
-Viz také:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Viz také: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
 ##### <a name="valid-prefixes"></a>Platné předpony
 
-- [Přijímání telemetrie](./app-insights-overview.md):`dc`
-- [Živé metriky](./live-stream.md):`live`
-- [Profiler](./profiler-overview.md):`profiler`
-- [Snímek](./snapshot-debugger.md):`snapshot`
+- [Přijímání telemetrie](./app-insights-overview.md): `dc`
+- [Živé metriky](./live-stream.md): `live`
+- [Profiler](./profiler-overview.md): `profiler`
+- [Snímek](./snapshot-debugger.md): `snapshot`
 
 
 
@@ -107,10 +107,10 @@ V tomto příkladu se nastavil jenom klíč instrumentace.
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na [výchozích hodnotách sady SDK](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) a připojovat se k veřejnému globálnímu Azure:
-   - Ingestování`https://dc.services.visualstudio.com/`
-   - Živé metriky:`https://rt.services.visualstudio.com/`
-   - Modulu`https://agent.azureserviceprofiler.net/`
-   - Ladění`https://agent.azureserviceprofiler.net/`
+   - Ingestování `https://dc.services.visualstudio.com/`
+   - Živé metriky: `https://rt.services.visualstudio.com/`
+   - Modulu `https://agent.azureserviceprofiler.net/`
+   - Ladění `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -123,10 +123,10 @@ V tomto příkladu tento připojovací řetězec Určuje příponu koncového bo
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na zadané příponě koncového bodu: 
-   - Ingestování`https://dc.ai.contoso.com`
-   - Živé metriky:`https://live.ai.contoso.com`
-   - Modulu`https://profiler.ai.contoso.com`
-   - Ladění`https://snapshot.ai.contoso.com`  
+   - Ingestování `https://dc.ai.contoso.com`
+   - Živé metriky: `https://live.ai.contoso.com`
+   - Modulu `https://profiler.ai.contoso.com`
+   - Ladění `https://snapshot.ai.contoso.com`  
 
 
 
@@ -139,10 +139,10 @@ V tomto příkladu tento připojovací řetězec Určuje Explicitní přepsání
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na explicitních hodnotách přepsání: 
-   - Ingestování`https://custom.com:111/`
-   - Živé metriky:`https://custom.com:222/`
-   - Modulu`https://custom.com:333/`
-   - Ladění`https://custom.com:444/`  
+   - Ingestování `https://custom.com:111/`
+   - Živé metriky: `https://custom.com:222/`
+   - Modulu `https://custom.com:333/`
+   - Ladění `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Nastavení připojovacího řetězce
@@ -160,11 +160,11 @@ Připojovací řetězec může být nastaven buď v kódu, v proměnné prostře
 
 ### <a name="environment-variable"></a>Proměnná prostředí
 
-- Připojovací řetězec:`APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Připojovací řetězec: `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetryConfiguration. ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration. ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 Explicitně nastavené rozhraní .NET:
 ```csharp

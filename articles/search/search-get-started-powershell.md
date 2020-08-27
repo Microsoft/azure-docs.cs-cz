@@ -9,31 +9,31 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b95880c8cdda67f895615f9a3ba8daf3ab5e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506001"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935872"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rychlý Start: vytvoření indexu Azure Kognitivní hledání v PowerShellu pomocí rozhraní REST API
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Post (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Azure Portal](search-get-started-portal.md)
 > 
 
-Tento článek vás provede procesem vytvoření, načtení a dotazování indexu služby Azure Kognitivní hledání pomocí prostředí PowerShell a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
+Tento článek vás provede procesem vytvoření, načtení a dotazování indexu služby Azure Kognitivní hledání pomocí prostředí PowerShell a [rozhraní REST API azure kognitivní hledání](/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [PowerShell 5,1 nebo novější, pomocí rutiny](https://github.com/PowerShell/PowerShell) [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
++ [PowerShell 5,1 nebo novější, pomocí rutiny](https://github.com/PowerShell/PowerShell) [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
 
 + [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
@@ -85,7 +85,7 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok definuje index a odešle ho do služby. Pro tento krok se používá [REST API vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok definuje index a odešle ho do služby. Pro tento krok se používá [REST API vytvoření indexu](/rest/api/searchservice/create-index) .
 
 Požadované prvky indexu zahrnují název a kolekci polí. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo získatelné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
 
@@ -179,7 +179,7 @@ Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které 
 
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-K odeslání dokumentu použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API pro tento úkol je [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+K odeslání dokumentu použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API pro tento úkol je [Přidání, aktualizace nebo odstranění dokumentů](/rest/api/searchservice/addupdate-or-delete-documents).
 
 1. Vložte tento příklad do PowerShellu a vytvořte objekt **$body** obsahující dokumenty, které chcete nahrát. 
 
@@ -281,7 +281,7 @@ K odeslání dokumentu použijte požadavek HTTP POST na koncový bod adresy URL
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Výsledky by měly vypadat podobně jako v následujícím příkladu. Měl by se zobrazit [stavový kód 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    Výsledky by měly vypadat podobně jako v následujícím příkladu. Měl by se zobrazit [stavový kód 201](/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,7 +317,7 @@ K odeslání dokumentu použijte požadavek HTTP POST na koncový bod adresy URL
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [rozhraní API pro hledání dokumentů](/rest/api/searchservice/search-documents).
 
 Nezapomeňte použít jednoduché uvozovky při hledání $urls. Řetězce dotazů obsahují **$** znaky a je možné je vynechat, pokud je celý řetězec uzavřen v jednoduchých uvozovkách.
 

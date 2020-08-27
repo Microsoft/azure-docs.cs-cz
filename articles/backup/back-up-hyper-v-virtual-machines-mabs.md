@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823960"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892809"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -149,7 +149,7 @@ Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obno
     - Pokud jste nakonfigurovali síť, vyberte **Použít obnovení založené na síti SAN za využití snímků hardwaru**.
     - Pokud chcete po dokončení procesu obnovení dostat e-mailové upozornění, vyberte **Odeslat e-mail po dokončení obnovení** a pak zadejte e-mailovou adresu.
 
-6. Na obrazovce Souhrn zkontrolujte, jestli jsou všechny podrobnosti správné. Pokud podrobnosti nejsou správné nebo chcete provést změnu, klikněte na tlačítko **Zpět**. Pokud jste s nastavením spokojení, kliknutím na tlačítko **Obnovit** spustíte proces obnovení.
+6. Na obrazovce Souhrn zkontrolujte, jestli jsou všechny podrobnosti správné. Pokud podrobnosti nejsou správné nebo chcete provést změnu, klikněte na tlačítko **Zpět**. Pokud jste s nastavením spokojeni, kliknutím na **obnovit** spusťte proces obnovení.
 
 7. Obrazovka **Stav obnovení Status** poskytuje informace o úloze obnovení.
 

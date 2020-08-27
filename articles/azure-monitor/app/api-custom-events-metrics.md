@@ -3,13 +3,13 @@ title: Application Insights rozhraní API pro vlastní události a metriky | Mic
 description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte do svého zařízení nebo do aplikace, webové stránky nebo služby pár řádků kódu.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366868"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936567"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -59,7 +59,7 @@ Získat instanci `TelemetryClient` (kromě v jazyce JavaScript na webových str�
 
 Pro aplikace [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) a [non http/Worker pro .NET/.NET Core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) se doporučuje získat instanci `TelemetryClient` z kontejneru injektáže vkládání závislostí, jak je vysvětleno v příslušné dokumentaci.
 
-Pokud používáte AzureFunctions v2 + nebo Azure WebJobs v3 +, postupujte podle tohoto dokumentu:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+Pokud používáte AzureFunctions v2 + nebo Azure WebJobs v3 +, postupujte podle tohoto dokumentu: https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -204,8 +204,8 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 Telemetrii je k dispozici v `customMetrics` tabulce v [Application Insights Analytics](../log-query/log-query-overview.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
 
-* `valueSum`– Toto je součet měření. Chcete-li získat střední hodnotu, rozdělte `valueCount` .
-* `valueCount`– Počet měření, které byly agregovány do tohoto `trackMetric(..)` volání.
+* `valueSum` – Toto je součet měření. Chcete-li získat střední hodnotu, rozdělte `valueCount` .
+* `valueCount` – Počet měření, které byly agregovány do tohoto `trackMetric(..)` volání.
 
 ## <a name="page-views"></a>Zobrazení stránek
 
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
 *C#*
 
@@ -825,7 +825,7 @@ Všimněte si, že:
 * Když extrahujete hodnotu z formátu JSON customDimensions nebo customMeasurements, má dynamický typ, takže je nutné ji přetypovat `tostring` nebo `todouble` .
 * K zohlednění možnosti [vzorkování](./sampling.md)byste měli použít `sum(itemCount)` , ne `count()` .
 
-## <a name="timing-events"></a><a name="timed"></a>Události časování
+## <a name="timing-events"></a><a name="timed"></a> Události časování
 
 V některých případech je třeba, aby bylo možné graf, jak dlouho trvá provedení akce. Můžete například chtít zjistit, jak dlouho uživatelé berou v úvahu volby ve hře. Pro tuto možnost lze použít parametr měření.
 
@@ -972,7 +972,7 @@ applicationInsights.setup()
     .start();
 ```
 
-Chcete-li zakázat tyto sběrače po inicializaci, použijte objekt konfigurace:`applicationInsights.Configuration.setAutoCollectRequests(false)`
+Chcete-li zakázat tyto sběrače po inicializaci, použijte objekt konfigurace: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="developer-mode"></a><a name="debug"></a>Vývojářský režim
 
@@ -1001,7 +1001,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>Nastavení klíče instrumentace pro vybranou vlastní telemetrii
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> Nastavení klíče instrumentace pro vybranou vlastní telemetrii
 
 *C#*
 
@@ -1011,7 +1011,7 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamický klíč instrumentace
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamický klíč instrumentace
 
 Abyste se vyhnuli smíchání telemetrie od vývojových, testovacích a produkčních prostředí, můžete [vytvořit samostatné prostředky Application Insights](./create-new-resource.md) a změnit jejich klíče v závislosti na prostředí.
 
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

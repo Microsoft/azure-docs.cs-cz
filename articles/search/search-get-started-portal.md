@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935309"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Průvodce **importem dat** je Azure Portal nástroj, který vás provede vytvoř
 
 Průvodce má také stránky pro rozšíření AI, takže můžete extrahovat text a strukturu ze souborů obrázků a nestrukturovaného textu. Zpracování obsahu pomocí AI zahrnuje optické rozpoznávání znaků (OCR), klíčové fráze a extrakci entit a analýzu obrázků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -136,11 +136,11 @@ Kdykoli lze přidat další konstrukce, jako jsou bodovací profily a možnosti 
 
 Vyhraďte si chvilku na prostudování možností definice indexu, abyste dobře chápali, co všechno můžete při návrhu indexu upravovat, a co naopak ne. Možnosti zobrazené šedě naznačují, že se určitá hodnota nedá upravit nebo odstranit. 
 
-## <a name="query-using-search-explorer"></a><a name="query-index"></a>Dotaz pomocí Průzkumníka vyhledávání
+## <a name="query-using-search-explorer"></a><a name="query-index"></a> Dotaz pomocí Průzkumníka vyhledávání
 
 Teď už byste měli mít vyhledávací index, který je připravený na dotazování pomocí integrované stránky dotazů [**Průzkumník služby Hledání**](search-explorer.md). Ta obsahuje vyhledávací pole, ve kterém si můžete otestovat libovolné řetězce dotazů.
 
-**Průzkumník služby Search** je vybaven pouze pro zpracování [požadavků REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchou syntaxi dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [úplný analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)a navíc všechny parametry hledání, které jsou k dispozici v [dokumentu hledání REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) operace.
+**Průzkumník služby Search** je vybaven pouze pro zpracování [požadavků REST API](/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchou syntaxi dotazu](/rest/api/searchservice/simple-query-syntax-in-azure-search) i [úplný analyzátor dotazů Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search)a navíc všechny parametry hledání, které jsou k dispozici v [dokumentu hledání REST API](/rest/api/searchservice/search-documents#bkmk_examples) operace.
 
 > [!TIP]
 > Následující kroky jsou popsané v 6m08s na video s [přehledem Azure kognitivní hledání](https://channel9.msdn.com/Events/Connect/2016/138).
@@ -150,7 +150,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. V rozevíracím seznamu **index** vyberte *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2020-06-30).
+2. V rozevíracím seznamu **index** vyberte  *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2020-06-30).
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -164,7 +164,7 @@ Můžete zadat podmínky a fráze, podobně jako na to, co můžete dělat v Bin
 
 ### <a name="simple-query-with-top-n-results"></a>Jednoduchý dotaz s horními N výsledky
 
-#### <a name="example-string-query-searchspa"></a>Příklad (dotaz na řetězec):`search=spa`
+#### <a name="example-string-query-searchspa"></a>Příklad (dotaz na řetězec): `search=spa`
 
 * Parametr **Search** se používá k zadání klíčového slova pro fulltextové vyhledávání. v tomto případě vrátí data hotelu pro ty, které obsahují *Spa* , do libovolného vyhledávacího pole v dokumentu.
 
@@ -172,7 +172,7 @@ Můžete zadat podmínky a fráze, podobně jako na to, co můžete dělat v Bin
 
 * Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. Chcete-li zobrazit atributy indexu na portálu, klikněte na možnost *hotely – ukázka* v seznamu **indexy** .
 
-#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Příklad (parametrizovaný dotaz):`search=spa&$count=true&$top=10`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Příklad (parametrizovaný dotaz): `search=spa&$count=true&$top=10`
 
 * **&** Symbol slouží k připojení parametrů vyhledávání, které lze zadat v libovolném pořadí.
 
@@ -188,7 +188,7 @@ Filtry se do požadavků hledání zahrnou po připojení parametru **$filter**.
 
 * Parametr **$filter** vrací výsledky odpovídající kritériím, která jste zadali. V tomto případě hodnocení větší než 4.
 
-* Syntaxe parametru Filter je založená na konstruktech jazyka OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+* Syntaxe parametru Filter je založená na konstruktech jazyka OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a>Omezení vlastností dotazu
 
@@ -207,7 +207,7 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 
 * Kategorizovat je možné pouze filtrovatelná pole. Ve výsledcích je možné vrátit pouze zobrazitelná pole.
 
-* Pole *hodnocení* je plovoucí desetinná čárka dvojitá přesnost a seskupení bude podle přesné hodnoty. Další informace o seskupení podle intervalu (například hodnocení 3 hvězdičky, hodnocení 4 hvězdičkami atd.) najdete v tématu [implementace omezujících možností navigace v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* Pole *hodnocení* je plovoucí desetinná čárka dvojitá přesnost a seskupení bude podle přesné hodnoty. Další informace o seskupení podle intervalu (například hodnocení 3 hvězdičky, hodnocení 4 hvězdičkami atd.) najdete v tématu [implementace omezujících možností navigace v Azure kognitivní hledání](./search-faceted-navigation.md#filter-based-on-a-range).
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Zvýraznění výsledků hledání
@@ -240,11 +240,11 @@ Pokud parametr **queryType** není zadaný, použije se výchozí jednoduchý an
 
 Vyhledávání přibližných shod a vyhledávání pomocí zástupných znaků mají vliv na výstup hledání. U těchto formátů dotazů se neprovádí lingvistická analýza. Než začnete používat hledání přibližné a zástupných znaků, přečtěte si, [Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md#stage-2-lexical-analysis) a vyhledejte část o výjimkách lexikálních analýz.
 
-Další informace o scénářích dotazů povolených úplným analyzátorem dotazů najdete [v tématu Syntaxe dotazů Lucene v Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+Další informace o scénářích dotazů povolených úplným analyzátorem dotazů najdete [v tématu Syntaxe dotazů Lucene v Azure kognitivní hledání](/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a>Vyzkoušení geoprostorového hledání
 
- Geoprostorové hledání je podporované prostřednictvím [datového typu edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) v polích, které obsahují souřadnice. Geoprostorové hledání je typ filtru určený v [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+ Geoprostorové hledání je podporované prostřednictvím [datového typu edm.GeographyPoint](/rest/api/searchservice/supported-data-types) v polích, které obsahují souřadnice. Geoprostorové hledání je typ filtru určený v [syntaxi jazyka OData pro filtry](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Příklad (filtry geografických souřadnic): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Geoprostorové hledání je užitečné, pokud vaše vyhledávací aplikace obsa
 
 V tomto kurzu najdete rychlý Úvod k Azure Kognitivní hledání pomocí Azure Portal.
 
-Zjistili jste, jak vytvořit index vyhledávání pomocí průvodce pro **Import dat**. Dozvěděli jste se o [indexerech](search-indexer-overview.md) a také o základních pracovních postupech návrhu indexu, včetně [podporovaných úprav publikovaného indexu](https://docs.microsoft.com/rest/api/searchservice/update-index).
+Zjistili jste, jak vytvořit index vyhledávání pomocí průvodce pro **Import dat**. Dozvěděli jste se o [indexerech](search-indexer-overview.md) a také o základních pracovních postupech návrhu indexu, včetně [podporovaných úprav publikovaného indexu](/rest/api/searchservice/update-index).
 
 V **průzkumníku služby Search** na webu Azure Portal jste se prostřednictvím praktických příkladů klíčových funkcí, jako jsou filtry, zvýrazňování shod, vyhledávání přibližných shod a geografické vyhledávání, seznámili se syntaxí dotazů.
 
@@ -264,7 +264,7 @@ Zjistili jste také, jak na portálu najít indexy, indexery a zdroje dat. Pomoc
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -280,4 +280,4 @@ Pomocí Průvodce portálem vygenerujte webovou aplikaci připravenou k použit�
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

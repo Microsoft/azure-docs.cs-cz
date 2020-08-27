@@ -3,14 +3,14 @@ title: Použití Azure AD ve službě Azure Kubernetes
 description: Naučte se používat Azure AD ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661057"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936992"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -37,17 +37,19 @@ Integrace Azure Active Directory spravovaná v AKS je dostupná ve veřejných o
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Azure CLI verze 2.9.0 nebo novější
-* Kubectl s minimální verzí [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180)
+* Azure CLI verze 2.11.0 nebo novější
+* Kubectl s minimální verzí [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) nebo [kubelogin](https://github.com/Azure/kubelogin)
+* Pokud používáte [Helm](https://github.com/helm/helm), minimální verze Helm 3,3.
 
 > [!Important]
-> Je nutné použít Kubectl s minimální verzí 1,18.
+> Je nutné použít Kubectl s minimální verzí 1.18.1 nebo kubelogin. Pokud nepoužíváte správnou verzi, všimnete si potíží s ověřováním.
 
-K instalaci kubectl použijte následující příkazy:
+K instalaci kubectl a kubelogin použijte následující příkazy:
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 [Tyto pokyny](https://kubernetes.io/docs/tasks/tools/install-kubectl/) použijte pro jiné operační systémy.

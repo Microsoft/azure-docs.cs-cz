@@ -8,19 +8,19 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e35ba083e376f519ccbc32c71c1ac9b1e03a41
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080751"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935292"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>Vnímání zjistitelnosti PII
 
 > [!IMPORTANT] 
 > Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
-Dovednost **detekce PII** získává osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+Dovednost **detekce PII** získává osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](../cognitive-services/text-analytics/overview.md) .
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -32,32 +32,32 @@ Dovednost **detekce PII** získává osobní údaje ze vstupního textu a poskyt
 Microsoft. dovednosti. text. PIIDetectionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
-| Název parametru     | Description |
+| Název parametru     | Popis |
 |--------------------|-------------|
 | `defaultLanguageCode` |    Kód jazyka vstupního textu V současné době `en` se podporuje jenom. |
 | `minimumPrecision` | Hodnota mezi 0,0 a 1,0. Pokud je výsledek spolehlivosti (ve `piiEntities` výstupu) nižší než hodnota nastavená `minimumPrecision` , entita se nevrátí ani nemaskuje. Výchozí hodnota je 0,0. |
-| `maskingMode` | Parametr, který poskytuje různé způsoby, jak maskovat zjištěné PII ve vstupním textu. Podporovány jsou následující možnosti: <ul><li>`none`(výchozí): to znamená, že se neprovede žádné maskování a `maskedText` Výstup nebude vrácen. </li><li> `redact`: Tato možnost odebere zjištěné entity ze vstupního textu a nenahradí je cokoli. Všimněte si, že v tomto případě bude posun ve `piiEntities` výstupu ve vztahu k původnímu textu, a ne maskovanému textu. </li><li> `replace`: Tato možnost nahradí zjištěné entity znakem uvedeným v `maskingCharacter` parametru.  Znak se zopakuje na délku zjištěné entity, takže posuny budou správně odpovídat vstupnímu textu i výstupu `maskedText` .</li></ul> |
+| `maskingMode` | Parametr, který poskytuje různé způsoby, jak maskovat zjištěné PII ve vstupním textu. Podporovány jsou následující možnosti: <ul><li>`none` (výchozí): to znamená, že se neprovede žádné maskování a `maskedText` Výstup nebude vrácen. </li><li> `redact`: Tato možnost odebere zjištěné entity ze vstupního textu a nenahradí je cokoli. Všimněte si, že v tomto případě bude posun ve `piiEntities` výstupu ve vztahu k původnímu textu, a ne maskovanému textu. </li><li> `replace`: Tato možnost nahradí zjištěné entity znakem uvedeným v `maskingCharacter` parametru.  Znak se zopakuje na délku zjištěné entity, takže posuny budou správně odpovídat vstupnímu textu i výstupu `maskedText` .</li></ul> |
 | `maskingCharacter` | Znak, který bude použit k maskování textu v případě, že `maskingMode` je parametr nastaven na hodnotu `replace` . Podporovány jsou následující možnosti: `*` (výchozí), `#` , `X` . Tento parametr může být pouze v `null` případě, že není `maskingMode` nastaven na hodnotu `replace` . |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Description                   |
+| Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | `languageCode`    | Nepovinný parametr. Výchozí je `en`.  |
 | `text`          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu      | Description                   |
+| Název výstupu      | Popis                   |
 |---------------|-------------------------------|
-| `piiEntities` | Pole komplexních typů, které obsahují následující pole: <ul><li>text (skutečný PII jako extrahovaný)</li> <li>typ</li><li>Podtyp</li><li>skóre (vyšší hodnota znamená, že je pravděpodobnější, že se jedná o skutečnou entitu)</li><li>posun (do vstupního textu)</li><li>length</li></ul> </br> [Možné typy a podtypy lze nalézt zde.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `piiEntities` | Pole komplexních typů, které obsahují následující pole: <ul><li>text (skutečný PII jako extrahovaný)</li> <li>typ</li><li>Podtyp</li><li>skóre (vyšší hodnota znamená, že je pravděpodobnější, že se jedná o skutečnou entitu)</li><li>posun (do vstupního textu)</li><li>length</li></ul> </br> [Možné typy a podtypy lze nalézt zde.](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
 | `maskedText` | Pokud `maskingMode` je hodnota nastavena na jinou hodnotu než `none` , bude tento výstup výsledkem řetězce maskování provedeného na vstupním textu, jak je popsáno ve vybraném `maskingMode` .  Pokud `maskingMode` je nastaveno na `none` , nebude tento výstup k dispozici. |
 
 ##    <a name="sample-definition"></a>Definice vzorku
@@ -85,7 +85,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
     ]
   }
 ```
-##    <a name="sample-input"></a>Vzorový vstup
+##    <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -127,7 +127,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 }
 ```
 
-Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](../cognitive-services/text-analytics/overview.md), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-and-warning-cases"></a>Případy chyb a varování
 Pokud kód jazyka pro dokument není podporován, je vrácena upozornění a extrahovány žádné entity.

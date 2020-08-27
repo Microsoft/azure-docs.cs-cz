@@ -4,14 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 548d324a67b1bbee4741724faf2cf27ec6c3c3c1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754651"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925394"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -85,7 +86,7 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
 1. V **Průzkumník řešení**otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` . (Je seskupena pod `MainPage.xaml` .) Obsah tohoto souboru nahraďte níže, která zahrnuje:
 
-- `using`příkazy pro `Speech` `Speech.Dialog` obory názvů a
+- `using` příkazy pro `Speech` `Speech.Dialog` obory názvů a
 - Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
 - Základní pomocníky uživatelského rozhraní pro prezentování zpráv a chyb v aplikaci
 - Místo pro cestu inicializačního kódu, který se naplní později

@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ebeea9cd6e928a9d9d77a8475cee774f3d33b28e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5903d6c58e080b658bbd80a5f774b441d6c91b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752964"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936859"
 ---
 <a name="HOLTop"></a>
 

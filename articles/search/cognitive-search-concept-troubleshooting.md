@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510862"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935462"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro rozšíření AI v Azure Kognitivní hledání
 
@@ -54,7 +54,7 @@ V takovém případě může být vhodné říct indexeru, aby ignoroval chyby. 
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tip 4: použití relací ladění k identifikaci a řešení problémů s dovednosti 
 
-Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a potvrzovat změny v produkčním dovednosti v kanálu pro rozšíření AI. Tato funkce verze Preview [si přečte dokumentaci](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Další informace o konceptech a o tom, jak začít, najdete v tématu [relace ladění](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a potvrzovat změny v produkčním dovednosti v kanálu pro rozšíření AI. Tato funkce verze Preview [si přečte dokumentaci](./cognitive-search-debug-session.md). Další informace o konceptech a o tom, jak začít, najdete v tématu [relace ladění](./cognitive-search-tutorial-debug-sessions.md).
 
 Relace ladění fungují na jednom dokumentu, což je skvělý způsob, jak iterativním sestavovat složitější kanály pro obohacení.
 

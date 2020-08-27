@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564445"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924973"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
 
@@ -37,7 +37,7 @@ Azure Kognitivní hledání má závislost na Cognitive Services, včetně [poč
 
 ## <a name="same-region-requirement"></a>Požadavek stejné oblasti
 
-Vyžadujeme, aby Azure Kognitivní hledání a Azure Cognitive Services existovaly ve stejné oblasti. V opačném případě se tato zpráva zobrazí v době běhu:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Vyžadujeme, aby Azure Kognitivní hledání a Azure Cognitive Services existovaly ve stejné oblasti. V opačném případě se tato zpráva zobrazí v době běhu: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobrazí tato chyba, měli byste vytvořit nový prostředek Cognitive Services ve stejné oblasti jako Azure Kognitivní hledání.
 
@@ -170,5 +170,5 @@ To všechno dohromady zaplatíte přibližně $57,00, abyste ingestují 1 000 do
 ## <a name="next-steps"></a>Další kroky
 + [Stránka s cenami za Azure Kognitivní hledání](https://azure.microsoft.com/pricing/details/search/)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

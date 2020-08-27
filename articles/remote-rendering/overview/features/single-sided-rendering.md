@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 1a9f80166e47b17644b37d4bc9b93e1abefe3432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aff636adff48a8882c152eab398a96a8d28f84e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022756"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892741"
 ---
-# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided":::vykreslování
+# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: vykreslování
 
 Většina zobrazovacích ploch používá ke zvýšení výkonu [odstranení zadní plochy](https://en.wikipedia.org/wiki/Back-face_culling) . Pokud jsou ale sítě vyjmuté z oblasti [vyjmuté plochy](cut-planes.md), budou se uživatelé často zobrazovat na zadní straně trojúhelníků. Pokud jsou tyto trojúhelníky poraženy, výsledek nevypadá jako přesvědčivý.
 
@@ -23,11 +23,11 @@ Nastavení * :::no-loc text="single-sided"::: vykreslování* umožňuje přizp�
 > [!CAUTION]
 > :::no-loc text="single-sided":::Nastavení vykreslování je experimentální funkce. V budoucnu se může znovu odebrat. Neměňte prosím výchozí nastavení, pokud skutečně neřeší kritickou chybu ve vaší aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 :::no-loc text="single-sided":::Nastavení vykreslení má pouze efekt pro sítě, které byly [převedeny](../../how-tos/conversion/configure-model-conversion.md) s `opaqueMaterialDefaultSidedness` možností nastavenou na `SingleSided` . Ve výchozím nastavení je tato možnost nastavena na hodnotu `DoubleSided` .
 
-## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided":::nastavení vykreslování
+## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided"::: nastavení vykreslování
 
 Existují tři různé režimy:
 
@@ -55,13 +55,13 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```cpp
 void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
-    settings->Mode(SingleSidedMode::Normal);
+    settings->SetMode(SingleSidedMode::Normal);
 
     // Single-sided geometry is always rendered double-sided
-    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
+    settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

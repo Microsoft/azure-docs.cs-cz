@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448847"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935598"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly služby Azure Monitor pro veřejný Load Balancer úrovně Basic
 
@@ -29,13 +29,13 @@ Pomocí různých typů protokolů v Azure můžete spravovat a řešit základn
 * **Protokoly sondy stavu:** Pomocí tohoto protokolu můžete zobrazit problémy zjištěné sondou stavu, jako je počet instancí ve fondu back-end, který nepřijímá požadavky z nástroje pro vyrovnávání zatížení z důvodu selhání sondy stavu. Do tohoto protokolu se zapisuje, když dojde ke změně stavu sondy stavu.
 
 > [!IMPORTANT]
-> **Protokoly událostí sondy stavu nejsou v současné době funkční a jsou uvedeny ve [známých problémech pro Azure Load Balancer](whats-new.md#known-issues).** Protokoly Azure Monitor aktuálně fungují pouze pro veřejné základní nástroje pro vyrovnávání zatížení. Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Správce prostředků. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Další informace o modelech nasazení najdete v tématu [Principy nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/management/deployment-models.md).
+> **Protokoly událostí sondy stavu nejsou v současné době funkční a jsou uvedeny ve [známých problémech pro Azure Load Balancer](whats-new.md#known-issues).** Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Správce prostředků. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Další informace o modelech nasazení najdete v tématu [Principy nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Povolte protokolování událostí a sondy stavu, abyste mohli začít shromažďovat data dostupná přes tyto protokoly. K povolení protokolování použijte následující postup.
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Na portálu klikněte na **skupiny prostředků**.
 2. Vyberte **\<resource-group-name>** , kde je nástroj pro vyrovnávání zatížení.

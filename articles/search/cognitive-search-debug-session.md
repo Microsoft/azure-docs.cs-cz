@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560370"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936159"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
 
@@ -95,4 +95,4 @@ Ladění sesisons práce s využitím všech všeobecně dostupných zdrojů dat
 Teď, když rozumíte prvkům ladicích relací, vyzkoušejte si kurz pro praktické prostředí.
 
 > [!div class="nextstepaction"]
-> [Kurz k procházení funkcí cvičení ladění](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)
+> [Kurz k procházení funkcí cvičení ladění](./cognitive-search-tutorial-debug-sessions.md)

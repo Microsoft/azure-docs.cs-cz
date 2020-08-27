@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827133"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892571"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -169,7 +169,7 @@ První sloupec (PV) zobrazuje fyzický svazek. následující sloupce zobrazují
 
 ###### <a name="duplicate-volume-groups"></a>Duplicitní skupiny svazků
 
-K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, kde je skript spuštěný, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na příklad níže.
+K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. To znamená, že názvy skupin svazků v počítači, kde je skript spuštěný, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na příklad níže.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -348,7 +348,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte při obnovování souborů z virtuálních počítačů problémy, další informace najdete v následující tabulce.
 
