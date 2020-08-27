@@ -4,14 +4,15 @@ description: V mnoha scénářích škálování zákazník často potřebuje z�
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158156"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921983"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat službu signálu pomocí více instancí?
 Nejnovější sada SDK služby signalizace podporuje více koncových bodů pro instance služby Signal. Pomocí této funkce můžete škálovat souběžná připojení nebo je použít pro zasílání zpráv mezi oblastmi.
@@ -217,7 +218,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `ServiceEndpoint`Objekt má `EndpointType` vlastnost s hodnotou `primary` nebo `secondary` .
 
-`primary`koncové body jsou upřednostňovanými koncovými body pro příjem klientského provozu a považují se za spolehlivější síťová připojení. `secondary`koncovým bodům se považují méně spolehlivá síťová připojení a používají se pouze k přebírání přenosů mezi servery, například při vysílání zpráv, nikoli pro přenos klientů na server.
+`primary` koncové body jsou upřednostňovanými koncovými body pro příjem klientského provozu a považují se za spolehlivější síťová připojení. `secondary` koncovým bodům se považují méně spolehlivá síťová připojení a používají se pouze k přebírání přenosů mezi servery, například při vysílání zpráv, nikoli pro přenos klientů na server.
 
 V případech různých oblastí může být síť nestabilní. U jednoho serveru aplikace umístěného v *východní USA*se koncový bod služby Signal umístěný ve stejné *východní USA* oblasti dá nakonfigurovat jako `primary` a koncové body v jiných oblastech označených jako `secondary` . V této konfiguraci můžou koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *východní USA* serveru aplikace, ale na tento aplikační server se nesměrují žádní klienti pro **různé oblasti** . Architektura se zobrazuje v následujícím diagramu:
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985780"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918124"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
@@ -27,12 +27,15 @@ Pomocí následujících možností můžete nakonfigurovat nastavení DNS priv�
 - **Použijte službu DNS pro přeposílání (volitelné)**. K přepsání překladu DNS pro konkrétní prostředek privátního propojení můžete použít server DNS pro přeposílání. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
  
 > [!IMPORTANT]
-> Nedoporučujeme potlačit zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 
+> Nedoporučuje se přepsat zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Konfigurace zóny DNS služeb Azure
 Služba Azure ve veřejné službě DNS vytvoří záznam DNS kanonického názvu (CNAME), který přesměruje řešení na navrhovaný název privátní domény. Řešení můžete přepsat privátní IP adresou vašich privátních koncových bodů. 
  
 Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pomocí veřejné služby DNS se teď server DNS bude překládat na vaše privátní koncové body. Proces nemá vliv na vaše stávající aplikace. 
+
+> [!IMPORTANT]
+> Privátní sítě, které už používají privátní zónu DNS pro daný typ, se můžou připojovat k veřejným prostředkům jenom v případě, že nemají žádná připojení privátního koncového bodu, jinak se v privátní zóně DNS vyžaduje odpovídající konfigurace DNS, aby bylo možné dokončit pořadí překladu DNS. 
 
 Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následující tabulce:
 
@@ -100,7 +103,7 @@ Ke správné konfiguraci potřebujete tyto prostředky:
 
 - Klientská virtuální síť
 
-- Privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md) zóny s [typem záznamu](../dns/dns-zones-records.md#record-types)
+- Privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md)  zóny s [typem záznamu](../dns/dns-zones-records.md#record-types)
 
 - Informace o privátním koncovém bodu (název záznamu a privátní IP adresa)
 

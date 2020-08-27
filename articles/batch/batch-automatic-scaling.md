@@ -3,13 +3,13 @@ title: Automatické škálování výpočetních uzlů ve fondu služby Azure Ba
 description: Povolte automatické škálování v cloudovém fondu, abyste mohli dynamicky upravovat počet výpočetních uzlů ve fondu.
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387468"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932317"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -283,7 +283,7 @@ K získání ukázkových dat o proměnných definovaných službou lze použít
 
 | Metoda | Popis |
 | --- | --- |
-| Getsample () |`GetSample()`Metoda vrací vektor ukázek dat.<br/><br/>Vzorek je na data metriky o hodnotě 30 sekund. Jinými slovy jsou vzorky získány každých 30 sekund. Jak je uvedeno níže, nastane zpoždění mezi tím, kdy je vzorek shromážděn a kdy je k dispozici pro vzorec. V takovém případě nemusí být pro vyhodnocení vzorce k dispozici všechny vzorky za dané časové období.<ul><li>`doubleVec GetSample(double count)`: Určuje počet vzorků, které se mají získat z posledních shromážděných ukázek. `GetSample(1)`Vrátí poslední dostupnou ukázku. Metriky, jako `$CPUPercent` například, by však `GetSample(1)` neměly být použity, protože není možné zjistit, *kdy* byla ukázka shromážděna. Může to být nedávno nebo z důvodu systémových problémů může být to mnohem starší. V takových případech je lepší použít časový interval, jak je znázorněno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Určuje časový rámec pro shromažďování ukázkových dat. Volitelně také Určuje procentuální hodnotu vzorků, které musí být k dispozici v požadovaném časovém rámci. Například `$CPUPercent.GetSample(TimeInterval_Minute * 10)` vrátí 20 vzorků, pokud jsou v historii k dispozici všechny ukázky za posledních 10 minut `CPUPercent` . Pokud poslední minuta historie není dostupná, vrátí se jenom 18 ukázek. V tomto případě `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` selže, protože je k dispozici pouze 90% ukázek, ale to `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` bylo úspěšné.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Určuje časový rámec pro shromažďování dat s časem zahájení i časem ukončení. Jak je uvedeno výše, nastane zpoždění mezi tím, kdy je shromážděna ukázka, a když bude k dispozici pro vzorec. Zvažte tuto prodlevu při použití `GetSample` metody. Viz `GetSamplePercent` níže. |
+| Getsample () |`GetSample()`Metoda vrací vektor ukázek dat.<br/><br/>Vzorek je na data metriky o hodnotě 30 sekund. Jinými slovy jsou vzorky získány každých 30 sekund. Jak je uvedeno níže, nastane zpoždění mezi tím, kdy je vzorek shromážděn a kdy je k dispozici pro vzorec. V takovém případě nemusí být pro vyhodnocení vzorce k dispozici všechny vzorky za dané časové období.<ul><li>`doubleVec GetSample(double count)`: Určuje počet vzorků, které se mají získat z posledních shromážděných ukázek. `GetSample(1)` Vrátí poslední dostupnou ukázku. Metriky, jako `$CPUPercent` například, by však `GetSample(1)` neměly být použity, protože není možné zjistit, *kdy* byla ukázka shromážděna. Může to být nedávno nebo z důvodu systémových problémů může být to mnohem starší. V takových případech je lepší použít časový interval, jak je znázorněno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Určuje časový rámec pro shromažďování ukázkových dat. Volitelně také Určuje procentuální hodnotu vzorků, které musí být k dispozici v požadovaném časovém rámci. Například `$CPUPercent.GetSample(TimeInterval_Minute * 10)` vrátí 20 vzorků, pokud jsou v historii k dispozici všechny ukázky za posledních 10 minut `CPUPercent` . Pokud poslední minuta historie není dostupná, vrátí se jenom 18 ukázek. V tomto případě `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` selže, protože je k dispozici pouze 90% ukázek, ale to `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` bylo úspěšné.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Určuje časový rámec pro shromažďování dat s časem zahájení i časem ukončení. Jak je uvedeno výše, nastane zpoždění mezi tím, kdy je shromážděna ukázka, a když bude k dispozici pro vzorec. Zvažte tuto prodlevu při použití `GetSample` metody. Viz `GetSamplePercent` níže. |
 | GetSamplePeriod() |Vrátí období vzorků, které byly získány v historické ukázkové sadě dat. |
 | Count () |Vrátí celkový počet vzorků v historii metrik. |
 | HistoryBeginTime() |Vrátí časové razítko ukázky nejstarších dostupných dat pro danou metriku. |
@@ -667,7 +667,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-`$curTime`dá se upravit tak, aby odráželo vaše místní časové pásmo přidáním `time()` do produktu `TimeZoneInterval_Hour` a vašeho posunu UTC. Například použijte `$curTime = time() + (-6 * TimeInterval_Hour);` pro horská oblast (MDT) (letní čas). Mějte na paměti, že posun by musel být upraven na začátku a na konci letního času (Pokud je k dispozici).
+`$curTime` dá se upravit tak, aby odráželo vaše místní časové pásmo přidáním `time()` do produktu `TimeZoneInterval_Hour` a vašeho posunu UTC. Například použijte `$curTime = time() + (-6 * TimeInterval_Hour);` pro horská oblast (MDT) (letní čas). Mějte na paměti, že posun by musel být upraven na začátku a na konci letního času (Pokud je k dispozici).
 
 ### <a name="example-2-task-based-adjustment"></a>Příklad 2: úpravy založené na úlohách
 

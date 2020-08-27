@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 182cf54f58b4fbb8b80fb4ff9d7c1a9c1e353470
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1554722308675a44a9c144059cc9886996fa3166
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723907"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918430"
 ---
 # <a name="language-support-for-form-recognizer"></a>Jazyková podpora pro rozpoznávání formulářů
 
@@ -26,11 +26,11 @@ V tomto článku jsou uvedené lidské jazyky, které podporuje služba pro rozp
 |:-----|:----:|:-----:|:---:|:---:|
 |Čínština (zjednodušená) | `zh-Hans`| | ✔ |
 |Nizozemština | `nl` | |✔ |
-|Angličtina | `en` |✔ |
+|Angličtina (vytištěno & ručně) | `en` |✔ |
 |Francouzština | `fr` | |✔ |
 |Němčina | `de` | |✔ |
 |Italština | `it` | |✔ |
 |Portugalština | `pt` | |✔ |
 |Španělština | `es` | |✔ |
 
-* Nástroj pro rozpoznávání formulářů v 2.1 Public Preview podporuje tyto jazyky pro `Analyze Layout` a `Train Custom Model` (_vlak s popisky_ a _vlak bez popisků_). `Analyze Receipt` a `Analyze Business Card` jsou podporované jenom v angličtině.
+* Nástroj pro rozpoznávání formulářů v 2.1 Public Preview podporuje tyto jazyky pro rozložení a vlastní. Předem připravené Reciept a předem připravené Business karty se podporují jenom v angličtině.

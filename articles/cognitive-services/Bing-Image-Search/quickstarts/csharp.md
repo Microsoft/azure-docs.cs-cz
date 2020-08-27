@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f35b69a3ca44308a7d314f448bf35b81d7119228
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a5e957e21b431ede445fd64774fa4727eda7f803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603515"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922238"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a C #
 
@@ -23,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak odesílat rozhraní API Bingu pro vyhle
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) s dalšími zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).

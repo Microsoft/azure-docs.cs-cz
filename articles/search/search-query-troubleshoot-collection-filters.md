@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113090"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932062"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Řešení potíží s filtry kolekce OData v Azure Kognitivní hledání
 
@@ -39,11 +39,11 @@ V následující tabulce jsou uvedeny chyby, se kterými se můžete setkat při
 | Chybová zpráva | Status | Další informace najdete v tématu |
 | --- | --- | --- |
 | Funkce ' matchd ' nemá žádné parametry svázané s proměnnou rozsahu ' '. Uvnitř výrazů lambda (any nebo All) jsou podporovány pouze odkazy vázané na pole. Změňte prosím svůj filtr tak, aby byla funkce ' matchd ' mimo výraz lambda a akci opakujte. | Použití `search.ismatch` nebo `search.ismatchscoring` uvnitř výrazu lambda | [Pravidla pro filtrování složitých kolekcí](#bkmk_complex) |
-| Neplatný výraz lambda Byl nalezen test rovnosti nebo nerovnosti, kde byl očekáván opak ve výrazu lambda, který se opakuje nad polem typu Collection (EDM. String). Pro Any použijte prosím výrazy ve formátu ' x EQ y ' nebo ' search.in (...) '. Pro All použijte prosím výrazy ve formátu ' x ne y ', ' not (x EQ y) ' nebo ' not search.in (...) '. | Filtrování na poli typu`Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
-| Neplatný výraz lambda Našla se Nepodporovaná forma komplexního logického výrazu. Pro klíčové slovo any použijte výrazy, které jsou "ORs of and", označované také jako Disjunctive Normal Form. Například: "(a a b) nebo (c a d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy rovnosti. Pro All použijte výrazy, které jsou "and of ORs", označované také jako conjunctive Normal Form. Například: "(a nebo b) a (c nebo d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy nerovnosti. Příklady výrazů porovnání: ' x gt 5 ', ' x Le 2 '. Příklad výrazu rovnosti: ' x EQ 5 '. Příklad výrazu nerovnosti: ' x ne 5 '. | Filtrování polí typu `Collection(Edm.DateTimeOffset)` , `Collection(Edm.Double)` , `Collection(Edm.Int32)` nebo`Collection(Edm.Int64)` | [Pravidla pro filtrování srovnatelných kolekcí](#bkmk_comparables) |
-| Neplatný výraz lambda Bylo nalezeno nepodporované použití geografické. Distance () nebo Geo. intersects () ve výrazu lambda, který projde polem typu Collection (EDM. GeographyPoint). U ' Any ' se ujistěte, že porovnáte geografické. Distance () pomocí operátorů ' lt ' nebo ' Le ' a ujistěte se, že jakékoliv použití geo. intersects () není typu negace. Pro All se ujistěte, že porovnáte geografické. Distance () pomocí operátorů gt nebo GE a zajistěte, aby jakékoli použití geograficky. intersects () bylo typu negace. | Filtrování na poli typu`Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
-| Neplatný výraz lambda Komplexní logické výrazy nejsou podporovány ve výrazech lambda, které se iterují nad poli kolekce typu (EDM. GeographyPoint). Pro klíčové slovo any připojte dílčí výrazy pomocí operátoru OR. a se nepodporuje. Pro možnost All se připojte k dílčím výrazům a. ' or ' není podporován. | Filtrování polí typu `Collection(Edm.String)` nebo`Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) <br/><br/> [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
-| Neplatný výraz lambda Byl nalezen relační operátor (jedna z ' lt ', ' Le ', ' gt ' nebo ' GE '). Ve výrazech lambda, které se iterují nad poli typu Collection (EDM. String), jsou povoleny pouze operátory rovnosti. Pro Any použijte prosím výrazy ve formátu x EQ y. Pro All použijte prosím výrazy ve formátu x ne y nebo not (x EQ y). | Filtrování na poli typu`Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
+| Neplatný výraz lambda Byl nalezen test rovnosti nebo nerovnosti, kde byl očekáván opak ve výrazu lambda, který se opakuje nad polem typu Collection (EDM. String). Pro Any použijte prosím výrazy ve formátu ' x EQ y ' nebo ' search.in (...) '. Pro All použijte prosím výrazy ve formátu ' x ne y ', ' not (x EQ y) ' nebo ' not search.in (...) '. | Filtrování na poli typu `Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
+| Neplatný výraz lambda Našla se Nepodporovaná forma komplexního logického výrazu. Pro klíčové slovo any použijte výrazy, které jsou "ORs of and", označované také jako Disjunctive Normal Form. Například: "(a a b) nebo (c a d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy rovnosti. Pro All použijte výrazy, které jsou "and of ORs", označované také jako conjunctive Normal Form. Například: "(a nebo b) a (c nebo d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy nerovnosti. Příklady výrazů porovnání: ' x gt 5 ', ' x Le 2 '. Příklad výrazu rovnosti: ' x EQ 5 '. Příklad výrazu nerovnosti: ' x ne 5 '. | Filtrování polí typu `Collection(Edm.DateTimeOffset)` , `Collection(Edm.Double)` , `Collection(Edm.Int32)` nebo `Collection(Edm.Int64)` | [Pravidla pro filtrování srovnatelných kolekcí](#bkmk_comparables) |
+| Neplatný výraz lambda Bylo nalezeno nepodporované použití geografické. Distance () nebo Geo. intersects () ve výrazu lambda, který projde polem typu Collection (EDM. GeographyPoint). U ' Any ' se ujistěte, že porovnáte geografické. Distance () pomocí operátorů ' lt ' nebo ' Le ' a ujistěte se, že jakékoliv použití geo. intersects () není typu negace. Pro All se ujistěte, že porovnáte geografické. Distance () pomocí operátorů gt nebo GE a zajistěte, aby jakékoli použití geograficky. intersects () bylo typu negace. | Filtrování na poli typu `Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
+| Neplatný výraz lambda Komplexní logické výrazy nejsou podporovány ve výrazech lambda, které se iterují nad poli kolekce typu (EDM. GeographyPoint). Pro klíčové slovo any připojte dílčí výrazy pomocí operátoru OR. a se nepodporuje. Pro možnost All se připojte k dílčím výrazům a. ' or ' není podporován. | Filtrování polí typu `Collection(Edm.String)` nebo `Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) <br/><br/> [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
+| Neplatný výraz lambda Byl nalezen relační operátor (jedna z ' lt ', ' Le ', ' gt ' nebo ' GE '). Ve výrazech lambda, které se iterují nad poli typu Collection (EDM. String), jsou povoleny pouze operátory rovnosti. Pro Any použijte prosím výrazy ve formátu x EQ y. Pro All použijte prosím výrazy ve formátu x ne y nebo not (x EQ y). | Filtrování na poli typu `Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
 
 <a name="bkmk_examples"></a>
 
@@ -229,4 +229,4 @@ Pokud filtry píšete často a rozumíte pravidlům, které vám pomůžou s tí
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

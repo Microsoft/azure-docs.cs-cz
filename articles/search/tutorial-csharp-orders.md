@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9564576715c32f8bcc871d10fae50f139aacdb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420630"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932147"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
@@ -462,8 +462,8 @@ Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba něk
 
 4. Nyní je třeba tyto koncepce spojit dohromady. Tyto fragmenty kódu jsou nicméně až do našeho kurzu, takže sestavení aplikace založené na mapě je ponecháno jako cvičení pro čtenáře. Pokud chcete tento příklad dále použít, zvažte buď zadání názvu města s poloměrem, nebo vyhledání bodu na mapě a výběr poloměru. Další informace o těchto možnostech najdete v následujících zdrojích informací:
 
-* [Dokumentace k Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
-* [Najít adresu pomocí služby Azure Maps Search Service](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Dokumentace k Azure Maps](../azure-maps/index.yml)
+* [Najít adresu pomocí služby Azure Maps Search Service](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Seřazení výsledků na základě profilu vyhodnocování
 
@@ -957,9 +957,9 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 4. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje a prostředky
 
-Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Shrnutí
 
@@ -975,4 +975,4 @@ Vezměte v úvahu následující poznatky z tohoto projektu:
 
 Dokončili jste tuto sérii kurzů pro C# – měli byste mít k dispozici užitečné znalosti rozhraní API Azure Kognitivní hledání.
 
-Další referenční materiály a kurzy najdete v části procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)nebo v dalších kurzech v [dokumentaci k Azure kognitivní hledání](https://docs.microsoft.com/azure/search/).
+Další referenční materiály a kurzy najdete v části procházení [Microsoft Learn](/learn/browse/?products=azure)nebo v dalších kurzech v [dokumentaci k Azure kognitivní hledání](./index.yml).
