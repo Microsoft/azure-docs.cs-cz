@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 379f0c5418c2e15786b16cf1e4f67487432fa905
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ffd00ace0445b1b8cc13881834d7759aa217c4c6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985926"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020962"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace správy účtů při Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ V tomto článku se dozvíte, jak provádět operace správy účtů na Azure Da
 
 Pokyny k provádění operací správy dat pro Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace systému souborů na data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Visual Studio 2013 nebo vyšší**. Níže uvedené pokyny používají Visual Studio 2019.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -91,7 +92,7 @@ Pokyny k provádění operací správy dat pro Data Lake Storage Gen1 pomocí sa
 
 Ve zbývajících oddílech tohoto článku uvidíte, jak používat dostupné metody rozhraní .NET k provádění operací, jako je ověřování, nahrávání souborů atd.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 * Pro ověřování koncového uživatele pro vaši aplikaci, přečtěte si téma [ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 * Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).

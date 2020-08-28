@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
-ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69876810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021132"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Jak používat Twilio pro hlasové funkce a SMS z Azure
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -144,7 +145,7 @@ Další informace o parametrech předaných metodě **CallResource. Create** nal
 Jak bylo zmíněno, tento kód používá Twilio web k vrácení TwiML odpovědi. Místo toho můžete k poskytnutí odpovědi TwiML použít svůj vlastní web. Další informace najdete v tématu [Postup: poskytování TwiML odpovědí z vašeho vlastního webu](#howto_provide_twiml_responses).
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Postupy: odeslání zprávy SMS
-Následující snímek obrazovky ukazuje, jak odeslat zprávu SMS pomocí třídy **MessageResource** . Číslo **od** je poskytované Twilio pro zkušební účty k odeslání zpráv SMS. Před spuštěním kódu musí **být pro svůj** účet Twilio ověřené číslo.
+Následující snímek obrazovky ukazuje, jak odeslat zprávu SMS pomocí třídy **MessageResource**  . Číslo **od** je poskytované Twilio pro zkušební účty k odeslání zpráv SMS. Před spuštěním kódu musí **být pro svůj** účet Twilio ověřené číslo.
 
 ```csharp
 // Use your account SID and authentication token instead

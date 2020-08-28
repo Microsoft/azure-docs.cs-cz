@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 79720655aee8be5450e02bce395ef910ad474428
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33ade2be8b75a4e63f6def2b6c5e1001dde97ff8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020486"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 
@@ -34,7 +35,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní SQL API slu�
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="Aplikace seznamu úkolů Xamarin spuštěná v systému iOS":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud vyvíjíte ve Windows a ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit sady funkcí **Vývoj pro Azure** a **Vývoj mobilních aplikací pomocí .NET**.
 

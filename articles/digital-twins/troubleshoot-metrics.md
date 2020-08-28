@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003877"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -24,7 +24,7 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
 
 1. Vytvořte instanci digitálních vláken Azure. Pokyny, jak nastavit instanci digitálních vláken Azure v tématu, najdete v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md).
 
-2. Najděte instanci digitálních vláken Azure v [Azure Portal](https:/portal.azure.com) (můžete pro ni otevřít stránku zadáním jejího názvu do panelu hledání na portálu). 
+2. Najděte instanci digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (můžete pro ni otevřít stránku zadáním jejího názvu do panelu hledání na portálu). 
 
     V nabídce instance vyberte **metriky**.
    
@@ -98,7 +98,7 @@ Dimenze vám pomůžou identifikovat další podrobnosti o metrikách. Některé
 
 | Dimenze | Hodnoty |
 | --- | --- |
-| Authentication | OAuth |
+| Ověřování | OAuth |
 | Operace (pro požadavky rozhraní API) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modely/číst, <br>Microsoft. DigitalTwins/modely/Write, <br>Microsoft. DigitalTwins/modely/DELETE, <br>Microsoft. DigitalTwins/dotaz/akce |
 | Typ koncového bodu | Event Grid <br>Centrum událostí, <br>Service Bus |
 | Protokol | HTTPS |

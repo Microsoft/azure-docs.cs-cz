@@ -7,12 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 5931311368a6389386adb689a505feeeed03b29c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289188"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011289"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
 
@@ -33,9 +34,9 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.queues)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

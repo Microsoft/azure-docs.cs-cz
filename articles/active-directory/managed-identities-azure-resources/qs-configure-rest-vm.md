@@ -3,7 +3,7 @@ title: Konfigurace spravovaných identit na virtuálním počítači Azure pomoc
 description: Podrobné pokyny pro konfiguraci systémových a uživatelem přiřazených identit na virtuálním počítači Azure pomocí technologie KUDRLINKOU k provádění REST API volání.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9db22c6876294c9ffba33eab3d27900bf294e886
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: efce90225367489c05afb044a5381ae3ec2fdae3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873836"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021336"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -33,7 +33,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

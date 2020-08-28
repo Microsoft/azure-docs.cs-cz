@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890803"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021030"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -97,7 +97,7 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
 3. V **Nastavení**vyberte **vlastnosti**.
 

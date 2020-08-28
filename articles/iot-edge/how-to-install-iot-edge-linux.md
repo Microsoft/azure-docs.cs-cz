@@ -9,16 +9,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4078d7e6c20571db2387cfd138ecb325fc3469e7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321878"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022084"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian
 
-Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile je zařízení nakonfigurované s modulem runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu. Další informace najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
+Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile v zařízení nakonfigurujete modul runtime IoT Edge, můžete do něj z cloudu začít nasazovat obchodní logiku. Další informace najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
 V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge na zařízení s platformou x64, ARM32 nebo ARM64 Linux. Poskytujeme instalační balíčky pro server Ubuntu 16,04, Ubuntu Server 18,04 a Raspbian Stretch. Seznam podporovaných operačních systémů a architektur pro Linux najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) .
 
@@ -284,37 +284,19 @@ Pokud vaše síť obsahuje proxy server, postupujte podle kroků v části [Konf
    ./check-config.sh
    ```
 
-Tento příkaz poskytuje podrobný výstup, který obsahuje stav funkcí jádra používaných modulem runtime Moby. Budete chtít zajistit, aby všechny položky v `Generally Necessary` a `Network Drivers` byly povoleny, aby bylo zajištěno, že je jádro plně kompatibilní s modulem runtime Moby.  Pokud jste identifikovali chybějící funkce, povolte je opětovným sestavením jádra ze zdroje a výběrem přidružených modulů pro zahrnutí do příslušného souboru kernel. config.  Podobně platí, že pokud používáte generátor konfigurace jádra, jako `defconfig` `menuconfig` je nebo, najděte a povolte příslušné funkce a odpovídajícím způsobem Sestavte jádro.  Po nasazení nově upraveného jádra spusťte skript check-config znovu, abyste ověřili, že všechny požadované funkce byly úspěšně povoleny.
+Tento příkaz poskytuje podrobný výstup, který obsahuje stav funkcí jádra používaných modulem runtime Moby. Budete chtít zajistit, aby všechny položky v `Generally Necessary` a  `Network Drivers` byly povoleny, aby bylo zajištěno, že je jádro plně kompatibilní s modulem runtime Moby.  Pokud jste identifikovali chybějící funkce, povolte je opětovným sestavením jádra ze zdroje a výběrem přidružených modulů pro zahrnutí do příslušného souboru kernel. config.  Podobně platí, že pokud používáte generátor konfigurace jádra, jako `defconfig` `menuconfig` je nebo, najděte a povolte příslušné funkce a odpovídajícím způsobem Sestavte jádro.  Po nasazení nově upraveného jádra spusťte skript check-config znovu, abyste ověřili, že všechny požadované funkce byly úspěšně povoleny.
 
 ## <a name="install-runtime-using-release-assets"></a>Instalace modulu runtime pomocí prostředků vydaných verzí
 
-Postup v této části použijte, pokud chcete nainstalovat určitou verzi Moby a modul runtime Azure IoT Edge, který není dostupný prostřednictvím `apt-get install` . Seznam balíčků Microsoft obsahuje jenom omezené sady posledních verzí a jejich dílčích verzí, takže tento postup je pro kohokoli, kdo chce nainstalovat starší verzi nebo Release Candidate verzi.
+Postup v této části použijte, pokud chcete nainstalovat určitou verzi Azure IoT Edge runtime, která není dostupná prostřednictvím `apt-get install` . Seznam balíčků Microsoft obsahuje jenom omezené sady posledních verzí a jejich dílčích verzí, takže tento postup je pro kohokoli, kdo chce nainstalovat starší verzi nebo Release Candidate verzi.
 
-Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. Pomocí následujících kroků načtete všechny součásti IoT Edge do svého zařízení: modul Moby a rozhraní příkazového řádku, libiothsm a nakonec proces démona zabezpečení IoT Edge.
+Pomocí příkazů oblé můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. K instalaci libiothsm a procesu démona zabezpečení IoT Edge použijte následující postup. Nainstalujte modul Moby a rozhraní příkazového řádku pomocí kroků v části [Instalace modulu runtime kontejneru](#install-a-container-runtime) .
 
 1. Přejděte do vydaných verzí [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi pro vydání, na kterou chcete cílit.
 
 2. Rozbalte část **assets (prostředky** ) pro danou verzi.
 
-3. V žádné dané vydané verzi může nebo nemusí být možné aktualizovat modul Moby. Pokud se zobrazí soubory, které začínají na **Moby** a **Moby-CLI**, aktualizujte tyto součásti pomocí následujících příkazů. Pokud nevidíte žádné soubory Moby, přečtěte si předchozí assety vydaných verzí, dokud nenajdete nejnovější verzi.
-
-   1. Vyhledejte soubor **Moby** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
-
-   2. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi modulu Moby:
-
-      ```bash
-      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
-      ```
-
-   3. Vyhledejte soubor **Moby-CLI** , který odpovídá architektuře zařízení IoT Edge. Moby CLI je volitelná součást, ale může být užitečná během vývoje. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
-
-   4. Pomocí zkopírovaného odkazu v následujícím příkazu nainstalujte tuto verzi rozhraní příkazového řádku Moby:
-
-      ```bash
-      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
-      ```
-
-4. Každé vydání by mělo mít nové soubory pro démona zabezpečení IoT Edge a hsmlib. Tyto součásti můžete aktualizovat pomocí následujících příkazů.
+3. Každé vydání by mělo mít nové soubory pro démona zabezpečení IoT Edge a hsmlib. Tyto součásti můžete aktualizovat pomocí následujících příkazů.
 
    1. Vyhledejte soubor **libiothsm-STD** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
 

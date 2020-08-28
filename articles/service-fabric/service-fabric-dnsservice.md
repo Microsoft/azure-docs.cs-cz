@@ -3,12 +3,13 @@ title: Služba DNS pro Azure Service Fabric
 description: Použijte službu DNS Service Fabric pro zjišťování mikroslužeb v rámci clusteru.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258903"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021268"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete v clusteru povolit a zjišťovat tak další služby pomocí protokolu DNS. 
@@ -116,7 +117,7 @@ Název DNS pro vaši službu je v rámci clusteru přeložitelný, takže je dů
 Důrazně doporučujeme použít schéma pojmenování `<ServiceDnsName>.<AppInstanceName>` , například `service1.application1` . Pokud je aplikace nasazená pomocí nástroje Docker, služba automaticky přiřazuje názvy DNS pomocí tohoto schématu pojmenovávání.
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Nastavení názvu DNS pro výchozí službu v ApplicationManifest.xml
-Otevřete projekt v aplikaci Visual Studio nebo v oblíbeném editoru a otevřete soubor ApplicationManifest.xml. Přejít na oddíl výchozí služby a pro každou službu přidejte `ServiceDnsName` atribut. Následující příklad ukazuje, jak nastavit název DNS služby na`service1.application1`
+Otevřete projekt v aplikaci Visual Studio nebo v oblíbeném editoru a otevřete soubor ApplicationManifest.xml. Přejít na oddíl výchozí služby a pro každou službu přidejte `ServiceDnsName` atribut. Následující příklad ukazuje, jak nastavit název DNS služby na `service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -143,7 +144,7 @@ Následující příklad nastaví název DNS stavové služby na `statefulsvc.ap
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Nastavení názvu DNS pro službu pomocí prostředí PowerShell
-Název DNS pro službu můžete nastavit při jejím vytváření pomocí `New-ServiceFabricService` příkazu PowerShellu. Následující příklad vytvoří novou bezstavovou službu s názvem DNS.`service1.application1`
+Název DNS pro službu můžete nastavit při jejím vytváření pomocí `New-ServiceFabricService` příkazu PowerShellu. Následující příklad vytvoří novou bezstavovou službu s názvem DNS. `service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -173,9 +174,9 @@ Dotazy DNS, které cílí na oddíl, jsou formátovány takto:
 Kde:
 
 - *First-Label-* --partition-------------------------
-- *PartitionPrefix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je "--". Další informace najdete v tématu věnovaném [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionPrefix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je "--". Další informace najdete v tématu věnovaném  [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Target-partition-Name* je název oddílu. 
-- *PartitionSuffix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je prázdný řetězec. Další informace najdete v tématu věnovaném [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionSuffix* je hodnota, kterou lze nastavit v oddílu služba DNSservice manifestu clusteru nebo v šabloně správce prostředků clusteru. Výchozí hodnota je prázdný řetězec. Další informace najdete v tématu věnovaném  [nastavení služby DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Zbytek-partition-Service-DnsName* je zbývající část názvu DNS služby.
 
 Následující příklady ukazují dotazy DNS na dělené služby spuštěné v clusteru, který má výchozí nastavení pro `PartitionPrefix` a `PartitionSuffix` : 
@@ -252,4 +253,4 @@ public class ValuesController : Controller
 * Služba DNS pro službu Service Fabric Services ještě není v systému Linux podporována. Služba DNS je podporovaná pro kontejnery v systému Linux. K dispozici je ruční řešení pomocí nástroje Fabric Client/ServicePartitionResolver.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o komunikaci služby v rámci clusteru s [připojením a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)
+Další informace o komunikaci služby v rámci clusteru s  [připojením a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)

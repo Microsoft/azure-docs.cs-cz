@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030380"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021557"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -195,7 +196,7 @@ Následující operace kontejneru můžou použít zapůjčení ke správě pesi
 * Nastavení seznamu ACL kontejneru
 * Kontejner zapůjčení  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Určení hlaviček podmínek pro operace Blob service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kontejner zapůjčení](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -256,7 +257,7 @@ Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení neb
 
 V obecných vývojářích, kteří používají tabulky, by měly při vývoji škálovatelných aplikací spoléhat na optimistickou souběžnost. Pokud je potřeba pesimistické zamykání, můžou při přístupu k tabulkám podniknout vývojáři, kteří přiřadí určený objekt BLOB pro každou tabulku a před tím, než bude v tabulce pracovat, se pokusí o objekt BLOB převzít zapůjčení. Tento přístup vyžaduje aplikaci, aby se zajistilo, že všechny cesty k datům získají zapůjčení před tím, než se v tabulce začne pracovat. Je také potřeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,7 +267,7 @@ Jedním z scénářů, ve kterých je souběžnost ve frontě ve službě Queuei
 
 Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z tohoto důvodu klienti zpracovávající zprávy načtené z fronty mají jistotu, že se zprávy zpracovávají idempotentní způsobem. Pro operace aktualizace, jako je SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage, se používá poslední strategie zapisovače WINS.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Rozhraní REST API služby Queue Service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získat zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -277,7 +278,7 @@ K Souborové službě se dá dostat pomocí dvou různých koncových bodů prot
 
 Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokončený, dokud nebudou všechny ostatní otevřené popisovače protokolu SMB v tomto souboru zavřeny. Když je soubor označený jako čeká na odstranění, všechny operace REST na tomto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (Nenalezeno) se nevrátí, protože klient SMB může před zavřením souboru odstranit příznak nedokončeného odstranění. Jinými slovy, stavový kód 404 (Nenalezeno) se očekává jenom v případě, že byl soubor odebraný. Všimněte si, že když je soubor ve stavu čekání na odstranění protokolu SMB, nebude zahrnutý do výsledků souborů seznamu. Všimněte si také, že operace odstranění souboru REST a odstranění adresáře REST jsou potvrzeny atomicky a nevedou k nedokončenému stavu odstranění.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Správa zámků souborů](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
@@ -291,6 +292,6 @@ Další informace o Azure Storage najdete v těchto tématech:
 
 * [Microsoft Azure Storage domovskou stránku](https://azure.microsoft.com/services/storage/)
 * [Seznámení se službou Azure Storage](storage-introduction.md)
-* Začínáme úložiště pro objekty [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md), [fronty](../storage-dotnet-how-to-use-queues.md)a [soubory](../storage-dotnet-how-to-use-files.md)
+* Začínáme úložiště pro objekty [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md),  [fronty](../storage-dotnet-how-to-use-queues.md)a [soubory](../storage-dotnet-how-to-use-files.md)
 * Architektura úložiště – [Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)
 

@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75434664"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020928"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
@@ -28,7 +28,7 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
@@ -95,7 +95,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
 
    Tento krok stáhne a nainstaluje balíček NuGet [klientské sady SDK služby zřizování pro Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Přidejte následující `using` příkazy za další `using` příkazy v horní části: `Program.cs`
+1. Přidejte následující `using` příkazy za další `using` příkazy v horní části `Program.cs` :
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -103,7 +103,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Přidejte do `Program` třídy následující pole a proveďte uvedené změny.  
+1. Přidejte do třídy následující pole `Program` a proveďte uvedené změny.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -123,7 +123,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    > * Uložení připojovacího řetězce pro správce služby zřizování v kódu je v rozporu s osvědčenými postupy zabezpečení. Místo toho by se měl připojovací řetězec uchovávat zabezpečeným způsobem, například v zabezpečeném konfiguračním souboru nebo v registru.
    > * Nezapomeňte nahrát pouze veřejnou část podpisového certifikátu. Nikdy nenahrávejte soubory .pfx (PKCS12) ani .pem obsahující privátní klíče ke službě zřizování.
 
-1. Do `Program` třídy přidejte následující metodu. Tento kód vytvoří položku skupiny registrací a pak zavolá `CreateOrUpdateEnrollmentGroupAsync` metodu `ProvisioningServiceClient` pro přidání skupiny registrací do služby zřizování.
+1. Do třídy přidejte následující metodu `Program` . Tento kód vytvoří položku skupiny registrací a pak zavolá `CreateOrUpdateEnrollmentGroupAsync` metodu pro `ProvisioningServiceClient` Přidání skupiny registrací do služby zřizování.
 
    ```csharp
    public static async Task RunSample()

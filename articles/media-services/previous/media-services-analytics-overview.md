@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d9efb1e9256bccd04a76b4f63edaaf7c2c6ac708
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 45a23f55f87f086e4f5be8058a68ada1513f8975
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955212"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020996"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na Media Services platformě 
 
@@ -64,7 +65,7 @@ Azure Media Redactor je Media Analytics multimediální procesor, který nabíz�
 ### <a name="content-moderation"></a>Moderování obsahu
 Azure Content Moderator umožňuje používat pro vaše videa moderování s asistencí počítače. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování. Ruční moderování videí pro nežádoucí obsah je časově náročná a náročná úloha. Díky této službě a přidruženým nástrojům pro kontrolu se kombinuje moderování počítačů s funkcemi, které jsou v rámci smyčky, díky funkcím, které umožňují efektivně a efektivně úspornou efektivitu. Další informace najdete v článku [zpracování videí pomocí Azure Content moderator](media-services-content-moderation.md) .
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 Media Analytics mohou organizacím a podnikům pomáhat glean nové poznatky z videa a efektivněji spravovat velké objemy obsahu videa. Tady je několik scénářů:
 
 * **Centra volání**. I když se nástupem na sociálních médiích, vaše zákaznická centra volání stále usnadňují vysoké procento transakcí služeb zákazníkům. Kódovaný v těchto zvukových datech je velké množství informací o zákaznících, které je možné analyzovat za účelem dosažení vyšší spokojenosti zákazníků. Pomocí Media Indexer mohou organizace extrahovat text a sestavit indexy a řídicí panely hledání. Pak můžou extrahovat inteligentní stížnosti, zdroje stížností a další relevantní data.

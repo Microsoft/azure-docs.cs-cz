@@ -14,16 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b9b234f0d701ae2ef269b53c3b3c0276ca31f7f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052827"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020605"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
 
-V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, které používají Media Services. Funkce Azure definovaná v tomto článku sleduje kontejner účtu úložiště s názvem **vstup** pro nové soubory MP4. Po přetažení souboru do kontejneru úložiště spustí aktivační událost objektu BLOB funkci. Pokud chcete zkontrolovat službu Azure Functions, přečtěte si téma [Přehled](../../azure-functions/functions-overview.md) a další témata v části **Azure Functions** .
+V tomto článku se dozvíte, jak začít s vytvářením Azure Functions, které používají Media Services. Funkce Azure definovaná v tomto článku sleduje kontejner účtu úložiště s názvem **vstup** pro nové soubory MP4. Po přetažení souboru do kontejneru úložiště spustí aktivační událost objektu BLOB funkci. Pokud chcete zkontrolovat službu Azure Functions, přečtěte si téma  [Přehled](../../azure-functions/functions-overview.md) a další témata v části **Azure Functions** .
 
 Pokud chcete prozkoumat a nasadit existující Azure Functions, které používají Azure Media Services, podívejte se na [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají Media Services k zobrazení pracovních postupů souvisejících s ingestování obsahu přímo z úložiště objektů blob, kódování a zápisu obsahu zpátky do úložiště objektů BLOB. Obsahuje taky příklady monitorování oznámení úloh prostřednictvím webhooků a front Azure. Můžete také vyvíjet své funkce na základě příkladů v úložišti [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) . Pokud chcete tyto funkce nasadit, klikněte na tlačítko **nasadit do Azure** .
 
@@ -42,7 +43,7 @@ Pokud chcete prozkoumat a nasadit existující Azure Functions, které používa
 
 ## <a name="configure-function-app-settings"></a>Konfigurovat nastavení aplikace Function App
 
-Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostředí, které budou použity v rámci svých funkcí. Pokud chcete nakonfigurovat nastavení aplikace, klikněte na odkaz konfigurovat nastavení aplikace. Další informace najdete v tématu [Konfigurace nastavení Azure Function App](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostředí, které budou použity v rámci svých funkcí. Pokud chcete nakonfigurovat nastavení aplikace, klikněte na odkaz konfigurovat nastavení aplikace. Další informace najdete v tématu  [Konfigurace nastavení Azure Function App](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Funkce definovaná v tomto článku předpokládá, že máte v nastavení aplikace následující proměnné prostředí:
 
@@ -70,7 +71,7 @@ Po nasazení aplikace Function App ji můžete najít mezi **App Services** Azur
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klikněte na **Vytvořit**. 
+4. Klikněte na možnost **Vytvořit**. 
 
 ## <a name="files"></a>Soubory
 

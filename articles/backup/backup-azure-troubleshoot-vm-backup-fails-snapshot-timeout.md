@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3fe61bf5d116d257ed7aeb32226a437d0193c54
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1bfd83534bda6397983b0595acc089e901c473d6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892384"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021476"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -277,7 +277,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_ `<Geo>` _ `<number>` .
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a vyberte **Odstranit**.
@@ -306,7 +306,7 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V nabídce **centra** vyberte **všechny prostředky**, vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ `<Geo>` _ `<number>` , kde se nachází váš virtuální počítač.
 
     ![Vyberte skupinu prostředků.](./media/backup-azure-arm-vms-prepare/resource-group.png)

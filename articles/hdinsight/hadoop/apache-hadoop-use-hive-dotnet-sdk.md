@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: cdb2207ab834ab84cedd2ad23e5e26186ac44039
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207758"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020469"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
 
@@ -24,7 +24,7 @@ Naučte se odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Napíš
 > [!NOTE]  
 > Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte mít následující položky:
 
@@ -142,7 +142,7 @@ Výstup aplikace by měl vypadat přibližně takto:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Další informace najdete v následujících článcích:
+V tomto článku jste zjistili, jak odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Další informace najdete v těchto článcích:
 
 * [Začínáme se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Vytváření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)

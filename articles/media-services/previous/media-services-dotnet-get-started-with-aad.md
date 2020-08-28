@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.custom: has-adal-ref
-ms.openlocfilehash: c1bf77881f672bf3bd2b2dccf91c30855c520052
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: 4c83ab0a2958fc437f7b6df1502e34e62254d35c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042908"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020639"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Použití ověřování Azure AD pro přístup k rozhraní API Azure Media Services pomocí .NET
 

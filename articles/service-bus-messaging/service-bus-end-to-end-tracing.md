@@ -3,12 +3,13 @@ title: Azure Service Bus komplexní trasování a diagnostika | Microsoft Docs
 description: Přehled Service Bus diagnostiky klientů a komplexní trasování (klient prostřednictvím všech služeb, které se podílejí na zpracování)
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340723"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021625"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
 
@@ -20,7 +21,7 @@ Když producent pošle zprávu přes frontu, obvykle se děje v rozsahu někter�
 Microsoft Azure Service Bus zasílání zpráv má definované vlastnosti datové části, které by producenti a spotřebitelé měli použít k předání takového kontextu trasování.
 Protokol je založený na [protokolu korelace http](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Název vlastnosti        | Description                                                 |
+| Název vlastnosti        | Popis                                                 |
 |----------------------|-------------------------------------------------------------|
 |  ID diagnostiky       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Korelace – kontext | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |
@@ -86,7 +87,7 @@ V případě, že váš systém trasování nepodporuje sledování volání aut
 
 Service Bus klient .NET instrumentuje pomocí primitivních primitiv rozhraní .NET [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) a [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-`Activity`slouží jako kontext trasování, zatímco `DiagnosticSource` je mechanismus oznámení. 
+`Activity` slouží jako kontext trasování, zatímco `DiagnosticSource` je mechanismus oznámení. 
 
 Pokud není k dispozici naslouchací proces pro události DiagnosticSource, instrumentace se vypne a zachová nulové náklady instrumentace. DiagnosticSource poskytuje všem ovládacím prvkům naslouchací proces:
 - naslouchací proces řídí, se kterými zdroji a událostmi naslouchá
@@ -142,8 +143,8 @@ Pro každou operaci jsou odesílány dvě události: ' Start ' a ' stop '. Pravd
 Datová část události poskytuje naslouchací proces s kontextem operace, replikuje příchozí parametry rozhraní API a návratovou hodnotu. Datová část události ' stop ' má všechny vlastnosti datové části ' Start ', takže můžete událost ' spustit ' zcela ignorovat.
 
 Všechny události mají také vlastnosti entita a koncový bod, jsou v níže uvedené tabulce vynechány.
-  * `string Entity`--Název entity (Queue, téma atd.)
-  * `Uri Endpoint`– Service Bus adresa URL koncového bodu
+  * `string Entity` --Název entity (Queue, téma atd.)
+  * `Uri Endpoint` – Service Bus adresa URL koncového bodu
 
 Každé události ' stop ' má `Status` vlastnost s `TaskStatus` asynchronní operací byla dokončena s, která je také vynechána v následující tabulce pro zjednodušení.
 
@@ -151,33 +152,33 @@ Tady je úplný seznam instrumentované operace:
 
 | Název operace | Sledované rozhraní API | Vlastnosti konkrétní datové části|
 |----------------|-------------|---------|
-| Microsoft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`– Seznam odesílaných zpráv |
-| Microsoft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`– Zpracovávaná zpráva<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`– Posun naplánované zprávy<br/>`long SequenceNumber`– Pořadové číslo naplánované zprávy (část události ' stop ') |
-| Microsoft. Azure. ServiceBus. Cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`– Pořadové číslo zprávy, která se má zrušit | 
-| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver. metody ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`– Maximální počet zpráv, které by mohly být přijaty.<br/>`IList<Message> Messages`– Seznam přijatých zpráv (část události ' stop ') |
-| Microsoft. Azure. ServiceBus. prohlížet | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`– Výchozí bod, ze kterého se má procházet dávka zpráv.<br/>`int RequestedMessageCount`– Počet zpráv, které se mají načíst.<br/>`IList<Message> Messages`– Seznam přijatých zpráv (část události ' stop ') |
-| Microsoft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`– Seznam obsahující pořadová čísla, která mají být přijata.<br/>`IList<Message> Messages`– Seznam přijatých zpráv (část události ' stop ') |
-| Microsoft. Azure. ServiceBus. Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`– Seznam obsahující tokeny zámku odpovídajících zpráv, které mají být dokončeny.|
-| Microsoft. Azure. ServiceBus. Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`– Token zámku odpovídající zprávy, která se má opustit. |
-| Microsoft. Azure. ServiceBus. odklad | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`– Token zámku odpovídající zprávy, která se má odložit. | 
-| Microsoft. Azure. ServiceBus. nedoručených zpráv | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`– Token zámku odpovídající zprávy na nedoručené písmeno. | 
-| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`– Token zámku odpovídající zprávy pro obnovení zámku.<br/>`DateTime LockedUntilUtc`– Nové datum a čas vypršení platnosti tokenu zámku ve formátu UTC. (' Stop ' – datová část události)|
-| Microsoft. Azure. ServiceBus. Process | Funkce lambda obslužné rutiny zpráv poskytnutá v [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message`-Zpráva je zpracovávána. |
-| Microsoft. Azure. ServiceBus. ProcessSession | Funkce lambda obslužné rutiny relace zprávy, která je k dispozici v [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message`-Zpráva je zpracovávána.<br/>`IMessageSession Session`– Zpracovávaná relace |
-| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`– Popis pravidla, který poskytuje pravidlo, které se má přidat. |
-| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`– Název pravidla, které chcete odebrat. |
-| Microsoft. Azure. ServiceBus. getrules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`-Všechna pravidla přidružená k předplatnému. (Pouze datové části ' stop ') |
-| Microsoft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`– Identifikátor sessionId obsažený ve zprávách. |
-| Microsoft. Azure. ServiceBus. getsessionstate | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`– Identifikátor sessionId obsažený ve zprávách.<br/>`byte [] State`-Stav relace (část události ' stop ') |
-| Microsoft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`– Identifikátor sessionId obsažený ve zprávách.<br/>`byte [] State`-Stav relace |
-| Microsoft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`– Identifikátor sessionId obsažený ve zprávách. |
-| Microsoft. Azure. ServiceBus. Exception | jakékoli instrumentované rozhraní API| `Exception Exception`-Instance výjimky |
+| Microsoft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` – Seznam odesílaných zpráv |
+| Microsoft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` – Zpracovávaná zpráva<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` – Posun naplánované zprávy<br/>`long SequenceNumber` – Pořadové číslo naplánované zprávy (část události ' stop ') |
+| Microsoft. Azure. ServiceBus. Cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` – Pořadové číslo zprávy, která se má zrušit | 
+| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver. metody ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` – Maximální počet zpráv, které by mohly být přijaty.<br/>`IList<Message> Messages` – Seznam přijatých zpráv (část události ' stop ') |
+| Microsoft. Azure. ServiceBus. prohlížet | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` – Výchozí bod, ze kterého se má procházet dávka zpráv.<br/>`int RequestedMessageCount` – Počet zpráv, které se mají načíst.<br/>`IList<Message> Messages` – Seznam přijatých zpráv (část události ' stop ') |
+| Microsoft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` – Seznam obsahující pořadová čísla, která mají být přijata.<br/>`IList<Message> Messages` – Seznam přijatých zpráv (část události ' stop ') |
+| Microsoft. Azure. ServiceBus. Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` – Seznam obsahující tokeny zámku odpovídajících zpráv, které mají být dokončeny.|
+| Microsoft. Azure. ServiceBus. Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` – Token zámku odpovídající zprávy, která se má opustit. |
+| Microsoft. Azure. ServiceBus. odklad | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` – Token zámku odpovídající zprávy, která se má odložit. | 
+| Microsoft. Azure. ServiceBus. nedoručených zpráv | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` – Token zámku odpovídající zprávy na nedoručené písmeno. | 
+| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` – Token zámku odpovídající zprávy pro obnovení zámku.<br/>`DateTime LockedUntilUtc` – Nové datum a čas vypršení platnosti tokenu zámku ve formátu UTC. (' Stop ' – datová část události)|
+| Microsoft. Azure. ServiceBus. Process | Funkce lambda obslužné rutiny zpráv poskytnutá v [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message` -Zpráva je zpracovávána. |
+| Microsoft. Azure. ServiceBus. ProcessSession | Funkce lambda obslužné rutiny relace zprávy, která je k dispozici v [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Zpráva je zpracovávána.<br/>`IMessageSession Session` – Zpracovávaná relace |
+| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` – Popis pravidla, který poskytuje pravidlo, které se má přidat. |
+| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` – Název pravidla, které chcete odebrat. |
+| Microsoft. Azure. ServiceBus. getrules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Všechna pravidla přidružená k předplatnému. (Pouze datové části ' stop ') |
+| Microsoft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` – Identifikátor sessionId obsažený ve zprávách. |
+| Microsoft. Azure. ServiceBus. getsessionstate | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` – Identifikátor sessionId obsažený ve zprávách.<br/>`byte [] State` -Stav relace (část události ' stop ') |
+| Microsoft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` – Identifikátor sessionId obsažený ve zprávách.<br/>`byte [] State` -Stav relace |
+| Microsoft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` – Identifikátor sessionId obsažený ve zprávách. |
+| Microsoft. Azure. ServiceBus. Exception | jakékoli instrumentované rozhraní API| `Exception Exception` -Instance výjimky |
 
 V každé události máte přístup `Activity.Current` , který obsahuje kontext aktuální operace.
 
 #### <a name="logging-additional-properties"></a>Protokolování dalších vlastností
 
-`Activity.Current`poskytuje podrobný kontext aktuální operace a jejích nadřazených prvků. Další informace najdete v [dokumentaci aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde najdete další podrobnosti.
+`Activity.Current` poskytuje podrobný kontext aktuální operace a jejích nadřazených prvků. Další informace najdete v [dokumentaci aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde najdete další podrobnosti.
 Service Bus Instrumentace poskytuje další informace, které jsou k `Activity.Current.Tags` `MessageId` `SessionId` dispozici, a pokaždé, když jsou k dispozici.
 
 Aktivity, které sledují událost Receive, prohlížet a ReceiveDeferred, mohou mít také `RelatedTo` značku. Obsahuje jedinečný seznam `Diagnostic-Id` (y) zpráv, které byly přijaty v důsledku.
@@ -201,17 +202,17 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filtrování a vzorkování
 
 V některých případech je žádoucí protokolovat pouze část událostí, aby se snížila režie výkonu nebo spotřeba úložiště. Mohli byste protokolovat pouze události stop (jako v předchozím příkladu) nebo ukázkové procento událostí. 
-`DiagnosticSource`Poskytněte způsob, jak ho dosáhnout pomocí `IsEnabled` predikátu. Další informace najdete v tématu [filtrování založené na kontextu v DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource` Poskytněte způsob, jak ho dosáhnout pomocí `IsEnabled` predikátu. Další informace najdete v tématu [filtrování založené na kontextu v DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
-`IsEnabled`může být voláno vícekrát, aby jedna operace minimalizovala dopad na výkon.
+`IsEnabled` může být voláno vícekrát, aby jedna operace minimalizovala dopad na výkon.
 
-`IsEnabled`se volá v následujícím pořadí:
+`IsEnabled` se volá v následujícím pořadí:
 
-1. `IsEnabled(<OperationName>, string entity, null)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Všimněte si, že na konci není žádné "Start" nebo "Stop". Slouží k filtrování konkrétních operací nebo front. Pokud zpětné volání vrátí `false` události pro operaci, nebudou odeslány.
+1. `IsEnabled(<OperationName>, string entity, null)` například `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Všimněte si, že na konci není žádné "Start" nebo "Stop". Slouží k filtrování konkrétních operací nebo front. Pokud zpětné volání vrátí `false` události pro operaci, nebudou odeslány.
 
    * Pro operace "proces" a "ProcessSession" obdržíte také `IsEnabled(<OperationName>, string entity, Activity activity)` zpětné volání. Slouží k filtrování událostí na základě `activity.Id` vlastností značek nebo.
   
-2. `IsEnabled(<OperationName>.Start)`například `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Kontroluje, zda by měla být aktivována událost Start. Výsledek má vliv pouze na událost Start, ale další instrumentace na ní není závislá.
+2. `IsEnabled(<OperationName>.Start)` například `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Kontroluje, zda by měla být aktivována událost Start. Výsledek má vliv pouze na událost Start, ale další instrumentace na ní není závislá.
 
 Pro událost zastavení není k dispozici `IsEnabled` .
 

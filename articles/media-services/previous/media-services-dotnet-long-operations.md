@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4365796a9d7f7b72687db19573c09ccfdf9ea8de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831732"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020520"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Živé streamování pomocí Azure Media Services
 
@@ -32,7 +33,7 @@ Sada Media Services .NET SDK poskytuje rozhraní API, která odesílají požada
 K dispozici jsou situace, kdy aplikace nemůže čekat na dlouho běžící požadavek HTTP, a chce se dotazovat na průběh operace ručně. Typickým příkladem může být prohlížeč, který pracuje s bezstavovou webovou službou: když prohlížeč požaduje vytvoření kanálu, Webová služba spustí dlouhou běžící operaci a vrátí ID operace do prohlížeče. Prohlížeč pak může požádat webovou službu, aby získala stav operace na základě ID. Sada Media Services .NET SDK poskytuje rozhraní API, která jsou užitečná pro tento scénář. Tato rozhraní API se nazývají "metody bez cyklického dotazování".
 Metody "non-cyklického dotazování" mají následující vzor pojmenovávání:*operace Odeslat operaci*(například SendCreateOperation). Metody operace Send*operace*vrátí objekt **IOperation** ; vrácený objekt obsahuje informace, které lze použít ke sledování operace. Vrátí **úlohu \<IOperation> **metody OperationAsync*operace*odeslání.
 
-V současné době následující třídy podporují metody bez cyklického dotazování: **kanál**, **StreamingEndpoint**a **program**.
+V současné době následující třídy podporují metody bez cyklického dotazování:  **kanál**, **StreamingEndpoint**a **program**.
 
 Chcete-li se dotázat na stav operace, použijte metodu **GetOperation** pro třídu **OperationBaseCollection** . Pomocí následujících intervalů ověřte stav operace: pro operace **kanálu** a **StreamingEndpoint** použijte 30 sekund; pro operace **programu** použijte 10 sekund.
 

@@ -10,12 +10,13 @@ ms.date: 05/15/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327714"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021234"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -37,7 +38,6 @@ Služba IoT Hub má výchozí integrovaný integrovaný koncový bod (**zprávy 
 
 Každá zpráva je směrována do všech koncových bodů, jejichž směrovací dotazy odpovídají. Jinými slovy, zpráva může být směrována do více koncových bodů.
 
-
 Pokud má váš vlastní koncový bod konfigurace brány firewall, zvažte použití výjimky důvěryhodné první strany společnosti Microsoft, aby váš IoT Hub měl přístup ke konkrétním koncovým [Azure Storageám](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)a [službám Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) a [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing). Tato možnost je k dispozici ve vybraných oblastech pro centra IoT s [identitou spravované služby](./virtual-network-support.md).
 
 IoT Hub aktuálně podporuje následující koncové body:
@@ -47,19 +47,23 @@ IoT Hub aktuálně podporuje následující koncové body:
  - Service Bus fronty a Service Bus témata
  - Event Hubs
 
-### <a name="built-in-endpoint"></a>Vestavěný koncový bod
+## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Vestavěný koncový bod jako koncový bod směrování
 
 Pomocí standardní [Event Hubs integrace a sad SDK](iot-hub-devguide-messages-read-builtin.md) můžete přijímat zprávy ze zařízení do cloudu z integrovaného koncového bodu (**zprávy/události**). Po vytvoření trasy se data přestanou předávat do integrovaného koncového bodu, pokud se do tohoto koncového bodu nevytvoří trasa.
 
-### <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage jako koncový bod směrování
 
 K dispozici jsou dvě služby úložiště, IoT Hub můžou směrovat zprávy na účty služeb [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (adls Gen2). Účty Azure Data Lake Storage jsou hierarchické účty úložiště s povoleným [oborem názvů](../storage/blobs/data-lake-storage-namespace.md)postavené nad úložištěm objektů BLOB. Oba používají objekty blob pro své úložiště.
 
-IoT Hub podporuje zápis dat do Azure Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB. Formát nelze upravit pro existující koncový bod. Při použití kódování JSON musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou z těchto hodnot se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64. Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint). Následující diagram ukazuje, jak vybrat formát kódování v Azure Portal.
+IoT Hub podporuje zápis dat do Azure Storage ve formátu [Apache Avro](https://avro.apache.org/) a také ve formátu JSON. Výchozí hodnota je AVRO. Při použití kódování JSON musíte nastavit contentType na **Application/JSON** a ContentEncoding na **UTF-8** ve [vlastnostech systému](iot-hub-devguide-routing-query-syntax.md#system-properties)zpráv. U obou z těchto hodnot se nerozlišují malá a velká písmena. Pokud není kódování obsahu nastaveno, IoT Hub zapíše zprávy ve formátu kódování Base 64.
+
+Formát kódování lze nastavit pouze v případě, že je nakonfigurován koncový bod úložiště objektů BLOB; nedá se upravovat pro existující koncový bod. Chcete-li přepnout formáty kódování pro existující koncový bod, bude nutné odstranit a znovu vytvořit vlastní koncový bod s požadovaným formátem. Jednou z užitečných strategií může být vytvoření nového vlastního koncového bodu s požadovaným formátem kódování a přidání paralelní trasy do tohoto koncového bodu. Tímto způsobem můžete ověřit data před odstraněním existujícího koncového bodu.
+
+Formát kódování můžete vybrat pomocí IoT Hub vytvořit nebo aktualizovat REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)nebo [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint). Následující obrázek ukazuje, jak vybrat formát kódování v Azure Portal.
 
 ![Kódování koncového bodu služby Blob Storage](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub vytvoří dávky zprávy a zapisuje data do úložiště vždy, když dávka dosáhne určité velikosti nebo po uplynutí určité doby. IoT Hub výchozí nastavení pro následující konvence pojmenovávání souborů: 
+IoT Hub vytvoří dávky zprávy a zapisuje data do úložiště vždy, když dávka dosáhne určité velikosti nebo po uplynutí určité doby. IoT Hub výchozí nastavení pro následující konvence pojmenovávání souborů:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -89,12 +93,11 @@ Pokud chcete vytvořit účet úložiště kompatibilního s Azure Data Lake Gen
 
 ![Vybrat Azure datum Lake Gen2 Storage](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
-
-### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus fronty a Service Bus témata
+## <a name="service-bus-queues-and-service-bus-topics-as-a-routing-endpoint"></a>Service Bus fronty a Service Bus témata jako koncový bod směrování
 
 Service Bus front a témat používaných jako IoT Hub koncových bodů nesmí mít povoleny **relace** nebo je povolena **Detekce duplicitních** dat. Pokud je některá z těchto možností povolená, koncový bod se v Azure Portal jeví jako **nedosažitelný** .
 
-### <a name="event-hubs"></a>Event Hubs
+## <a name="event-hubs-as-a-routing-endpoint"></a>Event Hubs jako koncový bod směrování
 
 Kromě předdefinovaného koncového bodu, který je kompatibilní s Event Hubs, můžete také směrovat data na vlastní koncové body typu Event Hubs. 
 

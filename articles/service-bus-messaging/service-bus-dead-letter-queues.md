@@ -3,13 +3,13 @@ title: Fronty nedoručených zpráv Service Bus | Microsoft Docs
 description: Popisuje fronty nedoručených zpráv v Azure Service Bus. Service Bus fronty a odběry témat poskytují sekundární dílčí frontu, která se nazývá fronta nedoručených zpráv.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511207"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021676"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled Service Bus front nedoručených zpráv
 
@@ -56,7 +56,7 @@ Toto chování nelze zakázat, ale můžete nastavit [MaxDeliveryCount](/dotnet/
 
 ## <a name="exceeding-timetolive"></a>Překročení TimeToLive
 
-Pokud je vlastnost [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) nebo [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) nastavena na **hodnotu true** (výchozí hodnota je **false**), všechny zprávy o vypršení platnosti se přesunou do DLQ a určí `TTLExpiredException` kód důvodu.
+Pokud je vlastnost [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) nebo [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) nastavena na **hodnotu true** (výchozí hodnota je **false**), všechny zprávy o vypršení platnosti se přesunou do DLQ a určí  `TTLExpiredException` kód důvodu.
 
 Zprávy s vypršenou platností jsou vymazány a přesunuty do DLQ, pokud je alespoň jeden aktivní příjem z hlavní fronty nebo předplatného a [odložené zprávy](./message-deferral.md) nebudou vymazány a přesunuty do fronty nedoručených zpráv po vypršení platnosti. Tyto chování jsou záměrné.
 
@@ -80,7 +80,7 @@ Chcete-li načíst tyto nedoručené zprávy, můžete vytvořit příjemce pomo
 
 ## <a name="example"></a>Příklad
 
-Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce Receive pro hlavní front kód načte zprávu s [příjmem (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), který požádá zprostředkovatele, aby okamžitě vrátil libovolnou zprávu, která je snadno dostupná, nebo se vrátí bez výsledku. Pokud kód obdrží zprávu, okamžitě ho opustí, čímž se zvýší `DeliveryCount` . Jakmile systém přesune zprávu do DLQ, hlavní fronta je prázdná a smyčka se ukončí, protože [metody ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) vrátí **hodnotu null**.
+Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce Receive pro hlavní front kód načte zprávu s [příjmem (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), který požádá zprostředkovatele, aby okamžitě vrátil libovolnou zprávu, která je snadno dostupná, nebo se vrátí bez výsledku. Pokud kód obdrží zprávu, okamžitě ho opustí, čímž se zvýší  `DeliveryCount` . Jakmile systém přesune zprávu do DLQ, hlavní fronta je prázdná a smyčka se ukončí, protože [metody ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) vrátí **hodnotu null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

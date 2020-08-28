@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853027"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011340"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -75,7 +75,7 @@ Následující videa můžou být užitečná, když se seznámíte s recenzemi 
 
 * [Kontrola přístupu pomocí přístupu](https://youtu.be/tIKdQhdHLXU)
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Licence
 
 Potřebujete platnou licenci Azure AD Premium (P2) pro každou osobu, jinou než globální správce nebo Správce uživatelů, kteří budou vytvářet nebo provádět kontroly přístupu. Další informace najdete v tématu [licenční požadavky kontroly přístupu](access-reviews-overview.md).
 
@@ -182,7 +182,7 @@ Mezi obvyklé cíle pro kontrolu patří:
 
 * [Členství](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) ve skupinách (synchronizované s Azure AD nebo vytvořené v Azure AD nebo Office 365, včetně Microsoft Teams).
 
-* [Přístup k balíčku](/entitlement-management-overview.md) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
+* [Přístup k balíčku](/azure/active-directory/governance/entitlement-management-overview) , který seskupuje prostředky (skupiny, aplikace a weby) do jednoho balíčku pro správu přístupu.
 
 * [Role Azure AD a role prostředků Azure](../privileged-identity-management/pim-resource-roles-assign-roles.md) , jak jsou definované v Privileged Identity Management.
 
@@ -422,7 +422,7 @@ Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povol
 | Články s návody| Popis |
 | - | - |
 | [Vytvořit kontroly přístupu](entitlement-management-access-reviews-create.md)| Povolit recenze balíčku přístupu |
-| [Provést kontroly přístupu](/entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
+| [Provést kontroly přístupu](entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
 | [Samostatná kontrola přiřazených balíčků přístupu](entitlement-management-access-reviews-self-review.md)| Samoobslužné přezkoumání přiřazených balíčků přístupu |
 
 

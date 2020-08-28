@@ -5,12 +5,13 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518958"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021965"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavové služby Reliable Services
 Pro spolehlivé služby jsou k dispozici dvě sady nastavení konfigurace. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní spolehlivé služby.
@@ -118,7 +119,7 @@ ReplicatorConfig
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kam se vytvoří sdílený soubor protokolu pro tuto repliku. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
 | SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval monitorování pro spravovaná volání rozhraní API. Příklad: uživatelem poskytnutá funkce zpětného volání zálohy. Po uplynutí intervalu se do Správce stavu pošle zpráva o stavu upozornění. |
 | LogTruncationIntervalSeconds |Sekundy |0 |Konfigurovatelný interval, při kterém se bude na každé replice inicializovat zkracování protokolu. Slouží k tomu, aby bylo zajištěno, že protokol je také zkrácen na základě času namísto pouze velikosti protokolu. Toto nastavení také vynutí vyprázdnění odstraněných položek ve spolehlivém slovníku. Proto se dá použít k zajištění včasného mazání odstraněných položek. |
-| EnableStableReads |Logická hodnota |Nepravda |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
+| EnableStableReads |Logická hodnota |Ne |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
 
 ### <a name="sample-configuration-via-code"></a>Ukázková konfigurace prostřednictvím kódu
 ```csharp

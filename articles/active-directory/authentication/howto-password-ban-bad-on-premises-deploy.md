@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003537"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -49,6 +49,8 @@ Je taky možné, že se silnější ověřování hesla bude týkat stávající
 * [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete *Vynutit* , aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Dalším monitorováním v této době je dobrý nápad.
+
+Je důležité si uvědomit, že ochrana heslem Azure AD může ověřovat hesla jenom během operace změny a nastavení hesel. Hesla přijatá a uložená ve službě Active Directory před nasazením ochrany heslem služby Azure AD nikdy nebudou ověřená a budou dál fungovat tak, jak je. V průběhu času budou všichni uživatelé a účty nakonec začít používat hesla ověřená ochranou hesel služby Azure AD, protože jejich stávající hesla jsou normálně vypršet. Účty nakonfigurované s heslem bez vypršení platnosti jsou z této výjimky.
 
 ### <a name="multiple-forest-considerations"></a>Více informací o více doménových strukturách
 

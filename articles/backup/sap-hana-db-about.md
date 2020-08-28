@@ -3,12 +3,12 @@ title: Informace o SAP HANA zálohování databáze na virtuálních počítač�
 description: V tomto článku se dozvíte o zálohování SAP HANA databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757536"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022305"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informace o SAP HANA zálohování databáze na virtuálních počítačích Azure
 
@@ -69,7 +69,7 @@ Pokud chcete obnovit virtuální počítač se spuštěným SAP HANA, postupujte
 
 * [Obnovte nový virtuální počítač ze zálohy virtuálního počítače Azure](backup-azure-arm-restore-vms.md) z posledního bodu obnovení. Nebo vytvořte nový prázdný virtuální počítač a připojte disky z posledního bodu obnovení.
 * Vzhledem k tomu, že disky WA nejsou zálohovány, nejsou obnoveny. Vytvořte prázdné disky a oblast protokolu WA.
-* Po nastavení všech ostatních konfigurací (například IP adresa, název systému atd.) je virtuální počítač nastavený na přijímání DATABÁZOVÝch dat ze služby Azure Backup.
+* Po nastavení všech ostatních konfigurací (například IP adresa, název systému atd.) je virtuální počítač nastavený na příjem dat databáze z Azure Backup.
 * Teď obnovte databázi do virtuálního počítače ze [zálohy služby Azure SAP HANA DB](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) na požadovaný časový okamžik.
 
 ## <a name="next-steps"></a>Další kroky

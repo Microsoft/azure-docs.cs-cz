@@ -7,14 +7,14 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 9acb9db0024ea1601f82b96376f084536fbbeabb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7ce7697b92df9c6bef61bbf9eccb9f4252ce957f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431865"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020673"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
 
@@ -35,7 +35,7 @@ Pomocí těchto kroků můžete znovu naučit a nasazovat novou webovou službu 
 
 ## <a name="deploy-the-retraining-web-service"></a>Nasazení webové služby retraining
 
-Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby** k **modelu vlaků**, zkušební experiment vyprodukuje nový model, který můžete použít.
+Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby**  k **modelu vlaků**, zkušební experiment vyprodukuje nový model, který můžete použít.
 
 K nasazení webové služby retraining použijte následující postup:
 

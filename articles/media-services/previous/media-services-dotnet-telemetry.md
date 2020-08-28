@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c101f6f2007e9d772f03be5d69e56d5f52866d6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b6a02118aabce7a2f80c016584af1e9808a2df5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052782"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021470"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurace telemetrie Azure Media Services pomocí .NET 
 

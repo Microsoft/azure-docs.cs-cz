@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e167ccf1717c539dc676d85a19eb6eacc3ec0bda
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75444668"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021115"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Nastavení globální distribuované databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 

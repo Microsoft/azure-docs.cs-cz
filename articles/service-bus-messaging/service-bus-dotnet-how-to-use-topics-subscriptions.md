@@ -4,12 +4,13 @@ description: Napíšeme konzolovou aplikaci C# .NET Core využívající témata
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337517"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021642"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -20,7 +21,7 @@ Tento kurz se zabývá následujícími kroky:
 1. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do tématu.
 2. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z odběru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
@@ -358,7 +359,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
    
     ![Délka tématu][topic-message-receive]
 
-Gratulujeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
+Blahopřejeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
 
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 

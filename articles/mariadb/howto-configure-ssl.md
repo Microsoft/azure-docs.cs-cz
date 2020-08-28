@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
-ms.openlocfilehash: ca1129f0ef4f341773ebb7fea89ff9ec0881ca5b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8f01d0b9ba3394d33b9bd6e9f0b3f13fff2f844
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143046"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021370"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MariaDB
 Azure Database for MariaDB podporuje připojení Azure Database for MariaDBho serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
@@ -63,7 +64,7 @@ Spuštěním příkazu pro **stav** MySQL ověřte, že jste se připojili k ser
 ```sql
 status
 ```
-Ověřte, že je připojení zašifrované, a to tak, že zkontroluje výstup, který by měl zobrazovat: **SSL: šifrování se používá, AES256-SHA.** 
+Ověřte, že je připojení zašifrované, a to tak, že zkontroluje výstup, který by měl zobrazovat:  **SSL: šifrování se používá, AES256-SHA.** 
 
 ## <a name="sample-code"></a>Ukázka kódu
 K navázání zabezpečeného připojení k Azure Database for MariaDB přes SSL z vaší aplikace, přečtěte si následující ukázky kódu:

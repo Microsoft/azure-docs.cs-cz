@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6556731ed18bd591e930ed89264cd62893fe9ac6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022050"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -24,7 +24,7 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -53,7 +53,7 @@ Trezor služby Recovery Services obsahuje zálohovaná data a zásadu zálohová
 
     ![Recovery Services hodnoty trezoru](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    Trezor služby Recovery Services musí být ve stejném umístění jako chráněné virtuální počítače. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. V tomto kurzu se vytvoří trezor služby Recovery Services v oblasti *Západní Evropa*, protože tam se vytvořil virtuální počítač *myVM* (vytvořený pomocí rychlého startu).
+    Trezor služby Recovery Services musí být ve stejném umístění jako chráněné virtuální počítače. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. V tomto kurzu se vytvoří Recovery Services trezor v *západní Evropa* , protože to je místo, kde se vytvořilo *myVM* (virtuální počítač vytvořený pomocí rychlého startu).
 
 1. Až budete připraveni k vytvoření trezoru Recovery Services, vyberte **vytvořit**.
 

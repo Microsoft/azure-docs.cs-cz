@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890259"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020945"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -159,7 +159,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
 | JobUniqueId_g |Text |Jedinečné ID pro identifikaci úlohy |
 | RecoveryJobDestination_s |Text | Cíl úlohy obnovení, kde se data obnovují |
-| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření obnoveného bodu obnovení |
 | RecoveryJobRPLocation_s |Text | Umístění, kam se uložil bod obnovení, který se má obnovit|
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
@@ -472,7 +472,7 @@ Pokud chcete zjistit, které sloupce patří pouze ke schématu V1, podívejte s
 
 Vzhledem k tomu, že je schéma V1 na cestě pro vyřazení, doporučuje se použít ve všech vašich vlastních dotazech na Azure Backup diagnostických dat pouze schéma v2. Níže je uveden příklad, jak aktualizovat dotazy pro odebrání závislostí na schématu V1:
 
-1. Určete, jestli dotaz používá jakékoli pole, které se dá použít jenom pro schéma v1. Předpokládejme, že máte dotaz na výpis všech zálohovaných položek a jejich přidružených chráněných serverů následujícím způsobem:
+1. Určete, jestli dotaz používá jakékoli pole, které platí jenom pro schéma v1. Předpokládejme, že máte dotaz na výpis všech zálohovaných položek a jejich přidružených chráněných serverů následujícím způsobem:
 
     ````Kusto
     AzureDiagnostics

@@ -3,7 +3,7 @@ title: Použití sady SDK ke konfiguraci spravovaných identit na virtuálním p
 description: Podrobné pokyny pro konfiguraci a používání spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9472f9fa2084a1665b4a103df359fd3b4f19d6ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b4b55fa5a21ce56d27505a724bcf08f1a893c71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609040"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003452"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače se spravovanými identitami pro prostředky Azure pomocí sady Azure SDK
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se dozvíte, jak povolit a odebrat spravované identity pro prostředky Azure pro virtuální počítač Azure pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 

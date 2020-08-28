@@ -8,13 +8,13 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828043"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021149"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Analýza úložiště Azure metriky (klasické)
 
@@ -157,7 +157,7 @@ Pokud chcete stáhnout metriky pro dlouhodobé ukládání nebo je analyzovat m�
 |PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Dostupnost|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
 |20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7.8|100|  
+|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
 |20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
 |20140522T1100|uživatelský UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
 

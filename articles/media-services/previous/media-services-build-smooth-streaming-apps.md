@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071906"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021465"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store  
 
@@ -45,7 +46,7 @@ Dokončené řešení pro každou lekci si můžete stáhnout z ukázek kódu pr
 * [Lekce 1](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – jednoduchá Smooth Streaming Windows 8 Media Player 
 * [Lekce 2](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – jednoduchá Smooth Streaming systému Windows 8 Media Player s ovládacím prvkem posuvníku, 
 * [Lekce 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – Smooth Streaming Media Player Windows 8 s výběrem streamu,  
-* [Lekce 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – Smooth Streaming Windows 8 Media Player se sledováním výběru.
+* [Lekce 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907)  – Smooth Streaming Windows 8 Media Player se sledováním výběru.
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lekce 1: Vytvoření základní aplikace Smooth Streaming Storu
 
@@ -69,7 +70,7 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
     | Název | Hodnota |
     | --- | --- |
     | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
-    | Template (Šablona) |Prázdná aplikace (XAML) |
+    | Šablona |Prázdná aplikace (XAML) |
     | Název |SSPlayer |
     | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |

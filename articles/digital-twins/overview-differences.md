@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fdd0cd6995a294be03640693fcca9fb814f3acbe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826819"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021693"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Jak se nové digitální vlákna Azure liší od předchozí verze (2018)?
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Co je nového digitálních vláken Azure? Jak se liší od předchozí verze (2018)?
 
 První veřejná verze Preview digitálních vláken Azure byla vydaná v říjnu 2018. I když se základní koncepty z této předchozí verze přenesly do nové služby ve verzi Public Preview, mnoho z rozhraní a podrobnosti implementace se změnily, aby služba byla pružnější a přístupná. Tyto změny byly motivovány názory zákazníků.
 
@@ -44,5 +44,4 @@ Seznam omezení digitálních vláken Azure v této veřejné verzi Preview najd
 
 V dalším kroku podrobně práci s digitálními akcemi Azure pomocí prvního kurzu:
 
-> [!div class="nextstepaction"]
-> [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
+[*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

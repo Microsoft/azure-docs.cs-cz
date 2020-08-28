@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5a4f436f6f5542db289ed219a240a68db5c2065b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072013"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021523"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services 
 
@@ -470,7 +471,7 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento dokument popisuje CENC s více nativními technologiemi DRM a Access Control přes ověřování tokenů, jeho návrh a implementaci pomocí Azure, Media Services a Media Player.
 

@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: a10c8b21da1e4dc08a186ccb6ba6528b7a655943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759781"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022067"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -35,9 +35,9 @@ V tomto kurzu se dozvíte:
 > Informace o sadách SDK Azure IoT, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -93,9 +93,9 @@ Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k 
 
 ### <a name="get-your-module-connection-string"></a>Získání připojovacího řetězce modulu
 
-Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte následovně:
+Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte takto:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte do svého centra IoT a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** se úspěšně vytvořil.
 

@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: d00dd096bcfba32912337b122aefd0c00195ee8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2368108ab2a6c6799254e2846f566d71882ad1b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000842"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021457"
 ---
 # <a name="monitor-job-progress-using-net"></a>Monitorování průběhu úlohy pomocí .NET 
 

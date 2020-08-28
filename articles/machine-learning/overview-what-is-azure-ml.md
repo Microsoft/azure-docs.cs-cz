@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5d8dca091ef5bc039538903f07f46bc5d8ea262f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650107"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021574"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
 V tomto článku se dozvíte o Azure Machine Learning cloudovém prostředí, které můžete využít ke školení, nasazení, automatizaci, správě a sledování modelů ML. 
 
-Azure Machine Learning můžete použít pro libovolný druh strojového učení, od klasického ml až po hloubkové učení, pod dohledem a bez dohledu učení. Bez ohledu na to, jestli upřednostňujete psaní kódu v Pythonu nebo R nebo s nulovým kódem, jako je například [Návrhář](tutorial-designer-automobile-price-train-score.md), můžete v pracovní prostor Azure Machine Learning sestavit, naučit a sledovat vysoce přesné modely strojového učení a hloubkového učení. 
+Azure Machine Learning můžete použít pro libovolný druh strojového učení, od klasického ml až po hloubkové učení, pod dohledem a bez dohledu učení. Bez ohledu na to, jestli chcete psát kód v Pythonu nebo R pomocí sady SDK nebo pracovat s možnostmi žádného kódu a nízkého kódu v [studiu](#build-ml-models-in-the-studio), můžete v pracovní prostor Azure Machine Learning sestavovat, vyvíjet a sledovat modely strojového učení a hloubkového učení. 
 
 Spusťte školení na místním počítači a pak nahorizontální navýšení kapacity do cloudu. 
 
@@ -67,23 +67,27 @@ Díky mnoha dostupným [výpočetním cílům](how-to-set-up-training-targets.md
 
 Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-train-models.md) pomocí sady SDK.
 
-## <a name="build-ml-models-with-no-code-tools"></a>Sestavování modelů ML pomocí nástrojů bez kódu
+## <a name="build-ml-models-in-the-studio"></a>Vytváření modelů ML v studiu
 
-V případě školení a nasazení s nízkým kódem a nasazením, zkuste:
+[Azure Machine Learning Studio](https://www.ml.azure.com) je webový portál v Azure Machine Learning pro možnosti s nízkým kódem a bez kódu pro školení modelů, nasazení a správu prostředků. Sada Studio se integruje se sadou Azure Machine Learning SDK, aby se zajistilo bezproblémové prostředí. Další informace najdete v tématu [co je Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md).
 
 + **Návrhář Azure Machine Learning (Preview)**
 
-  Použijte návrháře pro přípravu dat, výuku, testování, nasazení, správu a sledování modelů strojového učení bez psaní kódu. Není nutné žádné programování, vizuálně propojit datové sady a moduly a vytvořit model. Vyzkoušejte si [kurz pro návrháře](tutorial-designer-automobile-price-train-score.md).
+  Použijte [Návrháře](concept-designer.md) ke školení a nasazení modelů strojového učení bez psaní kódu. Vyzkoušejte si [kurz pro návrháře](tutorial-designer-automobile-price-train-score.md) a začněte. 
 
-  Další informace [najdete v článku Přehled návrháře Azure Machine Learning](concept-designer.md). 
+  ![Animovaný obrázek GIF rozhraní přetažení návrháře Azure Machine Learning](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Příklad návrháře Azure Machine Learning](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **Sledovat experimenty**
 
-+ **Uživatelské rozhraní automatizovaného strojového učení**
+  Naučte se [sledovat a vizualizovat experimenty v oblasti datových věd](tutorial-first-experiment-automated-ml.md) v studiu. 
 
-  Naučte se vytvářet [automatizované experimenty ml](tutorial-first-experiment-automated-ml.md) v snadno použitelném rozhraní. 
+    ![Podrobnosti o spuštění v Azure Machine Learning Studiu](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Navigační podokno Azure Machine Learning Studio](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **A mnohem víc...**
+
+  Navštivte Azure Machine Learning studia na adrese [ml.Azure.com](https://www.ml.azure.com). 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: nasazení správy životního cyklu &
 Pokud máte správný model, můžete ho snadno použít ve webové službě, v zařízení IoT nebo v Power BI. Další informace najdete v článku věnovaném [nasazení a umístění](how-to-deploy-and-where.md).

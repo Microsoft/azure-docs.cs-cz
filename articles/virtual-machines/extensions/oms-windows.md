@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494662"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020503"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
 
@@ -29,7 +29,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování v cloudových i mís
 
 ### <a name="operating-system"></a>Operační systém
 
-Podrobnosti o podporovaných operačních systémech Windows najdete v článku [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) .
+Podrobnosti o podporovaných operačních systémech Windows najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze rozšíření virtuálního počítače s Windows Log Analytics a sady Log Analytics agenta pro každou verzi. 
@@ -91,11 +91,11 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
 | typ | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1.0 |
+| typeHandlerVersion | 1,0 |
 | ID pracovního prostoru (např.) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
+\* ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
 
 > [!NOTE]
 > Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/platform/agent-windows.md).
@@ -162,7 +162,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 `Set-AzVMExtension`Příkaz lze použít k nasazení rozšíření Log Analytics agenta virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu. 
 
@@ -183,7 +183,7 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell.
 

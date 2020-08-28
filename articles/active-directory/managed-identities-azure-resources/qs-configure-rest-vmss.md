@@ -3,7 +3,7 @@ title: Konfigurace spravovaných identit v sadě škálování virtuálních po�
 description: Podrobné pokyny pro konfiguraci spravovaných identit systému a uživatelem přiřazených pro sadu škálování virtuálního počítače Azure pomocí technologie KUDRLINKOU k provádění REST API volání.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf514480f0ca247606ffbc50148556eeed007c8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f244a8bee9f5fe7222fb80793f200b92852d6aac
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921499"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021795"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí REST API volání
 
@@ -33,7 +33,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálních počítačů Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

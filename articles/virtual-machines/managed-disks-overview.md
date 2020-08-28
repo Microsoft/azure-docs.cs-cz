@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749690"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021431"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -91,7 +91,7 @@ Datový disk je spravovaný disk, který je připojený k virtuálnímu počíta
 
 Každý virtuální počítač má jeden připojený disk s operačním systémem. Tento disk s operačním systémem má předem instalovaný operační systém, který byl vybrán při vytvoření virtuálního počítače. Tento disk obsahuje spouštěcí svazek.
 
-Tento disk má maximální kapacitu 2 048 GiB.
+Tento disk má maximální kapacitu 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 

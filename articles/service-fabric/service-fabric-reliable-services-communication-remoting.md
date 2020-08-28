@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253282"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022152"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
 
@@ -109,7 +110,7 @@ Uživatel může tyto hodnoty nakonfigurovat předáním objektu OperationRetryS
 
 Od verze 2,8 balíčku vzdálené komunikace NuGet máte možnost použít sadu vzdálené komunikace v2. Vykonávání zásobníku vzdálené komunikace v2 je lepší. Poskytuje také funkce jako vlastní serializace a další připojitelná rozhraní API.
 Kód šablony stále používá sadu vzdálené komunikace v1.
-Vzdálená komunikace v2 není kompatibilní s V1 (předchozí zásobník vzdálené komunikace). Postupujte podle pokynů v článku [upgrade z verze V1 na v2](#upgrade-from-remoting-v1-to-remoting-v2) , aby nedocházelo k vlivům na dostupnost služeb.
+Vzdálená komunikace v2 není kompatibilní s V1 (předchozí zásobník vzdálené komunikace). Postupujte podle pokynů v článku  [upgrade z verze V1 na v2](#upgrade-from-remoting-v1-to-remoting-v2) , aby nedocházelo k vlivům na dostupnost služeb.
 
 Pro povolení zásobníku v2 jsou k dispozici následující přístupy.
 
@@ -127,7 +128,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí atributu As
    </Resources>
    ```
 
-2. Pomocí `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` metody rozšíření vytvořte naslouchací procesy vzdálené komunikace (stejné pro V1 a v2).
+2. Pomocí `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners`  metody rozšíření vytvořte naslouchací procesy vzdálené komunikace (stejné pro V1 a v2).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -268,7 +269,7 @@ Sestavte sestavení klienta se sestavením rozhraní, abyste se ujistili, že se
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Použití explicitních tříd vzdálené komunikace k vytvoření naslouchacího procesu/továrny klienta pro verzi v2 (kompatibilní s rozhraním)
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -357,7 +358,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Použití vlastní serializace se zprávou zabalené vzdálené komunikace
 
 U zprávy zabalené vzdálené komunikace vytvoříme jeden zabalený objekt se všemi parametry jako pole v něm.
-Postupujte takto:
+Postupujte následovně:
 
 1. Implementujte `IServiceRemotingMessageSerializationProvider` rozhraní k poskytnutí implementace pro vlastní serializaci.
     Tento fragment kódu ukazuje, jak implementace vypadá jako.

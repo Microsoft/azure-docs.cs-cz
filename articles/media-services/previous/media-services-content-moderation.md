@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954700"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022203"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator k detekci možného obsahu pro dospělé a pikantní 
 
@@ -31,7 +32,7 @@ Procesor **Azure media Content moderator** Media procesor (MP) umožňuje použ�
 
 Sada **Azure Media Content moderator** MP je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **Azure Media Content moderator** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o  **Azure Media Content moderator** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
 ## <a name="content-moderator-input-files"></a>Content Moderator vstupní soubory
 Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
@@ -47,20 +48,20 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="root-json-elements"></a>Kořenové elementy JSON
 
-| Prvek | Description |
+| Element | Popis |
 | --- | --- |
 | verze |Verze Content Moderator. |
 | měřítk |"Takty" za sekundu videa. |
 | posun |Posun času pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. Tato hodnota se může v budoucnu změnit. |
 | snímků |Počet snímků ve videu za sekundu. |
 | šířka |Šířka výstupního snímku videa (v pixelech)|
-| height |Výška výstupního snímku videa v pixelech|
+| výška |Výška výstupního snímku videa v pixelech|
 | totalDuration |Doba trvání vstupního videa v části "osové". |
 | [svalovin](#fragments-json-elements) |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment je automaticky zjištěný snímek s počátečním, dobou trvání, číslem intervalu a událostmi. |
 
 ### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
-|Prvek|Description|
+|Element|Popis|
 |---|---|
 | start |Čas zahájení první události v "taktech". |
 | doba trvání |Délka fragmentu v "taktech". |
@@ -69,9 +70,9 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="events-json-elements"></a>Události – elementy JSON
 
-|Prvek|Description|
+|Element|Popis|
 |---|---|
-| reviewRecommended | `true`nebo `false` v závislosti na tom, zda **AdultScore** nebo **racyScore** překročí vnitřní prahové hodnoty. |
+| reviewRecommended | `true` nebo `false` v závislosti na tom, zda **AdultScore** nebo **racyScore** překročí vnitřní prahové hodnoty. |
 | adultScore | Hodnocení spolehlivosti pro možný obsah pro dospělé, na škále 0,00 až 0,99. |
 | racyScore | Hodnocení spolehlivosti možného obsahu pikantní na škále 0,00 až 0,99. |
 | index | index rámce na stupnici od prvního indexu snímku až po poslední index snímku. |

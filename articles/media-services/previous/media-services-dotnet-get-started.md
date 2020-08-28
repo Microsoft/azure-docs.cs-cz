@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2c79566f51647492118f307e1c9737b98b1be484
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d29c0636ef6bd01560fba3b1b5bdd227c5116b09
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543584"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020622"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
 
@@ -27,7 +28,7 @@ ms.locfileid: "87543584"
 
 Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa na vyžádání (Video-on-Demand) pomocí služby Azure Media Services (AMS) s použitím sady SDK služby Azure Media Services .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 

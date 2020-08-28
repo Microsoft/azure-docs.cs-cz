@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75372087"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020724"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Stahování velkých objemů náhodných dat z úložiště Azure
 
@@ -25,7 +26,7 @@ Ve třetí části této série se naučíte:
 > * Spuštění aplikace
 > * Ověření počtu připojení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure][previous-tutorial].
 
