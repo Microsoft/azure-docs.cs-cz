@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530113"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050671"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -39,10 +39,14 @@ Zařízení se dá nasadit takto:
 - Pokud nechcete používat šablonu nebo jste v Azure Government, můžete zařízení nasadit pro VMware nebo Hyper-V pomocí skriptu PowerShellu.
 - U fyzických serverů vždy nasadíte zařízení pomocí skriptu.
 
-
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Jak se zařízení připojuje k Azure?
 
-Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute s veřejným partnerským vztahem/Microsoftu.
+Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute.
+
+- Pokud chcete používat Azure ExpressRoute pro Azure Migrate provozu replikace, vyžaduje se partnerský vztah Microsoftu nebo existující veřejný partnerský vztah (veřejný partnerský vztah je zastaralý pro nové vytváření ER).
+- Replikace přes Azure ExpressRoute jenom s povoleným privátním partnerským vztahem není podporovaná.
+
+Azure ExpressRoute s nakonfigurovaným partnerským vztahem Microsoftu je doporučená doména směrování pro provoz replikace.
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Má analýza zařízení vliv na výkon?
 
@@ -53,7 +57,6 @@ Zařízení Azure Migrate profilování místních počítačů neustále měř�
 Když použijete staženou šablonu k vytvoření virtuálního počítače zařízení, můžete do šablony přidat komponenty (například antivirový program), pokud necháte zachovat pravidla komunikace a brány firewall požadovaná pro Azure Migrate zařízení.
 
 ## <a name="what-network-connectivity-is-required"></a>Jaké síťové připojení je potřeba?
-
 
 Zařízení potřebuje přístup k adresám URL Azure. [Zkontrolujte](migrate-appliance.md#url-access) seznam adres URL.
 
@@ -96,12 +99,14 @@ Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
+No. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může Azure Migrate projekt mít více zařízení?
+
 K projektu může být připojeno více zařízení. Zařízení je však možné přidružit pouze k jednomu projektu. 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Může se zařízení Azure Migrate/zařízení replikace připojit ke stejnému vCenter?
+
 Yes. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta).
 
 
@@ -123,11 +128,11 @@ Po použití zařízení k zahájení zjišťování nemůžete znovu nakonfigur
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
-Ne. V tuto chvíli není tato možnost podporovaná. 
+No. V tuto chvíli není tato možnost podporovaná. 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Můžu na hostiteli ESXi zjistit?
 
-Ne. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
+No. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
 
 ## <a name="how-do-i-update-the-appliance"></a>Návody aktualizovat zařízení?
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e80db84789ab5c8b0f07bc6a76ae99f8db3c8b80
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923870"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051028"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
 
 [Referenční informace](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -125,6 +125,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> Chcete-li získat kořenový adresář kontejneru, vynechejte `-Path` parametr.
 
 ## <a name="rename-or-move-a-directory"></a>Přejmenování nebo přesunutí adresáře
 
@@ -202,7 +204,8 @@ $properties.Group
 $properties.Owner
 ```
 
-Chcete-li vypsat obsah kontejneru, vynechejte `-Path` parametr z příkazu.
+> [!NOTE]
+> Chcete-li zobrazit obsah kořenového adresáře kontejneru, vynechejte `-Path` parametr.
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
@@ -227,6 +230,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> Pokud chcete nahrát soubor do kořenového adresáře kontejneru, vynechejte `-Path` parametr.
 
 ## <a name="show-file-properties"></a>Zobrazit vlastnosti souboru
 

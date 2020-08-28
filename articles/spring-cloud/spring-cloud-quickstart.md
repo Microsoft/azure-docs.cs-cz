@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9e9973db60f84d2eab63137a3034882bb4ded7f6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951844"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048193"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -169,13 +169,15 @@ Po dokončení nasazení budete mít k aplikaci přístup na adrese `https://<se
 
 #### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/Azure-CLI)
 
-1. Pomocí následujícího příkazu můžete z aplikace získat protokoly v reálném čase.
+Pomocí následujícího příkazu můžete z aplikace získat protokoly v reálném čase.
 
-    ```azurecli
-    az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
-    ```
-    
-    [![Protokoly ](media/spring-cloud-quickstart-java/streaming-logs.png) streamování](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
+```azurecli
+az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
+
+```
+Protokoly se zobrazí ve výsledcích:
+
+[![Protokoly ](media/spring-cloud-quickstart-java/streaming-logs.png) streamování](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
 
 >[!TIP]
 > Slouží `az spring-cloud app logs -h` k prozkoumávání dalších parametrů a funkcí streamování protokolů.

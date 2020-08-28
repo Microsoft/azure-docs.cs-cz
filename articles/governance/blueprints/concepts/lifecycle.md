@@ -1,14 +1,14 @@
 ---
 title: Pochopení životního cyklu podrobného plánu
 description: Seznamte se s životním cyklem, na který odkazuje definice podrobného plánu, a podrobnosti o jednotlivých fázích, včetně aktualizace a odebírání přiřazení podrobného plánu.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864024"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049702"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprint
 
@@ -81,14 +81,14 @@ Odstraňte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#
 
 V životním cyklu je několik bodů, které je možné přiřadit k předplatnému. Po **publikování**režimu verze podrobného plánu lze tuto verzi přiřadit k předplatnému. Tento životní cyklus umožňuje používat verze podrobného plánu a aktivně je přiřazovat během vývoje novější verze.
 
-Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](parameters.md).
+Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](./parameters.md).
 
 ### <a name="updating-assignments"></a>Aktualizace přiřazení
 
 Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
 
-- Přidat nebo odebrat [uzamykání prostředků](resource-locking.md)
-- Změna hodnoty [dynamických parametrů](parameters.md#dynamic-parameters)
+- Přidat nebo odebrat [uzamykání prostředků](./resource-locking.md)
+- Změna hodnoty [dynamických parametrů](./parameters.md#dynamic-parameters)
 - Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
 
 Informace o postupu najdete v tématu [aktualizace existujících přiřazení](../how-to/update-existing-assignments.md).
@@ -97,7 +97,7 @@ Informace o postupu najdete v tématu [aktualizace existujících přiřazení](
 
 Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupiny pro správu nebo předplatného. Při zrušení přiřazení podrobného plánu dojde k následujícímu:
 
-- Odebrání [uzamykání prostředků](resource-locking.md) podrobného plánu
+- Odebrání [uzamykání prostředků](./resource-locking.md) podrobného plánu
 - Odstranění objektu přiřazení podrobného plánu
 - Podmíněného Pokud se použila **spravovaná identita přiřazená systémem** , odstraní se taky.
 
@@ -106,8 +106,8 @@ Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Principy použití [statických a dynamických parametrů](./parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](./sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](./resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

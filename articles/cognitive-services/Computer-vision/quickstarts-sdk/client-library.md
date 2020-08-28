@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 ms.author: pafarley
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0a0f501f56f7537923f301ed41e4c044cf6ec71c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc5b0d05dc1e9e7c09781dba63c2031c72da73ff
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936860"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050303"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Rychlý Start: použití klientské knihovny Počítačové zpracování obrazu
 
@@ -26,7 +26,7 @@ Začněte s klientskou knihovnou Počítačové zpracování obrazu. Pomocí tě
 Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 
 * Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Vyrozpoznávají vytištěné a ručně psaný text pomocí rozhraní Batch Read API.
+* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
 
 ::: zone pivot="programming-language-csharp"
 

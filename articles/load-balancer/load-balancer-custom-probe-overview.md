@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207553"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051351"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -95,7 +95,7 @@ Dostupné protokoly závisí na použité Load Balancer SKU:
 | **Standardní SKU** |    &#9989; |   &#9989; |   &#9989; |
 | **Základní SKU** |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcp-probe"></a><a name="tcpprobe"></a>Test TCP
+### <a name="tcp-probe"></a><a name="tcpprobe"></a> Test TCP
 
 Sondy TCP iniciují připojení provedením třícestných Open TCP handshake s definovaným portem.  Sondy TCP ukončí připojení se čtyřnásobnou metodou handshake TCP.
 
@@ -223,7 +223,7 @@ Kromě Load Balancer sond stavu tato [IP adresa používá následující operac
 - Umožňuje komunikaci s virtuálním serverem DNS poskytovat filtrované rozlišení názvů zákazníkům, kteří nedefinují vlastní servery DNS.  Toto filtrování zajišťuje, že zákazníci můžou přeložit jenom názvy hostitelů jejich nasazení.
 - Umožňuje virtuálnímu počítači získat dynamickou IP adresu ze služby DHCP v Azure.
 
-## <a name="design-guidance"></a><a name="design"></a>Doprovodné materiály k návrhu
+## <a name="design-guidance"></a><a name="design"></a> Doprovodné materiály k návrhu
 
 Sondy stavu slouží k zajištění odolnosti služby a umožňují škálování. Nesprávná konfigurace nebo špatný vzor návrhu může mít vliv na dostupnost a škálovatelnost vaší služby. Projděte si celý dokument a zvažte, jaký dopad ve vašem scénáři je v případě, že je tato odpověď v testu označena příznakem nebo označená a jak má dopad na dostupnost vašeho scénáře vaší aplikace.
 
@@ -263,6 +263,6 @@ Základní veřejné Load Balancer zveřejňuje stav sondy stavu pro každý bac
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
-- [Začínáme vytvářet veřejný Nástroj pro vyrovnávání zatížení v Správce prostředků pomocí prostředí PowerShell](quickstart-create-standard-load-balancer-powershell.md)
+- [Začínáme vytvářet veřejný Nástroj pro vyrovnávání zatížení v Správce prostředků pomocí prostředí PowerShell](quickstart-load-balancer-standard-public-powershell.md)
 - [REST API pro sondy stavu](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Vyžádejte si nové možnosti sondy stavu s [Load Balancer UserVoice](https://aka.ms/lbuservoice)

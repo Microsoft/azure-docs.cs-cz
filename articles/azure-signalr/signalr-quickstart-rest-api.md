@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045002"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050501"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -19,7 +19,7 @@ Ve službě Azure SignalR je k dispozici [rozhraní REST API](https://github.com
 
 V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazového řádku do aplikací připojených klientů v jazyce C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
@@ -28,11 +28,17 @@ Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo L
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -45,6 +51,7 @@ Zatímco se nasazuje služba, přejděme na přípravu kódu. Naklonujte [ukázk
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
@@ -81,6 +88,8 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 ## <a name="run-the-sample-without-publishing"></a>Spuštění ukázky bez publikování
 
 Server nebo klienta můžete také spustit s použitím následujícího příkazu
@@ -97,6 +106,8 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 V kořenovém adresáři vzorku můžete spustit `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"`. Potom už nebudete možnost `-c "<ConnectionString>"` potřebovat.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 ## <a name="usage"></a>Využití
 
 Po spuštění serveru použijte příkaz k odeslání zprávy:
@@ -111,6 +122,8 @@ broadcast
 
 Můžete spustit více klientů s různými názvy.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a>Integrace se službami třetích stran
 
 Služba Azure SignalR umožňuje v systému integraci služeb třetích stran.
@@ -121,12 +134,12 @@ Následující tabulka uvádí všechny podporované verze rozhraní REST API k 
 
 Verze | Stav rozhraní API | Dveře | Specifikace
 --- | --- | --- | ---
-`1.0-preview` | K dispozici | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | K dispozici | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | K dispozici. | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | K dispozici. | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-Rozhraní API | 1,0 – Preview | 1.0
+rozhraní API | 1,0 – Preview | 1,0
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -244,7 +257,11 @@ Stavový kód odpovědi | Popis
 `200` | Služba je dobrá
 `5xx` | Chyba služby
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -252,3 +269,5 @@ V tomto rychlém startu jste zjistili, jak pomocí REST API vysílat zprávy v r
 
 > [!div class="nextstepaction"]
 > [Vývoj Azure Functions pomocí vazeb služby signalizace Azure](signalr-quickstart-azure-functions-csharp.md)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsapi)

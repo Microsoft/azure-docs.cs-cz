@@ -4,12 +4,12 @@ description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250732"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048274"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -30,12 +30,8 @@ Protokoly Azure Monitor jsou v Azure Portal povolené a spravované. Chcete-li p
 1. Vyberte cluster AKS, jako je například *myAKSCluster*, a pak zvolte **Přidání nastavení diagnostiky**.
 1. Zadejte název, třeba *myAKSClusterLogs*, a pak vyberte možnost **odeslání do Log Analytics**.
 1. Vyberte existující pracovní prostor nebo vytvořte nový. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Můžete povolit další protokoly, jako je například *Kube-audit* a *cluster-AutoScale*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
+1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. V tomto příkladu povolte protokoly *Kube-audit* . Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
 1. Až budete připraveni, vyberte **Uložit** a povolte shromažďování vybraných protokolů.
-
-Následující příklad snímku obrazovky portálu ukazuje okno *nastavení diagnostiky* :
-
-![Povolit Log Analytics pracovní prostor pro Azure Monitor protokoly clusteru AKS](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Naplánování testu pod v clusteru AKS
 
@@ -71,30 +67,25 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Zobrazit shromážděné protokoly
 
-Povolení a zobrazení diagnostických protokolů v pracovním prostoru Log Analytics může trvat několik minut. V Azure Portal vyberte skupinu prostředků pro pracovní prostor Log Analytics, například *myResourceGroup*, a pak zvolte svůj prostředek Log Analytics, například *myAKSLogs*.
+Povolení a zobrazení diagnostických protokolů může trvat několik minut. V Azure Portal přejděte na svůj cluster AKS a na levé straně vyberte **protokoly** . Pokud se zobrazí okno *příklady dotazů* , zavřete ho.
 
-![Výběr pracovního prostoru Log Analytics pro cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
 
-Na levé straně vyberte **protokoly**. Pokud chcete zobrazit *Kube-apiserver*, zadejte do textového pole tento dotaz:
-
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-Pro Server rozhraní API je nejspíš vráceno mnoho protokolů. Chcete-li určit rozsah dotazu pro zobrazení protokolů NGINX pod vytvořením v předchozím kroku, přidejte další příkaz *WHERE* pro hledání *lusků/Nginx* , jak je znázorněno v následujícím příkladu dotazu:
+Na levé straně vyberte **protokoly**. Chcete-li zobrazit protokoly *Kube-audit* , zadejte do textového pole následující dotaz:
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-Zobrazí se konkrétní protokoly pro váš NGINX pod, jak je znázorněno v následujícím ukázkovém snímku obrazovky:
+Je nejspíš vráceno mnoho protokolů. Chcete-li určit rozsah dotazu pro zobrazení protokolů NGINX pod vytvořením v předchozím kroku, přidejte další příkaz *WHERE* pro hledání *Nginx* , jak je znázorněno v následujícím příkladu dotazu:
 
-![Výsledky dotazu Log Analytics pro Sample NGINX pod](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
 Pokud chcete zobrazit další protokoly, můžete aktualizovat dotaz pro název *kategorie* na *Kube-Controller-Manager* nebo *Kube-Scheduler*v závislosti na tom, jaké další protokoly jste povolili. Další příkazy *WHERE* lze použít k upřesnění událostí, které hledáte.
 

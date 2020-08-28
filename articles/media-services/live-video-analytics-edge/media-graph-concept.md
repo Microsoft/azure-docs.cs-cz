@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798835"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048414"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -37,19 +37,28 @@ Hodnoty pro parametry v topologii jsou určeny při vytváření instancí grafu
 
 ## <a name="media-graph-states"></a>Stavy mediálního grafu  
 
-Mediální graf může být v jednom z následujících stavů:
+Životní cyklus topologií grafu a instancí grafu je zobrazený v následujícím diagramu stavu.
 
-* Neaktivní – představuje stav, ve kterém je nakonfigurované mediální graf, ale není aktivní.
-* Aktivace – stav při vytváření instance mediálního grafu (tj. přechodový stav mezi neaktivním a aktivním).
-* Aktivní – stav, kdy je mediální graf aktivní 
+![Životní cyklus topologie grafu a životního cyklu instance grafu](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  Mediální graf může být aktivní bez toku dat (například vstupní zdroj videa přejde do režimu offline).
-* Deaktivace – jedná se o stav, když je mediální graf převedený z aktivní na neaktivní.
+Začnete s [vytvářením topologie grafu](direct-methods.md#graphtopologyset). Potom pro každý živý informační kanál videa, který chcete s touto topologií zpracovávat, [vytvoříte instanci grafu](direct-methods.md#graphinstanceset). 
 
-Následující diagram znázorňuje Stavový počítač Media Graph.
+Instance grafu bude ve `Inactive` stavu nečinnosti.
 
-![Stavový počítač Media graphu](./media/media-graph/media-graph-state-machine.png)
+Až budete připraveni odeslat živý kanál videa do instance grafu, [aktivujete](direct-methods.md#graphinstanceactivate) ho. Instance grafu se krátce prochází přechodovým `Activating` stavem a pokud je úspěšná, přejděte do `Active` stavu. Ve `Active` stavu bude zpracováno médium (Pokud instance grafu obdrží vstupní data).
+
+> [!NOTE]
+>  Instance grafu může být aktivní bez toku dat (například fotoaparát přejde do režimu offline).
+> Vaše předplatné Azure bude účtováno, pokud je instance grafu v aktivním stavu.
+
+Můžete opakovat proces vytváření a aktivace jiných instancí grafu pro stejnou topologii, pokud máte další aktivní kanály videa pro zpracování.
+
+Po dokončení zpracování živého kanálu videa můžete instanci grafu [deaktivovat](direct-methods.md#graphinstancedeactivate) . Instance grafu se krátce prochází přechodovým `Deactivating` stavem, vyprázdní všechna data, která má, a pak se vrátí do `Inactive` stavu.
+
+Instanci grafu lze [Odstranit](direct-methods.md#graphinstancedelete) pouze v případě, že je ve `Inactive` stavu.
+
+Po odstranění všech instancí grafu odkazujících na konkrétní topologii grafu můžete [Odstranit topologii grafu](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Zdroje, procesory a jímky  
 

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045208"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051518"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -16,7 +16,7 @@ Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat bě�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
@@ -61,7 +61,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Změňte **typ** na **předdefinovaný**. Do **vyhledávacího**výrazu zadejte **tag**.
 
-   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte možnost **připojit značku a její výchozí hodnotu do skupin prostředků**.
+   1. Změňte fokus na **hledání** , které se má provést. Vyberte možnost **připojit značku a její výchozí hodnotu do skupin prostředků**.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 

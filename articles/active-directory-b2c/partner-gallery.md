@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814215"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049858"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -31,6 +31,7 @@ Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pom�
 | :--- | :--- |
 | ![symbol](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) je poskytovatel řešení prevence podvodů, který pomáhá organizacím chránit proti útokům na roboty, útokům na převzetí účtů a podvodné otevírání účtů.
 | ![symbol](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) je ověření identity a poskytovatel kontroly pravopisu, který provádí hodnocení rizik na základě atributů uživatele, aby se zabránilo podvodům.|
+| ![symbol](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) je skutečný poskytovatel ověřování bez hesla, který nahrazuje hesla s použitím šifrování veřejných klíčů, které eliminují podvod, útoky phishing a opakované použití přihlašovacích údajů.|
 | ![symbol](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) je ověřování identity a poskytovatel kontroly pravopisu s řešeními ověřování ID, řešení pro ochranu před podvody, řešení dodržování předpisů a další.|
 | ![symbol](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) je řešení digitálního ID s elektronickými identifikacemi, ověřováním a důvěryhodnými službami (eiDAS), které uživatelům umožňuje bezpečné přihlášení bez čtecích zařízení, hesel, dvojúrovňového ověřování a více kódů PIN. |
 | ![symbol](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
