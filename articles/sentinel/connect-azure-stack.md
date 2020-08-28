@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8114a5e6db7b82b846d221471f41dbdf418ddd9d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77588514"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001990"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Připojení virtuálních počítačů s Azure Stack k Azure Sentinel
 
@@ -36,7 +36,7 @@ Do virtuálních počítačů spuštěných v Azure Stack přidejte rozšířen�
 
 1. Na nové kartě prohlížeče se přihlaste k [portálu Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal).
 2. Přejít na stránku **virtuální počítače** , vyberte virtuální počítač, který chcete chránit pomocí služby Azure Sentinel. Informace o tom, jak vytvořit virtuální počítač na Azure Stack, najdete v tématu Vytvoření virtuálního počítače [s Windows serverem pomocí portálu Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) nebo [Vytvoření virtuálního počítače se systémem Linux pomocí portálu Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
-3. Vyberte **Extensions** (Rozšíření). Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
+3. Vyberte **Rozšíření**. Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
 4. Klikněte na kartu **Přidat** . Otevře se okno nabídky **nový prostředek** a zobrazí se seznam dostupných rozšíření virtuálních počítačů. 
 5. Vyberte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** a klikněte na **vytvořit**. Otevře se okno **instalovat konfiguraci rozšíření** .
 
@@ -49,7 +49,7 @@ Do virtuálních počítačů spuštěných v Azure Stack přidejte rozšířen�
 1. V okně Azure Stack **nainstalovat rozšíření** je vložte do označených polí a klikněte na tlačítko **OK**.
 1. Po dokončení instalace rozšíření se jeho stav zobrazí jako **úspěšné zřízení**. Může trvat až jednu hodinu, než se virtuální počítač objeví na portálu Sentinel Azure.
 
-Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Informace o řešení problémů agenta pro Linux najdete v tématu [řešení potíží s agentem Azure Log Analytics Linux](../azure-monitor/platform/agent-linux-troubleshoot.md).
 

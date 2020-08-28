@@ -3,12 +3,13 @@ title: 'Kurz: odeslání Event Hubs dat do datového skladu – Event Grid'
 description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat data do SQL Data Warehouse. K načtení digitalizačního souboru používá funkci Azure Functions.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86117555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007431"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
 Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V tomto [Event Hubs a v ukázce Event Grid Integration](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob na SQL Data Warehouse.
@@ -55,7 +56,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
     ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)

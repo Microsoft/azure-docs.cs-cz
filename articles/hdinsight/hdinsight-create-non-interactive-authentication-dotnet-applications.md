@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074783"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021761"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -35,7 +35,7 @@ Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles
 
 **Přidání role vlastníka do aplikace Azure AD**
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků, která obsahuje cluster HDInsight, na kterém spustíte dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
 1. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)**.
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.

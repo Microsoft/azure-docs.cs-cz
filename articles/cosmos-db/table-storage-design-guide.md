@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027803"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002172"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Table Storage: škálovatelné a výkonné tabulky
 
@@ -39,7 +39,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -51,8 +51,8 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zobrazeny</td>
@@ -71,8 +71,8 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -108,8 +108,8 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -152,8 +152,8 @@ Následující tabulka obsahuje některé klíčové hodnoty, které je třeba z
 | Počet oddílů v tabulce |Omezeno pouze na kapacitu účtu úložiště. |
 | Počet entit v oddílu |Omezeno pouze na kapacitu účtu úložiště. |
 | Velikost jednotlivé entity |Až 1 MB s maximálním počtem 255 vlastností (včetně `PartitionKey` , a `RowKey` `Timestamp` ). |
-| Velikost`PartitionKey` |Velikost řetězce až 1 KB. |
-| Velikost`RowKey` |Velikost řetězce až 1 KB. |
+| Velikost `PartitionKey` |Velikost řetězce až 1 KB. |
+| Velikost `RowKey` |Velikost řetězce až 1 KB. |
 | Velikost transakce skupiny entit |Transakce může zahrnovat maximálně 100 entit a velikost datové části musí být menší než 4 MB. EGT může entitu aktualizovat pouze jednou. |
 
 Další informace najdete v tématu [Principy datového modelu Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
@@ -195,8 +195,8 @@ V následujících příkladech se předpokládá, že Table Storage ukládá en
 
 | Název sloupce | Datový typ |
 | --- | --- |
-| `PartitionKey`(Název oddělení) |Řetězec |
-| `RowKey`(ID zaměstnance) |Řetězec |
+| `PartitionKey` (Název oddělení) |Řetězec |
+| `RowKey` (ID zaměstnance) |Řetězec |
 | `FirstName` |Řetězec |
 | `LastName` |Řetězec |
 | `Age` |Integer |
@@ -222,7 +222,7 @@ Příklady kódu na straně klienta, který může zpracovávat více typů enti
 
 * [Práce s heterogenními typy entit](#work-with-heterogeneous-entity-types)  
 
-### <a name="choose-an-appropriate-partitionkey"></a>Zvolit vhodný`PartitionKey`
+### <a name="choose-an-appropriate-partitionkey"></a>Zvolit vhodný `PartitionKey`
 Vaše volba `PartitionKey` by měla vyvážit nutnost povolit používání EGTs (k zajištění konzistence) před tím, než bude nutné distribuovat vaše entity do několika oddílů (aby se zajistilo škálovatelné řešení).  
 
 V jednom krajním případě můžete všechny entity ukládat do jednoho oddílu. To ale může omezit škálovatelnost vašeho řešení a zabránit tomu, aby úložiště tabulek mohlo umožňovat vyrovnávání zatížení požadavků. V ostatních extrémních případech můžete ukládat jednu entitu na oddíl. To je vysoce škálovatelné a umožňuje úložišti tabulek vyrovnávat zatížení požadavků, ale zabraňuje vám v použití transakcí skupin entit.  
@@ -1127,7 +1127,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1139,8 +1139,8 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,8 +1159,8 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,8 +1196,8 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -1219,7 +1219,7 @@ Každá entita musí mít stále `PartitionKey` `RowKey` hodnoty, a `Timestamp` 
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1232,8 +1232,8 @@ Každá entita musí mít stále `PartitionKey` `RowKey` hodnoty, a `Timestamp` 
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1254,8 +1254,8 @@ Každá entita musí mít stále `PartitionKey` `RowKey` hodnoty, a `Timestamp` 
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1295,8 +1295,8 @@ Každá entita musí mít stále `PartitionKey` `RowKey` hodnoty, a `Timestamp` 
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
-<th>E-mail</th>
+<th>Stáří</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>

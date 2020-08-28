@@ -11,21 +11,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 075bf78599602b1b92f3cec01fe5dfb92b5321cc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654442"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998947"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Dotazování dat z prostředí Azure Time Series Insights Gen2 pomocí jazyka C Sharp
 
 Tento příklad v jazyce C# ukazuje, jak zadávat dotazy na data z [rozhraní API pro přístup k datům Gen2](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) v prostředích Azure Time Series Insights Gen2.
 
 > [!TIP]
-> Prohlédněte si ukázky kódu C# Gen2 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
+> Prohlédněte si ukázky kódu C# Gen2 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -71,7 +71,7 @@ Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.n
 
 ## <a name="c-sample-code"></a>Ukázkový kód C#
 
-Chcete-li získat přístup k ukázkovému kódu jazyka C#, přečtěte si prosím úložiště [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) . 
+Chcete-li získat přístup k ukázkovému kódu jazyka C#, přečtěte si prosím úložiště [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) . 
 
 > [!NOTE]
 >

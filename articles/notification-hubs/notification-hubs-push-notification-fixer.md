@@ -16,12 +16,13 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5139f75084eb0646db2fc8b05b04aaf3ddb2a12
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010779"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
 
@@ -128,7 +129,7 @@ Tady jsou cesty pro diagnostiku hlavní příčiny odhozených oznámení v Noti
 
 Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: posílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete zkontrolovat přihlašovací údaje, které jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte na kartu **zásady přístupu** v Azure Portal.
 
@@ -171,7 +172,7 @@ Mnoho zákazníků používá [Service Bus Exploreru](https://github.com/paolosa
 
 ### <a name="verify-message-notifications"></a>Ověření oznámení zprávy
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží**možnost **Odeslat test odeslat**.
 
@@ -248,7 +249,7 @@ Tato zpráva znamená, že přihlašovací údaje nakonfigurované v Notificatio
 
 ### <a name="review-telemetry"></a>Kontrola telemetrie
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Na portálu můžete získat rychlý přehled o všech aktivitách v centru oznámení.
 

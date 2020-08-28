@@ -4,16 +4,16 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0e1e50f27c6d0563ab51a74bbfa22d2a7f54ecd3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827184"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000732"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
-Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel nebo správce zálohování by měl vidět, co se ve všech řešeních používá, a očekává se, že bude informován v důležitých scénářích. Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
+Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel, který má záložní účet nebo správce, by měl vidět, co se ve všech řešeních provede, a očekává se, že bude v důležitých scénářích upozorněn Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Úlohy zálohování v trezoru Recovery Services
 

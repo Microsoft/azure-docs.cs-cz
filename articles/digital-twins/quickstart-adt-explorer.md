@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959809"
+ms.locfileid: "89008552"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -98,7 +98,7 @@ V horní části okna klikněte na tlačítko *Přihlásit* se a nakonfigurujte 
 Zadejte důležité informace, které jste shromáždili dříve v části [požadavky](#prerequisites) :
 * ID aplikace (klienta)
 * ID adresáře (tenanta)
-* Adresa URL aplikace ADT ve formátu *https:// <instance host name> *
+* Adresa URL aplikace ADT ve formátu *https://{název hostitele instance}*
 
 >[!NOTE]
 > Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné načtení přihlašovacího pole. Zachová se hodnoty, které jste předali.

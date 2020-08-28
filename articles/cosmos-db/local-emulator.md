@@ -6,16 +6,17 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 08/19/2020
-ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607530"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011170"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
-Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru Azure Cosmos můžete svou aplikaci vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru Azure Cosmos, můžete přejít na používání účtu Azure Cosmos v cloudu.
+Emulátor služby Azure Cosmos nabízí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru služby Azure Cosmos, můžete přejít na účet služby Azure Cosmos v cloudu.
 
 Můžete vyvíjet pomocí emulátoru Azure Cosmos s využitím účtů [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api)a [Table](local-emulator.md#table-api) API. V současnosti ale zobrazení Průzkumník dat v emulátoru plně podporuje klienty pouze pro rozhraní SQL API. 
 
@@ -90,7 +91,7 @@ Průzkumník dat zjistí, zda je k dispozici nová aktualizace ke stažení.
 
 ## <a name="authenticating-requests"></a>Ověřování požadavků
 
-Stejně jako u Azure Cosmos DB v cloudu musí být ověřeny všechny požadavky, které provedete v emulátoru Azure Cosmos. Emulátor Azure Cosmos podporuje jeden pevný účet a známý ověřovací klíč pro ověřování pomocí hlavního klíče. Tento účet a klíč jsou jediné přihlašovací údaje povolené pro použití s emulátorem Azure Cosmos. Jsou to tyto:
+Stejně jako u Azure Cosmos DB v cloudu musí být ověřeny všechny požadavky, které provedete v emulátoru Azure Cosmos. Emulátor Azure Cosmos podporuje jeden pevný účet a známý ověřovací klíč pro ověřování pomocí hlavního klíče. Tento účet a klíč jsou jediné přihlašovací údaje povolené pro použití s emulátorem Azure Cosmos. Jedná se o tyto peeringy:
 
 ```bash
 Account name: localhost:<port>
@@ -539,7 +540,7 @@ Následující tipy vám pomůžou při řešení problémů, ke kterým docház
 
 - Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
 
-- Pokud dojde k **chybě "zakázáno", "zpráva": "žádost se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Zaškrtněte nastavení minimální povolený protokol SSL/TLS... "** problémy s připojením, to může být způsobeno globálními změnami v operačním systému (například Insider Preview build 20170) nebo nastavením prohlížeče, které povoluje TLS 1,3 jako výchozí. K podobné chybě může dojít při použití sady SDK ke spuštění žádosti o emulátoru Cosmos, například **Microsoft.Azure.Documents.DocumentClientException: požadavek se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Ověřte nastavení minimálního povoleného protokolu SSL/TLS účtu**. V tuto chvíli se očekává, že emulátor Cosmos přijímá jenom a funguje s protokolem TLS 1,2. Doporučené řešení je změnit nastavení a výchozí možnost TLS 1,2; například ve Správci služby IIS přejděte na "weby" – > "výchozí weby" a vyhledejte "vazby lokality" pro port 8081 a upravte je tak, aby se protokol TLS 1,3 zakázal. Podobnou operaci lze provést pro webový prohlížeč prostřednictvím možností nastavení.
+- Pokud dojde k **chybě "zakázáno", "zpráva": "žádost se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Zaškrtněte nastavení minimální povolený protokol SSL/TLS... "** problémy s připojením, to může být způsobeno globálními změnami v operačním systému (například Insider Preview build 20170) nebo nastavením prohlížeče, které povoluje TLS 1,3 jako výchozí. K podobné chybě může dojít při použití sady SDK ke spuštění žádosti o emulátoru Cosmos, například **Microsoft.Azure.Documents.DocumentClientException: požadavek se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Ověřte nastavení minimálního povoleného protokolu SSL/TLS účtu**. V současné době se jedná o očekávané chování, protože emulátor služby Cosmos přijímá pouze protokol TLS 1.2 a funguje pouze s ním. Doporučené řešení je změnit nastavení a výchozí možnost TLS 1,2; například ve Správci služby IIS přejděte na "weby" – > "výchozí weby" a vyhledejte "vazby lokality" pro port 8081 a upravte je tak, aby se protokol TLS 1,3 zakázal. Podobnou operaci je možné provést pro webový prohlížeč přes možnosti Nastavení.
 
 - Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Obnovte data emulátoru tak, že kliknete pravým tlačítkem na ikonu, která se zobrazuje v oznamovacím panelu Windows, a vyberete **resetovat data**.
 

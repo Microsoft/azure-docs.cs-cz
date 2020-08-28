@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7ef9d87db1981c7721c2398e858404c2527dd274
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605782"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011527"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -36,7 +37,7 @@ Další informace o službě soubory Azure najdete v tématu [co je Azure Files?
 
 Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní `System.IO` `WindowsAzure.Storage` API a tyto přístupy abstraktní.
 
-Rozhraní API | Kdy je použít | Poznámky
+rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
 [Microsoft. Azure. Storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory pomocí REST místo SMB a správy sdílené složky.

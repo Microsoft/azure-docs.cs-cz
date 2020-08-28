@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.custom: mvc
-ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85367372"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001169"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -152,7 +152,7 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
 |[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Identifikátor URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Existuje](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [Getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name](/dotnet/api/azure.storage.blobs.models.blobitem.name) (Jméno) |  |
+|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
 |[Objekt UriBuilder protokolu](/dotnet/api/system.uribuilder) | [Dotaz](/dotnet/api/system.uribuilder.query) |  |
 |[Seznam](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
 

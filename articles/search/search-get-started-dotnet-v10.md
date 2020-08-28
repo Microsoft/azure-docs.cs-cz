@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: d0391f3724533410a66f8d01bf77f5a3c5c8d9da
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002432"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí knihovny Microsoft. Azure. Search v10 za účelem Client Library
 

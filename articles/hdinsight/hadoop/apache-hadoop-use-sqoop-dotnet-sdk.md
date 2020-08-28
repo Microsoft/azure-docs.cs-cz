@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: 5faa3d7bf048eee622ddd5a46082bb2432d84871
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076245"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008280"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop ve službě HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "86076245"
 
 Naučte se používat sadu Azure HDInsight .NET SDK ke spouštění úloh Apache Sqoop ve službě HDInsight k importu a exportu mezi clusterem HDInsight a databází Azure SQL Database nebo SQL Server.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 

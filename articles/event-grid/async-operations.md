@@ -3,12 +3,13 @@ title: Stav Event Grid asynchronních operací
 description: Popisuje, jak sledovat Event Grid asynchronní operace v Azure. Zobrazuje hodnoty, které použijete k získání stavu dlouhotrvající operace.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103326"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011680"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Sledování Event Grid asynchronních operací Azure
 Některé operace Azure REST běží asynchronně, protože operaci nejde dokončit rychle. Tento článek popisuje, jak sledovat stav asynchronních operací prostřednictvím hodnot vrácených v odpovědi.  
@@ -29,9 +30,9 @@ Odpovědi na operaci, kterou provádíte, najdete v [dokumentaci k REST API](/re
 ## <a name="monitor-status-of-operation"></a>Stav monitorování operace
 Asynchronní operace REST vrací hodnoty hlaviček, které slouží k určení stavu operace. Existují potenciálně tři hodnoty hlaviček k prohlédnutí:
 
-* `Azure-AsyncOperation`-Adresa URL pro kontrolu průběžného stavu operace. Pokud vaše operace vrátí tuto hodnotu, vždy ji použijte (místo umístění), abyste mohli sledovat stav operace.
-* `Location`-Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte jenom v případě, že se nevrátí Azure-AsyncOperation.
-* `Retry-After`– Počet sekund, po které se má počkat, než se zkontroluje stav asynchronní operace.
+* `Azure-AsyncOperation` -Adresa URL pro kontrolu průběžného stavu operace. Pokud vaše operace vrátí tuto hodnotu, vždy ji použijte (místo umístění), abyste mohli sledovat stav operace.
+* `Location` -Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte jenom v případě, že se nevrátí Azure-AsyncOperation.
+* `Retry-After` – Počet sekund, po které se má počkat, než se zkontroluje stav asynchronní operace.
 
 Ale ne každá asynchronní operace vrátí všechny tyto hodnoty. Například může být nutné vyhodnotit hodnotu záhlaví Azure-AsyncOperation pro jednu operaci a hodnotu hlavičky umístění pro jinou operaci. 
 
@@ -71,8 +72,8 @@ Tělo odpovědi z této operace obsahuje informace o operaci. Následující př
 
 Operace, které vytvářejí, aktualizují nebo odstraňují (PUT, PATCH, DELETE) prostředek, obvykle vracejí `provisioningState` hodnotu. Po dokončení operace se vrátí jedna z následujících tří hodnot: 
 
-* Úspěch
-* Failed
+* Úspěšný
+* Neúspěšný
 * Zrušeno
 
 Všechny ostatní hodnoty označují, že operace stále běží. Poskytovatel prostředků může vrátit přizpůsobenou hodnotu, která označuje její stav. Můžete například obdržet přijetí žádosti, když je **žádost přijata a** je spuštěná.

@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348920"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007787"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
 Reliable Actors jsou objekty s jedním vláknem, které mohou zapouzdřit logiku i stav. Vzhledem k tomu, že objekty actor běží na Reliable Services, mohou spolehlivě udržovat stav pomocí stejných mechanismů trvalosti a replikace. Díky tomu objekty actor neztratí stav po selhání, po opětovné aktivaci po uvolnění paměti nebo při jejich přesunu mezi uzly v clusteru kvůli vyrovnávání nebo upgradu prostředků.

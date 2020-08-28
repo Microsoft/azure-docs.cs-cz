@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Server Tableau s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Zaškrtněte políčko **Povolit ověřování SAML pro server**.
 
-    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup, například <http://tableau_server> . Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například) není `http://tableau_server/` podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal
+    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup, například `http://tableau_server` . Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například) není `http://tableau_server/` podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal
 
     d. ID entity SAML – ID entity jednoznačně identifikuje vaši instalaci serveru Tableau na IdP. Sem můžete zadat adresu URL serveru Tableau, pokud se vám to líbí, ale nemusí se jednat o adresu URL vašeho serveru Tableau. Zkopírujte **ID entity SAML** a vložte je do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal
 

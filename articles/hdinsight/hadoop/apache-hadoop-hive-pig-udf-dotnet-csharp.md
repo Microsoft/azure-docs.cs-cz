@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: db49a3660d3f1aab6a8a9945751fed9461a6b8fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086037"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000613"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
@@ -24,7 +24,7 @@ Naučte se používat uživatelsky definované funkce jazyka C# s [Apache Hive](
 
 Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Znalost psaní a sestavování kódu v jazyce C#, který cílí na .NET Framework 4,5.
 

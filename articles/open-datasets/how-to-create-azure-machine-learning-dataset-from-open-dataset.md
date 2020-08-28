@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584875"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998068"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Vytvořením [datové sady Azure Machine Learning](../machine-learning/how-to-cr
 
 Informace o tom, kde se datové sady vejdou do celého pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](../machine-learning/concept-data.md#data-workflow) .
 
-Otevřené datové sady Azure jsou podmnožinou veřejných datových sad, které můžete použít k přidání funkcí specifických pro scénář k rozšíření prediktivních řešení a zlepšení jejich přesnosti. Podívejte se na [katalog otevřených datových sad](https://azure.microsoft.com/services/op[en-datasets/catalog/) pro data veřejné domény, která vám pomůžou naučit modely strojového učení, třeba:
+Otevřené datové sady Azure jsou podmnožinou veřejných datových sad, které můžete použít k přidání funkcí specifických pro scénář k rozšíření prediktivních řešení a zlepšení jejich přesnosti. Podívejte se na [katalog otevřených datových sad](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) pro data veřejné domény, která vám pomůžou naučit modely strojového učení, třeba:
 
 * [před](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [statistickým](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
@@ -38,7 +38,7 @@ Otevřené datové sady Azure jsou podmnožinou veřejných datových sad, kter�
 Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou zahrnuté v sadě [SDK pro Azure Machine Learning Python](#create-datasets-with-the-sdk) i v sadě [Azure Machine Learning Studio](#create-datasets-with-the-studio).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete:
 

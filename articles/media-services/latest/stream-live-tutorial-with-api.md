@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: b92d26da837cab72a4c4404a7b5b3de5d3116480
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 610006dc84abc0b8590353e1edd52582dfd6fac6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043354"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021999"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>Kurz: živé streamování pomocí Media Services
 

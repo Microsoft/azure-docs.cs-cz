@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825575"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000358"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -90,7 +90,7 @@ Před konfigurací záloh v trezoru zkontrolujte výchozí nastavení typu repli
 
 ## <a name="backup-policy-considerations"></a>Pokyny k zásadám zálohování
 
-Zásady Azure Backup mají dvě komponenty: *plán* (kdy se má provést zálohování) a *uchování* (doba uchování zálohy). Zásady můžete definovat na základě typu zálohovaných dat, požadavků na RTO/RPO, požadavků na operační nebo legislativní dodržování předpisů a typu úlohy (například virtuálního počítače, databáze, soubory). [Další informace najdete tady](backup-architecture.md#backup-policy-essentials).
+Zásady Azure Backup mají dvě komponenty: *plán* (kdy se má provést zálohování) a *uchování* (doba uchování zálohy). Můžete definovat zásady na základě typu zálohovaných dat, požadavků na RTO/RPO, požadavků na operační nebo legislativní dodržování předpisů a typu úlohy (například virtuální počítač, databáze, soubory). [Další informace najdete tady](backup-architecture.md#backup-policy-essentials).
 
 Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
 
@@ -214,7 +214,7 @@ Funkce služby Azure Backup nabízejí flexibilitu pro efektivní správu vašic
 
 * Azure Backup pořizování snímků virtuálních počítačů Azure a ukládá je spolu s disky pro zvýšení vytvoření bodu obnovení a urychlení operací obnovení. Tato funkce se označuje jako okamžité obnovení. Ve výchozím nastavení se snímky okamžitého obnovení uchovávají po dobu dvou dnů. Tato funkce umožňuje operaci obnovení z těchto snímků vyjmutím doby obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům provedeným během tohoto období. [Další informace najdete tady](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Typ replikace úložiště Azure Backupového trezoru je ve výchozím nastavení nastaven na geograficky redundantní (GRS). Tuto možnost nelze po ochraně položek změnit. Geograficky redundantní úložiště (GRS) poskytuje vyšší úroveň odolnosti dat než místně redundantní úložiště (LRS), umožňuje výslovný souhlas s používáním obnovení mezi oblastmi a náklady. Projděte si kompromisy mezi nižšími náklady a vyšší trvanlivostí dat, která je pro váš scénář nejvhodnější. [Další informace](backup-create-rs-vault.md#set-storage-redundancy)
+* Typ replikace úložiště Azure Backupového trezoru je ve výchozím nastavení nastaven na geograficky redundantní (GRS). Tuto možnost nelze po ochraně položek změnit. Geograficky redundantní úložiště (GRS) poskytuje vyšší úroveň odolnosti dat než místně redundantní úložiště (LRS), umožňuje výslovný souhlas s používáním obnovení mezi oblastmi a náklady. Projděte si kompromisy mezi nižšími náklady a vyšší trvanlivostí dat a rozhodněte se, co je pro váš scénář nejvhodnější. [Další informace](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Pokud chráníte úlohy běžící v rámci virtuálního počítače a samotného virtuálního počítače, zkontrolujte, jestli je tato duální ochrana potřebná.
 

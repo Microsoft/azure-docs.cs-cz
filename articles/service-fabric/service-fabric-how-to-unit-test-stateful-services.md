@@ -3,12 +3,13 @@ title: Vývoj testů jednotek pro stavové služby
 description: Přečtěte si o testování částí v Azure Service Fabric pro stavové služby a o speciálních faktorech, které byste měli mít na paměti při vývoji.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639832"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011391"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Vytváření testů jednotek pro stavové služby
 Testování částí Service Fabric stavové služby odhalí běžné chyby, které by se nemusely zachytit konvenční aplikací nebo testováním jednotek specifických pro doménu. Při vývoji testů jednotek pro stavové služby je potřeba mít na paměti několik zvláštních hledisek, které byste měli mít na paměti.

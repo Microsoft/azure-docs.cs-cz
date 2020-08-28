@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796557"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000001"
 ---
 # <a name="features"></a>Funkce
 
@@ -25,7 +25,7 @@ Nejnovější verze je podporována: `4.0.1`
 
 Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 | rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
@@ -49,7 +49,7 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 | přenosu                         | Částečné   | Částečné   | Částečné   | `self` a `next` jsou podporovány                     |
 | prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
-## <a name="search"></a>Hledat
+## <a name="search"></a>Search
 
 Všechny typy parametrů vyhledávání jsou podporovány. 
 
@@ -57,7 +57,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 |-----------------------|-----------|-----------|-----------|---------|
 | Číslo                | Ano       | Ano       | Ano       |         |
 | Datum/datum a čas         | Ano       | Ano       | Ano       |         |
-| String                | Ano       | Ano       | Ano       |         |
+| Řetězec                | Ano       | Ano       | Ano       |         |
 | Token                 | Ano       | Ano       | Ano       |         |
 | Referenční informace             | Ano       | Ano       | Ano       |         |
 | Složený             | Ano       | Ano       | Ano       |         |
@@ -98,7 +98,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | Operace hledání       | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Ne        | Ne        | Ne        |         |
-| `_sort`                 | Ne        | Ne        | Ne        |         |
+| `_sort`                 | Ne        | Částečné   | Částečné        |   `_sort=_lastUpdated` je podporováno       |
 | `_score`                | Ne        | Ne        | Ne        |         |
 | `_count`                | Ano       | Ano       | Ano       |         |
 | `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count` je podporováno |

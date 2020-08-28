@@ -4,18 +4,19 @@ description: V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posíl�
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337556"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021659"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
@@ -181,7 +182,7 @@ Vyberte název vaší fronty v okně Přehled oboru názvů, aby se zobrazila **
 
 Hodnota **Počet aktivních zpráv** pro tuto frontu je teď **10**. Pokaždé, když spustíte tuto aplikaci odesílatele bez načtení zpráv, se tato hodnota zvýší o 10.
 
-Aktuální velikost fronty zvýší **aktuální** hodnotu v nástroji **Essentials** pokaždé, když aplikace přidá zprávy do fronty.
+Aktuální velikost fronty zvýší **aktuální** hodnotu v nástroji **Essentials**  pokaždé, když aplikace přidá zprávy do fronty.
 
 V další části se dozvíte, jak tyto zprávy načíst.
 
@@ -382,7 +383,7 @@ Spusťte program a znovu se podívejte na portál. **Počet aktivních zpráv** 
 
 ![Zařadit do fronty po přijetí zpráv][queue-message-receive]
 
-Gratulujeme! Nyní jste vytvořili frontu, do této fronty jste odeslali sadu zpráv a tyto zprávy přijali ze stejné fronty.
+Blahopřejeme! Nyní jste vytvořili frontu, do této fronty jste odeslali sadu zpráv a tyto zprávy přijali ze stejné fronty.
 
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům snadno se připojit k oboru názvů Service Bus a spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí.

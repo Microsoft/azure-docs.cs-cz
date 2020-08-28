@@ -8,19 +8,20 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/11/2020
-ms.openlocfilehash: 829cbad707f24daf3331c87a5cc373239bb83b98
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: c76a6666be805aa088bab7c5716ffd88a30519c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658312"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002075"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý Start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java SDK v4](create-sql-api-java.md)
+> * [Sada Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -36,7 +37,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 [Referenční dokumentace k](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
@@ -123,7 +124,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos.
 
@@ -161,7 +162,7 @@ Než začnete sestavovat aplikaci, Podívejme se na hierarchii prostředků v Az
 * Účet Azure Cosmos 
 * Databáze 
 * Containers 
-* Items (Položky)
+* Položky
 
 Další informace o hierarchii různých entit najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md) článku. K interakci s těmito prostředky použijete následující třídy .NET:
 
@@ -177,7 +178,7 @@ Další informace o hierarchii různých entit najdete v tématu [práce s datab
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) – Tato metoda vytvoří dotaz na položky v rámci kontejneru v databázi Azure Cosmos pomocí příkazu jazyka SQL s parametrizovanými hodnotami. 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync`Metoda odstraní pouze databázi. K `Cosmosclient` disDeleteDatabaseAndCleanupAsync instance by se mělo provádět samostatně (to dělá v metodě). 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync` Metoda odstraní pouze databázi. K `Cosmosclient` disDeleteDatabaseAndCleanupAsync instance by se mělo provádět samostatně (to dělá v metodě). 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Příklady kódu
 

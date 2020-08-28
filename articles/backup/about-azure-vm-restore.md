@@ -3,12 +3,12 @@ title: O procesu obnovení virtuálního počítače Azure
 description: Přečtěte si, jak služba Azure Backup obnovuje virtuální počítače Azure.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5458d02e241860a98d1ab5f64df141132813f8dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761385"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011952"
 ---
 # <a name="about-azure-vm-restore"></a>Informace o obnovení virtuálních počítačů Azure
 

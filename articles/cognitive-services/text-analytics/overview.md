@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141853"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000953"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -82,26 +82,7 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 ## <a name="data-limits"></a>Omezení dat
 
-Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků.
-
-| Omezení | Hodnota |
-|------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených podle [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
-| Maximální velikost celého požadavku | 1 MB |
-| Maximální počet dokumentů v požadavku | Až 1 000 dokumentů ([u každé funkce se liší](concepts/data-limits.md)) |
-
-Vaše omezení četnosti se bude lišit od cenové úrovně.
-
-| Úroveň          | Počet žádostí za sekundu | Žádosti za minutu |
-|---------------|---------------------|---------------------|
-| S/více službami | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-Požadavky se měří pro každou funkci Analýza textu samostatně. Můžete například odeslat maximální počet požadavků pro vaši cenovou úroveň všem funkcím ve stejnou dobu.      
+Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Další informace najdete v článku [omezení pro data](concepts/data-limits.md) .
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 
