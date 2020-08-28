@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089851"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011850"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -27,7 +27,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 
-Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
+No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
 - **Úroveň Free** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
 
@@ -51,9 +51,9 @@ Agent shromažďuje různé podrobnosti konfigurace a protokoly událostí souvi
 
 Zajistěte, aby počítače používaly jeden z podporovaných operačních systémů pro agenta, jak je popsáno na následujících stránkách:
 
-* [Agent Log Analytics pro podporované operační systémy Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Agent Log Analytics pro podporované operační systémy Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [Agent Log Analytics pro podporované operační systémy Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [Agent Log Analytics pro podporované operační systémy Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 Přečtěte si další informace o [datech shromažďovaných agentem Log Analytics](security-center-enable-data-collection.md).
 

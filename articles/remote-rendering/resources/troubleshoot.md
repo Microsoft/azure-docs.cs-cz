@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509276"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014587"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -34,6 +34,14 @@ Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblo
 Ověřte, že grafický procesor podporuje dekódování hardwarových videí. Viz [vývojový počítač](../overview/system-requirements.md#development-pc).
 
 Pokud pracujete na přenosném počítači se dvěma grafickými procesory, je možné, že GPU, ve kterém pracujete, ve výchozím nastavení neposkytuje funkci dekódování hardwarových videí. Pokud ano, zkuste aplikaci vynutit, aby používala jiný GPU. To je často možné v nastavení ovladače GPU.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>Nepodařilo se načíst relaci nebo stav převodu.
+
+Příliš časté posílání REST API příkazů způsobí, že server bude omezovat a vracet chybu nakonec. Stavový kód HTTP v případě omezení je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
+
+Všimněte si, že toto omezení neovlivňuje jenom REST API volání, když se volá přímo, ale také jejich protějšky C#/C + +, například `Session.GetPropertiesAsync` , `Session.RenewAsync` nebo `Frontend.GetAssetConversionStatusAsync` .
+
+Pokud máte omezení na straně serveru, změňte kód tak, aby bylo volání méně časté. Server resetuje stav omezování každou minutu, takže můžete bezpečně znovu spustit kód po minutě.
 
 ## <a name="h265-codec-not-available"></a>Kodek h265 není k dispozici.
 
@@ -239,4 +247,4 @@ Coplanar povrchy můžou mít řadu různých příčin:
 ## <a name="next-steps"></a>Další kroky
 
 * [Požadavky na systém](../overview/system-requirements.md)
-* [Požadavky sítě](../reference/network-requirements.md)
+* [Síťové požadavky](../reference/network-requirements.md)

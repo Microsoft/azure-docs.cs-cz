@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.custom: seodec18
-ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: fff1a228e32f115c498678a654f6c8f028772161
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921850"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015675"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics (Preview)
 
@@ -21,10 +21,10 @@ Azure Stream Analytics nabízí dotazovací jazyk podobný SQL pro provádění 
 Uživatelem definovaná funkce .NET pro cloudové úlohy je dostupná v:
 * USA – středozápad
 * Severní Evropa
-* USA – východ
+* East US
 * USA – západ
 * USA – východ 2
-* Západní Evropa
+* West Europe
 
 Pokud vás zajímá použití této funkce v jakékoli jiné oblasti, můžete [požádat o přístup](https://aka.ms/ccodereqregion).
 
@@ -62,7 +62,7 @@ Totéž platí i v případě, že je potřeba zařadit data z C# do Azure Strea
 |řetězec  |  nvarchar (max)   |
 |DateTime  |  data a času.   |
 |struct  |  Záznam   |
-|odkazy objektů  |  Záznam   |
+|object  |  Záznam   |
 |Objekt []  |  Pole   |
 |Slovník\<string, object>  |  Záznam   |
 
@@ -158,7 +158,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`se předává jako vstupní parametr metodě UDF a dá se použít v rámci systému souborů UDF k publikování informací o vlastním protokolu. V následujícím příkladu `MyUdfMethod` definuje **datový** vstup, který je poskytován dotazem, a vstupní **kontext** jako modul, který je `StreamingContext` poskytován modulem runtime. 
+`StreamingContext` se předává jako vstupní parametr metodě UDF a dá se použít v rámci systému souborů UDF k publikování informací o vlastním protokolu. V následujícím příkladu `MyUdfMethod` definuje **datový** vstup, který je poskytován dotazem, a vstupní **kontext** jako modul, který je `StreamingContext` poskytován modulem runtime. 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)

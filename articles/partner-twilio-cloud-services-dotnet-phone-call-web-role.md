@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
-ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022339"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak pomocí Twilio uskutečnit volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele, aby provedl volání s daným číslem a zprávou, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Formulář volání Azure pomocí Twilio a ASP.NET][twilio_dotnet_basic_form]
 
-## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Požadavky
+## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Předpoklady
 K použití kódu v tomto tématu budete muset provést následující:
 
 1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, zaregistrujte se [https://www.twilio.com/try-twilio][try_twilio] . Ceny můžete vyhodnotit na adrese [https://www.twilio.com/pricing][twilio_pricing] . Informace o rozhraní API, které poskytuje Twilio, najdete v tématu [https://www.twilio.com/voice/api][twilio_api] .

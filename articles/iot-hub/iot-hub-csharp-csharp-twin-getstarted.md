@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135548"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013754"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
 
@@ -31,9 +31,9 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -65,7 +65,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Nainstalovat**.
+1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Install** (Nainstalovat).
 
     ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -135,7 +135,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
 
 V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
-## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+## <a name="create-the-device-app"></a>Vytvoření aplikace zařízení
 
 V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje své hlášené vlastnosti tak, aby obsahovala informace, které jsou připojené pomocí mobilní sítě.
 
@@ -145,7 +145,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReportConnectivity** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
+1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
 
@@ -211,7 +211,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
     }
     ```
 
-   Výše uvedený kód aktualizuje oznámenou vlastnost **myDeviceId** informacemi o připojení.
+   Výše uvedený kód aktualizuje oznámenou vlastnost  **myDeviceId** informacemi o připojení.
 
 1. Nakonec přidejte do metody **Main** následující řádky:
 

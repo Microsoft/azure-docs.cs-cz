@@ -3,13 +3,13 @@ title: 'Vytvoření první aplikace Service Fabric v jazyce C #'
 description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: sfrev
-ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: sfrev, devx-track-csharp
+ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260478"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012734"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 
@@ -103,7 +103,7 @@ Platforma volá tuto metodu, když je umístěna instance služby a je připrave
 
 Tato orchestrace je spravovaná systémem, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`RunAsync()`nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení úlohy `await Task.Delay()` . Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
+`RunAsync()` nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení úlohy `await Task.Delay()` . Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
 
 Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém bude čekat na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě), než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `RunAsync()` co nejrychleji, když systém požaduje zrušení.
 
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
+`RunAsync()` funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 

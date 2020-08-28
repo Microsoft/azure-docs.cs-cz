@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509837"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012377"
 ---
 # <a name="use-the-session-management-rest-api"></a>Použití rozhraní REST API pro správu relací
 
@@ -117,7 +117,14 @@ Odpověď od výše uvedeného požadavku zahrnuje **identifikátor SessionID**,
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>Aktualizace relace
+## <a name="modify-and-query-session-properties"></a>Úprava a dotazování vlastností relace
+
+Existuje několik příkazů pro dotazování nebo úpravu parametrů existujících relací.
+
+> [!CAUTION]
+Stejně jako u všech volání REST odesílají tyto příkazy příliš často, což způsobí, že server bude omezovat a vracet chybu nakonec. Stavový kód v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
+
+### <a name="update-session-parameters"></a>Aktualizovat parametry relace
 
 Tento příkaz aktualizuje parametry relace. V současné době můžete pouze roztáhnout dobu zapůjčení relace.
 
@@ -138,7 +145,7 @@ Tento příkaz aktualizuje parametry relace. V současné době můžete pouze r
 |-----------|:-----------|:-----------|
 | 200 | | Success |
 
-### <a name="example-script-update-a-session"></a>Ukázkový skript: aktualizace relace
+#### <a name="example-script-update-a-session"></a>Ukázkový skript: aktualizace relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +167,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Získat aktivní relace
+### <a name="get-active-sessions"></a>Získat aktivní relace
 
 Tento příkaz vrátí seznam aktivních relací.
 
@@ -174,7 +181,7 @@ Tento příkaz vrátí seznam aktivních relací.
 |-----------|:-----------|:-----------|
 | 200 | -Sessions: pole vlastností relace | Popis vlastností relace najdete v části získání vlastností relace. |
 
-### <a name="example-script-query-active-sessions"></a>Ukázkový skript: dotaz na aktivní relace
+#### <a name="example-script-query-active-sessions"></a>Ukázkový skript: dotaz na aktivní relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +210,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Získat vlastnosti relací
+### <a name="get-sessions-properties"></a>Získat vlastnosti relací
 
 Tento příkaz vrátí informace o relaci, jako je název hostitele virtuálního počítače.
 
@@ -217,7 +224,7 @@ Tento příkaz vrátí informace o relaci, jako je název hostitele virtuálníh
 |-----------|:-----------|:-----------|
 | 200 | -Message: řetězec<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: String<br/>-sessionId: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | vyčíslení výčtu sessionStatus {Start, Read, Stopped, Stopped, vypršela platnost, chyba}<br/>Pokud je stav "Error" nebo "vypršela", zpráva bude obsahovat další informace |
 
-### <a name="example-script-get-session-properties"></a>Příklad skriptu: získání vlastností relace
+#### <a name="example-script-get-session-properties"></a>Příklad skriptu: získání vlastností relace
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }

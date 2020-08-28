@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75452001"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005645"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
 *Metriky* jsou prostředky, o kterých se vaše služby týkají a které jsou poskytovány uzly v clusteru. Metrika je cokoli, co chcete spravovat, aby bylo možné zlepšit nebo sledovat výkon služeb. Můžete například sledovat spotřebu paměti a zjistit, jestli je vaše služba přetížená. Dalším použitím je zjistit, zda se může služba přesunout jinam, kde je paměť méně omezená, aby bylo možné dosáhnout vyššího výkonu.
@@ -18,7 +19,7 @@ ms.locfileid: "75452001"
 Příklady metrik se týkají například paměti, disku a využití procesoru. Tyto metriky představují fyzické metriky, prostředky, které odpovídají fyzickým prostředkům v uzlu, který je třeba spravovat. Metriky mohou být také logickými metrikami (a obvykle). Logické metriky jsou například "MyWorkQueueDepth" nebo "MessagesToProcess" nebo "TotalRecords". Logické metriky jsou definované aplikací a nepřímo odpovídají některým fyzickým spotřebám prostředků. Logické metriky jsou běžné, protože může být obtížné změřit a ohlásit spotřebu fyzických prostředků na základě jednotlivých služeb. Složitost měření a vytváření sestav vašich vlastních fyzických metrik také znamená, proč Service Fabric poskytuje některé výchozí metriky.
 
 ## <a name="default-metrics"></a>Výchozí metriky
-Řekněme, že chcete začít s psaním a nasazením služby. V tuto chvíli nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je dobré! Cluster Service Fabric Správce prostředků používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jsou to tyto:
+Řekněme, že chcete začít s psaním a nasazením služby. V tuto chvíli nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je dobré! Cluster Service Fabric Správce prostředků používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jedná se o tyto peeringy:
 
   - PrimaryCount – počet primárních replik na uzlu 
   - ReplicaCount – počet celkových stavových replik na uzlu
@@ -26,7 +27,7 @@ Příklady metrik se týkají například paměti, disku a využití procesoru. 
 
 | Metrika | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Vysoká |
+| PrimaryCount |0 |0 |1 |Vysoké |
 | ReplicaCount |0 |1 |1 |Střední |
 | Počet |1 |1 |1 |Nízká |
 
@@ -134,7 +135,7 @@ Jako připomenutí: Pokud chcete používat jenom výchozí metriky, nemusíte s
 
 Teď projdeme každé z těchto nastavení podrobněji a podíváme se na chování, které ovlivňuje.
 
-## <a name="load"></a>Načtení
+## <a name="load"></a>Načítání
 Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Příklad:
 
   - Zatížení lze definovat při vytvoření služby. Nazývá se to _výchozí zatížení_.

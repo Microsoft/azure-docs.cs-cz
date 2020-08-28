@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799277"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004897"
 ---
 # <a name="business-card-concepts"></a>Principy vizitek
 
-Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat a extrahovat páry klíčových hodnot z obchodních karet pomocí jednoho z předem připravených modelů. Rozhraní API pro vizitky kombinuje výkonné funkce optického rozpoznávání znaků (OCR) s využitím modelu porozumění naší firmou pro extrakci klíčových informací z vizitek v angličtině. Extrahuje osobní kontaktní údaje, název společnosti, pracovní zařazení a další. Předem připravené rozhraní API na vizitce je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview. 
+Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat a extrahovat kontaktní informace z obchodních karet pomocí jednoho z předem připravených modelů. Rozhraní API pro vizitky kombinuje výkonné funkce optického rozpoznávání znaků (OCR) s využitím modelu porozumění naší firmou pro extrakci klíčových informací z vizitek v angličtině. Extrahuje osobní kontaktní údaje, název společnosti, pracovní zařazení a další. Předem připravené rozhraní API na vizitce je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview. 
 
 ## <a name="what-does-the-business-card-api-do"></a>Co dělá rozhraní API na vizitce?
 
@@ -27,10 +27,11 @@ Rozhraní API pro vizitky extrahuje klíčová pole z obchodních karet a vrát�
 
 ![Z výstupu FOTT + JSON se jedná o položku contoso s použitím obrázku](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>Extrahovaná pole: 
+### <a name="fields-extracted"></a>Extrahovaná pole:
+
 * Jména kontaktů 
-* Jméno 
-* Příjmení 
+  * Křestní jména
+  * Příjmení
 * Názvy společností 
 * Oddělení 
 * Pracovní tituly 
@@ -43,7 +44,7 @@ Rozhraní API pro vizitky extrahuje klíčová pole z obchodních karet a vrát�
   * Pracovní telefony 
   * Další telefony 
 
-Rozhraní API pro vizitky vrátí také veškerý rozpoznaný text z vizitky. Tento výstup optického rozpoznávání znaků je zahrnutý v odpovědi JSON.  
+Rozhraní API pro vizitky může také vracet veškerý rozpoznaný text z vizitky. Tento výstup optického rozpoznávání znaků je zahrnutý v odpovědi JSON.  
 
 ### <a name="input-requirements"></a>Požadavky na vstup 
 
@@ -51,7 +52,7 @@ Rozhraní API pro vizitky vrátí také veškerý rozpoznaný text z vizitky. Te
 
 ## <a name="the-analyze-business-card-operation"></a>Operace analyzovat obchodní kartu
 
-[Karta analyzovat obchodní kartu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) přebírá obrázek nebo PDF vizitky jako vstup a získává hodnoty zájmu a textu. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
+[Karta analyzovat obchodní kartu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) jako vstup převezme obrázek nebo PDF vizitky a získá hodnoty, které vás zajímají. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
@@ -63,18 +64,15 @@ Druhým krokem je zavolat operaci [získat výsledky analýzy obchodních karet]
 
 |Pole| Typ | Možné hodnoty |
 |:-----|:----:|:----|
-|status | řetězec | notStarted: operace analýzy nebyla spuštěna. |
-| |  | běží: probíhá operace analýzy. |
-| |  | Nepovedlo se: operace analýzy se nezdařila. |
-| |  | úspěch: operace analýzy byla úspěšná. |
+|status | řetězec | notStarted: operace analýzy nebyla spuštěna.<br /><br />běží: probíhá operace analýzy.<br /><br />Nepovedlo se: operace analýzy se nezdařila.<br /><br />úspěch: operace analýzy byla úspěšná.|
 
-Když pole **Status (stav** ) má hodnotu **úspěch** , odpověď JSON bude obsahovat informace o porozumění a výsledcích rozpoznávání textu na vizitce. Výsledek porozumění vizitce se organizuje jako slovník hodnot pojmenovaných polí, kde každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
+Pokud má pole **stav** hodnotu **úspěch** , odpověď JSON bude v případě potřeby zahrnovat informace o vizitce a volitelné výsledky rozpoznávání textu. Výsledek porozumění vizitce se organizuje jako slovník hodnot pojmenovaných polí, kde každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
 
 ![výstup ukázkové vizitky](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Ukázkový výstup JSON
 
-Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "readResults" obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. Uzel "documentResults" obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota jako křestní jméno, příjmení, název společnosti a další.
+Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "readResults" obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. Uzel "documentResults" obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je křestní jméno, příjmení, název společnosti a další.
 
 ```json
 {
@@ -394,5 +392,4 @@ Rozhraní API na vizitce také zajišťuje [funkci pro zpracování AIBuilder ob
 - Postupujte podle pokynů v rychlém startu a začněte s [rozhraním rychlý Start pro Python na vizitce](./quickstarts/python-business-cards.md)
 - Další informace o [REST API pro rozpoznávání formulářů](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - Další informace o funkci [pro rozpoznávání formulářů](overview.md)
-
 

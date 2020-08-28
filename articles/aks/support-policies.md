@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050692"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012343"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -20,7 +20,7 @@ Tento článek poskytuje podrobné informace o zásadách technické podpory a o
 ## <a name="service-updates-and-releases"></a>Aktualizace a vydání služby
 
 * Informace o vydání najdete v [poznámkách k verzi AKS](https://github.com/Azure/AKS/releases).
-* Informace o funkcích ve verzi Preview najdete v tématu [funkce AKS ve verzi Preview a související projekty](https://github.com/Azure/AKS/blob/master/previews.md).
+* Informace o funkcích ve verzi Preview najdete v tématu [funkce AKS ve verzi Preview a související projekty](https://awesomeopensource.com/projects/aks?categoryPage=11).
 
 ## <a name="managed-features-in-aks"></a>Spravované funkce v AKS
 
@@ -140,7 +140,7 @@ I když se zákazníci můžou přihlásit k pracovním uzlům a měnit je, nedo
 AKS má jako spravované služby určité požadavky na síť a připojení. Tyto požadavky jsou pro normální komponenty IaaS méně flexibilní než požadavky. V AKS operace, jako je přizpůsobení pravidel NSG, blokování konkrétního portu (například pomocí pravidel brány firewall, které blokují odchozí port 443) a přidávání adres URL do seznamu povolených adres může způsobit nepodporu clusteru.
 
 > [!NOTE]
-> AKS v současné době neumožňuje úplně uzamknout výstupní provoz z vašeho clusteru. Pokud chcete řídit seznam adres URL a portů, které může váš cluster používat pro odchozí přenosy, přečtěte si téma omezení odchozího [provozu](limit-egress-traffic.md).
+> AKS v současné době neumožňuje úplně uzamknout výstupní provoz z vašeho clusteru. Pokud chcete řídit seznam adres URL a portů, které může váš cluster používat pro odchozí přenosy, přečtěte si téma omezení odchozího  [provozu](limit-egress-traffic.md).
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nepodporované funkce Alpha a beta Kubernetes
 
@@ -149,7 +149,7 @@ AKS podporuje pouze stabilní funkce v rámci nadřazeného Kubernetes projektu.
 Ve dvou scénářích může být funkce Alpha nebo beta zavedena před tím, než je všeobecně dostupná:
 
 * Zákazníci splnili AKS produkt, podporu nebo technické týmy a byli požádáni o vyzkoušení těchto nových funkcí.
-* Tyto funkce jsou [povolené příznakem funkce](https://github.com/Azure/AKS/blob/master/previews.md). Zákazníci musí explicitně vyjádřit výslovný souhlas s používáním těchto funkcí.
+* Tyto funkce jsou [povolené příznakem funkce](https://awesomeopensource.com/projects/aks?categoryPage=11). Zákazníci musí explicitně vyjádřit výslovný souhlas s používáním těchto funkcí.
 
 ## <a name="preview-features-or-feature-flags"></a>Funkce náhledu nebo příznaky funkcí
 

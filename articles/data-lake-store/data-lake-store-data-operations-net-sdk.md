@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515664"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022458"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
@@ -27,7 +28,7 @@ V tomto článku se dozvíte, jak provádět operace systému souborů na Data L
 
 Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů pro data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Visual Studio 2013 nebo vyšší**. Pokyny v tomto článku používají Visual Studio 2019.
 
@@ -48,8 +49,8 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
    1. Na kartě **Správce balíčků NuGet** se ujistěte, že je **zdroj balíčku** nastavený na **NuGet.org**. Ujistěte se také, že je zaškrtnuto políčko **zahrnout předběžné verze** .
    1. Vyhledejte a nainstalujte následující balíčky NuGet:
 
-      * `Microsoft.Azure.DataLake.Store`– Tento článek používá verzi v 1.0.0.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`– Tento článek používá v 2.3.1.
+      * `Microsoft.Azure.DataLake.Store` – Tento článek používá verzi v 1.0.0.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Tento článek používá v 2.3.1.
 
       Zavřete **Správce balíčků NuGet**.
 
@@ -83,7 +84,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
 
 Ve zbývajících částech článku vidíte, jak používat dostupné metody .NET k provádění operací, jako je ověřování, nahrávání souborů atd.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 * Pro ověřování koncového uživatele pro vaši aplikaci, přečtěte si téma [ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 * Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
@@ -191,7 +192,7 @@ Následující fragment kódu odstraní adresář a všechny jeho podadresáře 
 client.DeleteRecursive("/Test");
 ```
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 
 Tady je několik ukázek, které ukazují, jak používat sadu SDK Data Lake Storage Gen1 systému souborů.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642845"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015080"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -270,9 +270,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků vlastněných vaší organizací povolte shromažďování antimalwarových událostí pro Microsoft Antimalware pro Azure Cloud Services a Virtual Machines.
 
-- [Jak nakonfigurovat Microsoft Antimalware pro virtuální počítač](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Jak nakonfigurovat Microsoft Antimalware pro virtuální počítač](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Jak nakonfigurovat rozšíření Microsoft Antimalware pro Cloud Services](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Jak nakonfigurovat rozšíření Microsoft Antimalware pro Cloud Services](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [Pochopení antimalwarového programu Microsoftu](../security/fundamentals/antimalware.md)
 
