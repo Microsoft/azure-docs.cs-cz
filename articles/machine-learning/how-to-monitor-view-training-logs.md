@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 146b9a04b190808848af56612e14a05a617c7109
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554784"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005951"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -111,8 +111,7 @@ Přechodem k podrobnostem konkrétního spuštění zobrazíte jeho výstupy neb
 
 Můžete také upravit tabulku spustit seznam a vybrat vícenásobná spuštění a zobrazit buď hodnotu v poli Poslední, minimální nebo maximální hodnota protokolu. Přizpůsobte si grafy pro porovnání hodnot protokolovaných metrik a agregací napříč několika spuštěními.
 
-:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Podrobnosti o spuštění v Azure Machine Learning Studiu":::
-
+![Podrobnosti o spuštění v Azure Machine Learning Studiu](media/how-to-track-experiments/experimentation-tab.gif)
 
 ### <a name="format-charts-in-the-studio"></a>Formátování grafů v studiu
 

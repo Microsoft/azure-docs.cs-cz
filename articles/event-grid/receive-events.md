@@ -3,13 +3,13 @@ title: Příjem událostí z Azure Event Grid do koncového bodu HTTP
 description: Popisuje, jak ověřit koncový bod HTTP a pak přijímat a deserializovat události z Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9e89c6920c76914ccab6298b1404b0cae698b532
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415104"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006070"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -360,7 +360,7 @@ Nakonec otestujte, že vaše funkce teď může zpracovat vlastní typ události
 }]
 ```
 
-Tuto funkci můžete také v reálném čase otestovat [odesláním vlastní události pomocí objektu kudrlinkou z portálu](./custom-event-quickstart-portal.md) nebo [publikováním do vlastního tématu](./post-to-custom-topic.md) pomocí libovolné služby nebo aplikace, která může odesílat do koncového bodu, jako je například [post](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s nastaveným koncovým bodem jako adresu URL funkce.
+Tuto funkci můžete také v reálném čase otestovat [odesláním vlastní události pomocí objektu kudrlinkou z portálu](./custom-event-quickstart-portal.md) nebo [publikováním do vlastního tématu](./post-to-custom-topic.md)  pomocí libovolné služby nebo aplikace, která může odesílat do koncového bodu, jako je například [post](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s nastaveným koncovým bodem jako adresu URL funkce.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript
+ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 25f4c0244a027a0354809080bf13923e92d295f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844588"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001464"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -31,11 +31,11 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -60,7 +60,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště poskytuje jedinečný obor názvů pro ukládání a přístup k datovým objektům Azure Storage.
 
@@ -74,11 +74,11 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Předplatné** | *Moje předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    | **ResourceGroup** | *myResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Název** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
+   | **Name** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
    | **Umístění** | *East US* | Zvolte umístění. |
    | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
    | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |
-   | **Replikace**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
+   | **Replikace**| *Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
    | **Úroveň přístupu**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
 
     ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)

@@ -3,7 +3,7 @@ title: Správa spravovaných identit přiřazených uživatelem pomocí REST –
 description: Podrobné pokyny, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem pro REST API volání.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c342359b015085804b127ef8c58aca8a4b13dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da142b9ee97d45b5f798e1b7db31228613cd37f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608462"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014264"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí REST API volání
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují službám Azure možnost o
 
 V tomto článku se dozvíte, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem pomocí OBLÉ k provedení REST API volání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -63,11 +63,11 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
 
 **Text žádosti**
 
-|Name  |Description  |
+|Název  |Popis  |
 |---------|---------|
 |location     | Povinná hodnota. Umístění prostředku.        |
 
@@ -86,7 +86,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživatelem
 
@@ -106,7 +106,7 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
 
 ## <a name="next-steps"></a>Další kroky
 

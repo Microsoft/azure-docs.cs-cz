@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 8a50aa02a2ba7187c8221c046fcabb7f4a6473fa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826680"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006342"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory vhodné pro použití s Table service řešení. Také se dozvíte, jak můžete prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích o návrhu úložiště tabulek. Následující diagram shrnuje vztahy mezi různými vzory:  
@@ -742,7 +743,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -762,7 +763,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -799,7 +800,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td></td>
@@ -835,7 +836,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -857,7 +858,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -898,7 +899,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Stáří</th>
-<th>E-mail</th>
+<th>E-mailu</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>

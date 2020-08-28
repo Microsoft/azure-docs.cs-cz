@@ -8,13 +8,13 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d9b9ba3a8092992c9ebca9b3242223213b75ad80
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 9526a1569a5d8320dd59272ca97f5b48ec1dac1c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439674"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999094"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
 
@@ -172,7 +172,7 @@ Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici p�
    }
    ```
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 ## <a name="build-and-push-your-iot-edge-solution"></a>Sestavení a nabízení IoT Edge řešení
 

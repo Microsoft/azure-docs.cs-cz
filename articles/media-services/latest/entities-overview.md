@@ -12,13 +12,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009878"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
 
@@ -29,7 +29,7 @@ Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je 
 * Vlastnosti entit, které jsou typu, `Datetime` jsou vždy ve formátu UTC.
 * Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
-## <a name="comparison-operators"></a>Operátory porovnávání
+## <a name="comparison-operators"></a>Operátory porovnání
 
 K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -45,7 +45,7 @@ Operátory rozsahu:
 - `ge`: Otestujte, zda je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, zda je pole *menší nebo rovno* konstantní hodnotě.
 
-## <a name="filter"></a>Filtrovat
+## <a name="filter"></a>Filtr
 
 Použijte `$filter` k poskytnutí parametru filtru OData, abyste našli jenom objekty, které vás zajímají.
 
@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtrovat|Objednání|
+|Název entity|Název vlastnosti|Filtr|Objednání|
 |---|---|---|---|
 |[Aktiva](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||

@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826986"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004166"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -31,7 +31,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 
 | Chybová zpráva      | <span style="font-weight:normal">Nepovedlo se připojit k systému HANA.</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Instance SAP HANA může být mimo provoz.<br/>Požadovaná oprávnění pro práci s databází HANA nejsou nastavená pro Azure Backup. |
+| **Možné příčiny**    | Instance SAP HANA může být mimo provoz.<br/>Požadovaná oprávnění pro Azure Backup interakci s databází HANA nejsou nastavena. |
 | **Doporučená akce** | Ověřte, zda je databáze SAP HANA. Pokud je databáze spuštěná a spuštěná, ověřte, jestli jsou nastavená všechna požadovaná oprávnění. Pokud některá z oprávnění chybí, spusťte [předregistrační skript](https://aka.ms/scriptforpermsonhana) pro přidání chybějících oprávnění. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
@@ -45,7 +45,7 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 
 | Chybová zpráva      | <span style="font-weight:normal">Zadaná operace SAP HANA není podporovaná.</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné v SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
+| **Možné příčiny**    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné na SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
 | **Doporučená akce** | Další informace najdete [tady](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType

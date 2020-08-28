@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826510"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006578"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -69,7 +69,7 @@ Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnoven�
 
 1. Zadejte nastavení pro vybranou možnost obnovení.
 
-## <a name="create-a-vm"></a>Vytvořit virtuální počítač
+## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuální počítač rychle pomocí základního nastavení z bodu obnovení.
 
@@ -202,7 +202,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Úplné obnovení** | Hlavním rozdílem mezi virtuálními počítači Azure a místními hypervisory je, že v Azure není k dispozici žádná konzola virtuálních počítačů. Pro určité scénáře se vyžaduje konzola, jako je třeba obnovení pomocí zálohování typu úplného obnovení systému (BMR). Obnovení virtuálního počítače z trezoru je ale úplná náhrada pro BMR.
 **Obnovení virtuálních počítačů se speciálními síťovými konfiguracemi** | Mezi speciální síťové konfigurace patří virtuální počítače s využitím interního nebo externího vyrovnávání zatížení, použití více síťových adaptérů nebo více rezervovaných IP adres. Tyto virtuální počítače obnovíte pomocí [možnosti obnovit disk](#restore-disks). Tato možnost vytvoří kopii VHD do zadaného účtu úložiště a pak můžete vytvořit virtuální počítač s [interním](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) nebo [externím](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) nástrojem pro vyrovnávání zatížení, [několika síťovými kartami](../virtual-machines/windows/multiple-nics.md)nebo [více rezervovanými IP adresami](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)v souladu s vaší konfigurací.
 **Skupina zabezpečení sítě (NSG) na síťové kartě nebo podsíti** | Zálohování virtuálních počítačů Azure podporuje zálohování a obnovení NSG informací na úrovni virtuální sítě, podsítě a síťové karty.
-**Virtuální počítače připojené k zóně** | Pokud zálohujete virtuální počítač Azure, který je připnuté do zóny (s Azure Backup), můžete ho obnovit ve stejné zóně, kde byla připnutá. [Další informace](../availability-zones/az-overview.md)
+**Virtuální počítače připojené k zóně** | Pokud zálohujete virtuální počítač Azure, který je připnuté k zóně (pomocí Azure Backup), můžete ho obnovit ve stejné zóně, kde byla připnutá. [Další informace](../availability-zones/az-overview.md)
 **Obnovit virtuální počítač v libovolné skupině dostupnosti** | Při obnovení virtuálního počítače z portálu není k dispozici možnost výběru skupiny dostupnosti. Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 **Obnovení speciálních virtuálních počítačů, jako jsou třeba virtuální počítače SQL** | Pokud zálohujete virtuální počítač s SQL pomocí zálohování virtuálních počítačů Azure a pak použijete možnost obnovit virtuální počítač nebo po obnovení disků vytvořit virtuální počítač, musí být nově vytvořený virtuální počítač zaregistrován u poskytovatele SQL, jak je uvedeno [zde](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash). Tím se obnovený virtuální počítač převede na virtuální počítač SQL.
 

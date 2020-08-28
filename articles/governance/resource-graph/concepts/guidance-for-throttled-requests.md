@@ -3,12 +3,13 @@ title: Pokyny pro omezované požadavky
 description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541834"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006002"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -27,8 +28,8 @@ Graf prostředků Azure přiděluje číslo kvóty pro každého uživatele na z
 
 V každé odpovědi na dotaz přidává Azure Resource Graph dvě hlavičky omezení:
 
-- `x-ms-user-quota-remaining`(int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after`(hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
+- `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
 
 Pokud má objekt zabezpečení přístup k více než 5000 předplatným v rámci [oboru dotazu](./query-language.md#query-scope)skupiny pro správu nebo tenanta, je odpověď omezena na prvních 5000 předplatných a `x-ms-tenant-subscription-limit-hit` vrátí se záhlaví `true` jako.
 

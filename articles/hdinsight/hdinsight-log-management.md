@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 14634fac5d4501572a54f80f01a37e440d69d09b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075531"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997553"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -67,7 +67,7 @@ Je důležité pochopit typy úloh, které jsou spuštěny v clusterech HDInsigh
 
 * Vezměte v úvahu, jak můžete shromažďovat protokoly z clusteru nebo z více než jednoho clusteru a třídit je pro účely, jako je auditování, monitorování, plánování a upozorňování. Můžete použít vlastní řešení pro přístup k souborům protokolu a jejich stažení v pravidelných intervalech a kombinovat je a analyzovat pro zobrazení řídicího panelu. Můžete také přidat další funkce pro upozorňování na zabezpečení nebo detekci selhání. Tyto nástroje můžete vytvořit pomocí PowerShellu, sad SDK HDInsight nebo kódu, který přistupuje k modelu nasazení Azure Classic.
 
-* Zvažte, jestli řešení nebo služba monitorování budou užitečnou výhodou. Microsoft System Center poskytuje [Management Pack HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). K shromažďování a centralizaci protokolů můžete použít také nástroje třetích stran, jako je Apache Chukwa a uzlin. Mnoho společností nabízí služby pro monitorování řešení pro velké objemy dat založené na systému Hadoop, například: centrování, Compuware APM, Sematext správce SPM a Zettaset Orchestrator.
+* Zvažte, jestli řešení nebo služba monitorování budou užitečnou výhodou. Microsoft System Center poskytuje [Management Pack HDInsight](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259). K shromažďování a centralizaci protokolů můžete použít také nástroje třetích stran, jako je Apache Chukwa a uzlin. Mnoho společností nabízí služby pro monitorování řešení pro velké objemy dat založené na systému Hadoop, například: centrování, Compuware APM, Sematext správce SPM a Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Krok 2: Správa verzí clusterových služeb a zobrazení protokolů
 
@@ -173,8 +173,8 @@ Sadu .NET SDK pro Hadoop můžete použít k prohlédnutí souborů protokolu ge
 
 Chcete-li řídit velikost a počet uchovávaných souborů protokolu, nastavte následující vlastnosti `RollingFileAppender` :
 
-* `maxFileSize`je kritická velikost souboru, nad kterou se soubor zavedl. Výchozí hodnota je 10 MB.
-* `maxBackupIndex`Určuje počet záložních souborů, které mají být vytvořeny, výchozí 1.
+* `maxFileSize` je kritická velikost souboru, nad kterou se soubor zavedl. Výchozí hodnota je 10 MB.
+* `maxBackupIndex` Určuje počet záložních souborů, které mají být vytvořeny, výchozí 1.
 
 ### <a name="other-log-management-techniques"></a>Další metody správy protokolů
 

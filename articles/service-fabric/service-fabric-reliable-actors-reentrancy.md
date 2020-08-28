@@ -5,20 +5,21 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007804"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors Vícenásobný přístup
 Modul runtime Reliable Actors ve výchozím nastavení umožňuje logický volání Vícenásobný přístup na základě kontextu. To umožňuje, aby se aktéri znovu zavolaly, pokud jsou ve stejném řetězci kontextu volání. Například objekt actor A pošle zprávu objektu actor B, který pošle zprávu objektu actor C. V rámci zpracování zprávy, pokud objekt actor C volá objekt actor A, je zpráva znovu zavolána, takže bude povolena. Všechny ostatní zprávy, které jsou součástí jiného kontextu volání, budou blokovány u objektu actor A do doby, než dokončí zpracování.
 
 Existují dvě možnosti, které jsou pro objekt actor Vícenásobný přístup definovány ve `ActorReentrancyMode` výčtu:
 
-* `LogicalCallContext`(výchozí chování)
-* `Disallowed`– zakáže Vícenásobný přístup
+* `LogicalCallContext` (výchozí chování)
+* `Disallowed` – zakáže Vícenásobný přístup
 
 ```csharp
 public enum ActorReentrancyMode

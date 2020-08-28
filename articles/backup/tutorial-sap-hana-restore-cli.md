@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak obnovit SAP HANA databáze běžíc�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 3887b8e7333b6c581887fcfde7e1bd99200e72ef
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762279"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007260"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: obnovení databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 

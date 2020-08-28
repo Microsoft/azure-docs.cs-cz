@@ -3,12 +3,12 @@ title: Zálohování SQL Server pomocí Azure Backup Server
 description: V tomto článku se dozvíte, jak nakonfigurovat zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: caf3d49c9b921cab97054a97ece271e484a734bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003640"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005203"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Zálohování SQL Server do Azure pomocí Azure Backup Server
 
@@ -33,7 +33,7 @@ Postup zálohování databáze SQL Server a její obnovení z Azure:
   * MABS detekuje převzetí služeb při selhání a pokračuje v ochraně databáze.
   * MABS podporuje konfigurace clusteru s více lokalitami pro instanci SQL Server.
 * Když chráníte databáze využívající funkci AlwaysOn, má MABS následující omezení:
-  * MABS bude dodržovat zásady zálohování pro skupiny dostupnosti, které jsou nastavené v SQL Server na základě předvoleb zálohování, a to takto:
+  * MABS bude dodržovat zásady zálohování pro skupiny dostupnosti, které jsou nastavené v SQL Server na základě předvoleb zálohování, a to následujícím způsobem:
     * Preferovat sekundární – zálohy se budou objevovat na sekundární replice s výjimkou případu, kdy je primární replika jedinou replikou online. Pokud je k dispozici více sekundárních replik, bude pro zálohování vybrán uzel s nejvyšší prioritou zálohování. Pokud je k dispozici pouze primární replika, pak by záloha měla být provedena na primární replice.
     * Pouze sekundární – záloha se nebude provádět na primární replice. Pokud je online jenom primární replika, zálohování neproběhne.
     * Primární – zálohování se musí vždy odehrávat na primární replice.

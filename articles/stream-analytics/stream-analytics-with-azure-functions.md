@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77589449"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006886"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Kurz: spuštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření a spuštění úlohy Stream Analytics
 > * Vytvoření mezipaměti Azure pro instanci Redis
-> * Vytvoření funkce Azure
+> * Vytvoření funkce Azure Function
 > * Podívejte se na výsledky Azure cache for Redis
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.

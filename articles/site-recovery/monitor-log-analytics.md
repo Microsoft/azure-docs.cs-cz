@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495059"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006937"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak monitorovat počítače replikované pomocí Azure 
 
 Protokoly Azure Monitor poskytují datovou platformu protokolu, která shromažďuje protokoly aktivit a prostředků spolu s dalšími daty monitorování. V protokolech Azure Monitor používáte Log Analytics k zápisu a testování dotazů protokolu a k interaktivní analýze dat protokolu. Můžete vizualizovat výsledky protokolu a dotazovat se na ně a nakonfigurovat výstrahy tak, aby na základě monitorovaných dat probíhat akce.
 
-V případě Site Recovery můžete Azure Monitor protokoly, které vám pomohou s těmito kroky:
+Pro Site Recovery můžete použít protokoly Azure Monitor, které vám pomůžou s tímto:
 
 - **Monitoruje stav a stav Site Recovery**. Můžete například monitorovat stav replikace, stav testovacího převzetí služeb při selhání, Site Recovery události, cíle bodu obnovení (RPO) pro chráněné počítače a míry změny disků a dat.
 - **Nastavte výstrahy pro Site Recovery**. Můžete například nakonfigurovat výstrahy pro stav počítače, stav testovacího převzetí služeb při selhání nebo Site Recovery stav úlohy.
@@ -36,7 +36,7 @@ Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Přečtěte si další informace](../azure-monitor/log-query/get-started-portal.md).
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 
@@ -62,9 +62,9 @@ V místním prostředí můžete zachytit informace o míře četnosti změn dat
 1. Přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**.
 2. Klikněte na stránku **připojené zdroje** a dále vyberte **Windows servery**.
 3. Na procesovém serveru Stáhněte agenta pro Windows (64 bitů). 
-4. [Získání ID a klíče pracovního prostoru](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [Získání ID a klíče pracovního prostoru](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [Nakonfigurovat agenta na používání protokolu TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
+6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
 7. Po dokončení instalace přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**. Přejděte na **datovou** stránku a dále klikněte na **čítače výkonu systému Windows**. 
 8. Kliknutím na **+** přidejte následující dva čítače s intervalem vzorkování 300 sekund:
 

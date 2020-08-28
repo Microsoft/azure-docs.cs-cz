@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392127"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008688"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 
@@ -38,7 +39,7 @@ Když vydáte dotaz pro Azure Cosmos DB, sada SDK provede tyto logické kroky:
 
 Sady SDK poskytují různé možnosti pro provádění dotazů. Například v rozhraní .NET jsou tyto možnosti k dispozici ve `FeedOptions` třídě. Následující tabulka popisuje tyto možnosti a jejich dopad na dobu provádění dotazu. 
 
-| Možnost | Description |
+| Možnost | Popis |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Musí být nastaven na hodnotu true pro všechny dotazy, které je třeba provést v rámci více než jednoho oddílu. Toto je explicitní příznak, který vám umožní zajistit, aby v době vývoje byly kompromisy v výkonu. |
 | `EnableScanInQuery` | Je nutné nastavit na hodnotu true, pokud jste se vyhlásili z indexování, ale chcete spustit dotaz i v rámci kontroly. Dá se použít jenom v případě, že indexování pro požadovanou cestu filtru je zakázané. | 
@@ -124,7 +125,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Hlavičky odpovědí na klíč vrácené z dotazu zahrnují následující:
 
-| Možnost | Description |
+| Možnost | Popis |
 | ------ | ----------- |
 | `x-ms-item-count` | Počet položek vrácených v odpovědi. Tato možnost závisí na zadaném `x-ms-max-item-count` počtu položek, které se mohou vejít do maximální velikosti datové části odpovědi, zřízené propustnosti a času provádění dotazu. |  
 | `x-ms-continuation:` | Token pokračování pro pokračování v provádění dotazu, pokud jsou k dispozici další výsledky. | 
@@ -136,7 +137,7 @@ Podrobnosti o hlavičkách a možnostech žádosti o REST API najdete v tématu 
 ## <a name="best-practices-for-query-performance"></a>Osvědčené postupy pro výkon dotazů
 Níže jsou uvedené nejběžnější faktory, které mají vliv na Azure Cosmos DB výkon dotazů. Dig se podrobněji pro každé z těchto témat v tomto článku.
 
-| Jednotek | Tip | 
+| Faktor | Tip | 
 | ------ | -----| 
 | Zřízená propustnost | Změřte RU na dotaz a ujistěte se, že máte požadovanou zřízenou propustnost pro vaše dotazy. | 
 | Dělení a klíče oddílů | Upřednostnit dotazy s hodnotou klíče oddílu v klauzuli Filter pro nízkou latenci. |
@@ -182,7 +183,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximální stupeň paralelismu
-V případě dotazů můžete vyladit `MaxDegreeOfParallelism` a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
+V případě dotazů můžete vyladit `MaxDegreeOfParallelism` a identifikovat nejlepší konfigurace pro vaši aplikaci, zejména pokud provádíte dotazy mezi oddíly (bez filtru na hodnotu klíče oddílu). `MaxDegreeOfParallelism`  Určuje maximální počet paralelních úloh, tj. maximální počet oddílů, které mají být navštíveny paralelně. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -213,7 +214,7 @@ Jak nastavit globální distribuci a připojit se k nejbližší oblasti, najdet
 
 Oddíl metriky spouštění dotazů vysvětluje, jak načíst dobu provádění dotazů ( `totalExecutionTimeInMs` ), takže můžete rozlišovat čas strávený při provádění dotazů a čas strávený při přenosu v síti.
 
-### <a name="indexing-policy"></a>Zásady indexování
+### <a name="indexing-policy"></a>Zásada indexování
 Viz téma [Konfigurace zásad indexování](index-policy.md) pro cesty, druhy a režimy indexování a to, jak ovlivňují provádění dotazů. Ve výchozím nastavení zásada indexování používá indexování algoritmu hash pro řetězce, které jsou platné pro dotazy na rovnost, ale ne pro dotaz na rozsah nebo řazení podle dotazů. Pokud pro řetězce potřebujete dotazy na rozsah, doporučujeme zadat typ indexu rozsahu pro všechny řetězce. 
 
 Ve výchozím nastavení Azure Cosmos DB použije automatické indexování na všechna data. V případě scénářů vkládání s vysokým výkonem zvažte možnost vyloučení cest, protože se tím sníží náklady na RU za každou operaci vložení. 
@@ -237,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Description | 
+| Metrika | Jednotka | Popis | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -259,7 +260,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Description | 
+| Dotazy | Ukázková metrika | Popis | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 

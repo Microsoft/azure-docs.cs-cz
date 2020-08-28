@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004313"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Protřepení a protřepávání na vyžádání – načtení zprávy Twitteru pomocí Azure Functions
 
 V tomto projektu se naučíte, jak pomocí snímače pohybu aktivovat událost pomocí Azure Functions. Aplikace načte náhodný disk s #hashtag, kterou nakonfigurujete v náčrtu Arduino. Na obrazovce DevKit se zobrazí.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
 * Připojte DevKit k Wi-Fi.
 * Připravte vývojové prostředí.
 
-Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat prostřednictvím jedné z těchto metod:
+Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat prostřednictvím jedné z těchto metod:
 
 * Aktivujte si [bezplatný 30denní zkušební účet Microsoft Azure](https://azure.microsoft.com/free/) .
 * Pokud jste předplatitelem MSDN nebo Visual studia, můžete svůj [kredit Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) uplatnit.

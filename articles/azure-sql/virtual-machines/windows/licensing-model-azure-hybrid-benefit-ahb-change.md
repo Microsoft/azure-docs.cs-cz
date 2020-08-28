@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668895"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010218"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,11 +44,11 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se dá nakonfigurovat při zřizování virtuálního počítače, nebo kdykoli později. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/).
+- [Předplatné Azure](https://azure.microsoft.com/free/)
 - [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) je požadavek na využití [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
@@ -69,7 +69,7 @@ Licenční model můžete změnit přímo z portálu:
 ![Zvýhodněné hybridní využití Azure na portálu](./media/licensing-model-azure-hybrid-benefit-ahb-change/ahb-in-portal.png)
 
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ke změně modelu licence můžete použít rozhraní příkazového řádku Azure CLI.  
 
@@ -156,7 +156,9 @@ Změna licenčního modelu je:
 
 ## <a name="known-errors"></a>Známé chyby
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nepovedlo se najít prostředek Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ve skupině prostředků \<resource-group> .
+Přečtěte si nejčastější chyby a jejich řešení. 
+
+**Nepovedlo se najít prostředek Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ve skupině prostředků \<resource-group> .**
 
 K této chybě dojde, když se pokusíte změnit model licence na virtuálním počítači s SQL Server, který nebyl zaregistrován u poskytovatele prostředků SQL VM:
 
@@ -165,7 +167,7 @@ K této chybě dojde, když se pokusíte změnit model licence na virtuálním p
 Budete muset zaregistrovat předplatné u poskytovatele prostředků a pak [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků](sql-vm-resource-provider-register.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Virtuální počítač \<vmname\> má víc než jednu přidruženou síťovou kartu.
+**Virtuální počítač \<vmname\> má víc než jednu přidruženou síťovou kartu.**
 
 K této chybě dochází na virtuálních počítačích, které mají více než jednu síťovou kartu. Před změnou modelu licencování odeberte jednu ze síťových adaptérů. I když po změně modelu licencí můžete síťové rozhraní přidat zpátky do virtuálního počítače, operace v Azure Portal, například automatické zálohování a opravy, se už nebudou podporovat. 
 

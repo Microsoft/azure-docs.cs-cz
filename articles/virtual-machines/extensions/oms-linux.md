@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029089"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999814"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -36,7 +36,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 ### <a name="operating-system"></a>Operační systém
 
-Podrobnosti o podporovaných distribucích systému Linux najdete v článku [přehled log Analyticsho agenta](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
+Podrobnosti o podporovaných distribucích systému Linux najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze Log Analyticsho rozšíření virtuálního počítače a sady Log Analytics agenta pro každou verzi. Obsahuje odkaz na poznámky k verzi pro verzi sady Log Analytics agentů. Poznámky k verzi obsahují podrobnosti o opravách chyb a nové funkce, které jsou k dispozici pro danou verzi agenta.  
@@ -109,7 +109,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
 | typ | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
+| typeHandlerVersion | 1,7 |
 | ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
@@ -186,7 +186,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

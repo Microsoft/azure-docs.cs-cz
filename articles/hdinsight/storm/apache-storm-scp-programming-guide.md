@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: 4445bb5c73ca001813d529a3e65d1ea95e084616
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082450"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000137"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
 
@@ -72,7 +72,7 @@ Váš kód modulu plug-in implementuje jedno z následujících rozhraní. Kter�
 
 ### <a name="iscpplugin"></a>ISCPPlugin
 
-**ISCPPlugin** je společné rozhraní pro mnoho modulů plug-in. v současné době se jedná o fiktivní rozhraní.
+**ISCPPlugin** je společné rozhraní pro mnoho modulů plug-in. V současné době se jedná o fiktivní rozhraní.
 
 ```csharp
 public interface ISCPPlugin
@@ -434,7 +434,7 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Description |
+| Nová funkce | Parametry | Popis |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
 | **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
@@ -446,7 +446,7 @@ SCP.NET přidal následující funkce pro definování transakčních topologií
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Description |
+| Klíčové slovo | Popis |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |
@@ -539,9 +539,9 @@ SCP.NET přidá přizpůsobenou metodu seskupení a k seskupení používá obsa
 
 V předchozím souboru specifikace:
 
-* `scp-field-group`Určuje, že seskupení je přizpůsobené seskupení polí implementované spojovacím bod služby.
-* `:tx`nebo `:non-tx` Určuje, zda je topologie transakční. Tyto informace budete potřebovat, protože počáteční index se liší od transakčních a netransakčních topologií.
-* `[0,1]`Určuje sadu hodnot hash pro ID polí začínající nulou.
+* `scp-field-group` Určuje, že seskupení je přizpůsobené seskupení polí implementované spojovacím bod služby.
+* `:tx` nebo `:non-tx` Určuje, zda je topologie transakční. Tyto informace budete potřebovat, protože počáteční index se liší od transakčních a netransakčních topologií.
+* `[0,1]` Určuje sadu hodnot hash pro ID polí začínající nulou.
 
 ### <a name="hybrid-topology"></a>Hybridní topologie
 

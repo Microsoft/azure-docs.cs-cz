@@ -4,18 +4,18 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890551"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006138"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a používají službu [Azure Backup](backup-overview.md) .
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Můžu použít Azure Backup pro virtuální počítač s IaaS a SQL Server ve stejném počítači?
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Můžu použít Azure Backup pro virtuální počítač s IaaS a taky SQL Server na stejném počítači?
 
 Ano, na jednom virtuálním počítači můžete mít zálohování virtuálních počítačů i zálohování SQL. V tomto případě interně na virtuálním počítači spustíme úplnou zálohu jenom pro kopírování, aby se protokoly nezkrátily.
 

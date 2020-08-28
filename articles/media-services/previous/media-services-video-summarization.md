@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231841"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999508"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnails  
 
@@ -33,7 +34,7 @@ Procesor **Azure Media Video Thumbnails** Media (MP) umožňuje vytvořit souhrn
 
 Sada MP **miniatury multimédií Azure** je aktuálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **miniaturách multimédií Azure** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o  **miniaturách multimédií Azure** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
 ## <a name="limitations"></a>Omezení
 
@@ -67,7 +68,7 @@ V současné době můžete změnit následující parametry:
 
 Následující tabulka popisuje výchozí dobu trvání, když se **maxMotionThumbnailInSecs** nepoužívá.
 
-|  | Small | Větší |
+|  | Malý | Větší |
 | --- | --- | --- |
 | **Doba trvání videa** |d < 3 min. |3 min < d < 15 min |
 | **Doba trvání miniatury** |15 sekund (2-3 scén) |30 sekund (3-5 scén) |

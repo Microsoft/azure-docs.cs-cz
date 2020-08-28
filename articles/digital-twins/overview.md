@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042815"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003843"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -105,5 +105,4 @@ Pokud jste pracovali s předchozí verzí Preview digitálních vláken Azure, p
 
 Nebo si pokračujte a podrobněi se s využitím digitálních vláken Azure pomocí prvního kurzu:
 
-> [!div class="nextstepaction"]
-> [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
+[*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

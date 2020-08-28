@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824762"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998403"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -78,86 +78,25 @@ Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jed
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Následující tabulka uvádí operační systémy Windows a Linux, které Azure Monitor pro virtuální počítače podporuje. Později v této části najdete úplný seznam, který podrobně popisuje hlavní a podverze operačního systému Linux a podporované verze jádra.
+Azure Monitor pro virtuální počítače podporuje všechny operační systémy, které podporují agenta Log Analytics a agenta závislostí. Úplný seznam najdete v tématu [přehled Azure Monitorch agentů ](../platform/agents-overview.md#supported-operating-systems) .
 
-|Verze operačního systému |Výkon |Maps |
-|-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Systém Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18,04, 16,04 | X | X |
-|CentOS Linux 7, 6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Debian 9,4, 8 | ×<sup>1</sup> | |
+Přečtěte si následující seznam důležitých informací o podpoře agenta závislostí pro Linux, který podporuje Azure Monitor pro virtuální počítače:
 
-<sup>1</sup> funkce výkonu Azure monitor pro virtuální počítače je k dispozici pouze Azure monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
+- Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
+- Nestandardní verze jádra, jako třeba rozšíření fyzické adresy (PAE) a Xen, nejsou podporované pro žádnou distribuci systému Linux. Například systém s řetězcem vydání *2.6.16.21-0,8-Xen* není podporován.
+- Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
+- Pro Debian distribuce jiné než verze 9,4 není funkce map podporována a funkce Performance je k dispozici pouze z nabídky Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
+- Jádro CentOSPlus je podporováno.
+- Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
 
->[!NOTE]
->V operačním systému Linux:
-> - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
-> - Nestandardní verze jádra, jako třeba rozšíření fyzické adresy (PAE) a Xen, nejsou podporované pro žádnou distribuci systému Linux. Například systém s řetězcem vydání *2.6.16.21-0,8-Xen* není podporován.
-> - Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
-> - Jádro CentOSPlus je podporováno.
-> - Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-| 7.6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-| 6,10 | 2.6.32 – 754 |
-| 6.9 | 2.6.32 – 696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-| 18,04 | 5.3.0 – 1020<br>5,0 (zahrnuje jádro Azure vyladěné)<br>4,18* <br> 4,15* |
-| 16.04.3 | 4,15. * |
-| 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-|12 SP4 | 4,12. * (zahrnuje jádro Azure s vyladěnými jádry) |
-|12 SP3 | 4,4. * |
-|12 SP2 | 4,4. * |
-
-#### <a name="debian"></a>Debian 
-
-| Verze operačního systému | Verze jádra |
-|:--|:--|
-| 9 | 4,9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
 Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ne | |
 
@@ -175,7 +114,7 @@ Níže najdete několik metod pro nasazení těchto agentů.
 | Metoda | Popis |
 |:---|:---|
 | [Azure Portal](./vminsights-enable-portal.md) | Nainstalujte oba agenty na jeden virtuální počítač, sadu škálování virtuálního počítače nebo hybridní virtuální počítače připojené pomocí Azure ARC. |
-| [Šablony Správce prostředků](vminsights-enable-powershell.md) | Nainstalujte oba agenty pomocí kterékoli z podporovaných metod pro nasazení Správce prostředků šablony, včetně CLI a PowerShellu. |
+| [Šablony Resource Manageru](vminsights-enable-powershell.md) | Nainstalujte oba agenty pomocí kterékoli z podporovaných metod pro nasazení Správce prostředků šablony, včetně CLI a PowerShellu. |
 | [Azure Policy](./vminsights-enable-policy.md) | Pokud se vytvoří virtuální počítač nebo sada škálování virtuálních počítačů, přiřaďte Azure Policy iniciativu k automatické instalaci agentů. |
 | [Ruční instalace](./vminsights-enable-hybrid.md) | Nainstalujte agenty v hostovaném operačním systému do počítačů hostovaných mimo Azure, včetně ve vašem datovém centru nebo v jiných cloudových prostředích. |
 

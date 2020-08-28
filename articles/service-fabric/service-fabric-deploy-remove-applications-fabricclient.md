@@ -3,12 +3,13 @@ title: Nasazení Azure Service Fabric pomocí FabricClient
 description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat aplikace v Service Fabric.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376966"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009296"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]
@@ -122,7 +123,7 @@ Další informace o úložišti imagí a připojovacím řetězci pro úložišt
 
 ### <a name="deploy-large-application-package"></a>Nasadit balíček velkých aplikací
 Problém: vyprší časový limit rozhraní [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API pro velký balíček aplikace (v řádu GB).
-Zkuste
+Vyzkoušejte:
 - Zadejte větší časový limit pro metodu [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) s `timeout` parametrem. Ve výchozím nastavení je časový limit 30 minut.
 - Ověřte síťové připojení mezi zdrojovým počítačem a clusterem. Pokud je připojení pomalé, zvažte použití počítače s lepším připojením k síti.
 Pokud je klientský počítač v jiné oblasti než cluster, zvažte použití klientského počítače v bližší nebo stejné oblasti jako cluster.
@@ -135,7 +136,7 @@ Komprese zmenšuje velikost a počet souborů. tím se snižuje objem provozu a 
 
 ### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoha soubory
 Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) časový limit pro balíček aplikace s mnoha soubory (pořadí tisíců).
-Zkuste
+Vyzkoušejte:
 - Před kopírováním do úložiště imagí [balíček Zkomprimujte](service-fabric-package-apps.md#compress-a-package) . Komprese snižuje počet souborů.
 - Zadejte větší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametrem.
 

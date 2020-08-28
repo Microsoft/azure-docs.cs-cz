@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 39cbfebcf34ef47ae93972a11be44ef3bcec0d66
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826054"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008926"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
 
@@ -240,7 +241,7 @@ Pokud nejsou všechny vstupní mediální soubory úspěšně indexovány, úloh
 
 Vygenerují se stejné výstupy (jako úlohy, které byly úspěšně dokončeny). Můžete se podívat na výstupní soubor manifestu a zjistit, které vstupní soubory se nezdařily, podle hodnot sloupce chyby. Pro vstupní soubory, které selhaly, nebudou vygenerovány výsledné TTML, WebVTT a soubory klíčových slov.
 
-### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Předvolba úlohy pro Azure Media Indexer
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Předvolba úlohy pro Azure Media Indexer
 Zpracování z Azure Media Indexer lze přizpůsobit zadáním volitelné předvolby úlohy vedle této úlohy.  Následující popis popisuje formát konfiguračního souboru XML.
 
 | Název | Vyžadovat | Popis |
@@ -261,9 +262,9 @@ V případě chyby by Azure Media Indexer měla nahlásit jeden z následující
 | 2004 |Nepodporovaný protokol |Protokol adresy URL média není podporován. |
 | 2005 |Nepodporovaný typ souboru |Typ vstupního mediálního souboru se nepodporuje. |
 | 2006 |Příliš mnoho vstupních souborů |Vstupní manifest obsahuje více než 10 souborů. |
-| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>– nebo –<br/> Poškozený mediální soubor <br/>– nebo –<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
+| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>nebo<br/> Poškozený mediální soubor <br/>nebo<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
 | 4000 |Dávkové indexování bylo dokončeno částečně. |Některé ze vstupních mediálních souborů se nepovedlo indexovat. Další informace najdete v tématu <a href="#output_files">výstupní soubory</a>. |
-| ostatní |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
+| other |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
 
 ## <a name="supported-languages"></a><a id="supported_languages"></a>Podporované jazyky
 V současné době jsou podporovány anglické a španělské jazyky.  

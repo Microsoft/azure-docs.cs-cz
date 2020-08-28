@@ -11,12 +11,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: ed58919c47da13a8a0707a344a389126c6feb6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6b4ba1bf63c1b8ebe6b7e294f416eb528ce444c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091959"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005781"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -90,10 +91,10 @@ Viz téma [filtrování, řazení, stránkování Media Services entit](entities
 
 Chcete-li získat Lokátory streamování na základě přidruženého názvu Assetu, použijte následující operace:
 
-|Jazyk|Rozhraní API|
+|Jazyk|rozhraní API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|CLI|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|

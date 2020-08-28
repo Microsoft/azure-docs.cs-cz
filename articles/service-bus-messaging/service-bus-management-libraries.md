@@ -4,12 +4,13 @@ description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny 
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008042"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -22,7 +23,7 @@ Knihovny pro správu Azure Service Bus můžou dynamicky zřizovat Service Bus o
 * Vytváření, aktualizace a odstraňování tématu
 * Vytvoření, aktualizace, odstranění odběru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
