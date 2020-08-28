@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082008"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000188"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií v jazyce C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -150,9 +151,9 @@ Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii 
 
    * `NextTuple`: Voláno pomocí metody], když má Spout povoleno generovat nové řazené kolekce členů.
 
-   * `Ack`(pouze transakční topologie): zpracovává potvrzovací potvrzení spuštěná jinými součástmi v topologii pro řazené kolekce členů odeslané z Spout. Potvrzením řazené kolekce členů umožní Spout zjistit, že byl úspěšně zpracován pomocí součástí podřízené součásti.
+   * `Ack` (pouze transakční topologie): zpracovává potvrzovací potvrzení spuštěná jinými součástmi v topologii pro řazené kolekce členů odeslané z Spout. Potvrzením řazené kolekce členů umožní Spout zjistit, že byl úspěšně zpracován pomocí součástí podřízené součásti.
 
-   * `Fail`(pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace `Fail` metody umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
+   * `Fail` (pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace `Fail` metody umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
 
 2. Obsah třídy nahraďte `Spout` následujícím textem:
 
@@ -481,9 +482,9 @@ Při vytváření a odesílání hybridní topologie Vezměte v úvahu následuj
 
 SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu specificky pro práci s centrem událostí Spout (Java Spout, který čte z Event Hubs). Když vytváříte topologii, která používá centrum událostí Spout (například pomocí **ukázkové šablony čtečky EventHub** , použijte následující rozhraní API):
 
-* `EventHubSpoutConfig`Třída: vytvoří objekt, který obsahuje konfiguraci pro komponentu Spout.
+* `EventHubSpoutConfig` Třída: vytvoří objekt, který obsahuje konfiguraci pro komponentu Spout.
 
-* `TopologyBuilder.SetEventHubSpout`Metoda: přidá do topologie komponentu Spout centra událostí.
+* `TopologyBuilder.SetEventHubSpout` Metoda: přidá do topologie komponentu Spout centra událostí.
 
 > [!NOTE]  
 > `CustomizedInteropJSONSerializer`Ke serializaci dat vytvořených v Spout je nutné stále použít.

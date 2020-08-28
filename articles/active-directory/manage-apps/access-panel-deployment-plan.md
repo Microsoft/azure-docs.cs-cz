@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930532"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017715"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
-Azure Active Directory (Azure AD) Moje aplikace jsou webový portál, který pomáhá snížit náklady na podporu, zvýšit produktivitu a zabezpečení a omezit frustrace uživatele. Systém zahrnuje podrobné hlášení, které se sleduje při přístupu k systému a upozorňuje správce na zneužití nebo zneužití.
+Azure Active Directory (Azure AD) Moje aplikace jsou webový portál, který pomáhá snížit náklady na podporu, zvýšit produktivitu a zabezpečení a omezit frustrace uživatele. Systém zahrnuje podrobné hlášení, které se sleduje při přístupu k systému a upozorňuje správce na zneužití nebo zneužití. Další informace o používání mých aplikací z perspektivy koncových uživatelů najdete v [nápovědě k portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 Pomocí služby Azure AD moje aplikace můžete:
 
@@ -42,7 +42,7 @@ Výhody služby Azure AD moje aplikace představují tyto firmy:
 
 **Poskytuje intuitivní uživatelské prostředí**: Moje aplikace nabízí jednu platformu pro všechny aplikace připojené k jednotnému přihlašování pomocí jednotného přihlašování (SSO) Azure. Máte jednotný portál, ve kterém najdete stávající nastavení a nové funkce, jako je Správa skupin a Samoobslužné resetování hesla, jak se přidávají. Intuitivní prostředí umožňuje uživatelům vrátit se rychleji a zvýšit produktivitu a zároveň omezit jejich frustrace.
 
-**Zvýšení produktivity**: všechny uživatelské aplikace v mých aplikacích mají povolený jednotné přihlašování. Povolení jednotného přihlašování v rámci podnikových aplikací a Microsoft 365 vytvoří nadřazené prostředí pro přihlašování tím, že omezí nebo odstraní další výzvy k přihlášení. Moje aplikace využívají samoobslužné a dynamické členství a zvyšují celkové zabezpečení systému identity. Tím zajistíte, že oprávnění ke správě přístupu k aplikacím mají správná osoba. Moje aplikace slouží jako souvislá cílová stránka pro rychlé vyhledání prostředků a pokračování pracovních úloh.
+**Zvýšení produktivity**: všechny uživatelské aplikace v mých aplikacích mají povolený jednotné přihlašování. Povolení jednotného přihlašování v rámci podnikových aplikací a Microsoft 365 vytvoří nadřazené prostředí pro přihlašování tím, že omezí nebo odstraní další výzvy k přihlášení. Moje aplikace využívají samoobslužné a dynamické členství a zvyšují celkové zabezpečení systému identity. Moje aplikace zajišťuje, aby oprávnění ke správě přístupu k aplikacím měli správná osoba. Moje aplikace slouží jako souvislá cílová stránka pro rychlé vyhledání prostředků a pokračování pracovních úloh.
 
 **Spravuje náklady**: povolení mých aplikací ve službě Azure AD může pomáhat s doplněním místních infrastruktur. Snižuje náklady na podporu tím, že vám poskytne konzistentní portál pro hledání všech vašich aplikací, vyžádat přístup k prostředkům a spravovat účty.
 
@@ -89,6 +89,10 @@ Následující tabulka popisuje klíčové případy použití pro nasazení moj
 | Zkušenosti uživatele| Uživatelé můžou spravovat svoje účty. |
 | Zkušenosti uživatele| Uživatelé jsou vědomi kompatibility prohlížeče. |
 | Podpora| Uživatelé můžou najít podporu pro moje problémy s aplikacemi. |
+
+
+> [!TIP]
+> Moje aplikace se dají používat s interními adresami URL společnosti a vzdáleným pomocí proxy aplikací. Další informace najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Osvědčené postupy pro nasazení služby Azure AD moje aplikace
 
@@ -255,7 +259,7 @@ Viz [přiřazení uživatelů a skupin k aplikaci ve službě Active Directory](
 
 Pokud při testování nebo nasazení chcete přidat skupiny, ale ještě nechcete, aby se aplikace zobrazovaly ve složkách moje aplikace, přečtěte si téma [skrytí aplikace od uživatele v Azure Active Directory](hide-application-from-user-portal.md).
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Nasazení aplikací Microsoftu Microsoft 365 do mých aplikací
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>Nasazení aplikací Microsoft 365 do mých aplikací
 
 Pro Microsoft 365 aplikace obdrží uživatelé kopii Office na základě licencí, které jsou jim přiřazeny. Předpokladem pro přístup k aplikacím Office je, aby se uživatelům přiřadily správné licence vázané na aplikace Office. Když uživateli přiřadíte licenci, automaticky uvidí aplikace, které jsou přidružené k licenci na stránce Moje aplikace a ve spouštěči aplikace Microsoft 365.
 
@@ -303,7 +307,7 @@ Je důležité, abyste naplánovali, co dělat, pokud nasazení neprojde jako pl
 
 ## <a name="manage-your-implementation"></a>Správa implementace
 
-K provedení požadované úlohy v Azure Active Directory byste měli použít roli s nejnižšími oprávněními. [Projděte si různé role, které jsou k dispozici](../users-groups-roles/directory-assign-admin-roles.md) , a podle toho, co potřebujete, můžete pro tuto aplikaci vyřešit vaše potřeby pro každého. Některé role může být nutné použít dočasně a odebrat po dokončení nasazení.
+K provedení požadované úlohy v Azure Active Directory použijte nejnižší privilegovanou roli. [Projděte si různé role, které jsou k dispozici](../users-groups-roles/directory-assign-admin-roles.md) , a podle toho, co potřebujete, můžete pro tuto aplikaci vyřešit vaše potřeby pro každého. Některé role může být nutné použít dočasně a odebrat po dokončení nasazení.
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|

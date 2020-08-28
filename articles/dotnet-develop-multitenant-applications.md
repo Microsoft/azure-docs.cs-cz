@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481839"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017698"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenantové aplikace v Azure
 Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Office 365, Outlook.com a visualstudio.com.
@@ -46,7 +47,7 @@ Další informace o dalších doporučeních pro návrh víceklientské aplikace
 
 Azure poskytuje mnoho funkcí, které vám umožní řešit klíčové problémy zjištěné při navrhování víceklientského systému.
 
-**Izolace**
+**Oddělení**
 
 * Segmentovat klienty webu podle hlaviček hostitele s komunikací TLS nebo bez něj
 * Segmentovat klienty webu podle parametrů dotazu

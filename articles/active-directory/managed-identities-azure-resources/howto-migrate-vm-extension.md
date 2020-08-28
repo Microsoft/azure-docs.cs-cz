@@ -3,7 +3,7 @@ title: Ukončení používání rozšíření spravovaného virtuálního počí
 description: Podrobné pokyny k zastavení používání rozšíření virtuálních počítačů a zahájení používání Azure Instance Metadata Service (IMDS) pro ověřování.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848378"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018372"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure Instance Metadata Service
 
@@ -119,7 +119,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://localhost:50342/oauth2/token` | Spravované identity pro koncové body prostředků Azure, kde 50342 je výchozí port a dá se konfigurovat. |
@@ -145,7 +145,7 @@ Content-Type: application/json
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do `Authorization` pole Hlavička požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
 | `refresh_token` | Nepoužívá se spravovanými identitami pro prostředky Azure. |
@@ -167,8 +167,8 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 ```
 
 Kde: 
-- Název a typ rozšíření pro Windows:`ManagedIdentityExtensionForWindows`
-- Název a typ rozšíření pro Linux:`ManagedIdentityExtensionForLinux`
+- Název a typ rozšíření pro Windows: `ManagedIdentityExtensionForWindows`
+- Název a typ rozšíření pro Linux: `ManagedIdentityExtensionForLinux`
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure dojde k chybě skriptu služby Automation.
 
@@ -186,7 +186,7 @@ Pro používání rozšíření virtuálního počítače je k dispozici několi
 
  * Nejzávažnějším omezením je skutečnost, že přihlašovací údaje použité k vyžádání tokenů jsou uložené ve virtuálním počítači. Útočník, který úspěšně narušuje virtuální počítač, může exfiltrovat přihlašovací údaje. 
  * Kromě toho se rozšíření virtuálních počítačů stále nepodporuje u několika distribucí systému Linux, přičemž náklady na vývoj můžete upravit, sestavit a otestovat v každé z těchto distribucí. V současné době jsou podporovány pouze následující distribuce systému Linux: 
-    * CoreOS stabilní
+    * CoreOS Stable
     * CentOS 7,1 
     * Red Hat 7,2 
     * Ubuntu 15,04 

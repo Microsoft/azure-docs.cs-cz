@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí MABS
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514233"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017426"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
 
@@ -82,7 +82,7 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
     Když rozbalíte službu VSS dotazů serveru SharePoint Server MABS, abyste viděli, co data MABS může chránit.  Pokud je databáze SharePointu vzdálená, MABS se k ní připojí. Pokud se zdroje dat služby SharePoint nezobrazí, zkontrolujte, zda je zapisovač VSS spuštěn na serveru SharePoint a všech vzdálených SQL Server a zda je agent MABS nainstalován na serveru SharePoint a ve vzdáleném SQL Server. Také se ujistěte, že databáze služby SharePoint nejsou chráněny jinde jako SQL Server databáze.
 
-1. V **Vyberte způsob ochrany dat**určete, jak chcete zpracovat krátkodobé a dlouhodobé \- zálohování. Krátkodobé zálohy se vždy nejdříve ukládají na disk s možností zálohování z disku do cloudu Azure pomocí zálohování Azure \(krátkodobé nebo dlouhodobé\).
+1. V **Vyberte způsob ochrany dat**určete, jak chcete zpracovat krátkodobé a dlouhodobé \- zálohování. Krátkodobé \- zálohování je vždycky vždy na disku, s možností zálohování z disku do cloudu Azure s Azure Backup \( pro krátkodobé nebo dlouhodobé \- období \) .
 
 1. V nabídce **Vybrat krátkodobé \- cíle**určete, jak se má na disk zálohovat na krátkodobé \- úložiště.   V poli **Rozsah uchování** zadejte dobu, po kterou chcete data na disku uchovávat. V poli **četnost synchronizací**můžete určit, jak často chcete spouštět přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete zaškrtnout možnost těsně před bodem obnovení, takže MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
 
@@ -102,7 +102,7 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
 1. V části **Zvolit online replikaci**určete, jak se bude provádět počáteční Úplná replikace dat. Replikaci můžete provést po síti nebo můžete provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. [Další informace](./backup-azure-backup-import-export.md).
 
-1. Na stránce **Souhrn** zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**dojde k počáteční replikaci dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
+1. Na stránce  **Souhrn** zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**dojde k počáteční replikaci dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
 
 ## <a name="monitoring"></a>Monitorování
 
@@ -167,7 +167,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 
     ![Pracovní proces location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    MABS připojí databázi obsahu, která je hostitelem položky SharePoint, do dočasné instance SQL Server. Z databáze obsahu obnoví položku a umístí ji do pracovního umístění souboru na MABS. Obnovená položka, která je v pracovním umístění, se teď musí exportovat do pracovního umístění ve farmě služby SharePoint.
+    MABS připojuje databázi obsahu, která je hostitelem položky SharePoint, do dočasné instance SQL Server. Z databáze obsahu obnoví položku a umístí ji do pracovního umístění souboru na MABS. Obnovená položka, která je v pracovním umístění, se teď musí exportovat do pracovního umístění ve farmě služby SharePoint.
 
     ![Pracovní Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. Vyberte možnost **zadat možnosti obnovení**a použít nastavení zabezpečení pro farmu služby SharePoint nebo použít nastavení zabezpečení bodu obnovení. Klikněte na **Next** (Další).

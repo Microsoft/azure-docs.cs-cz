@@ -14,12 +14,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0b4fbe4ab7accec18f48e6319e16d10f083a8709
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327442"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008331"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Posílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 
@@ -49,7 +50,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET.
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení, včetně C, Java, Pythonu a JavaScriptu, prostřednictvím [sad SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide.md).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
@@ -116,7 +117,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která odesílá zprávy t
 
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na nový projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. V **možnosti spravovat balíčky NuGet**vyberte **Procházet**a pak vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte **nainstalovat**.
+1. V **možnosti spravovat balíčky NuGet**vyberte **Procházet**a pak vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte  **nainstalovat**.
 
    Tento krok stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 

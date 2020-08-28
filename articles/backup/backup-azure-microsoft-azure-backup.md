@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892282"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001157"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -24,7 +24,7 @@ ms.locfileid: "88892282"
 Tento článek vysvětluje, jak připravit prostředí pro zálohování úloh pomocí serveru Microsoft Azure Backup (MABS). Pomocí Azure Backup Server můžete chránit pracovní zatížení aplikací, jako jsou například virtuální počítače Hyper-V, Microsoft SQL Server, SharePoint Server, Microsoft Exchange a klienti Windows z jediné konzoly.
 
 > [!NOTE]
-> Azure Backup Server teď můžou chránit virtuální počítače VMware a poskytovat vylepšené možnosti zabezpečení. Nainstalujte produkt, jak je vysvětleno níže v následujících částech a nejnovějším agentem Azure Backup. Další informace o zálohování serverů VMware pomocí Azure Backup Server najdete v článku [použití Azure Backup Server k zálohování serveru VMware](backup-azure-backup-server-vmware.md). Další informace o možnostech zabezpečení najdete v [dokumentaci k funkcím zabezpečení Azure Backup](backup-azure-security-feature.md).
+> Azure Backup Server teď můžou chránit virtuální počítače VMware a poskytovat vylepšené možnosti zabezpečení. Nainstalujte produkt, jak je vysvětleno níže v následujících částech a nejnovějším agentem Azure Backup. Další informace o zálohování serverů VMware pomocí Azure Backup Server najdete v článku [použití Azure Backup Server k zálohování serveru VMware](backup-azure-backup-server-vmware.md). Další informace o možnostech zabezpečení najdete v [dokumentaci k funkcím Azure Backup zabezpečení](backup-azure-security-feature.md).
 >
 >
 
@@ -66,7 +66,7 @@ Pomocí odstranění duplicitních dat systému Windows Server můžete odstrani
 >
 > * Počítač spuštěný jako řadič domény
 > * Počítač, na kterém je nainstalovaná role aplikačního serveru
-> * Počítač, který je serverem pro správu nástroje System Center Operations Manager
+> * Počítač, který je System Center Operations Manager management server
 > * Počítač, na kterém je spuštěný server Exchange
 > * Počítač, který je uzlem clusteru
 >
@@ -95,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, vyberte v hlavní nabídce možnost **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -261,25 +261,25 @@ Tady je postup, pokud potřebujete přesunout MABS na nový server a zachovat ú
 
   > [!IMPORTANT]
   >
-  > * Název nového serveru musí být stejný jako původní instance Azure Backup Server. Název nové instance Azure Backup Server nemůžete změnit, pokud chcete použít předchozí fond úložiště a databázi MABS (DPMDB), abyste zachovali body obnovení.
-  > * Musíte mít zálohu databáze MABS (DPMDB). Bude nutné obnovit databázi.
+  > * Název nového serveru musí mít stejný název jako původní instance Azure Backup Server. Název nové instance Azure Backup Server nemůžete změnit, pokud chcete použít předchozí fond úložiště a databázi MABS (DPMDB), abyste zachovali body obnovení.
+  > * Musíte mít zálohu databáze MABS (DPMDB). Budete ho potřebovat k obnovení databáze.
 
 1. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenta ochrany.
-2. Vypněte původní server Azure Backup nebo ho odpojte od tohoto drátu.
+2. Vypněte původní Azure Backup Server nebo ho převeďte do režimu offline.
 3. Resetujte účet počítače ve službě Active Directory.
-4. Nainstalujte Server 2016 na nový počítač a pojmenujte ho na stejný název počítače jako na původním serveru Azure Backup.
-5. Připojit k doméně
-6. Nainstalovat Azure Backup Server V3 nebo novější (přesunout disky fondu úložiště MABS z původního serveru a importovat)
+4. Nainstalujte Server 2016 na nový počítač a poskytněte mu stejný název počítače jako původní Azure Backup Server.
+5. Připojte se k doméně.
+6. Nainstalujte Azure Backup Server V3 nebo novější (přesuňte disky fondu úložiště MABS z původního serveru a importujte).
 7. Obnovte DPMDB provedených v kroku 1.
 8. Připojte úložiště k novému serveru z původního záložního serveru.
-9. Z SQL obnovení DPMDB
-10. Z příkazového řádku správce na novém serveru CD pro Microsoft Azure Backup umístění instalace a složka bin
+9. Z SQL Obnovte DPMDB.
+10. Na novém serveru spusťte CMD (jako správce). Přejít do umístění instalačního Microsoft Azure Backup a složky bin
 
     Příklad cesty: C:\Windows\System32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
-11. Do Azure Backup spusťte příkaz DPMSYNC-SYNC.
+11. Pokud se chcete připojit k Azure Backup, spusťte `DPMSYNC -SYNC`
 
-    Pokud jste přidali nové disky do fondu úložiště DPM místo přesunutí starých těch, spusťte příkaz DPMSYNC-Reallocatereplica.
+    Pokud jste přidali **nové** disky do fondu úložiště DPM místo přesunutí starých těch, spusťte `DPMSYNC -Reallocatereplica`
 
 ## <a name="network-connectivity"></a>Připojení k síti
 
@@ -355,7 +355,7 @@ K upgradu MABS použijte následující postup:
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
 5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Přečtěte si další informace](backup-mabs-add-storage.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud Microsoft Azure Backup server selhává s chybami během fáze nastavení (nebo zálohování nebo obnovení), najdete další informace v [dokumentu s kódy chyb](https://support.microsoft.com/kb/3041338)  .
 Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.md) dotazech.

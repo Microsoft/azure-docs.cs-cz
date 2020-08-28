@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876304"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017307"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -38,7 +38,7 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
   * Aplikace zjistí převzetí služeb při selhání a pokračuje v ochraně databáze.
   * Aplikace DPM podporuje konfigurace clusteru více lokalit pro instanci SQL Serveru.
 * Když chráníte databáze využívající funkci AlwaysOn, má nástroj DPM tato omezení:
-  * Nástroj DPM bude ctít zásady zálohování pro skupiny dostupnosti, které jsou nastaveny v systému SQL Server na základě předvoleb zálohování:
+  * DPM bude dodržovat zásady zálohování pro skupiny dostupnosti, které jsou nastavené v SQL Server na základě předvoleb zálohování, a to takto:
     * Preferovat sekundární – zálohy se budou objevovat na sekundární replice s výjimkou případu, kdy je primární replika jedinou replikou online. Pokud je k dispozici více sekundárních replik, bude pro zálohování vybrán uzel s nejvyšší prioritou zálohování. Pokud je k dispozici pouze primární replika, pak by záloha měla být provedena na primární replice.
     * Pouze sekundární – záloha se nebude provádět na primární replice. Pokud je online jenom primární replika, zálohování neproběhne.
     * Primární – zálohování se musí vždy odehrávat na primární replice.

@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449054"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018854"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -110,7 +111,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     > [!NOTE]
     > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší*, tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
 
-    Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
+    Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje  **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
 
     K implementaci můžete použít dvě metody: **QueryBounds** a **ProcessQueryResult**. **QueryBounds** načte meze a **ProcessQueryResult** provede výsledek dotazu a použije ho pro místní **BoxCollider**.
 

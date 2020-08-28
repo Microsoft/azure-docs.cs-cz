@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Serv
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017562"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -441,7 +441,7 @@ Pokud chcete nakonfigurovat vyloučení disku, postupujte podle následujících
 
 Přejděte na server MABS, kde je virtuální počítač VMware nakonfigurovaný pro ochranu a nakonfigurujte vyloučení disku.
 
-  1. Získejte podrobnosti o hostiteli VMware, který je chráněný na serveru MABS.
+  1. Získejte podrobné informace o hostiteli VMware, který je chráněný na serveru MABS.
 
         ```powershell
         $psInfo = get-DPMProductionServer

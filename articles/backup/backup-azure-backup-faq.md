@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892758"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017732"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -56,7 +56,7 @@ Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, př
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dá se pro virtuální počítače zálohované v trezoru služby Recovery Services použít obnovování na úrovni položek (Item Level Restore, ILR)?
 
 - ILR se podporuje pro virtuální počítače Azure zálohované pomocí funkce zálohování virtuálních počítačů Azure. Další informace najdete v tomto [článku](backup-azure-restore-files-from-vm.md).
-- ILR se nepodporuje pro body obnovení online místních virtuálních počítačů zálohovaných službou Azure Backup Server nebo System Center DPM.
+- ILR se nepodporuje u online bodů obnovení místních virtuálních počítačů zálohovaných nástrojem Azure Backup Server (MABS) nebo System Center DPM.
 
 ## <a name="azure-backup-agent"></a>Agent Azure Backup
 
@@ -127,7 +127,7 @@ BMR a stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohova
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných s využitím trezoru služby Recovery Services?
 
-Celkové množství dat, které můžete zálohovat pomocí trezoru Recovery Services, není nijak omezené. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](./backup-support-matrix.md#vault-support).
+K dispozici není žádné omezení celkového množství dat, která můžete zálohovat pomocí Recovery Services trezoru. Jednotlivé zdroje dat (kromě virtuálních počítačů Azure) můžou mít velikost maximálně 54 400 GB. Další informace o omezeních najdete [v části omezení trezoru v matici podpory](./backup-support-matrix.md#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat vybraných k zálohování?
 
@@ -184,7 +184,7 @@ Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. C
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Kolikrát se dají obnovit data zálohovaná do Azure?
 
-Počet obnovení z Azure Backup není omezený.
+Neexistuje žádné omezení počtu obnov z Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Platí se za výchozí přenos z Azure při obnovování dat?
 

@@ -15,12 +15,13 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Operations'
 - devx-track-javascript
-ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-csharp
+ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017681"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -64,7 +65,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
@@ -79,7 +80,7 @@ Další informace o tom, jak vytvářet a používat tokeny zabezpečení, najde
 
 Každý podporovaný protokol, například MQTT, AMQP a HTTPS, přesměruje tokeny různými způsoby.
 
-Při použití MQTT má paket CONNECT deviceId jako ClientId, `{iothubhostname}/{deviceId}` v poli UserName (uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}`mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
+Při použití MQTT má paket CONNECT deviceId jako ClientId, `{iothubhostname}/{deviceId}` v poli UserName (uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}` mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
 
 Při použití [AMQP](https://www.amqp.org/)podporuje IoT Hub [SASL Plain](https://tools.ietf.org/html/rfc4616) a [AMQP a zabezpečení založené na deklaracích identity](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -87,8 +88,8 @@ Pokud používáte AMQP zabezpečení založené na deklaracích identity, Stand
 
 Pro SASL PLAIN **uživatelské jméno** může být:
 
-* `{policyName}@sas.root.{iothubName}`Pokud používáte tokeny na úrovni IoT Hub.
-* `{deviceId}@sas.{iothubname}`Pokud používáte tokeny v oboru zařízení.
+* `{policyName}@sas.root.{iothubName}` Pokud používáte tokeny na úrovni IoT Hub.
+* `{deviceId}@sas.{iothubname}` Pokud používáte tokeny v oboru zařízení.
 
 V obou případech pole heslo obsahuje token, jak je popsáno v [IoT Hub tokeny zabezpečení](iot-hub-devguide-security.md#security-tokens).
 
@@ -96,7 +97,7 @@ Protokol HTTPS implementuje ověřování zahrnutím platného tokenu do hlavič
 
 #### <a name="example"></a>Příklad
 
-Username (DeviceId rozlišuje velká a malá písmena):`iothubname.azure-devices.net/DeviceId`
+Username (DeviceId rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
 Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 

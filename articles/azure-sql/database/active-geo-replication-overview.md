@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448749"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018361"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 Aby vaše aplikace mohla hned po převzetí služeb při selhání přistupovat k nové primární databázi, ujistěte se, že požadavky na ověřování pro sekundární server a databázi jsou správně nakonfigurované. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](active-geo-replication-security-configure.md). Aby se zajistilo dodržování předpisů po převzetí služeb při selhání, ujistěte se, že zásady uchovávání záloh v sekundární databázi odpovídají primárnímu. Tato nastavení nejsou součástí databáze a nereplikují se. Ve výchozím nastavení se sekundární bude konfigurovat s výchozí dobou uchování PITR sedmi dnů. Podrobnosti najdete v tématu [SQL Database automatizované zálohy](automated-backups-overview.md).
 
 > [!IMPORTANT]
-> Pokud je vaše databáze členem skupiny převzetí služeb při selhání, nemůžete iniciovat převzetí služeb při selhání pomocí příkazu pro převzetí služeb při selhání geografické replikace. Pro skupinu použijte příkaz pro převzetí služeb při selhání. Pokud potřebujete převzít služby při selhání pro jednotlivé databáze, musíte je nejdřív odebrat ze skupiny převzetí služeb při selhání. Podrobnosti najdete v tématu [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) .
+> Pokud je vaše databáze členem skupiny převzetí služeb při selhání, nemůžete iniciovat převzetí služeb při selhání pomocí příkazu pro převzetí služeb při selhání geografické replikace. Pro skupinu použijte příkaz pro převzetí služeb při selhání. Pokud potřebujete převzít služby při selhání pro jednotlivé databáze, musíte je nejdřív odebrat ze skupiny převzetí služeb při selhání. Podrobnosti najdete v tématu  [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) .
 
 ## <a name="configuring-secondary-database"></a>Konfigurace sekundární databáze
 
@@ -178,7 +178,8 @@ Klient provádějící změny potřebuje síťový přístup k primárnímu serv
 
 ### <a name="on-the-master-of-the-secondary-server"></a>V hlavní části sekundárního serveru
 
-1. Přidejte IP adresu do seznamu povolených klientů, který provádí změny. Musí mít stejnou přesnou IP adresu primárního serveru.
+1. Přidejte IP adresu klienta do seznamu povolených v části pravidla brány firewall pro sekundární server. Ověřte, že se do sekundárního počítače přidala i přesná stejná IP adresa klienta, která byla přidaná na primárním serveru. Tento krok je potřeba provést před spuštěním příkazu ALTER DATABASE přidat sekundární příkaz pro inicializaci geografické replikace.
+
 1. Vytvořte stejné přihlašovací údaje jako na primárním serveru pomocí stejného hesla uživatele a čísla SID:
 
    ```sql

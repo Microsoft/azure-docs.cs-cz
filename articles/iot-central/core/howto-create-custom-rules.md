@@ -7,14 +7,14 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158142"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017851"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
 
@@ -30,11 +30,11 @@ V této příručce se dozvíte, jak:
 * Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -73,7 +73,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 
 ### <a name="stream-analytics-job"></a>Stream Analytics úlohy
 
-Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
@@ -84,13 +84,13 @@ Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.co
 | Hostitelské prostředí | Cloud |
 | Jednotky streamování | 3 |
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>Aplikace funkcí
 
 Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#create/Microsoft.FunctionApp) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| App name (Název aplikace)    | Zvolit název aplikace Function App |
+| Název aplikace    | Zvolit název aplikace Function App |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Operační systém | Windows |
@@ -258,7 +258,7 @@ Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení z
     | ------- | ----- |
     | Alias pro výstup | emailnotification |
     | Předplatné | Vaše předplatné |
-    | Function App | Vaše aplikace Function App |
+    | Aplikace funkcí | Vaše aplikace Function App |
     | Funkce  | HttpTrigger1 |
 
 1. V části **topologie úloh**vyberte **dotaz** a nahraďte stávající dotaz následujícím SQL:
@@ -321,8 +321,8 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejd
     | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
     | Centrum událostí | centralexport |
     | Měření | Zapnout |
-    | Zařízení | Vypnout |
-    | Šablony zařízení | Vypnout |
+    | Zařízení | Vypnuto |
+    | Šablony zařízení | Vypnuto |
 
 ![Konfigurace kontinuálního exportu dat](media/howto-create-custom-rules/cde-configuration.png)
 

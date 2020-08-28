@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551513"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s konektorem Google Cloud (G Suite)
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat konektor Google Cloud (G Suite) s Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -225,15 +225,18 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. V poli **Adresa URL přihlašovací stránky** v konektoru Google Cloud (G Suite) vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. V poli **Adresa URL stránky pro odhlášení** v konektoru Google Cloud (G Suite) vložte hodnotu URL pro **odhlášení** , kterou jste zkopírovali z Azure Portal.
+    c. V poli **Adresa URL stránky pro odhlášení** v konektoru Google Cloud (G Suite) vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. V poli **změnit adresu URL hesla** v konektoru Google Cloud (G Suite) vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
+    > [!NOTE]
+    > Google Cloud (G Suite) je založený na protokolu odhlašovacího SAML. Takže v poli **Adresa URL stránky** pro odhlášení musíme použít adresu URL pro ODhlášení SAML, tj. adresu URL pro přihlášení jako hodnotu pro stejné.
 
-    e. V konektoru Google Cloud (G Suite) pro **ověřovací certifikát**Nahrajte certifikát, který jste stáhli z Azure Portal.
+    d. V konektoru Google Cloud (G Suite) pro **ověřovací certifikát**Nahrajte certifikát, který jste stáhli z Azure Portal.   
 
-    f. Zaškrtnout/zrušit kontrolu **použití možnosti vystavitele specifické pro doménu** podle poznámky uvedené výše v části **základní konfigurace SAML** ve službě Azure AD.
+    e. Zaškrtnout/zrušit kontrolu **použití možnosti vystavitele specifické pro doménu** podle poznámky uvedené výše v části **základní konfigurace SAML** ve službě Azure AD.
 
-    například Klikněte na **Save Changes** (Uložit změny).
+    f. V poli **změnit adresu URL hesla** v konektoru Google Cloud (G Suite) vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
+
+    například Klikněte na **Uložit**.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Vytvořit testovacího uživatele konektoru Google Cloud (G Suite)
 

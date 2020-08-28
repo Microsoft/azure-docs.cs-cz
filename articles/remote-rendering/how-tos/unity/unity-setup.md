@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565465"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018973"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Nastavení Remote Renderingu pro Unity
 
@@ -66,11 +67,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="session-state-events"></a>Události stavu relace
 
-`RemoteManagerUnity.OnSessionUpdate`vygeneruje události při změně stavu relace. Podrobnosti najdete v dokumentaci kódu.
+`RemoteManagerUnity.OnSessionUpdate` vygeneruje události při změně stavu relace. Podrobnosti najdete v dokumentaci kódu.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`je volitelnou komponentou pro zjednodušení nastavení a správy relace. Obsahuje možnosti automatického zastavení jeho relace při ukončení aplikace nebo ukončení režimu přehrávání v editoru a také automatické prodloužení zapůjčení relace v případě potřeby. Ukládá data do mezipaměti, jako jsou vlastnosti relace (viz její `LastProperties` proměnná), a zpřístupňuje události pro změny stavu relace a chyby relací.
+`ARRServiceUnity` je volitelnou komponentou pro zjednodušení nastavení a správy relace. Obsahuje možnosti automatického zastavení jeho relace při ukončení aplikace nebo ukončení režimu přehrávání v editoru a také automatické prodloužení zapůjčení relace v případě potřeby. Ukládá data do mezipaměti, jako jsou vlastnosti relace (viz její `LastProperties` proměnná), a zpřístupňuje události pro změny stavu relace a chyby relací.
 
 V jednom okamžiku nemůže existovat více než jedna instance `ARRServiceUnity` . Slouží k tomu, aby bylo možné rychleji začít s implementací některých běžných funkcí. U větší aplikace může být vhodnější provádět tyto věci sami, ale.
 

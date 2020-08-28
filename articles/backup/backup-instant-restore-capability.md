@@ -4,18 +4,18 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892622"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000375"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
 > [!NOTE]
 > Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů v2** na **okamžité obnovení** , aby se snížila nutnost Azure Stack funkcí.
-> Všichni uživatelé Azure Backup se teď upgradují na **okamžité obnovení**.
+> Všichni Azure Backup uživatelé teď byli upgradováni na **okamžité obnovení**.
 
 Nový model pro okamžité obnovení nabízí následující vylepšení funkcí:
 
@@ -108,9 +108,9 @@ Pokud je typ obnovení "snímke and trezor", obnoví se automaticky z místního
 
 Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní snímek (Tier1). Doporučujeme, abyste naplánujete dobu uchování bodu obnovení (2), která je delší než doba uchování snímku.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímek existující i po nastavení Doba uchování v zásadách zálohování?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Proč můj snímek ještě existuje i po nastavení Doba uchování v zásadách zálohování?
 
-Pokud má bod obnovení snímek a je to nejnovější RP dostupné, bude se uchovávat až do další úspěšné zálohy. To je v souladu se zásadami navrženými pro uvolňování paměti (GC) ještě dnes, že pro případ, že se na virtuálním počítači ještě nezdařily všechny zálohy, má vždy k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.
+Pokud má bod obnovení snímek a je to nejnovější dostupný bod obnovení, bude uložen až do další úspěšné zálohy. To je v souladu s určenými zásadami uvolňování paměti (GC). Pro případ, že se v důsledku problému na virtuálním počítači nezdařila žádná z následujících záloh, má za to, že je vždy k dispozici alespoň jeden nejnovější bod obnovení. V normálních scénářích se body obnovení vyčistí po dobu maximálně 24 hodin po vypršení platnosti.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nepotřebuji funkci okamžitého obnovení. Je možné ho zakázat?
 

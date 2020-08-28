@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950149"
+ms.locfileid: "89018055"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,6 +129,8 @@ Pro konkrétní krok klikněte na modul. Přejděte na kartu **protokoly** . Dal
 
 > [!TIP]
 > Spuštění *publikovaných kanálů* najdete na kartě **koncové body** v pracovním prostoru. Spuštění pro *nepublikované kanály* se dá najít v **experimentech** nebo **kanálech**.
+
+Další informace o protokolování a trasování z `ParallelRunStep` naleznete v tématu [Debug and Troubleshooting ParallelRunStep](how-to-debug-parallel-run-step.md).
 
 ## <a name="logging-in-azure-machine-learning-designer-preview"></a>Přihlášení v Návrháři Azure Machine Learning (Preview)
 

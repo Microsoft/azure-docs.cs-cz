@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892554"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000715"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
 
@@ -50,13 +50,13 @@ Pokud jste uživatelem [Azure Lighthouse](https://azure.microsoft.com/services/a
 
 ## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta Azure Backup projeví na portálu?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se na portálu projeví stav úlohy Azure Backup agenta?
 
 Azure Portal může trvat až 15 minut, než bude odpovídat stavu úlohy agenta Azure Backup.
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Když úloha zálohování selže, jak dlouho trvá aktivace upozornění?
 
-Výstraha se vyvolá do 20 minut od selhání zálohování Azure.
+K vyvolání výstrahy dojde během 20 minut od Azure Backup chyby.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy se e-mail neposílá, pokud jsou nakonfigurovaná oznámení?
 

@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 6a8f956a692fd857fc864ca0132acc85d9942bbd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891806"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009453"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 

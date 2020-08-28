@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757281"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018718"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -184,6 +184,8 @@ V některých případech může být užitečné, pokud při dotazování na n�
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
 * **Problémy při vytváření AmlCompute**: je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
+
+* **Azure Container Registry v současné době nepodporuje znaky Unicode v názvech skupin prostředků**: je možné, že požadavky ACR selžou, protože název skupiny prostředků obsahuje znaky Unicode. Pokud chcete tento problém zmírnit, doporučujeme vytvořit ACR v jiné skupině prostředků s názvem.
 
 ## <a name="work-with-data"></a>Práce s daty
 
