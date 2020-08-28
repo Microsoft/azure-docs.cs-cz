@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903217"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021166"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování analýzy Azure Storage
 
@@ -89,7 +89,7 @@ Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytv�
 
 |Atribut|Popis|
 |---------------|-----------------|
-|`<service-name>`|Název služby úložiště Například: `blob` , `table` , nebo`queue`|
+|`<service-name>`|Název služby úložiště Například: `blob` , `table` , nebo `queue`|
 |`YYYY`|Rok čtyř číslice pro protokol. Příklad: `2011`|
 |`MM`|Dva číslice měsíce pro protokol. Příklad: `07`|
 |`DD`|Dva číselné dny pro protokol. Příklad: `31`|
@@ -105,7 +105,7 @@ Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytv�
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Po zaznamenání žádosti o úložiště se výsledný název protokolu koreluje do hodiny, kdy se požadovaná operace dokončila. Pokud se například požadavek getblob dokončil v 6:17:30 v 7/31/2011, protokol se zapíše s následující předponou:`blob/2011/07/31/1800/`
+ Po zaznamenání žádosti o úložiště se výsledný název protokolu koreluje do hodiny, kdy se požadovaná operace dokončila. Pokud se například požadavek getblob dokončil v 6:17:30 v 7/31/2011, protokol se zapíše s následující předponou: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Metadata protokolu
 
@@ -113,7 +113,7 @@ Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytv�
 
 |Atribut|Popis|
 |---------------|-----------------|
-|`LogType`|Popisuje, jestli protokol obsahuje informace týkající se operací čtení, zápisu nebo odstranění. Tato hodnota může obsahovat jeden typ nebo kombinaci všech tří, oddělených čárkami.<br /><br /> Příklad 1:`write`<br /><br /> Příklad 2:`read,write`<br /><br /> Příklad 3:`read,write,delete`|
+|`LogType`|Popisuje, jestli protokol obsahuje informace týkající se operací čtení, zápisu nebo odstranění. Tato hodnota může obsahovat jeden typ nebo kombinaci všech tří, oddělených čárkami.<br /><br /> Příklad 1: `write`<br /><br /> Příklad 2: `read,write`<br /><br /> Příklad 3: `read,write,delete`|
 |`StartTime`|Čas nejdřívějšího záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ` . Příklad: `2011-07-31T18:21:46Z`|
 |`EndTime`|Poslední čas záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ` . Příklad: `2011-07-31T18:22:09Z`|
 |`LogVersion`|Verze formátu protokolu|

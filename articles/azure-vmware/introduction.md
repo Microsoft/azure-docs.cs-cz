@@ -3,12 +3,12 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752129"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005050"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Co je Azure VMware Solution Preview?
 
@@ -46,7 +46,7 @@ Pravidelná upgrade privátního cloudu řešení Azure VMware a softwaru VMware
 
 ## <a name="monitoring-your-private-cloud"></a>Monitorování privátního cloudu
 
-Pomocí [protokolů v Azure monitor](../azure-monitor/overview.md) můžete shromažďovat protokoly na virtuálních počítačích, které běží ve vašem privátním cloudu řešení Azure VMware. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) na virtuální počítače se systémem Linux a Windows v privátních cloudech řešení Azure VMware pomocí stejných dotazů, které spouštíte na místních virtuálních počítačích. Můžete spouštět stejné dotazy, které byste normálně spustili na virtuálních počítačích, a to jenom stejně. Další informace o vytváření dotazů najdete v tématu [Postup zápisu dotazů](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Pomocí [protokolů v Azure monitor](../azure-monitor/overview.md) můžete shromažďovat protokoly na virtuálních počítačích, které běží ve vašem privátním cloudu řešení Azure VMware. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémem Linux a Windows v privátních cloudech řešení Azure VMware pomocí stejných dotazů, které spouštíte na místních virtuálních počítačích. Můžete spouštět stejné dotazy, které byste normálně spustili na virtuálních počítačích, a to jenom stejně. Další informace o vytváření dotazů najdete v tématu [Postup zápisu dotazů](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
 
 ## <a name="next-steps"></a>Další kroky
 

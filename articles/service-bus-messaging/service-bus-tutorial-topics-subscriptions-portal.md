@@ -5,12 +5,13 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 348e37202335cc525f945085658337fbe6bcc561
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 811777fff28cf56d7732461924b14e9e4b619c0c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182421"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000168"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
 

@@ -3,13 +3,13 @@ title: Vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v ASP.NET Core a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 03320fe41bcac8b99a3475b52fcf1b41ea5aed89
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: mvc, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 847bd2e30977c5a14f8294f6709cbd6d376a8211
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428359"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016270"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 Po vytvoření front-end služby VotingWeb sada Visual Studio náhodně vybere port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem.  [Manifest služby](service-fabric-application-and-service-manifests.md) deklaruje koncové body služby.
 
-V Průzkumník řešení otevřete *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
+V Průzkumník řešení otevřete  *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
 
 ```xml
 <Resources>

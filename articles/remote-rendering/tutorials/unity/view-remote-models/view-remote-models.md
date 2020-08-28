@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e9c29edb28700d0f2d3411925c0985adc0f53e92
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225797"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006461"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -24,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -42,7 +43,7 @@ Pro tento kurz potřebujete:
 
 Pokud chcete získat přístup ke službě vzdáleného vykreslování Azure, musíte nejdřív [vytvořit účet](../../../how-tos/create-an-account.md#create-an-account).
 
-## <a name="create-a-new-unity-project"></a>Vytvořit nový projekt Unity
+## <a name="create-a-new-unity-project"></a>Vytvoření nového projektu Unity
 
 > [!TIP]
 > [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje projekt se všemi dokončenými kurzy, který je možné použít jako referenci. Prohlédněte si *Unity\Tutorial-Complete* pro úplný projekt Unity.
@@ -842,7 +843,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 ![Model načten](./media/test-model-rendered.png)
 
-Gratulujeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
+Blahopřejeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
 
 > [!div class="nextstepaction"]
 > [Další: rozhraní a vlastní modely](../custom-models/custom-models.md)

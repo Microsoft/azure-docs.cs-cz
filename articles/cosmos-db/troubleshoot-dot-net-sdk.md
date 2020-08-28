@@ -8,12 +8,13 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290920"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021897"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -51,7 +52,7 @@ Podívejte se na [část problémy GitHubu](https://github.com/Azure/azure-cosmo
 ### <a name="check-the-portal-metrics"></a>Kontrolovat metriky portálu
 Kontrola [metrik portálu](monitor-accounts.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký](troubleshoot-request-rate-too-large.md) . 
 
-## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu<a id="error-codes"></a>
+## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 
 | Stavový kód | Popis | 
 |----------|-------------|

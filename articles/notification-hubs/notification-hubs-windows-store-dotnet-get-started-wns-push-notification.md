@@ -10,17 +10,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: 'mvc, ms.custom: devx-track-csharp'
 ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076700"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998284"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Kurz: odesílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs
 
@@ -63,7 +63,7 @@ Pokud chcete odesílat nabízená oznámení do aplikací UPW, přidružte svou 
 2. Zadejte název aplikace a vyberte, že chcete **rezervovat název produktu**. Tím se vytvoří nová registrace Windows Store pro vaši aplikaci.
 
     ![Uložení názvu aplikace](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. Rozbalte položku **Správa produktů**, vyberte **WNS/MPNS**a pak vyberte **web služby Live Services**. Přihlaste se ke svému účtu Microsoft. Na nové kartě se otevře stránka pro registraci aplikace. můžete také přejít přímo na stránku [Moje aplikace](https://apps.dev.microsoft.com) a vybrat název aplikace, který se zobrazí na této stránce.
+3. Rozbalte položku **Správa produktů**, vyberte **WNS/MPNS**a pak vyberte **web služby Live Services**. Přihlaste se ke svému účtu Microsoft. Na nové kartě se otevře stránka pro registraci aplikace. Alternativně můžete přejít přímo na stránku [Moje aplikace](https://apps.dev.microsoft.com) a vybrat název aplikace, který se zobrazí na této stránce.
 
     ![Stránka WNS/MPNS](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 4. Poznamenejte si heslo **tajného klíče aplikace** a **identifikátor zabezpečení (SID) balíčku**.

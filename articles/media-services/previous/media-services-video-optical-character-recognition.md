@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918304"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999542"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborech na digitální text  
 
@@ -33,7 +34,7 @@ Při použití ve spojení s vyhledávacím modulem můžete své médium snadno
 
 Procesor s médii **Azure Media OCR** je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **platformě Azure Media OCR** a ukazuje, jak ji použít s Media Services SDK pro .NET. Další informace a příklady najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Tento článek obsahuje podrobné informace o  **platformě Azure Media OCR** a ukazuje, jak ji použít s Media Services SDK pro .NET. Další informace a příklady najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
 ## <a name="ocr-input-files"></a>Vstupní soubory OCR
 Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
@@ -46,7 +47,7 @@ Konfigurace úlohy (přednastavení). Při vytváření úlohy pomocí **Azure M
 >
 
 ### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Description |
+| Název atributu | Popis |
 | --- | --- |
 |AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude výstup JSON obsahovat pozice pro každé jedno slovo (kromě frází a oblastí). Pokud nechcete zobrazit tyto podrobnosti, nastavte příznak na false. Výchozí hodnota je False. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Jazyk |(volitelné) popisuje jazyk textu, který má být hledán. Jedna z následujících možností: automaticky rozpoznat (výchozí), arabština, ChineseSimplified, ChineseTraditional, Čeština Dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, ruština, španělština, švédština, turečtina. |
@@ -107,13 +108,13 @@ Výstup optického rozpoznávání videa poskytuje data rozdělená na znaky nal
 
 Výstup obsahuje následující atributy:
 
-| Prvek | Description |
+| Element | Popis |
 | --- | --- |
 | Timescale |"takty" za sekundu videa |
 | Posun |časový posun pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. |
 | Framerate |Snímků za sekundu videa |
 | šířka |Šířka videa v pixelech |
-| height |Výška videa v pixelech |
+| výška |Výška videa v pixelech |
 | Fragments |pole časových bloků videa, na které jsou metadata v bloku |
 | start |počáteční čas fragmentu v taktech |
 | doba trvání |Délka fragmentu v "taktech" |

@@ -10,12 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904254"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011867"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -127,7 +128,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
 - `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
-- `VideoOnly`– Indexujte a extrahujte přehledy jenom pomocí videa (ignoruje zvuk).
+- `VideoOnly` – Indexujte a extrahujte přehledy jenom pomocí videa (ignoruje zvuk).
 - `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
 - `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
 

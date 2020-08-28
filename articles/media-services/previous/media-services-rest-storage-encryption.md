@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79f85473f4eb1839a283ce4fc0d3311defaa741e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439615"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999619"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště 
 

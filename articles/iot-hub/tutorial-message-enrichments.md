@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500210"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019721"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -36,9 +36,9 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 > * Spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra.
 > * Zobrazte výsledky a ověřte, že rozšíření zprávy fungují podle očekávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [Visual Studio](https://www.visualstudio.com/).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
@@ -77,7 +77,7 @@ Pokud jste to ještě neudělali, otevřete [okno Azure Cloud Shell](https://she
 
 Tady jsou zdroje vytvořené skriptem. *Obohaceno* znamená, že prostředek je pro zprávy s obohacením. *Původní* znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Name | Hodnota |
+| Název | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | název kontejneru | původně  |
@@ -297,7 +297,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
    Tady jsou zdroje vytvořené pomocí načtení šablony. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny. Jedná se o stejné hodnoty, které se používají ve skriptu rozhraní příkazového řádku Azure CLI.
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | název kontejneru | původně  |

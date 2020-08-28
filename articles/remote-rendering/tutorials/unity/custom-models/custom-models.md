@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 3753c809d8222030a885693ede800fe17c08b14b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224539"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022220"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Kurz: rozhraní a vlastní modely
 
@@ -23,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace služby Azure Blob Storage pro ingestování modelů
 > * Nahrávání a zpracování modelů pro vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: zobrazení vzdáleně vykresleného modelu](../view-remote-models/view-remote-models.md).
 

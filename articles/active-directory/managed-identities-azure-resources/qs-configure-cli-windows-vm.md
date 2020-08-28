@@ -3,7 +3,7 @@ title: Konfigurace spravovaných identit na virtuálním počítači Azure pomoc
 description: Podrobné pokyny pro konfiguraci spravovaných identit systémových a uživatelem na virtuálním počítači Azure pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b50d64051c2ee5bba5bd6fad61e0e703b85aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b003c3362e2fb22a36985eb29b1a537bbffb28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609187"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002381"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI
 
@@ -33,7 +33,7 @@ V tomto článku se pomocí Azure CLI naučíte, jak provádět následující s
 - Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

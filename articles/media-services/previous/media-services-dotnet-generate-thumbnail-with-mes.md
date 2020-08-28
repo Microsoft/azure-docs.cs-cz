@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836441"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020656"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
 
@@ -407,7 +408,7 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 
 * Vytvořte úlohu kódování.
 * Získejte odkaz na kodér Media Encoder Standard.
-* Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
+* Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
 
     ```csharp
     // Load the XML (or JSON) from the local file.

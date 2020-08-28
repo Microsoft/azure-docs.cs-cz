@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009606"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
@@ -68,6 +68,9 @@ Mezi scénáře použití archivní úrovně přístupu patří:
 - dlouhodobé zálohování, sekundární zálohování a archivní datové sady
 - Původní (hrubá, nezpracovaná) data, která je potřeba zachovat i po jejich zpracování do konečné, použitelné podoby.
 - Data pro soulad a archivaci, které je potřeba uchovat po dlouhou dobu a téměř se k nim nepřistupuje.
+
+> [!NOTE]
+> Archivní úroveň se v současné době nepodporuje u účtů ZRS, GZRS nebo RA-GZRS.
 
 ## <a name="account-level-tiering"></a>Vrstvení na úrovni účtu
 
@@ -230,7 +233,7 @@ Cenová struktura se u účtů GPv1 a GPv2 liší a zákazníci by před volbou 
 
 **Můžu ve stejném účtu ukládat objekty ve všech třech (horká, studená a archivní) úrovních?**
 
-Ano. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
+Yes. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
 
 **Můžu změnit výchozí úroveň přístupu účtu úložiště BLOB nebo GPv2?**
 
@@ -238,7 +241,7 @@ Ano, výchozí úroveň účtu můžete změnit nastavením atributu **úroveň 
 
 **Můžu u účtu nastavit výchozí úroveň přístupu na archivní?**
 
-Ne. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu. Při nahrávání objektů BLOB určíte úroveň přístupu podle vaší volby na horkou, studenou nebo archivní, a to bez ohledu na výchozí úroveň účtu. Tato funkce umožňuje zapisovat data přímo do archivní úrovně a ušetřit tak náklady od chvíle, kdy vytvoříte data v úložišti objektů BLOB.
+No. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu. Při nahrávání objektů BLOB určíte úroveň přístupu podle vaší volby na horkou, studenou nebo archivní, a to bez ohledu na výchozí úroveň účtu. Tato funkce umožňuje zapisovat data přímo do archivní úrovně a ušetřit tak náklady od chvíle, kdy vytvoříte data v úložišti objektů BLOB.
 
 **Ve kterých oblastech jsou horké, studené a archivní úrovně přístupu dostupné v?**
 

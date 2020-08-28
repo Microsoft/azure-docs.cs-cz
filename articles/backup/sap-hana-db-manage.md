@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826697"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006561"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -32,7 +32,7 @@ Další informace o monitorování najdete [v části monitorování v Azure Por
 
 Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP HANA. Výstrahy vám pomůžou soustředit se na události, které vás zajímají, aniž byste se museli ztratit v mnoha událostech, které zálohování vygeneruje. Azure Backup vám umožní nastavit upozornění a můžou se monitorovat takto:
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 * Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
   ![Výstrahy zálohování na řídicím panelu trezoru](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -84,7 +84,7 @@ Tyto zálohy na vyžádání se zobrazí také v seznamu bodů obnovení pro obn
 
 Obnovení spouštěné z nativních klientů HANA (pomocí **Backint**) pro obnovení na stejný počítač se dá [monitorovat](#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA spuštění zálohování nativního klienta v databázi s povolenou službou Azure Backup
+### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Spustit SAP HANA zálohování nativního klienta na databázi s povoleným Azure Backup
 
 Pokud chcete použít místní zálohu (pomocí HANA Studio/řídicího panelu) databáze, která se zálohuje pomocí Azure Backup, udělejte toto:
 

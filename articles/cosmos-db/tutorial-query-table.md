@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 481f1353e16fecd0e413152db89a4ae54824a0f8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85391889"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019279"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -26,7 +27,7 @@ Tento článek se zabývá následujícími úkony:
 
 Dotazy v tomto článku využívají následující ukázkovou tabulku `People`:
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -52,7 +53,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 
 **Výsledky**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -79,7 +80,7 @@ Další informace o vytváření výrazů filtru pro různé datové typy najdet
 
 **Výsledky**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

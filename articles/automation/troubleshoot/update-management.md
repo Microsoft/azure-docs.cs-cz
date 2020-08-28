@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447683"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003350"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -103,7 +103,7 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
 
 1. Spusťte Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline), a to v závislosti na operačním systému.
 
-2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky**vyberete **propojený pracovní prostor** .
+2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky**vyberete **propojený pracovní prostor** .
 
 3. Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation. Spusťte následující dotaz v pracovním prostoru Log Analytics.
 
@@ -534,7 +534,7 @@ Pokud se zobrazí hodnota HRESULT, dvakrát klikněte na výjimku zobrazenou če
 |`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Ty naznačují problémy s připojením k síti. Ujistěte se, že váš počítač má síťové připojení k Update Management. Seznam požadovaných portů a adres najdete v části [Plánování sítě](../update-management/update-mgmt-overview.md#ports) .        |
 |`0x8024001E`| Operace aktualizace nebyla dokončena, protože služba nebo systém se vypnul.|
 |`0x8024002E`| Služba web Windows Update je zakázána.|
-|`0x8024402C`     | Pokud používáte server WSUS, ujistěte se, že hodnoty registru pro `WUServer` a `WUStatusServer` v `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` klíči registru URČUJÍ správný server WSUS.        |
+|`0x8024402C`     | Pokud používáte server WSUS, ujistěte se, že hodnoty registru pro `WUServer` a `WUStatusServer` v  `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` klíči registru URČUJÍ správný server WSUS.        |
 |`0x80072EE2`|Došlo k potížím s připojením k síti nebo k potížím při komunikaci s nakonfigurovaným serverem WSUS. Zkontrolujte nastavení služby WSUS a ujistěte se, že je služba z klienta přístupná.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ujistěte se, že služba web Windows Update (wuauserv) je spuštěná a není zakázaná.        |
 |`0x80070005`| Chyba odepření přístupu může být způsobena některou z následujících příčin:<br> Nakažený počítač<br> Nastavení web Windows Update není správně nakonfigurováno.<br> Chyba oprávnění souboru ve složce%WinDir%\SoftwareDistribution<br> Nedostatek místa na disku na systémové jednotce (C:).

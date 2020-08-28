@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.custom: devx-track-python
-ms.openlocfilehash: 6c095083f88c00f706d19d1c652e19da007c6542
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876423"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019262"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
 
@@ -59,7 +59,7 @@ Další informace najdete v [ukázkách sady .NET V3 SDK](https://github.com/Azu
 > [!IMPORTANT]
 > Integrovaná sada Azure Cosmos DB .NET SDK je podporována pouze pro účty rozhraní SQL (Core) API. U jiných rozhraní API budete muset [nainstalovat příslušný ovladač .NET](#install-a-new-nuget-package) , který odpovídá rozhraní API. 
 
-## <a name="set-custom-options-using-cosmosclientoptions"></a>Nastavení vlastních možností pomocí``CosmosClientOptions``
+## <a name="set-custom-options-using-cosmosclientoptions"></a>Nastavení vlastních možností pomocí ``CosmosClientOptions``
 Pro větší flexibilitu můžete nastavit vlastní ``CosmosClientOptions`` vlastnost a předat ji do své ``CosmosClient`` instance. Tuto vlastnost můžete použít k těmto akcím:
 
 - Nastavte název aplikace v příponě User-Agent tak, aby se zahrnula do každého požadavku.

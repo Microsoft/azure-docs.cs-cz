@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816316"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001616"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>Reference: vyřazení imagí DSVM
 
@@ -50,18 +50,3 @@ Existující image DSVM zřízené ve vašem předplatném budou fungovat i po d
 >
 > Šablony ARM, které nebyly aktualizovány s novými podrobnostmi o imagi DSVM, se po datu vyřazení nepodaří nasadit.
 
-## <a name="mitigating-upcoming-retirements"></a>Zmírnění nadcházejících důchodů
-
-V této části probereme zmírnění zmírňující se na nadcházející vyřazení.
-
-### <a name="upgrade-windows-2016-dsvm"></a>Upgrade systému Windows 2016 DSVM
-
-Chcete-li migrovat datový disk ze stávající sady Windows 2016 DSVM do systému Windows 2019 DSVM, proveďte následující kroky:
-
-1. Vytvořte nový systém Windows 2019 DSVM podle zobrazených [pokynů.](./provision-vm.md#create-your-dsvm)
-1. Pomocí [těchto pokynů](../../virtual-machines/windows/detach-disk.md)odpojte stávající datové disky z image Windows 2016.
-1. Pomocí [těchto pokynů](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)připojte disk z předchozího kroku k imagi Windows 2019.
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>Upgrade Ubuntu 16,04 DSVM
-
-Doporučujeme upgradovat stávající Ubuntu 16,04 DSVMs na [edici Ubuntu 18,04 DSVM](./dsvm-ubuntu-intro.md).

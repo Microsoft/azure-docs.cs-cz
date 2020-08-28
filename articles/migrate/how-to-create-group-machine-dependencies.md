@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migr
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829913"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022373"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -82,9 +82,9 @@ Instalace agenta na počítač s Windows:
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Next** (Další).
 
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager nebo [Intigua](https://www.intigua.com/intigua-for-azure-migration).
-- [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o použití těchto metod k instalaci agenta MMA.
+- [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-options) o použití těchto metod k instalaci agenta MMA.
 - Agenta MMA je možné nainstalovat také pomocí tohoto [skriptu](https://go.microsoft.com/fwlink/?linkid=2104394).
-- [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) o operačních systémech Windows podporovaných nástrojem MMA.
+- [Přečtěte si další informace](../azure-monitor/platform/agents-overview.md#supported-operating-systems) o operačních systémech Windows podporovaných nástrojem MMA.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Instalace MMA do počítače se systémem Linux
 
@@ -95,7 +95,7 @@ Instalace nástroje MMA do počítače se systémem Linux:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA. 
+[Přečtěte si další informace](../azure-monitor/platform/agents-overview.md#supported-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA. 
 
 ## <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -147,7 +147,7 @@ Po vytvoření skupiny doporučujeme nainstalovat agenty do všech počítačů 
 Data závislosti zachycená Service Map můžete dotazovat v pracovním prostoru Log Analytics přidruženém k projektu Azure Migrate. Log Analytics slouží k zápisu a spouštění dotazů protokolu Azure Monitor.
 
 - [Naučte se](../azure-monitor/insights/service-map.md#log-analytics-records) Hledat Service map data v Log Analytics.
-- [Získejte přehled](../azure-monitor/log-query/get-started-queries.md) o psaní dotazů protokolu v [Log Analytics](../azure-monitor/log-query/get-started-portal.md).
+- [Získejte přehled](../azure-monitor/log-query/get-started-queries.md)  o psaní dotazů protokolu v [Log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
 Spusťte dotaz na data závislostí následujícím způsobem:
 
