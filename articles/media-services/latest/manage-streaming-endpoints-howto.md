@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500551"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010643"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Správa koncových bodů streamování pomocí Media Services V3
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak spustit příkaz [Start](/rest/api/media/strea
 > [!NOTE]
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
     
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zrevidujte 
 
@@ -45,7 +45,7 @@ Zrevidujte
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-Další informace: 
+Další informace naleznete v tématu: 
 
 * Referenční dokumentaci ke [spuštění StreamingEndpoint](/rest/api/media/streamingendpoints/start) .
 * Spuštění koncového bodu streamování je asynchronní operace. 
@@ -55,9 +55,9 @@ Další informace:
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
  
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Přejít na účet Azure Media Services.
-1. V levém podokně vyberte **koncové body streamování**.
+1. V levém podokně vyberte  **koncové body streamování**.
 1. Vyberte koncový bod streamování, který chcete spustit, a pak vyberte **Spustit**.
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI

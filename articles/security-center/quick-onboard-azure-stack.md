@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084003"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019374"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Rychlý Start: připojení virtuálních počítačů s Azure Stack k Security Center
 Po zaregistrování předplatného Azure můžete povolit Security Center k ochraně virtuálních počítačů běžících na Azure Stack tím, že z webu Azure Stack Marketplace přidáte rozšíření pro správu virtuálního počítače **Azure monitor, Update a Configuration** .
@@ -72,7 +72,7 @@ Nyní musíte přidat rozšíření **Azure monitor, Update a Configuration Mana
 7. Až dokončíte nastavení potřebné konfigurace, klikněte na **OK**.
 8. Po dokončení instalace rozšíření se jeho stav zobrazí jako **úspěšné zřizování**. Může trvat až jednu hodinu, než se virtuální počítač objeví na portálu Security Center.
 
-Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Informace o řešení problémů agenta pro Linux najdete v tématu [řešení potíží s agentem Azure Log Analytics Linux](../azure-monitor/platform/agent-linux-troubleshoot.md).
 

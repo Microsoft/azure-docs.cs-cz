@@ -3,12 +3,12 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756057"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002126"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 

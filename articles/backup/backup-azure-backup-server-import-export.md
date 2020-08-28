@@ -3,12 +3,12 @@ title: Offline zálohování pro DPM a Azure Backup Server
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890072"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002007"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS)
 
@@ -192,7 +192,7 @@ Stav úlohy importu můžete monitorovat z Azure Portal tak, že přejdete na st
 
 ### <a name="complete-the-workflow"></a>Dokončení pracovního postupu
 
-Po dokončení úlohy importu budou data počáteční zálohy k dispozici ve vašem účtu úložiště. V době příštího plánovaného zálohování zkopíruje Azure Backup obsah dat z účtu úložiště do trezoru Recovery Services.
+Po dokončení úlohy importu budou data počáteční zálohy k dispozici ve vašem účtu úložiště. V době příštího naplánovaného zálohování Azure Backup zkopíruje obsah dat z účtu úložiště do trezoru Recovery Services.
 
 V okamžiku příští naplánované úlohy vytváření online repliky Data Protection Manager provede přírůstkové zálohování při prvotním kopírování záložní kopie.
 

@@ -8,12 +8,13 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202386"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003180"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
 
@@ -658,7 +659,7 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **GPS**         | Nelze použít | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
+| **GPS**         | – | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
 | **WiFi**        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
 | **Majáky v/v** | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 

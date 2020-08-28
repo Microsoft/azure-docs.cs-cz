@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7cdacabcc97d37c144b498ea9a05ccc9d6bffc04
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058006"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019857"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled
@@ -34,7 +35,7 @@ Kromě plného automatického režimu je k dispozici pracovní postup se dvěma 
 ### <a name="combined-mode"></a>Kombinovaný režim
 Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MOV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' kombinované '}} |
@@ -49,7 +50,7 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 ### <a name="analyze-mode"></a>Režim analýzy
 Úspěšnost **analýzy** obousměrného pracovního postupu provede vstup videa a vytvoří soubor JSON pro umístění obličeje a obrázky ve formátu jpg každé zjištěné plochy.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' Analyze '}} |
@@ -114,7 +115,7 @@ To zahrnuje seznam ID, která se mají Rozostřit, původní video a poznámky J
 
 Výstup z průchodu Analyze nezahrnuje původní video. Video se musí nahrát do vstupního assetu pro úlohu režimu redigování a vybrané jako primární soubor.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
 | Vstupní Asset |foo_annotations.jsna |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
@@ -155,13 +156,13 @@ Můžete najít ukázky níže uvedených typů rozostření.
 
 ![Tahač](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Vysoká
+#### <a name="high"></a>Vysoké
 
-![Vysoká](./media/media-services-face-redaction/blur3.png)
+![Vysoké](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>Pole
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![Pole](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Black
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2cf6d2c02beff93553944474138bee3a2a316aa9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 94465e44a6cc2c4fa94ec8ea4504cbed80742f0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874346"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019143"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Nakonfigurujte ve svých aplikacích více hlavních serverů, které používají Azure Cosmos DB
 
@@ -56,7 +56,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Sada Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Sada Java v4 SDK
 
 Chcete-li ve své aplikaci povolit více hlavních serverů, zavolejte `.multipleWriteRegionsEnabled(true)` a `.preferredRegions(preferredRegions)` v Tvůrci klienta, kde `preferredRegions` je `List` obsahující jeden element – to je oblast, ve které se aplikace nasazuje a kde se Cosmos DB replikuje:
 
@@ -74,7 +74,7 @@ Chcete-li ve své aplikaci povolit více hlavních serverů, zavolejte `.multipl
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Async Java v2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Async Java v2 SDK
 
 Sada Java v2 SDK používala Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb). Pokud chcete ve své aplikaci povolit více hlavních serverů, nastavte `policy.setUsingMultipleWriteLocations(true)` a nastavte `policy.setPreferredLocations` na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
 
@@ -91,7 +91,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Sady SDK proNode.js, JavaScript a TypeScript
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a> Sady SDK proNode.js, JavaScript a TypeScript
 
 Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connectionPolicy.UseMultipleWriteLocations` na `true` . Nastavte také `connectionPolicy.PreferredLocations` na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
 

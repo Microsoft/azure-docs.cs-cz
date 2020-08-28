@@ -9,12 +9,13 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564991"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020265"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -88,7 +89,7 @@ V současné době existují dvě grafická rozhraní API, která lze vybrat `Wm
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed reality
 
-`GraphicsApiType.WmrD3D11`je výchozí vazba spouštěná na HoloLens 2. Vytvoří `GraphicsBindingWmrD3d11` vazbu. V tomto režimu se vzdálené vykreslování Azure zavěsí přímo do holografických rozhraní API.
+`GraphicsApiType.WmrD3D11` je výchozí vazba spouštěná na HoloLens 2. Vytvoří `GraphicsBindingWmrD3d11` vazbu. V tomto režimu se vzdálené vykreslování Azure zavěsí přímo do holografických rozhraní API.
 
 Chcete-li získat přístup k odvozeným grafickým vazbám, musí `GraphicsBinding` být základem přetypování.
 K použití vazby WMR je potřeba udělat dvě věci:
@@ -136,7 +137,7 @@ wmrBinding->BlitRemoteFrame();
 
 ### <a name="simulation"></a>Simulace
 
-`GraphicsApiType.SimD3D11`je vazba simulace a pokud je vybrána, vytvoří se `GraphicsBindingSimD3d11` vazba grafiky. Toto rozhraní se používá k simulaci přesunu hlav, například v desktopové aplikaci, a vykreslí monoscopic obrázek.
+`GraphicsApiType.SimD3D11` je vazba simulace a pokud je vybrána, vytvoří se `GraphicsBindingSimD3d11` vazba grafiky. Toto rozhraní se používá k simulaci přesunu hlav, například v desktopové aplikaci, a vykreslí monoscopic obrázek.
 Instalace je trochu větší a funguje takto:
 
 #### <a name="create-proxy-render-target"></a>Vytvořit cíl vykreslování proxy

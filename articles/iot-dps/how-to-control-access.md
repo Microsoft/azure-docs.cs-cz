@@ -8,13 +8,13 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7ca1620c51640699fe8b31aef3504b8c67185253
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 5190ff2575f80a7c1c8c4fc9b386441497de23fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423486"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020316"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
@@ -40,7 +40,7 @@ Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům 
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#device-provisioning-service-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Azure IoT Hub Device Provisioning Service uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu. Přihlašovací údaje zabezpečení, jako jsou například symetrické klíče, se nikdy neodesílají přes síťový kabel.
 

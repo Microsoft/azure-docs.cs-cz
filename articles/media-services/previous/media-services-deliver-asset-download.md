@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61465656"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019449"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením  
 Tento článek popisuje možnosti pro doručování mediálních prostředků odeslaných do Media Services. Obsah Media Services můžete doručovat v mnoha scénářích aplikací. Po kódování Stáhněte vygenerované mediální prostředky nebo k nim přihlaste pomocí lokátoru streamování. Pro zlepšení výkonu a škálovatelnosti můžete obsah doručovat také pomocí Content Delivery Network (CDN).

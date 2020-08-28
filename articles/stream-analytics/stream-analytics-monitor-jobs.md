@@ -7,18 +7,19 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
-ms.openlocfilehash: 2177280d4b8ffd52fb37dd01a74ea3ab0ae7de9f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 196d722e57abe743fc51692dde231e8f93682c46
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044069"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002262"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programové vytvoření monitorování úloh Stream Analytics
 
 Tento článek ukazuje, jak povolit monitorování Stream Analytics úlohy. Stream Analytics úlohy vytvořené přes rozhraní REST API, Azure SDK nebo PowerShell nemají ve výchozím nastavení povolené monitorování. Můžete ji ručně povolit v Azure Portal tak, že přejdete na stránku monitorování úlohy a kliknete na tlačítko Povolit nebo tento proces můžete automatizovat podle kroků v tomto článku. Data monitorování se zobrazí v oblasti metriky Azure Portal pro vaši úlohu Stream Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než zahájíte tento proces, musíte splnit následující předpoklady:
 

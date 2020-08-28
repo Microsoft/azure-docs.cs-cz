@@ -3,12 +3,13 @@ title: Ověřování klientů, kteří publikují události, aby Event Grid vlas
 description: Tento článek popisuje různé způsoby ověřování klientů, kteří publikují události, aby Event Grid vlastní témata.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837393"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019109"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Ověřování klientů publikování (Azure Event Grid)
 Tento článek poskytuje informace o ověřování klientů, které publikují události pro Azure Event Grid témat nebo domén pomocí **přístupového klíče** nebo tokenu **sdíleného přístupového podpisu (SAS)** . Doporučujeme použít token SAS, ale ověřování pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existujícími vydavateli webhooků.  

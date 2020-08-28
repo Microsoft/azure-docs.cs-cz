@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892571"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020163"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -348,7 +348,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte při obnovování souborů z virtuálních počítačů problémy, další informace najdete v následující tabulce.
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498357"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019993"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
@@ -23,9 +23,9 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ## <a name="create-a-container-using-azure-portal"></a>Vytvoření kontejneru pomocí webu Azure Portal
 
-### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
+### <a name="sql-api"></a><a id="portal-sql"></a>ROZHRANÍ SQL API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet.
 
@@ -41,7 +41,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -57,7 +57,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Rozhraní Cassandra API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -76,7 +76,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Rozhraní Gremlin API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-graph-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -93,7 +93,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="table-api"></a><a id="portal-table"></a>Rozhraní Table API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-table-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 

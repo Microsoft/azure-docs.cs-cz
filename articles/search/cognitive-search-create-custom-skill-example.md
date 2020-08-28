@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935479"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020180"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
@@ -27,7 +28,7 @@ V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhr
 
 + Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) nebo novější, včetně úlohy vývoj pro Azure.
 
-## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
+## <a name="create-an-azure-function"></a>Vytvoření funkce Azure Function
 
 I když tento příklad používá funkci Azure k hostování webového rozhraní API, nevyžaduje se.  Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
 

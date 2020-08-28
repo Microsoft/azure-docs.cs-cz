@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 48f728e697e3ca92eee0469c8368e966479fe7fb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422228"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019602"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -93,7 +93,7 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -109,7 +109,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Sady SDK pro Java v2
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Sady SDK pro Java v2
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -194,7 +194,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -279,7 +279,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)**](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu **konzistence** . Podívejte se do grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
+Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)**](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu **konzistence** . Podívejte se na graf s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Graf PBS v Azure Portal":::
 

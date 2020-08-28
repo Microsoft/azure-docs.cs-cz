@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232572"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019874"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detekce obličeje a emoce pomocí Azure Media Analytics
 
@@ -45,7 +46,7 @@ Procesor **Azure Media Face Detector** Media (MP) umožňuje počítat, sledovat
 
 Sada **Azure Media Face Detector** MP je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **Azure Media Face Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o  **Azure Media Face Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
 ## <a name="face-detector-input-files"></a>Vstupní soubory pro rozpoznávání tváře
 Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.

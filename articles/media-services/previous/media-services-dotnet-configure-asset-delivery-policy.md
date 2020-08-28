@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ddce8f348fa802dd5a8e37f52c69af02752339f4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019347"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurace zásad doručení assetů pomocí sady .NET SDK
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -54,7 +55,7 @@ MPEG DASH
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 * Před odstraněním AssetDeliveryPolicy byste měli odstranit všechny Lokátory streamování přidružené k assetu. V případě potřeby můžete později vytvořit nové Lokátory streamování s novým AssetDeliveryPolicy.
 * Lokátor streamování nejde vytvořit na prostředku šifrovaném úložiště, pokud není nastavená žádná zásada pro doručení prostředků.  Pokud prostředek není šifrovaný jako zašifrovaný, systém vám umožní vytvořit Lokátor a streamovat prostředek ve formě bez zásad doručení assetu.
 * K jednomu prostředku můžete mít k dispozici více zásad doručení prostředků, ale můžete zadat jenom jeden způsob, jak zpracovat daný AssetDeliveryProtocol.  To znamená, že se pokusíte propojit dvě zásady doručování, které určují protokol AssetDeliveryProtocol. SmoothStreaming, který bude mít za následek chybu, protože systém neví, který z nich chcete použít, když klient provede požadavek Smooth Streaming.

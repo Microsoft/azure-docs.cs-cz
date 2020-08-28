@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121897"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019738"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -20,7 +20,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplika
 
 Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -54,7 +54,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="add-feature-management"></a>Přidat správu funkcí
 
-1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. Vyhledejte *pom.xml* v kořenovém adresáři aplikace.
+1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. Vyhledejte  *pom.xml* v kořenovém adresáři aplikace.
 
 1. V textovém editoru otevřete soubor *pom.xml* a přidejte následující text do seznamu `<dependencies>` :
 
@@ -97,7 +97,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     ```
 
 > [!Note]
-> Je k dispozici knihovna správy neweb Feature, která nemá závislost na jaře-Web. Rozdíly najdete v [dokumentaci](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) k GitHubu.
+> Je k dispozici knihovna správy neweb Feature, která nemá závislost na jaře-Web. Rozdíly najdete v [dokumentaci](https://github.com/microsoft/spring-cloud-azure) k GitHubu.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -290,7 +290,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | State |
+    | Klíč | Stav |
     |---|---|
     | Beta | Zapnout |
 

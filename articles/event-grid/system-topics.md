@@ -2,13 +2,13 @@
 title: Systémová témata v Azure Event Grid
 description: Popisuje systémová témata v Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/27/2020
+ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119918"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019092"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systémová témata v Azure Event Grid
 Systémové téma v Event Grid představuje jednu nebo více událostí publikovaných službami Azure, jako jsou Azure Storage a Azure Event Hubs. Například systémové téma může představovat **všechny události objektů BLOB** nebo pouze objekty **BLOB vytvořené** a **odstraněné objekty blob** publikované pro **konkrétní účet úložiště**. Když se v tomto příkladu nahraje objekt blob do účtu úložiště, služba Azure Storage publikuje událost **vytvořeného objektu BLOB** do systémového tématu v Event Grid, která pak přepošle událost [účastníkům](event-handlers.md) tématu, které obdrží a zpracuje událost. 
@@ -57,7 +57,7 @@ Pokud jste nastavili zásady Azure tak, aby ji služba Event Grid nevytvořila, 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Umístění a skupina prostředků pro systémové téma
 V případě zdrojů událostí Azure, které jsou v určité oblasti nebo umístění, je systémové téma vytvořeno ve stejném umístění jako zdroj události Azure. Pokud třeba vytvoříte odběr událostí pro úložiště objektů BLOB v Azure v Východní USA, bude se v systému vytvořit téma v Východní USA. U globálních zdrojů událostí Azure, jako jsou například předplatná Azure, skupiny prostředků nebo Azure Maps, Event Grid vytvoří systémové téma v **globálním** umístění. 
 
-Obecně platí, že je systémové téma vytvořeno ve stejné skupině prostředků, ve které je zdroj události Azure. V případě odběrů událostí vytvořených v oboru předplatného Azure se v rámci skupiny prostředků **Default-EventGrid**vytvoří systémové téma. Pokud skupina prostředků neexistuje, Azure Event Grid ji vytvoří před vytvořením systémového tématu. 
+Obecně platí, že je systémové téma vytvořeno ve stejné skupině prostředků, ve které je zdroj události Azure. V případě odběrů událostí vytvořených v oboru předplatného Azure se v **západní USA 2** oblasti vytvoří systémové téma ve výchozí skupině prostředků **EventGrid** . Pokud skupina prostředků neexistuje, Azure Event Grid ji vytvoří před vytvořením systémového tématu. 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 

@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: a85df3e437f2c1ec93996cdaacfccadeaa47cc99
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: f781018fc5fc832be92de34c3ef220517ad28d75
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118249"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020418"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 
@@ -30,7 +31,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Tento rychlý Start ukazuje, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
@@ -111,7 +112,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopírování koncového bodu":::
 
-   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se identifikátor URI naplní `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Hodnota koncového bodu by měla vypadat nějak takto.`testgraphacct.gremlin.cosmosdb.azure.com`
+   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se identifikátor URI naplní `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Hodnota koncového bodu by měla vypadat nějak takto. `testgraphacct.gremlin.cosmosdb.azure.com`
 
 1. Potom přejděte na kartu **klíče** a zkopírujte hodnotu **primárního klíče** z Azure Portal. 
 

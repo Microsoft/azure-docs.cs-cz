@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685404"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020350"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -23,7 +23,7 @@ Tento článek vám pomůže řešit problémy s vizualizací a vizualizací zá
 
 Opravte problémy připravenosti vyhodnocování následujícím způsobem:
 
-**Chybu** | **Oprava**
+**Problém** | **Oprava**
 --- | ---
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K obsluze migrace takových virtuálních počítačů můžete použít migraci Azure Migrate serveru. Při migraci převede typ spouštění virtuálního počítače na systém BIOS.
 Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](https://aka.ms/WSosstatement)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat.
@@ -126,7 +126,7 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
-Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
@@ -164,7 +164,7 @@ Pro virtuální počítače se systémem Linux se ujistěte, že instalační p�
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)a [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
+- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 - **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
@@ -199,7 +199,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí  **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

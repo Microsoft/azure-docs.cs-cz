@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: c165663e19037bd2ebac410adb6b6d05fcc162e6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020401"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spouštění úloh MapReduce pomocí sady HDInsight .NET SDK
 
@@ -24,7 +24,7 @@ Naučte se odesílat MapReduce úlohy pomocí sady HDInsight .NET SDK. Clustery 
 > [!NOTE]  
 > Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -169,7 +169,7 @@ Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupního souboru 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v těchto článcích:
 
 * Informace o odeslání úlohy podregistru najdete v tématu [spuštění dotazů Apache Hive pomocí sady HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md).
 * Informace o vytváření clusterů HDInsight najdete [v tématu Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 43c003d69ff64ea85581b2d4e22c545376acd525
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197176"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010150"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Online streamování FairPlay pro iOS s Media Services V3
 
@@ -46,7 +47,7 @@ Tento článek popisuje podporu FairPlay streamování (FPS) v režimu offline, 
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před implementací offline DRM pro FairPlay na zařízení s iOS 10 +:
 

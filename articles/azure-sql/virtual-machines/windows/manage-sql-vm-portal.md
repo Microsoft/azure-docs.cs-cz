@@ -12,31 +12,31 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f502183b8240515ee136ce27d99bd4b5d6277c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668997"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010167"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Správa virtuálních počítačů s SQL Server v Azure pomocí Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-V [Azure Portal](https://portal.azure.com)prostředek **virtuálních počítačů SQL** je nezávislá služba pro správu. Můžete ji použít k zobrazení všech SQL Server virtuálních počítačů současně a upravit nastavení vyhrazená pro SQL Server: 
+V [Azure Portal](https://portal.azure.com)prostředek [**virtuálních počítačů SQL**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) je nezávislá služba správy pro správu SQL Server na virtuálních počítačích Azure. Můžete ji použít k zobrazení všech SQL Server virtuálních počítačů současně a upravit nastavení vyhrazená pro SQL Server: 
 
 ![Prostředek virtuálních počítačů SQL](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>Poznámky
 
-- K zobrazení a správě vašich SQL Server virtuálních počítačů v Azure doporučujeme použít prostředek **SQL Virtual Machine** . Ale v současné době prostředek **virtuálních počítačů s SQL** nepodporuje správu SQL Server virtuálních počítačů na [konci podpory](sql-server-2008-extend-end-of-support.md) . Pokud chcete spravovat nastavení pro SQL Server virtuálních počítačů na konci, použijte místo toho kartu nepoužívané [SQL Server konfigurace](#access-the-sql-server-configuration-tab) . 
+- K zobrazení a správě vašich SQL Server virtuálních počítačů v Azure doporučujeme použít prostředek [**SQL Virtual Machine**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . Ale v současné době prostředek **virtuálních počítačů s SQL** nepodporuje správu SQL Server virtuálních počítačů na [konci podpory](sql-server-2008-extend-end-of-support.md) . Pokud chcete spravovat nastavení pro SQL Server virtuálních počítačů na konci, použijte místo toho kartu nepoužívané [SQL Server konfigurace](#access-the-sql-server-configuration-tab) . 
 - Prostředek **SQL Virtual Machine** je dostupný jenom pro SQL Server virtuální počítače, které jsou [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>Přístup k prostředku virtuálních počítačů SQL
 Pokud chcete získat přístup k prostředku **virtuálních počítačů SQL** , udělejte toto:
 
-1. Otevřete [Azure Portal](https://portal.azure.com). 
+1. Otevřete web [Azure Portal](https://portal.azure.com). 
 1. Vyberte **všechny služby**. 
 1. Do vyhledávacího pole zadejte **virtuální počítače SQL** .
 1. (Volitelné): vyberte hvězdičku vedle možnosti **virtuální počítače SQL** a přidejte tuto možnost do nabídky **Oblíbené** . 
@@ -51,7 +51,7 @@ Pokud chcete získat přístup k prostředku **virtuálních počítačů SQL** 
    Výběrem SQL Server virtuálního počítače otevřete prostředek **virtuálních počítačů SQL** : 
 
 
-   ![Prostředek virtuálních počítačů SQL](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![Zobrazení prostředku virtuálních počítačů SQL](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > Prostředek **SQL Virtual Machine** je pro vyhrazená nastavení SQL Server. Vyberte název virtuálního počítače v poli **virtuální počítač** a otevřete tak nastavení specifická pro daný virtuální počítač, ale ne výhradně pro SQL Server. 
@@ -61,7 +61,7 @@ Karta **konfigurace SQL Server** je zastaralá. V tuto chvíli je jedinou metodo
 
 Pokud chcete získat přístup k zastaralé **SQL Server kartě Konfigurace** , přejděte do prostředku **virtuální počítače** . Použijte k tomu následující postup:
 
-1. Otevřete [Azure Portal](https://portal.azure.com). 
+1. Otevřete web [Azure Portal](https://portal.azure.com). 
 1. Vyberte **všechny služby**. 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
 1. (Volitelné): Pokud chcete přidat tuto možnost do nabídky **Oblíbené** , vyberte hvězdičku vedle možnosti **virtuální počítače** . 

@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322155"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020384"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rychlý Start: shromáždění dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
 [Azure monitor](../overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů se systémem Linux ve vašem prostředí do pracovního prostoru Log Analytics pro účely podrobných analýz a korelace. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. V tomto rychlém startu se dozvíte, jak pomocí několika jednoduchých kroků nakonfigurovat a shromažďovat data ze serveru Linux. Informace o virtuálních počítačích Azure Linux najdete v tématu [shromažďování dat o virtuálních počítačích Azure](./quick-collect-azurevm.md).  
 
-Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy Windows](../platform/log-analytics-agent.md#supported-linux-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-requirements).
+Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-requirements).
  
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

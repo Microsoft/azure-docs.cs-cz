@@ -7,12 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453938"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001963"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak používat vlastní zásady přidělování
 
@@ -39,7 +40,7 @@ V tomto článku provedete následující kroky:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -99,7 +100,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, ke kterému centru IoT Hub má být zařízení zaregistrováno na základě toho, zda ID registrace obsahuje řetězec **-Contoso-tstrsd-007** nebo **-Contoso-hpsd-088**. Také nastaví počáteční stav vlákna zařízení na základě toho, zda je zařízení informační nebo tepelné čerpadlo.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
 2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App**a pak vyberte **vytvořit**.
 

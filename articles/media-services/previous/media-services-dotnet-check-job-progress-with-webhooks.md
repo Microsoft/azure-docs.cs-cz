@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052969"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019398"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití webhooků Azure k monitorování oznámení úlohy Media Services pomocí .NET 
 

@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833024"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010286"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -90,7 +91,7 @@ Nyní můžete použít Media Services k vygenerování pohyblivých souborů mi
 
 S nejnovější verzí služby jsou drobné změny v chybových zprávách, které služba vrátila, v případě, že úloha selže, s ohledem na to, jak je rozděleno na dva nebo více řádků.
 
-## <a name="may-2018"></a>Květen 2018 
+## <a name="may-2018"></a>May 2018 
 
 Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování přenosového streamu RTP/MPEG-2. Migrujte prosím z protokolu RTP/MPEG-2 na RTMP nebo fragmentujte protokoly ingesta MP4 (Smooth Streaming).
 
@@ -214,7 +215,7 @@ Jednotky rezervované pro kódování Basic, Standard a Premium se přejmenovaly
 ### <a name="azure-sdk-for-php"></a>Azure SDK pro PHP
 Tým Azure SDK publikoval novou verzi balíčku [Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) , který obsahuje aktualizace a nové funkce pro Media Services. Konkrétně sada Media Services SDK for PHP nyní podporuje nejnovější funkce [ochrany obsahu](media-services-content-protection-overview.md) . Tyto funkce jsou dynamické šifrování pomocí AES a DRM (PlayReady a Widevine) s omezeními tokenu a bez něj. Podporuje také škálování [jednotek kódování](media-services-dotnet-encoding-units.md).
 
-Další informace:
+Další informace naleznete v tématu:
 
 * Následující [ukázky kódu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) vám pomůžou rychle začít:
   * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování aes-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
@@ -253,7 +254,7 @@ Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Wide
 Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Verze z srpna 2015
-* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace:
+* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématu:
     
 * Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 

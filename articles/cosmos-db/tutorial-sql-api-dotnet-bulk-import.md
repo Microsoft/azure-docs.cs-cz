@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77587562"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019245"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
 
@@ -27,7 +28,7 @@ Tento kurz zahrnuje:
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
@@ -81,7 +82,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 

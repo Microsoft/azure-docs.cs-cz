@@ -11,12 +11,13 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
-ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+- devx-track-csharp
+ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500993"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019126"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -37,9 +38,9 @@ V tomto kurzu provedete následující úlohy:
 > * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
 > * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
 

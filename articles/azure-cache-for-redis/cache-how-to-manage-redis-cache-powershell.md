@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004866"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019211"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/management/deployment-models.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
 
 ```azurepowershell
@@ -57,7 +57,7 @@ Chcete-li zadat odběr, spusťte následující příkaz. V následujícím př�
 
 Předtím, než budete moci použít prostředí Windows PowerShell s Azure Resource Manager, potřebujete následující:
 
-* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte: `$PSVersionTable` a ověřte hodnotu `PSVersion` 3,0 nebo 4,0. Informace o instalaci kompatibilní verze naleznete v tématu [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte: `$PSVersionTable` a ověřte hodnotu `PSVersion` 3,0 nebo 4,0. Informace o instalaci kompatibilní verze najdete v tématu [Windows Management Framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595).
 
 Podrobnou nápovědu k jakékoli rutině, kterou vidíte v tomto kurzu, získáte pomocí rutiny Get-Help.
 
@@ -141,7 +141,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Name |Název mezipaměti | |
+| Název |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |PAMĚT |
@@ -358,7 +358,7 @@ Následující příkaz aktualizuje zásady maxmemory pro Azure cache pro Redis 
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Škálování mezipaměti Azure pro Redis
-`Set-AzRedisCache`dá se použít ke škálování mezipaměti Azure pro instanci Redis při `Size` `Sku` úpravě vlastností,, nebo `ShardCount` . 
+`Set-AzRedisCache` dá se použít ke škálování mezipaměti Azure pro instanci Redis při `Size` `Sku` úpravě vlastností,, nebo `ShardCount` . 
 
 > [!NOTE]
 > Škálování mezipaměti pomocí prostředí PowerShell podléhá stejným omezením a pokynům pro škálování mezipaměti z Azure Portal. Pomocí následujících omezení můžete škálovat na jinou cenovou úroveň.

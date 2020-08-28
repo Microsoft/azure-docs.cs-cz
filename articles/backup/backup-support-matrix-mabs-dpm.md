@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825218"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019568"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 

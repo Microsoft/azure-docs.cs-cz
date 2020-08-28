@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132326"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002772"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -34,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Hotová aplikace logiky na základní úrovni](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -259,7 +259,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 1. Do návrháře v poli hledání zadejte `when new email arrives` jako filtr. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
 
-   Například:
+   Příklad:
 
    ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -363,7 +363,7 @@ Teď otestujte, jestli podmínka správně funguje:
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje jednu přílohu. Prozatím jednoduše vytvořte prázdný textový soubor a připojte ho k e-mailu.
 
@@ -470,11 +470,11 @@ Teď otestujte, jestli aplikace logiky zpracovává e-maily tak, jak jste zamý�
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve **filtru předmětu**triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje aspoň jednu přílohu. Prozatím stačí vytvořit jeden prázdný textový soubor a připojit ho k e-mailu.
 
-   * Váš e-mail obsahuje nějaký testovací obsah v těle, například:`Testing my logic app`
+   * Váš e-mail obsahuje nějaký testovací obsah v těle, například: `Testing my logic app`
 
    Pokud se aplikace logiky i přes úspěšnou aktivaci triggeru neaktivovala nebo nespustila, podívejte se do článku [Řešení potíží s aplikací logiky](../logic-apps/logic-apps-diagnosing-failures.md).
 
@@ -555,7 +555,7 @@ Teď otestujte, jestli aplikace logiky zpracovává e-přílohy tak, jak jste za
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje aspoň dvě přílohy. Prozatím jednoduše vytvořte dva prázdné textové soubory a připojte je k e-mailu.
 
@@ -601,7 +601,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
    | Nastavení | Hodnota | Poznámky |
    | ------- | ----- | ----- |
-   | **Schopn** | <*příjemce-e-mailová adresa*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Záměr** | <*příjemce-e-mailová adresa*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět**  | ```ASAP - Review applicant for position:``` **Předmět** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. |
    | **Text** | ```Please review new applicant:``` <p>```Applicant name:```**Od** <p>```Application file location:``` **Cesta** <p>```Application email content:``` **Text** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** |
    ||||
@@ -621,7 +621,7 @@ V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v 
 
 1. Pošlete sami sobě e-mail splňující tato kritéria:
 
-   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru:`Business Analyst 2 #423501`
+   * Předmět e-mailu obsahuje text, který jste zadali ve vlastnosti **filtru předmětu** triggeru: `Business Analyst 2 #423501`
 
    * E-mail obsahuje jednu nebo více příloh. Můžete znovu použít prázdný textový soubor z předchozího testu. Pokud chcete vyzkoušet realističtější scénář, připojte soubor s životopisem.
 

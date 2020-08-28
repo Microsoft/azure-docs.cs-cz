@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825252"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019585"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -146,7 +146,7 @@ Zálohování virtuálních počítačů, které se nasazují z vlastní image (
 Zálohování virtuálních počítačů, které se migrují do Azure| Podporuje se.<br/><br/> Pokud chcete zálohovat virtuální počítač, musí být na migrovaném počítači nainstalovaný agent virtuálního počítače.
 Zálohování konzistence s více virtuálními počítači | Azure Backup neposkytuje konzistenci dat a aplikací napříč více virtuálními počítači.
 Zálohování s [nastavením diagnostiky](../azure-monitor/platform/platform-logs-overview.md)  | Neplatné. <br/><br/> Pokud je obnovení virtuálního počítače Azure s diagnostickým nastavením aktivované pomocí možnosti [vytvořit novou](backup-azure-arm-restore-vms.md#create-a-vm) , obnovení se nepovede.
-Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde je dostupná [zóna dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud však zóna není k dispozici, obnovení se nezdařilo.
+Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde jsou dostupné [zóny dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud však zóna není k dispozici, obnovení se nezdařilo.
 Virtuální počítače s Gen2 | Podporováno <br> Azure Backup podporuje zálohování a obnovení [virtuálních počítačů s Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Když se tyto virtuální počítače obnoví z bodu obnovení, obnoví se jako [virtuální počítače Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 Zálohování virtuálních počítačů Azure s zámky | Nepodporované pro nespravované virtuální počítače. <br><br> Podporováno pro spravované virtuální počítače.
 [Spotové virtuální počítače](../virtual-machines/spot-vms.md) | Neplatné. Azure Backup obnoví virtuální počítače na místě jako běžné virtuální počítače Azure.
@@ -160,7 +160,7 @@ Velikost datového disku | Velikost jednotlivých disků může být až 32 TB a
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
 Šifrované disky | Podporuje se.<br/><br/> Virtuální počítače Azure s povoleným Azure Disk Encryption můžou být zálohované (s aplikací Azure AD nebo bez ní).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Musíte obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování u virtuálních počítačů, které už jsou chráněné pomocí Azure Backup.
-Disky s povoleným Akcelerátor zápisu | Nepodporováno<br/><br/> Azure Backup automaticky vyloučí disky s povoleným Akcelerátor zápisu (WA) při zálohování. Vzhledem k tomu, že nejsou zálohovány, nelze tyto disky obnovit z bodů obnovení virtuálního počítače. <br><br> **Důležité upozornění**: virtuální počítače s disky v WA potřebují pro úspěšnou zálohu připojení k Internetu (i když se tyto disky ze zálohy vylučují.)
+Disky s povoleným Akcelerátor zápisu | Nepodporováno<br/><br/> Azure Backup automaticky vyloučí disky s povoleným Akcelerátor zápisu (WA), které jsou povoleny během zálohování. Vzhledem k tomu, že nejsou zálohovány, nelze tyto disky obnovit z bodů obnovení virtuálního počítače. <br><br> **Důležité upozornění**: virtuální počítače s disky v WA potřebují pro úspěšnou zálohu připojení k Internetu (i když se tyto disky ze zálohy vylučují.)
 Zálohování & obnovení virtuálních počítačů nebo disků s odstraněnými duplicitními daty | Azure Backup nepodporuje odstranění duplicitních dat. Další informace najdete v tomto [článku](./backup-support-matrix.md#disk-deduplication-support) . <br/> <br/>  -Azure Backup neprovádí odstranění duplicitních dat mezi virtuálními počítači v trezoru Recovery Services. <br/> <br/>  – Pokud během obnovování dojde k virtuálním počítačům ve stavu odstranění duplicitních dat, soubory se nedají obnovit, protože trezor nerozumí formátu. Úplné obnovení virtuálního počítače ale můžete úspěšně provést.
 Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.

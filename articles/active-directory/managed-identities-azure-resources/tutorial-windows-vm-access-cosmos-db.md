@@ -3,7 +3,7 @@ title: 'Kurz: použití spravované identity pro přístup k Azure Cosmos DB-Win
 description: Tento kurz vás provede procesem použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 85f6f59c94f8167b700208036c16cc4c948376e8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82583075"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019823"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu pomocí spravované identity přiřazené systémem na virtuálním počítači s Windows k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

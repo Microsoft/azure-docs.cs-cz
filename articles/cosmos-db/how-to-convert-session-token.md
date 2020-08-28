@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261575"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020010"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Převod formátů tokenů relací v sadě .NET SDK
 
@@ -31,11 +32,11 @@ Existují dva formáty tokenů relace: **jednoduchý** a **vektorový**.  Tyto d
 
 ### <a name="simple-session-token"></a>Jednoduchý token relace
 
-Jednoduchý token relace má tento formát:`{pkrangeid}:{globalLSN}`
+Jednoduchý token relace má tento formát: `{pkrangeid}:{globalLSN}`
 
 ### <a name="vector-session-token"></a>Token vektorové relace
 
-Token relace Vector má následující formát:`{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
+Token relace Vector má následující formát: `{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
 
 ## <a name="convert-to-simple-session-token"></a>Převést na token jednoduchých relací
 
