@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131771"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047072"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 
@@ -95,13 +95,13 @@ Omezení označují počet převzetí služeb při selhání, které Site Recove
 
 Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vyžaduje, aby byly některé ovladače v počátečním stavu spouštění, a služby jako DHCP mají být nastavené tak, aby se spouštěly automaticky.
 - Počítače, které vyhovují, již mají tato nastavení zavedena.
-- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Přečtěte si další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - Počítače se systémem Linux se v době převzetí služeb při selhání zanesou do dodržování předpisů.
 
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
 --- | --- 
-Yes | 2000
-No | 1000
+Ano | 2000
+Ne | 1000
 
 - Omezení předpokládají, že v cílové oblasti pro předplatné probíhá minimálně jiné úlohy.
 - Některé oblasti Azure jsou menší a můžou mít mírně nižší omezení.
@@ -127,7 +127,7 @@ Je důležité, abyste měli dostatek konfiguračních serverů a procesových s
  
 Kapacita konfiguračního serveru je ovlivněná počtem počítačů, které se replikují, a ne podle míry četnosti změn dat. Pokud chcete zjistit, jestli potřebujete další konfigurační servery, použijte tyto definované limity virtuálních počítačů.
 
-**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Limit replikovaného počítače**
+**Procesor** | **Paměť** | **Disk mezipaměti** | **Limit replikovaného počítače**
  --- | --- | --- | ---
 8 vCPU<br> 2 sokety × 4 jádra @ 2,5 GHz | 16 GB | 600 GB | Až 550 počítačů<br> Předpokládá, že každý počítač má tři disky o velikosti 100 GB.
 
@@ -153,7 +153,7 @@ Kapacita procesového serveru je ovlivněná mírami četnosti změn dat, nikoli
 - Doporučujeme přidat server s nejvyšší specifikací. 
 
 
-**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Míra četnosti změn**
+**Procesor** | **Paměť** | **Disk mezipaměti** | **Míra četnosti změn**
  --- | --- | --- | --- 
 12 vCPU<br> 2 sokety × 6 jader @ 2,5 GHz | 24 GB | 1 GB | Až 2 TB za den
 
@@ -205,7 +205,7 @@ Pro převzetí služeb při selhání se můžete připravit předem následují
     - Odhadněte kompletní RTO pro vaše aplikace.
     - Odhad kompletních RPO pro vaše úlohy.
     - Identifikujte konflikty rozsahu IP adres.
-    - Při spouštění podrobností doporučujeme, abyste nepoužívali provozní sítě pro přechody, nepoužívali stejné názvy podsítí v produkčních a testovacích sítích a po každém přechodu provedli vyčištění testovacího převzetí služeb při selhání.
+    - Při spouštění podrobností doporučujeme, abyste nepoužívali provozní sítě pro procházení a po každém přechodu provedli vyčištění testovacího převzetí služeb při selhání.
 
 Pro spuštění rozsáhlého převzetí služeb při selhání doporučujeme následující:
 

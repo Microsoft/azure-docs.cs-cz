@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 770dd021a09e3ba0b1c2c6742ded3a73424b042f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8931c22c3656cf9708756153268ab1d9d87b8343
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951748"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050824"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
@@ -23,7 +23,7 @@ Tento dokument vysvětluje, jak vytvářet a nasazovat aplikace mikroslužeb do 
 
 Před nasazením pomocí Azure CLI nebo Maven dokončete příklady, které [zřídí instanci Azure jaře cloudu](spring-cloud-quickstart-provision-service-instance.md) , a [nastavte konfigurační server](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
@@ -68,7 +68,7 @@ Kompilace projektu trvá přibližně 5 minut. Po dokončení byste měli mít j
     az spring-cloud app create --name account-service
     ```
 
-1. Musíme skutečně nasadit naše aplikace do Azure. K nasazení všech tří aplikací použijte následující příkazy:
+1. Musíme nasadit aplikace vytvořené v předchozím kroku do Azure. K nasazení všech tří aplikací použijte následující příkazy:
 
     ```azurecli
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
@@ -118,10 +118,10 @@ Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlíže�
     ```
     
     Zobrazí se výzva k výběru:
-    * **Moduly:** vybrat `gateway` , `auth-service` a ' účet-služba ' ')
-    * **Předplatné:** vaše předplatné s vytvořenou instancí Azure jaře cloudu
-    * **Instance služby:** název vaší vytvořené instance cloudového cloudu Azure
-    * **Veřejný koncový bod:** V seznamu poskytnutých projektů zadejte číslo, které odpovídá za `gateway` účelem udělení veřejného přístupu.
+    * **Moduly:** Vyberte `gateway` , `auth-service` a `account-service` .
+    * **Předplatné:** Toto je vaše předplatné, které se používá k vytvoření instance Azure jaře cloudu.
+    * **Instance služby:** Jedná se o název vaší instance vašeho cloudového cloudu Azure.
+    * **Veřejný koncový bod:** V seznamu poskytnutých projektů zadejte číslo, které odpovídá `gateway` .  Tím zajistíte veřejný přístup.
 
 1. POM nyní obsahuje závislosti a konfigurace modulu plug-in. Nasaďte aplikace pomocí následujícího příkazu. 
 
@@ -158,13 +158,13 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
     ![Nasadit do Azure v pořádku](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. V části **před spuštěním** otevřete poklikejte na * spustit Maven cíl * *.
+1. V části **před spuštěním** otevřete dvakrát klikněte na *Spustit Maven cíl*.
 1. V textovém poli **pracovní adresář** přejděte do složky *piggymetrics/Gateway* .
 1. Do textového pole **příkazový řádek** zadejte *Package-DskipTests*. Klikněte na **OK**.
 1. Spusťte nasazení kliknutím na tlačítko **Spustit** v dolní části dialogového okna **nasadit Azure jarní cloudovou aplikaci** . Modul plug-in spustí příkaz `mvn package` v `gateway` aplikaci a nasadí jar vygenerované `package` příkazem.
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Nasazení aplikací ověřování – služba a účet – aplikace do jarního cloudu Azure
-Zopakováním výše uvedených kroků můžete nasazovat `auth-service` a `account-service` aplikace do Azure jaře cloudu. Zjisti:
+Zopakováním výše uvedených kroků můžete nasadit `auth-service` a `account-service` aplikace do Azure jaře cloudu:
 
 1. Upravte **název** a **artefakt** pro identifikaci `auth-service` aplikace.
 1. V textovém poli **aplikace:** vyberte **vytvořit aplikaci...** a vytvořte `auth-service` aplikace.

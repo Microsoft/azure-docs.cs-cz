@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření Apache Spark pro notebook Azure synapse Analytics'
-description: V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics a spustit dotaz Spark SQL.
+title: 'Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web'
+description: V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark ve službě Azure synapse Analytics a spustit dotaz Spark SQL.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496243"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049804"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark (ve verzi P
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -98,7 +98,7 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
    SHOW TABLES
    ```
 
-   Pokud používáte Poznámkový blok s Apache Spark fondem Azure synapse, získáte předvolbu `sqlContext` , kterou můžete použít ke spouštění dotazů pomocí Spark SQL. `%%sql`instruuje Poznámkový blok, aby použil předvolby `sqlContext` ke spuštění dotazu. Dotaz načte prvních 10 řádků ze systémové tabulky, které jsou ve výchozím nastavení součástí všech fondů služby Azure synapse Apache Spark.
+   Pokud používáte Poznámkový blok s Apache Spark fondem Azure synapse, získáte předvolbu `sqlContext` , kterou můžete použít ke spouštění dotazů pomocí Spark SQL. `%%sql` instruuje Poznámkový blok, aby použil předvolby `sqlContext` ke spuštění dotazu. Dotaz načte prvních 10 řádků ze systémové tabulky, které jsou ve výchozím nastavení součástí všech fondů služby Azure synapse Apache Spark.
 
 2. Spuštěním dalšího dotazu zobrazíte data v tabulce `demo_df`.
 

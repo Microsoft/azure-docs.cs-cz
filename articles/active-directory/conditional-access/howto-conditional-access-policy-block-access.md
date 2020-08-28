@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995305"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049260"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: blokovat přístup
 
@@ -38,7 +38,7 @@ Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyst
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které budou blokovat přístup ke všem aplikacím kromě [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , pokud uživatelé nejsou v důvěryhodné síti. Tyto zásady jsou uváděné do [režimu pouze](howto-conditional-access-report-only.md) pro spouštění sestav, aby správci mohli určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost si být jistí, že se zásady použijí podle svých záměrů, můžou je přepnout na **zapnuto**.
+Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které budou blokovat přístup ke všem aplikacím kromě [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , pokud uživatelé nejsou v důvěryhodné síti. Tyto zásady jsou uváděné do [režimu pouze](howto-conditional-access-insights-reporting.md) pro spouštění sestav, aby správci mohli určit dopad, který budou mít u stávajících uživatelů. Když mají správci možnost si být jistí, že se zásady použijí podle svých záměrů, můžou je přepnout na **zapnuto**.
 
 První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365, pokud se nepoužívá v důvěryhodném umístění.
 
@@ -49,7 +49,7 @@ První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**vyberte následující možnosti:
    1. V části **Zahrnout**vyberte **všechny cloudové aplikace**.
    1. V části **vyloučit**vyberte **Office 365 (Preview)**, vyberte **Vybrat**a pak vyberte **Hotovo**.
@@ -58,7 +58,7 @@ První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365
       1. Nastavte **Konfigurovat** na **Ano** .
       1. V části **Zahrnout**vyberte **libovolné umístění**.
       1. V části **vyloučit**vyberte **všechna důvěryhodná umístění**.
-      1. Vyberte **Done** (Hotovo).
+      1. Vyberte **Hotovo**.
    1. V části **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**a **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **blokovat přístup**a pak vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.
@@ -71,7 +71,7 @@ Níže je vytvořena druhá zásada, která pro uživatele Office 365 vyžaduje 
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
-   1. Vyberte **Done** (Hotovo).
+   1. Vyberte **Hotovo**.
 1. V **části cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Office 365 (Preview)**, vyberte **Vybrat**a pak **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**.
    1. Vyberte možnost **požadovat vícefaktorové ověřování** a **vyžadovat, aby zařízení byla označena jako vyhovující** vyberte vybrat. **Select**
@@ -84,6 +84,6 @@ Níže je vytvořena druhá zásada, která pro uživatele Office 365 vyžaduje 
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-insights-reporting.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

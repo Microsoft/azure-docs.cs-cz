@@ -1,7 +1,7 @@
 ---
 title: Registrovat mobilní aplikace, které volají webová rozhraní API | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
+description: Informace o tom, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (registrace aplikace)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652645"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047669"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -40,7 +40,7 @@ Uživatele můžete také přihlašovat pomocí sociálních identit, které pro
 
 Další informace najdete v tématu [scénáře a podporované toky](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) a scénáře ověřování a [podporované platformy a jazyky](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
-## <a name="platform-configuration-and-redirect-uris"></a>Konfigurace platformy a identifikátory URI pro přesměrování  
+## <a name="platform-configuration-and-redirect-uris"></a>Konfigurace platformy a identifikátory URI pro přesměrování
 
 ### <a name="interactive-authentication"></a>Interaktivní ověřování
 
@@ -72,20 +72,20 @@ Po dokončení tohoto postupu se identifikátor URI pro přesměrování vypoč�
 
 Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Tady je doporučený formát pro manifest:
 
-- **iOS**:`msauth.<BUNDLE_ID>://auth` 
-  - Zadejte například`msauth.com.yourcompany.appName://auth`
-- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
+  - Zadejte například `msauth.com.yourcompany.appName://auth`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Hodnotu hash podpisu pro Android můžete vygenerovat pomocí klíče verze nebo klíče pro ladění pomocí příkazu nástroje.
 
 ### <a name="username-password-authentication"></a>Uživatelské jméno – ověřování hesla
 
-Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. 
+Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 
 Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Provedete to tak, že začnete v části **ověřování** vaší aplikace. V podčásti **Upřesnit nastavení** v části **výchozí typ klienta zadejte** pro otázku **považovat aplikaci jako veřejný klient**možnost **Ano**.
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění. Tato oprávnění se také nazývají obory. V závislosti na prostředí, které chcete, můžete požadovat delegovaná oprávnění staticky prostřednictvím Azure Portal. Nebo je můžete vyžádat dynamicky za běhu. 
+Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění. Tato oprávnění se také nazývají obory. V závislosti na prostředí, které chcete, můžete požadovat delegovaná oprávnění staticky prostřednictvím Azure Portal. Nebo je můžete vyžádat dynamicky za běhu.
 
 Staticky registrací oprávnění umožňuje správcům snadno schválit vaši aplikaci. Doporučuje se statická registrace.
 

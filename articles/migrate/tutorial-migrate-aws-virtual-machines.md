@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s AWS
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762415"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048529"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -20,6 +20,7 @@ V tomto kurzu se dozvíte, jak zjišťovat, hodnotit a migrovat virtuální poč
 
 V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
+>
 > * Ověřte předpoklady pro migraci.
 > * Příprava prostředků Azure pomocí Azure Migrate: Migrace serveru Nastavte oprávnění pro účet a prostředky Azure pro práci s Azure Migrate.
 > * Připravte instance EC2 AWS pro migraci.
@@ -55,9 +56,9 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
-- Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Projděte si [podporované operační systémy](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
+- Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Přečtěte si [podporované operační systémy a verze jádra](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Ke kontrole verzí operačního systému a jádra pro virtuální počítače se systémem Linux můžete použít standardní příkazy, jako je *hostnamectl* nebo *uname-a* .  Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
 - Zajistěte, aby virtuální počítače s AWS splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
 - Ověřte, že virtuální počítače s AWS, které se replikují do Azure, splňují [požadavky na virtuální počítače Azure.](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 - Před migrací do Azure jsou na virtuálních počítačích potřeba nějaké změny.
@@ -252,7 +253,7 @@ Na zdrojovém virtuálním počítači AWS musí být nainstalovaný agent služ
 4. V části **procesový Server**vyberte název zařízení replikace. 
 5. V části **přihlašovací údaje hosta**vyberte během [instalace instalačního programu replikace](#download-the-replication-appliance-installer) prosím fiktivní účet, který jste dříve vytvořili, abyste službu mobility nainstalovali ručně (nabízená instalace není podporovaná). Pak klikněte na **Další: virtuální počítače**.   
  
-    ![Replikace virtuálních počítačů](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Replikovat nastavení](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. V **Virtual Machines**v části **Import nastavení migrace z posouzení**ponechte výchozí nastavení **Ne, nastavení migrace určíte ručně**.
 7. Ověřte každý virtuální počítač, který chcete migrovat. Pak klikněte na **Další: nastavení cíle**.
 
@@ -355,8 +356,8 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md).
@@ -381,11 +382,23 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 **Otázka:** Při pokusu o zjištění virtuálních počítačů s AWS se zobrazí chyba "Nepodařilo se načíst GUID systému BIOS".   
 **Odpověď:** Pro ověřování vždy používejte přihlašovací jméno uživatele a ne každého pseudo uživatele. Také si přečtěte podporované operační systémy pro virtuální počítače s AWS.  
 
-**Otázka:** Můj stav replikace neprobíhá.    
+**Otázka:** Můj stav replikace neprobíhá.   
 **Odpověď:** Ověřte, jestli vaše zařízení replikace splňuje požadavky. Ujistěte se, že jste povolili požadované porty na zařízení replikace TCP port 9443 a HTTPS 443 pro přenos dat. Ujistěte se, že nejsou k dispozici žádné zastaralé duplicitní verze replikačního zařízení připojeného ke stejnému projektu.   
 
 **Otázka:** Nedaří se mi zjistit AWS instance pomocí Azure Migrate z důvodu stavového kódu HTTP 504 ze vzdálené služby pro správu systému Windows.    
-**Odpověď:** Nezapomeňte si projít požadavky na zařízení migrace do Azure a potřeby přístupu URL. Zajistěte, aby se registrace zařízení neblokovala nastavením proxy.   
+**Odpověď:** Nezapomeňte si projít požadavky na zařízení migrace do Azure a potřeby přístupu URL. Zajistěte, aby se registrace zařízení neblokovala nastavením proxy.
+
+**Otázka:** Musím před migrací virtuálních počítačů s AWS do Azure udělat nějaké změny   
+**Odpověď:** Tyto změny možná budete muset udělat před migrací virtuálních počítačů s EC2 do Azure:
+
+- Pokud pro zřizování virtuálních počítačů používáte Cloud-init, možná budete chtít zakázat Cloud-init na virtuálním počítači, abyste ho mohli replikovat do Azure. Kroky zřizování, které provádí Cloud-init na virtuálním počítači, možná AWS konkrétní a po migraci do Azure nebudou platné. 
+- Pokud se jedná o virtuální počítač PV (virtualizovaný) a ne HVM virtuální počítač, možná ho nebudete moct spustit tak, jak je v Azure, protože param virtuálním počítačům se používá vlastní spouštěcí sekvence v AWS. Po odinstalaci ovladačů PV před provedením migrace do Azure možná budete moct tuto výzvu obdržet.  
+- Vždycky doporučujeme před konečnou migrací spustit migraci testu.  
+
+
+**Otázka:** Můžu migrovat virtuální počítače AWS s operačním systémem Amazon Linux  
+**Odpověď:** Virtuální počítače se spuštěným Amazon Linuxem se nedají migrovat tak, jak jsou, protože se v systému Amazon Linux OS podporuje jenom AWS.
+Pokud chcete migrovat úlohy běžící v Amazon Linux, můžete aktivovat virtuální počítač CentOS/RHEL v Azure a migrovat zatížení běžící na počítači s AWS Linux pomocí relevantního přístupu k migraci úloh. Například v závislosti na zatížení můžou být pro podporu migrace k dispozici nástroje specifické pro úlohu, například pro databáze nebo nástroje pro nasazení v případě webových serverů.
 
 ## <a name="next-steps"></a>Další kroky
 

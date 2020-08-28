@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 252f38e289f7b40c673d9048119823348a30a546
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015437"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051286"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
 
@@ -43,7 +43,7 @@ Tento kurz zahrnuje:
 > [!TIP]
 > V tomto kurzu se předpokládá, že máte předchozí zkušenosti s používáním ASP.NET Core MVC a Azure App Service. Pokud ASP.NET Core nebo požadované [nástroje](#prerequisites)nepoužíváte, doporučujeme si stáhnout kompletní ukázkový projekt z [GitHubu][GitHub], přidat požadované balíčky NuGet a spustit ho. Po sestavení projektu si můžete projít tento článek, abyste získali přehled o kódu v kontextu projektu.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
@@ -117,36 +117,19 @@ Azure Cosmos DB používá k přesunu a uložení dat JSON. Můžete použít `J
 
 ### <a name="add-views"></a><a name="add-views"></a>Přidání zobrazení
 
-Nyní vytvoříme následující tři zobrazení.
+Nyní přidáme následující zobrazení.
 
-* Přidat zobrazení položky seznamu
-* Přidat zobrazení nové položky
-* Přidání zobrazení upravit položku
+* Zobrazení vytvořit položku
+* Zobrazení odstranit položku
+* Zobrazení, které získá podrobnosti položky
+* Zobrazení upravit položku
+* Zobrazení pro výpis všech položek
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Přidat zobrazení položky seznamu
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Vytvořit zobrazení položky
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **zobrazení** a vyberte **Přidat**  >  **novou složku**. Pojmenujte *položku*složky.
 
 1. Klikněte pravým tlačítkem na složku prázdná **položka** a pak vyberte **Přidat**  >  **zobrazení**.
-
-1. V **zobrazení přidat MVC**zadejte následující hodnoty:
-
-   * Do **název zobrazení**zadejte *index*.
-   * V **šabloně**vyberte **seznam**.
-   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek obrazovky se zobrazeným dialogovým oknem přidat zobrazení MVC":::
-
-1. Po přidání těchto hodnot vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony.
-
-Po dokončení aplikace Visual Studio otevře soubor *cshtml* , který vytvoří. Tento soubor můžete zavřít v aplikaci Visual Studio. Později se k ní vrátíme.
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>Přidat zobrazení nové položky
-
-Podobně jako při vytváření zobrazení pro položky seznamu vytvořte nové zobrazení pro vytváření položek pomocí následujících kroků:
-
-1. V **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
 
 1. V okně **Přidat zobrazení MVC**proveďte následující změny:
 
@@ -156,9 +139,44 @@ Podobně jako při vytváření zobrazení pro položky seznamu vytvořte nové 
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
    * Vyberte **Přidat**.
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Přidání zobrazení upravit položku
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek obrazovky se zobrazeným dialogovým oknem přidat zobrazení MVC":::
 
-A nakonec přidejte zobrazení pro úpravu položky pomocí následujících kroků:
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Odstranit zobrazení položky
+
+1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+
+1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+
+   * Do pole **název zobrazení** zadejte Delete ( *Odstranit*).
+   * V poli **Šablona** vyberte **Odstranit**.
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+   * Vyberte **Přidat**.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Přidání zobrazení pro získání podrobností o položce
+
+1. V **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+
+1. V **zobrazení přidat MVC**zadejte následující hodnoty:
+
+   * Do **název zobrazení**zadejte *Podrobnosti*.
+   * V **šabloně**vyberte **Podrobnosti**.
+   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Přidání zobrazení upravit položku
 
 1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
 
@@ -170,7 +188,29 @@ A nakonec přidejte zobrazení pro úpravu položky pomocí následujících kro
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
    * Vyberte **Přidat**.
 
-Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Visual Studio při návratu do těchto zobrazení později.
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>Přidat zobrazení pro výpis všech položek
+
+A nakonec přidejte zobrazení pro získání všech položek pomocí následujících kroků:
+
+1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+
+1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+
+   * Do pole **Název zobrazení** zadejte *Index*.
+   * V poli **Šablona** vyberte **Seznam**.
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+   * Vyberte **Přidat**.
+
+1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Visual Studio.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Deklarovat a inicializovat služby
 

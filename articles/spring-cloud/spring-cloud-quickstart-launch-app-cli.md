@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 53e27e4fafaf4468c9c2f4a1ce24ace3d317dada
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 305a12de05ca934f5f8fd8b86746608d7fa32712
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503255"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046965"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
-Jarní cloud Azure umožňuje snadno spustit aplikaci mikroslužeb založenou na jarním startu v Azure.
+Jarní cloud Azure umožňuje snadno spustit aplikaci mikroslužeb založenou na jarním startu v Azure.  Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
 
 V tomto rychlém startu se dozvíte, jak nasadit stávající cloudovou aplikaci Java do Azure. Až budete hotovi, můžete pokračovat v správě aplikace prostřednictvím rozhraní příkazového řádku Azure nebo pomocí Azure Portal.
 
@@ -160,16 +160,16 @@ az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem.
-    ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+    ![PiggyMetrics spuštěn](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 Můžete také přejít na Azure Portal a najít tak adresu URL. 
 1. Přejít ke službě
 2. Vybrat **aplikace**
 3. Vybrat **bránu**
 
-    ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+    ![PiggyMetrics navigovat](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Najít adresu URL na stránce s **přehledem brány** ![ snímku obrazovky PiggyMetrics Running](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. Najděte adresu URL na stránce **Přehled brány**  ![ PiggyMetrics navigovat 2](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

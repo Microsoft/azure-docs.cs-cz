@@ -1,14 +1,14 @@
 ---
 title: Použití parametrů k vytváření dynamických modrotisky
 description: Přečtěte si o statických a dynamických parametrech a jejich použití k vytváření zabezpečených a dynamických modrotisky.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970633"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051555"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -55,11 +55,11 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. Klikněte na existující podrobný plán, klikněte na **Upravit** podrobný plán nebo klikněte na **+ vytvořit podrobný plán** a vyplňte informace na kartě **základy** .
+1. Vyberte existující podrobný plán a pak vyberte **Upravit podrobný plán** nebo vyberte **+ vytvořit podrobný plán** a vyplňte informace na kartě **základy** .
 
-1. Klikněte na **Další: artefakty** nebo klikněte na kartu **artefakty** .
+1. Vyberte **Další: artefakty** nebo vyberte kartu **artefakty** .
 
-1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y naplněné** ve sloupci **Parameters** . Pro úpravu parametrů artefaktů klikněte na řádek artefaktu.
+1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y naplněné** ve sloupci **Parameters** . Vyberte řádek artefaktu pro úpravu parametrů artefaktu.
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Parametry podrobného plánu v definici podrobného plánu" border="false":::
 
@@ -172,7 +172,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. Klikněte pravým tlačítkem na podrobný plán, který chcete přiřadit. Vyberte **přiřadit** podrobný plán, nebo klikněte na plán, který chcete přiřadit, a potom klikněte na tlačítko **přiřadit podrobný plán** .
+1. Klikněte pravým tlačítkem na podrobný plán, který chcete přiřadit. Vyberte **přiřadit** podrobný plán nebo vyberte plán, který chcete přiřadit, a pak použijte tlačítko **přiřadit podrobný plán** .
 
 1. Na stránce **přiřadit podrobný plán** Najděte oddíl **parametry artefaktů** . Každý artefakt s alespoň jedním **dynamickým parametrem** zobrazuje artefakt a možnosti konfigurace. Před přiřazením podrobného plánu poskytněte parametrům požadované hodnoty. V následujícím příkladu je _název_ **dynamickým parametrem** , který musí být definován k dokončení přiřazení podrobného plánu.
 
@@ -234,8 +234,8 @@ Nastavení **dynamických parametrů** během přiřazování je provedeno pří
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na seznam [funkcí](../reference/blueprint-functions.md)podrobného plánu.
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [životním cyklu podrobného plánu](./lifecycle.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](./sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](./resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

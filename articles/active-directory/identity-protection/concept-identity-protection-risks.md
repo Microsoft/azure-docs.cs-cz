@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815048"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047101"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -39,7 +39,6 @@ Tato rizika se počítají v režimu offline pomocí interních a externích zdr
 | Detekce rizik | Popis |
 | --- | --- |
 | Uniklé přihlašovací údaje | Tento typ detekce rizika označuje, že došlo k úniku platných přihlašovacích údajů uživatele. Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. Toto sdílení se obvykle provádí publikováním veřejně na tmavém webu, vložením webů nebo obchodováním a prodejem přihlašovacích údajů na černém trhu. Když služba nevrácených přihlašovacích údajů od Microsoftu Získá přihlašovací údaje uživatele z tmavého webu, vloží weby nebo jiné zdroje, vyhledá platné shody pomocí aktuálních platných přihlašovacích údajů uživatelů Azure AD. Další informace o nevrácených přihlašovacích údajích najdete v tématu [Nejčastější dotazy](#common-questions). |
-| Sprej hesla | Útok na postřik hesla je v případě, kdy je více uživatelských jmen napadeno pomocí běžných hesel v rámci sjednoceného hrubou silou, k získání neoprávněného přístupu. Toto zjišťování rizik se aktivuje, když se provedl útok na spreje hesla. |
 | Analýza hrozeb v Azure AD | Tento typ detekce rizika označuje aktivitu uživatele, která je pro daného uživatele neobvyklá nebo je konzistentní se známými vzorci útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu. |
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení
@@ -57,6 +56,7 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 | Správce potvrzuje ohrožení zabezpečení uživatele. | Offline | Tato detekce indikuje, že správce v uživatelském rozhraní rizikové uživatele nebo pomocí rozhraní riskyUsers API vybral možnost potvrdit zneužití uživatele. Pokud chcete zjistit, který správce potvrdil ohrožení tohoto uživatele, Zkontrolujte historii rizika uživatele (prostřednictvím uživatelského rozhraní nebo rozhraní API). |
 | Škodlivá IP adresa | Offline | Tato detekce indikuje přihlášení ze škodlivé IP adresy. IP adresa je považována za škodlivou na základě vysoké míry selhání kvůli neplatným přihlašovacím údajům z IP adresy nebo jiných zdrojů reputace IP. |
 | Podezřelá pravidla pro manipulaci s doručenou poštou | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Toto zjišťování profiluje vaše prostředí a aktivuje výstrahy v případě, že jsou v doručené poště uživatele podezřelá pravidla, která odstraňují nebo přesunují zprávy nebo složky. Tato detekce může znamenat, že došlo k ohrožení zabezpečení účtu uživatele, že zprávy jsou záměrně skryté a že se poštovní schránka používá k distribuci spamu nebo malwaru ve vaší organizaci. |
+| Sprej hesla | Offline | Útok na postřik hesla je v případě, kdy je více uživatelských jmen napadeno pomocí běžných hesel v rámci sjednoceného hrubou silou, k získání neoprávněného přístupu. Toto zjišťování rizik se aktivuje, když se provedl útok na spreje hesla. |
 | Neuskutečnitelná cesta | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Toto zjišťování identifikuje dvě uživatelské aktivity (Jedná se o jednu nebo víc relací) pocházející z geograficky vzdálených umístění v časovém období kratším než čas, kdy by uživatel musel použít stejné přihlašovací údaje jako jiný uživatel. |
 
 ### <a name="other-risk-detections"></a>Další detekce rizik

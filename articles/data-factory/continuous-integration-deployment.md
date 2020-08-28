@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: f44c3ac51bfc509df0b8f2b82c2d6259bba0aa3c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815806"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047663"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -625,6 +625,8 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
 
     - Entity Data Factory jsou vzájemně závislé. Například triggery závisejí na kanálech a kanály závisí na datových sadách a dalších kanálech. Selektivní publikování podmnožiny prostředků by mohlo vést k neočekávanému chování a chybám.
     - Ve výjimečných případech když potřebujete selektivní publikování, zvažte použití opravy hotfix. Další informace najdete v tématu [provozní prostředí oprav hotfix](#hotfix-production-environment).
+
+- Tým Azure Data Factory nedoporučuje přiřazovat řízení RBAC jednotlivým entitám (kanálům, datovým sadám atd.) v datové továrně. Pokud má například vývojář přístup k kanálu nebo datové sadě, měl by mít přístup ke všem kanálům nebo datovým sadám v datové továrně. Pokud se domníváte, že v rámci datové továrny potřebujete implementovat mnoho rolí RBAC, podívejte se na nasazení druhého objektu pro vytváření dat.
 
 -   Nemůžete publikovat z privátních větví.
 

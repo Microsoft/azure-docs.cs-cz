@@ -1,14 +1,14 @@
 ---
 title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131493"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047322"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -29,10 +29,10 @@ Než se dostanete k podrobnostem o pracovním postupu pro kód zásad, Projděte
 - [Definice iniciativy](./initiative-definition-structure.md)
 
 Názvy souborů se zarovnají do částí definice zásady nebo iniciativy:
-- `policy(set).json`– Celá definice
-- `policy(set).parameters.json`– `properties.parameters` Část definice
-- `policy.rules.json`– `properties.policyRule` Část definice
-- `policyset.definitions.json`– `properties.policyDefinitions` Část definice
+- `policy(set).json` – Celá definice
+- `policy(set).parameters.json` – `properties.parameters` Část definice
+- `policy.rules.json` – `properties.policyRule` Část definice
+- `policyset.definitions.json` – `properties.policyDefinitions` Část definice
 
 Příklady těchto formátů souborů jsou k dispozici v [Azure Policy úložiště GitHub](https://github.com/Azure/azure-policy/):
 
@@ -110,7 +110,8 @@ Přiřazení by mělo používat [enforcementMode](./assignment-structure.md#enf
 > [!NOTE]
 > I když je režim vynucení užitečný, není náhrada za účelem důkladného testování definice zásad za různých podmínek. Definice zásad by měla být testována pomocí `PUT` a `PATCH` REST API volání, kompatibilních a nekompatibilních prostředků a hranové případy, jako je vlastnost chybějící v prostředku.
 
-Po nasazení přiřazení můžete pomocí sady SDK zásad [získat data o dodržování předpisů](../how-to/get-compliance-data.md) pro nové přiřazení. Prostředí, které se používá k testování zásad a přiřazení, by mělo mít odpovídající i nekompatibilní prostředky. Stejně jako dobrý test jednotek kódu, chcete testovat, že prostředky jsou podle očekávání a že také nemáte žádné falešně pozitivní nebo falešně negativní. Pokud otestujete a ověříte pouze za to, co očekáváte, může dojít k neočekávanému a Neidentifikovanému dopadu zásad. Další informace najdete v tématu [vyhodnocení dopadu nové definice Azure Policy](./evaluate-impact.md).
+Po nasazení přiřazení použijte k [získání dat dodržování předpisů](../how-to/get-compliance-data.md) pro nové přiřazení sadu SDK zásad nebo [Azure Policy akci GitHubu pro kontrolu dodržování předpisů](https://github.com/marketplace/actions/azure-policy-compliance-scan) . Prostředí, které se používá k testování zásad a přiřazení, by mělo mít odpovídající i nekompatibilní prostředky.
+Stejně jako dobrý test jednotek kódu, chcete testovat, že prostředky jsou podle očekávání a že také nemáte žádné falešně pozitivní nebo falešně negativní. Pokud otestujete a ověříte pouze za to, co očekáváte, může dojít k neočekávanému a Neidentifikovanému dopadu zásad. Další informace najdete v tématu [vyhodnocení dopadu nové definice Azure Policy](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Povolit úlohy nápravy
 

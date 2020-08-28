@@ -7,16 +7,18 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 09820da3fcebe3614852f36180a29f35505039b8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 163940095c4a3a25123706ca47a7d059897cad20
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496844"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046863"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
 
 V tomto rychlém startu se dozvíte, jak nasadit existující jarní cloudovou aplikaci do Azure. Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure. 
+
+Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
 
 Vzorový kód aplikace použitý v tomto kurzu najdete v našem [úložišti ukázek GitHubu](https://github.com/Azure-Samples/PiggyMetrics). Jakmile budete hotovi, bude poskytnutá ukázková aplikace dostupná online a bude připravená ji spravovat prostřednictvím Azure Portal.
 
@@ -53,11 +55,11 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 3. Z výsledků vyberte **Azure jaře Cloud** .
 
- ![Ikona ASC](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
+ ![Začátek ASC](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
 4. Na stránce jarní cloud Azure klikněte na **+ Přidat**.
 
- ![Ikona ASC](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+ ![Přidat ASC](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
     - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.  Zajistěte, aby bylo toto předplatné přidané do našeho seznamu povolených pro Azure jaře Cloud.
@@ -78,7 +80,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 9. Podle vašich požadavků můžete nastavit **Povolit trasování** na *Ano* nebo *ne* .  Pokud nastavíte možnost **Povolit trasování** na Ano, vyberte taky existující Přehled aplikace nebo vytvořte nový. Bez specifikace **Application Insights** dojde k chybě ověření.
 
 
-    ![Trasování](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+    ![Zobrazení trasování](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
 
 10. Klikněte na **Zkontrolovat a vytvořit**.
 
@@ -98,7 +100,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 3. Výběrem možnosti **Použít** změny uložte.
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Portál ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
@@ -164,11 +166,11 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 3. Vyberte **přiřadit koncový bod** pro přiřazení veřejného koncového bodu k bráně. Může to trvat několik minut.
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+    ![Koncový bod portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
 4. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazený veřejný koncový bod (označený jako **URL**) do prohlížeče.
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
+    ![Ukázková aplikace portálu ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948891"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049923"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) analýzy podmíněného přístupu (CA), jako 
 
 Společnost Microsoft poskytuje standardní podmíněné zásady nazývané [výchozí hodnoty zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) , které zajišťují základní úroveň zabezpečení. Vaše organizace ale může potřebovat větší flexibilitu než nabídka výchozích hodnot zabezpečení. Podmíněný přístup můžete použít k přizpůsobení výchozích hodnot zabezpečení s větší členitosti a ke konfiguraci nových zásad, které splňují vaše požadavky.
 
-## <a name="learn"></a>Informace
+## <a name="learn"></a>Learn
 
 Než začnete, ujistěte se, že rozumíte tomu, jak [podmíněný přístup](overview.md) funguje a kdy byste ho měli použít.
 
@@ -52,7 +52,7 @@ Viz [licenční požadavky na podmíněný přístup](overview.md).
 
 Pokud potřebujete další funkce, budete možná potřebovat i související licence. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -242,7 +242,7 @@ Může být obtížné předpovědět počet a jména uživatelů ovlivněných 
 
 [Režim pouze pro sestavy ](concept-conditional-access-report-only.md) umožňuje správcům vyhodnotit dopad zásad CA ještě předtím, než je povolí ve svém prostředí.
 
-Naučte se [Konfigurovat režim pouze pro sestavy na základě zásad certifikační autority](howto-conditional-access-report-only.md).
+Naučte se [Konfigurovat režim pouze pro sestavy na základě zásad certifikační autority](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Plánování přerušení
 

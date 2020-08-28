@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075684"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050722"
 ---
 # <a name="ingestion-rules"></a>Pravidla pro přijímání
 ### <a name="json-flattening-escaping-and-array-handling"></a>Sloučení JSON, uvozovací znaky a zpracování pole
@@ -25,17 +25,17 @@ Prostředí Azure Time Series Insights Gen2 bude dynamicky vytvářet sloupce te
 >
 > * Než začnete vybírat [vlastnost ID časové řady](time-series-insights-update-how-to-id.md) nebo vlastní [časové razítko](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)zdroje událostí, zkontrolujte níže uvedená pravidla. Pokud je vaše ID TS nebo časové razítko v rámci vnořeného objektu nebo má jeden nebo více speciálních znaků níže, je důležité zajistit, aby název vlastnosti, který zadáte, odpovídal názvu sloupce *po* použití pravidel pro přijímání zpráv. Viz příklad [B](concepts-json-flattening-escaping-rules.md#example-b) níže.
 
-| Pravidlo | Ukázkový kód JSON |Název sloupce v úložišti |
-|---|---|---|
-| Azure Time Series Insights datový typ Gen2 se přidá na konec názvu sloupce jako "_ \<dataType\> ". | ```"type": "Accumulated Heat"``` | type_string |
-| [Vlastnost časového razítka](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) zdroje události bude uložena v Azure Time Series Insights Gen2 jako "timestamp" v úložišti a hodnota uložená v UTC. Vlastnost časového razítka zdroje událostí můžete přizpůsobit tak, aby splňovala požadavky vašeho řešení, ale název sloupce v teplém a studeném úložišti je "timestamp". Další vlastnosti formátu JSON, které nejsou časové razítko zdroje událostí, budou uloženy s názvem "_datetime" v názvu sloupce, jak je uvedeno v pravidle výše.  | ```"ts": "2020-03-19 14:40:38.318"``` | časové razítko |
-| Názvy vlastností JSON, které obsahují speciální znaky. [\ a ' jsou uvozeny pomocí znaků [a].  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' ID. WASP '] _string |
-| V rámci [a] Existují další uvozovací znaky jednoduchých uvozovek a zpětná lomítka. Jedna uvozovka se zapíše jako \ a zpětné lomítko se zapíše jako\\\ | ```"Foo's Law Value": "17.139999389648"``` | [' \' Hodnota právního "foo '] _double |
-| Vnořené objekty JSON jsou shrnuty s tečkou jako s oddělovačem. Je podporováno vnořování až na 10 úrovní. |  ```"series": {"value" : 316 }``` | Series. value_long |
-| Pole primitivních typů se ukládají jako dynamický typ. |  ```"values": [154, 149, 147]``` | values_dynamic |
+| Pravidlo | Ukázkový kód JSON | [Syntaxe výrazů časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Název sloupce vlastnosti v Parquet
+|---|---|---|---|
+| Azure Time Series Insights datový typ Gen2 se přidá na konec názvu sloupce jako "_ \<dataType\> ". | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
+| [Vlastnost časového razítka](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) zdroje události bude uložena v Azure Time Series Insights Gen2 jako "timestamp" v úložišti a hodnota uložená v UTC. Vlastnost časového razítka zdroje událostí můžete přizpůsobit tak, aby splňovala požadavky vašeho řešení, ale název sloupce v teplém a studeném úložišti je "timestamp". Další vlastnosti formátu JSON, které nejsou časové razítko zdroje událostí, budou uloženy s názvem "_datetime" v názvu sloupce, jak je uvedeno v pravidle výše.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
+| Názvy vlastností JSON, které obsahují speciální znaky. [\ a ' jsou uvozeny pomocí znaků [a].  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
+| V rámci [a] Existují další uvozovací znaky jednoduchých uvozovek a zpětná lomítka. Jedna uvozovka se zapíše jako \ a zpětné lomítko se zapíše jako \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
+| Vnořené objekty JSON jsou shrnuty s tečkou jako s oddělovačem. Je podporováno vnořování až na 10 úrovní. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` nebo `$event.series['value'].Long` |  `series.value_long` |
+| Pole primitivních typů se ukládají jako dynamický typ. |  ```"values": [154, 149, 147]``` | Dynamické typy se můžou načteno jenom prostřednictvím rozhraní API [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
 | Pole obsahující objekty mají dvě chování v závislosti na obsahu objektu: Pokud jsou ID TS nebo vlastnosti časového razítka v rámci objektů v poli, pole bude nekumulativní, takže počáteční datová část JSON vytvoří více událostí. To umožňuje dávkovat více událostí do jedné struktury JSON. Všechny vlastnosti nejvyšší úrovně, které jsou partnery pro pole, budou uloženy s každým nenasazeným objektem. Pokud vaše ID TS a časové razítko *nejsou v poli* , uloží se celý jako dynamický typ. | Viz příklady [a](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b) a [C](concepts-json-flattening-escaping-rules.md#example-c) níže.
-| Pole obsahující smíšené prvky se nesloučí. |  ```"values": ["foo", {"bar" : 149}, 147]``` | values_dynamic |
-| 512 znaků je limit názvů vlastností JSON. Pokud název překračuje 512 znaků, bude zkrácen na 512 a "_< ' hodnotou hash ' > ' je připojen. **Všimněte si** , že to platí i pro názvy vlastností, které jsou zřetězené z objektu, který je sloučený, a označuje cestu k vnořenému objektu. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` | data. Items. datapoints. Values. telemetrie<... pokračování na 512 znaků>_912ec803b2ce49e4a541068d495ab570_double |
+| Pole obsahující smíšené prvky se nesloučí. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dynamické typy se můžou načteno jenom prostřednictvím rozhraní API [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) . | `values_dynamic` |
+| 512 znaků je limit názvů vlastností JSON. Pokud název překračuje 512 znaků, bude zkrácen na 512 a "_< ' hodnotou hash ' > ' je připojen. **Všimněte si** , že to platí i pro názvy vlastností, které jsou zřetězené z objektu, který je sloučený, a označuje cestu k vnořenému objektu. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Porozumění duálnímu chování pro pole
 
@@ -97,7 +97,7 @@ Výše uvedená konfigurace a datová část vytvoří tři sloupce a čtyři ud
 
 ### <a name="example-b"></a>Příklad B:
 ID složené časové řady s jednou vnořenou vlastností<br/> 
-**ID časové řady prostředí:** `"plantId"` ani`"telemetry.tagId"`<br/>
+**ID časové řady prostředí:** `"plantId"` ani `"telemetry.tagId"`<br/>
 **Časové razítko zdroje události:**`"timestamp"`<br/>
 **Datová část JSON:**
 

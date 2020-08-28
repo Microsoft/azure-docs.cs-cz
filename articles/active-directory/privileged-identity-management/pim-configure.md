@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 07/01/2020
+ms.date: 08/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023906"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047815"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služba, která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. Tyto prostředky zahrnují prostředky v Azure AD, Azure a další online služby Microsoftu, jako je Office 365 nebo Microsoft Intune.
+ Privileged Identity Management (PIM) je služba v Azure Active Directory (Azure AD), která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. Tyto prostředky zahrnují prostředky v Azure AD, Azure a další online služby Microsoftu, jako je například Office 365 nebo Microsoft Intune.
 
 ## <a name="reasons-to-use"></a>Důvody k použití
 
-Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup podle potřeby (JIT) k prostředkům Azure a k Azure AD. Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
+Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup k prostředkům Azure a Azure AD za běhu. Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
 
 ## <a name="what-does-it-do"></a>Co to dělá?
 
@@ -44,7 +44,7 @@ Privileged Identity Management poskytuje aktivaci rolí na základě času a sch
 
 ## <a name="what-can-i-do-with-it"></a>Co s tím můžu dělat?
 
-Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte, že budete spravovat **role Azure AD** a role **prostředků Azure** . Když zvolíte typ rolí, které se mají spravovat, zobrazí se podobná sada možností pro daný typ role.
+Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte mezi možnostmi, jako je Správa **rolí Azure AD**, Správa rolí **prostředků Azure** nebo privilegovaných přístupových skupin. Když zvolíte, co chcete spravovat, zobrazí se příslušná sada možností pro tuto možnost.
 
 ![Snímek obrazovky Privileged Identity Management Azure Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -80,7 +80,7 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Description |
+| Termín nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | aktivně | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |

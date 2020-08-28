@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604775"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050858"
 ---
 # <a name="examine-the-video-indexer-output"></a>Kontrola výstupu Video Indexer
 
@@ -27,7 +27,7 @@ Rozhraní API můžete použít i tak, že zavoláte rozhraní **Get video index
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-Tento článek prověřuje výstup Video Indexer (obsah JSON). Informace o tom, jaké funkce a přehledy jsou k dispozici, najdete v tématu [video indexer Insights](video-indexer-overview.md#video-insights).
+Tento článek prověřuje výstup Video Indexer (obsah JSON). <br/>Informace o tom, jaké funkce a přehledy jsou k dispozici, najdete v tématu [video indexer Insights](video-indexer-overview.md#video-insights).
 
 > [!NOTE]
 > Vypršení platnosti všech přístupových tokenů v Video Indexer je jedna hodina.
@@ -58,7 +58,7 @@ Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](v
 |accountId|ID účtu v seznamu testů|
 |id|ID seznamu testů.|
 |name|Název seznamu stop|
-|description|Popis seznamu testů.|
+|Popis|Popis seznamu testů.|
 |userName|Jméno uživatele, který vytvořil seznam testů.|
 |vytvářejí|Čas vytvoření seznamu testů.|
 |privacyMode|Režim ochrany osobních údajů seznamu testů (Private/Public).|
@@ -331,7 +331,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá F
 |id|ID obličeje|
 |name|Název obličeje. Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
 |spolehlivost|Spolehlivost identifikace obličeje.|
-|description|Popis celebrit. |
+|Popis|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
 |knownPersonId|Pokud se jedná o známého uživatele, jeho interní ID.|
 |referenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
@@ -519,7 +519,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |name|Název značek.|
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
-|description|Popis značek|
+|Popis|Popis značek|
 |tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
 |spolehlivost|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: c3a482dc1fa63b997b948cc3bc5cacefc9c2ad0a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928493"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050518"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
 
@@ -29,14 +29,18 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) . 
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
+
 ## <a name="create-an-azure-signalr-resource"></a>Vytvořené prostředku služby Azure SignalR
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
@@ -50,6 +54,7 @@ V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](ht
     dotnet new mvc
     ```
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
 
@@ -72,6 +77,8 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
     </ItemGroup>
     </Project>    
     ```
+    
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Přidání služby Azure SignalR do webové aplikace
 
@@ -226,6 +233,7 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
     }
     ```
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
@@ -255,7 +263,7 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
 
     ![Příklad chatu skupiny signalizace v Azure](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -280,7 +288,7 @@ Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte náze
    
 Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje, odstraní.
 
-
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -289,4 +297,5 @@ V tomto rychlém startu jste vytvořili nový prostředek služby Azure Signal S
 > [!div class="nextstepaction"]
 > [Ověřování pomocí služby Azure SignalR](./signalr-concept-authenticate-oauth.md)
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 

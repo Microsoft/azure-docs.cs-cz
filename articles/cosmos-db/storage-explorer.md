@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799107"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047475"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty s využitím Průzkumníka služby Azure Storage
 
@@ -95,7 +95,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 * Po kliknutí pravým tlačítkem na účet nebo databázi Azure Cosmos DB můžete zvolit **Otevřít na portálu** a spravovat prostředek v prohlížeči na webu Azure Portal.
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Otevřít na portálu":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Otevřít na portálu":::
 
 * Účet, databázi nebo kolekci Azure Cosmos DB můžete také přidat do seznamu **Rychlý přístup**.
 * Možnost **Hledat odsud** umožňuje hledat klíčová slova v zadané cestě.
@@ -106,25 +106,25 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 #### <a name="create-a-database"></a>Vytvoření databáze
 
--   Klikněte pravým tlačítkem na účet služby Azure Cosmos DB, zvolte **Vytvořit databázi**, zadejte název databáze a stisknutím klávesy **Enter** dokončete vytváření.
+- Klikněte pravým tlačítkem na účet služby Azure Cosmos DB, zvolte **Vytvořit databázi**, zadejte název databáze a stisknutím klávesy **Enter** dokončete vytváření.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Vytvoření databáze v účtu Azure Cosmos":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Vytvoření databáze v účtu Azure Cosmos":::
 
 #### <a name="delete-a-database"></a>Odstranění databáze
 
 - Klikněte pravým tlačítkem na databázi, vyberte možnost **odstranit databázi**a v místním okně vyberte **Ano** . Uzel databáze se odstraní a účet služby Azure Cosmos DB se automaticky aktualizuje.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Odstranění první databáze":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Odstranění první databáze":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Odstraní druhé databáze.":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Odstraní druhé databáze.":::
 
 #### <a name="create-a-collection"></a>Vytvoření kolekce
 
 1. Klikněte pravým tlačítkem na databázi, zvolte možnost **vytvořit kolekci**a zadejte následující informace, jako je **ID kolekce**, **kapacita úložiště**atd. Dokončete kliknutím na **OK** .
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Vytvořit první kolekci v databázi":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Vytvořit první kolekci v databázi":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Vytvořit druhou kolekci v databázi":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Vytvořit druhou kolekci v databázi":::
 
 2. Vyberte **neomezeno** , aby bylo možné zadat klíč oddílu, a potom kliknutím na **tlačítko OK** dokončete akci.
 
@@ -146,7 +146,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 - Pokud chcete vytvořit nový dokument, otevřete v levém okně **dokumenty** , vyberte **Nový dokument**, upravte obsah v pravém podokně a pak vyberte **Uložit**. Můžete také aktualizovat existující dokument a pak vybrat **Uložit**. Změny můžete zahodit kliknutím na **Zahodit**.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Vytvořit nový dokument":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="Vytvořit nový dokument":::
 
 #### <a name="delete-a-document"></a>Odstranění dokumentu
 
@@ -156,7 +156,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 - Upravte filtr dokumentu zadáním [dotazu SQL](how-to-sql-query.md) a pak vyberte **použít**.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Dotaz na konkrétní dokumenty":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Dotaz na konkrétní dokumenty":::
 
 ### <a name="graph-management"></a>Správa grafů
 
@@ -165,7 +165,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 1. Pokud chcete vytvořit nový vrchol, otevřete v levém okně **graf** , vyberte **nový vrchol**, upravte obsah a pak vyberte **OK**.
 2. Pokud chcete upravit existující vrchol, vyberte ikonu pera v pravém podokně.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Úprava vrcholu grafu":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Úprava vrcholu grafu":::
 
 #### <a name="delete-a-graph"></a>Odstranění grafu
 
@@ -175,7 +175,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 - Upravte filtr grafu zadáním [dotazu Gremlin](gremlin-support.md) a pak vyberte **použít filtr**.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Spuštění dotazu grafu":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Spuštění dotazu grafu":::
 
 ### <a name="table-management"></a>Správa tabulek
 
@@ -184,33 +184,34 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 1. Pokud chcete vytvořit novou tabulku, otevřete **entity** v levém okně, vyberte **Přidat**, upravte obsah v dialogu **Přidat entitu** , přidejte vlastnost kliknutím na tlačítko **Přidat vlastnost**a pak vyberte **Vložit**.
 2. Chcete-li upravit tabulku, vyberte možnost **Upravit**, upravit obsah a pak vyberte možnost **aktualizovat**.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Vytvoření a úprava tabulky":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="Vytvoření a úprava tabulky":::
 
 #### <a name="import-and-export-table"></a>Import a export tabulky
 
 1. Pokud chcete importovat, vyberte tlačítko **importovat** a zvolte existující tabulku.
 2. Pokud chcete exportovat, vyberte tlačítko **exportovat** a zvolte cíl.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Import nebo export tabulky":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Import nebo export tabulky":::
 
 #### <a name="delete-entities"></a>Odstranění entit
 
 - Vyberte entity a vyberte tlačítko **Odstranit**.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Odstranění tabulky":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Odstranění tabulky":::
 
 #### <a name="query-table"></a>Dotaz na tabulku
 
 - Klikněte na tlačítko **dotaz** , podmínka vstupu dotazu a pak vyberte tlačítko **Spustit dotaz** . Zavřete podokno Dotaz kliknutím na tlačítko **Zavřít dotaz**.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Dotazování dat z tabulky":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Dotazování dat z tabulky":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Správa uložených procedur, triggerů a funkcí definovaných uživatelem
 
 * Chcete-li vytvořit uloženou proceduru, v levém stromu klikněte pravým tlačítkem na **uloženou proceduru**, zvolte možnost **vytvořit uloženou proceduru**, zadejte název do pravého okna a pak vyberte **vytvořit**.
 * Můžete také upravit existující uložené procedury tak, že dvakrát kliknete na tlačítko, provedete aktualizaci a kliknete na možnost **aktualizovat** , nebo pokud chcete změnu zrušit, vyberte možnost **Zrušit** .
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Vytváření a Správa uložených procedur":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Vytváření a Správa uložených procedur":::
+
 * Operace týkající se **triggerů** a **funkcí definovaných uživatelem** jsou podobné **uloženým procedurám**.
 
 ## <a name="troubleshooting"></a>Řešení potíží

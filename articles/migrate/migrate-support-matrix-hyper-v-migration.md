@@ -3,12 +3,12 @@ title: Podpora migrace Hyper-V v Azure Migrate
 description: Přečtěte si o podpoře migrace Hyper-V s Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871492"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051147"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -26,7 +26,10 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **Nasazení**       | Hostitel Hyper-V může být samostatný nebo nasazený v clusteru. <br/>Na hostitelích Hyper-V je nainstalovaný software pro replikaci Azure Migrate (Zprostředkovatel replikace technologie Hyper-V).|
 | **Oprávnění**           | Na hostiteli Hyper-V potřebujete oprávnění správce. |
 | **Operační systém hostitele** | Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2 s nejnovějšími aktualizacemi. Upozorňujeme, že instalace jádra serveru těchto operačních systémů je taky podporovaná. |
+| **Jiné požadavky na software** | .NET Framework 4,7 nebo novější |
 | **Přístup k portu** |  Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.
+| **Volné místo na disku (mezipaměť)** |  600 GB |
+| **Volné místo na disku (disk pro uchovávání)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Virtuální počítače Hyper-V
@@ -39,6 +42,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure. Před migrací proveďte úpravy ručně. Příslušné články obsahují pokyny k tomu, jak to provést. |
 | **Spouštění ze systému Linux**                 | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky. |
 | **Spouštění UEFI**                  | Podporuje se. Ujistěte se, že jste vybrali velikost virtuálního počítače, kterou virtuální počítač Azure Generation 2 podporuje.  |
+| **Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.|
 | **Velikost disku**                  | 2 TB pro disk s operačním systémem, 4 TB pro datové disky.|
 | **Číslo disku** | Maximálně 16 disků na virtuální počítač.|
 | **Šifrované disky/svazky**    | Migrace se nepodporuje.|

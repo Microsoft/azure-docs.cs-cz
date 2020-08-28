@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: dee6b0b1635880fb50b8d35f1f91ad2bce569cff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928475"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050530"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby ASP.NET and Signal Service
 
@@ -25,21 +25,27 @@ V tomto rychlém startu se dozvíte, jak začít s ASP.NET a službou Azure Sign
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET – signál 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 Pro aplikace signalizace ASP.NET se nepodporuje režim bez *serveru* . Pro instanci služby signalizace Azure vždy použijte *výchozí* nebo *klasický* .
 
 Prostředky Azure používané v tomto rychlém startu můžete vytvořit také pomocí [skriptu vytvořit skript služby Signal](scripts/signalr-cli-create-service.md).
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -52,6 +58,8 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
 
 ## <a name="configure-and-run-chat-room-web-app"></a>Konfigurace a spuštění webové aplikace chatovací místnosti
 
@@ -97,6 +105,8 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
 
 1. Stisknutím klávesy **F5** spusťte projekt v režimu ladění. Můžete vidět, že se aplikace spouští místně. Místo hostování modulu runtime signálu pomocí samotné aplikace se nyní připojí ke službě Azure Signal.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 
@@ -115,9 +125,14 @@ Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny pros
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili nový prostředek služby signalizace Azure a použili ho s webovou aplikací ASP.NET. V dalším kroku se naučíte vyvíjet aplikace v reálném čase pomocí služby Azure Signal Service pomocí ASP.NET Core.
 
 > [!div class="nextstepaction"]
 > [Služba signalizace Azure pomocí ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
+

@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398cf947f0a2d250c3cd0ed73a75bc3c091e5f7a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561024"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047526"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge
 
@@ -184,7 +184,7 @@ Vytvořit nový kanál a přidat novou fázi
     * **Výchozí platforma**: při sestavování imagí modulu vyberte stejnou hodnotu.
     * **Výstupní cesta**: zadejte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Tato cesta je konečným souborem manifestu nasazení IoT Edge.
 
-    Tyto konfigurace pomáhají nahradit adresy URL imagí modulu v `deployment.template.json` souboru. **Manifest pro generování nasazení** také pomáhá nahradit proměnné s přesnou hodnotu, kterou jste definovali v `deployment.template.json` souboru. V VS/VS Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavte hodnotu na kartě proměnné kanálu uvolnění. přesunout na kartu proměnné a nakonfigurovat název a hodnotu následujícím způsobem.
+    Tyto konfigurace pomáhají nahradit adresy URL imagí modulu v `deployment.template.json` souboru. **Manifest pro generování nasazení** také pomáhá nahradit proměnné s přesnou hodnotu, kterou jste definovali v `deployment.template.json` souboru. V VS/VS Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavíte hodnotu na kartě proměnné kanálu uvolnění. Přejděte na kartu proměnné a nakonfigurujte název a hodnotu následujícím způsobem.
 
     * **ACR_ADDRESS**: vaše Azure Container Registry adresa.
     * **ACR_PASSWORD**: vaše heslo Azure Container Registry.
@@ -204,6 +204,15 @@ Vytvořit nový kanál a přidat novou fázi
       * Pokud nasadíte do jednoho zařízení, zadejte **ID zařízení IoT Edge**.
       * Pokud nasazujete na více zařízení, zadejte **podmínku cíle**zařízení. Podmínka cíle je filtr, který odpovídá sadě IoT Edge zařízení v IoT Hub. Pokud chcete jako podmínku použít značky zařízení, je potřeba aktualizovat značky odpovídajících zařízení pomocí IoT Hub s dvojitou podmínkou zařízení. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](module-deployment-monitoring.md).
     * Rozbalte položku Rozšířená nastavení, vyberte možnost **ID nasazení IoT Edge**a vložte proměnnou `$(System.TeamProject)-$(Release.EnvironmentName)` . Tím se namapuje název projektu a verze s vaším ID nasazení IoT Edge.
+
+>[!NOTE]
+>Pokud chcete ve svém kanálu používat **vrstvená nasazení** , vrstvená nasazení ještě nejsou podporovaná v Azure IoT Edge úlohách v Azure DevOps.
+>
+>V Azure DevOps ale můžete použít [úlohu Azure CLI](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) k vytvoření nasazení jako vrstveného nasazení. Pro hodnotu **vloženého skriptu** můžete použít [příkaz AZ IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment):
+>
+>   ```azurecli-interactive
+>   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true
+>   ```
 
 12. Vyberte **Uložit** a uložte změny do nového kanálu vydání. Vraťte se do Zobrazení kanálu výběrem **kanálu** z nabídky.
 

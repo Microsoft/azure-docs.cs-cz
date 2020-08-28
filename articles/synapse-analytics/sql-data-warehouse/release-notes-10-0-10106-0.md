@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001004"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047448"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -45,7 +45,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Správa úloh – prostředí portálu**|Uživatelé můžou nakonfigurovat a spravovat svá nastavení správy úloh prostřednictvím Azure Portal. Možnost konfigurace [skupin úloh](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) a [klasifikátorů úloh](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) je možná.|
-|**Vylepšené zobrazení katalogu mapování tabulek**|Nové zobrazení katalogu [Sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) mapuje **object_ids** trvalých uživatelských tabulek na své fyzické názvy tabulek. Toto zobrazení nabízí optimalizovaný výkon v aktuální [pdw_table_mappings sys.](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions)|
+|**Vylepšené zobrazení katalogu mapování tabulek**|Nové zobrazení katalogu [Sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) mapuje **object_ids** trvalých uživatelských tabulek na své fyzické názvy tabulek.|
 
 ## <a name="july-2020"></a>Červenec 2020
 

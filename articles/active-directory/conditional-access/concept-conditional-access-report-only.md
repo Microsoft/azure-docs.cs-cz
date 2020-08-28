@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204187"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049379"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
 
@@ -38,7 +38,7 @@ Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který 
 
 Pokud je pro dané přihlášení vyhodnocena zásada v režimu pouze sestavy, existují čtyři nové možné hodnoty výsledků:
 
-| Výsledek | Description |
+| Výsledek | Popis |
 | --- | --- |
 | Pouze sestava: úspěch | Všechny nakonfigurované podmínky zásad, vyžadované neinteraktivní ovládací prvky grantu a ovládací prvky relace byly splněné. Například požadavek služby Multi-Factor Authentication je spokojen deklarací MFA, která už je v tokenu přítomná, nebo se na zařízení, které dodržuje předpisy, vyhovět zásadám zařízení, které dodržuje předpisy. |
 | Pouze sestava: Chyba | Všechny nakonfigurované podmínky zásad byly splněny, ale nebyly splněny všechny požadované ovládací prvky pro udělení neinteraktivního udělení nebo řízení relace. Například zásada platí pro uživatele, kde je nakonfigurovaný ovládací prvek blokování, nebo zařízení nesplňuje požadavky zásad zařízení. |
@@ -51,4 +51,4 @@ Správci mají možnost vytvořit více zásad v režimu pouze sestavy, takže j
  
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace režimu pouze pro sestavy na základě zásad podmíněného přístupu](howto-conditional-access-report-only.md)
+[Konfigurace režimu pouze pro sestavy na základě zásad podmíněného přístupu](howto-conditional-access-insights-reporting.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853917"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047624"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Pro změnu výchozích možností zálohování pro existující účet Azure Co
 
    * **Uchovávání záloh** – představuje období, ve kterém je každá záloha zachována. Můžete ji nakonfigurovat v hodinách nebo dnech. Minimální doba uchovávání nesmí být kratší než dvojnásobek intervalu zálohování (v hodinách) a nemůže být delší než 720 hodin.
 
-   * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete další kopie, musíte vytvořit žádost o podporu prostřednictvím Azure Portal a budou se účtovat další kopie. V části spotřebované úložiště na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) se dozvíte, jak přesně pocenou za další kopie.
+   * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete víc než dvě kopie, účtuje se další poplatek. V části spotřebované úložiště na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) se dozvíte, jak přesně pocenou za další kopie.
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurace intervalu zálohování a uchování pro existující účet Azure Cosmos" border="true":::
 

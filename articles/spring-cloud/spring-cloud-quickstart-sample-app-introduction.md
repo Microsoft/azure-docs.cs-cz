@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d833c8f136a71d563ce10240f03e2c68e9131687
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: d8eee715a3ac2256838b37c1c6722aa1307f6dd0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951892"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046778"
 ---
 # <a name="introduction-to-piggy-metrics-sample-app"></a>Seznámení s ukázkovou aplikací metrik Piggy
 
-V tomto rychlém startu budeme k tomu, abyste zjistili, jak nasadit aplikaci do jarní cloudové služby Azure, použijeme ukázku osobních finančních prostředků pro ověření konceptu s názvem Piggy metriky. Metriky Piggy demonstrují vzor architektury mikroslužeb a v následujících částech se zvýrazní rozpis služeb. Uvidíte, jak se nasazuje do Azure s výkonnými možnostmi Azure jaře cloudu ze zjišťování služeb, konfiguračního serveru do protokolů, metrik a distribuovaného trasování.
+V tomto rychlém startu používáme osobní finanční vzorek s názvem metriky Piggy, který vám ukáže, jak nasadit aplikaci do jarní cloudové služby Azure. Metriky Piggy ukazují vzor architektury mikroslužeb a zvýrazňují rozpis služeb. Uvidíte, jak se nasazuje v Azure s využitím výkonných cloudových možností Azure, včetně zjišťování služeb, konfiguračního serveru, protokolů, metrik a distribuovaného trasování.
 
 Pokud chcete postupovat podle příkladů nasazení v cloudu Azure, stačí pouze umístění zdrojového kódu, který je k dispozici v případě potřeby.
 
 ## <a name="functional-services"></a>Funkční služby
-Metriky Piggy se rozloží na tři základní mikroslužby. Všechny z nich jsou nezávisle nasazené aplikace uspořádané kolem obchodních domén.
+Metriky Piggy se rozloží na tři základní mikroslužby. Všechny z nich jsou nezávisle nasaditelné aplikace uspořádané podle obchodních domén.
 
 * **Služba účtu (která se má nasadit)**: obsahuje obecné logiky vstupu a ověřování uživatelů: položky, úspory a nastavení výdajů, úspory a nastavení účtu.
 * **Služba statistiky (nepoužívá se v tomto rychlém startu)**: provádí výpočty hlavních parametrů statistiky a zachycuje časovou řadu pro každý účet. DataPoint obsahuje hodnoty normalizované na základní měnu a časové období. Tato data se používají ke sledování dynamiky peněžního toku v době životnosti účtu.
@@ -32,8 +32,8 @@ V distribuovaných systémech je několik běžných vzorů, které vám pomůž
 
 * **Služba konfigurace (hostovaná pomocí jarního cloudu Azure)**: Azure pro konfiguraci jarního cloudu je horizontálně škálovatelná centralizovaná služba Konfigurace distribuovaných systémů. Používá připojitelné úložiště, které aktuálně podporuje místní úložiště, Git a podverze.
 * **Zjišťování služeb (hostované v Azure jaře Cloud)**: umožňuje automatické zjišťování síťových umístění pro instance služby, které by mohly mít dynamicky přiřazené adresy kvůli automatickému škálování, selhání a upgradům.
-* **Služba ověřování (bude nasazena)** Zodpovědnost za autorizaci jsou kompletně extrahovány na samostatný server, který uděluje OAuth2 tokeny pro back-endové služby prostředků. Auth server provádí autorizaci uživatelů a zabezpečenou komunikaci mezi počítačem a počítačem v hraniční síti.
-* **Brána API (bude nasazena)**: tři základní služby zveřejňují externí rozhraní API pro klienta. V reálných systémech se počet funkcí může velmi rychle zvětšovat pomocí složitosti systému. K vykreslování jedné komplexní webové stránky se můžou zapojit stovky služeb. Brána API je jedním vstupním bodem systému, který slouží ke zpracování požadavků a jejich směrování do příslušné služby back-end nebo k vyvolání více služeb back-end, k agregaci výsledků. 
+* **Ověřovací služba (k nasazení)** Zodpovědnost za autorizaci jsou kompletně extrahovány na samostatný server, který uděluje OAuth2 tokeny pro back-endové služby prostředků. Auth server provádí autorizaci uživatelů a zabezpečenou komunikaci mezi počítačem a počítačem v hraniční síti.
+* **Brána API (k nasazení)**: tři základní služby zveřejňují externí rozhraní API pro klienta. V reálných systémech se počet funkcí může velmi rychle zvětšovat pomocí složitosti systému. K vykreslování jedné komplexní webové stránky se můžou zapojit stovky služeb. Brána API je jedním vstupním bodem systému, který slouží ke zpracování požadavků a jejich směrování do příslušné služby back-end nebo k vyvolání více služeb back-end, k agregaci výsledků. 
 
 ## <a name="sample-usage-of-piggy-metrics"></a>Ukázkové použití metrik Piggy
 Podrobnosti o úplné implementaci najdete v tématu [metriky Piggy](https://github.com/Azure-Samples/piggymetrics). Ukázky odkazují na zdrojový kód podle potřeby.

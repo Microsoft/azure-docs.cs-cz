@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 72f6cee18664f63e36c38499e77f4c0ba7177c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386856"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050450"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Ověřování služby Azure SignalR s využitím služby Azure Functions
 
@@ -26,7 +26,7 @@ Podrobný kurz vytvoření chatovací místnosti s ověřováním a zasíláním
 * [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/?WT.mc_id=serverlesschatlab-tutorial-antchu) – Všesměrové vysílání nových zpráv připojeným chatovacím klientům
 * [Azure Storage](https://azure.microsoft.com/services/storage/?WT.mc_id=serverlesschatlab-tutorial-antchu) – Hostování statického webu pro uživatelské rozhraní chatovacího klienta
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz se vyžaduje následující software.
 
@@ -38,9 +38,13 @@ Pro tento kurz se vyžaduje následující software.
   * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) – umožňuje pracovat se službou Azure Functions ve VS Code
   * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) – místně obsluhuje webové stránky pro účely testování
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
+
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přejděte na web [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí svých přihlašovacích údajů.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-an-azure-signalr-service-instance"></a>Vytvoření instance služby Azure SignalR Service
 
@@ -48,7 +52,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 
 1. Klikněte na tlačítko **vytvořit prostředek** ( **+** ) pro vytvoření nového prostředku Azure.
 
-1. Vyhledejte a vyberte **službu SignalR**. Klikněte na **Vytvořit**.
+1. Vyhledejte a vyberte **službu SignalR**. Klikněte na možnost **Vytvořit**.
 
     ![Nová služba SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
@@ -61,12 +65,13 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
     | Umístění | Vyberte umístění, které je blízko vás. |
     | Cenová úroveň | Free |
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Změňte nastavení režimu služby na možnost bez *serveru*.
 
     ![Režim služby Signal](media/signalr-concept-azure-functions/signalr-service-mode.png)
-
+    
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="initialize-the-function-app"></a>Inicializace aplikace funkcí
 
@@ -129,9 +134,9 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
 
      ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
-1. Soubor uložte.
+1. Uložte soubor.
 
-    
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Vytvoření funkce pro ověřování uživatelů ve službě SignalR
 
@@ -146,7 +151,7 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
 
 1. Po zobrazení výzvy zadejte tyto informace.
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     |---|---|
     | Složka aplikace funkcí | Vyberte hlavní složku projektu. |
     | Šablona | Trigger HTTP |
@@ -194,6 +199,8 @@ Při prvním otevření chatovací aplikace v prohlížeči se vyžadují platn�
     ```
 
     Tato funkce převezme ze vstupní vazby informace o připojení ke službě SignalR a vrátí je klientovi v textu odpovědi HTTP. Klient nástroje Signal použije tyto informace pro připojení k instanci služby signalizace.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-send-chat-messages"></a>Vytvoření funkce pro odesílání zpráv chatu
 
@@ -247,7 +254,7 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
     * Trasa se změní na `messages` a trigger HTTP se omezí na metodu HTTP **POST**.
     * Přidá výstupní vazbu služby signalizace, která odešle zprávu vrácenou funkcí všem klientům připojeným k centru služby signalizace s názvem `chat` .
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 1. Otevřete soubor **SendMessage/index.js** a prohlédněte si tělo funkce. Následujícím způsobem upravte obsah souboru.
 
@@ -274,7 +281,9 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
 
     Tato funkce může přečíst identitu odesilatele a přijímat v textu zprávy hodnotu *recipient*, která umožňuje soukromě odeslat zprávu jedinému uživateli. Tyto funkce použijete v pozdější části kurzu.
 
-1. Soubor uložte.
+1. Uložte soubor.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>Vytvoření a spuštění webového uživatelského rozhraní chatovacího klienta
 
@@ -286,13 +295,15 @@ Uživatelské rozhraní chatovací aplikace je jednoduchá jednostránková apli
 
 1. Zkopírujte a vložte do něj obsah souboru **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)**.
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 1. Stisknutím **F5** místně spusťte aplikaci funkcí a připojte k ní ladicí program.
 
 1. Když máte otevřený soubor **index.html**, spusťte Live Server tím, že otevřete paletu příkazů VS Code (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`) a vyberete **Live Server: Open with Live Server** (Live Server: Otevřít pomocí rozšíření Live Server). Live Server otevře aplikaci v prohlížeči.
 
 1. Aplikace se otevře. Zadejte do okna chatu zprávu a stiskněte Enter. Aktualizujte aplikaci, aby se zobrazily nové zprávy. Vzhledem k tomu, že není nakonfigurované žádné ověřování, budou se všechny zprávy odesílat jako anonymní.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Nasazení do Azure a povolení ověřování
 
@@ -316,7 +327,7 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     |---|---|
     | Předplatné | Vyberte předplatné, které obsahuje instanci služby signalizace. |
     | Skupina prostředků | Vyberte stejnou skupinu prostředků. |
@@ -363,7 +374,7 @@ Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat 
     }
     ```
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 
 ### <a name="deploy-function-app-to-azure"></a>Nasazení aplikace Function App do Azure
@@ -438,7 +449,7 @@ Ověřování pomocí služby App Service podporuje ověřování přes Azure Ac
 
 1. Pro aplikaci je možné nakonfigurovat ověřování přes Azure Active Directory, Facebook, Twitter, účet Microsoft nebo Google. Nastavením hodnoty `authProvider` vyberte zprostředkovatele ověřování, kterého budete používat.
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 ### <a name="deploy-the-web-application-to-blob-storage"></a>Nasazení webové aplikace do úložiště objektů blob
 
@@ -450,7 +461,7 @@ K hostování webové aplikace využijeme funkci statického webu ve službě Az
 
 1. Zadejte tyto hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     |---|---|
     | Předplatné | Vyberte své předplatné. |
     | Účet úložiště | Vyberte účet úložiště, který jste vytvořili dříve. |
@@ -486,13 +497,17 @@ Přestože soubor **local.settings.json** obsahuje nastavení CORS, toto nastave
 
 1. Soukromé zprávy můžete odesílat kliknutím na uživatelské jméno v historii chatu. Tyto zprávy obdrží pouze vybraný příjemce.
 
-Blahopřejeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
+Gratulujeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
 
 ![Ukázka](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, pomocí webu Azure Portal odstraňte skupinu prostředků.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -500,3 +515,6 @@ V tomto kurzu jste zjistili, jak používat Azure Functions se službou Azure Si
 
 > [!div class="nextstepaction"]
 > [Sestavování aplikací v reálném čase pomocí Azure Functions](signalr-concept-azure-functions.md)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
+

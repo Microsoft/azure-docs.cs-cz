@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835880"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049685"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
@@ -18,7 +18,7 @@ Tento článek popisuje běžné problémy související s připojením k síti 
 
 Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů.
 
-| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| **Name**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net` . |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery. |
@@ -80,11 +80,8 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="AAD – značka":::
 
-1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy Site Recovery, které odpovídají cílovému umístění:
-
-   | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
-   | --- | --- | --- |
-   | Střední USA | 40.69.144.231 | 52.165.34.144 |
+1. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
 #### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
@@ -100,11 +97,8 @@ V tomto příkladu jsou potřeba tato pravidla NSG, aby bylo možné replikaci z
    - **Značka cílové služby**: _azureactivedirectory selhala_
    - **Rozsahy cílových portů**: _443_
 
-1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy Site Recovery, které odpovídají zdrojovému umístění:
-
-   | Umístění | Site Recovery IP adresa | IP adresa monitorování Site Recovery |
-   | --- | --- | --- |
-   | East US | 13.82.88.226 | 104.45.147.24 |
+1. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" na NSG, které odpovídá zdrojovému umístění. To umožňuje přístup k Site Recovery monitorování.
+1. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
 
@@ -127,8 +121,8 @@ Vlastní nastavení proxy serveru je neplatné a agent služby Azure Site Recove
 1. Agent služby mobility detekuje nastavení proxy serveru z IE ve Windows a `/etc/environment` v systému Linux.
 1. Pokud dáváte přednost nastavení proxy serveru jenom pro Azure Site Recovery služby mobility, můžete zadat podrobnosti o proxy serveru v souboru _ProxyInfo. conf_ , který najdete na adrese:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo. conf_ by měl mít nastavení proxy v následujícím formátu _ini_ :
 

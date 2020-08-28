@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548307"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047050"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -235,7 +235,7 @@ ID definice zásad, které jste vytvořili, by mělo vypadat jako v následujíc
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Další informace o tom, jak můžete spravovat zásady prostředků pomocí Azure CLI, najdete v tématu [zásady prostředků Azure CLI](/cli/azure/policy?view=azure-cli-latest).
+Další informace o tom, jak můžete spravovat zásady prostředků pomocí Azure CLI, najdete v tématu [zásady prostředků Azure CLI](/cli/azure/policy).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -243,6 +243,6 @@ Další informace o příkazech a dotazech v tomto článku najdete v následuj�
 
 - [Prostředky Azure REST API](/rest/api/resources/)
 - [Moduly Azure PowerShell](/powershell/module/az.resources/#policies)
-- [Příkazy zásad Azure CLI](/cli/azure/policy?view=azure-cli-latest)
+- [Příkazy zásad Azure CLI](/cli/azure/policy)
 - [Referenční informace o REST API poskytovatele prostředků Azure Policy Insights](/rest/api/policy-insights)
 - [Uspořádání prostředků s využitím skupin pro správu Azure.](../../management-groups/overview.md)

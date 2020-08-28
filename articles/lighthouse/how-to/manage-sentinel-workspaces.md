@@ -1,14 +1,14 @@
 ---
 title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511248"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050807"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -29,7 +29,7 @@ Tento centralizovaný model nasazení má následující výhody:
 
 - Vlastnictví dat zůstává u každého spravovaného tenanta.
 - Podporuje požadavky na ukládání dat v rámci geografických hranic.
-- Zajišťuje izolaci dat, protože data pro více zákazníků nejsou uložená ve stejném pracovním prostoru. 
+- Zajišťuje izolaci dat, protože data pro více zákazníků nejsou uložená ve stejném pracovním prostoru.
 - Zabraňuje tomu, aby se data exfiltrace ze spravovaných tenantů, což pomáhá zajistit dodržování dat.
 - Související náklady se účtují na každého spravovaného tenanta, nikoli na řízení tenanta.
 - Data ze všech zdrojů dat a datových konektorů, které jsou integrovány pomocí služby Azure Sentinel (například protokoly aktivit Azure AD, protokoly Office 365 nebo výstrahy ochrany Microsoft Threat Protection), zůstanou v rámci každého tenanta zákazníka.
@@ -71,13 +71,21 @@ Sešity můžete nasadit také přímo do samostatného tenanta, který spravuje
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Spouštění Log Analytics a loveckých dotazů napříč pracovními prostory Azure Sentinel
 
-Můžete vytvořit a uložit Log Analytics dotazy pro detekci hrozeb centrálně ve správě tenanta, včetně [loveckých dotazů](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Tyto dotazy se pak dají spouštět napříč všemi vašimi pracovními prostory Azure Sentinel ve vašich zákaznících pomocí operátoru Union a výrazu pracovního prostoru (). Další informace najdete v tématu [dotazování mezi jednotlivými pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Vytvářejte a neukládejte Log Analytics dotazy pro detekci hrozeb centrálně ve správě tenanta, včetně [loveckých dotazů](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Tyto dotazy se pak dají spouštět napříč všemi vašimi pracovními prostory Azure Sentinel ve vašich zákaznících pomocí operátoru Union a výrazu pracovního prostoru (). Další informace najdete v tématu [dotazování mezi jednotlivými pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Použití automatizace pro správu mezi jednotlivými pracovními prostory
 
 Službu Automation můžete použít ke správě několika pracovních prostorů služby Azure Sentinel a ke konfiguraci [loveckých dotazů](../../sentinel/hunting.md), playbooky a sešitů. Další informace najdete v tématu [Správa mezi jednotlivými pracovními prostory pomocí automatizace](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
 Všimněte si, že některé možnosti se [v současné době nepodporují napříč několika pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
+
+## <a name="manage-security-of-office-365-environments"></a>Správa zabezpečení prostředí Office 365
+
+Pomocí Azure Lighthouse ve spojení se službou Azure Sentinel můžete spravovat zabezpečení prostředí Office 365 napříč klienty. Nejdřív je nutné, aby [byly ve spravovaném tenantovi zapnuté datové konektory Office 365](../../sentinel/connect-office-365.md) , aby se informace o aktivitách uživatelů a správců v Exchange a SharePointu (včetně OneDrivu) mohly ingestovat do pracovního prostoru Sentinel Azure v rámci spravovaného tenanta. Zahrnuje to i podrobnosti o akcích, jako jsou soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny a operace poštovních schránek, a informace o uživatelích, kteří akce provedli. [Výstrahy ochrany před únikem informací office 365](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) jsou také podporovány v rámci integrovaného konektoru sady Office 365.
+
+[Konektor Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md) můžete povolit pro streamování výstrah a Cloud Discovery přihlášení do Azure Sentinel. To vám umožní získat přehled o cloudových aplikacích, získávat sofistikované analýzy, které identifikují a bojovat proti týká kybernetických hrozeb a řídí, jak se data cestují. Protokoly aktivit pro MCAS se dají [spotřebovat pomocí formátu CEF (Common Event Format)](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
+
+Po nastavení datových konektorů Office 365 můžete použít možnosti Azure Sentinel mezi klienty, jako je zobrazení a analýza dat v sešitech, používání dotazů k vytváření vlastních výstrah a konfigurace playbooky pro reakci na hrozby.
 
 ## <a name="next-steps"></a>Další kroky
 

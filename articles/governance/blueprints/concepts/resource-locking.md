@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383594"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051498"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -28,7 +28,7 @@ Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyř
 |-|-|-|-|
 |Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí Azure modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo **neodstraňují** artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
-|Jen pro čtení|Skupina bez prostředků|Jen pro čtení|Prostředek se nedá změnit jakýmkoli způsobem – bez změn a nedá se odstranit.|
+|Jen pro čtení|Skupina bez prostředků|Jen pro čtení|Prostředek nelze žádným způsobem změnit. Žádné změny a nelze ji odstranit.|
 |Neodstraňovat|*|Nejde odstranit|Prostředky je možné změnit, ale nelze je odstranit. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
 
 ## <a name="overriding-locking-states"></a>Přepsání stavů uzamčení
@@ -182,8 +182,8 @@ Zatímco **excludedPrincipals** musí být explicitní, položky **excludedActio
 ## <a name="next-steps"></a>Další kroky
 
 - Postupujte podle kurzu [ochrany nových prostředků](../tutorials/protect-new-resources.md) .
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
+- Další informace o [životním cyklu podrobného plánu](./lifecycle.md)
+- Principy použití [statických a dynamických parametrů](./parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](./sequencing-order.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)
