@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: Šifrování dat
           href: data-protection.md
+        - name: Geografická redundance
+          href: geo-redundancy.md
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru

@@ -246,7 +246,7 @@
               href: application-types.md
             - name: Přiřazený neočekávaný uživatel
               href: ways-users-get-assigned-to-applications.md
-        - name: Řešení potíží na přístupovém panelu
+        - name: Řešení potíží se sekcí Moje aplikace
           items:
             - name: Správa rozšíření prohlížeče
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: Nejde se přihlásit
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Chyba při instalaci rozšíření prohlížeče
-              href: access-panel-extension-problem-installing.md
             - name: Chyba při využívání samoobslužného přístupu k aplikacím
               href: access-panel-troubleshoot-self-service-access.md
         - name: Řešení potíží s místními aplikacemi

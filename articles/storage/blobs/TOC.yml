@@ -347,6 +347,8 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Použití rozhraní REST API služby Azure Storage
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Zabránění v autorizaci pomocí sdíleného klíče
+                  href: ../common/shared-key-authorization-prevent.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Delegování přístupu s využitím sdílených přístupových podpisů (SAS)
               items:
                 - name: Vytvoření SAS delegování uživatele

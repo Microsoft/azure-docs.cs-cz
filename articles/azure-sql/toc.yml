@@ -986,9 +986,11 @@
                 - name: Model licencí
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Edice
+                - name: Změna edice
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Změna verze
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Integrace se službou Azure Key Vault
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Skupina dostupnosti Always On
                   items:
+                    - name: portál Azure
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell nebo Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Šablony Azure pro rychlé zprovoznění

@@ -10,14 +10,21 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Spuštění aplikace Spring Cloudu – portál
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spuštění aplikace Spring Cloudu – Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spuštění aplikace Spring Cloudu – zdroj
-      href: spring-cloud-launch-from-source.md
-    - name: Spuštění aplikace Spring Cloudu – Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: Spuštění první aplikace
+      href: spring-cloud-quickstart.md
+    - name: Sestavování a spouštění mikroslužeb
+      expanded: true
+      items:
+        - name: Seznámení s ukázkovými aplikacemi
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Zřízení služby Azure Spring Cloud
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: Nastavení konfiguračního serveru
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: "Sestavování a\_nasazování aplikací"
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 'Použití protokolů, metrik a trasování'
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Kurzy
   items:
     - name: Ruční škálování aplikace
