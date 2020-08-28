@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953354"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004336"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Použití IoT DevKit AZ3166 s Azure Functions a Cognitive Services k vytvoření překladatele jazyka
 
@@ -29,7 +30,7 @@ K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 
 ## <a name="create-azure-cognitive-service"></a>Vytvořit službu pro rozpoznávání Azure
 
-1. V Azure Portal klikněte na **vytvořit prostředek** a vyhledejte **řeč**. Vyplňte formulář pro vytvoření služby pro rozpoznávání řeči.
+1. V Azure Portal klikněte na **vytvořit prostředek** a vyhledejte **řeč**. Vyplňte formulář pro vytvoření služby Speech.
   ![Služba Speech](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Přejděte ke službě rozpoznávání řeči, kterou jste právě vytvořili, klikněte na tlačítko **klíče** a zkopírujte a poznamenejte si **klíč1** pro DevKit přístupu k němu.
@@ -51,7 +52,7 @@ K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 1. Podle pokynů dokončete zřizování Azure IoT Hub a Azure Functions.
    ![Zřídit kroky](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   Poznamenejte si název zařízení IoT Hub Azure, které jste vytvořili.
+   Poznamenejte si název zařízení Azure IoT Hub, které jste vytvořili.
 
 1. Otevřete `Functions\DevKitTranslatorFunction.cs` a aktualizujte následující řádky kódu s názvem zařízení a klíčem služby Speech, který jste si poznamenali.
    ```csharp
@@ -101,17 +102,17 @@ K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 
 ## <a name="test-the-project"></a>Testování projektu
 
-Po inicializaci aplikace postupujte podle pokynů na obrazovce DevKit. Výchozí zdrojový jazyk je čínský.
+Po inicializaci aplikace postupujte podle pokynů na obrazovce DevKit. Výchozí zdrojový jazyk je čínština.
 
-Chcete-li vybrat jiný jazyk pro překlad:
+Pokud chcete vybrat pro překlad jiný jazyk:
 
-1. Stisknutím tlačítka A zadáte režim instalace.
+1. Stiskněte tlačítko A a vstupte do režimu nastavení.
 
-2. Stisknutím tlačítka B posuňte všechny podporované zdrojové jazyky.
+2. Stiskněte tlačítko B a projděte všechny podporované zdrojové jazyky.
 
 3. Stisknutím tlačítka A potvrďte zvolený zdrojový jazyk.
 
-4. Stiskněte a držte tlačítko B při mluvení a pak stiskněte tlačítko B pro zahájení překladu.
+4. Stiskněte a podržte tlačítko B a mluvte. Potom tlačítko B uvolněte a spusťte překlad.
 
 5. Přeložený text v angličtině se zobrazí na obrazovce.
 
@@ -119,11 +120,11 @@ Chcete-li vybrat jiný jazyk pro překlad:
 
 ![Výsledek překladu](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-Na obrazovce výsledek překladu můžete:
+Na obrazovce s výsledkem překladu:
 
-- Stisknutím tlačítek A a B se posuňte a vyberte zdrojový jazyk.
+- Stisknutím tlačítek A a B se můžete posouvat a vybrat zdrojový jazyk.
 
-- Pokud chcete mluvit, stiskněte tlačítko B. Chcete-li odeslat hlas a získat text překladu, uvolněte tlačítko B.
+- Můžete stisknout tlačítko B a mluvit. Pokud chcete odeslat řeč a získat přeložený text, uvolněte tlačítko B.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

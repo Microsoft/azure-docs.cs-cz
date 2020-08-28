@@ -3,12 +3,13 @@ title: Zabalení aplikace Service Fabric v Azure
 description: Přečtěte si o balení aplikace Service Fabric v Azure a o tom, jak připravit nasazení na cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260964"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012394"
 ---
 # <a name="package-an-application"></a>Balení aplikace
 

@@ -5,12 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256301"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012649"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidat vlastní sestavy o stavu Service Fabric
 Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) , který je navržený tak, aby na konkrétní entity mohl označovat stav není v pořádku a podmínky použití aplikace. Model stavu používá **sestavy stavu** (systémové součásti a sledovací zařízení). Cílem je snadno a rychle diagnostikovat a opravit. Zapisovače služeb se musí představit předem o stavu. Všechny podmínky, které mohou ovlivnit stav, by měly být hlášeny, zejména v případě, že mohou přispět k potížím s příznakem blízko ke kořenu. Informace o stavu mohou ušetřit čas a úsilí při ladění a vyšetřování. Užitečnost je obzvláště jasné, když je služba v cloudu (soukromá nebo Azure) v provozu.
@@ -172,7 +173,7 @@ Vytváření sestav o přechodech dává smysl pro služby, které se samy hlás
 ## <a name="implement-health-reporting"></a>Implementace vytváření sestav o stavu
 Jakmile jsou informace o entitě a sestavě jasné, můžete odesílat sestavy o stavu prostřednictvím rozhraní API, PowerShellu nebo REST.
 
-### <a name="api"></a>Rozhraní API
+### <a name="api"></a>rozhraní API
 K vytváření sestav přes rozhraní API potřebujete vytvořit sestavu o stavu, která je specifická pro typ entity, na kterou chtějí nahlásit. Poskytněte zprávu klientovi stavu. Případně můžete vytvořit informace o stavu a předat je do správné metody vytváření sestav `Partition` u `CodePackageActivationContext` aktuálních entit.
 
 Následující příklad ukazuje pravidelné generování sestav z sledovacího zařízení v rámci clusteru. Sledovací zařízení kontroluje, jestli je k externímu prostředku možné přistupovat v rámci uzlu. Prostředek vyžaduje manifest služby v rámci aplikace. Pokud prostředek není k dispozici, ostatní služby v aplikaci mohou stále fungovat správně. Proto je sestava odeslána na nasazenou entitu balíčku služby každých 30 sekund.

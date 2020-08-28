@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892418"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004982"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -321,7 +321,7 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-Výše uvedený výstup znamená, že se můžete vrátit k jakémukoli bodu v čase mezi zobrazeným časem zahájení a časem ukončení. Časy jsou v čase UTC. Vytvořte jakýkoli bod v čase v prostředí PowerShell, který je v rozsahu zobrazeném výše.
+Výše uvedený výstup znamená, že se můžete vrátit k jakémukoli bodu v čase mezi zobrazeným časem zahájení a časem ukončení. Časy jsou v čase UTC. Vytvořte všechny body v čase v prostředí PowerShell, které jsou v rozsahu uvedeném výše.
 
 > [!NOTE]
 > Když je vybraný bod protokolu pro obnovení, nemusíte zadávat výchozí bod, tedy úplnou zálohu, ze které se databáze obnovuje. Služba Azure Backup se postará o celý plán obnovení, tedy o tom, která úplná záloha má vybrat, jaké zálohy protokolů se mají použít, a tak dále.
@@ -380,7 +380,7 @@ $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConf
 
 ##### <a name="restore-as-files"></a>Obnovit jako soubory
 
-Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory** . Zálohovanou databázi SQL je možné obnovit do libovolného cílového virtuálního počítače, který je zaregistrován v tomto trezoru.
+Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možnost **Obnovit jako soubory** . Zálohovaná databáze SQL se dá obnovit na libovolný cílový virtuální počítač, který se zaregistruje do tohoto trezoru.
 
 ```powershell
 $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
@@ -582,7 +582,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Je důležité si uvědomit, že Azure Backup jenom sleduje úlohy aktivované uživatelem v zálohování SQL. Plánované zálohy (včetně záloh protokolu) nejsou na portálu nebo v PowerShellu viditelné. Pokud ale některé naplánované úlohy selžou, vygeneruje se [Výstraha zálohování](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) , která se zobrazí na portálu. Ke sledování všech naplánovaných úloh a dalších relevantních informací [použijte Azure monitor](backup-azure-monitoring-use-azuremonitor.md) .
 
-Uživatelé mohou sledovat operace aktivované na vyžádání/uživatelem pomocí ID úlohy, která je vrácena ve [výstupu](#on-demand-backup) asynchronních úloh, jako je například zálohování. Pomocí rutiny [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) prostředí PowerShell můžete sledovat úlohu a její podrobnosti.
+Uživatelé mohou sledovat operace aktivované na vyžádání/uživatelem s ID úlohy, která je vrácena ve [výstupu](#on-demand-backup) asynchronních úloh, jako je například zálohování. Pomocí rutiny [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) prostředí PowerShell můžete sledovat úlohu a její podrobnosti.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

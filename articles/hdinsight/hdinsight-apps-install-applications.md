@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212832"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016032"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Apache Hadoop třetích stran v Azure HDInsight
 
@@ -29,7 +29,7 @@ Publikované aplikace jsou uvedeny v následujícím seznamu:
 |[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první sjednocená integrační platforma pro velké objemy dat, která zrychluje dobu na hodnotu Hadoop a umožňuje IT oddělení poskytovat data samoobslužných služeb. Open Source a rozšiřitelné CDAP odstraňují překážky při inovacích. Požadavky: 4 uzly oblasti, min D3 v2. |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Datameerá škálovatelná platforma pro přípravu, prozkoumávání a řízení vašich dat pro účely analýzy urychluje převádění složitých zdrojů dat na cenné informace připravené pro firmy. díky rychlejšímu poskytování lepších informací na podnikové úrovni. |
 |[Dataiku DSS ve službě HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS pro podnikovou datovou vědeckou platformu, která umožňuje odborníkům přes data a analytikům v oblasti IT efektivněji navrhovat a spouštět nové datové produkty a služby a přepínat nezpracovaná data na ovlivněné předpovědi. |
-|[Aplikace HDI pro WANdisco Fusion](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBA, více Kafka |Udržování dat konzistentních v distribuovaném prostředí je náročné na zpracování datových operací. WANdisco fúze, softwarová platforma na podnikové úrovni, řeší tento problém tím, že umožňuje nestrukturovaná konzistenci dat napříč jakýmkoli prostředím. |
+|[Aplikace HDI pro WANdisco Fusion](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBA, více Kafka |Udržování dat konzistentních v distribuovaném prostředí je náročné na zpracování datových operací. WANdisco fúze, softwarová platforma na podnikové úrovni, řeší tento problém tím, že umožňuje nestrukturovaná konzistenci dat napříč jakýmkoli prostředím. |
 |[SparklingWater pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |Sparková voda podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuovaná náhodná doménová struktura, počítač s hloubkovou neuronové sítí, obsáhlý Learning, K-znamená, DPS, zobecněné modely nízké klasifikace, detekce anomálií, autoencoders. |
 |[Striim pro integraci dat v reálném čase do HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBA, Kafka, Spark, |Striim ("Stream") je ucelená platforma pro integraci dat a datovou sadu, která umožňuje průběžné přijímání, zpracování a analýzu různorodých datových proudů. |
 |[Jumbune Enterprise – zrychlení BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune pomáhá podnikům na vysoké úrovni – 1. Urychlení tez, MapReduce &ý podregistr založená na modulech Spark, Java a Scala úlohy. 2. Proaktivní monitorování clusteru Hadoop, 3. Vytváření správy kvality dat v systému souborů DFS. |
@@ -51,7 +51,7 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 **Instalace aplikace HDInsight**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
@@ -75,7 +75,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 **Výpis vlastností aplikace a zobrazení HDInsight**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 

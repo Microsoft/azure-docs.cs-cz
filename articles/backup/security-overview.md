@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890463"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012547"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -36,7 +36,7 @@ Pomocí Azure Backup, která zahrnuje zálohování virtuálních počítačů a
 
 Zálohování virtuálních počítačů Azure vyžaduje přesun dat z disku virtuálního počítače do trezoru Recovery Services. Veškerá požadovaná komunikace a přenos dat se ale stane jenom v páteřní síti Azure, aniž by bylo potřeba mít přístup k virtuální síti. Zálohování virtuálních počítačů Azure umístěných v zabezpečených sítích proto nevyžaduje povolení přístupu k žádným IP adresám nebo plně kvalifikovaným názvům domén.
 
-## <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro službu Azure Backup
+## <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) teď můžete data bezpečně zálohovat ze serverů ve virtuální síti do svého trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor, takže nemusíte zveřejňovat virtuální sítě pro žádné veřejné IP adresy. Pomocí privátních koncových bodů se dají zálohovat a obnovovat databáze SQL a SAP HANA, které běží v rámci virtuálních počítačů Azure. Dá se taky použít pro vaše místní servery pomocí agenta MARS.
 
@@ -70,7 +70,7 @@ Služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) 
 
 * Data odstraněných záloh se uchovávají po dobu dalších 14 dní od data odstranění. Tím je zajištěna obnova dat během daného časového období, takže nedochází ke ztrátě dat, i když dojde k útoku. Pro ochranu před poškozenými daty je také udržován větší počet minimálních bodů obnovení. [Přečtěte si další informace o obnově odstraněných zálohovaných dat](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
-* Pro data zálohovaná pomocí agenta Microsoft Azure Recovery Services (MARS) se před odesláním do Azure Backup a dešifrují data, která se zašifrují po stažení z Azure Backup, k zajištění šifrování dat. Podrobnosti přístupového hesla jsou dostupné jenom uživateli, který vytvořil heslo, a agenta, který je s ním nakonfigurovaný. Žádná služba není přenášená ani sdílená se službou. Tím zajistíte, že se data, která se nechtěně zveřejňují (například útok prostředníkem na síť), dokončí bez hesla a heslo se v síti nepošle.
+* Pro data zálohovaná pomocí agenta Microsoft Azure Recovery Services (MARS) se před odesláním do Azure Backup a dešifrují data, která se zašifrují po stažení z Azure Backup, k zajištění šifrování dat. Podrobnosti přístupového hesla jsou dostupné jenom uživateli, který vytvořil heslo, a agenta, který je s ním nakonfigurovaný. Žádná služba není přenášená ani sdílená se službou. Díky tomu zajistíte kompletní zabezpečení vašich dat, protože všechna data, která se nechtěně zveřejňují (například útok prostředníkem na síti), není možné použít bez přístupového hesla a heslo se neposílá přes síť.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Dodržování standardních požadavků na zabezpečení
 

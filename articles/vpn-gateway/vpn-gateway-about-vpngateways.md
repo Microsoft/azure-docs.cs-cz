@@ -6,20 +6,19 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855614"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015386"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
 Brána VPN je specifický typ brány virtuální sítě, která se používá k posílání šifrovaného provozu mezi virtuální sítí Azure a místním umístěním přes veřejný internet. Bránu VPN můžete použít také k posílání šifrovaného provozu mezi virtuálními sítěmi Azure po síti Microsoftu. Každá virtuální síť může mít pouze jednu bránu VPN. K jedné bráně VPN však můžete vytvořit několik připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma.
-
-Brány VPN se dají nasadit v Zóny dostupnosti Azure. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. Další informace najdete [v tématu o branách redundantní virtuální sítě v zóně zóny dostupnosti Azure](about-zone-redundant-vnet-gateways.md).
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Co je brána virtuální sítě?
 
@@ -33,9 +32,15 @@ Vytvoření vytváření brány virtuální sítě může trvat až 45 minut. P
 
 Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných se specifickými nastaveními. Většinu prostředků je možné nakonfigurovat jednotlivě, nicméně některé prostředky je potřeba konfigurovat v určitém pořadí.
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>Návrh: diagramy topologie připojení
+### <a name="design"></a><a name="diagrams"></a>Návrh
 
-Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. Například připojení Point-to-site, Site-to-site a souběžná existující ExpressRoute/site-to-site mají různé pokyny a požadavky na konfiguraci. Informace o diagramech návrhu a topologie připojení najdete v tématu [design](design.md).
+Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. Například připojení Point-to-site, Site-to-site a souběžná existující ExpressRoute/site-to-site mají různé pokyny a požadavky na konfiguraci. Informace o návrhu a zobrazení diagramů topologie připojení najdete v tématu [design](design.md).
+
+### <a name="planning-table"></a><a name="planningtable"></a>Plánovací tabulka
+
+Následující tabulka vám může pomoci se zvolením nejlepší možnosti připojení pro vaše řešení.
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>Nastavení
 
@@ -44,12 +49,6 @@ Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření ús
 ### <a name="deployment-tools"></a><a name="tools"></a>Nástroje pro nasazení
 
 Prostředky můžete začít vytvářet a konfigurovat pomocí konfiguračního nástroje, jako je například Azure Portal. Později se můžete rozhodnout používat ke konfiguraci dalších prostředků nebo úpravám stávajících prostředků jiný nástroj, třeba PowerShell. V současné době nelze konfigurovat všechny prostředky a nastavení prostředků pomocí webu Azure Portal. Pokyny v článcích pro každou topologii připojení určují, kdy je zapotřebí specifický konfigurační nástroj.
-
-### <a name="planning-table"></a><a name="planningtable"></a>Plánovací tabulka
-
-Následující tabulka vám může pomoci se zvolením nejlepší možnosti připojení pro vaše řešení.
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Skladové položky brány
 
@@ -62,13 +61,17 @@ Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kter
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
+## <a name="availability-zones"></a><a name="availability"></a>Zóny dostupnosti
+
+Brány VPN se dají nasadit v Zóny dostupnosti Azure. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. Další informace najdete [v tématu o branách redundantní virtuální sítě v zóně zóny dostupnosti Azure](about-zone-redundant-vnet-gateways.md).
+
 ## <a name="pricing"></a><a name="pricing"></a>Ceny
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
 
 Další informace o skladových jednotkách (SKU) brány pro službu VPN Gateway najdete v tématu [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-## <a name="faq"></a><a name="faq"></a>Časté otázky
+## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
 Nejčastější dotazy týkající se služby VPN Gateway najdete v tématu [Nejčastější dotazy ke službě VPN Gateway](vpn-gateway-vpn-faq.md).
 

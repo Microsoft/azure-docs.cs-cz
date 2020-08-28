@@ -3,12 +3,13 @@ title: 'Rychlý Start: první dotaz .NET Core'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení balíčků NuGet pro graf prostředků pro .NET Core a spuštění prvního dotazu.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: b452329148f607b6a71c366c51745906247a43a1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802697"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005866"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí .NET Core
 
@@ -16,9 +17,9 @@ Prvním krokem při použití Azure Resource graphu je ověření, že jsou nain
 
 Na konci tohoto procesu se balíčky přidají do instalace .NET Core a spustí se první dotaz na diagram prostředku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Objekt služby Azure, včetně _ClientID_ a _clientSecret_. Pokud nemáte instanční objekt pro použití s grafem prostředků nebo chcete vytvořit nový, podívejte se na téma knihovny pro [správu Azure pro ověřování .NET](/dotnet/azure/sdk/authentication#mgmt-auth).
   Přeskočte krok pro instalaci balíčků .NET Core, jak to provedeme v dalších krocích.
 
@@ -97,9 +98,9 @@ Díky sestavování a publikování konzolové aplikace .NET Core je čas vyzkou
 
 V každém volání metody `argQuery` jsou použity proměnné, které je třeba nahradit vlastními hodnotami:
 
-- `{tenantId}`– Nahraďte ID tenanta.
-- `{clientId}`– Nahraďte ID klienta objektu služby.
-- `{clientSecret}`– Nahraďte tajným kódem klienta vašeho instančního objektu.
+- `{tenantId}` – Nahraďte ID tenanta.
+- `{clientId}` – Nahraďte ID klienta objektu služby.
+- `{clientSecret}` – Nahraďte tajným kódem klienta vašeho instančního objektu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Změňte adresáře na, `{run-folder}` které jste definovali pomocí předchozího `dotnet publish` příkazu.

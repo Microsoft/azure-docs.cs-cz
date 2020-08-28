@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0fc79cab5868ec7d676c956581407dce308d80ad
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891486"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022509"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -21,9 +21,10 @@ Tento kurz zavádí ukázkovou aplikaci, která implementuje klientskou aplikaci
 Tuto ukázku můžete použít k provádění základních akcí v Azure, jako je nahrávání modelů, vytváření a úpravy vláken a vytváření relací. Můžete se také podívat na kód ukázky, kde se dozvíte o rozhraních API digitálních vláken Azure a postup implementace vlastních příkazů úpravou ukázkového projektu, který byste ale chtěli.
 
 V tomto kurzu budete...
-1. Nastavení instance digitálních vláken Azure
-2. Konfigurace ukázkové aplikace příkazového řádku pro interakci s instancí
-3. Pomocí aplikace z příkazového řádku můžete prozkoumat digitální vlákna Azure, včetně **modelů**, **digitálních vláken**, **vztahů**a **dotazů** .
+> [!div class="checklist"]
+> * Nastavení instance digitálních vláken Azure
+> * Konfigurace ukázkové aplikace příkazového řádku pro interakci s instancí
+> * Pomocí aplikace z příkazového řádku můžete prozkoumat digitální vlákna Azure, včetně **modelů**, **digitálních vláken**, **vztahů**a **dotazů** .
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 

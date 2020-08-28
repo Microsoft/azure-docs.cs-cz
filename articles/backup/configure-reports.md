@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826850"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022390"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -109,7 +109,7 @@ Tato karta slouží k získání přehledu o potenciálních příležitostech p
 
 ###### <a name="inactive-resources"></a>Neaktivní prostředky
 
-Pomocí tohoto zobrazení můžete identifikovat zálohované položky, které po delší dobu neobsahovaly úspěšnou zálohu. To může znamenat, že základní počítač, který se zálohuje, už neexistuje (a výsledkem je selhání zálohování), nebo došlo k nějakému problému s počítačem, který brání spolehlivému zálohování.
+Pomocí tohoto zobrazení můžete identifikovat zálohované položky, které po delší dobu neobsahovaly úspěšnou zálohu. To může znamenat, že základní počítač, který se zálohuje, už neexistuje (a výsledkem je neúspěšné zálohování), nebo je nějaký problém s počítačem, který brání spolehlivému zálohování.
 
 Chcete-li zobrazit neaktivní prostředky, přejděte na kartu **optimalizace** a vyberte dlaždici **neaktivní prostředky** . Kliknutím na tuto dlaždici zobrazíte mřížku, která obsahuje podrobnosti o všech neaktivních prostředcích, které existují ve vybraném oboru. Ve výchozím nastavení mřížka zobrazuje položky, které nemají bod obnovení za posledních sedm dnů. Pokud chcete najít neaktivní prostředky pro jiný časový rozsah, můžete upravit filtr **časového rozsahu** v horní části karty.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661550"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013000"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -165,6 +165,30 @@ Rozhraní API volá pro načtení modelů všechny návratové `ModelData` objek
 `RetrieveModelWithDependencies`Volání vrátí nejen požadovaný model, ale také všechny modely, na kterých je požadovaný model závislý.
 
 Modely se nemusí nutně vracet přesně do formuláře dokumentu, ve kterém byly nahrané. Digitální vlákna Azure jenom zaručuje, že návratový formulář bude sémanticky rovnocenný. 
+
+### <a name="update-models"></a>Aktualizovat modely
+
+Po nahrání modelu do instance je celé rozhraní modelu neměnné. To znamená, že neexistují tradiční "úpravy" modelů.
+
+Místo toho, pokud chcete provádět změny modelu v digitálních proobjektech Azure, jako je například změna `DisplayName` nebo `Description` , jak to udělat, je nahrát **novější verzi** stejného modelu. Tím se přepíše původní model.
+
+Uděláte to tak, že začnete s DTDL původního modelu. Aktualizujte libovolná pole, která chcete změnit.
+
+Pak tuto položku označte jako novější verzi modelu tím, že aktualizujete `id` pole modelu. Poslední část ID modelu, po `;` ,, představuje číslo modelu. Chcete-li označit, že se jedná o aktualizovanou verzi tohoto modelu, zvyšte číslo na konci `id` hodnoty na libovolné číslo vyšší, než je aktuální číslo verze.
+
+Například pokud vaše předchozí ID modelu vypadalo takto:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+verze 2 tohoto modelu může vypadat takto:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+Pak nahrajte novou verzi modelu do instance. Bude mít místo staré verze a nové vlákna, která vytvoříte pomocí tohoto modelu, bude používat aktualizovanou verzi.
 
 ### <a name="remove-models"></a>Odebrat modely
 

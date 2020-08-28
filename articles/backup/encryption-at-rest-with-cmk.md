@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892639"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022407"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -242,7 +242,7 @@ Ne, CMK šifrování se dá povolit jenom pro nové trezory. Proto trezor nesmí
 
 Ne, trezor nesmí mít žádné pokusy o ochranu jakýchkoli položek v minulosti.
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Mám trezor, který používá šifrování CMK. Můžu se později vrátit k šifrování pomocí klíčů spravovaných platformou, i když mám zálohované položky chráněné do trezoru?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Mám trezor, který používá šifrování CMK. Můžu se později vrátit k šifrování pomocí klíčů spravovaných platformou, i když mám zálohované položky chráněné do trezoru?
 
 Ne, po povolení šifrování CMK ho nejde vrátit, aby se používaly klíče spravované platformou. Můžete změnit klíče používané podle vašich požadavků.
 

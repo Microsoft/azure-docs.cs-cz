@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-javascript
-ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011799"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -34,10 +34,10 @@ Widget Cognitive Insights zahrnuje všechny vizuální přehledy, které se extr
 |---|---|---|
 |`widgets` | Řetězce oddělené čárkami | Umožňuje řídit přehledy, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` vykreslí jenom lidé a klíčová slova UI Insights.<br/>Dostupné možnosti: lidé, animatedCharacters, klíčová slova, popisky, zabarvení, emoce, témata, klíčové snímky, přepisy, optické rozpoznávání znaků, reproduktory, scény a namedEntities.|
 |`controls`|Řetězce oddělené čárkami|Umožňuje řídit ovládací prvky, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` vykreslí jenom možnost hledání a tlačítko Stáhnout.<br/>Dostupné možnosti: Hledat, stáhnout, předvolby, jazyk.|
-|`language`|Krátký kód jazyka (název jazyka)|Určuje jazyk Insights.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>ani`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Krátký kód jazyka (název jazyka)|Určuje jazyk Insights.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>ani `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Krátký kód jazyka | Řídí jazyk uživatelského rozhraní. Výchozí hodnota je `en`. <br/>Příklad: `locale=de`.|
 |`tab` | Výchozí vybraná karta | Řídí kartu **přehledy** , která je ve výchozím nastavení vykreslená. <br/>Příklad: `tab=timeline` vykreslí přehledy pomocí vybrané karty **Časová osa** .|
-|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr.| 
+|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr.| 
 
 ### <a name="player-widget"></a>Widget Player
 
@@ -51,7 +51,7 @@ Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivn
 |`type`| | Aktivuje vzhled zvukového přehrávače (součást videa se odebrala).<br/> Příklad: `type=audio`. |
 |`autoplay` | Logická hodnota | Určuje, zda by měl přehrávač při načtení videa začít přehrávat video. Výchozí hodnota je `true`.<br/> Příklad: `autoplay=false`. |
 |`language`/`locale` | Kód jazyka | Řídí jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`.|
-|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr.| 
+|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr.| 
 
 ### <a name="editor-widget"></a>Widget pro Editor
 
@@ -62,7 +62,7 @@ Pomůcku editoru můžete použít k vytvoření nových projektů a správě p�
 |`accessToken`<sup>*</sup> | Řetězec | Poskytuje přístup k videím, která jsou pouze v účtu, který se používá k vložení widgetu.<br> Widget pro Editor vyžaduje `accessToken` parametr. |
 |`language` | Kód jazyka | Řídí jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`. |
 |`locale` | Krátký kód jazyka | Řídí jazyk Insights. Výchozí hodnota je `en`.<br/>Příklad: `language=de`. |
-|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr.| 
+|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr.| 
 
 <sup>*</sup>Vlastník by měl poskytovat `accessToken` upozornění.
 
@@ -70,7 +70,7 @@ Pomůcku editoru můžete použít k vytvoření nových projektů a správě p�
 
 Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
 
-`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr. Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr. Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Sdílení odkazu pro widget **Playeru** nebo **Insights** bude mít přístupový token a udělí vám oprávnění jen pro čtení k vašemu účtu.
@@ -102,6 +102,17 @@ Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte pře
 Pomůcka pro rozpoznávání přehledů může pracovat s videem ve vaší aplikaci. V této části si ukážeme, jak této interakce dosáhnout.
 
 ![Video Indexer pomůcky pro rozpoznávání přehledů](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+
+### <a name="flow-overview"></a>Přehled toku
+
+Při úpravách přepisu dojde k následujícímu toku:
+
+1. Přepis upravíte na časové ose.
+1. Video Indexer získá tyto aktualizace a uloží je v [úpravách přepisu](customize-language-model-with-website.md#customize-language-models-by-correcting-transcripts) v jazykovém modelu.
+1. Popisky jsou aktualizované:
+
+    * Pokud používáte widget přehrávače Video Indexer – automaticky se aktualizuje.
+    * Pokud používáte externí přehrávač – zobrazí se nový soubor s titulky. uživatel **získá volání titulků videa** .
 
 ### <a name="cross-origin-communications"></a>Komunikace mezi zdroji
 

@@ -3,12 +3,13 @@ title: Řízení přístupu Azure Service Bus pomocí sdílených přístupovýc
 description: Přehled řízení přístupu Service Bus pomocí podpisů sdíleného přístupu najdete v podrobnostech o autorizaci SAS pomocí Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066181"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012071"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -67,9 +68,9 @@ Každý klient, který má přístup k názvu autorizačního pravidla a jeden z
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**– Okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha dne `00:00:00 UTC` 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
-* **`skn`**– Název autorizačního pravidla.
-* **`sr`**– Identifikátor URI přistupované prostředku.
+* **`se`** – Okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha dne `00:00:00 UTC` 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
+* **`skn`** – Název autorizačního pravidla.
+* **`sr`** – Identifikátor URI přistupované prostředku.
 * **`sig`** Označení.
 
 `signature-string`Je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**obor** , jak je popsáno v předchozí části), a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znakem LF.

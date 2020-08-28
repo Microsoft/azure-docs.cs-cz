@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244918"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012768"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server integrovaný do Azure Service Fabric pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
@@ -94,18 +95,18 @@ Níže jsou uvedené prostředky pro službu:
 
 Pokud služba používá schéma dělení na oddíly singleton, parametry řetězce dotazu *PartitionKey* a *PartitionKind* se nevyžadují a služba může být dostupná pomocí brány jako:
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Užit`http://localhost:19081/MyApp/MyService`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Užit `http://localhost:19081/MyApp/MyService`
 
 Pokud služba používá jednotné schéma dělení na oddíly (Int64), musí se pro přístup k oddílu služby použít parametry řetězce dotazu *PartitionKey* a *PartitionKind* :
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Užit`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Užit `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 Pokud chcete dosáhnout prostředků, které služba zpřístupňuje, jednoduše umístěte cestu prostředku za název služby v adrese URL:
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Užit`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Užit `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 Brána pak tyto požadavky přepošle na adresu URL služby:
 

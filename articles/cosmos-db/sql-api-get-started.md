@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 514fe30da9c0e232c168992c2aabbb484644aa99
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85118810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015301"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -152,7 +153,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
 
     Konzola zobrazí zprávu: **konec ukázky, stisknutím libovolné klávesy ukončete.** Tato zpráva potvrdí, že vaše aplikace vytvořila připojení k Azure Cosmos DB. Potom můžete okno konzoly zavřít.
 
-Gratulujeme! Úspěšně jste se připojili k účtu Azure Cosmos DB.
+Blahopřejeme! Úspěšně jste se připojili k účtu Azure Cosmos DB.
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 
@@ -268,7 +269,7 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Pom
             });
    ```
 
-Gratulujeme! Úspěšně jste vytvořili databázi Azure Cosmos.  
+Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos.  
 
 ## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>Krok 5: vytvoření kontejneru
 
@@ -299,7 +300,7 @@ Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/do
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste vytvořili kontejner Azure Cosmos.  
+Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos.  
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>Krok 6: Přidání položek do kontejneru
 
@@ -340,7 +341,7 @@ Nejprve vytvoříme `Family` třídu, která představuje objekty uložené v r�
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste vytvořili dvě položky Azure Cosmos.  
+Blahopřejeme! Úspěšně jste vytvořili dvě položky Azure Cosmos.  
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
 
@@ -368,7 +369,7 @@ Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v jednotliv
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste dotazováni na kontejner Azure Cosmos.
+Blahopřejeme! Úspěšně jste dotazováni na kontejner Azure Cosmos.
 
 ## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>Krok 8: nahrazení položky JSON
 
@@ -397,7 +398,7 @@ Teď aktualizujeme položku v Azure Cosmos DB. Změníme `IsRegistered` vlastnos
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste nahradili položku Azure Cosmos.
+Blahopřejeme! Úspěšně jste nahradili položku Azure Cosmos.
 
 ## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>Krok 9: odstranění položky
 
@@ -427,7 +428,7 @@ Nyní odstraníme položku v Azure Cosmos DB.
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste odstranili položku Azure Cosmos.
+Blahopřejeme! Úspěšně jste odstranili položku Azure Cosmos.
 
 ## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
 
@@ -443,7 +444,7 @@ Nyní odstraníme naši databázi. Odstraněním vytvořené databáze dojde k o
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Gratulujeme! Úspěšně jste odstranili databázi Azure Cosmos.
+Blahopřejeme! Úspěšně jste odstranili databázi Azure Cosmos.
 
 ## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka C#!
 
@@ -476,7 +477,7 @@ Deleted Database: FamilyDatabase
 End of demo, press any key to exit.
 ```
 
-Gratulujeme! Dokončili jste tento kurz a máte funkční konzolovou aplikaci jazyka C#!
+Blahopřejeme! Dokončili jste tento kurz a máte funkční konzolovou aplikaci jazyka C#!
 
 ## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>Získání úplného řešení kurzu
 

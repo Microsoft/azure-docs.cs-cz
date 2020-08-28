@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610723"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012445"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
@@ -53,10 +54,10 @@ Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené prop
 
 Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní API, můžete zajistit propustnost v různých členitcích.
 
-|Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
+|rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
-|SQL API|databáze|Kontejner|
-|Rozhraní API služby Azure Cosmos DB pro MongoDB|databáze|Kolekce|
+|SQL API|Databáze|Kontejner|
+|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|
 |Rozhraní Table API|Databázový účet|Tabulka|

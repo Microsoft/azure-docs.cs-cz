@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022441"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
 
@@ -450,7 +451,7 @@ Podporovány jsou následující operátory:
 | Rodina | Operátory |
 | --- | --- |
 | Průměr |+, -, *, /, % |
-| Logické |A, NEBO, NOT |
+| Logický |A, NEBO, NOT |
 | Porovnání |=,! =, <, >, <=, >=,  <> |
 
 ### <a name="functions"></a>Functions
@@ -478,7 +479,7 @@ V podmínkách směrování jsou podporovány následující funkce kontroly a p
 
 | Funkce | Popis |
 | -------- | ----------- |
-| AS_NUMBER | Převede vstupní řetězec na číslo. `noop`Pokud je vstup číslo, `Undefined`Pokud řetězec nepředstavuje číslo.|
+| AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup číslo, `Undefined` Pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrací logickou hodnotu označující, zda je typ zadaného výrazu pole Array. |
 | IS_BOOL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
 | IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
