@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016610"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak Reliable Actors používat platformu Service Fabric
 Tento článek vysvětluje, jak Reliable Actors pracovat na platformě Azure Service Fabric. Reliable Actors běžet v rámci architektury hostované v implementaci stavové spolehlivé služby nazývané *služby objektu actor*. Služba objektu actor obsahuje všechny součásti potřebné ke správě životního cyklu a odeslání zpráv pro vaše objekty actor:
@@ -61,7 +62,7 @@ Služby objektu actor jsou rozdělené stavové služby. Každý oddíl služby 
 Reliable Services lze vytvořit s různými schématy oddílů a rozsahy klíčů oddílů. Služba actor používá schéma dělení Int64 s plným rozsahem klíčů Int64 pro mapování objektů actor na oddíly.
 
 ### <a name="actor-id"></a>ID objektu actor
-Každý objekt actor, který je vytvořen ve službě, má přiřazen jedinečný identifikátor, který je reprezentován `ActorId` třídou. `ActorId`je neprůhledná hodnota ID, která se dá použít pro jednotnou distribuci aktérů napříč oddíly služby vygenerováním náhodných ID:
+Každý objekt actor, který je vytvořen ve službě, má přiřazen jedinečný identifikátor, který je reprezentován `ActorId` třídou. `ActorId` je neprůhledná hodnota ID, která se dá použít pro jednotnou distribuci aktérů napříč oddíly služby vygenerováním náhodných ID:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());

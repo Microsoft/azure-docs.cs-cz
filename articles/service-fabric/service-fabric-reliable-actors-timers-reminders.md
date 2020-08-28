@@ -3,12 +3,13 @@ title: Reliable Actors časovače a připomenutí
 description: Úvod do časovačů a připomenutí Service Fabric Reliable Actors, včetně pokynů k použití jednotlivých.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245943"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016542"
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače a připomenutí objektu actor
 Objekty actor mohou naplánovat pravidelnou práci sami registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
@@ -204,7 +205,7 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Když se aktivuje připomenutí, modul runtime Reliable Actors vyvolá `ReceiveReminderAsync` metodu (C#) nebo `receiveReminderAsync` (Java) objektu actor. Objekt actor může registrovat více připomenutí a `ReceiveReminderAsync` metoda (C#) nebo `receiveReminderAsync` (Java) je vyvolána při aktivaci kterékoli z těchto připomenutí. Objekt actor může použít název připomenutí, který je předán `ReceiveReminderAsync` metodě (C#) nebo `receiveReminderAsync` (Java), a zjistit, jaké připomenutí bylo aktivováno.
+Když se aktivuje připomenutí, modul runtime Reliable Actors vyvolá  `ReceiveReminderAsync` metodu (C#) nebo `receiveReminderAsync` (Java) objektu actor. Objekt actor může registrovat více připomenutí a `ReceiveReminderAsync` metoda (C#) nebo `receiveReminderAsync` (Java) je vyvolána při aktivaci kterékoli z těchto připomenutí. Objekt actor může použít název připomenutí, který je předán `ReceiveReminderAsync` metodě (C#) nebo `receiveReminderAsync` (Java), a zjistit, jaké připomenutí bylo aktivováno.
 
 Modul runtime Actors uloží stav objektu actor po `ReceiveReminderAsync` dokončení volání (C#) nebo `receiveReminderAsync` (Java). Pokud při ukládání stavu dojde k chybě, bude objekt actor deaktivován a bude aktivována nová instance.
 

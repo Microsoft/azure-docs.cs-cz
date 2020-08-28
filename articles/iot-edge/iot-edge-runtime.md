@@ -8,15 +8,13 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom:
-- amqp
-- mqtt
-ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, mqtt, devx-track-csharp
+ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81730906"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016950"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení Azure IoT Edge runtime a jeho architektury
 
@@ -94,20 +92,20 @@ Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu, 
   * Stahování
   * Spuštěno
   * Není v pořádku
-  * Failed
+  * Neúspěšný
   * Zastaveno
 
 * **restartPolicy** – způsob, jakým agent IoT Edge restartuje modul. Mezi možné hodnoty patří:
   
-  * `never`– Agent IoT Edge nikdy nerestartuje modul.
-  * `on-failure`– Pokud modul selže, agent IoT Edge ho restartuje. Pokud se modul vypíná čistě, agent IoT Edge ho nerestartuje.
-  * `on-unhealthy`– Pokud modul selže nebo je považován za špatný, agent IoT Edge ho restartuje.
-  * `always`– Pokud modul selže, je považován za špatný nebo je vypnut jakýmkoli způsobem, agent IoT Edge jej restartuje.
+  * `never` – Agent IoT Edge nikdy nerestartuje modul.
+  * `on-failure` – Pokud modul selže, agent IoT Edge ho restartuje. Pokud se modul vypíná čistě, agent IoT Edge ho nerestartuje.
+  * `on-unhealthy` – Pokud modul selže nebo je považován za špatný, agent IoT Edge ho restartuje.
+  * `always` – Pokud modul selže, je považován za špatný nebo je vypnut jakýmkoli způsobem, agent IoT Edge jej restartuje.
 
 * **imagePullPolicy** – určuje, zda se agent IoT Edge pokusí stáhnout nejnovější obrázek pro modul automaticky nebo ne. Pokud nezadáte hodnotu, výchozí hodnota je Create ( *vytvořit*). Mezi možné hodnoty patří:
 
-  * `on-create`– Když spouštíte modul nebo aktualizujete modul založený na novém manifestu nasazení, agent IoT Edge se pokusí načíst image modulu z registru kontejneru.
-  * `never`– Agent IoT Edge se nikdy nebude pokoušet načíst image modulu z registru kontejneru. S touto konfigurací zodpovídáte za získání image modulu na zařízení a správu všech aktualizací imagí.
+  * `on-create` – Když spouštíte modul nebo aktualizujete modul založený na novém manifestu nasazení, agent IoT Edge se pokusí načíst image modulu z registru kontejneru.
+  * `never` – Agent IoT Edge se nikdy nebude pokoušet načíst image modulu z registru kontejneru. S touto konfigurací zodpovídáte za získání image modulu na zařízení a správu všech aktualizací imagí.
 
 Agent IoT Edge odesílá odezvu modulu runtime do IoT Hub. Tady je seznam možných odpovědí:
   

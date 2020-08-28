@@ -3,12 +3,12 @@ title: Upgrade agenta Microsoft Azure Recovery Services (MARS)
 description: Přečtěte si, jak upgradovat agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c822c75fa1232d2304b5bcb4a0afe4323e52287f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890187"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007362"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Upgrade agenta Microsoft Azure Recovery Services (MARS)
 
@@ -23,7 +23,7 @@ Pro instalace agenta Azure Backup a Azure Backup serveru:
 
 1. Přejděte do trezoru Recovery Services, kde jste zaregistrovali servery, které jsou potenciálně zálohované staršími verzemi agenta. Seznam trezorů se staršími agenty Azure Backup najdete v části Azure Backup aktualizace výstrah z Azure.
 1. V části **Nastavení** na levé straně trezoru Recovery Services vyberte možnost **infrastruktura zálohování** v části **Spravovat** .
-1. Pokud chcete zjistit, jaké agenty služby Azure Backup jsou nainstalované jako součást instalací serveru Azure Backup, přečtěte si část **zálohování serverů pro správu** v části **servery pro správu**. Zobrazí se seznam serverů, které mají instalaci serveru Azure Backup, spolu s číslem verze pro přidruženého agenta Azure Backup.
+1. Chcete-li zjistit, Azure Backup agenti nainstalováni jako součást instalací serveru Azure Backup, přejít na **servery pro správu zálohování** v části **servery pro správu**. Zobrazí se seznam serverů, které mají instalaci serveru Azure Backup, spolu s číslem verze pro přidruženého agenta Azure Backup.
 
     ![Seznam agentů MARS nainstalovaných jako součást instalací serveru Azure Backup](./media/upgrade-mars-agent/backup-management-servers.png)
 
@@ -31,7 +31,7 @@ Pro instalace agenta Azure Backup a Azure Backup serveru:
 
     ![Seznam serverů s nainstalovaným agentem MARS](./media/upgrade-mars-agent/protected-servers.png)
 
-1. Výběrem sloupce **verze** agenta pro instalace agenta Mars nebo sloupce **verze Azure Backup agenta** pro instalace Azure Backup serveru seřaďte sloupec verze agenta Azure Backup.
+1. Seřaďte sloupec verze agenta Azure Backup, a to výběrem sloupce **verze agenta** pro instalace agenta Mars nebo sloupce **verze Azure Backup agenta** pro Azure Backup Server instalace.
 
 1. Předchozí krok vám poskytne seznam serverů s agenty Azure Backup, které mají verze nižší než 2.0.9083.0 nebo verze agenta uvedené jako prázdné. Jedná se o servery, na kterých je potřeba aktualizovat agenty Azure Backup.
 
@@ -43,7 +43,7 @@ Jakmile identifikujete servery, které vyžadují aktualizaci agenta Azure Backu
 
     ![Chráněné servery s neaktuálními verzemi agentů](./media/upgrade-mars-agent/old-agent-version.png)
 
-    ![Servery Azure Backup s zastaralými verzemi agentů](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
+    ![Azure Backup servery s zastaralými verzemi agentů](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
 1. Vyberte **připojit** , pokud chcete získat soubor připojení ke vzdálené ploše pro připojení k serveru nebo se přímo připojit k serveru přes připojení ke vzdálené ploše na serveru.
 
@@ -65,7 +65,7 @@ Jakmile identifikujete servery, které vyžadují aktualizaci agenta Azure Backu
 
 1. Zkopírujte instalační program aktualizace agenta Azure Backup na server.
 
-    ![Kopírování instalačního programu agenta Azure Backup na server](./media/upgrade-mars-agent/copy-agent-installer.png)
+    ![Kopírovat instalační program aktualizace agenta Azure Backup na server](./media/upgrade-mars-agent/copy-agent-installer.png)
 
 1. Spusťte instalační program. Spustí se Průvodce upgradem agenta Microsoft Azure Recovery Services.
 
@@ -81,7 +81,7 @@ Jakmile identifikujete servery, které vyžadují aktualizaci agenta Azure Backu
 
 ## <a name="for-system-center-data-protection-manager-sc-dpm-customers"></a>Pro zákazníky nástroje System Center Data Protection Manager (SC DPM)
 
-Pokud jste nainstalovali agenty Azure Backup na servery nástroje System Center Data Protection Manager (SC DPM), musíte podle následujících pokynů zjistit, jestli vaše servery DPM potřebují aktualizaci agenta Azure Backup:
+Pokud jste nainstalovali agenty Azure Backup na servery nástroje System Center Data Protection Manager (SC DPM), musíte postupovat podle následujících pokynů, abyste určili, jestli servery DPM potřebují aktualizaci agenta Azure Backup:
 
 1. Přihlaste se k serveru SC DPM jako správce.
 2. Otevřete konzolu DPM.

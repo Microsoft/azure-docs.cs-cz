@@ -8,13 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.custom: amqp
-ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: e990d122367581c785b411f3f6d3c39b334a14fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733389"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998573"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (.NET)
 
@@ -32,9 +32,9 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 > [!NOTE]
 > Informace o sadách SDK služby Azure IoT Hub, s jejichž pomocí můžete sestavit aplikace, které poběží v zařízení, i back-end vašeho řešení, najdete v tématu [Sady SDK služby IoT Hub](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -54,7 +54,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 V této části vytvoříte na simulovaném zařízení konzolovou aplikaci .NET, která aktualizuje hlášené vlastnosti dvojčete modulu.
 
-Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
+Než začnete, Získejte připojovací řetězec modulu. Přihlaste se na [Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 

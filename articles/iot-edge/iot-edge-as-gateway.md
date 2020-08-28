@@ -4,19 +4,19 @@ description: Pomocí Azure IoT Edge můžete vytvořit transparentní, neprůhle
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/25/2019
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0589779de2ddb0bc75dde3b57d6444634b879f86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232623"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017018"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
@@ -24,13 +24,31 @@ Brány v IoT Edge řešení poskytují připojení zařízení a hraniční anal
 
 ## <a name="patterns"></a>Vzory
 
-Existují tři způsoby použití zařízení IoT Edge jako brány: transparentní, překlad protokolu a překlad identity:
+Existují tři způsoby použití IoT Edge zařízení jako brány: transparentní, překlad protokolu a překlad identity.
 
-* **Transparentní** – zařízení, která se teoreticky můžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Podřízená zařízení mají vlastní identity IoT Hubu a používají protokoly MQTT, AMQP nebo HTTP. Brána jednoduše předává komunikaci mezi zařízeními a IoT Hubem. Zařízení i uživatelé, kteří s nimi pracují prostřednictvím IoT Hub, nevědí, že brána Mediating jejich komunikaci. Nedostatečné povědomí znamená, že brána je považována za *transparentní*. Konkrétní informace týkající se používání zařízení IoT Edge jako transparentní brány najdete v tématu [Vytvoření transparentní brány](how-to-create-transparent-gateway.md).
-* **Překlad protokolu** – známý taky jako neprůhledný model brány, zařízení, která nepodporují MQTT, AMQP nebo http, můžou používat zařízení brány k posílání dat, která se IoT Hub jménem. Brána rozumí protokolu, který podřízená zařízení používají, a je jediným zařízením, které má v IoT Hubu identitu. Všechny informace vypadají jako z jednoho zařízení a brány. Pokud cloudové aplikace chtějí analyzovat data podle jednotlivých zařízení, musí podřízená zařízení vložit do svých zpráv dodatečné identifikační údaje. Primitiva IoT Hubu, jako jsou dvojčata a metody, jsou navíc k dispozici pouze pro zařízení brány, nikoli pro podřízená zařízení.
-* **Překlad identity** – zařízení, která se nemůžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Brána poskytuje identitu IoT Hubu a překlad protokolu jménem podřízených zařízení. Brána je dostatečně inteligentní, aby porozuměla protokolu používanému v podřízených zařízeních, poskytla jim identitu a přeložila primitiva IoT Hubu. Podřízená zařízení se v IoT Hubu zobrazují jako prvotřídní zařízení s dvojčaty a metodami. Uživatel může se zařízeními v IoT Hubu pracovat a není si vědom zprostředkujícího zařízení brány.
+Klíčový rozdíl mezi vzorci spočívá v tom, že transparentní brána předává zprávy mezi podřízenými zařízeními a IoT Hub bez nutnosti dalšího zpracování. Překlad protokolů a překlad identity však vyžaduje zpracování brány, aby bylo možné komunikaci povolit.
+
+Všechny brány můžou použít IoT Edge moduly k provádění analýz nebo předběžného zpracování na hraničních zařízeních před předáním zpráv ze zařízení, která mají IoT Hub.
 
 ![Modely transparentního diagramu, protokolu a brány identity](./media/iot-edge-as-gateway/edge-as-gateway.png)
+
+### <a name="transparent-pattern"></a>Transparentní vzor
+
+V *transparentním* vzoru brány se zařízení, která se teoreticky můžou připojit k IoT Hub, můžou místo toho připojit k zařízení brány. Podřízená zařízení mají vlastní identity IoT Hubu a používají protokoly MQTT, AMQP nebo HTTP. Brána jednoduše předává komunikaci mezi zařízeními a IoT Hubem. Zařízení i uživatelé, kteří s nimi pracují prostřednictvím IoT Hub, nevědí, že brána Mediating jejich komunikaci. Nedostatečné povědomí znamená, že brána je považována za *transparentní*.
+
+Modul runtime IoT Edge zahrnuje transparentní možnosti brány. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro fungování jako transparentní brány](how-to-create-transparent-gateway.md).
+
+### <a name="protocol-translation-pattern"></a>Vzor překladu protokolů
+
+Brána pro *Překlad protokolu* je také známá jako *neprůhledná* brána na rozdíl od modelu transparentní brány. V tomto modelu můžou zařízení, která nepodporují MQTT, AMQP nebo HTTP, používat zařízení brány k posílání dat, která se IoT Hub jménem. Brána rozumí protokolu, který podřízená zařízení používají, a je jediným zařízením, které má v IoT Hubu identitu. Všechny informace vypadají jako z jednoho zařízení a brány. Pokud cloudové aplikace chtějí analyzovat data podle jednotlivých zařízení, musí podřízená zařízení vložit do svých zpráv dodatečné identifikační údaje. Primitiva IoT Hubu, jako jsou dvojčata a metody, jsou navíc k dispozici pouze pro zařízení brány, nikoli pro podřízená zařízení.
+
+IoT Edge runtime nezahrnuje možnosti překladu protokolu. Tento model vyžaduje vlastní moduly nebo moduly třetích stran, které jsou často specifické pro použitý hardware a protokol. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) obsahuje několik modulů překladu protokolů, ze kterých si můžete vybrat.
+
+### <a name="identity-translation-pattern"></a>Vzor překladu identit
+
+V rámci vzoru brány pro *Překlad identit* se zařízení, která se nemůžou připojit k IoT Hub, můžou místo toho připojit k zařízení brány. Brána poskytuje identitu IoT Hubu a překlad protokolu jménem podřízených zařízení. Brána je dostatečně inteligentní, aby porozuměla protokolu používanému v podřízených zařízeních, poskytla jim identitu a přeložila primitiva IoT Hubu. Podřízená zařízení se v IoT Hubu zobrazují jako prvotřídní zařízení s dvojčaty a metodami. Uživatel může se zařízeními v IoT Hubu pracovat a není si vědom zprostředkujícího zařízení brány.
+
+IoT Edge runtime nezahrnuje funkce překladu identity. Tento model vyžaduje vlastní moduly nebo moduly třetích stran, které jsou často specifické pro použitý hardware a protokol. Ukázku, která používá vzor překladu identity, najdete v tématu [Azure IoT Edge LoRaWAN Starter Kit](https://github.com/Azure/iotedge-lorawan-starterkit).
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -42,7 +60,7 @@ Všechny vzory bran poskytují následující výhody:
 * **Vyhlazení provozu** – IoT Edge zařízení automaticky implementuje exponenciální omezení rychlosti, pokud IoT Hub omezuje provoz, zatímco se zprávy ukládají místně. Díky této výhodě je vaše řešení odolné vůči špičkám v provozu.
 * **Podpora offline** – zařízení brány ukládá zprávy a zdvojené aktualizace, které nelze doručit IoT Hub.
 
-Brána, která překládá protokol, může také provádět Edge Analytics, izolaci zařízení, vyhlazování provozu a podporu offline pro stávající zařízení a nová zařízení, která jsou omezená na prostředky. Mnoho stávajících zařízení vyrábí data, která můžou být v Power Business Insights. nejsou ale navržené s ohledem na cloudové připojení. Neprůhledné brány umožňují, aby tato data byla odemčená a používána v řešení IoT.
+Brána, která překládá protokol, může podporovat stávající zařízení a nová zařízení, která jsou omezená na prostředky. Mnoho stávajících zařízení vyrábí data, která můžou být v Power Business Insights. nejsou ale navržené s ohledem na cloudové připojení. Neprůhledné brány umožňují, aby tato data byla odemčená a používána v řešení IoT.
 
 Brána, která provádí překlad identity, nabízí výhody překladu protokolů a navíc umožňuje úplnou správu zařízení v cloudu. Všechna zařízení v řešení IoT se zobrazí v IoT Hub bez ohledu na protokol, který používají.
 
@@ -61,7 +79,7 @@ Při použití vzoru neprůhledné brány (překladu protokolu) všechna zaříz
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak nastavit transparentní bránu:
+Přečtěte si tři kroky nastavení transparentní brány:
 
 * [Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md)
 * [Ověření podřízeného zařízení pro Azure IoT Hub](how-to-authenticate-downstream-device.md)

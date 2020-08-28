@@ -3,13 +3,13 @@ title: Ověření přístupu k Azure Event Hubs se signaturami sdíleného pří
 description: V tomto článku se dozvíte, jak ověřit přístup k prostředkům Event Hubs pomocí sdílených přístupových podpisů.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423095"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008314"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Tady jsou některé ovládací prvky, které můžete nastavit v SAS: 
@@ -44,10 +44,10 @@ Při použití autorizačního pravidla sendRuleNS můžou klientské aplikace p
 ## <a name="generate-a-shared-access-signature-token"></a>Generování tokenu sdíleného přístupového podpisu 
 Každý klient, který má přístup k názvu autorizačního pravidla a jeden z jeho podpisových klíčů, může generovat token SAS. Token je vygenerován vytvořením řetězce v následujícím formátu:
 
-- `se`– Okamžité vypršení platnosti tokenu Celé číslo odrážející sekundy od epocha 00:00:00 UTC dne 1. ledna 1970 (UNIX epocha) po vypršení platnosti tokenu
-- `skn`– Název autorizačního pravidla, které je název klíče SAS.
-- `sr`– Identifikátor URI přistupované prostředku.
-- `sig`Označení.
+- `se`  – Okamžité vypršení platnosti tokenu Celé číslo odrážející sekundy od epocha 00:00:00 UTC dne 1. ledna 1970 (UNIX epocha) po vypršení platnosti tokenu
+- `skn` – Název autorizačního pravidla, které je název klíče SAS.
+- `sr` – Identifikátor URI přistupované prostředku.
+- `sig` Označení.
 
 Řetězec signatury je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (rozsah jak je popsáno v předchozí části) a řetězcové vyjádření konce platnosti tokenu, které je oddělené znakem CRLF.
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986371"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017273"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Řešení potíží s Azure SQL Database a problémy s výkonem spravované instance Azure SQL pomocí Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,12 +32,12 @@ Tato stránka poskytuje informace o Azure SQL Database a potížích s výkonem 
 
 Intelligent Insights automaticky detekuje problémy s výkonem na základě čekací doby spuštění dotazu, chyb nebo časových limitů. Intelligent Insights výstupy zjistily vzorce výkonu v protokolu prostředků. V následující tabulce jsou shrnuty zjistitelné vzorce výkonu.
 
-| Rozpoznatelné vzory výkonu | Azure SQL Database | Spravovaná instance Azure SQL |
+| Rozpoznatelné vzory výkonu | Azure SQL Database | Azure SQL Managed Instance |
 | :------------------- | ------------------- | ------------------- |
 | [Dosažení limitů prostředků](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Vaše omezení prostředků dosáhly spotřeby dostupných prostředků (DTU), pracovních vláken databáze nebo relací přihlášení k databázi dostupným u monitorovaného předplatného. To má vliv na výkon. | Spotřeba prostředků procesoru dosáhne svých omezení prostředků. To má vliv na výkon databáze. |
 | [Zvýšení zatížení](intelligent-insights-troubleshoot-performance.md#workload-increase) | Zjistilo se zvýšení zátěže nebo nepřetržité akumulace úloh v databázi. To má vliv na výkon. | Bylo zjištěno zvýšení zátěže. To má vliv na výkon databáze. |
 | [Tlak paměti](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří vyžadují nároky na paměť, musí čekat na přidělení paměti pro statisticky významné množství času nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
-| [Uzamčení](intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
+| [Zamknut](intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
 | [Zvýšená MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon. | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon. |
 | [PAGELATCH spory](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon. | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze. |
 | [Chybějící index](intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn chybějící index, který má vliv na výkon. | Byl zjištěn chybějící index vlivu na výkon databáze. |
@@ -168,7 +168,7 @@ Vzhledem k tomu, že PAGELATCH je mechanismus interního řízení, určuje auto
 
 Jednou z metod pro zpracování kolizí zámků je nahrazení sekvenčního klíče indexu pomocí nesekvenčního klíče, aby bylo možné rovnoměrně distribuovat vložení do rozsahu indexu. První sloupec v indexu obvykle distribuuje úlohu poměrně. Další metodou, kterou je třeba zvážit, je vytváření oddílů tabulky. Vytvoření schématu vytváření oddílů hash s vypočítaným sloupcem v dělené tabulce je běžným přístupem pro zmírnění nadměrného kolizí zámků. V případě kolize PAGELATCH v/v, zavedení indexů pomáhá zmírnit tento problém s výkonem.
 
-Další informace najdete v tématu [Diagnostika a řešení kolizí na západce při SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (stažení PDF).
+Další informace najdete v tématu [Diagnostika a řešení kolizí na západce při SQL Server](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) (stažení PDF).
 
 ## <a name="missing-index"></a>Chybějící index
 

@@ -6,12 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497048"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017137"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB
 
@@ -242,7 +243,7 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ---
 
-## <a name="cassandra-api"></a>Rozhraní API Cassandra
+## <a name="cassandra-api"></a>Rozhraní Cassandra API
 
 Účty Azure Cosmos DB pro rozhraní API Cassandra se dají zřídit pro automatické škálování pomocí [příkazů CQL](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) nebo [šablon Azure Resource Manager](resource-manager-samples.md).
 

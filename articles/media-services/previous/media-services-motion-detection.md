@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913000"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016831"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Detekce pohybů pomocí Azure Media Analytics
 
@@ -34,7 +35,7 @@ Tato technologie je zaměřená na kanály videa o zabezpečení, takže je mož
 
 Sada **Azure Media Motion Detector** MP je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **Azure Media Motion Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o  **Azure Media Motion Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
 ## <a name="motion-detector-input-files"></a>Vstupní soubory snímače pohybu
 Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
@@ -45,7 +46,7 @@ Při vytváření úlohy s **Azure Media Motion Detector**je nutné zadat předv
 ### <a name="parameters"></a>Parametry
 Můžete použít následující parametry:
 
-| Name | Možnosti | Description | Výchozí |
+| Název | Možnosti | Popis | Výchozí |
 | --- | --- | --- | --- |
 | sensitivityLevel |Řetězec: ' nízká ', ' střední ', ' High ' |Nastaví úroveň citlivosti, na které jsou nahlášeny pohyby. Upravte tuto hodnotu pro úpravu počtu falešně pozitivních hodnot. |úrovně |
 | frameSamplingValue |Kladné celé číslo |Nastaví četnost spuštění algoritmu. 1 se rovná každému snímku, 2 znamená každý druhý rámec atd. |1 |
@@ -98,7 +99,7 @@ Rozhraní API detektoru pohybu poskytuje indikátory, jakmile se v pevném videu
 
 Následující tabulka popisuje prvky výstupního souboru JSON.
 
-| Prvek | Description |
+| Element | Popis |
 | --- | --- |
 | verze |To odkazuje na verzi rozhraní API pro video. Aktuální verze je 2. |
 | měřítk |"Takty" za sekundu videa. |

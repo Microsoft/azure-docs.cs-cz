@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 06/15/2020
+ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7eac92a3d438c6a9ee67ae5d5b06829f3ef77528
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754919"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016882"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,12 +37,13 @@ Automatizovaná ML v kanálu je reprezentována `AutoMLStep` objektem. `AutoMLSt
 
 Existuje několik podtříd třídy `PipelineStep` . Kromě toho se v `AutoMLStep` tomto článku zobrazí `PythonScriptStep` Příprava dat a další pro registraci modelu.
 
-Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, je `Dataset` objekty. Chcete-li přesunout data _mezi_ kroky a případně uložit výstup dat ze spuštění, preferovaným způsobem je `OutputFileDatasetConfig` objekt. Další informace najdete v tématu [vstupní a výstupní data z kanálů ml](how-to-move-data-in-out-of-pipelines.md).
+Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, je `Dataset` objekty. Chcete-li přesunout data _mezi_ kroky, upřednostňovaným způsobem je `PipelineData` objekty. Chcete-li použít s `AutoMLStep` , `PipelineData` objekt musí být transformován do `PipelineOutputTabularDataset` objektu. Další informace najdete v tématu [vstupní a výstupní data z kanálů ml](how-to-move-data-in-out-of-pipelines.md).
 
-> [!NOTE]
->`OutputFileDatasetConfig`Třídy a `OutputTabularDatasetConfig` jsou experimentální funkce ve verzi Preview a můžou se kdykoli změnit.
->
->Další informace naleznete v tématu https://aka.ms/azuremlexperimental.
+
+> [!TIP]
+> Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídách veřejné verze Preview  `OutputFileDatasetConfig` a `OutputTabularDatasetConfig` .  Tyto třídy jsou experimentální funkce ve verzi Preview a můžou se kdykoli změnit.
+> 
+>Další informace o experimentálních funkcích naleznete v tématu https://aka.ms/azuremlexperimental .
 
 `AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
 
@@ -150,7 +151,8 @@ Datová sada Titanic standardních hodnot se skládá ze smíšených číselný
 - Transformovat kategorií data na celá čísla
 - Vyřadit sloupce, které neplánujeme použít
 - Rozdělení dat na školicí a testovací sady
-- Zapsat transformovaná data do `OutputFileDatasetConfig` výstupních cest
+- Zapsat transformovaná data buď do
+    - `PipelineData` výstupní cesty
 
 ```python
 %%writefile dataprep.py
@@ -220,7 +222,7 @@ Výše uvedený fragment kódu je kompletní, ale minimální příklad přípra
 
 Různé `prepare_` funkce v předchozím fragmentu kódu upravují příslušný sloupec ve vstupní datové sadě. Tyto funkce pracují s daty po změně na `DataFrame` objekt PANDAS. V každém případě chybějící data jsou vyplněna buď reprezentativními náhodnými daty, nebo kategorií daty ukazujícími "neznámé". Data kategorií založená na textu jsou mapována na celá čísla. Již nepotřebné sloupce jsou přepsány nebo vyřazeny. 
 
-Poté, co kód definuje funkce přípravy dat, analyzuje kód vstupní argument, což je cesta, na kterou chceme zapisovat data. (Tyto hodnoty budou určeny `OutputFileDatasetConfig` objekty, které budou popsány v následujícím kroku.) Kód načte registrovanou `'titanic_cs'` `Dataset` , převede ho na PANDAS `DataFrame` a zavolá různé funkce pro přípravu dat. 
+Poté, co kód definuje funkce přípravy dat, analyzuje kód vstupní argument, což je cesta, na kterou chceme zapisovat data. (Tyto hodnoty budou určeny `PipelineData` objekty, které budou popsány v následujícím kroku.) Kód načte registrovanou `'titanic_cs'` `Dataset` , převede ho na PANDAS `DataFrame` a zavolá různé funkce pro přípravu dat. 
 
 Vzhledem k tomu `output_path` , že je plně kvalifikované, funkce `os.makedirs()` slouží k přípravě adresářové struktury. V tomto okamžiku můžete použít `DataFrame.to_csv()` k zápisu výstupních dat, ale soubory Parquet jsou efektivnější. Tato efektivita by pravděpodobně nepodstatná pro takovou malou datovou sadu, ale použití funkcí balíčku **PyArrow** `from_pandas()` a `write_table()` je jenom pár klávesových úhozů `to_csv()` .
 
@@ -228,25 +230,30 @@ Soubory Parquet se nativně podporují v kroku automatizovaného ML, který je p
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Zapsat krok kanálu přípravy dat ( `PythonScriptStep` )
 
-Výše popsaný kód pro přípravu dat musí být přidružený k `PythonScripStep` objektu, který se má použít s kanálem. Cesta, na kterou je zapsán výstup pro přípravu dat Parquet, je generována `OutputFileDatasetConfig` objektem. Prostředky připravené dříve, jako `ComputeTarget` `RunConfig` jsou, a, `'titanic_ds' Dataset` jsou použity k dokončení specifikace.
+Výše popsaný kód pro přípravu dat musí být přidružený k `PythonScripStep` objektu, který se má použít s kanálem. Cesta, na kterou je zapsán výstup pro přípravu dat Parquet, je generována `PipelineData` objektem. Prostředky připravené dříve, jako `ComputeTarget` `RunConfig` jsou, a, `'titanic_ds' Dataset` jsou použity k dokončení specifikace.
 
+PipelineData uživatelé
 ```python
-from azureml.data import OutputFileDatasetConfig
-from azureml.pipeline.steps import PythonScriptStep
+from azureml.pipeline.core import PipelineData
 
-prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
+from azureml.pipeline.steps import PythonScriptStep
+prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
+    arguments=["--output_path", prepped_data_path],
+    inputs=[titanic_ds.as_named_input("titanic_ds")],
+    outputs=[prepped_data_path],
     allow_reuse=True
 )
 ```
+`prepped_data_path`Objekt je typu `PipelineOutputFileDataset` . Všimněte si, že je zadáno v obou `arguments` `outputs` argumentech a. Pokud provedete předchozí krok, uvidíte, že v rámci kódu pro přípravu dat je hodnota argumentu `'--output_path'` cesta k souboru, do kterého byl soubor Parquet zapsán. 
 
-`prepped_data_path`Objekt je typu, `OutputFileDatasetConfig` který odkazuje na adresář.  Všimněte si, že je zadáno v `arguments` parametru. 
+> [!TIP]
+> Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview `OutputFileDatasetConfig` . Další informace o `OutputFileDatasetConfig` návrhových vzorech a metodách najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
 ## <a name="train-with-automlstep"></a>Výuka pomocí AutoMLStep
 
@@ -254,19 +261,42 @@ Konfigurace postupu automatizovaného kanálu se provádí s `AutoMLConfig` tř�
 
 ### <a name="send-data-to-automlstep"></a>Odeslat data do `AutoMLStep`
 
-Vstupní data v kanálu ML musí být `Dataset` objekt. Nejvyšší způsob provádění je poskytnout vstupní data ve formě `OutputTabularDatasetConfig` objektů. Vytvoříte objekt daného typu s `read_delimited_files()` `OutputFileDatasetConfig` příponou, jako je například `prepped_data_path` objekt.
+Vstupní data v kanálu ML musí být `Dataset` objekt. Nejvyšší způsob provádění je poskytnout vstupní data ve formě `PipelineOutputTabularDataset` objektů. Vytvoříte objekt typu s `parse_parquet_files()` nebo `parse_delimited_files()` na `PipelineOutputFileDataset` , například `prepped_data_path` objekt.
 
 ```python
-# type(prepped_data_path) == OutputFileDatasetConfig
-# type(prepped_data) == OutputTabularDatasetConfig
-prepped_data = prepped_data_path.read_delimited_files()
+# type(prepped_data_path) == PipelineOutputFileDataset
+# type(prepped_data) == PipelineOutputTabularDataset
+prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 ```
 
-Výše uvedený fragment kódu vytvoří vysoké provádění `OutputTabularDatasetConfig` z `OutputFileDatasetConfig` výstupu kroku Příprava dat.
+Výše uvedený fragment kódu vytvoří vysoké provádění `PipelineOutputTabularDataset` z `PipelineOutputFileDataset` výstupu kroku Příprava dat.
+
+> [!TIP]
+> Třída Public Preview `OutputFileDatasetConfig` má také možnost převést na `OutputFileDatasetConfig` `OutputTabularDatasetConfig` pro spotřebu v AutoML spuštění. Další informace o `OutputFileDatasetConfig` návrhových vzorech a metodách najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+
+Další možností je použít `Dataset` objekty registrované v pracovním prostoru:
+
+```python
+prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
+```
+
+Porovnávání dvou technik:
+
+| Technika | Výhody a nevýhody | 
+|-|-|
+|`PipelineOutputTabularDataset`| Vyšší výkon | 
+|| Fyzická trasa z `PipelineData` | 
+|| Po spuštění kanálu nejsou data trvalá. |
+|| [Postup ukazující na Poznámkový blok `PipelineOutputTabularDataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+| Registrovat `Dataset` | Nižší výkon |
+| | Může být vygenerováno mnoha způsoby | 
+| | Data se přetrvají a jsou viditelná v celém pracovním prostoru. |
+| | [Poznámkový blok znázorňující registrovanou `Dataset` techniku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+
 
 ### <a name="specify-automated-ml-outputs"></a>Zadat automatizované výstupy ML
 
-Výstupy `AutoMLStep` představují konečné skóre metriky modelu s vyšším výkonem a tento model sám sebe. Chcete-li tyto výstupy použít v dalších krocích kanálu, připravte `OutputFileDatasetConfig` objekty, aby je přijímaly.
+Výstupy `AutoMLStep` představují konečné skóre metriky modelu s vyšším výkonem a tento model sám sebe. Chcete-li tyto výstupy použít v dalších krocích kanálu, připravte `PipelineData` objekty, aby je přijímaly.
 
 ```python
 
@@ -326,8 +356,8 @@ Fragment kódu ukazuje idiom, který se běžně používá s `AutoMLConfig` . A
 - `path` a `debug_log` popište cestu k projektu a místní soubor, do kterého budou zapsány informace o ladění. 
 - `compute_target` je dříve definovaná `compute_target` , to znamená, že v tomto příkladu je levný počítač založený na procesoru. Pokud používáte zařízení s hloubkovým učením v AutoML, měli byste změnit cíl výpočetní služby na bázi GPU.
 - `featurization` je nastaven na `auto` . Další podrobnosti najdete v části [Featurization dat](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) v dokumentu konfigurace AUTOMATIZOVANÉho ml. 
-- `training_data` je nastaven na `OutputTabularDatasetConfig` objekty vytvořené z výstupu kroku Příprava dat. 
 - `label_column_name` Určuje, který sloupec má zajímat předpověď. 
+- `training_data` je nastaven na `PipelineOutputTabularDataset` objekty vytvořené z výstupu kroku Příprava dat. 
 
 `AutoMLStep`Sám o sobě použije `AutoMLConfig` a má jako výstupy `PipelineData` objekty vytvořené pro uchování metrik a data modelu. 
 
