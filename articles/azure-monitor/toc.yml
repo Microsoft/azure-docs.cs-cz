@@ -329,6 +329,28 @@
       items:
         - name: Pravidla shromažďování dat
           href: platform/data-collection-rule-overview.md
+        - name: Zdroje dat agenta
+          items:
+            - name: Přehled
+              href: platform/agent-data-sources.md
+            - name: Události systému Windows
+              href: platform/data-sources-windows-events.md
+            - name: Vlastní data JSON
+              href: platform/data-sources-json.md
+            - name: Shromážděná data o výkonu
+              href: platform/data-sources-collectd.md
+            - name: Syslog
+              href: platform/data-sources-syslog.md
+            - name: Čítače výkonu
+              href: platform/data-sources-performance-counters.md
+            - name: Výkon linuxových aplikací
+              href: platform/data-sources-linux-applications.md
+            - name: Protokoly IIS
+              href: platform/data-sources-iis-logs.md
+            - name: Vlastní protokoly
+              href: platform/data-sources-custom-logs.md
+            - name: Vlastní pole
+              href: platform/custom-fields.md
         - name: Vlastní metriky
           items:
             - name: Vlastní metriky
@@ -361,6 +383,24 @@
             - name: Shromažďování dat
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Agent Log Analytics
+          items:
+            - name: Přehled
+              href: platform/log-analytics-agent.md
+            - name: Agenti systému Windows
+              href: platform/agent-windows.md
+            - name: Agenti systému Linux
+              href: platform/agent-linux.md
+            - name: Rozšíření virtuálního počítače pro Windows
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Rozšíření virtuálního počítače pro Linux
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Brána Log Analytics
+              href: platform/gateway.md
+            - name: Správa agentů
+              href: platform/agent-manage.md
+            - name: Stav agenta
+              href: insights/solution-agenthealth.md
         - name: Rozšíření Azure Diagnostics
           items:
             - name: Přehled
@@ -403,46 +443,6 @@
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Shromažďování metrik s využitím Telegrafu
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Agent Log Analytics
-          items:
-            - name: Přehled
-              href: platform/log-analytics-agent.md
-            - name: Agenti systému Windows
-              href: platform/agent-windows.md
-            - name: Agenti systému Linux
-              href: platform/agent-linux.md
-            - name: Rozšíření virtuálního počítače pro Windows
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: Rozšíření virtuálního počítače pro Linux
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Brána Log Analytics
-              href: platform/gateway.md
-            - name: Správa agentů
-              href: platform/agent-manage.md
-            - name: Stav agenta
-              href: insights/solution-agenthealth.md
-            - name: Zdroje dat
-              items:
-                - name: Přehled
-                  href: platform/agent-data-sources.md
-                - name: Události systému Windows
-                  href: platform/data-sources-windows-events.md
-                - name: Vlastní data JSON
-                  href: platform/data-sources-json.md
-                - name: Shromážděná data o výkonu
-                  href: platform/data-sources-collectd.md
-                - name: Syslog
-                  href: platform/data-sources-syslog.md
-                - name: Čítače výkonu
-                  href: platform/data-sources-performance-counters.md
-                - name: Výkon linuxových aplikací
-                  href: platform/data-sources-linux-applications.md
-                - name: Protokoly IIS
-                  href: platform/data-sources-iis-logs.md
-                - name: Vlastní protokoly
-                  href: platform/data-sources-custom-logs.md
-                - name: Vlastní pole
-                  href: platform/custom-fields.md
         - name: Řešení potíží
           items:
             - name: Rozšíření Log Analytics pro virtuální počítače

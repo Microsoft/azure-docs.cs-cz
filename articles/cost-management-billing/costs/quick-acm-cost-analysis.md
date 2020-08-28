@@ -3,17 +3,18 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560584"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718522"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -161,6 +162,10 @@ Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sl
 
 Pokud potřebujete úplnou, neagregovanou datovou sadu, stáhněte si ji z fakturačního účtu. Pak v seznamu služeb v levém navigačním podokně portálu přejděte na **Správa nákladů a fakturace**. V případě potřeby vyberte svůj fakturační účet. Přejděte na **Využití a poplatky** a vyberte ikonu **Stáhnout** pro požadované fakturační období.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+- Pokud jste připnuli vlastní zobrazení pro analýzu nákladů a už ho nepotřebujete, přejděte na řídicí panel, na který jste ho připnuli, a toto zobrazení odstraňte.
+- Pokud jste si stáhli soubory s daty o využití a už je nepotřebujete, nezapomeňte je odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

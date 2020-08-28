@@ -132,7 +132,7 @@
         - name: Sada Azure SDK pro .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Poskytovatel Java Springu
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: Azure SDK pro Javu
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: Azure SDK pro Python

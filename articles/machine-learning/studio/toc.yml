@@ -5,7 +5,7 @@
   items:
     - name: Machine Learning Studio (Classic)
       displayName: overview
-      href: what-is-ml-studio.md
+      href: studio-classic-overview.md
     - name: Porovnání našich produktů ML
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: Rychlé starty

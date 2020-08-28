@@ -3,17 +3,18 @@ title: 'Kurz: Vytváření a správa rozpočtů Azure'
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/15/2020
-ms.topic: conceptual
+ms.date: 08/20/2020
+ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 739d300faf77564891b2b783a3eb1cca50373015
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446009"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718349"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -189,9 +190,14 @@ $ActionGroupId = (Set-AzActionGroup -ResourceGroupName YourResourceGroup -Name T
 
 New-AzConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Vytvoření rozpočtu pomocí šablony Azure Resource Manageru
 
 Pomocí šablony Azure Resource Manageru můžete vytvořit rozpočet. Pokud chcete šablonu použít, projděte si téma [Vytvoření rozpočtu pomocí šablony Azure Resource Manageru](quick-create-budget-template.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste vytvořili rozpočet a už ho nepotřebujete, projděte si jeho podrobnosti a odstraňte ho.
 
 ## <a name="next-steps"></a>Další kroky
 

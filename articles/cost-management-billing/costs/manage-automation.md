@@ -3,16 +3,17 @@ title: Správa nákladů na Azure s využitím automatizace
 description: Tento článek vysvětluje, jak můžete spravovat náklady na Azure s využitím automatizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 08/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 0727f98b917944f3721c6c6758fde05c2efd8773
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449827"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684401"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -79,11 +80,181 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 
 ## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>Opakované načítání rozsáhlých datových sad s využitím exportů
 
-Funkce Exporty je řešením pro plánování pravidelných výpisů nákladových dat. Představuje doporučený způsob načítání neagregovaných nákladových dat pro organizace, jejichž soubory využití jsou příliš velké, než aby se pro volání a stahování dat mohlo spolehlivě využívat rozhraní API pro podrobnosti využití. Data se umístí do účtu služby Azure Storage podle vašeho výběru. Odsud je můžete načíst do vlastních systémů a analyzovat podle potřeb vašich týmů. Pokud chcete nakonfigurovat exporty na webu Azure Portal, přečtěte si téma věnované [exportu dat](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data).
+Pomocí exportů z Cost Managementu můžete pravidelně exportovat velké objemy dat. Export je doporučený způsob načítání neagregovaných informací o nákladech. Platí to zejména v případě, že soubory s daty o využití jsou příliš rozsáhlé a nejde je spolehlivě volat a stahovat pomocí rozhraní API pro podrobnosti využití. Exportovaná data se uloží do účtu Azure Storage, který zvolíte. Odsud je můžete načítat do vlastních systémů a analyzovat podle vašich potřeb. Pokud chcete nakonfigurovat exporty na webu Azure Portal, přečtěte si téma věnované [exportu dat](tutorial-export-acm-data.md).
+
+Pokud chcete automatizovat exporty pro různé rozsahy, vhodným výchozím bodem je ukázkový požadavek rozhraní API uvedený v další části. Můžete využít rozhraní API pro export a vytvořit automatické exporty jako součást obecné konfigurace prostředí. Automatické exporty vám pomohou zajistit, že máte potřebná data. Při rozšiřování využití Azure je můžete využít ve vlastních systémech vaší organizace.
+
+### <a name="common-export-configurations"></a>Běžné konfigurace exportu
+
+Před vytvořením prvního exportu se zamyslete nad scénářem a možnostmi konfigurace, které jsou pro něj potřeba. Zvažte následující možnosti exportu:
+
+- **Opakování:** Určuje, jak často běží úlohy exportu a kdy se do účtu Azure Storage umístí výsledný soubor. Možnosti jsou každý den, každý týden nebo každý měsíc. Zkuste nakonfigurovat opakování tak, aby odpovídalo úlohám importu dat používaným interním systémem vaší organizace.
+- **Období opakování:** Určuje, po jak dlouhou dobu zůstane export platný. Soubory se exportují jenom během období opakování.
+- **Časový rámec:** Určuje množství dat vygenerovaných exportem při konkrétním spuštění. Běžné možnosti jsou od začátku měsíce a od začátku týdne.
+- **Datum zahájení:** Určuje, odkdy má začít platit rozvrh pro export. Export se vytvoří v den zahájení a následně na základě určeného opakování.
+- **Typ:** Existují tři typy exportu:
+  - ActualCost: Celkové využití a náklady za zadané období tak, jak se vyúčtují a zobrazí na faktuře.
+  - AmortizedCost: Celkové využití a náklady za zadané období. U nákladů na nákup rezervací se přitom použije odpovídající amortizace.
+  - Usage: Typu Usage jsou všechny exporty vytvořené do 20. července 2020. Všechny naplánované exporty aktualizujte jako ActualCost nebo AmortizedCost.
+- **Sloupce:** Definuje datová pole, která chcete zahrnout do souboru exportu. Odpovídají polím, která jsou k dispozici v rozhraní API pro podrobnosti využití. Další informace najdete v tématu věnovaném [rozhraní API pro podrobnosti využití](/rest/api/consumption/usagedetails/list).
+
+### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>Vytvoření denního exportu od začátku měsíce pro předplatné
+
+Adresa URL požadavku: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
+
+```json
+{
+  "properties": {
+    "schedule": {
+      "status": "Active",
+      "recurrence": "Daily",
+      "recurrencePeriod": {
+        "from": "2020-06-01T00:00:00Z",
+        "to": "2020-10-31T00:00:00Z"
+      }
+    },
+    "format": "Csv",
+    "deliveryInfo": {
+      "destination": {
+        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
+        "container": "{yourContainer}",
+        "rootFolderPath": "{yourDirectory}"
+      }
+    },
+    "definition": {
+      "type": "ActualCost",
+      "timeframe": "MonthToDate",
+      "dataSet": {
+        "granularity": "Daily",
+        "configuration": {
+          "columns": [
+            "Date",
+            "MeterId",
+            "ResourceId",
+            "ResourceLocation",
+            "Quantity"
+          ]
+        }
+      }
+    }
+}
+```
+
+### <a name="automate-alerts-and-actions-with-budgets"></a>Automatizace upozornění a akcí s využitím rozpočtů
+
+Maximalizace využití investic do cloudu má dvě důležité součásti. Jednou z nich je automatické vytváření rozpočtu. Druhou je konfigurace orchestrace na základě nákladů v rámci reakce na upozornění rozpočtu. Existují různé způsoby automatizace vytváření rozpočtů Azure. Při překročení nakonfigurovaných prahových hodnot upozornění dochází k různým reakcím.
+
+Následující části obsahují přehled dostupných možností a poskytují ukázkové požadavky rozhraní API, které vám pomohou s automatizací rozpočtů začít.
+
+#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Jak se vyhodnocují náklady vzhledem k rozpočtovým prahům
+
+Vaše náklady se vzhledem k rozpočtovým prahům vyhodnocují jednou za den. V den vytvoření nového rozpočtu nebo den resetování rozpočtu budou náklady v porovnání s prahovou hodnotou rovné nule, protože k vyhodnocení nemuselo dojít.
+
+Když Azure zjistí, že vaše náklady překročily prahovou hodnotu, během jedné hodiny se aktivuje oznámení.
+
+#### <a name="view-your-current-cost"></a>Zobrazení aktuálních nákladů
+
+K zobrazení aktuálních nákladů je potřeba použít volání GET s využitím [rozhraní API pro dotazy](/rest/api/cost-management/query).
+
+Volání GET pro rozhraní API pro rozpočty nevrátí aktuální náklady zobrazené v analýze nákladů. Místo toho toto volání vrátí vaše poslední vyhodnocené náklady.
+
+### <a name="automate-budget-creation"></a>Automatizace vytváření rozpočtů
+
+Vytváření rozpočtu můžete automatizovat pomocí [rozhraní API pro rozpočty](/rest/api/consumption/budgets). Rozpočet si také můžete vytvořit pomocí [šablony rozpočtu](quick-create-budget-template.md). Šablony představují snadný způsob, jak standardizovat nasazení Azure a současně zajistit správnou konfiguraci a prosazování řízení nákladů.
+
+#### <a name="common-budgets-api-configurations"></a>Běžné konfigurace rozhraní API pro rozpočty
+
+Existuje mnoho způsobů, jak nakonfigurovat rozpočet v prostředí Azure. Nejdřív se zamyslete nad scénářem a možnostmi konfigurace, které jsou pro něj potřeba. Zkontrolujte následující možnosti:
+
+- **Časový úsek:** Reprezentuje opakované období, které váš rozpočet využívá ke kumulaci a vyhodnocení nákladů. Nejběžnější možnosti jsou jednou za měsíc, jednou za čtvrtletí a jednou za rok.
+- **Časové obdob:í** Představuje dobu, po kterou je rozpočet platný. Rozpočet aktivně monitoruje a upozorňuje jenom po dobu, po kterou zůstává platný.
+- **Oznámení**
+  - Kontaktní e-mailové adresy: Tyto e-mailové adresy dostávají upozornění, když rozpočet nakumuluje náklady a překročí se definované prahové hodnoty.
+  - Kontaktní role: Při použití této možnosti dostanou e-mailová upozornění všichni uživatelé s odpovídající rolí Azure RBAC pro příslušný obor. Například vlastníci předplatného by dostali upozornění na rozpočet vytvořený v oboru předplatného.
+  - Kontaktní skupiny: Při překročení prahové hodnoty pro upozornění rozpočet volá nakonfigurované skupiny akcí.
+- **Filtry dimenze nákladů:** Stejné filtrování jako při analýze nákladů nebo v rozhraní API pro dotazy můžete také využít ve vašem rozpočtu. Pomocí tohoto filtru můžete omezit rozsah nákladů, které v rámci rozpočtu monitorujete.
+
+Po identifikaci možností vytvoření rozpočtu, které vyhovují vašim potřebám, vytvořte rozpočet pomocí rozhraní API. Následující příklad vám pomůže začít s běžnou konfigurací rozpočtu.
+
+**Vytvoření rozpočtu vyfiltrovaného na několik prostředků a značek**
+
+Adresa URL požadavku: `PUT https://management.azure.com/subscriptions/{SubscriptionId} /providers/Microsoft.Consumption/budgets/{BudgetName}/?api-version=2019-10-01`
+
+```json
+{
+  "eTag": "\"1d34d016a593709\"",
+  "properties": {
+    "category": "Cost",
+    "amount": 100.65,
+    "timeGrain": "Monthly",
+    "timePeriod": {
+      "startDate": "2017-10-01T00:00:00Z",
+      "endDate": "2018-10-31T00:00:00Z"
+    },
+    "filter": {
+      "and": [
+        {
+          "dimensions": {
+            "name": "ResourceId",
+            "operator": "In",
+            "values": [
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}",
+              "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{meterName}"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "category",
+            "operator": "In",
+            "values": [
+              "Dev",
+              "Prod"
+            ]
+          }
+        },
+        {
+          "tags": {
+            "name": "department",
+            "operator": "In",
+            "values": [
+              "engineering",
+              "sales"
+            ]
+          }
+        }
+      ]
+    },
+    "notifications": {
+      "Actual_GreaterThan_80_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 80,
+        "contactEmails": [
+          "user1@contoso.com",
+          "user2@contoso.com"
+        ],
+        "contactRoles": [
+          "Contributor",
+          "Reader"
+        ],
+        "contactGroups": [
+          "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/actionGroups/{actionGroupName}
+        ],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+```
+
+### <a name="configure-cost-based-orchestration-for-budget-alerts"></a>Konfigurace orchestrace na základě nákladů pro upozornění rozpočtu
+
+Rozpočty můžete nakonfigurovat tak, aby spouštěly automatizované akce pomocí skupin akcí Azure. Další informace o automatizaci akcí s využitím rozpočtů najdete v tématu věnovaném [automatizaci s využitím rozpočtů Azure](../manage/cost-management-budget-scenario.md).
 
 ## <a name="data-latency-and-rate-limits"></a>Omezení četnosti a latence dat
 
-Doporučujeme, abyste tato rozhraní API nevolali víckrát než jednou denně. Data služby Cost Management se aktualizují každé čtyři hodiny tak, jak jsou od poskytovatelů prostředků Azure přijímána nová data o využití. Častější volání neposkytuje žádná další data. Místo toho by vedlo ke zvýšení zatížení. Další informace o tom, jak často se mění data a jak se nakládá s latencí dat, najdete v tématu [Vysvětlení dat služby Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data).
+Doporučujeme, abyste tato rozhraní API nevolali víckrát než jednou denně. Data služby Cost Management se aktualizují každé čtyři hodiny tak, jak jsou od poskytovatelů prostředků Azure přijímána nová data o využití. Častější volání neposkytuje žádná další data. Místo toho by vedlo ke zvýšení zatížení. Další informace o tom, jak často se mění data a jak se nakládá s latencí dat, najdete v tématu [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>Kód chyby 429 – počet volání překročil omezení četnosti
 
