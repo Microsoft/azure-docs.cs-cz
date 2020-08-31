@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78402824"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144817"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -41,7 +41,7 @@ Návod, jak používat rozhraní příkazového řádku Git, [si můžete přeč
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
@@ -104,7 +104,7 @@ Po odeslání školicího běhu se vrátí objekt [Run](https://docs.microsoft.c
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 `az ml run`Příkaz CLI lze použít k načtení vlastností z běhu. Například následující příkaz vrátí vlastnosti posledního spuštění v experimentu s názvem `train-on-amlcompute` :
 
@@ -116,4 +116,4 @@ Další informace najdete v referenční dokumentaci [AZ ml Run](https://docs.mi
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md)
+* [Použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md)

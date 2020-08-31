@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4d4f6ff7819ef3cd0cf8e6a4c504a9b89dd5fda9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810237"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070662"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -179,7 +179,7 @@ Alternativně existuje více možností Marketplace, jako je Barracuda WAF pro A
 - Function App by měl být přístupný jenom přes HTTPS
 - V Function App by se měla použít nejnovější verze TLS.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
+Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -595,9 +595,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použijte řízení přístupu na základě role (RBAC) Azure Active Directory (AD) k řízení přístupu k rovině ovládacího prvku Azure Functions (Azure Portal). 
+**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacího prvku Azure Functions (Azure Portal). 
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

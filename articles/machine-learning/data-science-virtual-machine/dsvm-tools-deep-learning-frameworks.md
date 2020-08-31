@@ -11,32 +11,22 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0c189efa4fc9c981a486ebd174ad80b348c6bc9a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815534"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070912"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
-
-> [!NOTE]
-> Následující image virtuálních počítačů jsou zastaralé:
->
-> * Obrázek Windows serveru 2016 DSVM
-> * Obrázek Ubuntu 16,04 DSVM 
->
-> Tyto image virtuálních počítačů jsou dostupné jenom pro existující zákazníky, kteří používají nasazení ARM. Tyto image budou nadále získávat důležité opravy zabezpečení až do data jejich vyřazení, ale nebudou aktualizovány nejnovějšími nástroji pro datové vědy, které se dostanou do budoucna.
-> 
-> Přečtěte si prosím [stránku nepoužívané image DSVM](./reference-deprecation.md).
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | |
-| Podporované edice DSVM      | Ubuntu 16,04 (zastaralé)    |
+| Podporované edice DSVM      | Ubuntu 16.04    |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Caffe je nainstalován v `/opt/caffe` .   Ukázky jsou v `/opt/caffe/examples` .|
 | Jak ji spustit      | pomocí X2Go se přihlaste k VIRTUÁLNÍmu počítači a potom spusťte nový terminál a zadejte následující:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Otevře se nové okno prohlížeče s ukázkami poznámkových bloků. Binární soubory jsou nainstalované v/opt/Caffe/Build/Install/bin..<br/><br/>Nainstalovaná verze Caffe vyžaduje Python 2,7 a nebude fungovat s Python 3,5, který je ve výchozím nastavení aktivovaný. Pokud chcete přejít na Python 2,7, spusťte příkaz `source activate root` a přepněte se do prostředí Anaconda.|    
 
@@ -45,7 +35,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | |
-| Podporované edice DSVM      | Ubuntu 16,04 (zastaralé)     |
+| Podporované edice DSVM      | Ubuntu 16.04     |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Caffe2 je nainstalován v prostředí [Python 2,7 (root) conda. |
 | Jak ji spustit      | Terminál: Spusťte Python a importujte Caffe2. <br/> * JupyterHub: [Připojte se k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom v adresáři Caffe2 vyhledejte ukázkové poznámkové bloky. Některé poznámkové bloky vyžadují, aby byl v kódu Pythonu nastavený kořen Caffe2. Zadejte/opt/caffe2. |
 
@@ -54,7 +44,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 5,2 |
-| Podporované edice DSVM      | Ubuntu 16,04 (zastaralé)    |
+| Podporované edice DSVM      | Ubuntu 16.04    |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | V Pythonu 3,5 se instaluje chainer. |
 | Jak ji spustit      | Terminál: aktivujte prostředí Python 3,5, spusťte `python` a potom `import chainer` . <br/> * JupyterHub: [Připojte se k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a pak vyhledejte ukázkové poznámkové bloky v adresáři chainer.| 
 
@@ -63,7 +53,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 10.0.130|
-| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)  |
+| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Systém Windows 2016<br> Ubuntu 16.04  |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  |na systémové cestě je k dispozici _NVIDIA-SMI_ .  |
 | Jak ji spustit      | Otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte _NVIDIA-SMI_. |
 
@@ -73,7 +63,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 0.16.1|
-| Podporované edice DSVM      | Ubuntu 18.04<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Ubuntu 18.04<br> Ubuntu 16.04   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Horovod je nainstalován v Pythonu 3,5 |
 | Jak ji spustit      | Aktivujte správné prostředí v terminálu a pak spusťte Python. |
 
@@ -82,7 +72,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 2.2.4 |
-| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Systém Windows 2016 <br> Ubuntu 16.04   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Keras je nainstalovaný v Pythonu 3,6 ve Windows a v Pythonu 3,5u v systému Linux. |
 | Jak ji spustit      | Aktivujte správné prostředí v terminálu a pak spusťte Python. |
 
@@ -91,7 +81,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 2.5.1 |
-| Podporované edice DSVM      | Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Systém Windows 2016 <br> Ubuntu 16.04   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | CNTK je nainstalovaný v Pythonu 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) a v Pythonu pro [Linux](./dsvm-tools-languages.md#python-linux-edition)3,5.) |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a spusťte Python. <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom otevřete adresář CNTK pro ukázky. |
 
@@ -99,7 +89,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.3.0 |
-| Podporované edice DSVM      | Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Systém Windows 2016 <br> Ubuntu 16.04    |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | MXNet se instaluje do `C:\dsvm\tools\mxnet` systému Windows a `/dsvm/tools/mxnet` na Ubuntu. Vazby Pythonu jsou nainstalované v Pythonu 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) a Python 3,5 on [Linux](./dsvm-tools-languages.md#python-linux-edition)) vazby R jsou taky součástí Ubuntu DSVM. |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí conda a potom spusťte příkaz `import mxnet` . <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md#access-the-dsvm) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a otevřete `mxnet` adresář pro ukázky. |
 
@@ -108,7 +98,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.0.1 |
-| Podporované edice DSVM      | Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Systém Windows 2016 <br> Ubuntu 16.04    |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | MXNet model Server je nainstalovaný v Pythonu 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) a v Pythonu pro [Linux](./dsvm-tools-languages.md#python-linux-edition)3,5.) |
 | Jak ji spustit      | Terminál: Spusťte `sudo systemctl stop jupyterhub` , aby se služba JupyterHub nejdřív zastavila, protože naslouchá na stejném portu. Pak aktivujte správné prostředí conda a spusťte `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
@@ -117,7 +107,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze |  |
-| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé)   |
+| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Systém Windows 2016<br> Ubuntu 16.04   |
 | K čemu slouží? | Nástroj NVIDIA pro dotazování aktivity GPU |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `nvidia-smi` je v systémové cestě. |
 | Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem**otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte příkaz `nvidia-smi` . |
@@ -127,7 +117,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.2.0 (Ubuntu 16,04); 1.4.0 (Ubuntu 18,04, Windows 2019) |
-| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16,04 (zastaralé) |
+| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Nainstalováno v [pythonu 3,5](dsvm-tools-languages.md#python-linux-edition). Obsahuje ukázky Jupyter poznámkových bloků a ukázky jsou v/dsvm/Samples/pytorch.. |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Připojte se a otevřete adresář PyTorch pro ukázky.  |
 
@@ -136,7 +126,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.13 |
-| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016 (zastaralé)<br> Ubuntu 16,04 (zastaralé) |
+| Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Systém Windows 2016 <br> Ubuntu 16.04 |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Nainstalováno v Pythonu 3,5 v systémech [Linux](dsvm-tools-languages.md#python-linux-edition) a Python 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python. <br/> * Jupyter: Připojte se k [Jupyter](provision-vm.md) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom otevřete adresář TensorFlow pro ukázky.   |
 
@@ -145,7 +135,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.12 |
-| Podporované edice DSVM      | Ubuntu 16,04 (zastaralé) |
+| Podporované edice DSVM      | Ubuntu 16.04 |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | tensorflow_model_server je k dispozici v terminálu. |
 | Jak ji spustit      |  Ukázky jsou k dispozici [online](https://www.tensorflow.org/serving/).   |
 
@@ -155,6 +145,6 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované verze | 1.0.3 |
-| Podporované edice DSVM      | Ubuntu 16,04 (zastaralé) |
+| Podporované edice DSVM      | Ubuntu 16.04 |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  |Theano je nainstalován v Pythonu 2,7 (_root_) a v prostředí Python 3,5 (_py35_). |
 | Jak ji spustit      |  Terminál: aktivujte požadovanou verzi Pythonu (root nebo py35), spusťte Python a pak importujte Theano.<br/>* Jupyter: vyberte jádro Python 2,7 nebo 3,5 a pak importujte Theano.  <br/>Chcete-li vyřešit poslední chybu MKL (Math kernel Library), musíte nejprve nastavit vrstvu vláken MKL následujícím způsobem:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

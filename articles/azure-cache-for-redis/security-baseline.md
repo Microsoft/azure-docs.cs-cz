@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e22e7c1295747725cf40f1fd1b84b49ab6d6fbb2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242695"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071189"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Základní hodnota zabezpečení Azure pro Azure cache pro Redis
 
@@ -158,7 +158,7 @@ Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 
 Měla by být povolená DDoS Protection Standard.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager (ARM), řízení přístupu na základě role (RBAC) a zásady, v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou například šablony Azure Resource Manager (ARM), řízení přístupu na základě role Azure (Azure RBAC) a zásady, a to v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
 Jak nakonfigurovat a spravovat Azure Policy:
 
@@ -216,7 +216,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Doprovodné**materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni řídicích roviny pro instance služby Azure cache pro Redis.
 
-Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Jak povolit nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -228,7 +228,7 @@ Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.micro
 
 Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Jak povolit nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -262,9 +262,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 Všimněte si, že protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Jak povolit nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
+Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -276,7 +276,7 @@ Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Lo
 
 Když jsou metriky dostupné, když povolíte nastavení diagnostiky, protokolování auditu na rovině dat ještě není k dispozici pro službu Azure cache pro Redis.
 
-Jak nakonfigurovat výstrahy pro Azure cache pro Redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
+Jak nakonfigurovat výstrahy pro Azure cache pro Redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -314,9 +314,9 @@ Jak nakonfigurovat výstrahy pro Azure cache pro Redis:https://docs.microsoft.co
 
 **Doprovodné**materiály: Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Jak získat členy role adresáře ve službě Azure AD pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Jak získat členy role adresáře ve službě Azure AD pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Monitorování Azure Security Center**: Ano
 
@@ -330,7 +330,7 @@ Přístup k této rovině dat do mezipaměti Azure pro Redis se řídí prostře
 
 Nedoporučujeme vytvářet výchozí hesla do aplikace. Místo toho můžete ukládat hesla v Azure Key Vault a pak je pomocí Azure Active Directory načíst.
 
-Jak znovu vygenerovat mezipaměť Azure pro přístupové klíče Redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
+Jak znovu vygenerovat mezipaměť Azure pro přístupové klíče Redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -348,9 +348,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-Použití Azure Security Center k monitorování identity a přístupu (Preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Použití Azure Security Center k monitorování identity a přístupu (Preview): https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Jak používat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak používat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 **Monitorování Azure Security Center**: Ano
@@ -361,9 +361,9 @@ Jak používat Azure Policy:https://docs.microsoft.com/azure/governance/policy/t
 
 **Pokyny**: Azure cache pro Redis používá přístupové klíče k ověřování uživatelů a nepodporuje jednotné přihlašování (SSO) na úrovni datové roviny. Přístup k rovině ovládacího prvku pro službu Azure cache pro Redis je k dispozici prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
-Porozumění službě Azure cache pro Redis REST API:https://docs.microsoft.com/rest/api/redis/
+Porozumění službě Azure cache pro Redis REST API: https://docs.microsoft.com/rest/api/redis/
 
-Vysvětlení jednotného přihlašování pomocí služby Azure AD:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Vysvětlení jednotného přihlašování pomocí služby Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -374,9 +374,9 @@ Vysvětlení jednotného přihlašování pomocí služby Azure AD:https://docs.
 
 **Doprovodné**materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Jak monitorovat identitu a přístup v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Monitorování Azure Security Center**: Ano
 
@@ -404,9 +404,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-Postup nasazení Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Postup nasazení Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Vysvětlení zjišťování rizik Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Monitorování Azure Security Center**: Ano
 
@@ -416,7 +416,7 @@ Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/acti
 
 **Pokyny**: Nakonfigurujte pojmenovaná umístění v Azure Active Directory (AD) podmíněný přístup, aby se povolil přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -437,9 +437,9 @@ Ověřování Azure AD se nedá použít pro přímý přístup k mezipaměti Az
 
 **Doprovodné**materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
 
-Pochopení sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Pochopení sestav Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Jak používat kontroly přístupu Azure identity: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -451,9 +451,9 @@ Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azu
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Jak integrovat protokoly aktivit Azure do Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Postup zprovoznění služby Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Postup zprovoznění služby Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -463,11 +463,11 @@ Postup zprovoznění služby Azure Sentinel:https://docs.microsoft.com/azure/sen
 
 **Doprovodné**materiály: pro odchylku chování přihlášení k účtu u roviny ovládacího prvku použijte funkce Azure Active Directory (AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-Jak zobrazit rizikové přihlašování Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Jak zobrazit rizikové přihlašování Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Jak nakonfigurovat a povolit zásady pro rizika ochrany identity: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -535,7 +535,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Microsoft spravuje základní infrastrukturu pro Azure cache pro Redis a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -563,7 +563,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -571,9 +571,9 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použijte řízení přístupu na základě role (RBAC) Azure Active Directory (AAD) k řízení přístupu k mezipaměti Azure pro plochu ovládacího prvku Redis (tj. Azure Portal). 
+**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k mezipaměti Azure pro Redis plochu ovládacího prvku (tj. Azure Portal). 
 
-Jak nakonfigurovat RBAC v Azure:
+Jak nakonfigurovat službu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -603,11 +603,11 @@ Pokud používáte službu Azure cache pro Redis a funkci Redis data Persistence
 
 Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256 šifrování AES, je k dispozici jedna z nejúčinnějších šifrovacích šifr a je kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage nelze zakázat. Pro šifrování účtu úložiště můžete spoléhat na klíče spravované Microsoftem, nebo můžete spravovat šifrování pomocí vlastních klíčů.
 
-Postup konfigurace trvalosti v Azure cache pro Redis:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+Postup konfigurace trvalosti v Azure cache pro Redis: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-Vysvětlení šifrování pro účty Azure Storage:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Vysvětlení šifrování pro účty Azure Storage: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -635,7 +635,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 Microsoft provádí správu ohrožení zabezpečení pro základní systémy, které podporují Azure cache pro Redis.
 
-Pochopení Azure Security Center doporučení:https://docs.microsoft.com/azure/security-center/recommendations-reference
+Pochopení Azure Security Center doporučení: https://docs.microsoft.com/azure/security-center/recommendations-reference
 
 **Monitorování Azure Security Center**: Ano
 
@@ -683,11 +683,11 @@ Pochopení Azure Security Center doporučení:https://docs.microsoft.com/azure/s
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Porozumění službě Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -715,11 +715,11 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 - Povolené typy prostředků
 
-Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -845,9 +845,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 
-Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -865,9 +865,9 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -885,9 +885,9 @@ Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/
 
 **Pokyny**: Pokud používáte vlastní definice Azure Policy nebo šablony Azure Resource Manager pro Azure cache pro instance Redis a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Jak ukládat kód v Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Jak ukládat kód v Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -905,7 +905,7 @@ Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. cache k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -923,7 +923,7 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. cache k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurace mezipaměti Azure pro instance Redis a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1087,7 +1087,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Doprovodné**materiály: mezipaměť Azure pro zálohy Redis z exportu Redis a trvalost Redis se ukládají v rámci vybraného Azure Storage účtu. Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256 šifrování AES, je k dispozici jedna z nejúčinnějších šifrovacích šifr a je kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage nelze zakázat. Pro šifrování účtu úložiště můžete spoléhat na klíče spravované Microsoftem, nebo můžete spravovat šifrování pomocí vlastních klíčů.
 
-Vysvětlení šifrování pro účty Azure Storage:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Vysvětlení šifrování pro účty Azure Storage: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
 **Monitorování Azure Security Center**: Ano
 

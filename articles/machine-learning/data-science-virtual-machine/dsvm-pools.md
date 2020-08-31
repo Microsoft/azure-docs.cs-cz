@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477336"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144766"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu Virtual Machines pro datové vědy
 
 V tomto článku se dozvíte, jak vytvořit sdílený fond pro datové vědy Virtual Machines (DSVMs) pro tým. Výhody použití sdíleného fondu zahrnují lepší využití prostředků, jednodušší sdílení a spolupráci a efektivnější správu prostředků DSVM.
 
-K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [nastavení cílových výpočetních](../how-to-set-up-training-targets.md#amlcompute)prostředků.
+K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [Vytvoření výpočetních cílů pomocí Python SDK](../how-to-create-attach-compute-sdk.md).
 
 ## <a name="interactive-vm-pool"></a>Interaktivní fond virtuálních počítačů
 

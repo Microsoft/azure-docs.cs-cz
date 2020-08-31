@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120775"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068469"
 ---
 # <a name="publisher-verification-preview"></a>Ověření vydavatele (Preview)
 
@@ -38,17 +38,17 @@ Ověřování vydavatele nabízí následující výhody:
 - **Vylepšené hodnocení rizik**– pro žádosti o udělení souhlasu společnosti Microsoft budou zjištěny požadavky na udělení souhlasu od vydavatele jako signál. 
 
 ## <a name="requirements"></a>Požadavky
-Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jsou to tyto: 
+Je k dispozici několik požadavků na ověření vydavatele, některé z nich již byly dokončeny mnoha partnery společnosti Microsoft. Jedná se o tyto peeringy: 
 
 -  ID MPN pro platný účet [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) . Tento účet MPN musí být [globální účet partnera (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) pro vaši organizaci. 
 
--  Tenant Azure AD s [vlastní doménou](../fundamentals/add-custom-domain.md)OVĚŘENOU službou DNS. Vlastní doména se musí shodovat s doménou e-mailové adresy použité během ověřování v předchozím kroku. 
+-  Aplikace registrovaná v tenantovi Azure AD s nakonfigurovanou [doménou vydavatele](howto-configure-publisher-domain.md)
 
--  Aplikace zaregistrovaná v tenantovi Azure AD s [doménou vydavatele](howto-configure-publisher-domain.md) nakonfigurovanou pomocí stejné domény, jakou používali dřív. 
+-  Doména e-mailové adresy použité během ověřování účtu MPN musí být buď shodná s doménou vydavatele nakonfigurovanou v aplikaci, nebo [vlastní doménou](../fundamentals/add-custom-domain.md) ověřenou DNS, kterou jste přidali do tenanta služby Azure AD. 
 
 -  Uživatel, který provádí ověřování, musí mít autorizaci k provádění změn v registraci aplikace v Azure AD a účtu MPN v partnerském centru. 
 
-    -  V Azure AD musí být tento uživatel buď vlastníkem aplikace, nebo mít jednu z následujících [rolí](../users-groups-roles/directory-assign-admin-roles.md): správce aplikace, správce cloudové aplikace, globální správce. 
+    -  V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../users-groups-roles/directory-assign-admin-roles.md): správce aplikace, správce cloudové aplikace nebo globální správce. 
 
     -  V partnerském centru musí mít tento uživatel tyto [role](/partner-center/permissions-overview): správce MPN, účty správce nebo globální správce (Toto je sdílená role spravovaná ve službě Azure AD).
     

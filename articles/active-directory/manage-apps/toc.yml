@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: Chyba souhlasu uživatele
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: Potíže s přihlašováním z vlastního portálu
-              href: application-sign-in-other-problem-deeplink.md
-            - name: Potíže s přihlašováním z přístupového panelu
+            - name: Potíže s přihlašováním ze sekce Moje aplikace
               href: application-sign-in-other-problem-access-panel.md
             - name: Chyba na přihlašovací stránce aplikace
               href: application-sign-in-problem-application-error.md
-            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: Potíže s přihlášením k aplikaci Microsoftu
               href: application-sign-in-problem-first-party-microsoft.md
             - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: Řešení potíží s jednotným přihlašováním
           items:
+            - name: Řešení potíží s jednotným přihlašováním založeném na heslech
+              href: troubleshoot-password-based-sso.md
             - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: Běžné potíže s konfigurací hesel – aplikace v galerii
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Řešení potíží se seznamem aplikací a přiřazením
           items:
             - name: Správa seznamu aplikací pro vašeho tenanta
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: Řešení potíží se sekcí Moje aplikace
           items:
-            - name: Správa rozšíření prohlížeče
-              href: manage-access-panel-browser-extension.md
             - name: Aplikace se nezobrazuje
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: Zobrazuje e neočekávaná aplikace
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: Nejde se přihlásit
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Chyba při využívání samoobslužného přístupu k aplikacím
-              href: access-panel-troubleshoot-self-service-access.md
         - name: Řešení potíží s místními aplikacemi
           items:
             - name: Řešení potíží s proxy aplikací

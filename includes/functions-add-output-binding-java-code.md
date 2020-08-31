@@ -17,6 +17,6 @@ Nyní můžete použít nový `msg` parametr pro zápis do výstupní vazby z k�
 
 Když použijete výstupní vazbu, nemusíte používat Azure Storage kód SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
-Vaše `run` metoda by teď měla vypadat jako v následujícím příkladu:
+Vaše `run` Metoda by teď měla vypadat jako v následujícím příkladu:
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="17-38":::

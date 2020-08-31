@@ -7,16 +7,20 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266295"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072294"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows ze šablony Resource Manageru
 
 Naučte se, jak vytvořit virtuální počítač s Windows pomocí šablony Azure Resource Manager a Azure PowerShell z Azure Cloud shellu. Šablona použitá v tomto článku nasadí jeden virtuální počítač se systémem Windows Server v nové virtuální síti s jednou podsítí. Informace o vytvoření virtuálního počítače se systémem Linux najdete v tématu [Vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager](../linux/create-ssh-secured-vm-from-template.md).
+
+Alternativou je nasazení šablony z Azure Portal. Pokud chcete otevřít šablonu na portálu, vyberte tlačítko **nasadit do Azure** .
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 

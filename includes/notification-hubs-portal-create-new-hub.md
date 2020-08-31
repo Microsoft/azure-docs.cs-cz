@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/22/2020
 ms.locfileid: "67509092"
 ---
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **všechny služby** a v části **mobilní zařízení** vyberte **Notification Hubs** . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky** v levé nabídce. Po přidání **Notification Hubs** k **oblíbeným položkám**ji vyberte v nabídce vlevo.
 
@@ -35,7 +35,7 @@ ms.locfileid: "67509092"
 
     1. Vyberte existující skupinu prostředků ve **skupině prostředků**nebo vytvořte název nové skupiny prostředků.
 
-    1. Vyberte **Vytvořit**.
+    1. Vyberte **Create** (Vytvořit).
 
         ![Azure Portal – nastavení vlastností centra oznámení](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 

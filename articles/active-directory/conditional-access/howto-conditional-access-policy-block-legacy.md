@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049243"
+ms.locfileid: "89068622"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
@@ -37,7 +37,7 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 1. V části **cloudové aplikace nebo akce**vyberte **všechny cloudové aplikace**.
    1. Vyberte **Hotovo**.
 1. V části **podmínky**  >  **klientských aplikací**nastavte **Konfigurovat** na **Ano**.
-   1. Zaškrtněte pouze políčka **klienti Exchange ActiveSync** a **Další klienti**.
+   1. Zaškrtněte pouze políčka **klienti Exchange ActiveSync** a **Další klienti**. Aby bylo možné nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, musí být uživatel také globálním správcem.
    1. Vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělit**vyberte **blokovat přístup**.
    1. Vyberte **Vybrat**.

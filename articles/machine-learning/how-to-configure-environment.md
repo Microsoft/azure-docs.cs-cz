@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652634"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144885"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Následující tabulka uvádí každé vývojové prostředí popsané v tomto �
 
 | Prostředí | Výhody | Nevýhody |
 | --- | --- | --- |
-| [Cloudová Azure Machine Learning COMPUTE – instance (Preview)](#compute-instance) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Cloudová Azure Machine Learning výpočetní instance](#compute-instance) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
 | [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudové výpočetní instance (Python a SDK jsou předem nainstalované), ale mají předem nainstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovou výpočetní instancí je pomalejší prostředí Začínáme. |
@@ -55,7 +55,7 @@ Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>Vaše vlastní cloudová instance COMPUTE
 
-Instance služby [compute Azure Machine Learning (Preview)](concept-compute-instance.md) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ml.
+Instance služby Azure Machine Learning [COMPUTE](concept-compute-instance.md) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ml.
 
 Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -63,7 +63,7 @@ Další informace o výpočetních instancích, včetně postupu instalace balí
 
 Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuální počítač pro datové vědy
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
 DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro práci v oblasti datové vědy, která je předem nakonfigurovaná:
 
@@ -156,7 +156,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
     Tento příklad vytvoří prostředí pomocí Python 3.7.7, ale lze zvolit jakékoli konkrétní podverze. Kompatibilita sady SDK nemusí být zaručená u určitých hlavních verzí (doporučuje se 3,5 +) a při spuštění chyb se doporučuje vyzkoušet jinou verzi/podverzi v prostředí Anaconda. Vytvoření prostředí během stahování komponent a balíčků bude trvat několik minut.
 
-1. Spuštěním následujících příkazů v novém prostředí povolíte jádra IPython pro konkrétní prostředí. Tím se zajistí očekávané chování při importu jádra a balíčku při práci s poznámkovým blokům Jupyter v prostředích Anaconda:
+1. Spuštěním následujících příkazů v novém prostředí povolíte jádro Pythonu specifické pro prostředí. Tím se zajistí očekávané chování při importu jádra a balíčku při práci s poznámkovým blokům Jupyter v prostředích Anaconda:
 
     ```bash
     conda install notebook ipykernel
@@ -306,10 +306,10 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    |&nbsp;Doplňky balíčku sady SDK &nbsp;|Zdroj|&nbsp;Název PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
-   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl]|
+   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [datacihly] nebo [automl].
+   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [ `databricks` ] nebo [ `automl` ].
 
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte  **připojit** .

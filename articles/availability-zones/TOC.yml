@@ -25,9 +25,9 @@
         - name: Spravované disky
           items:
             - name: Přidání spravovaného disku do zón dostupnosti s využitím rozhraní příkazového řádku
-              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
+              href: ../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm
             - name: Přidání spravovaného disku do zón dostupnosti s PowerShellu
-              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+              href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
         - name: Škálovací sady virtuálních počítačů
           items:
             - name: Vytvoření škálovací sady v zóně dostupnosti
@@ -58,11 +58,11 @@
                 - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s využitím Azure (CLI)
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Veřejná IP adresa
-          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: Databáze SQL
           items:
             - name: Zóny dostupnosti pro SQL Database
-              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
         - name: Storage
           items:
             - name: Zónově redundantní úložiště
@@ -70,11 +70,11 @@
         - name: Event Hubs
           items:
             - name: Geografické zotavení po havárii služby Event Hubs
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
+              href: ../event-hubs/event-hubs-geo-dr.md#availability-zones
         - name: Service Bus
           items:
             - name: Geografické zotavení po havárii služby Service Bus
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
+              href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones
         - name: VPN Gateway
           items:
             - name: Vytvoření zónově redundantní brány virtuální sítě
@@ -83,6 +83,10 @@
           items:
             - name: Vytvoření zónově redundantní brány virtuální sítě
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Application Gateway v2
+          items:
+            - name: Automatické škálování a zónově redundantní služby Application Gateway v2
+              href: ../application-gateway/application-gateway-autoscaling-zone-redundant.md
         - name: Identita
           items:
             - name: Vytvoření instance Azure Active Directory Domain Services

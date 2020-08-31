@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227148"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143729"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -159,9 +159,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Translator Text                  | Ano                | Ano                | -                  |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | –\*            | -                  |
-| Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
-| Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
+| Azure Stream Analytics           | Ano                | –\*              | -                  |
+| Event Hubs                       | Ano                | Ano                | -                  |
+| Functions                        | Ano                | Ano                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Azure HDInsight                  | Ano                | Vše                | -                  |
@@ -175,9 +175,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtual Machines                 | Ano                | Ano, RSA 2048-bit  | -                  |
-| Sada škálování virtuálních počítačů        | Ano                | Ano, RSA 2048-bit  | -                  |
-| SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
+| Virtual Machines                 | Ano                | Ano                | -                  |
+| Sada škálování virtuálních počítačů        | Ano                | Ano                | -                  |
+| SAP HANA                         | Ano                | Ano                | -                  |
 | App Service                      | Ano                | Ano\*\*            | -                  |
 | Automation                       | Ano                | Ano\*\*            | -                  |
 | Azure Functions                  | Ano                | Ano\*\*            | -                  |
@@ -187,13 +187,13 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Service Bus                      | Ano                | Ano                | -                  |
 | Site Recovery                    | Ano                | Ano                | -                  |
 | **Databáze**                    |                    |                    |                    |
-| SQL Server na virtuálních počítačích   | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Azure SQL Database               | Ano                | Ano, RSA 2048-bit  | Ano                |
+| SQL Server na virtuálních počítačích   | Ano                | Ano                | Ano                |
+| Azure SQL Database               | Ano                | Ano, RSA 3072-bit  | Ano                |
 | Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
 | Azure SQL Database pro MySQL     | Ano                | Ano                | -                  |
 | Azure SQL Database pro PostgreSQL | Ano               | Ano                | -                  |
-| Azure Synapse Analytics          | Ano                | Ano, RSA 2048-bit  | -                  |
-| SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Azure Synapse Analytics          | Ano                | Ano, RSA 3072-bit  | -                  |
+| SQL Server Stretch Database      | Ano                | Ano, RSA 3072-bit  | Ano                |
 | Table Storage                    | Ano                | Ano                | Ano                |
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
@@ -203,7 +203,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Repos                      | Ano                | -                  | Ano                |
 | **Identita**                     |                    |                    |                    |
 | Azure Active Directory           | Ano                | -                  | -                  |
-| Azure Active Directory Domain Services | Ano          | Ano, RSA 2048-bit  | -                  |
+| Azure Active Directory Domain Services | Ano          | Ano                | -                  |
 | **Integrace**                  |                    |                    |                    |
 | Service Bus                      | Ano                | Ano                | Ano                |
 | Event Grid                       | Ano                | -                  | -                  |
@@ -220,20 +220,20 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Security Center for IoT    | Ano                | Ano                | -                  |
 | Azure Sentinel                   | Ano                | Ano                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Blob Storage úrovně Premium             | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Blob Storage                     | Ano                | Ano                | Ano                |
+| Blob Storage úrovně Premium             | Ano                | Ano                | Ano                |
 | Disk Storage                     | Ano                | Ano                | -                  |
 | Ultra Disk Storage               | Ano                | Ano                | -                  |
 | Spravované Disk Storage             | Ano                | Ano                | -                  |
-| File Storage                     | Ano                | Ano, RSA 2048-bit  | -                  |
-| Premium Storage souboru             | Ano                | Ano, RSA 2048-bit  | -                  |
-| Synchronizace souborů                        | Ano                | Ano, RSA 2048-bit  | -                  |
+| File Storage                     | Ano                | Ano                | -                  |
+| Premium Storage souboru             | Ano                | Ano                | -                  |
+| Synchronizace souborů                        | Ano                | Ano                | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
 | Azure Cache for Redis            | Ano                | –\*              | -                  |
 | Azure NetApp Files               | Ano                | Ano                | -                  |
-| Archiv služby Storage                  | Ano                | Ano, RSA 2048-bit  | -                  |
-| StorSimple                       | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Archiv služby Storage                  | Ano                | Ano                | -                  |
+| StorSimple                       | Ano                | Ano                | Ano                |
 | Azure Backup                     | Ano                | Ano                | Ano                |
 | Data Box                         | Ano                | -                  | Ano                |
 | Data Box Edge                    | Ano                | Ano                | -                  |

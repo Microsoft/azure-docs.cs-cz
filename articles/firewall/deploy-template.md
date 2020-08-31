@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Firewall se šablonou Zóny dostupnosti-Správce prostředků'
-description: Nasaďte Azure Firewall pomocí šablony. Virtuální síť má jednu virtuální síť se třemi podsítěmi. Nasadí se dva virtuální počítače s Windows serverem. pole s odkazem a serverem.
+description: V tomto rychlém startu nasadíte Azure Firewall pomocí šablony. Virtuální síť má jednu virtuální síť se třemi podsítěmi. Nasadí se dva virtuální počítače s Windows serverem. pole s odkazem a serverem.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705125"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071716"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-ARM
 

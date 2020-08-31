@@ -4,19 +4,19 @@ description: Naučte se konfigurovat databázi v Azure SQL Database a klientské
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 90bfe3f6e8d5ed19380ab2b48aa38e598c3f109a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bdc03d93654fdb0ae90600f8dad279f0fc8efbe9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501606"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070832"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
