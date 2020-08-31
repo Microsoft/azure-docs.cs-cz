@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717026"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055069"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -110,7 +110,7 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
 Správci mohou zvolit [metody ověřování](../authentication/concept-authentication-methods.md) , které mají být uživatelům k dispozici. Je důležité, abyste povolili více než jednu metodu ověřování, takže uživatelé mají k dispozici metodu zálohování pro případ, že jejich primární metoda není k dispozici. Pro povolení správců jsou k dispozici následující metody:
 
 > [!TIP]
-> Microsoft doporučuje používat mobilní aplikaci jako primární metodu pro Azure Multi-Factor Authentication pro zajištění nejlepšího zabezpečení a uživatelského prostředí.
+> Microsoft doporučuje používat Microsoft Authenticator (mobilní aplikace) jako primární metodu pro Azure Multi-Factor Authentication pro bezpečnější a vylepšené uživatelské prostředí. Aplikace Microsoft Authenticator také [splňuje](https://azure.microsoft.com/resources/microsoft-nist/) Národní ústav standardů a úrovně záruky na technologie ověřovatelů. 
 
 ### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
 

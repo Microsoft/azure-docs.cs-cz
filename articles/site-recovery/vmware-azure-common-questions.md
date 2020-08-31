@@ -3,12 +3,12 @@ title: Běžné dotazy týkající se zotavení po havárii VMware pomocí Azure
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086145"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054967"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
@@ -112,9 +112,9 @@ Site Recovery replikuje místní virtuální počítače VMware a fyzické serve
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>Můžu replikovat nové počítače do účtů úložiště?
 
-Ne. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
+No. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
 
-Replikace nových virtuálních počítačů do účtu úložiště je k dispozici jenom pomocí PowerShellu nebo REST API (verze 2018-01-10 nebo 2016-08-10).
+Replikace nových virtuálních počítačů do účtu úložiště je k dispozici pouze pomocí prostředí PowerShell ([AZ. RecoveryServices Module verze 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) nebo REST API (verze 2018-01-10 nebo 2016-08-10). [Přečtěte si, jak](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) nastavit replikaci pomocí příkazů PowerShellu.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Jaké jsou výhody replikace na spravované disky?
 
@@ -131,7 +131,7 @@ Ano, pro průběžné replikace můžete snadno [změnit typ spravovaného disku
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Můžu přepínat replikaci ze spravovaných disků na nespravované disky?
 
-Ne. Přepnutí ze spravovaného na nespravované není podporováno.
+No. Přepnutí ze spravovaného na nespravované není podporováno.
 
 ## <a name="replication"></a>Replikace
 
@@ -176,7 +176,7 @@ Pro replikaci VMware do Azure můžete změnit velikost disku zdrojových virtu�
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Můžu migrovat místní počítače na novou vCenter Server, aniž by to ovlivnilo probíhající replikaci?
 
-Ne. Změna VMware vCenter nebo migrace by ovlivnila průběžnou replikaci. Nastavte Site Recovery s novým vCenter Server a znovu povolte replikaci pro počítače.
+No. Změna VMware vCenter nebo migrace by ovlivnila průběžnou replikaci. Nastavte Site Recovery s novým vCenter Server a znovu povolte replikaci pro počítače.
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Můžu replikovat do mezipaměti nebo cílového účtu úložiště, který má nakonfigurovanou virtuální síť (s bránami firewall Azure)?
 
@@ -234,7 +234,7 @@ Doporučujeme [vytvořit virtuální počítač konfiguračního serveru](vmware
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Může být konfigurační server replikován do více než jedné oblasti?
 
-Ne. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
+No. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Můžu hostovat konfigurační server v Azure?
 
@@ -266,15 +266,15 @@ Yes. Stáhněte si instalační program MySQL a umístěte ho do složky C:\Temp
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Můžu použít virtuální počítač konfiguračního serveru pro cokoli jiného?
 
-Ne. Virtuální počítač používejte jenom pro konfigurační server.
+No. Virtuální počítač používejte jenom pro konfigurační server.
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Můžu naklonovat konfigurační server a použít ho k orchestraci?
 
-Ne. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
+No. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>Můžu změnit trezor, ve kterém je konfigurační server zaregistrovaný?
 
-Ne. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
+No. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Můžu použít stejný konfigurační server pro zotavení po havárii virtuálních počítačů VMware i fyzických serverů?
 

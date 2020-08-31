@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/27/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934493"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055528"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
@@ -30,25 +30,14 @@ Dnes Microsoft používá NMT k překladu do nejoblíbenějších jazyků. Všec
 
 ## <a name="core-features"></a>Základní funkce
 
-Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a rozhraní REST API:
+* Překlad řeči na text s výsledky rozpoznávání.
+* Překlad řeči na řeč.
+* Podpora překladu do více cílových jazyků.
+* Výsledky dočasnáho rozpoznávání a překladu.
 
-| Případ použití | Sada SDK | REST |
-|----------|-----|------|
-| Překlad řeči na text s výsledky rozpoznávání. | Ano | Ne |
-| Překlad řeči na řeč. | Ano | Ne |
-| Výsledky dočasnáho rozpoznávání a překladu. | Ano | Ne |
+## <a name="get-started"></a>Začínáme 
 
-## <a name="get-started-with-speech-translation"></a>Začínáme s překladem řeči
-
-Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů překladu řeči uspořádaných podle jazyka.
-
-| Rychlé zprovoznění | Platforma | API – referenční informace |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Procházet](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Procházet](https://aka.ms/csspeech/javaref) |
+Projděte si [rychlý Start](get-started-speech-translation.md) a začněte s překladem řeči. Služba překladu řeči je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md) a rozhraní příkazového [řádku pro rozpoznávání](spx-overview.md)řeči.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -72,5 +61,6 @@ Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech AP
 
 ## <a name="next-steps"></a>Další kroky
 
+* Dokončete [rychlý Start](get-started-speech-translation.md) překladu řeči.
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)

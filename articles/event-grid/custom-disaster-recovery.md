@@ -3,12 +3,13 @@ title: Zotavení po havárii pro vlastní témata v Azure Event Grid
 description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461676"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004540"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -42,7 +43,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 
@@ -69,7 +70,7 @@ Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako prim
 
    * Zadejte pro odběr události logický název a přidejte "-Primary" jako příponu, aby bylo snazší ho sledovat.
    * Vyberte typ koncového bodu Webhook.
-   * Nastavte koncový bod na adresu URL události vašeho přijímače událostí, který by měl vypadat nějak takto:`https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Nastavte koncový bod na adresu URL události vašeho přijímače událostí, který by měl vypadat nějak takto: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
      ![Event Grid odběr primárních událostí](./media/custom-disaster-recovery/create-primary-es.png)
 

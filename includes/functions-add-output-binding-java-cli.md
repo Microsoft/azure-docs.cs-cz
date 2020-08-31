@@ -11,17 +11,17 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673259"
 ---
-V projektu Java jsou vazby definovány jako anotace vazby v metodě Function. Soubor *Function. JSON* pak automaticky generuje na základě těchto poznámek.
+V projektu Java jsou vazby definovány jako anotace vazby v metodě Function. *function.jsv* souboru se pak automaticky generuje na základě těchto poznámek.
 
-Přejděte do umístění kódu funkce v části _Src/Main/Java_, otevřete soubor projektu *Function. Java* a do definice `run` metody přidejte následující parametr:
+Přejděte do umístění kódu funkce v části _Src/Main/Java_, otevřete soubor projektu *Function. Java* a do definice metody přidejte následující parametr `run` :
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-`msg` Parametr je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven `connection` metodou. Místo samotného připojovacího řetězce předáte nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště.
+`msg`Parametr je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue` . Připojovací řetězec pro účet úložiště je nastaven `connection` metodou. Místo samotného připojovacího řetězce předáte nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště.
 
-Definice `run` metody by teď měla vypadat jako v následujícím příkladu:  
+`run`Definice metody by teď měla vypadat jako v následujícím příkladu:  
 
 ```java
 @FunctionName("HttpTrigger-Java")

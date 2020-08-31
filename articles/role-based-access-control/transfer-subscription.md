@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029973"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055647"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
 
@@ -28,12 +28,15 @@ Organizace můžou mít několik předplatných Azure. Každé předplatné je p
 
 Tento článek popisuje základní kroky, pomocí kterých můžete přenést předplatné do jiného adresáře služby Azure AD a znovu vytvořit některé prostředky po přenosu.
 
+> [!NOTE]
+> U předplatných Azure CSP není změna adresáře Azure AD pro předplatné podporovaná.
+
 ## <a name="overview"></a>Přehled
 
 Převod předplatného Azure na jiný adresář služby Azure AD je složitý proces, který musí být pečlivě naplánován a proveden. Mnoho služeb Azure vyžaduje, aby objekty zabezpečení (identity) fungovaly normálně nebo dokonce i spravovaly jiné prostředky Azure. Tento článek se snaží pokrýt většinu služeb Azure, které jsou silně závislé na objektech zabezpečení, ale nejsou vyčerpávající.
 
 > [!IMPORTANT]
-> Převod předplatného vyžaduje ukončení procesu.
+> V některých případech může převod předplatného vyžadovat dokončení procesu. K vyhodnocení, jestli se při migraci vyžaduje výpadky, se vyžaduje pečlivé plánování.
 
 Následující diagram znázorňuje základní kroky, které je třeba provést při přenosu odběru do jiného adresáře.
 
@@ -66,22 +69,23 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 
 | Služba nebo prostředek | Ovlivněné | Obnovitelné | Máte vliv na to? | Co můžete dělat |
 | --------- | --------- | --------- | --------- | --------- |
-| Přiřazení rolí | Ano | Yes | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
-| Vlastní role | Ano | Yes | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
-| Spravované identity přiřazené systémem | Ano | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
-| Spravované identity přiřazené uživatelem | Ano | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
-| Azure Key Vault | Ano | Yes | [Seznam Key Vault zásad přístupu](#list-other-known-resources) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s ověřováním Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-other-known-resources) |  |  |
-| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Azure Data Lake Storage Gen1 | Ano |  |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Azure Files | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Synchronizace souborů Azure | Ano | Yes |  |  |
-| Spravované disky Azure | Yes | – |  |  |
-| Azure Container Services pro Kubernetes | Ano | Yes |  |  |
-| Azure Active Directory Domain Services | Yes | No |  |  |
+| Přiřazení rolí | Ano | Ano | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
+| Vlastní role | Ano | Ano | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
+| Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
+| Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
+| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-other-known-resources) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
+| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Soubory Azure | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Synchronizace souborů Azure | Ano | Ano |  |  |
+| Spravované disky Azure | Ano | – |  |  |
+| Azure Container Services pro Kubernetes | Ano | Ano |  |  |
+| Azure Active Directory Domain Services | Ano | Ne |  |  |
 | Registrace aplikací | Ano | Ano |  |  |
 
-Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není ve stejném předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
+> [!IMPORTANT]
+> Pokud používáte šifrování v klidovém umístění pro prostředek, jako je například účet úložiště nebo databáze SQL, a prostředek má závislost na trezoru klíčů, který *není v* předplatném, které se přenáší, může dojít k neopravitelné chybě. V takovém případě použijte jiný Trezor klíčů nebo dočasně zakažte klíče spravované zákazníkem, abyste se vyhnuli neopravitelné chybě.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -199,9 +203,9 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
 
     | Kritéria | Typ spravované identity |
     | --- | --- |
-    | `alternativeNames`vlastnost obsahuje`isExplicit=False` | Přiřazeno systémem |
-    | `alternativeNames`vlastnost nezahrnuje`isExplicit` | Přiřazeno systémem |
-    | `alternativeNames`vlastnost obsahuje`isExplicit=True` | Přiřazeno uživatelem |
+    | `alternativeNames` vlastnost obsahuje `isExplicit=False` | Přiřazeno systémem |
+    | `alternativeNames` vlastnost nezahrnuje `isExplicit` | Přiřazeno systémem |
+    | `alternativeNames` vlastnost obsahuje `isExplicit=True` | Přiřazeno uživatelem |
 
     Můžete taky použít příkaz [AZ identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) , který vypíše uživatelem přiřazené identity. Další informace najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
@@ -217,8 +221,8 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
 
 Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klienta Azure Active Directory pro předplatné, ve kterém je vytvořený. Zároveň jsou k tomuto ID tenanta vázány i všechny položky zásad přístupu. Další informace najdete v tématu [přesun Azure Key Vault do jiného předplatného](../key-vault/general/move-subscription.md).
 
-> [!WARNING]
-> Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není ve stejném předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
+> [!IMPORTANT]
+> Pokud používáte šifrování v klidovém umístění pro prostředek, jako je například účet úložiště nebo databáze SQL, a prostředek má závislost na trezoru klíčů, který *není v* předplatném, které se přenáší, může dojít k neopravitelné chybě. V takovém případě použijte jiný Trezor klíčů nebo dočasně zakažte klíče spravované zákazníkem, abyste se vyhnuli neopravitelné chybě.
 
 - Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) seznamu zásad přístupu. Další informace najdete v tématu [poskytnutí Key Vault ověřování pomocí zásad řízení přístupu](../key-vault/key-vault-group-permissions-for-apps.md).
 
@@ -228,7 +232,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Vypsání databází Azure SQL pomocí ověřování Azure AD
 
-- Pomocí [AZ SQL Server AD – admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) a [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte databáze SQL Azure s ověřováním Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../sql-database/sql-database-aad-authentication-configure.md).
+- Pomocí [AZ SQL Server AD – admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) a [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte databáze SQL Azure s ověřováním Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)

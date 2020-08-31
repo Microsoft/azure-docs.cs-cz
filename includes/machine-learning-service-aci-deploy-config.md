@@ -13,12 +13,12 @@ ms.locfileid: "79486014"
 ---
 Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
-| Entita JSON | Parametr metody | Description |
+| Entita JSON | Parametr metody | Popis |
 | ----- | ----- | ----- |
-| `computeType` | NA | Cílové výpočetní prostředí. Pro ACI musí být hodnota `ACI` . |
-| `containerResourceRequirements` | NA | Kontejner pro entity CPU a paměti |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit. Upravovaný`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |
+| `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro ACI musí být hodnota `ACI` . |
+| `containerResourceRequirements` | Není k dispozici | Kontejner pro entity CPU a paměti |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit. Upravovaný `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí `0.5` |
 | `location` | `location` | Oblast Azure, do které se má tato webová služba nasadit Pokud není zadáno, bude použito umístění pracovního prostoru. Další podrobnosti o dostupných oblastech najdete tady: [ACI oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
 | `authEnabled` | `auth_enabled` | Určuje, jestli se má pro tuto webovou službu povolit ověřování. Výchozí hodnota je false. |
 | `sslEnabled` | `ssl_enabled` | Určuje, jestli se má pro tuto webovou službu povolit protokol SSL. Výchozí hodnota je false. |

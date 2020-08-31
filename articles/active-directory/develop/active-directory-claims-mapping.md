@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853367"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068639"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -302,7 +302,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | streetaddress | Adresa |
 | Uživatel | ovládacím | PSČ |
 | Uživatel | preferredlanguange | Preferovaný jazyk |
-| Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |
+| Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |*
 | Uživatel | mailNickname | Přezdívka pošty |
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
@@ -340,6 +340,8 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 - JwtClaimType musí obsahovat název deklarace identity, která se má vygenerovat v JWTs.
 - SamlClaimType musí obsahovat identifikátor URI deklarace identity, která se má vygenerovat v tokenech SAML.
+
+* **atribut onPremisesUserPrincipalName:** Při použití alternativního ID se místní atribut userPrincipalName synchronizuje s atributem Azure AD onPremisesUserPrincipalName. Tento atribut je k dispozici pouze v případě, že je nakonfigurováno alternativní ID, ale je k dispozici prostřednictvím aplikace MS Graph beta: https://graph.microsoft.com/beta/me/ .
 
 > [!NOTE]
 > Názvy a identifikátory URI deklarací identity v omezené sadě deklarací nelze použít pro prvky typu deklarace identity. Další informace najdete v části výjimky a omezení dále v tomto článku.
@@ -440,7 +442,7 @@ V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace 
 > [!NOTE]
 > Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

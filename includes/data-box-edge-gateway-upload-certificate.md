@@ -16,9 +16,9 @@ Správný certifikát SSL zajišťuje odesílání šifrovaných informací do s
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
 2. Pomocí `Set-HcsCertificate` rutiny Nahrajte certifikát. Po zobrazení výzvy zadejte následující parametry:
 
-   - `CertificateFilePath`-Cesta ke sdílené složce, která obsahuje soubor certifikátu ve formátu *. pfx* .
-   - `CertificatePassword`– Heslo použité k ochraně certifikátu.
-   - `Credentials`– Uživatelské jméno pro přístup ke sdílené složce, která obsahuje certifikát. Po zobrazení výzvy zadejte heslo ke sdílené síťové složce.
+   - `CertificateFilePath` -Cesta ke sdílené složce, která obsahuje soubor certifikátu ve formátu *. pfx* .
+   - `CertificatePassword` – Heslo použité k ochraně certifikátu.
+   - `Credentials` – Uživatelské jméno pro přístup ke sdílené složce, která obsahuje certifikát. Po zobrazení výzvy zadejte heslo ke sdílené síťové složce.
 
      Následující příklad ukazuje použití této rutiny:
 

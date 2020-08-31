@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654272"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055681"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade image uzlu služby Azure Kubernetes (AKS)
 
@@ -20,6 +20,10 @@ AKS podporuje upgrade imagí na uzlu, takže budete mít nejnovější aktualiza
 Pokud vás zajímá informace o nejnovějších obrázcích poskytovaných službou AKS, přečtěte si [poznámky k verzi AKS](https://github.com/Azure/AKS/releases) , kde najdete další podrobnosti.
 
 Informace o tom, jak upgradovat verzi Kubernetes pro váš cluster, najdete v tématu [upgrade clusteru AKS][upgrade-cluster].
+
+## <a name="limitations"></a>Omezení
+
+* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 
 ## <a name="install-the-aks-cli-extension"></a>Instalace rozšíření CLI AKS
 

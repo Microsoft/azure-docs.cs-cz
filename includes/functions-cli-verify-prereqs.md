@@ -13,7 +13,7 @@ ms.locfileid: "80673150"
 ---
 ### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
 
-+ V terminálu nebo příkazovém okně spusťte `func --version` příkaz a ověřte, zda Azure Functions Core Tools verze 2.7.1846 nebo novější.
++ V terminálu nebo příkazovém okně spusťte příkaz `func --version` a ověřte, zda Azure Functions Core Tools verze 2.7.1846 nebo novější.
 
 + Spusťte `az --version` a ověřte, jestli je verze Azure CLI 2.0.76 nebo novější.
 

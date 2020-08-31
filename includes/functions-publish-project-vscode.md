@@ -29,16 +29,16 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
     + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    + **Vyberte Function App v Azure**: zvolte `+ Create new Function App`. (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
+    + **Vyberte Function App v Azure**: zvolte `+ Create new Function App` . (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
       
     + **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
     
     ::: zone pivot="programming-language-python"
-    + **Vyberte modul runtime**: Zvolte verzi Pythonu, kterou jste spustili místně. K zkontrolování vaší `python --version` verze můžete použít příkaz.
+    + **Vyberte modul runtime**: Zvolte verzi Pythonu, kterou jste spustili místně. `python --version`K zkontrolování vaší verze můžete použít příkaz.
     ::: zone-end
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    + **Vyberte modul runtime**: Zvolte verzi Node. js, kterou jste spustili místně. K zkontrolování vaší `node --version` verze můžete použít příkaz.
+    + **Vyberte modul runtime**: zvolte verzi Node.js, na které jste pracovali místně. `node --version`K zkontrolování vaší verze můžete použít příkaz.
     ::: zone-end
 
     + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. 

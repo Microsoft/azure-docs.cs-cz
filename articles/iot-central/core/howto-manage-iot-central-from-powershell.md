@@ -7,13 +7,14 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 7638b44dc3e727e2530e656541272ddad292d1fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002467"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067752"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -73,7 +74,7 @@ Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplik
 |Název              |Název aplikace v Azure Portal. |
 |Subdoména         |Subdoména v adrese URL aplikace V tomto příkladu je adresa URL aplikace `https://mysubdomain.azureiotcentral.com` . |
 |Skladová jednotka (SKU)               |V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Template (Šablona)          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
+|Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
 |DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]

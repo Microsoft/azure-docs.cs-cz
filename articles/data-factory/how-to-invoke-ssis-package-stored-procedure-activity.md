@@ -13,12 +13,13 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: e7729318e6121b0072546b8e111a8b782e95906d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183405"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067820"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Uložená procedura ve službě Azure Data Factory
 
@@ -26,7 +27,7 @@ ms.locfileid: "86183405"
 
 Tento článek popisuje, jak spustit balíček SSIS v kanálu Azure Data Factory pomocí aktivity uložené procedury. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
 Návod v tomto článku používá Azure SQL Database k hostování katalogu SSIS. Můžete také použít spravovanou instanci Azure SQL.
@@ -62,7 +63,7 @@ Prvním krokem je vytvoření datové továrny pomocí Azure Portal.
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**. 
 
      ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -116,7 +117,7 @@ V tomto kroku použijete uživatelské rozhraní Data Factory k vytvoření kan�
     ![Ověření kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Kliknutím na tlačítko **publikovat vše** klikněte na publikovat kanál a Data Factory. 
 
-    ![Publikovat](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Publikování](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>Spuštění a monitorování kanálu
 V této části aktivujete spuštění kanálu a pak ho monitorujte. 

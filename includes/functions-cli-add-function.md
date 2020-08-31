@@ -19,8 +19,8 @@ func new --name HttpExample --template "HTTP trigger"
 ```  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"
-`func new`Vytvoří soubor kódu HttpExample.cs.
+`func new` Vytvoří soubor kódu HttpExample.cs.
 ::: zone-end
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
-`func new`vytvoří podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
+`func new` vytvoří podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *function.js*.
 ::: zone-end

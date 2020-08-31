@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810112"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055324"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -183,15 +183,38 @@ Chcete-li definovat datový typ pro vstupní vazbu, použijte `dataType` vlastno
 Možnosti pro `dataType` jsou: `binary` , `stream` a `string` .
 
 ## <a name="context-object"></a>kontextový objekt
-Modul runtime používá `context` objekt k předání dat do a z vaší funkce a k umožnění komunikace s modulem runtime. Kontextový objekt lze použít pro čtení a nastavení dat z vazeb, zápis protokolů a použití `context.done` zpětného volání, pokud je vaše exportovaná funkce synchronní.
 
-`context`Objekt je vždy prvním parametrem funkce. Mělo by být zahrnuto, protože má důležité metody jako `context.done` a `context.log` . Objekt můžete pojmenovat libovolným způsobem, který chcete (například `ctx` nebo `c` ).
+Modul runtime používá `context` objekt k předávání dat do a z funkce a modulu runtime. Slouží ke čtení a nastavení dat z vazeb a pro zápis do protokolů `context` je objekt vždy prvním parametrem předaným funkci.
+
+U funkcí, které obsahují synchronní kód, objekt context obsahuje `done` zpětné volání, které je voláno při zpracování funkce. Explicitní volání `done` není nutné při psaní asynchronního kódu; `done` zpětné volání se volá implicitně.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
+
+| Název vlastnosti  | Typ  | Popis |
+|---------|---------|---------|
+| `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
+| `functionName` | Řetězec | Poskytuje název běžící funkce. |
+| `functionDirectory` | Řetězec | Poskytuje adresář App Functions. |
+
+Následující příklad ukazuje, jak vrátit `invocationId` .
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -201,7 +224,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Vrátí pojmenovaný objekt, který se používá ke čtení nebo přiřazení dat vazby. Data vazby vstupu a triggeru se dají použít při čtení vlastností na `context.bindings` . Data vazby výstupu lze přiřadit přidáním dat do`context.bindings`
+Vrátí pojmenovaný objekt, který se používá ke čtení nebo přiřazení dat vazby. Data vazby vstupu a triggeru se dají použít při čtení vlastností na `context.bindings` . Data vazby výstupu lze přiřadit přidáním dat do `context.bindings`
 
 Například následující definice vazeb ve vaší function.jsv nástroji umožňují přístup k obsahu fronty z `context.bindings.myInput` a přiřazování výstupů do fronty pomocí `context.bindings.myOutput` .
 
@@ -395,7 +418,7 @@ Když pracujete s triggery HTTP, můžete získat přístup k objektům požadav
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Pouze odpověď]_ Voláním `context.res.send(body?: any)` .** Je vytvořena odpověď protokolu HTTP se vstupem `body` jako text odpovědi. `context.done()`je implicitně volána.
++ **_[Pouze odpověď]_ Voláním `context.res.send(body?: any)` .** Je vytvořena odpověď protokolu HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
 + **_[Pouze odpověď]_ Voláním `context.done()` .** Speciální typ vazby HTTP vrátí odpověď, která je předána `context.done()` metodě. Následující výstupní vazba protokolu HTTP definuje `$return` výstupní parametr:
 
@@ -500,7 +523,7 @@ Při místním spuštění jsou nastavení aplikace načítána z [local.setting
 
 Ve výchozím nastavení je funkce JavaScriptu spouštěna z `index.js` , soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json` .
 
-`scriptFile`lze použít k získání struktury složky, která vypadá jako v následujícím příkladu:
+`scriptFile` lze použít k získání struktury složky, která vypadá jako v následujícím příkladu:
 
 ```
 FunctionApp
@@ -647,7 +670,7 @@ Při vývoji Azure Functions v modelu hostování bez serveru je to realita. *St
 
 Když v Azure Functions aplikaci použijete klienta pro konkrétní služby, nevytvářejte nového klienta s každým voláním funkce. Místo toho vytvořte jednoho statického klienta v globálním oboru. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
 
-### <a name="use-async-and-await"></a>Použijte `async` a`await`
+### <a name="use-async-and-await"></a>Použijte `async` a `await`
 
 Při psaní Azure Functions v JavaScriptu, byste měli napsat kód pomocí `async` `await` klíčových slov a. Psaní kódu pomocí `async` a `await` místo zpětných volání nebo `.then` a `.catch` pomocí příslibů pomáhá vyhnout se dvěma běžným problémům:
  - Vyvolává nezachycené výjimky, které způsobí [selhání procesu Node.js](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), což může mít vliv na spouštění dalších funkcí.

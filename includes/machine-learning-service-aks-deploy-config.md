@@ -27,8 +27,8 @@ Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [Ak
 | `authEnabled` | `auth_enabled` | Určuje, zda má být pro webovou službu povoleno ověřování klíčů. Obojí `tokenAuthEnabled` a `authEnabled` nemůže být `True` . Výchozí hodnota, `True` . |
 | `tokenAuthEnabled` | `token_auth_enabled` | Určuje, jestli se má pro webovou službu povolit ověřování tokenu. Obojí `tokenAuthEnabled` a `authEnabled` nemůže být `True` . Výchozí hodnota, `False` . |
 | `containerResourceRequirements` | Není k dispozici | Kontejner pro entity CPU a paměti |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit této webové službě. Upravovaný`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit této webové službě. Upravovaný `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí `0.5` |
 | `appInsightsEnabled` | `enable_app_insights` | Určuje, zda má být povoleno protokolování Application Insights pro webovou službu. Výchozí hodnota, `False` . |
 | `scoringTimeoutMs` | `scoring_timeout_ms` | Časový limit pro vykonání volání bodování webové službě. Výchozí hodnota, `60000` . |
 | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maximální počet souběžných požadavků na uzel pro tuto webovou službu. Výchozí hodnota, `1` . |

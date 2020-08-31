@@ -31,11 +31,11 @@ Pokud se setkáte s problémy zařízení, můžete vytvořit balíček pro podp
 
     Použijí se následující parametry:
 
-    - `-Path`-Zadejte síť nebo místní cestu ke zkopírování balíčku pro podporu. požadovanou
-    - `-Credential`-Zadejte přihlašovací údaje pro přístup k chráněné cestě.
-    - `-Zip`– Určete, aby se vygeneroval soubor zip.
-    - `-Include`– Určuje, že se mají zahrnout součásti, které se mají zahrnout do balíčku pro podporu. Pokud není zadaný, `Default` předpokládá se.
-    - `-IncludeArchived`– Určuje, že se mají do balíčku pro podporu zahrnout archivované protokoly.
-    - `-IncludePeriodicStats`– Určuje, že se mají do balíčku pro podporu zahrnout protokoly pravidelného oznámení.
+    - `-Path` -Zadejte síť nebo místní cestu ke zkopírování balíčku pro podporu. požadovanou
+    - `-Credential` -Zadejte přihlašovací údaje pro přístup k chráněné cestě.
+    - `-Zip` – Určete, aby se vygeneroval soubor zip.
+    - `-Include` – Určuje, že se mají zahrnout součásti, které se mají zahrnout do balíčku pro podporu. Pokud není zadaný, `Default` předpokládá se.
+    - `-IncludeArchived` – Určuje, že se mají do balíčku pro podporu zahrnout archivované protokoly.
+    - `-IncludePeriodicStats` – Určuje, že se mají do balíčku pro podporu zahrnout protokoly pravidelného oznámení.
 
     

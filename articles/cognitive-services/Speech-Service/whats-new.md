@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131850"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055307"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Služba Speech: co je nového v docs
 
@@ -48,9 +48,6 @@ Pokud se chcete dozvědět o aktualizacích služby Speech, sady Speech SDK, za�
 * [Rychlý Start: Nastavení vývojového prostředí](quickstarts/setup-platform.md) – přidání instrukcí JavaScriptu do dokumentace
 * [Rychlý Start: syntetizace řeči do zvukového souboru](quickstarts/text-to-speech-audio-file.md) – přidání instrukcí JavaScriptu do dokumentace
 * [Rychlý Start: syntetizace řeči na mluvčí](quickstarts/text-to-speech.md) – pokyny pro JavaScript přidávané do dokumentace
-* [Rychlý Start: Převod řeči na řeč](quickstarts/translate-speech-to-speech.md) – přidání instrukcí JavaScriptu do dokumentace
-* [Rychlý Start: Převod řeči na více jazyků](quickstarts/translate-speech-to-text-multiple-languages.md) – pokyny pro JavaScript byly přidány do dokumentace.
-* [Rychlý Start: Převod řeči na text](quickstarts/translate-speech-to-text.md) – pokyny pro JavaScript přidané do dokumentace
 * [Co je klíčové slovo?](custom-keyword-overview.md) – Aktualizovaný obsah a odkazy Začínáme
 * [Zadejte zdrojový jazyk pro mluvený text](how-to-specify-source-language.md) přidaný do dokumentace JavaScript a cíl-C.
 
@@ -77,7 +74,7 @@ Tato tabulka je aktualizována měsíčně a pouze odrážejí problémy otevře
 |[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|Spuštění kontejnerů služby Speech Service selže|2020-05-13|Otevřená|Problém|
 |[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|Manish-95|Příklad pro soubor výslovnosti|2020-05-11|Otevřená|Problém|
 |[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|Ukázka Java je nesprávná.|2020-05-10|Otevřená|Problém|
-|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Nejde získat výslovnost skóre.|2020-05-08|Uzavřená|Problém|
+|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Nejde získat skóre výslovnosti.|2020-05-08|Uzavřená|Problém|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|Šablona souboru YAML|2020-05-07|Uzavřená|Problém|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|Ukázkový kód jazyka C# nevyzývá uživatele ke mluvit.|2020-05-06|Uzavřená|Problém|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|Upgrade TTS z verze 1.3 na verze 1.4|2020-05-05|Uzavřená|Žádost o získání dat|

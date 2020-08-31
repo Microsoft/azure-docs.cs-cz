@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008552"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055460"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -26,6 +26,10 @@ Rychlý Start obsahuje následující hlavní kroky:
 1. Nahrajte předem připravené modely a data grafu a vytvořte vzorový scénář.
 1. Prozkoumejte graf scénáře, který je vytvořený.
 1. Provedení změn v grafu
+
+Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma podlahami a dvěma místnosti. Graf bude vypadat takto:
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -144,7 +148,7 @@ Průzkumník aplikace ADT nyní nahraje tyto soubory modelu do instance digitál
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Zobrazení pole modelu zobrazení se dvěma definicemi modelů, které jsou uvedeny uvnitř, Floor (dtmi: priklad: Floor; 1) a místnost (dtmi: Příklad: místnost; 1). Ikona zobrazení modelu ukazující, že v kruhu je pro každý model zvýrazněno písmeno i." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Zobrazení pole modelu zobrazení se dvěma definicemi modelů, které jsou uvedeny uvnitř, Floor (dtmi: priklad: Floor; 1) a místnost (dtmi: Příklad: místnost; 1). Ikona zobrazení modelu ukazující, že v kruhu je pro každý model zvýrazněno písmeno "i"." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -198,7 +202,7 @@ Průzkumník aplikace ADT nyní pomocí nahraného souboru vytvoří požadovan�
 
 Graf byl nyní nahrán do Průzkumníka aplikace ADT. Chcete-li zobrazit graf, stiskněte tlačítko *Spustit dotaz* v poli *Průzkumník grafů* v horní části okna Průzkumníka aplikace ADT. 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Tlačítko spustit dotaz poblíž horního okraje okna je zvýrazněno." lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Tlačítko "spustit dotaz" poblíž horního okraje okna je zvýrazněno." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Tím se spustí výchozí dotaz pro výběr a zobrazení všech digitálních vláken. Průzkumník aplikace ADT načte všechny vlákna a relace ze služby a nakreslí graf definovaný v poli *zobrazení grafu* .
 
@@ -271,7 +275,7 @@ Vlastnosti v tomto seznamu lze upravovat. Vyberte hodnotu teploty **70** a povol
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Pole Průzkumník vlastností zobrazující vlastnosti pro Room0. Hodnota teploty je upravitelné pole zobrazující 76 a zvýraznění kolem ikony uložit je zvýrazněno." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Pole "Průzkumník vlastností" zobrazující vlastnosti pro Room0. Hodnota teploty je upravitelné pole zobrazující 76 a zvýraznění kolem ikony uložit je zvýrazněno." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::

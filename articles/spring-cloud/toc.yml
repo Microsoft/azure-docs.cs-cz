@@ -5,8 +5,6 @@
   items:
     - name: Co je Azure Spring Cloud?
       href: spring-cloud-overview.md
-    - name: Java a základní operační systém pro aplikace mikroslužeb Spring
-      href: spring-cloud-principles-microservice-apps.md
 - name: Rychlé starty
   expanded: true
   items:

@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Relace
           href: concept-conditional-access-session.md
-    - name: Přehledy a generování sestav
-      href: howto-conditional-access-insights-reporting.md
     - name: Režim pouze sestav
       href: concept-conditional-access-report-only.md
     - name: Závislosti služeb
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
+    - name: Konfigurace režimu Pouze sestavy
+      href: howto-conditional-access-insights-reporting.md
     - name: Vyžadování klientem schválených aplikací
       href: app-based-conditional-access.md
     - name: Vyžadování zásad ochrany aplikací
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: Vyžadování podmínek použití
       href: terms-of-use.md
-    - name: Konfigurace režimu pouze sestav
-      href: howto-conditional-access-report-only.md
     - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
       href: howto-conditional-access-session-lifetime.md
-    - name: Migrace klasických zásad
-      href: policy-migration-mfa.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s přihlášením
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: Nejčastější dotazy
           href: faqs.md
+    - name: Migrace klasických zásad
+      href: policy-migration-mfa.md
 - name: Referenční informace
   items:
     - name: Beta verze rozhraní Graph API

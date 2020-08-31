@@ -3,7 +3,7 @@
 - name: Přehled
   items:
     - name: Informace o službě Azure Arc
-      href: arc-overview.md
+      href: overview.md
 - name: Servery s podporou služby Arc >
   href: ./servers/overview.md
 - name: Kubernetes s podporou služby Arc >

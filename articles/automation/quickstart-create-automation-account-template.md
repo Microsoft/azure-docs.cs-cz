@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685625"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055426"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Automation pomocí šablony ARM
 
@@ -60,7 +60,7 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 |:---|:---|:---|
 | [Pracovní prostor](/azure/templates/microsoft.operationalinsights/workspaces) | pracovní prostory | 2020-03-01 – Preview |
 | [Účet služby Automation](/azure/templates/microsoft.automation/automationaccounts) | automatizace | 2020-01-13 – Preview |
-| [Propojené služby v pracovním prostoru](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | worksapces | 2020-03-01 – Preview |
+| [Propojené služby v pracovním prostoru](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | pracovní prostory | 2020-03-01 – Preview |
 
 ### <a name="before-you-use-the-template"></a>Před použitím šablony
 
@@ -104,7 +104,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste právě vytvořili. 
 
