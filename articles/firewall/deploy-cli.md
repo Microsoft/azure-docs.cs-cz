@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602614"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075422"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfigurace Azure Firewall pomocí rozhraní příkazového řádku Azure
 
@@ -35,17 +35,16 @@ V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit testovací síťové prostředí
-> * Nasadit bránu firewall
-> * Vytvoření výchozí trasy
-> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
-> * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
-> * Testování brány firewall
+* Nastavit testovací síťové prostředí
+* Nasadit bránu firewall
+* Vytvoření výchozí trasy
+* Konfigurace pravidla použití pro povolení přístupu k www.google.com
+* Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
+* Testování brány firewall
 
 Pokud budete chtít, můžete tento postup provést pomocí [Azure Portal](tutorial-firewall-deploy-portal.md) nebo [Azure PowerShell](deploy-ps.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

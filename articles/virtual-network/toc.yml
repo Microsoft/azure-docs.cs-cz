@@ -97,7 +97,11 @@
     - name: Zabezpečení
       items:
         - name: Skupiny zabezpečení sítě
-          href: security-overview.md
+          items:
+            - name: Přehled
+              href: security-overview.md
+            - name: Jak to funguje
+              href: network-security-group-how-it-works.md
         - name: Skupiny zabezpečení aplikací
           href: application-security-groups.md
         - name: Značky služeb

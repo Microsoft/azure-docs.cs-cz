@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086598"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075303"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (Preview) pro správu přihlašovacích údajů
 
@@ -38,7 +38,7 @@ Zprostředkovatel ID umožňuje přihlásit se k clusterům ESP pomocí Multi-Fa
 
 Pokud chcete vytvořit cluster ESP s povoleným zprostředkovatelem ID, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků vytváření pro cluster ESP. Další informace najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP.
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 
@@ -98,13 +98,21 @@ Jakmile je zprostředkovatel ID povolený, budete pořád potřebovat hodnotu ha
 
 Ověřování SSH vyžaduje, aby byla hodnota hash k dispozici v Azure služba AD DS. Pokud chcete použít SSH jenom pro scénáře správy, můžete vytvořit jenom jeden účet jenom pro Cloud a použít ho ke clusteru SSH. Jiní uživatelé stále můžou používat Ambari nebo nástroje HDInsight (například modul plug-in IntelliJ), aniž by byl k dispozici hodnota hash hesla v Azure služba AD DS.
 
+Pokud chcete řešit problémy s ověřováním, přečtěte si tuto [příručku](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Klienti, kteří používají OAuth pro připojení k bráně HDInsight s nastavením služby ID Broker
 
 V instalačním programu služby ID se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Pomocí kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) můžete získat token s následujícími informacemi:
 
-*   Identifikátor URI prostředku OAuth:`https://hib.azurehdinsight.net` 
+*   Identifikátor URI prostředku OAuth: `https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a
 *   Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+Po načítá tokenu OAuth ho můžete použít v autorizační hlavičce pro požadavek HTTP na bránu clusteru (např. <clustername> -int.azurehdinsight.NET). Například vzorový příkaz složeného příkazu na rozhraní API Livy může vypadat takto:
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
 
 ## <a name="next-steps"></a>Další kroky
 

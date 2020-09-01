@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494549"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074419"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -196,7 +197,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -303,7 +304,7 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
 | tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
-| odstranění        | Podporováno                                   | Podporováno     |
+| delete        | Podporováno                                   | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive` . Akce `tierToArchive` je levnější než akce `tierToCool` .
@@ -467,7 +468,7 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**  
 Platforma spouští zásady životního cyklu jednou denně. Po nakonfigurování zásady může trvat až 24 hodin, než se některé akce poprvé spustí.  

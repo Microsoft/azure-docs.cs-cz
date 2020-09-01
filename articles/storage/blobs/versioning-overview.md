@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056529"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074530"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -29,6 +29,8 @@ Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [po
 
 > [!IMPORTANT]
 > Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-versioning-works"></a>Jak funguje Správa verzí objektů BLOB
 
@@ -163,7 +165,7 @@ Při pořizování snímku objektu BLOB s verzí se vytvoří nová verze ve ste
 
 Následující diagram ukazuje, co se stane při pořizování snímku objektu BLOB s verzí. V diagramu verze a snímky objektů BLOB s ID verze 2 a 3 obsahují stejná data.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující snímky objektu BLOB s verzí":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující snímky objektu BLOB s verzí ":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Autorizovat operace s verzemi objektů BLOB
 
@@ -320,7 +322,7 @@ Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žá
 
 ![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Povolení správy verzí objektů blob](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

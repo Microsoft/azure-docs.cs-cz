@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001055"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074402"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>Povolení a správa verzí objektů BLOB (Preview)
 
@@ -24,6 +24,8 @@ Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit sprá
 Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB pro účet úložiště pomocí šablony Azure Portal nebo Azure Resource Manager.
 
 Než povolíte správu verzí objektů blob, musíte si zaregistrovat verzi Preview. Další informace o tom, jak se zaregistrují verze objektů blob, včetně toho, jak se zaregistrovat ve verzi Preview, najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Povolení správy verzí objektů blob
 

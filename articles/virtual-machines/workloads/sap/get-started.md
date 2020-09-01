@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871373"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075949"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -88,6 +88,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 08/28/2020: Změna v [ha pro SAP NW na virtuálních počítačích Azure v SLES s ANF](./high-availability-guide-suse-netapp-files.md) za účelem opravy překlepu
 - 08/25/2020: Změna v [Průvodci ha pro SAP ASCS/SCS se službou WSFC a sdíleným diskem](./sap-high-availability-guide-wsfc-shared-disk.md), [Příprava infrastruktury Azure pro SAP ASCS/SCS pomocí služby WSFC a sdíleného disku](./sap-high-availability-infrastructure-wsfc-shared-disk.md) a [instalace SAP NW ha s WSFC a sdíleným diskem](./sap-high-availability-guide-wsfc-shared-disk.md) , který přináší možnost použití architektury Azure Shared disk a Document ERS2 pro SAP
 - 08/25/2020: vydání [příručky multi-SID ha pro SAP ASCS/SCS s WSFC a sdíleným diskem Azure](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
 - 08/25/2020: Změna v [Průvodci ha pro SAP ASCS/SCS s WSFC a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md), [Příprava infrastruktury Azure pro SAP ASCS/SCS se službou WSFC a sdílenými složkami](./sap-high-availability-infrastructure-wsfc-file-share.md), [Průvodce vysokou SID pro SAP ASCS/SCS s WSFC a sdíleným diskem](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) a [průvodcem pro SAP ASCS/SCS se službou WSFC a SOFS sdílenou složkou](./sap-ascs-ha-multi-sid-wsfc-file-share.md) v případě aktualizací obsahu a restrukturalizace v průvodcích ha pro SAP ASCS/SCS pomocí WFC a sdíleného disku 

@@ -5,12 +5,13 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fb99babfd53b26874bed62183871d13ae0ae4baf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120122"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073638"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM
 
@@ -26,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1961aa3ee21d5b04108b3107731560d747a2c963
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497320"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075558"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Základní hodnoty zabezpečení Azure pro Azure Data Box
 
@@ -216,11 +216,11 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašemu Azure Data box. Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. při prvním vytvoření objednávky můžete určit, kdo má mít přístup k vaší objednávce. Nastavte role Azure v různých oborech, abyste mohli řídit přístup k pořadí Data Box. Role Azure určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
+**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašemu Azure Data box. K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. při prvním vytvoření objednávky můžete určit, kdo má mít přístup k vaší objednávce. Nastavte role Azure v různých oborech, abyste mohli řídit přístup k pořadí Data Box. Role Azure určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
 
 * [Porozumění vlastním rolím](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [Jak nakonfigurovat RBAC pro sešity](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Jak nakonfigurovat službu Azure RBAC pro sešity](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Informace o tom, jak nastavit řízení přístupu v objednávce](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
 
@@ -427,7 +427,7 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Odpovědnost**: netýká se
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
 **Pokyny**: Ujistěte se, že máte k předplatnému přístup vlastníka nebo přispěvatele, abyste mohli vytvořit objednávku data box. Můžete také definovat Data Box čtenář a Data Box role přispěvatele na úrovni prostředků.
 

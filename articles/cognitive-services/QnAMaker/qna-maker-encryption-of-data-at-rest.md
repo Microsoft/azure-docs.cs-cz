@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 1ca0dda046329e95c649540fd42f96ca43838c85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e744423e00377ef763824f6e39865e6b3e8ee475
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086701"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073535"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker šifrování dat v klidovém umístění
 
@@ -22,7 +22,7 @@ QnA Maker automaticky šifruje vaše data, když se trvale uloží do cloudu, co
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK) nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
+Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. K dispozici je také možnost spravovat vaše předplatné s vlastními klíči nazvanými klíče spravované zákazníkem (CMK). CMK nabízí větší flexibilitu při vytváření, rotaci, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat. Pokud je pro vaše předplatné nakonfigurované CMK, je k dispozici dvojité šifrování, které nabízí druhou vrstvu ochrany, a přitom vám umožní řídit šifrovací klíč pomocí Azure Key Vault.
 
 QnA Maker používá podporu CMK z Azure Search. V Azure Search je potřeba vytvořit [CMK pomocí Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys). Tato instance Azure by měla být přidružená k QnA Maker službě, aby byla povolená CMK.
 
@@ -35,17 +35,17 @@ Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků
 
 1. Vytvořte novou instanci Azure Search a povolte požadavky uvedené v [požadavcích na klíč spravovaný zákazníkem pro Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites).
 
-   ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-1.png)
+   ![Zobrazit nastavení šifrování 1](../media/cognitive-services-encryption/qna-encryption-1.png)
 
 2. Když vytvoříte prostředek QnA Maker, je automaticky přidružen k instanci Azure Search. Toto nelze použít s CMK. Chcete-li použít CMK, je třeba přidružit nově vytvořenou instanci Azure Search vytvořenou v kroku 1. Konkrétně je potřeba aktualizovat `AzureSearchAdminKey` a `AzureSearchName` v prostředku QnA maker.
 
-   ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-2.png)
+   ![Zobrazit nastavení šifrování 2](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Dále vytvořte nové nastavení aplikace:
-   * **Název**: nastavte tuto hodnotu na`CustomerManagedEncryptionKeyUrl`
+   * **Název**: nastavte tuto hodnotu na `CustomerManagedEncryptionKeyUrl`
    * **Hodnota**: Jedná se o hodnotu, kterou jste získali v kroku 1 při vytváření instance Azure Search.
 
-   ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/qna-encryption-3.png)
+   ![Zobrazit nastavení šifrování 3](../media/cognitive-services-encryption/qna-encryption-3.png)
 
 4. Až se dokončí, restartujte modul runtime. Služba QnA Maker je teď povolená CMK.
 
@@ -61,5 +61,5 @@ Vzhledem k tomu, že je služba QnA Maker Portal hostovaná v oblasti Západ USA
 ## <a name="next-steps"></a>Další kroky
 
 * [Šifrování v Azure Search pomocí CMKs v Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
-* [Šifrování dat v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

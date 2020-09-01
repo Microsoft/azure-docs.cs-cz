@@ -7,12 +7,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336607"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075252"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytváření Service Busch prostředků pomocí šablon Azure Resource Manager
 
@@ -29,7 +30,7 @@ Azure Resource Manager šablony vám pomůžou definovat prostředky k nasazení
 
 Tyto šablony Service Bus Azure Resource Manager jsou k dispozici ke stažení a nasazení. Kliknutím na následující odkazy zobrazíte podrobnosti o každém z nich s odkazy na šablony na GitHubu:
 
-* [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+* [Vytvoření oboru názvů Service Busu](service-bus-resource-manager-namespace.md)
 * [Vytvoření oboru názvů Service Bus s využitím fronty](service-bus-resource-manager-namespace-queue.md)
 * [Vytvoření oboru názvů Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 * [Vytvoření oboru názvů Service Bus s použitím fronty a autorizačního pravidla](service-bus-resource-manager-namespace-auth-rule.md)
