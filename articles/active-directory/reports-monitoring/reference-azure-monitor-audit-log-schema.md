@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68987943"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231091"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schématu protokolů auditu Azure AD v Azure Monitor (Preview)
 
@@ -147,7 +147,7 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 
 ## <a name="field-and-property-descriptions"></a>Popisy polí a vlastností
 
-| Název pole | Description |
+| Název pole | Popis |
 |------------|-------------|
 | time       | Datum a čas (UTC). |
 | operationName | Název operace. |
@@ -167,7 +167,7 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 
 <br>
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 |---------------|-------------|
 | AuditEventCategory | Typ události auditu. Může to být *Správa uživatelů*, *Správa aplikací*nebo jiný typ.|
 | Typ identity | Typ může být *aplikace* nebo *uživatel*. |
@@ -179,5 +179,5 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 ## <a name="next-steps"></a>Další kroky
 
 * [Interpretace schématu protokolů přihlášení ve službě Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
-* [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Diagnostické protokoly Azure](../../azure-monitor/platform/platform-logs-overview.md)
 * [Nejčastější dotazy a známé problémy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

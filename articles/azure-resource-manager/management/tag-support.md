@@ -3,12 +3,12 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231516"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -263,6 +263,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | reportFeedback | Ne | Ne |
 > | service | Ano | Ano |
 > | validateServiceName | Ne | Ne |
+
+> [!NOTE]
+> Azure API Management podporuje jenom vytváření maximálně 15 párů název/hodnota značky pro každou službu.
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 

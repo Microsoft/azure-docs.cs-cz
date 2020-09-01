@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656536"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231312"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí ISE (Integration Service Environment) pomocí Logic Apps REST API
 
-Tento článek ukazuje, jak vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím REST API Logic Apps ve scénářích, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). Prostředí integrační služby (ISE) je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky oddělené od globální služby Logic Apps pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
+Tento článek ukazuje, jak vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím REST API Logic Apps ve scénářích, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). Prostředí integrační služby (ISE) je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky oddělené od globální služby Logic Apps pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. Prostředí integrační služby vám také poskytuje vlastní statickou IP adresu. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
 Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) zprovoznění nebo pomocí [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
 > [!IMPORTANT]
 > Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné [požadavky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky pro povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
@@ -58,7 +58,7 @@ V hlavičce požadavku zahrňte tyto vlastnosti:
 
 ## <a name="request-body"></a>Text požadavku
 
-Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE. Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` . Pro existující ISE můžete odeslat žádost o opravu pouze pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem naleznete v tématu také [Certificate Connector – certifikáty podepsané svým držitelem](../connectors/connectors-native-http.md#self-signed).
+Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE. Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` . Pro existující ISE můžete odeslat žádost o opravu pouze pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ```json
 {

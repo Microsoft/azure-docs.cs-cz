@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445436"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230173"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).
 
@@ -48,7 +48,7 @@ Další informace o instalaci Azure PowerShell najdete v tématu [instalace Azur
 
 Než povolíte a nakonfigurujete obnovení k bodu v čase, povolte jeho požadavky pro účet úložiště: Obnovitelné odstranění, změna kanálu a správa verzí objektů BLOB. Další informace o povolení jednotlivých funkcí najdete v těchto článcích:
 
-- [Povolit obnovitelné odstranění pro objekty blob](soft-delete-enable.md)
+- [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
 - [Povolení a zákaz kanálu změn](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 
@@ -184,4 +184,4 @@ $job | Wait-Job
 - [Obnovení bodu v čase pro objekty blob bloku (Preview)](point-in-time-restore-overview.md)
 - [Obnovitelné odstranění](soft-delete-overview.md)
 - [Změnit kanál (Preview)](storage-blob-change-feed.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)

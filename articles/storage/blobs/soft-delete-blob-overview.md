@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057218"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230105"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
-Obnovitelné odstranění pro objekty blob chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, objekty blob, verze objektů BLOB (Preview) a snímky v tomto účtu úložiště se po jejich odstranění můžou obnovit v době uchování, kterou zadáte.
+Obnovitelné odstranění pro objekty blob chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je u objektů BLOB povolená možnost obnovitelného odstranění pro účet úložiště, objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště se po odstranění můžou obnovit v době uchování, kterou zadáte.
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout obnovitelné odstranění. Další informace o povolení obnovitelného odstranění najdete v tématu [povolení a Správa obnovitelného odstranění objektů BLOB](soft-delete-enable.md).
 
@@ -28,7 +28,7 @@ Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo od
 
 Když je v účtu úložiště povolené obnovitelné odstranění objektů blob, můžete objekty po odstranění obnovit do zadané doby uchovávání dat. Tato ochrana se rozšiřuje na všechny objekty BLOB (objekty blob bloku, doplňovací objekty blob nebo objekty blob stránky), které se vymažou jako výsledek přepsání.
 
-Pokud se při povolení obnovitelného odstranění objektů BLOB odstraní data v existujícím objektu BLOB nebo snímku, ale verze blobing (Preview) není povolená, pak se vygeneruje měkký odstraněný snímek, který uloží stav přepsaných dat. Po uplynutí zadané doby uchování dojde k trvalému odstranění objektu.
+Pokud se při povolení obnovitelného odstranění objektů BLOB odstraní data v existujícím objektu BLOB nebo snímku, ale Správa verzí objektů BLOB není povolená, vygeneruje se pro uložení stavu přepsaných dat měkký odstraněný snímek. Po uplynutí zadané doby uchování dojde k trvalému odstranění objektu.
 
 Pokud je v účtu úložiště zapnutá Správa verzí objektů BLOB a obnovitelné odstranění objektů blob, pak odstranění objektu BLOB vytvoří novou verzi místo snímku, který je odstraněný jako měkký. Nová verze není Odstraněná a při vypršení doby uchování dočasného odstranění se neodebere. Obnovitelné odstraněné verze objektu BLOB se dají obnovit v rámci doby uchovávání voláním operace [obnovení objektu BLOB](/rest/api/storageservices/undelete-blob) . Objekt BLOB lze následně obnovit z jedné z jeho verzí voláním operace [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) . Další informace o použití správy verzí objektů BLOB a obnovitelného odstranění najdete v tématu [Správa verzí objektů BLOB a obnovitelné odstranění](versioning-overview.md#blob-versioning-and-soft-delete).
 
@@ -163,7 +163,7 @@ Povolení obnovitelného odstranění často přepsaných dat může mít za ná
 
 ### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Můžu použít nastavení rozhraní API vrstev objektů BLOB pro objekty blob vrstvy se měkkými odstraněnou snímků?
 
-Ano. Měkké odstraněné snímky zůstanou v původní úrovni, ale základní objekt BLOB se přesune na novou úroveň.
+Yes. Měkké odstraněné snímky zůstanou v původní úrovni, ale základní objekt BLOB se přesune na novou úroveň.
 
 ### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Účty úložiště úrovně Premium mají omezení počtu snímků objektů blob na 100. Počítá se z tohoto limitu měkké odstraněné snímky?
 
@@ -193,5 +193,5 @@ Je možné využít obnovitelné odstranění bez ohledu na verzi rozhraní API,
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit obnovitelné odstranění pro objekty blob](soft-delete-enable.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)

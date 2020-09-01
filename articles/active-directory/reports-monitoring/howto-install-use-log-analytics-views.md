@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608190"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230581"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
 
@@ -31,11 +31,11 @@ Azure Active Directory zobrazení Log Analytics pomáhá analyzovat a hledat pro
 * Protokoly auditu: [Sestava aktivity protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii všech úloh, které provedete ve vašem tenantovi.
 * Protokoly přihlašování: pomocí [sestavy aktivita přihlášení](concept-sign-ins.md)můžete určit, kdo provedl úkoly hlášené v protokolech auditu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
-* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).
 * Nejdřív proveďte kroky pro [Směrování protokolů aktivit služby Azure AD do vašeho pracovního prostoru Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
 * Stáhněte si zobrazení z [úložiště GitHub](https://aka.ms/AADLogAnalyticsviews) do místního počítače.
 
@@ -67,11 +67,11 @@ Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
     ![Vytvořit pravidlo](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Vyberte skupinu akcí pro upozornění. Obecně to může být tým, kterému chcete poslat oznámení e-mailem nebo textovou zprávou, nebo se může jednat o automatizovaný úkol pomocí webhooků, runbooků, funkcí, Logic Apps nebo externích řešení ITSM. Naučte se [vytvářet a spravovat skupiny akcí v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+6. Vyberte skupinu akcí pro upozornění. Obecně to může být tým, kterému chcete poslat oznámení e-mailem nebo textovou zprávou, nebo se může jednat o automatizovaný úkol pomocí webhooků, runbooků, funkcí, Logic Apps nebo externích řešení ITSM. Naučte se [vytvářet a spravovat skupiny akcí v Azure Portal](../../azure-monitor/platform/action-groups.md).
 
 7. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu. Nyní se zobrazí upozornění pokaždé, když dojde k chybě přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Postup analýzy protokolů aktivit pomocí protokolů Azure Monitor](howto-analyze-activity-logs-log-analytics.md)
-* [Začínáme s protokoly Azure Monitor v Azure Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Začínáme s protokoly Azure Monitor v Azure Portal](../../azure-monitor/log-query/get-started-portal.md)

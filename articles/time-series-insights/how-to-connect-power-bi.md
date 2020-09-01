@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046701"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230972"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -52,20 +52,20 @@ Pokud chcete Power BI prostředí Azure Time Series Insights připojit, postupuj
 
 Jak začít:
 
-1. Otevřete Azure Time Series Insights Průzkumníku Gen2 a dootevírejte data.
+1. Otevřete Průzkumníka Azure Time Series Insights a požádejte ho o data.
 1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a vyberte **připojit k Power BI**.
 
-    [![Export Průzkumníka Azure Time Series Insights Gen2](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Export Průzkumníka Azure Time Series Insights](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Nastavte parametry v této kartě:
 
    1. Zadejte relativní časový rámec, který chcete zobrazit. Pokud máte s existujícím zobrazením spokojeni, ponechte to jako **stávající časový rámec**.
-   
-   1. Vyberte mezi **agregovanými** a **nezpracovanými událostmi**. 
-   
+
+   1. Vyberte mezi **agregovanými** a **nezpracovanými událostmi**.
+
        > [!NOTE]
-       > Data můžete kdykoli agregovat později v Power BI, ale po agregaci nelze vrátit zpět na nezpracovaná data. 
-       
+       > Data můžete kdykoli agregovat později v Power BI, ale po agregaci nelze vrátit zpět na nezpracovaná data.
+
        > [!NOTE]
        > Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
 
@@ -89,7 +89,7 @@ Jak začít:
     [![Připojit Power BI k Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Případně přejděte na kartu **Azure** , vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
-    
+
 1. Zobrazí se dialogové okno s žádostí o oprávnění k připojení k prostředkům třetích stran. Vyberte **pokračovat**.
 
     [![Zvolit vytvořit vlastní dotaz](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Teď, když jste data importovali do Power BI, je čas sestavovat sestavu s vizu
 
     [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  Ve sloupci **vizualizace** vyberte svůj vizuál výběru. Vyberte například **Spojnicový graf**. Tím se na plátno přidá prázdný spojnicový graf.
+1. Ve sloupci **vizualizace** vyberte svůj vizuál výběru. Vyberte například **Spojnicový graf**. Tím se na plátno přidá prázdný spojnicový graf.
 
-1.  V seznamu **pole** vyberte **_Timestamp** a přetáhněte ji do pole **osa** pro zobrazení položek podél osy X. Nezapomeňte přepnout na **_Timestamp** jako hodnotu pro **osu** (výchozí je **hierarchie data**).
+1. V seznamu **pole** vyberte **_Timestamp** a přetáhněte ji do pole **osa** pro zobrazení položek podél osy X. Nezapomeňte přepnout na **_Timestamp** jako hodnotu pro **osu** (výchozí je **hierarchie data**).
 
     [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  V seznamu **pole** vyberte **TimeSeriesId** a přetáhněte ji do pole **hodnoty** , abyste zobrazili položky podél osy Y.
+1. V seznamu **pole** vyberte **TimeSeriesId** a přetáhněte ji do pole **hodnoty** , abyste zobrazili položky podél osy Y.
 
     [![Vytvoření spojnicového grafu](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Pokud chcete na plátno přidat další graf, vyberte kdekoliv na plátně mimo spojnicový graf a tento postup opakujte.
+1. Pokud chcete na plátno přidat další graf, vyberte kdekoliv na plátně mimo spojnicový graf a tento postup opakujte.
 
     [![Vytvoření dalších grafů ke sdílení](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

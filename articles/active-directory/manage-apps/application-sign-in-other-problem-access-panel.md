@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070322"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231176"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -27,10 +27,16 @@ Další informace o používání služby Azure AD jako zprostředkovatele ident
 Tyto aplikace jsou nakonfigurované jménem uživatele na portálu Azure AD. Aplikace musí být správně nakonfigurována a přiřazena uživateli nebo skupině, pro kterou je uživatel členem, aby zobrazila aplikaci v mých aplikacích. 
 
 Typ aplikací, které může uživatel zobrazit, spadají do následujících kategorií:
--   Aplikace Office 365
+-   Aplikace Microsoft 365 a Office 365
 -   Aplikace Microsoftu a aplikace třetích stran nakonfigurované pomocí jednotného přihlašování založeného na federaci
 -   Aplikace jednotného přihlašování založené na heslech
 -   Aplikace s existujícími řešeními jednotného přihlašování
+
+Tady je několik věcí, které kontrolují, jestli se aplikace zobrazuje nebo nezobrazuje.
+- Ujistěte se, že je aplikace přidaná do Azure AD, a ujistěte se, že je uživatel přiřazený. Další informace najdete v části [rychlý Start při správě aplikací](view-applications-portal.md).
+- Pokud se aplikace přidala v nedávné době, odhlaste se a znovu zaregistrujte. 
+- Pokud aplikace vyžaduje licenci, jako je třeba Office, pak se ujistěte, že má uživatel přiřazenou příslušnou licenci.
+- Doba potřebná pro změny licencování se může lišit v závislosti na velikosti a složitosti skupiny.
 
 ## <a name="general-issues-to-check-first"></a>Obecné problémy k první kontrole
 

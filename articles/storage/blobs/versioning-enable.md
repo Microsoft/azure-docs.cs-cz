@@ -1,29 +1,27 @@
 ---
-title: Povolení a správa verzí objektů BLOB (Preview)
+title: Povolení a správa verzí objektů BLOB
 titleSuffix: Azure Storage
-description: Naučte se povolit správu verzí objektů BLOB (Preview) v Azure Portal nebo pomocí Azure Resource Manager šablony.
+description: Naučte se povolit správu verzí objektů BLOB ve Azure Portal nebo pomocí Azure Resource Manager šablony.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074402"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230666"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>Povolení a správa verzí objektů BLOB (Preview)
+# <a name="enable-and-manage-blob-versioning"></a>Povolení a správa verzí objektů BLOB
 
-Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage (Preview).  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
+Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage.  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
 
-Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB pro účet úložiště pomocí šablony Azure Portal nebo Azure Resource Manager.
-
-Než povolíte správu verzí objektů blob, musíte si zaregistrovat verzi Preview. Další informace o tom, jak se zaregistrují verze objektů blob, včetně toho, jak se zaregistrovat ve verzi Preview, najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
+Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB pro účet úložiště pomocí šablony Azure Portal nebo Azure Resource Manager. Další informace o tom, jak se správou verzí objektů blob, najdete v tématu [Správa verzí objektů BLOB](versioning-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -75,7 +73,7 @@ Další informace o nasazení prostředků pomocí šablon v Azure Portal najdet
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Úprava objektu BLOB tak, aby aktivoval novou verzi
 
-Následující příklad kódu ukazuje, jak aktivovat vytvoření nové verze pomocí klientské knihovny Azure Storage pro .NET, verze [12.5.0-Preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) nebo novější. Před spuštěním tohoto příkladu se ujistěte, že jste povolili správu verzí pro váš účet úložiště.
+Následující příklad kódu ukazuje, jak aktivovat vytvoření nové verze pomocí klientské knihovny Azure Storage pro .NET, verze [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) nebo novější. Před spuštěním tohoto příkladu se ujistěte, že jste povolili správu verzí pro váš účet úložiště.
 
 Tento příklad vytvoří objekt blob bloku a pak aktualizuje metadata objektu BLOB. Aktualizace metadat objektu BLOB aktivuje vytvoření nové verze. Příklad načte počáteční verzi a aktuální verzi a zobrazí, že metadata obsahují pouze aktuální verze.
 
@@ -161,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)
 - [Obnovitelné odstranění objektů blob služby Azure Storage](soft-delete-overview.md)

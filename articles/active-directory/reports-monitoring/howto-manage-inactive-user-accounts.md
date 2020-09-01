@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608139"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244717"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
@@ -43,9 +43,9 @@ Poslední úspěšné přihlášení nabízí potenciálním přehledům, které
 
 Neaktivní účty zjistíte tak, že vyhodnocujete vlastnost **lastSignInDateTime** zveřejněnou typem prostředku **signInActivity** rozhraní API pro **Microsoft Graph** . Pomocí této vlastnosti můžete implementovat řešení pro následující scénáře:
 
-- **Uživatelé podle jména**: v tomto scénáři vyhledáte konkrétního uživatele podle názvu, který vám umožní vyhodnotit lastSignInDateTime:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Uživatelé podle jména**: v tomto scénáři vyhledáte konkrétního uživatele podle názvu, který vám umožní vyhodnotit lastSignInDateTime: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -58,11 +58,11 @@ V této části jsou uvedeny informace o tom, co potřebujete znát o vlastnosti
 
 ### <a name="how-can-i-access-this-property"></a>Jak se dá získat přístup k této vlastnosti?
 
-Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je k dispozici vlastnost lastSignInDateTime prostřednictvím rutiny Get-AzureAdUser?
 
-Ne.
+No.
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Jakou edici služby Azure AD potřebuji pro přístup k této vlastnosti?
 
@@ -91,5 +91,5 @@ Pokud chcete vygenerovat lastSignInDateTime časové razítko, budete potřebova
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Reference k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Reference k rozhraní API sestav aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)

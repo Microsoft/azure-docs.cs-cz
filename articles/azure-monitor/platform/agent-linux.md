@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998930"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230462"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -51,11 +51,19 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
  - Ubuntu, Debian: `apt-get install -y python2`
  - SUSE `zypper install -y python2`
 
-Spustitelný soubor python2 musí mít alias na Python, a to pomocí následujícího příkazu:
+Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metoda, kterou můžete použít k nastavení tohoto aliasu:
 
-```
-alternatives --set python `which python2`
-```
+1. Spuštěním následujícího příkazu odeberte všechny existující aliasy.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Spusťte následující příkaz pro vytvoření aliasu.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ## <a name="supported-linux-hardening"></a>Podporované posílení zabezpečení pro Linux
 Agent OMS má podporu vlastního nastavení pro Linux. 
@@ -64,7 +72,8 @@ V současné době jsou podporovány následující:
 - Standardů
 
 Následující jsou plánovány, ale nejsou dosud podporovány:
-- CIS – SELINUX
+- SLUŽBY
+- SELINUX
 
 Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS podporovány ani plánovány.  
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066657"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230071"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Povolení a Správa obnovitelného odstranění pro kontejnery (Preview)
 
@@ -22,7 +22,7 @@ Obnovitelné odstranění kontejneru (Preview) chrání vaše data před náhodn
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout u kontejneru obnovitelné odstranění. V tomto článku se dozvíte, jak povolit obnovitelné odstranění kontejnerů. Další podrobnosti o obnovitelném odstranění kontejneru, včetně toho, jak se zaregistrovat pro verzi Preview, najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
 
-V případě komplexní ochrany dat doporučuje společnost Microsoft také povolit obnovitelné odstranění pro objekty BLOB a správu verzí objektů BLOB (Preview). Další informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [povolení a Správa obnovitelného odstranění pro objekty blob](soft-delete-blob-enable.md). Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
+V případě komplexní ochrany dat doporučuje společnost Microsoft také povolit obnovitelné odstranění objektů BLOB a správy verzí objektů BLOB. Další informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [povolení a Správa obnovitelného odstranění pro objekty blob](soft-delete-blob-enable.md). Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [Správa verzí objektů BLOB](versioning-overview.md).
 
 ## <a name="enable-container-soft-delete"></a>Povolit obnovitelné odstranění kontejneru
 
@@ -101,4 +101,4 @@ V rámci doby uchování můžete obnovit dočasná odstraněný kontejner a jeh
 
 - [Obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md)
 - [Obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)

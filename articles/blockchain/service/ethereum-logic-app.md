@@ -1,23 +1,24 @@
 ---
 title: Použití konektoru Ethereem blockchain s Azure Logic Apps – Azure blockchain Service
 description: Pomocí konektoru Ethereem blockchain s Azure Logic Apps můžete aktivovat funkce inteligentních kontraktů a reagovat na události inteligentních kontraktů.
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077033"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230530"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
-Pomocí [konektoru Ethereem blockchain](/connectors/blockchainethereum/) s [Azure Logic Apps](../../logic-apps/index.yml) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
+Pomocí [konektoru Ethereem blockchain](/connectors/blockchainethereum/) s [Azure Logic Apps](../../logic-apps/index.yml) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Tento článek vysvětluje, jak můžete pomocí konektoru Ethereem blockchain odeslat informace blockchain do jiné služby nebo zavolat funkci blockchain. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
+- Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
+- Pokud s Azure Logic Apps začínáte, zvažte, jak si projít Microsoft Learn moduly [Úvod do Azure Logic Apps](/learn/modules/intro-to-logic-apps/) a [zavolejte rozhraní API z pracovního postupu Logic Apps pomocí vlastního konektoru](/learn/modules/logic-apps-and-custom-connectors/).
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
@@ -33,7 +34,7 @@ Azure Logic Apps pomáhá při plánování a automatizaci obchodních procesů 
 
 Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu.
 
-Konektor Ethereem blockchain má jednu Trigger a několik akcí. Aktivační událost nebo akce, které použijete, závisí na vašem scénáři.
+Konektor Ethereem blockchain má jednu Trigger a několik akcí. Aktivační událost nebo akce, které použijete, závisí na vašem scénáři. Postupujte podle části v tomto článku, který nejlépe odpovídá vašemu scénáři.
 
 Pokud váš pracovní postup:
 
@@ -128,7 +129,7 @@ Následující kroky například generují aplikaci Logic mikroslužeb založeno
 
     ![Zobrazení návrháře s výběrem připojení](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. Teď můžete použít aplikaci logiky. Pokud chcete otestovat mikroslužbu založenou na REST, vydejte požadavek HTTP POST na adresu URL požadavku aplikace logiky. Zkopírujte obsah **adresy URL post http** z kroku **při přijetí požadavku HTTP** .
+1. Teď můžete použít aplikaci logiky. Pokud chcete otestovat mikroslužbu založenou na REST, vydejte požadavek HTTP POST na adresu URL požadavku aplikace logiky. Zkopírujte obsah **adresy URL http post** z kroku **při přijetí požadavku HTTP** .
 
     ![Podokno návrháře Logic Apps s adresou URL POST protokolu HTTP](./media/ethereum-logic-app/post-url.png)
 
@@ -176,7 +177,7 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
 **Použití Azure Portal:**
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)

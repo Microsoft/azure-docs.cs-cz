@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891505"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231142"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -35,8 +35,8 @@ Architektura generování sestav v Azure AD se skládá z následujících kompo
     - [Protokoly auditu](concept-audit-logs.md) – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. 
     
 - **Sestavy zabezpečení** 
-    - [Riziková přihlášení](concept-risky-sign-ins.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-    - [Uživatelé označení příznakem rizika](concept-user-at-risk.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
+    - [Riziková přihlášení](../identity-protection/overview-identity-protection.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
 Tento článek obsahuje seznam aktivit auditování, které můžete protokolovat v protokolech auditu.
 
@@ -135,11 +135,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|AdminPolicyDatas-SetResources|
 |Správa aplikací|AdminUserJourneys-GetResources|
 |Správa aplikací|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Create IdentityProvider|
-|Authentication|Vytvoření aplikace V1|
-|Authentication|Vytvoření aplikace V2|
-|Authentication|Vytvoření vlastních domén v tenantovi|
+|Ověřování|AdminUserJourneys-SetResources|
+|Ověřování|Create IdentityProvider|
+|Ověřování|Vytvoření aplikace V1|
+|Ověřování|Vytvoření aplikace V2|
+|Ověřování|Vytvoření vlastních domén v tenantovi|
 |Autorizace|Vytvoření nového objektu AdminUserJourney|
 |Autorizace|Vytvoření kódu JSON lokalizovaného prostředku|
 |Autorizace|Vytvoření nového vlastního zprostředkovatele identity|
@@ -267,8 +267,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Klíč|Odstranění nastavení společnosti|
 |Klíč|Snížení úrovně partnera|
 |Klíč|Adresář je odstraněný|
-|Jiné|Adresář je trvale odstraněný|
-|Jiné|Adresář s naplánovaným odstraněním|
+|Další|Adresář je trvale odstraněný|
+|Další|Adresář s naplánovaným odstraněním|
 |Prostředek|Propagace společnosti u partnera|
 |Prostředek|Vyprázdnění vlastností Rights Management|
 |Prostředek|Odebrání partnera ze společnosti|
@@ -474,7 +474,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|Přidání role ze šablony|
 |Správa uživatelů|Přidání vymezeného člena do role|
 |Správa uživatelů|Přidáno|
-|Správa uživatelů|Přiřazení|
+|Správa uživatelů|Přiřadit|
 |Správa uživatelů|Hromadné vytvoření uživatelů – spuštěné|
 |Správa uživatelů|Hromadné vytvoření uživatelů – dokončeno|
 |Správa uživatelů|Hromadné odstranění uživatelů – spuštěné|
@@ -507,11 +507,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Zvýšení oprávnění|
 |Správa adresářů|Odebráno|
 |Správa adresářů|Změny nastavení role|
-|Jiné|ScanAlertsNow|
-|Jiné|Registrace|
-|Jiné|Pozastavení|
-|Jiné|UpdateAlertSettings|
-|Jiné|UpdateCurrentState|
+|Další|ScanAlertsNow|
+|Další|Registrace|
+|Další|Pozastavení|
+|Další|UpdateAlertSettings|
+|Další|UpdateCurrentState|
 |Správa zásad|Ukončení kontroly přístupu|
 |Správa zásad|Přidání schvalovatele k žádosti o schválení|
 |Správa zásad|Přidání revidujícího ke kontrole přístupu|
@@ -523,8 +523,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Jiné|Vytvoření žádosti o schválení|
-|Jiné|Odstranění kontroly přístupu|
+|Další|Vytvoření žádosti o schválení|
+|Další|Odstranění kontroly přístupu|
 |Správa uživatelů|Odebrání revidujícího z kontroly přístupu|
 |Správa uživatelů|Žádost o použití výsledku kontroly|
 |Správa uživatelů|Žádost a zastavení kontroly|
@@ -558,7 +558,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |PIM|ActivationRequested|
 |PIM|Přidáno|
 |PIM|AddedOutsidePIM|
-|PIM|Přiřazení|
+|PIM|Přiřadit|
 |PIM|DismissAlert|
 |PIM|Zvýšení oprávnění|
 |PIM|ReactivateAlert|

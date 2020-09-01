@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854270"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230822"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globální parametry v Azure Data Factory
 
@@ -41,13 +41,28 @@ Globální parametry lze použít v jakémkoli [výrazu kanálu](control-flow-ex
 
 ![Použití globálních parametrů](media/author-global-parameters/expression-global-parameters.png)
 
-## <a name="global-parameters-in-cicd"></a><a name="cicd"></a>Globální parametry v CI/CD
+## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> Globální parametry v CI/CD
 
-Globální parametry mají jedinečný proces CI/CD relativně k ostatním entitám v Azure Data Factory. Když publikujete objekt pro vytváření nebo exportujete šablonu ARM s globálními parametry, vytvoří se složka s názvem *globalParameters* se souborem s názvem *your-factory-name_GlobalParameters.js*. Tento soubor je objekt JSON, který obsahuje jednotlivé globální typy parametrů a hodnotu v publikované továrně.
+Existují dva způsoby, jak integrovat globální parametry do řešení pro kontinuální integraci a nasazení:
+
+* Zahrnutí globálních parametrů do šablony ARM
+* Nasazení globálních parametrů prostřednictvím skriptu PowerShellu
+
+Pro většinu případů použití se doporučuje zahrnout globální parametry do šablony ARM. Tato akce bude nativně integrována s řešením popsaným v [dokumentu CI/CD](continuous-integration-deployment.md). Globální parametry budou ve výchozím nastavení přidány jako parametr šablony ARM, protože se často mění z prostředí na prostředí. Můžete povolit zahrnutí globálních parametrů v šabloně ARM z centra pro správu.
+
+![Zahrnout do šablony ARM](media/author-global-parameters/include-arm-template.png)
+
+Přidáním globálních parametrů do šablony ARM přidáte nastavení na úrovni továrny, které může přepsat další nastavení na úrovni továrny, jako je například klíč spravovaný zákazníkem nebo konfigurace Gitu v jiných prostředích. Pokud máte tato nastavení povolená v prostředí se zvýšenými oprávněními, jako je UAT nebo PROD, je lepší nasadit globální parametry prostřednictvím skriptu PowerShellu v níže popsaném postupu.
+
+### <a name="deploying-using-powershell"></a>Nasazení pomocí PowerShellu
+
+Následující kroky popisují, jak nasadit globální parametry přes PowerShell. To je užitečné v případě, že váš cílový objekt factory má nastavení na úrovni továrny, jako je například klíč spravovaný zákazníkem.
+
+Když publikujete objekt pro vytváření nebo exportujete šablonu ARM s globálními parametry, vytvoří se složka s názvem *globalParameters* se souborem s názvem *your-factory-name_GlobalParameters.js*. Tento soubor je objekt JSON, který obsahuje jednotlivé globální typy parametrů a hodnotu v publikované továrně.
 
 ![Publikování globálních parametrů](media/author-global-parameters/global-parameters-adf-publish.png)
 
-Pokud nasazujete do nového prostředí, jako je například TEST nebo produkční prostředí, doporučuje se vytvořit kopii tohoto souboru globálních parametrů a přepsat příslušné hodnoty specifické pro dané prostředí. Při opětovném publikování původního souboru globálních parametrů se přepíší, ale kopie druhého prostředí se nedotkne.
+Pokud nasazujete do nového prostředí, jako je například TEST nebo produkční prostředí, doporučujeme vytvořit kopii tohoto souboru globálních parametrů a přepsat příslušné hodnoty specifické pro dané prostředí. Při opětovném publikování původního souboru globálních parametrů se přepíší, ale kopie druhého prostředí se nedotkne.
 
 Například pokud máte továrnu s názvem "ADF-DEV" a globální parametr typu String s názvem "prostředí" s hodnotou "dev", vygeneruje se při publikování souboru s názvem *ADF-DEV_GlobalParameters.js* . Pokud se nasazuje do testovací továrny s názvem ' ADF_TEST ', vytvořte kopii souboru JSON (například s názvem ADF-TEST_GlobalParameters.json) a nahraďte hodnoty parametrů hodnotami specifickými pro prostředí. Parametr Environment může mít nyní hodnotu test. 
 

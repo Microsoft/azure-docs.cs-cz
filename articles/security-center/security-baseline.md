@@ -6,13 +6,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f7da9b1779ed2cf46cb29b21215a9415cbaef494
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004487"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231278"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Základní hodnoty zabezpečení Azure pro Security Center
 
@@ -394,7 +394,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Doprovodné**materiály: Azure Security Center používá nakonfigurovaný pracovní prostor Log Analytics k ukládání dat, upozornění a doporučení, která generuje. Nakonfigurujte klíč spravovaný zákazníkem (CMK) pro pracovní prostor, který jste nakonfigurovali pro Security Center shromažďování dat. CMK povolí šifrování všech dat uložených v pracovním prostoru a jejich odeslání pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. 
 
-- [Azure Monitor klíč spravovaný zákazníkem](../azure-monitor/platform/customer-managed-keys.md)
+- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/platform/customer-managed-keys.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -596,7 +596,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 
 **Doprovodné**materiály: Azure Security Center používá nakonfigurovaný pracovní prostor Log Analytics k ukládání dat, upozornění a doporučení, která generuje. Nakonfigurujte klíč spravovaný zákazníkem (CMK) pro pracovní prostor, který jste nakonfigurovali pro Security Center shromažďování dat. CMK povolí šifrování všech dat uložených v pracovním prostoru a jejich odeslání pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. 
 
-- [Azure Monitor klíč spravovaný zákazníkem](../azure-monitor/platform/customer-managed-keys.md)
+- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/platform/customer-managed-keys.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

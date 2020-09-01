@@ -1,18 +1,18 @@
 ---
 title: Kurz – přidání ukázkového modelu – Azure Analysis Services | Microsoft Docs
-description: V této lekci kurzu zjistíte, jak přidat ukázkový model do služby Azure Analysis Services.
+description: V tomto kurzu se dozvíte, jak přidat Vzorový model do Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697516"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230887"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -24,7 +24,7 @@ V tomto kurzu přidáte na server ukázkovou tabulkovou modelovou databázi Adve
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -45,7 +45,7 @@ Přihlaste se k [portálu](https://portal.azure.com/).
 
 2. V části **Nový model**  >  **Zvolte zdroj dat**, ověřte, že je vybraná možnost **ukázková data** , a pak klikněte na **Přidat**.
 
-    ![Výběr ukázkových dat](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Vybrat nový model](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. Na stránce **Přehled** ověřte, že je přidaný ukázkový model `adventureworks`.
 
@@ -62,7 +62,7 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 
 2. Do pole **Připojit k serveru** vložte název serveru, v poli **Ověření** zvolte **Active Directory – univerzální s podporou vícefaktorového ověřování**, zadejte své uživatelské jméno a klikněte na **Připojit**.
 
-    ![Přihlášení](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Přihlásit se](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. V **Průzkumníku objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
 

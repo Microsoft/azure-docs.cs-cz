@@ -3,12 +3,12 @@ title: Vytváření a používání souborů prostředků
 description: Naučte se vytvářet soubory prostředků služby Batch z různých vstupních zdrojů. Tento článek obsahuje několik běžných metod, jak je vytvořit a umístit na virtuální počítač.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146296"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230938"
 ---
 # <a name="creating-and-using-resource-files"></a>Vytváření a používání souborů prostředků
 
@@ -99,7 +99,7 @@ Pokud každý úkol má pro daný úkol jedinečný počet souborů, považují 
 
 Pokud je v úloze několik stovek souborů prostředků, může dávka úlohu odmítnout, protože je příliš velká. Je nejlepší zajistit, aby vaše úkoly byly malé tím, že minimalizují počet souborů prostředků na samotném úkolu.
 
-Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé [metody](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods) kontejneru pro soubory prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
+Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé [metody](/dotnet/api/microsoft.azure.batch.resourcefile#methods) kontejneru pro soubory prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
 
 ## <a name="next-steps"></a>Další kroky
 

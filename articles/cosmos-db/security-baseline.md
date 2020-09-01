@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 99985ba8540a347977b9eaf2e733a308fa777b97
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531502"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231397"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
 
@@ -34,13 +34,13 @@ K zabezpečení účtu Azure Cosmos můžete použít také koncové body služb
 
 Data uložená v účtu Azure Cosmos můžete také zabezpečit pomocí bran firewall protokolu IP. Azure Cosmos DB podporuje řízení přístupu na základě IP adres pro podporu příchozích bran firewall. Bránu firewall protokolu IP můžete nastavit na účtu Azure Cosmos pomocí Azure Portal, Azure Resource Manager šablon nebo prostřednictvím rozhraní příkazového řádku Azure CLI nebo Azure PowerShell.
 
-Přehled privátních odkazů Azure:https://docs.microsoft.com/azure/private-link/private-link-overview
+Přehled privátních odkazů Azure: https://docs.microsoft.com/azure/private-link/private-link-overview
 
-Postup konfigurace privátního koncového bodu pro Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
+Postup konfigurace privátního koncového bodu pro Azure Cosmos DB:  https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
 
-Vytvoření skupiny zabezpečení sítě s konfigurací zabezpečení:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+Vytvoření skupiny zabezpečení sítě s konfigurací zabezpečení:  https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-Postup konfigurace brány firewall protokolu IP v Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
+Postup konfigurace brány firewall protokolu IP v Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
 
 **Monitorování Azure Security Center**: Ano
 
@@ -52,11 +52,11 @@ Postup konfigurace brány firewall protokolu IP v Cosmos DB:https://docs.microso
 
 Když jsou virtuální počítače nasazené ve stejné virtuální síti jako účet Azure Cosmos, můžete použít skupinu zabezpečení sítě (NSG) a snížit tak riziko exfiltraceí dat. Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audity provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Pochopení zabezpečení sítě, které poskytuje Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+Pochopení zabezpečení sítě, které poskytuje Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Monitorování Azure Security Center**: Ano
 
@@ -66,7 +66,7 @@ Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network
 
 **Pokyny**: pomocí funkce sdílení prostředků mezi zdroji (CORS) Povolte webové aplikaci spuštěné v jedné doméně přístup k prostředkům v jiné doméně. Webové prohlížeče implementují omezení zabezpečení označované jako zásady stejného původu, které brání webové stránce v volání rozhraní API v jiné doméně. CORS ale poskytuje zabezpečený způsob, jak, aby zdrojová doména mohla volat rozhraní API v jiné doméně. Po povolení podpory CORS pro váš účet Azure Cosmos se vyhodnotí jenom ověřené požadavky, které určují, jestli jsou povolené podle pravidel, která jste zadali.
 
-Konfigurace sdílení prostředků mezi zdroji:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
+Konfigurace sdílení prostředků mezi zdroji: https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
 
 **Monitorování Azure Security Center**: Ano
 
@@ -78,11 +78,11 @@ Konfigurace sdílení prostředků mezi zdroji:https://docs.microsoft.com/azure/
 
 Povolte DDoS Protection Standard ve virtuálních sítích přidružených k vašim Azure Cosmos DB instancím, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Jak nakonfigurovat Azure Cosmos DB rozšířené ochrany před internetovými útoky:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Jak nakonfigurovat Azure Cosmos DB rozšířené ochrany před internetovými útoky: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Jak nakonfigurovat DDoS Protection: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Pochopení Azure Security Center integrované analýzy hrozeb:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Pochopení Azure Security Center integrované analýzy hrozeb: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 **Monitorování Azure Security Center**: Ano
 
@@ -92,9 +92,9 @@ Pochopení Azure Security Center integrované analýzy hrozeb:https://docs.micro
 
 **Pokyny**: povolení protokolu Flow skupiny zabezpečení sítě (NSG) a odesílání protokolů do účtu úložiště pro audit provozu. Protokoly toku NSG můžete odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Jak povolit protokoly toku NSG:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Monitorování Azure Security Center**: Ano
 
@@ -104,7 +104,7 @@ Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network
 
 **Doprovodné**materiály: použití rozšířené ochrany před internetovými útoky (ATP) pro Azure Cosmos DB. ATP pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby a integrovat je se systémy centrálního monitorování zabezpečení. 
 
-Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 **Monitorování Azure Security Center**: Ano
 
@@ -123,7 +123,7 @@ Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky:h
 
 **Doprovodné**materiály: u prostředků, které potřebují přístup k vašemu účtu Azure Cosmos, použijte značky služby Virtual Network k definování řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-Další informace o použití značek služeb:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -139,9 +139,9 @@ Další informace o použití značek služeb:https://docs.microsoft.com/azure/v
 
 Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Postup vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -151,7 +151,7 @@ Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/b
 
 **Doprovodné**materiály: používejte značky pro síťové prostředky přidružené k vašemu nasazení Azure Cosmos DB, aby je bylo možné logicky uspořádat do taxonomie.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -161,9 +161,9 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Cosmos DB instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích. 
 
-Jak zobrazit a načíst události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -186,9 +186,9 @@ Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azu
 
 **Pokyny**: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení vygenerovaných Azure Cosmos DB. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty úložiště pro dlouhodobé a archivační úložiště. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo incidentu zabezpečení a řízení událostí zabezpečení (SIEM) třetí strany. 
 
-Postup povolení diagnostických protokolů pro Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/logging
+Postup povolení diagnostických protokolů pro Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/logging
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -198,9 +198,9 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 **Doprovodné**materiály: Povolte nastavení diagnostiky pro Azure Cosmos DB a odešlete protokoly do pracovního prostoru Log Analytics nebo účtu úložiště. Nastavení diagnostiky v Azure Cosmos DB se používají ke shromažďování protokolů prostředků. Tyto protokoly jsou zachyceny na žádost a jsou také označovány jako "protokoly roviny dat". Mezi Příklady operací s rovinou dat patří odstranění, vložení a čtení. Můžete také povolit nastavení diagnostiky protokolu aktivit Azure a odeslat je do stejného Log Analytics pracovního prostoru.
 
-Postup povolení nastavení diagnostiky pro Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/logging
+Postup povolení nastavení diagnostiky pro Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/logging
 
-Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Jak povolit nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -218,7 +218,7 @@ Jak povolit nastavení diagnostiky pro protokol aktivit Azure:https://docs.micro
 
 **Doprovodné**materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k vašim Azure Cosmos DB instancí podle předpisů pro dodržování předpisů vaší organizace.
 
-Postup nastavení parametrů uchovávání protokolů:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Postup nastavení parametrů uchovávání protokolů: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -228,7 +228,7 @@ Postup nastavení parametrů uchovávání protokolů:https://docs.microsoft.com
 
 **Doprovodné**materiály: můžete provádět dotazy v Log Analytics pracovní prostor pro hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě Azure Cosmos DB protokolů, které jste shromáždili.
 
-Jak provádět dotazy pro Azure Cosmos DB v pracovních prostorech Log Analytics:https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
+Jak provádět dotazy pro Azure Cosmos DB v pracovních prostorech Log Analytics: https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -242,11 +242,11 @@ Jak provádět dotazy pro Azure Cosmos DB v pracovních prostorech Log Analytics
 
 Pracovní prostor Log Analytics můžete také připojit do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení. Kromě toho můžete pomocí Azure Monitor vytvořit vlastní výstrahy protokolu v pracovním prostoru Log Analytics.
 
-Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
+Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB: https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
+Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
 
 **Monitorování Azure Security Center**: Ano
 
@@ -292,17 +292,17 @@ K vyhledání účtů, které jsou členy skupin pro správu, můžete také pou
 
 Kromě toho mohou být některé akce v Azure Cosmos DB řízeny pomocí Azure Active Directory a hlavních klíčů pro konkrétní účet.  K řízení přístupu ke klíčům použijte nastavení účtu disableKeyBasedMetadataWriteAccess.
 
-Principy řízení přístupu na základě rolí v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Principy řízení přístupu na základě rolí v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Sestavujte vlastní role pomocí Azure Cosmos DBch akcí (Microsoft.Docobor názvů umentDB):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Sestavujte vlastní role pomocí Azure Cosmos DBch akcí (Microsoft.Docobor názvů umentDB): https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
-Vytvořte novou roli v Azure Active Directory:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
+Vytvořte novou roli v Azure Active Directory: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Jak získat členy role adresáře v Azure Active Directory pomocí prostředí PowerShell:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Jak získat členy role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-Omezení přístupu uživatelů k datovým operacím:https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
+Omezení přístupu uživatelů k datovým operacím: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
 **Monitorování Azure Security Center**: Ano
 
@@ -312,11 +312,11 @@ Omezení přístupu uživatelů k datovým operacím:https://docs.microsoft.com/
 
 **Pokyny**: koncept výchozích nebo prázdných hesel neexistuje ve vztahu k Azure AD nebo Azure Cosmos DB. Místo toho Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům; hlavní klíče a tokeny prostředků. Klíče lze kdykoli znovu vygenerovat.
 
-Princip zabezpečeného přístupu k datům v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
+Princip zabezpečeného přístupu k datům v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
-Postup opětovného generování Azure Cosmos DB klíčů:https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
+Postup opětovného generování Azure Cosmos DB klíčů: https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
 
-Postup při programovém přístupu ke klíčům pomocí Azure Active Directory:https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
+Postup při programovém přístupu ke klíčům pomocí Azure Active Directory: https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -336,9 +336,9 @@ Postup při programovém přístupu ke klíčům pomocí Azure Active Directory:
 
 **Doprovodné**materiály: Azure Cosmos DB používá dva typy klíčů k autorizaci uživatelů a nepodporuje jednotné přihlašování (SSO) na úrovni datové roviny. Přístup k rovině ovládacího prvku pro Cosmos DB je k dispozici prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
-Principy služby Azure Database for Cosmos DB REST API:https://docs.microsoft.com/rest/api/cosmos-db/
+Principy služby Azure Database for Cosmos DB REST API: https://docs.microsoft.com/rest/api/cosmos-db/
 
-Vysvětlení jednotného přihlašování s Azure Active Directory:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Vysvětlení jednotného přihlašování s Azure Active Directory: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -348,9 +348,9 @@ Vysvětlení jednotného přihlašování s Azure Active Directory:https://docs.
 
 **Doprovodné**materiály: povolte Azure Active Directory Multi-Factor Authentication a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Jak monitorovat identitu a přístup v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Monitorování Azure Security Center**: Ano
 
@@ -360,9 +360,9 @@ Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs
 
 **Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s Multi-Factor Authentication nakonfigurovaným pro přihlášení k prostředkům Azure a jejich konfigurace.
 
-Další informace o pracovních stanicích s privilegovaným přístupem:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Další informace o pracovních stanicích s privilegovaným přístupem: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -376,9 +376,9 @@ Kromě toho můžete použít Azure Active Directory (AD) Privileged Identity Ma
 
 Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-Postup nasazení Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Postup nasazení Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Vysvětlení zjišťování rizik Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Monitorování Azure Security Center**: Ano
 
@@ -388,7 +388,7 @@ Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/acti
 
 **Pokyny**: umožňuje nakonfigurovat podmínku umístění zásad podmíněného přístupu a spravovat pojmenovaná umístění. Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí. Můžete omezit přístup k citlivým prostředkům, jako jsou například instance Azure Cosmos DB, do nakonfigurovaných pojmenovaných umístění.
 
-Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -398,9 +398,9 @@ Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/a
 
 **Doprovodné**materiály: jako centrální ověřování a systém autorizací použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-Postup vytvoření a konfigurace Azure Active Directory instance:https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
+Postup vytvoření a konfigurace Azure Active Directory instance: https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
-Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL:https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
+Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azure SQL: https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -410,7 +410,7 @@ Jak nakonfigurovat a spravovat Azure Active Directory ověřování pomocí Azur
 
 **Doprovodné**materiály: Azure Active Directory poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Kromě toho můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatele se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Jak používat kontroly přístupu Azure identity: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -420,7 +420,7 @@ Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azu
 
 **Doprovodné**materiály: můžete vytvořit nastavení diagnostiky pro Azure Active Directory uživatelské účty, Odeslat protokoly auditu a protokoly přihlášení do pracovního prostoru Log Analytics, kde můžete nakonfigurovat požadované výstrahy.
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Jak integrovat protokoly aktivit Azure do Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -432,11 +432,11 @@ Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.c
 
 Pomocí funkce Azure AD Identity Protection a detekce rizik můžete také nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Kromě toho můžete protokoly ingestovat do služby Azure Sentinel pro další šetření.
 
-Postup zobrazení Azure Active Directory rizikových přihlášení:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Postup zobrazení Azure Active Directory rizikových přihlášení: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Jak nakonfigurovat a povolit zásady pro rizika ochrany identity: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: Ano
 
@@ -446,7 +446,7 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 **Doprovodné**materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro službu Azure Database for Cosmos DB podporované.
 
-Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -460,7 +460,7 @@ Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/
 
 **Doprovodné**materiály: pomocí značek pomáhají při sledování Azure Cosmos DB instancí, které ukládají nebo zpracovávají citlivé informace.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -470,15 +470,15 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Instance Azure Cosmos DB jsou odděleny virtuální sítí nebo podsítí, vhodně označené a zabezpečené v rámci skupiny zabezpečení sítě (NSG) nebo Azure Firewall. Instance Azure Cosmos DB ukládající citlivé údaje by měly být izolované. Pomocí privátního odkazu Azure se můžete připojit k účtu Azure Cosmos DB instance prostřednictvím privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v podsíti v rámci vaší virtuální sítě. Pak můžete omezit přístup k vybraným privátním IP adresám. 
 
-Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření skupin pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření skupin pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Postup konfigurace privátního koncového bodu pro Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
+Postup konfigurace privátního koncového bodu pro Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
 
-Vytvoření skupiny zabezpečení sítě s konfigurací zabezpečení:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+Vytvoření skupiny zabezpečení sítě s konfigurací zabezpečení: https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -494,9 +494,9 @@ Vytvoření skupiny zabezpečení sítě s konfigurací zabezpečení:https://do
 
 Kromě toho při použití virtuálních počítačů pro přístup k instancím Azure Cosmos DB použijte privátní linku, bránu firewall, skupiny zabezpečení sítě a značky služeb, aby se snížila možnost exfiltraceí dat. Společnost Microsoft spravuje základní infrastrukturu pro Azure Cosmos DB a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Jak nakonfigurovat Cosmos DB rozšířené ochrany před internetovými útoky: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: Ano
 
@@ -506,7 +506,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 **Doprovodné**materiály: všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1.2. Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte prosím [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .
 
-Přehled zabezpečení Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/database-security
+Přehled zabezpečení Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/database-security
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -520,7 +520,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Index Azure Cosmos DB data pomocí Azure Kognitivní hledání: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ; BC =/azure/cosmos-db/breadcrumb/toc.jszapnuto
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -530,7 +530,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 **Doprovodné**materiály: Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
-Postup implementace RBAC v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Postup implementace RBAC v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -542,7 +542,7 @@ Postup implementace RBAC v Azure Cosmos DB:https://docs.microsoft.com/azure/cosm
 
 Společnost Microsoft spravuje základní infrastrukturu pro Cosmos DB a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -554,11 +554,11 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 Ve výchozím nastavení spravuje Microsoft klíče, které slouží k šifrování dat v účtu Azure Cosmos. Volitelně můžete zvolit, že se má přidat druhá vrstva šifrování s vlastními klíči.
 
-Principy šifrování v klidovém umístění pomocí Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+Principy šifrování v klidovém umístění pomocí Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Princip správy klíčů pro šifrování v klidovém umístění pomocí Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
+Princip správy klíčů pro šifrování v klidovém umístění pomocí Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
 
-Postup konfigurace klíčů spravovaných zákazníkem pro váš účet Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
+Postup konfigurace klíčů spravovaných zákazníkem pro váš účet Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -568,9 +568,9 @@ Postup konfigurace klíčů spravovaných zákazníkem pro váš účet Azure Co
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Cosmos DB.
 
-Vytváření upozornění pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Vytváření upozornění pro události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-Vytváření upozornění pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Vytváření upozornění pro události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -586,7 +586,7 @@ Vytváření upozornění pro události protokolu aktivit Azure:https://docs.mic
 
 Microsoft provádí systémovou opravu a správu ohrožení zabezpečení na podkladových hostitelích, kteří podporují vaše Azure Cosmos DB instance. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Podporované funkce dostupné v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
+Podporované funkce dostupné v Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
 
 **Monitorování Azure Security Center**: Ano
 
@@ -638,11 +638,11 @@ Podporované funkce dostupné v Azure Security Center:https://docs.microsoft.com
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Principy řízení přístupu na základě role v Azure:https://docs.microsoft.com/azure/role-based-access-control/overview
+Principy řízení přístupu na základě role v Azure: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -652,9 +652,9 @@ Principy řízení přístupu na základě role v Azure:https://docs.microsoft.c
 
 **Doprovodné**materiály: použití značek u instancí Azure Cosmos DB a souvisejících prostředků s metadaty k logickému uspořádání do taxonomie.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Které Azure Cosmos DB prostředky podporují značky:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
+Které Azure Cosmos DB prostředky podporují značky: https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -664,11 +664,11 @@ Které Azure Cosmos DB prostředky podporují značky:https://docs.microsoft.com
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků, mimo jiné Azure Cosmos DB prostředky. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -692,9 +692,9 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -735,9 +735,9 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -756,7 +756,7 @@ Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v rámci vysoce zabezpečeného prostředí.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -792,9 +792,9 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 - Cosmos DB by měl používat koncový bod služby virtuální sítě
 
-Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -813,9 +813,9 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -852,7 +852,7 @@ Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?vie
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.DocumentDB" k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -870,7 +870,7 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.DocumentDB" k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Cosmos DB instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje]. 
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -888,11 +888,11 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: u virtuálních počítačů Azure nebo webových aplikací, které běží na Azure App Service slouží pro přístup k instancím Azure Cosmos DB, použijte identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů Azure Cosmos DB. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Postup vytvoření Key Vault:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Postup vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.microsoft.com/azure/key-vault/managed-identity
+Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Monitorování Azure Security Center**: Ano
 
@@ -904,9 +904,9 @@ Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.m
 
 Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-Postup konfigurace spravovaných identit:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 **Monitorování Azure Security Center**: Ano
 
@@ -916,7 +916,7 @@ Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azur
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -963,7 +963,7 @@ Vaše zodpovědnost za všechny soubory nahrané do nevýpočetních prostředk�
 
 **Doprovodné**materiály: Azure Cosmos DB přebírá snímky vašich dat každé čtyři hodiny. Všechny zálohy se ukládají samostatně ve službě úložiště a tyto zálohy se globálně replikují z hlediska odolnosti proti regionálním katastrofám. V jednom okamžiku se zachová jenom poslední dva snímky. Pokud se však kontejner nebo databáze odstraní, Azure Cosmos DB zachová stávající snímky daného kontejneru nebo databáze po dobu 30 dnů. Kontaktujte podporu Azure a požádejte o obnovení ze zálohy.
 
-Principy Azure Cosmos DB automatizovaného zálohování:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+Principy Azure Cosmos DB automatizovaného zálohování: https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -975,11 +975,11 @@ Principy Azure Cosmos DB automatizovaného zálohování:https://docs.microsoft.
 
 Pokud chcete ukládat přihlašovací údaje pro instance Cosmos DB pomocí Key Vault, zajistěte pravidelné automatizované zálohování vašich klíčů.
 
-Vysvětlení Azure Cosmos DB automatizovaného zálohování:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+Vysvětlení Azure Cosmos DB automatizovaného zálohování: https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-Postup obnovení dat v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
+Postup obnovení dat v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
-Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1013,9 +1013,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-Pochopení šifrování dat v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+Pochopení šifrování dat v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Jak povolit obnovitelné odstranění v Key Vault:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Jak povolit obnovitelné odstranění v Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1029,13 +1029,13 @@ Jak povolit obnovitelné odstranění v Key Vault:https://docs.microsoft.com/azu
 
 **Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
 
-K podpoře při vytváření vlastního plánu odpovědí na incidenty můžete také využít příručku pro zpracování incidentů v počítači s NIST.https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+K podpoře při vytváření vlastního plánu odpovědí na incidenty můžete také využít příručku pro zpracování incidentů v počítači s NIST. https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Postup konfigurace automatizace pracovních postupů v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Anatomie centra Microsoft Security Response Center:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Anatomie centra Microsoft Security Response Center: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -1056,7 +1056,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 **Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1066,7 +1066,7 @@ Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvi�
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana.  Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-Jak nastavit Azure Security Center kontakt zabezpečení:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+Jak nastavit Azure Security Center kontakt zabezpečení: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1076,9 +1076,9 @@ Jak nastavit Azure Security Center kontakt zabezpečení:https://docs.microsoft.
 
 **Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-Postup konfigurace průběžného exportu:https://docs.microsoft.com/azure/security-center/continuous-export
+Postup konfigurace průběžného exportu: https://docs.microsoft.com/azure/security-center/continuous-export
 
-Jak streamovat výstrahy do Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Jak streamovat výstrahy do Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1088,7 +1088,7 @@ Jak streamovat výstrahy do Azure Sentinel:https://docs.microsoft.com/azure/sent
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
+Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1100,9 +1100,9 @@ Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.m
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
-**Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Monitorování Azure Security Center**: nelze použít
 

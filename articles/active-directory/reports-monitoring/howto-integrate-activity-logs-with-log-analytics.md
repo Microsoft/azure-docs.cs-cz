@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608989"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230564"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů služby Azure AD s protokoly Azure Monitor
 
@@ -51,14 +51,14 @@ Protokoly aktivit auditu a protokoly aktivit přihlašování můžete směrovat
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 * Předplatné Azure. Pokud předplatné Azure nemáte, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Tenanta Azure AD.
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
-* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="licensing-requirements"></a>Licenční požadavky
 
@@ -66,7 +66,7 @@ Použití této funkce vyžaduje licenci Azure AD Premium P1 nebo P2. Pokud chce
 
 ## <a name="send-logs-to-azure-monitor"></a>Odeslat protokoly do Azure Monitor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**  >  **nastavení diagnostiky**  ->  **Přidat nastavení diagnostiky**. Můžete také vybrat **Exportovat nastavení** na stránce **protokoly auditu** nebo **přihlášení** a získat tak stránku konfigurace nastavení diagnostiky.  
     

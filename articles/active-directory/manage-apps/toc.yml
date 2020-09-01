@@ -238,12 +238,6 @@
               href: application-types.md
             - name: Přiřazený neočekávaný uživatel
               href: ways-users-get-assigned-to-applications.md
-        - name: Řešení potíží se sekcí Moje aplikace
-          items:
-            - name: Aplikace se nezobrazuje
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: Zobrazuje e neočekávaná aplikace
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: Řešení potíží s místními aplikacemi
           items:
             - name: Řešení potíží s proxy aplikací

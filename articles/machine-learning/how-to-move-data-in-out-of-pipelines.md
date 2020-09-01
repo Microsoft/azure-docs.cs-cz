@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997893"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230309"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -33,15 +33,14 @@ Tento článek vám ukáže, jak:
 - Vytvořit nové objekty, které chcete `Dataset` `PipelineData` zachovat
 
 > [!TIP]
-> Vylepšené prostředí pro předávání dočasných dat mezi jednotlivými kroky kanálu a uchování dat po spuštění kanálu jsou k dispozici ve třídách veřejné verze Preview  `OutputFileDatasetConfig` a `OutputTabularDatasetConfig` .  Tyto třídy jsou experimentální funkce ve verzi Preview a můžou se kdykoli změnit.
-> 
->Další informace o experimentálních funkcích naleznete v tématu https://aka.ms/azuremlexperimental .
+> Vylepšené prostředí pro předávání dočasných dat mezi jednotlivými kroky kanálu a uchování dat po spuštění kanálu jsou k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) a [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Tyto třídy jsou [experimentální](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
+
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 

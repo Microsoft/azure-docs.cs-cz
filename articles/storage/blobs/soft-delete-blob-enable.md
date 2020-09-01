@@ -10,16 +10,16 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020843"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230224"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
 
-Částečný odstranění objektu BLOB chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, objekty blob, verze objektů BLOB (Preview) a snímky v tomto účtu úložiště se po jejich odstranění můžou obnovit v době uchování, kterou zadáte.
+Částečný odstranění objektu BLOB chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, můžou se objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště po jejich odstranění obnovit v rámci doby uchování, kterou zadáte.
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout funkci BLOB Soft DELETE. V tomto článku se dozvíte, jak povolit obnovitelné odstranění pro objekty blob. Další podrobnosti o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>Další kroky
 
 - [Obnovitelné odstranění pro úložiště objektů BLOB](soft-delete-overview.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)

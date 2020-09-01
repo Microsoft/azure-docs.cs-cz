@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016882"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230343"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Funkce automatizovaného škálování na základě Azure Machine Learning vám 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 
@@ -41,9 +41,7 @@ Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, j
 
 
 > [!TIP]
-> Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídách veřejné verze Preview  `OutputFileDatasetConfig` a `OutputTabularDatasetConfig` .  Tyto třídy jsou experimentální funkce ve verzi Preview a můžou se kdykoli změnit.
-> 
->Další informace o experimentálních funkcích naleznete v tématu https://aka.ms/azuremlexperimental .
+> Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) a [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Tyto třídy jsou [experimentální](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
 
 `AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
 
@@ -272,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Výše uvedený fragment kódu vytvoří vysoké provádění `PipelineOutputTabularDataset` z `PipelineOutputFileDataset` výstupu kroku Příprava dat.
 
 > [!TIP]
-> Třída Public Preview `OutputFileDatasetConfig` má také možnost převést na `OutputFileDatasetConfig` `OutputTabularDatasetConfig` pro spotřebu v AutoML spuštění. Další informace o `OutputFileDatasetConfig` návrhových vzorech a metodách najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> Třída Public Preview `OutputFileDatasetConfig` má také možnost převést na `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) pro spotřebu v AutoML spuštění. Další informace o `OutputFileDatasetConfig` návrhových vzorech a metodách najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
 Další možností je použít `Dataset` objekty registrované v pracovním prostoru:
 

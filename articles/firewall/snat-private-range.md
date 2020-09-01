@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 272f5b747efbc3776b1b2ba7c3546ade717c2452
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019075"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231363"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Rozsahy privátních IP adres Azure Firewall SNAT
 
@@ -20,7 +20,7 @@ Azure Firewall poskytuje automatické SNAT pro veškerý odchozí provoz na veř
 
 Tato logika funguje dobře při směrování provozu přímo na Internet. Pokud jste ale povolili [vynucené tunelování](forced-tunneling.md), před jejich vstupem se internetový provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet, takže se tento zdroj skryje z místní brány firewall.
 
-Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall SNATs provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet. Můžete ale nakonfigurovat Azure Firewall **, aby** nesnat na svůj rozsah veřejných IP adres.
+Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall SNATs provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet. Můžete ale nakonfigurovat Azure Firewall **, aby** nesnat na svůj rozsah veřejných IP adres. Pokud například chcete zadat jednotlivé IP adresy, můžete ji zadat takto: `192.168.1.10` . Pokud chcete zadat rozsah IP adres, můžete ho zadat takto: `192.168.1.0/24` .
 
 Pokud chcete nakonfigurovat Azure Firewall na nikdy SNAT bez ohledu na cílovou IP adresu, použijte jako rozsah privátních IP adres **0.0.0.0/0** . V této konfiguraci Azure Firewall moci nikdy směrovat přenosy přímo na Internet. Pokud chcete nakonfigurovat bránu firewall tak, aby vždycky byla v nezávisle na cílové adrese, použijte jako rozsah privátních IP adres **255.255.255.255/32** .
 

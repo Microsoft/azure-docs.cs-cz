@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041315"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230428"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Základní hodnoty zabezpečení Azure pro HDInsight
 
@@ -32,9 +32,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Pokud chcete snížit riziko ztráty dat prostřednictvím exfiltrace, omezte odchozí síťový provoz pro clustery Azure HDInsight pomocí Azure Firewall.
 
-Jak nasadit Azure HDInsight v rámci Virtual Network a zabezpečit pomocí skupiny zabezpečení sítě:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Jak nasadit Azure HDInsight v rámci Virtual Network a zabezpečit pomocí skupiny zabezpečení sítě: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Postup omezení odchozího provozu pro clustery Azure HDInsight pomocí Azure Firewall:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Postup omezení odchozího provozu pro clustery Azure HDInsight pomocí Azure Firewall: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Monitorování Azure Security Center**: Ano
 
@@ -108,11 +108,11 @@ K dispozici je několik závislostí pro Azure HDInsight, které vyžadují př�
 
 Pokud chcete snížit riziko ztráty dat prostřednictvím exfiltrace, omezte odchozí síťový provoz pro clustery Azure HDInsight pomocí Azure Firewall.
 
-Jak nasadit HDInsight v rámci Virtual Network a zabezpečit pomocí skupiny zabezpečení sítě:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Jak nasadit HDInsight v rámci Virtual Network a zabezpečit pomocí skupiny zabezpečení sítě: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Pochopení závislostí HDInsight a využití brány firewall:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Pochopení závislostí HDInsight a využití brány firewall: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-IP adresy správy HDInsight:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+IP adresy správy HDInsight: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -192,7 +192,7 @@ Jak zobrazit a načíst události protokolu aktivit Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -526,7 +526,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 **Doprovodné**materiály: není k dispozici; Customer Lockbox ještě není pro Azure HDInsight podporované.
 
-Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -834,15 +834,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -883,13 +883,13 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -909,7 +909,7 @@ Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -1290,7 +1290,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Monitorování Azure Security Center**: nelze použít
 

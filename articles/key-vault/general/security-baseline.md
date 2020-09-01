@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830209"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230275"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
@@ -69,9 +69,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 **Pokyny**: povolení Azure DDoS Protection Standard ve virtuálních sítích Azure přidružených k vašim Key Vault instancím pro ochranu před distribuovanými útoky DoS (Denial-of-Service). K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
  
-Správa Azure DDoS Protection Standard pomocí Azure Portal:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Správa Azure DDoS Protection Standard pomocí Azure Portal: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Detekce hrozeb pro vrstvu služby Azure v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Detekce hrozeb pro vrstvu služby Azure v Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
 **Monitorování Azure Security Center**: Ano
@@ -86,7 +86,7 @@ Integrace Key Vault s privátním odkazem na Azure:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Protokolování Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Protokolování Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
@@ -123,7 +123,7 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 
 **Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Key Vault, použijte značky služeb Azure pro Azure Key Vault k definování řízení přístupu k síti u skupin zabezpečení sítě nebo na Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-Přehled značek služeb Azure:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Přehled značek služeb Azure: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -243,7 +243,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 **Doprovodné**materiály: v rámci Azure monitor pro pracovní prostor Log Analytics, který se používá k ukládání protokolů Azure Key Vault, nastavte dobu uchování podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-Změnit dobu uchovávání dat:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Změnit dobu uchovávání dat: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -399,9 +399,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) se službou Azure Multi-Factor Authentication (MFA) nakonfigurovanou pro přihlášení a konfiguraci Key Vaultch povolených prostředků. 
 
-Pracovní stanice privilegovaného přístupu:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Pracovní stanice privilegovaného přístupu: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-Plánování cloudového nasazení Azure Multi-Factor Authentication:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Plánování cloudového nasazení Azure Multi-Factor Authentication: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
@@ -415,15 +415,15 @@ Plánování cloudového nasazení Azure Multi-Factor Authentication:https://doc
 
 Povolit rozšířenou ochranu před internetovými útoky (ATP) pro Azure Key Vault pro generování výstrah pro podezřelou aktivitu.
 
-Nasadit Azure AD Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Nasadit Azure AD Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Nastavte rozšířenou ochranu před internetovými útoky pro Azure Key Vault (Preview):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Nastavte rozšířenou ochranu před internetovými útoky pro Azure Key Vault (Preview): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
-Výstrahy pro Azure Key Vault (Preview):https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+Výstrahy pro Azure Key Vault (Preview): https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Azure Active Directory detekce rizik:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure Active Directory detekce rizik: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Vytváření a Správa skupin akcí v Azure Portal:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Vytváření a Správa skupin akcí v Azure Portal: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
 
@@ -435,7 +435,7 @@ Vytváření a Správa skupin akcí v Azure Portal:https://docs.microsoft.com/az
 
 **Pokyny**: umožňuje nakonfigurovat podmínku umístění zásad podmíněného přístupu a spravovat pojmenovaná umístění. Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí. Přístup k citlivým prostředkům, jako jsou Key Vault tajné klíče, můžete omezit na vaše nakonfigurovaná pojmenovaná umístění.
 
-Jaká je podmínka umístění v Azure Active Directory podmíněný přístup?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Jaká je podmínka umístění v Azure Active Directory podmíněný přístup?: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
 
@@ -479,9 +479,9 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 **Doprovodné**materiály: povolení nastavení diagnostiky pro Azure Key Vault a Azure Active Directory a posílání všech protokolů do log Analyticsho pracovního prostoru. Nakonfigurujte požadovaná upozornění (například pokusy o přístup k zakázaným tajným klíčům) v rámci Log Analytics.
 
-Integrace protokolů služby Azure AD s protokoly Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Integrace protokolů služby Azure AD s protokoly Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Migrace ze starého řešení Key Vault:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
+Migrace ze starého řešení Key Vault: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 
 
@@ -493,11 +493,11 @@ Migrace ze starého řešení Key Vault:https://docs.microsoft.com/azure/azure-m
 
 **Pokyny**: pomocí funkcí Azure Active Directory ochrany identit a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se vašich Azure Key Vault chráněných prostředků. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace. 
 
-Sestava rizikových přihlášení na portálu Azure Active Directory:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
+Sestava rizikových přihlášení na portálu Azure Active Directory: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
-Postupy: konfigurace a povolení zásad rizik:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Postupy: konfigurace a povolení zásad rizik: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel:  https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 **Monitorování Azure Security Center**: Ano
@@ -508,7 +508,7 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 **Doprovodné**materiály: nepoužitelné; Customer Lockbox se pro Azure Key Vault nepodporuje.
 
-Podporované služby a scénáře ve všeobecné dostupnosti:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Podporované služby a scénáře ve všeobecné dostupnosti: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -524,7 +524,7 @@ Podporované služby a scénáře ve všeobecné dostupnosti:https://docs.micros
 
 **Doprovodné**materiály: pomocí značek pomáhají při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace na Azure Key Vault povolené prostředky. 
 
-Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Použití značek k uspořádání prostředků Azure: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 
@@ -538,9 +538,9 @@ Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com
 
 Po uplatnění pravidel brány firewall můžete provádět operace Azure Key Vault roviny dat pouze v případě, že požadavek pochází z povolených podsítí nebo rozsahů IP adres. To platí také pro Azure Key Vault přístup v Azure Portal. I když můžete z Azure Portal přejít k trezoru klíčů, možná nebudete moct zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud klientský počítač není na seznamu povolených. To má vliv také na Azure Key Vault pro výběr a další služby Azure. Možná budete moct zobrazit seznamy trezorů klíčů, ale ne seznam klíčů, pokud pravidla firewallu brání vašemu klientskému počítači.
 
-Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Koncové body služby virtuální sítě pro Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Koncové body služby virtuální sítě pro Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
 
 
@@ -552,11 +552,11 @@ Koncové body služby virtuální sítě pro Azure Key Vault:https://docs.micros
 
 **Doprovodné**materiály: všechna data uložená v Azure Key Vault se považují za citlivá. Pro řízení přístupu k Azure Key Vault tajným klíčům použijte Azure Key Vault řízení přístupu k rovině dat. K řízení přístupu v síťové vrstvě můžete použít také vestavěnou bránu firewall Key Vault. Pokud chcete monitorovat přístup k Azure Key Vault, povolte Key Vault nastavení diagnostiky a odešlete protokoly do účtu Azure Storage nebo Log Analytics pracovního prostoru.
 
-Zabezpečený přístup k trezoru klíčů:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Zabezpečený přístup k trezoru klíčů: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Nakonfigurovat Azure Key Vault brány firewall a virtuální sítě: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Protokolování Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Protokolování Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
@@ -568,7 +568,7 @@ Protokolování Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-v
 
 **Doprovodné**materiály: veškerý provoz Azure Key Vault pro ověřování, správu a přístup k rovině dat je zašifrovaný a projde přes protokol https: port 443. (Pro seznam CRL bude ale občas možné provozovat přenosy HTTP [port 80].) 
 
-Přístup k Azure Key Vault za bránou firewall:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Přístup k Azure Key Vault za bránou firewall: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 
 
 
@@ -709,7 +709,7 @@ Získání předplatných, ke kterým má aktuální účet přístup:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Co je řízení přístupu na základě role Azure (Azure RBAC)?
+Co je řízení přístupu na základě role v Azure (Azure RBAC)?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -741,7 +741,7 @@ Vytvoření skupin pro správu pro organizaci a správu prostředků:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Použití značek k uspořádání prostředků Azure: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -760,15 +760,15 @@ Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com
 
 **Doprovodné**materiály: pomocí zásad Azure můžete nastavovat omezení pro typ prostředků, které se dají vytvořit v předplatných zákazníků, a to pomocí těchto integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
 
-Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -807,13 +807,13 @@ Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumn
 
 **Doprovodné**materiály: pomocí zásad Azure můžete nastavovat omezení pro typ prostředků, které se dají vytvořit v předplatných zákazníků, a to pomocí těchto integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
-Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy ukázky:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Policy ukázky: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -1044,7 +1044,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.  
   
- Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+ Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 Předem prohledejte veškerý obsah, který se nahrává nebo odesílá do nevýpočetních prostředků Azure, jako je například Azure Key Vault. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1102,15 +1102,15 @@ Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual M
 
 V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
-Postup zálohování certifikátů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Postup zálohování certifikátů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Postup zálohování Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Postup zálohování Key Vault spravovaných účtů úložiště: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Postup při zálohování Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Postup při zálohování Key Vault tajných kódů: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
+Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup
 
 
 
@@ -1132,15 +1132,15 @@ Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
 
 V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
-Postup zálohování certifikátů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Postup zálohování certifikátů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Postup zálohování Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Postup zálohování Key Vault spravovaných účtů úložiště: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Postup při zálohování Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Postup při zálohování Key Vault tajných kódů: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
+Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup
 
 
 
@@ -1160,13 +1160,13 @@ Postup povolení Azure Backup:https://docs.microsoft.com/azure/backup
 
 - Obnovit – AzKeyVaultSecret
 
-Postup obnovení Key Vaultch certifikátů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+Postup obnovení Key Vaultch certifikátů:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 
-Postup obnovení klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+Postup obnovení klíčů Key Vault: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
 
-Postup obnovení Key Vault spravovaných účtů úložiště:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+Postup obnovení Key Vault spravovaných účtů úložiště: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
 
-Postup obnovení Key Vault tajných kódů:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+Postup obnovení Key Vault tajných kódů: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
 
 **Monitorování Azure Security Center**: nelze použít

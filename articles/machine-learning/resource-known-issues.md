@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018718"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230377"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -318,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
+* **Nedávná aktualizace závislostí AutoML na novější verze bude compatibilitity**: od verze 1.13.0 sady SDK nebudou modely načteny do starších sad SDK z důvodu nekompatibility se staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějších verzích, které teď zapnete. Zobrazí se chyba, například:
+  * Modul nebyl nalezen: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
+  * Chyby importu: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
+  * Chyby atributů: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  Pokud chcete tento problém obejít, proveďte v závislosti na vaší verzi školení sady AutoML SDK jeden z následujících dvou kroků:
+  1. Pokud je vaše verze školení sady AutoML SDK větší než 1.13.0, budete potřebovat `pandas == 0.25.1` a `sckit-learn==0.22.1` . Pokud dojde k neshodě verzí, upgradujte scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. Pokud je vaše verze školení pro sadu SDK pro AutoML nižší nebo rovna 1.12.0, budete potřebovat `pandas == 0.23.4` a `sckit-learn==0.20.3` . Pokud se neshoduje verze, downgrade scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
  
    ```python

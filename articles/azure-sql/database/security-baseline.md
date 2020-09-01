@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045939"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231023"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Základní hodnota zabezpečení Azure pro Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **Pokyny**: povolení rozšířené ochrany před internetovými útoky (ATP) pro Azure SQL Database.  Uživatelům se zobrazí výstraha o podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení a útocích prostřednictvím injektáže SQL a také o vzorcích dotazů neobvyklé Database. Rozšířená ochrana před internetovými útoky také integruje výstrahy s Azure Security Center.
 
-Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database:https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Pochopení a použití rozšířené ochrany před internetovými útoky pro Azure SQL Database: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -157,9 +157,9 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou šablony pro správu prostředků Azure, řízení přístupu na základě role (RBAC) a zásady, v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Postup vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Monitorování Azure Security Center**: Ano
 
@@ -437,7 +437,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolte přístup k portálu a správě prostředků Azure jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -627,7 +627,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
-**Doprovodné**materiály: transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou nebezpečných offline aktivit šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze v SQL Database a na spravované instanci SQL. Šifrovací klíč TDE může spravovat buď společnost Microsoft, nebo zákazník.
+**Doprovodné**materiály: transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou nebezpečných offline aktivit šifrováním dat v klidovém stavu. Provádí šifrování a dešifrování neaktivní uložené databáze, souvisejících záloh a souborů transakčních protokolů v reálném čase a nevyžaduje žádné změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze v SQL Database a na spravované instanci SQL. Šifrovací klíč TDE může spravovat buď společnost Microsoft, nebo zákazník.
 
 Správa transparentního šifrování dat a používání vlastních šifrovacích klíčů:
 
@@ -723,11 +723,11 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Porozumění službě Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -777,15 +777,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -819,15 +819,15 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 **Doprovodné**materiály: pomocí Azure Policy můžete umístit omezení typu prostředků, které se dají vytvořit v předplatných zákazníka, a to pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -845,7 +845,7 @@ Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1011,7 +1011,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1035,7 +1035,7 @@ Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.
 
 Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage, Blob Storage, Azure SQL Database atd. Společnost Microsoft nemá přístup k vašim datům v těchto instancích.
 
-Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1133,7 +1133,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Pokyny**: Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-Výstrahy zabezpečení v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+Výstrahy zabezpečení v Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1201,7 +1201,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Monitorování Azure Security Center**: nelze použít
 
