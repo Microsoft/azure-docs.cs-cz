@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/06/2020
-ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533083"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072192"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
@@ -28,15 +28,17 @@ V případě potřeby můžete připojit nebo odpojit svazek pro virtuální po�
 
     ![Pokyny k připojení SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
     * Pokud připojujete svazek systému souborů NFS, nezapomeňte použít `vers` možnost v `mount` příkazu k určení verze protokolu NFS, která odpovídá svazku, který chcete připojit. 
-    * Pokud používáte NFSv 4.1, připojte systém souborů pomocí následujícího příkazu:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    * Pokud používáte NFSv 4.1, připojte systém souborů pomocí následujícího příkazu:  `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+        > [!NOTE]
+        > Pokud používáte NFSv 4.1, ujistěte se, že všechny virtuální počítače, které namontují export, používají jedinečné názvy hostitelů.
 
 3. Pokud chcete připojit svazek systému souborů NFS automaticky při spuštění nebo restartování virtuálního počítače Azure, přidejte položku do `/etc/fstab` souboru na hostiteli. 
 
-    Například:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
+    Například:  `$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
-    * `$ANFIP`je IP adresa Azure NetApp Filesho svazku, který se nachází v okně vlastností svazku.
-    * `$FILEPATH`je cesta exportu Azure NetApp Filesho svazku.
-    * `$MOUNTPOINT`je adresář vytvořený na hostiteli systému Linux, který slouží k připojení exportu NFS.
+    * `$ANFIP` je IP adresa Azure NetApp Filesho svazku, který se nachází v okně vlastností svazku.
+    * `$FILEPATH` je cesta exportu Azure NetApp Filesho svazku.
+    * `$MOUNTPOINT` je adresář vytvořený na hostiteli systému Linux, který slouží k připojení exportu NFS.
 
 4. Pokud chcete připojit svazek k systému Windows pomocí systému souborů NFS:
 

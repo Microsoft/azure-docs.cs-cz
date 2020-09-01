@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854293"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069285"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Základní hodnoty zabezpečení Azure pro Azure Firewall
 
@@ -74,7 +74,7 @@ Všimněte si, že nemůžete vytvořit vlastní značku služby, ani určit, kt
 
 **Doprovodné**materiály: zásady Azure ještě nejsou plně podporované pro Azure firewall. Azure Firewall Manager lze použít k zajištění standardizace konfigurací zabezpečení.
 
-Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manageru, ovládací prvky RBAC a zásady, v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony Azure Resource Manageru, řízení a zásady Azure RBAC, a to v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -132,7 +132,7 @@ Poznámka: oba protokoly se dají uložit do účtu úložiště, streamované d
 
 Seznam akcí prostředků v protokolech aktivit: Azure Resource Manager operace poskytovatele prostředků
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -416,11 +416,11 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: k řízení přístupu k Azure firewall a souvisejícím prostředkům použijte Azure Active Directory řízení přístupu na základě role (RBAC).
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k Azure firewall a souvisejícím prostředkům.
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

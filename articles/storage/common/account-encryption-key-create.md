@@ -10,13 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056716"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070492"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -217,7 +217,7 @@ Následující příklad JSON vytvoří účet úložiště pro obecné účely 
 
 Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, si v jednom z následujících článků nakonfigurujte klíče spravované zákazníky pomocí Azure Key Vault:
 
-- [Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal](storage-encryption-keys-portal.md)
+- [Konfigurace klíčů spravovaných zákazníkem se službou Azure Key Vault pomocí webu Azure Portal](storage-encryption-keys-portal.md)
 - [Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault s využitím PowerShellu](storage-encryption-keys-powershell.md)
 - [Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure CLI](storage-encryption-keys-cli.md)
 

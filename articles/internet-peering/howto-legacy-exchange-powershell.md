@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2abd05243f30a32d8fe49f12bf4ee2ad09855002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 769522238939fe8ee786ae51a1b3b6051604451e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699987"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071665"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí PowerShellu
 
@@ -91,7 +92,7 @@ Tato příklad reakce ukazuje, kdy bylo úspěšné dokončení kompletního zř
     MaxPrefixesAdvertisedV6  : 2000
     ConnectionState          : Active
 ```
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Podrobnější popis všech parametrů získáte spuštěním následujícího příkazu:
 
 ```powershell

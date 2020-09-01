@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 59b795462ff6e033e299c15f4099b7bfd3874451
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963865"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069389"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
 
@@ -98,7 +98,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Doprovodné**materiály: Pokud je to nutné pro účely dodržování předpisů, vyberte síťové virtuální zařízení z Azure Marketplace, které podporuje funkce pro zjišťování neoprávněných vniknutí (ID) a systémy ochrany před únikem informací (IP) s možnostmi kontroly zatížení.
 
-Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte Azure Firewall s veřejnou IP adresou ve stejné virtuální síti jako uzly fondu Azure Batch. Nakonfigurujte pravidla překladu adres (NAT) mezi důvěryhodnými umístěními na internetu a privátními IP adresami uzlů jednotlivých fondů. Na Azure Firewall v části Analýza hrozeb nakonfigurujte "Alert" a "deny" pro blokování výstrahy a zablokování provozu do a ze známých škodlivých IP adres a domén. IP adresy a domény se nacházejí z kanálu Microsoft Threat Intelligence a zahrnují se jenom ty nejvyšší důvěrné záznamy. 
 
@@ -178,9 +178,9 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi fondy Azure Batch. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-Jak zobrazit a načíst události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
+Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
 
-Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Postup při vytváření výstrah v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Monitorování Azure Security Center**: Ano
 
@@ -500,7 +500,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Doprovodné**materiály: není k dispozici; Customer Lockbox ještě není pro Azure Batch podporované.
  
-Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -596,13 +596,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: k řízení přístupu k rovině správy prostředků Azure, včetně účtu Batch, fondů služby Batch a účtů úložiště, použijte řízení přístupu na základě role (RBAC) Azure Active Directory (AAD).
+**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině správy prostředků Azure, včetně účtu Batch, fondů služby Batch a účtů úložiště.
 
 Porozumění službě Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-Jak nakonfigurovat RBAC v Azure:
+Jak nakonfigurovat službu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -773,14 +773,14 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -818,12 +818,12 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -843,7 +843,7 @@ Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -907,9 +907,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Microsoft.Network
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -942,13 +942,13 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Pokyny**: Pokud používáte pro fondy Azure Batch vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+**Pokyny**: Pokud používáte pro fondy Azure Batch vlastní image, použijte řízení přístupu na základě role Azure (Azure RBAC) a zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
 
-Princip RBAC v Azure:
+Porozumění službě Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-Jak nakonfigurovat RBAC v Azure:
+Jak nakonfigurovat službu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
@@ -987,9 +987,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - V účtech Batch by měly být povolené diagnostické protokoly.
 
-Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -1039,7 +1039,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
-Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1169,7 +1169,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Doprovodné**materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Monitorování Azure Security Center**: nelze použít
 

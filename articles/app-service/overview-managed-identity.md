@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961580"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070339"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -326,12 +326,12 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 > | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | prostředek          | Dotazy  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
-> | verze-api       | Dotazy  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
+> | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
+> | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY – HLAVIČKA | Záhlaví | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
-> | client_id         | Dotazy  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
-> | principal_id      | Dotazy  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
-> | mi_res_id         | Dotazy  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
+> | client_id         | Dotaz  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
+> | principal_id      | Dotaz  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
+> | mi_res_id         | Dotaz  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
 
 > [!IMPORTANT]
 > Pokud se pokoušíte získat tokeny pro uživatelsky přiřazené identity, musíte zahrnout jednu z volitelných vlastností. V opačném případě se služba tokenů pokusí získat token pro identitu přiřazenou systémem, která může nebo nemusí existovat.

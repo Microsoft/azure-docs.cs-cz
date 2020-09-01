@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281986"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070390"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -90,7 +90,7 @@ Nahrajte celý adresář pomocí tokenu SAS:
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-– nebo –
+nebo
 
 ```azcopy
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive --put-md5
@@ -254,7 +254,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--řetězec z-na** volitelně Určuje kombinaci zdrojového cíle. Například: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**--** nápovědu pro kopírování.
+**--**  nápovědu pro kopírování.
 
 **--include-After** String zahrnuje pouze soubory změněné za dané datum a čas nebo po něm. Hodnota by měla být ve formátu ISO8601. Pokud není zadané žádné časové pásmo, předpokládá se, že hodnota je v místním časovém pásmu počítače, na kterém běží AzCopy. například `2020-08-19T15:04:00Z` pro čas UTC nebo `2020-08-19` pro půlnoc (00:00) v místním časovém pásmu. Jako u AzCopy 10,5 se tento příznak vztahuje pouze na soubory, nikoli na složky, takže vlastnosti složky nebudou zkopírovány při použití tohoto příznaku v `--preserve-smb-info` nebo `--preserve-smb-permissions` .
 
@@ -263,6 +263,8 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 **--include-Path** řetězec zahrnuje pouze tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí `;` .
+
+**--list-of-** Versions určuje soubor, ve kterém je každé ID verze uvedené na samostatném řádku. Ujistěte se, že zdroj musí ukazovat na jeden objekt BLOB a že všechna ID verzí zadaná v souboru, který tento příznak používá, musí patřit pouze do zdrojového objektu BLOB. AzCopy stáhne zadané verze do zadané cílové složky. Další informace najdete v tématu [stažení předchozích verzí objektu BLOB](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí `INFO` ). 
 
@@ -302,6 +304,6 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí formát je `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [azcopy](storage-ref-azcopy.md)

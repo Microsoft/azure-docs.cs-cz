@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 02937c22cbc16defb0b7672ac7ebc56c2ae2beb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550284"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068775"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -235,7 +236,7 @@ Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny tét
 
 Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
-|Název čítače výkonu | Description|
+|Název čítače výkonu | Popis|
 | --- | --- |
 |Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|
@@ -313,7 +314,7 @@ Události jsou protokolovány různými součástmi proxy serveru pomocí násle
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|
-|Rutiny prostředí PowerShell| 30000-39999|
+|Rutiny PowerShellu| 30000-39999|
 
 ## <a name="proxy-service-text-logging"></a>Protokolování textu služby proxy
 

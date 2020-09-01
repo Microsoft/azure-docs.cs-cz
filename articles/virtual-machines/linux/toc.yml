@@ -89,13 +89,13 @@
             - name: Vytvoření spravovaného disku ze snímku
               href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Kopírování spravovaného disku do stejného nebo jiného předplatného
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Export snímku jako VHD do účtu úložiště
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Export VHD spravovaného disku do účtu úložiště
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Kopírování snímku do stejného nebo jiného předplatného
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Síťové virtuální počítače
           items:
             - name: Zabezpečení provozu sítě mezi virtuálními počítači
@@ -143,13 +143,13 @@
             - name: Vytvoření snímku z VHD
               href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Kopírování snímku do stejného nebo jiného předplatného
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Monitorování virtuálních počítačů
           items:
             - name: Monitorování virtuálního počítače s využitím protokolů Azure Monitoru
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Kopírování spravovaného disku do stejného nebo jiného předplatného
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného s využitím PowerShellu
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Integrované služby Azure Policy
@@ -239,7 +239,7 @@
             - name: Řada Mv2
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Virtuální procesory s omezením
-              href: ../constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Optimalizované z hlediska úložiště
           items:
             - name: Přehled
@@ -294,7 +294,7 @@
             - name: Co jsou rezervace Azure?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Flexibilita velikosti instance virtuálního počítače
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Spotové virtuální počítače
           displayName: 'pre-empt, preempt'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -317,7 +317,7 @@
             - name: Co jsou rezervace Azure?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibilita velikosti instance virtuálního počítače
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Výsledky srovnávacích testů
           href: compute-benchmark-scores.md
     - name: Schválené distribuce
@@ -329,21 +329,21 @@
     - name: Diskové úložiště
       items:
         - name: Úvod ke spravovaným diskům
-          href: ../managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Výběr typu disku pro virtuální počítače IaaS
-          href: ../disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Šifrování
           href: disk-encryption.md
         - name: Rezervace služby Disk Storage
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Návrh pro vysoký výkon
-          href: ../premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Zvládání výkonových špiček disků
           href: disk-bursting.md
         - name: Cíle škálovatelnosti pro disky
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
-          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Sdílené disky
           href: disks-shared.md
         - name: Disky OS s kratší platností
@@ -357,7 +357,7 @@
     - name: Zabezpečení
       items:
         - name: Zabezpečení a zásady
-          href: ../security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Mechanismy zabezpečení služby Azure Policy
@@ -370,7 +370,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Stavy a životní cyklus
-      href: ../states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Monitorování
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Diagnostika spouštění
@@ -418,7 +418,7 @@
         - name: Přehled migrace
           href: migration-classic-resource-manager-overview.md
         - name: Podrobné informace o migraci
-          href: ../migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Plánování migrace
           href: migration-classic-resource-manager-plan.md
         - name: Migrovat pomocí rozhraní příkazového řádku
@@ -428,7 +428,7 @@
         - name: Komunitní nástroje pro migraci
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Nejčastější dotazy
-          href: ../migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Použití imagí
       displayName: 'SIG, AMI, image'
       items:
@@ -474,7 +474,7 @@
               href: cloudinit-bash-script.md
             - name: Příprava existujícího virtuálního počítače pro cloud-init
               href: cloudinit-prepare-custom-image.md
-        - name: Vytváření imagí bez
+        - name: Vytváření imagí bez agenta zřizování
           href: no-agent.md
         - name: Zákaz zřizování linuxových agentů
           href: disable-provisioning.md
@@ -740,7 +740,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -956,9 +956,9 @@
           href: detach-disk.md
         - name: Nasazení disků s využitím šablony ARM
           displayName: 'Azure Resource Manager, ARM'
-          href: ../using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Povolení sdílených disků
-          href: ../disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Nahrání virtuálního pevného disku na disk – CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Zabezpečený import/export disku – CLI
@@ -968,11 +968,11 @@
         - name: Změna velikosti disku
           href: expand-disks.md
         - name: Použití Průzkumníku služby Storage ke správě disků
-          href: ../disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Pořízení snímku disku
           href: snapshot-copy-managed-disk.md
         - name: Rezervace služby Disk Storage
-          href: ../disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vytvoření přírůstkového snímku – CLI
           href: disks-incremental-snapshots.md
         - name: Vytvoření přírůstkového snímku – portál
@@ -1006,9 +1006,9 @@
         - name: Výkon
           items:
             - name: Použití akcelerátoru zápisu
-              href: ../how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Použití disků Ultra
-              href: ../disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Srovnávací test disku
               href: disks-benchmarks.md
             - name: Optimalizace výkonu

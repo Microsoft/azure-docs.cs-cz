@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115794"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068656"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
-> Důrazně doporučujeme použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Graph API Azure AD pro přístup k prostředkům Azure Active Directory (Azure AD). Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které by mohla být služba Azure AD Graph API vhodná; Další informace najdete v příspěvku blogu [Microsoft Graph nebo Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) a [migrace aplikací Azure ad Graph do Microsoft Graph](/graph/migrate-azure-ad-graph-overview).
+> Důrazně doporučujeme použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Graph API Azure AD pro přístup k prostředkům Azure Active Directory (Azure AD). Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které by mohla být služba Azure AD Graph API vhodná; Další informace najdete v příspěvku blogu [Microsoft Graph nebo Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) a [migrace aplikací Azure ad Graph do Microsoft Graph](/graph/migrate-azure-ad-graph-planning-checklist).
 
 Tento článek se týká Graph API služby Azure AD. Podobné informace související s Microsoft Graph API najdete v tématu [použití rozhraní api Microsoft Graph](/graph/use-the-api).
 

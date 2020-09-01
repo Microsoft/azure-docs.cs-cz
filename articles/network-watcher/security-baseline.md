@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f50310b8494b65ff8e9170d333d7c3e70c82ded
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255922"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071512"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Základní hodnoty zabezpečení Azure pro Network Watcher
 
@@ -234,9 +234,9 @@ Network Watcher by měl být povolený.
 
 **Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup správce k řídicí rovině (například Azure Portal) Azure Network Watcher. Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím vlastník, přispěvatele nebo přispěvatele sítě nebo přiřazený k vlastní roli, která je přiřazená k akcím uvedeným pro konkrétní Network Watcher možnosti.
 
-Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
+K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Oprávnění k řízení přístupu na základě rolí, která jsou nutná k použití možností Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -443,15 +443,15 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Odpovědnost**: netýká se
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné ke konfiguraci řízení přístupu na základě role (RBAC). Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
+**Pokyny**: můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné ke konfiguraci řízení přístupu na základě role v Azure (Azure RBAC). Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
 
 Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím vlastník, přispěvatele nebo přispěvatele sítě nebo přiřazený k vlastní roli, která je přiřazená k akcím uvedeným pro konkrétní Network Watcher možnosti.
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [Principy oprávnění RBAC v Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Principy oprávnění Azure RBAC v Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -564,7 +564,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -626,7 +626,7 @@ Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

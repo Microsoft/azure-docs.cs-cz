@@ -1,4 +1,4 @@
-- name: Dokumentace brány Azure Firewall
+- name: Dokumentace ke službě Azure Firewall
   href: index.yml
 - name: Přehled
   items:

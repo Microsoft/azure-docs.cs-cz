@@ -10,14 +10,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517316"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070713"
 ---
-# <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení spravované instance SQL Azure
+# <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje, jak se klienti připojují ke službě Azure SQL Managed instance v závislosti na typu připojení. Ukázky skriptů pro změnu typů připojení jsou uvedené níže a s důležitými informacemi týkajícími se změny výchozího nastavení připojení.

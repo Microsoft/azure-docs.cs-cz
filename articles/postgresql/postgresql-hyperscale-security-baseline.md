@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: a7014e6721cb6985ddff5ddaf773de4e85a048e0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563904"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071495"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
 
@@ -347,13 +347,13 @@ V některých případech aplikace třetích stran vyžadují k zabezpečenému 
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použití řízení přístupu na základě role (RBAC) v Azure k řízení přístupu k rovině ovládacího prvku Citus (škálování na úrovni) (např. Azure Portal). RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
+**Doprovodné**materiály: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacího prvku Citus (škálování na úrovni) (např. Azure Portal). Azure RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
 
 Pokud chcete upravit uživatelská oprávnění na úrovni databáze, použijte standardní příkazy PostgreSQL pomocí nástroje, jako je PgAdmin nebo psql.
 
-- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [Jak nakonfigurovat přístup uživatelů pomocí SQL pro Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
@@ -742,7 +742,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**Doprovodné**materiály: Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
 
 - [V této části najdete další informace o strategii Microsoftu a provádění testování v rámci červeného seskupování a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

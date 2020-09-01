@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536917"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069319"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -48,7 +48,9 @@ V tomto kurzu se naučíte:
 
 Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](deploy-ps.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="set-up-the-network"></a>Nastavit síť
 
@@ -72,7 +74,7 @@ Tato virtuální síť bude obsahovat tři podsítě.
 > [!NOTE]
 > Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 1. Vyberte **síť**  >  **virtuální síť**.
 2. V části **Předplatné** vyberte své předplatné.
 3. V případě **skupiny prostředků**vyberte **test-FW-RG**.
@@ -98,7 +100,7 @@ Tato virtuální síť bude obsahovat tři podsítě.
 
 Nyní vytvořte virtuální počítač úlohy a umístěte ho do podsítě **zátěžového sériového zatížení** .
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 2. Vyberte **COMPUTE** a potom vyberte **virtuální počítač**.
 3. **Windows Server 2016 Datacenter** v seznamu Doporučené.
 4. Zadejte pro virtuální počítač tyto hodnoty:
@@ -125,7 +127,7 @@ Nyní vytvořte virtuální počítač úlohy a umístěte ho do podsítě **zá
 
 Nasaďte do virtuální sítě bránu firewall.
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 2. Do vyhledávacího pole zadejte **firewall** a stiskněte klávesu **ENTER**.
 3. Vyberte **firewall** a pak vyberte **vytvořit**.
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
@@ -137,7 +139,7 @@ Nasaďte do virtuální sítě bránu firewall.
    |Název     |**Test-FW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: **test-FW-vn**|
-   |Veřejná IP adresa     |**Přidat nový**<br>**Název**: **FW-PIP**|
+   |Veřejná IP adresa     |**Přidat nový**<br>**Název**:  **FW-PIP**|
 
 5. Vyberte **Zkontrolovat a vytvořit**.
 6. Zkontrolujte souhrn a pak vyberte **vytvořit** a vytvořte bránu firewall.
@@ -188,7 +190,7 @@ Toto je pravidlo aplikace, které umožňuje odchozí přístup `www.google.com`
 9. Jako **typ zdroje**vyberte **IP adresa**.
 10. Jako **zdroj**zadejte **10.0.2.0/24**.
 11. V části **Protokol:Port** zadejte **http, https**.
-12. Pro **cílové plně kvalifikované názvy domén**zadejte**`www.google.com`**
+12. Pro **cílové plně kvalifikované názvy domén**zadejte **`www.google.com`**
 13. Vyberte **Přidat**.
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).

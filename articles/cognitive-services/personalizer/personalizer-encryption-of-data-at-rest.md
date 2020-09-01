@@ -1,20 +1,20 @@
 ---
 title: Šifrování neaktivních dat služby přizpůsobování
 titleSuffix: Azure Cognitive Services
-description: Šifrování neaktivních dat služby přizpůsobení.
+description: Microsoft nabízí šifrovací klíče spravované Microsoftem a umožňuje také spravovat Cognitive Services předplatná s vlastními klíči, které se nazývají Customer Customer Key (CMK). Tento článek obsahuje informace o šifrování dat v klidovém umístění pro přizpůsobení a o tom, jak povolit a spravovat CMK.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 10eb627a340b45c93b2cfb2973e294d8d5d7c7e5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307798"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069900"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat služby přizpůsobování
 
@@ -24,8 +24,6 @@ Služba přizpůsobené aplikace automaticky šifruje vaše data při trvalém u
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom v cenové úrovni E0. Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby pro přizpůsobení](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití CMK se službou pro přizpůsobování budete muset vytvořit nový prostředek pro přizpůsobení a vybrat E0 jako cenovou úroveň. Jakmile se vytvoří prostředek pro individuální nastavení s cenovou úrovní E0, můžete k nastavení spravované identity použít Azure Key Vault.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

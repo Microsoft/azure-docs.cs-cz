@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c80269c949ec97a09584d736371ccd11879fd82b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828213"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069693"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
 
@@ -27,7 +27,7 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na **Konfigurace**.
 4. V části **Druh účtu** klikněte na **Upgradovat**.

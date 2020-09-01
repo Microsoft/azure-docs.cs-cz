@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501351"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069812"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage
 
@@ -154,7 +154,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
 |Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -197,7 +197,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
 |Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Šablona](#tab/template)
 
@@ -240,7 +240,7 @@ Odstranění účtu úložiště odstraní celý účet včetně všech dat v ú
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

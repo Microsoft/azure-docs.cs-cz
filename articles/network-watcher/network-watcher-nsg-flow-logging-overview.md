@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084360"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070577"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -294,7 +294,7 @@ Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více 
 ```
 **Vysvětlení řazené kolekce členů protokolu**
 
-![Přehled protokolů toků](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![tok zaznamenává řazenou kolekci členů](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **Ukázka výpočtu šířky pásma**
 
@@ -365,7 +365,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Povolit pro kritické virtuální sítě/podsítě**: protokoly toků by měly být povolené na všech kritických virtuální sítě/podsítích ve vašem předplatném jako osvědčený postup pro audit a zabezpečení. 
 
-**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toků NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/security-overview.md#how-traffic-is-evaluated) ve skupinách zabezpečení sítě.
+**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toků NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě.
 
 **Zřizování úložiště**: úložiště by mělo být zřízené ve službě Intune s očekávaným objemem protokolu toku.
 
@@ -391,7 +391,7 @@ Protokoly se někdy nezobrazí, protože vaše virtuální počítače nejsou ak
 
 Protokoly toku NSG v současné době nepodporují automatizaci prostřednictvím šablon ARM. Další informace najdete v [oznámení o funkci](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co dělají protokoly toku NSG?**
 
@@ -407,7 +407,7 @@ Pokud chcete použít účet úložiště za bránou firewall, musíte poskytnou
 
 - Přejděte do účtu úložiště zadáním názvu účtu úložiště do globálního vyhledávání na portálu nebo na [stránce účty úložiště](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 - V části **Nastavení** vyberte **brány firewall a virtuální sítě** .
-- V nástroji **Povolení přístupu z**vyberte **vybrané sítě**. Pak v části **výjimky**zaškrtněte políčko vedle položky * * * * umožňuje důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště * * * *
+- V nástroji **Povolení přístupu z**vyberte  **vybrané sítě**. Pak v části  **výjimky**zaškrtněte políčko vedle položky * * * * umožňuje důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště * * * *
 - Pokud je tato možnost již vybraná, není potřeba provádět žádné změny.
 - Na [stránce Přehled protokolů toků NSG](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) vyhledejte cílovou NSG a povolte protokoly toku NSG s vybraným účtem úložiště.
 

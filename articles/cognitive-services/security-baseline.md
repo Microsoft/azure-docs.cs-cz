@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7c6f115597b5b95cd1004f67adec53727736c377
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498340"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072022"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Základní hodnoty zabezpečení Azure pro Cognitive Services
 
@@ -151,7 +151,7 @@ Můžete také použít skupiny zabezpečení aplikací (ASG), které vám pomoh
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky související s vaším kontejnerem Cognitive Services Azure pomocí Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. Cognitiveservices Account a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě pro instance Azure cache.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v rámci jedné definice podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -532,9 +532,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: pomocí Azure Active Directory (Azure AD) řízení přístupu na základě role (RBAC) můžete řídit přístup k rovině ovládacího prvku Azure Cognitive Services (tj. Azure Portal).
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacího prvku Azure Cognitive Services (tj. Azure Portal).
 
 * [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 

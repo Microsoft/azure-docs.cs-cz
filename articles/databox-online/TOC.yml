@@ -1,73 +1,181 @@
 - name: Dokumentace ke službě Azure Stack Edge a Data Box Gateway
   href: /azure/databox-online/
   expanded: true
-- name: Data Box Gateway
+- name: Azure Stack Edge s GPU (Preview)
   items:
     - name: Přehled
       items:
-        - name: Co je Data Box Gateway?
-          href: data-box-gateway-overview.md
+        - name: Co je Azure Stack Edge s GPU?
+          href: azure-stack-edge-gpu-overview.md
     - name: Kurzy
       items:
-        - name: 1. Příprava
-          href: data-box-gateway-deploy-prep.md
-        - name: 2a. Zřizování v prostředí Hyper-V
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2b. Zřizování v prostředí VMWare
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3. Připojení, nastavení, aktivace'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: 4. Přidání a připojení
-          href: data-box-gateway-deploy-add-shares.md
+        - name: 0. Zajištění kontrolního seznamu
+          href: azure-stack-edge-gpu-deploy-checklist.md
+        - name: '1. Objednání, příprava'
+          href: azure-stack-edge-gpu-deploy-prep.md
+        - name: 2. Instalace
+          href: azure-stack-edge-gpu-deploy-install.md
+        - name: 3. Připojení
+          href: azure-stack-edge-gpu-deploy-connect.md
+        - name: 4. Konfigurace sítě
+          href: azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md
+        - name: 5. Konfigurace zařízení
+          href: azure-stack-edge-gpu-deploy-set-up-device-update-time.md
+        - name: 6. Konfigurace certifikátů
+          href: azure-stack-edge-gpu-deploy-configure-certificates.md
+        - name: 7. Aktivace
+          href: azure-stack-edge-gpu-deploy-activate.md
+        - name: 8. Konfigurace výpočetních funkcí
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+        - name: '9A. Přidání, připojení ke sdílené složce'
+          href: azure-stack-edge-j-series-deploy-add-shares.md
+        - name: '9B. Přidání, připojení k účtům úložiště'
+          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Koncepty
       items:
         - name: Kontrola požadavků
-          href: data-box-gateway-system-requirements.md
+          href: azure-stack-edge-gpu-system-requirements.md
         - name: Pochopení limitů
-          href: data-box-gateway-limits.md
+          href: azure-stack-edge-limits.md
         - name: Přehled zabezpečení
-          href: data-box-gateway-security.md
-        - name: Zobrazit případy použití
-          href: data-box-gateway-use-cases.md
+          href: azure-stack-edge-security.md
+        - name: Kontrola specifikací
+          items:
+            - name: Specifikace zařízení
+              href: azure-stack-edge-gpu-technical-specifications-compliance.md
+            - name: Specifikace napájecího kabelu
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+        - name: Vysvětlení protokolu Kubernetes
+          items:
+            - name: Co je Kubernetes?
+              href: azure-stack-edge-gpu-kubernetes-overview.md
+            - name: Úložiště Kubernetes
+              href: azure-stack-edge-gpu-kubernetes-storage.md
+            - name: Práce v síti s Kubernetes
+              href: azure-stack-edge-gpu-kubernetes-networking.md
+            - name: Kubernetes RBAC
+              href: azure-stack-edge-gpu-kubernetes-rbac.md
+            - name: Úlohy Kubernetes
+              href: azure-stack-edge-gpu-kubernetes-workload-management.md
     - name: Postup
       items:
-        - name: Aktualizace
-          href: data-box-gateway-apply-updates.md
-        - name: Spravovat
+        - name: Nasazení ukázek IoT Edge
+          items:
+            - name: Modul z galerie Nvidia
+              href: azure-stack-edge-j-series-configure-gpu-modules.md
+            - name: Modul GPU z úložiště Git
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: Modul GPU přes marketplace
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+        - name: Nasazení úloh Kubernetes
+          items:
+            - name: Přes kubectl
+              items:
+                - name: Přístup ke clusteru Kubernetes
+                  href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Vystavení bezstavové aplikace
+                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                - name: Nasazení stavové aplikace (zřízené staticky)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
+                - name: Nasazení stavové aplikace (zřízené dynamicky)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+            - name: Přes IoT Edge
+              items:
+                - name: Vystavení bezstavové aplikace
+                  href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+            - name: Přes Azure Arc
+              items:
+                - name: Povolení služby Arc v clusteru Kubernetes
+                  href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
+                - name: Nasazení bezstavové aplikace přes GitOps
+                  href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+        - name: Konfigurace Azure Resource Manageru
+          items:
+            - name: Připojení přes Azure PowerShell
+              href: azure-stack-edge-j-series-connect-resource-manager.md
+            - name: Nastavení hesla Azure Resource Manageru
+              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+            - name: Konfigurace klientských nastavení TLS
+              href: azure-stack-edge-j-series-configure-tls-settings.md
+        - name: Nasazení virtuálních počítačů
+          items:
+            - name: Nasazování virtuálních počítačů – šablony
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: Nasazování virtuálních počítačů – rutiny Azure PowerShellu
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+            - name: Nasazování virtuálních počítačů – skript Azure PowerShellu
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+            - name: Nasazování virtuálních počítačů – Azure CLI/Python
+              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: Vytvoření image virtuálního počítače
+              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+        - name: Správa certifikátů
+          items:
+            - name: Požadavky
+              href: azure-stack-edge-j-series-certificate-requirements.md
+            - name: Používání vlastních
+              href: azure-stack-edge-j-series-manage-certificates.md
+            - name: Vytvoření pomocí nástroje Azure Stack Readiness Checker
+              href: azure-stack-edge-j-series-create-certificates-tool.md
+            - name: Řešení chyb certifikátů
+              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+            - name: Vývoj modulu jazyka C#
+              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: Správy výpočetních funkcí Edge
+          href: azure-stack-edge-j-series-manage-compute.md
+        - name: Správa brány úložiště
           items:
             - name: Sdílené složky
-              href: data-box-gateway-manage-shares.md
+              href: azure-stack-edge-j-series-manage-shares.md
             - name: Uživatelé
-              href: data-box-gateway-manage-users.md
+              href: azure-stack-edge-j-series-manage-users.md
+            - name: Účty úložiště
+              href: azure-stack-edge-j-series-manage-storage-accounts.md
             - name: Plány služby Bandwidth
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Přístup, výkon, připojení'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+        - name: Správa zařízení
+          items:
+            - name: 'Výkon, přístup, možnosti připojení'
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: Přes PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
+              href: azure-stack-edge-gpu-connect-powershell-interface.md
+            - name: Instalace aktualizací
+              href: azure-stack-edge-gpu-install-update.md
+            - name: Vrácení zařízení
+              href: azure-stack-edge-return-device.md
+            - name: Výměna zařízení
+              href: azure-stack-edge-replace-device.md
         - name: Monitorování
-          href: data-box-gateway-monitor.md
+          items:
+            - name: Použití grafů metrik
+              href: azure-stack-edge-monitor.md
+            - name: Použití řídicího panelu Kubernetes
+              href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
         - name: Řešení potíží
-          href: data-box-gateway-troubleshoot.md
-        - name: Kontaktovat podporu Microsoftu
-          href: azure-stack-edge-contact-microsoft-support.md
+          items:
+            - name: Potíže se zařízeními
+              href: azure-stack-edge-troubleshoot.md
+            - name: Potíže s objednáním
+              href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Kontaktovat podporu Microsoftu
+              href: azure-stack-edge-contact-microsoft-support.md
     - name: "Poznámky k\_verzi"
       items:
-        - name: 2007 – aktuální
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: Všeobecná dostupnost (GA)
-          href: data-box-gateway-release-notes.md
-- name: Azure Stack Edge
+        - name: 2008 – poznámky k verzi
+          href: azure-stack-edge-gpu-2008-release-notes.md
+    - name: Referenční informace
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge s FPGA
   items:
     - name: Přehled
       items:
-        - name: Co je Azure Stack Edge?
+        - name: Co je Azure Stack Edge s FPGA?
           href: azure-stack-edge-overview.md
     - name: Kurzy
       items:
@@ -151,6 +259,68 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Data Box Gateway
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Data Box Gateway?
+          href: data-box-gateway-overview.md
+    - name: Kurzy
+      items:
+        - name: 1. Příprava
+          href: data-box-gateway-deploy-prep.md
+        - name: 2a. Zřizování v prostředí Hyper-V
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2b. Zřizování v prostředí VMWare
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: '3. Připojení, nastavení, aktivace'
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: 4. Přidání a připojení
+          href: data-box-gateway-deploy-add-shares.md
+    - name: Koncepty
+      items:
+        - name: Kontrola požadavků
+          href: data-box-gateway-system-requirements.md
+        - name: Pochopení limitů
+          href: data-box-gateway-limits.md
+        - name: Přehled zabezpečení
+          href: data-box-gateway-security.md
+        - name: Zobrazit případy použití
+          href: data-box-gateway-use-cases.md
+    - name: Postup
+      items:
+        - name: Aktualizace
+          href: data-box-gateway-apply-updates.md
+        - name: Spravovat
+          items:
+            - name: Sdílené složky
+              href: data-box-gateway-manage-shares.md
+            - name: Uživatelé
+              href: data-box-gateway-manage-users.md
+            - name: Plány služby Bandwidth
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 'Přístup, výkon, připojení'
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: Přes PowerShell
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: Monitorování
+          href: data-box-gateway-monitor.md
+        - name: Řešení potíží
+          href: data-box-gateway-troubleshoot.md
+        - name: Kontaktovat podporu Microsoftu
+          href: azure-stack-edge-contact-microsoft-support.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: 2007 – aktuální
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: Všeobecná dostupnost (GA)
+          href: data-box-gateway-release-notes.md
 - name: Zdroje a prostředky
   items:
     - name: Ukázky modulů Azure Stack Edge v C# (.NET)

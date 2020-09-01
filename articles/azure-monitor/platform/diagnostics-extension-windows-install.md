@@ -7,13 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499190"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069574"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
@@ -133,7 +133,7 @@ Veřejné nastavení je definováno ve [veřejném elementu](diagnostics-extensi
 
 
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 Prostředí PowerShell lze použít k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače pomocí rutiny [set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) , jak je uvedeno v následujícím příkladu. 
 
 ```powershell
@@ -192,7 +192,7 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Description |
+| Data | Typ úložiště | Popis |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |

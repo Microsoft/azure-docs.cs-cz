@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 12/19/2019
+ms.date: 08/28/2020
 ms.author: nitinme
-ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 1ab075d882f073098e015f8b0726743803edc2ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223750"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069982"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -31,7 +31,7 @@ Chcete zjistit, co je nového a aktualizované v dokumentaci k Cognitive Service
 |[Služba Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Služba Custom Vision")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
 |[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Nástroj pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů") (Preview)|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
-|[Nástroj pro rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (Preview)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
+|[Rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
 
 ## <a name="speech-apis"></a>Rozhraní API pro rozpoznávání řeči

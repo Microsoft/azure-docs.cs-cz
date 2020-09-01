@@ -6,12 +6,13 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506294"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071240"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 
@@ -19,7 +20,7 @@ Tento článek vás provede použitím nástroje příkazového řádku Maven k 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vývoji funkcí pomocí Kotlin musíte mít nainstalované následující:
 
@@ -238,7 +239,7 @@ Pokud chcete pracovat s [triggery funkcí a dalšími vazbami](functions-trigger
 
 Vytvořili jste aplikaci funkcí Kotlin s jednoduchou triggerem HTTP a nasadili ji na Azure Functions.
 
-- Další informace o vývoji funkcí Java a Kotlin najdete v [příručce pro vývojáře Java Functions](functions-reference-java.md) .
+- Další informace o vývoji funkcí Java a Kotlin najdete v  [příručce pro vývojáře Java Functions](functions-reference-java.md) .
 - Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
 - Funkce můžete psát a ladit místně pomocí nástrojů [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) a [Eclipse](functions-create-maven-eclipse.md). 
 - Funkce ladění můžete do Azure nasadit pomocí editoru Visual Studio Code. Pokyny najdete v dokumentaci editoru Visual Studio Code o [aplikacích bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

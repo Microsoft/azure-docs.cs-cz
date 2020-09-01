@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e620502deb67c7fe79341bc1a45cb1ce33fa52f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836713"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071461"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
@@ -546,7 +546,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro nevýpočetní prostředky, které slouží k ukládání dat.
 
@@ -868,13 +868,13 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: Pokud používáte vlastní image, zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte RBAC, aby bylo zajištěno, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+**Doprovodné**materiály: Pokud používáte vlastní image, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte Azure RBAC, aby bylo zajištěno, že přístup k obrázkům budou mít jenom autorizovaní uživatelé.
 
-* [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Pochopení Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
+* [Vysvětlení služby Azure RBAC pro Container Registry](../container-registry/container-registry-roles.md)
 
-* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

@@ -1,19 +1,19 @@
 ---
-title: Filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí portálu
+title: 'Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí portálu'
 description: V tomto kurzu zjistíte, jak nasadit a konfigurovat DNAT služby Azure Firewall pomocí webu Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/02/2020
+ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251491"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069268"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
 
@@ -28,12 +28,11 @@ V tomto kurzu se naučíte:
 > * Konfigurace pravidla DNAT
 > * Testování brány firewall
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- **VN-Hub** – v této virtuální síti bude brána firewall.
-- **VN-Spoke** – v této virtuální síti bude server úloh.
+
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -45,6 +44,11 @@ V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
 6. Vyberte **Vytvořit**.
 
 ## <a name="set-up-the-network-environment"></a>Nastavení síťového prostředí
+
+V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
+
+- **VN-Hub** – v této virtuální síti bude brána firewall.
+- **VN-Spoke** – v této virtuální síti bude server úloh.
 
 Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah.
 

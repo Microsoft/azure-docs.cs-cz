@@ -5,13 +5,13 @@ author: anthonychu
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 03f27315a1506a67f41bec929f42f3cf6278f126
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: mvc, devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: e9bbfd311d6a05d0dd328a63c7d11e14ab0d7e4a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142277"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069608"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
@@ -23,7 +23,7 @@ V tomto článku se naučíte používat Python, TensorFlow a Azure Functions s 
 > * Vytvoří rozhraní HTTP API bez serveru pro klasifikaci obrázku jako obsahujícího psa nebo kočka.
 > * Využívání rozhraní API z webové aplikace
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/). (Python 3.7.4 a Python 3.6. x jsou ověřovány pomocí Azure Functions; Python 3,8 a novější verze se zatím nepodporují.)
@@ -127,7 +127,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     > [!TIP]
     > Vzhledem k tomu, že projekt funkce je svázán s konkrétním modulem runtime, všechny funkce v projektu musí být zapsány stejným jazykem.
 
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
+1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new` Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
 
     ```
     func new --name classify --template "HTTP trigger"

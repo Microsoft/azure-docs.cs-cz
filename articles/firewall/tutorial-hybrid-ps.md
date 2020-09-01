@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611165"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069404"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
 Když připojíte místní síť k virtuální síti Azure a vytvoříte hybridní síť, bude mít možnost řídit přístup k síťovým prostředkům Azure důležitou součást celkového plánu zabezpečení.
 
-Azure Firewall můžete použít k řízení přístupu k síti v hybridní síti pomocí pravidel, která definují povolený a zakázaný síťový provoz.
+S využitím služby Azure Firewall můžete řídit síťový přístup v hybridní síti pomocí pravidel, která definují povolený a zakázaný síťový provoz.
 
 V tomto článku vytvoříte tři virtuální sítě:
 
@@ -31,17 +31,16 @@ V tomto článku vytvoříte tři virtuální sítě:
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Deklarování proměnných
-> * Vytvoření virtuální sítě centra firewallu
-> * Vytvoření virtuální sítě paprsků
-> * Vytvoření místní virtuální sítě
-> * Konfigurace a nasazení brány firewall
-> * Vytvoření a propojení bran VPN
-> * Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
-> * Vytvoření tras
-> * Vytvoření virtuálních počítačů
-> * Testování brány firewall
+* Deklarování proměnných
+* Vytvoření virtuální sítě centra firewallu
+* Vytvoření virtuální sítě paprsků
+* Vytvoření místní virtuální sítě
+* Konfigurace a nasazení brány firewall
+* Vytvoření a propojení bran VPN
+* Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
+* Vytvoření tras
+* Vytvoření virtuálních počítačů
+* Testování brány firewall
 
 Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si téma [kurz: nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure Portal](tutorial-hybrid-portal.md).
 
@@ -62,7 +61,7 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 V části [Vytvoření tras](#create-the-routes) v tomto článku najdete informace o tom, jak se tyto trasy vytvářejí.
 
 >[!NOTE]
->Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
+>Služba Azure Firewall musí mít přímé připojení k internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 >
 >Azure Firewall lze nakonfigurovat pro podporu vynuceného tunelování. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
 
@@ -71,7 +70,7 @@ V části [Vytvoření tras](#create-the-routes) v tomto článku najdete inform
 
 Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 

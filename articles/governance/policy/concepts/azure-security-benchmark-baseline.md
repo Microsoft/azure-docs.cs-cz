@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 909d423b31bb76d8d6aaed994d1c9f7372cbc01f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937495"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069778"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Základní Azure Policy zabezpečení pro Azure Security test
 
@@ -72,13 +72,13 @@ Pomocí [Azure AD Privileged Identity Management](../../../active-directory/priv
 
 *Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: pomocí Azure Active Directory řízení přístupu na základě role (RBAC) můžete řídit přístup k Azure Policy.
+**Pokyny**: k řízení přístupu k Azure Policy použijte řízení přístupu na základě role Azure (Azure RBAC).
 
-* [Oprávnění RBAC ve službě Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
+* [Oprávnění Azure RBAC v Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
 
-* [Jak nakonfigurovat RBAC v Azure](../../../role-based-access-control/role-assignments-portal.md)
+* [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.

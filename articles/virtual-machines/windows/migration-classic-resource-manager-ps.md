@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: cf020dba240d87e2e7c1c291e3c15df9611395e8
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2bd3140ad8e0c8502c8760a5d9bdf426c828470c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507507"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072398"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí prostředí PowerShell
 
