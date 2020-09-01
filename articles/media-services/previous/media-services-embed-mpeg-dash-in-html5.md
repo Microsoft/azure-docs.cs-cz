@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55c22a58ea76c268c40894c0ea64d43312b1ba27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564852"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269087"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 využívající DASH.js  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 využívající DASH.js
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 ## <a name="overview"></a>Přehled
 MPEG-POMLČKa je standard ISO pro adaptivní streamování obsahu videa, který nabízí významné výhody pro vývojáře, kteří chtějí poskytovat vysoce kvalitní a adaptivní streamování videí. Pomocí MPEG-POMLČKy se Stream videa automaticky upraví na nižší definici, když dojde k zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastavené" video, zatímco hráč stahuje několik dalších sekund, než se hraje (to znamená, že snižuje pravděpodobnost ukládání do vyrovnávací paměti). I když se zahlcení sítě omezuje, přehrávač videa se zase vrátí do datového proudu s vyšší kvalitou. Tato možnost přizpůsobení požadované šířky pásma také vede k rychlejšímu počátečnímu času pro video. To znamená, že prvních pár sekund je možné přehrát v rychlém stahování a v případě, že je obsah uložen do vyrovnávací paměti.

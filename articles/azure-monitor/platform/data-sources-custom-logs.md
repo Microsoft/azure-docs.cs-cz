@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111996"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269484"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
 
@@ -62,10 +62,10 @@ Začnete tím, že nahrajete ukázku vlastního protokolu.  Průvodce bude analy
 Pokud se použije oddělovač časového razítka, pak vlastnost TimeGenerated každého záznamu uloženého v Azure Monitor bude naplněna s datem a časem zadanými pro tuto položku v souboru protokolu.  Pokud se použije nový oddělovač řádků, TimeGenerated se naplní datem a časem, které položka Azure Monitor shromáždila.
 
 1. Klikněte na **Procházet** a přejděte k ukázkovému souboru.  Všimněte si, že toto tlačítko může být označeno jako označit v některých prohlížečích **možnost soubor** .
-2. Klikněte na **Další**.
+2. Klikněte na **Next** (Další).
 3. Průvodce vlastním protokolem nahraje soubor a zobrazí seznam záznamů, které identifikuje.
 4. Změňte oddělovač, který se používá k identifikaci nového záznamu a vyberte oddělovač, který nejlépe identifikuje záznamy v souboru protokolu.
-5. Klikněte na **Další**.
+5. Klikněte na **Next** (Další).
 
 ### <a name="step-3-add-log-collection-paths"></a>Krok 3. Přidat cesty ke kolekcím protokolů
 Musíte definovat jednu nebo více cest v agentovi, kde může najít vlastní protokol.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo můžete zadat cestu se zástupným znakem pro název. Tato podpora podporuje aplikace, které každý den vytvoří nový soubor, nebo když jeden soubor dosáhne určité velikosti. Můžete také zadat více cest pro jeden soubor protokolu.
@@ -74,7 +74,7 @@ Aplikace může například vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
-| Description | Cesta |
+| Popis | Cesta |
 |:--- |:--- |
 | Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. \\ \* . txt |
 | Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log \* . txt |
@@ -85,7 +85,7 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 2. Zadejte cestu a klikněte na **+** tlačítko.
 3. Opakujte tento postup pro všechny další cesty.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis protokolu.
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4: Zadejte název a popis protokolu.
 Název, který zadáte, bude použit pro typ protokolu, jak je popsáno výše.  Bude vždycky končit _CL, aby ho rozlišil jako vlastní protokol.
 
 1. Zadejte název protokolu.  Přípona ** \_ CL** se poskytuje automaticky.
@@ -158,7 +158,7 @@ K vrácení všech záznamů z shromážděného protokolu používáme jednoduc
 
 
 ## <a name="alternatives-to-custom-logs"></a>Alternativy k vlastním protokolům
-I když jsou vlastní protokoly užitečné v případě, že se data vejdou na uvedená kritéria, ale existují případy, kdy potřebujete jinou strategii:
+I když jsou vlastní protokoly užitečné v případě, že se data vejdou na výše uvedená kritéria, existují případy, jako například následující, kde potřebujete jinou strategii:
 
 - Data neodpovídají požadované struktuře, jako je například časové razítko v jiném formátu.
 - Soubor protokolu nedodržuje požadavky, jako je například kódování souboru nebo nepodporovaná struktura složky.

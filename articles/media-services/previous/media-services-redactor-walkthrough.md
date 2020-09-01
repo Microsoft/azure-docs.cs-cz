@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69997676"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269688"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics návodu k redigování
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
 **Azure Media redactor** je [Azure Media Analytics](media-services-analytics-overview.md) multimediální procesor (MP), který nabízí škálovatelné redigování tváře v cloudu. Naredigování obličeje umožňuje upravit vaše video, aby se rozostří plošky vybraných jednotlivců. Je možné, že budete chtít použít službu redigování obličeje ve scénářích veřejného zabezpečení a média pro příspěvky. Několik minut záběrů, které obsahují více plošek, může trvat hodiny na redigování ručně, ale v rámci této služby bude proces redigování obličeje vyžadovat jenom několik jednoduchých kroků. Další informace najdete v [tomto](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
-Podrobnosti o **Azure Media redactor**najdete v tématu [Přehled redigování obličeje](media-services-face-redaction.md) .
+Podrobnosti o  **Azure Media redactor**najdete v tématu [Přehled redigování obličeje](media-services-face-redaction.md) .
 
 V tomto tématu se dozvíte, jak spustit plný pracovní postup redigování pomocí Azure Media Services Exploreru (AMSE) a Azure Media Redactor Vizualizér (Open Source Tool).
 

@@ -1,7 +1,7 @@
 ---
 title: Schéma vstupních metadat Azure Media Services V3
 description: Tento článek poskytuje přehled o schématu vstupních metadat Azure Media Services V3.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269144"
 ---
-# <a name="input-metadata"></a>Vstupní metadata 
+# <a name="input-metadata"></a>Vstupní metadata
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Úloha kódování je přidružená ke vstupnímu assetu (nebo assetům), na kterém chcete provést některé úlohy kódování.  Po dokončení úlohy se vytvoří výstupní Asset. Výstupní Asset obsahuje video, zvuk, miniatury, manifesty a další soubory. 
 
@@ -41,7 +43,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 > 
 > 
 
-| Name  | Description |
+| Název  | Popis |
 | --- | --- | 
 | **VideoTracks**|Každý soubor fyzického majetku může obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [VideoTracks](#videotracks). |
 | **AudioTracks**|Každý fyzický soubor prostředků může obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [AudioTracks](#audiotracks) . |
@@ -49,9 +51,9 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ### <a name="other-child-elements"></a>Ostatní podřízené elementy
 
-| Name | Popis |
+| Název | Popis |
 | --- | --- |
-| **Název**<br />Vyžadováno |Název souboru assetu. <br /><br />Příklad: `"Name": "Ignite-short.mp4"` |
+| **Name**<br />Vyžadováno |Název souboru assetu. <br /><br />Příklad: `"Name": "Ignite-short.mp4"` |
 | **Identifikátor URI**<br />Vyžadováno |Adresa URL, kde se nachází vstupní Asset. Pokud chcete identifikovat vstupní Asset, do kterého patří výstupní Asset, použijte `Uri` místo ID pole.|
 | **Velikost**<br />Vyžadováno |Velikost souboru prostředků v bajtech  <br /><br />Příklad: `"Size": 75739259`|
 | **Doba trvání**<br />Vyžadováno |Doba přehrávání obsahu <br /><br />Příklad: `"Duration": "PT1M10.304S"`. |
@@ -63,14 +65,14 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="videotracks"></a>VideoTracks
 
-| Name |  | Description |
+| Název |  | Popis |
 | --- | --- |
 | **FourCC**<br />Vyžadováno |Videokodek FourCC kód, který je hlášen pomocí FFmpeg.<br /><br />Příklad: `"FourCC": "avc1"` |
 | **Profil** |Profil stopy videa. <br /><br />Příklad: `"Profile": "Main"`|
 | **Obsah** |Úroveň stopy videa <br /><br />Příklad: `"Level": "3.2"`|
 | **PixelFormat** |Formát pixelu stopy videa <br /><br />Příklad: `"PixelFormat": "yuv420p"`|
-| **impulzu**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|
-| **Height**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
+| **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|
+| **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Vyžadováno |Čítač zobrazení poměru stran videa<br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Ukázka poměru stran videa – čitatel. <br /><br />Příklad: `"SampleAspectRatioNumerator": 1.0`|
@@ -90,7 +92,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| Name  | Description |
+| Název  | Popis |
 | --- | --- | 
 | **SampleFormat** |Vzorový formát <br /><br />Příklad: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Rozložení kanálu. <br /><br />Příklad: `"ChannelLayout": "stereo"`|
@@ -108,7 +110,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="metadata"></a>Metadata
 
-| Name | Description |
+| Název | Popis |
 | --- | --- |
 | **zkrat**<br />Vyžadováno |Klíč v páru klíč/hodnota. |
 | **osa**<br /> Vyžadováno |Hodnota v páru klíč/hodnota. |

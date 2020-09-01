@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c7f571489a9e565fac8c23db4c08321be6f551d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146194"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269807"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge
 
@@ -57,7 +57,7 @@ Proces připojení k místním rozhraním API zařízení pomocí Azure Resource
 
 V následujících částech najdete podrobné informace o každém z výše uvedených kroků v části připojení k Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k Azure Stack hraničního zařízení](azure-stack-edge-j-series-configure-tls-settings.md).
 

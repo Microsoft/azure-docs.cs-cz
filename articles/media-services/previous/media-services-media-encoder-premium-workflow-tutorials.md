@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 55d9d9191dc62d7397c5de944985d5653eff4e13
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057462"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269824"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy k Media Encoderu Premium Workflow
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Přehled
-Tento dokument obsahuje návody, které ukazují, jak přizpůsobit pracovní postupy pomocí **Návrhář postupu provádění**. Skutečné soubory pracovního postupu najdete [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
+Tento dokument obsahuje návody, které ukazují, jak přizpůsobit pracovní postupy pomocí  **Návrhář postupu provádění**. Skutečné soubory pracovního postupu najdete [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
 ## <a name="toc"></a>TOC
 Jsou pokrytá následující témata:
@@ -462,7 +465,7 @@ V případě, že se liší od našeho videa MP4, komponenta kodéru JPG vyprodu
 
 *Představujeme zapisovač souborů JPG pro hledání scény*
 
-Nakonfigurujte vlastnost Cesta výstupní složky pomocí výrazu:`${ROOT_outputWriteDirectory}`
+Nakonfigurujte vlastnost Cesta výstupní složky pomocí výrazu: `${ROOT_outputWriteDirectory}`
 
 a vlastnost Prefix názvu souboru s:
 

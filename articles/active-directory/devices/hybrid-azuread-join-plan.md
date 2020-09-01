@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925341"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269569"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -26,13 +26,13 @@ Podobně jako uživatel je zařízení další základní identitou, kterou chce
 - Hybridní připojení k Azure AD
 - Registrace v Azure AD
 
-Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. V současné době můžete zabezpečený přístup k vašim cloudovým a místním prostředkům zabezpečit pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
+Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. V současné době můžete zabezpečený přístup k vašim cloudovým a místním prostředkům zabezpečit pomocí [podmíněného přístupu](../conditional-access/overview.md).
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
+V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](./overview.md).
 
 > [!NOTE]
 > Minimální požadovaná verze řadiče domény pro připojení k hybridní službě Azure AD ve Windows 10 je Windows Server 2008 R2.
@@ -100,7 +100,7 @@ Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](o
 > I když Windows 10 automaticky odstraní místně registrovaný stav služby Azure AD, objekt zařízení ve službě Azure AD se okamžitě neodstraní, pokud ho spravuje Intune. Odebrání stavu registrovaného pro Azure AD můžete ověřit spuštěním dsregcmd/status a zvažte, jestli zařízení není zaregistrované v Azure AD na základě toho.
 
 ### <a name="additional-considerations"></a>Další aspekty
-- Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](./howto-device-identity-virtual-desktop-infrastructure.md).
 
 - Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. 
 
@@ -118,19 +118,19 @@ Připojení k hybridní službě Azure AD funguje s oběma spravovanými i feder
 
 ### <a name="managed-environment"></a>Spravované prostředí
 
-Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel (kosmetice)](/azure/active-directory/hybrid/whatis-phs) , nebo [předávat ověřování (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) pomocí [bezproblémového jednotného přihlašování](/azure/active-directory/hybrid/how-to-connect-sso).
+Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) , nebo [předávat ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md).
 
 Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
 
 > [!NOTE]
-> [Cloudové ověřování pomocí připraveného zavedení](/azure/active-directory/hybrid/how-to-connect-staged-rollout) je podporované jenom při spuštění aktualizace Windows 10 1903.
+> [Cloudové ověřování pomocí připraveného zavedení](../hybrid/how-to-connect-staged-rollout.md) je podporované jenom při spuštění aktualizace Windows 10 1903.
 
 ### <a name="federated-environment"></a>Federované prostředí
 
 Federované prostředí by mělo mít poskytovatele identity, který podporuje následující požadavky. Pokud máte federované prostředí pomocí Active Directory Federation Services (AD FS) (AD FS), jsou již podporovány níže uvedené požadavky.
 
 - **WIAORMULTIAUTHN deklarace identity:** Tato deklarace identity se vyžaduje k tomu, aby se pro zařízení se systémem Windows na nižší úrovni mohla připojit hybridní služba Azure AD.
-- **Protokol WS-Trust:** Tento protokol je nutný k ověření současných zařízení s Windows připojených k hybridní službě Azure AD pomocí Azure AD. Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trust:`/adfs/services/trust/2005/windowstransport`  
+- **Protokol WS-Trust:** Tento protokol je nutný k ověření současných zařízení s Windows připojených k hybridní službě Azure AD pomocí Azure AD. Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trust: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -152,9 +152,9 @@ V závislosti na scénáři, který odpovídá vaší infrastruktuře identity, 
 
 ## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>Kontrola podpory místních uživatelů služby AD v hlavním názvu uživatele (UPN) pro připojení k hybridní službě Azure AD
 
-V některých případech se vaše místní uživatelské názvy UPN můžou lišit od uživatelských UPN Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](/azure/security/fundamentals/choose-ad-authn), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
+V některých případech se vaše místní uživatelské názvy UPN můžou lišit od uživatelských UPN Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](../hybrid/choose-ad-authn.md), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
 
-- Název UPN pro směrování uživatelů: směrovatelný hlavní název uživatele má platnou ověřenou doménu, která je zaregistrovaná u doménového registrátora. Pokud je například contoso.com primární doménou v Azure AD, contoso.org je primární doména v místní službě AD vlastněná společností Contoso a [ověřená v Azure AD](/azure/active-directory/fundamentals/add-custom-domain) .
+- Název UPN pro směrování uživatelů: směrovatelný hlavní název uživatele má platnou ověřenou doménu, která je zaregistrovaná u doménového registrátora. Pokud je například contoso.com primární doménou v Azure AD, contoso.org je primární doména v místní službě AD vlastněná společností Contoso a [ověřená v Azure AD](../fundamentals/add-custom-domain.md) .
 - Hlavní název uživatele bez směrování uživatelů: nesměrovatelný hlavní název uživatele (UPN) nemá ověřenou doménu. Dá se použít jenom v privátní síti vaší organizace. Pokud je například contoso.com primární doménou v Azure AD, contoso. Local je primární doména v místní službě AD, ale nejedná se o ověřitelných doménách v Internetu a používá se jenom v síti Contoso.
 
 > [!NOTE]

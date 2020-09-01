@@ -4,15 +4,15 @@ description: Řešení potíží se soubory Azure v systému Windows. Podívejte
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 05/31/2019
+ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797781"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269365"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -344,14 +344,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny k selhání:
-1. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445.
-2. CheckDomainJoined: Ověřte, že je klientský počítač připojený k doméně služby Active Directory.
-3. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby).
-4. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. 
-5. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key
-6. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain.
-7. CheckAadUserHasSid: Ověřte, jestli má uživatel Azure AD ve službě AD identifikátor SID, tato akce vyžaduje, aby uživatel měl vstupní ID objektu uživatele Azure AD s parametrem-ObjectId. 
-8. CheckStorageAccountDomainJoined: Zkontrolujte vlastnosti účtu úložiště, aby bylo možné zjistit, zda bylo povoleno ověřování AD a naplněny vlastnosti služby Active Directory účtu.
+1. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key. Pokud není heslo správné, můžete heslo resetovat spuštěním rutiny [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) . 
+2. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby). Pokud hlavní název služby není správně nastavený, spusťte rutinu Set-AD vrácenou v rutině ladění a nakonfigurujte hlavní název služby (SPN).
+3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) , kde najdete pokyny k připojení k doméně.
+4. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445. Pokud požadovaný port není otevřený, přečtěte si další informace o problémech s připojením se soubory Azure v tématu [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) nástroje pro řešení potíží.
+5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
+6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.
+7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 
