@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b67397db3cc6de2a0e6658795ddf87ad355ad422
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008997"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078363"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Směrný plán zabezpečení Azure Resource graphu pro Azure Security test
 
@@ -41,13 +41,13 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 *Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použití řízení přístupu na základě role (RBAC) k řízení přístupu k datům a prostředkům. Pokud chcete použít Azure Resource Graph, musíte mít také odpovídající přístup k prostředkům, které chcete dotazovat. Tento přístup by měl být určený jen pro čtení a měl by být povolený jenom pro požadované pracovníky.
+**Pokyny**: k řízení přístupu k datům a prostředkům použijte řízení přístupu na základě role Azure (Azure RBAC). Pokud chcete použít Azure Resource Graph, musíte mít také odpovídající přístup k prostředkům, které chcete dotazovat. Tento přístup by měl být určený jen pro čtení a měl by být povolený jenom pro požadované pracovníky.
 
 * [Oprávnění v Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
-* [Jak nakonfigurovat RBAC v Azure](../../../role-based-access-control/role-assignments-rest.md)
+* [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.

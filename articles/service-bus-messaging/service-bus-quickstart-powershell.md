@@ -6,12 +6,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 085eedf3a3ce09689a5a7b7d4c69d1aade42ffb3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185433"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077683"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Vytvoření oboru názvů Service Bus a fronty pomocí Azure PowerShell
 V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a frontu pomocí Azure PowerShell. Také se dozvíte, jak získat autorizační přihlašovací údaje, které může klientská aplikace použít k odesílání a přijímání zpráv do fronty. 
@@ -19,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a fr
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu se ujistěte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete. 
 
@@ -39,7 +40,7 @@ V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po
     ```azurepowershell-interactive
     New-AzResourceGroup –Name ContosoRG –Location eastus
     ```
-5. Spuštěním následujícího příkazu vytvořte obor názvů pro zasílání zpráv Service Bus. V tomto příkladu `ContosoRG` je skupina prostředků, kterou jste vytvořili v předchozím kroku. `ContosoSBusNS`je název oboru názvů Service Bus vytvořeného v této skupině prostředků. 
+5. Spuštěním následujícího příkazu vytvořte obor názvů pro zasílání zpráv Service Bus. V tomto příkladu `ContosoRG` je skupina prostředků, kterou jste vytvořili v předchozím kroku. `ContosoSBusNS` je název oboru názvů Service Bus vytvořeného v této skupině prostředků. 
 
     ```azurepowershell-interactive
     New-AzServiceBusNamespace -ResourceGroupName ContosoRG -Name ContosoSBusNS -Location eastus

@@ -3,19 +3,20 @@ title: Prostředky, role a řízení přístupu v Azure Application Insights | M
 description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926497"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076680"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
 Pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
 
 > [!IMPORTANT]
-> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Další informace](#access).
+> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Přečtěte si další informace](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -37,7 +38,7 @@ Nejprve některé definice:
 * [**Předplatné**](https://portal.azure.com) – Pokud chcete používat Application Insights nebo jiné prostředky Azure, přihlásíte se k předplatnému Azure. Každá skupina prostředků patří k jednomu předplatnému Azure, kde si zvolíte svůj cenový balíček, a pokud se jedná o předplatné organizace, vyberte členy a jejich přístupová oprávnění.
 * [**Účet Microsoft**][account] – uživatelské jméno a heslo, které používáte k přihlášení k předplatným Microsoft Azure, Xbox Live, Outlook.com a dalším službám Microsoftu.
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Řízení přístupu ve skupině prostředků
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Řízení přístupu ve skupině prostředků
 
 Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, existují také samostatné skryté prostředky pro výstrahy a webové testy. Jsou připojené ke stejné [skupině prostředků](#resource-group) jako prostředek Application Insights. Do této služby můžete také umístit další služby Azure, jako jsou weby nebo úložiště.
 

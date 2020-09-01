@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212311"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078040"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -159,7 +159,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 **Doprovodné materiály:** DevTest Labs používá službu Azure AD pro správu identit. Tyto dvě klíčové aspekty zvažte, když uživatelům udělíte přístup k prostředí založenému na DevTest Labs:
 
-- **Správa prostředků:** Poskytuje přístup k Azure Portal ke správě prostředků (vytváření virtuálních počítačů, vytváření prostředí, spouštění, zastavování, restartování, odstraňování a použití artefaktů atd.). Správa prostředků se provádí v Azure pomocí řízení přístupu na základě role (RBAC). Role přiřadíte uživatelům a nastavíte oprávnění na úrovni prostředků a přístupu.
+- **Správa prostředků:** Poskytuje přístup k Azure Portal ke správě prostředků (vytváření virtuálních počítačů, vytváření prostředí, spouštění, zastavování, restartování, odstraňování a použití artefaktů atd.). Správa prostředků se provádí v Azure pomocí řízení přístupu na základě role Azure (RBAC). Role přiřadíte uživatelům a nastavíte oprávnění na úrovni prostředků a přístupu.
 - **Virtuální počítače (na úrovni sítě)**: ve výchozí konfiguraci virtuální počítače používají účet místního správce. Pokud je k dispozici doména (Azure AD Domain Services, místní doména nebo cloudová doména), můžete počítače připojit k doméně. Uživatelé pak můžou pomocí artefaktu připojení k doméně připojit k počítačům své identity založené na doméně. 
 
 - [Referenční architektura pro DevTest Labs](devtest-lab-reference-architecture.md#architecture)
@@ -315,9 +315,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 **Zodpovědnost:** Zákazníka
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
-**Doprovodné materiály:** Pro řízení přístupu k testovacím prostředím v Azure DevTest Labs použijte Azure Active Directory (Azure AD) řízení přístupu na základě role (RBAC).
+**Doprovodné materiály:** Pro řízení přístupu k testovacím prostředím v Azure DevTest Labs použijte řízení přístupu na základě role Azure (Azure RBAC).
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 - [Pochopení rolí v DevTest Labs](devtest-lab-add-devtest-user.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -638,12 +638,12 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 **Zodpovědnost:** Zákazníka
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
-**Doprovodné materiály:** Pokud používáte vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. Pomocí Galerie sdílených imagí můžete sdílet své image s konkrétními laboratořemi, které ji potřebují. Pro Image kontejnerů je uložte do Azure Container Registry a pomocí RBAC zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
+**Doprovodné materiály:** Pokud používáte vlastní image, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. Pomocí Galerie sdílených imagí můžete sdílet své image s konkrétními laboratořemi, které ji potřebují. V případě imagí kontejnerů je uložte do Azure Container Registry a pomocí Azure RBAC zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
 
-- [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Pochopení Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [Konfigurace Galerie sdílených imagí pro DevTest Labs](configure-shared-image-gallery.md)
-- [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
+- [Vysvětlení služby Azure RBAC pro Container Registry](../container-registry/container-registry-roles.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 

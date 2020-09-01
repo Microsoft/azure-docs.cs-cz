@@ -6,12 +6,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055264"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078397"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -96,10 +97,10 @@ Následující příkaz načte poslední 1000 události z protokolu aktivit:
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog`podporuje mnoho dalších parametrů. `Get-AzLog`Další informace najdete v referenčních informacích.
+`Get-AzLog` podporuje mnoho dalších parametrů. `Get-AzLog`Další informace najdete v referenčních informacích.
 
 > [!NOTE]
-> `Get-AzLog`poskytuje jenom 15 dní historie. Pomocí parametru **-MaxRecords** můžete zadávat dotazy na poslední N události mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDK (ukázka jazyka C# pomocí sady SDK). Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
+> `Get-AzLog` poskytuje jenom 15 dní historie. Pomocí parametru **-MaxRecords** můžete zadávat dotazy na poslední N události mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDK (ukázka jazyka C# pomocí sady SDK). Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
 > 
 > 
 
@@ -139,23 +140,23 @@ Načte všechna pravidla upozornění nastavená pro cílový prostředek. Např
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
+`Get-AzAlertRule` podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Vytvoření upozornění metrik
 Pomocí `Add-AlertRule` rutiny můžete vytvořit, aktualizovat nebo zakázat pravidlo výstrahy.
 
-Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` a v `New-AzAlertRuleWebhook` uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
+Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí  `New-AzAlertRuleEmail` a v `New-AzAlertRuleWebhook` uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
 
 Následující tabulka popisuje parametry a hodnoty používané k vytvoření výstrahy pomocí metriky.
 
-| parameter | Hodnota |
+| parameter | value |
 | --- | --- |
 | Název |simpletestdiskwrite |
 | Umístění tohoto pravidla výstrahy |East US |
 | ResourceGroup |montest |
 | Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisu za sekundu. Podívejte se na `Get-MetricDefinitions` rutinu, jak načíst přesné názvy metrik. |
-|  – operátor |GreaterThan |
+| operátor |GreaterThan |
 | Prahová hodnota (počet/s) pro tuto metriku |1 |
 | WindowSize (hh: mm: SS formát) |00:05:00 |
 | Agregátor (statistika metriky, která v tomto případě používá průměrný počet) |Průměr |

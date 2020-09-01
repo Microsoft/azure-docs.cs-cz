@@ -1,6 +1,7 @@
 - name: Dokumentace ke službě Azure Data Share
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je Azure Data Share?
       href: overview.md
@@ -36,6 +37,11 @@
       href: samples-powershell.md
 - name: Návody
   items:
+    - name: Sdílení a příjem dat podle zdroje
+      items:
+        - name: Sdílení z Azure Data Exploreru
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: Monitorování
       href: how-to-monitor.md
     - name: Řešení potíží
@@ -54,9 +60,6 @@
       href: security.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
-    - name: Sdílení dat Azure Data Exploreru
-      href: /azure/data-explorer/data-share
-      maintainContext: true
 - name: Referenční informace
   items:
     - name: .NET

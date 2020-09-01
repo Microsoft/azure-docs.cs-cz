@@ -1,20 +1,20 @@
 ---
 title: Custom Vision šifrování dat v klidovém umístění
 titleSuffix: Azure Cognitive Services
-description: Custom Vision šifrování dat v klidovém umístění.
+description: Microsoft nabízí šifrovací klíče spravované Microsoftem a umožňuje také spravovat Cognitive Services předplatná s vlastními klíči, které se nazývají Customer Customer Key (CMK). Tento článek obsahuje informace o šifrování dat v klidovém umístění pro Custom Vision a o tom, jak povolit a spravovat CMK.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 85cf251db69d33f02e928eaea6a848f20ae7d923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310287"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077751"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision šifrování dat v klidovém umístění
 
@@ -30,8 +30,8 @@ Azure Custom Vision automaticky šifruje vaše data při trvalém ukládání do
 Klíče spravované zákazníkem jsou v tuto chvíli dostupné v těchto oblastech:
 
 * USA (střed) – jih
-* USA – západ 2
-* USA – východ
+* Západní USA 2
+* East US
 * USA (Gov) – Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]

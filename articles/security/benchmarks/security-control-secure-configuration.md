@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193101"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077224"
 ---
 # <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
 
@@ -22,7 +22,7 @@ Navažte, implementujte a aktivně spravujte (sledujte, vykazovat, opravujte) ko
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.1 | 5.1 | Zákazník |
+| 7.1 | 5,1 | Zákazník |
 
 Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace prostředků Azure. Můžete také použít předdefinované definice Azure Policy.
 
@@ -42,7 +42,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.2 | 5.1 | Zákazník |
+| 7.2 | 5,1 | Zákazník |
 
 Použijte Azure Security Center doporučení k údržbě konfigurací zabezpečení ve všech výpočetních prostředcích.  Kromě toho můžete k vytvoření konfigurace zabezpečení operačního systému vyžadovaného vaší organizací použít vlastní image operačního systému nebo konfiguraci stavu Azure Automation.
 
@@ -74,7 +74,7 @@ Použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabez
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.4 | 5,2 | Shared |
+| 7,4 | 5,2 | Shared |
 
 Dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení výpočetních prostředků Azure.  Kromě toho můžete použít šablony Azure Resource Manager, vlastní image operačního systému nebo konfiguraci stavu Azure Automation k údržbě konfigurace zabezpečení operačního systému vyžadovaného vaší organizací.   Šablony virtuálních počítačů společnosti Microsoft kombinované s Azure Automation konfigurací požadovaného stavu mohou pomoci při schůzi a údržbě požadavků na zabezpečení. 
 
@@ -110,13 +110,13 @@ Využijte Azure DevOps k bezpečnému ukládání a správě kódu, jako jsou vl
 |--|--|--|
 | 7.6 | 5.3 | Zákazník |
 
-Pokud používáte vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. Pomocí Galerie sdílených imagí můžete své image sdílet s různými uživateli, instančními objekty nebo skupinami služby AD v rámci vaší organizace.  V případě imagí kontejnerů je uložte do Azure Container Registry a využijte RBAC, aby bylo zajištěno, že k imagí budou mít přístup jenom autorizovaní uživatelé.  
+Pokud používáte vlastní image, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. Pomocí Galerie sdílených imagí můžete své image sdílet s různými uživateli, instančními objekty nebo skupinami služby AD v rámci vaší organizace.  V případě imagí kontejnerů je uložte do Azure Container Registry a využijte Azure RBAC, aby bylo zajištěno, že přístup k obrázkům budou mít jenom autorizovaní uživatelé.  
 
-- [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [Vysvětlení RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [Vysvětlení služby Azure RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [Přehled Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
@@ -136,7 +136,7 @@ Definování a implementace standardních konfigurací zabezpečení pro prostř
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 7.8 | 5.4 | Zákazník |
+| 7,8 | 5.4 | Zákazník |
 
 Konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudu nebo v místním datacentru. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali. 
 
@@ -199,4 +199,4 @@ Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovac�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit další řízení zabezpečení: [obrana proti malwaru](security-control-malware-defense.md)
+- Zobrazit další řízení zabezpečení:  [obrana proti malwaru](security-control-malware-defense.md)

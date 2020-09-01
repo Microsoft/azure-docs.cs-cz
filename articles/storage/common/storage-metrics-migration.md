@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422058"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078244"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Přechod na metriky v Azure Monitor
 
-Azure Storage teď integruje metriky do Azure Monitor platformy. Tento článek vám pomůže provést přechod.
+Od **31. srpna 2023** analýza úložiště metriky, označované také jako *klasické metriky* , budou vyřazeny. Pokud používáte klasické metriky, nezapomeňte přejít na metriky v Azure Monitor před tímto datem. Tento článek vám pomůže provést přechod.
 
 ## <a name="steps-to-complete-the-transition"></a>Postup dokončení přechodu
 
@@ -63,8 +63,8 @@ Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azur
 
 | Klasická metrika | Metrika v Azure Monitor |
 | ------------------- | ----------------- |
-| `Capacity`            | `BlobCapacity`s dimenzí `BlobType` rovnou `BlockBlob` nebo`PageBlob` |
-| `ObjectCount`        | `BlobCount`s dimenzí `BlobType` rovnou `BlockBlob` nebo`PageBlob` |
+| `Capacity`            | `BlobCapacity` s dimenzí `BlobType` rovnou `BlockBlob` nebo `PageBlob` |
+| `ObjectCount`        | `BlobCount` s dimenzí `BlobType` rovnou `BlockBlob` nebo `PageBlob` |
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
@@ -74,40 +74,40 @@ Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azur
 
 | Klasická metrika | Metrika v Azure Monitor |
 | ------------------- | ----------------- |
-| `AnonymousAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ClientTimeoutError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousNetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousSuccess` | Transakce s dimenzí `ResponseType` rovná se `Success` a dimenze `Authentication` rovna`Anonymous` |
-| `AnonymousThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo `ServerBusyError` a dimenze `Authentication` rovny`Anonymous` |
-| `AuthorizationError` | Transakce s dimenzí `ResponseType` rovná se`AuthorizationError` |
+| `AnonymousAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ClientTimeoutError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousNetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousSuccess` | Transakce s dimenzí `ResponseType` rovná se `Success` a dimenze `Authentication` rovna `Anonymous` |
+| `AnonymousThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo `ServerBusyError` a dimenze `Authentication` rovny `Anonymous` |
+| `AuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` |
 | `Availability` | `Availability` |
 | `AverageE2ELatency` | `SuccessE2ELatency` |
 | `AverageServerLatency` | `SuccessServerLatency` |
-| `ClientOtherError` | Transakce s dimenzí `ResponseType` rovná se`ClientOtherError` |
-| `ClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se`ClientTimeoutError` |
-| `NetworkError` | Transakce s dimenzí `ResponseType` rovná se`NetworkError` |
-| `PercentAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se`AuthorizationError` |
-| `PercentClientOtherError` | Transakce s dimenzí `ResponseType` rovná se`ClientOtherError` |
-| `PercentNetworkError` | Transakce s dimenzí `ResponseType` rovná se`NetworkError` |
-| `PercentServerOtherError` | Transakce s dimenzí `ResponseType` rovná se`ServerOtherError` |
-| `PercentSuccess` | Transakce s dimenzí `ResponseType` rovná se`Success` |
-| `PercentThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo`ServerBusyError` |
-| `PercentTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` nebo `ResponseType` se rovná`ClientTimeoutError` |
-| `SASAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` a dimenze `Authentication` rovna`SAS` |
-| `SASClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` a dimenze `Authentication` rovna`SAS` |
-| `SASClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ClientTimeoutError` a dimenze `Authentication` rovna`SAS` |
-| `SASNetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` a dimenze `Authentication` rovna`SAS` |
-| `SASServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` a dimenze `Authentication` rovna`SAS` |
-| `SASServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` a dimenze `Authentication` rovna`SAS` |
-| `SASSuccess` | Transakce s dimenzí `ResponseType` rovná se `Success` a dimenze `Authentication` rovna`SAS` |
-| `SASThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo `ServerBusyError` a dimenze `Authentication` rovny`SAS` |
-| `ServerOtherError` | Transakce s dimenzí `ResponseType` rovná se`ServerOtherError` |
-| `ServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se`ServerTimeoutError` |
-| `Success` | Transakce s dimenzí `ResponseType` rovná se`Success` |
-| `ThrottlingError` | `Transactions`s dimenzí `ResponseType` rovnou `ClientThrottlingError` nebo`ServerBusyError`|
+| `ClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` |
+| `ClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ClientTimeoutError` |
+| `NetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` |
+| `PercentAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` |
+| `PercentClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` |
+| `PercentNetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` |
+| `PercentServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` |
+| `PercentSuccess` | Transakce s dimenzí `ResponseType` rovná se `Success` |
+| `PercentThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo `ServerBusyError` |
+| `PercentTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` nebo `ResponseType` se rovná `ClientTimeoutError` |
+| `SASAuthorizationError` | Transakce s dimenzí `ResponseType` rovná se `AuthorizationError` a dimenze `Authentication` rovna `SAS` |
+| `SASClientOtherError` | Transakce s dimenzí `ResponseType` rovná se `ClientOtherError` a dimenze `Authentication` rovna `SAS` |
+| `SASClientTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ClientTimeoutError` a dimenze `Authentication` rovna `SAS` |
+| `SASNetworkError` | Transakce s dimenzí `ResponseType` rovná se `NetworkError` a dimenze `Authentication` rovna `SAS` |
+| `SASServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` a dimenze `Authentication` rovna `SAS` |
+| `SASServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` a dimenze `Authentication` rovna `SAS` |
+| `SASSuccess` | Transakce s dimenzí `ResponseType` rovná se `Success` a dimenze `Authentication` rovna `SAS` |
+| `SASThrottlingError` | Transakce s dimenzí `ResponseType` rovnající se `ClientThrottlingError` nebo `ServerBusyError` a dimenze `Authentication` rovny `SAS` |
+| `ServerOtherError` | Transakce s dimenzí `ResponseType` rovná se `ServerOtherError` |
+| `ServerTimeoutError` | Transakce s dimenzí `ResponseType` rovná se `ServerTimeoutError` |
+| `Success` | Transakce s dimenzí `ResponseType` rovná se `Success` |
+| `ThrottlingError` | `Transactions` s dimenzí `ResponseType` rovnou `ClientThrottlingError` nebo `ServerBusyError`|
 | `TotalBillableRequests` | `Transactions` |
 | `TotalEgress` | `Egress` |
 | `TotalIngress` | `Ingress` |

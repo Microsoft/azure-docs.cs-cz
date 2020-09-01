@@ -94,9 +94,11 @@
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Nasazení a správa pomocí Azure CLI
           href: cli-samples.md
-        - name: Zřízení služby Azure Cache for Redis
+        - name: Vytvoření mezipaměti Redis – šablona ARM
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Zřízení webové aplikace s využitím služby Azure Cache for Redis
+        - name: Vytvoření webové aplikace s využitím mezipaměti Redis – šablona ARM
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: Spravovat
       items:

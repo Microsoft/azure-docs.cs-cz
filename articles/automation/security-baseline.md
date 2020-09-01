@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6e5c7bbc850a71cd71d8f826c6a975f552374b7a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562680"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077717"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -146,7 +146,7 @@ Pokud používáte hybridní pracovní procesy Runbooku hostované na virtuáln�
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky, které používá Azure Automation s Azure Policy.
 
-Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manageru, ovládací prvky RBAC a zásady, v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony Azure Resource Manageru, řízení a zásady Azure RBAC, a to v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -570,11 +570,11 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: pomocí služby Azure AD RBAC můžete řídit přístup k prostředkům Azure Automation pomocí předdefinovaných definic rolí a přiřazovat přístup uživatelům, kteří přistupují k prostředkům Automation, a to za přístupovým modelem s nejnižším oprávněním nebo s dostatečným oprávněním. Pokud používáte hybridní pracovní procesy Runbooku, využijte spravované identity pro tyto virtuální počítače, abyste se vyhnuli používání instančních objektů. při použití více tenantů nebo procesů Hybrid Runbook Worker se ujistěte, že se k identitě pracovních procesů Runbooku používala náležitě vymezená oprávnění RBAC.
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k prostředkům Azure Automation pomocí vestavěných definic rolí, přiřazení přístupu uživatelům, kteří přistupují k vašim prostředkům Automation, v rámci přístupového modelu s nejnižším oprávněním nebo s dostatečným oprávněním. Pokud používáte hybridní pracovní procesy Runbooku, využijte spravované identity pro tyto virtuální počítače, abyste se vyhnuli používání instančních objektů. při použití s více klienty nebo procesy Hybrid Runbook Worker se ujistěte, že se k identitě pracovních procesů Runbooku používaly náležitě vymezená oprávnění Azure RBAC.
 
-* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+* [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 * [Oprávnění sady Runbook pro Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 Pokud používáte funkci Hybrid Runbook Worker, ujistěte se, že jste správně omezili přístup k vlastní imagi operačního systému ve vašem účtu úložiště, takže k imagi budou mít přístup jenom autorizovaní uživatelé.
 
-* [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Pochopení Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

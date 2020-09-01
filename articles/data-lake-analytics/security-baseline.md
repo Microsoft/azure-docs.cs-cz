@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005118"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076374"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Základní hodnoty zabezpečení Azure pro Data Lake Analytics
 
@@ -334,7 +334,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům Data Lake Analytics.
+**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Řízení přístupu na základě role v Azure (Azure RBAC) poskytuje jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům Data Lake Analytics.
 
 * [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: implementace izolace pomocí samostatných předplatných, skupin pro správu pro jednotlivé domény zabezpečení, jako je prostředí, citlivost na data. Můžete omezit Data Lake Analytics pro řízení úrovně přístupu k prostředkům Data Lake Analytics, které vaše aplikace a podniková prostředí vyžadují. Pokud jsou nakonfigurována pravidla brány firewall, budou mít přístup k prostředkům Data Lake Analytics pouze aplikace požadující data přes zadanou sadu sítí. Přístup k Azure Data Lake Analytics můžete řídit prostřednictvím služby Azure AD RBAC.
+**Pokyny**: implementace izolace pomocí samostatných předplatných, skupin pro správu pro jednotlivé domény zabezpečení, jako je prostředí, citlivost na data. Můžete omezit Data Lake Analytics pro řízení úrovně přístupu k prostředkům Data Lake Analytics, které vaše aplikace a podniková prostředí vyžadují. Pokud jsou nakonfigurována pravidla brány firewall, budou mít přístup k prostředkům Data Lake Analytics pouze aplikace požadující data přes zadanou sadu sítí. Přístup k Azure Data Lake Analytics můžete řídit přes Azure RBAC.
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: použití řízení přístupu na základě role (RBAC) k řízení způsobu interakce uživatelů se službou.
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení interakce uživatelů se službou.
 
-* [Správa Access Control na základě rolí](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Správa služby Azure RBAC](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

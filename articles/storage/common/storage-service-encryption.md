@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814446"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078193"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -48,8 +48,8 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 | Operace šifrování a dešifrování | Azure | Azure | Azure |
 | Podporované služby Azure Storage Services | Vše | BLOB Storage, soubory Azure<sup>1, 2</sup> | Blob Storage |
 | Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault | Vlastní úložiště klíčů zákazníka |
-| Zodpovědnost za střídání klíčů | Partnerský vztah Microsoftu | Customer (Zákazník) | Customer (Zákazník) |
-| Řízení klíčů | Partnerský vztah Microsoftu | Customer (Zákazník) | Customer (Zákazník) |
+| Zodpovědnost za střídání klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
+| Řízení klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
 
 <sup>1</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s úložištěm Queue, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro fronty](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s tabulkovým úložištěm, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
@@ -69,6 +69,8 @@ Po vytvoření oboru šifrování můžete zadat obor šifrování pro požadave
 
 > [!NOTE]
 > Obory šifrování nejsou podporovány v geograficky redundantním úložišti s přístupem pro čtení (RA-GRS) a v geograficky redundantním úložišti s přístupem pro čtení (RA-GZRS) ve verzi Preview.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!IMPORTANT]
 > Obory šifrování ve verzi Preview jsou určené jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.

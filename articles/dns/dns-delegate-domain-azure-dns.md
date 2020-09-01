@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84710129"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077989"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
 
 Služba Azure DNS umožňuje hostování vaší domény DNS a správu vašich záznamů DNS. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Předpokládejme například, že od registrátora názvů domén zakoupíte doménu contoso.net a potom v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu záznamy názvového serveru (tj. záznamy NS). Doménový registrátor uloží tyto záznamy NS v nadřazené zóně, v tomto případě .net. Uživatelé internetu po celém světě se pak přesměrují do vaší domény v Azure DNS zóně při pokusu o překlad záznamů DNS v contoso.net.
+Předpokládejme například, že od registrátora názvů domén zakoupíte doménu contoso.net a potom v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu záznamy názvového serveru (tj. záznamy NS). Registrátor ukládá záznamy NS v nadřazené zóně .NET. Uživatelé internetu po celém světě se pak přesměrují do vaší domény v Azure DNS zóně při pokusu o překlad záznamů DNS v contoso.net.
 
 
 V tomto kurzu se naučíte:
@@ -32,11 +32,11 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-Ukázková doména použitá pro tento kurz je contoso.net, ale použijte vlastní název domény.
+V tomto příkladu budeme odkazovat na nadřazenou doménu jako na **contoso.NET** .
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
@@ -45,14 +45,19 @@ Ukázková doména použitá pro tento kurz je contoso.net, ale použijte vlastn
    ![Zóna DNS](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Vyberte **vytvořit ZÓNU DNS**.
-1. Na stránce **Vytvořit zónu DNS** zadejte následující hodnoty a pak vyberte **Vytvořit**:
+1. Na stránce **vytvořit ZÓNU DNS** zadejte následující hodnoty a pak vyberte **vytvořit**: například **contoso.NET** .
+      > [!NOTE] 
+      > Pokud je nově vytvořená zóna podřízenou zónou (například nadřazená zóna = contoso.net podřízená zóna = child.contoso.net), přečtěte si náš [kurz vytvoření nové podřízené zóny DNS](./tutorial-public-dns-zones-child.md) .
 
-   | **Nastavení** | **Hodnota** | **Podrobnosti** |
-   |---|---|---|
-   |**Name** (Jméno)|[název vaší domény] |Název domény, kterou jste si zakoupili. V tomto kurzu se jako příklad používá doména contoso.net.|
-   |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má zóna vytvořit.|
-   |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný.<br>Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.|
-   |**Umístění**|East US||
+    | **Nastavení** | **Hodnota** | **Podrobnosti** |
+    |--|--|--|
+    | **Podrobnosti o projektu:**  |  |  |
+    | **Skupina prostředků**    | ContosoRG | Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci předplatného, který jste vybrali, jedinečný. Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno. |
+    | **Podrobnosti instance:** |  |  |
+    | **Podřízená zóna**        | ponechat nezaškrtnutou | Vzhledem k tomu, že tato **zóna není** [podřízenou zónou](./tutorial-public-dns-zones-child.md) , měli byste toto políčko nechat nezaškrtnuté. |
+    | **Name**              | contoso.net | Pole pro název nadřazené zóny      |
+    | **Umístění**          | East US | Toto pole je založené na umístění, které jste vybrali jako součást vytváření skupiny prostředků.  |
+    
 
 ## <a name="retrieve-name-servers"></a>Načtení názvových serverů
 

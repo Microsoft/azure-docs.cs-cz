@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055579"
+ms.locfileid: "89076510"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Naslouchací proces pro čtení a zápis skupiny převzetí služeb při selhání**
 
-  Záznam DNS CNAME, který odkazuje na aktuální primární adresu URL. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohám čtení i zápisu transparentně se znovu připojit k primární databázi, když se primární změna po převzetí služeb při selhání. Když je na serveru vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.database.windows.net` . Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci SQL, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.zone_id.database.windows.net` .
+  Záznam DNS CNAME, který odkazuje na aktuální primární adresu URL. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohám čtení i zápisu transparentně se znovu připojit k primární databázi, když se primární změna po převzetí služeb při selhání. Když je na serveru vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.database.windows.net` . Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci SQL, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.<zone_id>.database.windows.net` .
 
 - **Skupina převzetí služeb při selhání – naslouchací proces jen pro čtení**
 
-  Záznam CNAME DNS vytvořený, který odkazuje na naslouchací proces jen pro čtení, který odkazuje na adresu URL sekundárního objektu. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohy SQL, která je jen pro čtení, k sekundárnímu připojení k sekundárnímu pomocí zadaných pravidel vyrovnávání zatížení. Když je na serveru vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.secondary.database.windows.net` . Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci SQL, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.zone_id.secondary.database.windows.net` .
+  Záznam CNAME DNS vytvořený, který odkazuje na naslouchací proces jen pro čtení, který odkazuje na adresu URL sekundárního objektu. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohy SQL, která je jen pro čtení, k sekundárnímu připojení k sekundárnímu pomocí zadaných pravidel vyrovnávání zatížení. Když je na serveru vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.secondary.database.windows.net` . Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci SQL, bude záznam CNAME DNS pro adresu URL naslouchacího procesu vytvořený jako `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 - **Zásady automatického převzetí služeb při selhání**
 
@@ -257,13 +257,13 @@ Při provádění operací OLTP použijte `<fog-name>.zone_id.database.windows.n
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Připojení k sekundární instanci pomocí naslouchacího procesu jen pro čtení
 
-Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte `<fog-name>.zone_id.secondary.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
+Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
 > [!NOTE]
 > V některých úrovních služby SQL Database podporuje použití [replik jen pro čtení](read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Když jste nakonfigurovali geograficky replikovanou sekundární položku, můžete tuto možnost použít k připojení k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
 >
-> - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.zone_id.database.windows.net` .
-> - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.zone_id.database.windows.net` .
+> - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.<zone_id>.database.windows.net` .
+> - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>Příprava na snížení výkonu
 

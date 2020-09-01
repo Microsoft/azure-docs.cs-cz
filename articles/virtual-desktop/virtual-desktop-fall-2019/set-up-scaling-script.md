@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005580"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078176"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Škálování hostitelů relací virtuálních počítačů s Windows (Classic) pomocí Azure Automation
 
@@ -21,10 +21,6 @@ ms.locfileid: "88005580"
 Celkové náklady na nasazení virtuálních klientů s Windows můžete snížit tak, že změníte velikost virtuálních počítačů (VM). To znamená vypnutí a zrušení přidělení virtuálních počítačů hostitele relace v době mimo špičku a jejich opětovné zapnutí a přerozdělení během špičky.
 
 V tomto článku se dozvíte o nástroji pro škálování vytvořeném pomocí účtu Azure Automation a aplikaci Azure Logic Apps, která automaticky škáluje virtuální počítače hostitele relací ve vašem prostředí virtuálních počítačů s Windows. Pokud se chcete dozvědět, jak používat nástroj pro škálování, přeskočte dopředu s [požadavky](#prerequisites).
-
-## <a name="report-issues"></a>Nahlášení potíží
-
-Sestavy problémů pro nástroj pro škálování se momentálně zpracovávají na GitHubu místo podpora Microsoftu. Pokud narazíte na problém s nástrojem pro škálování, získejte potřebné informace popsané v části [problémy s vytvářením sestav](#reporting-issues) a otevřete problém GitHubu označený pomocí "4a-WVD-re-logicapps" na [stránce GitHubu VP](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
 
 ## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro škálování funguje
 
@@ -362,3 +358,7 @@ Pokud jste se rozhodli použít Log Analytics, můžete všechna data protokolu 
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Nahlášení potíží
+
+Sestavy problémů pro nástroj škálování jsou aktuálně zpracovávány podpora Microsoftu. Při vytváření sestavy problému nezapomeňte postupovat podle pokynů v tématu [hlášení problémů](#reporting-issues). Pokud máte svůj názor na nástroj nebo chcete požádat o nové funkce, otevřete na [stránce GitHubu služby Vzdálená](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)plocha problém GitHub označený "4-WVD-reškálování-Tool".

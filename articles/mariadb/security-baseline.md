@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 69930342a69613c3863443c993d80e02e1981a98
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366828"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077241"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
 
@@ -34,11 +34,11 @@ Alternativně můžete použít koncové body služby Virtual Network k ochraně
 
 Azure Database for MariaDB můžete také zabezpečit pomocí pravidel brány firewall. Brána firewall serveru znemožní přístup k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
 
-Postup konfigurace privátního odkazu pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Postup konfigurace privátního odkazu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě na serveru Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+Jak vytvořit a spravovat koncové body služby virtuální sítě a pravidla virtuální sítě na serveru Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Jak nakonfigurovat Azure Database for MariaDB pravidla brány firewall:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Jak nakonfigurovat Azure Database for MariaDB pravidla brány firewall: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Monitorování Azure Security Center**: Ano
 
@@ -48,9 +48,9 @@ Jak nakonfigurovat Azure Database for MariaDB pravidla brány firewall:https://d
 
 **Pokyny**: když je server Azure Database for MariaDB zabezpečený k privátnímu koncovému bodu, můžete virtuální počítače nasadit ve stejné virtuální síti. Ke snížení rizika exfiltrace dat můžete použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Postup konfigurace privátního odkazu pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Postup konfigurace privátního odkazu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -72,9 +72,9 @@ Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher
 
 Povolte DDoS Protection Standard ve virtuálních sítích přidružených k vašim Azure Database for MariaDB instancím, abyste se mohli chránit před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Jak nakonfigurovat DDoS Protection: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
 
@@ -86,7 +86,7 @@ Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-netw
 
 **Pokyny**: když je server Azure Database for MariaDB zabezpečený k privátnímu koncovému bodu, můžete virtuální počítače nasadit ve stejné virtuální síti. Pak můžete nakonfigurovat skupinu zabezpečení sítě (NSG), aby se snížilo riziko exfiltrace dat. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -97,7 +97,7 @@ Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
 **Pokyny**: použití rozšířené ochrany před internetovými útoky pro Azure Database for MariaDB. Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
-Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 
 **Monitorování Azure Security Center**: Ano
@@ -118,7 +118,7 @@ Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure D
 **Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Database for MariaDB, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. SQL. WestUs) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro odpovídající službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 Poznámka: Azure Database for MariaDB používá značku služby Microsoft. SQL.
 
-Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview Principy použití značek služby pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview Principy použití značek služby pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -136,11 +136,11 @@ Další informace o použití značek služeb: https://docs.microsoft.com/azure/
 
 - Server MariaDB by měl používat koncový bod služby virtuální sítě.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy ukázky pro síťové služby:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy ukázky pro síťové služby: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Postup vytvoření Azure Blueprint:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Postup vytvoření Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -155,7 +155,7 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -164,7 +164,7 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Database for MariaDB instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
-Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view jak vytvářet výstrahy v Azure monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view jak vytvářet výstrahy v Azure monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
@@ -188,9 +188,9 @@ Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsof
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
 **Pokyny**: povolení nastavení diagnostiky a protokolů serveru a příjem protokolů pro agregaci dat zabezpečení generovaných vašimi Azure Database for MariaDB instancemi. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
-Konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupovat k nim: jak připojit k https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupovat k nim: jak připojit k https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupova
 
 **Pokyny**: povolení nastavení diagnostiky na vašich instancích Azure Database for MariaDB pro přístup k protokolům auditu, zabezpečení a diagnostiky. Ujistěte se, že jste konkrétně povolili protokol auditu MariaDB. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Můžete také povolit nastavení diagnostiky protokolů aktivit Azure a odesílat protokoly do stejného Log Analytics pracovního prostoru nebo účtu úložiště.
 
-Postup konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs jak nakonfigurovat a přistupovat k protokolům auditu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Postup konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs jak nakonfigurovat a přistupovat k protokolům auditu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -222,7 +222,7 @@ Postup konfigurace a přístup k protokolům serveru pro Azure Database for Mari
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
 **Doprovodné**materiály: v rámci Azure monitor pro pracovní prostor Log Analytics, který se používá k ukládání protokolů Azure Database for MariaDB, nastavte dobu uchování podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
-Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period ukládání protokolů prostředků v účtu služby Azure Storage:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period ukládání protokolů prostředků v účtu služby Azure Storage: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
 
@@ -234,11 +234,11 @@ Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovn�
 
 **Pokyny**: analýza a sledování protokolů z instancí MariaDB pro chování neobvyklé. Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM.
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Další informace o pracovním prostoru Log Analytics:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Další informace o pracovním prostoru Log Analytics: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Postup provádění vlastních dotazů v Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Postup provádění vlastních dotazů v Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -250,13 +250,13 @@ Postup provádění vlastních dotazů v Azure Monitor:https://docs.microsoft.co
 
 Kromě toho můžete povolit protokoly serveru a nastavení diagnostiky pro MariaDB a odesílat protokoly do pracovního prostoru Log Analytics. Připojte pracovní prostor Log Analytics do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení.
 
-Jak povolit rozšířenou ochranu před internetovými útoky pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Jak povolit rozšířenou ochranu před internetovými útoky pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Konfigurace a přístup k protokolům serveru pro MariDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Konfigurace a přístup k protokolům serveru pro MariDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Konfigurace a přístup k protokolům auditu pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+Konfigurace a přístup k protokolům auditu pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: Ano
 
@@ -294,9 +294,9 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 **Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup správce k rovině správy (Azure Portal/Azure Resource Manager) vašich instancí MariaDB. Kromě toho udržujte inventarizaci účtů pro správu, které mají přístup k rovině dat instancí MariaDB. (Při vytváření serveru MariaDB zadáte přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů MariaDB.)
 
-Pochopení správy přístupu pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
+Pochopení správy přístupu pro MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Principy předdefinovaných rolí Azure pro předplatná Azure:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Principy předdefinovaných rolí Azure pro předplatná Azure: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Monitorování Azure Security Center**: Ano
@@ -309,7 +309,7 @@ Principy předdefinovaných rolí Azure pro předplatná Azure:https://docs.micr
 
 Při vytváření samotného prostředku MariaDB vynutí Azure vytvořit administrativního uživatele se silným heslem. Po vytvoření instance MariaDB můžete použít první účet správce serveru, který jste vytvořili, a vytvořit tak další uživatele a udělit jim přístup pro správu. Při vytváření těchto účtů se ujistěte, že pro každý účet nakonfigurujete jiné silné heslo.
 
-Jak vytvořit další účty pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-users
+Jak vytvořit další účty pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -320,7 +320,7 @@ Jak vytvořit další účty pro MariaDB:https://docs.microsoft.com/azure/mariad
 
 **Doprovodné**materiály: vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu, které mají přístup k instancím MariaDB. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu.
 
-Pochopení Azure Security Center identity a přístupu:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Pochopení Azure Security Center identity a přístupu: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -330,7 +330,7 @@ Pochopení Azure Security Center identity a přístupu:https://docs.microsoft.co
 
 **Doprovodné**materiály: přístup k rovině dat na MariaDB se řídí identitami uloženými v databázi nástroje a nepodporuje jednotné přihlašování. Přístup k řídicí rovině pro MariaDB je k dispozici prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
-Pochopení Azure Database for MariaDB REST API:https://docs.microsoft.com/rest/api/mariadb/
+Pochopení Azure Database for MariaDB REST API: https://docs.microsoft.com/rest/api/mariadb/
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -340,9 +340,9 @@ Pochopení Azure Database for MariaDB REST API:https://docs.microsoft.com/rest/a
 
 **Doprovodné**materiály: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Jak monitorovat identitu a přístup v rámci Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Monitorování Azure Security Center**: Ano
 
@@ -352,9 +352,9 @@ Jak monitorovat identitu a přístup v rámci Azure Security Center:https://docs
 
 **Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
-Další informace o pracovních stanicích s privilegovaným přístupem:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Další informace o pracovních stanicích s privilegovaným přístupem: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -366,11 +366,11 @@ Jak povolit vícefaktorové ověřování v Azure:https://docs.microsoft.com/azu
 
 Kromě toho můžete použít Azure AD Privileged Identity Management (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-Postup nastavení rozšířené ochrany před internetovými útoky pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Postup nastavení rozšířené ochrany před internetovými útoky pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Postup nasazení Privileged Identity Management (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Postup nasazení Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Vysvětlení zjišťování rizik Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Monitorování Azure Security Center**: Ano
 
@@ -380,7 +380,7 @@ Vysvětlení zjišťování rizik Azure AD:https://docs.microsoft.com/azure/acti
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí, abyste omezili přístup k prostředkům Azure, jako je MariaDB.
 
-Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -392,7 +392,7 @@ Jak nakonfigurovat pojmenovaná umístění v Azure:https://docs.microsoft.com/a
 
 Ověřování Azure AD se nedá použít pro přímý přístup k rovině dat MariaDB, ale k řízení účtů správce MariaDB se můžou použít přihlašovací údaje Azure AD pro správu na úrovni roviny správy (např. Azure Portal).
 
-Postup aktualizace hesla správce pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
+Postup aktualizace hesla správce pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
 
 **Monitorování Azure Security Center**: Ano
 
@@ -402,9 +402,9 @@ Postup aktualizace hesla správce pro MariaDB:https://docs.microsoft.com/azure/m
 
 **Doprovodné**materiály: Přečtěte si protokoly Azure Active Directory, které vám pomůžou zjistit zastaralé účty, které můžou obsahovat i s rolemi pro správu MariaDB. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím, které se dají použít pro přístup k MariaDB a přiřazení rolí. Přístup uživatelů by se měl pravidelně kontrolovat, například každých 90 dní, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-Pochopení sestav Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Pochopení sestav Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Jak používat kontroly přístupu Azure identity: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Monitorování Azure Security Center**: Ano
 
@@ -414,11 +414,11 @@ Jak používat kontroly přístupu Azure identity:https://docs.microsoft.com/azu
 
 **Doprovodné**materiály: Povolte nastavení diagnostiky pro MariaDB a Azure Active Directory a odešlete všechny protokoly do pracovního prostoru Log Analytics. Nakonfigurujte požadovaná upozornění (například neúspěšné pokusy o ověření) v rámci Log Analytics pracovního prostoru.
 
-Konfigurace a přístup k protokolům serveru pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+Konfigurace a přístup k protokolům serveru pro MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Konfigurace a přístup k protokolům auditu pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+Konfigurace a přístup k protokolům auditu pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Jak integrovat protokoly aktivit Azure do Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -430,13 +430,13 @@ Jak integrovat protokoly aktivit Azure do Azure Monitor:https://docs.microsoft.c
 
 Pomocí funkcí Azure Active Directory Identity Protection a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce. Můžete povolit automatizované odezvy prostřednictvím služby Azure Sentinel, abyste mohli implementovat reakce na zabezpečení vaší organizace.
 
-Jak povolit rozšířenou ochranu před internetovými útoky pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Jak povolit rozšířenou ochranu před internetovými útoky pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Jak nakonfigurovat a povolit zásady pro rizika ochrany identity:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Jak nakonfigurovat a povolit zásady pro rizika ochrany identity: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Jak zobrazit rizikové přihlašování Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Jak zobrazit rizikové přihlašování Azure AD: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak připojit Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -446,7 +446,7 @@ Jak připojit Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstar
 
 **Doprovodné**materiály: nepoužitelné; Customer Lockbox ještě není pro Azure Database for MariaDB podporované.
 
-Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Seznam podporovaných služeb Customer Lockbox: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -460,7 +460,7 @@ Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/
 
 **Doprovodné**materiály: pomocí značek pomáhají při sledování Azure Database for MariaDBch instancí nebo souvisejících prostředků, které ukládají nebo zpracovávají citlivé informace.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -470,15 +470,15 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Pomocí kombinace privátních odkazů, koncových bodů služby a/nebo MariaDB pravidel brány firewall můžete izolovat a omezit síťový přístup k instancím MariaDB.
 
-Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Postup konfigurace privátního odkazu pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+Postup konfigurace privátního odkazu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Postup konfigurace koncových bodů služby pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+Postup konfigurace koncových bodů služby pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Jak nakonfigurovat pravidla brány firewall pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Jak nakonfigurovat pravidla brány firewall pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -490,9 +490,9 @@ Jak nakonfigurovat pravidla brány firewall pro Azure Database for MariaDB:https
 
 Microsoft spravuje základní infrastrukturu pro MariaDB a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Jak zmírnit exfiltrace dat pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+Jak zmírnit exfiltrace dat pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -502,7 +502,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 **Pokyny**: Azure Database for MariaDB podporuje připojení serveru Azure Database for MariaDB k klientským aplikacím pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL). Vynucování připojení TLS mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "muž" v prostředním případě šifrováním datového proudu mezi serverem a vaší aplikací. V Azure Portal zajistěte, aby byl u všech instancí MariaDB povolená možnost vykonat připojení SSL.
 
-Jak nakonfigurovat šifrování při přenosu pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
+Jak nakonfigurovat šifrování při přenosu pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -514,7 +514,7 @@ Jak nakonfigurovat šifrování při přenosu pro MariaDB:https://docs.microsoft
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -522,11 +522,11 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: pomocí služby Azure AD RBAC můžete řídit přístup k databázi Azure pro rovinu správy MariaDB (Azure Portal/Azure Resource Manager). Pro přístup k rovině dat (v samotné databázi) použijte dotazy SQL k vytvoření uživatelů a konfiguraci oprávnění uživatele.
+**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k databázi Azure pro rovinu správy MariaDB (Azure Portal/Azure Resource Manager). Pro přístup k rovině dat (v samotné databázi) použijte dotazy SQL k vytvoření uživatelů a konfiguraci oprávnění uživatele.
 
-Jak nakonfigurovat RBAC v Azure:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Jak nakonfigurovat službu Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Jak nakonfigurovat přístup uživatelů pomocí SQL pro MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-users
+Jak nakonfigurovat přístup uživatelů pomocí SQL pro MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -538,7 +538,7 @@ Jak nakonfigurovat přístup uživatelů pomocí SQL pro MariaDB:https://docs.mi
 
 Microsoft spravuje základní infrastrukturu pro MariaDB a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -548,7 +548,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 **Pokyny**: Služba Azure Database for MariaDB používá šifrovací modul ověřený standardem FIPS 140-2 pro šifrování úložiště dat v klidovém provozu. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
-Vysvětlení šifrování v klidovém umístění pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-security
+Vysvětlení šifrování v klidovém umístění pro MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-security
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -558,7 +558,7 @@ Vysvětlení šifrování v klidovém umístění pro MariaDB:https://docs.micro
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure Database for MariaDB a dalších důležitých nebo souvisejících prostředcích.
 
-Vytváření upozornění pro události protokolu aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Vytváření upozornění pro události protokolu aktivit Azure: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -620,11 +620,11 @@ Vytváření upozornění pro události protokolu aktivit Azure:https://docs.mic
 
 **Pokyny**: pomocí grafu prostředků Azure můžete v rámci vašich předplatných dotazovat a zjišťovat všechny prostředky (včetně Azure Database for MariaDB serveru). Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
-Jak vytvářet dotazy pomocí Azure Resource graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit vaše předplatná Azure:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+Porozumění službě Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -634,7 +634,7 @@ Porozumění službě Azure RBAC:https://docs.microsoft.com/azure/role-based-acc
 
 **Doprovodné**materiály: použití značek pro Azure Database for MariaDB Server a další související prostředky, které dávají metadata k logickému uspořádání do taxonomie.
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -644,11 +644,11 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Database for MariaDB serveru a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-Jak vytvořit další předplatná Azure:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Jak vytvořit další předplatná Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Postup vytvoření Skupiny pro správu:https://docs.microsoft.com/azure/governance/management-groups/create
+Postup vytvoření Skupiny pro správu: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Vytváření a používání značek:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Vytváření a používání značek: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -672,9 +672,9 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Jak vytvářet dotazy pomocí Azure graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -716,9 +716,9 @@ Jak vytvářet dotazy pomocí Azure graphu:https://docs.microsoft.com/azure/gove
 
 - Povolené typy prostředků
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odepřít konkrétní typ prostředku s Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -739,7 +739,7 @@ Jak odepřít konkrétní typ prostředku s Azure Policy:https://docs.microsoft.
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v prostředí s vysokým zabezpečením, jako je Azure Database for MariaDB Server obsahující citlivé údaje.
 
-Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 
@@ -774,9 +774,9 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 - Pro Azure Database for MariaDB by měla být povolená geograficky redundantní záloha.
 
-Jak zobrazit dostupné aliasy Azure Policy:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -796,9 +796,9 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] pro vymáhání zabezpečených nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 
@@ -818,9 +818,9 @@ Pochopení Azure Policych účinků:https://docs.microsoft.com/azure/governance/
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy pro servery Azure Database for MariaDB a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Jak ukládat kód v Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Jak ukládat kód v Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -838,7 +838,7 @@ Azure Repos dokumentaci:https://docs.microsoft.com/azure/devops/repos/index?view
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforMariaDB můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -858,7 +858,7 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DBforMariaDB můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Database for MariaDB instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
-Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -878,11 +878,11 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 **Doprovodné**materiály: u Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k serverům Azure Database for MariaDB použijte identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů serveru Azure Database for MariaDB. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Jak integrovat se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Postup vytvoření Key Vault:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Postup vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.microsoft.com/azure/key-vault/managed-identity 
+Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.microsoft.com/azure/key-vault/managed-identity 
 
 
 
@@ -908,7 +908,7 @@ Spravované identity použijte k poskytování služeb Azure s automaticky sprav
 
 **Pokyny**: implementace skeneru přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
-Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -958,9 +958,9 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 **Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí.  Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.  Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-Principy zálohování pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Principy zálohování pro MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-Principy počáteční konfigurace MariaDB:https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
+Principy počáteční konfigurace MariaDB: https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
 
 
 
@@ -974,9 +974,9 @@ Principy počáteční konfigurace MariaDB:https://docs.microsoft.com/azure/mari
 
 Pokud používáte Key Vault pro šifrování dat na straně klienta pro data uložená na vašem serveru MariaDB, zajistěte pravidelné automatizované zálohování vašich klíčů.
 
-Principy zálohování pro MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Principy zálohování pro MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Postup zálohování klíčů Key Vault:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 
 **Monitorování Azure Security Center**: Ano
@@ -989,7 +989,7 @@ Postup zálohování klíčů Key Vault:https://docs.microsoft.com/powershell/mo
 
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
-Principy zálohování a obnovení v Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
+Principy zálohování a obnovení v Azure Database for MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -1000,7 +1000,7 @@ Principy zálohování a obnovení v Azure Database for MariaDB:https://docs.mic
 
 **Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-Principy zálohování a obnovení v Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-backup
+Principy zálohování a obnovení v Azure Database for MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 
 **Monitorování Azure Security Center**: Ano
@@ -1015,9 +1015,9 @@ Principy zálohování a obnovení v Azure Database for MariaDB:https://docs.mic
 
 **Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
 
-- Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
-- Anatomie centra Microsoft Security Response Center:https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
-- Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty:https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
+- Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- Anatomie centra Microsoft Security Response Center: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
+- Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1029,9 +1029,9 @@ Principy zálohování a obnovení v Azure Database for MariaDB:https://docs.mic
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data.  Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-- Výstrahy zabezpečení v Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+- Výstrahy zabezpečení v Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-- Použití značek k uspořádání prostředků Azure:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- Použití značek k uspořádání prostředků Azure: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1041,7 +1041,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: proveďte cvičení k otestování funkcí reakce na incidenty na běžných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
-- Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvičení programů pro plány a možnosti IT: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1051,7 +1051,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-- Jak nastavit Azure Security Center kontakt zabezpečení:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- Jak nastavit Azure Security Center kontakt zabezpečení: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1061,8 +1061,8 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-- Postup konfigurace průběžného exportu:https://docs.microsoft.com/azure/security-center/continuous-export
-- Jak streamovat výstrahy do Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- Postup konfigurace průběžného exportu: https://docs.microsoft.com/azure/security-center/continuous-export
+- Jak streamovat výstrahy do Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1073,7 +1073,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
     
 
-Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
+Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1089,7 +1089,7 @@ Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.m
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 **Monitorování Azure Security Center**: nelze použít
