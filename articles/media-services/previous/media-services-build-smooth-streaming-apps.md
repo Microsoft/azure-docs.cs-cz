@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021465"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264636"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Sada SDK Smooth Streaming klienta pro systém Windows 8 umožňuje vývojářům vytvářet aplikace pro Windows Store, které mohou hrát a živě Smooth Streaming obsah. Kromě základního přehrávání Smooth Streaming obsahu poskytuje sada SDK také bohatě funkční funkce, jako je Microsoft PlayReady Protection, omezení na úrovni kvality, Live DVR, přepínání zvukových streamů, naslouchání aktualizacím stavu (například změny úrovně kvality) a chybové události atd. Další informace o podporovaných funkcích najdete v [poznámkách k verzi](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Další informace najdete v tématu [rozhraní přehrávače pro systém Windows 8](https://playerframework.codeplex.com/). 
 
@@ -33,7 +35,7 @@ Tento kurz obsahuje čtyři lekce:
 3. Vybrat Smooth Streaming datové proudy
 4. Výběr Smooth Streamingch stop
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
 > Projekty Windows Store verze 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2017.  Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
@@ -67,11 +69,11 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 1. V nabídce **soubor** klikněte na příkaz **Nový**a potom klikněte na **projekt**.
 1. V dialogovém okně Nový projekt zadejte nebo vyberte následující hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
     | Šablona |Prázdná aplikace (XAML) |
-    | Název |SSPlayer |
+    | Name |SSPlayer |
     | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |
     | Vytvořit adresář pro řešení |Vyberte |
@@ -83,10 +85,10 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer**a pak klikněte na **Přidat odkaz**.
 1. Zadejte nebo vyberte tyto hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | Referenční skupina |Windows/rozšíření |
-    | Referenční informace |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
+    | Reference |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
 
 1. Klikněte na **OK**. 
 

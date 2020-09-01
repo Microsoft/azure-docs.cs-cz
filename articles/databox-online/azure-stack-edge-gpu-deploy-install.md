@@ -1,6 +1,6 @@
 ---
-title: Kurz instalace – balení fyzického zařízení, stojanu, kabelové Azure Stack Edge | Microsoft Docs
-description: Druhý kurz instalace Azure Stack Edge vyžaduje, abyste fyzické zařízení mohli rozbalením, stojanem a kabelem.
+title: Kurz k instalaci, rozbalení, stojanu, kabelu Azure Stack fyzického zařízení GPU | Microsoft Docs
+description: Druhý kurz instalace Azure Stack hraniční GPU zahrnuje postup pro rozbalení, stojan a kabelové fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181812"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262851"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Kurz: instalace Azure Stack Edge pomocí GPU
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Pro správnou operaci musí být zařízení Azure Stack Edge připojená k racku.
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.

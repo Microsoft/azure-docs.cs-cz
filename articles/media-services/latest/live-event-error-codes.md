@@ -11,24 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/4/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6dfaa3491a9d15a3cc54b82d5c116ee2442f70c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000947"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265367"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services kódy chyb živé události
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tabulky v této části uvádějí kódy chyb [živé události](live-events-outputs-concept.md) .
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.yml) pro živou událost, může se zobrazit jedna z následujících chyb z události [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) .
+Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.yml) pro živou událost, může se zobrazit jedna z následujících chyb z události [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  .
 
-| Kód výsledku | Popis |
+| Kód výsledku | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Nesprávná adresa URL pro příjem |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | V nakonfigurovaném seznamu povolených IP adres není kodér IP. |
@@ -46,7 +48,7 @@ Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.y
 
 V události [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) se může zobrazit jedna z následujících chyb.
 
-|Kód výsledku|Popis|
+|Kód výsledku|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Platnost relace RTMP vypršela po nečinnosti pro povolený časový limit.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné.|

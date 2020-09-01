@@ -1,6 +1,6 @@
 ---
-title: Kurz, jak filtrovat, analyzovat data s využitím výpočtů na Azure Stack Edge | Microsoft Docs
-description: Naučte se konfigurovat výpočetní roli na Azure Stack Edge a použít ji k transformaci dat před odesláním do Azure.
+title: Kurz, jak filtrovat, analyzovat data s výpočetními prostředky na Azure Stack GPU na okraji | Microsoft Docs
+description: Naučte se, jak nakonfigurovat výpočetní roli na grafickém procesoru Azure Stack Edge a použít ho k transformaci dat před odesláním do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 8ba460168edc03b1cb491d69010acd03f4a84ae3
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a5e0817050f8411dfc7fc64edae21f1b927e4e5c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181567"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262984"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Kurz: Konfigurace výpočetních prostředků na zařízení GPU na Azure Stack hraničních zařízeních
 
@@ -29,10 +29,10 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace COMPUTE
-> * Získat koncový bod rozhraní API Kubernetes
+> * Získat koncové body Kubernetes
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge se ujistěte, že:
 
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 

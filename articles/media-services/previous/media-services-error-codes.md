@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042834"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263667"
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb služby Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Při použití Microsoft Azure Media Services můžete od služby obdržet chybové kódy HTTP v závislosti na problémech, jako je například vyprší platnost ověřovacích tokenů k akcím, které nejsou podporovány v Media Services. Následuje seznam **kódů chyb HTTP** , které mohou být vráceny Media Services a možnými příčinami.  
 
 ## <a name="400-bad-request"></a>400 – Chybný požadavek
@@ -51,7 +54,7 @@ Požadavek nebylo možné ověřit (před tím, než může být autorizován) z
   * Platnost tokenu vypršela. 
   * Token obsahuje neplatný podpis.
 
-## <a name="403-forbidden"></a>403 – Zakázáno
+## <a name="403-forbidden"></a>403 zakázané
 Požadavek není povolen z některého z následujících důvodů:
 
 * Účet Media Services nebyl nalezen nebo byl odstraněn.

@@ -1,6 +1,6 @@
 ---
 title: Kurz konfigurace nastavení sítě pro zařízení Azure Stack Edge pomocí GPU v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack Edge vám dává pokyn ke konfiguraci sítě, výpočetní sítě a nastavení webového proxy serveru pro vaše fyzické zařízení.
+description: Kurz nasazení Azure Stack hraničního procesoru vám dává pokyn ke konfiguraci sítě, výpočetní sítě a nastavení webového proxy serveru pro vaše fyzické zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 36d331de3a93e04932c4bce4d14704b33f69fab6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181540"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262970"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Kurz: konfigurace sítě pro Azure Stack Edge pomocí GPU
 
@@ -26,13 +26,13 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GPU se ujistěte, že:
 
@@ -149,7 +149,7 @@ Toto je volitelná konfigurace.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru

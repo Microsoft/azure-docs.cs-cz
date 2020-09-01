@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765008"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264959"
 ---
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Služba Azure Media Service nabízí video, zvuk a text v různých protokolech. Když publikujete živý datový proud pomocí MPEG-POMLČKy nebo HLS/CMAF, pak společně s videem a zvukem doručí naše služba přepisu text v IMSC 1.1 kompatibilní TTML. Doručení se zabalí do fragmentů MPEG-4 Part 30 (ISO/IEC 14496-30). Pokud používáte doručování přes HLS/TS, text se doručí jako VTTý v bloku.
 
@@ -33,14 +35,14 @@ Tento článek popisuje, jak povolit živý přepis při streamování živé ud
 
 Živý přepis je k dispozici v následujících oblastech:
 
-- Jihovýchodní Asie
-- Západní Evropa
+- Southeast Asia
+- West Europe
 - Severní Evropa
-- USA – východ
-- USA – střed
-- USA – středojih
-- USA – západ 2
-- Brazílie – jih
+- East US
+- Střední USA
+- Středojižní USA
+- Západní USA 2
+- Brazil South
 
 Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu jazyka v rozhraní API.
 
@@ -135,7 +137,7 @@ Pokud chcete zapnout funkci Live přepisu nebo aktualizovat jazyk přepisu, opra
 
 Toto je ukázkové volání pro zapnutí živých přepisů.
 
-POUŽITA```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+POUŽITA ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
 
 ```
 {

@@ -3,23 +3,25 @@ title: Vytvoření úlohy Azure Media Services s více transformačními výstup
 description: Toto téma ukazuje, jak vytvořit úlohu Azure Media Services s více transformačními výstupy.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0592af43987e89556aee57ea44e07dc2c00828
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63e6da53e542172d474f9ca5de9ab136f38f42f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006784"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265537"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Vytvoření úlohy s více transformačními výstupy
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Toto téma ukazuje, jak vytvořit transformaci pomocí dvou transformačních výstupů. První z nich volá, aby byl vstup kódovaný pro streamování s adaptivní přenosovou rychlostí s předdefinovaným přednastaveným [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) . Druhé jedno volání zvukového signálu ve vstupním videu se zpracuje pomocí [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Po vytvoření transformace můžete odeslat úlohu, která zpracuje vaše video odpovídajícím způsobem. Vzhledem k tomu, že v tomto příkladu zadáváme dva transformační výstupy, je nutné zadat dva výstupy úloh. Můžete zvolit, aby se výstupy úloh nasměrovaly do stejného Assetu (jak je vidět níže), nebo můžete mít do samostatných assetů zápis výsledků.
  

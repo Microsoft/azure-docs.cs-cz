@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf423599d39d30ead953aa389380bf603f80bcd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2ed19b9dae179c3e4fe89a9ce28df4ad0cd080af
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022033"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263208"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se dozvíte, jak povolit a zakázat spravované identity uživatelů a uživatelských identit pro virtuální počítač Azure (VM) pomocí Azure Portal. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -41,7 +41,7 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Povolení spravované identity přiřazené systémem při vytváření virtuálního počítače
 
-Aby bylo možné během vytváření virtuálního počítače povolit spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Aby bylo možné během vytváření virtuálního počítače povolit spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 - Na kartě **Správa** v části **Identita** přepněte **identitu spravované služby** na **zapnuto**.  
 
@@ -55,7 +55,7 @@ Další informace o vytvoření virtuálního počítače najdete v následujíc
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Povolení spravované identity přiřazené systémem na existujícím virtuálním počítači
 
-Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje virtuální počítač.
 
@@ -67,7 +67,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
 
 ### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Odebrání spravované identity přiřazené systémem z virtuálního počítače
 
-Pokud chcete z virtuálního počítače odebrat spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+Pokud chcete z virtuálního počítače odebrat spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 Pokud máte virtuální počítač, který už nepotřebuje spravovanou identitu přiřazenou systémem:
 
@@ -85,7 +85,7 @@ Pokud máte virtuální počítač, který už nepotřebuje spravovanou identitu
 
 ### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Přiřazení uživatelsky přiřazené identity během vytváření virtuálního počítače
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 V současné době Azure Portal nepodporuje přiřazení spravované identity přiřazené uživatelem během vytváření virtuálního počítače. Místo toho použijte jeden z následujících článků rychlý Start pro vytvoření virtuálního počítače, abyste nejdřív vytvořili virtuální počítač, a potom přejděte k další části, kde najdete podrobnosti o přiřazení spravované identity přiřazené uživatelem k virtuálnímu počítači:
 
@@ -94,7 +94,7 @@ V současné době Azure Portal nepodporuje přiřazení spravované identity p�
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Přiřazení spravované identity přiřazené uživateli k existujícímu virtuálnímu počítači
 
-K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje virtuální počítač.
 2. Přejděte na požadovaný virtuální počítač, klikněte na **Identita**, **přiřazený uživatel** a pak na ** \+ Přidat**.
@@ -107,7 +107,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 ### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače
 
-K odebrání uživatelsky přiřazené identity z virtuálního počítače potřebuje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+K odebrání uživatelsky přiřazené identity z virtuálního počítače potřebuje váš účet přiřazení role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje virtuální počítač.
 2. Přejděte na požadovaný virtuální počítač a klikněte na **Identita**, **přiřazený uživatel**, název spravované identity přiřazené uživatelem, kterou chcete odstranit, a pak klikněte na **Odebrat** (v podokně potvrzení klikněte na **Ano** ).
@@ -117,4 +117,3 @@ K odebrání uživatelsky přiřazené identity z virtuálního počítače pot�
 ## <a name="next-steps"></a>Další kroky
 
 - Pomocí Azure Portal udělte spravované identitě virtuálního počítače Azure [přístup k jinému prostředku Azure](howto-assign-access-portal.md).
-

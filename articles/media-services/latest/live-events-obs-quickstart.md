@@ -6,15 +6,17 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 04/16/2020
-ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 08/31/2020
+ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147813"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265503"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Azure Media Services pomocí OBS
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento rychlý Start vám pomůže vytvořit Azure Media Services živý datový proud pomocí Azure Portal a otevřít OBS (Open pro vysílání studia). Předpokládá, že máte předplatné Azure a máte vytvořený účet Media Services.
 
@@ -28,7 +30,7 @@ V tomto rychlém startu pokryjeme:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -174,7 +176,7 @@ Tato část nastaví vaše výstupy a umožní vám uložit záznam živého str
 
    ![Pole název lokátoru](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. Všechno ostatní na této obrazovce teď ponechte samostatně.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Přehrát výstupní všesměrové vysílání pomocí Azure Media Player
 

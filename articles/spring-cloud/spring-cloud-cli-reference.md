@@ -7,19 +7,16 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 07e7b8db3bf7e1131ec8892a69223eaf4505e8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10f3856a7c0c0a98ab8b23e20342d745b1966b9b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037742"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263191"
 ---
 # <a name="az-spring-cloud"></a>AZ jaře-Cloud
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Správa jarního cloudu Azure pomocí Azure CLI
-
->[!Note]
-> Jarní cloud Azure je aktuálně ve verzi Preview.  Tyto příkazy se můžou v budoucí verzi změnit nebo odebrat.
 
 | AZ jaře-Cloud | Příkazy |
 |------|------:|
@@ -93,11 +90,11 @@ az spring-cloud create  --name -n
 | Povinné parametry | Popis |
 | --- | :--- |
 | --Name-n | Název této instance Azure jaře cloudu |
-| --Resource-Group-g | Určuje skupinu prostředků pro tuto aplikaci.  Konfigurace výchozí skupiny pomocí`az configure --defaults group=<name>` |
+| --Resource-Group-g | Určuje skupinu prostředků pro tuto aplikaci.  Konfigurace výchozí skupiny pomocí `az configure --defaults group=<name>` |
 
 | Volitelné parametry | Popis |
 | --- | :--- |
-| --Location-l | Určuje umístění serveru pro tuto aplikaci.  Vyhledat platná umístění pomocí`az account list-locations` |
+| --Location-l | Určuje umístění serveru pro tuto aplikaci.  Vyhledat platná umístění pomocí `az account list-locations` |
 | --No-Wait | Nespouštějte dlouho probíhající operace.
 
 ### <a name="examples"></a>Příklady
@@ -254,7 +251,7 @@ az spring cloud app deploy  --name -n
 | --ENV | Proměnné prostředí oddělené mezerou ve formátu klíč [= hodnota]. |
 | --instance-počet | Počet instancí. |
 | --JAR – cesta | Pokud je tato cesta k dispozici, nasaďte jar z dané cesty. V opačném případě nasaďte aktuální složku jako tar. |
-| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --paměť | Počet GB paměti na instanci. |
 | --No-Wait | Nečekejte na dokončení dlouho spuštěných operací. |
 | --Běhová verze | Běhová verze jazyka používaného v aplikaci  Povolené hodnoty: `Java_11` , `Java_8` . |
@@ -504,7 +501,7 @@ az spring-cloud app update --name -n
 | --Enable – trvalé úložiště | Datového.  Pokud má hodnotu true, připojte 50 GB disk s výchozí cestou. |
 | --ENV | Proměnné prostředí oddělené mezerou ve formátu klíč [= hodnota]. |
 | --je-veřejné | Datového.  Pokud má hodnotu true, přiřaďte aplikaci veřejnou doménu. |
-| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --No-Wait | Nečekejte na dokončení dlouhotrvajících operací. |
 | --Běhová verze | Běhová verze jazyka používaného v aplikaci  Povolené hodnoty: `Java_11` , `Java_8` . |
 
@@ -739,7 +736,7 @@ Pokud chcete nasadit kód nebo aktualizovat nastavení na existující nasazení
 | --ENV | Proměnné prostředí oddělené mezerou ve formátu klíč [= hodnota]. |
 | --instance-počet | Počet instancí. Výchozí hodnota: 1. |
 | --JAR – cesta | Pokud je tato je k dispozici, nasaďte jar.  V opačném případě nasaďte aktuální složku jako tar. |
-| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM – možnosti | Řetězec obsahující možnosti JVM  Chcete-li zabránit chybám při analýze prostředí, použijte místo ' '. Například  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --paměť | Počet GB paměti na instanci. |
 | --No-Wait | Nečekejte na dokončení dlouho spuštěných operací. |
 | --Běhová verze | Běhová verze jazyka používaného v aplikaci  Povolené hodnoty: `Java_11` , `Java_8` . |

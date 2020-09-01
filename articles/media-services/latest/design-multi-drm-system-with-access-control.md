@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039187"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265656"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Vytvoření a vytvoření subsystému digitálního Rights Management (DRM) pro řešení OTT nebo online streamování je složitý úkol. Operátoři a online poskytovatelé videí obvykle používají jako externí tuto úlohu pro specializované poskytovatele služeb DRM. Cílem tohoto dokumentu je předložit referenční návrh a implementaci referenční implementace komplexního subsystému DRM v řešení OTT nebo online streamování.
 

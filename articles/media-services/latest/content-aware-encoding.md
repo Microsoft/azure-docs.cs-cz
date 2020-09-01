@@ -3,23 +3,25 @@ title: Přednastavení pro kódování s podporou obsahu – Azure Media Service
 description: Tento článek popisuje kódování zohledňující obsah v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 853381dbccea5374806fbeadb1d29632f0525fdb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003724"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265605"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Tím se zajistí řádné snížení kvality, protože přenosová rychlost je snížena, takže se jedná o rozlišení videa. Například kódování s více přenosovými rychlostmi používá pro kódovací žebřík, který se označuje jako tabulka rozlišení a přenosové rychlosti, informace o Media Services [vestavěných přednastavení kódování](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

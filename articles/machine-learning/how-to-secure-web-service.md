@@ -11,14 +11,14 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3e10841852b8a89b344d3bfd9311db8abe15642a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0afb7906e102e4f0fb49245949b08618da1693ec
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319537"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265673"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak zabezpečit webovou službu, která je nasazená prostřednictvím Azure Machine Learning.
@@ -28,7 +28,7 @@ Pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) můžete omezit p
 > [!TIP]
 > Sada Azure Machine Learning SDK používá pojem "SSL" pro vlastnosti, které se vztahují k zabezpečené komunikaci. To neznamená, že webová služba nepoužívá protokol *TLS*. SSL je jenom častěji rozpoznaná doba.
 >
-> Konkrétně webové služby nasazené prostřednictvím Azure Machine Learning podporují pouze protokol TLS verze 1,2.
+> Konkrétně webové služby nasazené prostřednictvím Azure Machine Learning podporují pouze protokol TLS verze 1,1.
 
 Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pomůžou se šifrováním a ověřením identity. Další informace o tom, jak digitální certifikáty fungují, najdete v tématu [Infrastruktura veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure)tématu Wikipedii.
 
@@ -71,7 +71,7 @@ Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény
 > [!WARNING]
 > Certifikáty *podepsané svým držitelem* používejte jenom pro vývoj. Nepoužívejte je v produkčních prostředích. Certifikáty podepsané svým držitelem můžou způsobit problémy v klientských aplikacích. Další informace naleznete v dokumentaci pro síťové knihovny, které používá vaše klientská aplikace.
 
-## <a name="enable-tls-and-deploy"></a><a id="enable"></a>Povolení TLS a nasazení
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a> Povolení TLS a nasazení
 
 Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 

@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264806"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Rozšířené kódování pomocí přizpůsobení předvoleb inverze 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Rozšířené kódování pomocí přizpůsobení předvoleb inverze
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -51,7 +53,7 @@ Při generování miniatur není nutné vždy zadávat šířku a výšku výstu
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Generovat miniatury
+## <a name="generate-thumbnails"></a>Generovat miniatury
 
 V této části se dozvíte, jak přizpůsobit předvolbu, která generuje miniatury. Předem definovaná přednastavení obsahují informace o tom, jak chcete soubor zakódovat, i informace potřebné k vygenerování miniatur. Můžete využít kterékoli z přednastavených součástí informovaná v [této](media-services-mes-presets-overview.md) části a přidat kód, který generuje miniatury.  
 
@@ -64,7 +66,7 @@ Informace o schématu naleznete v [tomto](media-services-mes-schema.md) tématu.
 
 Nezapomeňte si prohlédnout část s [informacemi](#considerations) o tom, co je potřeba.
 
-### <a name="json-preset"></a><a id="json"></a>Přednastavení JSON
+### <a name="json-preset"></a>Přednastavení JSON
 
 ```json
 {
@@ -166,7 +168,7 @@ Nezapomeňte si prohlédnout část s [informacemi](#considerations) o tom, co j
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>Přednastavení XML
+### <a name="xml-preset"></a>Přednastavení XML
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

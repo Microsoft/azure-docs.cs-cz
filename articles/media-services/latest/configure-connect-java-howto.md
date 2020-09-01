@@ -3,7 +3,7 @@ title: Připojení k Azure Media Services V3 API – Java
 description: Tento článek popisuje, jak se připojit k rozhraní Azure Media Services V3 API pomocí Java.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 08/31/2020
 ms.custom: devx-track-java
-ms.author: juliako
-ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: inhenkel
+ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319826"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265622"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Java SDK pomocí metody přihlašování instančního objektu.
 
@@ -59,7 +61,7 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
 ## <a name="add-dependencies"></a>Přidat závislosti
 
 1. V Visual Studio Code otevřete složku, ve které je váš projekt
-1. Vyhledejte a otevřete`pom.xml`
+1. Vyhledejte a otevřete `pom.xml`
 1. Přidat potřebné závislosti
 
     ```xml
@@ -120,7 +122,7 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
    ```
 1. Spusťte aplikaci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Media Services koncepty](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)

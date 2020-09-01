@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000036"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264279"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API 
+# <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
@@ -60,12 +62,12 @@ Při použití REST platí následující požadavky.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardní hlavičky požadavků HTTP, které podporuje Media Services
 Pro každé volání, které provedete v Media Services, je k dispozici sada požadovaných hlaviček, kterou musíte zahrnout do žádosti, a také sadu volitelných hlaviček, které byste mohli chtít zahrnout. Následující tabulka uvádí seznam požadovaných hlaviček:
 
-| Hlavička | Typ | Hodnota |
+| Záhlaví | Typ | Hodnota |
 | --- | --- | --- |
 | Autorizace |Bearer |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
-| x-MS-Version |Desetinné číslo |2,17 (nebo novější verze)|
-| DataServiceVersion |Desetinné číslo |3.0 |
-| MaxDataServiceVersion |Desetinné číslo |3.0 |
+| x-MS-Version |Decimal |2,17 (nebo novější verze)|
+| DataServiceVersion |Decimal |3,0 |
+| MaxDataServiceVersion |Decimal |3,0 |
 
 > [!NOTE]
 > Vzhledem k tomu, že Media Services používá ke zveřejnění rozhraní REST API protokol OData, hlavičky DataServiceVersion a MaxDataServiceVersion by měly být zahrnuté do všech požadavků. Pokud nejsou, ale v současné době Media Services předpokládá, že použitá hodnota DataServiceVersion je 3,0.
@@ -74,7 +76,7 @@ Pro každé volání, které provedete v Media Services, je k dispozici sada po�
 
 Následuje sada volitelných hlaviček:
 
-| Hlavička | Typ | Hodnota |
+| Záhlaví | Typ | Hodnota |
 | --- | --- | --- |
 | Datum |RFC 1123 datum |Časové razítko požadavku |
 | Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -Application/JSON; OData = verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
@@ -88,7 +90,7 @@ Následuje sada volitelných hlaviček:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardní hlavičky HTTP odpovědi, které podporuje Media Services
 Následuje sada hlaviček, které mohou být vráceny v závislosti na prostředku, který požadujete, a akci, kterou jste chtěli provést.
 
-| Hlavička | Typ | Hodnota |
+| Záhlaví | Typ | Hodnota |
 | --- | --- | --- |
 | ID žádosti |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygenerovala se služba. |
 | klient-požadavek-ID |Řetězec |Identifikátor určený volajícím v původní žádosti, pokud je k dispozici. |

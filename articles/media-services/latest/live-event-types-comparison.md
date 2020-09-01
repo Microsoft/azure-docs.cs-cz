@@ -3,7 +3,7 @@ title: Azure Media Services typy Livestream | Microsoft Docs
 description: V Azure Media Services může být živá událost nastavena buď na *předávací* , nebo na *živé kódování*. V tomto článku se zobrazuje podrobná tabulka, která porovnává typy událostí typu Live.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090055"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265248"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
 
-V Azure Media Services může být [živá událost](/rest/api/media/liveevents) nastavena buď na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi), nebo za běhu za *provozu* (místní kodér Live Encoder odesílá datový proud s jednou přenosovou rychlostí). 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+V Azure Media Services může být  [živá událost](/rest/api/media/liveevents) nastavena buď na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi), nebo za běhu za *provozu* (místní kodér Live Encoder odesílá datový proud s jednou přenosovou rychlostí). 
 
 V tomto článku jsou porovnávány funkce typů živých událostí.
 
@@ -36,13 +38,13 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 
 | Funkce | Předávací živá událost | Událost Standard nebo Premium1080p Live |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |Ne |Ano |
 | Maximální rozlišení videa pro kanál příspěvků |4K (4096x2160 v 60 snímcích za sekundu) |1080p (1920x1088 v 30 snímcích/s)|
 | Doporučené maximum vrstev v kanálu příspěvků|Až 12|Jeden zvuk|
 | Maximální počet vrstev ve výstupu| Stejné jako vstup|Až 6 (viz Předvolby systému níže)|
 | Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|–|
 | Maximální přenosová rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
-| Podpora pro zvukové stopy ve více jazycích|Yes|No|
+| Podpora pro zvukové stopy ve více jazycích|Ano|Ne|
 | Podporované vstupní kodeky videa |H. 264/AVC a H. 265/HEVC|H. 264/AVC|
 | Podporované video kodeky pro výstup|Stejné jako vstup|H. 264/AVC|
 | Podporovaná bitová hloubka videa, vstup a výstup|Až 10 bitů včetně HDR 10/HLG|8 bitů|
@@ -55,13 +57,13 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Maximální doba běhu| 24 hodin × 365 dní, živý lineární | 24 hodin × 365 dní, živý lineární (Preview)|
 | Možnost předávání dat titulků Embedded CEA 608/708|Ano|Ano|
 | Možnost zapnout živý přepis|Ano|Ano|
-| Podpora pro vložení SLAT|No|No|
-| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| No|No|
+| Podpora pro vložení SLAT|Ne|Ne|
+| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| Ne|Ne|
 | Podpora pro signalizaci reklamy prostřednictvím zpráv SCTE-35 in-band|Ano|Ano|
-| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Yes|Částečné|
-| Podpora pro neuniformní vstupní GOPs|Yes|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
-| Podpora pro vstup variabilní frekvence snímků|Yes|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
-| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|No|Pokud není LiveOutput spuštěný, po 12 hodinách.|
+| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Ano|Částečné|
+| Podpora pro neuniformní vstupní GOPs|Ano|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
+| Podpora pro vstup variabilní frekvence snímků|Ano|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
+| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|Ne|Pokud není LiveOutput spuštěný, po 12 hodinách.|
 
 ## <a name="system-presets"></a>Předvolby systému
 
