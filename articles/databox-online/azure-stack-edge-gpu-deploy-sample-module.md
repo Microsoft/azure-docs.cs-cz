@@ -1,23 +1,23 @@
 ---
-title: Nasadit modul GPU na zařízení Microsoft Azure Stack Edge | Microsoft Docs
+title: Nasadit modul GPU na zařízení s grafickým procesorem Azure Stack Edge | Microsoft Docs
 description: V této části najdete popis postupu povolení výpočetní služby a zajištění, aby vaše zařízení Azure Stack Edge bylo připravené pomocí místního uživatelského rozhraní.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 68badb1524c869309a0e2d96eaf6c9e490111bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084308"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254555"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-device"></a>Nasazení modulu IoT s povoleným GPU na Azure Stack hraniční zařízení
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Nasazení modulu IoT s povoleným GPU na zařízení s grafickým procesorem Azure Stack Edge
 
-Tento článek popisuje, jak na zařízení s Azure Stack Edge nasadit modul IoT Edge s povoleným grafickým procesorem. 
+Tento článek popisuje, jak na zařízení GPU Azure Stack Edge nasadit modul IoT Edge s povoleným grafickým procesorem. 
 
 V tomto článku získáte informace o těchto tématech:
   - Příprava Azure Stackho Edge na spuštění modulu GPU
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow srovnávacího testu pro procesor s grafickým procesorem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 

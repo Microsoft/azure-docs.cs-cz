@@ -1,6 +1,6 @@
 ---
-title: Přehled Microsoft Azure Stack Edge | Microsoft Docs
-description: Popisuje Azure Stack Edge, což je řešení úložiště, které používá fyzické zařízení pro přenos prostřednictvím sítě do Azure.
+title: Microsoft Azure Stack Edge s přehledem GPU | Microsoft Docs
+description: Popisuje Azure Stack Edge pomocí GPU, což je řešení úložiště, které používá fyzické zařízení pro přenos prostřednictvím sítě do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: e3caf4e0e60b8ef9fb0b30b599b22e0f07d8998c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a8e1c83573de53962b3646304389023d91ab6dd3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088379"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256238"
 ---
 # <a name="what-is-azure-stack-edge-with-gpu-preview"></a>Co je Azure Stack Edge s grafickým procesorem (Preview)?
 
@@ -48,7 +48,7 @@ Azure Stack Edge má následující možnosti:
 |Akcelerované AI Inferencing| Povoleno integrovaným grafickým procesorem (jeden nebo dva v závislosti na modelu).|
 |Hraniční Computing      |Umožňuje analýzu, zpracování a filtrování dat. Podporuje virtuální počítače a clustery Kubernetes.|
 |Vysoký výkon | Vysoce výkonné výpočetní a datové přenosy.|
-|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
+|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Spravované v cloudu     |Zařízení a služba se spravují prostřednictvím Azure Portal.  |
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Podporované protokoly     | Podpora pro protokoly Standard SMB, NFS a REST pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge](azure-stack-edge-system-requirements.md).|

@@ -1,6 +1,6 @@
 ---
-title: Správa výpočetní sítě v Azure Stack Edge pro přístup k modulům | Microsoft Docs
-description: V této části najdete popis postupu při rozšiřování výpočetní sítě na Azure Stack Edge pro přístup k modulům prostřednictvím externí IP adresy.
+title: Nasadit bezstavovou aplikaci Kubernetes na Azure Stack hraničních PROCESORů přes IoT Edge modul | Microsoft Docs
+description: Popisuje, jak nasadit bezstavovou aplikaci Kubernetes na zařízení GPU Azure Stack Edge pomocí modulu IoT Edge, ke kterému se přistupoval prostřednictvím externí IP adresy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 8de3dbd754cd0cbef947d2cde44542f9f3f77a08
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084230"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254164"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>Použití modulu IoT Edge ke spuštění bezstavové aplikace Kubernetes na zařízení s Azure Stack Edge
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>Použití modulu IoT Edge ke spuštění bezstavové aplikace Kubernetes na zařízení GPU Azure Stack Edge
 
 Tento článek popisuje, jak můžete použít modul IoT Edge k nasazení bezstavové aplikace na zařízení Azure Stack Edge.
 

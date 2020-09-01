@@ -4,14 +4,14 @@ description: 'Kurz: Naučte se používat Open Source nástroje pro migraci dat 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85118759"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255983"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat z různých zdrojů dat
 > * Export ze služby Azure Cosmos DB do formátu JSON
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provedete následující kroky:
 
@@ -40,6 +40,9 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provede
 * **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti v Azure Portal najdete v tématu [úrovně výkonu](performance-levels.md) a [cenové úrovně](https://azure.microsoft.com/pricing/details/cosmos-db/) v Azure Cosmos DB.
 
 * **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud chcete migrovat na účet Azure Cosmos DB, který má propustnost na úrovni databáze, poskytněte při vytváření kontejnerů Azure Cosmos klíč oddílu.
+
+> [!IMPORTANT]
+> Abyste se ujistili, že nástroj pro migraci dat používá protokol TLS (Transport Layer Security) 1,2 při připojování k účtům Azure Cosmos, použijte .NET Framework verze 4,7 nebo postupujte podle pokynů uvedených v [tomto článku](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
 
 ## <a name="overview"></a><a id="Overviewl"></a>Přehled
 

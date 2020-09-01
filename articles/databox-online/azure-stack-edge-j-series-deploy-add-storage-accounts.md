@@ -1,22 +1,22 @@
 ---
 title: Kurz přenosu dat do účtu úložiště pomocí Azure Stackch GPU na hraničních zařízeních | Microsoft Docs
-description: Naučte se přidávat účty úložiště na zařízeních GPU Azure Stack Edge a připojovat se k nim.
+description: Naučte se přidávat a připojovat se k místním a hraničním účtům úložiště na zařízeních GPU Azure Stack Edge.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7289498516664228e569d821032eeefeb6c65be4
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146245"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256392"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge"></a>Kurz: přenos dat prostřednictvím účtů úložiště pomocí Azure Stack Edge 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Připojení k účtu úložiště
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před přidáním účtů úložiště do Azure Stack Edge se ujistěte, že:
 

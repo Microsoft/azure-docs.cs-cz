@@ -1,6 +1,6 @@
 ---
-title: Kurz pro přípravu Azure Portalho prostředí Datacenter k nasazení Azure Stack Edge | Microsoft Docs
-description: První kurz o nasazení Azure Stack Edge zahrnuje přípravu Azure Portal.
+title: Kurz pro přípravu Azure Portal prostředí Datacenter k nasazení Azure Stack hraničního procesoru | Microsoft Docs
+description: První kurz o nasazení Azure Stackch GPU na hraničních zařízeních zahrnuje přípravu Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c02af8983489651d8b5b83d5d3107a534c51f067
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181846"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254674"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Kurz: Příprava na nasazení Azure Stack Edge pomocí GPU 
 
@@ -58,7 +58,7 @@ Teď můžete začít shromažďovat informace týkající se konfigurace softwa
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční zdroj, vaše zařízení Azure Stack Edge a síť datacenter.
 
