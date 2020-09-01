@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66474017"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279019"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz: integrace jedné doménové struktury služby AD pomocí synchronizace hodnot hash hesel (KOSMETICE)
 
@@ -27,10 +27,10 @@ ms.locfileid: "66474017"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí synchronizace hodnot hash hesel.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
-- Počítač s nainstalovanou [technologií Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
-- [Externí síťový adaptér](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
+- Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
+- [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
 - [Předplatné Azure](https://azure.microsoft.com/free)
 - Kopie systému Windows Server 2016
 
@@ -183,7 +183,7 @@ Nyní musíme vytvořit tenanta Azure AD, abychom mohli synchronizovat naše už
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Vyberte **ikonu plus (+)** a vyhledejte **Azure Active Directory**.
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
-4. Vyberte **Vytvořit**.</br>
+4. Vyberte **Create** (Vytvořit).</br>
 ![Vytvoření](media/tutorial-password-hash-sync/create1.png)</br>
 5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
@@ -207,8 +207,8 @@ Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci se spustí
 3. Na uvítací obrazovce zaškrtněte políčko, kterým odsouhlasíte licenční podmínky, a klikněte na **Pokračovat**.  
 4. Na obrazovce expresního nastavení klikněte na **Použít expresní nastavení**.</br>  
 ![Vytvoření](media/tutorial-password-hash-sync/express1.png)</br>
-5. Na obrazovce připojit k Azure AD zadejte uživatelské jméno a heslo pro globálního správce služby Azure AD. Klikněte na **Další**.  
-6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na **Další**.  
+5. Na obrazovce připojit k Azure AD zadejte uživatelské jméno a heslo pro globálního správce služby Azure AD. Klikněte na **Next** (Další).  
+6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na **Next** (Další).  
 7. Na obrazovce Připraveno ke konfiguraci klikněte na **Nainstalovat**.
 8. Až instalace skončí, klikněte na **Konec**.
 9. Po dokončení instalace se odhlaste a znovu se přihlaste, než použijete Synchronization Service Manager nebo editor pravidel synchronizace.

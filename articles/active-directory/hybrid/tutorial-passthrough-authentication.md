@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66473010"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279138"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz: integrace jedné doménové struktury služby AD pomocí předávacího ověřování (PTA)
 
@@ -24,11 +24,11 @@ ms.locfileid: "66473010"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí předávacího ověřování.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
-- Počítač s nainstalovanou [technologií Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
+- Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Předplatné Azure](https://azure.microsoft.com/free)
-- - [Externí síťový adaptér](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
+- - [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
 - Kopie systému Windows Server 2016
 - [Vlastní doména](../../active-directory/fundamentals/add-custom-domain.md) , kterou lze ověřit
 
@@ -187,7 +187,7 @@ Nyní musíme vytvořit tenanta Azure AD, abychom mohli synchronizovat naše už
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Vyberte **ikonu plus (+)** a vyhledejte **Azure Active Directory**.
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
-4. Vyberte **Vytvořit**.</br>
+4. Vyberte **Create** (Vytvořit).</br>
 ![Vytvoření](media/tutorial-password-hash-sync/create1.png)</br>
 5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.
@@ -228,7 +228,7 @@ Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci se spustí
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Na obrazovce připojit k Azure AD zadejte uživatelské jméno a heslo globálního správce, který jsme vytvořili výše, a klikněte na **Další**.
 2. Na obrazovce připojit adresáře klikněte na **Přidat adresář**.  Pak vyberte **vytvořit nový účet služby AD** a zadejte uživatelské jméno a heslo CONTOSO\Administrator a klikněte na **OK**.
-3. Klikněte na **Další**.
+3. Klikněte na **Next** (Další).
 4. Na obrazovce konfigurace přihlášení ke službě Azure AD vyberte **pokračovat bez porovnání všech přípon UPN s ověřenými doménami** a klikněte na **Další.**
 5. Na obrazovce filtrování domény a organizační jednotky klikněte na **Další**.
 6. Na obrazovce jedinečně identifikující uživatele klikněte na **Další**.
