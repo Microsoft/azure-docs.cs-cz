@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846976"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229918"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -34,8 +34,8 @@ Architektura vytváření sestav se skládá z následujících součástí:
     - **Přihlášení** – [Sestava přihlášení](concept-sign-ins.md) poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
 Tento článek vám poskytne přehled o sestavě auditu.
  
@@ -80,7 +80,7 @@ Data auditu můžete filtrovat v následujících polích:
 - Služba
 - Kategorie
 - Aktivita
-- Status
+- Stav
 - Cíl
 - Spustil(a) (činitel)
 - Rozsah dat
@@ -114,7 +114,7 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Ověřování
 - Autorizace
 - Kontakt
 - Zařízení
@@ -125,7 +125,7 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - KerberosDomain
 - Správa
 - Popisek
-- Jiné
+- Další
 - PermissionGrantPolicy
 - Zásada
 - ResourceManagement
@@ -134,12 +134,12 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
 Filtr **aktivity** je založen na typu kategorie a prostředku aktivity, kterou provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Seznam všech aktivit auditu můžete získat pomocí Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
 - Vše
-- Úspěch
+- Success
 - Selhání
 
 **Cílový** filtr vám umožní vyhledat konkrétní cíl podle názvu nebo hlavního názvu uživatele (UPN). Název cíle a hlavní název uživatele (UPN) rozlišují velká a malá písmena. 
@@ -210,9 +210,9 @@ Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdet
 
 ## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 
-Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, zobrazí se úplné zobrazení protokolů aktivit Office 365 jenom v centru pro správu Microsoft 365. 
+Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, zobrazí se úplné zobrazení protokolů aktivit Office 365 jenom v centru pro správu Microsoft 365. 
 
-Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e28da81400a97216836cfd9eccf0d4859ce0762f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902350"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228218"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory
 
@@ -31,7 +31,7 @@ Další informace o dostupných rolích služby Azure AD najdete v tématu [při
 Běžný způsob, jak přiřadit role Azure AD uživateli, je na stránce **přiřazené role** pro uživatele. Můžete taky nakonfigurovat, aby se způsobila možnost zvýšení úrovně oprávnění uživatele na roli pomocí Privileged Identity Management (PIM). Další informace o tom, jak používat PIM, najdete v tématu [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
-> Pokud máte plán licencí Azure AD Premium P2 a už používáte PIM, provedou se všechny úlohy správy rolí v [prostředí Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md).
+> Pokud máte plán licencí Azure AD Premium P2 a už používáte PIM, provedou se všechny úlohy správy rolí v [prostředí Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md). Tato funkce je v současné době omezená na přiřazení pouze jedné role. Aktuálně nemůžete vybrat více rolí a přiřadit je uživateli najednou.
 >
 > ![Role Azure AD spravované v PIM pro uživatele, kteří už používají PIM a mají licenci Premium P2](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 

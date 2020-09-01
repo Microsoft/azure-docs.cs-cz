@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146415"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229391"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
@@ -29,7 +29,7 @@ V tomto příkladu vytvoříme kanál sestavení a vydání pro nasazení infras
 Pokud chcete postupovat podle kroků v tomto článku, potřebujete organizaci Azure DevOps a týmový projekt.
 
 * [Vytvoření organizace Azure DevOps](/azure/devops/organizations/accounts/create-organization)
-* [Vytvoření projektu v Azure DevOps](/azure/devops/organizations/projects/create-projects)
+* [Vytvoření projektu v Azure DevOps](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>Správa zdrojového kódu pro vaše prostředí
 
@@ -325,7 +325,7 @@ V tomto příkladu se zaměříme na složku **HPC-Application** . Složka **HPC
 
     a. [Pomocí vizuálního návrháře](/azure/devops/pipelines/get-started-designer). Pokud ho chcete použít, klikněte na stránce **Nový kanál** na použít vizuálního návrháře.
 
-    b. [Pomocí sestavení YAML](/azure/devops/pipelines/get-started-yamls). Nový kanál YAML můžete vytvořit kliknutím na možnost Azure Repos nebo GitHub na stránce nový kanál. Alternativně můžete uložit níže uvedený příklad v rámci správy zdrojového kódu a odkazovat na existující soubor YAML kliknutím na vizuální Návrhář a pak pomocí šablony YAML.
+    b. [Pomocí sestavení YAML](/azure/devops/pipelines/get-started-yaml). Nový kanál YAML můžete vytvořit kliknutím na možnost Azure Repos nebo GitHub na stránce nový kanál. Alternativně můžete uložit níže uvedený příklad v rámci správy zdrojového kódu a odkazovat na existující soubor YAML kliknutím na vizuální Návrhář a pak pomocí šablony YAML.
 
     ```yml
     # To publish an application into Azure Batch, we need to

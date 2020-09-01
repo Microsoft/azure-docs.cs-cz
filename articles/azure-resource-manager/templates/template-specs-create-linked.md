@@ -2,13 +2,13 @@
 title: Vytvoření specifikace šablony s propojenými šablonami
 description: Naučte se vytvořit specifikaci šablony s propojenými šablonami.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: a70d4be2810b8d5a19fa9d806444cac1674e1a05
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.date: 08/31/2020
+ms.openlocfilehash: f1808be73981c3ab4d53fd2a651822b93b5fb790
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959217"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227997"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Kurz: Vytvoření specifikace šablony s propojenými šablonami (Preview)
 
@@ -186,7 +186,7 @@ az group create \
   --name templateSpecRG \
   --location westus2
 
-az template-specs create \
+az ts create \
   --name webSpec \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
@@ -207,14 +207,14 @@ Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
 
 ```azurecli
-az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 ```
 
 ---
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
-Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s výjimkou toho, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
+Nyní můžete nasadit specifikaci šablony. Nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s tím rozdílem, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -6,13 +6,13 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228354"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 

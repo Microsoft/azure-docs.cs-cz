@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843704"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228881"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps kanálu pro přijímání dat
 
@@ -64,7 +64,7 @@ Kód by měl být například uložený v úložišti Azure DevOps, GitHub nebo 
 Data technici pracují se zdrojovým kódem poznámkového bloku Pythonu místně v integrovaném vývojovém prostředí (například [Visual Studio Code](https://code.visualstudio.com)) nebo přímo v pracovním prostoru datacihly. Po dokončení změn kódu budou tyto zásady sloučeny do úložiště po vytvoření větve.
 
 > [!TIP] 
-> `.py`Místo ve `.ipynb` formátu poznámkového bloku Jupyter doporučujeme kód Uložit do souborů. Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
+> `.py`Místo v Jupyter notebook formátu doporučujeme kód Uložit do souborů `.ipynb` . Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
 
 ### <a name="azure-data-factory-source-code"></a>Zdrojový kód Azure Data Factory
 

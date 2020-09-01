@@ -1,20 +1,20 @@
 ---
 title: Přehled serverů s podporou ARC Azure (Preview)
-description: Naučte se používat servery s podporou Azure ARC (Preview) ke správě počítačů, které jsou hostované mimo Azure, jako by se jedná o prostředek Azure.
+description: Naučte se používat servery s podporou Azure ARC (Preview) ke správě serverů hostovaných mimo Azure, jako je prostředek Azure.
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211318"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228083"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Co jsou servery s podporou Azure ARC (Preview)?
 
-Servery s podporou ARC Azure (Preview) umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure v podnikové síti nebo jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek.
+Servery s podporou ARC Azure (Preview) umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, v podnikové síti nebo v jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek.
 
 Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
 
@@ -51,4 +51,4 @@ Agent připojeného počítače pošle službě pravidelné zprávy prezenčníh
 
 ## <a name="next-steps"></a>Další kroky
 
-Před vyhodnocením nebo povolením serverů s povoleným ARC (ve verzi Preview) na více hybridních počítačích si přečtěte článek [Přehled agenta připojeného počítače](agent-overview.md) , abyste zjistili, co je potřeba, technické podrobnosti o agentovi a metodách nasazení.
+Před vyhodnocením nebo povolením serverů s povoleným ARC (ve verzi Preview) na více hybridních počítačích si přečtěte téma [Přehled agenta připojení počítačů](agent-overview.md) , abyste pochopili požadavky, technické podrobnosti o agentovi a metody nasazení.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077003"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228677"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2
 
@@ -45,7 +45,6 @@ V této tabulce jsou uvedené funkce služby Blob Storage, které můžete použ
 |Snímky|Preview|Zatím nepodporováno|[Snímky objektů BLOB](snapshots-overview.md)|
 |Statické weby|Preview|Zatím nepodporováno|[Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)|
 |Neměnné úložiště|Preview|Zatím nepodporováno|[Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md)|
-|Zásady správy životního cyklu|Preview|Zatím nepodporováno|[Správa životního cyklu úložiště objektů blob v Azure](storage-lifecycle-management-concepts.md)|
 |Obnovitelné odstranění kontejneru|Preview|Preview|[Obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md)|
 |Obnovitelné odstranění objektu BLOB|Zatím nepodporováno|Zatím nepodporováno|[Obnovitelné odstranění pro objekty blob](storage-blob-soft-delete.md)|
 |Blobfuse|Preview|Zatím nepodporováno|[Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse](storage-how-to-mount-container-linux.md)|

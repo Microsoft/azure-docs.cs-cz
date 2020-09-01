@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4bed663b66e6c1a8c537ac9bac17ccdd8a8b152c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004149"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229035"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -640,7 +640,7 @@ Maximální počet seznamů řízení přístupu, které můžete použít u adr
 
 ### <a name="provide-feedback-or-report-issues"></a>Poskytnutí zpětné vazby nebo hlášení problémů
 
-Můžete zadat svůj názor nebo ohlásit problém pomocí kterékoli z těchto stránek: [PowerShell](https://github.com/Azure/azure-powershell/issues/new?assignees=&labels=triage&template=az-module-bug-report.md&title=), [.NET](https://github.com/Azure/azure-sdk-for-net/issues/new?assignees=&labels=&template=bug_report.md&title=), [Python](https://github.com/Azure/azure-sdk-for-python/issues/new?assignees=&labels=&template=bug_report.md&title=)
+Můžete zadat svůj názor nebo ohlásit problém na  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) .
 
 ## <a name="see-also"></a>Viz také
 

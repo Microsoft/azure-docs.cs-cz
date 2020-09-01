@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829625"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229748"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -47,9 +47,9 @@ S monitorováním Azure AD můžete směrovat protokoly do:
 * centrum událostí Azure, kde se můžete integrovat s existujícími nástroji SIEM, jako je Splunk, SumoLogic nebo QRadar.
 
 > [!NOTE]
-Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection). Podrobnosti najdete v tématu [Azure monitor změny terminologie](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand) .
+Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../../azure-monitor/platform/data-platform.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../../azure-monitor/terminology.md) .
 
-[Přečtěte si další informace o zásadách uchovávání sestav](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention).
+[Přečtěte si další informace o zásadách uchovávání sestav](./reference-reports-data-retention.md).
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Licencování a předpoklady pro Azure AD Reporting a monitoring
 
@@ -97,7 +97,7 @@ Vytváření sestav a monitorování se používá ke splnění vašich obchodn�
 
 * Vyžadováno pro řešení pro splnění obchodních potřeb
 * Skvělé vyhovět potřebám podniku
-* Neuvedeno
+* Není
 
 |Oblast |Popis |
 |-|-|
@@ -115,25 +115,25 @@ Díky monitorování Azure AD můžete směrovat protokoly aktivit Azure AD do s
 
 #### <a name="archive-logs-in-a-storage-account"></a>Archivace protokolů v účtu úložiště
 
-Směrováním protokolů do účtu služby Azure Storage je můžete uchovat po dobu delší, než je výchozí doba uchování, jak je uvedeno v našich [zásadách uchovávání informací](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention). Tuto metodu použijte, pokud potřebujete archivovat protokoly, ale nemusíte je integrovat se systémem SIEM a nepotřebujete průběžné dotazy a analýzu. Pořád můžete provádět hledání na vyžádání.
+Směrováním protokolů do účtu služby Azure Storage je můžete uchovat po dobu delší, než je výchozí doba uchování, jak je uvedeno v našich [zásadách uchovávání informací](./reference-reports-data-retention.md). Tuto metodu použijte, pokud potřebujete archivovat protokoly, ale nemusíte je integrovat se systémem SIEM a nepotřebujete průběžné dotazy a analýzu. Pořád můžete provádět hledání na vyžádání.
 
-Informace o [směrování dat do účtu úložiště](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account).
+Informace o [směrování dat do účtu úložiště](./quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Odeslat protokoly do protokolů Azure Monitor
 
-[Protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) slučují data monitorování z různých zdrojů. Poskytuje také dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu aplikací a používání prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete shromažďovat, monitorovat a upozorňovat na shromážděná data. Tuto metodu použijte, pokud nemáte existující řešení SIEM, ve kterém chcete data odesílat přímo, ale chcete dotazy a analýzy. Jakmile budou data v Azure Monitor protokoly, můžete je odeslat do centra událostí a odtud do SIEM, pokud chcete.
+[Protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md) slučují data monitorování z různých zdrojů. Poskytuje také dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu aplikací a používání prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete shromažďovat, monitorovat a upozorňovat na shromážděná data. Tuto metodu použijte, pokud nemáte existující řešení SIEM, ve kterém chcete data odesílat přímo, ale chcete dotazy a analýzy. Jakmile budou data v Azure Monitor protokoly, můžete je odeslat do centra událostí a odtud do SIEM, pokud chcete.
 
-Naučte se [odesílat data do protokolů Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+Naučte se [odesílat data do protokolů Azure monitor](./howto-integrate-activity-logs-with-log-analytics.md).
 
 K monitorování běžných scénářů, které zahrnují události přihlášení a auditu, můžete také nainstalovat předem vytvořená zobrazení protokolů aktivit služby Azure AD.
 
-Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views).
+Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](./howto-install-use-log-analytics-views.md).
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>Streamování protokolů do vašeho centra událostí Azure
 
 Směrování protokolů do centra událostí Azure umožňuje integraci s nástroji SIEM třetích stran. Tato integrace umožňuje kombinovat data protokolu aktivit Azure AD s jinými daty spravovanými vaším SIEM a poskytnout tak lepší přehled o vašem prostředí. 
 
-Informace o [streamování protokolů do centra událostí](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Informace o [streamování protokolů do centra událostí](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plánování operací a zabezpečení pro Azure AD Reporting a monitoring
 
@@ -151,9 +151,9 @@ Sestavy služby Azure AD mohou číst následující role:
 
 * Čtenář sestav
 
-Přečtěte si další informace o [rolích pro správu Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+Přečtěte si další informace o [rolích pro správu Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-*Vždy používejte koncept nejnižších oprávnění ke snížení rizika ohrožení bezpečnosti účtu*. Zvažte implementaci [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) k dalšímu zabezpečení vaší organizace.
+*Vždy používejte koncept nejnižších oprávnění ke snížení rizika ohrožení bezpečnosti účtu*. Zvažte implementaci [Privileged Identity Management](../privileged-identity-management/pim-configure.md) k dalšímu zabezpečení vaší organizace.
 
 ##  
 
@@ -163,27 +163,27 @@ V závislosti na tom, jaká rozhodnutí jste provedli dříve pomocí výše uve
 
 ### <a name="consume-and-archive-azure-ad-logs"></a>Využívání a archivace protokolů služby Azure AD
 
-[Vyhledání sestav aktivit na webu Azure Portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
+[Vyhledání sestav aktivit na webu Azure Portal](./howto-find-activity-reports.md)
 
-[Archivace protokolů služby Azure AD na účet Azure Storage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Archivace protokolů služby Azure AD na účet Azure Storage](./quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 ### <a name="implement-monitoring-and-analytics"></a>Implementace monitorování a analýzy
 
-[Odeslat protokoly do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[Odeslat protokoly do Azure Monitor](./howto-integrate-activity-logs-with-log-analytics.md)
 
-[Instalace a použití zobrazení Log Analytics pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[Instalace a použití zobrazení Log Analytics pro Azure Active Directory](./howto-install-use-log-analytics-views.md)
 
-[Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Interpretace schématu protokolů auditu v Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
+* [Interpretace schématu protokolů auditu v Azure Monitor](./reference-azure-monitor-audit-log-schema.md)
 
-* [Interpretace schématu přihlášení v Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [Interpretace schématu přihlášení v Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 
- * [Streamování protokolů Azure AD do centra událostí Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Streamování protokolů Azure AD do centra událostí Azure](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 
-* [Integrace protokolů Azure AD s nástrojem Splunk pomocí služby Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk)
+* [Integrace protokolů Azure AD s nástrojem Splunk pomocí služby Azure Monitor](./howto-integrate-activity-logs-with-splunk.md)
 
-* [Integrace protokolů Azure AD s nástrojem SumoLogic pomocí služby Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic)
+* [Integrace protokolů Azure AD s nástrojem SumoLogic pomocí služby Azure Monitor](./howto-integrate-activity-logs-with-sumologic.md)
 
  
 
@@ -191,6 +191,6 @@ V závislosti na tom, jaká rozhodnutí jste provedli dříve pomocí výše uve
 
 ## <a name="next-steps"></a>Další kroky
 
-Zvažte implementaci [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
+Zvažte implementaci [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
-Zvažte implementaci [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) .
+Zvažte implementaci [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) .

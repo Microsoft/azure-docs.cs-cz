@@ -10,12 +10,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85360516"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227861"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Kurz: základní prostředí služby Active Directory
 
@@ -28,8 +28,8 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít k otestování 
 Tento kurz se skládá z
 ## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
-- Počítač s nainstalovanou [technologií Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
-- [Externí síťový adaptér](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
+- Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
+- [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.
 - [Předplatné Azure](https://azure.microsoft.com/free)
 - Kopie systému Windows Server 2016
 - [Rozhraní Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
@@ -199,7 +199,7 @@ Teď je potřeba vytvořit tenanta Azure AD, abyste mohli synchronizovat naše u
 1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Vyberte **ikonu plus (+)** a vyhledejte **Azure Active Directory**.
 3. Vyberte ve výsledcích hledání **Azure Active Directory**.
-4. Vyberte **Vytvořit**.</br>
+4. Vyberte **Create** (Vytvořit).</br>
 ![Vytvoření](media/tutorial-single-forest/create1.png)</br>
 5. Zadejte **název organizace** společně s **počátečním názvem domény**. Potom vyberte **Vytvořit**. Vytvoří se váš adresář.
 6. Po dokončení této možnosti klikněte na odkaz **tady** a adresář spravujte.

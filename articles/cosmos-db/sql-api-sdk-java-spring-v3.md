@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 04a50d37606754ff4540d1056e378d46388e2592
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590636"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228031"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -126,9 +126,11 @@ cosmos.queryMetricsEnabled=true
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
 |**Přispívání do sady SDK** | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Kurz**| [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+|**Tutoriál**| [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Kurz pro jarní data Azure Cosmos DB na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>Historie verzí
+
+### <a name="300-beta2-unreleased"></a>3.0.0-beta. 2 (neuvolní se)
 
 ### <a name="300-beta1-2020-08-17"></a>3.0.0-beta. 1 (2020-08-17)
 #### <a name="new-features"></a>Nové funkce
@@ -160,7 +162,7 @@ cosmos.queryMetricsEnabled=true
 * Pevná `IgnoreCase`  &  `AllIgnoreCase` klíčová slova pro dotazy na ignorované případy
 * Byla odstraněna výchozí hodnota jednotky žádosti 4000 při automatickém vytváření kontejnerů.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

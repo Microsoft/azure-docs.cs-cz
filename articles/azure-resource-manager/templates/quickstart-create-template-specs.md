@@ -2,15 +2,15 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 84422862cfa73c2cbb27411bf0c1a7fb3fab9b35
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 47791455c63852bfc6f8a7e3152fabe18d303ecb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962651"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227725"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
@@ -75,7 +75,7 @@ Níže jsou uvedené možnosti.
 1. Pak vytvořte v této skupině prostředků specifikaci šablony. Dáte nové šabloně specifikace název **storageSpec**.
 
     ```azurecli
-    az template-specs create \
+    az ts create \
       --name storageSpec \
       --version "1.0" \
       --resource-group templateSpecRG \
@@ -205,7 +205,7 @@ Níže jsou uvedené možnosti.
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
-Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s výjimkou toho, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
+Nyní můžete nasadit specifikaci šablony. Nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s tím rozdílem, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -253,7 +253,7 @@ Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je s
 1. Získejte ID prostředku specifikace šablony.
 
     ```azurecli
-    id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+    id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
     ```
 
     > [!NOTE]

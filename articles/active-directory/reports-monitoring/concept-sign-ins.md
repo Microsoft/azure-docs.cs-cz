@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816078"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228762"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -32,8 +32,8 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
@@ -142,14 +142,14 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Moderní ověřování|Popis|
+|Název|Moderní ověřování|Popis|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
 |Exchange ActiveSync| |Tento filtr zobrazuje všechny pokusy o přihlášení, kde došlo k pokusu o provedení protokolu EAS.|
 |Prohlížeč|![Zaškrtnout](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
 |Exchange ActiveSync| | Zobrazí všechny pokusy o přihlášení od uživatelů s klientskými aplikacemi pomocí Exchange ActiceSync pro připojení k Exchangi Online.|
-|Prostředí PowerShell pro Exchange Online| |Slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Prostředí PowerShell pro Exchange Online| |Slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Webové služby Exchange| |Programovací rozhraní, které používá aplikace Outlook, Outlook pro Mac a aplikace třetích stran.|
 |IMAP4| |Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.|
 |Rozhraní MAPI přes protokol HTTP| |Používá Outlook 2010 a novější.|
@@ -234,7 +234,7 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Umístění
 - IP adresa
-- Date (Datum)
+- Datum
 - Vyžaduje se MFA
 - Stav přihlášení
 
@@ -271,13 +271,12 @@ Možnost **Přihlášení** poskytuje úplný přehled o všech událostech při
 
 ## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 
-Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Vezměte v úvahu bod, který znamená, že aktivita Office 365 a protokoly aktivit služby Azure AD sdílejí velký počet prostředků adresáře. Úplné zobrazení protokolů aktivit Office 365 nabízí jenom centrum pro správu Microsoft 365. 
+Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). Vezměte v úvahu bod, který znamená, že aktivita Office 365 a protokoly aktivit služby Azure AD sdílejí velký počet prostředků adresáře. Úplné zobrazení protokolů aktivit Office 365 nabízí jenom centrum pro správu Microsoft 365. 
 
-Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Kódy chyb sestav aktivit přihlašování](reference-sign-ins-error-codes.md)
 * [Zásady uchovávání dat v Azure AD](reference-reports-data-retention.md)
 * [Latence sestav Azure AD](reference-reports-latencies.md)
-

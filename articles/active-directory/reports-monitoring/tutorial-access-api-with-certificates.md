@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bc763a99c945925b80171738f4076e6305d92df9
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85608004"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229455"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: získání dat pomocí rozhraní API pro vytváření sestav Azure Active Directory s certifikáty
 
@@ -85,7 +85,7 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
    ``` 
 6. Nyní můžete získat přístupový token pro aplikaci MS Graph API pomocí tohoto certifikátu. Pomocí rutiny **Get-MSCloudIdMSGraphAccessTokenFromCert** z modulu MSCloudIdUtils PowerShellu předejte ID aplikace a kryptografický otisk, který jste získali v předchozím kroku. 
 
-   ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 7. Pomocí přístupového tokenu ve skriptu PowerShellu se můžete dotazovat na Graph API. Pomocí rutiny **Invoke-MSCloudIdMSGraphQuery** z MSCloudIDUtils můžete vytvořit výčet koncového bodu nenašla a directoryAudits. Tato rutina zpracovává vícestránkové výsledky a odesílá výsledky do kanálu PowerShellu.
 
@@ -100,5 +100,5 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte představu o rozhraní API pro generování sestav](concept-reporting-api.md)
-* [Reference k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Reference k rozhraní API sestav aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)

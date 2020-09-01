@@ -1,6 +1,6 @@
 ---
-title: Vizualizace dat v Průzkumníkovi Gen2 – Azure Time Series Insights Gen2 | Microsoft Docs
-description: Seznamte se s funkcemi a možnostmi dostupnými v Azure Time Series Insights Gen2 Exploreru.
+title: Vizualizovat data v Průzkumníkovi TSI – Azure Time Series Insights Gen2 | Microsoft Docs
+description: Seznamte se s funkcemi a možnostmi dostupnými v Průzkumníkovi Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,22 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164151"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227045"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Průzkumník Gen2
+# <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
 Tento článek popisuje různé funkce a možnosti, které jsou k dispozici v rámci [ukázkového prostředí](https://insights.timeseries.azure.com/preview/demo)Azure Time Series Insights Gen2.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete začít s Azure Time Series Insights Gen2 Explorer, musíte:
+Chcete-li začít s Azure Time Series Insights Explorer, musíte:
 
 * Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) .
 * [Poskytněte přístup k datům](./time-series-insights-data-access.md) prostředí Azure Time Series Insights Gen2, které jste pro účet vytvořili. Můžete poskytovat přístup i ostatním uživatelům.
@@ -31,11 +31,11 @@ Pokud chcete začít s Azure Time Series Insights Gen2 Explorer, musíte:
   * Informace [o tom, jak se připojit k centru událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * Informace [o tom, jak se připojit ke službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Prozkoumejte Azure Time Series Insights Gen2 Explorer
+## <a name="explore-the-azure-time-series-insights-explorer"></a>Prozkoumat Průzkumníka Azure Time Series Insights
 
-Azure Time Series Insights Průzkumník Gen2 se skládá z následujících sedmi prvků:
+Azure Time Series Insights Průzkumník se skládá z následujících sedmi prvků:
 
-[![Azure Time Series Insights Gen2 Explorer – přehled](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Přehled Průzkumníka Azure Time Series Insights](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [Panel prostředí](#1-environment-panel): zobrazí všechna prostředí Azure Time Series Insights Gen2.
 1. [Navigační panel](#2-navigation-bar): umožňuje přepínat mezi stránkami **analyzovat** a **model** .
@@ -193,7 +193,7 @@ Pokud chcete vybrat nový motiv, vyberte ikonu vašeho profilu, která se nachá
 > [!TIP]
 > Výběr jazyka je také k dispozici tak, že vyberete ikonu vašeho profilu.
 
-Azure Time Series Insights Průzkumník Gen2 podporuje dva motivy:
+Azure Time Series Insights Explorer podporuje dva motivy:
 
 * **Světlý motiv**: výchozí motiv zobrazený v celém tomto dokumentu.
 * **Tmavý motiv**: vykreslí Průzkumníka, jak je znázorněno zde:
@@ -204,7 +204,7 @@ Azure Time Series Insights Průzkumník Gen2 podporuje dva motivy:
 
 ### <a name="gen2-terms-panel"></a>Panel podmínek Gen2
 
-Tato část se vztahuje jenom na existující prostředí 1. generace, která se pokusí použít Průzkumníka v aktualizovaném uživatelském rozhraní. V kombinaci můžete chtít použít produkt 1. generace a produkt Gen2. Přidali jsme některé funkce z existujícího uživatelského rozhraní do aktualizovaného Průzkumníka, ale v novém Azure Time Series Insights Průzkumníku Gen2 můžete získat plný zážitek uživatelského rozhraní pro prostředí 1. generace.
+Tato část se vztahuje jenom na existující prostředí 1. generace, která se pokusí použít Průzkumníka v aktualizovaném uživatelském rozhraní. V kombinaci můžete chtít použít produkt 1. generace a produkt Gen2. Přidali jsme některé funkce z existujícího uživatelského rozhraní do aktualizovaného Průzkumníka, ale v novém Průzkumníkovi Azure Time Series Insights můžete získat plné prostředí uživatelského rozhraní pro prostředí 1. generace.
 
 Místo hierarchie se zobrazí panel Azure Time Series Insights Gen2 podmínek. Panel podmínky vám umožní definovat dotazy ve vašem prostředí. Použijte ho k filtrování dat na základě predikátu.
 

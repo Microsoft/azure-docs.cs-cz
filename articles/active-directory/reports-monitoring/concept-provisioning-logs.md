@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826867"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229867"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -34,8 +34,8 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
     - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
 
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
@@ -94,7 +94,7 @@ Můžete filtrovat data zřizování. Některé hodnoty filtru se dynamicky napl
 Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
-- Date (Datum)
+- Datum
 - Status
 - Akce
 
@@ -218,7 +218,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 - Služba Log Analytics momentálně není podporovaná.
 
-- Když přistupujete k protokolům zřizování z kontextu aplikace, nefiltrují automaticky události na konkrétní aplikaci podle způsobu, jakým protokoly auditují.
+- Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
 
 ## <a name="error-codes"></a>Kódy chyb
 
@@ -226,28 +226,26 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 
 |Kód chyby|Popis|
 |---|---|
-|Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
+|Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|
 |InternalServerError |Cílová aplikace vrátila neočekávanou chybu. Může se jednat o problém se službou cílové aplikace, který brání v práci. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD se dokázala ověřit u cílové aplikace, ale nemá autorizaci k provedení této aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD se dokázala ověřit u cílové aplikace, ale nemá autorizaci k provedení této aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](../saas-apps/tutorial-list.md)příslušné aplikace.|
 |UnprocessableEntity|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může dojít k potížím se službou cílové aplikace, která brání jejímu fungování.|
 |WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen za 40 minut.|
-|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)MS Graph API. Všimněte si, že restartování zřizování spustí počáteční cyklus, který může nějakou dobu trvat. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
-|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace. |
-|MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) o konfiguraci atributů, které se shodují.|
-|SchemaAttributeNotFound |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k přizpůsobení atributů a ujistěte se, že je konfigurace správná.|
+|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)MS Graph API. Všimněte si, že restartování zřizování spustí počáteční cyklus, který může nějakou dobu trvat. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
+|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](../saas-apps/tutorial-list.md)příslušné aplikace. |
+|MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](../app-provisioning/customize-application-attributes.md) o konfiguraci atributů, které se shodují.|
+|SchemaAttributeNotFound |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](../app-provisioning/customize-application-attributes.md) k přizpůsobení atributů a ujistěte se, že je konfigurace správná.|
 |InternalError |Došlo k vnitřní chybě služby ve službě Azure AD Provisioning. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
 |InvalidDomain |Operaci nelze provést, protože hodnota atributu obsahuje neplatný název domény. Aktualizujte název domény na uživateli nebo ho přidejte do seznamu povolených aplikací v cílové aplikaci. |
 |Časový limit |Operaci nelze dokončit, protože odpověď trvala příliš dlouho. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
 |LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.|
-|DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
-|DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
+|DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
 |ImportSkipped | Při vyhodnocování každého uživatele se pokusíme importovat uživatele ze zdrojového systému. K této chybě obvykle dochází v případě, že uživatel, který naimportoval, nemá vlastnost Matching definovanou v mapování atributů. Bez hodnoty přítomné v objektu User pro atribut Matching nemůžeme vyhodnotit rozsahy, shodující se ani exportovat změny. Všimněte si, že přítomnost této chyby neindikuje, že se uživatel nachází v oboru, protože pro uživatele zatím nehodnotili rozsah.|
 |EntrySynchronizationSkipped | Služba zřizování úspěšně provedla dotaz na zdrojový systém a identifikovala uživatele. U uživatele se neuskutečnila žádná další akce, která se přeskočila. Přeskočení může být způsobeno tím, že uživatel je mimo rozsah nebo uživatel, který už v cílovém systému existuje, a nevyžaduje žádné další změny.|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ověřit stav zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [Ověřit stav zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](../app-provisioning/application-provisioning-config-problem.md)

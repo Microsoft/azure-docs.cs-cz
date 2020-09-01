@@ -17,14 +17,14 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229850"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit Azure AD v Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit služby Azure AD v Azure Monitoru
 
 Protokoly aktivit služby Azure Active Directory (Azure AD) můžete směrovat do několika koncových bodů pro dlouhodobé uchovávání dat a přehledy dat. Tato funkce umožňuje:
 
@@ -48,7 +48,7 @@ Pomocí této funkce můžete směrovat protokoly auditu Azure AD a protokoly p�
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -79,8 +79,8 @@ Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecn
 | Kategorie protokolu | Počet uživatelů | Počet událostí za den | Objem dat za měsíc (odhad) | Náklady za měsíc (odhad) | Náklady za rok (odhad) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
 | Auditování | 100 000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
-| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
-| Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
+| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
+| Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
 | Přihlášení | 100 000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD |
  
 
@@ -103,9 +103,9 @@ Následující tabulka obsahuje odhadované náklady na měsíc pro základní c
 | Kategorie protokolu | Počet uživatelů | Počet událostí za sekundu | Počet událostí za pětiminutový interval | Objem za interval | Počet zpráv za interval | Počet zpráv za měsíc | Náklady za měsíc (odhad) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Auditování | 100 000 | 18 | 5 400 | 10,8 MB | 43 | 371 520 | 10,83 USD |
-| Auditování | 1 000 | 0.1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
+| Auditování | 1 000 | 0,1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
 | Přihlášení | 100 000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
-| Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
+| Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Náklady na Azure Monitor protokolů
 
@@ -126,7 +126,7 @@ Následující tabulka obsahuje odhadované náklady na měsíc pro základní c
 
 
 
-Pokud chcete zkontrolovat náklady související se správou protokolů Azure Monitor, přečtěte si téma [Správa nákladů pomocí řízení objemu dat a uchovávání v protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Pokud chcete zkontrolovat náklady související se správou protokolů Azure Monitor, přečtěte si téma [Správa nákladů pomocí řízení objemu dat a uchovávání v protokolech Azure monitor](../../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -180,13 +180,13 @@ Odpověď **: nové**zásady uchovávání informací budou aplikovány na proto
 
 **Otázka: Jaké nástroje SIEM se aktuálně podporují?** 
 
-Odpověď: **a** **: v**současné době je Azure monitor podporován [Splunk](tutorial-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), LogRhythm a LOGZ.IO. Další informace o fungování konektorů najdete v tématu [Streamování dat monitorování Azure do centra událostí, aby je mohl používat externí nástroj](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Odpověď: **a** **: v**současné době je Azure monitor podporován [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm a LOGZ.IO. Další informace o fungování konektorů najdete v tématu [Streamování dat monitorování Azure do centra událostí, aby je mohl používat externí nástroj](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
 **Otázka: Jak je možné integrovat protokoly aktivit Azure AD s instancí nástroje Splunk?**
 
-**Odpověď:** Nejprve nastavte [směrování protokolů aktivit Azure AD do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md) a pak postupujte podle pokynů k [integraci protokolů aktivit s nástrojem Splunk](tutorial-integrate-activity-logs-with-splunk.md).
+**Odpověď:** Nejprve nastavte [směrování protokolů aktivit Azure AD do centra událostí](./tutorial-azure-monitor-stream-logs-to-event-hub.md) a pak postupujte podle pokynů k [integraci protokolů aktivit s nástrojem Splunk](./howto-integrate-activity-logs-with-splunk.md).
 
 ---
 
@@ -198,7 +198,7 @@ Odpověď: **a** **: v**současné době je Azure monitor podporován [Splunk](t
 
 **Otázka: Můžu získat přístup k datům z centra událostí bez použití externího nástroje SIEM?** 
 
-Odpověď **: Ano**. Pro přístup k protokolům z vlastní aplikace můžete použít [rozhraní API služby Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
+Odpověď **: Ano**. Pro přístup k protokolům z vlastní aplikace můžete použít [rozhraní API služby Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md). 
 
 ---
 
@@ -206,5 +206,5 @@ Odpověď **: Ano**. Pro přístup k protokolům z vlastní aplikace můžete po
 ## <a name="next-steps"></a>Další kroky
 
 * [Archivace protokolů aktivit do účtu úložiště](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Směrování protokolů aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Směrování protokolů aktivit do centra událostí](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Integrace protokolů aktivit s Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

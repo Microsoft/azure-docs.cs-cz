@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079638"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228388"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
@@ -94,9 +94,9 @@ Použijte Azure Security Center k přístupu k síti jenom v čase, abyste mohli
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě doporučujeme doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
-* [Postup zabezpečení příchozích volání na Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Postup zabezpečení příchozích volání na Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Jak omezit příchozí IP adresy](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Jak omezit příchozí IP adresy](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bod
 
 * [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -382,7 +382,7 @@ Pokud se používá základní ověřování, budete muset zadat uživatelské j
 
 Pokud používáte infrastrukturu jako kód, neukládejte hesla do kódu a místo toho použijte Azure Key Vault k ukládání a načítání přihlašovacích údajů.
 
-* [Zabezpečení a přístup k datům v Logic Apps](./logic-apps-securing-a-logic-app.md)
+* [Zabezpečení a přístup k datům v Logic Apps](logic-apps-securing-a-logic-app.md)
 
 * [Jak nastavit a načíst tajný klíč z Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ Každý koncový bod žádosti v aplikaci logiky navíc má v adrese URL koncov�
 
 * [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Vysvětlení, jak omezit příchozí IP adresy v Logic Apps](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Vysvětlení, jak omezit příchozí IP adresy v Logic Apps](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -611,11 +611,11 @@ Aktivační událost žádosti podporuje pro příchozí požadavky pouze zabezp
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-* [Zabezpečený přístup a data v Azure Logic Apps](./logic-apps-securing-a-logic-app.md)
+* [Zabezpečený přístup a data v Azure Logic Apps](logic-apps-securing-a-logic-app.md)
 
-* [Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps](../connectors/connectors-native-reqres.md#tls-support)
+* [Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps](../connectors/connectors-native-http.md#tls-support)
+* [Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Zabezpečený přístup k datům historie spouštění](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [Zabezpečený přístup k datům historie spouštění](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaší aplikace logiky, můžete použít Azure Resource Lock. Tato možnost zabraňuje ostatním změnám a odstraňování produkčních prostředků.
 
-* [Zabezpečený přístup k operacím Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Zabezpečený přístup k operacím Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -885,7 +885,7 @@ Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organiza
 
 * [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Jak zabezpečit přístup k Logic Apps přes Azure RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Jak zabezpečit přístup k Logic Apps přes Azure RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -911,9 +911,9 @@ K ochraně citlivých dat a tajných kódů taky používejte zabezpečené para
 
 * [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Principy parametrů zabezpečené akce](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Principy parametrů zabezpečené akce](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Také se ujistěte, že zabezpečíte data v historii spouštění pomocí zmate
 
 * [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Zabezpečený přístup ke vstupům a výstupům historie spouštění](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Zabezpečený přístup ke vstupům a výstupům historie spouštění](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Zabezpečený přístup ke vstupům parametrů](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Zabezpečený přístup ke vstupům parametrů](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 Když vytvoříte prostředí ISE (Integration Service Environment) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí Azure Key Vault. Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
 
-* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ V současné době pouze konkrétní vestavěné triggery a akce podporují spra
 
 Můžete také implementovat kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Kromě toho byste měli rozšířit základní definici pracovního postupu apli
 
 * [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1151,9 +1151,9 @@ Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bod
 
 * [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Postup zálohování klíčů Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

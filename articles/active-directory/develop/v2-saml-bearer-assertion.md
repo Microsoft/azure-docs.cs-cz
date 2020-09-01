@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949350"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227912"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
 Tok kontrolního výrazu SAML 2,0 OAuth vám umožní požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít stávající vztah důvěryhodnosti. Signatura použitá pro kontrolní výraz SAML zajišťuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný zprostředkovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na jeho obsah, aby identifikoval Předmět kontrolního výrazu pro účely související se zabezpečením.
@@ -27,7 +27,7 @@ Tok kontrolního výrazu SAML je užitečný při načítání dat z rozhraní A
 
 Pro aplikace, které umožňují interaktivní přihlášení založené na prohlížeči pro získání kontrolního výrazu SAML a pak chcete přidat přístup k rozhraní API Protected OAuth (například Microsoft Graph), můžete vytvořit žádost OAuth pro získání přístupového tokenu pro rozhraní API. Když je prohlížeč přesměrován do služby Azure AD za účelem ověření uživatele, prohlížeč zahájí relaci z přihlášení SAML a uživatel nebude muset zadávat své přihlašovací údaje.
 
-Pro uživatele, kteří se ověřují pomocí zprostředkovatelů identity, jako je Active Directory Federation Services (AD FS) (AD FS), je pro Azure Active Directory taky podporovaný tok kontrolního výrazu OAuth.  Kontrolní výraz SAML získaný ze služby AD FS se dá použít v toku OAuth k ověření uživatele.
+Tok kontrolního výrazu protokolu SAML protokolu OAuth je podporován pouze pro uživatele, kteří se ověřují pomocí zprostředkovatelů identity, jako je například Active Directory Federation Services (AD FS) (ADFS) Azure Active Directory.  Kontrolní výraz SAML získaný ze služby AD FS se dá použít v toku OAuth k ověření uživatele.
 
 ![Tok OAuth](./media/v2-saml-bearer-assertion/1.png)
 

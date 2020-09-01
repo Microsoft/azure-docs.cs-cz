@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272039"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227759"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -270,7 +270,7 @@ Služba Azure: jádro
 > | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
 > | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní prostředky
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -797,6 +797,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/Read | Získá Application Gateway připojení PrivateEndpoint |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/Write | Aktualizuje připojení Application Gateway PrivateEndpoint. |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/DELETE | Odstraní připojení Application Gateway PrivateEndpoint. |
+> | Microsoft. Network/applicationGateways/privateLinkConfigurations/Read | Získá Application Gateway konfigurace privátních odkazů. |
 > | Microsoft. Network/applicationGateways/privateLinkResources/Read | Získá prostředky PrivateLink pro ApplicationGateway. |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Read | Načte zásady Application Gateway WAF. |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Write | Vytvoří Application Gateway zásady WAF nebo aktualizuje zásady Application Gateway WAF. |
@@ -880,6 +881,9 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/dnszones/TXT/Read | Získá sadu záznamů typu TXT ve formátu JSON. Sada záznamů obsahuje seznam záznamů a také hodnoty TTL, značek a ETag. |
 > | Microsoft. Network/dnszones/TXT/Write | Vytvoří nebo aktualizuje sadu záznamů typu TXT v zóně DNS. Zadané záznamy nahradí aktuální záznamy v sadě záznamů. |
 > | Microsoft. Network/dnszones/TXT/DELETE | Odeberte sadu záznamů daného názvu a zadejte ' TXT ' ze zóny DNS. |
+> | Microsoft. Network/dscpConfiguration/Write | Operace vložení konfigurace DSCP |
+> | Microsoft. Network/dscpConfiguration/Read | Operace vložení konfigurace DSCP |
+> | Microsoft. Network/dscpConfiguration/JOIN/Action | Připojí konfiguraci DSCP. |
 > | Microsoft. Network/expressRouteCircuits/Read | Získat ExpressRoute |
 > | Microsoft. Network/expressRouteCircuits/Write | Vytvoří nebo aktualizuje existující ExpressRoute. |
 > | Microsoft. Network/expressRouteCircuits/JOIN/Action | Spojí okruh Express Route. Nelze upozorňovat. |
@@ -916,6 +920,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/expressRoutePorts/Write | Vytvoří nebo aktualizuje ExpressRoutePorts |
 > | Microsoft. Network/expressRoutePorts/JOIN/Action | Připojí porty Express Route. Nelze upozorňovat. |
 > | Microsoft. Network/expressRoutePorts/DELETE | Odstraní ExpressRoutePorts |
+> | Microsoft. Network/expressRoutePorts/generateloa/Action | Generuje LOA pro ExpressRoutePorts. |
 > | Microsoft. Network/expressRoutePorts/propojuje/číst | Získá ExpressRouteLink |
 > | Microsoft. Network/expressRoutePortsLocations/Read | Získat umístění portů Express Route |
 > | Microsoft. Network/expressRouteServiceProviders/Read | Získá poskytovatele expresního Route Service. |
@@ -2041,6 +2046,10 @@ Služba Azure: [Azure Search](../search/index.yml)
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/Write | Vytvoří proxy server připojení privátního koncového bodu se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný proxy privátního koncového bodu. |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/Read | Vrátí seznam proxy serverů připojení privátního koncového bodu nebo získá vlastnosti zadaného proxy serveru připojení privátního koncového bodu. |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/DELETE | Odstraní existující proxy připojení privátního koncového bodu. |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Write | Vytvoří nový sdílený prostředek privátního propojení se zadanými parametry nebo aktualizuje vlastnosti zadaného sdíleného prostředku privátního propojení. |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Read | Vrátí seznam sdílených prostředků privátního propojení nebo získá vlastnosti zadaného sdíleného prostředku privátního propojení. |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/DELETE | Odstraní existující sdílený prostředek privátního propojení. |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/operationStatuses/Read | Získat podrobnosti o dlouhodobém běhu sdíleného prostředku privátního propojení |
 
 ### <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -2075,9 +2084,18 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazit seznam všech prostředků privátního propojení signálem |
 > | **Akce dataaction** | **Popis** |
-> | Microsoft. SignalRService/Signaler/serverConnection/Write | Spusťte připojení k serveru. |
+> | Microsoft. SignalRService/Signaler/serverConnection/Action | Spusťte připojení k serveru. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Action | Přidejte nebo odeberte připojení klientů ze skupin nebo zavřete připojení klienta. |
+> | Microsoft. SignalRService/Signaler/uživatel/akce | Přidejte nebo odeberte uživatele ze skupin. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Read | Ověřte existenci připojení. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Write | Odesílá zprávy přímo do připojení klienta. |
+> | Microsoft. SignalRService/Signaler/Group/Read | Ověřte existenci skupiny. |
+> | Microsoft. SignalRService/Signaler/Group/Write | Vysílat zprávy do klientských připojení v určité skupině nebo v některých skupinách. |
+> | Microsoft. SignalRService/Signaler/hub/Write | Vysílat zprávy všem klientským připojením připojeným k tomuto centru. |
 > | Microsoft. SignalRService/Signaler/Service/accessKey/Action | Získejte dočasnou AccessKey pro podepisování ClientTokens. |
 > | Microsoft. SignalRService/Signaler/Service/clientToken/Action | Získejte ClientToken pro spuštění připojení klienta. |
+> | Microsoft. SignalRService/Signaler/uživatel/číst | Ověřte existenci uživatele, a pokud se jednalo o skupinu. |
+> | Microsoft. SignalRService/Signaler/uživatel/zápis | Odešle zprávy uživateli, který může mít více připojení klientů. |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -4386,6 +4404,12 @@ Služba Azure: [Event Hubs](../event-hubs/index.yml)
 > | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
 > | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
 > | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
+> | Microsoft. EventHub/obory názvů/privateEndpointConnectionProxies/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. EventHub/obory názvů/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
+> | Microsoft. EventHub/obory názvů/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
+> | Microsoft. EventHub/obory názvů/privateEndpointConnections/DELETE | Odebere připojení privátního koncového bodu. |
+> | Microsoft. EventHub/obory názvů/privateEndpointConnections/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. EventHub/obory názvů/privateLinkResources/Read | Načte typy prostředků, které podporují připojení privátních koncových bodů. |
 > | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. EventHub/obory názvů/Providers/Microsoft. Insights/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
@@ -5082,6 +5106,15 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/čtení | Získá spuštění v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/Write | Vytvoří nebo aktualizuje spuštění v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/funkce/číst | Získá všechny povolené funkce pro Machine Learning Services pracovní prostor. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/číst | Načte koncové body odvození v Machine Learning Servicesch prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/Write | Vytvoří nebo aktualizuje koncový bod odvození v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/DELETE | Odstraní koncový bod odvození v Machine Learning Servicesch prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/checkNameAvailability/číst | Kontroluje název koncového bodu odvození v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/nasazení/číst | Získá nasazení v koncovém bodu v Machine Learning Servicesch prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/nasazení/zápis | Vytvoří nebo aktualizuje nasazení v koncovém bodu odvození v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/nasazení/odstranit | Odstraní nasazení v koncovém bodu odvození v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/nasazení/checkNameAvailability/číst | Kontroluje název nasazení v koncovém bodu pro odvození v Machine Learning Servicesch pracovních prostorech. |
+> | Microsoft. MachineLearningServices/pracovní prostory/inferenceEndpoints/nasazení/SKU/číst | Získá nastavení škálování SKU pro nasazení v koncovém bodu v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/štítky/export/akce | Exportovat popisky projektů označování v Machine Learning Servicesch pracovních prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/popisky/štítky/číst | Získá popisky projektů označování v Machine Learning Servicesch prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/popisky/štítky/zápisy | Vytvoří popisky projektů označování v Machine Learning Servicesch pracovních prostorech. |
@@ -5307,6 +5340,9 @@ Služba Azure: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel/DELETE | Odstraní autorizační pravidlo oboru názvů. Výchozí autorizační pravidlo oboru názvů nelze odstranit.  |
 > | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel/klíče listkey/Action | Získání připojovacího řetězce k oboru názvů |
 > | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel/regenerateKeys/Action | Autorizační pravidlo oboru názvů znovu vygeneruje primární/SecondaryKey. Zadejte klíč, který se musí znovu vygenerovat. |
+> | Microsoft. NotificationHubs/obory názvů/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
+> | Microsoft. NotificationHubs/obory názvů/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
+> | Microsoft. NotificationHubs/obory názvů/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
 > | Microsoft. NotificationHubs/obory názvů/NotificationHubs/Write | Vytvořte centrum oznámení a aktualizujte jeho vlastnosti. Mezi vlastnosti patří hlavně přihlašovací údaje PNS. Autorizační pravidla a hodnota TTL |
 > | Microsoft. NotificationHubs/obory názvů/NotificationHubs/Read | Získá seznam popisů prostředků centra oznámení. |
 > | Microsoft. NotificationHubs/obory názvů/NotificationHubs/DELETE | Odstranit prostředek centra oznámení |
@@ -6006,6 +6042,12 @@ Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
 > | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
 > | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
+> | Microsoft. Relay/obory názvů/privateEndpointConnectionProxies/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. Relay/obory názvů/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
+> | Microsoft. Relay/obory názvů/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
+> | Microsoft. Relay/obory názvů/privateEndpointConnections/DELETE | Odebere připojení privátního koncového bodu. |
+> | Microsoft. Relay/obory názvů/privateEndpointConnections/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. Relay/obory názvů/privateLinkResources/Read | Načte typy prostředků, které podporují připojení privátních koncových bodů. |
 > | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. Relay/obory názvů/Providers/Microsoft. Insights/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
@@ -6077,6 +6119,12 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
 > | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/Write | Vytvořit proxy připojení privátního koncového bodu |
 > | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
+> | Microsoft. ServiceBus/obory názvů/privateEndpointConnectionProxies/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. ServiceBus/obory názvů/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
+> | Microsoft. ServiceBus/obory názvů/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
+> | Microsoft. ServiceBus/obory názvů/privateEndpointConnections/DELETE | Odebere připojení privátního koncového bodu. |
+> | Microsoft. ServiceBus/obory názvů/privateEndpointConnections/stav operationstatus/Read | Získá stav operace asynchronního privátního koncového bodu. |
+> | Microsoft. ServiceBus/obory názvů/privateLinkResources/Read | Načte typy prostředků, které podporují připojení privátních koncových bodů. |
 > | Microsoft. ServiceBus/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. ServiceBus/obory názvů/Providers/Microsoft. Insights/diagnosticSettings/Write | Získá seznam popisů prostředků nastavení diagnostiky oboru názvů. |
 > | Microsoft. ServiceBus/obory názvů/Providers/Microsoft. Insights/logDefinitions/Read | Získá seznam popisů prostředků v názvech oborů názvů. |
@@ -6511,6 +6559,9 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/threatintelligence/metriky/Action | Shromáždit metriky logiky hrozeb |
 > | Microsoft. SecurityInsights/threatintelligence/bulkDelete/Action | Analýza hrozeb hromadného odstranění |
 > | Microsoft. SecurityInsights/threatintelligence/bulkTag/Action | Inteligentní značky – Analýza hrozeb |
+> | Microsoft. SecurityInsights/Watchlists/Read | Získá Watchlists |
+> | Microsoft. SecurityInsights/Watchlists/Write | Vytvořit Watchlists |
+> | Microsoft. SecurityInsights/Watchlists/DELETE | Odstraní Watchlists |
 
 ## <a name="devops"></a>DevOps
 
@@ -7213,14 +7264,85 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/LogProfiles/DELETE | Odstraní profil protokolu aktivit. |
 > | Microsoft. Insights/LogProfiles/Read | Číst profil protokolu aktivit |
 > | Microsoft. Insights/protokoly/číst | Čtení dat ze všech protokolů |
+> | Microsoft. Insights/logs/AADDomainServicesAccountLogon/číst | Čtení dat z tabulky AADDomainServicesAccountLogon |
+> | Microsoft. Insights/logs/AADDomainServicesAccountManagement/číst | Čtení dat z tabulky AADDomainServicesAccountManagement |
+> | Microsoft. Insights/logs/AADDomainServicesDirectoryServiceAccess/číst | Čtení dat z tabulky AADDomainServicesDirectoryServiceAccess |
+> | Microsoft. Insights/logs/AADDomainServicesLogonLogoff/číst | Čtení dat z tabulky AADDomainServicesLogonLogoff |
+> | Microsoft. Insights/logs/AADDomainServicesPolicyChange/číst | Čtení dat z tabulky AADDomainServicesPolicyChange |
+> | Microsoft. Insights/logs/AADDomainServicesPrivilegeUse/číst | Čtení dat z tabulky AADDomainServicesPrivilegeUse |
+> | Microsoft. Insights/logs/AADDomainServicesSystemSecurity/číst | Čtení dat z tabulky AADDomainServicesSystemSecurity |
+> | Microsoft. Insights/logs/AADManagedIdentitySignInLogs/číst | Čtení dat z tabulky AADManagedIdentitySignInLogs |
+> | Microsoft. Insights/logs/AADNonInteractiveUserSignInLogs/číst | Čtení dat z tabulky AADNonInteractiveUserSignInLogs |
+> | Microsoft. Insights/logs/AADServicePrincipalSignInLogs/číst | Čtení dat z tabulky AADServicePrincipalSignInLogs |
 > | Microsoft. Insights/logs/ADAssessmentRecommendation/číst | Čtení dat z tabulky ADAssessmentRecommendation |
+> | Microsoft. Insights/logs/AddonAzureBackupAlerts/číst | Čtení dat z tabulky AddonAzureBackupAlerts |
+> | Microsoft. Insights/logs/AddonAzureBackupJobs/číst | Čtení dat z tabulky AddonAzureBackupJobs |
+> | Microsoft. Insights/logs/AddonAzureBackupPolicy/číst | Čtení dat z tabulky AddonAzureBackupPolicy |
+> | Microsoft. Insights/logs/AddonAzureBackupProtectedInstance/číst | Čtení dat z tabulky AddonAzureBackupProtectedInstance |
+> | Microsoft. Insights/logs/AddonAzureBackupStorage/číst | Čtení dat z tabulky AddonAzureBackupStorage |
+> | Microsoft. Insights/logs/ADFActivityRun/číst | Čtení dat z tabulky ADFActivityRun |
+> | Microsoft. Insights/logs/ADFPipelineRun/číst | Čtení dat z tabulky ADFPipelineRun |
+> | Microsoft. Insights/logs/ADFSSISIntegrationRuntimeLogs/číst | Čtení dat z tabulky ADFSSISIntegrationRuntimeLogs |
+> | Microsoft. Insights/logs/ADFSSISPackageEventMessageContext/číst | Čtení dat z tabulky ADFSSISPackageEventMessageContext |
+> | Microsoft. Insights/logs/ADFSSISPackageEventMessages/číst | Čtení dat z tabulky ADFSSISPackageEventMessages |
+> | Microsoft. Insights/logs/ADFSSISPackageExecutableStatistics/číst | Čtení dat z tabulky ADFSSISPackageExecutableStatistics |
+> | Microsoft. Insights/logs/ADFSSISPackageExecutionComponentPhases/číst | Čtení dat z tabulky ADFSSISPackageExecutionComponentPhases |
+> | Microsoft. Insights/logs/ADFSSISPackageExecutionDataStatistics/číst | Čtení dat z tabulky ADFSSISPackageExecutionDataStatistics |
+> | Microsoft. Insights/logs/ADFTriggerRun/číst | Čtení dat z tabulky ADFTriggerRun |
 > | Microsoft. Insights/logs/ADReplicationResult/číst | Čtení dat z tabulky ADReplicationResult |
 > | Microsoft. Insights/logs/ADSecurityAssessmentRecommendation/číst | Čtení dat z tabulky ADSecurityAssessmentRecommendation |
+> | Microsoft. Insights/logs/ADTDigitalTwinsOperation/číst | Čtení dat z tabulky ADTDigitalTwinsOperation |
+> | Microsoft. Insights/logs/ADTEventRoutesOperation/číst | Čtení dat z tabulky ADTEventRoutesOperation |
+> | Microsoft. Insights/logs/ADTModelsOperation/číst | Čtení dat z tabulky ADTModelsOperation |
+> | Microsoft. Insights/logs/ADTQueryOperation/číst | Čtení dat z tabulky ADTQueryOperation |
+> | Microsoft. Insights/logs/AegDeliveryFailureLogs/číst | Čtení dat z tabulky AegDeliveryFailureLogs |
+> | Microsoft. Insights/logs/AegPublishFailureLogs/číst | Čtení dat z tabulky AegPublishFailureLogs |
 > | Microsoft. Insights/protokoly/výstraha/čtení | Čtení dat z tabulky výstrah |
 > | Microsoft. Insights/logs/AlertHistory/číst | Čtení dat z tabulky AlertHistory |
+> | Microsoft. Insights/logs/AmlComputeClusterEvent/číst | Čtení dat z tabulky AmlComputeClusterEvent |
+> | Microsoft. Insights/logs/AmlComputeClusterNodeEvent/číst | Čtení dat z tabulky AmlComputeClusterNodeEvent |
+> | Microsoft. Insights/logs/AmlComputeCpuGpuUtilization/číst | Čtení dat z tabulky AmlComputeCpuGpuUtilization |
+> | Microsoft. Insights/logs/AmlComputeJobEvent/číst | Čtení dat z tabulky AmlComputeJobEvent |
+> | Microsoft. Insights/logs/AmlRunStatusChangedEvent/číst | Čtení dat z tabulky AmlRunStatusChangedEvent |
+> | Microsoft. Insights/logs/ApiManagementGatewayLogs/číst | Čtení dat z tabulky ApiManagementGatewayLogs |
+> | Microsoft. Insights/logs/AppAvailabilityResults/číst | Čtení dat z tabulky AppAvailabilityResults |
+> | Microsoft. Insights/logs/AppBrowserTimings/číst | Čtení dat z tabulky AppBrowserTimings |
+> | Microsoft. Insights/logs/AppCenterError/číst | Čtení dat z tabulky AppCenterError |
+> | Microsoft. Insights/logs/AppDependencies/číst | Čtení dat z tabulky AppDependencies |
+> | Microsoft. Insights/logs/AppEvents/číst | Čtení dat z tabulky AppEvents |
+> | Microsoft. Insights/logs/AppExceptions/číst | Čtení dat z tabulky AppExceptions |
 > | Microsoft. Insights/logs/ApplicationInsights/číst | Čtení dat z tabulky ApplicationInsights |
+> | Microsoft. Insights/logs/AppMetrics/číst | Čtení dat z tabulky AppMetrics |
+> | Microsoft. Insights/logs/AppPageViews/číst | Čtení dat z tabulky AppPageViews |
+> | Microsoft. Insights/logs/AppPerformanceCounters/číst | Čtení dat z tabulky AppPerformanceCounters |
+> | Microsoft. Insights/logs/AppPlatformLogsforSpring/číst | Čtení dat z tabulky AppPlatformLogsforSpring |
+> | Microsoft. Insights/logs/AppPlatformSystemLogs/číst | Čtení dat z tabulky AppPlatformSystemLogs |
+> | Microsoft. Insights/logs/AppRequests/číst | Čtení dat z tabulky AppRequests |
+> | Microsoft. Insights/logs/AppServiceAntivirusScanLogs/číst | Čtení dat z tabulky AppServiceAntivirusScanLogs |
+> | Microsoft. Insights/logs/AppServiceAppLogs/číst | Čtení dat z tabulky AppServiceAppLogs |
+> | Microsoft. Insights/logs/AppServiceAuditLogs/číst | Čtení dat z tabulky AppServiceAuditLogs |
+> | Microsoft. Insights/logs/AppServiceConsoleLogs/číst | Čtení dat z tabulky AppServiceConsoleLogs |
+> | Microsoft. Insights/logs/AppServiceEnvironmentPlatformLogs/číst | Čtení dat z tabulky AppServiceEnvironmentPlatformLogs |
+> | Microsoft. Insights/logs/AppServiceFileAuditLogs/číst | Čtení dat z tabulky AppServiceFileAuditLogs |
+> | Microsoft. Insights/logs/AppServiceHTTPLogs/číst | Čtení dat z tabulky AppServiceHTTPLogs |
+> | Microsoft. Insights/logs/AppServicePlatformLogs/číst | Čtení dat z tabulky AppServicePlatformLogs |
+> | Microsoft. Insights/logs/AppSystemEvents/číst | Čtení dat z tabulky AppSystemEvents |
+> | Microsoft. Insights/logs/AppTraces/číst | Čtení dat z tabulky AppTraces |
+> | Microsoft. Insights/logs/AuditLogs/číst | Čtení dat z tabulky AuditLogs |
+> | Microsoft. Insights/logs/AutoscaleEvaluationsLog/číst | Čtení dat z tabulky AutoscaleEvaluationsLog |
+> | Microsoft. Insights/logs/AutoscaleScaleActionsLog/číst | Čtení dat z tabulky AutoscaleScaleActionsLog |
+> | Microsoft. Insights/logs/AWSCloudTrail/číst | Čtení dat z tabulky AWSCloudTrail |
 > | Microsoft. Insights/logs/AzureActivity/číst | Čtení dat z tabulky AzureActivity |
+> | Microsoft. Insights/logs/AzureAssessmentRecommendation/číst | Čtení dat z tabulky AzureAssessmentRecommendation |
+> | Microsoft. Insights/logs/AzureDevOpsAuditing/číst | Čtení dat z tabulky AzureDevOpsAuditing |
+> | Microsoft. Insights/logs/AzureDiagnostics/číst | Čtení dat z tabulky AzureDiagnostics |
 > | Microsoft. Insights/logs/AzureMetrics/číst | Čtení dat z tabulky AzureMetrics |
+> | Microsoft. Insights/logs/BaiClusterEvent/číst | Čtení dat z tabulky BaiClusterEvent |
+> | Microsoft. Insights/logs/BaiClusterNodeEvent/číst | Čtení dat z tabulky BaiClusterNodeEvent |
+> | Microsoft. Insights/logs/BaiJobEvent/číst | Čtení dat z tabulky BaiJobEvent |
+> | Microsoft. Insights/logs/BehaviorAnalytics/číst | Čtení dat z tabulky BehaviorAnalytics |
+> | Microsoft. Insights/logs/BlockchainApplicationLog/číst | Čtení dat z tabulky BlockchainApplicationLog |
+> | Microsoft. Insights/logs/BlockchainProxyLog/číst | Čtení dat z tabulky BlockchainProxyLog |
 > | Microsoft. Insights/logs/BoundPort/číst | Čtení dat z tabulky BoundPort |
 > | Microsoft. Insights/logs/CommonSecurityLog/číst | Čtení dat z tabulky CommonSecurityLog |
 > | Microsoft. Insights/protokoly/počítač/číst | Čtení dat z tabulky počítačů |
@@ -7229,7 +7351,22 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/ContainerImageInventory/číst | Čtení dat z tabulky ContainerImageInventory |
 > | Microsoft. Insights/logs/ContainerInventory/číst | Čtení dat z tabulky ContainerInventory |
 > | Microsoft. Insights/logs/ContainerLog/číst | Čtení dat z tabulky ContainerLog |
+> | Microsoft. Insights/logs/ContainerNodeInventory/číst | Čtení dat z tabulky ContainerNodeInventory |
+> | Microsoft. Insights/logs/ContainerRegistryLoginEvents/číst | Čtení dat z tabulky ContainerRegistryLoginEvents |
+> | Microsoft. Insights/logs/ContainerRegistryRepositoryEvents/číst | Čtení dat z tabulky ContainerRegistryRepositoryEvents |
 > | Microsoft. Insights/logs/ContainerServiceLog/číst | Čtení dat z tabulky ContainerServiceLog |
+> | Microsoft. Insights/logs/CoreAzureBackup/číst | Čtení dat z tabulky CoreAzureBackup |
+> | Microsoft. Insights/logs/DatabricksAccounts/číst | Čtení dat z tabulky DatabricksAccounts |
+> | Microsoft. Insights/logs/DatabricksClusters/číst | Čtení dat z tabulky DatabricksClusters |
+> | Microsoft. Insights/logs/DatabricksDBFS/číst | Čtení dat z tabulky DatabricksDBFS |
+> | Microsoft. Insights/logs/DatabricksInstancePools/číst | Čtení dat z tabulky DatabricksInstancePools |
+> | Microsoft. Insights/logs/DatabricksJobs/číst | Čtení dat z tabulky DatabricksJobs |
+> | Microsoft. Insights/logs/DatabricksNotebook/číst | Čtení dat z tabulky DatabricksNotebook |
+> | Microsoft. Insights/logs/DatabricksSecrets/číst | Čtení dat z tabulky DatabricksSecrets |
+> | Microsoft. Insights/logs/DatabricksSQLPermissions/číst | Čtení dat z tabulky DatabricksSQLPermissions |
+> | Microsoft. Insights/logs/DatabricksSSH/číst | Čtení dat z tabulky DatabricksSSH |
+> | Microsoft. Insights/logs/DatabricksTables/číst | Čtení dat z tabulky DatabricksTables |
+> | Microsoft. Insights/logs/DatabricksWorkspace/číst | Čtení dat z tabulky DatabricksWorkspace |
 > | Microsoft. Insights/logs/DeviceAppCrash/číst | Čtení dat z tabulky DeviceAppCrash |
 > | Microsoft. Insights/logs/DeviceAppLaunch/číst | Čtení dat z tabulky DeviceAppLaunch |
 > | Microsoft. Insights/logs/DeviceCalendar/číst | Čtení dat z tabulky DeviceCalendar |
@@ -7244,6 +7381,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/DeviceSleepState/číst | Čtení dat z tabulky DeviceSleepState |
 > | Microsoft. Insights/logs/DHAppFailure/číst | Čtení dat z tabulky DHAppFailure |
 > | Microsoft. Insights/logs/DHAppReliability/číst | Čtení dat z tabulky DHAppReliability |
+> | Microsoft. Insights/logs/DHCPActivity/číst | Čtení dat z tabulky DHCPActivity |
 > | Microsoft. Insights/logs/DHDriverReliability/číst | Čtení dat z tabulky DHDriverReliability |
 > | Microsoft. Insights/logs/DHLogonFailures/číst | Čtení dat z tabulky DHLogonFailures |
 > | Microsoft. Insights/logs/DHLogonMetrics/číst | Čtení dat z tabulky DHLogonMetrics |
@@ -7252,15 +7390,28 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/DHWipAppLearning/číst | Čtení dat z tabulky DHWipAppLearning |
 > | Microsoft. Insights/logs/DnsEvents/číst | Čtení dat z tabulky DnsEvents |
 > | Microsoft. Insights/logs/DnsInventory/číst | Čtení dat z tabulky DnsInventory |
+> | Microsoft. Insights/logs/Dynamics365Activity/číst | Čtení dat z tabulky Dynamics365Activity |
 > | Microsoft. Insights/logs/ETWEvent/číst | Čtení dat z tabulky ETWEvent |
 > | Microsoft. Insights/protokoly/událost/čtení | Čtení dat z tabulky událostí |
 > | Microsoft. Insights/logs/ExchangeAssessmentRecommendation/číst | Čtení dat z tabulky ExchangeAssessmentRecommendation |
 > | Microsoft. Insights/logs/ExchangeOnlineAssessmentRecommendation/číst | Čtení dat z tabulky ExchangeOnlineAssessmentRecommendation |
+> | Microsoft. Insights/logs/FailedIngestion/číst | Čtení dat z tabulky FailedIngestion |
+> | Microsoft. Insights/logs/FunctionAppLogs/číst | Čtení dat z tabulky FunctionAppLogs |
 > | Microsoft. Insights/protokoly/prezenční signál/čtení | Čtení dat z tabulky prezenčního signálu |
+> | Microsoft. Insights/logs/HuntingBookmark/číst | Čtení dat z tabulky HuntingBookmark |
 > | Microsoft. Insights/logs/IISAssessmentRecommendation/číst | Čtení dat z tabulky IISAssessmentRecommendation |
 > | Microsoft. Insights/logs/InboundConnection/číst | Čtení dat z tabulky InboundConnection |
+> | Microsoft. Insights/logs/InsightsMetrics/číst | Čtení dat z tabulky InsightsMetrics |
+> | Microsoft. Insights/logs/IntuneAuditLogs/číst | Čtení dat z tabulky IntuneAuditLogs |
+> | Microsoft. Insights/logs/IntuneDeviceComplianceOrg/číst | Čtení dat z tabulky IntuneDeviceComplianceOrg |
+> | Microsoft. Insights/logs/IntuneOperationalLogs/číst | Čtení dat z tabulky IntuneOperationalLogs |
+> | Microsoft. Insights/logs/IoTHubDistributedTracing/číst | Čtení dat z tabulky IoTHubDistributedTracing |
+> | Microsoft. Insights/logs/KubeEvents/číst | Čtení dat z tabulky KubeEvents |
+> | Microsoft. Insights/logs/KubeHealth/číst | Čtení dat z tabulky KubeHealth |
+> | Microsoft. Insights/logs/KubeMonAgentEvents/číst | Čtení dat z tabulky KubeMonAgentEvents |
 > | Microsoft. Insights/logs/KubeNodeInventory/číst | Čtení dat z tabulky KubeNodeInventory |
 > | Microsoft. Insights/logs/KubePodInventory/číst | Čtení dat z tabulky KubePodInventory |
+> | Microsoft. Insights/logs/KubeServices/číst | Čtení dat z tabulky KubeServices |
 > | Microsoft. Insights/logs/LinuxAuditLog/číst | Čtení dat z tabulky LinuxAuditLog |
 > | Microsoft. Insights/logs/MAApplication/číst | Čtení dat z tabulky MAApplication |
 > | Microsoft. Insights/logs/MAApplicationHealth/číst | Čtení dat z tabulky MAApplicationHealth |
@@ -7271,6 +7422,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/MAApplicationReadiness/číst | Čtení dat z tabulky MAApplicationReadiness |
 > | Microsoft. Insights/logs/MADeploymentPlan/číst | Čtení dat z tabulky MADeploymentPlan |
 > | Microsoft. Insights/logs/MADevice/číst | Čtení dat z tabulky MADevice |
+> | Microsoft. Insights/logs/MADeviceNotEnrolled/číst | Čtení dat z tabulky MADeviceNotEnrolled |
+> | Microsoft. Insights/logs/MADeviceNRT/číst | Čtení dat z tabulky MADeviceNRT |
 > | Microsoft. Insights/logs/MADevicePnPHealth/číst | Čtení dat z tabulky MADevicePnPHealth |
 > | Microsoft. Insights/logs/MADevicePnPHealthAlternativeVersions/číst | Čtení dat z tabulky MADevicePnPHealthAlternativeVersions |
 > | Microsoft. Insights/logs/MADevicePnPHealthIssues/číst | Čtení dat z tabulky MADevicePnPHealthIssues |
@@ -7278,19 +7431,27 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/MADriverInstanceReadiness/číst | Čtení dat z tabulky MADriverInstanceReadiness |
 > | Microsoft. Insights/logs/MADriverReadiness/číst | Čtení dat z tabulky MADriverReadiness |
 > | Microsoft. Insights/logs/MAOfficeAddin/číst | Čtení dat z tabulky MAOfficeAddin |
+> | Microsoft. Insights/logs/MAOfficeAddinEntityHealth/číst | Čtení dat z tabulky MAOfficeAddinEntityHealth |
 > | Microsoft. Insights/logs/MAOfficeAddinHealth/číst | Čtení dat z tabulky MAOfficeAddinHealth |
+> | Microsoft. Insights/logs/MAOfficeAddinHealthEventNRT/číst | Čtení dat z tabulky MAOfficeAddinHealthEventNRT |
 > | Microsoft. Insights/logs/MAOfficeAddinHealthIssues/číst | Čtení dat z tabulky MAOfficeAddinHealthIssues |
 > | Microsoft. Insights/logs/MAOfficeAddinInstance/číst | Čtení dat z tabulky MAOfficeAddinInstance |
 > | Microsoft. Insights/logs/MAOfficeAddinInstanceReadiness/číst | Čtení dat z tabulky MAOfficeAddinInstanceReadiness |
 > | Microsoft. Insights/logs/MAOfficeAddinReadiness/číst | Čtení dat z tabulky MAOfficeAddinReadiness |
 > | Microsoft. Insights/logs/MAOfficeApp/číst | Čtení dat z tabulky MAOfficeApp |
+> | Microsoft. Insights/logs/MAOfficeAppCrashesNRT/číst | Čtení dat z tabulky MAOfficeAppCrashesNRT |
 > | Microsoft. Insights/logs/MAOfficeAppHealth/číst | Čtení dat z tabulky MAOfficeAppHealth |
 > | Microsoft. Insights/logs/MAOfficeAppInstance/číst | Čtení dat z tabulky MAOfficeAppInstance |
+> | Microsoft. Insights/logs/MAOfficeAppInstanceHealth/číst | Čtení dat z tabulky MAOfficeAppInstanceHealth |
 > | Microsoft. Insights/logs/MAOfficeAppReadiness/číst | Čtení dat z tabulky MAOfficeAppReadiness |
+> | Microsoft. Insights/logs/MAOfficeAppSessionsNRT/číst | Čtení dat z tabulky MAOfficeAppSessionsNRT |
 > | Microsoft. Insights/logs/MAOfficeBuildInfo/číst | Čtení dat z tabulky MAOfficeBuildInfo |
 > | Microsoft. Insights/logs/MAOfficeCurrencyAssessment/číst | Čtení dat z tabulky MAOfficeCurrencyAssessment |
 > | Microsoft. Insights/logs/MAOfficeCurrencyAssessmentDailyCounts/číst | Čtení dat z tabulky MAOfficeCurrencyAssessmentDailyCounts |
 > | Microsoft. Insights/logs/MAOfficeDeploymentStatus/číst | Čtení dat z tabulky MAOfficeDeploymentStatus |
+> | Microsoft. Insights/logs/MAOfficeDeploymentStatusNRT/číst | Čtení dat z tabulky MAOfficeDeploymentStatusNRT |
+> | Microsoft. Insights/logs/MAOfficeMacroErrorNRT/číst | Čtení dat z tabulky MAOfficeMacroErrorNRT |
+> | Microsoft. Insights/logs/MAOfficeMacroGlobalHealth/číst | Čtení dat z tabulky MAOfficeMacroGlobalHealth |
 > | Microsoft. Insights/logs/MAOfficeMacroHealth/číst | Čtení dat z tabulky MAOfficeMacroHealth |
 > | Microsoft. Insights/logs/MAOfficeMacroHealthIssues/číst | Čtení dat z tabulky MAOfficeMacroHealthIssues |
 > | Microsoft. Insights/logs/MAOfficeMacroIssueInstanceReadiness/číst | Čtení dat z tabulky MAOfficeMacroIssueInstanceReadiness |
@@ -7303,7 +7464,16 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/MAWindowsCurrencyAssessment/číst | Čtení dat z tabulky MAWindowsCurrencyAssessment |
 > | Microsoft. Insights/logs/MAWindowsCurrencyAssessmentDailyCounts/číst | Čtení dat z tabulky MAWindowsCurrencyAssessmentDailyCounts |
 > | Microsoft. Insights/logs/MAWindowsDeploymentStatus/číst | Čtení dat z tabulky MAWindowsDeploymentStatus |
+> | Microsoft. Insights/logs/MAWindowsDeploymentStatusNRT/číst | Čtení dat z tabulky MAWindowsDeploymentStatusNRT |
 > | Microsoft. Insights/logs/MAWindowsSysReqInstanceReadiness/číst | Čtení dat z tabulky MAWindowsSysReqInstanceReadiness |
+> | Microsoft. Insights/logs/McasShadowItReporting/číst | Čtení dat z tabulky McasShadowItReporting |
+> | Microsoft. Insights/logs/MicrosoftAzureBastionAuditLogs/číst | Čtení dat z tabulky MicrosoftAzureBastionAuditLogs |
+> | Microsoft. Insights/logs/MicrosoftDataShareReceivedSnapshotLog/číst | Čtení dat z tabulky MicrosoftDataShareReceivedSnapshotLog |
+> | Microsoft. Insights/logs/MicrosoftDataShareSentSnapshotLog/číst | Čtení dat z tabulky MicrosoftDataShareSentSnapshotLog |
+> | Microsoft. Insights/logs/MicrosoftDataShareShareLog/číst | Čtení dat z tabulky MicrosoftDataShareShareLog |
+> | Microsoft. Insights/logs/MicrosoftDynamicsTelemetryPerformanceLogs/číst | Čtení dat z tabulky MicrosoftDynamicsTelemetryPerformanceLogs |
+> | Microsoft. Insights/logs/MicrosoftDynamicsTelemetrySystemMetricsLogs/číst | Čtení dat z tabulky MicrosoftDynamicsTelemetrySystemMetricsLogs |
+> | Microsoft. Insights/logs/MicrosoftHealthcareApisAuditLogs/číst | Čtení dat z tabulky MicrosoftHealthcareApisAuditLogs |
 > | Microsoft. Insights/logs/NetworkMonitoring/číst | Čtení dat z tabulky NetworkMonitoring |
 > | Microsoft. Insights/logs/OfficeActivity/číst | Čtení dat z tabulky OfficeActivity |
 > | Microsoft. Insights/protokoly/operace/čtení | Čtení dat z tabulky operací |
@@ -7319,18 +7489,33 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/SecurityBaselineSummary/číst | Čtení dat z tabulky SecurityBaselineSummary |
 > | Microsoft. Insights/logs/SecurityDetection/číst | Čtení dat z tabulky SecurityDetection |
 > | Microsoft. Insights/logs/SecurityEvent/číst | Čtení dat z tabulky SecurityEvent |
+> | Microsoft. Insights/logs/SecurityIncident/číst | Čtení dat z tabulky SecurityIncident |
+> | Microsoft. Insights/logs/SecurityIoTRawEvent/číst | Čtení dat z tabulky SecurityIoTRawEvent |
+> | Microsoft. Insights/logs/SecurityNestedRecommendation/číst | Čtení dat z tabulky SecurityNestedRecommendation |
+> | Microsoft. Insights/logs/SecurityRecommendation/číst | Čtení dat z tabulky SecurityRecommendation |
 > | Microsoft. Insights/logs/ServiceFabricOperationalEvent/číst | Čtení dat z tabulky ServiceFabricOperationalEvent |
 > | Microsoft. Insights/logs/ServiceFabricReliableActorEvent/číst | Čtení dat z tabulky ServiceFabricReliableActorEvent |
 > | Microsoft. Insights/logs/ServiceFabricReliableServiceEvent/číst | Čtení dat z tabulky ServiceFabricReliableServiceEvent |
 > | Microsoft. Insights/logs/SfBAssessmentRecommendation/číst | Čtení dat z tabulky SfBAssessmentRecommendation |
 > | Microsoft. Insights/logs/SfBOnlineAssessmentRecommendation/číst | Čtení dat z tabulky SfBOnlineAssessmentRecommendation |
 > | Microsoft. Insights/logs/SharePointOnlineAssessmentRecommendation/číst | Čtení dat z tabulky SharePointOnlineAssessmentRecommendation |
+> | Microsoft. Insights/logs/SignalRServiceDiagnosticLogs/číst | Čtení dat z tabulky SignalRServiceDiagnosticLogs |
+> | Microsoft. Insights/logs/SigninLogs/číst | Čtení dat z tabulky SigninLogs |
 > | Microsoft. Insights/logs/SPAssessmentRecommendation/číst | Čtení dat z tabulky SPAssessmentRecommendation |
 > | Microsoft. Insights/logs/SQLAssessmentRecommendation/číst | Čtení dat z tabulky SQLAssessmentRecommendation |
+> | Microsoft. Insights/logs/SqlDataClassification/číst | Čtení dat z tabulky SqlDataClassification |
 > | Microsoft. Insights/logs/SQLQueryPerformance/číst | Čtení dat z tabulky SQLQueryPerformance |
+> | Microsoft. Insights/logs/SqlVulnerabilityAssessmentResult/číst | Čtení dat z tabulky SqlVulnerabilityAssessmentResult |
+> | Microsoft. Insights/logs/StorageBlobLogs/číst | Čtení dat z tabulky StorageBlobLogs |
+> | Microsoft. Insights/logs/StorageFileLogs/číst | Čtení dat z tabulky StorageFileLogs |
+> | Microsoft. Insights/logs/StorageQueueLogs/číst | Čtení dat z tabulky StorageQueueLogs |
+> | Microsoft. Insights/logs/StorageTableLogs/číst | Čtení dat z tabulky StorageTableLogs |
+> | Microsoft. Insights/logs/SucceededIngestion/číst | Čtení dat z tabulky SucceededIngestion |
 > | Microsoft. Insights/protokoly/syslog/Read | Čtení dat z tabulky syslog |
 > | Microsoft. Insights/logs/SysmonEvent/číst | Čtení dat z tabulky SysmonEvent |
 > | Microsoft. Insights/logs/Tables. vlastní/číst | Čtení dat z libovolného vlastního protokolu |
+> | Microsoft. Insights/logs/ThreatIntelligenceIndicator/číst | Čtení dat z tabulky ThreatIntelligenceIndicator |
+> | Microsoft. Insights/logs/TSIIngress/číst | Čtení dat z tabulky TSIIngress |
 > | Microsoft. Insights/logs/UAApp/číst | Čtení dat z tabulky UAApp |
 > | Microsoft. Insights/logs/UAComputer/číst | Čtení dat z tabulky UAComputer |
 > | Microsoft. Insights/logs/UAComputerRank/číst | Čtení dat z tabulky UAComputerRank |
@@ -7347,6 +7532,12 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/UpdateRunProgress/číst | Čtení dat z tabulky UpdateRunProgress |
 > | Microsoft. Insights/logs/UpdateSummary/číst | Čtení dat z tabulky UpdateSummary |
 > | Microsoft. Insights/protokoly/využití/čtení | Čtení dat z tabulky využití |
+> | Microsoft. Insights/logs/UserAccessAnalytics/číst | Čtení dat z tabulky UserAccessAnalytics |
+> | Microsoft. Insights/logs/UserPeerAnalytics/číst | Čtení dat z tabulky UserPeerAnalytics |
+> | Microsoft. Insights/logs/VMBoundPort/číst | Čtení dat z tabulky VMBoundPort |
+> | Microsoft. Insights/logs/VMComputer/číst | Čtení dat z tabulky VMComputer |
+> | Microsoft. Insights/logs/VMConnection/číst | Čtení dat z tabulky VMConnection |
+> | Microsoft. Insights/logs/VMProcess/číst | Čtení dat z tabulky VMProcess |
 > | Microsoft. Insights/logs/W3CIISLog/číst | Čtení dat z tabulky W3CIISLog |
 > | Microsoft. Insights/logs/WaaSDeploymentStatus/číst | Čtení dat z tabulky WaaSDeploymentStatus |
 > | Microsoft. Insights/logs/WaaSInsiderStatus/číst | Čtení dat z tabulky WaaSInsiderStatus |
@@ -7354,11 +7545,19 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/WDAVStatus/číst | Čtení dat z tabulky WDAVStatus |
 > | Microsoft. Insights/logs/WDAVThreat/číst | Čtení dat z tabulky WDAVThreat |
 > | Microsoft. Insights/logs/WindowsClientAssessmentRecommendation/číst | Čtení dat z tabulky WindowsClientAssessmentRecommendation |
+> | Microsoft. Insights/logs/WindowsEvent/číst | Čtení dat z tabulky WindowsEvent |
 > | Microsoft. Insights/logs/WindowsFirewall/číst | Čtení dat z tabulky WindowsFirewall |
 > | Microsoft. Insights/logs/WindowsServerAssessmentRecommendation/číst | Čtení dat z tabulky WindowsServerAssessmentRecommendation |
 > | Microsoft. Insights/logs/WireData/číst | Čtení dat z tabulky WireData |
+> | Microsoft. Insights/logs/WorkloadMonitoringPerf/číst | Čtení dat z tabulky WorkloadMonitoringPerf |
 > | Microsoft. Insights/logs/WUDOAggregatedStatus/číst | Čtení dat z tabulky WUDOAggregatedStatus |
 > | Microsoft. Insights/logs/WUDOStatus/číst | Čtení dat z tabulky WUDOStatus |
+> | Microsoft. Insights/logs/WVDCheckpoints/číst | Čtení dat z tabulky WVDCheckpoints |
+> | Microsoft. Insights/logs/WVDConnections/číst | Čtení dat z tabulky WVDConnections |
+> | Microsoft. Insights/logs/WVDErrors/číst | Čtení dat z tabulky WVDErrors |
+> | Microsoft. Insights/logs/WVDFeeds/číst | Čtení dat z tabulky WVDFeeds |
+> | Microsoft. Insights/logs/WVDHostRegistrations/číst | Čtení dat z tabulky WVDHostRegistrations |
+> | Microsoft. Insights/logs/WVDManagement/číst | Čtení dat z tabulky WVDManagement |
 > | Microsoft. Insights/MetricAlerts/Write | Vytvoření nebo aktualizace výstrahy metriky |
 > | Microsoft. Insights/MetricAlerts/DELETE | Odstranění výstrahy metriky |
 > | Microsoft. Insights/MetricAlerts/Read | Čtení výstrahy metriky |
@@ -7576,9 +7775,18 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceCleanup/číst | Čtení dat z tabulky DeviceCleanup |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceConnectSession/číst | Čtení dat z tabulky DeviceConnectSession |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceEtw/číst | Čtení dat z tabulky DeviceEtw |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceEvents/číst | Čtení dat z tabulky DeviceEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceFileEvents/číst | Čtení dat z tabulky DeviceFileEvents |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceHardwareHealth/číst | Čtení dat z tabulky DeviceHardwareHealth |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/přidružený/číst | Čtení dat z tabulky přidružený |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceHeartbeat/číst | Čtení dat z tabulky DeviceHeartbeat |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceImageLoadEvents/číst | Čtení dat z tabulky DeviceImageLoadEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceInfo/číst | Čtení dat z tabulky DeviceInfo |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceLogonEvents/číst | Čtení dat z tabulky DeviceLogonEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceNetworkEvents/číst | Čtení dat z tabulky DeviceNetworkEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceNetworkInfo/číst | Čtení dat z tabulky DeviceNetworkInfo |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceProcessEvents/číst | Čtení dat z tabulky DeviceProcessEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceRegistryEvents/číst | Čtení dat z tabulky DeviceRegistryEvents |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceSkypeHeartbeat/číst | Čtení dat z tabulky DeviceSkypeHeartbeat |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceSkypeSignIn/číst | Čtení dat z tabulky DeviceSkypeSignIn |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/DeviceSleepState/číst | Čtení dat z tabulky DeviceSleepState |
@@ -7629,6 +7837,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormLogs/číst | Čtení dat z tabulky HDInsightStormLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormMetrics/číst | Čtení dat z tabulky HDInsightStormMetrics |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormTopologyMetrics/číst | Čtení dat z tabulky HDInsightStormTopologyMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HealthStateChangeEvent/číst | Čtení dat z tabulky HealthStateChangeEvent |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/prezenční signál/čtení | Čtení dat z tabulky prezenčního signálu |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HuntingBookmark/číst | Čtení dat z tabulky HuntingBookmark |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/IISAssessmentRecommendation/číst | Čtení dat z tabulky IISAssessmentRecommendation |
@@ -7712,6 +7921,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/operace/číst | Čtení dat z tabulky operací |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/OutboundConnection/číst | Čtení dat z tabulky OutboundConnection |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/výkon/čtení | Čtení dat z tabulky perf |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/PowerBIDatasetsTenantPreview/číst | Čtení dat z tabulky PowerBIDatasetsTenantPreview |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/PowerBIDatasetsWorkspacePreview/číst | Čtení dat z tabulky PowerBIDatasetsWorkspacePreview |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ProtectionStatus/číst | Čtení dat z tabulky ProtectionStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/požadavky/číst | Čtení dat z tabulky requests |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SCCMAssessmentRecommendation/číst | Čtení dat z tabulky SCCMAssessmentRecommendation |
@@ -7919,9 +8130,6 @@ Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyDefinitions/Read | Získat informace o definici zásady. |
 > | Microsoft. Authorization/policyDefinitions/Write | Vytvořte vlastní definici zásad. |
 > | Microsoft. Authorization/policyDefinitions/DELETE | Odstraní definici zásady. |
-> | Microsoft. Authorization/policyExemptions/Read | Získat informace o výjimce zásady. |
-> | Microsoft. Authorization/policyExemptions/Write | Vytvoří výjimku zásady v zadaném oboru. |
-> | Microsoft. Authorization/policyExemptions/DELETE | Odstraní výjimku zásady v zadaném oboru. |
 > | Microsoft. Authorization/policySetDefinitions/Read | Získejte informace o definici sady zásad. |
 > | Microsoft. Authorization/policySetDefinitions/Write | Vytvoření vlastní definice sady zásad |
 > | Microsoft. Authorization/policySetDefinitions/DELETE | Odstraní definici sady zásad. |
@@ -9076,12 +9284,14 @@ Služba Azure: jádro
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
-> | Microsoft. Subscription/CreateSubscription/Action | Vytvoření předplatného Azure |
-> | Microsoft. Subscription/registr/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. Subscription. |
 > | Microsoft. Subscription/Cancel/Action | Zruší předplatné. |
 > | Microsoft. Subscription/přejmenovat/Action | Přejmenuje předplatné. |
-> | Microsoft. Subscription/SubscriptionDefinitions/Read | Získání definice předplatného Azure v rámci skupiny pro správu |
-> | Microsoft. Subscription/SubscriptionDefinitions/Write | Vytvoření definice předplatného Azure |
+> | Microsoft. Subscription/Enable/Action | Povolí předplatné |
+> | Microsoft. Subscription/CreateSubscription/Action | Vytvoření předplatného Azure |
+> | Microsoft. Subscription/registr/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. Subscription. |
+> | Microsoft. Subscription/updateTenant/Action | Aktualizovat tenanta předplatného |
+> | Microsoft. Subscription/aliass/Write | Vytvořit alias předplatného |
+> | Microsoft. Subscription/Subscriptions/Write | Vytvořit nebo aktualizovat předplatné |
 
 ## <a name="intune"></a>Intune
 

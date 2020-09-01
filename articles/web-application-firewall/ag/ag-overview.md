@@ -1,21 +1,21 @@
 ---
-title: Úvod do firewallu webových aplikací Azure
+title: Co je firewall webových aplikací Azure v Azure Application Gateway?
 titleSuffix: Azure Web Application Firewall
 description: Tento článek poskytuje přehled firewallu webových aplikací (WAF) na Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142852"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226994"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Firewall webových aplikací Azure v Azure Application Gateway
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
 
 Firewall webových aplikací Azure (WAF) v Azure Application Gateway poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Vkládání SQL a skriptování mezi weby patří mezi nejběžnější útoky.
 
@@ -98,7 +98,7 @@ Další informace o vlastních pravidlech najdete v tématu [vlastní pravidla p
 
 ### <a name="bot-mitigation-preview"></a>Omezení na robota (Preview)
 
-Sada pravidel spravované ochrany robotů může být povolená pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres společně se spravovaným RuleSet. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. Intelligent Security Graph využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
+Sada pravidel spravované ochrany robotů může být povolená pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres společně se spravovaným RuleSet. Zdrojem těchto IP adres je kanál analýzy hrozeb Microsoftu. Analýza hrozeb Microsoftu využívá systém Intelligent Security Graph, který využívá celá řada služeb, včetně služby Azure Security Center.
 
 > [!NOTE]
 > Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -158,7 +158,7 @@ Microsoft Azure Sentinel je škálovatelná, cloudová, nativní, SIEM (Security
 S integrovaným sešitem událostí brány firewall Azure WAF můžete získat přehled událostí zabezpečení na WAF. Patří sem události, odpovídající a blokovaná pravidla a všechno ostatní, co se přihlásí do protokolů brány firewall. Další informace najdete v části protokolování níže. 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Sešit událostí brány firewall Azure WAF](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>Protokolování
 
@@ -206,10 +206,12 @@ Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hro
 
 Cenové modely se liší od WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
+## <a name="whats-new"></a>Co je nového
+
+Další informace o tom, co je nového u brány firewall webových aplikací Azure, najdete v tématu [Aktualizace Azure](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall).
+
 ## <a name="next-steps"></a>Další kroky
 
-- Začněte [vytvořením zásady WAF](create-waf-policy-ag.md)
 - Další informace o [spravovaných pravidlech WAF](application-gateway-crs-rulegroups-rules.md)
 - Další informace o [vlastních pravidlech](custom-waf-rules-overview.md)
 - Přečtěte si o [bráně firewall webových aplikací v Azure front-dveří](../afds/afds-overview.md)
-

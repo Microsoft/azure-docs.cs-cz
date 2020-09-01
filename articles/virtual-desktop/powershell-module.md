@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007254"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229966"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Nastavení modulu PowerShell pro virtuální plochu Windows
 
@@ -40,6 +40,12 @@ Dále spusťte následující rutinu pro připojení k Azure:
 ```powershell
 Connect-AzAccount
 ```
+
+>! VÝZNAMNÁ Pokud se připojujete k portálu US Gov, spusťte místo toho tuto rutinu:
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
 
 Přihlášení k účtu Azure vyžaduje kód, který se vygeneruje při spuštění rutiny Connect. Pokud se chcete přihlásit, přejděte na adresu <https://microsoft.com/devicelogin> , zadejte kód a pak se přihlaste pomocí svých přihlašovacích údajů správce Azure.
 

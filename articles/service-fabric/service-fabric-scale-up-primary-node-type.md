@@ -4,12 +4,12 @@ description: Naučte se škálovat Cluster Service Fabric přidáním typu uzlu.
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854627"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228711"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Navýšení kapacity Service Fabric typ primárního uzlu clusteru přidáním typu uzlu
 Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric tak, že do clusteru přidáte další typ uzlu. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně.
@@ -31,7 +31,7 @@ Následuje postup aktualizace velikosti a operačního systému virtuálního po
 ### <a name="deploy-the-initial-service-fabric-cluster"></a>Nasadit počáteční Cluster Service Fabric 
 Pokud chcete postupovat spolu s ukázkou, nasaďte počáteční cluster s jedním primárním typem uzlu a jednu sadu škálování [Service Fabric-počáteční cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json). Tento krok můžete vynechat, pokud už máte nasazený existující Service Fabric cluster. 
 
-1. Přihlaste se k účtu Azure. 
+1. Přihlaste se ke svému účtu Azure. 
 ```powershell
 # sign in to your Azure account and select your subscription
 Login-AzAccount -SubscriptionId "<your subscription ID>"
@@ -99,7 +99,7 @@ New-AzResourceGroupDeployment `
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. Vytvořte novou sadu škálování virtuálního počítače, která bude používat novou SKLADOVOU položku virtuálního počítače, a SKU operačního systému, na které byste chtěli škálovat. 
+4. Vytvořte novou sadu škálování virtuálního počítače, která bude používat novou SKLADOVOU položku virtuálního počítače a SKLADOVOU položku operačního systému, na kterou se má škálovat. 
 
 Typ uzlu ref 
 ```json
@@ -124,6 +124,134 @@ SKU OPERAČNÍHO SYSTÉMU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+Následující fragment kódu je příkladem nového prostředku sady škálování virtuálních počítačů, který se používá k vytvoření nového typu uzlu pro cluster Service Fabric. Měli byste zajistit, abyste měli všechna další rozšíření, která jsou potřebná pro vaše zatížení. 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. Do clusteru přidejte nový typ uzlu, který odkazuje na sadu škálování virtuálního počítače, která byla vytvořena výše. Vlastnost **Primary** v tomto typu uzlu by měla být nastavena na hodnotu true. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ V případě vysoké a vyšší odolnosti clusterů aktualizujte prostředek clu
 ```
 10. Odeberte všechny ostatní prostředky související s typem původního uzlu ze šablony ARM. V tématu [Service Fabric – nový cluster typů uzlů](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) pro šablonu, ze které byly odebrány všechny původní prostředky.
 
-11. Nasaďte upravenou šablonu Azure Resource Manager. * * Tento krok může trvat delší dobu, obvykle až dvě hodiny. Tento upgrade změní nastavení na InfrastructureService, a proto je nutné restartovat uzel. V tomto případě se forceRestart ignoruje. Parametr upgradeReplicaSetCheckTimeout určuje maximální dobu, po kterou Service Fabric čeká na vystavení oddílu v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu. Hodnota parametru upgradeTimeout může být snížena na 6 hodin, ale v případě maximálního zabezpečení 12 hodin by se měla použít.
+11. Nasaďte upravenou šablonu Azure Resource Manager. * * Tento krok může trvat delší dobu, obvykle až dvě hodiny. Tento upgrade změní nastavení na InfrastructureService; Proto je nutné restartovat uzel. V tomto případě se forceRestart ignoruje. Parametr upgradeReplicaSetCheckTimeout určuje maximální dobu, po kterou Service Fabric čeká na vystavení oddílu v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu. Hodnota parametru upgradeTimeout může být snížena na 6 hodin, ale v případě maximálního zabezpečení 12 hodin by se měla použít.
 Pak ověřte, že se prostředek Service Fabric na portálu zobrazuje jako připravený. 
 
 ```powershell

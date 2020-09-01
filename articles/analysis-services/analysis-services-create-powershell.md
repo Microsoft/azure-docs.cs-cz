@@ -1,25 +1,25 @@
 ---
 title: Rychlý Start – vytvoření Azure Analysis Services pomocí prostředí PowerShell Azure Analysis Services | Microsoft Docs
-description: Zjistěte, jak vytvořit server služby Azure Analysis Services pomocí PowerShellu.
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Analysis Services Server pomocí PowerShellu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: a57222346a69d3d92c108da9e57a1d656974b561
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074810"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229323"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
 Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vytvoření serveru služby Azure Analysis Services ve vašem předplatném Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,6 +73,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 V tomto rychlém startu jste zjistili, jak pomocí PowerShellu vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      
-> [!div class="nextstepaction"]
-> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)
+> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      

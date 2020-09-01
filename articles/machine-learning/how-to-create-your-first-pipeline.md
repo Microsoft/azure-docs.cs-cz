@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0d917ea686c2003bf46b6fca872ef67fb0363107
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144069"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228899"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -56,10 +56,8 @@ Vytvoření prostředků potřebných ke spuštění kanálu ML:
 * Nakonfigurujte `Dataset` objekt tak, aby odkazoval na trvalá data, která se nachází v nebo jsou přístupná v úložišti dat. Nakonfigurujte `PipelineData` objekt pro dočasná data předaná mezi kroky kanálu. 
 
     > [!TIP]
-    > Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídě Public Preview  `OutputFileDatasetConfig` .  Tato třída je experimentální funkcí ve verzi Preview a může se kdykoli změnit.
-    > 
-    >Další informace o experimentálních funkcích naleznete v tématu https://aka.ms/azuremlexperimental .
-    
+    > Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídě Public Preview  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) .  Tato třída je [experimentální](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit.
+
 * Nastavte [výpočetní cíle](concept-azure-machine-learning-architecture.md#compute-targets) , na kterých se budou spouštět vaše kroky kanálu.
 
 ### <a name="set-up-a-datastore"></a>Nastavení úložiště dat

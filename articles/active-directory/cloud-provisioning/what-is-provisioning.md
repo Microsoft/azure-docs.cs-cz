@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76712550"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228235"
 ---
 # <a name="what-is-identity-provisioning"></a>Co je zřizování identit?
 
@@ -50,7 +50,7 @@ Nejběžnějším scénářem je, že když se do vaší společnosti připojí 
 
 ![zřizování cloudu](media/what-is-provisioning/cloud3.png)
 
-V Azure Active Directory (Azure AD) pojem **[zřizování aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích, ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další.
+V Azure Active Directory (Azure AD) pojem **[zřizování aplikací](../app-provisioning/user-provisioning.md)** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích, ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
 
 ## <a name="directory-provisioning"></a>Zřizování adresáře
 

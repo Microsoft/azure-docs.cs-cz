@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873411"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228643"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co je monitorování Azure Active Directory?
 
@@ -63,7 +63,7 @@ Směrování protokolů do centra událostí Azure vám umožní provést integr
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Odeslat protokoly do protokolů Azure Monitor
 
-[Protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) jsou řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete rychle načíst, monitorovat a upozornit shromážděná data. Naučte se [odesílat data do protokolů Azure monitor](howto-integrate-activity-logs-with-log-analytics.md).
+[Protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md) jsou řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete rychle načíst, monitorovat a upozornit shromážděná data. Naučte se [odesílat data do protokolů Azure monitor](howto-integrate-activity-logs-with-log-analytics.md).
 
 Můžete také nainstalovat předem připravená zobrazení, aby protokoly aktivit služby Azure AD monitorovaly běžné scénáře včetně událostí přihlášení a auditu. Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md).
 

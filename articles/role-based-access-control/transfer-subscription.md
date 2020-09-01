@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177274"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227028"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
 
@@ -42,7 +42,7 @@ Následující diagram znázorňuje základní kroky, které je třeba provést 
 
 1. Příprava na přenos
 
-1. Převod vlastnictví fakturace předplatného Azure na jiný účet
+1. Přenést předplatné Azure do jiného adresáře
 
 1. Opětovné vytvoření prostředků v cílovém adresáři, například přiřazení rolí, vlastní role a spravované identity
 
@@ -264,12 +264,12 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ## <a name="step-2-transfer-the-subscription"></a>Krok 2: přeneste předplatné
 
-V tomto kroku převedete předplatné ze zdrojového adresáře do cílového adresáře. Postup se liší v závislosti na tom, zda budete chtít také přenést vlastnictví fakturace.
+V tomto kroku převedete předplatné ze zdrojového adresáře do cílového adresáře. Postup se liší v závislosti na tom, zda chcete také přenést vlastnictví fakturace.
 
 > [!WARNING]
 > Při přenosu odběru se všechna přiřazení rolí ve zdrojovém adresáři **trvale** odstraní a nelze je obnovit. Po převodu předplatného se nemůžete vrátit zpátky. Před provedením tohoto kroku se ujistěte, že jste dokončili předchozí kroky.
 
-1. Určete, zda chcete také přenést vlastnictví fakturace.
+1. Určete, zda chcete také přenést vlastnictví fakturace na jiný účet.
 
 1. Přeneste odběr do jiného adresáře.
 
