@@ -4,12 +4,12 @@ description: Tento kurz podrobně popisuje zálohování několika virtuálních
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8d798b594fe28ad6a1a3924406493841ab661ca7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075666"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181727"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Zálohování virtuálních počítačů Azure s využitím PowerShellu
 
@@ -27,7 +27,7 @@ Co se v tomto kurzu naučíte:
 > * Aktivujte úlohu zálohování na vyžádání pro chráněné virtuální počítače, abyste mohli zálohovat virtuální počítač (nebo ho chránit), musíte splnit [předpoklady](backup-azure-arm-vms-prepare.md) pro přípravu vašeho prostředí pro ochranu vašich virtuálních počítačů.
 
 > [!IMPORTANT]
-> Tento kurz předpokládá, že už máte vytvořenou skupinu prostředků a virtuální počítač Azure.
+> V tomto kurzu se předpokládá, že už máte vytvořenou skupinu prostředků a virtuální počítač Azure.
 
 ## <a name="sign-in-and-register"></a>Přihlášení a registrace
 

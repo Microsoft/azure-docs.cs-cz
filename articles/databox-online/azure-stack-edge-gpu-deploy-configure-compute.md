@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 9fd940ec5cfb3eac9d0072c8554ca6bd295a50ec
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8ba460168edc03b1cb491d69010acd03f4a84ae3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087741"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181567"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Kurz: Konfigurace výpočetních prostředků na zařízení GPU na Azure Stack hraničních zařízeních
 
@@ -80,7 +80,7 @@ Konfigurace výpočetních prostředků na pozadí může trvat 20-30 minut, ne�
 
 Po úspěšné konfiguraci výpočtů v Azure Portal existuje cluster Kubernetes a výchozí uživatel přidružený k oboru názvů IoT (obor názvů System řízený pomocí Azure Stack Edge). 
 
-## <a name="get-kubernetes-api-endpoint"></a>Získat koncový bod rozhraní API Kubernetes
+## <a name="get-kubernetes-endpoints"></a>Získat koncové body Kubernetes
 
 Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete potřebovat koncový bod Kubernetes. Pomocí těchto kroků můžete získat koncový bod rozhraní Kubernetes API z místního uživatelského rozhraní vašeho zařízení Azure Stack Edge.
 
@@ -91,13 +91,21 @@ Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete po
 
 3. Uložte řetězec koncového bodu. Použijete ji později při konfiguraci klienta pro přístup ke clusteru Kubernetes prostřednictvím kubectl.
 
-4. Když jste v místním webovém uživatelském rozhraní, vyberte **Upřesnit nastavení** a Stáhněte si konfigurační soubor. 
+4. I když jste v místním webovém uživatelském rozhraní, můžete:
 
-    ![Stránka zařízení v místním uživatelském rozhraní](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-1.png)
+    - Přejít na Kubernetes API, vyberte **Upřesnit nastavení** a Stáhněte si rozšířený konfigurační soubor pro Kubernetes. 
 
-    Pokud jste k dispozici klíč od Microsoftu (vyberte uživatele může mít), můžete použít tento konfigurační soubor.
+        ![Stránka zařízení v místním uživatelském rozhraní 1](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-    ![Stránka zařízení v místním uživatelském rozhraní](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-2.png)
+        Pokud jste k dispozici klíč od Microsoftu (vyberte uživatele může mít), můžete použít tento konfigurační soubor.
+
+        ![Stránka zařízení v místním uživatelském rozhraní 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
+
+    - Můžete také přejít na koncový bod **řídicího panelu Kubernetes** a stáhnout `aseuser` konfigurační soubor. 
+    
+        ![Stránka zařízení v místním uživatelském rozhraní 3](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
+
+        `aseuser`Konfigurační soubor umožňuje ladit všechny problémy související s `iotedge` oborem názvů v clusteru Kubernetes. Další informace najdete v tématu [ladění problémů Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge). 
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -106,7 +114,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Konfigurace COMPUTE
-> * Získat koncový bod rozhraní API Kubernetes
+> * Získat koncové body Kubernetes
 
 
 Informace o tom, jak spravovat Azure Stack hraniční zařízení, najdete v těchto tématech:

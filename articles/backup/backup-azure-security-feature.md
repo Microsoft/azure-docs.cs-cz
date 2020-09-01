@@ -4,12 +4,12 @@ description: Naučte se používat funkce zabezpečení v Azure Backup k zajišt
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892452"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181676"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 
@@ -22,7 +22,7 @@ Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšu
 > [!NOTE]
 > Pokud používáte zálohování virtuálních počítačů infrastruktury jako služby (IaaS), neměli byste povolit funkce zabezpečení. Tyto funkce nejsou ještě dostupné pro zálohování virtuálních počítačů IaaS, takže jejich povolení nebude mít žádný vliv. Funkce zabezpečení by měly být povolené jenom v případě, že používáte: <br/>
 >
-> - **Agent Azure Backup**. Minimální verze agenta 2.0.9052. Po povolení těchto funkcí byste měli upgradovat na tuto verzi agenta, aby se prováděly kritické operace. <br/>
+> - **Agent Azure Backup**. Minimální verze agenta 2.0.9052. Až tyto funkce povolíte, měli byste upgradovat na tuto verzi agenta, aby se prováděly kritické operace. <br/>
 > - **Azure Backup Server**. Minimální verze agenta Azure Backup 2.0.9052 s Azure Backup Server Update 1. <br/>
 > - **Data Protection Manager softwaru System Center**. Minimální verze agenta Azure Backup 2.0.9052 s Data Protection Manager 2012 R2 UR12 nebo Data Protection Manager 2016 UR2. <br/>
 

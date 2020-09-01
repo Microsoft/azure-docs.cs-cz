@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084044"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180673"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Pomocí řídicího panelu Kubernetes monitorujte zařízení GPU Azure Stack Edge.
 
@@ -26,6 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Přístup k řídicímu panelu Kubernetes na zařízení
+> * Stáhnout `aseuser` konfiguraci
 > * Zobrazit moduly nasazené na zařízení
 > * Získat IP adresu pro aplikace nasazené na zařízení
 > * Zobrazit protokoly kontejnerů pro moduly nasazené v zařízení
@@ -33,13 +34,13 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="about-kubernetes-dashboard"></a>O řídicím panelu Kubernetes
 
-Řídicí panel Kubernetes je webové uživatelské rozhraní, které můžete použít k řešení problémů vašich kontejnerových aplikací. Řídicí panel Kubernetes je alternativa založená na uživatelském rozhraní k `kubectl` příkazovému řádku Kubernetes. 
+Řídicí panel Kubernetes je webové uživatelské rozhraní, které můžete použít k řešení problémů vašich kontejnerových aplikací. Řídicí panel Kubernetes je alternativa založená na uživatelském rozhraní k `kubectl` příkazovému řádku Kubernetes. Další informace najdete v tématu [řídicí panel Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Na Azure Stack hraničním zařízení můžete pomocí řídicího panelu Kubernetes v režimu jen pro čtení získat přehled o aplikacích spuštěných v zařízení Azure Stack Edge, zobrazit stav prostředků clusteru Kubernetes a zobrazit všechny chyby, ke kterým došlo v zařízení.
+Na Azure Stack hraničním zařízení můžete pomocí řídicího panelu Kubernetes v režimu jen *pro čtení* získat přehled o aplikacích spuštěných v zařízení Azure Stack Edge, zobrazit stav prostředků clusteru Kubernetes a zobrazit všechny chyby, ke kterým došlo v zařízení.
 
 ## <a name="access-dashboard"></a>Přístup k řídicímu panelu
 
-Řídicí panel Kubernetes je jen pro čtení a běží na hlavním uzlu Kubernetes na portu 31000. Pro přístup k řídicímu panelu použijte následující postup: 
+Řídicí panel Kubernetes je *jen pro čtení* a běží na hlavním uzlu Kubernetes na portu 31000. Pro přístup k řídicímu panelu použijte následující postup: 
 
 1. V místním uživatelském rozhraní zařízení, klikněte na **zařízení** a pak na **koncové body zařízení**. Výběrem adresy URL řídicího panelu Kubernetes otevřete řídicí panel v prohlížeči.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: c789a5fdd2aed7a904dc71065340b3c921ac9abb
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146602"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181710"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak používat Samoobslužný přístup k aplikacím
 
@@ -28,7 +28,7 @@ Další informace o používání mých aplikací z perspektivy koncových uživ
 
 Tato funkce umožňuje:
 
--   Umožněte uživatelům automaticky zjišťovat aplikace z [přístupového panelu aplikace](https://myapps.microsoft.com/) bez přestane skupiny IT.
+-   Umožněte uživatelům automaticky zjišťovat aplikace z [mých aplikací](https://myapps.microsoft.com/) , aniž byste přestane skupinu IT.
 -   Přidejte tyto uživatele do předem nakonfigurované skupiny, abyste viděli, kdo požadoval přístup, odebrali přístup a spravovali přiřazené role.
 -   Volitelně můžete povolit, aby někdo schválil žádosti o přístup k aplikacím, aby tato skupina IT nemusela.
 -   Volitelně můžete nakonfigurovat až 10 jednotlivců, kteří můžou schvalovat přístup k této aplikaci.
@@ -57,14 +57,14 @@ Pokud chcete aplikaci povolit Samoobslužný přístup k aplikacím, postupujte 
 13. **Volitelné:** **u aplikací, které zveřejňují role**, pokud chcete roli přiřadit schválené uživatele samoobslužné služby, vyberte selektor vedle **role, které by se měly přiřazovat uživatelům v této aplikaci? Pokud** chcete vybrat roli, ke které se tito uživatelé mají přiřadit.
 14. Kliknutím na tlačítko **Uložit** v horní části dokončíte.
 
-Jakmile dokončíte konfiguraci samoobslužné aplikace, uživatelé můžou přejít na svůj [přístupový panel aplikace](https://myapps.microsoft.com/) a vybrat tlačítko **+ Přidat** a najít tak aplikace, na které jste povolili Samoobslužný přístup. Obchodní schvalovatelé také uvidí oznámení na svém [přístupovém panelu aplikací](https://myapps.microsoft.com/). Můžete povolit e-mailem upozornění, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení. 
+Jakmile dokončíte konfiguraci samoobslužné aplikace, uživatelé můžou přejít na [Moje aplikace](https://myapps.microsoft.com/) a vybrat tlačítko **+ Přidat** a najít tak aplikace, na které jste povolili Samoobslužný přístup. Obchodní schvalovatelé také uvidí oznámení na stránce [Moje aplikace](https://myapps.microsoft.com/) . Můžete povolit e-mailem upozornění, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení. 
 
 Tato schválení podporují pouze pracovní postupy s jedním schválením, což znamená, že pokud zadáte více schvalovatelů, může každý jednotlivý schvalovatel schválit přístup k aplikaci.
 
 ## <a name="things-to-check-if-self-service-isnt-working"></a>Věci pro kontrolu, jestli nefunguje Samoobslužná služba
 -   Ujistěte se, že uživatel nebo skupina mají povolený požadavek samoobslužného přístupu k aplikacím.
--   Ujistěte se, že uživatel navštívil správné místo pro Samoobslužný přístup k aplikacím. Uživatelé můžou přejít na svůj [přístupový panel aplikace](https://myapps.microsoft.com/) a vybrat tlačítko **+ Přidat** a najít tak aplikace, na které jste povolili Samoobslužný přístup.
--   Pokud byl nedávno nakonfigurovaný Samoobslužný přístup k aplikacím, zkuste se znovu přihlásit a přejít na přístupový panel uživatele po několika minutách, aby se zjistilo, jestli se projevily změny samoobslužného přístupu.
+-   Ujistěte se, že uživatel navštívil správné místo pro Samoobslužný přístup k aplikacím. Uživatelé můžou přejít na stránku [Moje aplikace](https://myapps.microsoft.com/) a vybrat tlačítko **+ Přidat** a najít aplikace, na které jste povolili Samoobslužný přístup.
+-   Pokud byl nedávno nakonfigurovaný Samoobslužný přístup k aplikacím, zkuste se znovu přihlásit a znovu přihlašovat do mých aplikací uživatele po několika minutách, abyste zjistili, jestli se projevily změny samoobslužného přístupu.
 
 ## <a name="next-steps"></a>Další kroky
 [Nastavení služby Azure Active Directory pro samoobslužnou správu skupin](../users-groups-roles/groups-self-service-management.md)

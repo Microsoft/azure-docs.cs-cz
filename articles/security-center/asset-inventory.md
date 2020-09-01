@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263901"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181099"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.
 
@@ -38,7 +38,7 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Preview|
-|Stanov|Zdarma|
+|Stanov|Free|
 |Požadované role a oprávnění:|Všichni uživatelé|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
@@ -102,6 +102,9 @@ Při použití [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/dat
 1. Chcete-li použít **výsledky zabezpečení obsahující** filtr, zadejte bezplatný text z ID, kontrolu zabezpečení nebo CVE jméno hledání ohrožení zabezpečení, které chcete filtrovat na ovlivněné prostředky:
 
     !["Výsledky zabezpečení obsahují filtr](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > **Výsledky zabezpečení obsahují** a filtry **značek** přijímají pouze jednu hodnotu. Chcete-li filtrovat podle více než jednoho, použijte příkaz **Přidat filtry**.
 
 1. Chcete-li použít filtr **cenové úrovně** , vyberte jednu nebo více možností (bezplatné, částečné nebo standardní):
 

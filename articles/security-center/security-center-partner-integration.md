@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519215"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180843"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -35,10 +35,7 @@ Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohr
 > [!NOTE]
 > Security Center neinstaluje agenta Log Analytics na partnerských virtuálních zařízeních, protože většina dodavatelů zabezpečení brání externím agentům běžícím na jejich zařízeních.
 
-Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky úrovně Standard, najdete v těchto tématech: 
-
-- [Integrovaná chyba pro prohledávání virtuálních počítačů](built-in-vulnerability-assessment.md).
-- [Nasazení řešení pro kontrolu ohrožení zabezpečení partnera](partner-vulnerability-assessment.md).
+Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky úrovně Standard, najdete v tématu [posouzení ohrožení zabezpečení pro Azure Virtual Machines](deploy-vulnerability-assessment-vm.md).
 
 Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 

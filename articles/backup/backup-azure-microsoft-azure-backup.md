@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001157"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181693"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -275,11 +275,11 @@ Tady je postup, pokud potřebujete přesunout MABS na nový server a zachovat ú
 9. Z SQL Obnovte DPMDB.
 10. Na novém serveru spusťte CMD (jako správce). Přejít do umístění instalačního Microsoft Azure Backup a složky bin
 
-    Příklad cesty: C:\Windows\System32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Příklad cesty: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. Pokud se chcete připojit k Azure Backup, spusťte `DPMSYNC -SYNC`
 
-    Pokud jste přidali **nové** disky do fondu úložiště DPM místo přesunutí starých těch, spusťte `DPMSYNC -Reallocatereplica`
+    Pokud jste přidali **nové** disky do fondu úložiště DPM místo přesunutí starých těch, spusťte příkaz `DPMSYNC -Reallocatereplica` .
 
 ## <a name="network-connectivity"></a>Připojení k síti
 

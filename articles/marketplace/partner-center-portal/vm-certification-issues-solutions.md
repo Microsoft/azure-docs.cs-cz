@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225362"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181438"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
 
@@ -84,7 +84,7 @@ Pokud se pokoušíte nainstalovat sadu Visual Studio nebo jakýkoli produkt lice
 
 Další informace o výběru schválené základní třídy najdete v tématu [Vytvoření technických prostředků virtuálních počítačů Azure](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo
+## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo 
 
 Sada nástrojů Microsoft Certification Toolkit vám může pomáhat při spouštění testovacích případů a ověření, že je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
 
@@ -113,7 +113,7 @@ V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při 
  
 |Scénář|Testovací případ|Chyba|Řešení|
 |---|---|---|---|
-|1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2,241 nebo novější. Tento požadavek byl povinný od 1. května 2020.|Aby bylo možné [Odeslat žádost](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support), musí být bitová kopie aktualizována s požadovanou verzí.|
+|1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020.|Aktualizujte prosím verzi agenta pro Linux a měla by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Testovací případ historie bash|Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), zobrazí se chyba. Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.|Pokud chcete tento problém vyřešit, připojte VHD k jakémukoli jinému pracovnímu virtuálnímu počítači a proveďte požadované změny (například odstraňte soubory historie *. bash* ), aby se snížila velikost menší nebo rovna 1 KB.|
 |3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0**. Kontrolou spusťte následující příkaz:<br>`cat /proc/cmdline`|Nastavte hodnotu **Console** na **ttyS0**a odešlete požadavek znovu.|
 |4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval**.|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a potom požadavek odešlete znovu.|
@@ -213,7 +213,7 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 |RHEL a cent OS|6,10|2.6.32-754.15.3|
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
-||7.4|3.10.0-693.50.3|
+||7,4|3.10.0-693.50.3|
 ||7,5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7.7|3.10.0-1062.1.1|
@@ -363,7 +363,8 @@ Vydavatelé se musí obrátit na podporu [vydavatele na webu Marketplace](https:
    4.    Verze – verze nabídky virtuálních počítačů, pro kterou je požadována výjimka
    5.   Typ výjimky – testy, uzamčený virtuální počítač, vlastní šablony
    6.   Důvod žádosti – důvod pro tuto výjimku a informace o testech, které mají být vyloučeny 
-   7.   Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
+   7. Časová osa – datum, do kterého byla tato výjimka požadována 
+   8.   Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
 
 
 ## <a name="next-steps"></a>Další kroky

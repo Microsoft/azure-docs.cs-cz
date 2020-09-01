@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d88873dafd5a3ffac3f0135d877ff407427ffd6f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799084"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179857"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -32,7 +32,7 @@ Další informace najdete v tématu [Co je Azure Active Directory?](active-direc
 **Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud nemáte placené předplatné Office 365 nebo Azure AD, budete muset aktivovat bezplatný [účet Azure](https://azure.microsoft.com/free/
 ) nebo placené předplatné.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
@@ -51,7 +51,7 @@ Placené služby AD Azure, jako je Enterprise Mobility + Security, doplňují os
 
 **A:** Ve výchozím nastavení má osoba, která se zaregistruje k předplatnému Azure, přiřazenou roli vlastníka pro prostředky Azure. Vlastník může použít buď účet Microsoft, nebo pracovní nebo školní účet z adresáře, ke kterému je předplatné Azure přidružené.  Tato role je oprávnění ke správě služeb na webu Azure Portal.
 
-Pokud se ostatní potřebují přihlašovat a přistupovat ke službám pomocí stejného předplatného, můžete jim přiřadit příslušnou [integrovanou roli](../../role-based-access-control/built-in-roles.md). Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Pokud se ostatní potřebují přihlašovat a přistupovat ke službám pomocí stejného předplatného, můžete jim přiřadit příslušnou [integrovanou roli](../../role-based-access-control/built-in-roles.md). Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Ve výchozím nastavení se uživateli, který se zaregistruje do předplatného Azure, přiřadí role globálního správce pro tento adresář. Globální správce má přístup ke všem funkcím adresáře Azure AD. Azure AD má jinou sadu rolí správce pro správu adresáře a funkcí souvisejících s identitou. Tito správci budou mít přístup k různým funkcím v Azure Portal. Role správce určuje, co můžou dělat, jako je vytváření nebo úpravy uživatelů, přiřazování rolí pro správu ostatním, Resetování uživatelských hesel, Správa uživatelských licencí nebo Správa domén.  Další informace o správcích adresáře služby Azure AD a jejich rolích najdete v tématu [přiřazení uživatele k rolím správců v Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a [přiřazování rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
@@ -160,7 +160,7 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 
 **Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na možnostech vaší aplikace a vašich předvolbách můžete nakonfigurovat jednotné přihlašování a automatizované zřizování.  
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ Další informace najdete v tématu [prostředí koncových uživatelů pro apli
 
 **Odpověď:** Azure AD podporuje mnoho standardizovaných protokolů pro ověřování a autorizaci, například SAML 2.0, OpenID Connect, OAuth 2.0 a WS-Federation. Azure AD podporuje funkce ukládání hesel do trezoru a automatického přihlašování pro aplikace, které podporují pouze ověření na základě formuláře.   
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md)
 * [Protokoly pro ověřování služby Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)

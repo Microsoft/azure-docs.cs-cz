@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000715"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181489"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
 
@@ -19,7 +19,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se Azure Backup
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Návody ověřit, zda byla data vytváření sestav spouštěna v pracovním prostoru Log Analytics (LA)?
 
-Přejděte do pracovního prostoru LA, který jste nakonfigurovali, přejděte na položku nabídky **protokoly** a spusťte dotaz CoreAzureBackup | Vezměte 1. Pokud se zobrazí vracený záznam, znamená to, že se data začala přesměrovat do pracovního prostoru. Počáteční nabízení dat může trvat až 24 hodin.
+Přejděte do pracovního prostoru LA, který jste nakonfigurovali. Přejděte do položky nabídky **protokoly** a spusťte dotaz `CoreAzureBackup | take 1` . Pokud se zobrazí vracený záznam, znamená to, že se data začala přesměrovat do pracovního prostoru. Počáteční nabízení dat může trvat až 24 hodin.
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Jaká je frekvence nabízených dat do pracovního prostoru LA?
 

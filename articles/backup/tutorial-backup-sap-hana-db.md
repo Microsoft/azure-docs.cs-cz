@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 063cd04ecfc67d5f0f761bb0159ab80dcff40030
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 08221bddf9eac77217be23d972cd434b36d3c607
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958809"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180537"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -221,7 +221,7 @@ Nastavení zásad určete následujícím způsobem:
    * Měsíční a roční rozsah uchování se chová podobným způsobem.
 4. V nabídce **zásady úplného zálohování** klikněte na **OK** , aby se nastavení přijímalo.
 5. Pak vyberte **rozdílové zálohování** a přidejte rozdílovou zásadu.
-6. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování. Povolili jsme rozdílovou zálohu každé **neděle** v **2:00**. ta se uchovává po dobu **30 dnů**.
+6. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování. Povolili jsme rozdílové zálohování každé **neděle** v **2:00**, které se uchovává po dobu **30 dnů**.
 
    ![Zásady rozdílového zálohování](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
@@ -243,7 +243,7 @@ Nastavení zásad určete následujícím způsobem:
 9. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
 10. Až dokončíte definování zásad zálohování, klikněte na **OK**.
 
-Nyní jste úspěšně nakonfigurovali zálohy pro vaše SAP HANA databáze.
+Úspěšně jste nakonfigurovali zálohy pro vaše SAP HANA databáze.
 
 ## <a name="next-steps"></a>Další kroky
 

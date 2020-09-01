@@ -9,23 +9,23 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2018
+ms.date: 08/28/2020
 ms.author: rogardle
-ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074069"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179636"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření Oracle Database na virtuálním počítači Azure
 
 Tato příručka podrobně popisuje použití rozhraní příkazového řádku Azure k nasazení virtuálního počítače Azure z [Image Galerie Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) , aby bylo možné vytvořit databázi Oracle 12c. Po nasazení serveru se připojíte přes SSH, aby se nakonfigurovala databáze Oracle. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -82,7 +82,7 @@ ssh azureuser@<publicIpAddress>
 
 V imagi na webu Marketplace už je nainstalovaný software Oracle. Vytvořte ukázkovou databázi následujícím způsobem. 
 
-1.  Přepněte na uživatele *Oracle* a pak inicializujte naslouchací proces pro protokolování:
+1.  Přepněte na uživatele *Oracle* a pak spusťte naslouchací proces Oracle:
 
     ```bash
     $ sudo -su oracle
@@ -116,8 +116,13 @@ V imagi na webu Marketplace už je nainstalovaný software Oracle. Vytvořte uk�
     The listener supports no services
     The command completed successfully
     ```
+2. Vytvoření datového adresáře pro datové soubory Oracle
 
-2.  Vytvořte databázi:
+    ```bash
+        mkdir /u01/app/oracle/oradata
+    ```
+
+3.  Vytvořte databázi:
 
     ```bash
     dbca -silent \
@@ -136,28 +141,58 @@ V imagi na webu Marketplace už je nainstalovaný software Oracle. Vytvořte uk�
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
+           -datafileDestination "/u01/app/oracle/oradata/"
            -ignorePreReqs
     ```
 
     Vytvoření databáze trvá několik minut.
 
-3. Nastavit proměnné Oracle
+    Zobrazí se výstup, který vypadá podobně jako následující:
 
-Než se připojíte, musíte nastavit dvě proměnné prostředí: *ORACLE_HOME* a *ORACLE_SID*.
+    ```output
+        Copying database files
+        1% complete
+        2% complete
+        8% complete
+        13% complete
+        19% complete
+        27% complete
+        Creating and starting Oracle instance
+        29% complete
+        32% complete
+        33% complete
+        34% complete
+        38% complete
+        42% complete
+        43% complete
+        45% complete
+        Completing Database Creation
+        48% complete
+        51% complete
+        53% complete
+        62% complete
+        70% complete
+        72% complete
+        Creating Pluggable Databases
+        78% complete
+        100% complete
+        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+    ```
 
-```bash
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-ORACLE_SID=cdb1; export ORACLE_SID
-```
+4. Nastavit proměnné Oracle
 
-Do souboru. bashrc můžete také přidat proměnné ORACLE_HOME a ORACLE_SID. Tím by se uložily proměnné prostředí pro budoucí přihlášení. Potvrďte, že se do souboru přidaly následující příkazy `~/.bashrc` pomocí editoru podle vašeho výběru.
+    Než se připojíte, musíte nastavit dvě proměnné prostředí: *ORACLE_HOME* a *ORACLE_SID*.
 
-```bash
-# Add ORACLE_HOME. 
-export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1 
-# Add ORACLE_SID. 
-export ORACLE_SID=cdb1 
-```
+    ```bash
+        ORACLE_SID=cdb1; export ORACLE_SID
+    ```
+
+    Do souboru. bashrc můžete také přidat proměnné ORACLE_HOME a ORACLE_SID. Tím by se uložily proměnné prostředí pro budoucí přihlášení. Potvrďte, že následující příkazy byly přidány do `~/.bashrc` souboru pomocí editoru podle vašeho výběru.
+
+    ```bash
+    # Add ORACLE_SID. 
+    export ORACLE_SID=cdb1 
+    ```
 
 ## <a name="oracle-em-express-connectivity"></a>Připojení Oracle EM Express
 

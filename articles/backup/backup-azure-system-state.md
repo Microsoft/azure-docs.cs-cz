@@ -3,12 +3,12 @@ title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému počítačů s Windows serverem do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013431"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181625"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496043"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180775"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -24,7 +24,7 @@ Současná podniková analýza vyžaduje provoz v obrovském měřítku na jaké
 
 Toto řešení je obtížné sestavovat, konfigurovat, zabezpečovat a udržovat, což zpozdí extrakci inteligentního přehledu.
 
-**Azure synapse** je integrovaná analytická služba, která urychluje přehled ze všech dat v jakémkoli měřítku napříč datovými sklady a systémy pro analýzu velkých objemů dat. Přináší dohromady nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané při analýze velkých objemů dat, a **kanály** k orchestraci aktivit a přesunu dat.
+**Azure synapse** je integrovaná analytická služba, která urychluje přehled ze všech dat v jakémkoli měřítku napříč datovými sklady a systémy pro analýzu velkých objemů dat. Přináší dohromady nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané při analýze velkých objemů dat a **kanály** pro integraci dat a ETL/ELT.
 
 Azure synapse se dodává s uživatelským prostředím pro web Native **Studio** , které poskytuje jednotné prostředí a model pro správu, monitorování, kódování a zabezpečení.
 
@@ -59,13 +59,13 @@ Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL
 * SQL a Spark můžou přímo prozkoumat a analyzovat soubory Parquet, CSV, TSV a JSON, které jsou uložené v Data Lake.
 * Rychlé škálovatelné načítání a uvolňování dat mezi databázemi SQL a Spark
 
-### <a name="built-in-orchestration-via-pipelines"></a>Vestavěná orchestrace přes kanály
+### <a name="built-in-data-integration-via-pipelines"></a>Integrovaná integrace dat prostřednictvím kanálů
 
-Azure synapse nabízí integrovaný modul pro integraci dat a prostředí, jako Azure Data Factory, což vám umožní vytvářet kanály s bohatou datovou částí bez použití samostatného modulu orchestrace.
+Azure synapse přináší integrovaný nástroj se stejným modulem pro integraci dat a prostředí jako Azure Data Factory, což vám umožní vytvářet bohatý kanály ETL v měřítku, aniž byste museli opustit analýzu synapse.
 
-* Přesun dat mezi Azure synapse a 90 + místními zdroji dat
-* Orchestrace poznámkových bloků, kanálů, úloh Spark, skriptů SQL, uložených procedur
+* Ingestování dat z devadesáti zdrojů dat
 * ETL bez kódu s aktivitami toku dat
+* Orchestrace poznámkových bloků, úloh Sparku, uložených procedur, skriptů SQL a dalších
 
 ### <a name="unified-management-monitoring-and-security"></a>Sjednocená Správa, monitorování a zabezpečení
 
@@ -86,7 +86,7 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-* [Použití synapse studia](quickstart-synapse-studio.md)
+* [Použití sady Synapse Studio](quickstart-synapse-studio.md)
 * [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 * [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
 * [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md)

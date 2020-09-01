@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 673bd211f3271eceacb18e7fabfcc6ace2ded42c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 36d331de3a93e04932c4bce4d14704b33f69fab6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087727"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181540"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Kurz: konfigurace sítě pro Azure Stack Edge pomocí GPU
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
      >[!NOTE]
      >
      > * Doporučujeme, abyste místní IP adresu síťového rozhraní nepnuli z static na DCHP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na protokol DHCP, tak nemusíte určit adresu DHCP. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení aktivuje se službou, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
-     > * Pokud povolíte výpočetní prostředí a použijete IoT Edge modul na zařízení Azure Stack Edge, doporučujeme, abyste nastavili ověřování webového proxy serveru jako **žádné**. Protokol NTLM není podporován.
+
 
     Po nakonfigurování a použití nastavení sítě se vraťte na **začátek**.
 
@@ -120,7 +120,11 @@ Pomocí těchto kroků povolíte výpočetní prostředky a nakonfigurujete výp
 
 Toto je volitelná konfigurace.
 
-1. Přejít na stránku Začínáme v místním webovém uživatelském rozhraní vašeho zařízení.
+> [!IMPORTANT]
+> * Pokud povolíte výpočetní prostředí a použijete IoT Edge modul na zařízení Azure Stack Edge, doporučujeme, abyste nastavili ověřování webového proxy serveru jako **žádné**. Protokol NTLM není podporován.
+>* Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL. Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný. Obvykle transparentní proxy servery dobře fungují s Azure Stack Edge. Netransparentní webové proxy servery nejsou podporovány.
+
+1. Přejít na stránku **Začínáme** v místním webovém uživatelském rozhraní vašeho zařízení.
 2. Na dlaždici **síť** nakonfigurujte nastavení webového proxy server. I když je konfigurace webového proxy serveru volitelná, pokud používáte webový proxy server, můžete ho nakonfigurovat jenom na této stránce.
 
    ![Stránka nastavení webového proxy serveru v místním webovém prostředí](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)

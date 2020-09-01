@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fcaac4c1efe6507d4f69acd897e456400b1f61f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1f8e0464eb7f513149dd1cfa2ec5dcdc0f193417
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087759"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181217"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pomocí GPU
 
 V tomto kurzu se dozvíte, jak můžete nakonfigurovat certifikáty pro zařízení Azure Stack Edge pomocí integrovaného GPU pomocí místního webového uživatelského rozhraní.
 
-Doba potřebná pro tento krok se může lišit v závislosti na konkrétní možnosti zvolit způsob, jakým se ve vašem prostředí vytváří tok certifikátů. 
+Doba potřebná pro tento krok se může lišit v závislosti na konkrétní zvolené možnosti a způsobu, jakým se ve vašem prostředí vytváří tok certifikátů.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -36,8 +36,8 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
 * Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md).
 * Pokud máte v plánu používat vlastní certifikáty:
     - Vaše certifikáty by měly být připravené v příslušném formátu včetně certifikátu podpisového řetězce.
-    - Pokud je vaše zařízení nasazené v Azure Government nebo Azure Government Secret nebo Azure Government cloudovém cloudu, které není nasazené ve veřejném cloudu Azure, je nutné před aktivací zařízení zadat certifikát podpisového řetězce. 
-    Podrobnosti o certifikátu najdete na webu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md).
+<!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
+    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Konfigurace certifikátů pro zařízení
@@ -55,9 +55,9 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
 
     - Pokud jste změnili název zařízení nebo doménu DNS, pak pokud chcete zařízení úspěšně aktivovat, můžete vybrat jednu z následujících možností: 
     
-        - Vygenerujte všechny certifikáty zařízení. **Certifikáty zařízení by se měly používat jenom pro testování a nepoužívají se u produkčních úloh.** Další informace najdete [v poznámkách k vygenerování certifikátů zařízení na Azure Stack hraničních zařízeních](#generate-device-certificates).
+        - **Vygenerujte všechny certifikáty zařízení**. Certifikáty zařízení by se měly používat jenom k testování a nepoužívají se v produkčních úlohách. * * Další informace najdete [v části generování certifikátů zařízení na Azure Stack hraničních zařízeních](#generate-device-certificates).
 
-        - Přineste si vlastní certifikáty. Můžete přenést vlastní podepsané certifikáty koncových bodů a odpovídající podpisové řetězce. Nejprve přidejte podpisový řetězec a potom nahrajte certifikáty koncového bodu. **Pro produkční úlohy doporučujeme vždycky přenášet vlastní certifikáty.** Další informace najdete v poznámkách k [převedení vlastních certifikátů na zařízení Azure Stack Edge](#bring-your-own-certificates).
+        - **Přineste si vlastní certifikáty**. Můžete přenést vlastní podepsané certifikáty koncových bodů a odpovídající podpisové řetězce. Nejprve přidejte podpisový řetězec a potom nahrajte certifikáty koncového bodu. **Pro produkční úlohy doporučujeme vždycky přenášet vlastní certifikáty.** Další informace najdete v poznámkách k [převedení vlastních certifikátů na zařízení Azure Stack Edge](#bring-your-own-certificates).
     
         - Můžete přenést některé vlastní certifikáty a vygenerovat některé certifikáty zařízení. Možnost **generovat certifikáty** bude znovu generovat jenom certifikáty zařízení.
 

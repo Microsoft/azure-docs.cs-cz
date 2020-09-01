@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795911"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179568"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -310,11 +310,11 @@ Pokud je váš Azure Active Directory připojený k místní službě Active Dir
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Inventarizaci privilegovaných účtů v rámci hostovaných Virtual Machines
 
-Obvykle nemusíte uživatelům poskytovat neomezená oprávnění k vašim předplatným nebo prostředkům Azure. Role správce Azure AD můžete použít k udělení přístupu pouze k uživatelům, kteří potřebují své úlohy. Role správce Azure AD můžete použít k umožnění jednoho správce spravovat pouze virtuální počítače v rámci předplatného, zatímco jiný může spravovat databáze SQL v rámci stejného předplatného. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../../role-based-access-control/overview.md).
+Obvykle nemusíte uživatelům poskytovat neomezená oprávnění k vašim předplatným nebo prostředkům Azure. Role správce Azure AD můžete použít k udělení přístupu pouze k uživatelům, kteří potřebují své úlohy. Role správce Azure AD můžete použít k umožnění jednoho správce spravovat pouze virtuální počítače v rámci předplatného, zatímco jiný může spravovat databáze SQL v rámci stejného předplatného. Další informace najdete v tématu [co je řízení přístupu na základě role v Azure](../../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementace rolí PIM pro správce Azure AD
 
-Využijte Privileged Identity Management s rolemi správce Azure AD ke správě, řízení a monitorování přístupu k prostředkům Azure. Ochrana osobních údajů je chráněná tím, že se snižuje doba expozice oprávnění a zvyšuje se jejich využití prostřednictvím sestav a výstrah. Další informace najdete v tématu [Správa přístupu RBAC k prostředkům Azure pomocí Privileged Identity Management](../../role-based-access-control/best-practices.md).
+Využijte Privileged Identity Management s rolemi správce Azure AD ke správě, řízení a monitorování přístupu k prostředkům Azure. Ochrana osobních údajů je chráněná tím, že se snižuje doba expozice oprávnění a zvyšuje se jejich využití prostřednictvím sestav a výstrah. Další informace najdete v tématu [co je Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Použití integrace protokolů Azure k posílání relevantních protokolů Azure do systémů SIEM
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásady
+* Zásada
 * Operace
 * Zabezpečení informací
 * Servery

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 0104f9002a1fb4f6f1d0d31bd6eea50bce1b365b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 562acfe1ae96f7f88b72945846bcb49c0cc1f216
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050365"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179534"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
 
@@ -41,7 +41,7 @@ Konkrétně konektor HDFS podporuje:
 - Kopírování souborů pomocí protokolu *webhdfs* nebo integrované podpory *DistCp* .
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -250,7 +250,7 @@ Tato část popisuje chování, které je výsledkem použití cesty seznamu sou
 
 Aktivita kopírování podporuje použití DistCp ke kopírování souborů do úložiště objektů BLOB v Azure (včetně [připravené kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. V takovém případě může DistCp využít výkon vašeho clusteru místo spuštění v místním prostředí Integration runtime. Použití DistCp poskytuje lepší propustnost kopírování, zejména v případě, že je cluster velmi výkonný. Na základě konfigurace ve vaší datové továrně aktivita kopírování automaticky vytvoří příkaz DistCp, odešle ho do vašeho clusteru Hadoop a monitoruje stav kopírování.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů BLOB v Azure (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje následující požadavky:
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027695"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179399"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -220,7 +220,7 @@ Chcete-li použít vlastní zprávy, proveďte následující kroky:
 
 1. Přejděte na **Azure Active Directory**  >  nastavení**zabezpečení**  >  **MFA**–  >  **telefonní hovor**.
 1. Vyberte **Přidat pozdrav**.
-1. Vyberte **typ** pozdravu, jako je například *pozdrav (Standard)* nebo *ověřování proběhlo úspěšně*.
+1. Vyberte **typ** pozdravu, jako je například *pozdrav (Standard)* nebo  *ověřování proběhlo úspěšně*.
 1. Vyberte **jazyk**založený na předchozí části o [chování vlastního jazyka zprávy](#custom-message-language-behavior).
 1. Vyhledejte a vyberte zvukový soubor *. mp3* nebo *. wav* , který chcete nahrát.
 1. Až budete připraveni, vyberte **Přidat**a pak **Uložit**.
@@ -242,12 +242,9 @@ Funkce _důvěryhodných IP adres_ v Azure Multi-Factor Authentication obchází
 
 Pokud vaše organizace nasadí rozšíření serveru NPS za účelem poskytování MFA pro místní aplikace, Všimněte si, že zdrojová IP adresa se vždy jeví jako server NPS, se kterým se snaží ověřování natékat.
 
-| Typ tenanta Azure AD | Možnosti funkcí důvěryhodné IP adresy |
-|:--- |:--- |
-| Spravované |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 důvěryhodných rozsahů IP adres.|
-| Federovaní |**Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí v rámci organizace, můžou obejít dvoustupňové ověřování. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. |
+| Typ tenanta Azure AD | Možnosti důvěryhodných IP adres | |:---|:---| dva kroky | Spravované | **Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 rozsahů důvěryhodných IP adres. | | Federované | **Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí z organizace, můžou obejít službu Multi-Factor Authentication. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které mohou obejít službu Multi-Factor Authentication pro uživatele, kteří se přihlásí z intranetu společnosti. |
 
-Důvěryhodná IP adresa funguje jenom v intranetu společnosti. Pokud vyberete možnost **všechny federované uživatele** a uživatel se přihlásí mimo intranet společnosti, musí se uživatel ověřit pomocí dvoustupňového ověřování. Proces je stejný i v případě, že uživatel prezentuje AD FS deklarací identity.
+Důvěryhodná IP adresa funguje jenom v intranetu společnosti. Pokud vyberete možnost **všechny federované uživatele** a uživatel se přihlásí mimo intranet společnosti, musí se uživatel ověřit pomocí služby Multi-Factor Authentication. Proces je stejný i v případě, že uživatel prezentuje AD FS deklarací identity.
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>Činnost koncového uživatele v rámci Corpnet
 
@@ -268,7 +265,7 @@ Pravidla podmíněného přístupu můžete použít k definování pojmenovaný
 1. Zadejte název umístění.
 1. Vyberte **Označit jako důvěryhodné umístění**.
 1. Zadejte rozsah IP adres v notaci CIDR pro vaše prostředí, například *40.77.182.32/27*.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu
 
@@ -278,14 +275,14 @@ Pokud chcete povolit důvěryhodné IP adresy pomocí zásad podmíněného př�
 1. Vyberte **Konfigurovat důvěryhodné IP adresy MFA**.
 1. Na stránce **nastavení služby** v části **důvěryhodné IP adresy**vyberte některou z následujících dvou možností:
 
-   * **Pro žádosti od federovaných uživatelů pocházejících z mého intranetu**: Pokud chcete tuto možnost vybrat, zaškrtněte políčko. Všichni federované uživatelé, kteří se přihlásí z podnikové sítě, obcházejí dvoustupňové ověřování pomocí deklarace identity, která je vydaná AD FS. Ujistěte se, že AD FS má pravidlo pro přidání deklarace identity intranetu do příslušného provozu. Pokud pravidlo neexistuje, vytvořte v AD FS následující pravidlo:
+   * **Pro žádosti od federovaných uživatelů pocházejících z mého intranetu**: Pokud chcete tuto možnost vybrat, zaškrtněte políčko. Všem federovaným uživatelům, kteří se přihlásí z podnikové sítě, obejít ověřování Multi-Factor Authentication pomocí deklarace identity, která je vydaná AD FS. Ujistěte se, že AD FS má pravidlo pro přidání deklarace identity intranetu do příslušného provozu. Pokud pravidlo neexistuje, vytvořte v AD FS následující pravidlo:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Pro požadavky z konkrétního rozsahu veřejných IP**adres: Pokud chcete zvolit tuto možnost, zadejte IP adresy do textového pole pomocí zápisu CIDR.
       * Pro IP adresy, které jsou v rozsahu xxx. xxx. xxx. 1 až XXX. xxx. xxx. 254, použijte notaci jako **xxx. xxx. xxx. 0/24**.
       * Pro jednu IP adresu použijte Notation, jako je **xxx.xxx.xxx.xxx/32**.
-      * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obcházejí dvoustupňové ověřování.
+      * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obejít službu Multi-Factor Authentication.
 
 1. Vyberte **Uložit**.
 
@@ -298,20 +295,20 @@ Pokud nechcete používat zásady podmíněného přístupu k povolení důvěry
 1. V části Multi-Factor Authentication vyberte **nastavení služby**.
 1. Na stránce **nastavení služby** v části **důvěryhodné IP adresy**vyberte jednu (nebo obě) z následujících dvou možností:
 
-   * **Pro žádosti od federovaných uživatelů v mém intranetu**: Pokud chcete vybrat tuto možnost, zaškrtněte políčko. Všichni federované uživatelé, kteří se přihlásí z podnikové sítě, obcházejí dvoustupňové ověřování pomocí deklarace identity, která je vydaná AD FS. Ujistěte se, že AD FS má pravidlo pro přidání deklarace identity intranetu do příslušného provozu. Pokud pravidlo neexistuje, vytvořte v AD FS následující pravidlo:
+   * **Pro žádosti od federovaných uživatelů v mém intranetu**: Pokud chcete vybrat tuto možnost, zaškrtněte políčko. Všem federovaným uživatelům, kteří se přihlásí z podnikové sítě, obejít ověřování Multi-Factor Authentication pomocí deklarace identity, která je vydaná AD FS. Ujistěte se, že AD FS má pravidlo pro přidání deklarace identity intranetu do příslušného provozu. Pokud pravidlo neexistuje, vytvořte v AD FS následující pravidlo:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Pro požadavky ze zadaného rozsahu podsítí IP adres**: Chcete-li zvolit tuto možnost, zadejte IP adresy do textového pole pomocí zápisu CIDR.
       * Pro IP adresy, které jsou v rozsahu xxx. xxx. xxx. 1 až XXX. xxx. xxx. 254, použijte notaci jako **xxx. xxx. xxx. 0/24**.
       * Pro jednu IP adresu použijte Notation, jako je **xxx.xxx.xxx.xxx/32**.
-      * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obcházejí dvoustupňové ověřování.
+      * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obejít službu Multi-Factor Authentication.
 
 1. Vyberte **Uložit**.
 
 ## <a name="verification-methods"></a>Metody ověřování
 
-Na portálu nastavení služby můžete zvolit metody ověřování, které jsou k dispozici pro uživatele. Když uživatelé zaregistrují své účty pro Azure Multi-Factor Authentication, zvolí si upřednostňovanou metodu ověření z možností, které jste povolili. Pokyny k procesu registrace uživatele najdete v části [Nastavení účtu pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-first-time.md).
+Na portálu nastavení služby můžete zvolit metody ověřování, které jsou k dispozici pro uživatele. Když uživatelé zaregistrují své účty pro Azure Multi-Factor Authentication, zvolí si upřednostňovanou metodu ověření z možností, které jste povolili. Pokyny pro proces registrace uživatele najdete v části [Nastavení účtu pro službu Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 K dispozici jsou následující metody ověřování:
 
@@ -336,25 +333,25 @@ Pokud chcete povolit nebo zakázat metody ověřování, proveďte následujíc�
 
 ## <a name="remember-multi-factor-authentication"></a>Zapamatovat Multi-Factor Authentication
 
-Funkce _Zapamatovat Multi-Factor Authentication_ umožňuje uživatelům obejít následná ověření po dobu určitého počtu dnů po úspěšném přihlášení k zařízení pomocí Multi-Factor Authentication. Tato funkce vylepšuje použitelnost tím, že minimalizuje počet pokusů, kolikrát musí uživatel provést MFA na stejném zařízení.
+Funkce _Zapamatovat Multi-Factor Authentication_ umožňuje uživatelům obejít následná ověření po dobu určitého počtu dnů po úspěšném přihlášení k zařízení pomocí Multi-Factor Authentication. Pro zvýšení použitelnosti a minimalizaci počtu pokusů, kolikrát musí uživatel provést MFA na stejném zařízení, vyberte dobu trvání 90 dní nebo více.
 
 > [!IMPORTANT]
 > Pokud dojde k ohrožení bezpečnosti účtu nebo zařízení, může to mít vliv na zapamatování Multi-Factor Authentication důvěryhodných zařízení. Pokud dojde k ohrožení bezpečnosti podnikového účtu nebo dojde ke ztrátě nebo odcizení důvěryhodného zařízení, měli byste [odvolat relace MFA](howto-mfa-userdevicesettings.md).
 >
-> Akce obnovit odvolá důvěryhodný stav ze všech zařízení a uživatel musí provést dvoustupňové ověřování znovu. Můžete taky dát uživatelům pokyn, aby obnovili Multi-Factor Authentication na svých vlastních zařízeních, jak je uvedeno v [možnosti Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
+> Akce obnovit odvolá důvěryhodný stav ze všech zařízení a uživatel je nutný k opětovnému provedení služby Multi-Factor Authentication. Můžete taky dát uživatelům pokyn, aby obnovili Multi-Factor Authentication na svých vlastních zařízeních, jak je uvedeno v [možnosti Správa nastavení pro vícefaktorové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 
 ### <a name="how-the-feature-works"></a>Jak funkce funguje
 
 Funkce zapamatovat Multi-Factor Authentication nastaví trvalý soubor cookie v prohlížeči, když uživatel vybere možnost po **X dnech znovu se neptat** při přihlášení. Uživatel není znovu vyzván k Multi-Factor Authentication z tohoto stejného prohlížeče, dokud neskončí platnost souboru cookie. Pokud uživatel otevře jiný prohlížeč na stejném zařízení nebo vymaže soubory cookie, zobrazí se jim výzva k ověření.
 
-Možnost **příště nedotazování na X dní** se nezobrazí v neprohlížečových aplikacích bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace používají _aktualizační tokeny_ , které každou hodinu poskytují nové přístupové tokeny. Při ověření obnovovacího tokenu Azure AD zkontroluje, že poslední dvoustupňové ověřování proběhlo během zadaného počtu dnů.
+Možnost **příště nedotazování na X dní** se nezobrazí v neprohlížečových aplikacích bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace používají _aktualizační tokeny_ , které každou hodinu poskytují nové přístupové tokeny. Při ověření obnovovacího tokenu Azure AD zkontroluje, jestli se poslední služba Multi-Factor Authentication stala během zadaného počtu dnů.
 
-Tato funkce snižuje počet ověřování ve webových aplikacích, které se obvykle zobrazují při každém dotazu. Tato funkce zvyšuje počet ověřování pro klienty moderních ověřování, kteří se normálně vyzvat každých 90 dní. Může také zvýšit počet ověřování v kombinaci se zásadami podmíněného přístupu.
+Tato funkce snižuje počet ověřování ve webových aplikacích, které se obvykle zobrazují při každém dotazu. Tato funkce může zvýšit počet ověřování pro klienty moderního ověřování, kteří se obvykle dotazují každých 90 dní, pokud je nakonfigurovaná nižší doba trvání. Může také zvýšit počet ověřování v kombinaci se zásadami podmíněného přístupu.
 
 > [!IMPORTANT]
-> Funkce **Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **zůstat přihlášenou** AD FS, když uživatelé provedou dvoustupňové ověřování pro AD FS prostřednictvím Azure Multi-Factor Authentication Server nebo řešení Multi-Factor Authentication jiného výrobce.
+> Funkce **Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **zůstat přihlášenou** AD FS, když uživatelé provedou vícefaktorové ověřování pro AD FS prostřednictvím Azure Multi-Factor Authentication Server nebo řešení Multi-Factor Authentication jiného výrobce.
 >
-> Pokud uživatelé vyberou možnost **zůstat přihlášeni** na AD FS a také označí své zařízení jako důvěryhodné pro Multi-Factor Authentication, uživatel nebude automaticky ověřený po vypršení časového **limitu zapamatování služby Multi-Factor Authentication** . Azure AD si vyžádá nové dvoustupňové ověřování, ale AD FS vrátí token s původní Multi-Factor Authentication deklarací a datem, místo aby se znovu provádělo dvoustupňové ověřování. **Tato reakce nastavuje smyčku ověřování mezi Azure AD a AD FS.**
+> Pokud uživatelé vyberou možnost **zůstat přihlášeni** na AD FS a také označí své zařízení jako důvěryhodné pro Multi-Factor Authentication, uživatel nebude automaticky ověřený po vypršení časového **limitu zapamatování služby Multi-Factor Authentication** . Azure AD vyžaduje nové služby Multi-Factor Authentication, ale AD FS vrátí token s původní Multi-Factor Authentication deklarací a datem, místo aby se služba Multi-Factor Authentication znovu prováděla. **Tato reakce nastavuje smyčku ověřování mezi Azure AD a AD FS.**
 >
 > Funkce **pamatovat Multi-Factor Authentication** není kompatibilní s uživateli B2B a při přihlašování k pozváným klientům se nebude zobrazovat pro uživatele B2B.
 >
@@ -366,8 +363,8 @@ Pokud chcete povolit a nakonfigurovat možnost pro uživatele, aby si zapamatova
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**a pak zvolte **Uživatelé**.
 1. Vyberte **Multi-Factor Authentication**.
 1. V části Multi-Factor Authentication vyberte **nastavení služby**.
-1. Na stránce **nastavení služby** **Spravovat zapamatování vícefaktorového ověřování**vyberte možnost **dovolit uživatelům pamatovat si vícefaktorové ověřování na zařízeních, která důvěřují** .
-1. Nastavte počet dní, po který mají důvěryhodná zařízení obejít dvoustupňové ověřování. Výchozí hodnota je 14 dní.
+1. Na stránce **nastavení služby** v části **zapamatování vícefaktorového ověřování**vyberte možnost **dovolit uživatelům zapamatovat vícefaktorové ověřování u zařízení, která důvěřují** .
+1. Nastavte počet dní, po které mají důvěryhodná zařízení obejít službu Multi-Factor Authentication. Pro optimální uživatelské prostředí prodlužte dobu trvání až *90* nebo více dní.
 1. Vyberte **Uložit**.
 
 ### <a name="mark-a-device-as-trusted"></a>Označení zařízení jako důvěryhodného

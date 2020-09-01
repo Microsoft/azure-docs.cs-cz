@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 6c29240aa3267cd93ba0c3de1f0c797ce1a1483c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de0847beb92ebc95e1998d88cae93dbc19c3fb27
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084515"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180044"
 ---
 # <a name="azure-stack-edge-with-gpu-preview-release-notes"></a>Azure Stack Edge s poznámkou pro verzi Preview GPU
 
@@ -46,7 +46,7 @@ Následující tabulka poskytuje souhrn známých problémů pro zařízení Azu
 |**odst.**|Kubernetes |Kubernetes v současné době nepovoluje služby pro vyrovnávání zatížení ve více protokolech. Například služba DNS, která by musela naslouchat na TCP i UDP. |Pokud chcete toto omezení Kubernetes vyřešit pomocí MetalLB, můžete vytvořit dvě služby (jednu pro TCP, jednu pro protokol UDP) na stejném pod selektor. Tyto služby používají stejný klíč pro sdílení a specifikace. loadBalancerIP ke sdílení stejné IP adresy. Pokud máte více služeb než dostupné IP adresy, můžete sdílené IP adresy také sdílet. <br> Další informace najdete v tématu [sdílení IP adres](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**12,5.**|Cluster Kubernetes|Stávající moduly Azure IoT Edge Marketplace se v clusteru Kubernetes nespustí jako hostující platforma pro IoT Edge na Azure Stack hraničním zařízení.|Moduly se musí upravit, aby se nasadily na Azure Stack hraničním zařízení. Další informace najdete v tématu Změna Azure IoT Edgech modulů z webu Marketplace na používání Azure Stack hraničního zařízení.<!-- insert link-->|
 |**13,5.**|Kubernetes |Připojení vázaných na soubor nejsou u Azure IoT Edge v Kubernetes v zařízení Azure Stack Edge podporována.|IoT Edge používá vrstvu překladu k překladu `ContainerCreate` možností do Kubernetes konstrukcí. Vytváření `Binds` map do adresáře hostpath nebo vytváření a tak připojení vázaných na soubor nemůže být vázáno na cesty v kontejnerech IoT Edge.|
-
+|**čtrnáct.**|Kubernetes |Pokud přenesete vlastní certifikáty pro IoT Edge a přidáte je do zařízení Azure Stack Edge, nové certifikáty se neúčtují v rámci aktualizace grafů Helm.|Pokud chcete tento problém vyřešit, [Připojte se k rozhraní PowerShell zařízení](azure-stack-edge-gpu-connect-powershell-interface.md). Restart `iotedged` a `edgehub` lusky.|
 
 ## <a name="next-steps"></a>Další kroky
 

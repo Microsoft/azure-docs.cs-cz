@@ -3,12 +3,12 @@ title: Zálohování Azure File Share
 description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892248"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180010"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
@@ -50,7 +50,13 @@ Zálohování sdílené složky Azure je nativní cloudové řešení zálohová
 
 ## <a name="backup-costs"></a>Náklady na zálohování
 
-V současné době se vám budou účtovat jenom snímky, protože zálohování sdílené složky Azure je řešení založené na snímcích. Poplatky za úložiště vynaložené pro snímky se účtují spolu se spotřebou souborů Azure [podle uvedených podrobností](https://azure.microsoft.com/pricing/details/storage/files/)o cenách.
+Existují dva náklady spojené se záložním řešením sdílení souborů Azure:
+
+1. **Náklady na úložiště snímků**: poplatky za úložiště vynaložené pro snímky se účtují spolu se spotřebou souborů Azure [podle uvedených podrobností](https://azure.microsoft.com/pricing/details/storage/files/) o cenách. 
+
+2. **Poplatek za chráněnou instanci** : od 1. září 2020 se zákazníkům bude účtovat poplatek za chráněnou instanci podle [níže uvedených podrobností](https://azure.microsoft.com/en-in/pricing/details/backup/) o cenách. Poplatek za chráněnou instanci závisí na celkové velikosti chráněných sdílených složek v účtu úložiště.
+
+Podrobné odhady pro zálohování sdílených složek Azure najdete v podrobnostech o [Azure Backup cenové Estimator](https://aka.ms/AzureBackupCostEstimates).  
 
 ## <a name="next-steps"></a>Další kroky
 

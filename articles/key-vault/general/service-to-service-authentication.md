@@ -9,12 +9,12 @@ ms.date: 08/08/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: af7cb87f8caf0176505c8af864ae8d3cb0c312a0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585691"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180911"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -27,7 +27,7 @@ Správa takových přihlašovacích údajů může být obtížná. Setrvání p
 
 `Microsoft.Azure.Services.AppAuthentication`Knihovna spravuje ověřování automaticky, což zase umožňuje soustředit se na vaše řešení, nikoli na vaše přihlašovací údaje. Podporuje místní vývoj pomocí Microsoft Visual Studio, Azure CLI nebo integrovaného ověřování Azure AD. Při nasazení do prostředku Azure, který podporuje spravovanou identitu, knihovna automaticky používá [spravované identity pro prostředky Azure](../../active-directory/msi-overview.md). Nejsou vyžadovány žádné změny kódu nebo konfigurace. Knihovna také podporuje přímé použití [přihlašovacích údajů klienta](../../azure-resource-manager/resource-group-authenticate-service-principal.md) Azure AD, když spravovaná identita není k dispozici, nebo když není možné určit kontext zabezpečení vývojáře během místního vývoje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -54,7 +54,7 @@ V případě aplikací .NET je nejjednodušší způsob práce se spravovanou id
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-`AzureServiceTokenProvider`Třída ukládá token do mezipaměti a načítá ho z Azure AD těsně před vypršením platnosti. Proto už před voláním metody nemusíte kontrolovat platnost `GetAccessTokenAsync` . Stačí zavolat metodu, pokud chcete použít token.
+Před voláním metody nemusíte kontrolovat vypršení platnosti tokenu `GetAccessTokenAsync` , protože `AzureServiceTokenProvider` token uloží do paměti a načítá ho z Azure AD těsně před vypršením platnosti. 
 
 `GetAccessTokenAsync`Metoda vyžaduje identifikátor prostředku. Další informace o službě Microsoft Azure Services najdete v tématu [co jsou spravované identity pro prostředky Azure](../../active-directory/msi-overview.md).
 

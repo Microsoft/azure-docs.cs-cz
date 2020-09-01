@@ -5,14 +5,14 @@ description: Informace o tom, co se změnilo v nové verzi digitálních vláken
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: fdd0cd6995a294be03640693fcca9fb814f3acbe
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021693"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181421"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Co je nového digitálních vláken Azure? Jak se liší od předchozí verze (2018)?
 

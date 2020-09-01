@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919671"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179347"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Vylepší výzvy k opakovanému ověření a pochopení životnosti relace pro Azure Multi-Factor Authentication
 
 Azure Active Directory (Azure AD) má několik nastavení, která určují, jak často se uživatelé potřebují znovu ověřit. Toto opakované ověřování může být u prvního faktoru, jako je heslo, FIDO nebo Microsoft Authenticator bez hesla nebo provádění vícefaktorového ověřování (MFA). Tato nastavení opakovaného ověřování můžete nakonfigurovat podle potřeby vlastního prostředí a uživatelského prostředí, které chcete.
+
+Výchozí konfigurace Azure AD pro četnost přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje často vypadá jako rozumné, ale může Backfire. Pokud jsou uživatelé vyškoleni, aby mohli zadat své přihlašovací údaje, aniž by se museli překládat, můžou je omylem zadat na výzvu ke škodlivé přihlašovací údaje.
+
+Může se jednat o zvukové upozornění, které nežádá uživatele, aby se přihlásil zpátky, i když jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří změna hesla, zařízení, které nedodržuje předpisy, nebo operace zakázání účtu. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
 Tento článek podrobně popisuje doporučené konfigurace a způsob práce s různými nastaveními a jejich vzájemné interakce.
 
@@ -35,6 +39,7 @@ Pokud chcete vašim uživatelům poskytnout správné rovnováhu zabezpečení a
 * Pokud máte licence pro aplikace Office 365 nebo bezplatnou úroveň služby Azure AD:
     * Povolte jednotné přihlašování (SSO) napříč aplikacemi pomocí [spravovaných zařízení](../devices/overview.md) nebo [bezproblémového přihlašování](../hybrid/how-to-connect-sso.md).
     * Nechte zapnutou možnost *zůstat přihlášená* a uživatelé ji přijměte.
+* V případě scénářů pro mobilní zařízení se ujistěte, že uživatelé používají aplikaci Microsoft Authenticator. Tato aplikace se používá jako zprostředkovatel pro jiné federované aplikace Azure AD a na zařízení se omezuje výzvy k ověření.
 
 Náš výzkum ukazuje, že toto nastavení je pro většinu tenantů nejvhodnější. Některé kombinace těchto nastavení, jako je *třeba zapamatovat MFA* a *zůstat v jednom*, můžou vést k tomu, že se uživatelům zobrazí výzva, aby ověřili příliš často. Pravidelné výzvy k opakovanému ověření jsou pro produktivitu uživatelů špatné a můžou být zranitelnější vůči útokům.
 
@@ -71,11 +76,11 @@ Další informace o konfiguraci možnosti, která umožní uživatelům zůstat 
 
 ### <a name="remember-multi-factor-authentication"></a>Zapamatovat Multi-Factor Authentication  
 
-Toto nastavení umožňuje nakonfigurovat hodnoty mezi 1-60 dny a nastavit trvalý soubor cookie v prohlížeči, když uživatel vybere možnost po X dnech při přihlašování **znovu nedotazovat** .
+Toto nastavení umožňuje nakonfigurovat hodnoty mezi 1-365 dny a nastavit trvalý soubor cookie v prohlížeči, když uživatel vybere možnost po X dnech při přihlašování **znovu nedotazovat** .
 
 ![Snímek obrazovky s ukázkovou výzvou ke schválení žádosti o přihlášení](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-I když toto nastavení snižuje počet ověřování ve webových aplikacích, zvyšuje počet ověřování pro klienty moderních ověřování, jako jsou například klienti Office. Tito klienti obvykle vyzvou až po resetování hesla nebo nečinnosti po 90 dnech. Maximální hodnota *zapamatování MFA* je ale 60 dní. Pokud se používá v kombinaci s **zůstatem přihlášeným** nebo zásadami podmíněného přístupu, může se zvýšit počet požadavků na ověření.
+I když toto nastavení snižuje počet ověřování ve webových aplikacích, zvyšuje počet ověřování pro klienty moderních ověřování, jako jsou například klienti Office. Tito klienti obvykle vyzvou až po resetování hesla nebo nečinnosti po 90 dnech. Nastavení této hodnoty na méně než 90 dní ale zkrátí výchozí výzvy MFA pro klienty Office a zvýší frekvenci opakovaného ověřování. Pokud se používá v kombinaci s **zůstatem přihlášeným** nebo zásadami podmíněného přístupu, může se zvýšit počet požadavků na ověření.
 
 Pokud používáte *zapamatování MFA* a máte licence Azure AD Premium 1, zvažte možnost migrace těchto nastavení do frekvence přihlašování pomocí podmíněného přístupu. V opačném případě zvažte použití možnost *zůstat přihlášeni?* místo toho.
 

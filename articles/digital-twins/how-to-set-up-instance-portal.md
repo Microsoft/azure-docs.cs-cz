@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 300a11c36b11230d2bd75534f152a0a5955743ed
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234980"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181781"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -107,7 +107,7 @@ Začněte tím, že přejdete na [Azure Active Directory](https://portal.azure.c
 Na následující stránce *Registrovat aplikaci* vyplňte požadované hodnoty:
 * **Název**: zobrazovaný název aplikace Azure AD, který se má přidružit k registraci.
 * **Podporované typy účtů**: vyberte *účty jenom v tomto organizačním adresáři (jenom výchozí adresář – jeden tenant)* .
-* **Identifikátor URI pro přesměrování**: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Můžete použít `http://localhost` .
+* **Identifikátor URI pro přesměrování**: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Přidejte identifikátor URI *veřejného klienta/nativního (mobilní & Desktop)* pro `http://localhost` .
 
 Až skončíte, stiskněte tlačítko *zaregistrovat* .
 

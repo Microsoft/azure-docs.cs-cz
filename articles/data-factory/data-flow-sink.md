@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/18/2020
+ms.openlocfilehash: b2a356f8ee6c8e3d11548a3c7c17a868e4c057c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223631"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179177"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -36,7 +36,7 @@ Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selekt
 
 ![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
 
-##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Podporované typy jímky
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Podporované typy jímky
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
 
@@ -48,8 +48,9 @@ Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (EL
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Nastavení specifická pro tyto konektory se nacházejí na kartě **Nastavení** . Příklady skriptu informace a toku dat v těchto nastaveních najdete v dokumentaci k konektoru. 
+Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení** . Příklady skriptu informace a toku dat v těchto nastaveních se nachází v dokumentaci konektoru. 
 
 Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Chcete-li zapsat data do těchto jiných zdrojů z datového toku, použijte aktivitu kopírování a načtěte tato data z podporované jímky.
 

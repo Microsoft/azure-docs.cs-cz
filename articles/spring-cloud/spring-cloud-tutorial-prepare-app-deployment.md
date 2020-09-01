@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046727"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179755"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -21,8 +21,8 @@ V tomto tématu se dozvíte, jak připravit existující aplikaci pružiny v jaz
 Před spuštěním tohoto příkladu můžete vyzkoušet [základní rychlý Start](spring-cloud-quickstart.md).
 
 Další příklady vysvětlují, jak nasadit aplikaci do jarního cloudu Azure při konfiguraci souboru POM. 
-* [Spustit aplikaci pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
-* [Spuštění aplikace pomocí Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
+* [Spuštění první aplikace](spring-cloud-quickstart.md)
+* [Sestavování a spouštění mikroslužeb](spring-cloud-quickstart-sample-app-introduction.md)
 
 Tento článek vysvětluje požadované závislosti a jejich přidání do souboru POM.
 

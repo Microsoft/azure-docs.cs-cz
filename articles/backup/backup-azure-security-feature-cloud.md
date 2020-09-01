@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004914"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179959"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
@@ -97,7 +97,7 @@ Postupujte následovně:
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
+Pokud byly položky odstraněny před tím, než byl zakázán částečný-DELETE, budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
 
 Identifikujte položky, které jsou ve stavu nepodmíněného odstranění.
 
@@ -134,7 +134,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="using-rest-api"></a>Pomocí rozhraní REST API
 
-Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
+Pokud byly položky odstraněny před tím, než byl zakázán částečný-DELETE, budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
 
 1. Nejprve vraťte operace odstranění se kroky uvedenými [zde](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion).
 2. Pak pomocí REST API podle kroků uvedených [tady](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)zakažte funkci obnovitelného odstranění.

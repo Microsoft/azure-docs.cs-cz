@@ -1,15 +1,15 @@
 ---
 title: Vytvoření zásad zálohování pomocí REST API
-description: V tomto článku se naučíte, jak vytvářet a spravovat zásady zálohování (plánování a uchovávání) pomocí REST API.
+description: V tomto článku se dozvíte, jak vytvářet a spravovat zásady zálohování (plánování a uchovávání) pomocí REST API.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 4678c6aaa03d511da35d5efee2b1e75d08546781
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006257"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179602"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 

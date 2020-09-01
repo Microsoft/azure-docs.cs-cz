@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359088"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179143"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -58,7 +58,7 @@ Funkce diagnostiky podporuje uživatelské objekty s následujícími duplicitn�
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Aby bylo možné získat přístup k této funkci, je nutné mít oprávnění **globálního správce** nebo oprávnění **Přispěvatel** z nastavení RBAC.
+> Pro přístup k této funkci se vyžaduje oprávnění **globálního správce** nebo oprávnění **Přispěvatel** z Azure RBAC.
 >
 
 Postupujte podle kroků z Azure Portal pro zúžení podrobností o chybách synchronizace a poskytněte konkrétnější řešení:
@@ -148,7 +148,7 @@ Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Akt
 
 
 **Č.** Jaké oprávnění uživatel potřebuje k použití opravy?  
-**Určitého.** **Globální správce**nebo **Přispěvatel** z nastavení RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
+**Určitého.** **Globální správce**nebo **Přispěvatel** z Azure RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
 
 
 **Č.** Je nutné nakonfigurovat Azure AD Connect nebo aktualizovat agenta Azure AD Connect Health pro tuto funkci?  

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587967"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181370"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -55,7 +55,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
     * Pro instanci: název *skupiny prostředků* . Můžete použít existující skupinu prostředků nebo zadat nový název, který chcete vytvořit.
     * Pro instanci: *název* instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
     * Pro registraci aplikace: *Zobrazovaný název aplikace Azure AD* , který se má přidružit k registraci. V této registraci aplikace nakonfigurujete přístupová oprávnění k [rozhraním API pro digitální vlákna Azure](how-to-use-apis-sdks.md). Později se klientská aplikace ověří proti registraci aplikace a v důsledku toho se jim přidělí nakonfigurovaná přístupová oprávnění k rozhraním API.
-    * Pro registraci aplikace: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Můžete použít `http://localhost` .
+    * Pro registraci aplikace: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Použijte `http://localhost`. Skript nastaví pro něj *veřejný klient/nativní (mobilní & Desktop)* .
 
 Skript vytvoří instanci digitálních vláken Azure, přiřadí uživatele Azure, aby k instanci používala roli *Azure Digital Realiass Owner (Preview)* , a nastavení registrace aplikace Azure AD pro vaši klientskou aplikaci.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589499"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181761"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -36,6 +36,15 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 > Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Iniciovat ruční převzetí služeb při selhání na spravované instanci SQL
+
+### <a name="rbac-permissions-required"></a>Vyžadována oprávnění RBAC
+
+Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít jednu z následujících rolí RBAC:
+
+- Role vlastníka předplatného nebo
+- Role přispěvatele spravované instance nebo
+- Vlastní role s následujícím oprávněním:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 

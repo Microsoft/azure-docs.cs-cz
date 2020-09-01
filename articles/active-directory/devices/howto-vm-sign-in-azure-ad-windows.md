@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005031"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180333"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -58,7 +58,7 @@ Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 > [!IMPORTANT]
 > Chcete-li použít tuto funkci verze Preview, nasaďte pouze podporované distribuce oken a v podporované oblasti Azure. Tato funkce se v cloudech Azure Government nebo svrchovaného v tuto chvíli nepodporuje.
 
-### <a name="network-requirements"></a>Požadavky sítě
+### <a name="network-requirements"></a>Síťové požadavky
 
 Pokud chcete povolit ověřování Azure AD pro virtuální počítače s Windows v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
@@ -274,7 +274,7 @@ Tento ukončovací kód se přeloží na DSREG_E_MSI_TENANTID_UNAVAILABLE, proto
 
    - RDP na virtuální počítač jako místní správce a ověření, že koncový bod vrátí platné ID tenanta spuštěním tohoto příkazu z příkazového řádku se zvýšenými oprávněními na virtuálním počítači:
       
-      - Metadata složeného H: truehttp://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - Metadata složeného H: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
 1. Správce virtuálních počítačů se pokusí nainstalovat rozšíření AADLoginForWindows, ale spravovaná identita přiřazená systémem nepovolila virtuální počítač jako první. Přejděte do okna identita virtuálního počítače. Na kartě přiřazené systémem ověřte, zda je stav Zapnuto.
 
@@ -329,7 +329,7 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 
 ![Váš účet je nakonfigurovaný tak, aby vám zabránil v používání tohoto zařízení.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Ověřte, že jste [nakonfigurovali zásady RBAC](../../virtual-machines/linux/login-using-aad.md) pro virtuální počítač, který uděluje uživateli přihlašovací jméno správce virtuálního počítače nebo uživatelskou roli pro přihlášení k virtuálnímu počítači:
+Ověřte, že jste pro virtuální počítač [nakonfigurovali zásady Azure RBAC](../../virtual-machines/linux/login-using-aad.md) , které udělí uživateli buď přihlašovací jméno správce virtuálního počítače, nebo roli přihlášení uživatele virtuálního počítače:
  
 #### <a name="unauthorized-client"></a>Neautorizovaný klient
 

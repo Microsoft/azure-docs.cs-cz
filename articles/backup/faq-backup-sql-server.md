@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006138"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180095"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 

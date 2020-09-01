@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 53e97e768dc13c32f6c174d01dfb222e0de61e43
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017868"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180945"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -68,7 +68,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Tato databáze SQL nepodporuje požadovaný typ zálohování. | Vyvolá se v případě, že model obnovení databáze nepovoluje požadovaný typ zálohování. K této chybě může dojít v následujících situacích: <br/><ul><li>Databáze, která používá jednoduchý model obnovení, neumožňuje zálohování protokolů.</li><li>Pro hlavní databázi nejsou povoleny rozdílové zálohy a protokoly.</li></ul>Další podrobnosti najdete v dokumentaci k [modelům obnovení SQL Server](/sql/relational-databases/backup-restore/recovery-models-sql-server) . | Pokud se zálohování protokolu pro databázi v jednoduchém modelu obnovení nepovede, zkuste jednu z těchto možností:<ul><li>Pokud se databáze nachází v režimu jednoduchého obnovení, zakažte zálohování protokolů.</li><li>Pomocí [dokumentace k SQL Server](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) můžete změnit model obnovení databáze na úplný nebo Hromadně protokolované. </li><li> Pokud nechcete změnit model obnovení a máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné a rozdílové zálohy budou fungovat podle plánu. Zálohy protokolu se přeskočí, což je v tomto případě očekávané.</li></ul>Pokud se jedná o hlavní databázi a máte nakonfigurovanou rozdílovou zálohu nebo zálohování protokolu, použijte některý z následujících kroků:<ul><li>Pomocí portálu můžete změnit plán zásad zálohování hlavní databáze na úplný.</li><li>Pokud máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné zálohování bude fungovat podle plánu. V tomto případě se v tomto případě očekávají rozdílové zálohování nebo zálohy protokolů.</li></ul> |
+| Tato databáze SQL nepodporuje požadovaný typ zálohování. | Vyvolá se v případě, že model obnovení databáze nepovoluje požadovaný typ zálohování. K této chybě může dojít v následujících situacích: <br/><ul><li>Databáze, která používá jednoduchý model obnovení, neumožňuje zálohování protokolů.</li><li>Pro hlavní databázi nejsou povoleny rozdílové zálohy a protokoly.</li></ul>Další podrobnosti najdete v dokumentaci k [modelům obnovení SQL Server](/sql/relational-databases/backup-restore/recovery-models-sql-server) . | Pokud se zálohování protokolu pro databázi v jednoduchém modelu obnovení nepovede, zkuste jednu z těchto možností:<ul><li>Pokud se databáze nachází v režimu jednoduchého obnovení, zakažte zálohování protokolů.</li><li>Pomocí [dokumentace k SQL Server](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) můžete změnit model obnovení databáze na úplný nebo Hromadně protokolované. </li><li> Pokud nechcete změnit model obnovení a máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné a rozdílové zálohy budou fungovat podle plánu. Zálohy protokolu se přeskočí, což je v tomto případě očekávané.</li></ul>Pokud se jedná o hlavní databázi a nakonfigurovali jste rozdílové zálohování nebo zálohování protokolu, použijte některý z následujících kroků:<ul><li>Pomocí portálu můžete změnit plán zásad zálohování hlavní databáze na úplný.</li><li>Pokud máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné zálohování bude fungovat podle plánu. V tomto případě se v tomto případě očekávají rozdílové zálohování nebo zálohy protokolů.</li></ul> |
 | Operace se zrušila, protože ve stejné databázi už je spuštěná konfliktní operace. | Prohlédněte si [záznam blogu o omezeních zálohování a obnovení](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) , která se spouštějí souběžně.| [Pomocí SQL Server Management Studio (SSMS) můžete monitorovat úlohy zálohování](manage-monitor-sql-database-backup.md). Po neúspěšném konfliktu operace restartujte operaci.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist

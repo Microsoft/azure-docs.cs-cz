@@ -2,13 +2,13 @@
 title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082932"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179619"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -184,10 +184,30 @@ Následující příklad ukazuje formáty různých typů parametrů.
 
 ## <a name="deploy-template-with-parameter-file"></a>Nasadit šablonu se souborem parametrů
 
-Přečtěte si:
+Pokud chcete předat místní soubor parametrů pomocí Azure CLI, použijte @ a název souboru parametrů.
 
-- [Nasazení prostředků pomocí šablon ARM a Azure CLI](./deploy-cli.md#parameters)
-- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+Další informace najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure CLI](./deploy-cli.md#parameters).
+
+Chcete-li předat soubor s místními parametry pomocí Azure PowerShell, použijte `TemplateParameterFile` parametr.
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+Další informace najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+
+> [!NOTE]
+> Nemůžete použít soubor parametrů v okně vlastní šablony na portálu.
 
 ## <a name="file-name"></a>Název souboru
 
@@ -199,7 +219,7 @@ Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor pa
 
 Můžete použít vložené parametry a místní soubor parametrů ve stejné operaci nasazení. Můžete například zadat některé hodnoty v souboru s místním parametrem a přidat další hodnoty vložené během nasazování. Zadáte-li hodnoty pro parametr v místním souboru parametrů i v poli inline, má hodnota inline přednost.
 
-Je možné použít externí soubor parametrů poskytnutím identifikátoru URI souboru. Když to uděláte, nebudete moci předat jiné hodnoty buď vložené, nebo z místního souboru. Všechny vložené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
+Je možné použít externí soubor parametrů poskytnutím identifikátoru URI souboru. Při použití externího souboru parametrů nelze předat jiné hodnoty buď vložené, nebo z místního souboru. Všechny vložené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
 
 ## <a name="parameter-name-conflicts"></a>Konflikty názvů parametrů
 

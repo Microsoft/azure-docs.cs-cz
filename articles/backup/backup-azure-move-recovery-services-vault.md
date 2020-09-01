@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827116"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181506"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -17,7 +17,7 @@ Tento článek vysvětluje, jak přesunout trezor Recovery Services nakonfigurov
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Přesun prostředků pro úložiště Recovery Services se podporuje v oblasti Austrálie – východ, Austrálie – jih, Kanada – střed, Kanada – východ, Jižní Východní Asie, Východní Asie Střed USA, Střed USA – sever, Východní USA, Východní USA 2, Střed USA – jih, Středozápadní USA, středozápadní USA 2, Západní USA, Západní USA 2, Střed Indie, Jižní Indie, Severní Evropa,, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, , Západní Evropa, Jižní Afrika sever, Jižní Afrika – západ, Velká Británie – jih a Velká Británie – západ.
+Přesun prostředků pro úložiště Recovery Services se podporuje v oblasti Austrálie – východ, Austrálie – jih, Kanada – střed, Kanada – východ, Jižní Východní Asie, Východní Asie, Střed USA, Střed USA – sever, Východní USA, Východní USA 2, Střed USA – jih, Středozápadní USA, středozápadní USA 2, Západní USA, Západní USA 2, Brazílie – jih, střed Indie, Jižní Indie, Japonsko – východ, Japonsko – západ, Korea – jih , Severní Evropa, Západní Evropa, Jižní Afrika sever, Jižní Afrika – západ, Velká Británie – jih a Velká Británie – západ.
 
 ## <a name="unsupported-regions"></a>Nepodporované oblasti
 
@@ -52,7 +52,7 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 
 Přesunutí trezoru Recovery Services a přidružených prostředků do jiné skupiny prostředků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam **trezorů Recovery Services** a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
    ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ Přesunutí trezoru Recovery Services a přidružených prostředků do jiné sk
 
 Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do jiného předplatného.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam trezorů Recovery Services a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
     ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
