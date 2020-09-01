@@ -3,12 +3,12 @@ title: Obnovení stavu systému na Windows Server
 description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892537"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178582"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -46,7 +46,7 @@ Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do p�
 
     ![Svazek a datum](./media/backup-azure-restore-system-state/select-date.png)
 
-6. Po výběru bodu obnovení, který se má obnovit, vyberte **Další**.
+6. Až zvolíte bod obnovení, který se má obnovit, vyberte **Další**.
 
     Azure Backup připojí místní bod obnovení a použije ho jako svazek pro obnovení.
 
@@ -88,13 +88,13 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a vyberte možnost **Další**.
 
-    ![Hledat](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
     ![Hledat položky](./media/backup-azure-restore-system-state/select-date.png)
 
-9. Po výběru bodu obnovení, který se má obnovit, vyberte **Další**.
+9. Až zvolíte bod obnovení, který se má obnovit, vyberte **Další**.
 
 10. V podokně **Vybrat režim obnovení stavu systému** zadejte cíl, ve kterém chcete obnovit soubory stavu systému, a pak vyberte **Další**.
 

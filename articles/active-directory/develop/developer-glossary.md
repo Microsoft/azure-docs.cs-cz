@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117239"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178820"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -164,7 +164,7 @@ Podobně jako [obory](#scopes)role poskytují [serveru prostředků](#resource-s
 
 Role jsou řetězce definované prostředky (například schvalovatel výdajů, "jen pro čtení", "adresář. četl. vše") spravované v [Azure Portal][AZURE-portal] prostřednictvím [manifestu aplikace](#application-manifest)prostředku a uložené ve [vlastnosti appRoles][Graph-Sp-Resource]prostředku. Azure Portal se také používá k přiřazení uživatelů k rolím "uživatel" a ke konfiguraci [oprávnění klientských aplikací](#permissions) pro přístup k roli "aplikace".
 
-Podrobné informace o aplikačních rolích, které jsou vystavené rozhraním API Microsoft Graph, najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Podrobný příklad implementace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal][AAD-RBAC].
+Podrobné informace o aplikačních rolích, které jsou vystavené rozhraním API Microsoft Graph, najdete v tématu [Graph API obory oprávnění][Graph-Perm-Scopes]. Podrobný příklad implementace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal][AAD-RBAC].
 
 ## <a name="scopes"></a>obory
 

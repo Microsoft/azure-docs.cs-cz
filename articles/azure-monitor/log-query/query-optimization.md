@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565719"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177739"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -52,6 +52,8 @@ Pro každý spuštěný dotaz jsou k dispozici následující indikátory výkon
 
 ## <a name="total-cpu"></a>PROCESOR celkem
 Skutečný výpočetní procesor, který byl investoval do zpracování tohoto dotazu napříč všemi uzly zpracování dotazů. Vzhledem k tomu, že většina dotazů je prováděna na velkých číslech uzlů, bude obvykle mnohem větší než doba, jakou bude dotaz skutečně proveden. 
+
+Dotaz, který využívá více než 100 sekund procesoru, je považován za dotaz, který spotřebovává nadměrné prostředky. Dotaz, který využívá více než 1 000 sekund procesoru, je považován za urážlivý dotaz a může být omezen.
 
 Doba zpracování dotazu je strávená na:
 - Načítání dat – načtení starých dat bude spotřebovávat víc času než při načítání nedávných dat.
@@ -177,6 +179,8 @@ SecurityEvent
 
 Důležitým faktorem při zpracování dotazu je objem dat, který je prohledáván a používán pro zpracování dotazu. Azure Průzkumník dat používá agresivní optimalizace, které výrazně snižují objem dat v porovnání s jinými datovými platformami. Stále existují v dotazu kritické faktory, které mohou ovlivnit objem dat, který se používá.
 
+Dotaz, který zpracovává více než 2, 000KB dat je považován za dotaz, který spotřebovává nadměrné prostředky. Dotaz, který zpracovává více než 20 000KB dat, je považován za urážlivý dotaz a může být omezen.
+
 V protokolu Azure Monitor se sloupec **TimeGenerated** používá jako způsob, jak data indexovat. Omezení **TimeGeneratedch** hodnot na co nejblíže větší rozsah zajistí výrazné zlepšení výkonu dotazů tím, že významně omezí množství dat, která se mají zpracovat.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vyhnout se zbytečnému použití operátorů hledání a sjednocení
@@ -300,6 +304,8 @@ SecurityEvent
 
 Všechny protokoly v protokolu Azure Monitor jsou rozdělené podle sloupce **TimeGenerated** . Počet oddílů, které jsou k dispozici, přímo souvisí s časovým rozsahem. Snížení časového rozsahu představuje nejúčinnější způsob, jak zajistit, aby se provádění dotazů zobrazilo.
 
+Dotaz s časovým rozsahem více než 15 dní je považován za dotaz, který spotřebovává nadměrné prostředky. Dotaz s časovým rozsahem více než 90 dní je považován za urážlivý dotaz a může být omezen.
+
 Časový rozsah lze nastavit pomocí voliče časového rozsahu na obrazovce Log Analytics, jak je popsáno v tématu [rozsah dotazu protokolu a časový rozsah v Azure Monitor Log Analytics](scope.md#time-range). Toto je doporučená metoda, protože vybraný časový rozsah je předán do back-endu pomocí metadat dotazu. 
 
 Alternativním způsobem je explicitní zahrnutí podmínky [WHERE](/azure/kusto/query/whereoperator) na **TimeGenerated** v dotazu. Tuto metodu byste měli použít, protože zajišťuje, že časové rozpětí je vyřešeno, a to i v případě, že je dotaz použit z jiného rozhraní.
@@ -389,6 +395,9 @@ Existuje několik případů, kdy systém nemůže poskytnout přesné měření
 ## <a name="age-of-processed-data"></a>Stáří zpracovaných dat
 Azure Průzkumník dat využívá několik vrstev úložiště: místní disky SSD v paměti a mnohem pomalejší objekty blob Azure. V novějších datech je vyšší pravděpodobnost, že je uložená v výkonnější úrovni s menší latencí, což snižuje dobu trvání dotazů a CPU. Kromě samotných dat má systém také mezipaměť pro metadata. Starší data, menší pravděpodobnost, že metadata budou v mezipaměti.
 
+Dotaz, který zpracovává data, než je více než 14 dní stará, se považuje za dotaz, který spotřebovává nadměrné prostředky.
+
+
 I když některé dotazy vyžadují použití starých dat, existují případy, kdy omylem používá stará data. K tomu dochází, pokud jsou dotazy spouštěny bez časového rozsahu v jejich metadatech a ne všechny odkazy tabulky zahrnují filtr na sloupec **TimeGenerated** . V těchto případech bude systém kontrolovat všechna data, která jsou uložena v této tabulce. Pokud je uchovávání dat dlouhé, může se vztahovat na dlouhé časové rozsahy, tedy na data, která jsou stará jako doba uchovávání dat.
 
 Takové případy můžou být například:
@@ -408,6 +417,8 @@ Existuje několik situací, kdy může být jeden dotaz spuštěn v různých ob
 Provádění dotazů mezi oblastmi vyžaduje, aby systém serializován a přenesl do back-endu velkých bloků mezilehlých dat, která jsou obvykle mnohem větší než konečné výsledky dotazu. Také omezuje schopnost systému provádět optimalizace, heuristické a využité mezipaměti.
 Pokud není k dispozici žádný reálný důvod pro kontrolu všech těchto oblastí, měli byste obor upravit tak, aby se kryl méně oblastí. Pokud je obor prostředku minimalizován, ale stále se používá mnoho oblastí, může k tomu dojít z důvodu chyby konfigurace. Například protokoly auditu a nastavení diagnostiky jsou odesílány do různých pracovních prostorů v různých oblastech nebo existují více konfigurací nastavení diagnostiky. 
 
+Dotaz, který zahrnuje více než 3 oblasti, je považován za dotaz, který spotřebovává nadměrné prostředky. Dotaz, který zahrnuje více než 6 oblastí, je považován za urážlivý dotaz a může být omezen.
+
 > [!IMPORTANT]
 > Když se dotaz spustí napříč několika oblastmi, měření procesoru a dat nebudou přesné a bude reprezentovat měření pouze v jedné z oblastí.
 
@@ -420,6 +431,8 @@ Využití více pracovních prostorů může mít za následek:
 - Když dotaz v oboru prostředků načítá data a data jsou uložena ve více pracovních prostorech.
  
 Provádění dotazů mezi oblastmi a mezi clustery vyžaduje, aby systém serializován a přenesl do back-endu velkých bloků mezilehlých dat, která jsou obvykle mnohem větší než konečné výsledky dotazu. Také omezuje schopnost systému provádět optimalizace, heuristické a využití mezipamětí.
+
+Dotaz, který zahrnuje více než 5 pracovních prostorů, je považován za dotaz, který spotřebovává nadměrné prostředky. Dotazy nemohou být v rozsahu až 100 pracovních prostorů.
 
 > [!IMPORTANT]
 > V některých scénářích s více pracovními prostory nebudou měření procesoru a dat přesné a bude reprezentovat měření jenom pro několik pracovních prostorů.

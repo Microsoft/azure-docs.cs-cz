@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f9adf6ce4559234eec74c92f09aa752eb1f9ab51
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386058"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177325"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
@@ -82,7 +83,7 @@ Odkaz na předplatné se dosahuje vytvořením *prostředku* Azure AD B2C v rám
 
 Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci využití Azure AD B2C nebo dalších prostředků Azure, včetně dalších prostředků Azure AD B2C. Nedá se použít k přidání dalších služeb založených na licencích Azure nebo licencí Office 365 v rámci tenanta Azure AD B2C.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * [Azure AD B2C tenanta](tutorial-create-tenant.md) , kterého chcete propojit s předplatným
@@ -91,7 +92,7 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 
 ### <a name="create-the-link"></a>Vytvořit odkaz
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a pak vyberte adresář, který obsahuje předplatné Azure, které chcete použít (*ne* adresář obsahující Azure AD B2C tenanta).
 1. Vyberte **vytvořit prostředek**, zadejte `Active Directory B2C` do pole **Hledat na Marketplace** a pak vyberte **Azure Active Directory B2C**.
 1. Vyberte **Vytvořit**.
@@ -99,7 +100,7 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 1. Z rozevíracího seznamu vyberte **klienta Azure AD B2C** . Zobrazují se jenom klienti, pro které jste globální správce a kteří ještě nejsou propojení s předplatným. Do pole **Azure AD B2C název prostředku** se naplní název domény Azure AD B2C tenanta, kterého jste vybrali.
 1. Vyberte aktivní **předplatné** Azure, které jste správcem.
 1. V části **Skupina prostředků**vyberte **vytvořit novou**a zadejte **umístění skupiny prostředků**. Toto nastavení skupiny prostředků nemá žádný vliv na váš Azure AD B2C umístění tenanta, výkon ani stav fakturace.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
     ![Stránka pro vytvoření prostředku Azure AD B2C v Azure Portal](./media/billing/portal-01-create-b2c-resource-page.png)
 
 Po dokončení těchto kroků pro klienta Azure AD B2C se vaše předplatné Azure bude účtovat podle údajů přímo v Azure Direct nebo smlouva Enterprise, pokud jsou k dispozici.
@@ -132,11 +133,24 @@ Správa Azure AD B2C pomocí řízení přístupu na základě role není ovlivn
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Změna předplatného fakturace klienta Azure AD B2C
 
-Pokud zdrojové a cílové odběry existují v rámci stejného Azure Active Directory tenanta, můžete Azure AD B2C klienty přesunout do jiného předplatného.
+### <a name="move-using-azure-resource-manager"></a>Přesunout pomocí Azure Resource Manager
+
+Azure AD B2C klienty lze přesunout do jiného předplatného pomocí Azure Resource Manager Pokud zdrojové a cílové odběry existují v rámci stejného Azure Active Directory tenanta.
 
 Informace o tom, jak přesunout prostředky Azure jako tenanta Azure AD B2C do jiného předplatného, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Než začnete s přesunem, nezapomeňte si přečíst celý článek, abyste plně pochopili omezení a požadavky pro takové přesunutí. Kromě pokynů pro přesunutí prostředků obsahuje důležité informace, jako je například kontrolní seznam před přesunem a ověření operace přesunutí.
+
+### <a name="move-by-un-linking-and-re-linking"></a>Přesunutí zrušením vazby a opakovaným propojením
+
+Pokud jsou zdrojová a cílová předplatná přidružená k různým klientům Azure Active Directory, nemůžete provést přesun prostřednictvím Azure Resource Manager, jak je vysvětleno výše. Stejný konečný výsledek však můžete přesto dosáhnout zrušením propojení klienta Azure AD B2C ze zdrojového předplatného a jeho propojením s cílovým předplatným. Tato metoda je bezpečná, protože jediný objekt, který odstraníte, je *fakturační odkaz*, nikoli tenant Azure AD B2C sám. Nebudou ovlivněni žádní uživatelé, aplikace, toky uživatelů atd.
+
+1. V samotném Azure AD B2C adresáři [Pozvěte uživatele typu Host](user-overview.md#guest-user) z cílového klienta služby Azure AD (ten, se kterým je cílový odběr Azure propojený), a ujistěte se, že tento uživatel má v Azure AD B2C roli **globálního správce** .
+1. Přejděte do *prostředku Azure* , který představuje Azure AD B2C ve vašem zdrojovém předplatném Azure, jak je vysvětleno v části [správa prostředků klientů Azure AD B2C](#manage-your-azure-ad-b2c-tenant-resources) výše. Neprovádějte přepnutí na vlastního tenanta Azure AD B2C.
+1. Klikněte na tlačítko **Odstranit** na stránce **Přehled** . Tím *nedojde* k odstranění souvisejících uživatelů ani aplikací klienta Azure AD B2C. Pouze odebere fakturační propojení ze zdrojového předplatného.
+1. Přihlaste se k Azure Portal pomocí uživatelského účtu, který jste přidali jako správce v Azure AD B2C v kroku 1. Pak přejděte do cílového předplatného Azure, které je propojené s cílovým Azure Active Directory tenant. 
+1. Pomocí výše uvedeného postupu [Vytvoření odkazu](#create-the-link) znovu vytvořte fakturační odkaz v cílovém předplatném.
+1. Váš prostředek Azure AD B2C se teď přesunul do cílového předplatného Azure (propojený s cílovým Azure Active Directory) a bude se účtovat prostřednictvím tohoto předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 

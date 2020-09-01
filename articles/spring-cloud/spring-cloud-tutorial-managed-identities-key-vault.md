@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2b68c4857d3d688c42779be9b5f5fa6e43e0403e
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: c960a4aeaeea41f23c7f29351b9205c4bbf21454
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116894"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177223"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity pro připojení Key Vault k aplikaci pro jarní cloudovou službu Azure
 
@@ -114,13 +114,13 @@ Tato aplikace bude mít přístup k získání tajných kódů z Azure Key Vault
 
     @SpringBootApplication
     @RestController
-    public class SecretsApplication implements CommandLineRunner {
+    public class DemoApplication implements CommandLineRunner {
 
         @Value("${connectionString}")
         private String connectionString;
 
         public static void main(String[] args) {
-          SpringApplication.run(SecretsApplication.class, args);
+          SpringApplication.run(DemoApplication.class, args);
         }
 
         @GetMapping("get")
@@ -149,7 +149,7 @@ Tato aplikace bude mít přístup k získání tajných kódů z Azure Key Vault
     mvn clean package
     ```
 
-5. Teď můžete aplikaci nasadit do Azure pomocí příkazu Azure CLI `az spring-cloud app deploy` . 
+5. Teď můžete aplikaci nasadit do Azure pomocí příkazu Azure CLI  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/demo-0.0.1-SNAPSHOT.jar
@@ -201,7 +201,7 @@ Klientská knihovna Azure Key Vault tajných klíčů vám umožní bezpečně u
     mvn clean package
     ```
 
-5. Nyní Nasaďte aplikaci do Azure pomocí příkazu Azure CLI `az spring-cloud app deploy` . 
+5. Nyní Nasaďte aplikaci do Azure pomocí příkazu Azure CLI  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/asc-managed-identity-keyvault-sample-0.1.0.jar

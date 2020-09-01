@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014654"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178007"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -103,18 +103,60 @@ Operace zálohování se nezdařila z důvodu problému se **systémovou aplikac
 Kód chyby: ExtensionFailedVssWriterInBadState <br/>
 Chybová zpráva: operace snímku se nezdařila, protože zapisovače VSS byly ve špatném stavu.
 
-Restartujte zapisovače služby VSS, které jsou ve špatném stavu. Z příkazového řádku se zvýšenými oprávněními spusťte příkaz ```vssadmin list writers``` . Výstup obsahuje všechny zapisovače VSS a jejich stav. U každého zapisovače VSS se stavem, který není **[1] stabilní**, restartujte zapisovač VSS spuštěním následujících příkazů z příkazového řádku se zvýšenými oprávněními:
+K této chybě dochází, protože zapisovače VSS byly ve špatném stavu. Rozšíření Azure Backup komunikují se zapisovači VSS, aby bylo možné pořizovat snímky disků. Pokud chcete tento problém vyřešit, postupujte následovně:
 
-* ```net stop serviceName```
-* ```net start serviceName```
+Restartujte zapisovače služby VSS, které jsou ve špatném stavu.
+- Z příkazového řádku se zvýšenými oprávněními spusťte příkaz ```vssadmin list writers``` .
+- Výstup obsahuje všechny zapisovače VSS a jejich stav. U každého zapisovače VSS se stavem, který není **[1] stabilní**, restartujte příslušnou službu zapisovače VSS. 
+- Chcete-li službu restartovat, spusťte následující příkazy z příkazového řádku se zvýšenými oprávněními:
 
-Další postup, který může pomáhat, je spustit následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce).
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> Restartování některých služeb může mít dopad na produkční prostředí. Zajistěte, aby byl proces schválení následován a služba se restartovala v naplánovaném výpadku.
+ 
+   
+Pokud restartování zapisovače VSS nevyřeší problém a problém přetrvává z důvodu vypršení časového limitu, pak:
+- Spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními (jako správce), aby se zabránilo vytváření vláken pro snímky objektů BLOB.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-Přidáním tohoto klíče registru dojde k tomu, že vlákna nebudou vytvořena pro snímky objektů BLOB a zabráníte vypršení časového limitu.
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>Operace ExtensionFailedVssServiceInBadState-Snapshot selhala, protože služba Stínová kopie svazku (VSS) je ve špatném stavu.
+
+Kód chyby: ExtensionFailedVssServiceInBadState <br/>
+Chybová zpráva: operace snímku se nepovedla kvůli službě Stínová kopie svazku (VSS) ve špatném stavu.
+
+K této chybě dochází, protože služba VSS je ve špatném stavu. Rozšíření Azure Backup komunikují se službou VSS, aby bylo možné pořizovat snímky disků. Pokud chcete tento problém vyřešit, postupujte následovně:
+
+Restartujte službu VSS (Stínová kopie svazku).
+- Přejděte do souboru Services. msc a restartujte službu Stínová kopie svazku.<br>
+ani<br>
+- Z příkazového řádku se zvýšenými oprávněními spusťte následující příkazy:
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+ 
+Pokud problém přetrvává, restartujte virtuální počítač v naplánovaném výpadku.
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable – vytvoření virtuálního počítače se nezdařilo, protože vybraná velikost virtuálního počítače není k dispozici.
+
+Kód chyby: chybová zpráva UserErrorSkuNotAvailable: Vytvoření virtuálního počítače se nezdařilo, protože vybraná velikost virtuálního počítače není k dispozici. 
+ 
+K této chybě dochází, protože velikost virtuálního počítače vybraná během operace obnovení je Nepodporovaná velikost. <br>
+
+Chcete-li tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) . Pomocí těchto disků vytvořte virtuální počítač ze seznamu [dostupných podporovaných velikostí virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) pomocí [rutin PowerShellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks).
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – vytvoření virtuálního počítače se nezdařilo, protože není k dispozici požadavek na nákup na trhu.
+
+Kód chyby: chybová zpráva UserErrorMarketPlaceVMNotSupported: Vytvoření virtuálního počítače se nezdařilo z důvodu nepřítomnosti žádosti o nákup na trhu v místě. 
+ 
+Azure Backup podporuje zálohování a obnovení virtuálních počítačů, které jsou k dispozici v Azure Marketplace. K této chybě dochází, když se pokoušíte obnovit virtuální počítač (s konkrétním nastavením pro plán/Vydavatel), který už není dostupný v Azure Marketplace. další [informace najdete tady](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
+- Pokud chcete tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) a pak použijte rutiny [PowerShellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) nebo [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) k vytvoření virtuálního počítače s nejnovějšími informacemi z webu Marketplace, které odpovídají danému virtuálnímu počítači.
+- Pokud Vydavatel nemá žádné informace z Marketplace, můžete k načtení dat použít datové disky a můžete je připojit k existujícímu virtuálnímu počítači.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – při analýze konfigurace záložního rozšíření došlo k chybě.
 
@@ -259,7 +301,7 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení není pro tento typ úlohy podporováno: <br>Počkejte, až se úloha dokončí. |Žádné |
-| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**ani**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
+| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**nebo**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
 | Zálohování nemůže úlohu zrušit, protože neprobíhá: <br>Zrušení je podporováno pouze pro probíhající úlohy. Zkuste zrušit probíhající úlohu. |K této chybě dochází z důvodu přechodného stavu. Počkejte minutu a zkuste operaci zrušit. |
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 

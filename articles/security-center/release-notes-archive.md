@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167007"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177308"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -141,7 +141,7 @@ Nové funkce ve verzi Public Preview zahrnují:
 
 Aplikace, které jsou nainstalované na virtuálních počítačích, by mohly často obsahovat chyby zabezpečení, které by mohly vést k porušení virtuálního počítače. Oznamujeme, že úroveň Standard Security Center zahrnuje integrované posouzení ohrožení zabezpečení pro virtuální počítače bez dalších poplatků. Posouzení ohrožení zabezpečení, které využívá Qualys ve verzi Public Preview, vám umožní průběžně kontrolovat všechny nainstalované aplikace na virtuálním počítači a vyhledat ohrožené aplikace a prezentovat závěry v prostředí Security Centerového portálu. Security Center se postará o všechny operace nasazení, aby uživatel nemusel žádné další práce vyžadovat. Až budeme pokračovat, plánujeme vám poskytnout možnosti posouzení ohrožení zabezpečení pro podporu jedinečných obchodních potřeb zákazníků.
 
-[Přečtěte si další informace o posouzení ohrožení zabezpečení pro Azure Virtual Machines](security-center-vulnerability-assessment-recommendations.md).
+[Přečtěte si další informace o posouzení ohrožení zabezpečení pro Azure Virtual Machines](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Pokročilé zabezpečení dat pro SQL servery na Azure Virtual Machines (Preview)

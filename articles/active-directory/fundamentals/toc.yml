@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: Zabezpečené vzdálené pracovní procesy
           href: concept-secure-remote-workers.md
-        - name: Nepřetržité vyhodnocování přístupu
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Skupiny a uživatelé
       items:
         - name: Správa přístupu a skupin

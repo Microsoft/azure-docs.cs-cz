@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055647"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177274"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
 
@@ -29,14 +29,14 @@ Organizace můžou mít několik předplatných Azure. Každé předplatné je p
 Tento článek popisuje základní kroky, pomocí kterých můžete přenést předplatné do jiného adresáře služby Azure AD a znovu vytvořit některé prostředky po přenosu.
 
 > [!NOTE]
-> U předplatných Azure CSP není změna adresáře Azure AD pro předplatné podporovaná.
+> U předplatných poskytovatelů cloudových služeb Azure není změna adresáře služby Azure AD pro předplatné podporovaná.
 
 ## <a name="overview"></a>Přehled
 
 Převod předplatného Azure na jiný adresář služby Azure AD je složitý proces, který musí být pečlivě naplánován a proveden. Mnoho služeb Azure vyžaduje, aby objekty zabezpečení (identity) fungovaly normálně nebo dokonce i spravovaly jiné prostředky Azure. Tento článek se snaží pokrýt většinu služeb Azure, které jsou silně závislé na objektech zabezpečení, ale nejsou vyčerpávající.
 
 > [!IMPORTANT]
-> V některých případech může převod předplatného vyžadovat dokončení procesu. K vyhodnocení, jestli se při migraci vyžaduje výpadky, se vyžaduje pečlivé plánování.
+> V některých případech může převod předplatného vyžadovat dokončení procesu. K vyhodnocení, jestli se pro váš přenos vyžaduje výpadky, se vyžaduje pečlivé plánování.
 
 Následující diagram znázorňuje základní kroky, které je třeba provést při přenosu odběru do jiného adresáře.
 
@@ -73,7 +73,7 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 | Vlastní role | Ano | Ano | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
 | Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
 | Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
-| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-other-known-resources) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
+| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
 | Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
@@ -84,8 +84,8 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 | Azure Active Directory Domain Services | Ano | Ne |  |  |
 | Registrace aplikací | Ano | Ano |  |  |
 
-> [!IMPORTANT]
-> Pokud používáte šifrování v klidovém umístění pro prostředek, jako je například účet úložiště nebo databáze SQL, a prostředek má závislost na trezoru klíčů, který *není v* předplatném, které se přenáší, může dojít k neopravitelné chybě. V takovém případě použijte jiný Trezor klíčů nebo dočasně zakažte klíče spravované zákazníkem, abyste se vyhnuli neopravitelné chybě.
+> [!WARNING]
+> Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -221,8 +221,8 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
 
 Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klienta Azure Active Directory pro předplatné, ve kterém je vytvořený. Zároveň jsou k tomuto ID tenanta vázány i všechny položky zásad přístupu. Další informace najdete v tématu [přesun Azure Key Vault do jiného předplatného](../key-vault/general/move-subscription.md).
 
-> [!IMPORTANT]
-> Pokud používáte šifrování v klidovém umístění pro prostředek, jako je například účet úložiště nebo databáze SQL, a prostředek má závislost na trezoru klíčů, který *není v* předplatném, které se přenáší, může dojít k neopravitelné chybě. V takovém případě použijte jiný Trezor klíčů nebo dočasně zakažte klíče spravované zákazníkem, abyste se vyhnuli neopravitelné chybě.
+> [!WARNING]
+> Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
 - Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) seznamu zásad přístupu. Další informace najdete v tématu [poskytnutí Key Vault ověřování pomocí zásad řízení přístupu](../key-vault/key-vault-group-permissions-for-apps.md).
 
@@ -232,7 +232,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Vypsání databází Azure SQL pomocí ověřování Azure AD
 
-- Pomocí [AZ SQL Server AD – admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) a [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte databáze SQL Azure s ověřováním Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
+- Pomocí [AZ SQL Server AD – admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) a [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte Azure SQL Database s povolenou integrací ověřování Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -262,16 +262,21 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>Krok 2: přenos vlastnictví fakturace
+## <a name="step-2-transfer-the-subscription"></a>Krok 2: přeneste předplatné
 
-V tomto kroku převedete vlastnictví fakturace předplatného ze zdrojového adresáře do cílového adresáře.
+V tomto kroku převedete předplatné ze zdrojového adresáře do cílového adresáře. Postup se liší v závislosti na tom, zda budete chtít také přenést vlastnictví fakturace.
 
 > [!WARNING]
-> Při přenosu vlastnictví fakturace předplatného se všechna přiřazení rolí ve zdrojovém adresáři **trvale** odstraní a nelze je obnovit. Až převedete vlastnictví fakturace předplatného, nemůžete se vrátit zpátky. Před provedením tohoto kroku se ujistěte, že jste dokončili předchozí kroky.
+> Při přenosu odběru se všechna přiřazení rolí ve zdrojovém adresáři **trvale** odstraní a nelze je obnovit. Po převodu předplatného se nemůžete vrátit zpátky. Před provedením tohoto kroku se ujistěte, že jste dokončili předchozí kroky.
 
-1. Postupujte podle kroků v části [přenos vlastnictví fakturace předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md). Pokud chcete přenést předplatné do jiného adresáře služby Azure AD, musíte zaškrtnout políčko **předplatné služby Azure AD** .
+1. Určete, zda chcete také přenést vlastnictví fakturace.
 
-1. Po dokončení převodu vlastnictví se vraťte k tomuto článku a znovu vytvořte prostředky v cílovém adresáři.
+1. Přeneste odběr do jiného adresáře.
+
+    - Pokud chcete zachovat aktuální vlastnictví fakturace, postupujte podle kroků v části [přidružení nebo přidání předplatného Azure do tenanta Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    - Pokud chcete také přenést vlastnictví fakturace, postupujte podle kroků v části [přenos vlastnictví fakturace předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md). Pokud chcete přenést předplatné do jiného adresáře, musíte zaškrtnout políčko **předplatné služby Azure AD** .
+
+1. Po dokončení převodu předplatného se vraťte k tomuto článku a znovu vytvořte prostředky v cílovém adresáři.
 
 ## <a name="step-3-re-create-resources"></a>Krok 3: opětovné vytvoření prostředků
 

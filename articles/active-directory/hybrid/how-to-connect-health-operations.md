@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828791"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177614"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -74,7 +74,7 @@ Azure AD Connect Health pro Active Directory Federation Services (AD FS) (AD FS)
 2. V okně **Server** klikněte na panelu akcí na **Odstranit**.
 ![Snímek obrazovky Azure AD Connect Health odstranění serveru](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potvrďte zadáním názvu serveru do potvrzovacího pole.
-4. Klikněte na **Odstranit**.
+4. Klikněte na tlačítko **Odstranit**.
 
 Azure AD Connect Health pro Azure Active Directory Domain Services:
 
@@ -82,7 +82,7 @@ Azure AD Connect Health pro Azure Active Directory Domain Services:
 2. Vyberte řadič domény, který se má odebrat.
 3. Na panelu akcí klikněte na **Odstranit vybrané**.
 4. Potvrďte akci odstranění serveru.
-5. Klikněte na **Odstranit**.
+5. Klikněte na tlačítko **Odstranit**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Odstraní instanci služby z Azure AD Connect Health služby.
 V některých případech je vhodné odebrat instanci služby. Tady je přehled toho, co potřebujete znát k odebrání instance služby z Azure AD Connect Health služby.
@@ -99,12 +99,12 @@ Při odstraňování instance služby mějte na paměti následující skutečno
 2. V okně **Služba** klikněte na panelu akcí na **Odstranit**. 
 ![Snímek obrazovky Azure AD Connect Health odstranění služby](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Potvrďte zadáním názvu služby do potvrzovacího pole (například: sts.contoso.com).
-4. Klikněte na **Odstranit**.
+4. Klikněte na tlačítko **Odstranit**.
    <br><br>
 
 [//]: # (Začátek oddílu RBAC)
-## <a name="manage-access-with-role-based-access-control"></a>Správa přístupu prostřednictvím řízení přístupu na základě role
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup k uživatelům a skupinám jiným než globálním správcům. RBAC přiřazuje role k určeným uživatelům a skupinám a poskytuje mechanismus pro omezení globálních správců v rámci vašeho adresáře.
+## <a name="manage-access-with-azure-rbac"></a>Správa přístupu pomocí Azure RBAC
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup k uživatelům a skupinám jiným než globálním správcům. Azure RBAC přiřazuje role k určeným uživatelům a skupinám a poskytuje mechanismus pro omezení globálních správců v rámci vašeho adresáře.
 
 ### <a name="roles"></a>Role
 Azure AD Connect Health podporuje následující předdefinované role:
@@ -135,12 +135,12 @@ Chcete-li uživateli dovolit přístup na úrovni *všech instancí služby* v r
    ![Snímek obrazovky s postranním panelem Azure AD Connect Health prostředků](./media/how-to-connect-health-operations/startRBAC.png)
 2. Vyberte **Přidat**.
 3. V podokně **Vybrat roli** vyberte roli (například **vlastník**).<br>
-   ![Snímek obrazovky okna Azure AD Connect Health uživatelů RBAC](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Snímek obrazovky s nabídkou konfigurace Azure AD Connect Health a Azure RBAC](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Zadejte název nebo identifikátor cílového uživatele nebo skupiny. Můžete vybrat jednoho nebo více uživatelů nebo skupin současně. Klikněte na **Vybrat**.
-   ![Snímek obrazovky okna Azure AD Connect Health uživatelů RBAC](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Snímek obrazovky s Azure AD Connect Health a seznamem rolí Azure RBAC](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Vyberte **OK**.<br>
 6. Po dokončení přiřazení role se uživatelé a skupiny zobrazí v seznamu.<br>
-   ![Snímek obrazovky okna Azure AD Connect Health uživatelé RBAC se zvýrazněnými novými uživateli](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Snímek obrazovky s vybranými Azure AD Connect Health a Azure RBAC a novými uživateli](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 K uvedeným uživatelům a skupinám teď mají přístup podle jejich přiřazených rolí.
 
@@ -153,7 +153,7 @@ K uvedeným uživatelům a skupinám teď mají přístup podle jejich přiřaze
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Krok 3: sdílení umístění okna s uživateli nebo skupinami
 1. Po přiřazení oprávnění může uživatel k Azure AD Connect Health přistupovat tak, že [ho](https://aka.ms/aadconnecthealth)přejdeme.
 2. V okně může uživatel připnout okno nebo jiné jeho části na řídicí panel. Jednoduše klikněte na ikonu **Připnout na řídicí panel** .<br>
-   ![Snímek obrazovky okna Azure AD Connect Health pro PIN kód RBAC se zvýrazněnou ikonou PIN](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Snímek obrazovky okna Azure AD Connect Health a PIN kódu Azure RBAC se zvýrazněnou ikonou připnutí](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > Uživatel s přiřazenou rolí Čtenář nemůže získat Azure AD Connect Health rozšíření z Azure Marketplace. Uživatel nemůže provést potřebnou operaci "vytvořit". Uživatel se přesto může dostat do okna tak, že se vrátí na předchozí odkaz. Pro následné použití může uživatel připnout okno na řídicí panel.
@@ -161,8 +161,8 @@ K uvedeným uživatelům a skupinám teď mají přístup podle jejich přiřaze
 >
 
 ### <a name="remove-users-or-groups"></a>Odebrat uživatele nebo skupiny
-Můžete odebrat uživatele nebo skupinu přidanou do Azure AD Connect Health RBAC. Jednoduše klikněte pravým tlačítkem myši na uživatele nebo skupinu a vyberte možnost **Odebrat**.<br>
-![Snímek obrazovky okna Azure AD Connect Health uživatelé RBAC se zvýrazněnou možností odebrat](./media/how-to-connect-health-operations/RBAC_remove.png)
+Můžete odebrat uživatele nebo skupinu přidanou do Azure AD Connect Health a Azure RBAC. Jednoduše klikněte pravým tlačítkem myši na uživatele nebo skupinu a vyberte možnost **Odebrat**.<br>
+![Snímek obrazovky Azure AD Connect Health a Azure RBAC se zvýrazněnou možností odebrat](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (Konec oddílu RBAC)
 

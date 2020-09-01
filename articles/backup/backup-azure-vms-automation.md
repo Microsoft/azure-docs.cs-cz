@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892401"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178127"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -474,7 +474,7 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Obnovení spravovaných disků
 
 > [!NOTE]
-> Pokud má zálohovaný virtuální počítač spravované disky a chcete je obnovit jako spravované disky, zavedli jsme možnost Azure PowerShell RM Module v 6.7.0. a vyšší
+> Pokud má zálohovaný virtuální počítač spravované disky a chcete je obnovit jako spravované disky, zavedli jsme možnost z Azure PowerShell RM Module v 6.7.0. a vyšší.
 >
 >
 
