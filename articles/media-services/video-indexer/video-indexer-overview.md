@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744607"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267866"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Co je Video Indexer služby Azure Media Services?
 
 Video Indexer (VI) je řešení Azure Media Services AI a součást značky Azure Cognitive Services. Video Indexer poskytuje možnost extrahovat podrobné přehledy (bez potřeby analýzy dat nebo dovedností v kódování) pomocí modelů strojového učení, které jsou založené na několika kanálech (Voice, vocals, Visual). Modely můžete dále přizpůsobit a naučit. Služba umožňuje hloubkové hledání, snižuje provozní náklady, umožňuje nové příležitosti finanční zhodnocení a vytváří nové uživatelské prostředí ve velkých archivech videí (s nízkými překážkami vstupu).
 
 Pokud chcete začít s extrakcí přehledů pomocí Video Indexer, musíte si vytvořit účet a nahrávat videa. Když nahrajete videa do Video Indexer, analyzují vizuály i zvuk spuštěním různých modelů AI. Jak Video Indexer analyzuje vaše video, přehledy, které jsou extrahovány modely AI.
+
+Když vytvoříte účet Video Indexer a připojíte ho k Media Services, uloží se soubory médií a souborů metadat do účtu služby Azure Storage přidruženého k tomuto Media Services účtu. Další informace najdete v tématu [Vytvoření účtu video indexer připojeného k Azure](connect-to-azure.md).
 
 Následující diagram představuje ilustraci a nejedná se o technické vysvětlení toho, jak Video Indexer funguje v back-endu.
 
@@ -70,9 +72,9 @@ Následující seznam obsahuje přehledy, které můžete z videí načíst pomo
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
-* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština, portugalština a korejština.
-* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština a portugalština. Pokud jazyk nemůžete identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
-* **Identifikace a přepis mluveného slova ve více jazycích** (Preview): automaticky identifikuje mluvený jazyk v různých segmentech ze zvuku. Pošle každý segment mediálního souboru, který se má přepisu, a pak ho zkombinuje zpátky do jednoho sjednoceného přepisu. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
+* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, arabština, ruština, portugalština, hindština a korejština.
+* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, ruština a portugalština. Pokud není možné s jistotou identifikovat jazyk, Video Indexer předpokládá, že mluveným jazykem je angličtina. Další informace najdete v tématu [Model identifikace jazyka](language-identification-model.md).
+* **Identifikace a přepis mluveného slova ve více jazycích** (Preview): automaticky identifikuje mluvený jazyk v různých segmentech ze zvuku. Jednotlivé části mediálního souboru se odešlou k přepisu a tyto části přepisu se pak znovu spojí v jeden ucelený přepis. Další informace najdete v tématu [Automatická identifikace a přepis vícejazyčného obsahu](multi-language-identification-transcription.md).
 * **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: automaticky detekuje samostatný přepis a sloučení s jednou časovou osou.
 * **Redukce hluku**: vymaže zvukové a přenosové nahrávky v telefonním formátu (na základě filtrů Skypu).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604535"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267237"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
 
@@ -108,7 +108,7 @@ Ujistěte se, že má klient Windows 10 v1511 kumulativní aktualizaci z červen
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Motiv se nesynchronizuje a data chráněná pomocí Windows Information Protection 
 
-Aby nedošlo k úniku dat, data, která jsou chráněná pomocí [windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) , se nesynchronizují prostřednictvím Enterprise State Roaming pro zařízení s aktualizací Windows 10 pro výročí.
+Aby nedošlo k úniku dat, data, která jsou chráněná pomocí [windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) , se nesynchronizují prostřednictvím Enterprise State Roaming pro zařízení s aktualizací Windows 10 pro výročí.
 
 **Doporučená akce**  
 Žádné Tyto potíže mohou vyřešit budoucí aktualizace systému Windows.
@@ -159,8 +159,8 @@ Pokud má uživatel smíšený hlavní název uživatele (například uživatels
 Uživatel bude muset zařízení odpojovat a znovu připojit ke cloudu. Provedete to tak, že se přihlásíte jako uživatel místního správce a odpojíte zařízení tak, že v části **Nastavení**  >  **systému**  >  **About** zvolíte možnost spravovat nebo odpojit od práce nebo školy. Níže tyto soubory vyčistěte a pak Azure AD připojte zařízení znovu v systému **Nastavení**  >  **System**  >  **About** a vyberte připojit k práci nebo školu. Pokračujte tím, že se připojíte k zařízení Azure Active Directory a dokončíte tok.
 
 V kroku vyčištění vyčistěte následující soubory:
-- Settings. dat v`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Všechny soubory ve složce`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Settings. dat v `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Všechny soubory ve složce `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

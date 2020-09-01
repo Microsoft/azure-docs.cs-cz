@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428459"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268413"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Ověření připojených zařízení
 > * Řešení potíží
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo novější)
 - Přihlašovací údaje globálního správce pro vašeho tenanta Azure AD
@@ -68,14 +68,14 @@ Služba připojení k hybridní službě Azure AD vyžaduje, aby zařízení mě
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- `https://autologon.microsoftazuread-sso.com`(Pokud používáte nebo plánujete používat bezproblémové přihlašování SSO)
+- `https://autologon.microsoftazuread-sso.com` (Pokud používáte nebo plánujete používat bezproblémové přihlašování SSO)
 
 > [!WARNING]
 > Pokud vaše organizace používá proxy servery, které zachycují provoz SSL pro scénáře, jako je prevence ztráty dat nebo omezení tenanta Azure AD, zajistěte, aby byl provoz do ' https://device.login.microsoftonline.com ' vyloučený z přerušení TLS a prověřený. Vyloučení se nepovedlo https://device.login.microsoftonline.com , může způsobit rušení s ověřováním klientským certifikátem a způsobuje problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
 
-Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, můžete pomocí [implementace automatického zjišťování webových proxy serverů (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) povolit počítačům s Windows 10 registraci zařízení ve službě Azure AD. Problémy s konfigurací a správou protokolu WPAD najdete v tématu [řešení potíží při automatickém zjišťování](/previous-versions/tn-archive/cc302643(v=technet.10)). V zařízeních s Windows 10 starších než 1709 aktualizace je k dispozici jen možnost WPAD pro konfiguraci proxy serveru pro práci s hybridním připojením k Azure AD. 
+Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, můžete pomocí [implementace automatického zjišťování webových proxy serverů (WPAD)](/previous-versions/tn-archive/cc995261(v=technet.10)) povolit počítačům s Windows 10 registraci zařízení ve službě Azure AD. Problémy s konfigurací a správou protokolu WPAD najdete v tématu [řešení potíží při automatickém zjišťování](/previous-versions/tn-archive/cc302643(v=technet.10)). V zařízeních s Windows 10 starších než 1709 aktualizace je k dispozici jen možnost WPAD pro konfiguraci proxy serveru pro práci s hybridním připojením k Azure AD. 
 
-Pokud službu WPAD nepoužíváte, můžete na svém počítači nakonfigurovat nastavení proxy serveru WinHTTP počínaje systémem Windows 10 1709. Další informace najdete v tématu [nastavení proxy WinHTTP nasazená objektem zásad skupiny](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Pokud službu WPAD nepoužíváte, můžete na svém počítači nakonfigurovat nastavení proxy serveru WinHTTP počínaje systémem Windows 10 1709. Další informace najdete v tématu [nastavení proxy WinHTTP nasazená objektem zásad skupiny](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo).
 
 > [!NOTE]
 > Pokud nakonfigurujete nastavení proxy serveru na svém počítači pomocí nastavení WinHTTP, nepůjde se připojit k Internetu bez jakýchkoli počítačů, které se nemůžou připojit k nakonfigurovanému proxy serveru.
@@ -174,7 +174,7 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 1. V případě, že přejdete na stránku zařízení, použijte [přímý odkaz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices).
+2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](./device-management-azure-portal.md).
 3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo.
 4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
 
@@ -224,7 +224,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
-- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](./troubleshoot-device-dsregcmd.md)
 - [Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 

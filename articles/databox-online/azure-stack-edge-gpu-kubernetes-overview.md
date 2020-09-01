@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: b85586a431a20102035e253537fc45c8a8a54796
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be7e01644d7d1f232c50b1efbadf100671a262fe
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084104"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268104"
 ---
-# <a name="kubernetes-on-your-azure-stack-edge-device"></a>Kubernetes na Azure Stack hraniční zařízení
+# <a name="kubernetes-on-your-azure-stack-edge-gpu-device"></a>Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních
 
 Kubernetes je oblíbená Open-Source platforma pro orchestraci kontejnerových aplikací. Tento článek obsahuje přehled Kubernetes a potom popisuje, jak Kubernetes funguje na zařízení Azure Stack Edge. 
 

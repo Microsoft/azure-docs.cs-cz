@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal
-ms.openlocfilehash: fadb290d1bd1126c3bfc0cd76d6e6b862d1396e3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8924b77cddc9efc4d2b1b8451df38de77b37c09c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556247"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267355"
 ---
-# <a name="find-your-azure-subscription"></a>Najděte si předplatné Azure
+# <a name="find-your-azure-subscription"></a>Vyhledání předplatného Azure
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +31,7 @@ ms.locfileid: "88556247"
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nadpisu služby Azure vyberte předplatná. (Pokud nejsou uvedené žádné odběry, možná budete muset přepnout klienty Azure AD.) ID vašich předplatných jsou uvedená ve druhém sloupci.
 1. Zkopírujte ID předplatného a vložte ho do textového dokumentu podle vlastního výběru pro pozdější použití.
 

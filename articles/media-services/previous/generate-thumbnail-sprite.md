@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61229046"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268566"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Vytvoření spritu miniatury  
+# <a name="generate-a-thumbnail-sprite"></a>Vytvoření spritu miniatury
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Můžete použít Media Encoder Standard k vygenerování Sprite miniatury, což je soubor JPEG, který obsahuje několik miniatur malých rozlišení dohromady propojených s jednou (velkou) imagí společně se souborem VTT. Tento soubor VTT určuje časový rozsah ve vstupním videu, které každá miniatura představuje, spolu s velikostí a souřadnicemi této miniatury v rámci velkého souboru JPEG. Hráči videa používají soubor VTT a Sprite k zobrazení příznaku "vizuálu", který poskytuje čtenářům vizuální zpětnou vazbu při čištění a předávání podél časové osy videa.
 
@@ -33,7 +35,7 @@ Aby bylo možné použít Media Encoder Standard k vygenerování Sprite miniatu
 
     1. Pokud je SpriteColumn nastavené na M >= 1, výstupní obrázek je obdélník se sloupci M. Pokud počet miniatur vygenerovaných pomocí #2 není přesný násobek M, poslední řádek bude neúplný a vlevo černých pixelů.  
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```json
 {

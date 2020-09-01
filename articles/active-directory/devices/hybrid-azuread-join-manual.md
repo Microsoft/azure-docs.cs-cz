@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428384"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268549"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,11 +35,11 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
-* [Úvod do správy zařízení v Azure Active Directory](../device-management-introduction.md)
+* [Úvod do správy zařízení v Azure Active Directory](./overview.md)
 * [Plánování implementace služby Hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md)
 * [Řízení připojení vašich zařízení k hybridní službě Azure AD](hybrid-azuread-join-control.md)
 
@@ -83,7 +83,7 @@ Hybridní zařízení připojená k Azure AD můžete nakonfigurovat pro různé
 
 V následující tabulce najdete přehled požadovaných kroků pro váš scénář:  
 
-| Kroky | Aktuální Windows a synchronizace hodnoty hash hesel | Aktuální Windows a federace | Windows nižší úrovně |
+| Postup | Aktuální Windows a synchronizace hodnoty hash hesel | Aktuální Windows a federace | Windows nižší úrovně |
 | :--- | :---: | :---: | :---: |
 | Konfigurace spojovacího bodu služby | ![Zaškrtnout][1] | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
 | Nastavení vystavování deklarací identity |     | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
@@ -94,7 +94,7 @@ V následující tabulce najdete přehled požadovaných kroků pro váš scén�
 
 Vaše zařízení během registrace používají objekt spojovací bod služby (SCP) a zjišťují informace o tenantovi Azure AD. V místní instanci služby Active Directory musí být objekt SCP pro zařízení připojená k hybridní službě Azure AD v oddílu konfigurace názvového kontextu v doménové struktuře počítače. Pro každou doménovou strukturu existuje pouze jeden názvový kontext konfigurace. V konfiguraci služby Active Directory s více doménovými strukturami musí spojovací bod služby existovat ve všech doménových strukturách, které obsahují počítače připojené k doméně.
 
-Pomocí rutiny [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) můžete načíst názvový kontext konfigurace vaší doménové struktury.  
+Pomocí rutiny [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) můžete načíst názvový kontext konfigurace vaší doménové struktury.  
 
 Pro doménovou strukturu s názvem domény Active Directory *fabrikam.com* je názvový kontext konfigurace následující:
 
@@ -167,7 +167,7 @@ Pro řadiče domény se systémem Windows Server 2008 nebo staršími verzemi po
 
 V předchozím skriptu `$verifiedDomain = "contoso.com"` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Abyste mohli doménu použít, musíte ji vlastnit.
 
-Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md).
+Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0).
 
@@ -326,7 +326,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 V předchozí deklaraci identity `<verified-domain-name>` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Například použijte `Value = "http://contoso.com/adfs/services/trust/"` .
 
-Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
+Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).  
 
 Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0).
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
-- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](./troubleshoot-device-dsregcmd.md)
 - [Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 

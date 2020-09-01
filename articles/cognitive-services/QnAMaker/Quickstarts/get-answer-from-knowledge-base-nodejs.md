@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Node. js – QnA Maker'
-description: Tento rychlý Start založený na Node. js vám umožní získat odpověď ze znalostní báze prostřednictvím kódu programu.
+title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Node.js-QnA Maker'
+description: Tento Node.js rychlý Start na bázi REST vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342778"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268053"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Rychlý Start: získání odpovědí na dotaz ze znalostní báze s využitím Node. js
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Rychlý Start: Získejte odpovědi na dotaz ze znalostní báze Knowledge Base pomocí Node.js
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/knowledge-base.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak programově získat odpověď z publiko
 
     ![Publish settings (Nastavení publikování)](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-## <a name="create-a-nodejs-file"></a>Vytvoření souboru Node. js
+## <a name="create-a-nodejs-file"></a>Vytvoření souboru Node.js
 
 Otevřete VSCode a vytvořte nový soubor s názvem `get-answer.js` .
 
@@ -37,33 +37,23 @@ Otevřete VSCode a vytvořte nový soubor s názvem `get-answer.js` .
 
 V horní části `get-answer.js` souboru přidejte nezbytné závislosti do projektu:
 
-[!code-nodejs[Add the required dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=1-4 "Add the required dependencies")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 
 Dále přidejte požadované konstanty pro přístup k QnA Maker. Tyto hodnoty jsou po publikování znalostní báze na stránce **publikovat** .
 
-[!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>Přidat požadavek POST k odeslání otázky a získat odpověď
 
 Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker k odeslání otázky do znalostní báze a obdrží odpověď:
 
-[!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
-
-`Authorization`Hodnota hlavičky obsahuje řetězec `EndpointKey` .
-
-## <a name="install-the-dependencies"></a>Nainstalovat závislosti
-
-Nainstalujte závislosti z příkazového řádku:
-
-```bash
-npm install request request-promise
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="query":::
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Spusťte program z příkazového řádku. Požadavek bude automaticky odesílat do rozhraní API služby QnA Maker a pak bude vytištěn v okně konzoly.
+Spusťte tento program z příkazového řádku. Požadavek bude automaticky odesílat do rozhraní API služby QnA Maker a pak bude vytištěn v okně konzoly.
 
 Spusťte soubor:
 

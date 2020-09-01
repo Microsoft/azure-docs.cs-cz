@@ -1,5 +1,5 @@
 ---
-title: Nahrát multimédia
+title: Nahrávání médií
 titleSuffix: Azure Media Services
 description: Naučte se nahrávat multimédia pro streamování nebo kódování.
 services: media-services
@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 334eebe9680ba0e381bf82ac2e474a47a3b8875e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719253"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267288"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Nahrání média pro streamování nebo kódování
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V Media Services nahrajete digitální soubory (Media) do kontejneru objektů BLOB přidruženého k assetu. Entita [assetu](/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů do kontejneru assetu se váš obsah bezpečně uloží do cloudu pro další zpracování a streamování.
 

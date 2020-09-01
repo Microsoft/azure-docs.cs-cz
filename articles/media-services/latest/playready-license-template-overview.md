@@ -1,7 +1,7 @@
 ---
 title: Šablona licence Microsoft PlayReady pro Azure Media Services V3
 description: Toto téma poskytuje přehled šablony licencí PlayReady, která se používá ke konfiguraci licencí PlayReady.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 302c938aa3a778f4e1b0ca7884f82943edf43ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b4131ff0cb2169660b231cdf136f52c3f26a02dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998964"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267152"
 ---
-# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services vám umožní šifrovat obsah pomocí **Microsoft PlayReady**. Media Services také poskytuje službu pro doručování licencí PlayReady. K nakonfigurování licencí PlayReady můžete použít rozhraní Media Services API. Když se hráč pokusí přehrát obsah chráněný pomocí PlayReady, pošle se mu požadavek na doručení licence. Pokud licenční služba žádost schválí, vydá licenci, která je odeslána klientovi a slouží k dešifrování a přehrání zadaného obsahu.
 

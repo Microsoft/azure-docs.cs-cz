@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 8394ddbc4247eb992532fb11d06d8f5432edd1c7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084113"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268121"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-device"></a>Kubernetes sítě na hraničním zařízení Azure Stack
+# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes sítě v zařízení GPU Azure Stack Edge
 
 V Azure Stack hraničních zařízeních se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby použití sítě pro lusky v clusteru Kubernetes. 
 

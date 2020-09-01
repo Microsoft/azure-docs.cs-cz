@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 52b737e88e13c59d260da73c6fa37a1088cb91d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038456"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265894"
 ---
 # <a name="azure-media-services-telemetry"></a>Telemetrie Azure Media Services  
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
@@ -78,9 +79,9 @@ Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
 PartitionKey|{ID účtu} _ {ID entity}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu, aby se zjednodušily pracovní postupy, ve kterých se do stejného účtu úložiště zapisují více účtů Media Services.
 RowKey|{sekund až půlnoc} _ {Random Value}|01688_00199<br/><br/>Klíč řádku začíná počtem sekund až půlnoci, aby bylo možné v rámci oddílu použít dotazy na horní n-Style. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
-Timestamp|Datum/Čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Timestamp|Datum/čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ entity poskytující data telemetrie|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je pouze hodnota řetězce.
-Název|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Čas výskytu události telemetrie (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Zjištěný čas je poskytován entitou odesílající telemetrii (například kanál). Může dojít k problémům při synchronizaci mezi komponentami, aby tato hodnota byla přibližná.
 Idslužby|{ID služby}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Vlastnosti specifické pro entitu|Podle definice události|Datový proud: stream1, přenosová rychlost 10123,...<br/><br/>Zbývající vlastnosti jsou definovány pro daný typ události. Obsah tabulky Azure je páry klíč-hodnota.  (to znamená, že různé řádky v tabulce mají různé sady vlastností).
@@ -101,7 +102,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z Azure Table 2016 – 09-09T22:43:42.241 Z
 Typ|Typ|StreamingEndpoint
-Název|Název|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Název hostitele|Název hostitele koncového bodu|builddemoserver.origin.mediaservices.windows.net
@@ -120,7 +121,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ|Kanál
-Název|Název|ChannelHeartbeat
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Typ videa, zvuk/text sledování|Video/zvuk
@@ -132,10 +133,10 @@ OverlapCount|Překrytí v ingestu|0
 DiscontinuityCount|Nekontinuita pro sledování|0
 LastTimestamp|Poslední přijaté časové razítko dat|1800488800
 NonincreasingCount|Počet zahozených fragmentů z důvodu nerostoucího časového razítka|2
-UnalignedKeyFrames|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality), ve kterých nebyly zarovnány klíčové snímky |Pravda
-UnalignedPresentationTime|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality/stopy), kde není zarovnán čas prezentace|Pravda
-UnexpectedBitrate|True, pokud se počítá nebo Skutečná přenosová rychlost zvukového/obrazového záznamu > 40 000 b/s a IncomingBitrate = = 0 nebo IncomingBitrate a actualBitrate se liší o 50% |Pravda
-V pořádku|True, pokud <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> jsou všechny 0|Pravda<br/><br/>V pořádku je složená funkce, která vrací hodnotu false, pokud se drží kterákoli z následujících podmínek:<br/><br/>– OverlapCount > 0<br/>– DiscontinuityCount > 0<br/>– NonincreasingCount > 0<br/>-UnalignedKeyFrames = = true<br/>-UnalignedPresentationTime = = true<br/>-UnexpectedBitrate = = true
+UnalignedKeyFrames|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality), ve kterých nebyly zarovnány klíčové snímky |Ano
+UnalignedPresentationTime|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality/stopy), kde není zarovnán čas prezentace|Ano
+UnexpectedBitrate|True, pokud se počítá nebo Skutečná přenosová rychlost zvukového/obrazového záznamu > 40 000 b/s a IncomingBitrate = = 0 nebo IncomingBitrate a actualBitrate se liší o 50% |Ano
+V pořádku|True, pokud <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> jsou všechny 0|Ano<br/><br/>V pořádku je složená funkce, která vrací hodnotu false, pokud se drží kterákoli z následujících podmínek:<br/><br/>– OverlapCount > 0<br/>– DiscontinuityCount > 0<br/>– NonincreasingCount > 0<br/>-UnalignedKeyFrames = = true<br/>-UnalignedPresentationTime = = true<br/>-UnexpectedBitrate = = true
 
 **Živý archiv**
 
@@ -145,7 +146,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ|Archiv
-Název|Název|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Manifest|Adresa URL programu|Asset – eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM

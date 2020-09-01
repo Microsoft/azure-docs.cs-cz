@@ -3,7 +3,7 @@ title: Migrace z Azure Media Services V2 na V3
 description: Tento článek popisuje změny, které byly představeny v Azure Media Services V3, a ukazuje rozdíly mezi dvěma verzemi.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448390"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267560"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento článek popisuje změny, které byly představeny v Azure Media Services V3, a ukazuje rozdíly mezi dvěma verzemi.
 
@@ -96,12 +98,12 @@ Následující tabulka ukazuje, jak vlastnosti [assetu](/rest/api/media/assets/c
 |`id`– (jedinečné) Úplná cesta Azure Resource Manager, viz příklady v [assetu](/rest/api/media/assets/createorupdate) .||
 |`name`– (jedinečné) informace najdete v tématu zásady [vytváření názvů](media-services-apis-overview.md#naming-conventions) . ||
 |`alternateId`|`AlternateId`|
-|`assetId`|`Id`– (jedinečná) hodnota začíná `nb:cid:UUID:` předponou.|
+|`assetId`|`Id` – (jedinečná) hodnota začíná `nb:cid:UUID:` předponou.|
 |`created`|`Created`|
 |`description`|`Name`|
 |`lastModified`|`LastModified`|
 |`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options`(možnosti vytváření)|
+|`storageEncryptionFormat`| `Options` (možnosti vytváření)|
 |`type`||
 
 ### <a name="storage-side-encryption"></a>Šifrování na straně úložiště

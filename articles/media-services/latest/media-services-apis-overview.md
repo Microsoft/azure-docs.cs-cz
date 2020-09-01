@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Přečtěte si o pravidlech, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6cb771b8df4ab81ff9c538a38b084856b1dfbc39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719185"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267271"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj pomocí rozhraní API služby Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Jako vývojář můžete použít Media Services [REST API](/rest/api/media/) nebo klientské knihovny, které vám umožní pracovat s REST API, abyste mohli snadno vytvářet, spravovat a spravovat vlastní pracovní postupy pro média. Rozhraní [Media Services V3](https://aka.ms/ams-v3-rest-sdk) API je založené na specifikaci openapi (dříve označované jako Swagger).
 
@@ -60,7 +62,7 @@ Na následujícím obrázku čísla reprezentují tok požadavků v chronologick
 4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
 5. Střední vrstva vrátí data z Media Services.
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>ukázky
 
 Podívejte se na následující ukázky, které ukazují, jak se připojit pomocí instančního objektu služby Azure AD:
 

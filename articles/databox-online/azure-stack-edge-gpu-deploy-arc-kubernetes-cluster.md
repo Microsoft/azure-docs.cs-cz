@@ -1,6 +1,6 @@
 ---
-title: Povolit na Azure Stack hraničních zařízeních Azure ARC na Kubernetes | Microsoft Docs
-description: Popisuje, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení Azure Stack Edge.
+title: Povolit Azure ARC v Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních | Microsoft Docs
+description: Popisuje, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení GPU Azure Stack Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 03bf2a01ad4c1d5d017d881bf171806fa33e8799
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084485"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268189"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-device"></a>Povolení služby Azure ARC v clusteru Kubernetes na zařízení s Azure Stack Edge
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Povolení služby Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge
 
 V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení Azure Stack Edge. 
 
 Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
 
@@ -132,7 +132,7 @@ Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli`
     Další informace o tom, jak vytvořit instanční objekt a provést přiřazení role, najdete v postupu v tématu [Vytvoření instančního objektu s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal).
 
 
-## <a name="enable-arc-on-kubernetes-cluster"></a>Povolit oblouk v clusteru Kubernetes
+## <a name="enable-arc-on-kubernetes-cluster"></a>Povolení služby Arc v clusteru Kubernetes
 
 Pomocí těchto kroků nakonfigurujete cluster Kubernetes pro správu ARC Azure:
 

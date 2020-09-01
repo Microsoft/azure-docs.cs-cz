@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274081"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268532"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na některé otázky, které správci IT můž
 > [!NOTE]
 > Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](/deployedge/microsoft-edge-enterprise-sync).
 
-**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Data aplikací**: univerzální aplikace pro Windows můžou zapisovat data nastavení do složky roamingu a veškerá data zapsaná do této složky se automaticky synchronizují. Pro návrh aplikace, aby tuto možnost využila, je k dispozici vývojářům jednotlivých aplikací. Další informace o tom, jak vyvíjet univerzální aplikaci pro Windows, která používá roaming, najdete na blogu věnovaném [rozhraní API úložiště aplikačních](/windows/uwp/design/app-settings/store-and-retrieve-app-data) údajů a [blogu vývojářům pro roaming pro Windows 8](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Jaký účet se má použít k synchronizaci nastavení?
 
@@ -86,9 +86,9 @@ Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Az
 Roaming funguje jenom pro univerzální aplikace pro Windows. K dispozici jsou dvě možnosti, jak povolit roaming ve stávající desktopové aplikaci pro Windows:
 
 * [Most pro stolní počítače](https://aka.ms/desktopbridge) vám pomůže přenést stávající desktopové aplikace Windows do Univerzální platforma Windows. Z tohoto místa se budou vyžadovat minimální změny kódu, aby bylo možné využívat roaming dat aplikací Azure AD. Most pro stolní počítače poskytuje vašim aplikacím identitu aplikace, která je nutná k povolení roamingu dat aplikací pro existující aplikace klasické pracovní plochy.
-* [Virtualizace uživatelského prostředí (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) vám pomůže vytvořit vlastní šablonu nastavení pro stávající desktopové aplikace pro Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojář aplikace změnil kód aplikace. Pro zákazníky, kteří si zakoupili sadu Microsoft Desktop Optimization Pack, je UE-V omezený na místní roaming služby Active Directory.
+* [Virtualizace uživatelského prostředí (UE-V)](/previous-versions//dn458947(v=vs.85)) vám pomůže vytvořit vlastní šablonu nastavení pro stávající desktopové aplikace pro Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojář aplikace změnil kód aplikace. Pro zákazníky, kteří si zakoupili sadu Microsoft Desktop Optimization Pack, je UE-V omezený na místní roaming služby Active Directory.
 
-Správci můžou nakonfigurovat vícefaktorové technologie pro roaming dat aplikací klasické pracovní plochy Windows změnou roamingu nastavení operačního systému Windows a univerzálních aplikačních dat pomocí [zásad skupiny s podporou UE-v](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně těchto:
+Správci můžou nakonfigurovat vícefaktorové technologie pro roaming dat aplikací klasické pracovní plochy Windows změnou roamingu nastavení operačního systému Windows a univerzálních aplikačních dat pomocí [zásad skupiny s podporou UE-v](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně těchto:
 
 * Nastavení roamingu zásady skupiny pro Windows
 * Nesynchronizovat zásady skupiny aplikací pro Windows

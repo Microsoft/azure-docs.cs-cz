@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000921"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267577"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to. Bez ohledu na to, jestli jste vývojář aplikace, centrum volání, státní úřad nebo zábava, Media Services vám pomůže vytvářet aplikace, které dodávají mediální prostředí vynikající kvality pro velké cílové skupiny na nejoblíbenějších mobilních zařízeních a prohlížečích.
 
@@ -86,7 +88,7 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>ukázky
 
 Pomocí [tohoto prohlížeče ukázek](/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
 

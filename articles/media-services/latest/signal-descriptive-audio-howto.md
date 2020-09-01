@@ -3,29 +3,31 @@ title: Signály popisné zvukové stopy s Azure Media Services V3 | Microsoft Do
 description: Podle kroků v tomto kurzu nahrajte soubor, zakódovat video, přidejte popisné zvukové stopy a Streamujte obsah pomocí Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006648"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267424"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Do svého videa můžete přidat záznam mluveného komentáře, který umožní vizuálně postiženým klientům sledovat záznam videa tím, že naslouchá mluveným komentářům. V Media Services V3 budete signalizovat popisné zvukové stopy tím, že budete opatřovat zvukovou stopu v souboru manifestu.
 
 Tento článek ukazuje, jak zakódovat video, nahrát zvukový soubor MP4 (kodek AAC) obsahující popisný zvuk do výstupního prostředku a upravit soubor. ISM tak, aby obsahoval popisný zvuk.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.

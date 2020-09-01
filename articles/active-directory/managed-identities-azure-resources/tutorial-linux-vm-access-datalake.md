@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df59d556edb6faea221e2afd799e95796d74648e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d465419dfe36fd5dd67abdef22a6f54fba69a98e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007396"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267458"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
 
@@ -34,13 +34,13 @@ V tomto kurzu se naučíte:
 > * Udělit přístup virtuálnímu počítači k Azure Data Lake Store.
 > * Získejte přístupový token pomocí spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k souborům a složkám v Azure Data Lake Store. Pro tento krok můžete použít stávající instanci Data Lake Store nebo vytvořit novou. Pokud chcete vytvořit instanci Data Lake Store na webu Azure Portal, postupujte podle tohoto článku [Rychlý start ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). V [dokumentaci ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) také najdete články Rychlý start pro použití Azure CLI nebo Azure PowerShellu.
+V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k souborům a složkám v Azure Data Lake Store. Pro tento krok můžete použít stávající instanci Data Lake Store nebo vytvořit novou. Pokud chcete vytvořit instanci Data Lake Store na webu Azure Portal, postupujte podle tohoto článku [Rychlý start ke službě Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md). V [dokumentaci ke službě Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md) také najdete články Rychlý start pro použití Azure CLI nebo Azure PowerShellu.
 
 V Data Lake Storu vytvořte novou složku a udělte spravované identitě přiřazené systémem virtuálního počítače s Linuxem oprávnění ke čtení, zápisu a spouštění souborů v této složce:
 
@@ -56,18 +56,18 @@ V Data Lake Storu vytvořte novou složku a udělte spravované identitě přiř
 10. Podobně jako v 5. kroku vyberte **Přidat**. Do pole **Vybrat** zadejte název virtuálního počítače. Ve výsledcích hledání vyberte svůj virtuální počítač a pak klikněte na **Vybrat**.
 11. Podobně jako v 6. kroku vyberte **Vybrat oprávnění**. Vyberte oprávnění **Číst**, **Zápis** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu a výchozí položka oprávnění**. Vyberte **OK**.  Oprávnění by se mělo úspěšně přidat.
 
-Spravované identity pro prostředky Azure teď můžou se soubory ve vytvořené složce provádět všechny operace. Další informace o správě přístupu ke službě Data Lake Store najdete v článku o [řízení přístupu v Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Spravované identity pro prostředky Azure teď můžou se soubory ve vytvořené složce provádět všechny operace. Další informace o správě přístupu ke službě Data Lake Store najdete v článku o [řízení přístupu v Data Lake Store](../../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
-V této části se dozvíte, jak získat přístupový token a volat Data Lake Store systému souborů. Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu "Nosičer \<ACCESS_TOKEN_VALUE\> ".  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+V této části se dozvíte, jak získat přístupový token a volat Data Lake Store systému souborů. Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu "Nosičer \<ACCESS_TOKEN_VALUE\> ".  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 
 V tomto kurzu použijete při ověření přístupu k REST API systému souborů Data Lake Store nástroj cURL pro požadavky REST.
 
 > [!NOTE]
 > Klientské sady SDK systému souborů Data Lake Store zatím spravované identity pro prostředky Azure nepodporují.
 
-K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about). Pokud potřebujete pomoc s konfigurací klíčů klienta SSH, přečtěte si téma [Jak používat klíče SSH s Windows v Azure](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/about). Pokud potřebujete pomoc s konfigurací klíčů klienta SSH, přečtěte si téma [Jak používat klíče SSH s Windows v Azure](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Na portálu přejděte ke svému linuxovému virtuálním počítači. V **Přehledu** vyberte **Připojit**.  
 2. Připojte se vybraným klientem SSH k virtuálnímu počítači. 
@@ -155,4 +155,4 @@ Pomocí jiných rozhraní API systému souborů Data Lake Store můžete přidá
 V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

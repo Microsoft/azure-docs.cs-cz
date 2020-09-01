@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611309"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268770"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 
@@ -28,8 +28,8 @@ Další klienty se systémem Windows najdete v článku [řešení potíží s h
 V tomto článku se předpokládá, že jste [nakonfigurovali zařízení se hybridem Azure Active Directory připojená](hybrid-azuread-join-plan.md) k podpoře následujících scénářů:
 
 - Podmíněný přístup podle zařízení
-- [Podnikový roaming nastavení](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello pro firmy](../active-directory-azureadjoin-passport-deployment.md)
+- [Podnikový roaming nastavení](./enterprise-state-roaming-overview.md)
+- [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Tento dokument poskytuje pokyny k odstraňování potíží, které vám pomohou vyřešit potenciální problémy.
 
@@ -170,7 +170,7 @@ Možné příčiny selhání:
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
    - Důvod: selhání obecného zjišťování. Nepovedlo se získat metadata zjišťování z DRS.
    - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
    - Důvod: při provádění zjišťování vypršel časový limit operace.
    - Řešení: Ujistěte se, že `https://enterpriseregistration.windows.net` je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
@@ -387,7 +387,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: shromáždění protokolů a kontaktování podpora Microsoftu
 
-Stáhnout soubor Auth.zip z[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Stáhnout soubor Auth.zip z [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
 1. Rozbalte soubory a přejmenujte zahrnuté soubory **start-auth.txt** a **stop-auth.txt** na **Start-auth. cmd** a **stop-auth. cmd**.
 1. Z příkazového řádku se zvýšenými oprávněními spusťte **Start-auth. cmd**.

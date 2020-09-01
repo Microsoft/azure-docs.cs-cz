@@ -3,22 +3,24 @@ title: Poznámky k verzi Azure Media Services V3 | Microsoft Docs
 description: Abyste měli přehled o nejnovějším vývoji, najdete v tomto článku nejnovější aktualizace Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072132"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267494"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
@@ -141,7 +143,7 @@ Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineární
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v tématu [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v tématu  [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -270,31 +272,31 @@ Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams?
 
 #### <a name="asset-commands"></a>Příkazy assetu
 
-- ```--storage-account```a ```--container``` přidané argumenty.
+- ```--storage-account``` a ```--container``` přidané argumenty.
 - Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) v ```az ams asset get-sas-url``` příkazu byl přidán.
 
 #### <a name="job-commands"></a>Příkazy úlohy
 
-- ```--correlation-data```a ```--label``` přidané argumenty
-- ```--output-asset-names```přejmenování na ```--output-assets``` . Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
+- ```--correlation-data``` a ```--label``` přidané argumenty
+- ```--output-asset-names``` přejmenování na ```--output-assets``` . Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
 
 #### <a name="streaming-locator-commands"></a>Příkazy lokátoru streamování
 
-- ```az ams streaming locator```základní příkaz nahrazen ```az ams streaming-locator``` .
-- ```--streaming-locator-id```a ```--alternative-media-id support``` přidané argumenty.
-- ```--content-keys argument```argument se aktualizoval.
-- ```--content-policy-name```přejmenování na ```--content-key-policy-name``` .
+- ```az ams streaming locator``` základní příkaz nahrazen ```az ams streaming-locator``` .
+- ```--streaming-locator-id``` a ```--alternative-media-id support``` přidané argumenty.
+- ```--content-keys argument``` argument se aktualizoval.
+- ```--content-policy-name``` přejmenování na ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Příkazy zásad streamování
 
-- ```az ams streaming policy```základní příkaz nahrazen ```az ams streaming-policy``` .
+- ```az ams streaming policy``` základní příkaz nahrazen ```az ams streaming-policy``` .
 - Podporuje parametry šifrování v ```az ams streaming-policy create``` přidaných.
 
 #### <a name="transform-commands"></a>Příkazy transformace
 
-- ```--preset-names```Argument byl nahrazen parametrem ```--preset``` . Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add``` ). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
-- ```az ams transform output remove```dá se provést předáním výstupního indexu, který se má odebrat.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenty přidané v ```az ams transform create``` ```az ams transform output add``` příkazech a.
+- ```--preset-names``` Argument byl nahrazen parametrem ```--preset``` . Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add``` ). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
+- ```az ams transform output remove``` dá se provést předáním výstupního indexu, který se má odebrat.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenty přidané v ```az ams transform create``` ```az ams transform output add``` příkazech a.
 
 ## <a name="october-2018---ga"></a>Říjen 2018 – GA
 

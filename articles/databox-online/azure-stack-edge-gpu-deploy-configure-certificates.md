@@ -1,6 +1,6 @@
 ---
 title: Kurz konfigurace certifikátů pro zařízení Azure Stack Edge pomocí GPU v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack Edge vám dává pokyn ke konfiguraci certifikátů na fyzickém zařízení.
+description: Kurz nasazení Azure Stack Edge s grafickým procesorem vám dává pokyn ke konfiguraci certifikátů na fyzickém zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f8e0464eb7f513149dd1cfa2ec5dcdc0f193417
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 80a857f80fd2c164637e591fbab43123659cd2f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181217"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268172"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pomocí GPU
 
@@ -26,10 +26,10 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GPU se ujistěte, že:
 
@@ -155,7 +155,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace certifikátů pro fyzické zařízení
 
 Informace o tom, jak aktivovat Azure Stack hraniční zařízení, najdete v tématech:

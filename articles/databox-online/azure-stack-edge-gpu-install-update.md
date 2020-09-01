@@ -1,22 +1,23 @@
 ---
 title: Instalace aktualizace na zařízení GPU na Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak použít aktualizace pomocí Azure Portal a místního webového uživatelského rozhraní pro zařízení s GRAFICKÝm rozhraním pro Azure Stack Edge.
+description: Popisuje, jak použít aktualizace pomocí Azure Portal a místního webového uživatelského rozhraní pro zařízení GPU Azure Stack Edge a clusteru Kubernetes na zařízení.
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: article
-ms.date: 06/12/2020
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e973e41493b8e84f31a82d5379a01a0e851a48d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084119"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268240"
 ---
 # <a name="update-your-azure-stack-edge-with-gpu"></a>Aktualizace Azure Stackového okraje pomocí GPU 
 
-Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack Edge pomocí GPU prostřednictvím místního webového uživatelského rozhraní a přes Azure Portal. Aktualizace softwaru a opravy hotfix můžete použít, chcete-li, aby vaše zařízení Azure Stack Edge zůstalo v aktuálním stavu. 
+Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack Edge pomocí GPU prostřednictvím místního webového uživatelského rozhraní a přes Azure Portal. Aktualizace softwaru nebo opravy hotfix použijete, chcete-li zachovat Azure Stack hraniční zařízení a přidružené cluastery Kubernetes na zařízení v aktuálním stavu. 
 
 > [!IMPORTANT]
 > - Aktualizace **2008** odpovídá verzi **2.1.1328.1904** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2008-release-notes.md).

@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019449"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266523"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením  
+# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: doručení assetu stažením
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Tento článek popisuje možnosti pro doručování mediálních prostředků odeslaných do Media Services. Obsah Media Services můžete doručovat v mnoha scénářích aplikací. Po kódování Stáhněte vygenerované mediální prostředky nebo k nim přihlaste pomocí lokátoru streamování. Pro zlepšení výkonu a škálovatelnosti můžete obsah doručovat také pomocí Content Delivery Network (CDN).
 
 Tento příklad ukazuje, jak stáhnout mediální prostředky z Media Services do místního počítače. Kód dotazuje úlohy přidružené k účtu Media Services podle ID úlohy a přistupuje ke své kolekci **OutputMediaAssets** (což je sada jednoho nebo více výstupních prostředků médií, které jsou výsledkem spuštění úlohy). Tento příklad ukazuje, jak stáhnout výstupní mediální prostředky z úlohy, ale můžete použít stejný přístup ke stažení jiných prostředků.

@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Naučte se vytvářet filtry pomocí dynamického balíčku pro filtrování a selektivní streamování manifestů.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4a2464cbb47291f35cd4d7e20b555356e3e9aa8b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266455"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při doručování obsahu streamování s adaptivní přenosovou rychlostí do zařízení někdy potřebujete publikovat více verzí manifestu, aby se mohly zaměřit konkrétní možnosti zařízení nebo dostupná šířka pásma sítě. [Dynamický balíček](dynamic-packaging-overview.md) vám umožní určit filtry, které mohou vyfiltrovat konkrétní kodeky, rozlišení, přenosové rychlosti a kombinace zvukového stopu průběžně. Toto filtrování odstraní nutnost vytvářet více kopií. Jednoduše potřebujete publikovat novou adresu URL s konkrétní sadou filtrů nakonfigurovaných na vaše cílová zařízení (iOS, Android, byznysu nebo prohlížeče) a možnosti sítě (scénáře s vysokou šířkou pásma, mobilním nebo malou šířkou pásma). V takovém případě můžou klienti manipulovat s datovým proudem vašeho obsahu prostřednictvím řetězce dotazu (zadáním dostupných [filtrů assetů nebo filtrů účtu](filters-concept.md)) a pomocí filtrů streamovat konkrétní oddíly streamu.
 
@@ -56,7 +58,7 @@ Ke sledování přenosové rychlosti streamu videa můžete použít [stránku A
 
 Můžete použít filtry na protokoly streamování ABR: HLS, MPEG-POMLČKa a Smooth Streaming. V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol (Protokol)|Příklad|
+|Protokol|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|

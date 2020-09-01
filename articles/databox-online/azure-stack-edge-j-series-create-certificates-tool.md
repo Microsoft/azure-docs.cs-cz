@@ -5,15 +5,15 @@ services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ea560cf7d61a208cf29aef977aea6d1584a7cdb7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146042"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267373"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>Vytvoření certifikátů pro Azure Stack Edge pomocí nástroje pro kontrolu připravenosti centra Azure Stack 
 
@@ -37,7 +37,7 @@ K vyžádání následujících certifikátů můžete použít nástroj pro kon
 - Certifikát sítě VPN
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit zástupce pro nasazení Azure Stack hraničních zařízení, ujistěte se, že: 
 

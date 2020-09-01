@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011867"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268821"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -167,7 +167,7 @@ Pokud parametr `videoUrl` není zadaný, Video Indexer očekává, že soubor p�
 
 Následující fragment kódu v jazyce C# předvádí společné použití všech rozhraní API Video Indexeru.
 
-#### <a name="instructions-for-running-this-code-sample"></a>Pokyny pro spuštění této ukázky kódu
+**Pokyny pro spuštění následující ukázky kódu**
 
 Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva parametry: API Management ověřovací klíč a adresu URL videa.
 

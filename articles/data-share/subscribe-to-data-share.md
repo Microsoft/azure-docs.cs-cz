@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258660"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268889"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
 
@@ -38,7 +38,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 * Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
 * Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Příjem dat do zdroje založeného na jazyce SQL:
+### <a name="receive-data-into-a-sql-based-target"></a>Příjem dat do cíle založeného na SQL:
 
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel. 
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo Azure SQL Data Warehouse. To lze provést pomocí následujících kroků: 
@@ -68,7 +68,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otevřít pozvánku
 
@@ -78,7 +78,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
    Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tím přejdete do seznamu pozvání ke sdílení dat.
 
-   ![Zasílán](./media/invitations.png "Seznam pozvánek") 
+   ![Seznam pozvánek](./media/invitations.png "Seznam pozvánek") 
 
 1. Vyberte sdílenou složku, kterou chcete zobrazit. 
 
@@ -104,7 +104,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 ## <a name="configure-received-share"></a>Konfigurace přijaté sdílené složky
 Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následujících kroků.
 
-1. Vyberte kartu datové **sady** . zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl. Vyberte možnost **+ mapovat na cíl** a zvolte cílové úložiště dat. 
+1. Vyberte kartu **datové sady** . Zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl. Vyberte možnost **+ mapovat na cíl** a zvolte cílové úložiště dat. 
 
    ![Mapovat na cíl](./media/dataset-map-target.png "Mapovat na cíl") 
 
@@ -114,7 +114,7 @@ Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následuj
 
    ![Cílový účet úložiště](./media/dataset-map-target-sql.png "Cílové úložiště") 
 
-1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**.
+1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . Zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**.
 
    ![Povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků")
 

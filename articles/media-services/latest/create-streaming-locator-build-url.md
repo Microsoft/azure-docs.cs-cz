@@ -3,23 +3,25 @@ title: Vytvoření lokátoru streamování a adres URL sestavení – Azure Medi
 description: Tento článek ukazuje, jak vytvořit Lokátor streamování a adresy URL sestavení.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/04/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9eae2b0d8b5bebc027dd46afd17a37b8a19b422
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c00729e236cb314f47df8f622db2e19438af61ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012156"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267900"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Vytvoření lokátoru streamování a adres URL
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Pokud chcete v Azure Media Services vytvořit adresu URL streamování, musíte nejdřív vytvořit [Lokátor streamování](streaming-locators-concept.md). Potom zřetězete název hostitele [koncového bodu streamování](/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Když poprvé vytvoříte účet služby Media Service, bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže musíte zavolat **Spustit** , aby se spustilo streamování.
 

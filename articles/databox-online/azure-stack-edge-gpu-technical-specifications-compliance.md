@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 87c96ef6487895d3230541f0ae5fe15c5a645368
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084050"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266659"
 ---
-# <a name="azure-stack-edge-technical-specifications-and-compliance"></a>Technické specifikace Azure Stack Edge a dodržování předpisů
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pomocí GPU 
 
 Hardwarové součásti Azure Stack hraničních zařízení s integrovaným grafickým procesorem (GPU) se řídí technickými specifikacemi a regulativními normami, které jsou uvedené v tomto článku. Technické specifikace popisují hardware, jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
 

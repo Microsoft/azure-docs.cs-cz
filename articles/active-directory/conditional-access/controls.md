@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948296"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266574"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
 Vlastní ovládací prvky jsou funkcí verze Preview Azure Active Directory. Při použití vlastních ovládacích prvků jsou vaši uživatelé přesměrováni na kompatibilní službu, aby splnila požadavky na ověření mimo Azure Active Directory. Aby bylo možné tento ovládací prvek vyhovět, bude prohlížeč uživatele přesměrován na externí službu, provede požadované ověření a pak bude přesměrován zpět na Azure Active Directory. Azure Active Directory ověří odpověď, a pokud byl uživatel úspěšně ověřen nebo ověřen, uživatel pokračuje v toku podmíněného přístupu.
 
 > [!NOTE]
-> Další informace o změnách, které plánujeme na možnosti vlastního ovládacího prvku, najdete v článku únor 2020. února, [co je nového](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls).
+> Další informace o změnách, které plánujeme na možnosti vlastního ovládacího prvku, najdete v části únor 2020 – [co je nového](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls).
 
 ## <a name="creating-custom-controls"></a>Vytváření vlastních ovládacích prvků
 

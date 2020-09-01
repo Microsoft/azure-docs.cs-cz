@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689040"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266778"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -62,7 +62,7 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 - Uživatel zařízení zakáže z portálu moje aplikace. 
 - Správce (nebo uživatel) odstraní nebo zakáže zařízení v Azure Portal nebo pomocí PowerShellu.
 - Jenom služba hybridního připojení ke službě Azure AD: správce odebere z oboru synchronizace v případě zařízení odstraněných z Azure AD organizační jednotku zařízení.
-- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](../hybrid/reference-connect-device-disappearance.md).
 
 
 Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
@@ -312,7 +312,7 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 **A:** Proveďte následující kroky:
 
 1.    [Tvorba zásady dodržování předpisů](/intune/compliance-policy-create-mac-os)
-1.    [Definování zásad podmíněného přístupu pro zařízení macOS](../active-directory-conditional-access-azure-portal.md) 
+1.    [Definování zásad podmíněného přístupu pro zařízení macOS](../conditional-access/overview.md) 
 
 **Mark**
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfbad53fd2361752824292e0ade82f3ac231916
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096854"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268753"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Vynutilit TLS 1,2 pro službu Azure AD Registration Service
 
@@ -52,7 +52,7 @@ Všechny počítače, které fungují jako proxy servery mezi zařízeními a sl
 
 ## <a name="update-ad-fs-servers"></a>Aktualizace AD FSch serverů
 
-Všechny AD FS servery, které se používají ke komunikaci se službou Device Registration Service pro Azure AD, musí zajistit, aby byl povolený protokol TLS 1,2. Informace o tom, jak tuto konfiguraci povolit nebo ověřit, najdete v tématu [Správa protokolů SSL/TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
+Všechny AD FS servery, které se používají ke komunikaci se službou Device Registration Service pro Azure AD, musí zajistit, aby byl povolený protokol TLS 1,2. Informace o tom, jak tuto konfiguraci povolit nebo ověřit, najdete v tématu [Správa protokolů SSL/TLS a šifrovacích sad pro AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
 
 ## <a name="client-updates"></a>Aktualizace klienta
 
@@ -68,4 +68,4 @@ U následujících klientů je známo, že nebude možné podporovat protokol TL
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled protokolu TLS/SSL (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/tls-ssl-schannel-ssp-overview)
+[Přehled protokolu TLS/SSL (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

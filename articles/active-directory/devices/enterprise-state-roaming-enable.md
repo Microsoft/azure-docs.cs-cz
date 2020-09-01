@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541885"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268600"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 
@@ -32,11 +32,11 @@ Pokud povolíte Enterprise State Roaming, vaše organizace vám automaticky udě
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
 1. Vyberte **Azure Active Directory**  >  **zařízení**  >  **Enterprise State Roaming**.
-1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](/azure/active-directory/device-management-azure-portal).
+1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](./device-management-azure-portal.md).
   
    ![Obrázek nastavení zařízení s označením uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními.](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, musí se zařízení ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD, je primární přihlašovací identita uživatele svou identitou Azure AD, takže se nevyžaduje žádná další konfigurace. U zařízení, která používají místní službu Active Directory, musí správce IT [nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](hybrid-azuread-join-manual-steps.md). 
+Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, musí se zařízení ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD, je primární přihlašovací identita uživatele svou identitou Azure AD, takže se nevyžaduje žádná další konfigurace. U zařízení, která používají místní službu Active Directory, musí správce IT [nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](./hybrid-azuread-join-plan.md). 
 
 ## <a name="data-storage"></a>Úložiště dat
 

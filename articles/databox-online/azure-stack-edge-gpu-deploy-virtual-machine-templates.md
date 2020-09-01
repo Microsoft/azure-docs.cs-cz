@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 330186b12efcc31e9f99d7c4bdbff3e081311c23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084149"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268155"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení Azure Stack Edge prostřednictvím šablon
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge prostřednictvím šablon
 
 V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí šablon. Tyto šablony jsou soubory JavaScript Object Notation (JSON), které definují infrastrukturu a konfiguraci pro váš virtuální počítač. V těchto šablonách určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
