@@ -7,6 +7,8 @@
     - name: Co je nového v Media Services
       displayName: release notes
       href: release-notes.md
+    - name: Media Services – dodržování předpisů
+      href: concept-compliance.md
 - name: Rychlé starty
   items:
     - name: Nastavení prostředí
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: Kurzy
   items:
-    - name: Kódování vzdáleného souboru a streamování videa
+    - name: .NET
       items:
-        - name: S využitím REST
-          displayName: 'encoding, job, transform'
+        - name: Kódování a streamování vzdáleného souboru – REST
           href: stream-files-tutorial-with-rest.md
-        - name: S využitím rozhraní příkazového řádku
-          href: stream-files-cli-quickstart.md
-        - name: S využitím .NET
+        - name: Kódování a streamování vzdáleného souboru – .NET
           href: stream-files-dotnet-quickstart.md
-        - name: Pomocí Node.js
+        - name: Kódování a streamování načteného souboru
+          href: stream-files-tutorial-with-api.md
+        - name: Živé streamování
+          href: stream-live-tutorial-with-api.md
+        - name: Analýza videa
+          href: analyze-videos-tutorial-with-api.md
+        - name: Dynamické šifrování s využitím AES-128
+          href: protect-with-aes128.md
+        - name: Dynamické šifrování s využitím DRM
+          href: protect-with-drm.md
+    - name: Rozhraní příkazového řádku
+      items:
+        - name: Kódování a streamování vzdáleného souboru – CLI
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: Kódování a streamování vzdáleného souboru – Node.js
           href: stream-files-nodejs-quickstart.md
-    - name: Ukládání událostí AMS v Azure Log Analytics
-      href: tutorial-events-log-analytics.md
-    - name: Kódování načteného souboru a streamování videa
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: Živé streamování
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: Analýza videa
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: Dynamické šifrování s využitím AES-128
-      href: protect-with-aes128.md
-    - name: Dynamické šifrování s využitím DRM
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: portál Azure
+      items:
+        - name: Ukládání událostí AMS v Azure Log Analytics
+          href: tutorial-events-log-analytics.md
 - name: ukázky
   items:
     - name: Ukázky Media Services v3
@@ -378,7 +381,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

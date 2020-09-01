@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651756"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144834"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -55,7 +55,7 @@ Můžete začít s konfigurací spuštění pro místní počítač a pak v př�
 * [Co je konfigurace spuštění?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Kurz: analýza prvního modelu ML](tutorial-1st-experiment-sdk-train.md)
 * [Příklady: Jupyter Notebook příklady modelů školení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [Postupy: nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md)
+* [Postupy: použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -147,7 +147,7 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
 
-## <a name="cli"></a>Rozhraní příkazového řádku
+## <a name="cli"></a>CLI
 
 Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CLI. Poskytuje příkazy rozhraní příkazového řádku pro různé platformy pro práci s Azure Machine Learning. Typicky k automatizaci úloh, jako je například školení modelu strojového učení, použijete rozhraní příkazového řádku.
 
@@ -160,4 +160,4 @@ Ke spuštění a správě školicích úloh můžete použít rozšíření VS C
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [nastavit školicí prostředí](how-to-set-up-training-targets.md).
+Naučte se [používat výpočetní cíle pro školení modelů](how-to-set-up-training-targets.md).

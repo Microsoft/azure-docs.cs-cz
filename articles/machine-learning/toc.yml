@@ -216,6 +216,13 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: Vytváření výpočetních prostředků
+      items:
+        - name: Použití sady Studio
+          href: how-to-create-attach-compute-studio.md
+        - name: Použití sady Python SDK
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: Nastavení prostředí
       items:
         - name: Nastavení vývojových prostředí
@@ -265,7 +272,7 @@
         - name: Přístup k datům
           items:
             - name: Připojení ke službě Azure Storage
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: Získání dat z úložiště dat
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: Trénování modelů
       items:
-        - name: Nastavení prostředí trénování
+        - name: Odeslání trénovacího běhu
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Použití nástrojů pro odhady pro ML

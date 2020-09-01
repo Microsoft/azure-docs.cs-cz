@@ -3,15 +3,15 @@ title: Plán Azure Functions Premium
 description: Podrobnosti a možnosti konfigurace (virtuální síť, bez počátečního startu, neomezené trvání spuštění) pro plán Azure Functions Premium.
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506192"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145741"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -36,21 +36,42 @@ Pomocí vytvořeného plánu můžete vytvořit aplikaci Function App pomocí [A
 
 K dispozici jsou následující funkce pro aplikace Functions nasazené do plánu Premium.
 
-### <a name="pre-warmed-instances"></a>Předem zahřívání instance
+### <a name="always-ready-instances"></a>Vždy připravené instance
 
 Pokud v plánu spotřeby nejsou žádné události a spuštění, vaše aplikace se může škálovat na nulové instance. Když se přidají nové události v, musí být speciální instance specializovaná na svou aplikaci, která je na ní spuštěná.  Specializace nových instancí může v závislosti na aplikaci nějakou dobu trvat.  Tato další latence při prvním volání se často označuje jako studený start aplikace.
 
-V plánu Premium můžete mít aplikaci předem zahřívání na určitém počtu instancí až do minimální velikosti plánu.  Předem zavedené instance také umožňují předem škálovat aplikaci před velkým objemem zátěže. Vzhledem k tomu, že se aplikace škáluje, nejprve se škáluje do předem zahřívání instancí. Další instance pokračují ve vyrovnávací paměti a zahřívá se hned po přípravě na další operaci škálování. Když máte vyrovnávací paměť předběžně zavedených instancí, můžete efektivně zabránit latenci při počátečním startu.  Předem zavedené instance jsou součástí plánu Premium a je potřeba, abyste zachovali aspoň jednu instanci, která je spuštěná a dostupná vždy, když je plán aktivní.
+V plánu Premium můžete mít aplikaci vždycky připravenou na zadaný počet instancí.  Maximální počet vždy připravených instancí je 20.  Když události začnou aplikaci aktivovat, budou směrovány nejprve na instance vždy připravené.  Jelikož se funkce změní na aktivní, další instance se zahřeje jako vyrovnávací paměť.  Tato vyrovnávací paměť brání studeným startům pro nové instance potřebné během škálování.  Tyto instance ve vyrovnávací paměti se nazývají [předem zahřívání instance](#pre-warmed-instances).  Díky kombinaci instancí vždy připraveno a předem zahřívání vyrovnávací paměti může vaše aplikace efektivně eliminovat studené zahájení.
 
-Počet předem zavedených instancí můžete v Azure Portal nakonfigurovat tak, že vyberete **Function App**a kliknete na kartu **funkce platformy** a vyberete možnosti **horizontálního** navýšení kapacity. V okně pro úpravu aplikace Function App jsou předem zavedené instance specifické pro danou aplikaci, ale minimální a maximální počet instancí platí pro celý plán.
+> [!NOTE]
+> U každého plánu Premium bude vždy aspoň jedna aktivní a fakturovaná instance.
+
+Počet vždy připravených instancí můžete v Azure Portal nakonfigurovat tak, že vyberete svoji **Function App**a kliknete na kartu **funkce platformy** a vyberete možnosti **horizontálního** navýšení kapacity. V okně pro úpravu aplikace Function App jsou vždy připravené instance specifické pro danou aplikaci.
 
 ![Nastavení elastického škálování](./media/functions-premium-plan/scale-out.png)
 
-V Azure CLI můžete také nakonfigurovat předem zavedené instance pro aplikaci.
+Pro aplikaci můžete pomocí Azure CLI nakonfigurovat i vždy připravené instance.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
 ```
+
+#### <a name="pre-warmed-instances"></a>Předem zahřívání instance
+
+Předem zahřívání instance jsou počet instancí zahřívání jako vyrovnávací paměť během událostí škálování a aktivace.  Předem zavedené instance pokračují do vyrovnávací paměti, dokud nedosáhnete maximálního limitu pro horizontální navýšení kapacity.  Výchozí hodnota předem zahřívání instance je 1 a většina scénářů by měla zůstat jako 1.  Pokud má aplikace dlouhou dobu zahřívání (například vlastní image kontejneru), můžete tuto vyrovnávací paměť zvětšit.  Předem zastaralá instance bude aktivní až po dostatečném využití všech aktivních instancí.
+
+Vezměte v úvahu tento příklad, jakým způsobem fungují instance Always Ready a předem zahřívání instance.  Aplikace funkcí Premium má nakonfigurované pět instancí vždy připraveno a výchozí je jedna předtrvalá instance.  Když je aplikace nečinná a neaktivují se žádné události, aplikace se zřídí a spustí na pět instancí.  
+
+Jakmile se první Trigger dostane do, stanou se pět instancí vždy připraveno na aktivní a přidělí se další předem zahřívání instance.  Aplikace je teď spuštěná se šesti zřízenými instancemi: pět instancí vždy připraveno na aktivní a šestá předem zahřívání a neaktivní vyrovnávací paměť.  Pokud se frekvence provádění stále zvětšuje, bude se nakonec využívat pět aktivních instancí.  Když se platforma rozhodne škálovat víc než pět instancí, bude se škálovat do předem zahřívání instance.  Pokud k tomu dojde, bude nyní existovat šest aktivních instancí a sedmá instance bude okamžitě zřízena a bude provedena vyplňování předem zahřívání vyrovnávací paměti.  Tato posloupnost škálování a před zahříváním bude pokračovat, dokud nedosáhnete maximálního počtu instancí pro aplikaci.  Žádné instance nebudou předem zahřívání ani aktivovány mimo maximum.
+
+Počet předem zavedených instancí aplikace můžete upravit pomocí Azure CLI.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+```
+
+#### <a name="maximum-instances-for-an-app"></a>Maximální počet instancí aplikace
+
+Kromě [plánu maximálního počtu instancí](#plan-and-sku-settings)můžete nakonfigurovat maximálně jednu aplikaci.  Maximum aplikace se dá nakonfigurovat pomocí [limitu škálování aplikace](./functions-scale.md#limit-scale-out).
 
 ### <a name="private-network-connectivity"></a>Připojení k privátní síti
 
@@ -68,16 +89,13 @@ Další informace o tom, jak škálování funguje, najdete v tématu [škálov�
 
 ### <a name="longer-run-duration"></a>Delší doba běhu
 
-Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [upravit host.jsv konfiguraci](./functions-host-json.md#functiontimeout) , aby to nebylo pro aplikace Premium Plan (garantované 60 minut) nevázané.
+Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [upravit host.jsv konfiguraci](./functions-host-json.md#functiontimeout) , aby byla doba nevázaná pro aplikace plánu Premium (garantované 60 minut).
 
 ## <a name="plan-and-sku-settings"></a>Nastavení plánu a SKU
 
-Při vytváření plánu nakonfigurujete dvě nastavení: minimální počet instancí (nebo velikost plánu) a maximální limit shlukování.  Minimální instance jsou rezervované a vždycky spuštěné.
+Při vytváření plánu jsou k dispozici dvě nastavení velikosti plánu: minimální počet instancí (nebo velikost plánu) a maximální limit shlukování.
 
-> [!IMPORTANT]
-> Za každou instanci přidělenou v minimálním počtu instancí se účtuje bez ohledu na to, jestli jsou funkce spuštěné nebo ne.
-
-Pokud vaše aplikace vyžaduje instance nad rámec velikosti vašeho plánu, může pokračovat horizontální navýšení kapacity, dokud počet instancí nedosáhne maximálního limitu shlukování.  Účtují se za instance přesahující váš plán jenom v době, kdy jsou spuštěné a pronajaté.  Připravujeme úsilí, aby se vaše aplikace přihlásila na vymezený maximální limit, zatímco pro vaši aplikaci jsou zaručené minimální instance plánu.
+Pokud vaše aplikace vyžaduje instance mimo instance Always Ready, může pokračovat horizontální navýšení kapacity, dokud počet instancí nedosáhne maximálního limitu shlukování.  Účtují se za instance přesahující váš plán jenom v době, kdy jsou spuštěné a pronajaté.  Díky omezení velikosti vaší aplikace na vymezený maximální limit dosáhneme úsilí.
 
 Velikost plánu a maximum v Azure Portal můžete nakonfigurovat výběrem možností **horizontálního** navýšení kapacity v plánu nebo aplikace Function App nasazené do tohoto plánu (v části **funkce platformy**).
 
@@ -87,11 +105,24 @@ Můžete taky zvýšit maximální limit shluku z Azure CLI:
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
+Minimální pro každý plán bude nejméně jedna instance.  Skutečný minimální počet instancí, které se automaticky nakonfigurují za vás, a to v závislosti na instancích Always Reading požadovaných aplikacemi v plánu.  Pokud například aplikace A požaduje pět instancí vždy připraveno a aplikace B požádá dva instance vždy připravené ve stejném plánu, bude minimální velikost plánu vypočítána jako pět.  App A bude běžet na všech 5 a aplikace B bude běžet jenom na 2.
+
+> [!IMPORTANT]
+> Za každou instanci přidělenou v minimálním počtu instancí se účtuje bez ohledu na to, jestli jsou funkce spuštěné nebo ne.
+
+Ve většině případů by mělo být minimum vypočítaného minima dostačující.  Škálování nad rámec minima ale dosáhne nejvyšší intenzity.  Pokud nejsou k dispozici další instance, je možné, že v určitém časovém limitu může dojít k zpoždění v případě nepravděpodobného zvýšení kapacity.  Nastavením minimálního minimálního počtu automatického vypočítaného minima rezervujete instance předem.
+
+Zvýšení vypočítaného minima pro plán se dá provést pomocí Azure CLI.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+```
+
 ### <a name="available-instance-skus"></a>Dostupné skladové položky instance
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová položka|Cores|Paměť|Storage|
+|SKU|Cores|Paměť|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -104,7 +135,7 @@ Například aplikace funkcí JavaScriptu je omezená na výchozí omezení pamě
 
 ## <a name="region-max-scale-out"></a>Maximální horizontální navýšení kapacity oblasti
 
-Níže jsou uvedené maximální podporované hodnoty horizontálního navýšení kapacity pro jeden plán v každé oblasti a konfiguraci operačního systému. Pokud chcete požádat o zvýšení, otevřete prosím lístek podpory.
+Níže jsou uvedeny aktuálně podporované maximální hodnoty škálování pro jeden plán v každé oblasti a konfiguraci operačního systému. Pokud chcete požádat o zvýšení, otevřete prosím lístek podpory.
 
 Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
@@ -130,10 +161,10 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Norsko – východ| 20 | 20 |
 |Středojižní USA| 100 | 20 |
 |Indie – jih | 100 | Není k dispozici |
-|Jihovýchodní Asie| 100 | 20 |
+|Southeast Asia| 100 | 20 |
 |Spojené království – jih| 100 | 20 |
 |Spojené království – západ| 100 | 20 |
-|Západní Evropa| 100 | 20 |
+|West Europe| 100 | 20 |
 |Západní Indie| 100 | 20 |
 |USA – středozápad| 20 | 20 |
 |USA – západ| 100 | 20 |

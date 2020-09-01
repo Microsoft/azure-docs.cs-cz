@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513056"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145922"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Postup konfigurace směrování virtuálního centra
 
 Virtuální rozbočovač může obsahovat několik bran, například bránu VPN typu Site-to-site, bránu ExpressRoute, bránu Point-to-site a Azure Firewall. Možnosti směrování ve virtuálním centru poskytuje směrovač, který spravuje všechny směrování, včetně směrování mezi bránami pomocí Border Gateway Protocol (BGP). Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN.
 
 Další informace najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
-
-> [!NOTE]
-> Některé z těchto možností se pořád můžou vymezit. Očekává se, že to dokončí 17. srpna.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Vytvoření směrovací tabulky
 
@@ -36,7 +32,7 @@ Další informace najdete v tématu [o směrování virtuálního rozbočovače]
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Karta základy":::
 
-   * **Název**
+   * **Name**
    * **Trasy**
    * **Název trasy**
    * **Cílový typ**

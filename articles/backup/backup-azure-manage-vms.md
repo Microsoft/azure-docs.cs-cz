@@ -3,12 +3,12 @@ title: Správa a sledování záloh virtuálních počítačů Azure
 description: Naučte se spravovat a monitorovat zálohy virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999338"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145429"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
 
@@ -121,7 +121,7 @@ Existují dva způsoby, jak zastavit ochranu virtuálního počítače:
 * **Zastavte ochranu a odstraňte zálohovaná data**. Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany virtuálního počítače a odstraní všechny body obnovení. Nebudete moct obnovit virtuální počítač ani použít možnost *obnovit zálohování* .
 
 >[!NOTE]
->Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří. V souladu se zásadami vyprší platnost starých bodů obnovení, ale jeden poslední bod obnovení bude vždycky uložený, dokud nezastavíte zálohování a data odstraníte.
+>Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří. V souladu se zásadami vyprší platnost starých bodů obnovení, ale nejnovější bod obnovení bude vždycky uložený, dokud nezastavíte zálohování a data odstraníte.
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Zastavení ochrany a uchování zálohovaných dat
@@ -187,8 +187,8 @@ K ochraně dat Azure Backup zahrnuje funkci obnovitelného odstranění. Díky o
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Zálohovaná položka, ve které už primární zdroj dat neexistuje
 
 * Pokud se virtuální počítače Azure nakonfigurované pro Azure Backup buď odstranily, nebo se přesunuly bez zastavení ochrany, pak úlohy zálohování naplánované zálohovací úlohy i na vyžádání (ad-hoc) selžou s chybou UserErrorVmNotFoundV2. Předběžná kontroly zálohování se budou zobrazovat jako kritická jenom pro neúspěšné úlohy zálohování na vyžádání (naplánované úlohy, které selhaly, se nezobrazují).
-* Tyto zálohované položky zůstávají aktivní v systému, který dodržuje zásady zálohování a uchovávání dat nastavené uživatelem. Zálohovaná data pro tyto virtuální počítače Azure se budou uchovávat podle zásad uchovávání informací. Body obnovení s vypršenou platností (s výjimkou posledního bodu obnovení) se vyčistí podle rozsahu uchování nastaveného v zásadách zálohování.
-* Doporučujeme odstranit zálohované položky, ve kterých primární zdroj dat už neexistuje, abyste se vyhnuli jakýmkoli dodatečným poplatkům, pokud se zálohovaná položka/data pro prostředky Delete už nevyžadují, protože poslední bod obnovení je ponechán trvale a uživatel se účtuje podle platných cen zálohování.
+* Tyto zálohované položky zůstávají aktivní v systému, který dodržuje zásady zálohování a uchovávání dat nastavené uživatelem. Zálohovaná data pro tyto virtuální počítače Azure se budou uchovávat podle zásad uchovávání informací. Body obnovení s vypršenou platností (s výjimkou nejaktuálnějšího bodu obnovení) se vyčistí podle rozsahu uchování nastaveného v zásadách zálohování.
+* Doporučujeme odstranit zálohované položky, ve kterých primární zdroj dat už neexistuje, abyste se vyhnuli jakýmkoli dodatečným poplatkům, pokud se zálohovaná položka/data pro prostředky Delete už nevyžadují, protože nejnovější bod obnovení je trvale zachované a uživatel se účtuje podle platných cen zálohování.
 
 ## <a name="next-steps"></a>Další kroky
 

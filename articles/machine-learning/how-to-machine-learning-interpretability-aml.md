@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853394"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144103"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -73,8 +73,8 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
    * Chcete-li, aby vaše vysvětlení a vizualizace byly více informativní, můžete při provádění klasifikace předávat názvy funkcí a názvy výstupních tříd.
 
    Následující bloky kódu ukazují, jak vytvořit instanci objektu vysvětlit pomocí `TabularExplainer` , `MimicExplainer` a `PFIExplainer` místně.
-   * `TabularExplainer`volá jedno ze tří SHAP vysvětlení pod ( `TreeExplainer` , `DeepExplainer` nebo `KernelExplainer` ).
-   * `TabularExplainer`automaticky vybere nejvhodnější z nich pro váš případ použití, ale můžete zavolat každé ze svých tří základních vysvětlujícíů přímo.
+   * `TabularExplainer` volá jedno ze tří SHAP vysvětlení pod ( `TreeExplainer` , `DeepExplainer` nebo `KernelExplainer` ).
+   * `TabularExplainer` automaticky vybere nejvhodnější z nich pro váš případ použití, ale můžete zavolat každé ze svých tří základních vysvětlujícíů přímo.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -86,7 +86,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                  classes=classes)
     ```
 
-    – nebo –
+    nebo
 
     ```python
 
@@ -112,7 +112,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                classes=classes)
     ```
 
-    – nebo –
+    nebo
 
     ```python
     from interpret.ext.blackbox import PFIExplainer
@@ -147,7 +147,7 @@ global_explanation.get_feature_importance_dict()
 ### <a name="explain-an-individual-prediction-local-explanation"></a>Vysvětlit jednotlivou předpověď (místní vysvětlení)
 Získejte hodnoty důležitosti jednotlivých funkcí různých datapoints voláním vysvětlení pro jednotlivé instance nebo skupiny instancí.
 > [!NOTE]
-> `PFIExplainer`nepodporuje místní vysvětlení.
+> `PFIExplainer` nepodporuje místní vysvětlení.
 
 ```python
 # get explanation for the first data point in the test set
@@ -275,7 +275,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Nastavte Azure Machine Learning COMPUTE jako cíl výpočtů a odešlete školicí běh. Pokyny najdete v tématu [Nastavení výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#amlcompute) . Můžete také najít užitečné [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) .
+1. Nastavte Azure Machine Learning COMPUTE jako cíl výpočtů a odešlete školicí běh. Pokyny najdete v tématu [Vytvoření výpočetních cílů pomocí Python SDK](how-to-create-attach-compute-sdk.md#amlcompute) . Můžete také najít užitečné [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) .
 
 1. Stáhněte si vysvětlení do svého místního poznámkového bloku Jupyter.
 

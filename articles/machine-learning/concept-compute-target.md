@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141921"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146724"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -27,13 +27,13 @@ Typický životní cyklus vývoje modelu vám může:
 
 Výpočetní prostředky, které používáte pro cíle výpočtů, jsou připojené k [pracovnímu prostoru](concept-workspace.md). Výpočetní prostředky jiné než místní počítač sdílí uživatelé pracovního prostoru.
 
-## <a name="training-compute-targets"></a><a name="train"></a>Školení výpočetních cílů
+## <a name="training-compute-targets"></a><a name="train"></a> Školení výpočetních cílů
 
 Azure Machine Learning má různou podporu v různých výpočetních prostředcích.  Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit.
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Přečtěte si další informace o [nastavení a používání výpočetního cíle pro školení modelů](how-to-set-up-training-targets.md).
+Přečtěte si další informace o [použití výpočetní cíle pro školení modelů](how-to-set-up-training-targets.md).
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>Cíle nasazení
 
@@ -46,11 +46,11 @@ Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (spravované)
 
-Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Jediným spravovaným výpočetním prostředím jsou Azure Machine Learning výpočetní clustery a [výpočetní instance](concept-compute-instance.md) . V budoucnu může být přidáno více spravovaných výpočetních prostředků.
+Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Jediným spravovaným výpočetním prostředím jsou Azure Machine Learning výpočetní clustery a [výpočetní instance](concept-compute-instance.md) . 
 
 Můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery z:
-* Azure Machine Learning Studio
-* Azure Portal
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
+* portál Azure
 * Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Správce prostředků. Příklad šablony naleznete v tématu [create Azure Machine Learning COMPUTE Template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
@@ -68,7 +68,7 @@ Když se tyto výpočetní prostředky vytvoří automaticky, na rozdíl od jin�
 
 
 > [!NOTE]
-> Pokud je výpočetní cluster nečinný, přiřadí se automatické škálování na 0 uzlů, takže nebudete platit, když se nepoužívá.  *Instance*COMPUTE je ale vždycky zapnutá a neprovádí automatické škálování.  [Výpočetní instanci](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) byste měli zastavit, pokud ji nepoužíváte, abyste se vyhnuli dodatečným nákladům.
+> Pokud je výpočetní cluster nečinný, přiřadí se automatické škálování na 0 uzlů, takže nebudete platit, když se nepoužívá.  *Instance*COMPUTE je ale vždycky zapnutá a neprovádí automatické škálování.  [Výpočetní instanci](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) byste měli zastavit, pokud ji nepoužíváte, abyste se vyhnuli dodatečným nákladům. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
 
@@ -107,5 +107,5 @@ Nespravovaný cíl výpočetní služby není *spravován nástrojem* Azure Mach
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se:
-* [Nastavení cílového výpočetního prostředí pro výuku modelu](how-to-set-up-training-targets.md)
+* [Využijte výpočetní cíl ke školení modelu](how-to-set-up-training-targets.md)
 * [Nasazení modelu do cíle služby COMPUTE](how-to-deploy-and-where.md)

@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191803"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146534"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -29,12 +29,12 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
     V jednotlivých uzlech není zaručeno, že vždy bude k dispozici. I když nejsou běžné, selhání hardwaru, aktualizace operačního systému a hostitel jiných problémů, můžou způsobit, že jednotlivé uzly budou offline. Pokud vaše úloha Batch vyžaduje deterministický a zaručený průběh, měli byste přidělit fondy s více uzly.
 
 - **Nepoužívejte názvy prostředků znovu.**
-    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
+    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
 
 - **Kontinuita při údržbě fondu a selhání.**
     Doporučujeme, aby vaše úlohy dynamicky používaly fondy. Pokud vaše úlohy používají stejný fond pro všechno, může se stát, že se vaše úlohy nespustí, pokud dojde k nějakému problému s fondem. To je obzvláště důležité pro časově citlivé úlohy. Pokud chcete tento problém vyřešit, vyberte nebo vytvořte fond dynamicky, když naplánujete každou úlohu, nebo máte možnost přepsat název fondu, abyste mohli obejít špatný fond.
 
-- **Provozní kontinuita při údržbě fondu a selhání** Existuje mnoho možných příčin, které mohou zabránit, aby se fond rozrůst na požadovanou velikost, kterou si přejete, jako je například vnitřní chyba, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
+- **Provozní kontinuita při údržbě fondu a selhání** Existuje mnoho možných příčin, které mohou zabránit, aby se fond rozrůst na požadovanou velikost, kterou si přejete, jako je například vnitřní chyba, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
 
 ### <a name="pool-lifetime-and-billing"></a>Doba života fondu a fakturace
 
@@ -63,7 +63,7 @@ Když vytváříte fond Azure Batch s použitím konfigurace virtuálního poč�
 
 ### <a name="third-party-images"></a>Image třetích stran
 
-Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest).
+Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms).
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 
@@ -83,7 +83,7 @@ Proto se ujistěte, že nenavrhnete řešení Batch, které vyžaduje tisíce so
 
 Úloha služby Batch má neomezenou dobu života, dokud se neodstraní ze systému. Jeho stav určuje, zda může přijmout více úloh pro plánování nebo nikoli.
 
-Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) nebo [proměnné maxwallclocktime](/rest/api/batchservice/job/add#jobconstraints).
+Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) nebo [proměnné maxwallclocktime](/rest/api/batchservice/job/add#jobconstraints).
 
 Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit.md#resource-quotas). Úlohy a plány úloh v dokončeném stavu se nepočítají k této kvótě.
 
@@ -99,7 +99,7 @@ Batch má integrovanou podporu Azure Storage pro nahrávání dat prostřednictv
 
 ### <a name="manage-task-lifetime"></a>Správa životnosti úlohy
 
-Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
+Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
 
 Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, což by mohlo ztížit dotazování a hledání úkolů, které vás zajímají (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu (v případě, že ještě `retentionTime` není dosaženo). To pomáhá zajistit, aby se uzly neplnily daty úlohy a aby nedostatek místa na disku.
 
@@ -113,7 +113,7 @@ Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má
 
 ### <a name="design-for-retries-and-re-execution"></a>Návrh pro opakování a opakované spuštění
 
-Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
+Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
 
 I když je to zřídka, může se úloha opakovat interně z důvodu selhání ve výpočetním uzlu, jako je například neschopnost aktualizovat vnitřní stav nebo selhání uzlu v době, kdy je úloha spuštěná. Tato úloha se zopakuje na stejném výpočetním uzlu, pokud je to možné, až do interního limitu před tím, než se vrátíte k úloze a oddělíte úlohu, která má být přeplánována službou Batch, případně na jiném výpočetním uzlu.
 
@@ -173,7 +173,7 @@ Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty,
 
 Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-## <a name="connectivity"></a>Možnosti připojení
+## <a name="connectivity"></a>Připojení
 
 Při zvažování připojení ve vašich řešeních služby Batch si přečtěte následující pokyny.
 
@@ -192,7 +192,7 @@ Pokud vaše žádosti dostanou odezvy HTTP na úrovni 5xx a v odpovědi se nach�
 
 ### <a name="retry-requests-automatically"></a>Opakovat požadavky automaticky
 
-Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](/dotnet/api/microsoft.azure.batch.retrypolicyprovider).
 
 ### <a name="static-public-ip-addresses"></a>Statické veřejné IP adresy
 

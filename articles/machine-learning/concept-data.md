@@ -1,7 +1,7 @@
 ---
 title: Zabezpečení přístupu k datům v cloudu
 titleSuffix: Azure Machine Learning
-description: Naučte se zabezpečeně připojit k datům z Azure Machine Learning a jak používat datové sady a úložiště dat pro úlohy ML. Úložiště dat může ukládat data z objektu blob Azure, Azure Data Lake 1. generace & 2, SQL DB, datacihly,...
+description: Naučte se zabezpečeně připojit k datům z Azure Machine Learning a jak používat datové sady a úložiště dat pro úlohy ML. Úložiště dat může ukládat data z objektu blob Azure, Azure Data Lake Gen 1 & 2, SQL DB a Azure Databricks.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651790"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146683"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
 Azure Machine Learning usnadňuje připojení k datům v cloudu.  Poskytuje abstraktní vrstvu nad základní službou úložiště, takže můžete bezpečně přistupovat k datům a pracovat s nimi, aniž byste museli psát kód, který je specifický pro váš typ úložiště. Azure Machine Learning také nabízí následující možnosti dat:
 
+*    Interoperabilita s datovými rámečky PANDAS a Spark
 *    Správa verzí a sledování datových linií
 *    Popisky dat 
 *    Monitorování odchylek dat
-*    Interoperabilita s datovými rámečky PANDAS a Spark
-
+    
 ## <a name="data-workflow"></a>Pracovní postup dat
 
 Až budete připraveni použít data v cloudovém řešení úložiště, doporučujeme následující pracovní postup doručování dat. Tento pracovní postup předpokládá, že máte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) a data v cloudové službě úložiště v Azure. 
@@ -67,13 +67,19 @@ Podporované cloudové služby úložiště v Azure, které se dají registrovat
 
 ## <a name="datasets"></a>Datové sady
 
-Azure Machine Learning datové sady jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašich dat, takže se neúčtují žádné dodatečné náklady na úložiště a integrita vašich původních zdrojů dat nehrozí.
+Azure Machine Learning datové sady jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašeho dataBy, který vytváří datovou sadu Azure Machine Learning, vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. 
 
- Pokud chcete s daty v úložišti pracovat, [Vytvořte datovou sadu](how-to-create-register-datasets.md) , která zabalí data do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do svého pracovního prostoru, abyste ji mohli sdílet a opakovaně používat v různých experimentech bez složitosti příjmu dat.
+Vzhledem k tomu, že datové sady jsou vyhodnoceny laxně vytvářená a data zůstávají v jejím existujícím umístění, je
 
-Datové sady je možné vytvořit z místních souborů, veřejných adres URL, [otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)nebo služeb úložiště Azure prostřednictvím úložiště dat. Chcete-li vytvořit datovou sadu z datového rámce v paměti PANDAS, zapište data do místního souboru, jako je například Parquet, a vytvořte datovou sadu z tohoto souboru.  
+* Neúčtují se žádné dodatečné náklady na úložiště.
+* Nehrozí neriziková neúmyslná změna původních zdrojů dat.
+* Zvýšení rychlosti výkonu pracovního postupu ML.
 
-Podporujeme 2 typy datových sad: 
+Pokud chcete s daty v úložišti pracovat, [Vytvořte datovou sadu](how-to-create-register-datasets.md) , která zabalí data do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do svého pracovního prostoru, abyste ji mohli sdílet a opakovaně používat v různých experimentech bez složitosti příjmu dat.
+
+Datové sady je možné vytvořit z místních souborů, veřejných adres URL, [otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)nebo služeb úložiště Azure prostřednictvím úložiště dat. 
+
+Existují dva typy datových sad: 
 
 + [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Pokud jsou vaše data už vyčištěná a připravená k použití ve školicích experimentech, můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které se odkazuje pomocí datových sad, do svého cíle výpočetní služby.
 

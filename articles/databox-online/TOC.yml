@@ -7,7 +7,7 @@
       items:
         - name: Co je Azure Stack Edge s GPU?
           href: azure-stack-edge-gpu-overview.md
-    - name: Kurzy
+    - name: Výukové kurzy
       items:
         - name: 0. Zajištění kontrolního seznamu
           href: azure-stack-edge-gpu-deploy-checklist.md
@@ -151,10 +151,10 @@
               href: azure-stack-edge-monitor.md
             - name: Použití řídicího panelu Kubernetes
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: Řešení potíží
+        - name: Odstraňování potíží
           items:
             - name: Potíže se zařízeními
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: Potíže s objednáním
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Kontaktovat podporu Microsoftu

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651911"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146755"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -24,7 +24,7 @@ Výpočetní instance usnadňují začátek vývoje Azure Machine Learning a tak
 
 Použijte výpočetní instanci jako vaše plně nakonfigurované a spravované vývojové prostředí v cloudu pro strojové učení. Můžou se taky používat jako výpočetní cíl pro školení a Inferencing pro účely vývoje a testování.  
 
-Pro vzdělávání modelů produkčního prostředí použijte [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly. Pro nasazení modelu produkčního prostředí použijte [cluster služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
+Pro vzdělávání modelů produkčního prostředí použijte [Azure Machine Learning výpočetní cluster](how-to-create-attach-compute-sdk.md#amlcompute) s možnostmi škálování s více uzly. Pro nasazení modelu produkčního prostředí použijte [cluster služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="why-use-a-compute-instance"></a>Proč používat výpočetní instanci?
 
@@ -138,18 +138,7 @@ Tyto akce lze řídit pomocí RBAC:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Vytvoření výpočetní instance
 
-Pokud jste připraveni spustit jeden z vašich poznámkových bloků, vytvořte v pracovním prostoru v Azure Machine Learning Studiu novou instanci služby COMPUTE z oddílu **COMPUTE** nebo v části **poznámkové bloky** .
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Vytvořit novou výpočetní instanci":::
-
-
-|Pole  |Popis  |
-|---------|---------|
-|Název výpočetních prostředků     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
-|Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |
-|Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|Povolit/zakázat přístup přes SSH     |   Přístup SSH je ve výchozím nastavení zakázán.  Přístup SSH nemůže být. Po vytvoření se změnila. Pokud chcete interaktivně ladit pomocí [vs Code vzdálených](how-to-set-up-vs-code-remote.md) , Nezapomeňte povolit přístup.   |
-|Rozšířená nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť**a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](how-to-enable-virtual-network.md#compute-instance) pro virtuální síť.        |
+Pokud jste připraveni spustit jeden z vašich poznámkových bloků, vytvořte v pracovním prostoru v Azure Machine Learning Studiu [novou instanci služby COMPUTE](how-to-create-attach-compute-studio.md#compute-instance) z oddílu **COMPUTE** nebo v části **poznámkové bloky** . 
 
 Můžete také vytvořit instanci.
 * Přímo z [prostředí integrovaných poznámkových bloků](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -158,7 +147,7 @@ Můžete také vytvořit instanci.
 * S Azure Machine Learning SDK
 * Z [rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 
-Vyhrazená jádra na jednu oblast a kvótu pro skupinu virtuálních počítačů a celkovou kvótu, která se vztahuje na vytvoření instance Compute. je sjednocený a sdílený s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci.
+Vyhrazená jádra na jednu oblast a kvótu pro rodinu virtuálních počítačů, která platí pro vytváření výpočetních instancí, jsou sjednocená a sdílená s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci.
 
 ## <a name="compute-target"></a>Cílový výpočetní objekt
 

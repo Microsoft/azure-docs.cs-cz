@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475188"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144613"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -135,12 +135,12 @@ Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kuber
 
 |  Verze K8s | Verze nadřazeného softwaru  | AKS ve verzi Preview  | AKS GA  | Konec života |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Dec-09-19  | 19. ledna   | Července 20  | 1,20 GA | 
-| 1,18  | Březen – 23-20  | 20. května   | 20. srpna  | 1,21 GA | 
-| 1,19  | Srpna 04-20  | 20. srpna   | 20. listopadu  | 1,22 GA | 
-| 1.20  | * Listopadu 20    | * Prosinec 20   | * Jan 21  | 1,23 GA | 
+| 1,17  | Dec-09-19  | Leden 2019   | Července 2020  | 1,20 GA | 
+| 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
+| 1,19  | Srpna 04-20  | Srpna 2020   | Listopadu 2020  | 1,22 GA | 
+| 1,20  | * Listopadu 2020    | * Prosince 2020   | * Ledna 2021  | 1,23 GA | 
 
-\*Čeká na nedokončené odesílání data vydání.
+\* Čeká na nedokončené odesílání data vydání.
 
 ## <a name="faq"></a>Nejčastější dotazy
 

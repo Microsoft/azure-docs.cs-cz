@@ -12,19 +12,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319571"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144030"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, kam uložit vstupní soubory a kde zapisovat výstupní soubory z experimentů, abyste zabránili chybám limitu úložiště a latenci experimentů.
 
-Při spouštění školicích běhů na [cílovém výpočetním cíli](how-to-set-up-training-targets.md)jsou izolované od vnějších prostředí. Účelem tohoto návrhu je zajištění reprodukovatelnosti a přenositelnosti experimentu. Pokud stejný skript spustíte dvakrát, na stejném nebo jiném cílovém výpočetním cíli, dostanete stejné výsledky. S tímto návrhem můžete nakládat s výpočetními cíli jako s výpočetními prostředky bez stavů, přičemž každý z nich nemá žádné spřažení s úlohami, které jsou spuštěny po jejich dokončení.
+Při spouštění školicích běhů na [cílovém výpočetním cíli](concept-compute-target.md)jsou izolované od vnějších prostředí. Účelem tohoto návrhu je zajištění reprodukovatelnosti a přenositelnosti experimentu. Pokud stejný skript spustíte dvakrát, na stejném nebo jiném cílovém výpočetním cíli, dostanete stejné výsledky. S tímto návrhem můžete nakládat s výpočetními cíli jako s výpočetními prostředky bez stavů, přičemž každý z nich nemá žádné spřažení s úlohami, které jsou spuštěny po jejich dokončení.
 
 ## <a name="where-to-save-input-files"></a>Kam ukládat vstupní soubory
 
@@ -79,4 +79,4 @@ Pokud nepotřebujete úložiště dat, zapište soubory do `./outputs` složky a
 
 * Přečtěte si další informace o [přístupu k datům z úložišť dat](how-to-access-data.md).
 
-* Přečtěte si další informace o [tom, jak nastavit cíle školení](how-to-set-up-training-targets.md).
+* Přečtěte si další informace o vytváření výpočetních cílů pomocí [sady Python SDK](how-to-create-attach-compute-sdk.md) nebo pomocí nástroje [Studio](how-to-create-attach-compute-studio.md).

@@ -1,6 +1,6 @@
 ---
 title: Odvolání přístupu uživatele v nouzi v Azure Active Directory | Microsoft Docs
-description: Hromadné přidání uživatelů do centra pro správu Azure AD v Azure Active Directory
+description: Jak odvolat veškerý přístup pro uživatele v Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798410"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147129"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Odvolání přístupu uživatele v Azure Active Directory
 
@@ -38,7 +38,7 @@ Přístupové tokeny a aktualizační tokeny se často používají s tlustými 
 
 Služba Azure AD pak znovu vyhodnotí své zásady autorizace. Pokud je uživatel pořád autorizovaný, Azure AD vydá nový přístupový token a aktualizuje token.
 
-Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) do aplikací Office 365, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
+Přístupové tokeny můžou být bezpečnostními právy, pokud je nutné přístup odvolat v době, která je kratší než doba života tokenu, což je obvykle přibližně hodina. Z tohoto důvodu Microsoft aktivně pracuje na zajištění [průběžného vyhodnocení přístupu](../conditional-access/concept-continuous-access-evaluation.md) do aplikací Office 365, což pomáhá zajistit neplatnost přístupových tokenů téměř v reálném čase.  
 
 ## <a name="session-tokens-cookies"></a>Tokeny relace (soubory cookie)
 

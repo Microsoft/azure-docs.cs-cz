@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3c2fef4ebd7db076a502f63101c80c4e08683b39
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782715"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145361"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -51,15 +51,13 @@ Máte aplikaci připojenou k trezoru klíčů, která vytváří certifikáty pl
 
 Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédněte si přiřazení zásad pro vaše aktuální předplatné a předplatné, na které se přesouváte, a zajistěte, aby nedocházelo k žádnému neshodě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup na úrovni přispěvatele nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů.
 * Přístup na úrovni přispěvatele nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout.
 * Skupina prostředků v novém předplatném.
 
 ## <a name="procedure"></a>Postup
-
-Pokud jste 
 
 ### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Přesun Key Vault k novému předplatnému v rámci stejného tenanta
 

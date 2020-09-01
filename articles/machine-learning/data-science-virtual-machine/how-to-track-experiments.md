@@ -1,7 +1,7 @@
 ---
-title: Experimenty sledování a nasazení modelů
+title: Experimenty při sledování a nasazování modelů
 titleSuffix: Azure Data Science Virtual Machine
-description: Naučte se sledovat a protokolovat experimenty z DSVM pomocí služby Azure Machine Learning a/nebo MLFlow.
+description: Přečtěte si, jak sledovat a protokolovat experimenty z DSVM pomocí Azure Machine Learning a/nebo MLFlow.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,14 +9,14 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 687cd6570a9518be6f398a40fcd2d0e10a9634f2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817511"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146891"
 ---
-# <a name="track-experiments-and-deploy-models-in-azureml"></a>Sledovat experimenty a nasazovat modely v AzureML
+# <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Sledovat experimenty a nasazovat modely v Azure Machine Learning
 
 Vylepšete proces vytváření modelů sledováním experimentů a monitorováním metrik spuštění. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu pomocí rozhraní [MLflow](https://mlflow.org/) API a jak sledovat experiment v Azure Machine Learning.
 
@@ -165,7 +165,7 @@ Pokud chcete nasadit model diabetes, přejděte do nabídky vlevo v [Azure Machi
 
 Potom v podokně Podrobnosti modelu klikněte na tlačítko __nasadit__ :
 
-![Nasadit](./media/how-to-track-experiments/mlflow-experiments-4.png)
+![Nasazení](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
 Tento model nasadíme do clusteru odvození (Azure Kubernetes Service), který jsme vytvořili v kroku 1. Vyplňte následující podrobnosti zadáním názvu služby a názvu AKS výpočetního clusteru (vytvořeného v kroku 1). Doporučujeme také zvýšit __kapacitu kapacity procesoru__ na 1 (od 0,1) a __rezervu paměti__ na 1 (od 0,5) – to můžete udělat kliknutím na __Upřesnit__ a vyplněním podrobností. Pak klikněte na __nasadit__.
 

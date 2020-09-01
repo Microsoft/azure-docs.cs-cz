@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 2a40c6158b5d29f695360c04a0d4376efd4238f9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 927908fa708e7e687bf82400c10e08fbcccdef19
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288469"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145021"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -29,7 +29,11 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady B-Series](../sizes-b-series-burstable.md)
 * [DCsv2-Series](../dcv2-series.md)
 * Řady [DSv2-Series](../dv2-dsv2-series.md) a [Dsv3-Series](../dv3-dsv3-series.md)
+* [Dsv4-Series](../dv4-dsv4-series.md)
+* [Ddsv4-Series](../ddv4-ddsv4-series.md)
+* [Dasv4-Series](../dav4-dasv4-series.md)
 * [Esv3-Series](../ev3-esv3-series.md)
+* [Easv4-Series](../eav4-easv4-series.md)
 * [Řada Fsv2](../fsv2-series.md)
 * [Řady GS](../sizes-previous-gen.md#gs-series)
 * [Řada HB](../hb-series.md)
@@ -104,7 +108,7 @@ Níže jsou uvedené kroky k vytvoření virtuálního počítače generace 2 (G
 1. Vyberte **Vytvořit prostředek**.
 1. Klikněte na **Zobrazit vše** z Azure Marketplace vlevo.
 1. Vyberte bitovou kopii, která podporuje Gen2.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 1. Na kartě **Upřesnit** v části **generování virtuálního počítače** vyberte možnost **Obecné 2** .
 1. Na kartě **základy** klikněte v části **Podrobnosti instance**na **Velikost** a otevřete okno **Vybrat velikost virtuálního počítače** .
 1. Vyberte [podporovaný virtuální počítač 2. generace](#generation-2-vm-sizes).
@@ -153,7 +157,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
     Yes. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
 
 * **Existuje cenový rozdíl mezi virtuálními počítači generace 1 a generace 2?**  
-    Ne.
+    No.
 
 * **Mám soubor. VHD z místního virtuálního počítače 2. generace. Můžu soubor. VHD použít k vytvoření virtuálního počítače generace 2 v Azure?**
   Ano, můžete přenést soubor. VHD generace 2 do Azure a použít ho k vytvoření virtuálního počítače 2. generace. K tomu použijte následující postup:

@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: Instalace jazykových sad
       href: language-packs.md
+    - name: Použití Azure Advisoru
+      href: azure-advisor.md
     - name: Řešení doporučení
       href: azure-advisor-recommendations.md
 - name: Koncepty

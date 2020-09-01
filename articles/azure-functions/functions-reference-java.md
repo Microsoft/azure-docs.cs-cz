@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810084"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144919"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -144,14 +144,16 @@ V následující tabulce jsou uvedeny aktuální podporované verze jazyka Java 
 
 | Verze funkcí | Verze Java (Windows) | Verze Java (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Preview)<br/>8<sup>\*</sup> | 11 (Preview)<br/>8 |
+| 3.x | 11 (Preview)<br/>8 | 11 (Preview)<br/>8 |
 | 2.x | 8 | Není k dispozici |
 
-<sup>\*</sup>Toto je aktuální výchozí nastavení pom.xml generovaného archetypeem Maven.
+Pokud pro nasazení nezadáte verzi Java, Maven Archetype ve výchozím nastavení je Java 8 během nasazování do Azure.
 
 ### <a name="specify-the-deployment-version"></a>Zadat verzi nasazení
 
-V současné době Maven Archetype vygeneruje pom.xml, která cílí na Java 8. Následující prvky v pom.xml je třeba aktualizovat, aby se vytvořila aplikace Function App, která spouští Java 11.
+Verzi Java, která cílí na Maven Archetype, můžete řídit pomocí `-DjavaVersion` parametru. Hodnota tohoto parametru může být ether `8` nebo `11` . Podpora Java 11 je momentálně ve verzi Preview. 
+
+Maven Archetype vygeneruje pom.xml, která cílí na zadanou verzi Java. Následující prvky v pom.xml označují verzi jazyka Java, která se má použít:
 
 | Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
 | ---- | ---- | ---- | --- |
@@ -320,7 +322,7 @@ Pokud chcete dostávat dávku vstupů, můžete vytvořit vazby na `String[]` ,,
 
 ```
 
-Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem `cardinality` k tomu, že je nastavena na `MANY` , funkce dostane dávku zpráv z centra událostí. `EventData`z centra událostí se převede na `TestEventData` pro provádění funkce.
+Tato funkce se aktivuje pokaždé, když se v nakonfigurovaném centru událostí nacházejí nová data. Vzhledem `cardinality` k tomu, že je nastavena na `MANY` , funkce dostane dávku zpráv z centra událostí. `EventData` z centra událostí se převede na `TestEventData` pro provádění funkce.
 
 ### <a name="output-binding-example"></a>Příklad výstupní vazby
 

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145258"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146415"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
@@ -28,8 +28,8 @@ V tomto příkladu vytvoříme kanál sestavení a vydání pro nasazení infras
 
 Pokud chcete postupovat podle kroků v tomto článku, potřebujete organizaci Azure DevOps a týmový projekt.
 
-* [Vytvoření organizace Azure DevOps](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Vytvoření projektu v Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Vytvoření organizace Azure DevOps](/azure/devops/organizations/accounts/create-organization)
+* [Vytvoření projektu v Azure DevOps](/azure/devops/organizations/projects/create-projects)
 
 ### <a name="source-control-for-your-environment"></a>Správa zdrojového kódu pro vaše prostředí
 
@@ -48,7 +48,7 @@ Struktura základu kódu použitá v této ukázce se podobá následujícímu:
 
 V této části se předpokládá, že máte zkušenosti s řízením verzí a návrhem šablon Správce prostředků. Pokud tyto koncepty neznáte, přečtěte si následující stránky, kde najdete další informace.
 
-* [Co je Správa zdrojového kódu?](/azure/devops/user-guide/source-control?view=azure-devops)
+* [Co je Správa zdrojového kódu?](/azure/devops/user-guide/source-control)
 * [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
@@ -309,7 +309,7 @@ Teď, když je zdrojový kód nastavený, můžeme začít s prvním sestavením
 
 ## <a name="continuous-integration"></a>Kontinuální integrace
 
-[Azure Pipelines](/azure/devops/pipelines/get-started/?view=azure-devops)v rámci Azure DevOps Services vám pomůže s implementací kanálu sestavení, testování a nasazení pro vaše aplikace.
+[Azure Pipelines](/azure/devops/pipelines/get-started/)v rámci Azure DevOps Services vám pomůže s implementací kanálu sestavení, testování a nasazení pro vaše aplikace.
 
 V této fázi kanálu jsou testy obvykle spouštěny k ověření kódu a sestavování vhodné části softwaru. Počet a typy testů a všechny další úlohy, které spustíte, budou záviset na vaší širší strategii sestavení a vydání.
 
@@ -323,9 +323,9 @@ V tomto příkladu se zaměříme na složku **HPC-Application** . Složka **HPC
 
 1. Máte dvě možnosti, jak vytvořit kanál sestavení:
 
-    a. [Pomocí vizuálního návrháře](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Pokud ho chcete použít, klikněte na stránce **Nový kanál** na použít vizuálního návrháře.
+    a. [Pomocí vizuálního návrháře](/azure/devops/pipelines/get-started-designer). Pokud ho chcete použít, klikněte na stránce **Nový kanál** na použít vizuálního návrháře.
 
-    b. [Pomocí sestavení YAML](/azure/devops/pipelines/get-started-yaml?view=azure-devops). Nový kanál YAML můžete vytvořit kliknutím na možnost Azure Repos nebo GitHub na stránce nový kanál. Alternativně můžete uložit níže uvedený příklad v rámci správy zdrojového kódu a odkazovat na existující soubor YAML kliknutím na vizuální Návrhář a pak pomocí šablony YAML.
+    b. [Pomocí sestavení YAML](/azure/devops/pipelines/get-started-yamls). Nový kanál YAML můžete vytvořit kliknutím na možnost Azure Repos nebo GitHub na stránce nový kanál. Alternativně můžete uložit níže uvedený příklad v rámci správy zdrojového kódu a odkazovat na existující soubor YAML kliknutím na vizuální Návrhář a pak pomocí šablony YAML.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,7 +357,7 @@ V tomto příkladu se zaměříme na složku **HPC-Application** . Složka **HPC
     ![Zobrazení živých výstupů z buildu](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Pokud používáte klientskou aplikaci ke spuštění aplikace pro dávku HPC, je nutné pro tuto aplikaci vytvořit samostatnou definici sestavení. V dokumentaci k [Azure Pipelines](/azure/devops/pipelines/get-started/index?view=azure-devops) můžete najít několik průvodců.
+> Pokud používáte klientskou aplikaci ke spuštění aplikace pro dávku HPC, je nutné pro tuto aplikaci vytvořit samostatnou definici sestavení. V dokumentaci k [Azure Pipelines](/azure/devops/pipelines/get-started/index) můžete najít několik průvodců.
 
 ## <a name="continuous-deployment"></a>Průběžné nasazování
 
@@ -440,7 +440,7 @@ K nasazení infrastruktury se zapojí řada kroků. Vzhledem k použití [propoj
     * **Skupina prostředků**: $ (resourceGroupName)
     * **Umístění**: $ (umístění)
     * **Šablona**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/ARM-Templates/deployment.jszapnuto
-    * **Přepsat parametry šablony**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Přepsat parametry šablony**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Běžný postup je použít Azure Key Vault úlohy. Pokud má instanční objekt (připojení k vašemu předplatnému Azure) odpovídající nastavení zásad přístupu, může stahovat tajné kódy z Azure Key Vault a používat je jako proměnné v kanálu. Název tajného klíče se nastaví s přidruženou hodnotou. V definici vydané verze může být například odkaz na tajný kód sshPassword s použitím $ (sshPassword).
 
@@ -450,7 +450,7 @@ Běžný postup je použít Azure Key Vault úlohy. Pokud má instanční objekt
     * **Zobrazovaný název:** Vytvoření aplikace v účtu Azure Batch
     * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
     * **Umístění skriptu**: vložený skript
-    * **Vložený skript**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Vložený skript**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. Druhý krok slouží k nahrání přidružených balíčků do aplikace. V našem případě soubory ffmpeg.
 
@@ -458,7 +458,7 @@ Běžný postup je použít Azure Key Vault úlohy. Pokud má instanční objekt
     * **Zobrazovaný název:** Nahrát balíček na účet Azure Batch
     * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
     * **Umístění skriptu**: vložený skript
-    * **Vložený skript**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Vložený skript**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Číslo verze balíčku aplikace je nastaveno na proměnnou. To je užitečné, pokud přepsané předchozí verze balíčku budou fungovat za vás a pokud chcete ručně řídit číslo verze vloženého balíčku na Azure Batch.
@@ -476,7 +476,7 @@ Po nastavení prostředí potvrďte, že následující testy mohou být úspě�
 Připojte se k novému účtu Azure Batch pomocí Azure CLI z příkazového řádku PowerShellu.
 
 * Přihlaste se ke svému účtu Azure pomocí `az login` a postupujte podle pokynů k ověření.
-* Nyní ověřte účet Batch:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Nyní ověřte účet Batch: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Seznam dostupných aplikací
 

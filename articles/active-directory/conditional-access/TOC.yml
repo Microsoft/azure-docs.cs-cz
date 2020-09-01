@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: Nástroj What If
       href: what-if-tool.md
+    - name: Nepřetržité vyhodnocování přístupu
+      href: concept-continuous-access-evaluation.md
     - name: Vlastní ovládací prvky
       href: controls.md
     - name: Migrace klasických zásad

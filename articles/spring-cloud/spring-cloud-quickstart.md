@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 067195cfef35863a7bcc314a55b4bf1ff8a3ccd7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048193"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146937"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -147,23 +147,24 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 
 1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
 
-    ![Nasazení do Azure 1](media/spring-cloud-quickstart-java/intellij-deploy-azure.png)
+    [![Nasazení do Azure 1 ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png)](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. V poli **název** přijměte název aplikace. **Název** odkazuje na konfiguraci, nikoli na název aplikace. Uživatelé je obvykle nemusí měnit.
 1. V textovém poli **artefaktu** vyberte *hellospring-0.0.1-Snapshot. jar*.
 1. V textovém poli **odběr** ověřte své předplatné.
 1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance).
+1. Nastavte **veřejný koncový bod** , který se má *Povolit*.
 1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...**.
 1. Zadejte *hellospring*a pak klikněte na **OK**.
 
-    ![Nasadit do Azure v pořádku](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)
+    [![Nasadit do Azure v pořádku ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
 1. Spusťte nasazení kliknutím na tlačítko **Spustit** v dolní části dialogového okna **nasadit Azure jarní cloudovou aplikaci** . Modul plug-in spustí příkaz `mvn package` v `hellospring` aplikaci a nasadí jar vygenerované `package` příkazem.
 ---
 
 Po dokončení nasazení budete mít k aplikaci přístup na adrese `https://<service instance name>-hellospring.azuremicroservices.io/` .
 
-  ![Přístup k aplikaci z prohlížeče](media/spring-cloud-quickstart-java/access-app-browser.png)
+  [![Přístup k aplikaci z prohlížeče ](media/spring-cloud-quickstart-java/access-app-browser.png)](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
 
 ## <a name="streaming-logs-in-real-time"></a>Streamování protokolů v reálném čase
 
@@ -187,16 +188,13 @@ Protokoly se zobrazí ve výsledcích:
 1. Vyberte **Azure Explorer**a pak **jarní Cloud**.
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 1. V rozevíracím seznamu vyberte možnost **protokoly streamování** .
-
-    ![Výběr protokolů streamování](media/spring-cloud-intellij-howto/streaming-logs.png)
-
 1. Vyberte instanci.
 
-    ![Vybrat instanci](media/spring-cloud-intellij-howto/select-instance.png)
+    [![Výběr protokolů ](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png) streamování](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)
 
 1. Protokol streamování se zobrazí v okně výstup.
 
-    ![Výstup protokolu streamování](media/spring-cloud-intellij-howto/streaming-log-output.png)
+    [![Výstup ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png) protokolu streamování](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 ---
 
 Pokročilé funkce Log Analytics najdete na kartě **protokoly** v nabídce na [Azure Portal](https://portal.azure.com/). Protokoly mají latenci během několika minut.

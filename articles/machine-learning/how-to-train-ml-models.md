@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650311"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146585"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Pomocí Azure Machine Learning můžete snadno odeslat školicí skript do [různých výpočetních cílů](how-to-set-up-training-targets.md#compute-targets-for-training), a to pomocí [objektu RunConfiguration](how-to-set-up-training-targets.md#whats-a-run-configuration) a [objektu ScriptRunConfig](how-to-set-up-training-targets.md#submit). Tento model poskytuje značnou flexibilitu a maximální kontrolu.
+Pomocí Azure Machine Learning můžete snadno odeslat školicí skript do [různých výpočetních cílů](how-to-set-up-training-targets.md), a to pomocí [objektu RunConfiguration](how-to-set-up-training-targets.md#whats-a-run-configuration) a [objektu ScriptRunConfig](how-to-set-up-training-targets.md#submit). Tento model poskytuje značnou flexibilitu a maximální kontrolu.
 
 
 Třída Estimator usnadňuje výuce modelů pomocí obsáhlého učení a posílení učení. Poskytuje abstrakci vysoké úrovně, která umožňuje snadno vytvořit konfiguraci spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odeslání školicího skriptu pomocí libovolného vzdělávacího rozhraní, které zvolíte (například scikit-učení) na jakémkoli cílovém výpočetním prostředí, ať už se jedná o místní počítač, jeden virtuální počítač v Azure nebo cluster GPU v Azure. Pro PyTorch, TensorFlow, řetězení a posílení výukových úkolů Azure Machine Learning také poskytuje odpovídající [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)a [výztuže Learning](how-to-use-reinforcement-learning.md) odhady, aby bylo možné tyto architektury zjednodušit.
@@ -29,7 +29,7 @@ Třída Estimator usnadňuje výuce modelů pomocí obsáhlého učení a posíl
 ## <a name="train-with-an-estimator"></a>Výuka s Estimator
 
 Po vytvoření [pracovního prostoru](concept-workspace.md) a nastavení [vývojového prostředí](how-to-configure-environment.md)v Azure Machine Learning zahrnuje následující kroky:  
-1. Vytvořit [vzdálený cíl výpočtů](how-to-set-up-training-targets.md) (Poznámka: můžete použít také místní počítač jako cíl výpočtů)
+1. Vytvořte [vzdálený cíl výpočtů](how-to-create-attach-compute-sdk.md) (nebo můžete použít také místní počítač jako cíl výpočtů).
 2. Nahrajte [školicí data](how-to-access-data.md) do úložiště dat (volitelné).
 3. Vytvoření [školicího skriptu](tutorial-train-models-with-aml.md#create-a-training-script)
 4. Vytvoření objektu `Estimator`
@@ -39,7 +39,7 @@ Tento článek se zaměřuje na kroky 4-5. Postup 1-3 najdete v [kurzu o výukov
 
 ### <a name="single-node-training"></a>Školení s jedním uzlem
 
-Použijte `Estimator` pro školení s jedním uzlem spuštění ve vzdálené výpočetní službě Azure pro model scikit-učení. Měli byste už mít vytvořený objekt [cíle výpočetního](how-to-set-up-training-targets.md#amlcompute) objektu `compute_target` a objekt [DataSet](how-to-create-register-datasets.md) `ds` .
+Použijte `Estimator` pro školení s jedním uzlem spuštění ve vzdálené výpočetní službě Azure pro model scikit-učení. Měli byste už mít vytvořený objekt [cíle výpočetního](how-to-create-attach-compute-sdk.md#amlcompute) objektu `compute_target` a objekt [DataSet](how-to-create-register-datasets.md) `ds` .
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ Parametr | Popis
 --|--
 `source_directory`| Místní adresář, který obsahuje veškerý váš kód potřebný pro školicí úlohu. Tato složka se zkopíruje z místního počítače do vzdálené výpočetní služby.
 `script_params`| Slovník, který určuje argumenty příkazového řádku, které se mají předat vašemu školicímu skriptu `entry_script` , ve formě `<command-line argument, value>` párů. K určení podrobného příznaku v `script_params` použijte `<command-line argument, "">` .
-`compute_target`| Vzdálený výpočetní cíl, na kterém se váš školicí skript spustí, v tomto případě cluster Azure Machine Learning COMPUTE ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Pamatujte na to, že cluster AmlCompute se běžně používá, je také možné zvolit jiné typy výpočetních cílů, jako jsou například virtuální počítače Azure nebo i místní počítač.)
+`compute_target`| Vzdálený výpočetní cíl, na kterém se váš školicí skript spustí, v tomto případě cluster Azure Machine Learning COMPUTE ([AmlCompute](how-to-create-attach-compute-sdk.md#amlcompute)). (Pamatujte na to, že cluster AmlCompute se běžně používá, je také možné zvolit jiné typy výpočetních cílů, jako jsou například virtuální počítače Azure nebo i místní počítač.)
 `entry_script`| FilePath (vzhledem k `source_directory` ) školicímu skriptu, který se má spustit na vzdáleném výpočetním prostředí. Tento soubor a všechny další soubory, na kterých závisí, by měly být umístěny v této složce.
 `conda_packages`| Seznam balíčků Pythonu, které se mají nainstalovat přes Conda, kterou vyžaduje váš školicí skript.  
 
@@ -93,7 +93,7 @@ Existují dva další školicí scénáře, pomocí kterých můžete provádět
 
 Následující kód ukazuje, jak provést distribuované školení pro model Keras. Kromě toho se místo použití výchozích Azure Machine Learning imagí určuje vlastní image z Docker Hub `continuumio/miniconda` pro účely školení.
 
-Měli byste už mít vytvořený cílový objekt služby [COMPUTE](how-to-set-up-training-targets.md#amlcompute) `compute_target` . Estimator vytvoříte takto:
+Měli byste už mít vytvořený cílový objekt služby [COMPUTE](how-to-create-attach-compute-sdk.md#amlcompute) `compute_target` . Estimator vytvoříte takto:
 
 ```Python
 from azureml.train.estimator import Estimator

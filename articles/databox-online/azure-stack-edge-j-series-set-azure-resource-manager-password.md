@@ -1,23 +1,23 @@
 ---
-title: Nastavení Azure Resource Manager hesla na hraničním zařízení Azure Stack
-description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na Azure Stack Edge pomocí Azure PowerShell.
+title: Nastavení Azure Resource Manager hesla na zařízení GPU Azure Stack Edge
+description: Popisuje, jak se připojit k Azure Resource Manager běžícímu na procesorovém GPU Azure Stack Edge pomocí Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d56f12c746383576a32e2c0ade542bc8aedff22d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084712"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146279"
 ---
 # <a name="set-azure-resource-manager-password"></a>Nastavit Azure Resource Manager heslo
 
-[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]
+<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 Tento článek popisuje, jak nastavit heslo pro Azure Resource Manager. Toto heslo musíte nastavit při připojování k místním rozhraním API zařízení prostřednictvím Azure Resource Manager.
 

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e5b7211ffc72c4752008f36ebb266373c919025b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076017"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146857"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -81,17 +81,19 @@ Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+`-DjavaVersion`Parametr oznamuje modulu runtime Functions, kterou verzi Java má použít. Použijte `-DjavaVersion=11` , pokud chcete, aby vaše funkce běžely v jazyce Java 11, který je ve verzi Preview. Pokud nezadáte `-DjavaVersion` , Maven se výchozí hodnota Java 8. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
 
 Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení.   
 Po zobrazení výzvy zadejte následující hodnoty:
@@ -106,8 +108,6 @@ Po zobrazení výzvy zadejte následující hodnoty:
 `Y`Potvrďte zadáním nebo stisknutím klávesy ENTER.
 
 Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který je v tomto příkladu `fabrikam-functions` . 
-
-Pro spuštění v jazyce Java 11 v Azure je nutné upravit hodnoty v souboru pom.xml. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
 ::: zone-end
 `--docker`Možnost generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Azure functions a vybraným modulem runtime.
 
@@ -159,14 +159,6 @@ K zastavení hostitele použijte **kombinaci kláves CTRL +** - **C** .
 ## <a name="build-the-container-image-and-test-locally"></a>Sestavení image kontejneru a místní test
 
 Volitelné Projděte si *souboru Dockerfile* v kořenovém adresáři složky projektu. Souboru Dockerfile popisuje požadované prostředí pro spuštění aplikace Function App v systému Linux.  Úplný seznam podporovaných základních imagí pro Azure Functions najdete na [stránce Azure Functions Base image](https://hub.docker.com/_/microsoft-azure-functions-base).
-
-::: zone pivot="programming-language-java"  
-Pokud používáte jazyk Java 11 (Preview), změňte `JAVA_VERSION` argument Build ve vygenerovaném souboru Dockerfile na následující: 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 V kořenové složce projektu spusťte příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název, `azurefunctionsimage` , a značku `v1.0.0` . Položku `<DOCKER_ID>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
 
@@ -311,17 +303,17 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
 
     1. V levém navigačním panelu vyberte **funkce**a potom vyberte funkci, kterou chcete ověřit.
 
-        ![Příkaz Get URL funkce na Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![Vyberte funkci v Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. Vyberte **získat adresu URL funkce**.
 
-        ![Příkaz Get URL funkce na Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![Získat adresu URL funkce z Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. V automaticky otevíraném okně vyberte **výchozí (klíč funkce)** a potom zkopírujte adresu URL do schránky. Klíč je řetězec znaků, který následuje po `?code=` .
 
-        ![Příkaz Get URL funkce na Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![Výběr výchozího přístupového klíče funkce](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  

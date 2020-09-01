@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017715"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146619"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
@@ -55,11 +55,8 @@ Výhody služby Azure AD moje aplikace představují tyto firmy:
 Moje aplikace je zdarma a nevyžaduje žádné licence k použití na základní úrovni. Nicméně počet objektů ve vašem adresáři a další funkce, které chcete nasadit, můžou vyžadovat další licence. Mezi běžné scénáře služby Azure AD, které mají požadavky na licencování, patří následující funkce zabezpečení:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [Členství na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 Seznamte se s [úplnými licencemi pro Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -69,7 +66,6 @@ Seznamte se s [úplnými licencemi pro Azure AD](https://azure.microsoft.com/pri
 Před zahájením tohoto projektu dokončete následující předpoklady:
 
 * [Integrace jednotného přihlašování k aplikaci](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [Správa infrastruktury uživatelů a skupin Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Plánování nasazení Azure AD moje aplikace
@@ -139,7 +135,6 @@ Uživatelé nebo správci musí souhlasit s podmínkami použití a zásadami oc
 Pokud chcete použít souhlas správce, musíte být globální správce organizace a aplikace musí být buď:
 
 * Registrováno ve vaší organizaci
-
 * Registrováno v jiné organizaci služby Azure AD a dříve byla odeslána alespoň jedním uživatelem.
 
 Další informace najdete v tématu [Konfigurace způsobu, jakým koncoví uživatelé souhlasí s aplikací v Azure Active Directory](configure-user-consent.md).
@@ -180,9 +175,7 @@ Když se uživatelé přihlásí k aplikacím jednotného přihlašování na z�
 Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
 
 * [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [Stažení a konfigurace na základě uživatele pro Chrome, Firefox, Microsoft Edge nebo IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Pro uživatele, kteří nepoužívají aplikace jednotného přihlašování založené na heslech, je také výhoda rozšíření. Mezi tyto výhody patří možnost spuštění libovolné aplikace z panelu hledání, vyhledání přístupu k nedávno používaným aplikacím a odkaz na stránku Moje aplikace.
@@ -294,7 +287,6 @@ Následující testy by se měly provádět u zařízení vlastněných společn
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>Příklady testovacích případů aplikace samoobslužné funkce aplikací
 
-
 | Obchodní případ| Očekávaný výsledek |
 | - | - |
 | Uživatel může spravovat členství v aplikaci.| Uživatel může přidat nebo odebrat členy, kteří mají přístup k aplikaci. |
@@ -319,22 +311,5 @@ K provedení požadované úlohy v Azure Active Directory použijte nejnižší 
 
 Pomocí [Privileged Identity Management](../privileged-identity-management/pim-configure.md) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 
-### <a name="troubleshoot-my-apps-issues"></a>Řešení potíží s aplikacemi
-
-Vytváření průvodců odstraňováním potíží pro vaši organizaci podpory pomocí běžných scénářů, které odkazují na dokumentaci Microsoftu v jejich řešení. Možná budete chtít vytvořit vodítka, která přeruší podporu do vrstev používaných vaší organizací.
-
-Další informace najdete v těchto příručkách k odstraňování potíží:
-
-[Nezobrazují se aplikace](access-panel-troubleshoot-application-not-appearing.md)
-
-[Zobrazují se neočekávané aplikace](access-panel-troubleshoot-unexpected-application.md)
-
-[Uživatel se nemůže přihlásit k aplikacím.](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[Problémy s použitím samoobslužného přístupu k aplikacím](access-panel-troubleshoot-self-service-access.md)
-
-[Problémy s rozšířením prohlížeče](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>Další kroky
-
 [Plánování nasazení Azure Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)

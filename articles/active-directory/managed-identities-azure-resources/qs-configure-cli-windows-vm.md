@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b003c3362e2fb22a36985eb29b1a537bbffb28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994fe7e711210d9eb676b41cb70ff695c6456006
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002381"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145378"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI
 
@@ -113,6 +113,10 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřazenou uživatelem z virtuálního počítače Azure pomocí Azure CLI.
 
+      > [!NOTE]
+      > If you create your user-assigned managed identity in a different RG than your VM. You'll have to use the URL of your managed identity to assign it to your VM.
+      >i.e. --identities "/subscriptions/<SUBID>/resourcegroups/<RESROURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER_ASSIGNED_ID_NAME>"
+
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživatelem během vytváření virtuálního počítače Azure
 
 Aby bylo možné přiřadit uživatelem přiřazenou identitu k VIRTUÁLNÍmu počítači během jejího vytvoření, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
@@ -182,7 +186,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    }
    ```
 
-2. Přiřaďte k VIRTUÁLNÍmu počítači identitu přiřazenou uživatelem pomocí [AZ VM identity Assign](/cli/azure/vm). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>`Je uživatelem přiřazená vlastnost prostředku spravované identity `name` , jak je vytvořená v předchozím kroku:
+2. Přiřaďte k VIRTUÁLNÍmu počítači identitu přiřazenou uživatelem pomocí [AZ VM identity Assign](/cli/azure/vm). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>`Je uživatelem přiřazená vlastnost prostředku spravované identity `name` , jak je vytvořená v předchozím kroku. Pokud jste vytvořili spravovanou identitu přiřazenou uživatelem v jiném RG, než je váš virtuální počítač. Budete muset použít adresu URL spravované identity.
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

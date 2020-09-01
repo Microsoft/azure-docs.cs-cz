@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 203baa4650c3a0a5aa87971dca87d751a070cd05
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071342"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145548"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -82,7 +82,7 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt Functions z [archetypu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). Použijte, `-DjavaVersion=11` Pokud chcete nasadit funkce Java 11. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
+Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt Functions z [archetypu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). Použijte, pokud chcete, aby `-DjavaVersion=11` vaše funkce běžely na Java 11. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash

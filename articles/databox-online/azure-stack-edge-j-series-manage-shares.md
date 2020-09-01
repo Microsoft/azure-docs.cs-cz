@@ -1,19 +1,19 @@
 ---
-title: Azure Stack Správa sdílené složky Edge | Microsoft Docs
-description: Popisuje, jak použít Azure Portal ke správě sdílených složek na hraničních Azure Stackch.
+title: Azure Stack Správa sdílení GPU na okraji | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě sdílených složek na procesorovém GPU Azure Stack Edge.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1dff88a3f546480fe92f8fb1eb582fc3b8d2ddb6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0bbcc6f3e8b02c6f8191114253d3ccb2d1b739a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084762"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147095"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě sdílených složek na hraničních Azure Stackch
 
@@ -82,7 +82,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 6. V poli **místní uživatel všechna oprávnění** vyberte možnost **vytvořit novou** nebo **použít existující**.
 
-7. Vyberte **Vytvořit**. 
+7. Vyberte **Create** (Vytvořit). 
 
     ![Vytvořit místní sdílenou složku](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 

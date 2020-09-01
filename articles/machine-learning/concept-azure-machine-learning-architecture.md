@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: b90cda409096f940d6c2b1c64517731e81c41fbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069152"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146772"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -106,7 +106,7 @@ Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript
 
 Konfigurace spuštění může být trvalá do souboru v adresáři, který obsahuje školicí skript.   Nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
-Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
+Například konfigurace spuštění najdete v tématu [použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
 
 ### <a name="estimators"></a>Odhady
 
@@ -121,7 +121,7 @@ Další informace o odhady najdete v tématu o [modelech vlak ml pomocí odhady]
 Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
 
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 

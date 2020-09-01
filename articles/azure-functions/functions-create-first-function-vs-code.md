@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b5f3a6b8b8a04cca9543a5343d4496524a166c39
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919603"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146568"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code
 
@@ -120,6 +120,8 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
     ::: zone pivot="programming-language-java"  
     + **Vyberte jazyk pro projekt funkce**: zvolte `Java` .
+
+    + **Vyberte verzi Java**: zvolte `Java 8` nebo `Java 11 (preview)` , na kterých se budou spouštět vaše funkce v Azure. Vyberte verzi jazyka Java, kterou jste ověřili místně.
 
     + **Zadejte ID skupiny**: vyberte `com.function` .
 

@@ -1,19 +1,19 @@
 ---
-title: Modul C# IoT Edge pro Azure Stack Edge | Microsoft Docs
-description: Naučte se vyvíjet modul C# IoT Edge, který se dá nasadit na Azure Stack Edge.
+title: Modul C# IoT Edge pro Azure Stack Edge s grafickým procesorem | Microsoft Docs
+description: Naučte se vyvíjet modul C# IoT Edge, který se dá nasadit na zařízení GPU Azure Stack Edge.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: a6fb02033d7f242649907eaed8bf01aa23b3cbbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083895"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146228"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Vývoj modulu C# IoT Edge pro přesunutí souborů na Azure Stack Edge
 
@@ -42,7 +42,7 @@ Vaše zařízení Azure Stack Edge může nasazovat a spouštět IoT Edge moduly
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -77,7 +77,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
 
       ![Vytvoření registru kontejneru](./media/azure-stack-edge-j-series-create-iot-edge-module/create-container-registry-1.png)
  
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
 
     ![Získání přístupových klíčů](./media/azure-stack-edge-j-series-create-iot-edge-module/get-access-keys-1.png)

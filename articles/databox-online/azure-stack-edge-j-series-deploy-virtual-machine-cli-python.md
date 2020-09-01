@@ -1,19 +1,19 @@
 ---
-title: Nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure CLI a Python
-description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí Azure CLI a Pythonu.
+title: Nasazení virtuálních počítačů do GPU zařízení Azure Stack Edge pomocí Azure CLI a Pythonu
+description: Popisuje, jak vytvořit a spravovat virtuální počítače na Azure Stack zařízení GPU na hraničním počítači pomocí Azure CLI a Pythonu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/21/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 898e10f4cc6d1e85a5d44fff41bede885b914a18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77251148bed76f672adc2fffe2db688b33786022
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088375"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147112"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení Azure Stack Edge pomocí Azure CLI a Pythonu
 
@@ -45,7 +45,7 @@ Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 
 Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí rozhraní příkazového řádku Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 

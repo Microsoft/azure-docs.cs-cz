@@ -4,23 +4,23 @@ description: Přečtěte si, jak připojit virtuální systém souborů ve fondu
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921626"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145480"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
 Azure Batch teď podporuje připojení cloudového úložiště nebo externího systému souborů ve výpočetních uzlech se systémem Windows nebo Linux ve fondech služby Batch. Když je výpočetní uzel připojen k fondu, je virtuální systém souborů připojen a je v tomto uzlu považován za místní disk. Můžete připojit souborové systémy, jako jsou soubory Azure, Azure Blob Storage, systém souborů NFS (Network File System), včetně [mezipaměti avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)nebo protokolu CIFS (Common Internet File System).
 
-V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet).
+V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](/dotnet/api/overview/azure/batch).
 
 > [!NOTE]
 > Připojení virtuálního systému souborů je podporováno v fondech Batch vytvořených v nebo po 2019-08-19. Fondy dávek vytvořené před 2019-08-19 tuto funkci nepodporují.
 > 
-> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) .
+> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](/dotnet/api/microsoft.azure.batch) .
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Výhody připojení ve fondu
 

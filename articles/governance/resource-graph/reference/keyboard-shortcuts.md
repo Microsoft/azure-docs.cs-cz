@@ -4,12 +4,12 @@ description: Průzkumník Azure Resource Graph v Azure Portal podporuje kláveso
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848817"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146432"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Klávesové zkratky pro Průzkumníka Azure Resource graphu
 
@@ -22,7 +22,6 @@ Tento článek obsahuje seznam klávesových zkratek, které fungují na stránc
 |Komentář/odkomentovat |<kbd>PODRŽTE</kbd>+<kbd>/</kbd> | <kbd>Přepsat</kbd>+<kbd>/</kbd> |
 |Zmenšit odsazení |<kbd>CTRL</kbd> + <kbd>[</kbd> |<kbd>Příkaz cmd</kbd> + <kbd>[</kbd> |
 |Zvětšit odsazení |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Příkaz cmd</kbd> + <kbd>]</kbd> |
-|Vybrat vše |<kbd>CTRL</kbd> + <kbd>A</kbd> |<kbd>Příkaz cmd</kbd> + <kbd>A</kbd> |
 |Posunout řádek dolů |<kbd>ALT</kbd> + <kbd>↓</kbd> |<kbd>Možnost</kbd> + <kbd>↓</kbd> |
 |Posunout řádek nahoru |<kbd>ALT</kbd> + <kbd>↑</kbd> |<kbd>Možnost</kbd> + <kbd>↑</kbd> |
 |Nahrazení |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Příkaz cmd</kbd> + <kbd>ALT</kbd> + <kbd>F</kbd> |

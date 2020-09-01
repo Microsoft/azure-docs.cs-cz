@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012684"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144987"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -39,7 +39,7 @@ Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporov
 
 Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md).
 
-## <a name="estimate-costs"></a>Odhadované náklady
+## <a name="estimate-costs"></a>Odhadněte náklady
 
 Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady ještě předtím, než vytvoříte prostředky v účtu Azure Machine Learning. Na levé straně vyberte **AI + Machine Learning**a pak vyberte **Azure Machine Learning** a začněte.  
 
@@ -69,7 +69,7 @@ S neustále se měnícími se daty potřebujete rychlé a zjednodušené školen
 
 Azure Machine Learning uživatelé můžou použít cluster Managed Azure Machine Learning COMPUTE, označovaný také jako AmlCompute. AmlCompute podporuje celou řadu možností GPU a CPU. AmlCompute je interně hostovaný jménem vašeho předplatného, a to Azure Machine Learning. Přináší stejné zabezpečení na podnikové úrovni, dodržování předpisů a zásady správného řízení ve službě Azure IaaS Cloud Scale.
 
-Vzhledem k tomu, že se tyto výpočetní fondy nacházejí v infrastruktuře Azure IaaS, můžete nasazovat, škálovat a spravovat školení se stejnými požadavky na zabezpečení a dodržování předpisů jako v ostatních částech vaší infrastruktury.  Tato nasazení se objeví ve vašem předplatném a řídí se pravidly zásad správného řízení. Přečtěte si další informace o [Azure Machine Learning COMPUTE](how-to-set-up-training-targets.md#amlcompute).
+Vzhledem k tomu, že se tyto výpočetní fondy nacházejí v infrastruktuře Azure IaaS, můžete nasazovat, škálovat a spravovat školení se stejnými požadavky na zabezpečení a dodržování předpisů jako v ostatních částech vaší infrastruktury.  Tato nasazení se objeví ve vašem předplatném a řídí se pravidly zásad správného řízení. Přečtěte si další informace o [Azure Machine Learning COMPUTE](how-to-create-attach-compute-sdk.md#amlcompute).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Konfigurace školicích clusterů pro automatické škálování
 
@@ -105,9 +105,9 @@ V některých případech byste měli nakonfigurovat své školicí běhy, aby s
 Tady je několik možností, které máte:
 * Definujte parametr s názvem `max_run_duration_seconds` v RunConfiguration k řízení maximální doby, po kterou se může běh na výpočetním prostředí rozhodnout (buď místní, nebo vzdálený cloudový výpočet).
 * V případě [ladění pomocí parametrů](how-to-tune-hyperparameters.md#early-termination)Definujte zásadu prvotního ukončení ze zásad Bandit, pozastavené zásady nebo zásadu výběru zkrácení. Chcete-li dále řídit Sweep parametrů, použijte parametry jako `max_total_runs` nebo `max_duration_minutes` .
-* V případě [automatizovaného strojového učení](how-to-configure-auto-train.md#exit)nastavte podobné zásady ukončení pomocí `enable_early_stopping` příznaku. K `iteration_timeout_minutes` `experiment_timeout_minutes` řízení maximální doby trvání běhu nebo pro celý experiment použijte také vlastnosti, jako je a.
+* V případě [automatizovaného strojového učení](how-to-configure-auto-train.md#exit)nastavte podobné zásady ukončení pomocí  `enable_early_stopping` příznaku. K `iteration_timeout_minutes` `experiment_timeout_minutes` řízení maximální doby trvání běhu nebo pro celý experiment použijte také vlastnosti, jako je a.
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Použití virtuálních počítačů s nízkou prioritou
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Použití virtuálních počítačů s nízkou prioritou
 
 Azure umožňuje používat nadbytečnou nevyužitou kapacitu jako virtuální počítače s nízkou prioritou napříč sadami Virtual Machine Scale Sets, službou Batch a službou Machine Learning. Tato přidělení jsou předem emptible, ale v porovnání s vyhrazenými virtuálními počítači se přidávají za nižší cenu. Obecně doporučujeme používat pro úlohy služby Batch virtuální počítače s nízkou prioritou. Měli byste je také použít, pokud se přerušení budou obnovovat buď prostřednictvím opětovného odeslání (pro Batch Inferencing), nebo prostřednictvím restartu (pro školení s hloubkovým učením s kontrolními body).
 
@@ -127,4 +127,4 @@ Azure Machine Learning COMPUTE podporuje rezervované instance, které jsou v po
 Přečtěte si další informace:
 * [Správa a zvýšení kvót prostředků](how-to-manage-quotas.md)
 * [Správa nákladů pomocí analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* [Azure Machine Learning výpočetní](how-to-set-up-training-targets.md#amlcompute)prostředky.
+* Vytvořte Azure Machine Learning COMPUTE pomocí [sady SDK](how-to-create-attach-compute-sdk.md#amlcompute) nebo v [studiu](how-to-create-attach-compute-studio.md#amlcompute).

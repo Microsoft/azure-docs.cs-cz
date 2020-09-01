@@ -4,12 +4,12 @@ description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spra
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922000"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146464"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -334,8 +334,8 @@ Pomocí balíčků aplikací můžete svým zákazníkům pomáhat vybrat aplika
 * [REST API dávky][api_rest] také poskytují podporu pro práci s balíčky aplikací. Podívejte se například na element [applicationPackageReferences][rest_add_pool_with_packages] v části [Přidání fondu k účtu][rest_add_pool] , kde najdete informace o tom, jak určit balíčky k instalaci pomocí REST API. Podrobnosti o tom, jak získat informace o aplikaci pomocí dávkové REST API, najdete v tématu [aplikace][rest_applications] .
 * Naučte se programově [Spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). Knihovna [.NET Batch Management][api_net_mgmt] může povolit funkce vytváření a odstraňování účtů pro vaši aplikaci nebo službu Batch.
 
-[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples

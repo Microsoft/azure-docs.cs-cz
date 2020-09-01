@@ -1,19 +1,19 @@
 ---
-title: Použití certifikátů s Azure Stack Edge | Microsoft Docs
-description: Popisuje použití certifikátů s Azure Stack hraničním zařízením, včetně toho, jaké typy a jak na zařízení nahrávat certifikáty.
+title: Použití certifikátů s grafickým procesorem Azure Stack Edge | Microsoft Docs
+description: Popisuje použití certifikátů s Azure Stackým zařízením s grafickým procesorem, včetně toho, jaké typy a jak na zařízení nahrávat certifikáty.
 services: Azure Stack Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e257ecbcc608dfc6ecb9aedae69eeef083395836
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084624"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147078"
 ---
 # <a name="use-certificates-with-azure-stack-edge-series"></a>Použití certifikátů s Azure Stack hraničními řadami 
 
