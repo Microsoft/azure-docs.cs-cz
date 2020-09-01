@@ -3,7 +3,7 @@ title: Definování filtrů v Azure Media Services
 description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023224"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262630"
 ---
 # <a name="filters"></a>Filtry
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při doručování obsahu zákazníkům (živé události streamování nebo video na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services nabízí [dynamické manifesty](filters-dynamic-manifest-overview.md) založené na předem definovaných filtrech. 
 
@@ -77,7 +79,7 @@ Filtrovat podmínky vlastností sledování popisují typy sledování, hodnoty 
 |**Rychlostí**|Použijte přenosovou rychlost stopy pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosové rychlosti v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když můžete použít určitou hodnotu přenosové rychlosti, třeba 250000 (bity za sekundu), tento přístup se nedoporučuje, protože přesné přenosové rychlosti můžou kolísat od jednoho Assetu k druhému.|
 |**FourCC**|Použijte hodnotu FourCC stopy pro filtrování.<br/><br/>Hodnota je prvním prvkem formátu kodeků, jak je uvedeno v [dokumentu RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "avc1", "hev1", "hvc1"<br/>Pro zvuk: "mp4a", "ES-3"<br/><br/>Chcete-li určit hodnoty FourCC pro stopy v Assetu, Získejte a prověřte soubor manifestu.|
 |**Jazyk**|Použijte jazyk sledování pro filtrování.<br/><br/>Hodnota je značka jazyka, který chcete zahrnout, jak je uvedeno v dokumentu RFC 5646. Například "en".|
-|**Název**|Použijte název stopy pro filtrování.|
+|**Name**|Použijte název stopy pro filtrování.|
 |**Typ**|Použijte typ stopy pro filtrování.<br/><br/>Jsou povoleny následující hodnoty: "video", "audio" nebo "text".|
 
 ### <a name="example"></a>Příklad

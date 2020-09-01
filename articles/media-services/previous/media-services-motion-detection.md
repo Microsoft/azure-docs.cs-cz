@@ -15,14 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e9a978cd96da47e91434c7146eb3e258d77d8ee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016831"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261338"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Detekce pohybů pomocí Azure Media Analytics
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Procesor **Azure Media Motion Detector** médií bude vyřazen. Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
@@ -46,7 +48,7 @@ Při vytváření úlohy s **Azure Media Motion Detector**je nutné zadat předv
 ### <a name="parameters"></a>Parametry
 Můžete použít následující parametry:
 
-| Název | Možnosti | Popis | Výchozí |
+| Name | Možnosti | Popis | Výchozí |
 | --- | --- | --- | --- |
 | sensitivityLevel |Řetězec: ' nízká ', ' střední ', ' High ' |Nastaví úroveň citlivosti, na které jsou nahlášeny pohyby. Upravte tuto hodnotu pro úpravu počtu falešně pozitivních hodnot. |úrovně |
 | frameSamplingValue |Kladné celé číslo |Nastaví četnost spuštění algoritmu. 1 se rovná každému snímku, 2 znamená každý druhý rámec atd. |1 |

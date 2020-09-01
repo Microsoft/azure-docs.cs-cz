@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: d49b74ffff8f382427422071b7d8f494f71a52fb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38bfada87701533002a2dcf304af573da4c87766
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345185"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259893"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí jazyka Go
 
@@ -37,44 +37,34 @@ Vytvořte soubor s názvem `create-new-knowledge-base.go`.
 
 Na začátek souboru `create-new-knowledge-base.go` přidejte následující řádky k přidání potřebných závislostí do projektu:
 
-[!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
-
-## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
-Za předcházející požadované závislosti přidejte požadované konstanty pro přístup ke službě QnA Maker.
-
-Nastavte následující hodnoty:
-
-* `<your-qna-maker-subscription-key>`- **Klíč** je řetězec znaků 32 a je k dispozici v Azure Portal v prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
-* `{your-resource-name}`– **Název prostředku** se používá k vytvoření adresy URL koncového bodu pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
-
-[!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="dependencies":::
 
 ## <a name="add-the-kb-model-definition"></a>Přidejte definici modelu znalostní báze
 Za konstanty přidejte následující definici modelu znalostní báze. Model po definici provádí převod na řetězec.
 
-[!code-go[Add the KB model definition](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=22-44 "Add the KB model definition")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="model":::
 
 ## <a name="add-supporting-structures-and-functions"></a>Přidání podpůrných struktur a funkcí
 
 V dalším kroku přidejte následující podpůrné funkce.
 
-1. Přidejte strukturu pro požadavek HTTP:
+1. Přidejte strukturu pro odpověď HTTP:
 
-    [!code-go[Add the structure for an HTTP request](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=46-49 "Add the structure for an HTTP request")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="response":::
 
-2. Přidejte následující metodu pro zpracování požadavku POST na rozhraní API služby QnA Maker. V tomto rychlém startu se požadavek POST používá k odeslání definice znalostní báze do služby QnA Maker.
+1. Přidejte následující metodu pro zpracování požadavku POST na rozhraní API služby QnA Maker. V tomto rychlém startu se požadavek POST používá k odeslání definice znalostní báze do služby QnA Maker.
 
-    [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="post":::
 
-3. Přidejte následující metodu pro zpracování požadavku GET na rozhraní API služby QnA Maker. V tomto rychlém startu se požadavek GET používá ke kontrole stavu operace vytváření.
+1. Přidejte následující metodu pro zpracování požadavku GET na rozhraní API služby QnA Maker. V tomto rychlém startu se požadavek GET používá ke kontrole stavu operace vytváření.
 
-    [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
+    :::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get":::
 
 ## <a name="add-function-to-create-kb"></a>Přidání funkce pro vytvoření znalostní báze
 
 Přidejte následující funkce pro vytvoření požadavku HTTP POST na vytvoření znalostní báze. **ID operace** _Vytvoření_ se vrátí v **umístění**pole hlavičky odpovědi post a pak se použije jako součást trasy v žádosti o získání. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování.
 
-[!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="create_kb":::
 
 Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila.
 
@@ -92,7 +82,7 @@ Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje 
 
 Přidejte následující funkci na vytvoření požadavku HTTP GET, který zkontroluje stav operace. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování.
 
-[!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="get_status":::
 
 Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
@@ -110,7 +100,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 Následující funkce je hlavní funkce, která vytvoří znalostní bázi a pak opakuje kontroly stavu. Protože vytvoření znalostní báze může nějakou dobu trvat, je třeba volání na kontrolu stavu opakovat, dokud vrácený stav nebude úspěch nebo neúspěch.
 
-[!code-go[Add the main method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=110-140 "Add the main method")]
+:::code language="go" source="~/cognitive-services-quickstart-code/go/QnAMaker/rest/create-kb.go" id="main":::
 
 
 ## <a name="compile-the-program"></a>Kompilace programu

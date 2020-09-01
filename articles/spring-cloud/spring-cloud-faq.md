@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054984"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260522"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -40,10 +40,10 @@ Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Jaká jsou známá omezení Azure jarního cloudu?
 
-Při vydání verze Preview má Azure jarní Cloud následující známá omezení:
-
+U jarního cloudu Azure máte Tato známá omezení:
+    
 * `spring.application.name` bude přepsáno názvem aplikace, který se používá k vytvoření jednotlivých aplikací.
-* `server.port` ve výchozím nastavení se jedná o porty 80/443. Pokud použijete jinou hodnotu, bude přepsána na 80/443.
+* `server.port` Výchozí hodnota je port 1025. Pokud použijete jinou hodnotu, bude přepsána na 1025.
 * Šablony Azure Portal a Azure Resource Manager nepodporují nahrávání balíčků aplikací. Balíčky aplikací můžete nahrát jenom nasazením aplikace přes rozhraní příkazového řádku Azure CLI.
 
 ### <a name="what-pricing-tiers-are-available"></a>Jaké cenové úrovně jsou k dispozici? 

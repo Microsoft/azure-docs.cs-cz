@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ead605462eeb92b31181ce9bba3100df521b471b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004410"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262395"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí Media Encoder Standard pomocí .NET  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí Media Encoder Standard pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít integrovaný kodér médií Media Services. Můžete také použít kodér poskytovaný Media Services partnerem. kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. 
 

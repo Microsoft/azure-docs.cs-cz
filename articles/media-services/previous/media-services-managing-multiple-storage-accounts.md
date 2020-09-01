@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c7addf4d30e81f449e9d9a7509dfe44c381e014
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b5b0b383cba45646a1e5a8f980b3a097767f9979
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020078"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262596"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Servicesch prostředků napříč několika účty úložiště  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 K jednomu Media Services účtu můžete připojit více účtů úložiště. Možnost připojit více účtů úložiště k účtu Media Services přináší následující výhody:
 

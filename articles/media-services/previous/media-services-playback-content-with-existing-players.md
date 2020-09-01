@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd09b734f1ac5ac3c98b6c0c717a48de19b0106f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686921"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261066"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure Media Services podporuje spoustu oblíbených formátů streamování, například Smooth Streaming, HTTP Live Streaming a MPEG-pomlčky. Toto téma ukazuje na existující přehrávače, které můžete použít k otestování vašich datových proudů.
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Přehrávač obsahu Azure Portal Media Services
@@ -56,7 +59,7 @@ Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání
 
 [https://dashif.org](https://dashif.org)
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 K testování adres URL HLS můžete také použít:
 
 * **Safari** na zařízení s iOS nebo

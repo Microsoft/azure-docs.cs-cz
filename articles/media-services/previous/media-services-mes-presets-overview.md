@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038438"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261471"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Přednastavené ukázky pro Media Encoder Standard (status)
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder Standard** definuje sadu předem definovaných předvoleb kódování systému, které můžete použít při vytváření úloh kódování. Pokud chcete zakódovat video pro streamování pomocí Media Services, doporučuje se použít přednastavení adaptivního streamování. Když zadáte tuto předvolbu, Media Encoder Standard [automaticky vygeneruje žebřík přenosové rychlosti](media-services-autogen-bitrate-ladder-with-mes.md). 
 

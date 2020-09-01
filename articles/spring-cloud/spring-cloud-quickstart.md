@@ -1,18 +1,18 @@
 ---
 title: Rychlý start – nasazení první aplikace Azure Spring Cloudu
-description: V tomto rychlém startu nasadíme aplikaci pro jaře Cloud Hello do jarního cloudu Azure.
+description: V tomto rychlém startu nasadíme jarní cloudovou aplikaci do jarního cloudu Azure.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6a7a489367aa7348a3449a72de6889476e5d38db
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 245516e0a54865d3a6097c4bb566b850cb738ad6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177595"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260546"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -37,7 +37,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 * Volitelné [Nainstalujte Azure CLI verze 2.0.67 nebo vyšší](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a rozšíření Azure jaře cloudu pomocí příkazu: `az extension add --name spring-cloud`
 * Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
-## <a name="generate-a-spring-cloud-hello-project"></a>Generování projektu jaře Cloud Hello
+## <a name="generate-a-spring-cloud-project"></a>Vygenerování jarního cloudového projektu
 
 Začněte s [pružinou Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) a vygenerujte ukázkový projekt s doporučenými závislostmi pro jarní cloud Azure. Následující obrázek ukazuje Initializr sadu pro tento ukázkový projekt.
 ```url
@@ -125,7 +125,7 @@ Následující postup sestaví a nasadí aplikaci pomocí rozhraní příkazové
 
 Následující postup používá modul plug-in IntelliJ pro Azure jaře Cloud k nasazení ukázkové aplikace v IntelliJ nápad.  
 
-### <a name="import-hello-project"></a>Importovat projekt Hello
+### <a name="import-project"></a>Import projektu
 
 1. Otevřete **uvítací** dialog IntelliJ a výběrem **Importovat projekt** otevřete Průvodce importem.
 1. Vyberte `hellospring` složku.

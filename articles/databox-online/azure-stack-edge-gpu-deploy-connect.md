@@ -1,6 +1,6 @@
 ---
 title: Kurz pro připojení, konfiguraci a aktivaci zařízení Azure Stack Edge pomocí GPU v Azure Portal | Microsoft Docs
-description: Kurz nasazení Azure Stack Edge vám dává pokyn k připojení, nastavení a aktivaci fyzického zařízení.
+description: Kurz nasazení Azure Stack hraničního procesoru vám dává pokyn k připojení, nastavení a aktivaci fyzického zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 90f9fcc7bbac3164b4e620674bd64d026c11badb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181829"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262715"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Kurz: připojení k Azure Stack Edge pomocí GPU
 
@@ -26,11 +26,11 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Připojení k fyzickému zařízení
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GPU se ujistěte, že:
 
@@ -73,7 +73,7 @@ Teď jste na stránce **Přehled** svého zařízení. Dalším krokem je konfig
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Připojení k fyzickému zařízení
 
 

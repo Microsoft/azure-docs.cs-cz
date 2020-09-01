@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179755"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260319"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -41,8 +41,8 @@ Jarní cloud Azure podporuje pouze aplikace pružiny pro spuštění, které jso
 Jarní spouštěcí verze | Jarní cloudová verze
 ---|---
 2.1 | Střední verze
-2,2 | Hoxton. RELEASE
-2.3 | Hoxton.SR5
+2,2 | Hoxton.SR8
+2.3 | Hoxton.SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jaře Booting verze 2,1
 
@@ -62,7 +62,7 @@ Pro jaře Booting verze 2,1 přidejte do souboru POM aplikace následující zá
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -88,7 +88,7 @@ Pro jaře Booting verze 2,2 přidejte do souboru POM aplikace následující zá
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -113,7 +113,7 @@ Pro jaře Booting verze 2,3 přidejte do souboru POM aplikace následující zá
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -122,49 +122,23 @@ Pro jaře Booting verze 2,3 přidejte do souboru POM aplikace následující zá
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Závislost klienta na jaře cloudu Azure
 
-Azure jaře Cloud hostuje a spravuje jarní cloudové komponenty. Mezi tyto komponenty patří jarní cloudová služba a server pro konfiguraci jarního cloudu. Zahrňte do svých závislostí klientskou knihovnu jarních cloudů Azure, aby bylo možné komunikovat s instancí cloudové služby Azure na jaře.
+Azure jaře Cloud hostuje a spravuje jarní cloudové komponenty. Mezi tyto komponenty patří jarní cloudová služba a server pro konfiguraci jarního cloudu. Doporučuje se použít jaře Boot 2,2 nebo 2,3. V případě jarního spouštění 2,1 budete muset do svých závislostí zahrnout klientskou knihovnu pro jarní cloudy Azure, aby bylo možné komunikovat s instancí cloudové služby Azure jaře.
 
 V následující tabulce jsou uvedené správné verze cloudových cloudů Azure pro vaši aplikaci, které využívají jarní spouštěcí a jarní Cloud.
 
-Jarní spouštěcí verze | Jarní cloudová verze | Verze cloudu pro Azure jaře
+Jarní spouštěcí verze | Jarní cloudová verze | Verze počátečního cloudu pro Azure jaře pro klienta
 ---|---|---
-2.1 | Střední verze | 2.1
-2,2 | Hoxton. RELEASE | 2,2
-2.3 | Hoxton.SR5 | 2.3
+2.1 | Střední verze | 2.1.2
+2,2 | Hoxton.SR8 | Není potřeba
+2.3 | Hoxton.SR8 | Není potřeba
 
-Do souboru pom.xml zahrňte jednu z následujících závislostí. Vyberte závislost, jejíž verze cloudu pro Azure jaře se shoduje s vaší vlastní.
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Závislost pro Azure jaře Cloud verze 2,1
-
-Pro jaře Boot verze 2,1 přidejte do souboru POM aplikace následující závislost.
+Pokud používáte jarní spouštění 2,1, zahrňte do souboru pom.xml následující dependenciy.
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Závislost pro Azure jaře Cloud verze 2,2
-
-Pro jaře Boot verze 2,2 přidejte do souboru POM aplikace následující závislost.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-Pro jaře Boot verze 2,3 přidejte do souboru POM aplikace následující závislost.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

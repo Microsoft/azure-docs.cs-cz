@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72801954"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262664"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Přehled
 **Návrhář postupu provádění** je desktopový Nástroj pro Windows, který se používá k návrhu a vytváření vlastních pracovních postupů pro kódování pomocí **Media Encoder Premium Workflow**.
 Pomocí výkonného nástroje pro návrháře pracovních postupů můžete navrhovat a vytvářet komplexní pracovní postupy, které se spustí v **Media Encoderu Premium**.  
@@ -73,7 +76,7 @@ Video o dni 3 se zabývá:
 
 * Skriptování v rámci pracovních postupů/modrotisky
 * Omezení s aktuálním kodérem
-* Q&A
+* Otázky a odpovědi
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
