@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d3bf8b43bc12a2a8a193ea2708ab1668235edde
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f7a40cb72e1ae58f7962c4c8b80195a82ebdc5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259264"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce po publikování s operacemi streamování na vyžádání 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce po publikování s operacemi streamování na vyžádání
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené požadavky HTTP, které volají Azure Media Services rozhraní REST API. Informace o tom, jak nakonfigurovat **metodu post** , aby ji bylo možné volat Media Services rozhraní REST API najdete v kurzu věnovaném [konfiguraci služby post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
 

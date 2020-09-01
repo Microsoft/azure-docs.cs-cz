@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180333"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259366"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Přidejte nebo odeberte přiřazení rolí Azure pomocí Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Přidejte nebo odeberte přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Použití podmíněného přístupu
 
@@ -339,7 +339,7 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 
 ![Vaše přihlašovací údaje nefungovaly.](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Ověřte, že počítač s Windows 10, který používáte k inicializaci připojení ke vzdálené ploše, je ten, který je připojený k Azure AD, nebo jestli je hybridní služba Azure AD připojená ke stejnému adresáři Azure AD, ke kterému je připojený váš virtuální počítač. Další informace o identitě zařízení najdete v článku [co je identita zařízení](/azure/active-directory/devices/overview).
+Ověřte, že počítač s Windows 10, který používáte k inicializaci připojení ke vzdálené ploše, je ten, který je připojený k Azure AD, nebo jestli je hybridní služba Azure AD připojená ke stejnému adresáři Azure AD, ke kterému je připojený váš virtuální počítač. Další informace o identitě zařízení najdete v článku [co je identita zařízení](./overview.md).
 
 > [!NOTE]
 > Windows 10 Build 20H1 přidal podporu pro počítač se systémem Azure AD, který iniciuje připojení RDP k vašemu VIRTUÁLNÍmu počítači. Při použití registrovaného počítače Azure AD (ne připojeného k Azure AD nebo k hybridnímu Azure AD) jako klienta RDP pro inicializaci připojení k vašemu VIRTUÁLNÍmu počítači musíte zadat přihlašovací údaje ve formátu AzureAD\UPn (např. AzureAD\john@contoso.com ).
@@ -367,4 +367,4 @@ Nasdílejte svůj názor na tuto funkci ve verzi Preview nebo nahlaste problémy
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) .
+Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](../fundamentals/active-directory-whatis.md) .

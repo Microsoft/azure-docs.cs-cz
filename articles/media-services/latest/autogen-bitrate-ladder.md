@@ -3,7 +3,7 @@ title: Kódování videí pomocí standardu Encoder v Media Services – Azure |
 description: V tomto tématu se dozvíte, jak používat standardní kodér v Media Services ke kódování vstupního videa s automaticky generovaným žebříkem rychlosti na základě vstupních rozlišení a přenosové rychlosti.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733313"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258822"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování pomocí automaticky generovaného žebříku přenosové rychlosti
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -40,7 +42,7 @@ V této části jsou uvedeny tři příklady výstupních vrstev videí vytvoře
 ### <a name="example-1"></a>Příklad 1
 Zdroj s výškou "1080" a snímkem "29,970" vytváří 6 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +54,7 @@ Zdroj s výškou "1080" a snímkem "29,970" vytváří 6 vrstev videa:
 ### <a name="example-2"></a>Příklad 2
 Zdroj s výškou "720" a snímkem "23,970" vytváří 5 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,7 +65,7 @@ Zdroj s výškou "720" a snímkem "23,970" vytváří 5 vrstev videa:
 ### <a name="example-3"></a>Příklad 3
 Zdroj s výškou "360" a snímkem "29,970" vytvoří 3 vrstvy videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

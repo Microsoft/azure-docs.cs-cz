@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6ac638d9062f31b68d3e1954688dde7ed40c4d2c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258295"
 ---
-# <a name="azure-media-services-community"></a>Komunita Azure Media Services  
+# <a name="azure-media-services-community"></a>Komunita Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby, jak můžete získat aktualizace AMS. Můžete si také zobrazit nová videa a podcasty, klást otázky a poskytovat zpětnou vazbu.   
 

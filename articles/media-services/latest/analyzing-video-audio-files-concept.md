@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Naučte se analyzovat zvuk a video obsah pomocí AudioAnalyzerPreset a VideoAnalyzerPreset v Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053480"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258890"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services V3 umožňuje extrakci přehledů z vašich videosouborů a zvukových souborů pomocí Video Indexer. Tento článek popisuje předvolby analyzátoru Media Services V3 použité k extrakci těchto přehledů. Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Chcete-li pochopit, kdy použít předvolby Video Indexer vs. Media Services Analyzer, Projděte si [dokument porovnání](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 

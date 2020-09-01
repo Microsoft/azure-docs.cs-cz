@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Přečtěte si o filtrování, řazení a stránkování entit Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96f08f75d0921fdf88b71c8e8dd2398a6b85ec6d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009878"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258465"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
@@ -45,7 +47,7 @@ Operátory rozsahu:
 - `ge`: Otestujte, zda je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, zda je pole *menší nebo rovno* konstantní hodnotě.
 
-## <a name="filter"></a>Filtr
+## <a name="filter"></a>Filtrovat
 
 Použijte `$filter` k poskytnutí parametru filtru OData, abyste našli jenom objekty, které vás zajímají.
 
@@ -156,7 +158,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtr|Objednání|
+|Název entity|Název vlastnosti|Filtrovat|Objednání|
 |---|---|---|---|
 |[Aktiva](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||

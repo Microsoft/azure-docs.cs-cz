@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422092"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258839"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto kurzu a v zadané ukázce přehrávače můžete nastavit kompletní podsystém ochrany mediálního obsahu v Azure Media Services (AMS) a Azure Active Directory (AAD) pro streamování mediálního obsahu se všemi podporovanými možnostmi AMS DRM/AES-128, streamování, kodeků a formátů kontejnerů. Vzorek je dostatečně obecný pro zabezpečený přístup k jakýmkoli REST API chráněným protokolem OAuth 2 prostřednictvím autorizačního toku kódu a ověřovacího klíče pro výměnu kódu (PKCE). (Azure Media Services služby doručování licencí je jenom jedna z nich.) Funguje taky pro Microsoft Graph rozhraní API nebo jakýkoli vlastní vyvinutý REST API zabezpečený pomocí toku autorizačního kódu OAuth 2. Toto je doprovodný dokument k [ukázkovému kódu](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 
@@ -40,7 +42,7 @@ Pokud nemáte předplatné Azure Media Services, vytvořte [bezplatný zkušebn�
 ### <a name="duration"></a>Doba trvání
 Tento kurz by měl trvat přibližně dvě hodiny, než se dokončí, když máte připravenou technologii, kterou si můžete projít.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Použijí se následující nejnovější technologické verze a koncepty. Před zahájením tohoto kurzu se jim doporučujeme seznámit s nimi.
 
@@ -64,7 +66,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 * Instalace Node.js. Stáhněte si Node.js sem [https://nodejs.org](https://nodejs.org) . NPM je součástí instalace.
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * Účet Azure Media Services (AMS).
-* @azure/msal-browserv 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) pro různé klientské platformy
+* @azure/msal-browser v 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) pro různé klientské platformy
 * Nejnovější verze [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(obsažená v ukázce)
 * Přihlašovací údaje pro FPS od společnosti Apple, pokud chcete zahrnout FairPlay DRM a certifikát aplikace hostovaný s CORS, který je přístupný prostřednictvím JavaScriptu na straně klienta.
 
@@ -106,7 +108,7 @@ Další podrobnosti o subsystému najdete v tématu [Návrh systému ochrany obs
 Aplikace přehrávače je jednostránkové aplikace (SPA), vyvinutá v Visual Studio Code pomocí:
 
 * Node.js s využitím jazyka JavaScript pro ES 6
-* @azure/msal-browser2,0 beta
+* @azure/msal-browser 2,0 beta
 * Sada Azure Media Player SDK
 * Tok OAuth 2 s koncovými body služby Azure AD v2 (Microsoft Identity Platform)
 
@@ -261,7 +263,7 @@ Máte dvě možnosti, jak nastavit aplikaci přehrávače:
 
 ### <a name="option-1"></a>Možnost 1
 
-1. Spusťte Visual Studio Code.
+1. Spuštění nástroje Visual Studio Code
 1. Chcete-li projekt otevřít, klikněte na položku soubor-> otevřít složku – > vyhledejte a vyberte nadřazenou složku *package.jsv* souboru.
 1. Otevřete JavaScriptový soubor *Public/JavaScript/constants.js*.
 1. Nahraďte `OAUTH2_CONST.CLIENT_ID` `client_id` vaší registrovanou klientskou aplikací v tenantovi AAD.  Najdete ho v `client_id` části Přehled registrované aplikace v Azure Portal. Poznámka: Toto je ID klienta, nikoli ID objektu.

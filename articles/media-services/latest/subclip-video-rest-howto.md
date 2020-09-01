@@ -3,7 +3,7 @@ title: Rozříznout video při kódování pomocí Azure Media Services REST
 description: Toto téma popisuje, jak rozříznout video při kódování pomocí Azure Media Services pomocí REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: juliako
-ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: d60baf6b8ca3fd2371ab13128524ad407d07942e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091874"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257343"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Rozstřihnout video při kódování pomocí Media Services-REST
 
@@ -26,7 +26,7 @@ Video můžete při kódování pomocí [úlohy](/rest/api/media/jobs)oříznout
 
 V příkladu v tomto tématu se vytvoří úloha, která ořízne video při odesílání úlohy kódování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 

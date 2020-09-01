@@ -3,21 +3,21 @@ title: Lokátory streamování v Azure Media Services | Microsoft Docs
 description: Tento článek obsahuje vysvětlení toho, co jsou Lokátory streamování a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b4ba1bf63c1b8ebe6b7e294f416eb528ce444c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fe448ea5a4d9610ff82beb7cfa1071d2e8249dfd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005781"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257615"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -91,10 +91,10 @@ Viz téma [filtrování, řazení, stránkování Media Services entit](entities
 
 Chcete-li získat Lokátory streamování na základě přidruženého názvu Assetu, použijte následující operace:
 
-|Jazyk|rozhraní API|
+|Jazyk|Rozhraní API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|CLI|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|

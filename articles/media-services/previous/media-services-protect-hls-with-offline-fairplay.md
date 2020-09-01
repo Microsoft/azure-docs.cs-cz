@@ -16,14 +16,16 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df84761edf605f1dda087569f95749e5b9c5c7b6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021098"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259706"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>Streamování FairPlay pro iOS v offline režimu 
+# <a name="offline-fairplay-streaming-for-ios"></a>Streamování FairPlay pro iOS v offline režimu
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 3](../latest/offline-fairplay-for-ios.md)
@@ -202,7 +204,7 @@ Tři ukázkové testy v Media Services pokrývají následující tři scénář
 Tyto ukázky najdete na [tomto ukázkovém webu](https://aka.ms/poc#22)s odpovídajícím certifikátem aplikace hostovaným ve webové aplikaci Azure.
 V případě ukázky verze 3 nebo 4 sady SDK serveru FPS je v případě, že hlavní seznam testů obsahuje alternativní zvuk, v režimu offline, který přehrává jenom zvuk. Proto je potřeba obložení alternativního zvuku. Jinými slovy, druhý a třetí vzorek uvedený dříve pracuje v režimu online a offline. Ukázka uvedená jako první hraje zvuk pouze v režimu offline, zatímco online streamování funguje správně.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Následující nejčastější dotazy poskytují pomoc při řešení potíží:
 
 - **Proč se v režimu offline jenom zvuk hraje, ale ne video?** Zdá se, že se jedná o návrh ukázkové aplikace. Když je v režimu offline k dispozici alternativní zvuková stopa (což je případ pro HLS), v režimu offline se jako výchozí použije alternativní zvuková stopa v systému iOS 10 i iOS 11. Pokud chcete toto chování pro offline režim přechodu na více snímků, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést na Media Services, přidejte dynamický filtr manifestu "pouze" audio = false. " Jinými slovy, HLS adresa URL končí řetězcem. ISM/manifest (Format = M3U8-AAPL, audio-Only = false). 

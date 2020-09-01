@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: sdílení mimo vaši organizaci – Azure Data Share'
 description: Kurz – sdílení dat se zákazníky a partnery pomocí Azure Data Share
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: d78e9c11ef0c70730fedc0ea9ef4b5a61f7d29c6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072158"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259060"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: sdílení dat pomocí Azure Data Share  
 
@@ -60,14 +60,14 @@ V tomto kurzu se naučíte:
     1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure.
     1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím sdílení dat SQL z Azure Portal. Můžete také přidat rozsah IP adres. 
 
-### <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Průzkumník dat
+### <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Data Exploreru
 * Cluster Azure Průzkumník dat s databázemi, které chcete sdílet.
 * Oprávnění k zápisu do clusteru Azure Průzkumník dat, který se nachází v *Microsoft. Kusto/Clusters/Write*. Toto oprávnění existuje v roli Přispěvatel.
 * Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -86,14 +86,14 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
 
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
-## <a name="create-a-data-share"></a>Vytvoření sdílené složky dat
+## <a name="create-a-share"></a>Vytvoření sdílené složky
 
 1. Přejděte na stránku s přehledem sdílení dat.
 
@@ -101,17 +101,17 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte možnost **začít sdílet data**.
 
-1. Vyberte **Vytvořit**.   
+1. Vyberte **Create** (Vytvořit).   
 
-1. Vyplňte podrobnosti pro vaši sdílenou složku dat. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
+1. Vyplňte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Zadat podrobnosti o sdílené složce") 
 
 1. Vyberte **pokračovat**.
 
-1. Pokud chcete do sdílené složky dat přidat datové sady, vyberte **přidat datové sady**. 
+1. Chcete-li do sdílené složky přidat datové sady, vyberte možnost **přidat datové sady**. 
 
-    ![Datové sady](./media/datasets.png "Datové sady")
+    ![Přidání datových sad do sdílené složky](./media/datasets.png "Datové sady")
 
 1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. Pokud sdílíte z Azure SQL Database nebo Azure SQL Data Warehouse, budete vyzváni k zadání některých přihlašovacích údajů SQL. Proveďte ověření pomocí uživatele, který jste vytvořili jako součást požadavků.
 
@@ -135,7 +135,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte **pokračovat**.
 
-1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
+1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Create** (Vytvořit).
 
 Vaše sdílená složka Azure je teď vytvořená a příjemce vaší sdílené složky je teď připravený přijmout vaše pozvání. 
 

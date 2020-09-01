@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604395"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259349"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -48,16 +48,16 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
 |   |   | Aktuální Windows | Bez trvalého přihlášení | Ano<sup>5</sup> |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
+|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
-|   | Spravované | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
+|   | Spravované | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
 | Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
 <sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 a Windows Server 2019.
@@ -68,7 +68,7 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 <sup>4</sup> **spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného s použitím [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md).
 
-<sup>5</sup> **Podpora nestálosti systému Windows** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
+<sup>5</sup> **Podpora nestálosti systému Windows** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny. Tento scénář vyžaduje systém Windows 10 1803, Windows Server 2019 nebo Windows Server (půlroční kanál) počínaje verzí 1803.
 
 <sup>6</sup> **Podpora nestálosti Windows na nižší úrovni** vyžaduje další pozornost, jak je uvedeno níže v části s pokyny.
 
