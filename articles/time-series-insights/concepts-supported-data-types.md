@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 254732630dcf28b90413a1269a34d3aa388cb06c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997859"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226739"
 ---
 # <a name="supported-data-types"></a>Podporované datové typy
 
@@ -23,7 +23,7 @@ Následující tabulka uvádí typy dat podporované nástrojem Azure Time Serie
 | Datový typ | Popis | Příklad | [Syntaxe výrazů časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Název sloupce vlastnosti v Parquet
 |---|---|---|---|---|
 | **bool** | Datový typ, který má jeden ze dvou stavů: `true` nebo `false` . | `"isQuestionable" : true` | `$event.isQuestionable.Bool` nebo `$event['isQuestionable'].Bool` | `isQuestionable_bool`
-| **hodnotu** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . Vlastnosti DateTime jsou vždy uloženy ve formátu UTC. Posuny časového pásma, jsou-li správně formátovány, budou aplikovány a pak vracející hodnotu uloženou v UTC. V [této](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) části najdete další informace o vlastnosti časového razítka prostředí a posunech data a času. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Pokud je "eventProcessedLocalTime" časové razítko zdroje událostí: `$event.$ts` . Pokud se jedná o jinou vlastnost JSON: `$event.eventProcessedLocalTime.DateTime` nebo `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **datetime** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . Vlastnosti DateTime jsou vždy uloženy ve formátu UTC. Posuny časového pásma, jsou-li správně formátovány, budou aplikovány a pak vracející hodnotu uloženou v UTC. V [této](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) části najdete další informace o vlastnosti časového razítka prostředí a posunech data a času. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Pokud je "eventProcessedLocalTime" časové razítko zdroje událostí: `$event.$ts` . Pokud se jedná o jinou vlastnost JSON: `$event.eventProcessedLocalTime.DateTime` nebo `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | 64-bit číslo s dvojitou přesností  | `"value": 31.0482941` | `$event.value.Double` nebo `$event['value'].Double` |  `value_double`
 | **long** | Podepsané 64 celé číslo se znaménkem  | `"value" : 31` | `$event.value.Long` nebo `$event['value'].Long` |  `value_long`
 | **řetezce** | Textové hodnoty musí obsahovat platnou znakovou sadu UTF-8. Hodnoty null a prázdné řetězce jsou ošetřeny stejným způsobem. |  `"site": "DIM_MLGGG"`| `$event.site.String` nebo `$event['site'].String`| `site_string`
@@ -34,9 +34,10 @@ Následující tabulka uvádí typy dat podporované nástrojem Azure Time Serie
 
 > [!NOTE]
 > Typ **řetězce** nemůže mít hodnotu null:
->   * [Výraz časové řady (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) vyjádřený v [dotazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) , který porovnává hodnotu prázdného řetězce ('**'**) s **hodnotou null** , se chová stejným způsobem: `$event.siteid.String = NULL` je ekvivalentem `$event.siteid.String = ''` .
->   * Rozhraní API může vracet hodnoty **null** i v případě, že původní události obsahovaly prázdné řetězce.
->   * Nepoužívejte závislost na hodnotách **null** ve sloupcích **řetězců** k provedení porovnání nebo vyhodnocení, považovat je za stejným způsobem jako prázdné řetězce.
+>
+> * [Výraz časové řady (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) vyjádřený v [dotazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) , který porovnává hodnotu prázdného řetězce ('**'**) s **hodnotou null** , se chová stejným způsobem: `$event.siteid.String = NULL` je ekvivalentem `$event.siteid.String = ''` .
+> * Rozhraní API může vracet hodnoty **null** i v případě, že původní události obsahovaly prázdné řetězce.
+> * Nepoužívejte závislost na hodnotách **null** ve sloupcích **řetězců** k provedení porovnání nebo vyhodnocení, považovat je za stejným způsobem jako prázdné řetězce.
 
 ## <a name="sending-mixed-data-types"></a>Posílání smíšených datových typů
 

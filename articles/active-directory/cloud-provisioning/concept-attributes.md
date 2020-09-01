@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299325"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226926"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
 Objekt v Azure Active Directory (Azure AD), podobně jako jakýkoli adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty. Když vytvoříte nového uživatele nebo kontakt ve službě Azure AD, vytváříte novou instanci tohoto objektu. Tyto instance se můžou odlišit na základě jejich vlastností.
@@ -51,7 +51,7 @@ Například pokud byste měli atribut mail "" a museli byste john.smith@contoso.
 * **Vstup** (pošta): " john.smith@contoso.com "
 * **Výstup**: Jan. Smith
 
-Další informace o tom, jak napsat vlastní výrazy a syntaxi, najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Další informace o tom, jak napsat vlastní výrazy a syntaxi, najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 
 V následující tabulce jsou uvedeny běžné atributy a jejich synchronizace do služby Azure AD.
 

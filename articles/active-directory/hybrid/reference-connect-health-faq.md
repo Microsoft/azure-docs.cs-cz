@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718539"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182373"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy obsahují otázky týkající se používání služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -70,10 +70,10 @@ Azure AD Connect Health není v německém cloudu podporován s výjimkou [funkc
 
 | Role | Funkce | Podporováno v německém cloudu |
 | ------ | --------------- | --- |
-| Připojit stav pro synchronizaci | Monitorování/Insight/výstrahy/analýza | No |
-|  | Zpráva o chybách synchronizace | Yes |
-| Connect Health pro AD FS | Monitorování/Insight/výstrahy/analýza | No |
-| Připojit stav pro přidání | Monitorování/Insight/výstrahy/analýza | No |
+| Připojit stav pro synchronizaci | Monitorování/Insight/výstrahy/analýza | Ne |
+|  | Zpráva o chybách synchronizace | Ano |
+| Connect Health pro AD FS | Monitorování/Insight/výstrahy/analýza | Ne |
+| Připojit stav pro přidání | Monitorování/Insight/výstrahy/analýza | Ne |
 
 Aby bylo zajištěno připojení agenta ke službě Connect Health pro synchronizaci, nakonfigurujte prosím odpovídající [požadavky na instalaci](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) .
 
@@ -98,13 +98,13 @@ Následující čísla představují aproximaci:
 
 **Otázka: bude nutné restartovat servery během instalace agentů Azure AD Connect Health?**
 
-Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
+No. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
 
 Například v systému Windows Server 2008 R2 vyžaduje instalace rozhraní .NET 4,5 restartování serveru.
 
 **Otázka: provádí Azure AD Connect Health práci prostřednictvím předávacího proxy serveru HTTP?**
 
-Ano. U probíhajících operací můžete nakonfigurovat agenta stavu tak, aby používal proxy server HTTP k přeposílání odchozích požadavků HTTP.
+Yes. U probíhajících operací můžete nakonfigurovat agenta stavu tak, aby používal proxy server HTTP k přeposílání odchozích požadavků HTTP.
 Přečtěte si další informace o [konfiguraci proxy serveru HTTP pro agenty stavu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
 Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může být nutné změnit nastavení proxy serveru aplikace Internet Explorer předem.
@@ -115,7 +115,7 @@ Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může 
 
 **Otázka: podporuje Azure AD Connect Health základní ověřování při připojování k proxy HTTP?**
 
-Ne. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
+No. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
 
 **Otázka: jaké porty brány firewall potřebuji k tomu, aby mohl agent Azure AD Connect Health fungovat?**
 
@@ -137,7 +137,7 @@ Registraci agenta stavu z následujících možných důvodů se může zdařit:
 
 * Agent nemůže komunikovat s požadovanými koncovými body, protože brána firewall blokuje provoz. To je zvláště běžné na proxy serverech webových aplikací. Ujistěte se, že jste povolili odchozí komunikaci s požadovanými koncovými body a porty. Podrobnosti najdete v [části požadavky](how-to-connect-health-agent-install.md#requirements) .
 * Odchozí komunikace se řídí kontrolou TLS v síťové vrstvě. To způsobí, že certifikát, který agent používá, bude nahrazen kontrolním serverem nebo entitou a kroky pro dokončení registrace agenta selžou.
-* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. K delegování přístupu jiným uživatelům můžete použít [řízení přístupu na základě role Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) .
+* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. K delegování přístupu jiným uživatelům můžete použít [řízení přístupu na základě role Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) .
 
 **Otázka: zobrazuje se upozornění, že "Health Service data nejsou aktuální." Návody řešení problému?**
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 927908fa708e7e687bf82400c10e08fbcccdef19
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 66649bff609e59f0de04bc56b434a2c3d0eedc8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145021"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181914"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -28,7 +28,8 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 
 * [Řady B-Series](../sizes-b-series-burstable.md)
 * [DCsv2-Series](../dcv2-series.md)
-* Řady [DSv2-Series](../dv2-dsv2-series.md) a [Dsv3-Series](../dv3-dsv3-series.md)
+* [Dsv2-Series](../dv2-dsv2-series.md) 
+* [Dsv3-series](../dv3-dsv3-series.md)
 * [Dsv4-Series](../dv4-dsv4-series.md)
 * [Ddsv4-Series](../ddv4-ddsv4-series.md)
 * [Dasv4-Series](../dav4-dasv4-series.md)
@@ -38,10 +39,12 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady GS](../sizes-previous-gen.md#gs-series)
 * [Řada HB](../hb-series.md)
 * [Řada HC](../hc-series.md)
-* [Ls-series](../sizes-previous-gen.md#ls-series) a [Lsv2-Series](../lsv2-series.md)
+* [Řada ls-series](../sizes-previous-gen.md#ls-series) 
+* [Řada Lsv2](../lsv2-series.md)
 * [Řada M](../m-series.md)
 * [Mv2-Series](../mv2-series.md)<sup>1</sup>
-* Řady [NCv2-Series](../ncv2-series.md) a [NCv3-Series](../ncv3-series.md)
+* [Řada NCv2](../ncv2-series.md)
+* [Řada NCv3](../ncv3-series.md)
 * [Řada ND](../nd-series.md)
 * [Řada NVv3](../nvv3-series.md)
 
@@ -80,7 +83,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 |---------|--------------|--------------|
 | Spouštění             | PCAT         | UEFI |
 | Řadiče disku | IDE – integrované vývojové prostředí          | SCSI |
-| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
+| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | [Zobrazit dostupné velikosti](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
 
@@ -100,7 +103,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Níže jsou uvedené kroky k vytvoření virtuálního počítače generace 2 (Gen2) v Azure Portal.
 

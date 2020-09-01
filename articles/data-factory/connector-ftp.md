@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: 8df3331e19a82011d2e36fcd5c55c9e19b99490b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 128a4c566dd1a58969df0741ddd59b74cc583e92
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051181"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182254"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru FTP pomocí Azure Data Factory
 
@@ -44,7 +44,7 @@ Konkrétně tento konektor FTP podporuje:
 
 Konektor FTP podporuje server FTP běžící v pasivním režimu. Aktivní režim není podporován.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

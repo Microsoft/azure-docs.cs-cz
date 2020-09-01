@@ -1,7 +1,7 @@
 ---
 title: Pokyny pro značky aplikace | Azure
 titleSuffix: Microsoft identity platform
-description: Komplexní průvodce prostředky služby Azure Active Directory určenými pro vývojáře
+description: Seznamte se s pokyny pro branding aplikací pro platformu Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,25 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117290"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226637"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
-Při nasazování aplikací s Azure Active Directory (Azure AD) budete muset vést vaše zákazníky v případě, že se pomocí svého pracovního nebo školního účtu (spravovaného v Azure AD) nebo osobního účtu budou chtít zaregistrovat nebo přihlásit k vaší aplikaci.
+Při vývoji aplikací s platformou Microsoft identity je potřeba nasměrovat zákazníky, kteří chtějí používat svůj pracovní nebo školní účet (spravovaný ve službě Azure AD), nebo svůj osobní účet pro registraci a přihlášení k vaší aplikaci.
 
 V tomto článku provedete následující:
 
 - Dozvíte se další informace o těchto dvou typech uživatelských účtů spravovaných Microsoftem a tom, jak odkazovat na účty Azure AD v aplikaci.
-- Zjistíte, co je potřeba udělat, abyste přidali logo Microsoftu pro použití ve vaší aplikaci.
+- Zjistěte, co je potřeba udělat, abyste přidali logo Microsoftu pro použití ve vaší aplikaci.
 - Stáhnete si oficiální obrázky **Přihlásit se** nebo **Přihlásit se účtem Microsoft** pro použití ve vaší aplikaci.
 - Seznámíte se s tím, co lze a nelze dělat při brandingu a navigaci.
 
@@ -38,7 +38,7 @@ Microsoft spravuje dva druhy uživatelských účtů:
 - **Osobní účty** (dříve označované jako Windows Live ID). Tyto účty představují vztah mezi *jednotlivými* uživateli a Microsoftem a používají se k přístupu k uživatelským zařízením a službám od Microsoftu. Tyto účty jsou určené k osobnímu použití.
 - **Pracovní nebo školní účty**. Tyto účty spravuje Microsoft jménem organizace využívající Azure Active Directory. Tyto účty se používají k přihlašování k Office 365 a dalším obchodním službám Microsoftu.
 
-Pracovní nebo školní účty Microsoft obvykle přiřazují koncovým uživatelům (zaměstnanci, studenti, federální zaměstnanci) jejich organizace (společnost, škola, orgán státní správy). Tyto účty se spravují přímo v cloudu (na platformě Azure AD) nebo se synchronizují do Azure AD z místního adresáře, jako je například Windows Server Active Directory. Microsoft je *správcem* pracovních nebo školních účtů, ale organizace tyto účty vlastní a řídí.
+Pracovní nebo školní účty Microsoft obvykle přiřazují koncovým uživatelům (zaměstnanci, studenti, federální zaměstnanci) jejich organizace (společnost, škola, orgán státní správy). Tyto účty jsou nařízené přímo v cloudu (na platformě Azure AD) nebo synchronizované s Azure AD z místního adresáře, jako je Windows Server Active Directory. Microsoft je *správcem* pracovních nebo školních účtů, ale organizace tyto účty vlastní a řídí.
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Odkazování na účty Azure AD v aplikaci
 
@@ -67,7 +67,7 @@ Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je 
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
 > *Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, můžete udělit <your_app_name> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
 

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e95f635cfb354487298b340f8f25b15c3ca146a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087711"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181846"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Kurz: Příprava na nasazení Azure Stack Edge  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Kurz: Příprava na nasazení Azure Stack Edge pomocí GPU 
 
-Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stack Edge. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku.
+Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stack Edge s grafickým procesorem. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku.
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
@@ -46,8 +46,9 @@ Pro nasazení Azure Stack Edge musíte nejprve připravit prostředí. Jakmile j
 |**[5. Konfigurace nastavení zařízení pro Azure Stack Edge](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Přiřaďte název zařízení a doménu DNS, nakonfigurujte server aktualizací a čas zařízení. |
 |**[6. Konfigurace nastavení zabezpečení pro Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Nakonfigurujte certifikáty pro vaše zařízení. Použijte certifikáty vygenerované zařízením nebo využijte vlastní certifikáty.   |
 |**[7. aktivace hraničního Azure Stack](azure-stack-edge-gpu-deploy-activate.md)** |K aktivaci zařízení použijte aktivační klíč ze služby. Zařízení je připravené nastavovat sdílené složky SMB nebo NFS nebo je připojit prostřednictvím REST. |
-|**[8a. Přenos dat pomocí hraničních sdílení](azure-stack-edge-j-series-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
-|**[8B. Přenos dat pomocí hraničních účtů úložiště](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Přidejte účty úložiště a připojte se k úložišti objektů BLOB prostřednictvím rozhraní REST API. |
+|**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Tím se také vytvoří cluster Kubernetes. |
+|**[9a. Přenos dat pomocí hraničních sdílení](azure-stack-edge-j-series-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
+|**[9b. Přenos dat pomocí hraničních účtů úložiště](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Přidejte účty úložiště a připojte se k úložišti objektů BLOB prostřednictvím rozhraní REST API. |
 
 
 Teď můžete začít shromažďovat informace týkající se konfigurace softwaru pro zařízení Azure Stack Edge.
@@ -57,7 +58,7 @@ Teď můžete začít shromažďovat informace týkající se konfigurace softwa
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční zdroj, vaše zařízení Azure Stack Edge a síť datacenter.
 
@@ -104,7 +105,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
 1. Pomocí přihlašovacích údajů pro Microsoft Azure se přihlaste k Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com) .
 
-2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Vytvořit**.
+2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Create** (Vytvořit). Pokud se zobrazí nějaké problémy, přejděte k tématu [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
 
 3. Vyberte předplatné, které chcete použít pro Azure Stack hraniční zařízení. Vyberte zemi, do které chcete toto fyzické zařízení dodávat. Vyberte **Zobrazit zařízení**.
 
@@ -118,7 +119,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Vytvoření prostředku 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
-5. Po povolení předplatného byste měli být schopní pokračovat v vytváření prostředků. V okně **Vybrat typ zařízení** zvolte **Vybrat**. 
+5. Po povolení předplatného byste měli být schopní pokračovat v vytváření prostředků. V okně **Vybrat typ zařízení** zvolte **Vybrat**.
 
     ![Vytvoření prostředku 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
 
@@ -156,7 +157,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Vytvoření prostředku 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
 
-8. Vyberte **Vytvořit**.
+8. Vyberte **Create** (Vytvořit).
 
 Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte **Přejít k prostředku**.
 
@@ -165,6 +166,8 @@ Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasa
 Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
 
 ![Oznámení pro revizi pořadí Azure Stack Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+Pokud narazíte na problémy v průběhu procesu objednávky, přečtěte si téma [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
 
 ## <a name="get-the-activation-key"></a>Získání aktivačního klíče
 

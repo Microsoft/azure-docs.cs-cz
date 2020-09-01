@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cfafb47e6d5fcde2858e7329b5b8ef3a0e0b241e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c0581a79bda4ae4e311390f5b2d929073e0833d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087701"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182016"
 ---
 # <a name="tutorial-configure-device-settings-for-azure-stack-edge-with-gpu"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack Edge pomocí GPU
 
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nakonfigurujete nastavení související s zařízením na zařízení Azure Stack Edge pomocí GPU, ujistěte se, že:
 
@@ -59,16 +59,17 @@ Pomocí těchto kroků můžete nakonfigurovat nastavení týkající se zaříz
 
         ![Stránka místního webového uživatelského rozhraní (zařízení)](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
-        Pokud jste změnili název zařízení a doménu DNS, nebudou automaticky generované certifikáty podepsané svým držitelem v zařízení fungovat. Musíte vybrat jednu z následujících možností: 
+        Pokud jste změnili název zařízení a doménu DNS, nebudou automaticky generované certifikáty podepsané svým držitelem v zařízení fungovat. Při konfiguraci certifikátů je potřeba vybrat jednu z následujících možností: 
         
         - Vygenerujte a stáhněte certifikáty zařízení. 
         - Přineste si vlastní certifikáty pro zařízení včetně podpisového řetězce.
+    
 
         ![Stránka místního webového uživatelského rozhraní (zařízení)](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
 
-    4. Když se změní název zařízení a doména DNS, vytvoří se koncové body SMB a NFS. 
+    4. Když se změní název zařízení a doména DNS, vytvoří se koncové body SMB a NFS.  
 
-    4. Po použití nastavení se **vraťte na začátek**.
+    5. Po použití nastavení se **vraťte na začátek**.
 
 ## <a name="configure-update"></a>Konfigurace aktualizace
 
@@ -128,7 +129,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas

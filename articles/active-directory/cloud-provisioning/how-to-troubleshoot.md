@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256862"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226943"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
@@ -120,9 +120,9 @@ Při instalaci agenta zřizování cloudu se může zobrazit chybová zpráva.
 
 K tomuto problému obvykle dochází v důsledku toho, že agent nedokáže spustit registrační skripty PowerShellu kvůli zásadám spouštění v prostředí PowerShell.
 
-Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
-### <a name="log-files"></a>Soubory protokolu
+### <a name="log-files"></a>Soubory protokolů
 
 Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
 
@@ -195,7 +195,7 @@ Výběrem stavu můžete zobrazit další informace o karanténě. Můžete tak�
 
   ![Restartovat zřizování](media/how-to-troubleshoot/quarantine3.png)
 
-- [Restartujte úlohu zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zrušit výběr:
+- [Restartujte úlohu zřizování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zrušit výběr:
   - Escrows pro restartování čítače v úschově, který se bude nabíhat směrem k karanténě stavu.
   - Umístit do karantény, aby se aplikace odstranila z karantény.
   - Vodoznaky. 
@@ -208,6 +208,3 @@ Výběrem stavu můžete zobrazit další informace o karanténě. Můžete tak�
 
 - [Co je zřizování?](what-is-provisioning.md)
 - [Co je zřízení cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
-
-
-

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271258"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226203"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření vlastního sešitu pomocí šablony pro rychlý Start
 > * Přidat dotaz do existující šablony sešitu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure s alespoň jedním správcem licencované licence P1. Pokud nemáte předplatné Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 
@@ -41,15 +41,15 @@ V tomto kurzu se naučíte:
 
 Seznamte se s těmito články:
 
-- [Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [Jak integrovat protokoly aktivit pomocí Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit pomocí Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Správa účtu pro nouzový přístup v Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Správa účtu pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
 
-- [Stručná referenční příručka ke KQL](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [Stručná referenční příručka ke KQL](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Monitor sešity](../../azure-monitor/platform/workbooks-overview.md)
 
 
 

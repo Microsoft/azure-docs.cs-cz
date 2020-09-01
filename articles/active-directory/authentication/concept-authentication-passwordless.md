@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226671"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
 Funkce, jako je Multi-Factor Authentication (MFA), jsou skvělým způsobem, jak zabezpečit vaši organizaci, ale uživatelé často získají frustrovaní s dodatečnou vrstvou zabezpečení, která si musí pamatovat hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co máte, a něco vás nebo něco znáte.
 
-| Authentication  | Něco, co máte | Něco, co se vám nebo znáte |
+| Ověřování  | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
 | Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
@@ -114,6 +114,8 @@ Bezpečnostní klíč **musí** implementovat následující funkce a rozšíře
 | 2 | Kód PIN klienta | Tato funkce umožňuje chránit vaše přihlašovací údaje pomocí druhého faktoru a vztahuje se na klíče zabezpečení, které nemají uživatelské rozhraní. |
 | 3 | HMAC – tajný klíč | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
 | 4 | Více účtů na RP | Tato funkce zajišťuje, že můžete použít stejný bezpečnostní klíč v rámci více služeb, jako je například účet Microsoft a Azure Active Directory. |
+
+### <a name="fido2-security-key-providers"></a>FIDO2 zprostředkovatelé zabezpečení klíčů
 
 Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím bez hesla. Pro vyhodnocení vlastností zabezpečení těchto klíčů doporučujeme, abyste se obrátili na dodavatele i na FIDO Alliance.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146755"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226790"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -80,10 +80,10 @@ Balíčky Pythonu jsou nainstalované v prostředí **python 3,6-AzureML** .
 
 ### <a name="installing-packages"></a>Instalace balíčků
 
-Balíčky můžete nainstalovat přímo do poznámkového bloku Jupyter nebo RStudio:
+Balíčky můžete nainstalovat přímo do Jupyter Notebook nebo RStudio:
 
 * RStudio použijte kartu **balíčky** v pravém dolním rohu nebo kartu **Konzola** v levém horním rohu.  
-* Python: přidejte instalační kód a spusťte ho v buňce Jupyter poznámkového bloku.
+* Python: přidejte instalační kód a proveďte v Jupyter Notebook buňce.
 
 Případně můžete k oknu terminálu přistupovat některým z těchto způsobů:
 

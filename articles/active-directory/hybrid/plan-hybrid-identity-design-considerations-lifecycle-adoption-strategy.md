@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbbc86b44c95219677b520cc54fbad51be06104a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109318"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182407"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí hybridního životního cyklu identit
 V této úloze definujete strategii správy identit pro vaše řešení hybridní identity, aby splňovala podnikové požadavky, které jste definovali v části [určení úloh správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -36,13 +36,13 @@ Díky kvalitnímu řešení pro správu přístupu k účtu může vaše organiz
 
 Mezi účty v propracovaných IT firmách patří stovky parametrů, které definují autority, a tyto podrobnosti můžou být řízeny vaším systémem zřizování. Nové uživatele je možné identifikovat pomocí dat, která zadáte z autoritativního zdroje. Možnost schválení žádosti o přístup zahájí procesy, které schvalují (nebo zamítnou) zřizování prostředků pro ně.
 
-| Fáze správy životního cyklu | Místní | Cloud | Hybridní |
+| Fáze správy životního cyklu | Místně | Cloud | Hybridní |
 | --- | --- | --- | --- |
 | Správa účtů a zřizování |Pomocí role serveru AD DS (Active Directory® Domain Services) můžete vytvářet škálovatelnou, zabezpečenou a zvladatelnou infrastrukturu pro správu uživatelů a prostředků a poskytovat podporu pro aplikace pro práci s adresáři, jako je Microsoft® Exchange Server. <br><br> [Skupiny v služba AD DS můžete zřídit prostřednictvím Správce identit.](https://technet.microsoft.com/library/ff686261.aspx) <br>[Uživatele můžete zřídit v služba AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Správci můžou pomocí řízení přístupu spravovat přístup uživatelů ke sdíleným prostředkům z bezpečnostních důvodů. Řízení přístupu ve službě Active Directory je spravováno na úrovni objektu nastavením různých úrovní přístupu nebo oprávnění k objektům, jako je úplné řízení, zápis, čtení nebo bez přístupu. Řízení přístupu ve službě Active Directory definuje, jak můžou různí uživatelé používat objekty služby Active Directory. Ve výchozím nastavení jsou oprávnění k objektům ve službě Active Directory nastavena na nejbezpečnější nastavení. |Musíte vytvořit účet pro každého uživatele, který bude mít přístup ke cloudové službě Microsoftu. Můžete také změnit uživatelské účty nebo je odstranit, pokud už je nepotřebujete. Ve výchozím nastavení nemají uživatelé oprávnění správce, ale můžete je volitelně přiřadit. <br><br> V rámci Azure Active Directory je jednou z hlavních funkcí schopnost spravovat přístup k prostředkům. Tyto prostředky mohou tvořit součást adresáře jako v případě oprávnění ke správě objektů prostřednictvím rolí v adresáři, nebo prostředků, které jsou pro adresář externí, jako jsou aplikace SaaS, služby Azure a sharepointové weby nebo místní prostředky. <br><br> Ve středu řešení pro správu přístupu Azure Active Directory je skupina zabezpečení. Vlastník prostředku (nebo správce adresáře) může přiřadit skupinu poskytující určité přístupové právo k prostředkům, které vlastní. Členové skupiny budou mít přístup a vlastník prostředku může delegovat právo na správu seznamu členů skupiny na někoho jiného, jako je například manažer oddělení nebo správce helpdesku.<br> <br> Část Správa skupin v Azure AD poskytuje další informace o správě přístupu prostřednictvím skupin. |Rozšíří identity služby Active Directory do cloudu prostřednictvím synchronizace a federace. |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
-Řízení přístupu na základě role (RBAC) využívá role a zásady zřizování k vyhodnocení, testování a prosazování vašich obchodních procesů a pravidel pro udělení přístupu uživatelům. Správci klíčů vytvářejí zásady zřizování a přiřazují uživatele k rolím a definují sady nároků na prostředky pro tyto role. RBAC rozšiřuje řešení pro správu identit, aby používala softwarové procesy, a v procesu zřizování omezila ruční interakci s uživatelem.
-Služba Azure AD RBAC umožňuje společnosti omezit počet operací, které může jednotlivec provést, jakmile budou mít přístup k Azure Portal. Když použijete RBAC k řízení přístupu k portálu, správci IT můžou přístup delegovat pomocí následujících přístupů ke správě přístupu:
+Řízení přístupu na základě role v Azure (Azure RBAC) využívá role a zásady zřizování k vyhodnocení, testování a prosazování vašich obchodních procesů a pravidel pro udělení přístupu uživatelům. Správci klíčů vytvářejí zásady zřizování a přiřazují uživatele k rolím a definují sady nároků na prostředky pro tyto role. Azure RBAC rozšiřuje řešení pro správu identit, aby používala softwarové procesy, a snížilo ruční interakci uživatelů během procesu zřizování.
+Azure RBAC umožňuje společnosti omezit počet operací, které může jednotlivec provádět, jakmile budou mít přístup k Azure Portal. Když použijete službu Azure RBAC k řízení přístupu k portálu, správci IT můžou přístup delegovat pomocí následujících přístupů ke správě přístupu:
 
 * **Přiřazení role na základě skupin**: můžete přiřadit přístup ke SKUPINÁM Azure AD, které se dají synchronizovat z vaší místní služby Active Directory. Díky tomu můžete využívat stávající investice, které vaše organizace provedla při správě skupin a jejich zpracování. Můžete také použít funkci delegovaná Správa skupin Azure AD Premium.
 * **Využijte integrované role v Azure**: můžete použít tři role, vlastníka, přispěvatele a čtenáře, abyste zajistili, že uživatelé a skupiny mají oprávnění dělat jenom úkoly, které potřebují ke své práci.

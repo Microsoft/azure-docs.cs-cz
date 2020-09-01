@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 40310ad5aab20b6501cead8d408743fbd584d667
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 62c4813caa1d35f20824223c77fb3a652b0cc6b8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051266"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182574"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 

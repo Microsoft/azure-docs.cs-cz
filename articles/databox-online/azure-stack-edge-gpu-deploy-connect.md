@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c98d6644dba0b3ca51f07f01ec27fee697369f2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 90f9fcc7bbac3164b4e620674bd64d026c11badb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087723"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181829"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Kurz: připojení k Azure Stack Edge pomocí GPU
 
@@ -26,11 +26,11 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Připojení k fyzickému zařízení
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GPU se ujistěte, že:
 
@@ -45,9 +45,11 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pomocí GP
 
     ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
+    Rozdílné zařízení může vypadat trochu jinak, v závislosti na přesném modelu, který jste dostali.
+
 
 3. Otevřete okno prohlížeče a přejděte k místnímu webovému uživatelskému rozhraní zařízení v `https://192.168.100.10` .  
-    Tato akce může trvat několik minut, než se zařízení zapnete. 
+    Tato akce může trvat několik minut, než se zařízení zapnete.
 
     Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu. 
    
@@ -71,7 +73,7 @@ Teď jste na stránce **Přehled** svého zařízení. Dalším krokem je konfig
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Připojení k fyzickému zařízení
 
 

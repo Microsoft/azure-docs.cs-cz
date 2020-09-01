@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/16/2020
-ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/18/2020
+ms.openlocfilehash: 0f6b1789a5148af37ddd2d0895cec348c27f663a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522767"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182486"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování 
 
@@ -37,7 +37,7 @@ Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selekt
 
 ![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
 
-##  <a name="supported-source-types"></a><a name="supported-sources"></a>Podporované typy zdrojů
+##  <a name="supported-source-types"></a><a name="supported-sources"></a> Podporované typy zdrojů
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
 
@@ -49,8 +49,9 @@ Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (EL
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Nastavení specifická pro tyto konektory se nachází na kartě **Možnosti zdrojového kódu** . Příklady skriptu informace a toku dat v těchto nastaveních najdete v dokumentaci k konektoru. 
+Nastavení specifická pro tyto konektory jsou umístěna na kartě **Možnosti zdrojového kódu** . Příklady skriptu informace a toku dat v těchto nastaveních se nachází v dokumentaci konektoru. 
 
 Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
 

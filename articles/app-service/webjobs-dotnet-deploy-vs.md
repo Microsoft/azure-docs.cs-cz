@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959897"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226025"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio
 
@@ -184,9 +184,9 @@ Informace o nasazení úlohy WebJob:
 
 Typ webové úlohy může být buď *aktivován* , nebo *průběžně*:
 
-- Aktivované (výchozí): aktivovaná webová úloha se spustí v závislosti na události vazby, podle [plánu](#scheduling-a-triggered-webjob)nebo na ruční aktivaci (na vyžádání). Spustí se ve všech instancích, na kterých běží webová aplikace, ale můžete volitelně omezit webovou úlohu na jedinou instanci.
+- Aktivované (výchozí): aktivovaná webová úloha se spustí v závislosti na události vazby, podle [plánu](#scheduling-a-triggered-webjob)nebo na ruční aktivaci (na vyžádání). Spouští se na jedné instanci, na které běží webová aplikace.
 
-- Průběžné: [nepřetržitá](#continuous-execution) webová úloha se spustí hned po vytvoření webové úlohy. Tento typ webové úlohy je nejvhodnější pro nevázané nebo dlouhotrvající úlohy. Pokud úloha skončí, můžete ji restartovat.  
+- Průběžné: [nepřetržitá](#continuous-execution) webová úloha se spustí hned po vytvoření webové úlohy. Ve výchozím nastavení běží na všech instancích se škálováním webové aplikace, ale dá se nakonfigurovat tak, aby se spouštěla jako jediná instance prostřednictvím *nastavení. job*.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

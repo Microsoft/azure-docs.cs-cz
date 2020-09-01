@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování úloh DPM
 description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 7b4e63e94599b1445a7244018e00999df8365cd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4f0364ef218d346149191e168540eed4827001de
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014672"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182458"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
@@ -262,7 +262,7 @@ Každý agent DPM ví seznam zdrojů dat na serveru, na kterém je nainstalován
 3. Načte seznam všech zdrojů dat na serveru.
 4. Vyberte jeden nebo více zdrojů dat a přidejte je do skupiny ochrany.
 
-Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PowerShell s názvem *productionserver01* , který se bude zálohovat.
+Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PowerShell s názvem *productionserver01* pro zálohování.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

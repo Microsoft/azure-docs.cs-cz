@@ -4,16 +4,16 @@ description: Přečtěte si, jak omezit webový provoz pomocí brány firewall w
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50aaf4f2639f48e5536e6eeaba5edbc246b2bba7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: faa46b3ad96e9555a08a662f205a0a130c28bac2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501061"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225165"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
 
@@ -21,17 +21,16 @@ Můžete omezit provoz brány Application Gateway pomocí [brány firewall webov
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvoření účtu úložiště a konfigurace diagnostiky
+ * Nastavit síť
+ * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
+ * Vytvoření škálovací sady virtuálních počítačů
+ * Vytvoření účtu úložiště a konfigurace diagnostiky
 
 ![Příklad brány firewall webových aplikací](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -1,25 +1,25 @@
 ---
-title: Správa verzí objektů BLOB (Preview)
+title: Správa verzí objektů BLOB
 titleSuffix: Azure Storage
-description: Správa verzí úložiště objektů BLOB (Preview) automaticky udržuje předchozí verze objektu a identifikuje je pomocí časových razítek. Předchozí verze objektu blob můžete obnovit, aby se data obnovila, pokud se omylem změnila nebo odstranila.
+description: Správa verzí úložiště objektů BLOB automaticky udržuje předchozí verze objektu a identifikuje je pomocí časových razítek. Předchozí verze objektu blob můžete obnovit, aby se data obnovila, pokud se omylem změnila nebo odstranila.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074530"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226258"
 ---
-# <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
+# <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
-Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage (Preview).  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
+Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage.  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
 
 Správa verzí objektů BLOB je povolená v účtu úložiště a platí pro všechny objekty BLOB v účtu úložiště. Po povolení správy verzí objektů BLOB pro účet úložiště Azure Storage automaticky zachovává verze všech objektů BLOB v účtu úložiště.
 
@@ -41,6 +41,10 @@ Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob
 Když odstraníte objekt BLOB s povoleným správou verzí, Azure Storage vytvoří verzi, která před odstraněním zachytí stav objektu BLOB. Aktuální verze objektu BLOB se pak odstraní, ale verze objektu BLOB jsou trvalé, takže je v případě potřeby možné znovu vytvořit. 
 
 Verze objektů BLOB jsou neměnné. Nemůžete změnit obsah nebo metadata existující verze objektu BLOB.
+
+Správa verzí objektů BLOB je k dispozici pro obecné účely v2, objekty blob bloku a účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
+
+Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
 
 ### <a name="version-id"></a>ID verze
 
@@ -108,7 +112,7 @@ K automatizaci procesu přesunu objektů blob bloku do příslušné úrovně po
 
 ## <a name="enable-or-disable-blob-versioning"></a>Povolit nebo zakázat správu verzí objektů BLOB
 
-Informace o tom, jak povolit nebo zakázat správu verzí objektů blob, najdete v tématu [Povolení nebo zakázání správy verzí objektů BLOB](versioning-enable.md).
+Informace o tom, jak povolit nebo zakázat správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
 
 Zakázání správy verzí objektů BLOB neodstraní existující objekty blob, verze ani snímky. Když vypnete správu verzí objektů blob, všechny existující verze budou v účtu úložiště dostupné. Následně se nevytvoří žádné nové verze.
 
@@ -196,134 +200,95 @@ Následující tabulka uvádí oprávnění požadovaná na SAS k odstranění v
 |----------------|----------------|------------------------|
 | Odstranit         | x              | Odstraní verzi objektu BLOB. |
 
-## <a name="about-the-preview"></a>O verzi Preview
-
-Správa verzí objektů BLOB je dostupná ve verzi Preview v následujících oblastech:
-
-- USA – východ 2
-- Střední USA
-- Severní Evropa
-- Západní Evropa
-- Francie – střed
-- Kanada – východ
-- Střední Kanada
-
-> [!IMPORTANT]
-> Verze Preview objektu BLOB je určená jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
-
-Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
-
-### <a name="storage-account-support"></a>Podpora účtu úložiště
-
-Správa verzí objektů BLOB je dostupná pro následující typy účtů úložiště:
-
-- Účty úložiště pro obecné účely v2
-- Zablokovat účty úložiště objektů BLOB
-- Účty úložiště Blob
-
-Pokud je váš účet úložiště účet pro obecné účely V1, použijte Azure Portal k upgradu na účet pro obecné účely v2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
-
-Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
-
-### <a name="register-for-the-preview"></a>Zaregistrovat se pro verzi Preview
-
-Pokud se chcete zaregistrovat ve verzi Preview, použijte PowerShell nebo Azure CLI a odešlete žádost o registraci funkce v rámci vašeho předplatného. Po schválení žádosti můžete povolit správu verzí objektů BLOB pomocí všech nových nebo existujících účtů úložiště blob bloku s obecným účelem v2, BLOB Storage nebo Premium.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az-feature-register) .
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Ověření stavu registrace
-
-Pokud chcete zjistit stav registrace, použijte PowerShell nebo Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
 Povolení správy verzí objektů BLOB může mít za následek další poplatky za úložiště dat vašeho účtu. Při návrhu aplikace je důležité vědět, jak se tyto poplatky můžou snížit, abyste mohli minimalizovat náklady.
 
-Verze objektů blob, jako jsou snímky objektů blob, se účtují stejnou sazbou jako aktivní data. Pokud verze sdílí bloky nebo stránky s jeho základním objektem blob, platíte jenom za všechny další bloky nebo stránky, které nejsou sdílené mezi verzí a základním objektem BLOB.
+Verze objektů blob, jako jsou snímky objektů blob, se účtují stejnou sazbou jako aktivní data. Způsob, jakým se účtují verze, záleží na tom, jestli jste explicitně nastavili vrstvu základního objektu BLOB nebo pro kteroukoli z jeho verzí (nebo snímků). Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md).
+
+Pokud jste nezměnili úroveň objektu BLOB nebo verze, budou se vám účtovat jedinečné bloky dat v rámci tohoto objektu blob, jeho verze a jakékoli snímky, které může mít. Další informace najdete v tématu [fakturace, pokud nebyla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Pokud jste změnili úroveň objektu BLOB nebo verze, bude se vám účtovat celý objekt bez ohledu na to, jestli je objekt BLOB a verze nakonec ve stejné vrstvě. Další informace najdete v tématu [fakturace, pokud byla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-been-explicitly-set).
 
 > [!NOTE]
 > Povolení správy verzí pro často přepsaná data může vést ke zvýšení poplatků za kapacitu úložiště a zvýšené latenci během výpisu operací. Aby se tyto otázky zmírnily, ukládejte často přepsaná data v samostatném účtu úložiště s vypnutou správou verzí.
 
-### <a name="important-billing-considerations"></a>Důležité informace o fakturaci
+Další informace o fakturaci pro snímky objektů BLOB najdete v tématu [snímky objektů BLOB](snapshots-overview.md).
 
-Při povolování správy verzí objektů BLOB nezapomeňte vzít v úvahu následující body:
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Fakturace v případě, že vrstva objektů BLOB nebyla explicitně nastavena
 
-- Váš účet úložiště se za jedinečné bloky nebo stránky účtuje bez ohledu na to, jestli jsou v objektu BLOB nebo v předchozí verzi objektu BLOB. K vašemu účtu se neúčtují další poplatky za verze přidružené k objektu blob, dokud neaktualizujete objekt blob, na kterém jsou založené. Po aktualizaci se objekt BLOB odliší od předchozích verzí. Pokud k tomu dojde, budou se vám účtovat jedinečné bloky nebo stránky v jednotlivých objektech blob nebo ve verzi.
-- Když nahradíte blok v rámci objektu blob bloku, tento blok se následně účtuje jako jedinečný blok. To platí i v případě, že má blok stejné ID bloku a stejná data jako ve verzi. Po opětovném potvrzení bloku se odliší od jeho protějšku v jakékoli verzi a bude vám účtováno za jeho data. Totéž platí pro stránku v objektu blob stránky, který je aktualizovaný se stejnými daty.
-- Úložiště objektů BLOB nemá způsob, jak určit, zda dva bloky obsahují identická data. Každý blok, který je nahraný a potvrzený, se považuje za jedinečný, a to i v případě, že má stejná data a stejné ID bloku. Vzhledem k tomu, že se poplatky za jedinečné bloky dostanou, je důležité vzít v úvahu, že pokud je povolená Správa verzí, budete mít za následek další jedinečné bloky a další poplatky za aktualizaci objektu BLOB.
-- Pokud je povolená Správa verzí objektů blob, navrhněte operace aktualizace pro objekty blob bloku tak, aby aktualizovaly nejnižší možný počet bloků. Operace zápisu, které umožňují jemně odstupňovanou kontrolu nad bloky, jsou [vloženy do bloku](/rest/api/storageservices/put-block) a [seznamu blokovaných umístění](/rest/api/storageservices/put-block-list). Operace [Put BLOB](/rest/api/storageservices/put-blob) na druhé straně nahrazuje celý obsah objektu blob, takže může vést k dalším poplatkům.
+Pokud jste vrstvu objektů BLOB pro základní objekt BLOB nebo některou z jeho verzí nestavili explicitně, budou se vám účtovat jedinečné bloky nebo stránky v rámci objektu blob, jeho verze a všechny snímky, které může mít. Data sdílená v rámci objektu BLOB a její verze se účtují jenom jednou. Po aktualizaci objektu BLOB se data v základním objektu BLOB odchylují od dat uložených ve svých verzích a jedinečná data se účtují podle bloku nebo stránky.
 
-### <a name="versioning-billing-scenarios"></a>Scénáře fakturace správy verzí
+Když nahradíte blok v rámci objektu blob bloku, tento blok se následně účtuje jako jedinečný blok. To platí i v případě, že má blok stejné ID bloku a stejná data jako v předchozí verzi. Až se blok znovu potvrdí, odliší se od jeho protějšku v předchozí verzi a bude vám účtováno za jeho data. Totéž platí pro stránku v objektu blob stránky, který je aktualizovaný se stejnými daty.
 
-Následující scénáře ukazují, jak se účtují poplatky za objekt blob bloku a jeho verze.
+Úložiště objektů BLOB nemá způsob, jak určit, zda dva bloky obsahují identická data. Každý blok, který je nahraný a potvrzený, se považuje za jedinečný, a to i v případě, že má stejná data a stejné ID bloku. Vzhledem k tomu, že se poplatky za jedinečné bloky dostanou, je důležité mít na paměti, že pokud je povolená Správa verzí, je potřeba vzít v úvahu, že aktualizace objektu BLOB je v případě, že je povolené
+
+Pokud je povolená Správa verzí objektů blob, volejte operace aktualizace pro objekty blob bloku tak, aby aktualizovaly nejnižší možný počet bloků. Operace zápisu, které umožňují jemně odstupňovanou kontrolu nad bloky, jsou [vloženy do bloku](/rest/api/storageservices/put-block) a [seznamu blokovaných umístění](/rest/api/storageservices/put-block-list). Operace [Put BLOB](/rest/api/storageservices/put-blob) na druhé straně nahrazuje celý obsah objektu blob, takže může vést k dalším poplatkům.
+
+Následující scénáře ukazují, jak se účtují poplatky za objekty blob bloku a její verze, když není vrstva objektů BLOB explicitně nastavená.
 
 #### <a name="scenario-1"></a>Scénář 1
 
 Ve scénáři 1 má objekt BLOB předchozí verzi. Objekt BLOB se od vytvoření verze neaktualizoval. poplatky se účtují jenom pro jedinečné bloky 1, 2 a 3.
 
-![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-1.png)
+![Diagram 1 znázorňující fakturaci jedinečných bloků v základním objektu BLOB a předchozí verzi](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>Scénář 2
 
 Ve scénáři 2 se aktualizoval jeden blok (blok 3 v diagramu) v objektu BLOB. I když aktualizovaný blok obsahuje stejná data a stejné ID, není stejný jako blok 3 v předchozí verzi. Výsledkem je, že se účtu účtuje čtyři bloky.
 
-![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-2.png)
+![Diagram 2 znázorňující fakturaci jedinečných bloků v základním objektu BLOB a předchozí verzi](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>Scénář 3
 
 Ve scénáři 3 se objekt BLOB aktualizoval, ale jeho verze ne. Blok 3 byl nahrazen blokem 4 v základním objektu blob, ale předchozí verze stále odráží blok 3. Výsledkem je, že se účtu účtuje čtyři bloky.
 
-![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-3.png)
+![Diagram 3 znázorňující fakturaci jedinečných bloků v základním objektu BLOB a předchozí verzi](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>Scénář 4
 
-Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žádné původní bloky. V důsledku toho se účet účtuje za všechny osm jedinečných bloků &mdash; ve čtyřech základních objektech blob a čtyři v předchozí verzi. K tomuto scénáři může dojít, pokud píšete do objektu BLOB s operací Put blob, protože nahrazuje celý obsah základního objektu BLOB.
+Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žádné původní bloky. V důsledku toho se účet účtuje za všechny osm jedinečných bloků &mdash; ve čtyřech základních objektech blob a čtyři v předchozí verzi. K tomuto scénáři může dojít, pokud píšete do objektu BLOB s operací [Put BLOB](/rest/api/storageservices/put-blob) , protože nahrazuje celý obsah základního objektu BLOB.
 
-![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-4.png)
+![Diagram 4 znázorňující fakturaci jedinečných bloků v základním objektu BLOB a předchozí verzi](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Fakturace při explicitně nastavené úrovni objektu BLOB
+
+Pokud jste explicitně nastavili úroveň objektu BLOB pro objekt BLOB nebo verzi (nebo snímek), bude se vám účtovat celá délka obsahu objektu v nové vrstvě bez ohledu na to, jestli sdílí bloky s objektem v původní úrovni. Účtuje se vám také celá velikost obsahu nejstarší verze v původní úrovni. Všechny další předchozí verze nebo snímky, které zůstanou v původní úrovni, se účtují podle jedinečných bloků, které mohou sdílet, jak je popsáno v tématu [fakturace, pokud nebyla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>Přesun objektu BLOB na novou úroveň
+
+Následující tabulka popisuje chování fakturace objektu BLOB nebo verze při přesunu do nové úrovně.
+
+| Pokud je vrstva objektů BLOB nastavena explicitně na... | Pak se vám bude účtovat... |
+|-|-|
+| Základní objekt BLOB s předchozí verzí | Základní objekt BLOB v nové vrstvě a nejstarší verzi v původní vrstvě a všechny jedinečné bloky v jiných verzích. <sup>1</sup> |
+| Základní objekt BLOB s předchozí verzí a snímkem | Základní objekt BLOB v nové vrstvě, nejstarší verze v původní vrstvě a nejstarší snímek v původní vrstvě, včetně všech jedinečných bloků v jiných verzích nebo snímcích<sup>1</sup>. |
+| Předchozí verze | Verze v nové vrstvě a základním objektu BLOB v původní vrstvě a všechny jedinečné bloky v jiných verzích. <sup>1</sup> |
+
+<sup>1</sup> Pokud jsou k dispozici jiné předchozí verze nebo snímky, které nebyly přesunuty z původní úrovně, jsou tyto verze nebo snímky účtovány na základě počtu jedinečných bloků, které obsahují, jak je popsáno v tématu [fakturace, pokud nebyla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Explicitní nastavení vrstvy pro objekt blob, verzi nebo snímek nelze vrátit zpět. Pokud objekt BLOB přesunete do nové úrovně a pak ho přesunete zpátky do původní úrovně, bude se vám účtovat úplná délka obsahu objektu, i když sdílí bloky s jinými objekty v původní úrovni.
+
+Operace, které explicitně nastavily úroveň objektu blob, verze nebo snímku, zahrnují:
+
+- [Nastavení úrovně objektu blob](/rest/api/storageservices/set-blob-tier)
+- [Vložit objekt BLOB](/rest/api/storageservices/put-blob) se zadanou úrovní
+- [Seznam blokovaných umístění](/rest/api/storageservices/put-block-list) se zadanou úrovní
+- [Kopírovat objekt BLOB](/rest/api/storageservices/copy-blob) se specifikovanou úrovní
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>Odstranění objektu blob, když je povolené obnovitelné odstranění
+
+Pokud je povolené obnovitelné odstranění objektů blob, pokud odstraníte nebo přepíšete základní objekt blob, který má explicitně nastavenou vrstvu, budou se všechny předchozí verze objektu BLOB s přístupným odstraněnou délkou účtovat s plnou délkou obsahu. Další informace o tom, jak se ve spolupráci se správou verzí a obnovitelného odstraňování objektů blob, najdete v tématu [Správa verzí objektů BLOB a obnovitelné odstranění](#blob-versioning-and-soft-delete).
+
+Následující tabulka popisuje chování fakturace u objektu blob, který je podmíněně odstraněn, v závislosti na tom, jestli je Správa verzí povolená nebo zakázaná. Pokud je povolená Správa verzí, vytvoří se verze, když se odstraněný objekt BLOB. Když je Správa verzí zakázaná, měkké odstranění objektu BLOB vytvoří snímek s jemným odstraněním.
+
+| Pokud přepíšete základní objekt BLOB s explicitně nastavenou vrstvou... | Pak se vám bude účtovat... |
+|-|-|
+| Pokud jsou povolené obnovitelné odstranění objektů BLOB a správa verzí | Všechny existující verze s plnou délkou obsahu bez ohledu na úroveň. |
+| Pokud je povolené obnovitelné odstraňování objektů blob, ale je zakázaná správa verzí | Všechny existující snímky obnovitelného odstranění s plnou délkou obsahu bez ohledu na úroveň. |
 
 ## <a name="see-also"></a>Viz také
 
-- [Povolení správy verzí objektů blob](versioning-enable.md)
+- [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Obnovitelné odstranění pro objekty blob Azure Storage](storage-blob-soft-delete.md)

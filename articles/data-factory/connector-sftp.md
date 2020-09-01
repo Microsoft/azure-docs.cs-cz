@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: f431ca71b4df7b23fdc994689492a937db915686
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e8067f2aa485202412f0f0b6101eafb7768b222a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048325"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181897"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopírování dat z a do serveru SFTP pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Konkrétně konektor SFTP podporuje:
 - Kopírování souborů z a do serveru SFTP pomocí *základního* nebo *SshPublicKey* ověřování.
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

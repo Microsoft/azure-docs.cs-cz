@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008742"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226705"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
@@ -61,8 +61,9 @@ Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prosto
 1. Na hlavní stránce klienta vyberte možnost **Přihlásit se k odběru pomocí adresy URL**.
 2. Zadejte adresu URL pracovního prostoru nebo svou e-mailovou adresu:
    - Pokud použijete **adresu URL pracovního prostoru**, použijte toho, kterého vám správce poskytl. Při přístupu k prostředkům z virtuálního počítače s Windows můžete použít jednu z těchto adres URL:
-     - Virtuální plocha Windows (Classic):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Virtuální počítač s Windows:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Virtuální plocha Windows (Classic): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Virtuální počítač s Windows: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Virtuální počítač s Windows (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - Pokud místo toho použijete pole **e-mail** , zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nastavil [zjišťování e-mailů](/windows-server/remote/remote-desktop-services/rds-email-discovery).
 3. Vyberte **Další**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.

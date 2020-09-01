@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 1bfd83534bda6397983b0595acc089e901c473d6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021476"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182033"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 

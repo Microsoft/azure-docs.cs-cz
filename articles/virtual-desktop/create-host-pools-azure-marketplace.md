@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755479"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226093"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -47,6 +47,8 @@ Pokud ještě nemáte předplatné Azure, [Vytvořte si účet](https://azure.mi
 Chcete-li začít vytvářet nový fond hostitelů:
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
+   
+   >! ZNAČTE Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.
 
 2. Do panelu hledání zadejte **virtuální klient Windows** a potom v části služby vyhledejte a vyberte **Windows Virtual Desktop** .
 
@@ -72,7 +74,7 @@ Chcete-li začít vytvářet nový fond hostitelů:
       > [!div class="mx-imgBorder"]
       > ![Snímek obrazovky s rozevírací nabídkou pro pole typu přiřazení Uživatel zvolil možnost automaticky.](media/assignment-type-field.png)
 
-9. Pokud zvolíte **fond**, zadejte následující informace:
+9.  Pokud zvolíte **fond**, zadejte následující informace:
 
      - V poli **maximální počet relací**zadejte maximální počet uživatelů, které mají vyrovnávání zatížení pro jednoho hostitele relace.
      - Pro **algoritmus vyrovnávání zatížení**vyberte v závislosti na vzoru použití buď možnost šířka – první nebo hloubka – první.

@@ -3,12 +3,12 @@ title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144460"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182509"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 

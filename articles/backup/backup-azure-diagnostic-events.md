@@ -3,12 +3,12 @@ title: Použít nastavení diagnostiky pro trezory Recovery Services
 description: Tento článek popisuje, jak používat staré a nové diagnostické události pro Azure Backup.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826663"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182594"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Použít nastavení diagnostiky pro trezory Recovery Services
 
@@ -102,7 +102,7 @@ V současné době i nadále podporujeme událost AzureBackupReport pro zpětnou
 
 2. Pomocí [integrovaných definic Azure Policy](./azure-policy-configure-diagnostics.md) v Azure Backup můžete přidat nové nastavení diagnostiky pro všechny trezory v zadaném oboru. Tato zásada přidá nové nastavení diagnostiky do trezorů, které nemají nastavení diagnostiky nebo mají pouze starší nastavení diagnostiky. Tato zásada se dá přiřadit k celému předplatnému nebo skupině prostředků v určitou dobu. Musíte mít oprávnění vlastníka pro každé předplatné, ke kterému je zásada přiřazená.
 
-Můžete se rozhodnout, že máte samostatná nastavení diagnostiky pro AzureBackupReport a šest nových událostí, dokud nemigrujete všechny vlastní dotazy, aby používaly data z nových tabulek. Následující obrázek ukazuje příklad trezoru, který má dvě nastavení diagnostiky. První nastavení s názvem **Setting1**odesílá data události AzureBackupReport do pracovního prostoru Log Analytics v režimu diagnostiky Azure. Druhé nastavení s názvem **Setting2**odesílá data o šesti nových událostech Azure Backup do pracovního prostoru Log Analytics v režimu specifickém pro prostředky.
+Můžete se rozhodnout, že budete mít samostatná nastavení diagnostiky pro AzureBackupReport a šest nových událostí, dokud nemigrujete všechny vlastní dotazy, aby používaly data z nových tabulek. Následující obrázek ukazuje příklad trezoru, který má dvě nastavení diagnostiky. První nastavení s názvem **Setting1**odesílá data události AzureBackupReport do pracovního prostoru Log Analytics v režimu diagnostiky Azure. Druhé nastavení s názvem **Setting2**odesílá data o šesti nových událostech Azure Backup do pracovního prostoru Log Analytics v režimu specifickém pro prostředky.
 
 ![Dvě nastavení](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

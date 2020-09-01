@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056803"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182118"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -267,16 +267,15 @@ Pokud očekáváte, že budete mít krátká krátkodobá připojení, a žádn�
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Pokud máte například 3 *nodeVMs*a 50 000 *desiredAllocatedOutboundPorts*, musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
- 
+
 - Při nastavování *IdleTimeoutInMinutes* na jinou hodnotu než výchozí hodnota 30 minut zvažte, jak dlouho budou vaše úlohy potřebovat odchozí připojení. Zvažte také výchozí hodnotu časového limitu pro nástroj pro vyrovnávání zatížení *Standard* SKU, který se používá mimo AKS, na 4 minuty. Hodnota *IdleTimeoutInMinutes* , která přesněji odráží konkrétní úlohu AKS, může přispět ke snížení vyčerpání SNAT způsobená vytvořením připojení, která se už nepoužívají.
 
 > [!WARNING]
 > Změna hodnot pro *AllocatedOutboundPorts* a *IdleTimeoutInMinutes* může významně změnit chování odchozího pravidla pro nástroj pro vyrovnávání zatížení a nemělo by se dělat lehce, aniž byste pochopili kompromisy a vzory připojení vaší aplikace, podívejte se do [části řešení potíží s aktualizací SNAT níže][troubleshoot-snat] a v Azure [Load Balancer zkontrolujte odchozí pravidla][azure-lb-outbound-rules-overview] a [odchozí připojení][azure-lb-outbound-connections] , abyste plně pochopili dopad vašich změn.
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>Omezení příchozího provozu do konkrétních rozsahů IP adres
 
-Skupina zabezpečení sítě (NSG) přidružená k virtuální síti pro nástroj pro vyrovnávání zatížení má ve výchozím nastavení pravidlo pro povolení všech příchozích externích přenosů. Toto pravidlo můžete aktualizovat tak, aby povolovalo pouze konkrétní rozsahy IP adres pro příchozí provoz. Následující manifest používá *loadBalancerSourceRanges* k určení nového rozsahu IP adres pro příchozí externí provoz:
+Následující manifest používá *loadBalancerSourceRanges* k určení nového rozsahu IP adres pro příchozí externí provoz:
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> Příchozí externí přenosové toky z nástroje pro vyrovnávání zatížení do virtuální sítě pro cluster AKS. Virtuální síť má skupinu zabezpečení sítě (NSG), která umožňuje veškerý příchozí provoz z nástroje pro vyrovnávání zatížení. Tento NSG používá k povolení provozu z nástroje pro vyrovnávání zatížení [značku služby][service-tags] *typu vyrovnávání* zatížení.
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Udržovat IP adresu klienta při příchozích připojeních
 
@@ -322,7 +324,7 @@ Níže je uveden seznam poznámek podporovaných pro služby Kubernetes Services
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Název DNS popisku na veřejných IP adresách   | Zadejte název popisku DNS pro **veřejnou** službu. Pokud je nastavené na prázdný řetězec, nebude se používat položka DNS ve veřejné IP adrese.
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` nebo `false`                     | Určete, že by měla být služba vystavená pomocí pravidla zabezpečení Azure, které může být sdíleno s jinou službou, zajištěním konkrétního obchodování s pravidly pro zvýšení počtu služeb, které mohou být vystaveny. Tato poznámka spoléhá na funkci [Rozšířená pravidla zabezpečení](../virtual-network/security-overview.md#augmented-security-rules) Azure u skupin zabezpečení sítě. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Název skupiny prostředků            | Zadejte skupinu prostředků pro veřejné IP adresy nástroje pro vyrovnávání zatížení, které nejsou ve stejné skupině prostředků jako infrastruktura clusteru (skupina prostředků uzlu).
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Seznam povolených značek služby          | Zadejte seznam povolených [značek služby](../virtual-network/security-overview.md#service-tags) oddělený čárkou.
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Seznam povolených značek služby          | Zadejte seznam povolených [značek služby][service-tags] oddělený čárkou.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Vypršení časového limitu nečinnosti protokolu TCP v minutách          | Zadejte dobu v minutách, po kterou mají v nástroji pro vyrovnávání zatížení dojít k vypršení časového limitu nečinnosti připojení protokolu TCP. Výchozí a minimální hodnota je 4. Maximální hodnota je 30. Musí být celé číslo.
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Zakázat `enableTcpReset` pro SLB
 
@@ -333,14 +335,14 @@ Pokud víte, že spouštíte mnoho odchozích připojení TCP nebo UDP ke stejn�
 
 Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u odchozího připojení naváže, spravuje nebo konfigurovatelné časovače, které se mění z výchozích hodnot. Pečlivě si prostudujte tuto část.
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 1. Ověřte, jestli vaše připojení netrvají po dlouhou dobu, a spoléhá se na výchozí časový limit nečinnosti pro uvolnění tohoto portu. Pokud ano, může být pro váš scénář nutné snížit výchozí časový limit 30 minut.
 2. Prozkoumejte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů).
 3. Určete, zda má tato aktivita očekávané chování nebo zda se aplikace nechová. Pomocí [metrik](../load-balancer/load-balancer-standard-diagnostics.md) a [protokolů](../load-balancer/load-balancer-monitor-log.md) v Azure monitor doložit vaše závěry. V případě metriky připojení SNAT použijte kategorii "neúspěšné".
 4. Vyhodnotí, zda jsou následovány příslušné [vzory](#design-patterns) .
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí [dalších odchozích IP adres a dalších přidělených odchozích portů](#configure-the-allocated-outbound-ports) .
 
-### <a name="design-patterns"></a>Vzory návrhu
+### <a name="design-patterns"></a>Způsoby návrhu
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení. Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
 - Atomické žádosti (jedna žádost na připojení) obecně není vhodným návrhem. Taková omezení pro antipatterny se omezují na škálování, snižuje výkon a snižuje spolehlivost. Místo toho můžete znovu použít připojení HTTP/S a snížit tak počet připojení a přidružené porty SNAT. Škálování aplikace se zvýší a vylepšit výkon kvůli snížení nákladů na handshake, režijních a kryptografických operací při použití TLS.
@@ -424,3 +426,4 @@ Přečtěte si další informace o používání interního Load Balancer pro p�
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

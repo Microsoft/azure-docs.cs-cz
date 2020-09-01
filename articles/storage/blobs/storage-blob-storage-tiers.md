@@ -3,17 +3,17 @@ title: Horké, studené a archivní úrovně přístupu pro objekty blob – Azu
 description: Přečtěte si o horké, studené a archivní úrovni přístupu pro úložiště objektů BLOB v Azure. Zkontrolujte účty úložiště, které podporují vrstvení. Porovná možnosti úložiště objektů blob bloku.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009606"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226178"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
@@ -156,7 +156,7 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 
 1. V horní části klikněte na **Uložit** .
 
-![Změna úrovně účtu úložiště](media/storage-tiers/account-tier.png)
+![Změna výchozí úrovně účtu v Azure Portal](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Ke změně úrovně účtu se dá použít následující skript PowerShellu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. V dolní části vyberte **Uložit** .
 
-![Změna úrovně účtu úložiště](media/storage-tiers/blob-access-tier.png)
+![Změna úrovně objektu BLOB v Azure Portal](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Ke změně úrovně objektu BLOB se dá použít následující skript PowerShellu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName`Proměnná musí být inicializována s názvem kontejneru. `$blobName`Proměnná musí být inicializována s vaším názvem objektu BLOB. 
@@ -219,6 +219,8 @@ Všechny účty úložiště používají cenový model pro úložiště objekt�
 - **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 - **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
 - **Změna úrovně přístupu**: Změna úrovně přístupu k účtu bude mít za následek poplatky za změnu vrstvy pro odvozené objekty blob _vrstvy přístupu_ uložené v účtu, který nemá explicitně nastavenou úroveň. Informace o změně úrovně přístupu pro jeden objekt BLOB najdete v tématu [fakturace vrstvení na úrovni objektů BLOB](#blob-level-tiering-billing).
+
+    Změna úrovně přístupu pro objekt blob, pokud je povolená Správa verzí, nebo pokud má objekt BLOB snímky, může mít za následek další poplatky. Další informace o tom, jak se vám bude účtovat, když je povolená Správa verzí objektů BLOB a explicitně měníte úroveň objektu blob, najdete v tématu [ceny a fakturace](versioning-overview.md#pricing-and-billing) v dokumentaci pro správu verzí objektů BLOB. Další informace o tom, jak se fakturuje, když objekt BLOB má snímky a explicitně měníte úroveň objektu blob, najdete v tématu [ceny a fakturace](snapshots-overview.md#pricing-and-billing) v dokumentaci pro snímky objektů BLOB.
 
 > [!NOTE]
 > Další informace o cenách pro objekty blob bloku najdete na stránce s [cenami Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/) . Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).

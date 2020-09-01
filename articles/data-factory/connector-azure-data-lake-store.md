@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 6728b00a4b77e3a755c6220404a07ae54bb5263a
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 08/31/2020
+ms.openlocfilehash: ed1b64ff1156548ec04900b2303b68b6980565ae
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051232"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182526"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí Azure Data Factory
 

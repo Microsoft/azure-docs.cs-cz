@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019568"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181999"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -50,7 +50,7 @@ Další informace najdete tady:
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-**Scénář** | **Agent** | **Umístění**
+**Scénář** | **Agenta** | **Umístění**
 --- | --- | ---
 **Zálohování místních počítačů a úloh** | DPM/MABS Protection Agent běží na počítačích, které chcete zálohovat.<br/><br/> Agent MARS na serveru DPM nebo MABS.<br/> Minimální verze agenta Microsoft Azure Recovery Services nebo agenta Azure Backup, který je vyžadován pro povolení této funkce, je 2.0.8719.0.  | DPM/MABS musí běžet místně.
 

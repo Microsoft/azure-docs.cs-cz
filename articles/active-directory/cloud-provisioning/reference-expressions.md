@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201846"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226569"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování cloudu je jedním z typů mapování atributů, které lze zadat, mapování výrazu. 
@@ -73,7 +73,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 |[Rozdělení](#split)|Rozdělí řetězec na pole s více hodnotami pomocí zadaného oddělovače.|
 |[StringFromSID](#stringfromsid)|Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpečení na řetězec.| 
 |[StripSpaces](#stripspaces) |Odebere ze zdrojového řetězce všechny znaky ("").| 
-|[Přepnutí](#switch)|Když hodnota **zdroje** odpovídá **klíči**, vrátí **hodnotu** pro tento **klíč**. | 
+|[Přepínač](#switch)|Když hodnota **zdroje** odpovídá **klíči**, vrátí **hodnotu** pro tento **klíč**. | 
 |[ToLower](#tolower)|Převezme hodnotu *zdrojového* řetězce a převede ji na malý případ pomocí pravidel jazykové verze, které jsou určeny.| 
 |[ToUpper](#toupper)|Převezme hodnotu *zdrojového* řetězce a převede ji na velká písmena pomocí pravidel jazykové verze, které jsou určeny.|
 |[Sklon](#trim)|Funkce Trim odstraní úvodní a koncové prázdné znaky z řetězce.|
@@ -87,7 +87,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
    | **auditování** |Vyžadováno |Řetězec |Řetězec, který chcete připojit ke konci zdrojové hodnoty. |
@@ -110,7 +110,7 @@ Tato funkce převede oba parametry do binární reprezentace a nastaví bit na:
 
 Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídající bity obou parametrů jsou 1.
 
-**Případě**  
+**Příklad:**  
  
  `BitAnd(&HF, &HF7)`</br>
  Vrátí hodnotu 7, protože hexadecimální hodnota "F" a "F7" je vyhodnocena.
@@ -127,7 +127,7 @@ Funkce CBool vrátí logickou hodnotu založenou na vyhodnoceném výrazu.
 **Mark**  
 Pokud je výraz vyhodnocen jako nenulová hodnota, pak funkce CBool vrátí hodnotu true, jinak vrátí hodnotu false.
 
-**Případě**  
+**Příklad:**  
 `CBool([attrib1] = [attrib2])`  
 
 Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
@@ -138,7 +138,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 Funkce ConvertFromBase64 převede zadanou hodnotu v kódování Base64 na běžný řetězec.
 
 **Syntaktick**  
-`str ConvertFromBase64(str source)`– předpokládá kódování Unicode.  
+`str ConvertFromBase64(str source)` – předpokládá kódování Unicode.  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Zdroj: řetězec kódovaný v kódování Base64  
@@ -159,7 +159,7 @@ Převede hodnotu pole celých čísel na odpovídající řetězcovou reprezenta
 **Syntaktick**  
 `str ConvertToBase64(str source)`
 
-**Případě**  
+**Příklad:**  
 `ConvertToBase64("Hello world!")`  
 Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -174,7 +174,7 @@ Funkce ConvertToUTF8Hex převede řetězec na šestnáctkovou hodnotu v kódová
 **Mark**  
 Výstupní formát této funkce se používá Azure Active Directory jako formát atributu DN.
 
-**Případě**  
+**Příklad:**  
 `ConvertToUTF8Hex("Hello world!")`  
 Vrátí 48656C6C6F20776F726C6421
 
@@ -198,7 +198,7 @@ Funkce CStr se převede na datový typ String.
 
 * hodnota: může to být číselná hodnota, odkazový atribut nebo logická hodnota.
 
-**Případě**  
+**Příklad:**  
 `CStr([dn])`  
 Může vracet "CN = Jan, DC = contoso, DC = com"
 
@@ -210,7 +210,7 @@ Funkce DateFromNum převede hodnotu ve formátu data AD na typ DateTime.
 **Syntaktick**  
 `dt DateFromNum(num value)`
 
-**Případě**  
+**Příklad:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
@@ -226,7 +226,7 @@ Funkce DNComponent vrací hodnotu zadané složky DN z levé části.
 * DN: atribut reference, který se má interpretovat
 * ComponentNumber: komponenta v rozlišujícím názvu, která se má vrátit
 
-**Případě**  
+**Příklad:**  
 `DNComponent(CRef([dn]),1)`  
 Pokud je DN "CN = Jan, OU =...", vrátí Jana
 
@@ -238,7 +238,7 @@ Funkce Error slouží k vrácení vlastní chyby.
 **Syntaktick**  
 `void Error(str ErrorMessage)`
 
-**Případě**  
+**Příklad:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 
@@ -250,10 +250,10 @@ Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
-   | **inputFormat** |Vyžadováno |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty naleznete v tématu [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
+   | **inputFormat** |Vyžadováno |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty najdete v tématu [/dotnet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
    | **outputFormat** |Vyžadováno |Řetězec |Formát data výstupu. |
 
 ---
@@ -276,7 +276,7 @@ Funkce IIF vrátí jednu ze sady možných hodnot na základě zadané podmínky
 * valueIfTrue: Pokud je podmínka vyhodnocena jako true, vrácená hodnota.
 * valueIfFalse: Pokud je podmínka vyhodnocena jako false, vrácená hodnota.
 
-**Případě**  
+**Příklad:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Pokud je uživatel interně, vrátí alias uživatele s názvem "t-", který je přidán na začátek, jinak vrátí alias uživatele tak, jak je.
 
@@ -299,7 +299,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 **Mark**  
 Vrátí pozici, kde byl dílčí řetězec nalezen, nebo 0, pokud nebyl nalezen.
 
-**Případě**  
+**Příklad:**  
 `InStr("The quick brown fox","quick")`  
 Evalues na 5
 
@@ -317,7 +317,7 @@ Pokud je výraz vyhodnocen jako null, funkce IsNull vrátí hodnotu true.
 **Mark**  
 U atributu je hodnota null vyjádřena nepřítomností atributu.
 
-**Případě**  
+**Příklad:**  
 `IsNull([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen v CS nebo MV.
 
@@ -333,7 +333,7 @@ Pokud má výraz hodnotu null nebo je prázdný řetězec, vrátí funkce IsNull
 U atributu by se to mělo vyhodnotit na hodnotu true, pokud atribut chybí nebo je přítomen, ale je to prázdný řetězec.  
 Inverzní část této funkce je pojmenována jako.
 
-**Případě**  
+**Příklad:**  
 `IsNullOrEmpty([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetězec v CS nebo MV.
 
@@ -348,7 +348,7 @@ Pokud se výraz vyhodnotí jako řetězec, který není null a není prázdný, 
 **Mark**  
 Inverzní funkce k této funkci má název IsNullOrEmpty.
 
-**Případě**  
+**Příklad:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -367,7 +367,7 @@ Funkce Item je užitečná společně s funkcí Contains, protože druhá funkce
 
 Vyvolá chybu, pokud je index mimo rozsah.
 
-**Případě**  
+**Příklad:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Vrátí primární e-mailovou adresu.
 
@@ -392,7 +392,7 @@ Pokud je jednou ze zdrojových hodnot atribut s více hodnotami, pak se všechny
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **oddělování** |Vyžadováno |Řetězec |Řetězec, který se používá k oddělení zdrojových hodnot při zřetězení do jednoho řetězce. Může být "", pokud není vyžadován oddělovač. |
    | **source1 ... sourceN** |Povinný, proměnlivý počet pokusů |Řetězec |Řetězcové hodnoty, které se mají spojit dohromady. |
@@ -417,7 +417,7 @@ Funkce Left vrátí zadaný počet znaků nalevo od řetězce.
 
 Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí se řetězec shodný s řetězcem (tj. obsahující všechny znaky v parametru 1).
 
-**Případě**  
+**Příklad:**  
 `Left("John Doe", 3)`  
 Vrací objekt `Joh`.
 
@@ -429,7 +429,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu. |
    | **Čína** |Vyžadováno |celé číslo |Index ve **zdrojovém** řetězci, ve kterém by měl být spuštěný dílčí řetězec První znak v řetězci bude mít index 1, druhý znak bude mít index 2 atd. |
@@ -443,7 +443,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec | Obvykle se jedná o křestní jméno nebo název atributu příjmení. |
 
@@ -455,7 +455,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Logický řetězec |Očekávané **zdrojové** hodnoty jsou "true" nebo "false". |
 
@@ -467,12 +467,12 @@ Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, z
 **Syntaktick**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Případě**  
+**Příklad:**  
 `RemoveDuplicates([proxyAddresses])`  
 Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny duplicitní hodnoty.
 
 ---
-### <a name="replace"></a>Nahradit
+### <a name="replace"></a>Nahrazení
 **Slouží**<br> Replace (Source, oldValue, vzor Regex, regexGroupName, replacementValue, replacementAttributeName, Template)
 
 **Popis:**<br>
@@ -497,12 +497,12 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze **zdrojového** objektu. |
    | **oldValue** |Volitelné |Řetězec |Hodnota, která má být nahrazena ve **zdroji** nebo **šabloně**. |
    | **Vzor Regex** |Volitelné |Řetězec |Vzor regulárního výrazu pro hodnotu, která má být nahrazena **zdrojem**. Nebo, pokud se používá **replacementPropertyName** , vzorek pro extrakci hodnoty z **replacementPropertyName**. |
-   | **regexGroupName** |Volitelné |Řetězec |Název skupiny uvnitř **vzor Regex** Jenom v případě, že se používá **replacementPropertyName** , extrahujeme hodnotu této skupiny jako **replacementValue** z **replacementPropertyName**. |
+   | **regexGroupName** |Volitelné |Řetězec |Název skupiny uvnitř **vzor Regex** Jenom v případě, že se používá  **replacementPropertyName** , extrahujeme hodnotu této skupiny jako **replacementValue** z **replacementPropertyName**. |
    | **replacementValue** |Volitelné |Řetězec |Nová hodnota, kterou chcete nahradit starou. |
    | **replacementAttributeName** |Volitelné |Řetězec |Název atributu, který se má použít k nahrazení hodnoty |
    | **vzhledu** |Volitelné |Řetězec |Když se zadá hodnota **šablony** , budeme v šabloně Hledat text **OldValue** a nahradit ho **zdrojovou** hodnotou. |
@@ -522,7 +522,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |Vyžaduje se aspoň 2, bez horní meze. |Řetězec | Seznam pravidel generování jedinečných hodnot, které se mají vyhodnotit |
 
@@ -535,7 +535,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-  | Name | Požadováno/opakování | Typ | Poznámky |
+  | Název | Požadováno/opakování | Typ | Poznámky |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Vyžadováno |Řetězec |objekt **[appRoleAssignments]** . |
 
@@ -547,7 +547,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
    | **oddělovač** |Vyžadováno |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
@@ -568,7 +568,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
 
@@ -580,12 +580,12 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**Zdrojová** hodnota, která se má ověřit |
    | **Hodnot** |Volitelné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
-   | **zkrat** |Vyžadováno |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
-   | **value** |Vyžadováno |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
+   | **key** |Vyžadováno |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
+   | **osa** |Vyžadováno |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,7 +595,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu |
    | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -609,7 +609,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-  | Name | Požadováno/opakování | Typ | Poznámky |
+  | Název | Požadováno/opakování | Typ | Poznámky |
   | --- | --- | --- | --- |
   | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
   | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -623,7 +623,7 @@ Funkce Trim odstraní úvodní a koncové prázdné znaky z řetězce.
 **Syntaktick**  
 `str Trim(str value)`  
 
-**Případě**  
+**Příklad:**  
 `Trim(" Test ")`  
 Vrátí "test".
 
@@ -650,7 +650,7 @@ Každý řetězec znaků v řetězci, oddělený jedním ze znaků v oddělovač
 
 Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žádná slova identifikovaná oddělovači, je vrácen prázdný řetězec.
 
-**Případě**  
+**Příklad:**  
 `Word("The quick brown fox",3," ")`  
 Vrátí "Brown"
 

@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608258"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226960"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
-[Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z programovacích jazyků a nástrojů.
+[Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](./concept-reporting-api.md) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z programovacích jazyků a nástrojů.
 
-Rozhraní API pro vytváření sestav používá protokol [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) k autorizaci přístupu k webovým rozhraním API.
+Rozhraní API pro vytváření sestav používá protokol [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) k autorizaci přístupu k webovým rozhraním API.
 
 K přípravě přístupu k rozhraní API pro vytváření sestav potřebujete:
 
@@ -42,7 +42,7 @@ K přípravě přístupu k rozhraní API pro vytváření sestav potřebujete:
 
 Chcete-li získat přístup k datům sestav prostřednictvím rozhraní API, je nutné mít přiřazenou jednu z následujících rolí:
 
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 
 - Správce zabezpečení
 
@@ -85,7 +85,7 @@ Pokud chcete nakonfigurovat adresář pro přístup k rozhraní API pro vytvář
 
     b. V případě **typu podporované účty**vyberte **účty jenom v této organizaci**.
 
-    c. V poli **Adresa URL pro přesměrování** vyberte **webové** textové pole a zadejte `https://localhost` .
+    c. V poli **Adresa URL pro přesměrování**  vyberte **webové** textové pole a zadejte `https://localhost` .
 
     d. Vyberte **Zaregistrovat**. 
 
@@ -200,7 +200,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 
  Přihlaste se k účtu pomocí přihlašovacích tlačítek v uživatelském rozhraní Průzkumníka graphu, abyste se vyhnuli zobrazování chyby při pokusu o přihlášení pomocí Graph Exploreru. 
 
-![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
+![Průzkumník grafů](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Chyba: nepovedlo se provést kontrolu licence Premium z Microsoft Graph 
 
@@ -225,5 +225,5 @@ Postupujte podle kroků v části [požadavky pro přístup k rozhraní API pro 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Reference k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Reference k rozhraní API sestav aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Reference k rozhraní API auditu](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Reference k rozhraní API sestav aktivit přihlašování](/graph/api/resources/signin?view=graph-rest-beta)

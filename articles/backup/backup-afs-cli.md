@@ -3,18 +3,18 @@ title: Zálohování sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat Azure CLI k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012020"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182203"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku
 
 Rozhraní příkazového řádku Azure (CLI) poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek podrobně popisuje, jak zálohovat sdílené složky Azure pomocí Azure CLI. K provedení těchto kroků můžete také využít [Azure PowerShell](./backup-azure-afs-automation.md) nebo [Azure Portal](backup-afs.md).
 
-Na konci tohoto kurzu se naučíte, jak pomocí Azure CLI provádět následující operace:
+Na konci tohoto kurzu se dozvíte, jak pomocí Azure CLI provádět následující operace:
 
 * Vytvoření trezoru Služeb zotavení
 * Povolit zálohování sdílených složek Azure

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518318"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182390"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -28,14 +28,14 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 
 | Funkce | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | kládají |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | kládají |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.4.0 |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.4.0 |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.6.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.6.0 |
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
@@ -165,7 +165,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** na text se podívejte na [tagy pro obrázky typu převod řeči na text](../containers/container-image-tags.md#speech-to-text).
@@ -207,7 +207,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 U všech podporovaných národních prostředí a odpovídajících hlasů kontejneru **textu na řeč** se podívejte na [značky obrázku pro převod textu na mluvené slovo](../containers/container-image-tags.md#text-to-speech).
@@ -423,6 +423,8 @@ Další informace o používání protokolů WSS a HTTPS najdete v tématu [zabe
 #### <a name="analyze-sentiment"></a>Analýza mínění
 
 Pokud jste zadali přihlašovací údaje rozhraní API pro analýzu textu [do kontejneru](#analyze-sentiment-on-the-speech-to-text-output), můžete použít sadu Speech SDK k posílání požadavků rozpoznávání řeči s analýzou mínění. Odezvy rozhraní API můžete nakonfigurovat tak, aby používaly buď *jednoduchý* nebo *podrobný* formát.
+> [!NOTE]
+> v 1.13 sady Speech SDK pro hlasové služby je zjištěn problém s analýzou mínění. Pokud používáte analýzu mínění v sadě Speech SDK pro Python Service, použijte prosím 1.12. x nebo starší.
 
 # <a name="simple-format"></a>[Jednoduchý formát](#tab/simple-format)
 
@@ -569,7 +571,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z a do Snowflake
-description: Naučte se, jak kopírovat data z a do Snowflake pomocí Azure Data Factory.
+title: Kopírování a transformace dat v Snowflake
+description: Naučte se kopírovat a transformovat data v Snowflake pomocí Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,30 +11,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 5bc64985401fce1c58a985b6b9fdead620c9aa8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048172"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181880"
 ---
-# <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Kopírování dat z a do Snowflake pomocí Azure Data Factory
+# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopírování a transformace dat v Snowflake pomocí Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Snowflake. Další informace o Data Factory najdete v [úvodním článku](introduction.md).
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Snowflake a jak transformovat data v Snowflake pomocí toku dat. Další informace o Data Factory najdete v [úvodním článku](introduction.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Snowflake je podporován pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou tabulkou matice zdroje/jímky](copy-activity-overview.md)
+- [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
 Pro aktivitu kopírování podporuje tento konektor Snowflake tyto funkce:
 
 - Kopírovat data z Snowflake, která využívá příkaz [Kopírovat do [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) Snowflake, aby dosáhla nejlepšího výkonu.
-- Zkopírujte data do Snowflake, která využívá k dosažení nejlepšího výkonu výhod příkazu [Kopírovat do [Table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) Snowflake. Podporuje Snowflake v Azure.
+- Zkopírujte data do Snowflake, která využívá k dosažení nejlepšího výkonu výhod příkazu [Kopírovat do [Table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) Snowflake. Podporuje Snowflake v Azure. 
+
+Snowflake jako jímka není podporována, pokud používáte pracovní prostor Azure synapse Analytics.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -105,8 +108,8 @@ Následující vlastnosti jsou podporovány pro datovou sadu Snowflake.
 | Vlastnost  | Popis                                                  | Povinné                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | typ      | Vlastnost Type datové sady musí být nastavená na **SnowflakeTable**. | Ano                         |
-| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| schema | Název schématu. Všimněte si, že v názvu schématu se v ADF bude rozlišovat velká a malá písmena. |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení Všimněte si, že v názvu tabulky se nachází v podavači ADF velká a malá písmena. |Ne pro zdroj, Ano pro jímku  |
 
 **Příklad:**
 
@@ -143,7 +146,7 @@ Chcete-li kopírovat data z Snowflake, v části **zdroj** aktivity kopírován�
 | Vlastnost                     | Popis                                                  | Povinné |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Ano      |
-| query          | Určuje dotaz SQL, který má načíst data z Snowflake.<br>Provádění uložené procedury není podporováno. | Ne       |
+| query          | Určuje dotaz SQL, který má načíst data z Snowflake. Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` .<br>Provádění uložené procedury není podporováno. | Ne       |
 | exportSettings | Rozšířená nastavení používaná k načtení dat z Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | Ne       |
 | ***V části `exportSettings` :*** |  |  |
 | typ | Typ příkazu pro export nastavený na **SnowflakeExportCopyCommand**. | Ano |
@@ -194,7 +197,7 @@ Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v té
         "typeProperties": {
             "source": {
                 "type": "SnowflakeSource",
-                "sqlReaderQuery": "SELECT * FROM MyTable",
+                "sqlReaderQuery": "SELECT * FROM MYTABLE",
                 "exportSettings": {
                     "type": "SnowflakeExportCopyCommand",
                     "additionalCopyOptions": {
@@ -396,6 +399,83 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
+
+Při transformaci dat v toku mapování dat můžete číst a zapisovat do tabulek v Snowflake. Další informace najdete v tématu transformace [zdroje](data-flow-source.md) a [transformace jímky](data-flow-sink.md) v tématu mapování toků dat. Můžete použít datovou sadu Snowflake nebo [vloženou datovou sadu](data-flow-source.md#inline-datasets) jako typ zdroje a jímky.
+
+### <a name="source-transformation"></a>Transformace zdroje
+
+V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Snowflake. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** . Konektor využívá [interní přenos dat](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)Snowflake.
+
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tabulka | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | Ne | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
+| Dotaz | Pokud jako vstup vyberete dotaz, zadejte dotaz, který načte data z Snowflake. Toto nastavení přepisuje jakoukoli tabulku, kterou jste zvolili v datové sadě.<br>Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` . | Ne | Řetězec | query |
+
+#### <a name="snowflake-source-script-examples"></a>Příklady zdrojového skriptu Snowflake
+
+Když použijete Snowflake DataSet jako typ zdroje, je přidružený skript toku dat:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SnowflakeSource
+```
+
+Použijete-li vloženou datovou sadu, je přidružen skript toku dat:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'select * from MYTABLE',
+    store: 'snowflake') ~> SnowflakeSource
+```
+
+### <a name="sink-transformation"></a>Transformace jímky
+
+V níže uvedené tabulce jsou uvedeny vlastnosti, které Snowflake jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** . Při použití vložené datové sady se zobrazí další nastavení, která jsou stejná jako vlastnosti popsané v části [Vlastnosti datové sady](#dataset-properties) . Konektor využívá [interní přenos dat](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)Snowflake.
+
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update – metoda | Určete, jaké operace jsou v cíli Snowflake povoleny.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Ano | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
+| Klíčové sloupce | V případě aktualizací upsertuje a DELETE musí být klíčový sloupec nebo sloupce nastaveny k určení, který řádek má být změněn. | Ne | Pole | keys |
+| Akce tabulky | Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné**: v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit**: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit**: všechny řádky z cílové tabulky se odeberou. | Ne | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
+
+#### <a name="snowflake-sink-script-examples"></a>Příklady skriptu jímky Snowflake
+
+Když použijete Snowflake DataSet jako typ jímky, je přidružený skript toku dat:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:false,
+    keys:['movieId'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
+
+Použijete-li vloženou datovou sadu, je přidružen skript toku dat:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    tableName: 'table',
+    schemaName: 'schema',
+    deletable: true,
+    insertable: true,
+    updateable: true,
+    upsertable: false,
+    store: 'snowflake',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

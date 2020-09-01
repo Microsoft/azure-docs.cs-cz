@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Přečtěte si informace o streamování obsahu s integrací CDN a také předběžnému navýšení a navýšení programu CDN-Assist.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799345"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226144"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
 
@@ -29,14 +29,19 @@ Oblíbený obsah bude obsluhován přímo z mezipaměti CDN, pokud je fragment v
 
 Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotlivé fragmenty videa jsou uloženy v mezipaměti jako vlastní entita. Představte si například, že při prvním spuštění konkrétního videa se bude sledovat. Pokud se v prohlížeči přeskočí, jak sledovat jenom pár sekund, stačí jenom fragmenty videa spojené s tím, co osoba sledovala v mezipaměti v síti CDN. Díky adaptivnímu streamování obvykle máte 5 až 7 různých přenosů videa. Pokud jedna osoba sleduje jednu přenosovou rychlost a jiná osoba sleduje jinou přenosovou rychlost, pak se všechny ukládají do mezipaměti samostatně v síti CDN. I když dva lidé sledují stejnou přenosovou rychlost, mohly by být streamování přes různé protokoly. Každý protokol (HLS, MPEG-POMLČKa, Smooth Streaming) se ukládá do mezipaměti samostatně. Takže všechny přenosové rychlosti a protokoly se ukládají do mezipaměti odděleně a všechny požadované fragmenty videa se ukládají do mezipaměti.
 
-Pokud se rozhodnete, jestli chcete povolit CDN na [koncovém bodu streamování](streaming-endpoint-concept.md)Media Services, zvažte počet předpokládaných prohlížečů. CDN vám pomůže jenom v případě, že očekáváte spoustu prohlížečů pro váš obsah. Pokud je maximální počet souběžnosti prohlížečů nižší než 500, doporučuje se zakázat CDN, protože CDN nejlépe odpovídá souběžnosti.
+S výjimkou testovacího prostředí doporučujeme povolit CDN pro koncové body streamování Standard a Premium. Každý typ koncového bodu streamování má jiný podporovaný limit propustnosti.
+Je obtížné provést přesný výpočet pro maximální počet souběžných streamů podporovaných koncovým bodem streamování, protože jsou k dispozici různé faktory, které je potřeba vzít v úvahu. Zde jsou některé z nich:
+
+- Maximální počet přenosů používaných pro streamování
+- Chování přehrávače před uložením do vyrovnávací paměti a přepínáním. Hráči se snaží rozložit segmenty od počátku a použít rychlost zatížení k výpočtu přepínání s adaptivní přenosovou rychlostí. Pokud koncový bod streamování získá blízko sytosti, může se doba odezvy lišit a hráči začnou přepínat na nižší kvalitu. Při snižování zátěže u přehrávačů koncových bodů streamování můžete škálovat zpátky na vyšší kvalitu a vytvořit tak nechtěné přepínání triggerů.
+Celkově je bezpečné odhadnout maximální počet souběžných streamů tím, že se vyberou maximální propustnost koncového bodu streamování a vydělí se tím maximální přenosovou rychlostí (za předpokladu, že všichni hráči využívají nejvyšší přenosovou rychlost Například můžete mít koncový bod streamování Standard, který je omezený na 600 MB/s a nejvyšší přenosovou rychlostí 3Mbp. V tomto případě jsou přibližně 200 souběžných proudů podporované v horní přenosové rychlosti. Nezapomeňte také zvážit požadavky na zvukovou šířku pásma. I když může být datový proud streamování jenom v 128 KPS, celkový objem streamování se při vynásobení počtem souběžných streamů rychle přidá.
 
 Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept od počátku do služby [CDN-Assist](#origin-assist-cdn-prefetch) .
 
 ## <a name="considerations"></a>Požadavky
 
-* [Koncový bod streamování](streaming-endpoint-concept.md) `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
-* Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
+- [Koncový bod streamování](streaming-endpoint-concept.md) `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
+- Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
 
 ## <a name="enable-azure-cdn-integration"></a>Povolit integraci Azure CDN
 
@@ -148,7 +153,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 * Funguje tato funkce s obsahem UHD/HEVC?
 
-    Ano.
+    Yes.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

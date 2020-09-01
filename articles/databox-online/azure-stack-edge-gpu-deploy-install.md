@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 905229cde0d2b3dde7f0f2192860c33fc69e5fb2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087706"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181812"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Kurz: instalace Azure Stack Edge pomocí GPU
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -37,7 +37,7 @@ Požadavky pro instalaci fyzického zařízení jsou následující:
 
 Než začnete, ujistěte se, že:
 
-* Dokončili jste všechny kroky v části [Příprava na nasazení Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md).
+* Dokončili jste všechny kroky v části [Příprava na nasazení Azure Stack Edge s grafickým procesorem](azure-stack-edge-gpu-deploy-prep.md).
     * Vytvořili jste prostředek Azure Stack Edge pro nasazení zařízení.
     * Vygenerovali jste aktivační klíč pro aktivaci zařízení pomocí Azure Stackho hraničního prostředku.
 
@@ -48,11 +48,11 @@ Před nasazením zařízení:
 
 - Ujistěte se, že zařízení funguje bezpečně na plochém, stabilním a úrovni pracovního prostoru.
 - Ověřte, že lokalita, kterou chcete nastavit, disponuje jedním z následujícího:
-    - Standardní AC výkon z nezávislého zdroje
+    - Standardní AC výkon z nezávislého zdroje.
 
         - nebo -
-    - Jednotka PDU napájení stojanu s nenepřerušitelným zdrojem napájení (UPS)
-    - Dostupná patice 1U na stojanu, do kterého chcete zařízení připojit
+    - Rozvodná energetická jednotka racku s nepřerušitelným zdrojem napájení (UPS)
+    - Dostupná patice 1U v racku, do kterého chcete zařízení připojit.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Síť v datovém centru
 
@@ -75,7 +75,7 @@ Toto zařízení se dodává v jedné krabici. Zařízení rozbalíte pomocí n�
     - Jedno sestavení pro železniční sadu
     - Bezpečnostní brožura, informace o životním prostředí a regulativní informace
 
-Pokud jste neobdrželi všechny uvedené položky, obraťte se na podporu Azure Stack Edge. Dalším krokem je připojení zařízení k stojanu.
+Pokud jste neobdrželi všechny uvedené položky, obraťte se na [Podpora Microsoftu](azure-stack-edge-contact-microsoft-support.md). Dalším krokem je připojení zařízení k stojanu.
 
 
 ## <a name="rack-the-device"></a>Usazení zařízení do racku
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Pro správnou operaci musí být zařízení Azure Stack Edge připojená k racku.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.
@@ -166,7 +166,7 @@ Než začnete kabelovat vaše zařízení, budete potřebovat následující:
 - Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
 - Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Aspoň jedno rozhraní datové sítě z portu 2, PORT 3, port 4, PORT 5 nebo PORT 6 musí být připojené k Internetu (s připojením k Azure).  
 - Přístup ke dvěma jednotkám distribuce napájení (doporučeno).
-- Aspoň jeden síťový přepínač s rychlostí 1 GbE pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Pokud pro data používáte rozhraní 25/10 GbE, budete potřebovat přepínač s 25 gbemi nebo 10 přepínači. 
+- Aspoň jeden síťový přepínač s rychlostí 1 GbE pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Místní webové uživatelské rozhraní nebude dostupné, pokud připojený přepínač nemá aspoň 1 GbE. Pokud pro data používáte rozhraní 25/10 GbE, budete potřebovat přepínač s 25 gbemi nebo 10 přepínači. 
 
 > [!NOTE]
 > - Pokud se připojujete pouze k jednomu síťovému rozhraní, doporučujeme, abyste pro posílání dat do Azure používali síťové rozhraní 25 nebo 10 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 

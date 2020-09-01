@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763087"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182322"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -45,7 +45,7 @@ Před integrací aplikací se službou Azure AD je důležité znát, kde jste a
   * Azure AD
   * V samostatné aplikační databázi, kterou vlastníte
   * V neschválených aplikacích
-  * Všechny výš uvedené položky
+  * Všechny výše uvedené
 * Jaká oprávnění a přiřazení rolí mají jednotliví uživatelé aktuálně k dispozici? Potřebujete si projít svůj přístup nebo jste si jisti, že je teď k disvěřit přístup a přiřazení rolí uživatelů?
 * Jsou již vytvořeny skupiny v místní službě Active Directory?
   * Jak jsou vaše skupiny uspořádány?
@@ -54,7 +54,7 @@ Před integrací aplikací se službou Azure AD je důležité znát, kde jste a
 * Budete potřebovat vyčistit databáze uživatelů a skupin před integrací?  (Jedná se o poměrně důležitou otázku. Uvolnění paměti, uvolnění paměti.)
 
 ### <a name="access-management-inventory"></a>Inventář správy přístupu
-* Jak aktuálně spravujete přístup uživatelů k aplikacím? Je potřeba změnit?  Měli jste za přístup k jiným způsobům správy přístupu, jako je třeba [RBAC](../../role-based-access-control/role-assignments-portal.md) ?
+* Jak aktuálně spravujete přístup uživatelů k aplikacím? Je potřeba změnit?  Měli jste za přístup k jiným způsobům správy přístupu, jako je například se službou [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) ?
 * Kdo potřebuje přístup k čemu?
 
 Možná nemáte odpovědi na všechny tyto otázky dopředu, ale to je v pořádku.  Tato příručka vám pomůže odpovědět na některé z těchto otázek a dělat nějaká kvalifikovaná rozhodnutí.
@@ -95,7 +95,7 @@ Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z
 
 Stažení plánu nasazení z Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte možnost **podnikové aplikace**vybrat  |  **Pick an App**  |  **plán nasazení**aplikace.
 
 Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109357"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182441"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze definujete strategii ochrany dat pro vaše řešení hybridní identity, aby splňovala obchodní požadavky, které jste definovali v nástroji:
@@ -48,7 +48,7 @@ V závislosti na tom, jak jste odpověděli na otázky v části [Určení poža
 | BitLocker Drive Encryption |X |X | |
 | SQL Server k šifrování databází |X |X | |
 | Šifrování z virtuálního počítače do virtuálního počítače | | |× |
-| PROTOKOL SSL/TLS | | |× |
+| SSL/TLS | | |× |
 | Síť VPN | | |× |
 
 > [!NOTE]
@@ -121,7 +121,7 @@ Každá interakce v diagramu znázorněná na obrázku X představuje jeden scé
 
 1. Podmíněný přístup k aplikacím, které jsou hostované místně: u registrovaných zařízení můžete použít zásady přístupu pro aplikace, které jsou nakonfigurované pro použití AD FS s Windows Serverem 2012 R2.
 
-2. Access Control k Azure Portal: Azure taky umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC). Tato metoda umožňuje společnosti omezit počet operací, které může jednotlivec dělat v Azure Portal. Pomocí RBAC pro řízení přístupu k portálu mohou správci IT delegovat přístup pomocí následujících přístupů ke správě přístupu:
+2. Access Control k Azure Portal: Azure vám taky umožní řídit přístup k portálu pomocí řízení přístupu na základě role Azure (Azure RBAC)). Tato metoda umožňuje společnosti omezit počet operací, které může jednotlivec dělat v Azure Portal. Pomocí služby Azure RBAC pro řízení přístupu k portálu mohou správci IT delegovat přístup pomocí následujících přístupů ke správě přístupu:
 
    - Přiřazení role na základě skupin: můžete přiřadit přístup ke skupinám Azure AD, které se dají synchronizovat z vaší místní služby Active Directory. Díky tomu můžete využít stávající investice, které vaše organizace provedla při správě skupin a jejich zpracování. Můžete také použít funkci delegovaná Správa skupin Azure AD Premium.
    - Použijte předdefinované role v Azure: můžete použít tři role – vlastník, přispěvatel a čtenář, abyste zajistili, že uživatelé a skupiny mají oprávnění dělat jenom úkoly, které potřebují ke své práci.

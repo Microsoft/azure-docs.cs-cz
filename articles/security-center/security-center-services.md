@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607136"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181931"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -35,7 +35,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
@@ -45,9 +45,9 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
-|Vyhodnocení šifrování disku|✔|✔|-|Zdarma|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Zdarma|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Zdarma|
+|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 
 ### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
@@ -59,7 +59,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
-|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
@@ -68,10 +68,10 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Standard|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: zdarma<br><br>Mimo Azure: Standard|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Zdarma|
-|Vyhodnocení šifrování disku|✔|✔|-|Zdarma|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Zdarma|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Zdarma|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
+|Vyhodnocení šifrování disku|✔|✔|-|Free|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Free|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Free|
 
 --- 
 
@@ -91,13 +91,13 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Funkce Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Yes |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Yes |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Yes |
-| Symantec v12.1.1100+| Řada Windows Serverů  | No | Yes |
-| McAfee v10+ | Řada Windows Serverů  | No | Yes |
-| McAfee v10+ | Řada Linux serverů  | No | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | No | Ano  **\***  |
+| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
+| Sophos v9 +| Řada Linux serverů  | Ne | Ano  **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 

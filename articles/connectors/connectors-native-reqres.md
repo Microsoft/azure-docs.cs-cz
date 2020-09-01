@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289440"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226510"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované akce triggeru požadavků a odpovědí můžete vytvářet automatizované úlohy a pracovní postupy, které přijímají příchozí požadavky HTTPS a reagují na ně. Můžete mít například aplikaci logiky:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované akce triggeru požadavku a odpovědi můžete vytvářet automatizované úlohy a pracovní postupy, které mohou přijímat příchozí požadavky přes protokol HTTPS. Chcete-li místo toho odesílat odchozí požadavky, použijte vestavěný [Trigger http nebo akci HTTP](../connectors/connectors-native-http.md).
+
+Můžete mít například aplikaci logiky:
 
 * Přijetí a odpověď na požadavek HTTPS na data v místní databázi.
 
@@ -24,47 +26,28 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 
 * Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
 
-Aktivační událost žádosti podporuje [Azure Active Directory otevřené ověřování](../active-directory/develop/index.yml) (Azure AD OAuth) pro autorizaci příchozích volání do vaší aplikace logiky. Další informace o povolení tohoto ověřování najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – povolení ověřování Azure AD OAuth](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+V tomto článku se dozvíte, jak použít akci triggeru a odpovědi žádosti, aby vaše aplikace logiky mohla přijímat příchozí volání a reagovat na ně.
 
-## <a name="prerequisites"></a>Požadavky
+Informace o šifrování, zabezpečení a autorizaci příchozích volání do vaší aplikace logiky, jako je například [TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security), dříve označované jako SSL (Secure SOCKETS Layer) (SSL) nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Předpoklady
 
-* Základní znalosti o [Logic Apps](../logic-apps/logic-apps-overview.md) Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Účet a předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
-
-* Příchozí volání podporují *pouze* TLS (Transport Layer Security) 1,2. Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](/security/solving-tls1-problem). Odchozí volání podporují TLS 1,0, 1,1 a 1,2 na základě schopnosti cílového koncového bodu.
-
-* Příchozí volání podporují tyto šifrovací sady:
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md)?
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Přidat aktivační událost žádosti
 
-Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření do koncových bodů HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+Tato integrovaná aktivační událost vytvoří ručně koncový bod, který může zpracovávat *pouze* příchozí požadavky přes protokol HTTPS. Když volající pošle požadavek do tohoto koncového bodu, aktivuje se [Trigger žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a spustí se aplikace logiky. Další informace o tom, jak zavolat tuto aktivační událost, najdete v tématu [pracovní postupy volání, triggeru nebo vnořování s koncovými body HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+
+Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že vaše aplikace logiky zahrnuje [akci odpovědi](#add-response), pokud vaše aplikace logiky po uplynutí této doby neodešle odpověď zpět volajícímu, vrátí vaše aplikace logiky `504 GATEWAY TIMEOUT` stav volajícímu. Pokud vaše aplikace logiky neobsahuje akci odpovědi, 
+> vaše aplikace logiky okamžitě vrátí `202 ACCEPTED` stav volajícímu.
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
-1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
+1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte, **když se přijme požadavek HTTP** .
 
    ![Vybrat aktivační událost žádosti](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -144,11 +127,11 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-      ![Generovat schéma z datové části](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![Snímek obrazovky s vybranou možnost použít ukázkovou datovou část k vygenerování schématu](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. Zadejte ukázkovou datovou část a vyberte **Hotovo**.
 
-      ![Generovat schéma z datové části](./media/connectors-native-reqres/enter-payload.png)
+      ![Zadat ukázkovou datovou část k vygenerování schématu](./media/connectors-native-reqres/enter-payload.png)
 
       Tady je ukázková datová část:
 
@@ -206,15 +189,13 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    ![Adresa URL pro použití aktivace aplikace logiky](./media/connectors-native-reqres/generated-url.png)
 
    > [!NOTE]
-   > Pokud chcete při volání triggeru požadavku do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi:`%25%23`
+   > Pokud chcete při volání triggeru požadavku do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi: `%25%23`
 
 1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL.
 
-   Můžete například použít nástroj, jako je například [post](https://www.getpostman.com/) , k odeslání HTTP POST. Pokud jste [povolili Azure Active Directory otevřete ověřování](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) pro autorizaci příchozích volání triggeru žádosti, zavolejte Trigger pomocí [adresy URL sdíleného přístupového podpisu (SAS)](../logic-apps/logic-apps-securing-a-logic-app.md#sas) nebo pomocí ověřovacího tokenu, ale nemůžete použít obojí. Ověřovací token musí určovat `Bearer` typ v autorizační hlavičce. Další informace najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – přístup k aktivačním událostem založeným na požadavku](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+   Můžete například použít nástroj, jako je například [post](https://www.getpostman.com/) , k odeslání HTTP POST. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v těchto tématech: [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v těchto tématech: [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
-
-### <a name="trigger-outputs"></a>Výstupy triggeru
+## <a name="trigger-outputs"></a>Výstupy triggeru
 
 Zde jsou další informace o výstupech z triggeru požadavku:
 
@@ -228,15 +209,13 @@ Zde jsou další informace o výstupech z triggeru požadavku:
 
 ## <a name="add-a-response-action"></a>Přidat akci odpovědi
 
-Akci reakce můžete použít ke reakci na datovou část (data) na příchozí požadavek HTTPS, ale jenom v aplikaci logiky, která se aktivuje požadavkem HTTPS. Akci odpovědi můžete přidat kdykoli ve svém pracovním postupu. Další informace o základní definici JSON pro tuto aktivační událost najdete v tématu [typ akce odpovědi](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
-
-Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky vrátí `504 GATEWAY TIMEOUT` volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` odpověď volajícímu.
+Když použijete Trigger žádosti pro zpracování příchozích požadavků, můžete vytvořit model odpovědi a odeslat výsledky datové části zpět volajícímu pomocí předdefinované [Akce odpovědi](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action). Akci odpovědi můžete použít *jenom* s triggerem požadavku. Tato kombinace s akcí triggeru a odpovědi žádosti vytvoří [vzor požadavků a odpovědí](https://en.wikipedia.org/wiki/Request%E2%80%93response). S výjimkou uvnitř smyček foreach a do smyček a paralelních větví můžete přidat akci odpovědi kdekoli v pracovním postupu.
 
 > [!IMPORTANT]
 > Pokud akce odpovědi zahrnuje tyto hlavičky, Logic Apps tyto hlavičky z vygenerované zprávy odpovědi odebrat bez zobrazení upozornění nebo chyby:
 >
 > * `Allow`
-> * `Content-*`s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a`Content-Type`
+> * `Content-*` s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a `Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -253,7 +232,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole jako filtr "Response" a vyberte akci **odpovědi** .
+1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr a vyberte akci **odpovědi** .
 
    ![Vybrat akci odpovědi](./media/connectors-native-reqres/select-response-action.png)
 
@@ -286,5 +265,5 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Konektory pro Logic Apps](../connectors/apis-list.md)
-

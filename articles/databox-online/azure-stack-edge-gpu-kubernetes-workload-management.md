@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 21845b51fdd108221d5e1bce50e953b79084d17d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084083"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182050"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Správa úloh Kubernetes na zařízení Azure Stack Edge
 
@@ -33,40 +33,13 @@ Mezi dva běžné typy úloh, které můžete nasadit na Azure Stack hraniční 
 
     Pro nasazení stavové aplikace můžete vytvořit nasazení Kubernetes. 
 
-## <a name="namespaces-types"></a>Typy oborů názvů
+## <a name="deployment-flow"></a>Tok nasazení
 
-Prostředky Kubernetes, například lusky a nasazení, jsou logicky seskupeny do oboru názvů. Tato seskupení poskytují způsob, jak logicky rozdělit cluster Kubernetes a omezit přístup k vytváření, zobrazení nebo správě prostředků. Uživatelé můžou pracovat jenom s prostředky v rámci svých přiřazených oborů názvů.
-
-Obory názvů jsou určené pro použití v prostředích s mnoha uživateli, kteří jsou rozloženi mezi několik týmů nebo projektů. V případě clusterů s několika až desítkami uživatelů byste neměli muset vytvářet ani myslet na všechny obory názvů vůbec. Pokud potřebujete funkce, které poskytují, začněte používat obory názvů.
-
-Další informace najdete v tématu [obory názvů Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
-
-
-Vaše zařízení Azure Stack Edge má následující obory názvů:
-
-- **Obor názvů System** – tento obor názvů tam, kde existují základní prostředky, jako jsou například síťové funkce jako DNS a proxy nebo řídicí panel Kubernetes. Do tohoto oboru názvů obvykle nesadíte vlastní aplikace. Tento obor názvů použijte k ladění všech problémů clusteru Kubernetes. 
-
-    V zařízení existuje několik oborů názvů systému a názvy odpovídající těmto oborům názvů systému jsou rezervované. Tady je seznam rezervovaných oborů názvů systému: 
-    - Kube – systém
-    - metallb – systém
-    - DBE – obor názvů
-    - default
-    - Kubernetes – řídicí panel
-    - default
-    - Kube-Node-zapůjčení
-    - Kube – veřejný
-    - iotedge
-    - Azure – ARC
-
-    Ujistěte se, že nepoužíváte žádné rezervované názvy pro uživatelské obory názvů, které vytvoříte. 
-<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
-
-- **Obor názvů uživatele** – jedná se o obory názvů, které můžete vytvořit prostřednictvím **kubectl** k lokálně nasazeným aplikacím.
+K nasazení aplikací na Azure Stack hraniční zařízení budete postupovat podle těchto kroků: 
  
-- **Obor názvů IoT Edge** – k tomuto oboru názvů se připojíte `iotedge` a nasadíte aplikace přes IoT Edge.
-
-- **Obor názvů ARC Azure** – připojíte se k tomuto `azure-arc` oboru názvů a nasadíte aplikace přes Azure ARC.
-
+1. **Konfigurace přístupu**: za prvé budete používat prostředí PowerShell pro vytvoření uživatele, vytvoření oboru názvů a udělení přístupu k tomuto oboru názvů uživateli.
+2. **Konfigurace úložiště**: dále budete používat prostředek Azure Stack Edge v Azure Portal k vytvoření trvalých svazků pomocí statického nebo dynamického zřizování pro stavové aplikace, které budete nasazovat.
+3. **Konfigurace sítě**: nakonec služby budete používat k vystavování aplikací externě a v rámci clusteru Kubernetes.
  
 ## <a name="deployment-types"></a>Typy nasazení
 
@@ -78,7 +51,7 @@ Existují tři hlavní způsoby nasazení vašich úloh. Každá z těchto metod
 
 - **Nasazení IoT Edge**: Jedná se prostřednictvím IoT Edge, které se připojují ke službě Azure IoT Hub. Připojíte se ke clusteru K8 na zařízení Azure Stack Edge přes `iotedge` obor názvů. Agenti IoT Edge nasazená v tomto oboru názvů zodpovídají za připojení k Azure. Konfiguraci použijete `IoT Edge deployment.json` pomocí Azure DEVOPS CI/CD. Správa oboru názvů a IoT Edge se provádí prostřednictvím operátoru cloudu.
 
-- **Nasazení Azure/ARC**: Azure ARC je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů K8. Cluster K8 se připojujete na zařízení Azure Stack Edge přes `azure-arc namespace` .  V tomto oboru názvů se nasazují agenti, kteří zodpovídají za připojení k Azure. Konfiguraci nasazení použijete pomocí správy konfigurace založené na GitOps. Azure ARC vám také umožní použít Azure Monitor pro kontejnery k zobrazení a monitorování clusterů. Další informace najdete v tom, [co je Azure-ARC s podporou Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+- **Nasazení Azure/ARC**: Azure ARC je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů K8. Cluster K8 se připojujete na zařízení Azure Stack Edge přes `azure-arc namespace` . V tomto oboru názvů se nasazují agenti, kteří zodpovídají za připojení k Azure. Konfiguraci nasazení použijete pomocí správy konfigurace založené na GitOps. Azure ARC vám také umožní použít Azure Monitor pro kontejnery k zobrazení a monitorování clusterů. Další informace najdete v tom, [co je Azure-ARC s podporou Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 ## <a name="choose-the-deployment-type"></a>Zvolit typ nasazení
 

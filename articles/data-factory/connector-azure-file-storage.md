@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: c7b91fb8d283402cf8bda43c707d0ce2c8a1498b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 08/31/2020
+ms.openlocfilehash: fe48f27cdf2aa09f47e3ed58433a5695036e4cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051249"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182475"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopírování dat z nebo do Azure File Storage pomocí služby Azure Data Factory
 

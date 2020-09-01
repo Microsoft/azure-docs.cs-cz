@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 30d040cfc608f0d11d3d59f52cd59c1a946bcc19
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 08/31/2020
+ms.openlocfilehash: 584aafccf146f3f261a7d375ecb57dcde18d03d5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050978"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182533"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopírování dat ze služby Amazon Simple Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]

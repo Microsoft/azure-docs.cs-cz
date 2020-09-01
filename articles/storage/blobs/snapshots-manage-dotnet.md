@@ -1,27 +1,27 @@
 ---
 title: Vytvoření a Správa snímku objektu BLOB v .NET
 titleSuffix: Azure Storage
-description: Naučte se vytvořit snímek objektu BLOB jen pro čtení pro zálohování dat objektů BLOB v daném časovém okamžiku.
+description: Naučte se používat klientskou knihovnu .NET k vytvoření snímku objektu BLOB jen pro čtení pro zálohování dat objektů BLOB v daném časovém okamžiku.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020809"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226127"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Vytvoření a Správa snímku objektu BLOB v .NET
 
 Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém časovém okamžiku. Tento článek popisuje, jak vytvořit a spravovat snímky objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-Další informace o snímcích objektů BLOB v Azure Storage najdete v tématu [Vytvoření a Správa snímku objektu BLOB v rozhraní .NET](snapshots-overview.md).
+Další informace o snímcích objektů BLOB v Azure Storage najdete v tématu [snímky objektů BLOB](snapshots-overview.md).
 
 ## <a name="create-a-snapshot"></a>Vytvoření snímku
 
@@ -162,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Další kroky
 
 - [Snímky objektů BLOB](snapshots-overview.md)
-- [Verze objektů BLOB (Preview)](versioning-overview.md)
+- [Verze objektů BLOB](versioning-overview.md)
 - [Obnovitelné odstranění pro objekty blob](storage-blob-soft-delete.md)

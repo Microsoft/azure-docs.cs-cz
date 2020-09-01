@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373858"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226892"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -27,7 +27,7 @@ Tento článek poskytuje pokyny k výběru a používání Azure Active Director
 Pro použití Azure AD Connectho zřizování cloudu potřebujete následující:
     
 - Účet správce hybridní identity pro vašeho tenanta Azure AD, který není uživatelem typu Host.
-- Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Místní konfigurace brány firewall.
 
 >[!NOTE]
@@ -37,12 +37,12 @@ Ve zbývající části dokumentu najdete podrobné pokyny pro tyto požadavky.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
-1. Vytvořte v tenantovi Azure AD jenom cloudový účet správce hybridní identity. Tímto způsobem můžete spravovat konfiguraci tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Přečtěte si, jak [Přidat účet jenom pro cloudovou hybridní identitu správce](../active-directory-users-create-azure-portal.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
-1. Přidejte jeden nebo více [vlastních názvů domén](../active-directory-domains-add-azure-portal.md) do svého tenanta služby Azure AD. Uživatelé se můžou přihlásit pomocí některého z těchto názvů domén.
+1. Vytvořte v tenantovi Azure AD jenom cloudový účet správce hybridní identity. Tímto způsobem můžete spravovat konfiguraci tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Přečtěte si, jak [Přidat účet jenom pro cloudovou hybridní identitu správce](../fundamentals/add-users-azure-active-directory.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
+1. Přidejte jeden nebo více [vlastních názvů domén](../fundamentals/add-custom-domain.md) do svého tenanta služby Azure AD. Uživatelé se můžou přihlásit pomocí některého z těchto názvů domén.
 
 ### <a name="in-your-directory-in-active-directory"></a>Ve vašem adresáři ve službě Active Directory
 
-Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) .
+Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) .
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
@@ -96,4 +96,3 @@ Pokud chcete povolit TLS 1,2, postupujte podle těchto kroků.
 
 - [Co je zřizování?](what-is-provisioning.md)
 - [Co je zřízení cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
-
