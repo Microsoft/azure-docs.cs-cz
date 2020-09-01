@@ -33,6 +33,8 @@
           href: dns-delegate-domain-azure-dns.md
         - name: Vytvoření vlastních záznamů DNS pro webovou aplikaci
           href: dns-web-sites-custom-domain.md
+        - name: Vytvoření nové podřízené zóny DNS
+          href: tutorial-public-dns-zones-child.md
         - name: Záznamy aliasů pro Traffic Manager
           href: tutorial-alias-tm.md
         - name: Záznamy aliasů pro veřejné IP adresy

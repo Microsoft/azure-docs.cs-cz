@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903557"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079672"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -20,7 +20,7 @@ Jednotky streamování (SUs) představují výpočetní prostředky, které jsou
 
 Aby se dosáhlo nízké latence zpracování streamů, provádějí úlohy Stream Analytics veškeré zpracování v paměti. Když dojde k nedostatku paměti, úloha streamování se nezdařila. V důsledku toho je pro produkční úlohy důležité monitorovat využití prostředků úlohy streamování a zajistit, aby byl k dispozici dostatek prostředků, aby byly úlohy spuštěné 24/7.
 
-Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu paměti vašich úloh. Pro úlohu streamování s minimálními nároky je tato metrika obvykle mezi 10% a 20%. Pokud je využití SU% nízké a vstupní události obdrží nevyřízené, vaše zatížení pravděpodobně vyžaduje více výpočetních prostředků, což vyžaduje, abyste zvýšili počet služeb SUs. Je vhodné zachovat metriku SU nižší než 80%, aby se zohlednila občasné špičky. Microsoft doporučuje nastavit výstrahu na 80% SU využití metriky, aby se zabránilo vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro Azure Stream Analytics úlohy](stream-analytics-set-up-alerts.md).
+Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu paměti vašich úloh. Pro úlohu streamování s minimálními nároky je tato metrika obvykle mezi 10% a 20%. Pokud je využití SU% vysoké (nad 80%), nebo pokud události vstupu přestanou být zaprotokolovány (i s nízkým využitím%, protože nezobrazuje využití CPU), vaše zatížení pravděpodobně vyžaduje více výpočetních prostředků, což vyžaduje, abyste zvýšili počet služeb SUs. Je vhodné zachovat metriku SU nižší než 80%, aby se zohlednila občasné špičky. Microsoft doporučuje nastavit výstrahu na 80% SU využití metriky, aby se zabránilo vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro Azure Stream Analytics úlohy](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurace Stream Analyticsch jednotek streamování (SUs)
 1. Přihlášení k [Azure Portal](https://portal.azure.com/)
@@ -111,7 +111,7 @@ Počet nespárovaných událostí v připojení ovlivňuje využití paměti pro
 
 V tomto příkladu je možné, že se zobrazují spousty reklam a na ni klikne jenom pár lidí a je potřeba, aby se všechny události zobrazovaly v časovém období. Využitá paměť je přímo úměrná velikosti tohoto okna a frekvenci událostí. 
 
-Pokud to chcete napravit, pošlete události do centra událostí, které je rozdělené do oddílů pomocí klíčů Join (ID v tomto případě), a nahorizontální navýšení kapacity dotazu tím, že systém zpracuje každý vstupní oddíl samostatně pomocí **oddílu podle** uvedeného příkladu:
+Pokud to chcete napravit, pošlete události do centra událostí, které je rozdělené do oddílů pomocí klíčů Join (ID v tomto případě), a nahorizontální navýšení kapacity dotazu tím, že systém zpracuje každý vstupní oddíl samostatně pomocí  **oddílu podle** uvedeného příkladu:
 
    ```sql
    SELECT clicks.id

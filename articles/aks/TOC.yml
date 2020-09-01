@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Přehled diagnostiky služby Azure Kubernetes Service
       href: concepts-diagnostics.md
+    - name: Udržitelné vytváření softwaru
+      href: concepts-sustainable-software-engineering.md
 - name: Návody
   items:
     - name: Operace clusteru

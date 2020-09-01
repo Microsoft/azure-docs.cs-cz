@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958758"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079655"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -488,7 +488,7 @@ Následující operace jsou podporovány úpravou:
 - Přidejte nebo nahraďte hodnotu spravovaného typu identity ( `identity.type` ) virtuálních počítačů a sady škálování virtuálních počítačů.
 - Přidejte nebo nahraďte hodnoty určitých aliasů (Preview).
   - Použití `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
-    v části Azure PowerShell získáte seznam aliasů, které lze použít s úpravou.
+    v Azure PowerShell **4.6.0** nebo vyšší získáte seznam aliasů, které lze použít s úpravou.
 
 > [!IMPORTANT]
 > Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Připojení se ale doporučuje, pokud nemůžete vytvořit spravovanou identitu nebo upravit ještě nepodporují alias pro vlastnost prostředku.

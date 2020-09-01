@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836322"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079638"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
@@ -182,7 +182,7 @@ Měly by být povolené diagnostické protokoly v Logic Apps.
 
 Měla by být povolená DDoS Protection Standard.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v rámci jediné definice podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -641,7 +641,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
 **Doprovodné**materiály: můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní úkoly, jako je správa, úpravy a zobrazení Logic Apps. Pokud chcete řídit svá oprávnění, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste členům v rámci předplatného Azure mohli přiřadit přizpůsobené nebo předdefinované role:
 - Přispěvatel aplikace logiky: umožňuje spravovat Logic Apps, ale nemůžete pro ně měnit přístup.
@@ -877,7 +877,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Doprovodné**materiály: prostředky související s vaším Logic Apps, které jsou nutné pro obchodní operace, ale mohou být pro organizaci vyšší rizika, měli byste je izolovat v rámci svého vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečit pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
-Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organizaci zvýšit riziko, měli byste je všude, kde to jde, kdykoli je to možné, přes samostatné skupiny prostředků s konkrétními oprávněními a hranicemi RBAC.
+Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organizaci zvýšit riziko, měli byste je všude, kde to jde, kdykoli je to možné, přes samostatné skupiny prostředků s konkrétními oprávněními a hranicemi Azure RBAC.
 
 * [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
@@ -885,7 +885,7 @@ Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organiza
 
 * [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Postup zabezpečení přístupu k Logic Apps pomocí RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Jak zabezpečit přístup k Logic Apps přes Azure RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Monitorování Azure Security Center**: není k dispozici
 

@@ -5,19 +5,19 @@ description: Pomocí tohoto Azure PowerShell příkladu skriptu vytvořte spravo
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: seo-dt-2019
+ms.custom: seo-dt-2019, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073380"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079553"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance
 
@@ -41,7 +41,7 @@ Azure PowerShell příkazy mohou spustit nasazení pomocí předdefinované Azur
 
 Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a kolaci nelze později změnit. Vlastnosti jiných instancí lze změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../virtual-network-subnet-create-arm-template.md) nebo [upravili stávající virtuální síť](../vnet-existing-add-subnet.md) pro spravovanou instanci. V případě potřeby můžete v případě potřeby připravit síťové prostředí pomocí samostatné [šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
 

@@ -3,12 +3,13 @@ title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 6ea248dd51ae6786b0e987dc31ca83b29277cd16
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6938d0fcd2357efcf03053b0c9b2bde3954270b7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961502"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079434"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 

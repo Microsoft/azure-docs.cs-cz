@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044171"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079179"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -598,15 +598,15 @@ Funkce zjišťování dat a klasifikace ještě nejsou k dispozici pro jiné slu
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použijte řízení přístupu na základě role (RBAC) Azure Active Directory (AD) k řízení přístupu k rovině ovládacího prvku Azure Data Factory (Azure Portal).
+**Doprovodné**materiály: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k ploše ovládacího prvku Azure Data Factory (Azure Portal).
 
 Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role přispěvatel nebo vlastník nebo správcem předplatného Azure.
 
-U Data Factorych zdrojů dat, jako je například Azure SQL Database, najdete další informace o RBAC, které se týkají standardních hodnot zabezpečení této služby.
+U Data Factory zdrojů dat, jako je například Azure SQL Database, najdete další informace týkající se služby Azure RBAC v tématu základní hodnoty zabezpečení této služby.
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Role a oprávnění pro službu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -656,7 +656,7 @@ Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault 
 
 * [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-* [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+* [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -767,7 +767,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -808,7 +808,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 Poznámka: název softwaru, verze, Vydavatel a čas aktualizace jsou dostupné z Azure Portal. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
 
-* [Seznámení s Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Seznámení se službou Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [Jak povolit inventář virtuálních počítačů Azure](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
@@ -820,7 +820,7 @@ Poznámka: název softwaru, verze, Vydavatel a čas aktualizace jsou dostupné z
 
 **Pokyny**: pokud používáte Integration runtime na virtuálním počítači Azure, poskytuje Azure Automation úplnou kontrolu během nasazování, operací a vyřazení úloh a prostředků z provozu. K identifikaci veškerého softwaru nainstalovaného v Virtual Machines můžete použít Change Tracking. Můžete implementovat vlastní proces nebo použít konfiguraci Azure Automation stav pro odebrání neautorizovaného softwaru.
 
-* [Seznámení s Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Seznámení se službou Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [Sledování změn ve vašem prostředí pomocí Change Tracking řešení](https://docs.microsoft.com/azure/automation/change-tracking)
 
@@ -843,7 +843,7 @@ Poznámka: název softwaru, verze, Vydavatel a čas aktualizace jsou dostupné z
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
@@ -984,15 +984,15 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Pokyny**: Pokud používáte vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili, že k imagí budou mít přístup jenom autorizovaní uživatelé. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte RBAC, aby bylo zajištěno, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+**Doprovodné**materiály: Pokud používáte vlastní image, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte Azure RBAC, aby bylo zajištěno, že přístup k obrázkům budou mít jenom autorizovaní uživatelé.
 
 Roli Přispěvatel Data Factory lze použít k vytváření a správě datových továren a také k podřízeným prostředkům v nich.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Vysvětlení RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Vysvětlení služby Azure RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Role a oprávnění pro službu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 

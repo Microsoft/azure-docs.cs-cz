@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be4bab10d369fcefe626bbe890acfff7fc7004b0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700293"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079060"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>Vytvoření nebo úprava přímého partnerského vztahu pomocí prostředí PowerShell
 
@@ -53,7 +54,7 @@ Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](ho
 * [Vytvoření nebo úprava partnerského vztahu systému Exchange pomocí prostředí PowerShell](howto-exchange-powershell.md)
 * [Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí PowerShellu](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Podrobnější popis všech parametrů získáte spuštěním následujícího příkazu:
 
 ```powershell

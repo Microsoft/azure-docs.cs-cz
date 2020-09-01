@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7d75b9f097f97dcc425edd6baed7cc96d55c38ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6c41e0ffc9d90fca8b492e854fdada31b1c46267
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085278"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078873"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření virtuálního počítače s Azure Monitor pomocí prostředí PowerShell
 

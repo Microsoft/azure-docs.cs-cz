@@ -1,20 +1,20 @@
 ---
 title: Šifrování dat v klidovém umístění
 titleSuffix: Azure Cognitive Services
-description: Šifrování dat v klidovém umístění.
+description: Microsoft vám umožňuje spravovat Cognitive Services předplatná s vlastními klíči nazývanými Customer Customer Key (CMK). Tento článek obsahuje informace o šifrování dat v klidovém umístění pro překladatele a o tom, jak povolit a spravovat CMK.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310831"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079196"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
@@ -22,11 +22,11 @@ Překladatel automaticky šifruje vaše data, která nahrajete k sestavení vlas
 
 ## <a name="about-cognitive-services-encryption"></a>O šifrování Cognitive Services
 
-Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód ani aplikace, abyste mohli využívat šifrování.
+Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou zabezpečená ve výchozím nastavení, a abyste mohli využívat šifrování, nemusíte upravovat kód ani aplikace.
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. Pokud používáte cenovou úroveň, která podporuje klíče spravované zákazníkem, můžete zobrazit nastavení šifrování prostředku v části **šifrování** [Azure Portal](https://portal.azure.com), jak je znázorněno na následujícím obrázku.
+Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Pokud používáte cenovou úroveň, která podporuje klíče spravované zákazníkem, můžete zobrazit nastavení šifrování prostředku v části **šifrování** [Azure Portal](https://portal.azure.com), jak je znázorněno na následujícím obrázku.
 
 ![Zobrazit nastavení šifrování](../media/cognitive-services-encryption/encryptionblade.png)
 
@@ -34,7 +34,7 @@ U předplatných, která podporují jenom šifrovací klíče spravované Micros
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Klíče spravované zákazníkem s využitím Azure Key Vaultu
 
-K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
+Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. K dispozici je také možnost spravovat vaše předplatné s vlastními klíči nazvanými klíče spravované zákazníkem (CMK). CMK nabízí větší flexibilitu při vytváření, rotaci, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat. Pokud je pro vaše předplatné nakonfigurované CMK, je k dispozici dvojité šifrování, které nabízí druhou vrstvu ochrany, a přitom vám umožní řídit šifrovací klíč pomocí Azure Key Vault.
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou k dispozici pro všechny cenové úrovně služby Translator. Pokud chcete požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem](https://aka.ms/cogsvc-cmk) , který bude trvat přibližně 3-5 pracovních dnů, aby se dozvěděl o stavu vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou Translator budete muset vytvořit nový prostředek překladatele. Po vytvoření prostředku překladatele můžete k nastavení spravované identity použít Azure Key Vault.
@@ -44,8 +44,6 @@ Pomocí těchto kroků povolíte klíčům spravovaným zákazníkem pro překla
 1. Vytvořte svůj nový místní Překladatel nebo místní Cognitive Services prostředek. Tato akce nebude fungovat s globálním prostředkem.
 2. V Azure Portal povolenou spravovanou identitu a přidejte informace o klíčích spravované zákazníkem.
 3. Vytvořte nový pracovní prostor ve vlastním překladateli a přidružte informace k tomuto předplatnému.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 

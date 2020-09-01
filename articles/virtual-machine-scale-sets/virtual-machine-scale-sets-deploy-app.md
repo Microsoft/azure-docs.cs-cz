@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080518"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079587"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovacích sad virtuálních počítačů
 
@@ -35,7 +35,7 @@ Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních p
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
-- [Šablona Azure Resource Manageru](tutorial-install-apps-template.md)
+- [Šablona Azure Resource Manager](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace do virtuálního počítače s Windows pomocí prostředí PowerShell DSC
@@ -43,8 +43,8 @@ Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních p
 
 Rozšíření PowerShell DSC umožňuje přizpůsobit instance virtuálních počítačů v sadě škálování pomocí PowerShellu. Následující příklad:
 
-- Vydá pokyn instancím virtuálních počítačů ke stažení balíčku DSC z GitHubu.*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Nastaví rozšíření pro spuštění instalačního skriptu.`configure-http.ps1`
+- Vydá pokyn instancím virtuálních počítačů ke stažení balíčku DSC z GitHubu. *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Nastaví rozšíření pro spuštění instalačního skriptu. `configure-http.ps1`
 - Načte informace o škálované sadě pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) .
 - Aplikuje rozšíření na instance virtuálních počítačů pomocí [Update-AzVmss](/powershell/module/az.compute/update-azvmss) .
 

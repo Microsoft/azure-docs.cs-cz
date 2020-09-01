@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f84c73f3fbefddd2972f077826fe1e2a8738ad5a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079052"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079145"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Základní hodnoty zabezpečení Azure pro ExpressRoute
 
@@ -240,13 +240,13 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup správce k řídicí rovině (například Azure Portal) vašich prostředků Azure ExpressRoute.
 
-Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
+K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
 
 Partneři, kteří používají Správce prostředků Partnerská rozhraní API, můžou navíc na prostředek expressRouteCrossConnection použít Access Control na základě rolí. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Využití RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Využití Azure RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -437,7 +437,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 * [Jak nakonfigurovat lokalitu na síť IPSEC přes ExpressRoute](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
 
-Jak nakonfigurovat lokalitu na síť IPSEC přes ExpressRoute:https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
+Jak nakonfigurovat lokalitu na síť IPSEC přes ExpressRoute: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -453,17 +453,17 @@ Jak nakonfigurovat lokalitu na síť IPSEC přes ExpressRoute:https://docs.micro
 
 **Odpovědnost**: netýká se
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné ke konfiguraci řízení přístupu na základě role (RBAC). Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
+**Pokyny**: můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné ke konfiguraci řízení přístupu na základě role v Azure (Azure RBAC). Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
 
 Azure ExpressRoute má také vlastníka okruhu a uživatelské role okruhu. Uživatelé okruhu jsou vlastníky bran virtuální sítě, které nejsou v rámci stejného předplatného jako okruh ExpressRoute. Vlastník okruhu má kdykoliv oprávnění upravovat a odvolat. Odvolání výsledků autorizace ve všech připojeních propojení, která se odstraňují z předplatného, jehož přístup byl odvolán. Uživatelé okruhu můžou uplatnit autorizaci (jednu autorizaci na virtuální síť).
 
 Partneři, kteří používají Správce prostředků Partnerská rozhraní API, můžou navíc na prostředek expressRouteCrossConnection použít Access Control na základě rolí. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Využití RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Využití Azure RBAC v ExpressRoute partnerovi Správce prostředků API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 * [Principy rolí správy v ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
 

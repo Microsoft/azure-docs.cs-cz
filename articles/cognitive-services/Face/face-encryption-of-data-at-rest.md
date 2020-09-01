@@ -1,20 +1,20 @@
 ---
 title: Šifrování neaktivních dat ve službě Face
 titleSuffix: Azure Cognitive Services
-description: Služba čelí Šifrování neaktivních dat.
+description: Microsoft nabízí šifrovací klíče spravované Microsoftem a umožňuje také spravovat Cognitive Services předplatná s vlastními klíči, které se nazývají Customer Customer Key (CMK). Tento článek obsahuje informace o šifrování v klidovém umístění pro tvář a o tom, jak povolit a spravovat CMK.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 33495dd5b092cb51b3421e7204f3b529077d63b3
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309029"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079264"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat ve službě Face
 
@@ -24,15 +24,6 @@ Služba obličeje automaticky šifruje vaše data při trvalém ukládání do c
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom v cenové úrovni E0. Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby Face](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou obličeje budete muset vytvořit nový prostředek pro vytváření obličeje a vybrat E0 jako cenovou úroveň. Jakmile se vytvoří prostředek obličeje s cenovou úrovní E0, můžete k nastavení spravované identity použít Azure Key Vault.
-
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Klíče spravované zákazníkem jsou v tuto chvíli dostupné v těchto oblastech:
-
-* USA (střed) – jih
-* USA – západ 2
-* USA – východ
-* USA (Gov) – Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

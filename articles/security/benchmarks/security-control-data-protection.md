@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045531"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078992"
 ---
 # <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
 
@@ -84,15 +84,15 @@ Využijte Azure SQL Information Protection k usnadnění klasifikace a označov�
 
 - [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 4.6 | 14,6 | Zákazník |
+| 4,6 | 14,6 | Zákazník |
 
-Využijte Azure AD RBAC k řízení přístupu k datům a prostředkům, jinak použijte metody řízení přístupu specifické pro službu.
+K řízení přístupu k datům a prostředkům použijte řízení přístupu na základě role Azure (Azure RBAC), jinak použijte metody řízení přístupu ke konkrétním službám.
 
-- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 

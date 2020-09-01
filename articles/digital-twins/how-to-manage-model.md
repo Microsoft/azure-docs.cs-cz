@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013000"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079772"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -170,9 +170,9 @@ Modely se nemusí nutně vracet přesně do formuláře dokumentu, ve kterém by
 
 Po nahrání modelu do instance je celé rozhraní modelu neměnné. To znamená, že neexistují tradiční "úpravy" modelů.
 
-Místo toho, pokud chcete provádět změny modelu v digitálních proobjektech Azure, jako je například změna `DisplayName` nebo `Description` , jak to udělat, je nahrát **novější verzi** stejného modelu. Tím se přepíše původní model.
+Místo toho, abyste mohli provádět změny modelu v digitálních proobjektech Azure, jak to provést, je nahrát **novější verzi** stejného modelu. Během období Preview vám přechod verze modelu umožní jenom odebrat pole, nepřidávat nové (Pokud chcete přidat nová pole, měli byste jenom [vytvořit značku nového modelu](#create-models)).
 
-Uděláte to tak, že začnete s DTDL původního modelu. Aktualizujte libovolná pole, která chcete změnit.
+Pokud chcete vytvořit novou verzi existujícího modelu, začněte s DTDL původního modelu. Aktualizujte pole, která chcete změnit.
 
 Pak tuto položku označte jako novější verzi modelu tím, že aktualizujete `id` pole modelu. Poslední část ID modelu, po `;` ,, představuje číslo modelu. Chcete-li označit, že se jedná o aktualizovanou verzi tohoto modelu, zvyšte číslo na konci `id` hodnoty na libovolné číslo vyšší, než je aktuální číslo verze.
 

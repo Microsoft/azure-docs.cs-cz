@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420817"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079111"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall
 
@@ -33,6 +33,10 @@ V tomto kurzu se naučíte:
 > * Vytvoření zásady brány firewall a zabezpečení centra
 > * Testování brány firewall
 
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
 ## <a name="create-a-hub-and-spoke-architecture"></a>Vytvoření architektury centra a paprsků
 
 Nejdřív vytvořte virtuální sítě paprsků, kam můžete umístit své servery.
@@ -52,7 +56,7 @@ Tyto dvě virtuální sítě budou mít v nich Server úloh a budou chráněny b
 3. Vyberte **Přidat podsíť**.
 4. Zadejte **úlohu-01-SN**.
 5. Jako **Rozsah adres podsítě**zadejte **10.1.1.0/24**.
-6. Vyberte možnost **Přidat**.
+6. Vyberte **Přidat**.
 1. Vyberte **Zkontrolovat a vytvořit**.
 2. Vyberte **Vytvořit**.
 
@@ -182,7 +186,7 @@ Zásady brány firewall definují kolekce pravidel pro směrování provozu na j
 10. V případě **protokolu**zadejte **http, https**.
 11. Ujistěte se, že **cílový typ** je **plně kvalifikovaný název domény**.
 12. Pro **cíl**zadejte ** \* . Microsoft.com**.
-13. Vyberte možnost **Přidat**.
+13. Vyberte **Přidat**.
 
 Přidejte pravidlo DNAT, abyste mohli připojit vzdálenou plochu k virtuálnímu počítači **SRV-úlohy-01** .
 
@@ -199,7 +203,7 @@ Přidejte pravidlo DNAT, abyste mohli připojit vzdálenou plochu k virtuálním
 11. Do pole **cíl**zadejte veřejnou IP adresu brány firewall, kterou jste si poznamenali dříve.
 12. Pro **přeloženou adresu**zadejte privátní IP adresu pro **SRV-úlohu-01** , kterou jste si poznamenali dříve.
 13. Do pole **Přeložený port** zadejte **3389**.
-14. Vyberte možnost **Přidat**.
+14. Vyberte **Přidat**.
 
 Přidejte pravidlo sítě, abyste mohli připojit vzdálenou plochu z **SRV-úlohy-01** do služby **SRV – úloha-02**.
 
@@ -214,7 +218,7 @@ Přidejte pravidlo sítě, abyste mohli připojit vzdálenou plochu z **SRV-úlo
 9. V případě **cílových portů**zadejte **3389**.
 9. Jako **typ cíle**vyberte **IP adresa**.
 10. Do pole **cíl**zadejte privátní IP adresu **SRV-úlohy-02** , kterou jste si poznamenali dříve.
-11. Vyberte možnost **Přidat**.
+11. Vyberte **Přidat**.
 1. Vyberte **Další: Analýza hrozeb**.
 2. Vyberte **Další: rozbočovače**.
 3. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
@@ -270,6 +274,10 @@ Nyní otestujte pravidlo sítě.
 
 Takže teď ověříte, že pravidlo sítě brány firewall funguje:
 * Vzdálenou plochu můžete připojit k serveru umístěnému v jiné virtuální síti.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Po dokončení testování prostředků brány firewall odstraňte skupinu prostředků **nástroje FW-Manager** , která bude odstraňovat všechny prostředky související s bránou firewall.
 
 ## <a name="next-steps"></a>Další kroky
 
