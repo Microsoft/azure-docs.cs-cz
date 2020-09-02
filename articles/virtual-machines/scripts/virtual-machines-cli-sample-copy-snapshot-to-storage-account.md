@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 45b16687a271aa810dbab3c3eed81517c75eda82
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e59386acdf4590100e59fe49142715ea26b8d6d6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951718"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321935"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export/zkopírování snímku do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
 
@@ -44,9 +44,9 @@ Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-[Vytvoření virtuálního počítače ze spravovaného disku](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Vytvoření virtuálního počítače ze spravovaného disku](virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

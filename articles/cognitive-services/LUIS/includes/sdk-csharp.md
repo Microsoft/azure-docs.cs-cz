@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-dotnet
+ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e29b3dcdaba4fde0782b0fee8c60428b5a824b28
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fff4e8c43263dfcc49be6cb6269078643118e8df
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934717"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323232"
 ---
 Použijte klientské knihovny Language Understanding (LUIS) pro rozhraní .NET pro:
 * Vytvoření aplikace
@@ -66,7 +66,6 @@ Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovan
     ...
     ```
 
-
 ### <a name="install-the-nuget-libraries"></a>Instalace knihoven NuGet
 
 V adresáři aplikace nainstalujte klientské knihovny Language Understanding (LUIS) pro rozhraní .NET pomocí následujících příkazů:
@@ -79,6 +78,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 ## <a name="authoring-object-model"></a>Vytváření objektového modelu
 
 Klient pro vytváření Language Understanding (LUIS) je objekt [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) , který se ověřuje v Azure, který obsahuje váš klíč pro vytváření obsahu.
+
+## <a name="code-examples-for-authoring"></a>Příklady kódu pro vytváření obsahu
 
 Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetně:
 
@@ -94,6 +95,8 @@ Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetn�
 
 Běhový klient pro modul runtime pro Language Understanding (LUIS) je objekt [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) , který se ověřuje v Azure, který obsahuje váš klíč prostředku.
 
+## <a name="code-examples-for-prediction-runtime"></a>Příklady kódu pro předpověď za běhu
+
 Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetně:
 
 * Předpověď podle [přípravného nebo produkčního slotu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet)
@@ -104,9 +107,11 @@ Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetn�
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-1. V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
 
-    [!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+[!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+
+## <a name="add-boilerplate-code"></a>Přidat často používaný kód
 
 1. Změňte signaturu `Main` metody tak, aby povolovala asynchronní volání:
 
@@ -117,6 +122,8 @@ Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetn�
 1. Pokud není uvedeno jinak, přidejte zbytek kódu do `Main` metody `Program` třídy.
 
 ## <a name="create-variables-for-the-app"></a>Vytvoření proměnných pro aplikaci
+
+Vytvořte dvě sady proměnných: první sada, kterou změníte, druhá sada ponechá, jak se zobrazí v ukázce kódu. 
 
 1. Vytvořte proměnné pro uložení klíče pro vytváření a názvů prostředků.
 
@@ -130,7 +137,7 @@ Po vytvoření klienta použijte tohoto klienta k přístupu k funkcím, včetn�
 
 Vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.apikeyserviceclientcredentials?view=azure-dotnet) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) .
 
-[!code-csharp[Create LUIS authoring client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
+[!code-csharp[Authenticate the client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>Vytvoření aplikace LUIS
 
@@ -147,7 +154,7 @@ Vytvořte [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.az
 
 `intentName`Hodnota je pevně zakódována `OrderPizzaIntent` jako součást proměnných v oddílu [Vytvoření proměnných pro aplikaci](#create-variables-for-the-app) .
 
-[!code-csharp[Create intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
+[!code-csharp[Create intent for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>Vytvoření entit pro aplikaci
 
@@ -159,9 +166,9 @@ Metody vytváření entit jsou součástí třídy [modelu](https://docs.microso
 
 Kód pro vytvoření entity vytvoří entitu strojového učení s podentitami a funkcemi použitými u `Quantity` subentit.
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Kód pro vytvoření entity vytvoří entitu strojového učení s podentitami a funkcemi použitými u subentit množství.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Částečná obrazovka z portálu znázorňující vytvořenou entitu, entitu strojového učení s podentitami a funkcemi použitou pro subentity "množství".":::
 
-[!code-csharp[Create entities](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
+[!code-csharp[Create entities for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
 
 Pomocí následující metody pro třídu Najděte ID dílčí entity, aby bylo možné přiřadit funkce této subentitě.
 
@@ -173,11 +180,11 @@ Aby bylo možné určit záměr utterance a extrahovat entity, aplikace potřebu
 
 Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) , jeden objekt pro každý příklad utterance. Každý příklad by měl označit všechny entity pomocí slovníku dvojic název-hodnota a hodnota entity. Hodnota entity by měla být přesně tak, jak se zobrazuje v textu příkladu utterance.
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Hodnota entity by měla být přesně tak, jak se zobrazuje v textu příkladu utterance.":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Částečný snímek obrazovky ukazující vzorový utterance na portálu ":::
 
-[Příklady volání. AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) s ID aplikace, ID verze a příkladem. 
+[Příklady volání. AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) s ID aplikace, ID verze a příkladem.
 
-[!code-csharp[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
+[!code-csharp[Add example utterance to intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
@@ -187,9 +194,9 @@ Metoda [vlak. TrainVersionAsync](https://docs.microsoft.com/dotnet/api/microsoft
 
 Velmi malý model, jako je například tento rychlý Start, bude vlak velmi rychlý. V případě aplikací na úrovni produkčního prostředí by mělo školení aplikace zahrnovat volání metody [GetStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_TrainExtensions_GetStatusAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ITrain_System_Guid_System_String_System_Threading_CancellationToken_) , které určuje, kdy nebo jestli bylo školení úspěšné. Odpověď je seznam objektů [ModelTrainingInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-dotnet) s odděleným stavem pro každý objekt. Aby bylo školení považovat za dokončené, musí být všechny objekty úspěšné.
 
-[!code-csharp[Train the app's version](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
+[!code-csharp[Train the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>Publikování aplikace Language Understanding
+## <a name="publish-app-to-production-slot"></a>Publikovat aplikaci do produkčního slotu
 
 Publikujte aplikaci LUIS pomocí metody [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet) . Tím se publikuje aktuální vyškolená verze v zadaném slotu na koncovém bodu. Klientská aplikace používá tento koncový bod k odeslání projevy uživatele pro předpověď záměru a extrakci entit.
 
@@ -201,7 +208,7 @@ Použijte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dot
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-csharp[Create LUIS runtime client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
+[!code-csharp[Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
 
 
 ## <a name="get-prediction-from-runtime"></a>Získat předpovědi z modulu runtime
@@ -212,7 +219,7 @@ Uživatel utterance je součástí objektu [PredictionRequest](https://docs.micr
 
 Metoda **GetSlotPredictionAsync** potřebuje několik parametrů, jako je ID aplikace, název patice, objekt žádosti o předpověď, který požadavek splní. Další možnosti jako verbose, Zobrazit všechny záměry a protokol jsou volitelné.
 
-[!code-csharp[Get prediction based on query](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
+[!code-csharp[Get prediction from runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 
