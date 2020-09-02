@@ -2,13 +2,14 @@
 title: Přehled Azure Resource Manageru
 description: Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure.
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087023"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293944"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
@@ -68,25 +69,33 @@ Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vy
 
 Při definování skupin prostředků byste měli vzít v úvahu některé důležité faktory:
 
-* Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud jeden prostředek, třeba server, musí existovat v jiném cyklu nasazení, měl by být v jiné skupině prostředků.
+* Všechny prostředky ve vaší skupině prostředků by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud jeden prostředek, třeba server, musí existovat v jiném cyklu nasazení, měl by být v jiné skupině prostředků.
 
-* Každý prostředek může být jenom v jedné skupině prostředků.
-
-* Některé prostředky můžou existovat mimo skupinu prostředků. Tyto prostředky se nasazují do [předplatného](../templates/deploy-to-subscription.md), [skupiny pro správu](../templates/deploy-to-management-group.md)nebo [tenanta](../templates/deploy-to-tenant.md). V těchto oborech jsou podporovány pouze konkrétní typy prostředků.
+* Každý prostředek může existovat jen v jedné skupině prostředků.
 
 * Prostředky je možné do skupiny prostředků kdykoli přidat nebo naopak odebrat.
 
 * Prostředky je možné přesouvat mezi skupinami. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](move-resource-group-and-subscription.md).
 
-* Skupina prostředků může obsahovat prostředky, které se nacházejí v různých oblastech.
+* Prostředky ve skupině prostředků se můžou nacházet v různých oblastech, než je skupina prostředků.
 
-* Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy.
+* Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-* Prostředek může interagovat s prostředky v dalších skupinách prostředků. Tato interakce je běžná v případě, že spolu tyto dva prostředky souvisejí, ale nesdílejí stejný životní cyklus (například webové aplikace, které se připojují k databázi).
+   Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/checklist/resiliency-per-service).
 
-Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
+* Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy. Pokud chcete spravovat skupinu prostředků, můžete přiřadit [zásady Azure](../../governance/policy/overview.md), [role RBAC](../../role-based-access-control/role-assignments-portal.md)nebo [zámky prostředků](lock-resources.md).
 
-Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/checklist/resiliency-per-service).
+* Značky můžete [použít](tag-resources.md) pro skupinu prostředků. Prostředky ve skupině prostředků tyto značky nedědí.
+
+* Prostředek se může připojit k prostředkům v jiných skupinách prostředků. Tento scénář je běžný v případě, že tyto dva prostředky souvisejí, ale nesdílejí stejný životní cyklus. Můžete mít například webovou aplikaci, která se připojuje k databázi v jiné skupině prostředků.
+
+* Při odstranění skupiny prostředků se odstraní také všechny prostředky ve skupině prostředků. Informace o tom, jak Azure Resource Manager orchestruje tato odstranění, najdete v tématu [Azure Resource Manager skupiny prostředků a odstraňování prostředků](delete-resource-group.md).
+
+* V každé skupině prostředků můžete nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou [vyloučené z limitu instancí 800](resources-without-resource-group-limit.md).
+
+* Některé prostředky můžou existovat mimo skupinu prostředků. Tyto prostředky se nasazují do [předplatného](../templates/deploy-to-subscription.md), [skupiny pro správu](../templates/deploy-to-management-group.md)nebo [tenanta](../templates/deploy-to-tenant.md). V těchto oborech jsou podporovány pouze konkrétní typy prostředků.
+
+* Pokud chcete vytvořit skupinu prostředků, můžete použít šablonu [portál](manage-resource-groups-portal.md#create-resource-groups), [POWERSHELL](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)nebo [Azure Resource Manager (ARM)](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manager
 

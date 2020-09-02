@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021184"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289813"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Kurz: škálování aplikace ve jarním cloudu Azure
 
@@ -26,13 +26,13 @@ Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby pr
 
 Chcete-li provést tyto postupy, potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
-* Nasazená instance služby jarní cloudová služba Azure  Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](spring-cloud-quickstart-launch-app-cli.md) .
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Nasazená instance služby jarní cloudová služba Azure  Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 
@@ -58,7 +58,7 @@ Nezapomeňte vybrat možnost **Uložit** a použít nastavení škálování.
 
 ![Služba škálování v Azure Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-Po několika sekundách se provedené změny zobrazí na stránce **Přehled** s dalšími podrobnostmi, které jsou k dispozici na kartě **instance aplikace** . škálování nevyžaduje žádné změny kódu ani nové nasazení.
+Po několika sekundách se provedené změny zobrazí na stránce **Přehled** s dalšími podrobnostmi, které jsou k dispozici na kartě **instance aplikace** . Škálování nevyžaduje žádné změny kódu nebo opětovné nasazení.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
 Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto [omezení](spring-cloud-quotas.md), můžete upgradovat na úroveň Standard. Pokud to chcete provést, přejděte nejprve do nabídky cenová úroveň a vyberte sloupec standardní úroveň a klikněte na tlačítko **upgradovat** .

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: 60c5431150141a8a2421c80ac4858f85ad41b002
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927098"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292533"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: vytvoření ukázkové aplikace na portálu (Azure Kognitivní hledání)
 
@@ -61,7 +61,7 @@ Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, 
 
 1. V poli Popis zvolte pole, které poskytuje podrobné informace, které mohou někomu pomáhat při rozhodování, zda kliknout do konkrétního dokumentu.
 
-   ![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/configure-results.png)
+   ![Konfigurace výsledků pro ukázková data](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Přidat postranní panel
 

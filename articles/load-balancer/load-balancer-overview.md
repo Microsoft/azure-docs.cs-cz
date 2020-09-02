@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420324"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299197"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -48,7 +48,7 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 
 - Zvyšte dostupnost díky distribuci prostředků **[v rámci](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** zón a **[mezi](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** nimi.
 
-- Konfigurace **[odchozího připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** pro virtuální počítače Azure
+- Konfigurace **[odchozího připojení ](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** pro virtuální počítače Azure
 
 - Pomocí **[sond stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** můžete monitorovat prostředky s vyrovnáváním zatížení.
 
@@ -74,6 +74,10 @@ Základní Load Balancer je ve výchozím nastavení otevřený pro Internet. Lo
 Informace o cenách Standard Load Balancer najdete v tématu [Load Balancer ceny](https://azure.microsoft.com/pricing/details/load-balancer/).
 Load Balancer úrovně Basic se nabízí zdarma.
 Load Balancer najdete v tématu [SLA](https://aka.ms/lbsla). Základní Load Balancer nemá žádnou smlouvu SLA.
+
+## <a name="whats-new"></a>Co je nového
+
+Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azure Load Balancer aktualizace funkcí na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) .
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete upgradovat základní Load Balancer na Standard Load Balancer, přečtěte si téma [upgrade základní Load Balancer](upgrade-basic-standard.md) .

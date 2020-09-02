@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367100"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292975"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -59,7 +59,7 @@ Pro přístup k protokolům auditu Apache Ranger a Ambari a k protokolům přís
 
 Ochrana dat je důležitá pro splnění požadavků organizace na zabezpečení a dodržování předpisů. Společně s omezením přístupu k datům z neautorizovaných zaměstnanců byste ji měli zašifrovat.
 
-Azure Storage a Data Lake Storage Gen1/Gen2 podporují transparentní [šifrování uložených dat](../../storage/common/storage-service-encryption.md) na straně serveru. Zabezpečené clustery HDInsight budou bez problémů pracovat se šifrováním neaktivních uložených dat na straně serveru.
+HDInsight podporuje šifrování dat v klidovém umístění s použitím spravovaných i [zákaznických klíčů](../disk-encryption.md)spravovaných platformou. Šifrování dat při přenosu se zpracovává pomocí TLS i IPSec. Další informace najdete [v tématu šifrování při přenosu pro Azure HDInsight](encryption-in-transit.md) .
 
 ### <a name="compliance"></a>Dodržování předpisů
 
@@ -79,7 +79,7 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 |  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Zákazník |
 |  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Zákazník |
 |  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Zákazník |
-|  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Zákazník |
+|  | Zajistěte, aby funkce [šifrování v rámci přenosu](./encryption-in-transit.md) povolila používání protokolu TLS a protokolu IPSec pro komunikaci mezi clustery. | Zákazník |
 |  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazník |
 |  | Řízení přístupu k datům prostřednictvím podpory Azure pomocí [bezpečnostního modulu zákazníka](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Zákazník |
 | Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Zákazník |

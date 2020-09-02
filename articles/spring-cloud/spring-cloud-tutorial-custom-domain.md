@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374197"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290323"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 Služba DNS (Domain Name Service) je technika pro ukládání názvů síťových uzlů v síti. Tento kurz namapuje doménu, například www.contoso.com, pomocí záznamu CNAME. Zabezpečuje vlastní doménu s certifikátem a ukazuje, jak vymáhat protokol TLS (Transport Layer Security), označovaný také jako SSL (Secure Sockets Layer) (SSL). 
@@ -20,7 +20,7 @@ Služba DNS (Domain Name Service) je technika pro ukládání názvů síťovýc
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
 ## <a name="prerequisites"></a>Předpoklady
-* Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md), nebo použití existující aplikace).
+* Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
 * Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
 * Nasazená instance [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
@@ -35,7 +35,7 @@ Postup nahrání certifikátu do trezoru klíčů:
 1. V dialogovém okně **vytvořit certifikát** v části **Metoda vytvoření certifikátu**vyberte `Import` .
 1. V části **nahrát soubor certifikátu**přejděte do umístění certifikátu a vyberte ho.
 1. V části **heslo**zadejte privátní klíč certifikátu.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
     ![Importovat certifikát 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -145,7 +145,7 @@ V tabulce vlastní doména vyberte **Přidat vazbu SSL** , jak je znázorněno n
 1. Vyberte svůj **certifikát** nebo ho importujte.
 1. Klikněte na **Uložit**.
 
-    ![Přidat vazbu SSL](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![Přidat vazbu SSL 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 Nebo můžete k **Přidání vazby SSL**použít Azure CLI:
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 Po úspěšném přidání vazby SSL bude stav domény zabezpečený: **v pořádku**. 
 
-![Přidat vazbu SSL](./media/custom-dns-tutorial/secured-domain-state.png)
+![Přidat vazbu SSL 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>Vynucení protokolu HTTPS
 Ve výchozím nastavení může kdokoli k vaší aplikaci přistupovat pomocí protokolu HTTP, ale můžete přesměrovat všechny požadavky HTTP na port HTTPS.
 
 Na stránce aplikace v levém navigačním panelu vyberte **vlastní doména**. Potom nastavte **pouze https**na *hodnotu true*.
 
-![Přidat vazbu SSL](./media/custom-dns-tutorial/enforce-http.png)
+![Přidat vazbu SSL 3](./media/custom-dns-tutorial/enforce-http.png)
 
 Nebo můžete použít rozhraní příkazového řádku Azure pro vymáhání protokolu HTTPS:
 ```
@@ -170,7 +170,7 @@ az spring-cloud app update -name <app-name> --https-only <true|false> -g <resour
 
 Po dokončení operace přejděte na libovolnou adresu URL HTTPS, která odkazuje na vaši aplikaci. Upozorňujeme, že adresy URL HTTP nefungují.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Import certifikátu](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
 * [Spusťte svoji jarní cloudovou aplikaci pomocí Azure CLI.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808231"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300115"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)
 
@@ -30,10 +30,11 @@ Pokud chcete odstranit aplikaci z tenanta Azure AD, budete potřebovat:
 - Volitelné: dokončování [zobrazení vašich aplikací](view-applications-portal.md)
 - Volitelné: dokončení [Přidání aplikace](add-application-portal.md)
 - Volitelné: dokončení [Konfigurace aplikace](add-application-portal-configure.md)
+- Volitelné: dokončování [přiřazování uživatelů k aplikaci](add-application-portal-assign-users.md).
 - Volitelné: dokončení [nastavení jednotného přihlašování](add-application-portal-setup-sso.md).
 
 >[!IMPORTANT]
->K otestování kroků v tomto rychlém startu použijte nevýrobní prostředí.
+>K otestování kroků v tomto rychlém startu použijte neprodukční prostředí.
 
 ## <a name="delete-an-application-from-your-azure-ad-tenant"></a>Odstranění aplikace z tenanta Azure AD
 

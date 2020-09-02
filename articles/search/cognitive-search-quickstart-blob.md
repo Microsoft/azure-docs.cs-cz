@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935394"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300030"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
 
@@ -76,7 +76,7 @@ Dále nakonfigurujte rozšíření AI tak, aby se vyvolalo rozpoznávání OCR, 
 
 1. V tomto rychlém startu používáme **bezplatný** Cognitive Services prostředek. Ukázková data se skládají ze 14 souborů, takže bezplatné plnění 20 transakcí v Cognitive Services je pro tento rychlý Start dostatečné. 
 
-   ![Připojení Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Připojit Cognitive Services připojit základní službu](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 1. Rozbalte položku **Přidat rozšíření** a proveďte čtyři výběry. 
 
@@ -86,7 +86,7 @@ Dále nakonfigurujte rozšíření AI tak, aby se vyvolalo rozpoznávání OCR, 
 
    Vyberte možnost rozpoznávání entit (osoby, organizace, umístění) a dovednosti při analýze obrázků.
 
-   ![Připojení Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Připojit Cognitive Services vybrat služby pro dovednosti](media/cognitive-search-quickstart-blob/skillset.png)
 
    Pokračujte na další stránku.
 

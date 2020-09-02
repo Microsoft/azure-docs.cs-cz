@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936618"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290306"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
 
@@ -239,7 +239,7 @@ Analyzátory se skládají ze tří součástí:
 
 V následujícím diagramu vidíte, jak budou tyto tři komponenty spolupracovat, aby tokenizovat větu:
 
-  ![Diagram procesu analyzátoru](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![Diagram procesu analyzátoru, který tokenizovat větu](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 Tyto tokeny se pak ukládají v obráceném indexu, který umožňuje rychlé fulltextové vyhledávání.  Obrácený index umožňuje fulltextové vyhledávání podle mapování všech jedinečných podmínek extrahovaných během lexikální analýzy do dokumentů, ve kterých se vyskytují. Příklad můžete vidět v následujícím diagramu:
 
@@ -251,7 +251,7 @@ Při hledání podmínek uložených v obráceném indexu se objeví vše hledá
 1. Obrácený index pak vyhledá dokumenty s vyhovujícími podmínkami.
 1. Nakonec jsou načtené dokumenty seřazeny podle [algoritmu podobnosti](index-ranking-similarity.md).
 
-  ![Diagram procesu analyzátoru](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![Diagram podobnosti pořadí procesů analyzátoru](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky se nevrátí. Další informace o tom, jak dotazy fungují, najdete v tomto článku pro [fulltextové vyhledávání](search-lucene-query-architecture.md).
 

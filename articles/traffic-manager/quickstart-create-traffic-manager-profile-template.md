@@ -1,19 +1,19 @@
 ---
-title: Vytvoření Traffic Manager pomocí šablony Azure Resource Manager (šablona ARM)
-description: Naučte se vytvořit profil Azure Traffic Manager pomocí šablony Azure Resource Manager (šablona ARM).
+title: 'Rychlý Start: vytvoření Traffic Manager pomocí šablony Azure Resource Manager (šablona ARM)'
+description: Tento článek rychlý Start popisuje, jak vytvořit profil Azure Traffic Manager pomocí šablony Azure Resource Manager (šablona ARM).
 services: traffic-manager
 author: duongau
 ms.service: traffic-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
-ms.date: 08/24/2020
-ms.openlocfilehash: bc7cc3220f228a4c8f15370b7b0fcde56db8186d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237230"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299146"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Rychlý Start: vytvoření profilu Traffic Manager pomocí šablony ARM
 
@@ -105,12 +105,12 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Pokud už profil Traffic Manager nepotřebujete, odstraňte skupinu prostředků. Tím se odebere profil Traffic Manager a všechny související prostředky.
+
+Pokud chcete odstranit skupinu prostředků, zavolejte `Remove-AzResourceGroup` rutinu:
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-Remove-AzResourceGroup -Name $resourceGroupName
-Write-Host "Press [ENTER] to continue..."
+Remove-AzResourceGroup -Name <your resource group name>
 ```
 
 ## <a name="next-steps"></a>Další kroky

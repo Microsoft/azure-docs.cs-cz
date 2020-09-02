@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546300"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Kurz: Azure Active Directory integrace s XaitPorter
 
@@ -30,7 +30,7 @@ Integrace XaitPorter s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s XaitPorter potřebujete následující položky:
 
@@ -112,7 +112,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí XaitPort
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-6. Zadejte **IP adresu** nebo **adresu URL federačních metadat aplikace** [týmu podpory SmartRecruiters](https://www.smartrecruiters.com/about-us/contact-us/), aby XAITPORTER mohl zajistit, aby byla IP adresa dosažitelná z vaší instance XaitPorter konfigurace seznamu povolených umístění na jejich straně. 
+6. Zadejte **IP adresu** nebo **adresu URL federačních metadat aplikace** [týmu podpory SmartRecruiters](https://www.smartrecruiters.com/about-us/contact-us/), aby XAITPORTER mohl zajistit, aby byla IP adresa dostupná z vaší instance XaitPorter s konfigurací schváleného seznamu na jejich straně. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Konfigurace jednotného přihlašování XaitPorter
 
@@ -213,4 +213,3 @@ Když na přístupovém panelu kliknete na dlaždici XaitPorter, měli byste se 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

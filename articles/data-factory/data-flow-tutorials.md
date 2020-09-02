@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 08/11/2020
-ms.openlocfilehash: 3400bc8799a7db966b5d6adc79a196932bd01eaa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 507c91ee4a2c61bba0af9611325bcf01b27fc6d6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226246"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289133"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -119,7 +119,7 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Optimalizace časů spuštění toku dat](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
-[Prostředí Azure Integration runtime pro toky dat](https://mssqldude.wordpress.com/)
+[Prostředí Azure Integration runtime pro toky dat](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 ## <a name="mapping-data-flow-scenarios"></a>Mapování scénářů toku dat
 

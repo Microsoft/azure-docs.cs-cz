@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82203263"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295257"
 ---
 # <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
 
@@ -27,7 +27,7 @@ Pokud chcete importovat existující rozhraní API, přečtěte si články v č
 
 V tomto článku vytvoříme prázdné rozhraní API a jako rozhraní API back-endu určíme [httpbin.org](https://httpbin.org) (veřejnou testovací službu).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
@@ -40,12 +40,12 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 3. Vyberte ze seznamu **Prázdné rozhraní API**.  
     ![Prázdné rozhraní API](media/add-api-manually/blank-api.png)  
 4. Zadejte nastavení pro rozhraní API. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
-5. Vyberte **Vytvořit**.
+5. Vyberte **Create** (Vytvořit).
 
 V tomto okamžiku nemáte v API Management žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud voláte operaci, která je vystavena prostřednictvím back-endu, ale ne prostřednictvím API Management, dostanete **404**.
 
 >[!NOTE] 
-> Ve výchozím nastavení při přidání rozhraní API platí, že i když je připojené k některé back-endové službě, APIM nebude prezentovat žádné operace, dokud je nepřidáte do seznamu povolených. Operaci back-endové služby přidáte do seznamu povolených tak, že vytvoříte operaci APIM, která se namapuje na back-endovou operaci.
+> Ve výchozím nastavení platí, že když přidáte rozhraní API, a to i v případě, že je připojený k některé back-endové službě, APIM nebude žádné operace vystavovat, dokud je nepovolíte. K povolení operace vaší back-endové služby vytvořte operaci APIM, která se mapuje na back-end operaci.
 
 ## <a name="add-and-test-an-operation"></a>Přidání a otestování operace
 

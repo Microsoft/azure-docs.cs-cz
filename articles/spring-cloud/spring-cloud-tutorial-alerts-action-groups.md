@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071172"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299222"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
 
@@ -24,7 +24,7 @@ Pro nastavení kanálu výstrah existují dva kroky:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart-launch-app-cli.md) startu.
+Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart.md) startu.
 
 Následující postupy inicializují **skupinu akcí** a **výstrahu** počínaje možností **výstrahy** v levém navigačním podokně instance jarního cloudu. (Tento postup lze také spustit na stránce **Přehled monitorování** Azure Portal.) 
 
@@ -76,11 +76,11 @@ Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy
 
 1. Vyberte podmínku. V tomto příkladu se používá **procento využití procesoru v systému**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-1.png)
+   ![Nové pravidlo upozornění na portálu obrazovky – pravidlo 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. Posuňte se dolů na podokno **Konfigurovat logiku signálu** a nastavte **prahovou hodnotu** , která se má monitorovat.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-2.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. Klikněte na **Hotovo**.
 
@@ -88,7 +88,7 @@ Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Mo
 
  V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-3.png) 
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. Posuňte se dolů a v části **Podrobnosti o výstraze**pojmenujte pravidlo upozornění.
 
@@ -96,15 +96,15 @@ Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Mo
 
 1. Klikněte na **Vytvořit pravidlo upozornění**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-4.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 5](media/alerts-action-groups/alerts-3-4.png)
 
 Ověřte, zda je povoleno nové pravidlo upozornění.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-4.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 6](media/alerts-action-groups/alerts-4.png)
 
 Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-5.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Další kroky
 

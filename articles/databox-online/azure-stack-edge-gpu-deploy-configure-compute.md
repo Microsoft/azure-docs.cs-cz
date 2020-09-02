@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: a5e0817050f8411dfc7fc64edae21f1b927e4e5c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262984"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293542"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Kurz: Konfigurace výpočetních prostředků na zařízení GPU na Azure Stack hraničních zařízeních
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Získat koncové body Kubernetes
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge se ujistěte, že:
 
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Name     |Zadejte název prostředku IoT Hub.         |
+    |Název     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
@@ -105,7 +105,7 @@ Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete po
     
         ![Stránka zařízení v místním uživatelském rozhraní 3](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
 
-        `aseuser`Konfigurační soubor umožňuje ladit všechny problémy související s `iotedge` oborem názvů v clusteru Kubernetes. Další informace najdete v tématu [ladění problémů Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge). 
+        Tento konfigurační soubor můžete použít k přihlášení do řídicího panelu Kubernetes nebo k ladění všech problémů v clusteru Kubernetes. Další informace najdete v tématu [přístup k řídicímu panelu Kubernetes](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#access-dashboard). 
 
 
 ## <a name="next-steps"></a>Další kroky
