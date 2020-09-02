@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0e31852b6cf40cec9161c6904ce99798f1ee4996
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303894"
+ms.locfileid: "89322496"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity
 
@@ -38,7 +38,7 @@ Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého te
 1. Na portálu Azure AD vyberte **podnikové aplikace**. Pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
 2. V navigační nabídce vlevo vyberte **Uživatelé a skupiny**.
    > [!NOTE]
-   > Pokud chcete přiřadit uživatele k aplikacím Microsoftu, jako jsou aplikace Office 365, některé z těchto aplikací používají PowerShell. 
+   > Některé aplikace Microsoft 365 a Office 365 vyžadují použití PowerShellu. 
 3. Klikněte na tlačítko **Přidat uživatele** .
 4. V podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 5. Vyberte uživatele nebo skupinu, které chcete aplikaci přiřadit. Do vyhledávacího pole můžete také začít psát jméno uživatele nebo skupiny. Můžete zvolit více uživatelů a skupin a vaše výběry se zobrazí v části **vybrané položky**.
@@ -55,6 +55,8 @@ Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého te
     > Pokud aplikace nepodporuje výběr rolí, přiřadí se výchozí role přístupu. V takovém případě aplikace spravuje úroveň přístupu uživatelů.
 9. V podokně **Přidat přiřazení** vyberte v dolní části podokna tlačítko **přiřadit** .
 
+> [!NOTE]
+> Pomocí stejného postupu můžete zrušit přiřazení uživatelů nebo skupin. Vyberte uživatele nebo skupinu, kterým chcete zrušit přiřazení, a pak vyberte **Odebrat**. Některé aplikace Microsoft 365 a Office 365 vyžadují použití PowerShellu. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

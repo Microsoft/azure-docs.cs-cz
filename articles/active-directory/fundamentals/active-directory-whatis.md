@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82a5fd5a14091c95bc1783f283c41431082c8980
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: db14e4e47cce1822404561d33bd8e0d3f224e037
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182101"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321102"
 ---
 # <a name="what-is-azure-active-directory"></a>Co je Azure Active Directory?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) je cloudová služba pro správu identit a př
 
 - Interní prostředky, jako jsou aplikace ve vaší podnikové síti nebo intranetu, spolu s jakýmikoli cloudovou aplikací vyvinutou vaší organizací. Další informace o vytvoření tenanta pro vaši organizaci najdete v tématu [rychlý Start: vytvoření nového tenanta v Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Office 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) .
+Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Office 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) .
 
 ## <a name="who-uses-azure-ad"></a>Kdo používá službu Azure AD?
 
@@ -66,9 +66,9 @@ Po výběru licence Azure AD získáte přístup k některým nebo všem násled
 |Kategorie|Popis|
 |-------|-----------|
 |Správa aplikací|Spravujte své cloudové a místní aplikace pomocí proxy aplikací, jednotného přihlašování, portálu moje aplikace (označovaného také jako přístupový panel) a aplikací SaaS (software jako služba). Další informace najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci správy aplikací](../manage-apps/index.yml).|
-|Ověřování|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
+|Authentication|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
 |Azure Active Directory pro vývojáře|Vytvářejte aplikace, které přihlásí všechny identity Microsoftu, získávají tokeny pro volání Microsoft Graph, dalších rozhraní API Microsoftu nebo vlastních rozhraní API. Další informace najdete v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](../develop/index.yml).|
-|B2B (Business-to-Business)|Spravujte uživatele typu Host a externí partnery a udržujte si kontrolu nad vašimi podnikovými daty. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../b2b/index.yml).|
+|B2B (Business-to-Business)|Spravujte uživatele typu Host a externí partnery a udržujte si kontrolu nad vašimi podnikovými daty. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../external-identities/index.yml).|
 |B2C (Business-to-Customer)|Přizpůsobte a určete, jak se uživatelé při používání vašich aplikací přihlásí, přihlásí a spravují své profily. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Podmíněný přístup|Spravujte přístup k vašim cloudovým aplikacím. Další informace najdete v [dokumentaci k podmíněnému přístupu v Azure AD](../conditional-access/index.yml).|
 |Správa zařízení|Umožňuje spravovat, jak mají cloudová nebo místní zařízení přístup k vašim firemním datům. Další informace najdete v [dokumentaci správy zařízení v Azure AD](../devices/index.yml).|

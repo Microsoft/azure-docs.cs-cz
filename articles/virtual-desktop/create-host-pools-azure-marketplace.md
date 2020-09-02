@@ -3,15 +3,15 @@ title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Az
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226093"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322581"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -131,9 +131,11 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
 7. Vyberte, jaké disky s operačním systémem chcete použít pro vaše virtuální počítače: SSD úrovně Standard, SSD úrovně Premium nebo HDD úrovně Standard.
 
-8. V části síť a zabezpečení vyberte **virtuální síť** a **podsíť** , kam chcete umístit virtuální počítače, které vytvoříte. Ujistěte se, že se virtuální síť může připojit k řadiči domény, protože budete muset připojit virtuální počítače uvnitř virtuální sítě k doméně. Dále vyberte, jestli chcete pro virtuální počítače zvolit veřejnou IP adresu. Doporučujeme, abyste vybrali možnost **ne**, protože privátní IP adresa je bezpečnější.
+8. V části síť a zabezpečení vyberte **virtuální síť** a **podsíť** , kam chcete umístit virtuální počítače, které vytvoříte. Ujistěte se, že se virtuální síť může připojit k řadiči domény, protože budete muset připojit virtuální počítače uvnitř virtuální sítě k doméně. Servery DNS virtuální sítě, které jste vybrali, by měly být nakonfigurované tak, aby používaly IP adresu řadiče domény.
 
-9. Vyberte druh skupiny zabezpečení, který chcete: **Basic**, **Advanced**nebo **none**.
+9. Dále vyberte, zda chcete pro virtuální počítače zvolit veřejnou IP adresu. Doporučujeme vybrat možnost **ne** , protože privátní IP adresa je bezpečnější.
+
+10. Vyberte druh skupiny zabezpečení, který chcete: **Basic**, **Advanced**nebo **none**.
 
     Pokud vyberete **základní**, budete muset vybrat, jestli chcete otevřít libovolný port pro příchozí spojení. Pokud vyberete **Ano**, zvolte ze seznamu standardních portů, pro které chcete povolit příchozí připojení.
 
@@ -145,11 +147,13 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     Pokud zvolíte možnost **Upřesnit**, vyberte existující skupinu zabezpečení sítě, kterou jste již nakonfigurovali.
 
-10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Volitelně můžete přidat konkrétní organizační jednotku, ve které chcete virtuální počítače. Pokud zvolíte **ne**, virtuální počítače budou připojené k doméně, která odpovídá příponě **hlavního názvu uživatele (UPN) připojení k doméně AD**.
+11. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Volitelně můžete přidat konkrétní organizační jednotku, ve které chcete virtuální počítače. Pokud zvolíte **ne**, virtuální počítače budou připojené k doméně, která odpovídá příponě **hlavního názvu uživatele (UPN) připojení k doméně AD**.
 
-11. V části účet správce zadejte přihlašovací údaje pro správce Doména služby Active Directory virtuální sítě, kterou jste vybrali.
+  - Při zadávání organizační jednotky se ujistěte, že používáte úplnou cestu (rozlišující název) a bez uvozovek.
 
-12. Vyberte **Další: pracovní prostor >**.
+12. V části účet správce zadejte přihlašovací údaje pro správce Doména služby Active Directory virtuální sítě, kterou jste vybrali. Tento účet nemůže mít povolené vícefaktorové ověřování (MFA). Když se připojíte k doméně Azure Active Directory Domain Services (Azure služba AD DS), účet musí být součástí skupiny správců DC služby Azure AD a heslo účtu musí fungovat ve službě Azure služba AD DS.
+
+13. Vyberte **Další: pracovní prostor >**.
 
 V takovém případě jsme připraveni zahájit další fázi nastavení fondu hostitelů: registrace skupiny aplikací do pracovního prostoru.
 

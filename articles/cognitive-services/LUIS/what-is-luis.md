@@ -5,12 +5,12 @@ keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NL
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752147"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320048"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -64,7 +64,7 @@ Navrhněte svůj model pomocí kategorií záměrů uživatelů s názvem **[zá
 |`When does your store open?`|StoreHoursAndLocation (Poloha a otevírací doba obchodu)|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting (Naplánovat schůzku)|1pm, Bob (13:00, Bob)|
 
-Sestavte model pomocí rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087) nebo pomocí [**portálu Luis**](https://www.luis.ai)nebo obou. Přečtěte si další informace o tom, jak sestavovat pomocí [portálu](get-started-portal-build-app.md) a [klientských knihoven SDK](quickstart-sdk.md).
+Sestavte model pomocí rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087) nebo pomocí [**portálu Luis**](https://www.luis.ai)nebo obou. Přečtěte si další informace o tom, jak sestavovat pomocí [portálu](get-started-portal-build-app.md) a [klientských knihoven SDK](azure-sdk-quickstart.md).
 
 ## <a name="step-2-get-the-query-prediction"></a>Krok 2: získání předpovědi dotazu
 
@@ -126,7 +126,7 @@ LUIS poskytuje funkce z Analýza textu jako součást vašich stávajících pro
 
 ## <a name="learn-with-the-quickstarts"></a>Seznamte se s rychlými starty
 
-Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-started-portal-build-app.md) a [klientských knihoven SDK](quickstart-sdk.md).
+Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-started-portal-build-app.md) a [klientských knihoven SDK](azure-sdk-quickstart.md).
 
 
 ## <a name="next-steps"></a>Další kroky

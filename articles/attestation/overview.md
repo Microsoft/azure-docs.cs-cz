@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: bc6f52ed175e55b283e3c41408c15b818a85d6b7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237282"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320592"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Ověření identity Microsoft Azure (Preview)
+# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
 
 Ověřování identity Microsoft Azure (Preview) je řešení pro ověřování prostředí pro důvěryhodné spuštění (TEEs), jako je například [rozšíření Intel® software Guard](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves a [zabezpečení na základě virtualizace](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. Enklávy Attestation je proces pro ověření, že je enklávy zabezpečený a důvěryhodný.
 
@@ -65,10 +65,11 @@ Zákazníci Azure Attestation vyjádřili požadavek, aby Microsoft mohl být v 
 
 Ověření identity Azure je upřednostňovanou volbou pro ověřování TEEs, protože nabízí následující výhody: 
 
-- Bezplatná služba Azure s vysokou dostupností
-- Využívá Azure Active Directory k ověřování požadavků klientů. To umožňuje službě Azure Attestation provádět ověřování na základě identity a vlastnictví.
-- Podporuje zásady, které umožňují vlastníkům tenanta omezit generování tokenů.
-- Nabízí ochranu svých dat při použití s implementací v SGX enklávy.
+- Sjednocené rozhraní pro ověřování více TEEs, například SGX enclaves a VBS enclaves
+- Víceklientská služba, která umožňuje konfiguraci vlastních poskytovatelů a zásad ověřování identity pro omezení generování tokenů
+- Nabízí výchozí poskytovatele, kteří můžou potvrzovat bez konfigurace od uživatelů.
+- Chrání data při použití s implementací v SGX enklávy.
+- Služba s vysokou dostupností, která bude nabízet smlouva SLA (SLA)
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Podpora pro provozní kontinuitu a zotavení po havárii (BCDR)
 

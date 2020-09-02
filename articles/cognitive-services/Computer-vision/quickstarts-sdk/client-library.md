@@ -1,27 +1,32 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Počítačové zpracování obrazu | Microsoft Docs'
+title: 'Rychlý Start: Počítačové zpracování obrazu Klientská knihovna'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete své aplikace připojit k rozhraní API pro počítačové zpracování obrazu z Azure Cognitive Services.
+description: Naučte se používat Azure Počítačové zpracování obrazu ve vaší aplikaci prostřednictvím nativní klientské knihovny v jazyce podle vašeho výběru.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 08/31/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom:
+- devx-track-python
+- devx-track-javascript
+- devx-track-csharp
+- cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bc5b0d05dc1e9e7c09781dba63c2031c72da73ff
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+keywords: počítačové zpracování obrazu, Služba Computer visioning
+ms.openlocfilehash: 87ff6a03f45fe61b44712166966a1fe3851ffb41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050303"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321832"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Rychlý Start: použití klientské knihovny Počítačové zpracování obrazu
 
-Začněte s klientskou knihovnou Počítačové zpracování obrazu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.
+Začněte s klientskou knihovnou Počítačové zpracování obrazu. Služba Počítačové zpracování obrazu poskytuje algoritmy AI pro zpracování imagí a vracení informací o jejich vizuálních funkcích. Pomocí těchto kroků nainstalujete balíček do aplikace a vyzkoušíte vzorový kód pro základní úlohy.
 
 Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 

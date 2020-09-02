@@ -3,16 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003536"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319810"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -24,6 +25,31 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="august-2020"></a>Srpen 2020
+
+Tady je postup, který se změnil v srpnu 2020:
+
+- Vylepšili jsme výkon, aby se snížila latence připojení v následujících oblastech Azure: 
+
+    - Spojené království
+    - Francie
+    - Norsko
+    - Jižní Korea
+
+   Pomocí [Estimator zkušeností](https://azure.microsoft.com/services/virtual-desktop/assessment/) můžete získat obecnou představu o tom, jak tyto změny ovlivní vaše uživatele.
+
+- Klient vzdálené plochy Microsoft Store (v 10.2.1522 +) je teď všeobecně dostupný! Tato verze klienta Microsoft Store vzdálené plochy je kompatibilní s virtuálním počítačem s Windows. Zavedli jsme také aktualizované toky uživatelského rozhraní pro vylepšené uživatelské prostředí. Tato aktualizace zahrnuje návrh, světlé a tmavé režimy a mnoho dalších zajímavých změn. Také jsme přepsali klienta, aby používal stejný základní modul protokolu RDP (Remote Desktop Protocol) jako klienti iOS, macOS a Android. To nám umožní doručovat nové funkce na všech platformách na vyšší míru. [Stáhněte si klienta](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) a podělte se o to!
+
+- Opravili jsme problém v desktopovém klientovi Teams (verze 1.3.00.21759), kde klient v chatu, kanálech a kalendáři ukázal jenom časové pásmo UTC. Aktualizovaný klient teď místo toho zobrazuje časové pásmo vzdálené relace.
+
+- Azure Advisor je teď součástí virtuálního klienta Windows. Při přístupu k virtuálnímu klientovi Windows prostřednictvím Azure Portal můžete zobrazit doporučení pro optimalizaci prostředí virtuálních počítačů s Windows. Další informace najdete na [Azure Advisor](azure-advisor.md).
+
+- Azure CLI teď podporuje virtuální počítače s Windows ( `az desktopvirtualization` ), které vám pomůžou automatizovat nasazení virtuálních počítačů s Windows. Seznam příkazů rozšíření najdete v [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) .
+
+- Aktualizovali jsme naše šablony nasazení tak, aby byly plně kompatibilní s rozhraními Azure Resource Manager virtuálních počítačů s Windows. Šablony můžete najít na [GitHubu](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
+
+- Portál US Gov Virtual Desktop pro Windows je teď ve verzi Public Preview. Další informace najdete v [našem oznámení](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
 
 ## <a name="july-2020"></a>Červenec 2020  
 
@@ -105,9 +131,7 @@ Provedli jsme několik vylepšení Microsoft Teams pro virtuální počítače s
 
 Další informace najdete v [našem blogovém příspěvku](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/).
 
-## <a name="next-steps"></a>Další kroky
-
-Přečtěte si o budoucích plánech v [Microsoft 365 plán virtuálních klientů pro Windows](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+## <a name="client-updates"></a>Aktualizace klienta
 
 V těchto článcích najdete informace o aktualizacích pro naše klienty pro virtuální počítače a službu Vzdálená plocha systému Windows:
 
@@ -116,3 +140,8 @@ V těchto článcích najdete informace o aktualizacích pro naše klienty pro v
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si o budoucích plánech v [Microsoft 365 plán virtuálních klientů pro Windows](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+

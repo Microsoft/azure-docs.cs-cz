@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815296"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319538"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -46,7 +46,7 @@ Azure nabízí dva hlavní typy obrázků, generalizované a specializované. V�
 
 ### <a name="generalized-images"></a>Generalizované obrázky
 
-Zobecněná Image je image, která vyžaduje, aby se instalace dokončila při prvním spuštění. Při prvním spuštění například nastavíte název hostitele, správce a další konfigurace specifické pro virtuální počítače. To je užitečné, pokud chcete, aby se obrázek opakovaně používal několikrát a když chcete při vytváření předat parametry. Pokud zobecněná bitová kopie obsahuje agenta Azure, agent zpracuje parametry a signál vrátí zpět na platformu, kterou dokončila počáteční konfigurace. Tento proces se nazývá **zřizování**. 
+Zobecněná Image je image, která vyžaduje, aby se instalace dokončila při prvním spuštění. Při prvním spuštění například nastavíte název hostitele, správce a další konfigurace specifické pro virtuální počítače. To je užitečné, pokud chcete, aby se obrázek opakovaně používal několikrát a když chcete při vytváření předat parametry. Pokud zobecněná bitová kopie obsahuje agenta Azure, agent zpracuje parametry a signál vrátí zpět na platformu, kterou dokončila počáteční konfigurace. Tento proces se nazývá [zřizování](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning). 
 
 Zřizování vyžaduje, aby byl v imagi zahrnutý zřizovací modul. Existují dva zřídí:
 - [Agent Azure Linux](../extensions/agent-linux.md)
