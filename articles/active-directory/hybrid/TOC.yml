@@ -31,7 +31,7 @@
         - name: Co je Azure AD Connect a Connect Health?
           href: whatis-azure-ad-connect.md
         - name: Volba vhodného ověřování
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: Synchronizace identit a odolnost duplicitních atributů
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Synchronizace hodnot hash hesel
@@ -339,7 +339,7 @@
     - name: Historie verzí agenta předávacího ověřování Azure AD
       href: reference-connect-pta-version-history.md
     - name: Historie verzí konektoru
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: Účty a oprávnění
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect – nejčastější dotazy

@@ -166,6 +166,8 @@
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
     - name: Ukázkové scénáře Azure
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: Zjišťování e-mailů
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: Zdroje a prostředky
   items:
     - name: PowerShell

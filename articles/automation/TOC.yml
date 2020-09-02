@@ -27,11 +27,6 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Vytvoření runbooku v Pythonu
       href: learn/automation-tutorial-runbook-textual-python2.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Přehled ověřování účtů služby Automation
@@ -325,6 +320,9 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Úvodní video ke službě Automation

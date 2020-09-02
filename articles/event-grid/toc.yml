@@ -94,8 +94,6 @@
       href: template-samples.md
     - name: Ukázky kódů
       href: /samples/browse/?term=Event+Grid
-    - name: Integrované služby Azure Policy
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Terminologie služby Event Grid
@@ -296,6 +294,9 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: Sady SDK
       href: sdk-overview.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

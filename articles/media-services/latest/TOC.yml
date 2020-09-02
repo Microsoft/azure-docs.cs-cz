@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: Kódování a streamování vzdáleného souboru – REST
-          href: stream-files-tutorial-with-rest.md
         - name: Kódování a streamování vzdáleného souboru – .NET
           href: stream-files-dotnet-quickstart.md
-        - name: Kódování a streamování načteného souboru
+        - name: Kódování a streamování načteného souboru – .NET
           href: stream-files-tutorial-with-api.md
-        - name: Živé streamování
+        - name: Živé streamování s využitím .NET
           href: stream-live-tutorial-with-api.md
-        - name: Analýza videa
+        - name: Analýza videa s využitím .NET
           href: analyze-videos-tutorial-with-api.md
         - name: Dynamické šifrování s využitím AES-128
           href: protect-with-aes128.md
         - name: Dynamické šifrování s využitím DRM
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: Kódování a streamování vzdáleného souboru – REST
+          href: stream-files-tutorial-with-rest.md
     - name: Rozhraní příkazového řádku
       items:
         - name: Kódování a streamování vzdáleného souboru – CLI

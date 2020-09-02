@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: Ukázky REST
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Fulltextové vyhledávání
@@ -496,6 +493,9 @@
           items:
             - name: Rozpoznávání pojmenovaných entit
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Podpora komunity Azure

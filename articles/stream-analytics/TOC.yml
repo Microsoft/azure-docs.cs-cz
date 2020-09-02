@@ -40,9 +40,6 @@
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Volba technologie analýzy streamování
@@ -655,6 +652,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Stream Analytics (Preview)

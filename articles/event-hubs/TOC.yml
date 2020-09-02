@@ -75,9 +75,6 @@
   items:
     - name: Ukázky kódů
       href: event-hubs-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Terminologie Event Hubs
@@ -290,6 +287,9 @@
       href: event-hubs-quotas.md
     - name: Konfigurace Apache Kafka
       href: apache-kafka-configurations.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

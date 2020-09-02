@@ -4,6 +4,10 @@
   items:
     - name: Co je ExpressRoute?
       href: expressroute-introduction.md
+- name: Rychlý start
+  items:
+    - name: Vytvoření okruhu ExpressRoute – šablona ARM
+      href: quickstart-create-expressroute-vnet-template.md
 - name: Kurzy
   items:
     - name: Vytvoření a změny okruhu

@@ -47,8 +47,6 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
-    - name: Co je nového?
-      href: whats-new.md
     - name: Komponenty
       href: components.md
     - name: Koncepty

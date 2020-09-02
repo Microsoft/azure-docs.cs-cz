@@ -38,9 +38,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Databáze a servery
@@ -244,6 +241,9 @@
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: Uložené procedury správy
       href: reference-stored-procedures.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Šablony nasazení

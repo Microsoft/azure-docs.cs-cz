@@ -161,7 +161,8 @@
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.cache/allversions
     - name: Integrované služby Azure Policy
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Příkazy Redis
       href: 'https://redis.io/commands#'
 - name: Zdroje a prostředky

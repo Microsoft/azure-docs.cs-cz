@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: d27bb0be6698a6b92c459143604ad2ebeb00b728
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/31/2020
+  ms.openlocfilehash: a2d736b2706b3b0958bb544c6d0e4434c78e6791
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85551883"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89231329"
 landingContent:
 - title: Informace o zásadách správného řízení Azure
   linkLists:
@@ -29,14 +29,26 @@ landingContent:
     links:
     - text: Skupiny pro správu Azure
       url: ./overview.md
-- title: Uspořádání prostředků
+- title: Začínáme
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření skupiny pro správu (portál)
+      url: ./create-management-group-portal.md
+    - text: Vytvoření skupiny pro správu (CLI)
+      url: ./create-management-group-azure-cli.md
+    - text: Vytvoření skupiny pro správu (Azure PowerShell)
+      url: ./create-management-group-powershell.md
+    - text: Vytvoření skupiny pro správu (REST)
+      url: ./create-management-group-rest-api.md
+    - text: Nasazení prostředků do skupiny pro správu (šablony ARM)
+      url: ../../azure-resource-manager/templates/deploy-to-management-group.md
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření skupin pro správu
-      url: ./create.md
-    - text: Správa vašich prostředků
+    - text: Správa hierarchie prostředků
       url: ./manage.md
+    - text: Ochrana hierarchie prostředků
+      url: ./how-to/protect-resource-hierarchy.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference

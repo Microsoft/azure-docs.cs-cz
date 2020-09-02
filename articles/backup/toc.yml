@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Správa zálohovaných databází SAP HANA – CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Matice podpory
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Dodržování předpisů

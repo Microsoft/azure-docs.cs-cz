@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7. Upgrade clusteru
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Clustery a úlohy
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

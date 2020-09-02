@@ -25,9 +25,6 @@
       href: powershell-samples.md
     - name: Řešení spravovaných aplikací
       href: sample-projects.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Zobrazení definičních artefaktů
@@ -157,6 +154,9 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

@@ -4,6 +4,8 @@
   items:
     - name: Informace o serverech s podporou služby Azure Arc
       href: overview.md
+    - name: Novinky agenta Connected Machine
+      href: agent-release-notes.md
 - name: Rychlé starty
   items:
     - name: Povolení agenta Servery s podporou služby Arc

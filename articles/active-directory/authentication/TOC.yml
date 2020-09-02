@@ -116,6 +116,10 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: Jednotné přihlašování k místním prostředkům
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Nejčastější dotazy k hybridnímu prostředí
+              href: howto-authentication-passwordless-faqs.md
+            - name: Řešení potíží s hybridním prostředím
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: Přihlašování telefonem bez hesla
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Řešení potíží
       items:
-        - name: Řešení potíží se SSPR
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: Nejčastější dotazy k SSPR
           href: active-directory-passwords-faq.md

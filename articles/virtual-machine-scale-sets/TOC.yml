@@ -93,9 +93,6 @@
           href: ./scripts/powershell-single-av-zone-scale-set.md
         - name: Vytvoření zónově redundantní škálovací sady
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Azure Resource Manager
@@ -357,7 +354,7 @@
           items:
             - name: Přehled
               href: shared-image-galleries.md
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
@@ -394,6 +391,9 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Šablony Azure
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

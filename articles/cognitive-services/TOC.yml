@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: Protokolování diagnostiky
       href: diagnostic-logging.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      href: ./policy-samples.md
 - name: Zabezpečení
   items:
     - name: Zabezpečení Cognitive Services
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Návod: Art Explorer'
           href: ./big-data/recipes/art-explorer.md
+- name: Reference
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

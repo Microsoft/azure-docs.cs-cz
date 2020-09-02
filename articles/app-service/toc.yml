@@ -79,9 +79,6 @@
       href: samples-powershell.md
     - name: Šablony Resource Manageru
       href: samples-resource-manager-templates.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
     - name: Terraform
       href: samples-terraform.md
 - name: Koncepty
@@ -285,6 +282,9 @@
       href: /rest/api/appservice/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.web/allversions
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Blog služby App Service

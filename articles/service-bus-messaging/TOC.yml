@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -72,9 +72,6 @@
   items:
     - name: Ukázky služby Service Bus
       href: service-bus-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Zasílání zpráv úrovně Premium
@@ -272,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: Syntaxe SQLRuleAction
       href: service-bus-messaging-sql-rule-action.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

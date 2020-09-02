@@ -4,12 +4,6 @@
   items:
     - name: Informace o Kubernetes s podporou služby Arc
       href: overview.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      items:
-        - name: Kubernetes s podporou služby Arc
-          href: policy-samples.md
 - name: Návody
   items:
     - name: Připojení ke službě Azure Arc
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: Řešení potíží
       href: Troubleshooting.md
+- name: Odkaz
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

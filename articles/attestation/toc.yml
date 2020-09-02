@@ -1,0 +1,48 @@
+- name: Microsoft Azure Attestation (Preview)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Microsoft Azure Attestation
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Šablona ARM
+      href: quickstart-template.md
+    - name: PowerShell
+      href: quickstart-powershell.md
+- name: Kurzy
+  items:
+    - name: Vytvoření a podepsání zásad ověřování identity
+      href: author-sign-policy.md
+    - name: Ukázky kódu ověřování identity SGX
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+- name: Příklady
+  items:
+    - name: Zásady ověřování identity
+      href: policy-examples.md
+    - name: Certifikát signatáře zásad
+      href: policy-signer-examples.md
+- name: Koncepty
+  items:
+    - name: Základní koncepty
+      href: basic-concepts.md
+    - name: Deklarace zásada ověřování identity
+      items:
+        - name: Gramatika pravidel deklarace identity
+          href: claim-rule-grammar.md
+        - name: Sady deklarací identity
+          href: claim-sets.md
+    - name: Pracovní postup
+      href: workflow.md
+- name: Odkazy
+  items:
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: REST
+      href: /rest/api/attestation/
+    - name: Azure PowerShell
+      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+    - name: Knihovna Azure DCAP pro Windows
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
+    - name: Knihovna Azure DCAP pro Linux
+      href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'

@@ -657,6 +657,8 @@
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
           href: nested-virtualization.md
+        - name: Automatické opravy hosta virtuálního počítače (Preview)
+          href: automatic-vm-guest-patching.md
     - name: Údržba platformy
       items:
         - name: Oznámení o údržbě
@@ -919,7 +921,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Otevření portů k virtuálnímu počítači
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

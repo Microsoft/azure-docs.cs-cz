@@ -7,12 +7,25 @@
       href: ../azure-management.md
     - name: Skupiny pro správu
       href: ./overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Vytvoření skupiny pro správu – portál
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: Vytvoření skupiny pro správu – CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: Vytvoření skupiny pro správu – Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: Vytvoření skupiny pro správu – REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
 - name: Návody
   expanded: true
   items:
-    - name: Vytvoření skupin pro správu
-      href: ./create.md
-    - name: Správa vašich prostředků
+    - name: Správa hierarchie prostředků
       href: ./manage.md
     - name: Ochrana hierarchie prostředků
       href: ./how-to/protect-resource-hierarchy.md

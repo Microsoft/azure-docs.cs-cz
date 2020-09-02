@@ -27,9 +27,6 @@
   items:
     - name: Ukázky kódu pro službu Key Vault
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Referenční informace
   items:
     - name: Azure PowerShell
@@ -51,6 +48,9 @@
       displayName: ARM
     - name: Specifikace používání vlastního klíče
       href: byok-specification.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

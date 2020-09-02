@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: Správa privátních koncových bodů
       href: manage-private-endpoint.md
+    - name: Kontrola provozu pomocí služby Azure Firewall
+      href: inspect-traffic-with-azure-firewall.md
     - name: Řešení potíží
       items:
         - name: Řešení problémů s připojením privátního koncového bodu
