@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b31f22f9a3909df308fdcfa994833887828f2539
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f1f044eb3af35019eaf010e118bc4a5814269e9e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876355"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378542"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro Python
 
@@ -27,9 +27,9 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
+[Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Python 2,7, 3.5.3 nebo novější
@@ -73,7 +73,7 @@ pip install azure.identity
 
 Klientská knihovna Azure Key Vault pro Python umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
+Ukázková aplikace, která ukazuje podobné operace jako v tomto článku, i další Key Vault funkce, jsou k dispozici na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets/samples).
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -99,7 +99,7 @@ client = SecretClient(vault_url=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
 
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí klienta. Metoda SetSecret] (/dotnet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) vyžaduje název tajného kódu – v této ukázce používáme "mySecret".  
+Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí klienta. [set_secret – metoda](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-) To vyžaduje název tajného kódu – v této ukázce používáme "mySecret".  
 
 ```python
 client.set_secret(secretName, secretValue)
@@ -113,7 +113,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Načtení tajného kódu
 
-Nyní můžete načíst dříve nastavenou hodnotu s [klientem. Getsecret – metoda](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
+Nyní můžete načíst dříve nastavenou hodnotu pomocí [metody get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-).
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -123,10 +123,10 @@ Váš tajný kód se teď uloží jako `retrieved_secret.value` .
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
-Nakonec smažte tajný klíč z vašeho trezoru klíčů s [klientem. Metoda DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
+Nakonec pomocí [metody begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-)odstraníme tajný klíč z vašeho trezoru klíčů.
 
 ```python
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 ```
 
 V případě, že se tajný klíč nachází, můžete ověřit pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
@@ -183,7 +183,7 @@ retrieved_secret = client.get_secret(secretName)
 print(f"Your secret is '{retrieved_secret.value}'.")
 print(f"Deleting your secret from {keyVaultName} ...")
 
-client.delete_secret(secretName)
+client.begin_delete_secret(secretName)
 
 print(" done.")
 ```
@@ -192,6 +192,6 @@ print(" done.")
 
 V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- [Přehled Azure Key Vault](../general/overview.md)
+- [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
+- [Azure Key Vault osvědčené postupy](../general/best-practices.md)

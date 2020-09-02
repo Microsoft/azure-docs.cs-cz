@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5b03e22fee2bf1bd662c152bf1b5c2f83a4358
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019908"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378011"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které používají jednu sadu ověřovacích přihlašovacích údajů
 
-Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/managed-identity.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče a tajné kódy. Přístupové klíče a tajné kódy byste měli pravidelně střídat.
+Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/authentication.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče a tajné kódy. Přístupové klíče a tajné kódy byste měli pravidelně střídat.
 
 V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají jednu sadu ověřovacích přihlašovacích údajů. Konkrétně tento kurz otočí SQL Server hesla uložená v Azure Key Vault pomocí funkce aktivované Azure Event Gridm oznámením:
 
@@ -113,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-Informace o tom, jak vytvořit aplikaci funkcí a použít spravovanou identitu pro přístup k Key Vault, najdete v tématu [Vytvoření aplikace Function App z Azure Portal](../../azure-functions/functions-create-function-app-portal.md) a [poskytnutí Key Vaultho ověřování se spravovanou identitou](../general/managed-identity.md).
+Informace o tom, jak vytvořit aplikaci funkcí a použít spravovanou identitu pro přístup k Key Vault, najdete v tématu [Vytvoření aplikace Function App z Azure Portal](/azure/azure-functions/functions-create-function-app-portal), [použití spravované identity pro App Service a Azure Functions](/azure/app-service/overview-managed-identity)a [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../general/assign-access-policy-portal.md).
 
 ### <a name="rotation-function"></a>Funkce rotace
 Funkce nasazená v předchozím kroku používá událost k aktivaci rotace tajného kódu aktualizací Key Vault a SQL Database. 

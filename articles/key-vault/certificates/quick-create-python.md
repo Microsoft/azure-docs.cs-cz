@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 86ce2b95cce82bd6d6877f83c3bc0b0496804c83
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d0d1ed2b082abe5930f358a2551a967dd158aa41
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875332"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376583"
 ---
 # <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Azure Key Vault certifikáty pro Python
 
@@ -29,7 +29,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Python 2,7, 3.5.3 nebo novější
@@ -68,7 +68,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Nejjednodušší způsob, jak ověřit cloudovou aplikaci .NET, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) .
+Nejjednodušší způsob, jak ověřit cloudovou aplikaci, je spravovaná identita. Podrobnosti najdete v tématu [ověření pro Key Vault](../general/authentication.md) .
 
 V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš instanční objekt vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-Principal-Name &gt; ".
 
@@ -239,6 +239,6 @@ print(" done.")
 
 V tomto rychlém startu jste vytvořili Trezor klíčů, uložili certifikát a načetli jste tento certifikát. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- [Přehled Azure Key Vault](../general/overview.md)
+- [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
+- [Azure Key Vault osvědčené postupy](../general/best-practices.md)

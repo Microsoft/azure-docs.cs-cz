@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795894"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376379"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
@@ -27,7 +27,7 @@ Tento článek popisuje jednotky pro správu v Azure Active Directory (Azure AD)
 
 Jednotky pro správu umožňují udělit oprávnění správce, která jsou omezená na oddělení, oblast nebo jiný segment vaší organizace, kterou definujete. Jednotky pro správu můžete použít k delegování oprávnění pro místní správce nebo k nastavení zásad na podrobné úrovni. Správce uživatelských účtů může například aktualizovat informace o profilu, resetovat hesla a přiřazovat licence uživatelům pouze ve své jednotce pro správu.
 
- Například delegování na oblastní specialisty podpory: role [správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator) omezená na správu pouze uživatelů v oblasti, které podporují.
+Například delegování na oblastní specialisty podpory: role [správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator) omezená na správu pouze uživatelů v oblasti, které podporují.
 
 ## <a name="deployment-scenario"></a>Scénář nasazení
 
@@ -54,7 +54,7 @@ V této verzi Preview můžete spravovat jednotky pro správu pomocí Azure Port
 
 Jednotky pro správu lze použít k logickému seskupení prostředků služby Azure AD. Například pro organizaci, jejíž oddělení IT je celkově rozptýlené, může být vhodné vytvořit administrativní jednotky, které definují tyto geografické hranice. V jiném scénáři, kde má více národních organizací odlišnou "podkategorie", které jsou částečně nezávislé na operacích, může být každá dílčí organizace reprezentována jednotkou správy.
 
-Kritéria, na kterých se vytvářejí jednotky pro správu, budou provádět jedinečné požadavky organizace. Jednotky pro správu představují běžný způsob, jak definovat strukturu napříč M365 službami. Doporučujeme, abyste připravili jednotky pro správu s využitím napříč M365 službami. Můžete získat maximální hodnotu z jednotek pro správu, když můžete přidružit běžné prostředky mezi M365 v rámci jednotky pro správu.
+Kritéria, na kterých se vytvářejí jednotky pro správu, budou provádět jedinečné požadavky organizace. Jednotky pro správu představují běžný způsob, jak definovat strukturu napříč Microsoft 365 službami. Doporučujeme, abyste připravili jednotky pro správu s využitím v rámci Microsoft 365 služby. Pokud k přidružení běžných prostředků mezi Microsoft 365 v rámci jednotky pro správu, můžete získat maximální hodnotu mimo jednotky pro správu.
 
 Můžete očekávat, že vytváření jednotek pro správu v organizaci projdete v následujících fázích:
 
@@ -64,7 +64,7 @@ Můžete očekávat, že vytváření jednotek pro správu v organizaci projdete
 
 ## <a name="currently-supported-scenarios"></a>Aktuálně podporované scénáře
 
-Globální správci nebo správci privilegovaných rolí můžou pomocí portálu Azure AD vytvořit jednotky pro správu, přidat uživatele jako členy jednotek pro správu a pak přiřadit IT oddělení k rolím správců vymezeným jednotce správy. Správci s rozsahem administrativní jednotky mohou potom použít portál Office 365 pro základní správu uživatelů v jejich jednotkách správy.
+Globální správci nebo správci privilegovaných rolí můžou pomocí portálu Azure AD vytvořit jednotky pro správu, přidat uživatele jako členy jednotek pro správu a pak přiřadit IT oddělení k rolím správců vymezeným jednotce správy. Správci s rozsahem administrativní jednotky mohou potom použít Centrum pro správu Microsoft 365 pro základní správu uživatelů v jejich administrativních jednotkách.
 
 Kromě toho je možné přidat skupiny jako členy jednotky pro správu a správce skupin s oborem správy, který je může spravovat pomocí PowerShellu, Microsoft Graph a portálu Azure AD.
 
@@ -99,7 +99,7 @@ Správa licencování skupin pro správu s rozsahem jednotky   |    Podporováno
 >
 > Správci s oborem jednotky pro správu nemůžou spravovat pravidla členství v dynamické skupině.
 
-Jednotky pro správu se vztahují pouze na oprávnění pro správu. Nebrání členům ani správcům používat [výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) k procházení jiných uživatelů, skupin nebo prostředků mimo jednotky pro správu. Na portálu Office 365 se odfiltrují uživatelé mimo jednotky pro správu s vymezeným oborem správy, ale můžete procházet jiné uživatele na portálu Azure AD, PowerShellu a dalších službách Microsoftu.
+Jednotky pro správu se vztahují pouze na oprávnění pro správu. Nebrání členům ani správcům používat [výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) k procházení jiných uživatelů, skupin nebo prostředků mimo jednotky pro správu. V centru pro správu Microsoft 365 se odfiltrují uživatelé mimo jednotky pro správu s vymezeným oborem správy, ale můžete procházet jiné uživatele na portálu Azure AD, PowerShellu a dalších službách Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 
