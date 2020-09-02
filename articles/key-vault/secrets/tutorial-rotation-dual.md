@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542191"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378215"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky se dvěma sadami ověřovacích přihlašovacích údajů
 
-Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/managed-identity.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče nebo hesla. Přístupové klíče a hesla by se měly často otáčet.
+Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/authentication.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče nebo hesla. Přístupové klíče a hesla by se měly často otáčet.
 
 V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají dvě sady ověřovacích přihlašovacích údajů. Konkrétně tento kurz otočí Azure Storage klíčů účtu uložených v Azure Key Vault jako tajné klíče pomocí funkce aktivované Azure Event Gridm oznámením. :
 
@@ -91,7 +91,7 @@ Funkce rotace aplikace funkcí vyžadují tyto komponenty a konfiguraci:
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **Vytvořit**.
 
-   ![Zkontrolovat a vytvořit](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![Kontrola a vytvoření prvního účtu úložiště](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 Po dokončení předchozích kroků budete mít účet úložiště, serverovou farmu, aplikaci funkcí a Application Insights. Po dokončení nasazení by se měla zobrazit pod obrazovkou: ![ nasazení bylo dokončeno.](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ Tajné informace můžete zobrazit pomocí příkazu níže:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-Všimněte si, že `CredentialId` se aktualizovala na alternativní `keyName` a `value` znovu vygenerovala ![ tajné zobrazení](../media/secrets/rotation-dual/dual-rotation-4.png)
+Všimněte si, že `CredentialId` se aktualizovala na alternativní `keyName` a `value` je znovu vygenerován ![ výstup pro první účet úložiště jako první.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Načtení přístupových klíčů pro ověření hodnoty
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Seznam přístupových klíčů](../media/secrets/rotation-dual/dual-rotation-5.png)
+![Výstup seznamu AZ Storage Account Keys pro první účet úložiště](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>Přidání dalších účtů úložiště pro rotaci
 
@@ -164,7 +164,7 @@ Přidání dalších klíčů účtu úložiště pro otočení do existující 
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Vyberte **Vytvořit**.
 
-   ![Zkontrolovat a vytvořit](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![Kontrola a vytvoření druhého účtu úložiště](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Přidat další přístupový klíč k účtu úložiště pro Key Vault
 
@@ -190,13 +190,13 @@ Zobrazit tajné informace pomocí příkazu níže:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-Všimněte si, že `CredentialId` se aktualizovala na alternativní `keyName` a `value` znovu vygenerovala ![ tajné zobrazení](../media/secrets/rotation-dual/dual-rotation-8.png)
+Všimněte si, že `CredentialId` se aktualizovala na alternativní `keyName` a `value` je znovu vygenerován ![ výstup pro druhý účet úložiště v tajnosti AZ klíčů trezor.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Načtení přístupových klíčů pro ověření hodnoty
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Seznam přístupových klíčů](../media/secrets/rotation-dual/dual-rotation-9.png)
+![Výstup seznamu AZ Storage Account Keys pro druhý účet úložiště](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Dostupné Key Vault funkce rotace dvou přihlašovacích údajů
 

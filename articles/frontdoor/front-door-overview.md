@@ -3,21 +3,21 @@ title: Přední dvířka Azure | Microsoft Docs
 description: Tento článek obsahuje přehled služby Azure Front Door. Zjistěte, zda se jedná o správnou volbu pro síťový provoz vyrovnávání zatížení pro vaši aplikaci.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322281"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378181"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 Přední dvířka Azure umožňují definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti. S předními dvířky můžete transformaci svých globálních uživatelů a podnikových aplikací transformovat na robustní, vysoce výkonné přizpůsobené moderní aplikace, rozhraní API a obsah, který se službou Azure dosáhne globální cílové skupiny.
@@ -81,6 +81,10 @@ Protokol HTTP/2 umožňuje plně duplexní komunikaci mezi back-endy aplikací a
 ## <a name="pricing"></a>Ceny
 
 Informace o cenách najdete v tématu, které se věnuje [cenám služby Front Door](https://azure.microsoft.com/pricing/details/frontdoor/).
+
+## <a name="whats-new"></a>Co je nového?
+
+Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azure Load Balancer aktualizace funkcí na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) .
 
 ## <a name="next-steps"></a>Další kroky
 

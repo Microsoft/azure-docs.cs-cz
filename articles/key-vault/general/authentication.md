@@ -3,190 +3,126 @@ title: Ověřování pro Azure Key Vault
 description: Zjistěte, jak ověřit a Azure Key Vault
 author: ShaneBala-keyvault
 ms.author: sudbalas
-ms.date: 06/08/2020
+ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930855"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378966"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Ověřování pro Azure Key Vault
 
-## <a name="overview"></a>Přehled
+Azure Key Vault umožňuje ukládat tajné klíče a řídit jejich distribuci v centralizovaném, zabezpečeném cloudovém úložišti, což eliminuje nutnost ukládat přihlašovací údaje v aplikacích. Pro přístup k těmto tajným klíčům se aplikace potřebují ověřit pouze pomocí Key Vault za běhu.
 
-Azure Key Vault je řešení pro správu tajných kódů, které umožňuje centralizovat úložiště tajných klíčů aplikací a řídit jejich distribuci. Azure Key Vault eliminuje nutnost ukládat přihlašovací údaje v aplikacích. Vaše aplikace se může k trezoru klíčů ověřit, aby se načetly požadované přihlašovací údaje. Tento dokument popisuje základy ověřování do trezoru klíčů.
+## <a name="app-identity-and-service-principals"></a>Identita aplikace a instanční objekty
 
-Tento dokument vám pomůže pochopit, jak funguje ověřování trezoru klíčů. Tento dokument vysvětluje tok ověřování, ukáže vám, jak udělit přístup k trezoru klíčů a obsahuje kurz pro načtení uloženého tajného klíče v trezoru klíčů z ukázkové aplikace v Pythonu.
+Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), která zodpovídá za ověřování identity libovolného **objektu zabezpečení**.
 
-Tento dokument bude pokrývat:
+Objekt zabezpečení je objekt, který představuje uživatele, skupinu, službu nebo aplikaci požadující přístup k prostředkům Azure. Azure přiřadí jedinečné **ID objektu** každému objektu zabezpečení.
 
-* Klíčové koncepty
-* Registrace objektu zabezpečení
-* Principy Key Vaultho toku ověřování
-* Udělení přístupového objektu služby Key Vault
-* Kurz (Python)
+* Objekt zabezpečení **uživatele** identifikuje jednotlivce, který má profil v Azure Active Directory.
 
-## <a name="key-concepts"></a>Klíčové koncepty
+* Objekt zabezpečení **skupiny** identifikuje sadu uživatelů vytvořených v Azure Active Directory. Všechny role nebo oprávnění přiřazených ke skupině jsou udělena všem uživatelům v rámci dané skupiny.
 
-### <a name="azure-active-directory-concepts"></a>Azure Active Directory koncepty
+* **Instanční objekt** je typ instančního objektu, který slouží k identitě aplikace nebo služby, což znamená, že místo uživatele nebo skupiny říkáte část kódu. ID objektu instančního objektu se označuje jako jeho **ID klienta** a funguje jako jeho uživatelské jméno. **Tajný kód klienta** instančního objektu funguje jako jeho heslo.
 
-* Azure Active Directory (AAD) – Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu, která pomáhá vašim zaměstnancům přihlašovat se a přistupovat k prostředkům.
+Pro aplikace existují dva způsoby, jak získat instanční objekt:
 
-* Definice role – definice role je kolekcí oprávnění.  AAD má standardní role (vlastníka, přispěvatele nebo čtenář), které obsahují úrovně oprávnění k provádění operací, jako jsou čtení, zápis a odstranění prostředku Azure. Role můžou být také vlastními definicemi vytvořenými uživateli s konkrétními podrobnými oprávněními.
+* Doporučené: pro aplikaci povolte **spravovanou identitu** přiřazenou systémem.
 
-* Registrace aplikací – když zaregistrujete aplikaci Azure AD, vytvoří se ve vašem tenantovi Azure AD, objektu aplikace a instančního objektu služby dva objekty. Zvažte použití objektu aplikace jako globální reprezentace aplikace pro použití ve všech klientech a instančního objektu jako místní reprezentace pro použití v konkrétním tenantovi.
+    Díky spravované identitě Azure interně spravuje instanční objekt aplikace a automaticky ověřuje aplikaci s ostatními službami Azure. Spravovaná identita je k dispozici pro aplikace nasazené do různých služeb.
 
-### <a name="security-principal-concepts"></a>Základní koncepty zabezpečení
+    Další informace najdete v tématu [Přehled spravované identity](/azure/active-directory/managed-identities-azure-resources/overview). Podívejte se také na [služby Azure, které podporují spravovanou identitu](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities), které odkazují na články, které popisují, jak povolit spravovanou identitu pro konkrétní služby (například App Service, Azure Functions, Virtual Machines atd.).
 
-* Objekt zabezpečení – objekt zabezpečení je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která žádá o přístup k prostředkům Azure.
+* Pokud nemůžete použít spravovanou identitu, můžete místo toho aplikaci **zaregistrovat** u svého TENANTA Azure AD, jak je popsáno v tématu [rychlý Start: registrace aplikace s platformou identity Azure](/azure/active-directory/develop/quickstart-register-app). Registrace vytvoří také druhý objekt aplikace, který identifikuje aplikaci napříč všemi klienty.
 
-* Uživatel – jednotlivec, který má profil ve službě Azure Active Directory.
+## <a name="authorize-a-service-principal-to-access-key-vault"></a>Autorizovat instanční objekt pro přístup k Key Vault
 
-* Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé.
+Key Vault pracuje se dvěma různými úrovněmi autorizace:
 
-* Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako identitu uživatele (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
+- **Zásady přístupu** určují, jestli uživatel, skupina nebo instanční objekt mají autorizaci pro přístup k tajným klíčům, klíčům a certifikátům *v rámci* existujícího prostředku Key Vault (někdy se označuje jako "operace roviny dat"). Zásady přístupu jsou obvykle udělovány uživatelům, skupinám a aplikacím.
 
-* Spravovaná identita – identita v Azure Active Directory, kterou automaticky spravuje Azure.
+    Pokud chcete přiřadit zásady přístupu, přečtěte si následující články:
 
-* ID objektu (ID klienta) – jedinečný identifikátor, který vygenerovala služba Azure AD, která je vázaná na instanční objekt během počátečního zřizování.
+    - [Azure Portal](assign-access-policy-portal.md)
+    - [Azure CLI](assign-access-policy-cli.md)
+    - [Azure PowerShell](assign-access-policy-portal.md)
 
-## <a name="security-principal-registration"></a>Registrace objektu zabezpečení
+- **Oprávnění role** určují, jestli uživatel, skupina nebo instanční objekt mají autorizaci k vytváření, odstraňování a jiné správě Key Vault prostředku (někdy označovaného jako "rovina správy"). Tyto role jsou nejčastěji uděleny jenom správcům.
+ 
+    Chcete-li přiřadit a spravovat role, přečtěte si následující články:
 
-1. Správce zaregistruje uživatele nebo aplikaci (instanční objekt) v Azure Active Directory.
+    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
+    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
-2. Správce vytvoří Azure Key Vault a nakonfiguruje zásady přístupu (ACL).
+    Key Vault aktuálně podporuje roli [Přispěvatel](/azure/role-based-access-control/built-in-roles#key-vault-contributor) , která umožňuje operace správy u prostředků Key Vault. Řada dalších rolí je aktuálně ve verzi Preview. Můžete také vytvořit vlastní role, jak je popsáno v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles).
 
-3. Volitelné Správce nakonfiguruje bránu Azure Key Vault firewall.
-
-![OBRÁZEK](../media/authentication-1.png)
-
-## <a name="understand-the-key-vault-authentication-flow"></a>Princip Key Vaultho toku ověřování
-
-1. Instanční objekt provede volání ověřování do AAD, ke kterému může dojít několika způsoby:
-    * Uživatel se může přihlásit k Azure Portal pomocí uživatelského jména a hesla.
-    * Aplikace používá ID klienta a prezentuje tajný klíč klienta nebo klientský certifikát pro AAD.
-    * Prostředek Azure, jako je třeba virtuální počítač, má přiřazenou službu MSI a kontaktuje koncový bod IMDS REST k získání přístupového tokenu.
-
-2. Pokud je ověření pro AAD úspěšné, instančnímu objektu se udělí token OAuth.
-3. Instanční objekt provede volání Key Vault.
-4. Azure Key Vault firewall určuje, zda má být volání povoleno.
-    * Scénář 1: Key Vault firewall je zakázaný, veřejný koncový bod (URI) trezoru klíčů je dosažitelný z veřejného Internetu. Volání je povoleno.
-    * Scénář 2: volající je Azure Key Vault Důvěryhodná služba. Pokud je vybraná možnost, můžou některé služby Azure obejít bránu firewall trezoru klíčů. [Seznam Key Vault důvěryhodných služeb](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-    * Scénář 3: volající je uvedený v bráně Azure Key Vault firewall podle IP adresy, virtuální sítě nebo koncového bodu služby.
-    * Scénář 4: volající může kontaktovat Azure Key Vault prostřednictvím nakonfigurovaného připojení s privátním propojením.
-    * Scénář 5: volající není autorizovaný a vrátí se zakázaná odpověď.
-5. Key Vault provede volání AAD k ověření přístupového tokenu objektu služby.
-6. Key Vault kontroluje, jestli má instanční objekt dostatečná oprávnění zásad přístupu k provedení požadované operace, v tomto příkladu je operace získat tajný klíč.
-7. Key Vault poskytuje tajný klíč k instančnímu objektu.
-
-![OBRÁZEK](../media/authentication-2.png)
-
-## <a name="grant-a-service-principal-access-to-key-vault"></a>Udělení přístupového objektu služby Key Vault
-
-1. Pokud ještě nemáte objekt služby, vytvořte ho. [Vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
-2. Přidejte přiřazení role k instančnímu objektu v nastavení Azure Key Vault IAM. Můžete přidat předem přiřazené role vlastníka, přispěvatele nebo čtenáře. Pro objekt služby můžete také vytvořit vlastní role. Měli byste dodržovat zabezpečení s nejnižšími oprávněními a poskytnout jenom minimální přístup nezbytný pro váš instanční objekt. 
-3.  Nakonfigurujte bránu firewall trezoru klíčů. Bránu firewall trezoru klíčů můžete ponechat zakázanou a povolíte přístup z veřejného Internetu (méně bezpečné, jednodušší konfigurace). Můžete taky omezit přístup ke konkrétním rozsahům IP adres, koncovým bodům služby, virtuálním sítím nebo soukromým koncovým bodům (bezpečnějším).
-4.  Přidejte zásady přístupu pro váš instanční objekt. Jedná se o seznam operací, které může instanční objekt provádět v trezoru klíčů. Měli byste použít objekt zabezpečení s minimálními oprávněními a omezit operace, které může instanční objekt provádět. Pokud však neposkytnete dostatečná oprávnění, instančnímu objektu bude odepřen přístup.
-
-## <a name="tutorial"></a>Kurz
-
-V tomto kurzu se naučíte nastavit instanční objekt pro ověření v trezoru klíčů a načíst tajný klíč. 
-
-### <a name="part-1--create-a-service-principal-in-the-azure-portal"></a>Část 1: Vytvoření instančního objektu v Azure Portal
-
-1. Přihlášení k webu Azure Portal
-1. Hledat Azure Active Directory
-1. Klikněte na kartu registrace aplikací.
-1. Klikněte na + nová registrace.
-1. Vytvoření názvu instančního objektu
-1. Vybrat registraci
-
-V tomto okamžiku máte registrovaný instanční objekt. Můžete ji zobrazit výběrem možnosti registrace aplikací. Vašemu instančnímu objektu se teď přiřadí identifikátor GUID ID klienta, takže si ho můžete představit jako "uživatelské jméno" pro instanční objekt. Nyní musíme vytvořit "heslo" pro instanční objekt, můžete použít tajný klíč klienta nebo klientský certifikát. Všimněte si, že použití tajného klíče klienta pro ověřování není zabezpečené a mělo by se používat pouze pro účely testování. Tento kurz vám ukáže, jak používat klientský certifikát.
-
-### <a name="part-2-create-a-client-certificate-for-your-service-principal"></a>Část 2: Vytvoření klientského certifikátu pro objekt služby
-
-1. Vytvoření certifikátu
-
-    * Možnost 1: vytvoření certifikátu pomocí [OpenSSL](https://www.openssl.org/) (pouze pro účely testování nepoužívejte certifikáty podepsané svým držitelem v produkčním prostředí)
-    * Možnost 2: vytvoření certifikátu pomocí trezoru klíčů. [Vytvoření certifikátu v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
-
-1. Stáhnout certifikát ve formátu PEM/PFX
-1. Přihlaste se k Azure Portal a přejděte do Azure Active Directory
-1. Klikněte na registrace aplikací.
-1. Vyberte objekt služby, který jste vytvořili v části 1.
-1. Klikněte na kartu certifikáty a tajné objekty služby.
-1. Nahrajte certifikát pomocí tlačítka pro odeslání certifikátu.
-
-### <a name="part-3-configure-an-azure-key-vault"></a>Část 3: konfigurace Azure Key Vault
-
-1. Vytvoří [odkaz](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) Azure Key Vault.
-
-2. Konfigurace Key Vault oprávnění IAM
-    1. Přejděte do trezoru klíčů.
-    1. Vyberte kartu Access Control (IAM).
-    1. Klikněte na přidat přiřazení role.
-    1. Vybrat roli Přispěvatel z rozevíracího seznamu
-    1. Zadejte název nebo ID klienta instančního objektu, který jste vytvořili.
-    1. Kliknutím na Zobrazit přiřazení rolí potvrďte, že je váš instanční objekt uvedený.
-
-3. Konfigurace oprávnění zásad přístupu Key Vault
-    1. Přejděte do trezoru klíčů.
-    1. V části nastavení vyberte kartu zásady přístupu.
-    1. Vyberte odkaz + Přidat zásadu přístupu.
-    1. V rozevíracím seznamu oprávnění skrytá zaškrtněte oprávnění získat a seznam.
-    1. Vyberte instanční objekt podle názvu nebo ID klienta.
-    1. Vyberte Přidat.
-    1. Vyberte Save (Uložit).
-
-4. V trezoru klíčů vytvořte tajný klíč.
-    1. Přejděte do trezoru klíčů.
-    1. V části Nastavení klikněte na kartu tajné klíče.
-    1. Klikněte na + generovat/importovat.
-    1. Vytvořte název tajného klíče. v tomto příkladu pojmenuje tajný klíč "test".
-    1. Vytvořte hodnotu pro tajný klíč. v tomto příkladu nastavím hodnotu "password123".
-
-Když teď spouštíte kód z místního počítače, můžete se k trezoru klíčů ověřit získáním přístupového tokenu tak, že zobrazíte ID klienta a cestu k certifikátu.
-
-### <a name="part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python"></a>4. část: načtení tajného kódu z Azure Key Vault v aplikaci (Python)
-
-Použijte následující ukázku kódu k otestování, jestli vaše aplikace může z vašeho trezoru klíčů získat tajný klíč pomocí instančního objektu, který jste nakonfigurovali. 
-
-```python
-from azure.keyvault.secrets import SecretClient
-from azure.identity import CertificateCredential
+    Obecné informace o rolích najdete v tématu [co je Azure založené na rolích Access Control (RBAC)?](/azure/role-based-access-control/overview).
 
 
-tenant_id = ""                                             ##ENTER AZURE TENANT ID
-vault_url = "https://{VAULT NAME}.vault.azure.net/"        ##ENTER THE URL OF YOUR KEY VAULT
-client_id = ""                                             ##ENTER CLIENT ID OF SERVICE PRINCIPAL
-cert_path = r"C:\Users\{USERNAME}\{PATH}\{CERT_NAME}.pem"  ##ENTER PATH TO CERTIFICATE
+> [!IMPORTANT]
+> Pro nejvyšší zabezpečení vždy sledujte základní objekty s nejnižšími oprávněními a udělte pouze ty nejdůležitější zásady přístupu a role, které jsou nezbytné. 
+    
+## <a name="configure-the-key-vault-firewall"></a>Konfigurace brány Key Vault firewall
 
-def main():
+Ve výchozím nastavení Key Vault umožňuje přístup k prostředkům prostřednictvím veřejných IP adres. Pro zajištění vyššího zabezpečení můžete také omezit přístup ke konkrétním rozsahům IP adres, koncovým bodům služby, virtuálním sítím nebo soukromým koncovým bodům.
 
-    #AUTHENTICATION TO AAD USING CLIENT ID AND CLIENT CERTIFICATE
-    token = CertificateCredential(tenant_id= tenant_id, client_id=client_id, certificate_path=cert_path)
+Další informace najdete v tématu [přístup Azure Key Vault za bránou firewall](/azure/key-vault/general/access-behind-firewall).
 
-    #AUTHENTICATION TO KEY VAULT PRESENTING AAD TOKEN
-    client = SecretClient(vault_url=vault_url, credential=token)
 
-    #CALL TO KEY VAULT TO GET SECRET
-    secret = client.get_secret('{SECRET_NAME}')            ##ENTER NAME OF SECRET IN KEY VAULT
+## <a name="the-key-vault-authentication-flow"></a>Key Vault tok ověřování
 
-    #GET PLAINTEXT OF SECRET
-    print(secret.value)
+1. Instanční objekt požaduje ověření ve službě Azure AD, například:
+    * Uživatel se do Azure Portal přihlásí pomocí uživatelského jména a hesla.
+    * Aplikace vyvolá Azure REST API, který prezentuje ID klienta a tajný klíč nebo klientský certifikát.
+    * Prostředek Azure, jako je třeba virtuální počítač se spravovanou identitou, kontaktuje koncový bod [azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) REST, který získá přístupový token.
 
-#CALL MAIN()
-if __name__ == "__main__":
-    main()
-```
+1. Pokud je ověřování pomocí služby Azure AD úspěšné, instančnímu objektu se udělí token OAuth.
 
-![OBRÁZEK](../media/authentication-3.png)
+1. Instanční objekt provede volání Key Vault REST API prostřednictvím koncového bodu Key Vault (URI).
 
+1. Brána firewall Key Vault kontroluje následující kritéria. Pokud je splněno jakékoli kritérium, volání je povoleno. V opačném případě se volání zablokuje a vrátí se zakázaná odpověď.
+
+    * Brána firewall je zakázaná a veřejný koncový bod Key Vault dosažitelný z veřejného Internetu.
+    * Volající je [Key Vault Důvěryhodná služba](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services), která umožňuje obejít bránu firewall.
+    * Volající je uveden v bráně firewall podle IP adresy, virtuální sítě nebo koncového bodu služby.
+    * Volající může kontaktovat Key Vault přes nakonfigurované připojení pomocí privátního propojení.    
+
+1. Pokud brána firewall povoluje volání, Key Vault volá službu Azure AD za účelem ověření přístupového tokenu objektu služby.
+
+1. Key Vault zkontroluje, jestli má instanční objekt pro požadovanou operaci zásadu přístupu. V takovém případě Key Vault vrátí zakázanou odpověď.
+
+1. Key Vault provede požadovanou operaci a vrátí výsledek.
+
+Následující obrázek znázorňuje proces pro aplikaci, která volá rozhraní API "Get tajného klíče" Key Vault:
+
+![Azure Key Vault tok ověřování](../media/authentication/authentication-flow.png)
+
+## <a name="code-examples"></a>Příklady kódu
+
+Následující tabulka obsahuje odkazy na různé články, které ukazují, jak pracovat s Key Vault v kódu aplikace pomocí knihoven sady Azure SDK pro daný jazyk. Pro usnadnění jsou k dispozici další rozhraní, jako je Azure CLI a Azure Portal.
+
+| Key Vault tajných klíčů | Key Vault klíče | Key Vault certifikátů |
+|  --- | --- | --- |
+| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
+| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [.NET (sada SDK V3)](/azure/key-vault/secrets/quick-create-net-v3) | -- | -- |
+| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
+| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| | | |
+| [Azure Portal](/azure/key-vault/secrets/quick-create-portal) | [Azure Portal](/azure/key-vault/keys/quick-create-portal) | [Azure Portal](/azure/key-vault/certificates/quick-create-portal) |
+| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
+| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
+| [Šablona ARM](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
 ## <a name="next-steps"></a>Další kroky
 
-1. Naučte se řešit chyby ověřování trezoru klíčů. [Průvodce odstraňováním potíží s Key Vault](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)
+- [Řešení potíží se zásadami přístupu Key Vault](troubleshooting-access-issues.md)
+- [Kódy chyb Key Vault REST API](rest-error-codes.md)
+- [Key Vault příručka pro vývojáře](developers-guide.md)
+- [Co je Access Control založené na rolích Azure (RBAC)?](/azure/role-based-access-control/overview)

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81391566"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377008"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -71,13 +71,13 @@ Zákazník má k této skupině prostředků plný přístup a používá ji ke 
 
 Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Přístup je buď trvalý, nebo omezený na určitou dobu.
 
-Při publikování [spravované aplikace na webu Marketplace](publish-marketplace-app.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty.
+Při publikování [spravované aplikace na webu Marketplace](publish-marketplace-app.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty. Změny prostředků ve spravované skupině prostředků příjemcem s udělenými akcemi podléhají [Azure Policy](../../governance/policy/overview.md) přiřazení v rámci oboru tenanta klienta, aby zahrnovali spravovanou skupinu prostředků.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Na spravovanou aplikaci můžete použít zásady [Azure Policy](../../governance/policy/overview.md). Zásady se používají k zajištění souladu nasazených instancí vaší spravované aplikace s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
+Můžete použít [Azure Policy](../../governance/policy/overview.md) k auditování spravované aplikace. Můžete použít definice zásad a zajistit, aby nasazené instance spravované aplikace splňovaly požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud vaše aplikace komunikuje s daty z Office 365, použijte definici zásady, abyste zajistili, že je povolené šifrování dat.
 
 ## <a name="next-steps"></a>Další kroky
 
