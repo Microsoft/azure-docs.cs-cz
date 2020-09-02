@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření sdílené datové složky – Azure Portal
+    - name: Sdílení dat – Azure Portal
       href: share-your-data-portal.md
-    - name: Vytvoření sdílené datové složky – šablona ARM
+    - name: Sdílení dat – šablona Resource Manageru
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Kurzy
@@ -39,6 +39,10 @@
   items:
     - name: Sdílení a příjem dat podle zdroje
       items:
+        - name: Sdílení z Azure Storage
+          href: how-to-share-from-storage.md
+        - name: Sdílení z Azure SQL Database nebo Synapse Analytics
+          href: how-to-share-from-sql.md
         - name: Sdílení z Azure Data Exploreru
           href: /azure/data-explorer/data-share
           maintainContext: true

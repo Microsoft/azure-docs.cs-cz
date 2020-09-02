@@ -61,8 +61,6 @@
           href: security-center-recommendations.md
         - name: Přehled zásad zabezpečení
           href: tutorial-security-policy.md
-        - name: Předdefinované zásady zabezpečení
-          href: security-center-policy-definitions.md
         - name: Použití doporučení k vylepšení zabezpečení
           href: security-center-using-recommendations.md
         - name: Standardní hodnoty zabezpečení
@@ -157,7 +155,7 @@
       href: asset-inventory.md
     - name: Integrace s ostatními nástroji a službami
       items:
-        - name: Integrace s řešením Windows Admin Center
+        - name: Ochrana serverů Windows Admin Center
           href: windows-admin-center-integration.md
         - name: Ochrana rozhraní API a webových aplikací Azure App Service
           href: security-center-app-services.md
@@ -211,6 +209,9 @@
       href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
       href: security-center-endpoint-protection.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

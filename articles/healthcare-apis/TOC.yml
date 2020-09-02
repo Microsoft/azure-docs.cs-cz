@@ -46,11 +46,6 @@
       items:
         - name: Příjem dat ze zařízení prostřednictvím Azure IoT Hubu
           href: device-data-through-iot-hub.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Návody
   expanded: false
   items:
@@ -82,6 +77,11 @@
           href: configure-cross-origin-resource-sharing.md
         - name: Konfigurace exportu
           href: configure-export-data.md
+    - name: Exportovat data
+      expanded: false
+      items:
+        - name: Deidentifikovaný export
+          href: export-data.md
     - name: Vyhledání ID objektů identit
       href: find-identity-object-ids.md
     - name: Povolení protokolování diagnostiky v Azure API for FHIR®
@@ -118,3 +118,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

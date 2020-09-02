@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: Konfigurace aplikace
       href: add-application-portal-configure.md
+    - name: Přiřazení uživatelů k aplikaci
+      href: add-application-portal-assign-users.md
     - name: Nastavení jednotného přihlašování
       href: add-application-portal-setup-sso.md
     - name: Odstranění aplikace

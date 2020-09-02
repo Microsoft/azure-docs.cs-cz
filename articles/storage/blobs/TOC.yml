@@ -111,9 +111,6 @@
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
-        - name: Integrované služby Azure Policy
-          displayName: 'samples, policies, definitions'
-          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Koncepty
       items:
         - name: Účty úložiště
@@ -554,6 +551,9 @@
           href: /azure/templates/microsoft.storage/allversions
         - name: Data monitorování
           href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Zdroje a prostředky
       items:
         - name: Aktualizace Azure
@@ -713,12 +713,8 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Postup
       items:
-        - name: Vytvořit
-          items:
-            - name: Vytvoření účtu úložiště (pro obecné účely v2)
-              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Vytvoření účtu úložiště (objekt blob bloku)
-              href: storage-blob-create-account-block-blob.md
+        - name: vytvořit účet úložiště
+          href: create-data-lake-storage-account.md
         - name: Migrace
           items:
             - name: Migrace ze služby Data Lake Storage Gen1
@@ -830,6 +826,9 @@
         - name: Šablona Resource Manageru
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Zdroje a prostředky
       items:
         - name: Známé problémy

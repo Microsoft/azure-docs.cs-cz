@@ -16,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Monitorování počítače
       href: ./learn/tutorial-enable-vm-insights.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      items:
-        - name: Servery s podporou služby Arc
-          href: policy-samples.md
 - name: Koncepty
   items:
     - name: Zabezpečení
@@ -57,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

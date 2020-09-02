@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: Synchronizace LDAP v Rangeru a Apache Ambari
           href: ./domain-joined/ldap-sync.md
+        - name: Dvojité šifrování během přenosu
+          href: ./domain-joined/encryption-in-transit.md
     - name: Návody
       items:
         - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů

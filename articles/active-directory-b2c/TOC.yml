@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: Relace SSO
       href: session-overview.md
+    - name: Ochrana identity a podmíněný přístup
+      href: conditional-access-identity-protection-overview.md
 - name: Návody
   items:
     - name: Integrace aplikací
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: Nastavení samoobslužného resetování hesla
               href: user-flow-self-service-password-reset.md
+        - name: Přidání podmíněného přístupu
+          href: conditional-access-user-flow.md
         - name: Přizpůsobení uživatelského prostředí
           items:
             - name: Přizpůsobení uživatelského rozhraní
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: Předávací externí token IdP
           href: idp-pass-through-user-flow.md
+    - name: Ochrana identity a podmíněný přístup
+      href: conditional-access-identity-protection-setup.md
     - name: Vlastní zásady
       items:
         - name: Vytvoření zásad
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: Transformace deklarací identity
                       href: claims-transformation-technical-profile.md
+                    - name: Technický profil podmíněného přístupu
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: Vydavatel tokenu JWT
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

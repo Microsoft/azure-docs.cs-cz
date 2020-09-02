@@ -73,15 +73,15 @@
               items:
                 - name: Přístup ke clusteru Kubernetes
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: Vystavení bezstavové aplikace
+                - name: Bezstavová aplikace
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: Nasazení stavové aplikace (zřízené staticky)
+                - name: Stavová aplikace zřízená staticky
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: Nasazení stavové aplikace (zřízené dynamicky)
+                - name: Stavová aplikace zřízená dynamicky
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: Přes IoT Edge
               items:
-                - name: Vystavení bezstavové aplikace
+                - name: Bezstavová aplikace
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: Přes Azure Arc
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Řešení chyb certifikátů
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: Vývoj modulu jazyka C#
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: Vývoj modulu jazyka C#
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Správy výpočetních funkcí Edge
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Správa brány úložiště
@@ -151,7 +151,7 @@
               href: azure-stack-edge-monitor.md
             - name: Použití řídicího panelu Kubernetes
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: Odstraňování potíží
+        - name: Řešení potíží
           items:
             - name: Potíže se zařízeními
               href: azure-stack-edge-gpu-troubleshoot.md
