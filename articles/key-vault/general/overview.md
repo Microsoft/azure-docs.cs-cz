@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190554"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421641"
 ---
 # <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
@@ -25,7 +25,7 @@ Azure Key Vault pomáhá vyřešit následující problémy:
 - **Správa tajných klíčů** – Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
 - **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadno zřídit, spravovat a nasazovat veřejné a soukromé certifikáty TLS/SSL (Transport Layer Security/SSL (Secure Sockets Layer)) pro použití s Azure a vašimi interními připojenými prostředky. 
-- **Ukládání tajných klíčů zajištěných moduly hardwarového zabezpečení** – tajné klíče a klíče je možné chránit buď pomocí softwaru, nebo ověřeného HSM úrovně 2 FIPS 140-2.
+- **Ukládání tajných klíčů zajištěných moduly hardwarového zabezpečení** – tajné klíče, klíče a certifikáty v úložišti se šifrují pomocí softwarového klíče (úrovně Standard) nebo ověřeného HSM klíče standardu FIPS 140-2 úrovně 2 (úroveň Premium). 
 
 ## <a name="why-use-azure-key-vault"></a>Proč používat Azure Key Vault?
 

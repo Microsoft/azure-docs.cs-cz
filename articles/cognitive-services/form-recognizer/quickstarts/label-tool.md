@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377808"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418955"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů RES
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 
@@ -225,7 +225,9 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > [!NOTE]
 > Tato pravidla se zobrazují pro formátování data:
 > 
-> Jako oddělovače data DMY lze použít následující znaky: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
+> Je nutné zadat formát ( `dmy` , `mdy` , `ymd` ) pro práci formátování data.
+>
+> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > * 1-1-2020
 > * 1-01-20
 >
-> Pokud má řetězec DMY data osm číslic, je oddělovač volitelný:
+> Pokud má řetězec data osm číslic, je oddělovač volitelný:
 > * 01012020
 > * 01 01 2020
 >
-> Měsíc může být také zapsán jako úplný nebo krátký název. Pokud se název používá, jsou znaky oddělovače volitelné:
+> Měsíc může být také zapsán jako úplný nebo krátký název. Pokud je název použit, jsou znaky oddělovače volitelné. Tento formát je však možné rozpoznat méně přesně než jiné.
 > * 01/leden/2020
 > * 01Jan2020
 > * 01 1. ledna 2020

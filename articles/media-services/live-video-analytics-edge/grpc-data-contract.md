@@ -3,12 +3,12 @@ title: kontrakt dat rozšíření gRPC – Azure
 description: V tomto článku se dozvíte, jak pomocí protokolu gRPC posílat zprávy mezi modulem Live video Analytics a vlastním rozšířením AI nebo CV.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 0221d20245a6db69791d8bf13ba9e00de3b96ecc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f2d93fb062ab3d6963177e7ece15df6bfe5b42cb
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691750"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421488"
 ---
 # <a name="grpc-extension-data-contract"></a>kontrakt dat rozšíření gRPC
 
@@ -21,7 +21,7 @@ gRPC je moderní, open source a vysoce výkonné rozhraní RPC, které běží v
 
 Relace gRPC je jediné připojení od klienta gRPC k serveru gRPC přes port TCP/TLS. 
 
-V jedné relaci: klient pošle popisovač streamování médií následovaný snímky videa na server jako zprávu [protobuf](https://developers.google.com/protocol-buffers) prostřednictvím relace gRPC streamu. Server ověří popisovač streamu, analyzuje snímek videa a vrátí výsledky odvození jako protobuf zprávu.
+V jedné relaci: klient pošle popisovač streamování médií následovaný snímky videa na server jako zprávu [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) prostřednictvím relace gRPC streamu. Server ověří popisovač streamu, analyzuje snímek videa a vrátí výsledky odvození jako protobuf zprávu.
 
 ![kontrakt rozšíření gRPC](./media/data-contracts/grpc.png)
 

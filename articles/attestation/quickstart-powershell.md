@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237242"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421284"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rychlý Start: nastavení ověření Azure pomocí Azure PowerShell
 
@@ -159,26 +159,27 @@ TagsTable:
 
 Zprostředkovatele ověření identity je možné odstranit pomocí rutiny Remove-AzAttestation.  
 
-' ' AzurePowerShell Remove-AzAttestation-Name $attestationProvider-ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>Správa zásad
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
-- Microsoft.Attestation/attestationProviders/attestation/write
-- Microsoft.Attestation/attestationProviders/attestation/delete
+Aby bylo možné spravovat zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
+- Microsoft. Attestation/attestationProviders/ověření/čtení
+- Microsoft. Attestation/attestationProviders/Attestation/Write
+- Microsoft. Attestation/attestationProviders/Attestation/DELETE
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+Tato oprávnění je možné přiřadit uživateli služby AD prostřednictvím role, jako je "vlastník" (oprávnění zástupných znaků), přispěvatele (oprávnění zástupných znaků) nebo "Přispěvatela ověření" (specifická oprávnění pouze pro Azure Attestation).  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
+Aby bylo možné číst zásady, vyžaduje uživatel Azure AD následující oprávnění pro akce:
+- Microsoft. Attestation/attestationProviders/ověření/čtení
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+Toto oprávnění může být přiřazeno uživateli služby AD prostřednictvím role, jako je například čtenář (oprávnění ke zástupným znakem) nebo "čtecí modul", "oprávnění pro Azure".
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+Níže uvedené rutiny prostředí PowerShell poskytují správu zásad pro poskytovatele ověření identity (jeden TEE v jednom okamžiku).
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+Get-AzAttestationPolicy vrátí aktuální zásady pro zadaný TEE. Rutina zobrazí zásady ve formátu text i JWT.
 
 ```powershell
 $teeType = "<tee Type>"

@@ -4,16 +4,18 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927166"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421607"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+## <a name="update-september-2020"></a>Aktualizace (září 2020)
+- Azure Migrate nyní umožňuje migrovat servery do Zóny dostupnosti
 
 ## <a name="update-august-2020"></a>Aktualizace (srpen 2020)
 

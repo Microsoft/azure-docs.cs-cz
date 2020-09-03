@@ -86,7 +86,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
@@ -101,7 +101,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte možnost **začít sdílet data**.
 
-1. Vyberte **Create** (Vytvořit).   
+1. Vyberte **Vytvořit**.   
 
 1. Vyplňte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
@@ -135,7 +135,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte **pokračovat**.
 
-1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Create** (Vytvořit).
+1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
 
 Vaše sdílená složka Azure je teď vytvořená a příjemce vaší sdílené složky je teď připravený přijmout vaše pozvání. 
 

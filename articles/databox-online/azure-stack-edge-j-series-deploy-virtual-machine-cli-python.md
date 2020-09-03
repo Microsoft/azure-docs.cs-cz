@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255524"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420485"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack na hraničních zařízeních pomocí Azure CLI a Pythonu
 
@@ -60,13 +60,13 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
 
     2. Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge vytvoří a spravuje virtuální přepínač odpovídající tomuto síťovému rozhraní.
 
-    Pokud se rozhodnete použít jiné síťové rozhraní pro výpočetní prostředky, ujistěte se, že jste:
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Odstraňte všechny virtuální počítače, které jste nasadili pomocí Azure Resource Manager.
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - Odstraňte všechna rozhraní virtuální sítě a virtuální síť přidružená k tomuto síťovému rozhraní.
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - Nyní můžete povolit jiné síťové rozhraní pro výpočetní výkon.
+    - You can now enable another network interface for compute.-->
 
 3. Vytvořili jste a nainstalovali jste všechny certifikáty na zařízení Azure Stack Edge a v důvěryhodném úložišti klienta. Postupujte podle postupu popsaného v části [Krok 2: vytvoření a instalace certifikátů](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 

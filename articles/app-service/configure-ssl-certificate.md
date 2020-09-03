@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401482"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420876"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -188,6 +188,13 @@ Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátn
 
 Pokud používáte Azure Key Vault ke správě certifikátů, můžete importovat certifikát PKCS12 z Key Vault do App Service, pokud [splňuje požadavky](#private-certificate-requirements).
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>Autorizovat App Service ke čtení z trezoru
+Ve výchozím nastavení poskytovatel prostředků App Service nemá přístup k Key Vault. Aby bylo možné použít Key Vault pro nasazení certifikátu, je nutné [autorizovat poskytovatele prostředků na přístup k trezoru](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)klíčů. 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd`  je hlavní název služby poskytovatele prostředků pro App Service a je stejný pro všechna předplatná Azure. V případě Azure Government cloudového prostředí použijte `6a02c803-dafd-4136-b4c3-5a6f318b4714` místo toho jako hlavní název služby poskytovatele prostředků.
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Import certifikátu z vašeho trezoru do aplikace
+
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
 V levém navigačním panelu aplikace vyberte možnost **Nastavení TLS/SSL**  >  importovat**certifikáty privátního klíče (. pfx)**  >  **Key Vault certifikát**.
@@ -205,6 +212,9 @@ Pomocí následující tabulky můžete vybrat certifikát.
 Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátního klíče** . Pokud import selhává s chybou, certifikát nesplňuje [požadavky pro App Service](#private-certificate-requirements).
 
 ![Import certifikátu Key Vault byl dokončen.](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> Pokud certifikát aktualizujete v Key Vault pomocí nového certifikátu, App Service automaticky synchronizuje certifikát během 48 hodin.
 
 > [!IMPORTANT] 
 > Chcete-li zabezpečit vlastní doménu pomocí tohoto certifikátu, je stále nutné vytvořit vazbu certifikátu. Postupujte podle kroků v části [vytvoření vazby](configure-ssl-bindings.md#create-binding).
