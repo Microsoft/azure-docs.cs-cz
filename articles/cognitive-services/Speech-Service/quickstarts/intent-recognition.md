@@ -1,25 +1,26 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči, záměrů a entit – Speech Service'
+title: Rychlý Start rozpoznávání záměru – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK k interaktivnímu rozpoznávání řeči ze zvukových dat zachycených z mikrofonu.
+description: V tomto rychlém startu použijete rozpoznávání záměrů k interaktivnímu rozpoznávání záměrů ze zvukových dat zachycených z mikrofonu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/02/2020
 ms.author: erhopf
-ms.custom: devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 4cc0754ea38ad7006431dd40206b2f10b1249e92
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: rozpoznávání záměru
+ms.openlocfilehash: 1bc8e7da760d1037185aed5ef0538055d5e697f2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925962"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400989"
 ---
-# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Rychlý Start: rozpoznávání řeči, záměrů a entit pomocí Language Understanding (LUIS)
+# <a name="get-started-with-intent-recognition"></a>Začínáme s rozpoznáváním záměrů
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/intent-recognition/header.md)]

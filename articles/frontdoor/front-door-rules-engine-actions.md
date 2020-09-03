@@ -3,7 +3,7 @@ title: Akce modulu pravidel pro přední dveře Azure
 description: Tento článek poskytuje seznam různých akcí, které můžete provádět s modulem pravidel pro službu Azure dopředných dveří.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: f5110a7644d3ca33da5755f783f61ac35484ddb1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521492"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399272"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Akce stroje pravidel služby Azure Front Door
 
@@ -102,7 +102,7 @@ Zahrnout zadané řetězce dotazu | Pro ukládání do mezipaměti se používaj
 Další pole |  Popis 
 ------------------|---------------
 Dynamická komprese | Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci.
-Parametry dotazů | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
+Parametry dotazu | Seznam povolených (nebo nepovolených) parametrů oddělený čárkami, který se má použít jako základ pro ukládání do mezipaměti.
 Doba uložení mezipaměti | Doba vypršení platnosti mezipaměti ve dnech, hodinách, minutách, sekundách Všechny hodnoty musí být int. 
 
 ## <a name="next-steps"></a>Další kroky

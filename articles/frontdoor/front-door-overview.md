@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378181"
+ms.locfileid: "89399408"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 Přední dvířka Azure umožňují definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti. S předními dvířky můžete transformaci svých globálních uživatelů a podnikových aplikací transformovat na robustní, vysoce výkonné přizpůsobené moderní aplikace, rozhraní API a obsah, který se službou Azure dosáhne globální cílové skupiny.
@@ -84,7 +84,7 @@ Informace o cenách najdete v tématu, které se věnuje [cenám služby Front D
 
 ## <a name="whats-new"></a>Co je nového?
 
-Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azure Load Balancer aktualizace funkcí na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) .
+Přihlaste se k odběru informačního kanálu RSS a na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) si prohlédněte nejnovější aktualizace funkcí služby Azure front-dveří.
 
 ## <a name="next-steps"></a>Další kroky
 
