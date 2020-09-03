@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079188"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426346"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Kurz: zřízení instance služby jarního cloudu Azure pomocí Terraformu
 
@@ -35,7 +35,7 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
 
 ## <a name="create-configuration-file"></a>Vytvoření konfiguračního souboru
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell).
 
@@ -94,7 +94,7 @@ V této části použijete několik příkazů Terraformu ke spuštění konfigu
     terraform apply plan.out
     ```
 
-1. Pokud chcete ověřit výsledky v rámci Azure Portal, přejděte do nové skupiny prostředků. Nová **instance Azure Cosmos DB** se zobrazí v nové skupině prostředků.
+1. Pokud chcete ověřit výsledky v rámci Azure Portal, přejděte do nové skupiny prostředků. Nová instance **Azure jaře cloudu** se zobrazí v nové skupině prostředků.
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>Aktualizace konfigurace pro konfigurační protokoly a metriky
 

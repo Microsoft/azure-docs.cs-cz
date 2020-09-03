@@ -1,18 +1,18 @@
 ---
 title: Přesun virtuálních počítačů do oblasti Azure se zónami dostupnosti pomocí Azure Site Recovery
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86135461"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425468"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
 Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporovány ve vybraných oblastech, jak je uvedeno v [oblastech, které podporují zóny dostupnosti](../availability-zones/az-region.md).
@@ -23,7 +23,7 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 - Přesun virtuálních počítačů ve skupině dostupnosti do Zóny dostupnosti v cílové oblasti
 
 > [!IMPORTANT]
-> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Další informace](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Přečtěte si další informace](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="check-prerequisites"></a>Kontrola požadavků
 

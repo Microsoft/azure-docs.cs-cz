@@ -1,7 +1,7 @@
 ---
-title: Co je to Překladatel? – Překladatel
+title: Co je Translator? – Překladatel
 titlesuffix: Azure Cognitive Services
-description: Integrujte překladatele do svých aplikací, webů, nástrojů a dalších řešení a poskytněte prostředí pro více jazyků pro uživatele.
+description: Integrujte překladatele do svých aplikací, webů, nástrojů a dalších řešení a poskytněte prostředí pro více jazyků.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589447"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425955"
 ---
-# <a name="what-is-the-translator"></a>Co je to Překladatel?
+# <a name="what-is-translator"></a>Co je Translator?
 
-Překladatel je možné snadno integrovat do aplikací, webů, nástrojů a řešení. Umožňuje přidat vícejazyčné uživatelské prostředí ve [více než 70 jazycích](languages.md)a můžete ho použít na libovolné hardwarové platformě s jakýmkoli operačním systémem pro převod textu na text.
-
-Překladatel je součástí kolekce [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) v rámci služby Machine Learning a algoritmů AI v cloudu a je ve vašich vývojových projektech snadno spotřební.
+Azure Cognitive Services Translator je cloudová služba pro strojový překlad, která je součástí skupiny [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) , která je založená na rozhraních API pro rozpoznávání a vytváření inteligentních aplikací. Překladatel se snadno integruje do aplikací, webů, nástrojů a řešení. Umožňuje přidat vícejazyčné uživatelské prostředí ve [více než 70 jazycích](languages.md)a můžete ho použít na libovolné hardwarové platformě s jakýmkoli operačním systémem pro převod textu na text.
 
 ## <a name="about-microsoft-translator"></a>Informace o službě Microsoft Translator
 
-Překladatel je cloudová služba překladu počítačů. Základní služba je překladatel, který využívá řadu produktů a služeb společnosti Microsoft a používá tisíce firem po celém světě ve svých aplikacích a pracovních postupech, což umožňuje jejich obsah dosáhnout globální cílové skupiny.
+Azure Cognitive Services Translator je cloudová služba pro překlad počítačů. Translator je řada produktů a služeb společnosti Microsoft a používá se v nich v rámci svých aplikací a pracovních postupů tisíce firem po celém světě, což umožňuje, aby jejich obsah dosáhl globální cílové skupiny.
 
-Překlad řeči, který využívá překladatel, je také k dispozici prostřednictvím [služby Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Kombinuje funkce z Translator Speech API a Custom Speech Service do sjednocené a plně přizpůsobitelné služby.Služba Speech nahrazuje službu Translator Speech API, která se 15. října 2019 vyřadí z provozu.
+Překlad řeči, který využívá překladatel, je také k dispozici prostřednictvím [služby Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Kombinuje funkce z Translator Speech API a Custom Speech Service do sjednocené a plně přizpůsobitelné služby. 
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -46,7 +44,7 @@ Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/trans
 
 ## <a name="language-customization"></a>Přizpůsobení jazyka
 
-Rozšíření základní služby Microsoft Translator, vlastní Překladatel se dá použít společně s překladatelem, který vám usnadní přizpůsobení systému překladu neuronové a vylepšení překladu konkrétní terminologie a stylu.
+Rozšíření služby Translator, vlastní Překladatel se dá použít společně s překladatelem, který vám usnadní přizpůsobení neuronové systému překladu a vylepšení překladu konkrétní terminologie a stylu.
 
 S rozšířením Custom Translator můžete vytvářet překladové systémy, které si poradí s terminologií používanou ve vaší firmě nebo oboru. Přizpůsobený systém překladu se pak snadno integruje do vašich stávajících aplikací, pracovních postupů a webů napříč různými typy zařízení prostřednictvím pravidelného překladatele pomocí parametru Category (kategorie).
 

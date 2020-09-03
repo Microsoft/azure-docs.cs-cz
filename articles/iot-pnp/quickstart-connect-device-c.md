@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: afe7396ebdada97b9311d0afe903f40757084586
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959285"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426108"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview spuštěné v systému Linux nebo Windows do IoT Hub (C)
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT techn
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý Start můžete spustit v systému Linux nebo Windows. Příkazy prostředí v tomto rychlém startu se řídí konvencí pro oddělovače cest pro Linux `/` , pokud sledujete v systému Windows, nezapomeňte tyto oddělovače pro použít `\` .
 
@@ -86,7 +86,9 @@ V tomto rychlém startu připravíte vývojové prostředí, které můžete pou
 Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte následující příkaz, který naklonuje úložiště GitHub sady [Azure IoT C a knihovny](https://github.com/Azure/azure-iot-sdk-c) do tohoto umístění:
 
 ```cmd\bash
-git clone --depth 1 --recurse-submodules https://github.com/Azure/azure-iot-sdk-c.git
+git clone https://github.com/Azure/azure-iot-sdk-c.git
+cd azure-iot-sdk-c
+git submodule update --init
 ```
 
 Očekává se, že dokončení této operace trvá několik minut.
@@ -132,7 +134,8 @@ cd iothub_client/samples/pnp/pnp_simple_thermostat/
 
 ```cmd
 REM Windows
-cd  iothub_client\samples\pnp\pnp_simple_thermostat\Debug\pnp_simple_thermostat.exe
+cd iothub_client\samples\pnp\pnp_simple_thermostat\Debug
+.\pnp_simple_thermostat.exe
 ```
 
 > [!TIP]
