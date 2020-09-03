@@ -2,18 +2,18 @@
 title: 'Kurz: směrování provozu do vážených koncových bodů – Azure Traffic Manager'
 description: Tento kurz popisuje, jak pomocí služby Traffic Manager směrovat provoz do vážených koncových bodů.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: rohink
-ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: duau
+ms.openlocfilehash: 90ed68e36b47d46c47e78407fac3b5fd74924b57
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76939482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397079"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řízení směrování provozu s váženými koncovými body pomocí služby Traffic Manager
 
@@ -29,9 +29,9 @@ V tomto kurzu se naučíte:
 > * Přidání koncových bodů virtuálních počítačů do profilu služby Traffic Manager
 > * Zobrazte službu Traffic Manager v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zobrazit službu Traffic Manager v akci, nasaďte pro účely tohoto kurzu následující:
 
@@ -40,7 +40,7 @@ Pokud chcete zobrazit službu Traffic Manager v akci, nasaďte pro účely tohot
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Vytvoření webů
 
@@ -70,7 +70,7 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
 6. Postupujte podle kroků a vytvořte druhý virtuální počítač s názvem *myIISVMWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **umístěním** *západní Evropa*a všechna ostatní nastavení stejné jako *myIISVMEastUS*.
 7. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
 
-![Vytvořit virtuální počítač](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
+![Vytvoření virtuálního počítače](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
