@@ -3,7 +3,7 @@ title: 'Rychlý Start: nastavení vysoké dostupnosti pomocí služby Azure fron
 description: V tomto rychlém startu se dozvíte, jak používat službu Azure front-dveří pro vysoce dostupnou a vysoce výkonnou globální webovou aplikaci.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.assetid: ''
 ms.service: frontdoor
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
-ms.author: sharadag
-ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: ab59de49b7cf625220f8a803aab9d2b9a2ae5937
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82133434"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398763"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
 
@@ -26,7 +26,7 @@ Začněte s předními dvířky Azure pomocí Azure Portal k nastavení vysoké 
 
 V tomto rychlém startu fond front Azure vytvoří fondy dvou instancí webové aplikace, které běží v různých oblastech Azure. Vytvoříte konfiguraci front-dveří na základě stejné a stejné priority jako u back-endu. Tato konfigurace směruje provoz na nejbližší lokalitu, která spouští aplikaci. Přední dveře Azure neustále monitorují webovou aplikaci. Služba zajišťuje automatické převzetí služeb při selhání pro další dostupnou lokalitu, když nejbližší web není dostupný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte webovou aplikaci, použijte následující postup k nastav
 
 1. Z domovské stránky nebo nabídky Azure vyberte **vytvořit prostředek**.
 
-1. Vyberte **Webová** > **Webová aplikace**.
+1. Vyberte **Web** > **Webová aplikace**.
 
    ![Vytvoření webové aplikace na webu Azure Portal](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
 
@@ -67,15 +67,15 @@ Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný po
 | Nastavení          | Hodnota     |
 | ---              | ---  |
 | **Skupina prostředků**   | Vyberte **Nový** a zadejte *FrontDoorQS_rg2* |
-| **Název**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
+| **Name**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
 | **Oblast**           | Jiné oblasti, v tomto příkladu *střed USA – jih* |
-| **App Service plan** > Plán**Windows** pro plánování App Service         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS*a pak vyberte **OK** . |
+| **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS*a pak vyberte **OK** . |
 
 ## <a name="create-a-front-door-for-your-application"></a>Vytvoření Front Dooru pro vaši aplikaci
 
 Nakonfigurujte přední dveře Azure tak, aby směrovaly uživatelský provoz na základě nejnižší latence mezi dvěma servery webových aplikací. Začněte tím, že přidáte hostitele front-endu pro frontu Azure.
 
-1. Z domovské stránky nebo nabídky Azure vyberte **vytvořit prostředek**. Vyberte **Síťová** > **dvířka**sítě.
+1. Z domovské stránky nebo nabídky Azure vyberte **vytvořit prostředek**. Vyberte **Síťová**  >  **dvířka**sítě.
 
 1. V **části vytvořit přední dvířka**vyberte **předplatné**.
 
@@ -85,7 +85,7 @@ Nakonfigurujte přední dveře Azure tak, aby směrovaly uživatelský provoz na
 
 1. Ve **front-endu/doménách**vyberte možnost **+** otevřít **Přidat hostitele front-endu**.
 
-1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Přidat**.
+1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Add** (Přidat).
 
    ![Přidání hostitele front-endu pro frontu Azure](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
@@ -97,11 +97,11 @@ Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
 1. Vyberte **Přidat back-end**. V případě **typu hostitele back-end**vyberte možnost *App Service*.
 
-1. Vyberte své předplatné a pak zvolte první webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. V tomto příkladu byla webová aplikace *WebAppContoso-1*. Vyberte **Přidat**.
+1. Vyberte své předplatné a pak zvolte první webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. V tomto příkladu byla webová aplikace *WebAppContoso-1*. Vyberte **Add** (Přidat).
 
 1. Vyberte znovu **Přidat back-end** . V případě **typu hostitele back-end**vyberte možnost *App Service*.
 
-1. Vyberte své předplatné, znovu a zvolte druhou webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. Vyberte **Přidat**.
+1. Vyberte své předplatné, znovu a zvolte druhou webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. Vyberte **Add** (Přidat).
 
    ![Přidání hostitele back-endu do předních dveří](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
@@ -112,7 +112,7 @@ Nakonec přidejte pravidlo směrování. Pravidlo směrování namapuje hostitel
 1. Do **Přidat pravidlo**pro **název**zadejte *LocationRule*. Přijměte všechny výchozí hodnoty a pak vyberte **Přidat** a přidejte pravidlo směrování.
 
    >[!WARNING]
-   > **Musíte** zajistit, aby každé z hostitelů front-endu v předních dveřích mělo pravidlo směrování s přidruženou výchozí`\*`cestou (). To znamená, že všechna vaše pravidla směrování musí mít aspoň jedno pravidlo směrování pro každého hostitele ve front-endu definovaného na výchozí cestě (`\*`). Pokud to neuděláte, může to vést k nesprávnému směrování provozu koncového uživatele.
+   > **Musíte** zajistit, aby každé z hostitelů front-endu v předních dveřích mělo pravidlo směrování s přidruženou výchozí cestou ( `\*` ). To znamená, že všechna vaše pravidla směrování musí mít aspoň jedno pravidlo směrování pro každého hostitele ve front-endu definovaného na výchozí cestě ( `\*` ). Pokud to neuděláte, může to vést k nesprávnému směrování provozu koncového uživatele.
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit**.
 
@@ -120,13 +120,13 @@ Nakonec přidejte pravidlo směrování. Pravidlo směrování namapuje hostitel
 
 ## <a name="view-azure-front-door-in-action"></a>Zobrazit přední dveře Azure v akci
 
-Když vytvoříte frontu, může trvat několik minut, než se konfigurace nasadí globálně. Až budete hotovi, přejděte do hostitele front-endu, který jste vytvořili. V prohlížeči, přejít na `contoso-frontend.azurefd.net`. Vaše žádost bude automaticky směrována na nejbližší server z určených serverů ve fondu back-endu.
+Když vytvoříte frontu, může trvat několik minut, než se konfigurace nasadí globálně. Až budete hotovi, přejděte do hostitele front-endu, který jste vytvořili. V prohlížeči, přejít na `contoso-frontend.azurefd.net` . Vaše žádost bude automaticky směrována na nejbližší server z určených serverů ve fondu back-endu.
 
 Pokud jste v tomto rychlém startu vytvořili tyto aplikace, zobrazí se stránka s informacemi.
 
 Pokud chcete otestovat rychlé globální převzetí služeb při selhání v akci, zkuste provést následující kroky:
 
-1. Otevřete prohlížeč, jak je popsáno výše, a přejít na adresu front-endu `contoso-frontend.azurefd.net`:.
+1. Otevřete prohlížeč, jak je popsáno výše, a přejít na adresu front-endu: `contoso-frontend.azurefd.net` .
 
 1. V Azure Portal vyhledejte a vyberte *App Services*. Posuňte se dolů a najděte jednu z vašich webových aplikací, **WebAppContoso-1** v tomto příkladu.
 

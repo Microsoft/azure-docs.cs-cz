@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 57baeccc9f4644ec055de638254d4613a33ef68d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378640"
+ms.locfileid: "89400428"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -37,13 +37,13 @@ Pokud vytváříte aplikaci Prem, provedete místní vývoj nebo jinak nemůžet
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>Jak dá skupině AD přístup k trezoru klíčů?
 
-Udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí rozhraní příkazového řádku Azure CLI AZ Key trezor set-Policy nebo rutiny Azure PowerShell set-AzKeyVaultAccessPolicy. Viz [přiřazení zásad přístupu – rozhraní příkazového řádku](assign-access-policy-cli.md) a [přiřazení zásad přístupu – PowerShell](assign-access-policy-powershell.md).
+Udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí příkazu Azure CLI `az keyvault set-policy` nebo rutiny Azure PowerShell set-AzKeyVaultAccessPolicy. Viz [přiřazení zásad přístupu – rozhraní příkazového řádku](assign-access-policy-cli.md) a [přiřazení zásad přístupu – PowerShell](assign-access-policy-powershell.md).
 
 Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) přiřazenou k trezoru klíčů. V opačném případě se nebude moci přihlásit a nezdaří se jim nedostatečná oprávnění pro přístup k předplatnému. U skupin Azure AD se spravovanými identitami může trvat až osm hodin, než se aktualizují tokeny a začnou platit.
 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Jak můžu znovu nasadit Key Vault se šablonou ARM, aniž byste museli odstraňovat existující zásady přístupu?
 
-V současné době se Key Vault opětovné nasazení ARM odstraní všechny zásady přístupu v Key Vault a nahradí je zásadami přístupu v šabloně ARM. Pro zásady přístupu Key Vault neexistuje žádná přírůstková možnost. Pokud chcete zachovat zásady přístupu v Key Vault, potřebujete si přečíst existující zásady přístupu v Key Vault a naplnit šablonu ARM pomocí těchto zásad, abyste se vyhnuli výpadkům v přístupu.
+V současné době Key Vault opětovné nasazení odstraní všechny zásady přístupu v Key Vault a nahradí je zásadami přístupu v šabloně ARM. Pro zásady přístupu Key Vault neexistuje žádná přírůstková možnost. Pokud chcete zachovat zásady přístupu v Key Vault, potřebujete si přečíst existující zásady přístupu v Key Vault a naplnit šablonu ARM pomocí těchto zásad, abyste se vyhnuli výpadkům v přístupu.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Doporučené kroky pro řešení potíží pro následující typy chyb
 
