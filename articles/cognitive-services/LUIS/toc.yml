@@ -22,7 +22,7 @@
     - name: Použití prohlížeče
       href: luis-get-started-get-intent-from-browser.md
     - name: Použití sady SDK
-      href: quickstart-sdk.md
+      href: azure-sdk-quickstart.md
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru

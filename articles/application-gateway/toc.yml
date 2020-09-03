@@ -90,6 +90,8 @@
       href: application-gateway-web-app-overview.md
     - name: Podpora protokolu WebSocket
       href: application-gateway-websocket.md
+    - name: Vysvětlení cen
+      href: understanding-pricing.md
     - name: Nejčastější dotazy
       href: application-gateway-faq.md
 - name: Návody

@@ -15,7 +15,7 @@
     - name: Vytvoření a podepsání zásad ověřování identity
       href: author-sign-policy.md
     - name: Ukázky kódu ověřování identity SGX
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: Příklady
   items:
     - name: Zásady ověřování identity

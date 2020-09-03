@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 07/20/2020
-  ms.openlocfilehash: e0fa5be7d88a2de661838ca85fe5f365e8da930f
-  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+  ms.openlocfilehash: 218a957bfc351dd40f9b101f44d1c6e090e92027
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89236436"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89398116"
 landingContent:
 - title: Informace o službě Microsoft Azure Attestation
   linkLists:
@@ -51,13 +51,13 @@ landingContent:
       url: author-sign-policy.md
     - text: Ukázky kódu ověřování identity SGX
       url: /samples/browse/?expanded=azure&terms=attestation
-- title: Příklady
+- title: Odkazy
   linkLists:
   - linkListType: reference
     links:
-    - text: Příklady zásad
-      url: policy-examples.md
-    - text: Příklady signatářů zásad
-      url: policy-signer-examples.md
     - text: Nejčastější dotazy
       url: faq.md
+    - text: REST
+      url: /rest/api/attestation/
+    - text: Azure PowerShell
+      url: /powershell/module/az.attestation/?view=azps-4.3.0#attestation

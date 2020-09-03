@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Co jsou služby Cognitive Services?
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Co je nového v dokumentaci ke Cognitive Services
       href: whats-new-docs.md
     - name: Cognitive Services a strojové učení
@@ -82,7 +82,7 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Návod: Art Explorer'
           href: ./big-data/recipes/art-explorer.md
-- name: Reference
+- name: Odkaz
   items:
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
