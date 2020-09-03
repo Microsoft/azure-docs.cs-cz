@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723553"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394393"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -48,6 +48,7 @@ Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozlože
 ## <a name="prebuilt-models"></a>Předem připravené modely
 
 Nástroj pro rozpoznávání formulářů obsahuje také předem připravené modely pro jedinečné typy formulářů.
+
 ### <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
 Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence. 
 
@@ -74,9 +75,11 @@ Pomocí rychlého startu můžete začít extrahovat data z formulářů. Při u
     * [Výuka bez popisků – kudrlinkou](quickstarts/curl-train-extract.md)
     * [Výuka bez popisků – Python](quickstarts/python-train-extract.md)
     * [Výuka s popisky – Python](quickstarts/python-labeled-data.md)
-  * Extrakce dat z prodejních příjmů z USA
+  * Extrakce dat z prodejních příjmů
     * [Extrahovat data příjmu – kudrlinkou](quickstarts/curl-receipts.md)
     * [Extrakce dat pro příjem – Python](quickstarts/python-receipts.md)
+  * Extrakce dat z vizitek
+    * [Extrakce dat obchodních karet – Python](quickstarts/python-business-cards.md)
   * Extrakce textu a struktury tabulky z formulářů
     * [Extrakce dat rozložení – Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat st
 | **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` Výukový program s ručně označenými daty. |
 | **Analyzovat formulář** |Analyzujte jeden dokument předaný jako datový proud pro extrakci textu, párů klíč/hodnota a tabulek z formuláře pomocí vlastního modelu.  |
 | **Analyzovat příjem** |Analyzujte jeden příjmový doklad pro extrakci klíčových informací a dalšího textu příjmu.|
+| **Analyzovat obchodní kartu** |Analyzovat vizitku pro extrakci klíčových informací a textu|
 | **Analyzovat rozložení** |Umožňuje analyzovat rozložení formuláře pro extrakci textu a struktury tabulky.|
 
 Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.

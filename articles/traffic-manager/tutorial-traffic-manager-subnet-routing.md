@@ -3,20 +3,20 @@ title: Kurz – konfigurace směrování provozu v podsíti pomocí Azure Traffi
 description: V tomto kurzu se dozvíte, jak nakonfigurovat Traffic Manager pro směrování provozu z podsítí uživatelů do konkrétních koncových bodů.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: rohink
-ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: duau
+ms.openlocfilehash: 5c6551e721a4bf197ea7091b8c0b71829693ba76
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77136289"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398286"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Kurz: směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí Traffic Manager
 
@@ -34,9 +34,9 @@ V tomto kurzu se naučíte:
 > * Přidání koncových bodů virtuálních počítačů do profilu služby Traffic Manager
 > * Zobrazení služby Traffic Manager v akci
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
 

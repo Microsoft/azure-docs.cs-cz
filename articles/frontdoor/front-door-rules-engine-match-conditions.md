@@ -3,7 +3,7 @@ title: Podmínky shody stroje Azure pro pravidla front
 description: Tento článek poskytuje seznam různých podmínek shody, které jsou k dispozici pro modul pravidel služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 99a590fd3adacc9a63c2ec482965ccd9ff162ac3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512159"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399238"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje pravidel služby Azure Front Door
 
@@ -150,7 +150,7 @@ Identifikuje požadavky, které zahrnují zadanou příponu souboru v názvu sou
 
 #### <a name="required-fields"></a>Povinná pole
 
-Operátor | Linka | Transformace případu
+Operátor | Rozšíření | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Malá písmena, Velká písmena, střih, odebrat prázdné znaky, kódování URL, kódování adresy URL
 
@@ -186,7 +186,7 @@ Operátor | Hodnota | Transformace případu
 
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
-- Libovolný
+- Všechny
 - Je rovno 
 - Contains 
 - Začíná na 

@@ -2,7 +2,7 @@
 title: 'Rychlý Start: vytvoření profilu pro HA aplikací – Azure Portal – Azure Traffic Manager'
 description: Tento článek Rychlý start popisuje, jak vytvořit profil služby Traffic Manager umožňující vytváření vysoce dostupných webových aplikací.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: rohink
-ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: 7a347d5cd72fcf955dae0aa8319632fdb43d3bf7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400258"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rychlý Start: vytvoření profilu Traffic Manager pomocí Azure Portal
 
@@ -29,26 +29,26 @@ Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro účely tohoto rychlého startu budete potřebovat dvě instance webové aplikace nasazené ve dvou různých oblastech Azure (*východní USA* a *západní Evropa*). Každý bude sloužit jako primární koncová body a koncové body převzetí služeb při selhání pro Traffic Manager
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **Webová** > **Webová aplikace**.
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **Webová**  >  **Webová aplikace**.
 
 1. V části **vytvořit webovou aplikaci**zadejte nebo vyberte následující hodnoty na kartě **základy** :
 
-   - **Subscription** > **Skupina prostředků**předplatného: vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
-   - **Instance Details** > **Název**podrobností instance: zadejte *myWebAppEastUS*.
-   - **Instance Details** > **Publikování**podrobností instance: vyberte **kód**.
-   - **Zásobník podrobností** > instance**modulu runtime**: vyberte **ASP.NET v 4.7** .
-   - **Podrobnosti** > instance**operační systém**: vyberte **Windows**.
-   - **Instance Details** > **Oblast**podrobností instance: vyberte **východní USA**.
-   - **App Service plán** > **Windows Plan (východní USA)**: vyberte **vytvořit novou** a potom zadejte **myAppServicePlanEastUS** .
-   - **App Service Plan** > **SKU a velikost**plánu App Service: vyberte **standardní S1**.
+   - **Předplatné**  >  **Skupina prostředků**: vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
+   - **Podrobnosti instance**  >  **Název**: zadejte *myWebAppEastUS*.
+   - **Podrobnosti instance**  >  **Publikovat**: vyberte **kód**.
+   - **Podrobnosti instance**  >  **Zásobník modulu runtime**: vyberte **ASP.NET v 4.7** .
+   - **Podrobnosti instance**  >  **Operační systém**: vyberte **Windows**.
+   - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA**.
+   - **Plán App Service**  >  **Windows Plan (východní USA)**: vyberte **vytvořit novou** a potom zadejte **myAppServicePlanEastUS** .
+   - **Plán App Service**  >  **SKU a velikost**: vyberte **standardní S1**.
    
-3. Vyberte kartu **monitorování** nebo vyberte **Další: monitorování**.  V části **monitorování**nastavte **Application Insights** > **Povolit Application Insights** na **ne**.
+3. Vyberte kartu **monitorování** nebo vyberte **Další: monitorování**.  V části **monitorování**nastavte **Application Insights**  >  **Povolit Application Insights** na **ne**.
 
 4. Vybrat **kontrolu a vytvořit**
 
@@ -60,7 +60,7 @@ Pro účely tohoto rychlého startu budete potřebovat dvě instance webové apl
 
 Vytvořte profil Traffic Manager, který přesměruje přenosy uživatelů na základě priority koncových bodů.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **sítě** > **Traffic Manager profil**.
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**.
 2. V **profilu vytvořit Traffic Manager**zadejte nebo vyberte Tato nastavení:
 
     | Nastavení | Hodnota |
@@ -71,7 +71,7 @@ Vytvořte profil Traffic Manager, který přesměruje přenosy uživatelů na z�
     | Skupina prostředků | Vyberte *myResourceGroupTM1*.|
     | Umístění |Toto nastavení odkazuje na umístění skupiny prostředků. Nemá žádný vliv na profil Traffic Manager, který se globálně nasadí.|
 
-3. Vyberte **Vytvořit**.
+3. Vyberte **Create** (Vytvořit).
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
@@ -87,7 +87,7 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
     | Typ | Vyberte **koncový bod Azure**. |
     | Název | Zadejte *myPrimaryEndpoint*. |
     | Typ cílového prostředku | Vyberte **App Service**. |
-    | Cílový prostředek | Vyberte možnost zvolit**východní USA** **App Service** > . |
+    | Cílový prostředek | Vyberte možnost **zvolit východní USA App Service**  >  **East US**. |
     | Priorita | Vyberte **1**. Veškerý provoz směřuje do tohoto koncového bodu, pokud je v pořádku. |
 
     ![Snímek obrazovky s přidáním koncového bodu do profilu Traffic Manager.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
@@ -100,7 +100,7 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
     | Typ | Vyberte **koncový bod Azure**. |
     | Název | Zadejte *myFailoverEndpoint*. |
     | Typ cílového prostředku | Vyberte **App Service**. |
-    | Cílový prostředek | Vyberte možnost zvolit**západní Evropa** **App Service** > . |
+    | Cílový prostředek | Vyberte možnost **zvolit západní Evropa App Service**  >  **West Europe**. |
     | Priorita | Vyberte **2**. Veškerý provoz přechází na tento koncový bod převzetí služeb při selhání, pokud primární koncový bod není v pořádku. |
 
 7. Vyberte **OK**.
@@ -130,7 +130,7 @@ V této části zkontrolujete název domény vašeho profilu Traffic Manager. Ta
 
 2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte svoji primární lokalitu:
     1. Na stránce Traffic Manager profil vyberte v části **Přehled** možnost **myPrimaryEndpoint**.
-    2. V *myPrimaryEndpoint*vyberte **zakázané** > **Uložit**.
+    2. V *myPrimaryEndpoint*vyberte **zakázané**  >  **Uložit**.
     3. Zavřete **myPrimaryEndpoint**. Všimněte si, že stav je teď **zakázaný** .
 3. Zkopírujte název DNS profilu Traffic Manager z předchozího kroku a zobrazte si web v nové relaci webového prohlížeče.
 4. Ověřte, zda je webová aplikace stále k dispozici.

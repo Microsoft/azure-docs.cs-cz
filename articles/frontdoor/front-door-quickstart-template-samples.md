@@ -3,19 +3,19 @@ title: Ukázky šablon Azure Resource Manager – přední dvířka Azure
 description: Přečtěte si o Správce prostředků ukázek šablon pro přední dveře Azure, včetně šablon pro vytváření základních front-dveří a konfiguraci omezení rychlosti Frontních dveří.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
-ms.author: sharadag
-ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.author: duau
+ms.openlocfilehash: 961214b3a815eb8ae9b0fcb283599b3474d4706e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182183"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399357"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Šablony modelu nasazení Azure Resource Manager pro službu Front Door
 

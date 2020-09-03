@@ -2,17 +2,17 @@
 title: 'Přehled Azure ExpressRoute: připojení přes privátní připojení'
 description: Technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
-ms.author: mialdrid
-ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.author: duau
+ms.openlocfilehash: 26f27297b651da11bf6dd76236709e5bfb77d90e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852945"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395396"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navazovat připojení ke cloudovým službám Microsoftu, jako je Microsoft Azure nebo Office 365.
@@ -109,7 +109,7 @@ Můžete si vybrat fakturační model, který vám nejlépe vyhovuje. Zvolte si 
   * Globální připojení pro služby. Okruh ExpressRoute vytvořený v libovolné oblasti (s výjimkou národních cloudů) bude mít přístup k prostředkům v libovolné jiné oblasti na světě. Například virtuální sítě vytvořené v oblasti Západní Evropa budou přístupné prostřednictvím okruhu ExpressRoute zřízeného ze Silicon Valley.
   * Zvýšení počtu propojení virtuálních sítí na jeden okruh ExpressRoute z 10 na vyšší limit, v závislosti na šířce pásma okruhu.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 Nejčastější dotazy týkající se ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
 ## <a name="whats-new"></a><a name="new"></a>Co je nového?
