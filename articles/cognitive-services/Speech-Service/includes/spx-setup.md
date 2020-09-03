@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 27d450f8e48210723570f2fe0b45be4bca89fd56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068616"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400893"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Jediným předpokladem je předplatné služby Azure Speech. Pokud ho ještě nemáte, přečtěte si [příručku](../get-started.md#new-resource) k vytvoření nového předplatného.
 
@@ -22,9 +22,8 @@ Jediným předpokladem je předplatné služby Azure Speech. Pokud ho ještě ne
 
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči ve Windows:
 
-1. Nainstalujte buď [.NET Framework 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471) nebo [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
-3. Přejít do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahovat podadresář, který potřebujete ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .NET Core 3,0 na CPU x64).
+1. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
+2. Přejít do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahovat podadresář, který potřebujete ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .NET Core 3,0 na CPU x64).
 
 Na příkazovém řádku změňte adresář na toto umístění a potom zadejte `spx` nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
 
@@ -53,11 +52,15 @@ Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro roz
 
 #### <a name="docker-install"></a>[Instalace Docker](#tab/dockerinstall)
 
+#### <a name="prerequisites"></a>Předpoklady
+
+> [!div class="checklist"]
+> * <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop pro vaši platformu <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznávání řeči v kontejneru Docker:
 
-1. Nainstalujte a spusťte [Docker Desktop pro vaši platformu](https://www.docker.com/get-started).
-1. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:`docker pull msftspeech/spx`
-1. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči:`docker run -it --rm msftspeech/spx help`
+1. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:  `docker pull msftspeech/spx`
+2. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>Připojit adresář v kontejneru
 
