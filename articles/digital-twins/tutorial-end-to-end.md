@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3da73e376fc77297f77c1ff8c7f444b98e92b412
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290763"
+ms.locfileid: "89401771"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -436,7 +436,7 @@ Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků. 
 
-Pomocí Azure Cloud Shell můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně přidružených prostředků, jako je úložiště.
+Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně funkcí a přidružených prostředků, jako je Storage.
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
@@ -451,7 +451,7 @@ V dalším kroku odstraňte registraci aplikace Azure AD, kterou jste vytvořili
 az ad app delete --id <your-application-ID>
 ```
 
-Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli z místního počítače.
+Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do svého místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

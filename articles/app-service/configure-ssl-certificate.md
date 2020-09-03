@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48ef1344a76444af23fd462175a8087af2724d3e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961937"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401482"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -145,8 +145,8 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků uvedených v části [udělení několika aplikací přístup k trezoru klíčů](../key-vault/general/group-permissions-for-apps.md). |
-| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/general/network-security.md) . |
+| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků v části [přiřazení zásady přístupu Key Vault](/azure/key-vault/general/assign-access-policy-portal). |
+| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](/azure/key-vault/general/network-security) . |
 
 Po výběru trezoru zavřete stránku **Key Vault úložiště** . V části **Krok 1: úložiště** by se měla zobrazit zelená značka zaškrtnutí u možnosti úspěch. Nechejte stránku otevřenou pro další krok.
 
