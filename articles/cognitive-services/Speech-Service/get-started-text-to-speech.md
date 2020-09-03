@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start syntézy řeči – služba Speech
+title: Rychlý Start převodu textu na řeč – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Naučte se používat sadu Speech SDK pro převod textu na řeč. V tomto rychlém startu se naučíte vytvářet konstrukce objektů a navrhovat vzory, podporované formáty zvukového výstupu, rozpoznávání řeči a možnosti vlastní konfigurace pro syntézu řeči.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack
-ms.openlocfilehash: 12ee7fbbd7699d09deae85971ffe411e115609ec
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: převod textu na řeč
+ms.openlocfilehash: 79409f95d698e015d15d9131dcf1f27b34b03343
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934684"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400894"
 ---
-# <a name="get-started-with-speech-synthesis"></a>Začínáme s syntézou řeči
+# <a name="get-started-with-text-to-speech"></a>Začínáme s převodem textu na řeč
 
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
