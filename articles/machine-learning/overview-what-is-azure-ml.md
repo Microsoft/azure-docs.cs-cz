@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145888"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462458"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -69,7 +69,7 @@ Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-t
 
 ## <a name="build-ml-models-in-the-studio"></a>Vytváření modelů ML v studiu
 
-[Azure Machine Learning Studio](https://www.ml.azure.com) je webový portál v Azure Machine Learning pro možnosti s nízkým kódem a bez kódu pro školení modelů, nasazení a správu prostředků. Sada Studio se integruje se sadou Azure Machine Learning SDK, aby se zajistilo bezproblémové prostředí. Další informace najdete v tématu [co je Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md).
+[Azure Machine Learning Studio](https://studio.azureml.net) je webový portál v Azure Machine Learning pro možnosti s nízkým kódem a bez kódu pro školení modelů, nasazení a správu prostředků. Sada Studio se integruje se sadou Azure Machine Learning SDK, aby se zajistilo bezproblémové prostředí. Další informace najdete v tématu [co je Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md).
 
 + **Návrhář Azure Machine Learning (Preview)**
 
@@ -86,7 +86,7 @@ Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-t
 
 + **A mnohem víc...**
 
-  Navštivte Azure Machine Learning studia na adrese [ml.Azure.com](https://www.ml.azure.com). 
+  Navštivte Azure Machine Learning studia na adrese [ml.Azure.com](https://studio.azureml.net). 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: nasazení správy životního cyklu &

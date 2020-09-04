@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070104"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459535"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Spravované privátní koncové body synapse (Preview)
 
@@ -23,7 +23,7 @@ V tomto článku se vysvětlují spravované privátní koncové body ve služb�
 
 Spravované privátní koncové body jsou privátní koncové body vytvořené ve spravovaném pracovním prostoru Microsoft Azure Virtual Network vytvoření privátního odkazu na prostředky Azure. Azure synapse tyto privátní koncové body spravuje vaším jménem.
 
-Azure synapse podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (například Azure Storage, Azure Cosmos DB a Azure SQL Data Warehouse) a službám Azure Hosted Customer/Partnerská služba z Azure Virtual Network bezpečně.
+Azure synapse podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (například Azure Storage a Azure Cosmos DB) a službám Azure Hosted Customer/Partnerská služba z Azure Virtual Network bezpečně.
 
 Když použijete privátní odkaz, přenosy mezi Virtual Network a pracovním prostorem procházejí výhradně přes páteřní síť Microsoftu. Soukromé propojení chrání před riziky exfiltrace dat. Vytvořením privátního koncového bodu vytvoříte privátní odkaz na prostředek.
 

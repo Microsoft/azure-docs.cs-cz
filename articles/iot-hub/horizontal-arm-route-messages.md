@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: fd2742744ef4f2f616e772c8f387887e113b132a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88862508"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462662"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Rychlý Start: nasazení IoT Hub Azure a účtu úložiště pomocí šablony ARM
 
@@ -21,7 +21,7 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -32,8 +32,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure: 
-* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.iothubs)
-* [Microsoft. Storage/](/azure/templates/microsoft.storage)
+* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
+* [Microsoft. Storage/](/azure/templates/microsoft.storage/allversions)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>Nasaďte šablonu a spusťte ukázkovou aplikaci.
 
@@ -46,7 +46,7 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
 
     [![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Stažení a extrahování [ukázek pro IoT C#](https://Azure-Samples/azure-iot-samples-csharp)
+1. Stažení a extrahování [ukázek pro IoT C#](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)
 
 1. Otevřete okno příkazového řádku a přejdete do složky, ve které zrušíte ukázky pro IoT C#. Vyhledejte složku se souborem ARM-Read-Write. csproj. V tomto příkazovém okně vytvoříte proměnné prostředí. Pokud chcete získat klíče, přihlaste se k [Azure Portal] ( https://portal.azure.com ]. Vyberte **skupiny prostředků** a pak vyberte skupinu prostředků použitou pro tento rychlý Start.
 

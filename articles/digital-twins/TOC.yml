@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: Návody
   items:
-    - name: Vývoj
-      items:
-        - name: Použití rozhraní API a sad SDK
-          href: how-to-use-apis-sdks.md
-        - name: Vytváření vlastních sad SDK s využitím AutoRestu
-          href: how-to-create-custom-sdks.md
     - name: Nasazení
       items:
         - name: Použití rozhraní příkazového řádku Azure Digital Twins
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: Dotazování na graf dvojčat
           href: how-to-query-graph.md
+    - name: Vývoj klientských aplikací
+      items:
+        - name: Použití rozhraní API a sad SDK
+          href: how-to-use-apis-sdks.md
+        - name: Vytváření vlastních sad SDK s využitím AutoRestu
+          href: how-to-create-custom-sdks.md
+        - name: Integrace se službou Azure SignalR Service
+          href: how-to-integrate-azure-signalr.md
     - name: Připojení vstupu
       items:
         - name: Ingestování telemetrie z IoT Hubu
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Vlastní swaggery pro Azure Digital Twins
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: Ukázka integrace SignalR
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Nástroje Azure
       items:
         - name: Azure Cloud Shell

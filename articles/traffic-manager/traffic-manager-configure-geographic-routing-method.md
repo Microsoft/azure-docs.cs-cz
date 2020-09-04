@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 53773d7c616edec067e1ed1778b7ce6b500ee936
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401074"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462611"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Kurz: Konfigurace metody geografického směrování provozu pomocí Traffic Manager
 
@@ -39,8 +39,7 @@ Metoda geografického směrování provozu umožňuje směrovat provoz do konkr�
 
 1. Vyhledejte název profilu Traffic Manager, který jste vytvořili v panelu hledání na portálu, a po zobrazení klikněte na výsledek.
 2. Přejděte do **Nastavení**  ->  **koncové body** v Traffic Manager.
-3. Kliknutím na **Přidat** zobrazíte **koncový bod přidat**.
-3. Klikněte na **Přidat** a v zobrazení přidat zobrazený **koncový bod** proveďte následující kroky:
+3. Klikněte na **Přidat** a v podokně **přidat koncový bod** , které se zobrazí, proveďte následující kroky:
 4. V závislosti na typu koncového bodu, který chcete přidat, vyberte **typ** . Pro geografické profily směrování používané v produkčním prostředí důrazně doporučujeme používat vnořené typy koncových bodů obsahující podřízený profil s více než jedním koncovým bodem. Další podrobnosti najdete v tématu [Nejčastější dotazy týkající se metod směrování geografického provozu](traffic-manager-FAQs.md).
 5. Zadejte **Název**, podle kterého tento koncový bod rozpoznáte.
 6. Některá pole na této stránce závisí na typu koncového bodu, který přidáváte:

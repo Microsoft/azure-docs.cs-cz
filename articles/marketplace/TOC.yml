@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: Poskytovatelé cloudových řešení
               href: ./cloud-solution-providers.md
+            - name: Průvodce onboardingem programu Connect
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: Vaše výhody na trhu
           href: ./gtm-your-marketplace-benefits.md
           items:

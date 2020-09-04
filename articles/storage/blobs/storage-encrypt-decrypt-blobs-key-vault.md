@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 975952a0a084286bdbc19ce02c1192d076cf3600
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001395"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458378"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
@@ -28,7 +28,7 @@ Přehled informací o Azure Key Vault najdete v tématu [co je Azure Key Vault?]
 
 Přehled informací o šifrování na straně klienta pro Azure Storage najdete v tématu [šifrování na straně klienta a Azure Key Vault Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -240,4 +240,4 @@ Další informace o použití Microsoft Azure Storage v jazyce C# najdete v tém
 
 Další informace o REST API objektů BLOB najdete v tématu [REST API služby BLOB Service](https://msdn.microsoft.com/library/azure/dd135733.aspx).
 
-Nejnovější informace o Microsoft Azure Storage najdete na [blogu Microsoft Azure Storage týmu](https://blogs.msdn.com/b/windowsazurestorage/).
+Nejnovější informace o Microsoft Azure Storage najdete na [blogu Microsoft Azure Storage týmu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/).

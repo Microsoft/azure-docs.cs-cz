@@ -64,7 +64,7 @@
   items:
     - name: Vizualizace datových anomálií v datových streamech Event Hubs
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: Uložení zachycených dat ve službě SQL Data Warehouse
+    - name: Ukládání zachycených dat ve službě Azure Synapse Analytics
       href: store-captured-data-data-warehouse.md
     - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
       href: event-hubs-kafka-stream-analytics.md

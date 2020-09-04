@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852476"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458557"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Rychlý Start: použití Azure Service Bus front s Pythonem
 
@@ -81,7 +81,7 @@ Další informace o kvótách najdete v tématu [Service Bus kvóty][Service Bus
 Klient fronty přijímá zprávy z fronty pomocí `get_receiver` metody v objektu **ServiceBusClient** . Následující příklad kódu vytvoří klienta fronty a přijme zprávu z `taskqueue` fronty. Nahraďte `<connectionstring>` hodnotou Service Bus primárním připojovacím řetězcem. 
 
 ```python
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import QueueClient
 
 # Create the QueueClient
 queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")

@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: b0b1914755ff0435318ab970aa6dc6e5e039d581
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855684"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458055"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro Log Analytics pracovní prostory v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytváření a konfiguraci Log Analytics pracovních prostorů v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -21,8 +21,9 @@ Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure
 
 ## <a name="template-references"></a>Odkazy na šablony
 
-- [Pracovní prostory Microsoft. OperationalInsights](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces) 
-- [Pracovní prostory Microsoft. OperationalInsights/zdroje dat](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/datasources)
+- [Pracovní prostory Microsoft. OperationalInsights](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces
+) 
+- [Pracovní prostory Microsoft. OperationalInsights/zdroje dat](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 Následující ukázka vytvoří nový prázdný pracovní prostor Log Analytics.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262970"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461863"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Kurz: konfigurace sítě pro Azure Stack Edge pomocí GPU
 
@@ -104,7 +104,11 @@ Pomocí těchto kroků povolíte výpočetní prostředky a nakonfigurujete výp
     
 3. Přiřaďte **IP adresy uzlu Kubernetes**. Tyto statické IP adresy jsou pro výpočetní virtuální počítač. 
 
-    U *n*-Node zařízení se pro výpočetní virtuální počítač, který používá počáteční a KONCOVá IP adresa, nabízí souvislý rozsah minimálně *n + 1* IPv4 adres (nebo více). Daná Azure Stack Edge je zařízení s jedním uzlem, je k dispozici minimálně 2 souvislé adresy IPv4. 
+    U *n*-Node zařízení se pro výpočetní virtuální počítač, který používá počáteční a KONCOVá IP adresa, nabízí souvislý rozsah minimálně *n + 1* IPv4 adres (nebo více). Daná Azure Stack Edge je zařízení s jedním uzlem, je k dispozici minimálně 2 souvislé adresy IPv4.
+
+    > [!IMPORTANT]
+    > Kubernetes na Azure Stack Edge používá podsíť 172.27.0.0/16 pro podsíť pod a 172.28.0.0/16 pro službu. Ujistěte se, že se nepoužívají ve vaší síti. Pokud se tyto podsítě už ve vaší síti používají, můžete tyto podsítě změnit spuštěním `Set-HcsKubeClusterNetworkInfo` rutiny z rozhraní PowerShellu zařízení. Další informace najdete v tématu [Změna Kubernetes pod a podsítí služby](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
+
 
 4. Přiřaďte **IP adresy externích služeb Kubernetes**. Toto jsou také IP adresy vyrovnávání zatížení. Tyto souvislé IP adresy jsou pro služby, které chcete zveřejnit mimo cluster Kubernetes, a určete rozsah statických IP adres v závislosti na počtu zveřejněných služeb. 
     
