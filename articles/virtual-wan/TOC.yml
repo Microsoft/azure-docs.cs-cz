@@ -4,16 +4,6 @@
   items:
     - name: Co je Virtual WAN?
       href: virtual-wan-about.md
-    - name: Architektura
-      items:
-        - name: Migrace na Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Architektura globální přenosové sítě
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: Architektura připojení SD-WAN
-          href: sd-wan-connectivity-architecture.md
-        - name: Propojení s Čínou
-          href: interconnect-china.md
 - name: Kurzy
   items:
     - name: Vytvoření připojení typu Site-to-Site
@@ -36,11 +26,21 @@
           href: virtual-wan-locations-partners.md
         - name: Automatizační pokyny pro partnery
           href: virtual-wan-configure-automation-providers.md
+    - name: Architektura
+      items:
+        - name: Migrace na Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Architektura globální přenosové sítě
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: Architektura připojení SD-WAN
+          href: sd-wan-connectivity-architecture.md
+        - name: Propojení s Čínou
+          href: interconnect-china.md
     - name: Směrování
       items:
         - name: Informace o směrováních virtuálních center
           href: about-virtual-hub-routing.md
-        - name: Scénáře
+        - name: Scénáře směrování
           items:
             - name: Mezi libovolnými prostředky
               href: scenario-any-to-any.md
@@ -154,8 +154,6 @@
   items:
     - name: Nejčastější dotazy
       href: virtual-wan-faq.md
-    - name: Oznámení o aktualizacích
-      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Omezení služeb a předplatných

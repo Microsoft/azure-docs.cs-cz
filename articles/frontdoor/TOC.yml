@@ -4,8 +4,6 @@
   items:
     - name: Co je Azure Front Door?
       href: front-door-overview.md
-    - name: Novinky ve službě Azure Front Door
-      href: front-door-whats-new.md
 - name: Rychlé starty
   expanded: true
   items:

@@ -82,6 +82,8 @@
       items:
         - name: Ingestování telemetrie z IoT Hubu
           href: how-to-ingest-iot-hub-data.md
+        - name: Automatická správa zařízení s využitím DPS
+          href: how-to-provision-using-device-provisioning-service.md
         - name: Integrace s Logic Apps
           href: how-to-integrate-logic-apps.md
     - name: Připojení výstupu
@@ -183,7 +185,9 @@
         - name: Validátor DTDL (ukázka)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: Ukázka integrace ioT Hubu a DPS
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Vlastní swaggery pro Azure Digital Twins
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
     - name: Nástroje Azure
       items:
         - name: Azure Cloud Shell

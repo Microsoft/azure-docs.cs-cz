@@ -241,11 +241,8 @@
   items:
     - name: Dokumentace k rozpoznávání záměru
       href: index-intent-recognition.yml
-    - name: Rychlý start
-      items:
-        - name: 'Rozpoznávání řeči, záměru a entit'
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: Rychlé zprovoznění rozpoznávání záměrů
+      href: quickstarts/intent-recognition.md
     - name: Návody
       items:
         - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: Rozpoznávání mluvčího
   items:
-    - name: Přehled
+    - name: Přehled rozpoznávání mluvčího
+      href: speaker-recognition-overview.md
+    - name: Rychlé zprovoznění rozpoznávání mluvčího
+      href: get-started-speaker-recognition.md
+    - name: Odkaz
       items:
-        - name: Co je rozpoznávání mluvčího?
-          href: speaker-recognition-overview.md
-        - name: Základy rozpoznávání mluvčího
-          href: speaker-recognition-basics.md
-    - name: Referenční informace
-      items:
-        - name: Rozhraní REST API
-          items:
-            - name: Rozhraní REST API pro rozpoznávání mluvčího
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: Rozhraní REST API pro rozpoznávání mluvčího
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Dokumentace k hostování

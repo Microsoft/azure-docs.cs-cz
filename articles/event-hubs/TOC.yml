@@ -125,8 +125,12 @@
       maintainContext: true
 - name: Návody
   items:
-    - name: Přesun mezi oblastmi
-      href: move-across-regions.md
+    - name: Přesunout
+      items:
+        - name: Přesun oboru názvů do jiné oblasti
+          href: move-across-regions.md
+        - name: Přesun vyhrazeného clusteru do jiné oblasti
+          href: move-cluster-across-regions.md
     - name: Dynamické přidávání oddílů
       href: dynamically-add-partitions.md
     - name: Použití služby Blob Storage jako úložiště kontrolních bodů v Azure Stack Hubu

@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: Referenční informace
   items:
-    - name: Kontrakt dat HTTP
-      href: http-data-contract.md
-    - name: Kontrakt dat gRPC
-      href: grpc-data-contract.md
+    - name: Protokol rozšíření HTTP
+      href: http-extension-protocol.md
+    - name: Protokol rozšíření gRPC
+      href: grpc-extension-protocol.md
     - name: Schéma odvozování metadat
       href: inference-metadata-schema.md
     - name: Přímé metody

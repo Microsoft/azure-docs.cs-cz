@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Použití disků Azure úrovně Ultra (Preview)
           href: use-ultra-disks.md
+        - name: Ovladače úložiště CSI
+          items:
+            - name: Povolení ovladačů úložiště CSI (Preview)
+              href: csi-storage-drivers.md
+            - name: Ovladače CSI pro disky Azure (Preview)
+              href: azure-disk-csi.md
+            - name: Ovladače CSI pro Azure Files (Preview)
+              href: azure-files-csi.md
     - name: Konfigurace sítí
       items:
         - name: Vytvoření nebo použití existující virtuální sítě
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: Povolení integrace Azure Active Directory
           items:
-            - name: AAD se správou AKS
+            - name: Azure AD se správou AKS
               href: managed-aad.md
-            - name: Integrace AAD (starší verze)
+            - name: Integrace Azure AD (starší verze)
               href: azure-ad-integration-cli.md
         - name: Použití Azure RBAC pro autorizaci Kubernetes (Preview)
           href: manage-azure-rbac.md

@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Transakce na komerčním marketplace
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: Plány a ceny
+              href: plans-pricing.md
             - name: Soukromé nabídky
               href: ./private-offers.md
             - name: Standardní kontrakt
               href: ./standard-contract.md
             - name: Přisuzování využití ze strany zákazníků partnerům Azure
               href: ./azure-partner-customer-usage-attribution.md
+            - name: Podporované země a oblasti
+              href: ./sell-from-countries.md
         - name: Průvodci publikováním podle typu nabídky
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: 'Aplikace Azure: spravované aplikace'
               href: ./marketplace-managed-apps.md
-            - name: Aplikace SaaS
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Containers
               href: ./marketplace-containers.md
             - name: Moduly IoT Edge
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: Nabídky SaaS
           items:
-            - name: Kontrolní seznam k vytváření nabídek SaaS
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: Vytvoření nabídky SaaS
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Naplánování nabídky SaaS
+              href: plan-saas-offer.md
             - name: Ověřování Azure AD pro SaaS
               items:
                 - name: Přehled Azure AD a SaaS
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: Vstupní stránka pro bezplatné nebo zkušební nabídky
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: Fakturace SaaS podle objemu dat
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: Vytvoření a publikování nabídky SaaS
+              items:
+                - name: Vytvoření nabídky SaaS
+                  href: create-new-saas-offer.md
+                - name: Konfigurace vlastností nabídky SaaS
+                  href: create-new-saas-offer-properties.md
+                - name: Konfigurace seznamu nabídek SaaS
+                  href: create-new-saas-offer-listing.md
+                - name: Přidání cílové skupiny pro verzi Preview
+                  href: create-new-saas-offer-preview.md
+                - name: Přidání technických podrobností
+                  href: create-new-saas-offer-technical.md
+                - name: Vytváření plánů
+                  href: create-new-saas-offer-plans.md
+                - name: Otestování a publikování nabídky SaaS
+                  href: test-publish-saas-offer.md
+            - name: Uvedení nabídky SaaS na trh
+              href: create-new-saas-offer-marketing.md
             - name: Rozhraní API naplnění SaaS
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: Rozhraní API pro naplnění SaaS – nejčastější dotazy
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: Fakturace SaaS podle objemu dat
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: Přehled správy potenciálních zákazníků
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Služba měření na marketplace
           items:
-            - name: Služba detekce anomálií
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Strategie ověřování
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Rozhraní API služeb měření na marketplace
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: Aktualizace stávajících nabídek
       href: ./partner-center-portal/update-existing-offer.md
-    - name: Aktivace výhod
+    - name: Aktivace programu Marketplace Rewards
       href: ./partner-center-portal/marketplace-rewards.md
     - name: Analýzy partnerského centra
       items:
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Možnosti podpory
       href: ./partner-center-portal/support.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Podporované značky HTML
+          href: supported-html-tags.md

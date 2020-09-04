@@ -661,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: Návody
           items:
+            - name: Migrace do rozhraní API Cassandra
+              items:
+                - name: Migrace – Z Oracle DB do rozhraní API Cassandra s využitím nástroje Striim
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: Migrace – Z Oracle DB do rozhraní API Cassandra s využitím nástroje Blitzz
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: Migrace – Z Apache Cassandra do rozhraní API Cassandra s využitím nástroje Blitzz
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Změna kanálu
               href: cassandra-change-feed.md
             - name: Ukládání a správa služby Spring Data
@@ -736,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: Aplikace React a Node.js
                   href: tutorial-develop-mongodb-react.md
-            - name: 2. Migrace dat
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3. Dotazování dat
+            - name: 2. Dotazování na data
               href: tutorial-query-mongodb.md
-            - name: 4. Globální distribuce dat
+            - name: 3. Globální distribuce dat
               href: tutorial-global-distribution-mongodb.md
         - name: Koncepty
           items:
@@ -753,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: Návody
           items:
-            - name: Průvodce před migrací
-              href: mongodb-pre-migration.md
-            - name: Průvodce po migraci
-              href: mongodb-post-migration.md
+            - name: Migrace na rozhraní API MongoDB
+              items:
+                - name: Průvodce před migrací
+                  href: mongodb-pre-migration.md
+                - name: Database Migration Service (online)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Database Migration Service (offline)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Průvodce po migraci
+                  href: mongodb-post-migration.md
             - name: Získání připojovacího řetězce
               href: connect-mongodb-account.md
             - name: Připojení s využitím Studia 3T
@@ -1235,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: Migrace do rozhraní API SQL s využitím Striimu
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: Migrace do rozhraní API Cassandra s využitím Striimu
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: Migrace – Z Oracle DB do rozhraní API Cassandra s využitím nástroje Blitzz
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: Migrace – Z Apache Cassandra do rozhraní API Cassandra s využitím nástroje Blitzz
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Migrace stovek terabajtů dat do Azure Cosmos DB
           href: migrate-cosmosdb-data.md
         - name: 'Migrace relačních dat typu 1:několik'
@@ -1302,7 +1307,7 @@
       displayName: ARM
     - name: Poznámky k verzi pro emulátor
       href: local-emulator-release-notes.md
-- name: Reference
+- name: Odkaz
   items:
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'

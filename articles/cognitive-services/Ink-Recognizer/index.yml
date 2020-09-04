@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Dokumentace k rozhraní API pro rozpoznávání rukopisu
-summary: Naučte se využívat rozhraní API pro rozpoznávání rukopisu k integraci rozpoznávání rukopisu do vašich aplikací a služeb. Toto rozhraní API je cloudová služba, která využívá strojové učení k rozpoznávání rukou psaných tvarů a textu v jakémkoli kontextu.
+title: Dokumentace k rozhraní API pro rozpoznávání rukopisu (vyřazuje se)
+summary: Verze Preview rozhraní API pro rozpoznávání rukopisu končí 26. srpna 2020. Pokud máte existující prostředky Rozpoznávání rukopisu, můžete je dál používat, dokud se tato služba k 31. lednu 2021 kompletně nevyřadí z provozu. Naučte se využívat rozhraní API pro rozpoznávání rukopisu k integraci rozpoznávání rukopisu do vašich aplikací a služeb. Toto rozhraní API je cloudová služba, která využívá strojové učení k rozpoznávání rukou psaných tvarů a textu v jakémkoli kontextu.
 metadata:
   title: Rozhraní API pro rozpoznávání rukopisu – kurzy, rychlá zprovoznění, referenční informace k rozhraní API
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415698"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419584"
 landingContent:
 - title: Informace o rozhraní API pro rozpoznávání rukopisu
   linkLists:
@@ -46,11 +46,11 @@ landingContent:
     links:
     - text: REST API
       url: https://go.microsoft.com/fwlink/?linkid=2089907
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
-- title: Ukázky
+- title: ukázky
   linkLists:
   - linkListType: learn
     links:
