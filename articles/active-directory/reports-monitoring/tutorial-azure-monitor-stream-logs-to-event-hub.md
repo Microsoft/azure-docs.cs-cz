@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229374"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469180"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: streamování Azure Active Directorych protokolů do centra událostí Azure
 
@@ -60,8 +60,8 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 7. Výběrem **OK** ukončete konfiguraci centra událostí.
 
 8. Proveďte jednu nebo obě z následujících akcí:
-    * Pokud chcete do účtu úložiště odesílat protokoly auditu, zaškrtněte políčko **Protokoly auditu**. 
-    * Pokud chcete do účtu úložiště odesílat protokoly přihlášení, zaškrtněte políčko **Protokoly přihlášení**.
+    * Pokud chcete odesílat protokoly auditu do centra událostí, zaškrtněte políčko **AuditLogs** . 
+    * Pokud chcete odesílat protokoly přihlášení do centra událostí, zaškrtněte políčko **SignInLogs** .
 
 9. Vyberte **Uložit** a nastavení se uloží.
 
