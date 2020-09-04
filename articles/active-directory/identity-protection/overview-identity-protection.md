@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815177"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437696"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -102,17 +102,17 @@ Správci podmíněného přístupu můžou taky vytvářet zásady, které přis
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Aplikace Azure AD Free/Office 365 |
+| Schopnost | Podrobnosti  | Aplikace Azure AD Free/Office 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
-| Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
-| Sestavy zabezpečení | Rizikoví uživatelé | Full access | Omezené informace | Omezené informace |
-| Sestavy zabezpečení | Riziková přihlášení | Full access | Omezené informace | Omezené informace |
-| Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | Ne |
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | Ne | Ne |
-| Oznámení | Týdenní výtah | Ano | Ne | Ne |
-| | Zásady registrace MFA | Ano | Ne | No |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Ano | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Ano |
+| Sestavy zabezpečení | Přehled |  No | No |Ano |
+| Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace | Omezené informace | Full access|
+| Sestavy zabezpečení | Riziková přihlášení  | Omezené informace | Omezené informace | Full access|
+| Sestavy zabezpečení | Detekce rizik   | No | Omezené informace| Full access|
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Ano |
+| Oznámení | Týdenní výtah| No | No | Ano | 
+| | Zásady registrace MFA | No | No | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 

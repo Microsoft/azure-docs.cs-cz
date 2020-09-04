@@ -5,22 +5,22 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752890"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434765"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rychlý Start: Vytvoření první statické webové aplikace v Azure Portal
 
-Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí portálu.
+Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí Azure Portal.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -56,38 +56,39 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-First-web-static-App** .
 1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
-1. Pro úpravu konfigurace sestavení vyberte tlačítko **Další: >sestavení**
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Tlačítko Další sestavení":::
 
 > [!NOTE]
 > Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure**a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
 
-1. Na kartě _sestavení_ přidejte podrobnosti o konfiguraci, které jsou specifické pro vaši preferovanou front-end architekturu.
+1. V části _Podrobnosti sestavení_ přidejte podrobnosti o konfiguraci, které jsou specifické pro vaši preferovanou front-end architekturu.
 
     # <a name="no-framework"></a>[Žádná architektura](#tab/vanilla-javascript)
 
-    - Vymazat výchozí hodnotu v poli _umístění aplikace_
-    - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
-    - Zrušte zaškrtnutí políčka Výchozí hodnota z _umístění artefaktu aplikace_ .
+    1. V rozevíracím seznamu _přednastavení sestavení_ vyberte **vlastní** .
+    1. Vymazat výchozí hodnotu v poli _umístění aplikace_
+    1. Vymazat výchozí hodnotu z pole _umístění rozhraní API_
+    1. Nechejte pole _umístění artefaktu aplikace_ prázdné.
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - Vymazat výchozí hodnotu v poli _umístění aplikace_
-    - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
-    - V poli _umístění artefaktu aplikace_ zadejte **DIST/úhlové – Basic** .
+    1. Z rozevíracího seznamu _přednastavení sestavení_ vyberte **úhlové** .
+    1. Ponechat výchozí hodnotu v poli _umístění aplikace_
+    1. Vymazat výchozí hodnotu z pole _umístění rozhraní API_
+    1. V poli _umístění artefaktu aplikace_ zadejte **DIST/úhlové – Basic** .
 
     # <a name="react"></a>[React](#tab/react)
 
-    - Vymazat výchozí hodnotu v poli _umístění aplikace_
-    - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
-    - Do pole _umístění artefaktu aplikace_ zadejte **Build** .
+    1. V rozevíracím seznamu _přednastavení sestavení_ vyberte možnost **reagovat** .
+    1. Ponechat výchozí hodnotu v poli _umístění aplikace_
+    1. Vymazat výchozí hodnotu z pole _umístění rozhraní API_
+    1. Do pole _umístění artefaktu aplikace_ zadejte **Build** .
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - Vymazat výchozí hodnotu v poli _umístění aplikace_
-    - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
-    - Typ **DIST** v poli _umístění artefaktu aplikace_
+    1. V rozevíracím seznamu _přednastavení sestavení_ vyberte **Vue.js** .
+    1. Ponechat výchozí hodnotu v poli _umístění aplikace_
+    1. Vymazat výchozí hodnotu z pole _umístění rozhraní API_
+    1. Ponechat výchozí hodnotu v poli _umístění artefaktu aplikace_
 
     ---
 

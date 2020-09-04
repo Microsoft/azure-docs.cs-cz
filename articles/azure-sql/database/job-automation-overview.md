@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984638"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436778"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Můžete vytvářet a plánovat úlohy, které se můžou pravidelně spouštět v jedné nebo mnoha databázích, aby se daly spouštět dotazy Transact-SQL (T-SQL) a provádět úlohy údržby.
 
-Můžete definovat cílovou databázi nebo skupiny databází, ve kterých se bude úloha spouštět, a také definovat plány pro spuštění úlohy.
-Úloha zpracovává úlohu přihlášení do cílové databáze. Můžete také definovat, udržovat a zachovat skripty jazyka Transact-SQL, které mají být spuštěny napříč skupinou databází.
+Můžete definovat cílovou databázi nebo skupinu databází, ve kterých se úloha spustí, a také plány spouštění úlohy.
+Úloha zajišťuje přihlášení k cílové databázi. Můžete také definovat, spravovat a uchovávat skripty Transact-SQL, které se spustí pro skupinu databází.
 
-Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k nějaké chybě.
+Každá úloha protokoluje stav spuštění a v případě jakéhokoli selhání také automaticky opakuje operace.
 
 ## <a name="when-to-use-automated-jobs"></a>Kdy použít automatizované úlohy
 
@@ -51,11 +51,11 @@ K dispozici jsou následující technologie plánování úloh:
 - **Úlohy agenta SQL** jsou klasické a s prošlou dostupností SQL Server komponenty plánování úloh, která je k dispozici ve spravované instanci Azure SQL. Úlohy agenta SQL nejsou k dispozici v Azure SQL Database.
 - **Úlohy elastic Database (Preview)** jsou služby plánování úloh, které spouštějí vlastní úlohy v jedné nebo mnoha databázích v Azure SQL Database.
 
-Je třeba poznamenat několik rozdílů mezi agentem SQL (dostupnými místně a jako součást spravované instance SQL) a agentem elastické úlohy databáze (k dispozici pro izolované databáze v Azure SQL Database a databázích v SQL Data Warehouse).
+Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně a jako součást spravované instance SQL) a agentem elastické úlohy databáze (k dispozici pro izolované databáze v Azure SQL Database a databázích ve službě Azure synapse Analytics).
 
 | |Elastické úlohy |Agent SQL |
 |---------|---------|---------|
-|**Rozsah** | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
+|**Scope** | Libovolný počet databází v Azure SQL Database nebo datových skladech ve stejném cloudu Azure jako Agent úlohy. Cíle můžou být na různých serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci jako Agent SQL. |
 |**Podporovaná rozhraní API a nástroje** | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>Úlohy agenta SQL
@@ -218,7 +218,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 |Název role |Oprávnění ke schématu jobs |Oprávnění ke schématu jobs_internal |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Žádná |
+|**jobs_reader** | SELECT | Žádné |
 
 > [!IMPORTANT]
 > Jako správce databáze zvažte před udělením přístupu k *databázi úloh* všechny bezpečnostní důsledky. Uživatel se zlými úmysly s oprávněními k vytváření nebo úpravě úloh by mohl vytvořit nebo upravit úlohu, která se pomocí uložených přihlašovacích údajů připojí k databázi pod jeho kontrolou a uživatel se zlými úmysly by tak mohl zjistit přihlašovací heslo.

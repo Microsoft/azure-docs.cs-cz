@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET C
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997281"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441523"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -36,7 +36,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -238,7 +238,7 @@ V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifes
 
 Pokud chcete spustit PowerShell z bodu **SetupEntryPoint**, můžete spustit PowerShell.exe v dávkovém souboru odkazujícím na soubor PowerShellu. Nejprve do projektu služby přidejte dávkový soubor.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb**, vyberte **Přidat**->**Nová položka** a přidejte nový soubor Setup.bat.  Upravte soubor *Setup.bat* a přidejte následující příkaz:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 

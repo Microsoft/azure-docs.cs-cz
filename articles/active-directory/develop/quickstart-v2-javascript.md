@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120520"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434601"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -151,7 +151,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 Spusťte projekt s webovým serverem pomocí [Node.js](https://nodejs.org/en/download/):
 
 1. Chcete-li spustit server, spusťte následující příkaz z adresáře projektu:
-    ```batch
+    ```cmd
     npm install
     npm start
     ```
@@ -179,7 +179,7 @@ Knihovna MSAL se přihlásí uživatelům a požádá o tokeny, které se použ�
 
 Případně, pokud máte Node.js nainstalované, můžete nejnovější verzi stáhnout prostřednictvím Správce balíčků Node.js (npm):
 
-```batch
+```cmd
 npm install msal
 ```
 
@@ -241,7 +241,7 @@ myMSALObj.loginPopup(loginRequest)
 
 ### <a name="request-tokens"></a>Žádosti o tokeny
 
-MSAL používá tři metody k získání tokenů: `acquireTokenRedirect` , `acquireTokenPopup` a.`acquireTokenSilent`
+MSAL používá tři metody k získání tokenů: `acquireTokenRedirect` , `acquireTokenPopup` a. `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
@@ -268,7 +268,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
+Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.

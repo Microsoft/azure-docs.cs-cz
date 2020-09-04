@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 12d91e43576647b2ffbc1e78d2e059871dbe8a3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6aa0aa22fce5ba0f763f98fec37f607d0ce8a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033169"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441763"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,9 +60,9 @@ Ovladače od jiných výrobců nemusí ve výchozím nastavení protokol TLS pou
 
 K připojení k Azure SQL Database nebo spravované instanci SQL Azure můžete použít různé knihovny a architektury. [Výukové kurzy](https://aka.ms/sqldev) Začínáme vám pomohou rychle začít s programovacími jazyky, jako je C#, Java, Node.js, php a Python. Pak sestavte aplikaci pomocí SQL Server on Linux nebo Windows nebo Docker v macOS.
 
-Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je použít v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database, spravované instanci SQL Azure a Azure SQL Data Warehouse.
+Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je používat v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database, spravované instanci SQL Azure a analýze Azure synapse Analytics (dřív SQL Data Warehouse).
 
-| Jazyk | Platforma | Další zdroje informací | Stáhnout | Začínáme |
+| Jazyk | Platforma | Další zdroje | Stáhnout | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

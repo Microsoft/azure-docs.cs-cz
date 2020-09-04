@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: 4c64502ac1fa4837d6052fd399fd2c44b6ab4a09
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 59acb2e851be69a9bb928d9b3aae73d8136493e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423877"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440911"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – použití Mongoose pro připojení k Cosmos DB
 
@@ -32,7 +32,7 @@ V této části kurzu budete:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s tímto kurzem, proveďte kroky v [části 4](tutorial-develop-mongodb-nodejs-part4.md).
 
@@ -114,11 +114,11 @@ Chcete-li připojit aplikaci k Azure Cosmos DB, je nutné aktualizovat nastaven�
 
 1. Načtěte primární klíč pro účet služby Azure Cosmos DB pomocí následujícího příkazu rozhraní příkazového řádku v okně terminálu: 
 
-    ```azure-cli-interactive
+    ```azurecli-interactive
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    \<cosmosdb-name>je název účtu Azure Cosmos DB, který jste vytvořili v [části 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
+    \<cosmosdb-name> je název účtu Azure Cosmos DB, který jste vytvořili v [části 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
 
 1. Zkopírujte primární klíč do souboru **environment.js** jako `key` hodnotu.
 

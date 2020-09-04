@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Data Factory pomocí Pythonu'
-description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
+description: Pomocí datové továrny zkopírujte data z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,14 +13,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873292"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439108"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí Pythonu
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -32,7 +32,7 @@ V tomto rychlém startu vytvoříte datovou továrnu pomocí Pythonu. Kanál v t
 
 Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vytvářet pracovní postupy založené na datech pro orchestraci a automatizaci přesunu dat a transformace dat. Pomocí Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty, které se nazývají kanály.
 
-Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI).
+Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako je Azure synapse Analytics (dříve SQL Data Warehouse) pro aplikace business intelligence (BI).
 
 ## <a name="prerequisites"></a>Požadavky
 

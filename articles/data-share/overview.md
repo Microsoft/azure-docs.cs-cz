@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 0dd0fbdd9bcf4d4fab2ffe9f420264ab737a700b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e80ea37409f7b5beb48ba7b8e96aeeda9a5836e5
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511917"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433428"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
@@ -45,7 +45,7 @@ Poskytovatelé dat můžou svým spotřebitelům dat postupně aktualizovat data
 
 ![tok sdílení dat](media/data-share-flow.png)
 
-Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data z Azure SQL Data Warehouse, příjemce dat si může vybrat, jestli chtějí data přijímat, do Azure Data Lake Store, Azure SQL Database nebo Azure SQL Data Warehouse. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
+Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data ze služby Azure synapse Analytics (dříve SQL Data Warehouse), příjemce dat si může vybrat, jestli chtějí přijímat data do Azure Data Lake Store, Azure SQL Database nebo Azure synapse Analytics. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
 
 Díky místnímu sdílení můžou poskytovatelé dat sdílet data, kde se nacházejí, bez kopírování dat. Po navázání vztahu sdílení prostřednictvím toku pozvánky se vytvoří symbolické propojení mezi zdrojovým úložištěm dat zprostředkovatele dat a cílovým úložištěm dat příjemce dat. Příjemce dat může data číst a dotazovat se v reálném čase pomocí vlastního úložiště dat. Změny zdrojového úložiště dat jsou k dispozici pro příjemce dat okamžitě. Místní sdílení je v současnosti ve verzi Preview pro Azure Průzkumník dat.
 

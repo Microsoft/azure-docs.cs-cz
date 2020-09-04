@@ -1,26 +1,26 @@
 ---
-title: 'Kurz: migrace dat událostí do SQL Data Warehouse – Azure Event Hubs'
-description: 'Kurz: v tomto kurzu se dozvíte, jak zachytit data z centra událostí do služby SQL Data Warehouse pomocí funkce Azure aktivované službou Event Grid.'
+title: 'Kurz: migrace dat událostí do Azure synapse Analytics – Azure Event Hubs'
+description: 'Kurz: v tomto kurzu se dozvíte, jak zachytit data z centra událostí do služby Azure synapse Analytics pomocí funkce Azure aktivované službou Event Grid.'
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997825"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436608"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do služby Azure synapse Analytics pomocí Event Grid a Azure Functions
 
-[Zachytávání](./event-hubs-capture-overview.md) služby Event Hubs představuje nejjednodušší způsob, jak automaticky doručovat streamovaná data ve službě Event Hubs do služby Azure Blob Storage nebo Azure Data Lake Store. Následně můžete tato data zpracovávat a doručovat do libovolných dalších cílových úložišť, například do služby SQL Data Warehouse nebo Cosmos DB. V tomto kurzu se dozvíte, jak pomocí funkce Azure aktivované [Event Gridem](../event-grid/overview.md) zachytávat data z centra událostí do služby SQL Data Warehouse.
+[Zachytávání](./event-hubs-capture-overview.md) služby Event Hubs představuje nejjednodušší způsob, jak automaticky doručovat streamovaná data ve službě Event Hubs do služby Azure Blob Storage nebo Azure Data Lake Store. Následně můžete zpracovávat a doručovat data do všech dalších cílů úložiště podle vaší volby, jako je Azure synapse Analytics nebo Cosmos DB. V tomto kurzu se naučíte zachytit data z centra událostí do služby Azure synapse Analytics pomocí funkce Azure aktivované v rámci služby [Event Grid](../event-grid/overview.md).
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
 - Nejprve vytvoříte centrum událostí s povolenou funkcí **Zachytávání** a jako cíl nastavíte službu Azure Blob Storage. Data generovaná aplikací WindTurbineGenerator se streamují do centra událostí a automaticky se zachytávají do služby Azure Storage jako soubory Avro.
 - Pak vytvoříte předplatné Azure Event Gridu s oborem názvů služby Event Hubs jako zdrojem a koncovým bodem funkce Azure jako cílem.
-- Vždy, když funkce Zachytávání služby Event Hubs doručí soubor Avro do objektu blob služby Azure Storage, oznámí Event Grid funkci Azure identifikátor URI objektu blob. Funkce pak provede migraci dat z objektu blob do služby SQL Data Warehouse.
+- Vždy, když funkce Zachytávání služby Event Hubs doručí soubor Avro do objektu blob služby Azure Storage, oznámí Event Grid funkci Azure identifikátor URI objektu blob. Funkce pak migruje data z objektu blob do služby Azure synapse Analytics.
 
 V tomto kurzu provedete následující akce:
 
@@ -30,9 +30,9 @@ V tomto kurzu provedete následující akce:
 > - Publikování kódu do aplikace Functions
 > - Vytvoření odběru Event Gridu v aplikaci Functions
 > - Streamování ukázkových dat do centra událostí
-> - Ověření zachycených dat ve službě SQL Data Warehouse
+> - Ověření zachycených dat ve službě Azure synapse Analytics
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující akce:
 - Stažení [ukázky Gitu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) ukázka řešení obsahuje následující součásti:
 
   - *WindTurbineDataGenerator* – Jednoduchý vydavatel odesílající ukázková data větrné turbíny do centra událostí s povolenou funkcí Zachytávání.
-  - *FunctionDWDumper* – Funkce Azure, která přijímá oznámení Event Gridu při zachycení souboru Avro do objektu blob služby Azure Storage. Přijme cestu URI objektu blob, načte jeho obsah a odešle tato data do služby SQL Data Warehouse.
+  - *FunctionDWDumper* – Funkce Azure, která přijímá oznámení Event Gridu při zachycení souboru Avro do objektu blob služby Azure Storage. Obdrží cestu k identifikátoru URI objektu blob, přečte obsah a vloží tato data do služby Azure synapse Analytics.
 
   Tato ukázka používá nejnovější balíček Azure. Messaging. EventHubs. Starou ukázku, která používá balíček Microsoft. Azure. EventHubs, můžete najít [tady](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
@@ -53,7 +53,7 @@ Pomocí Azure PowerShellu nebo Azure CLI nasaďte infrastrukturu potřebnou pro 
 - Plán služby Azure App Service pro hostování aplikace Functions
 - Aplikace funkcí pro zpracování zachycených souborů událostí
 - Logický server SQL pro hostování datového skladu
-- SQL Data Warehouse na uložení migrovaných dat
+- Azure synapse Analytics pro ukládání migrovaných dat
 
 Následující části obsahují příkazy Azure CLI a Azure PowerShellu pro nasazení požadované infrastruktury pro tento kurz. Před spuštěním příkazů aktualizujte názvy následujících objektů: 
 
@@ -91,9 +91,9 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky ve službě SQL Data Warehouse
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Vytvoření tabulky ve službě Azure synapse Analytics
 
-Vytvořte ve své službě SQL Data Warehouse tabulku spuštěním skriptu [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) v sadě [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), aplikaci [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) nebo Editoru dotazů na portálu. 
+Pomocí sady [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md)nebo editoru dotazů na portálu vytvořte tabulku ve službě Azure synapse Analytics spuštěním skriptu [CreateDataWarehouseTable. SQL.](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -148,7 +148,7 @@ Po publikování funkce můžete začít odebírat událost zachycení ze služb
    ![Vytvoření odběru](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>Generování ukázkových dat  
-Teď máte nastavené centrum událostí, službu SQL Data Warehouse, aplikaci Azure Function App a odběr Event Gridu. Po aktualizaci připojovacího řetězce a názvu vašeho centra událostí ve zdrojovém kódu můžete spustit aplikaci WindTurbineDataGenerator.exe, která bude generovat datové streamy do centra událostí. 
+Nyní jste nastavili centrum událostí, Azure synapse Analytics, Azure Function App a předplatné Event Grid. Po aktualizaci připojovacího řetězce a názvu vašeho centra událostí ve zdrojovém kódu můžete spustit aplikaci WindTurbineDataGenerator.exe, která bude generovat datové streamy do centra událostí. 
 
 1. Na portálu vyberte obor názvů centra události. Vyberte **připojovací řetězce**.
 
@@ -174,9 +174,9 @@ Teď máte nastavené centrum událostí, službu SQL Data Warehouse, aplikaci A
 6. Sestavte řešení a pak spusťte aplikaci WindTurbineGenerator.exe. 
 
 ## <a name="verify-captured-data-in-data-warehouse"></a>Ověření zachycených dat ve službě Data Warehouse
-Po několika minutách zadejte dotaz do tabulku ve službě SQL Data Warehouse. Zjistíte, že se data generovaná aplikací WindTurbineDataGenerator streamovala do vašeho centra událostí, zachytila se do kontejneru Azure Storage a pak se pomocí funkce Azure migrovala do tabulky SQL Data Warehouse.  
+Po několika minutách se dotazuje v tabulce ve službě Azure synapse Analytics. Všimněte si, že data generovaná službou WindTurbineDataGenerator byla streamovaná do vašeho centra událostí, zachycená do kontejneru Azure Storage a pak se migrují do tabulky Azure synapse Analytics pomocí funkce Azure Functions.  
 
 ## <a name="next-steps"></a>Další kroky 
 Pomocí kombinace datového skladu s výkonnými nástroji pro vizualizaci dat můžete získat užitečné přehledy.
 
-V tomto článku se dozvíte, jak používat [Power BI se službou SQL Data Warehouse](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect).
+Tento článek ukazuje, jak používat [Power BI se službou Azure synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)

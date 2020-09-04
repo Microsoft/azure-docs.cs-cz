@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e5123fbf038205befb207d1ecaf64e27ce42d887
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191106"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440962"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
 
@@ -28,11 +28,11 @@ Představte si například společnost vyrábějící hry, která shromažďuje 
 
 Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenční data, jako jsou informace o zákaznících, hrách a marketingových kampaních, které jsou uložené v místním úložišti dat. Společnost chce využít tato data z místního úložiště dat a zkombinovat je s dalšími daty protokolů, která má uložená v cloudovém úložišti dat. 
 
-Za účelem získání informací hodlá zpracovat spojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a transformovaná data publikovat do cloudového datového skladu, jako je služba Azure SQL Data Warehouse, aby z nich mohla snadno vytvářet sestavy. Tento pracovní postup chce automatizovat a provádět jeho monitorování a správu na každodenní bázi. Zároveň ho chce spouštět, jakmile se v kontejneru úložiště objektů blob objeví soubory.
+Aby bylo možné extrahovat přehledy, hodlá zpracovávat připojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a publikovat transformovaná data do cloudového datového skladu, jako je například Azure synapse Analytics (dříve SQL Data Warehouse), abyste mohli snadno sestavovat sestavu nad ní. Tento pracovní postup chce automatizovat a provádět jeho monitorování a správu na každodenní bázi. Zároveň ho chce spouštět, jakmile se v kontejneru úložiště objektů blob objeví soubory.
 
 Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou službu ETL a integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých zdrojů dat. Můžete vytvářet složité procesy ETL, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
 
-Transformovaná data navíc můžete publikovat do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI), která se mají spotřebovat. V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
+Transformovaná data navíc můžete publikovat do úložišť dat, jako je Azure synapse Analytics pro aplikace business intelligence (BI), která se mají spotřebovat. V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
 
 ![Zobrazení nejvyšší úrovně služby Data Factory](media/data-flow/overview.png)
 
@@ -87,7 +87,7 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
 - Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
-### <a name="triggers"></a>Aktivační procedury
+### <a name="triggers"></a>Aktivační události
 Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
@@ -119,5 +119,5 @@ Tady jsou důležité dokumenty dalších kroků k prozkoumání:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md)
+- [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md)
  

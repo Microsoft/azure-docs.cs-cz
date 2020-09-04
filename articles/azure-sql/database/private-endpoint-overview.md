@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213372"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442594"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "88213372"
 Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../../virtual-network/virtual-networks-overview.md) síti a podsíti.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív Azure SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.
+> Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.
 
 ## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
 

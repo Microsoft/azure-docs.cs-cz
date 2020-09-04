@@ -13,17 +13,17 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267354"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441767"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Rychlý Start: použití Editoru dotazů Azure Portal k dotazování Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Editor dotazů je nástroj v Azure Portal pro spouštění dotazů SQL pro vaši databázi v Azure SQL Database nebo datového skladu v Azure SQL Data Warehouse. 
+Editor dotazů je nástroj v Azure Portal pro spouštění dotazů SQL pro vaši databázi v Azure SQL Database nebo datového skladu ve službě Azure synapse Analytics. 
 
 V tomto rychlém startu použijete Editor dotazů ke spouštění dotazů jazyka Transact-SQL (T-SQL) na databázi.
 
@@ -139,7 +139,7 @@ Chcete-li přidat nový produkt v tabulce, [Spusťte následující příkaz](/s
    ```
 
 
-2. Vyberte možnost **Spustit** pro vložení nového řádku do `Product` tabulky. V podokně **zprávy** se zobrazí **dotaz uspěl: ovlivněné řádky: 1**.
+2. Vyberte možnost **Spustit**  pro vložení nového řádku do `Product` tabulky. V podokně **zprávy** se zobrazí **dotaz uspěl: ovlivněné řádky: 1**.
 
 
 ### <a name="run-an-update-query"></a>Spustit aktualizační dotaz

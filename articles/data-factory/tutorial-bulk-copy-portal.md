@@ -1,6 +1,6 @@
 ---
 title: Hromadné kopírování dat pomocí Azure Portal
-description: Naučte se používat Azure Data Factory a aktivitu kopírování k hromadnému kopírování dat ze zdrojového úložiště dat do cílového úložiště dat.
+description: Pomocí Azure Data Factory a aktivity kopírování můžete kopírovat data ze zdrojového úložiště dat do cílového úložiště dat hromadně.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081634"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442850"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -45,11 +45,11 @@ V tomto scénáři máte v Azure SQL Database několik tabulek, které chcete zk
 ![Pracovní postup](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * První kanál vyhledá seznam tabulek, které je potřeba zkopírovat do úložišť dat jímky.  Další možností je udržovat tabulku metadat se seznamem všech tabulek, které je potřeba zkopírovat do úložišť dat jímky. Kanál potom aktivuje jiný kanál, který postupně prochází všechny tabulky v databázi a provádí operaci kopírování dat.
-* Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopírujte příslušnou tabulku v Azure SQL Database do odpovídající tabulky ve službě Azure synapse Analytics (dřív SQL DW) pomocí [připravené kopie prostřednictvím služby Blob Storage a základu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) pro nejlepší výkon. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
+* Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopírujte příslušnou tabulku v Azure SQL Database do odpovídající tabulky ve službě Azure synapse Analytics (dřív SQL DW) pomocí [připravené kopie prostřednictvím služby Blob Storage a základu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) pro nejlepší výkon. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Účet Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
 * **Azure SQL Database**. Tato databáze obsahuje zdrojová data. 
 * **Azure synapse Analytics (dřív SQL DW)**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
@@ -62,7 +62,7 @@ Vytvořte v SQL Database databázi s ukázkovými daty Adventure Works LT, [a to
 
 **Příprava služby synapse Analytics pro službu Azure Data Sink (dříve SQL DW)**:
 
-1. Pokud nemáte Azure synapse Analytics (dřív SQL DW), přečtěte si článek [vytvoření SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) , kde najdete kroky pro jeho vytvoření.
+1. Pokud nemáte pracovní prostor Azure synapse Analytics (dřív SQL DW), přečtěte si článek Začínáme [se službou Azure synapse Analytics](..\synapse-analytics\get-started.md) , kde najdete kroky pro jeho vytvoření.
 
 1. Vytváření odpovídajících schémat tabulek v Azure synapse Analytics (dřív SQL DW) K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
@@ -75,7 +75,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. Přejděte na web [Azure Portal](https://portal.azure.com). 
 1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory prostředků**  >  **Analytics**  >  **Data Factory**. 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **název**zadejte **ADFTutorialBulkCopyDF** . 
@@ -331,7 +331,7 @@ Tento kanál provádí dvě akce:
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Přepněte na kartu **monitorování** . klikněte na **aktualizovat** , dokud se nezobrazí spuštění obou kanálů ve vašem řešení. Pokračujte v aktualizacích seznamu, dokud se nezobrazí stav **Úspěch**. 
+1. Přepněte na kartu **monitorování** . Klikněte na **aktualizovat** , dokud se nezobrazí spuštění obou kanálů ve vašem řešení. Pokračujte v aktualizacích seznamu, dokud se nezobrazí stav **Úspěch**. 
 
 1. Pokud chcete zobrazit spuštění aktivit související s kanálem **GetTableListAndTriggerCopyData** , klikněte na odkaz název kanálu pro daný kanál. Pro toto spuštění kanálu by se měla zobrazit dvě spuštění aktivit. 
     ![Monitorování spuštění kanálu](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)

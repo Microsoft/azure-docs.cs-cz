@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948874"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437900"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -95,6 +95,8 @@ Zjistěte, jak jiné organizace používají podmíněný přístup Azure AD k d
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 Zákazníci s [licencemi Microsoft 365 Business Premium](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají také přístup k funkcím podmíněného přístupu. 
+
+[Riziko přihlášení](concept-conditional-access-conditions.md#sign-in-risk) vyžaduje přístup k [Identity Protection](../identity-protection/overview-identity-protection.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

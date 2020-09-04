@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321086"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436252"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +35,7 @@ Například herní společnost shromažďuje protokoly generované hrami v cloud
 
 Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenční data, jako jsou informace o zákaznících, hrách a marketingových kampaních, které jsou uložené v místním úložišti dat. Společnost proto chce ingestovat data z cloudového úložiště dat a referenční data z místního úložiště dat. 
 
-Dále chce data zpracovat pomocí Hadoopu v cloudu (Azure HDInsight). Výsledná data chce publikovat do cloudového datového skladu, jako je Azure SQL Data Warehouse, nebo do místního úložiště dat, jako je SQL Server. Společnost chce, aby se tento pracovní postup spouštěl jednou týdně. 
+Dále chce data zpracovat pomocí Hadoopu v cloudu (Azure HDInsight). Chtějí publikovat výsledná data do cloudového datového skladu, jako je Azure synapse Analytics (dříve SQL Data Warehouse), nebo do místního úložiště dat, jako je například SQL Server. Společnost chce, aby se tento pracovní postup spouštěl jednou týdně. 
 
 Společnost potřebuje platformu, na které může vytvořit pracovní postup, který bude ingestovat data z místních i cloudových úložišť dat. Společnost také musí mít možnost transformovat nebo zpracovávat data pomocí stávajících výpočetních služeb, jako je Hadoop, a publikovat výsledky do místního nebo cloudového úložiště dat pro využití v aplikacích BI. 
 
@@ -47,7 +47,7 @@ Azure Data Factory je platforma pro tyto druhy scénářů. Je to *cloudová slu
 
 - Zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning.
 
--  Publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, a umožnit jejich využití v aplikacích business intelligence (BI).  
+-  Publikujte výstupní data do úložišť dat, jako je Azure synapse Analytics pro aplikace business intelligence (BI), která se mají spotřebovat.  
 
 Spíše než o tradiční platformu extrakce, transformace a načítání (ETL) se jedná o platformu extrakce a načítání (EL) a následné transformace a načtení (TL). Transformace zpracovávají data pomocí výpočetních služeb namísto přidávání odvozených sloupců, počítání řádků, řazení dat atd. 
 

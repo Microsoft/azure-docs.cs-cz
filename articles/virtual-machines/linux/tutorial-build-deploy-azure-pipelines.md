@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 140365abad266617443d58b7ed59f05a27009f59
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 60321363a7506d03ebf4aeffebac56305e231eb6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433053"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436217"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -84,9 +84,9 @@ Postupujte podle dalších kroků popsaných níže v závislosti na zásobníku
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Pro nasazování aplikací založených na spouštěcím a jarním cloudu v jazyce Java vytvořte v Azure virtuální počítač Linux pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) šablony, která poskytuje plně podporovaný modul runtime založený na OpenJDK.
-- Pro nasazení Java servletů na serveru Tomcat vytvořte pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) šablony Azure virtuální počítač se systémem Linux s jazykem Java 8 a [nakonfigurujte Tomcat 9. x jako službu](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Pro nasazení aplikace založené na jazyce Java EE použijte šablonu Azure k vytvoření [virtuálního počítače se systémem Linux + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) nebo [Linux VM + Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) nebo [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- Pro nasazování aplikací založených na spouštěcím a jarním cloudu v jazyce Java vytvořte v Azure virtuální počítač Linux pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) šablony, která poskytuje plně podporovaný modul runtime založený na OpenJDK.
+- Pro nasazení Java servletů na serveru Tomcat vytvořte pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) šablony Azure virtuální počítač se systémem Linux s jazykem Java 8 a [nakonfigurujte Tomcat 9. x jako službu](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- Pro nasazení aplikace založené na jazyce Java EE použijte šablonu Azure k vytvoření [virtuálního počítače se systémem Linux + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) nebo [Linux VM + Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) nebo [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) + WildFly/JBoss 14 
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -225,7 +225,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
 
 3. Můžete zadat eithor `runOnce` nebo `rolling` strategii nasazení. 
 
-   `runOnce`je nejjednodušší strategii nasazení, která zaznamená, že všechny zavěšení životního cyklu, konkrétně, `preDeploy` `deploy` `routeTraffic` a `postRouteTraffic` , se spustí jednou. Pak se `on:` `success` spustí buď nebo `on:` `failure` .
+   `runOnce` je nejjednodušší strategii nasazení, která zaznamená, že všechny zavěšení životního cyklu, konkrétně, `preDeploy` `deploy` `routeTraffic` a `postRouteTraffic` , se spustí jednou. Pak se `on:` `success` spustí buď nebo `on:` `failure` .
 
    Níže je příklad fragmentu YAML pro `runOnce` :
    ```YAML
@@ -244,7 +244,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
              - script: echo my first deployment
    ```
 
-4. Níže je uveden příklad fragmentu YAML, který můžete použít k definování postupné strategie pro virtuální počítače aktualizace až 5 cílů v každé iteraci. `maxParallel`určí počet cílů, které lze paralelně nasadit. Účty výběru pro absolutní číslo nebo procento cílů, které musí zůstat dostupné kdykoli, kromě cílů, které se nasazují na. Slouží také k určení stavu úspěch a selhání během nasazování.
+4. Níže je uveden příklad fragmentu YAML, který můžete použít k definování postupné strategie pro virtuální počítače aktualizace až 5 cílů v každé iteraci. `maxParallel` určí počet cílů, které lze paralelně nasadit. Účty výběru pro absolutní číslo nebo procento cílů, které musí zůstat dostupné kdykoli, kromě cílů, které se nasazují na. Slouží také k určení stavu úspěch a selhání během nasazování.
 
    ```YAML
    jobs: 
