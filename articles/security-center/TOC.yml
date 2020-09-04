@@ -130,6 +130,7 @@
         - name: Automatizace odpovědí na výstrahy
           href: workflow-automation.md
         - name: Export výstrah
+          displayName: continuous
           href: continuous-export.md
     - name: Použití bezpečnostních doporučení ke zvýšení zabezpečení
       items:
@@ -150,6 +151,7 @@
         - name: Automatizace odpovědí na doporučení
           href: workflow-automation.md
         - name: Export doporučení
+          displayName: continuous
           href: continuous-export.md
     - name: Správa prostředků s využitím inventáře prostředků
       href: asset-inventory.md

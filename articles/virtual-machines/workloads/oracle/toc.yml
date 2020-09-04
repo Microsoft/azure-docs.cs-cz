@@ -28,8 +28,6 @@
       href: oracle-reference-architecture.md
     - name: Vytvoření Oracle DB
       href: oracle-design.md
-    - name: Strategie zálohování pro Oracle DB
-      href: oracle-backup-recovery.md
     - name: Možnosti Oraclu pro zotavení po havárii
       href: oracle-disaster-recovery.md
 - name: Návody

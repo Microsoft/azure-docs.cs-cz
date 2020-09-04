@@ -219,9 +219,10 @@
     - name: Vytváření výpočetních prostředků
       items:
         - name: Použití sady Studio
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-studio.md
         - name: Použití sady Python SDK
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-sdk.md
     - name: Nastavení prostředí
       items:
@@ -477,9 +478,6 @@
         - name: Ladění a řešení potíží s krokem paralelního spuštění
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: Iterace a vývoj kanálů strojového učení
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: Azure Pipelines pro CI/CD
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context

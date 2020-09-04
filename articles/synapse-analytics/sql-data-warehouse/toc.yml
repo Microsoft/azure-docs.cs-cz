@@ -222,8 +222,6 @@
               href: sql-data-warehouse-develop-user-defined-schemas.md
             - name: Přiřazení proměnné
               href: sql-data-warehouse-develop-variable-assignment.md
-            - name: Zobrazení
-              href: sql-data-warehouse-develop-views.md
     - name: Dotazování
       items:
         - name: Dynamické SQL

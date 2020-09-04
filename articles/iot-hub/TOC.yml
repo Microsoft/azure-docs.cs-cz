@@ -173,6 +173,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Doporučení
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Zabezpečení od počátku

@@ -93,6 +93,9 @@
     - name: Vyhodnocení dopadu nové zásady
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Doporučené zásady
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: Dodržování legislativní předpisů
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md

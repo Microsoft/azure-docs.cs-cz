@@ -23,6 +23,8 @@
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: Přehled zabezpečení
+          href: security-overview.md
 - name: Návody
   items:
     - name: Připojení ke službě Azure Arc
