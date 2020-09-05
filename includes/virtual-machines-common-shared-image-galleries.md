@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ce2ce146b8a8ba06729c5e9428bccb8a60e14c39
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89449606"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494328"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -129,8 +129,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | No                   | Ano          | Ano                  |
+| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
+| Definice image     | Ne                   | Yes          | Yes                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -196,7 +196,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 * [Jaké jsou poplatky za používání Galerie sdílených imagí?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Jakou verzi rozhraní API mám použít k vytvoření sdílené image a její definice a verze image?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Jakou verzi rozhraní API mám použít k vytvoření sdíleného virtuálního počítače nebo sady škálování virtuálního počítače z verze image?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [Můžu aktualizovat sadu škálování virtuálních počítačů vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?] (#can-i-Update-my-Virtual-Machine-Scale-set-Ed-Using-Shared-Image--use-Shareed-Image-Galerie-images)
+* [Můžu aktualizovat sadu škálování virtuálního počítače vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Jak můžu zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných?
 
