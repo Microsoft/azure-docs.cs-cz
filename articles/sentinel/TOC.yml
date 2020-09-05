@@ -182,7 +182,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Ceny

@@ -94,6 +94,6 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'

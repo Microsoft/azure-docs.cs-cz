@@ -65,7 +65,7 @@
                   href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
-                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Spouštění privilegovaných kontejnerů v Azure Red Hat OpenShiftu 3.11
           href: howto-run-privileged-containers.md

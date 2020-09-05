@@ -44,6 +44,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Postup
   items:
+    - name: Přesun mezi oblastmi
+      href: move-across-regions.md
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Plánování a návrh

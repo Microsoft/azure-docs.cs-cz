@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5bec718de3f4f4b0ee78bacf9fc41cbedb8e71df
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 84a3f02935b64ccf7a672f19925cc6434d509ece
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379198"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483880"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -34,4 +34,18 @@ Další informace o tomto standardu dodržování předpisů najdete v článku 
 |---|---|---|---|---|
 |Protokolování a monitorování |5.1.7 |Ujistěte se, že protokolování služby Azure webrecovery je povolené. |[Měly by být povolené diagnostické protokoly v Key Vault.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |Další informace o zabezpečení |8.4 |Ujistěte se, že je Trezor klíčů obnovitelný. |[Key Vault objekty by měly být obnovitelné](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9,2
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – HIPAA HITRUST 9,2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [HIPAA HITRUST 9,2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásada<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Oddělení v sítích |0805.01 m1Organizational. 12.01. m |Brány zabezpečení organizace (např. brány firewall) vynutily zásady zabezpečení a jsou nakonfigurované pro filtrování provozu mezi doménami, blokují neoprávněný přístup a používají se k udržení oddělení mezi interními pevnými, interními bezdrátovými a externími segmenty sítě (např. Internet), včetně zóny DMZ a prosazování zásad řízení přístupu pro jednotlivé domény. |[Key Vault by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Oddělení v sítích |0806.01 m2Organizational. 12356 – 01. m |Síť organizací je logicky a fyzicky rozdělená na vymezený hraniční zabezpečení a odstupňovanou sadu ovládacích prvků, včetně podsítí pro veřejně přístupné systémové komponenty, které jsou logicky oddělené od interní sítě, na základě požadavků organizace. a provoz se řídí podle požadovaných funkcí a klasifikace dat nebo systémů na základě posouzení rizik a jejich příslušných požadavků na zabezpečení. |[Key Vault by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Oddělení v sítích |0894.01 m2Organizational. 7 – 01. m |Sítě jsou při migraci fyzických serverů, aplikací nebo dat na virtualizované servery oddělené od sítí na úrovni služby. |[Key Vault by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Protokolování auditu |1211.09 aa3System. 4 – 09. AA |Tato organizace ověřuje každé 90 (90) dnů pro každý výpis informací zaznamenaných v případě, že jsou data smazána nebo je stále vyžadováno jejich použití. |[Měly by být povolené diagnostické protokoly v Key Vault.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|Ovládací prvky sítě |0865.09 m2Organizational. 13. až 09. m |Organizace (i) autorizuje připojení z informačního systému k jiným informačním systémům mimo organizaci prostřednictvím smluv o zabezpečení propojení nebo jiné formální smlouvy. (II) dokumenty jednotlivých připojení, charakteristiky rozhraní, požadavky na zabezpečení a povaha sdělených informací; (III) využívá zamítnutí všech, povoluje zásady výjimek pro povolení připojení z informačního systému do jiných informačních systémů mimo organizaci. a (IV) aplikuje pravidlo s výchozím zamítnutím, které vyřazuje veškerý provoz přes brány firewall založené na hostiteli nebo nástroje pro filtrování portů na svých koncových bodech (pracovní stanice, servery atd.), s výjimkou těchto služeb a portů, které jsou výslovně povoleny. |[Key Vault by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Provozní kontinuita a hodnocení rizik |1635.12 b1Organizational. 2 – 12. b |Aspekty zabezpečení informací o kontinuitě podnikových procesů jsou na základě identifikace událostí (nebo posloupnosti událostí), které můžou způsobit přerušení v důležitých obchodních procesech organizace (např. selhání zařízení, lidské chyby, krádež, požár, přírodní katastrofy terorismu); (II) následované posouzením rizik pro zjištění pravděpodobnosti a dopadu takových přerušení, a to v čase, škálování poškození a doba obnovení; (III) na základě výsledků posouzení rizik je vyvíjena strategie provozní kontinuity, která identifikuje celkový přístup k kontinuitě podnikových aplikací; a (IV) Po vytvoření této strategie je potvrzení poskytované správou a vytvoří se plán, který se vytvoří a schválí pro implementaci této strategie. |[Key Vault objekty by měly být obnovitelné](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
