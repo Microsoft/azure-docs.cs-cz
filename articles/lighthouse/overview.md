@@ -3,16 +3,16 @@ title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660729"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488809"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
-Azure Lighthouse umožňuje správu napříč více klienty, což umožňuje vyšší automatizaci, škálovatelnost a rozšířené zásady správného řízení napříč prostředky a klienty. S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Tato nabídka může také těžit z podnikových IT organizací, které spravují prostředky napříč více klienty.
+Azure Lighthouse umožňuje správu pro více tenantů a zajišťuje vyšší automatizaci, větší škálovatelnost a vylepšené zásady správného řízení napříč prostředky i tenanty. S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Tato nabídka může také těžit z podnikových IT organizací, které spravují prostředky napříč více klienty.
 
 ![Diagram s přehledem Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
@@ -22,7 +22,7 @@ Azure Lighthouse pomáhá efektivně a efektivně sestavovat a doručovat spravo
 
 - **Správa ve velkém měřítku**: zapojení zákazníků a operace životního cyklu pro správu zákaznických prostředků jsou jednodušší a lépe škálovatelné. Existující rozhraní API, nástroje pro správu a pracovní postupy lze použít u delegovaných prostředků bez ohledu na oblasti, ve kterých se nacházejí.
 - **Lepší viditelnost a přesnost pro zákazníky**: zákazníci budou mít lepší přehled o vašich akcích a přesnou kontrolu nad oborem, který je delegovaný pro správu, včetně možnosti odebrat přístup kompletně, i když se vaše IP adresa zachová.
-- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](/partner-center/csp-overview). Azure Lighthouse se dá integrovat do stávajících pracovních postupů a aplikací a svůj dopad na zapojení zákazníků můžete sledovat [propojením ID partnera](../cost-management-billing/manage/link-partner-id.md).
+- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](/partner-center/csp-overview). Služba Azure Lighthouse se dá integrovat do stávajících pracovních postupů a aplikací a vy můžete sledovat svůj dopad na zapojení zákazníků a získat kredit získaný partnery tím, že [propojíte ID partnera](./how-to/partner-earned-credit.md).
 
 K používání Azure Lighthouse ke správě prostředků Azure se nevztahují žádné další poplatky. Azure Lighthouse může používat libovolný zákazník nebo partner Azure.
 

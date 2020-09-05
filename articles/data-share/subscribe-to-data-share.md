@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268889"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489914"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak přijmout pozvánku ke sdílení dat pomocí Azur
 > * Zadejte cíl pro vaše data.
 > * Vytvořte předplatné pro vaši sdílenou složku dat pro plánovanou aktualizaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete moct přijmout pozvánku ke sdílení dat, musíte zřídit několik prostředků Azure, které jsou uvedené níže. 
 
 Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné všechny požadavky. 
@@ -41,7 +41,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 ### <a name="receive-data-into-a-sql-based-target"></a>Příjem dat do cíle založeného na SQL:
 
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo Azure SQL Data Warehouse. To lze provést pomocí následujících kroků: 
+* Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo ke službě Azure synapse Analytics. To lze provést pomocí následujících kroků: 
     1. Nastavte jako správce Azure Active Directory pro SQL Server.
     1. Připojte se k Azure SQL Database/datový sklad pomocí Azure Active Directory.
     1. Pomocí Editoru dotazů (Preview) spusťte následující skript, který přidá spravovanou identitu pro sdílení dat jako db_datareader, db_datawriter db_ddladmin. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 

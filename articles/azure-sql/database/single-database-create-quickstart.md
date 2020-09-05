@@ -1,32 +1,28 @@
 ---
 title: Vytvoření izolované databáze
-description: Vytvořte v Azure SQL Database izolovanou databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. Dotaz na databázi pomocí Editoru dotazů v Azure Portal.
+description: Vytvořte v Azure SQL Database izolovanou databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
-author: sachinpMSFT
-ms.author: ninarn
-ms.reviewer: carlrab, sstein, vanto
-ms.date: 04/19/2020
-ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
+ms.date: 09/03/2020
+ms.openlocfilehash: 8747e2f898b9810f50a08830728f1fab9a7f0548
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962685"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488882"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
-V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte v Azure SQL Database jednu databázi. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal.
+V tomto rychlém startu vytvoříte v Azure SQL Database [jednu databázi](single-database-overview.md) pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal.
 
-[Jediná databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost Azure SQL Database. Na [serveru](logical-servers.md)můžete spravovat izolovanou databázi, která se nachází v zadané oblasti Azure v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/manage-resource-groups-portal.md) . V tomto rychlém startu vytvoříte novou skupinu prostředků a server pro novou databázi.
 
-Izolovanou databázi můžete vytvořit na výpočetní úrovni *zřízené* nebo *neserverového serveru* . Zřízená databáze je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](purchasing-models.md). Tento rychlý Start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na Vcore](service-tiers-vcore.md) , ale můžete také zvolit model [založený na DTU](service-tiers-dtu.md) .
-
-Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založeném na vCore a má přidaný rozsah výpočetních prostředků, včetně procesoru a paměti. Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru, přečtěte si téma [Vytvoření databáze bez serveru](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier).
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -34,14 +30,234 @@ Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založen�
 
 ## <a name="create-a-single-database"></a>Vytvoření izolované databáze
 
-[!INCLUDE [sql-database-create-single-database](../includes/sql-database-create-single-database.md)]
+V tomto rychlém startu se vytvoří jedna databáze na [výpočetní úrovni bez serveru](serverless-tier-overview.md).
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Pokud chcete v Azure Portal vytvořit izolovanou databázi, spustí se v tomto rychlém startu na stránce Azure SQL.
+
+1. Přejděte na stránku [možnost vybrat nasazení systému SQL](https://portal.azure.com/#create/Microsoft.AzureSQL) .
+1. V části **databáze SQL**ponechte **typ prostředku** nastavený na izolovaná **databáze**a vyberte **vytvořit**.
+
+   ![Přidat do Azure SQL](./media/single-database-create-quickstart/select-deployment.png)
+
+1. Na kartě **základy** formuláře **vytvořit SQL Database** v části **Project Details (podrobnosti projektu**) vyberte požadované **předplatné**Azure.
+1. V případě **skupiny prostředků**vyberte **vytvořit novou**, zadejte *myResourceGroup*a vyberte **OK**.
+1. Jako **název databáze** zadejte *mySampleDatabase*.
+1. Pro možnost **Server**vyberte **vytvořit novou**a vyplňte formulář **nového serveru** následujícími hodnotami:
+   - **Název serveru**: zadejte *MySQLServer*a přidejte některé znaky pro jedinečnost. Nemůžeme zadat přesný název serveru, protože názvy serverů musí být globálně jedinečné pro všechny servery v Azure, ne jen jedinečné v rámci předplatného. Zadejte tak něco jako mysqlserver12345 a portál vám umožní zjistit, jestli je k dispozici, nebo ne.
+   - **Přihlašovací jméno správce serveru**: zadejte *azureuser*.
+   - **Heslo**: zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
+   - **Umístění**: v rozevíracím seznamu vyberte umístění.
+
+   Vyberte **OK**.
+
+1. Nechte **použít elastický fond SQL** nastavený na **ne**.
+1. V části **COMPUTE + úložiště**vyberte **Konfigurovat databázi**.
+1. V tomto rychlém startu se používá databáze bez serveru, vyberte možnost bez **serveru**a pak vyberte **použít**. 
+
+      ![Konfigurace databáze bez serveru](./media/single-database-create-quickstart/configure-database.png)
+
+1. V dolní části stránky vyberte možnost **Další: sítě** .
+
+   ![Nová databáze SQL – karta Basic](./media/single-database-create-quickstart/new-sql-database-basics.png)
+
+1. Na kartě **sítě** pro **metodu připojení**vyberte **veřejný koncový bod**.
+1. Pro **pravidla brány firewall**nastavte **Přidat aktuální IP adresu klienta** na **Ano**. Nechejte **službám a prostředkům Azure přístup k tomuto serveru** nastavenému na **ne**.
+1. Vyberte **Další: Další nastavení** v dolní části stránky.
+
+   ![Karta sítě](./media/single-database-create-quickstart/networking.png)
+  
+
+1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data**vyberte **Ukázka**. Tím se vytvoří ukázková databáze AdventureWorksLT, aby byly k dispozici některé tabulky a data pro dotazování a experimentování s, a to na rozdíl od prázdné prázdné databáze.
+1. V dolní části stránky vyberte **zkontrolovat + vytvořit** :
+
+   ![Karta Další nastavení](./media/single-database-create-quickstart/additional-settings.png)
+
+1. Po kontrole vyberte na stránce **Revize + vytvořit** možnost **vytvořit**.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+
+## <a name="set-parameter-values"></a>Nastavení hodnot parametrů
+
+Následující hodnoty se používají v dalších příkazech k vytvoření databáze a požadovaných prostředků. Názvy serverů musí být globálně jedinečné napříč všemi verzemi Azure, takže se k vytvoření názvu serveru používá funkce $RANDOM. Nahraďte hodnoty 0.0.0.0 v rozsahu IP adres tak, aby odpovídaly vašemu konkrétnímu prostředí.
+
+```azurecli-interactive
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup
+location=eastus
+
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567!
+
+# Set a server name that is unique to Azure DNS (<server_name>.database.windows.net)
+serverName=server-$RANDOM
+
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
+```
+
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+
+```azurecli-interactive
+az group create --name $resourceGroupName --location $location
+```
+
+## <a name="create-a-server"></a>Vytvoření serveru
+
+Vytvořte server pomocí příkazu [AZ SQL Server Create](/cli/azure/sql/server) .
+
+```azurecli-interactive
+az sql server create \
+    --name $serverName \
+    --resource-group $resourceGroupName \
+    --location $location  \
+    --admin-user $adminlogin \
+    --admin-password $password
+```
+
+
+## <a name="configure-a-firewall-rule-for-the-server"></a>Konfigurace pravidla brány firewall pro server
+
+Pomocí příkazu [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) vytvořte pravidlo brány firewall.
+
+```azurecli-interactive
+az sql server firewall-rule create \
+    --resource-group $resourceGroupName \
+    --server $serverName \
+    -n AllowYourIp \
+    --start-ip-address $startip \
+    --end-ip-address $endip
+```
+
+
+## <a name="create-a-single-database"></a>Vytvoření izolované databáze
+
+Vytvořte databázi pomocí příkazu [AZ SQL DB Create](/cli/azure/sql/db) . Následující kód vytvoří
+
+
+```azurecli-interactive
+az sql db create \
+    --resource-group $resourceGroupName \
+    --server $serverName \
+    --name mySampleDatabase \
+    --sample-name AdventureWorksLT \
+    --edition GeneralPurpose \
+    --compute-model Serverless \
+    --family Gen5 \
+    --capacity 2
+```
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Pomocí Windows PowerShellu můžete vytvořit skupinu prostředků, server a samostatnou databázi.
+
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+
+## <a name="set-parameter-values"></a>Nastavení hodnot parametrů
+
+Následující hodnoty se používají v dalších příkazech k vytvoření databáze a požadovaných prostředků. Názvy serverů musí být globálně jedinečné ve všech verzích Azure, aby bylo možné vytvořit název serveru pomocí rutiny Get-Random. Nahraďte hodnoty 0.0.0.0 v rozsahu IP adres tak, aby odpovídaly vašemu konkrétnímu prostředí.
+
+```azurepowershell-interactive
+   # Set variables for your server and database
+   $resourceGroupName = "myResourceGroup"
+   $location = "eastus"
+   $adminLogin = "azureuser"
+   $password = "Azure1234567!"
+   $serverName = "mysqlserver-$(Get-Random)"
+   $databaseName = "mySampleDatabase"
+
+   # The ip address range that you want to allow to access your server
+   $startIp = "0.0.0.0"
+   $endIp = "0.0.0.0"
+
+   # Show randomized variables
+   Write-host "Resource group name is" $resourceGroupName
+   Write-host "Server name is" $serverName
+```
+
+
+## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
+
+Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+
+```azurepowershell-interactive
+   Write-host "Creating resource group..."
+   $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
+   $resourceGroup
+```
+
+
+## <a name="create-a-server"></a>Vytvoření serveru
+
+Vytvořte server pomocí rutiny [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) .
+
+```azurepowershell-interactive
+  Write-host "Creating primary server..."
+   $server = New-AzSqlServer -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -Location $location `
+      -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+      -ArgumentList $adminLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+   $server
+```
+
+## <a name="create-a-firewall-rule"></a>Vytvoření pravidla brány firewall
+
+Vytvořte pravidlo brány firewall serveru pomocí rutiny [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) .
+
+```azurepowershell-interactive
+   Write-host "Configuring server firewall rule..."
+   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+   $serverFirewallRule
+```
+
+
+## <a name="create-a-single-database"></a>Vytvoření izolované databáze
+
+Vytvořte izolovanou databázi pomocí rutiny [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .
+
+```azurepowershell-interactive
+   Write-host "Creating a gen5 2 vCore serverless database..."
+   $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -DatabaseName $databaseName `
+      -Edition GeneralPurpose `
+      -ComputeModel Serverless `
+      -ComputeGeneration Gen5 `
+      -VCore 2 `
+      -MinimumCapacity 2 `
+      -SampleName "AdventureWorksLT"
+   $database
+```
+
+---
+
+
 
 ## <a name="query-the-database"></a>Dotazování databáze
 
-Po vytvoření databáze můžete použít vestavěný **Editor dotazů** v Azure Portal pro připojení k databázi a dotazování na data.
+Po vytvoření databáze můžete použít **Editor dotazů (Preview)** v Azure Portal pro připojení k databázi a dotazování na data.
 
 1. Na portálu vyhledejte a vyberte **databáze SQL**a pak ze seznamu vyberte svou databázi.
-1. Na stránce **SQL Database** pro vaši databázi v nabídce vlevo vyberte **Editor dotazů (Preview)** .
+1. Na stránce databáze v levé nabídce vyberte **Editor dotazů (Preview)** .
 1. Zadejte přihlašovací údaje správce serveru a vyberte **OK**.
 
    ![Přihlášení k editoru dotazů](./media/single-database-create-quickstart/query-editor-login.png)
@@ -67,7 +283,7 @@ Ponechte skupinu prostředků, server a izolovanou databázi, abyste přešli na
 
 Po dokončení používání těchto prostředků můžete odstranit vytvořenou skupinu prostředků, která také odstraní Server a samostatnou databázi.
 
-### <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azure Portal:
 
@@ -75,12 +291,12 @@ Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azur
 1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
 1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
 
-### <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz rozhraní příkazového řádku Azure a použijte název vaší skupiny prostředků:
 
 ```azurecli-interactive
-az group delete --name <your resource group>
+az group delete --name $resourceGroupName
 ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -88,7 +304,7 @@ az group delete --name <your resource group>
 Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující rutinu PowerShellu s použitím názvu vaší skupiny prostředků:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name <your resource group>
+Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
 ---

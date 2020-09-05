@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378966"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481371"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Ověřování pro Azure Key Vault
 
 Azure Key Vault umožňuje ukládat tajné klíče a řídit jejich distribuci v centralizovaném, zabezpečeném cloudovém úložišti, což eliminuje nutnost ukládat přihlašovací údaje v aplikacích. Pro přístup k těmto tajným klíčům se aplikace potřebují ověřit pouze pomocí Key Vault za běhu.
 
-## <a name="app-identity-and-service-principals"></a>Identita aplikace a instanční objekty
+## <a name="app-identity-and-security-principals"></a>Identita aplikace a objekty zabezpečení
 
 Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), která zodpovídá za ověřování identity libovolného **objektu zabezpečení**.
 
@@ -40,7 +40,7 @@ Pro aplikace existují dva způsoby, jak získat instanční objekt:
 
 * Pokud nemůžete použít spravovanou identitu, můžete místo toho aplikaci **zaregistrovat** u svého TENANTA Azure AD, jak je popsáno v tématu [rychlý Start: registrace aplikace s platformou identity Azure](/azure/active-directory/develop/quickstart-register-app). Registrace vytvoří také druhý objekt aplikace, který identifikuje aplikaci napříč všemi klienty.
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>Autorizovat instanční objekt pro přístup k Key Vault
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Autorizovat objekt zabezpečení pro přístup k Key Vault
 
 Key Vault pracuje se dvěma různými úrovněmi autorizace:
 
