@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420485"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500228"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack na hraničních zařízeních pomocí Azure CLI a Pythonu
 
@@ -45,7 +45,7 @@ Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 
 Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí rozhraní příkazového řádku Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
@@ -342,7 +342,8 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   Poznamenejte si `id` `tenantId` hodnoty a tak, aby odpovídaly vašemu ID předplatného Azure Resource Manager a Azure Resource Manager ID tenanta a budou se používat v pozdějším kroku.
+       
    Následující proměnné prostředí je třeba nastavit tak, aby fungovaly jako *instanční objekt*:
 
    ```
@@ -352,7 +353,7 @@ Než začnete vytvářet a spravovat virtuální počítače na Azure Stack hran
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Vaše ID tenanta Azure Resource Manager, Azure Resource Manager ID klienta a Azure Resource Manager ID předplatného jsou pevně zakódované a mají stejné hodnoty ve všech Azure Stack hraničních zařízeních. Azure Resource Manager tajný klíč klienta je Azure Resource Manager heslo, které jste nastavili.
+   Vaše ID klienta Azure Resource Manager je pevně zakódováno. Ve výstupu `az login` příkazu, který jste provedli dříve, se nachází vaše Azure Resource Manager ID tenanta a ID Předplatného Azure Resource Manager. Azure Resource Manager tajný klíč klienta je Azure Resource Manager heslo, které jste nastavili.
 
    Další informace najdete v tématu [Azure Resource Manager heslo](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
 

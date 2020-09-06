@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268906"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500279"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Vytváření vlastních imagí virtuálních počítačů pro zařízení Azure Stack Edge
 
@@ -52,7 +52,22 @@ Chcete-li vytvořit bitovou kopii virtuálního počítače se systémem Linux, 
 
 1. Vytvoření virtuálního počítače s Linuxem Další informace najdete v kurzu postup [: vytváření a správa virtuálních počítačů se systémem Linux pomocí Azure CLI](../virtual-machines/linux/tutorial-manage-vm.md).
 
-2. [Stáhněte si existující disk s operačním systémem](../virtual-machines/linux/download-vhd.md).
+1. Zrušte zřízení virtuálního počítače. Použijte agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v tématu [Principy a použití agenta Azure Linux](../virtual-machines/extensions/agent-linux.md).
+
+    1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
+    2. V okně SSH zadejte následující příkaz:
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > Spusťte tento příkaz jenom na virtuálním počítači, který budete zachytit jako image. Tento příkaz nezaručuje, že image je smazána u všech citlivých informací, nebo je vhodná pro redistribuci. `+user`Parametr také odebere naposledy zřízený uživatelský účet. Pokud chcete zachovat přihlašovací údaje uživatelského účtu ve virtuálním počítači, používejte jenom `-deprovision` .
+     
+    3. Pokračujte zadáním **y** . `-force`Chcete-li se tomuto kroku potvrzení vyhnout, můžete přidat parametr.
+    4. Po dokončení příkazu zadejte **Exit** a zavřete tak klienta ssh.  Virtuální počítač bude v tuto chvíli i nadále spuštěn.
+
+
+1. [Stáhněte si existující disk s operačním systémem](../virtual-machines/linux/download-vhd.md).
 
 Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge. Vlastní image pro Linux můžete vytvořit pomocí následujících dvou Azure Marketplace imagí:
 
@@ -61,7 +76,7 @@ Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuá
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server je nejoblíbenější Linux pro cloudová prostředí na světě.|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux je jednou z nejoblíbenějších distribucí systému Linux.     |credativ|
 
-Úplný seznam imagí Azure Marketplace, které by mohly fungovat (dosud netestované), najdete v [Azure Marketplace položkách dostupných pro centrum Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+Úplný seznam Azure Marketplacech imagí, které by mohly fungovat (dosud netestované), najdete v [Azure Marketplace položkách, které jsou k dispozici pro Azure Stack hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
 
 
 ## <a name="next-steps"></a>Další kroky
