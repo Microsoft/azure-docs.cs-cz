@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310857"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505450"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Rychlý Start: konfigurace řešení IoT
 
@@ -45,9 +45,9 @@ Po definování všech vztahů prostředků Azure Security Center pro IoT využ�
 Pokud chcete přidat nový prostředek do řešení IoT, udělejte toto:
 
 1. Otevřete **IoT Hub** v Azure Portal.
-1. V nabídce **zabezpečení** v nabídce vlevo vyberte a otevřete **prostředky** .
-1. Vyberte **Upravit** a zvolte skupiny prostředků, které patří do vašeho řešení IoT.
-1. Klikněte na tlačítko **Add** (Přidat).
+1. V levé nabídce vyberte a otevřete **Nastavení** v části **zabezpečení** a pak vyberte **monitorované prostředky**.
+1. Vyberte **Upravit** a vyberte monitorované prostředky, které patří do vašeho řešení IoT.
+1. Klikněte na **Přidat**.
 
 Blahopřejeme! Přidali jste do řešení IoT novou skupinu prostředků.
 

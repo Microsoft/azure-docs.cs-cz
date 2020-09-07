@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: 'R, Python a T-SQL s SQL Serverem'
       href: walkthroughs-sql-server.md
-    - name: T-SQL a Python s SQL DW
+    - name: T-SQL a Python se službou Azure Synapse Analytics
       href: walkthroughs-sql-data-warehouse.md
 - name: Pomůcky a nástroje
   items:

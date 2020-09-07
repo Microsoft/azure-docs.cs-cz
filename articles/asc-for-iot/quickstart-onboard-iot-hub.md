@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310749"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504039"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Security Center pro službu IoT v IoT Hub
 
@@ -52,8 +52,8 @@ V rámci zabezpečení řešení IoT se shromažďují a ukládají IP adresy p�
 
 Povolení nebo zakázání shromažďování dat IP adres:
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** .
-1. Klikněte na obrazovku **Nastavení** a podle potřeby upravte nastavení geografického umístění nebo manipulace s IP adresami.
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
+1. Vyberte obrazovku **shromažďování dat** a podle potřeby upravte nastavení geografického umístění nebo manipulace s IP adresami.
 
 ### <a name="log-analytics-creation"></a>Vytváření Log Analytics
 
@@ -61,8 +61,8 @@ Když je zapnutá Azure Security Center pro IoT, vytvoří se výchozí pracovn�
 
 Změna konfigurace pracovního prostoru Log Analytics:
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** .
-1. Klikněte na obrazovku **Nastavení** a upravte konfiguraci pracovního prostoru Log Analytics nastavení podle vašich přání.
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
+1. Klikněte na obrazovku **shromažďování dat** a upravte konfiguraci pracovního prostoru Log Analytics nastavení podle vašich přání.
 
 ### <a name="customize-your-iot-security-solution"></a>Přizpůsobení řešení zabezpečení IoT
 
@@ -70,8 +70,8 @@ Ve výchozím nastavení zapnutí Azure Security Center pro řešení IoT automa
 
 Postup zapnutí nebo vypnutí Azure Security Center služby IoT na konkrétní IoT Hub:
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** .
-1. V rámci vašeho předplatného Azure klikněte na obrazovku **Nastavení** a upravte nastavení zabezpečení libovolného centra IoT.
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
+1. Vyberte obrazovku **shromažďování dat** a v rámci vašeho předplatného Azure upravte nastavení zabezpečení libovolného centra IoT.
 
 ## <a name="next-steps"></a>Další kroky
 

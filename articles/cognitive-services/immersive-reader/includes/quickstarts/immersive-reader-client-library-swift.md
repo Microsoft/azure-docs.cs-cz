@@ -3,18 +3,18 @@ title: Rychlý Start knihovny pro moderní čtečku SWIFT
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a přidáte funkce rozhraní API pro moderní čtečku.
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
-ms.author: pasta
-ms.openlocfilehash: 212aa3613335fe60bab2fa3d4f632577418a7d41
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.author: nitinme
+ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602236"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505374"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 

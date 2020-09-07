@@ -262,6 +262,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: Katalog upozornění služby Azure AD Connect Health
           href: how-to-connect-health-alert-catalog.md
+        - name: Načítání dat ve službě Azure AD Connect Health
+          href: how-to-connect-health-data-retrieval.md
     - name: Správa synchronizace Azure AD Connect
       items:
         - name: Pracovní server a zotavení po havárii

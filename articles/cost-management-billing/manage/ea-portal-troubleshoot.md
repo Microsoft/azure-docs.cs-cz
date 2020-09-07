@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687395"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294403"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Řešení potíží s přístupem k portálu Azure EA
 
@@ -32,7 +32,7 @@ Portál Azure EA slouží k udělení přístupu uživatelům s různými úrovn
 - Pracovní nebo školní účet napříč tenanty: Pro organizace, které si nastavily službu Active Directory s federací na cloud a budou mít účty ve více tenantech
 - Smíšený účet: Umožňuje přidávat uživatele s účtem Microsoft nebo pracovním či školním účtem (případně oběma typy účtů).
 
-První pracovní nebo školní účet přidaný do registrace určí _výchozí_ nebo _hlavní_ doménu. Pokud budete chtít přidat pracovní nebo školní účet s jiným tenantem, musíte úroveň ověřování u registrace změnit na ověřování napříč tenanty.
+První pracovní nebo školní účet přidaný do registrace určuje _výchozí_ doménu. Pokud budete chtít přidat pracovní nebo školní účet s jiným tenantem, musíte úroveň ověřování u registrace změnit na ověřování napříč tenanty.
 
 Aktualizace úrovně ověřování:
 

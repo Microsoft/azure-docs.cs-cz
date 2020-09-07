@@ -36,6 +36,8 @@
   items:
     - name: Vytvoření pracovního prostoru Synapse s využitím webu Azure Portal
       href: quickstart-create-workspace.md
+    - name: Nasazení s využitím šablony
+      href: quickstart-deployment-template-workspaces.md
     - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
       href: quickstart-create-workspace-cli.md
     - name: Použití sady Synapse Studio
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Výkon Apache Sparku
               href: ./spark/apache-spark-performance.md
+            - name: Optimalizace výkonu pro Apache Spark s využitím indexů hyperprostoru
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Chování automatického škálování Apache Sparku
               href: ./spark/apache-spark-autoscale.md
         - name: Vývoj

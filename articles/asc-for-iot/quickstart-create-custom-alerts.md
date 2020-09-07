@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310838"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505433"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Rychlý Start: vytvoření vlastních výstrah
 
@@ -67,8 +67,8 @@ Skupiny zabezpečení použijte k seskupení zařízení do logických kategori�
 
 ## <a name="customize-an-alert"></a>Přizpůsobení výstrahy
 
-1. Otevřete IoT Hub.
-1. V části **zabezpečení** klikněte na **vlastní výstrahy** .
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** . 
+1. Klikněte na **vlastní výstrahy**.
 1. Vyberte skupinu zabezpečení, pro kterou chcete použít vlastní nastavení.
 1. Klikněte na **Přidat vlastní výstrahu**.
 1. V rozevíracím seznamu vyberte vlastní výstrahu.

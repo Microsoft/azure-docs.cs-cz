@@ -312,6 +312,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Trénování s využitím vlastní image Dockeru
+          href: how-to-train-with-custom-image.md
         - name: Sledování a monitorování trénování
           items:
             - name: 'Spuštění, monitorování nebo zrušení běhů'

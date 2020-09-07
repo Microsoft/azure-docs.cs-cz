@@ -3,17 +3,17 @@ title: Nastavení integrace AWS se službou Azure Cost Management
 description: Tento článek vás provede nastavením a konfigurací integrace sestavy nákladů a využití AWS se službou Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 639d63df060a680e8c135a9be054ac412d1ca8dd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684996"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266064"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestavy nákladů a využití AWS
 
@@ -71,7 +71,6 @@ Použijte průvodce Vytvořit novou roli:
 5. Jako **Account ID** (ID účtu) zadejte **432263259397**.
 6. V části **Options** (Možnosti) vyberte **Require external ID (Best practice when a third party will assume this role)** (Vyžadovat externí ID (doporučený postup, když bude tuto roli zastávat třetí strana)).
 7. Jako **External ID** zadejte externí ID, což je sdílené heslo mezi rolí AWS a službou Azure Cost Management. Stejné externí ID se používá také na stránce **Nový konektor** ve službě Cost Management. Microsoft doporučuje, abyste při zadávání externího ID použili zásady pro silné heslo.
-
     > [!NOTE]
     > Neměňte výběr možnosti **Vyžadovat MFA**. Měla by zůstat nezaškrtnutá.
 8. Vyberte **Další: Oprávnění**.
@@ -148,23 +147,23 @@ JSON obsahující zásadu by měl vypadat přibližně jako v následujícím p�
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Nastavení nového konektoru AWS v Azure
+## <a name="set-up-a-new-connector-for-aws-in-azure"></a>Nastavení nového konektoru pro AWS v Azure
 
 Pomocí následujících informací vytvoříte konektor AWS a začnete monitorovat náklady na AWS:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do části **Cost Management a fakturace** > **Cost Management**.
-3. V části **Nastavení** vyberte **Cloudové konektory (Preview)** .  
-    ![Příklad znázorňující nastavení Cloudové konektory (Preview)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. Vyberte **+ Přidat** v horní části stránky a vytvořte konektor.
-5. Na stránce **Vytvořit konektor AWS** zadejte do pole **Zobrazovaný název** název konektoru.  
-    ![Příklad stránky pro vytvoření konektoru AWS](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Volitelně můžete vybrat výchozí skupinu pro správu. Budou se do ní ukládat všechny zjištěné propojené účty. Můžete ji nastavit později.
-7. V části **Fakturace** zaškrtněte políčko **Automaticky účtovat poplatek 1 % obecné dostupnosti**, pokud chcete zajistit nepřetržitý provoz po vypršení platnosti verze Preview. Pokud vyberete tuto automatickou možnost, musíte vybrat předplatné pro fakturaci.
-8. Jako **Název ARN role** zadejte hodnotu, kterou jste použili při nastavování role v AWS.
-9. Jako **Externí ID** zadejte hodnotu, kterou jste použili při nastavování role v AWS.
-10. Jako **Název sestavy** zadejte název, který jste vytvořili v AWS.
-11. Vyberte **Další** a potom vyberte **Vytvořit**.
+3. V části **Nastavení** vyberte **Konektory pro AWS**.  
+4. Vyberte **+ Přidat** v horní části stránky a vytvořte konektor.  
+    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="Příklad znázorňující nastavení Konektory pro AWS" :::
+1. Na stránce **Vytvořit konektor** do pole **Zobrazovaný název** zadejte název konektoru.  
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="Příklad stránky pro vytvoření konektoru AWS" :::
+1. Volitelně můžete vybrat výchozí skupinu pro správu. Budou se do ní ukládat všechny zjištěné propojené účty. Můžete ji nastavit později.
+1. Pokud chcete zajistit nepřetržitý provoz, v části **Fakturace** nastavte **Automaticky prodloužit** na **Zapnuto**. Pokud vyberete tuto automatickou možnost, musíte vybrat předplatné pro fakturaci.
+1. Jako **Název ARN role** zadejte hodnotu, kterou jste použili při nastavování role v AWS.
+1. Jako **Externí ID** zadejte hodnotu, kterou jste použili při nastavování role v AWS.
+1. Jako **Název sestavy** zadejte název, který jste vytvořili v AWS.
+1. Vyberte **Další** a potom vyberte **Vytvořit**.
 
 Může trvat několik hodin, než se objeví nové rozsahy AWS, konsolidovaný účet AWS, propojené účty AWS a jejich data nákladů.
 
@@ -178,16 +177,19 @@ Přiřazením oprávnění konektoru uživatelům po zjišťování se nepřiřa
 - Ověřte, že se do výběru rozsahu přidaly nové rozsahy. Vyberte **Aktualizovat** a zobrazte si nejnovější data.
 - Na stránce **Cloudové konektory** vyberte svůj konektor a vyberte **Přejít na fakturační účet**, abyste mohli přiřadit propojený účet ke skupinám pro správu.
 
-## <a name="manage-cloud-connectors"></a>Správa cloudových konektorů
+> [!NOTE]
+> Skupiny pro správu se v současnosti nepodporují pro zákazníky se Smlouvou se zákazníkem Microsoftu (MCA). Zákazníci se smlouvou MCA si mohou vytvořit tento konektor a zobrazit data AWS. Zákazníci se smlouvou MCA si ale nemohou zobrazovat náklady na Azure a náklady na AWS společně v rámci jedné skupiny pro správu.
 
-Když vyberete konektor na stránce **Cloudové konektory**, můžete provést tyto akce:
+## <a name="manage-aws-connectors"></a>Správa konektorů AWS
+
+Když vyberete konektor na stránce **Konektory pro AWS**, můžete provést tyto akce:
 
 - Vybráním možnosti **Přejít na fakturační účet** zobrazíte informace o konsolidovaném účtu AWS.
 - Vybráním služby **Access Control** můžete spravovat přiřazení role pro konektor.
 - Vybráním možnosti **Upravit** můžete aktualizovat konektor. Číslo účtu AWS nemůžete změnit, protože se zobrazuje v názvu ARN role. Můžete ale vytvořit nový konektor.
 - Vybráním možnosti **Ověřit** znovu spustíte ověřovací test, abyste se ujistili, že služba Cost Management smí shromažďovat data pomocí nastavení konektoru.
 
-![Ukázkový seznam vytvořených konektorů AWS](./media/aws-integration-setup-configure/list-aws-connectors.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="Příklad podrobností konektoru AWS" :::
 
 ## <a name="set-up-azure-management-groups"></a>Nastavení skupin pro správu Azure
 
@@ -197,9 +199,9 @@ Pokud chcete rozdělit náklady, můžete vytvořit skupinu pro správu, která 
 
 ## <a name="set-up-an-aws-consolidated-account"></a>Nastavení konsolidovaného účtu AWS
 
-Konsolidovaný účet AWS spojuje fakturaci a platby několika účtů AWS. Funguje taky jako propojený účet AWS.
+Konsolidovaný účet AWS spojuje fakturaci a platby několika účtů AWS. Funguje taky jako propojený účet AWS. Podrobnosti o konsolidovaném účtu AWS můžete zobrazit pomocí odkazu na stránce konektoru AWS. 
 
-![Ukázka podrobností pro konsolidovaný účet AWS](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="Ukázka podrobností pro konsolidovaný účet AWS" :::
 
 Na této stránce můžete provést následující:
 
@@ -221,7 +223,7 @@ Na této stránce můžete provést následující:
 - Vybráním možnosti **Aktualizovat** můžete aktualizovat přidružení propojeného účtu AWS ke skupině pro správu.
 - Vybráním služby **Access Control** můžete nastavit přiřazení role pro rozsah.
 
-![Příklad stránky propojeného účtu AWS](./media/aws-integration-setup-configure/aws-linked-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="Příklad stránky propojeného účtu AWS" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>Oprávnění pro propojený účet AWS
 

@@ -36,7 +36,7 @@
     - name: Azure Lighthouse a spravované aplikace Azure
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md
-- name: Praktičtí průvodci
+- name: Návody
   items:
     - name: Onboarding zákazníků do služby Azure Lighthouse
       displayName: resource management
@@ -47,6 +47,9 @@
     - name: Zobrazení a správa zákazníků
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Propojení ID partnera
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
     - name: Odebrání přístupu k delegování
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md

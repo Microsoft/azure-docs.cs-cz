@@ -114,6 +114,8 @@
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Zabezpečení prostředků indexeru
+          href: search-indexer-securing-resources.md
 - name: Návody
   items:
     - name: Vytváření indexů a konstrukcí
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filtrování identit uživatelů
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Odchozí zabezpečení (indexery)
+          items:
+            - name: Přístup přes rozsah IP adres
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: Přístup prostřednictvím výjimky důvěryhodné služby
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: Přístup prostřednictvím privátních koncových bodů
+              href: search-indexer-howto-access-private.md
     - name: Spravovat
       items:
         - name: Portál
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Search 2020-06-30
+        - name: Rozhraní API pro hledání (stabilní)
           href: /rest/api/searchservice
-        - name: Search 2020-06-30-Preview
+        - name: Rozhraní API pro hledání (Preview)
           href: /rest/api/searchservice/index-preview
-        - name: Management 2020-03-13
+        - name: Rozhraní API pro správu (stabilní)
           href: /rest/api/searchmanagement
-        - name: Management 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Rozhraní API pro správu (Preview)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search API

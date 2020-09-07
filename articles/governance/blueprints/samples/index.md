@@ -1,14 +1,14 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
-ms.date: 07/01/2020
+ms.date: 07/10/2020
 ms.topic: sample
-ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181552"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488350"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -26,7 +26,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard DoD Impact Level 5. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard FedRAMP Moderate. |
 | [FedRAMP High](./fedramp-h/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard FedRAMP High. |
-| [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard HIPAA HITRUST. |
+| [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard HIPAA HITRUST. |
 | [IRS 1075](./irs-1075/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů IRS 1075.|
 | [ISO 27001](./iso27001/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů ISO 27001. |
 | [ISO 27001: Sdílené služby](./iso27001-shared/index.md) | Poskytuje sadu kompatibilních vzorů infrastruktury a ochranné mantinely zásad, které pomáhají zajistit osvědčení ISO 27001. |
