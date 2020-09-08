@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření, výuka a publikování znalostní báze Know
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Tento článek obsahuje příklad vytvoření QnA Maker znalostní báze z jednoduché webové stránky s nejčastějšími dotazy pro odpovědi na otázky QnA Maker.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540750"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535845"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -89,7 +89,7 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 
 ## <a name="publish-the-knowledge-base"></a>Publikování znalostní báze
 
-Při publikování znalostní báze se obsah vaší znalostní báze přesune z `test` indexu do `prod` indexu ve službě Azure Search.
+Když publikujete znalostní bázi, obsah znalostní báze se přesune z `test` indexu do `prod` indexu ve službě Azure Search.
 
 ![Snímek obrazovky s přesunutím obsahu znalostní báze](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 

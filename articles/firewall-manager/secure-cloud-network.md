@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079111"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535998"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Kurz: zabezpečení virtuálního centra pomocí správce Azure Firewall
 
@@ -110,30 +110,6 @@ Nyní můžete vytvořit partnerský vztah k virtuálním sítím rozbočovač a
 
 Opakujte pro připojení k virtuální síti **paprske-02** : název připojení – **střed – paprskový-02**
 
-### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurace směrování centra a paprsků
-
-Z Azure Portal otevřete Cloud Shell a spusťte následující Azure PowerShell ke konfiguraci požadovaného směrování centra a paprsků. Připojení s partnerským paprskem/větví musí nastavovat rozšíření na **žádné**. To brání komunikaci mezi paprsky a místo toho směruje provoz do brány firewall pomocí výchozí trasy.
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
-
 ## <a name="deploy-the-servers"></a>Nasazení serverů
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
@@ -144,7 +120,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
    |---------|---------|
    |Skupina prostředků     |**FW – správce**|
    |Název virtuálního počítače     |**SRV – zatížení-01**|
-   |Oblast     |**VYLEPŠENÍ Východní USA)**|
+   |Region     |**VYLEPŠENÍ Východní USA)**|
    |Uživatelské jméno správce     |Zadejte uživatelské jméno.|
    |Heslo     |Zadejte heslo.|
 
