@@ -20,7 +20,7 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
     ![Výběr prostředí](../../../media/quickstarts/env-selector.png)
-1. Spusťte následující příkaz:
+1. Spusťte následující příkaz.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"

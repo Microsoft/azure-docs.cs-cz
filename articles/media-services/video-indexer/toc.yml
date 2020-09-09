@@ -102,6 +102,7 @@
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Oblasti
+      displayName: location
       href: regions.md
     - name: Nejčastější dotazy
       href: faq.md

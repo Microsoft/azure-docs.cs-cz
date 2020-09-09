@@ -4,14 +4,6 @@
   items:
     - name: Co je brána Azure Firewall?
       href: overview.md
-- name: Kurzy
-  items:
-    - name: Nasazení a konfigurace
-      href: tutorial-firewall-deploy-portal.md
-    - name: Nasazení v hybridní síti
-      href: tutorial-hybrid-portal.md
-    - name: Filtrování příchozího provozu pomocí DNAT
-      href: tutorial-firewall-dnat.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -24,6 +16,14 @@
     - name: Nasazení s využitím Zón dostupnosti – šablona ARM
       displayName: Resource Manager
       href: deploy-template.md
+- name: Kurzy
+  items:
+    - name: Nasazení a konfigurace
+      href: tutorial-firewall-deploy-portal.md
+    - name: Nasazení v hybridní síti
+      href: tutorial-hybrid-portal.md
+    - name: Filtrování příchozího provozu pomocí DNAT
+      href: tutorial-firewall-dnat.md
 - name: ukázky
   items:
     - name: Azure PowerShell
