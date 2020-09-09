@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697395"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612053"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
@@ -28,12 +28,12 @@ V tomto kurzu se naučíte:
 > * Testovat a spustit úlohu
 > * Vizualizovat výsledky v Power BI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, proveďte následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 * Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).
 * Budete potřebovat účet Power BI.
 
@@ -43,7 +43,7 @@ Než bude Stream Analytics moct analyzovat datový proud podvodných volání, m
 
 Pomocí následujícího postupu vytvořte centrum událostí a odešlete do něj data volání:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs**.
 
    ![Vytvoření centra událostí Azure na portálu](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -51,7 +51,7 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
 
    |**Nastavení**  |**Navrhovaná hodnota** |**Popis**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
+   |Název     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Your subscription\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
    |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
    |Umístění     |   USA – západ 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
@@ -99,7 +99,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
    * Nastavte hodnotu klíče *EventHubName* na hodnotu EntityPath v připojovacím řetězci.
    * Nastavte hodnotu klíče *Microsoft. ServiceBus. ConnectionString* na připojovací řetězec bez hodnoty EntityPath (Nezapomeňte odebrat středník, který ho předchází).
 
-4. Uložte soubor.
+4. Soubor uložte.
 5. Dále otevřete příkazové okno a přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator. Potom zadejte následující příkaz:
 
    ```cmd
@@ -113,7 +113,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
 
-   |**Záznam**  |**Definice**  |
+   |**Záznam**  |**Definition**  |
    |---------|---------|
    |CallrecTime    |  Časové razítko pro počáteční čas volání.       |
    |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie).       |
@@ -185,7 +185,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
 
    ![Konfigurace výstupu Stream Analytics](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**.
+4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**. Pokud chcete použít spravovanou identitu, přečtěte si téma [použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definování dotazu pro analýzu vstupních dat
 

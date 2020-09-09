@@ -4,15 +4,15 @@ description: Popisuje řešení Azure HPC cache, což je přístupové akcelerá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053684"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611755"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
@@ -65,11 +65,11 @@ Navštivte stránku [globální infrastruktura Azure podle oblastí](https://azu
 * USA (Gov) – Arizona
 * USA (Gov) – Virginia
 
-## <a name="service-availability"></a>Dostupnost služby
+<!-- ## Service availability
 
-Musíte požádat o přístup pro každé předplatné, které budete používat s mezipamětí Azure HPC. Toto omezení pomáhá zajistit kvalitu služby.
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-Vyžádejte si přístup vyplněním [tohoto formuláře](https://aka.ms/onboard-hpc-cache). Po přidání předplatného do seznamu přístupu můžete vytvořit mezipaměti.
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510170"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612780"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie kumulativního nasazení pro virtuální počítače Azure Linux
 
-Azure DevOps je integrovaná služba Azure, která automatizuje každou část procesu DevOps pro libovolný prostředek Azure. Ať už vaše aplikace používá virtuální počítače, webové aplikace, Kubernetes nebo jakýkoli jiný prostředek, můžete implementovat infrastrukturu jako kód (IaaC), průběžnou integraci, průběžné testování, průběžné doručování a nepřetržité monitorování s využitím Azure a Azure DevOps.
+Azure DevOps je integrovaná služba Azure, která automatizuje každou část procesu DevOps pro libovolný prostředek Azure. Ať už vaše aplikace používá virtuální počítače, webové aplikace, Kubernetes nebo jakýkoli jiný prostředek, můžete implementovat infrastrukturu jako kód (IaC), průběžnou integraci, průběžné testování, průběžné doručování a nepřetržité monitorování s využitím Azure a Azure DevOps.
 
 ![Azure Portal s Azure DevOps vybraný v části služby](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
@@ -91,7 +91,7 @@ Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte
  
 [Přečtěte si další informace](https://azure.microsoft.com/features/devops-projects/).
  
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Nasazení na virtuální počítače Azure pomocí Azure DevOps Projects](../../devops-project/azure-devops-project-vms.md)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
