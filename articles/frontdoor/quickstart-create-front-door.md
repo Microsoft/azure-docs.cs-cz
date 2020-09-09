@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: duau
-ms.openlocfilehash: ab59de49b7cf625220f8a803aab9d2b9a2ae5937
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398763"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569233"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
 
@@ -26,7 +26,7 @@ Začněte s předními dvířky Azure pomocí Azure Portal k nastavení vysoké 
 
 V tomto rychlém startu fond front Azure vytvoří fondy dvou instancí webové aplikace, které běží v různých oblastech Azure. Vytvoříte konfiguraci front-dveří na základě stejné a stejné priority jako u back-endu. Tato konfigurace směruje provoz na nejbližší lokalitu, která spouští aplikaci. Přední dveře Azure neustále monitorují webovou aplikaci. Služba zajišťuje automatické převzetí služeb při selhání pro další dostupnou lokalitu, když nejbližší web není dostupný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -67,7 +67,7 @@ Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný po
 | Nastavení          | Hodnota     |
 | ---              | ---  |
 | **Skupina prostředků**   | Vyberte **Nový** a zadejte *FrontDoorQS_rg2* |
-| **Name**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
+| **Název**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
 | **Oblast**           | Jiné oblasti, v tomto příkladu *střed USA – jih* |
 | **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS*a pak vyberte **OK** . |
 
@@ -85,7 +85,7 @@ Nakonfigurujte přední dveře Azure tak, aby směrovaly uživatelský provoz na
 
 1. Ve **front-endu/doménách**vyberte možnost **+** otevřít **Přidat hostitele front-endu**.
 
-1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Add** (Přidat).
+1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Přidat**.
 
    ![Přidání hostitele front-endu pro frontu Azure](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
@@ -97,11 +97,11 @@ Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
 1. Vyberte **Přidat back-end**. V případě **typu hostitele back-end**vyberte možnost *App Service*.
 
-1. Vyberte své předplatné a pak zvolte první webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. V tomto příkladu byla webová aplikace *WebAppContoso-1*. Vyberte **Add** (Přidat).
+1. Vyberte své předplatné a pak zvolte první webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. V tomto příkladu byla webová aplikace *WebAppContoso-1*. Vyberte **Přidat**.
 
 1. Vyberte znovu **Přidat back-end** . V případě **typu hostitele back-end**vyberte možnost *App Service*.
 
-1. Vyberte své předplatné, znovu a zvolte druhou webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. Vyberte **Add** (Přidat).
+1. Vyberte své předplatné, znovu a zvolte druhou webovou aplikaci, kterou jste vytvořili z **názvu hostitele back-endu**. Vyberte **Přidat**.
 
    ![Přidání hostitele back-endu do předních dveří](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
@@ -165,5 +165,3 @@ Opakujte postup pro ostatní dvě skupiny.
 Přejděte k dalšímu článku a Naučte se, jak přidat vlastní doménu do front-dveří.
 > [!div class="nextstepaction"]
 > [Přidání vlastní domény](front-door-custom-domain.md)
-
-Další informace o směrování provozu najdete v tématu [metody směrování front-dveří](front-door-routing-methods.md).

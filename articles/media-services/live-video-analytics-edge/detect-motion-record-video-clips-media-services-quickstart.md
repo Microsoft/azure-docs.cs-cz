@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067646"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568998"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -23,7 +23,7 @@ Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started
 * Pokud jste dříve nedokončili [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md) , Projděte si následující kroky:
     * [Nastavení prostředků Azure](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Nasazení modulů](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Konfigurace Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
+    * [Konfigurace editoru Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
@@ -33,7 +33,8 @@ Můžete použít aplikaci, jako je [VLC Player](https://www.videolan.org/vlc/),
 
 Po dokončení níže uvedeného postupu budete pro detekci pohybu auta používat Live video Analytics na IoT Edge a zaznamenáte si video klip počínaje kolem této 5 sekundové značky. Diagram níže je vizuální znázornění celkového toku.
 
-![Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu":::
 
 ## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 

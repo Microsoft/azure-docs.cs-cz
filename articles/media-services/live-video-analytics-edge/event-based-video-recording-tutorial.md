@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011766"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568556"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -36,7 +36,7 @@ Než začnete, přečtěte si tyto články:
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpoklady pro tento kurz:
 
@@ -62,7 +62,8 @@ Nahrávání videa založeného na událostech odkazuje na proces nahrávání v
 
 Případně můžete spustit záznam pouze v případě, že služba Inferencing zjistí, že došlo k určité události. V tomto kurzu použijete video o vozidlech pohybujících se na dálnici a zaznamenání videoklipů pokaždé, když se zjistí nákladní vůz.
 
-![Graf médií](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Graf médií":::
 
 Diagram je obrazové znázornění [mediálního grafu](media-graph-concept.md) a dalších modulů, které provádějí požadovaný scénář. Jsou zapojené čtyři IoT Edge moduly:
 
@@ -80,7 +81,8 @@ Jak znázorňuje diagram, použijete v mediálním grafu [zdrojový uzel RTSP](m
 
 Než začnete, ověřte, že jste dokončili třetí odrážku v části [požadavky](#prerequisites). Po dokončení skriptu pro nastavení prostředků vyberte složené závorky, které budou vystavovat strukturu složek. Zobrazí se několik souborů vytvořených v adresáři ~/clouddrive/lva-Sample.
 
-![Nastavení aplikace](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Nastavení aplikace":::
 
 Z zájmu tohoto kurzu jsou soubory:
 
@@ -152,7 +154,8 @@ Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zaříz
 
 Pomocí Visual Studio Code se přihlaste k Docker podle [těchto pokynů](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) . Pak vyberte **sestavení a nabízená IoT Edge řešení**. Pro tento krok použijte src/Edge/deployment.objectCounter.template.js.
 
-![Sestavování a nabízených IoT Edge řešení](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="Sestavování a nabízených IoT Edge řešení":::
 
 Tato akce vytvoří modul objectCounter pro počítání objektů a vloží image do vašeho Azure Container Registry.
 
@@ -160,7 +163,8 @@ Tato akce vytvoří modul objectCounter pro počítání objektů a vloží imag
 
 Tento krok vytvoří manifest nasazení IoT Edge v umístění src/Edge/config/deployment.objectCounter.amd64.jsna. Klikněte pravým tlačítkem na daný soubor a vyberte **vytvořit nasazení pro jedno zařízení**.
 
-![Vytvoření nasazení pro jedno zařízení](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Vytvoření nasazení pro jedno zařízení":::
 
 Pokud se jedná o váš první kurz se službou Live video Analytics na IoT Edge, Visual Studio Code vás vyzve k zadání připojovacího řetězce IoT Hub. Můžete ho zkopírovat z appsettings.jsv souboru.
 
@@ -169,7 +173,8 @@ Dále Visual Studio Code požádá o výběr zařízení IoT Hub. Vyberte zaří
 V této fázi se spustilo nasazení hraničních modulů do zařízení IoT Edge.
 Během přibližně 30 sekund aktualizujte IoT Hub Azure v části vlevo dole v Visual Studio Code. Měli byste vidět, že jsou nasazené čtyři moduly s názvem lvaEdge, rtspsim, yolov3 a objectCounter.
 
-![Nasazené čtyři moduly](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Nasazené čtyři moduly":::
 
 ## <a name="prepare-for-monitoring-events"></a>Příprava na monitorování událostí
 
@@ -179,9 +184,10 @@ Pokud se chcete podívat na události z modulu objectCounter a ve službě Live 
 1. Rozbalte uzel **zařízení** .
 1. Klikněte pravým tlačítkem myši na soubor lva-Sample-Device a vyberte možnost **Spustit sledování integrovaného koncového bodu události**.
 
-   ![Spustit sledování vestavěného koncového bodu události](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>Spuštění programu
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Spustit sledování vestavěného koncového bodu události":::
+    
+    ## <a name="run-the-program"></a>Spuštění programu
 
 1. V Visual Studio Code v nástroji použijte src/Cloud-to-Device-Console-App/operations.js.
 
@@ -390,13 +396,14 @@ Můžete prozkoumávat Media Services Asset, který byl vytvořen grafem, přihl
 1. Vyhledejte účet Media Services mezi prostředky, které máte ve svém předplatném. Otevřete podokno účet.
 1. V seznamu **Media Services** vyberte **assety** .
 
-    ![Prostředky](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Nepřetržité nahrávání videa":::
 1. Najdete seznam prostředků s názvem sampleAssetFromEVR-LVAEdge-{DateTime}. Toto je název, který jste zadali ve vlastnosti outputLocation události RecordingStarted. AssetNamePattern v topologii určuje, jak se tento název vygeneroval.
 1. Vyberte asset.
 1. Na stránce Podrobnosti o aktivech vyberte **vytvořit novou** v poli **Adresa URL streamování** .
 
-    ![Nový prostředek](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Nový prostředek":::
 1. V průvodci, který se otevře, přijměte výchozí možnosti a vyberte **Přidat**. Další informace najdete v tématu [přehrávání videa](video-playback-concept.md).
 
     > [!TIP]

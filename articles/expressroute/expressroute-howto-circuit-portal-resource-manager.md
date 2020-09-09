@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322115"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566258"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Kurz: vytvoření a úprava okruhu ExpressRoute
 
@@ -75,7 +75,10 @@ Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost vytvoření nov
     > [!IMPORTANT]
     > Umístění partnerského vztahu indikuje [fyzické umístění](expressroute-locations.md) , kde se s Microsoftem pracujete. Toto není **propojeno s vlastností** "umístění", která odkazuje na geografickou oblast, kde se nachází poskytovatel síťových prostředků Azure. I když se netýkají, je vhodné zvolit poskytovatele síťových prostředků geograficky blízko umístění partnerského vztahu okruhu.
 
-    * **SKU** určuje, jestli je povolený místní ExpressRoute, ExpressRoute Standard nebo doplněk ExpressRoute Premium. Můžete zadat **místní** SKU a získat místní skladovou položku ( **Standard** ), abyste získali standardní SKU nebo **prémii** pro doplněk Premium.
+    * **SKU** určuje, jestli je povolený místní ExpressRoute, ExpressRoute Standard nebo doplněk ExpressRoute Premium. Pro získání místní skladové položky (Standard) a **úrovně** **Premium** pro doplněk Premium můžete zadat **místní** SKU. Všimněte si, že můžete změnit SKLADOVOU položku a povolit doplněk Premium.
+    > [!IMPORTANT]
+    > SKU nemůžete změnit z **úrovně Standard/Premium** na **místní**.
+    
     * **Model fakturace** určuje typ fakturace. Můžete určit **měření** pro měřený datový tarif a **neomezený** pro neomezený datový tarif. Všimněte si, že můžete změnit typ fakturace z **měření** na **neomezeno**.
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ Můžete upravit některé vlastnosti okruhu ExpressRoute, aniž by to mělo vli
 Bez výpadků můžete provádět následující úlohy:
 
 * Povolí nebo zakáže doplněk ExpressRoute Premium pro okruh ExpressRoute.
+
+> [!IMPORTANT]
+  > Změna SKU z **úrovně Standard/Premium** na **místní** není podporována.
+
 * Zvyšte šířku pásma okruhu ExpressRoute, pokud je na portu k dispozici kapacita.
 
   > [!IMPORTANT]

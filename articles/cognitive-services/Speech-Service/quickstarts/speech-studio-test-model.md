@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý Start: testování modelu pomocí zvukových souborů – Speech Studio'
+title: Testování modelu pomocí zvukových souborů – Speech Studio
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete Speech Studio k testování rozpoznávání řeči v zvukovém souboru.
+description: V tomto postupu použijete Speech Studio k testování rozpoznávání řeči v zvukovém souboru.
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391532"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565799"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Rychlý Start: testování modelu pomocí zvukového souboru v studiu řeči
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Testování modelu pomocí zvukového souboru v studiu řeči
 
-V tomto rychlém startu použijete Speech Studio k převodu řeči ze zvukového souboru na text. Speech Studio umožňuje testovat, porovnávat, zlepšovat a nasazovat modely rozpoznávání řeči pomocí souvisejícího textu, zvukového přepisu a pokynů k výslovnosti, které zadáte.
+V tomto postupu použijete Speech Studio k převodu řeči ze zvukového souboru na text. Speech Studio umožňuje testovat, porovnávat, zlepšovat a nasazovat modely rozpoznávání řeči pomocí souvisejícího textu, zvukového přepisu a pokynů k výslovnosti, které zadáte.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -2,14 +2,14 @@
 title: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel
 description: V tomto kurzu použijete server modelů AI, který poskytuje Intel, k analýze živého kanálu videa z (simulované) kamery IP.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950251"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567571"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
@@ -17,7 +17,7 @@ V tomto kurzu se dozvíte, jak používat rozšíření OpenVINO™ model Server
 
 Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
@@ -30,6 +30,7 @@ Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a p
 > Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Výzvu můžete ignorovat.
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
+
 Při nastavování prostředků Azure se krátké video dávky za parkování zkopíruje do virtuálního počítače Linux v Azure, který používáte jako zařízení IoT Edge. V tomto rychlém startu se k simulaci živého streamu používá videosoubor.
 
 Otevřete aplikaci, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na [video](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) a začněte přehrávání. Uvidíte záběry vozidel v sérii parkovacích míst, většinu z nich zaparkované a jeden přesun.
@@ -38,7 +39,8 @@ V tomto rychlém startu budete používat Live video Analytics na IoT Edge spolu
 
 ## <a name="overview"></a>Přehled
 
-![Přehled](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Přehled":::
 
 Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) . 
 
@@ -46,7 +48,7 @@ Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zada
 
 V tomto kurzu provedete následující:
 
-1. Vytvoření a nasazení Media graphu, úprava 
+1. Vytvořte a nasaďte mediální graf a změňte ho.
 1. Interpretujte výsledky.
 1. Vyčistěte prostředky.
 

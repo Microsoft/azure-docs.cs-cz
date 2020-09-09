@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825344"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569301"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -90,10 +90,10 @@ Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení vyb
 
 Nabízíme rychlé zprovoznění ve většině oblíbených programovacích jazyků, z nichž každá je navržena pro učení základních vzorů návrhu a spouštění kódu za méně než 10 minut. Seznam rychlých startů pro jednotlivé funkce najdete v následujícím seznamu.
 
-* [Rychlý Start pro převod řeči na text](speech-to-text-basics.md)
+* [Rychlý Start pro převod řeči na text](get-started-speech-to-text.md)
 * [Rychlé zprovoznění převodu textu na řeč](get-started-text-to-speech.md)
-* [Rychlý Start překladu řeči](speech-translation-basics.md)
-* [Rychlý Start rozpoznávání záměrů](quickstarts/intent-recognition.md)
+* [Rychlé zprovoznění překladu řeči](speech-translation-basics.md)
+* [Rychlé zprovoznění rozpoznávání záměrů](quickstarts/intent-recognition.md)
 * [Rychlé zprovoznění rozpoznávání mluvčího](speaker-recognition-basics.md)
 
 Až budete mít možnost začít pracovat se službou Speech, vyzkoušejte naše kurzy, které ukazují, jak řešit různé scénáře.
@@ -117,7 +117,7 @@ Služba Speech funguje dobře s integrovanými modely, ale možná budete chtít
 
 Další produkty nabízejí modely řeči optimalizované pro konkrétní účely, jako je zdravotní péče nebo pojištění, ale jsou k dispozici všem uživatelům současně. Přizpůsobení ve službě Azure Speech se stávají součástí *vaší jedinečné* konkurenční výhody, která není k dispozici pro žádného jiného uživatele nebo zákazníka. Jinými slovy, vaše modely jsou soukromé a vlastní – vyladěny jenom pro váš případ použití.
 
-| Speech Service | Platforma | Popis |
+| Speech Service | Platforma | Description |
 | -------------- | -------- | ----------- |
 | Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání překážek rozpoznávání řeči, například mluveného stylu, slovníku a hluku na pozadí. |
 | Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný jedinečný hlas vašich aplikací pro převod textu na řeč pomocí vašich dostupných dat o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |

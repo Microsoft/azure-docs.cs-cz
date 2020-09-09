@@ -3,12 +3,12 @@ title: Co je rozšíření Media graphu – Azure
 description: Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: d7e14a0336da75e1948cf6dc4dbdb51490b70021
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420825"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569321"
 ---
 # <a name="media-graph-extension"></a>Rozšíření grafu médií
 
@@ -49,8 +49,9 @@ Proto použijte uzel procesoru rozšíření gRPC při:
 Rozšíření mediálních grafů umožňují spouštět modely odvození podle vašeho výběru na jakémkoli dostupném modulu runtime pro odvození, jako je ONNX, TensorFlow, PyTorch nebo jiné ve vašem vlastním kontejneru Docker. Vlastní rozšíření Inferencing by se mělo nasadit společně s modulem Edge Analytics pro video, aby se co nejlépe vyvolalo, a pak se vyvolá prostřednictvím procesoru rozšíření HTTP nebo procesoru rozšíření gRPC, který je součástí topologie grafu. Kromě toho je možné omezit frekvenci volání do vlastního rozšíření tím, že v případě potřeby přidáte [procesor snímače pohybu](media-graph-concept.md#motion-detection-processor) a přesměruje [procesor filtru snímkového přenosu](media-graph-concept.md#frame-rate-filter-processor) do procesoru rozšíření médií.
 
 Následující diagram znázorňuje tok dat vysoké úrovně:
- 
-![Tok dat](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="Odvozená služba AI":::
 
 ## <a name="samples"></a>ukázky
 

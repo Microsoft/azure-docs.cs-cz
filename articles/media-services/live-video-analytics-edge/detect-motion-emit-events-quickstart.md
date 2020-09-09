@@ -4,18 +4,18 @@ description: V tomto rychlém startu se dozvíte, jak pomocí nástroje Live vid
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 45595e8e6aa53b41d6d8b0d9d11457468dc47013
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d8b91529eaf5a9ee93cff28153b28b26fb7e685
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690930"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566894"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Rychlý Start: detekce událostí pohybu a vygenerování
 
 V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytics na IoT Edge. V tomto článku se používá virtuální počítač Azure jako zařízení IoT Edge a simulovaný živý video stream. Po dokončení kroků nastavení budete moct spustit simulovaný živý datový proud prostřednictvím mediálního grafu, který v tomto datovém proudu detekuje a hlásí jakýkoliv pohyb. Následující diagram znázorňuje grafické znázornění tohoto mediálního grafu.
 
-![Analýza živých videí na základě detekce pohybu](./media/analyze-live-video/motion-detection.png) 
+![Analýza živých videí na základě detekce pohybu](./media/analyze-live-video/motion-detection.svg) 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/csharp/header.md)]
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytic
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/detect-motion-emit-events-quickstart/csharp/prerequisites.md)]

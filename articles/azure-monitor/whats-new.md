@@ -6,16 +6,22 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827737"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569522"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="august-2020"></a>Srpen 2020
+
+### <a name="containers"></a>Kontejnery
+
+- [Nasazení & metriky hPa s Azure monitor pro kontejnery](insights/container-insights-deployment-hpa-metrics.md) – nový článek.
 
 ## <a name="july-2020"></a>Červenec 2020
 
@@ -36,7 +42,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Příklady šablon Správce prostředků pro prostředky Application Insights](samples/resource-manager-app-resource.md) – nový článek.
 - [Řešení potíží se službou Azure Application Insights Profiler](app/profiler-troubleshooting.md) – přidání poznámky k chybě běžící v profileru pro ASP.NET Core aplikace na Azure App Service. 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 - [Protokoluje výstrahy z Azure monitor pro kontejnery](insights/container-insights-log-alerts.md) – nový článek.
 - [Výstrahy metriky od Azure monitor pro kontejnery](insights/container-insights-metric-alerts.md) – nový článek.
 
@@ -99,7 +105,7 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 - [Monitorujte své aplikace bez změn kódu – automatické instrumentace pro Azure Monitor Application Insights](app/codeless-overview.md) – nový článek.
 - [Řešení potíží se selháním načtení sady SDK pro webové aplikace v jazyce JavaScript](app/javascript-sdk-load-failure.md) – nový článek
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 - [Postup zastavení monitorování hybridního Kubernetes clusteru](insights/container-insights-optout-hybrid.md) – přidáno pro Kubernetes s povoleným obloukem
 - [Nakonfigurujte cluster Kubernetes s povoleným obloukem Azure pomocí Azure monitor for Containers](insights/container-insights-enable-arc-enabled-clusters.md) – nový článek.
 - [Nakonfigurujte Azure Red Hat OpenShift v4. x s Azure monitor pro kontejnery](insights/container-insights-azure-redhat4-setup.md) – aktualizované požadavky.
@@ -206,7 +212,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 - [Postup povolení Azure monitor pro kontejnery](insights/container-insights-onboard.md) – aktualizovaná konfigurační tabulka brány firewall
 - [Postup aktualizace Azure monitor pro kontejnery pro metriky](insights/container-insights-update-metrics.md) – aktualizace pro shromažďování metrik pomocí spravovaných identit
 - [Náklady na monitorování Azure monitor pro kontejnery](insights/container-insights-cost.md) – nový článek.
@@ -269,7 +275,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Odebrání Application Insights v aplikaci Visual Studio](app/remove-application-insights.md) – nový článek.
 - [Vzorkování telemetrie v Azure Application Insights](app/sampling.md) – oprava v ukázce s pevnou sazbou v Pythonu.
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 - [Nakonfigurujte Azure Red Hat OpenShift v4. x s Azure monitor for Containers](insights/container-insights-azure-redhat4-setup.md) – nový článek.
 - [Ruční oprava problémů s synchronizací ServiceNow](platform/itsmc-resync-servicenow.md) – nový článek
@@ -290,7 +296,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 - [Pokročilé funkce](platform/metrics-charts.md) oddílu agregace služby Azure Průzkumník metrik – přidáno
 
-### <a name="workbooks"></a>Workbooks
+### <a name="workbooks"></a>Sešity
 
 - [Azure monitor sešitů a šablon Azure Resource Manager](platform/workbooks-automate.md) přidány šablony Správce prostředků pro nasazení šablony sešitu.
 
@@ -317,7 +323,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Monitorujte aplikace v Pythonu pomocí Azure monitor (Preview)](app/opencensus-python.md) – přidané standardní metriky.
 - [Podpora zdrojového mapování pro aplikace JavaScriptu – Azure Monitor Application Insights](app/source-map-support.md) – nový článek
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 - [Nejčastější dotazy Azure monitor](faq.md) – aktualizace pro Azure monitor pro kontejnery.
 - [Nakonfigurujte monitorování GPU pomocí Azure monitor for Containers](insights/container-insights-gpu-monitoring.md) – nový článek.
@@ -492,7 +498,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 ### <a name="application-insights"></a>Application Insights
 
 - [Application Insights pro aplikace pracovní služby Worker (jiné aplikace než HTTP)](app/worker-service.md) – Přidali jsme výchozí úroveň protokolování do kódu jazyka C#. Referenční verze balíčku se aktualizovala.
-- [Odkaz naApplicationInsights.config –](app/configuration-with-applicationinsights-config.md) ukázkový kód aktualizovaný službou Azure.
+- [ Odkaz naApplicationInsights.config –](app/configuration-with-applicationinsights-config.md) ukázkový kód aktualizovaný službou Azure.
 - [Automatizace Application Insights Azure pomocí PowerShellu](app/powershell.md) – aktualizace šablony Správce prostředků
 - [Azure Monitor Application Insights balíčky NuGet](app/nuget.md) – aktualizované verze balíčků.
 - [Vytvoření nového prostředku Application Insights Azure](app/create-new-resource.md) – poznámka přidána k globálně jedinečnému názvu

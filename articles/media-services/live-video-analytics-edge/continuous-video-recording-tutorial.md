@@ -3,12 +3,12 @@ title: Kurz nepřetržitého nahrávání videa do cloudu a přehrávání z clo
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nepřetržitému nahrávání videa do cloudu a streamování libovolné části tohoto videa pomocí Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043479"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566788"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nepřetržité nahrávání videa do cloudu a přehrávání z cloudu
 
@@ -33,7 +33,7 @@ Než začnete, přečtěte si tyto články:
 * [Koncepty Media graphu](media-graph-concept.md) 
 * [Scénáře nepřetržitého nahrávání videí](continuous-video-recording-concept.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpoklady pro tento kurz:
 
@@ -61,7 +61,8 @@ Jak je vysvětleno v článku [konceptu Media graphu](media-graph-concept.md) , 
  
  K provedení CVR je potřeba zachytit video z kamery podporující RTSP a nepřetržitě ji zaznamenat do [prostředku Azure Media Services](terminology.md#asset). Tento diagram znázorňuje grafické znázornění tohoto mediálního grafu.
 
-![Graf médií](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Graf médií":::
 
 V tomto kurzu použijete jeden hraniční modul sestavený pomocí [serveru Live555 Media](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) k simulaci kamery RTSP. V rámci Media graphu použijete zdrojový uzel [RTSP](media-graph-concept.md#rtsp-source) k získání živého informačního kanálu a odešlete toto video do [uzlu jímka assetu](media-graph-concept.md#asset-sink), který zaznamenává video do assetu.
 
@@ -130,7 +131,7 @@ Pak přejděte do složky src/Cloud-to-Device-Console-App Tady se zobrazí appse
 
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení a nastavení konfigurace pro tyto moduly. Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-1. Spusťte Visual Studio Code.
+1. Spuštění nástroje Visual Studio Code
 1. Nastavte připojovací řetězec IoT Hub tak, že v levém dolním rohu vyberete ikonu **Další akce** vedle PODOKNA **Azure IoT Hub** . Zkopírujte řetězec z src/Cloud-to-Device-Console-App/appsettings.jsv souboru. 
 
     ![Nastavit připojovací řetězec IoT Hub](./media/quickstarts/set-iotconnection-string.png)
@@ -352,7 +353,7 @@ Můžete prozkoumávat Media Services Asset, který byl vytvořen pomocí Media 
 1. Vyhledejte účet Media Services mezi prostředky, které máte ve svém předplatném, a otevřete podokno účet.
 1. V seznamu **Media Services** vyberte **assety** .
 
-    ![Prostředky](./media/continuous-video-recording-tutorial/assets.png)
+    ![Prostředky Media Services](./media/continuous-video-recording-tutorial/assets.png)
 1. Najdete tu materiály s názvem sampleAsset-CVRToAMSAsset-Sample-Graph-1. Toto je vzor názvů, který jste zvolili v souboru topologie grafu.
 1. Vyberte asset.
 1. Na stránce Podrobnosti o aktivech vyberte **vytvořit novou** v poli **Adresa URL streamování** .
