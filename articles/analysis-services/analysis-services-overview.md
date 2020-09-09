@@ -4,16 +4,16 @@ description: Přečtěte si o Azure Analysis Services plně spravovaná platform
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/12/2020
+ms.date: 09/08/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c6913fee6872d8875e068b2502727c9f42f80401
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164304"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594199"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -79,7 +79,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="americas"></a>Amerika
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazil South     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -87,6 +87,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
 |USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – středosever     |     S8v2, S9v2    |    1     |
 |Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Střední USA     |    S8v2, S9v2     |    1     |
 |Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -98,7 +99,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="europe"></a>Evropa
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Severní Evropa     |    S8v2, S9v2      |    3     |
@@ -108,7 +109,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1     |
@@ -182,7 +183,7 @@ Služba Analysis Services používá [autorizaci na základě rolí](https://doc
   
 Koncovým uživatelům (jiným než správcům), kteří se dotazují na data, se udělí přístup prostřednictvím databázových rolí. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena. Databázové role jsou definované oprávněními správce, ke čtení a ke čtení a zpracování (v databázi). Uživatelské a skupinové účty se přidají pomocí SSMS nebo PowerShellu.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
 
 Tabulkové modely na všech úrovních kompatibility podporují zabezpečení na úrovni řádků. Zabezpečení na úrovni řádků se konfiguruje v modelu pomocí výrazů DAX, které definují řádky v tabulce a jakékoli řádky v mnoha směrech související tabulky, na které se uživatel může dotazovat. Pro oprávnění pro čtení a pro čtení a zpracování jsou pomocí výrazů DAX definovány filtry řádků. 
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400428"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595984"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -25,6 +25,14 @@ Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtí
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Jak můžu monitorovat dostupnost trezoru, doby latence služby nebo další metriky výkonu pro Trezor klíčů?
 
 Když začnete škálovat službu, bude se vyvolávat počet požadavků odeslaných do trezoru klíčů. Taková poptávka má potenciál na zvýšení latence vašich požadavků a v extrémních případech způsobí, že vaše požadavky budou omezené, což bude mít vliv na výkon vaší služby. Můžete monitorovat metriky výkonu trezoru klíčů a získat výstrahy pro konkrétní prahové hodnoty. podrobné pokyny ke konfiguraci monitorování najdete v [článku Další informace](https://docs.microsoft.com/azure/key-vault/general/alert).
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nedaří se mi změnit zásady přístupu, jak je možné povolit?
+Uživatel musí mít dostatečná oprávnění AAD pro úpravu zásad přístupu. V takovém případě musí mít uživatel vyšší roli přispěvatele.
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Zobrazuje se chyba zásady Unkwown Co to znamená?
+Existují dvě různé možnosti zobrazení zásad přístupu v neznámém oddílu:
+* Může se jednat o předchozího uživatele, který měl přístup, a z nějakého důvodu, že uživatel neexistuje.
+* Pokud se zásady přístupu přidají přes PowerShell a přidají se zásady přístupu pro identifikátor objectID aplikace místo priciple služby.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Jak můžu přiřazovat řízení přístupu na objekt trezoru klíčů? 
 

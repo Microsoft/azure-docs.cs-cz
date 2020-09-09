@@ -4,15 +4,15 @@ description: Pomocí tohoto kurzu můžete pro stávající cluster AKS povolit 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 42952e379b9f68008de23ee3b1717280d8dd6cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088117"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595933"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Nasazení ukázkové aplikace pomocí AGIC pro příchozí přenosy v clusteru AKS
 > * Ověřte, že je aplikace dosažitelná prostřednictvím Application Gateway
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
