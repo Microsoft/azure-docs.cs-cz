@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: Vytvoření veřejné zóny – CLI
           href: dns-getstarted-cli.md
+        - name: Vytvoření veřejné zóny – šablona ARM
+          href: dns-get-started-template.md
     - name: Privátní DNS
       items:
         - name: Vytvoření privátní zóny – portál

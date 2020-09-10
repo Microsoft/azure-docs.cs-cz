@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Komponenty Application Gateway
           href: application-gateway-components.md
-        - name: Přehled konfigurace
-          href: configuration-overview.md
+        - name: Konfigurace
+          items:
+            - name: Přehled
+              href: configuration-overview.md
+            - name: Infrastruktura
+              href: configuration-infrastructure.md
+            - name: Front-endová IP adresa
+              href: configuration-front-end-ip.md
+            - name: Naslouchací procesy
+              href: configuration-listeners.md
+            - name: Vyžádání pravidel směrování
+              href: configuration-request-routing-rules.md
+            - name: Nastavení HTTP
+              href: configuration-http-settings.md
     - name: Podpora vysokého provozu
       href: high-traffic-support.md
     - name: SKU pro Automatické škálování v2

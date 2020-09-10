@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: Vyžádání přístupového tokenu
           href: access-tokens.md
+    - name: Klíče zásad
+      href: policy-keys-overview.md
     - name: Zásady a toky uživatele
       items:
         - name: Toky uživatele

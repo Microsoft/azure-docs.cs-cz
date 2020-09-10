@@ -27,6 +27,8 @@
       href: quickstart-ruby.md
     - name: Statický web v HTML
       href: quickstart-html.md
+    - name: Šablona ARM
+      href: quickstart-arm-template.md
     - name: Vlastní kontejner
       href: quickstart-custom-container.md
     - name: Vícekontejnerová aplikace

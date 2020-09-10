@@ -924,8 +924,6 @@
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Rychlé starty
           items:
-            - name: Vytvoření virtuálního počítače SQL
-              items: null
             - name: Portál
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
             - name: PowerShell

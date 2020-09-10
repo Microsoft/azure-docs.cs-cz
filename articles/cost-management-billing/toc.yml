@@ -12,7 +12,7 @@
     - name: Vytvoření rozpočtu – šablona ARM
       href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
-- name: Výukové kurzy
+- name: Kurzy
   items:
     - name: Kontrola vyúčtování jednotlivého účtu
       href: understand/review-individual-bill.md
@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Fakturační účty pro smlouvu s partnerem Microsoftu
           href: understand/mpa-overview.md
+        - name: Přenos předplatných mezi partnery (Preview)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: Návody
   items:
     - name: Konfigurace správy nákladů a fakturace

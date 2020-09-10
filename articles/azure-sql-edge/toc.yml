@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: Uchování a čištění dat
+          items:
+            - name: Přehled uchovávání dat
+              href: data-retention-overview.md
+            - name: Povolení nebo zákaz uchovávání dat
+              href: data-retention-enable-disable.md
+            - name: Čištění uchování dat
+              href: data-retention-cleanup.md

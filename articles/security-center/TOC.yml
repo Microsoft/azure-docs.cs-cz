@@ -136,7 +136,11 @@
       items:
         - name: Oprava doporučení
           href: security-center-remediate-recommendations.md
+        - name: Jak zabránit chybným konfiguracím pomocí možností Vynutit/Zamítnout
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: Posílení stavu zabezpečení
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: Referenční seznam doporučení
           href: recommendations-reference.md

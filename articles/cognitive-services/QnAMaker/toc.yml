@@ -24,6 +24,8 @@
   items:
     - name: Integrace s Power Virtual Agents
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: Vytvoření chatbota pro nejčastější dotazy s využitím služby Azure Bot Service
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: Testování s využitím dávkového souboru
       href: Quickstarts/batch-testing.md
 - name: Koncepty
@@ -91,7 +93,7 @@
         - name: Migrace na novou znalostní bázi
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Test
+        - name: Testování znalostní báze
           href: How-To/test-knowledge-base.md
     - name: Správa dvojic QnA
       items:

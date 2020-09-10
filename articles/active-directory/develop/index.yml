@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
-  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+  ms.openlocfilehash: f6893522b66f20dd26905084e5b09d303cbfd5b3
+  ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88690285"
+  ms.lasthandoff: 09/09/2020
+  ms.locfileid: "89612762"
 landingContent:
 - title: O platformě Microsoft Identity Platform
   linkLists:
@@ -120,6 +120,14 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 'Rychlý start: Registrace aplikace (přepis)'
+      url: quickstart-register-app.md
+    - text: 'Rychlý start: Zveřejnění webového rozhraní API (přepis)'
+      url: quickstart-configure-app-expose-web-apis.md
+    - text: 'Rychlý start: Přístup k webovému rozhraní API (přepis)'
+      url: quickstart-configure-app-access-web-apis.md
+    - text: Migrace zprostředkované aplikace Xamarinu pro Android do MSAL.NET
+      url: msal-net-migration-android-broker.md
     - text: Zpracování chyb a výjimek – Android
       url: msal-android-handling-exceptions.md
     - text: Atributy rozšíření schématu adresáře v deklaracích identity

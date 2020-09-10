@@ -9,8 +9,8 @@
     - name: Přidání uživatelů do Azure AD
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: Přiřazení licencí k uživatelům
-      href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-    - name: Udělení oprávnění pro neomezený počet registrací aplikací
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Vytvoření neomezené registrace aplikací
       href: roles-quickstart-app-registration-limits.md
     - name: Nastavení konce platnosti skupiny
       href: groups-quickstart-expiration.md
@@ -175,6 +175,8 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Přiřazení vlastních rolí v PowerShellu
               href: roles-assign-powershell.md
+            - name: Vlastní role pro podnikové aplikace
+              href: custom-enterprise-apps.md
             - name: Vlastní role/oprávnění
               href: roles-custom-available-permissions.md
             - name: Delegování oprávnění správce aplikace

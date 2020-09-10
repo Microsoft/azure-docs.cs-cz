@@ -32,6 +32,10 @@
       href: private-link-service-overview.md
     - name: Integrace DNS privátního koncového bodu
       href: private-endpoint-dns.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Postup
   items:
     - name: Privátní připojení k účtu úložiště

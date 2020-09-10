@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Postup
   items:
+    - name: Nastavení portálu
+      href: manage.md
     - name: Škálovací sady virtuálních počítačů
       items:
         - name: Použití s existujícím Azure Load Balancerem – portál
