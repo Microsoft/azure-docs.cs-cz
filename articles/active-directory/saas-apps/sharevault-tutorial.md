@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: dcf67ce9c9e63fdbba8db565113cf3380e4142dd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f8a0576ff9ea128aae0d63d4879fe66ed2bf549
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548663"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ShareVault
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ShareVault s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,6 +43,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * ShareVault podporuje zřizování uživatelů **jenom v čase** .
 * Po nakonfigurování ShareVault můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-sharevault-from-the-gallery"></a>Přidání ShareVault z Galerie
 
 Pokud chcete nakonfigurovat integraci ShareVault do služby Azure AD, musíte přidat ShareVault z Galerie do svého seznamu spravovaných aplikací SaaS.
@@ -54,7 +57,7 @@ Pokud chcete nakonfigurovat integraci ShareVault do služby Azure AD, musíte p�
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **ShareVault** .
 1. Na panelu výsledků vyberte **ShareVault** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharevault"></a>Konfigurace a testování jednotného přihlašování Azure AD pro ShareVault
+## <a name="configure-and-test-azure-ad-sso-for-sharevault"></a>Konfigurace a testování jednotného přihlašování Azure AD pro ShareVault
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ShareVault pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ShareVault.
 
@@ -94,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace ShareVault několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------- | --------- |
     | sv. SVID |  < `svid number` > |
     | sv. FirstName | User. křestní jméno |
@@ -115,7 +118,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -149,7 +152,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ShareVault, měli byste se automaticky přihlásit k ShareVault, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

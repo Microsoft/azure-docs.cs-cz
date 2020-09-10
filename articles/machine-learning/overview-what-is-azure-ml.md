@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d5e1e8c0ced03191a530598bf2dca308dc4fab03
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 72de3c45d0def7cf4a48884ee49be256179ac0a4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651030"
+ms.locfileid: "89659512"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -115,7 +115,7 @@ Azure Machine Learning funguje s ostatními službami na platformě Azure a inte
 + __Azure Event Grid__. Další informace najdete v tématu věnovaném [využívání Azure Machine Learningch událostí](concept-event-grid-integration.md).
 + __Azure monitor__. Další informace najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 + Úložiště dat, jako jsou __účty Azure Storage__, __Azure Data Lake Storage__, __Azure SQL Database__, __Azure Database for PostgreSQL__a __Azure Open DataSet__. Další informace najdete v tématech [přístup k datům ve službě Azure Storage Services](how-to-access-data.md) a [vytváření datových sad pomocí Azure Open DataSets](how-to-create-register-datasets.md).
-+ __Virtuální sítě Azure__. Další informace najdete v tématu [zabezpečené experimenty a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
++ __Virtuální sítě Azure__. Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
 + __Azure Pipelines__. Další informace najdete v tématu [výuka a nasazení modelů strojového učení](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Protokoly úložiště Git__ Další informace najdete v tématu [integrace Gitu](concept-train-model-git-integration.md).
 + __MLFlow__. Další informace najdete v tématu [MLflow ke sledování metrik a nasazení modelů](how-to-use-mlflow.md) . 
@@ -123,7 +123,7 @@ Azure Machine Learning funguje s ostatními službami na platformě Azure a inte
 
 ### <a name="secure-communications"></a>Zabezpečená komunikace
 
-Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v rámci virtuální sítě bezpečně použít k učení modelů a provádění odvození. Další informace najdete v tématu [zabezpečené experimenty a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
+Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v rámci virtuální sítě bezpečně použít k učení modelů a provádění odvození. Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
 
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Edice Basic & Enterprise
 

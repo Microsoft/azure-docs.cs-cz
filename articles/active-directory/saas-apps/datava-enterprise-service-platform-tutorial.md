@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536712"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s platformou Datava Enterprise Service
 
@@ -28,15 +28,12 @@ V tomto kurzu se dozvíte, jak integrovat platformu Datava Enterprise Service po
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné Datava Enterprise Service Platform (SSO) pro jednotné přihlašování (SSO).
-
-> [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -45,6 +42,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Platforma Datava Enterprise Service podporuje jednotné přihlašování (SSO) iniciované v **SP**
 * Platforma Datava Enterprise Service podporuje **pouze zřizování uživatelů v čase**
 * Jakmile nakonfigurujete platformu Datava Enterprise Service, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>Přidání platformy Datava Enterprise Service z Galerie
 
@@ -57,7 +57,7 @@ Pokud chcete nakonfigurovat integraci platformy Datava Enterprise Service do slu
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Datava Enterprise Service Platform** .
 1. Z panelu výsledků vyberte **Datava Enterprise Service Platform** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Konfigurace a testování jednotného přihlašování Azure AD pro platformu Datava Enterprise Service
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro platformu Datava Enterprise
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s platformou Datava Enterprise Service pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem na platformě Datava Enterprise.
 
@@ -103,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -137,7 +137,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici platforma Datava Enterprise Service na přístupovém panelu byste měli být automaticky přihlášeni k platformě služby Datava Enterprise, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -148,5 +148,3 @@ Po kliknutí na dlaždici platforma Datava Enterprise Service na přístupovém 
 - [Vyzkoušejte si platformu Datava Enterprise Service pomocí Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit platformu Datava Enterprise Service pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228235"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657837"
 ---
 # <a name="what-is-identity-provisioning"></a>Co je zřizování identit?
 
@@ -40,10 +40,10 @@ Zřizování z HR do cloudu zahrnuje vytváření objektů (uživatelů, rolí, 
 
 Nejběžnějším scénářem je, že když se do vaší společnosti připojí nový zaměstnanec, vstoupí do systému HR.  Jakmile k tomu dojde, budou zřízeny do cloudu.  V tomto případě Azure AD.  Zřizování z HR může pokrývat následující scénáře. 
 
-- Připravují se **noví zaměstnanci** – když se do cloudového HR přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně na Office 365 a další aplikace SaaS podporované službou Azure AD, a to s zpětným zápisem e-mailové adresy do cloudového hr.
-- **Aktualizace atributů a profilů zaměstnanců** – když se v cloudovém HR aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně v Office 365 a dalších aplikacích SaaS podporovaných službou Azure AD.
+- Připravují se **noví zaměstnanci** – když se do cloudového HR přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně Microsoft 365 a jiné aplikace SaaS podporované službou Azure AD, a to s zpětným zápisem e-mailové adresy do cloudového hr.
+- **Aktualizace atributů a profilů zaměstnanců** – když se v cloudovém HR aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet ve službě Active Directory, Azure Active Directory a volitelně Microsoft 365 a dalších SaaS aplikací podporovaných službou Azure AD.
 - **Ukončení zaměstnanců** – když se zaměstnanec v cloudovém HR ukončí, je jejich uživatelský účet automaticky zakázaný ve službě Active Directory, Azure Active Directory a volitelně Office 365 a další aplikace SaaS podporované službou Azure AD.
-- **Pracovní zařazení zaměstnanců** – Pokud se zaměstnanec znovu přiřadí do CLOUDového hru, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) se službou Active Directory, Azure Active Directory a volitelně Office 365 a dalšími aplikacemi SaaS, které Azure AD podporuje.
+- **Pracovní zařazení zaměstnanců** – Pokud se zaměstnanec znovu přiřadí do CLOUDového hru, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) se službou Active Directory, Azure Active Directory a volitelně Microsoft 365 a další aplikace SaaS podporované službou Azure AD.
 
 
 ## <a name="app-provisioning"></a>Zřizování aplikací

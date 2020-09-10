@@ -3,12 +3,12 @@ title: Uspořádání prostředků pomocí skupin pro správu – zásady správ
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d259f44b8424afa9fcfc94b3f1812a0485ab2993
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920156"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659244"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -21,7 +21,9 @@ Zásady můžete například použít pro skupinu pro správu, která omezuje ob
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a uspořádat tak prostředky do hierarchie umožňující využít jednotné zásady a správu přístupu. Následující diagram ukazuje příklad vytvoření hierarchie pro zásady správného řízení s využitím skupin pro správu.
 
-:::image type="content" source="./media/tree.png" alt-text="Příklad hierarchického stromu skupin pro správu" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="Diagram ukázkové hierarchie skupin pro správu" border="false":::
+   Diagram kořenové skupiny pro správu, který má skupiny pro správu i odběry. Některé podřízené skupiny pro správu uchovávají skupiny pro správu, některá předplatná a některá se uchovávají. Jedním z příkladů v ukázkové hierarchii je 4 úrovně skupin pro správu s podřízenou úrovní všech předplatných.
+:::image-end:::
 
 Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada bude dědit na všechna předplatná smlouva Enterprise (EA), která jsou následníky této skupiny pro správu a bude platit pro všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
@@ -147,7 +149,9 @@ Definice rolí se přiřadí oboru kdekoli v rámci hierarchie skupiny pro sprá
 
 Řekněme například, že se podíváme na malou část hierarchie pro vizuál.
 
-:::image type="content" source="./media/subtree.png" alt-text="dílčí strom" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Diagram podmnožiny hierarchie vzorových skupin pro správu." border="false":::
+   Diagram se zaměřuje na kořenovou skupinu pro správu s podřízenými a marketingovými skupinami pro správu. Skupina pro správu I T má jednu podřízenou skupinu pro správu s názvem produkční, zatímco skupina pro správu marketingu má dvě bezplatné zkušební verze předplatného.
+:::image-end:::
 
 Řekněme, že ve skupině pro správu marketingu je definovaná vlastní role. Tato vlastní role se pak přiřadí ke dvěma bezplatným zkušebním předplatným.  
 
@@ -189,7 +193,7 @@ Pokud je role vlastníka v předplatném zděděná z aktuální skupiny pro spr
 
 Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md). Můžete hledat všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure. Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Protokoly aktivit se skupinami pro správu" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Snímek obrazovky protokolů aktivit a operací vztahujících se k vybrané skupině pro správu." border="false":::
 
 Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 

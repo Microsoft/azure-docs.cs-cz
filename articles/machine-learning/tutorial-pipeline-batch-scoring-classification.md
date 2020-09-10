@@ -11,20 +11,20 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 87a65cd42ad58a06488499aaf8651e206c35b5f2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646972"
+ms.locfileid: "89657044"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto rozšířeném kurzu se naučíte, jak vytvořit kanál v Azure Machine Learning spustit úlohu vyhodnocování dávky. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na strojové učení místo infrastruktury a automatizace. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě. 
+V tomto rozšířeném kurzu se naučíte, jak vytvořit [kanál Azure Machine Learning](concept-ml-pipelines.md) pro spuštění úlohy vyhodnocování dávek. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na strojové učení místo infrastruktury a automatizace. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě. 
 
-V příkladu se používá předem provedený [model konvoluční neuronové](https://arxiv.org/abs/1512.00567) , který implementuje v Tensorflow pro klasifikaci neoznačených obrázků. [Přečtěte si další informace o kanálech strojového učení](concept-ml-pipelines.md).
+V příkladu se používá předem provedený [model konvoluční neuronové](https://arxiv.org/abs/1512.00567) , který implementuje v Tensorflow pro klasifikaci neoznačených obrázků. 
 
 V tomto kurzu provedete následující úlohy:
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .

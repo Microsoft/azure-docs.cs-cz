@@ -159,7 +159,7 @@
             - name: .NET (C#) SDK – zdroj
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: JavaScript SDK – npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1'
     - name: CLI služby Digital Twins
       items:
         - name: Referenční informace k CLI služby Digital Twins

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9d25d9e13cc7f3dba0f4254cda6e1119ff9e2e68
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812980"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659815"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
 
 Návrhář obsahuje několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte **data o cenách automobilu (RAW)**. 
 
-1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **datové sady**a pak zobrazte část **ukázky** a zobrazte si dostupné ukázkové datové sady.
+1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **ukázková** datová sada pro zobrazení dostupných ukázkových datových sad.
 
 1. Vyberte **data automobil auto data (Hrubá cena)** a přetáhněte je na plátno.
 

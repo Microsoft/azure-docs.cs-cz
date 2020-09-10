@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 304f80dcb2da4ed60bd94e9fb4d71d985da87cc2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496209"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661992"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý Start: Začínáme s Sentinel Azure
 
@@ -34,7 +34,7 @@ Aby bylo možné vizualizovat a získat analýzu toho, co se děje ve vašem pro
 
 - Na panelu nástrojů v horní části se dozvíte, kolik událostí jste ve vybraném časovém období, a porovná je s předchozími 24 hodinami. Panel nástrojů vás od těchto událostí upozorní, aktivované výstrahy (malé číslo představuje změnu za posledních 24 hodin) a pak vás upozorní na tyto události, počet otevřených, probíhajících a uzavřených. Zkontrolujte, že se nejedná o výrazné zvýšení ani pokles počtu událostí. Pokud dojde k přerušení, může to být tím, že připojení zastavilo hlášení do Azure Sentinel. Pokud dojde ke zvýšení, může dojít k nějaké podezřelé situaci. Podívejte se, jestli máte nové výstrahy.
 
-   ![Filtr Sentinel Azure](./media/qs-get-visibility/funnel.png)
+   ![Čítače Azure Sentinel](./media/qs-get-visibility/funnel.png)
 
 Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpečení vašeho pracovního prostoru:
 
@@ -42,14 +42,14 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
 - **Potenciální škodlivé události**: když se zjistí provoz ze zdrojů, u kterých se ví, že jsou škodlivé, Azure Sentinel vás na mapě upozorní. Pokud vidíte oranžová, jedná se o příchozí provoz: někdo se snaží o přístup k vaší organizaci ze známé škodlivé IP adresy. Pokud se zobrazí odchozí (červená) aktivita, znamená to, že data z vaší sítě se streamují z vaší organizace na známou škodlivou IP adresu.
 
-   ![Mapování Sentinel Azure](./media/qs-get-visibility/map.png)
+   ![Mapa škodlivého provozu](./media/qs-get-visibility/map.png)
 
 
-- **Nedávné incidenty**: Pokud si chcete zobrazit poslední incidenty, jejich závažnost a počet výstrah přidružených k incidentu. Pokud se u určitého typu výstrahy zobrazí jako náhlé špičky, může to znamenat, že aktuálně probíhá aktivní útok. Pokud máte například náhlou špičku 20 událostí pass-the-hash z Azure ATP, je možné, že se někdo aktuálně snaží o útok.
+- **Nedávné incidenty**: Pokud si chcete zobrazit poslední incidenty, jejich závažnost a počet výstrah přidružených k incidentu. Pokud se u určitého typu výstrahy zobrazí jako náhlé špičky, může to znamenat, že aktuálně probíhá aktivní útok. Například pokud máte náhlé špičky 20 událostí pass-the-hash od Microsoft Defenderu po identitu (dřív ATP. Azure ATP), je možné, že se někdo momentálně snaží o útok.
 
 - **Anomálie zdrojů dat**: analytiky dat Microsoftu vytvořily modely, které neustále vyhledávají data ze zdrojů dat, a to kvůli anomáliím. Pokud neexistují žádné anomálie, nic se nezobrazí. Pokud se zjistí anomálie, měli byste je podrobněovat, abyste zjistili, co se stalo. Například klikněte na špička v aktivitě Azure. Kliknutím na **graf** můžete zobrazit, kdy špička proběhla, a potom filtrovat aktivity, ke kterým došlo během tohoto časového období, abyste viděli, co způsobilo špičku.
 
-   ![Mapování Sentinel Azure](./media/qs-get-visibility/anomolies.png)
+   ![Zdroje dat neobvyklé](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>Použití vestavěných sešitů<a name="dashboards"></a>
 
@@ -64,10 +64,10 @@ Předdefinované sešity poskytují integrovaná data z připojených zdrojů da
 
    - Přidejte sešit pro bránu firewall. Přidejte například sešit Palo Alto. Sešit analyzuje provoz brány firewall a poskytuje korelace mezi daty brány firewall a událostmi hrozeb a zvýrazňuje podezřelé události napříč entitami. V sešitech získáte informace o trendech v provozu a umožňují přejít k podrobnostem a filtrovat výsledky. 
 
-      ![Řídicí panel PAL Alto](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Řídicí panel Palo Alto](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sešity můžete přizpůsobit úpravou tlačítka hlavní dotaz ![ ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko tlačítka můžete ![ ](./media/qs-get-visibility/go-to-la-button.png) přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
+Sešity můžete přizpůsobit úpravou ![ tlačítka pro úpravy hlavního dotazu dotazu ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko ![ Analytics Log Analytics můžete ](./media/qs-get-visibility/go-to-la-button.png) přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
 
 Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

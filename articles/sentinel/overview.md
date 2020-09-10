@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564629"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662026"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
 
@@ -43,9 +43,9 @@ V celé škále stávajících služeb Azure se v systému Azure Sentinel nativn
 
 ## <a name="connect-to-all-your-data"></a>Připojení ke všem datům
 
-Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel se dodává s řadou konektorů pro řešení Microsoftu, které jsou dostupné okamžitě a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky Microsoftu a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
+Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection) a Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP) a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
 
-![Sběrače dat](./media/collect-data/collect-data-page.png)
+![Kolektory dat](./media/collect-data/collect-data-page.png)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
@@ -82,13 +82,13 @@ V současnosti ve verzi Preview vám Azure Sentinel – [podrobné vyšetřovac�
 
 Využijte [výkonné nástroje pro hledání a dotazování](hunting.md)v rámci Azure Sentinel na základě Mitre Frameworku, které vám umožní proaktivní prokládat bezpečnostní hrozby ve zdrojích dat vaší organizace, než se aktivuje výstraha. Až zjistíte, který lovecký dotaz poskytuje přehledy o možných útokech, můžete také vytvořit vlastní pravidla detekce na základě dotazu a tyto poznatky obdržíte jako výstrahy na vaše reakce na incidenty zabezpečení. Při lovu můžete vytvořit záložky pro zajímavé události, které vám umožní vrátit se k nim později, sdílet je s ostatními a seskupovat je s ostatními korelačními událostmi a vytvořit tak přesvědčivý incident pro šetření.
 
-![Vyhledávání](./media/overview/hunting.png)
+![Přehled funkce pro lov](./media/overview/hunting.png)
 
 ## <a name="community"></a>Komunita
 
 Komunita Sentinel Azure je výkonným prostředkem pro detekci a automatizaci hrozeb. Naši analytici Microsoftu v oblasti zabezpečení neustále vytvářejí a přidávají nové sešity, playbooky, lovecké dotazy a další, jejich publikování do komunity, abyste je mohli používat ve svém prostředí. Můžete si stáhnout ukázkový obsah z [úložiště](https://aka.ms/asicommunity) GitHub privátní komunity a vytvořit vlastní sešity, lovecké dotazy, poznámkové bloky a playbooky pro službu Azure Sentinel. 
 
-![Komunita](./media/overview/community.png)
+![Prozkoumejte komunitu uživatelů](./media/overview/community.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585657"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662040"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím CLI
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí](manage-with-cli2.md)rozhraní příkazového řádku Azure.
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ff7e423063859a6cdc1a4362fb030c0deb75eb32
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447082"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658705"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
 
@@ -120,10 +120,10 @@ Následující tabulka shrnuje pole souborů k vyplnění:
 **Propustnost zápisu disku 1** | Ne | Data zapsaná na disk za sekundu, v MB za sekundu.
 **Procento využití procesoru** | Ne | Procento využitého procesoru
 **Procento využití paměti** | Ne | Procento využité paměti RAM
-**Operace čtení z celkového počtu disků** | Ne | Operace čtení disku za sekundu
-**Operace zápisu z celkového počtu disků** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení celkem disků** | Ne | Data načtená z disku v MB za sekundu.
-**Propustnost zápisu celkem disků** | Ne | Data zapsaná na disk v MB za sekundu.
+**Operace čtení z celkového počtu disků** | Ne | Operace čtení za sekundu pro všechny disky v kombinaci. <br/> Toto pole použijte, pokud nemůžete poskytnout data na úrovni disku. 
+**Operace zápisu z celkového počtu disků** | Ne | Operace zápisu za sekundu pro všechny disky v kombinaci. <br/> Toto pole použijte, pokud nemůžete poskytnout data na úrovni disku.
+**Propustnost čtení celkem disků** | Ne | Data načtená ze všech disků v MB za sekundu. <br/> Toto pole použijte, pokud nemůžete poskytnout data na úrovni disku. 
+**Propustnost zápisu celkem disků** | Ne | Data zapsaná na všechny disky v MB za sekundu. <br/> Toto pole použijte, pokud nemůžete poskytnout data na úrovni disku.
 **Síť v propustnosti** | Ne | Data přijatá serverem v MB za sekundu.
 **Propustnost sítě** | Ne | Data přenášená serverem v MB za sekundu.
 **Typ firmwaru** | Ne | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
@@ -146,6 +146,11 @@ Pokud například chcete zadat všechna pole pro druhý disk, přidejte tyto slo
 - Propustnost čtení disku 2
 - Propustnost zápisu disku 2
 
+Pokud nemůžete zadat data na úrovni disku, můžete zadat data o výkonu disku na server pomocí následujících polí. Podrobnosti o jednotlivých polích najdete v [této](#add-server-information) části.
+- Operace čtení z celkového počtu disků
+- Operace zápisu z celkového počtu disků
+- Propustnost čtení celkem disků
+- Propustnost zápisu celkem disků
 
 ## <a name="import-the-server-information"></a>Importovat informace o serveru
 

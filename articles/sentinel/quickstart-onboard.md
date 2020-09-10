@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 0e0530432fd72335a9ed9ab4d53ca5bc80c7c6da
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566246"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661983"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
 V tomto rychlém startu se dozvíte, jak připojit k Azure Sentinel. 
 
-Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, které jsou dostupné okamžitě a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky, Microsoft 365 zdrojů (včetně Office 365), Azure AD, Azure ATP, Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pomocí protokolu CEF (Common Event Format), syslog nebo REST-API můžete také připojit zdroje dat k Azure Sentinel.  
+Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit službu Azure Sentinel a pak připojit zdroje dat. Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, které jsou dostupné mimo pole, a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection), Microsoft 365ch zdrojů (včetně Office 365), Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP), Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pomocí protokolu CEF (Common Event Format), syslog nebo REST-API můžete také připojit zdroje dat k Azure Sentinel.  
 
 Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených sešitů, které jsou na základě vašich dat Surface Insights. Tyto sešity je možné snadno přizpůsobit podle svých potřeb.
 
@@ -41,20 +41,20 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
  
 ## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel <a name="enable"></a>
 
-1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
+1. Přihlaste se k webu Azure Portal. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
 
 1. Vyhledejte a vyberte **Azure Sentinel**.
 
-   ![search](./media/quickstart-onboard/search-product.png)
+   ![Hledání služeb](./media/quickstart-onboard/search-product.png)
 
 1. Vyberte **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
-   ![search](./media/quickstart-onboard/choose-workspace.png)
+   ![Zvolit pracovní prostor](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
+   > - Výchozí pracovní prostory vytvořené v Azure Defenderu (dříve Azure Security Center) se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
    > - U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů) se ukládají v Evropě (pro pracovní prostory v Evropě), v Austrálii (pro pracovní prostory v Austrálii) nebo v Východní USA (pro pracovní prostory v jiné oblasti).
 
    >[!IMPORTANT]

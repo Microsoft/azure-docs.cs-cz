@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534910"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660774"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí řídicího panelu Meraki
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat řídicí panel Meraki s Azure Active Dire
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,6 +42,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Řídicí panel Meraki podporuje **IDP** iniciované jednotné přihlašování.
 * Po nakonfigurování řídicího panelu Meraki můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-meraki-dashboard-from-the-gallery"></a>Přidání řídicího panelu Meraki z Galerie
 
 Ke konfiguraci integrace řídicího panelu Meraki do služby Azure AD je nutné přidat řídicí panel Meraki z Galerie do seznamu spravovaných aplikací SaaS.
@@ -53,7 +56,7 @@ Ke konfiguraci integrace řídicího panelu Meraki do služby Azure AD je nutné
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Meraki Dashboard** .
 1. Vyberte **řídicí panel Meraki** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Konfigurace a testování jednotného přihlašování Azure AD pro řídicí panel Meraki
+## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro řídicí panel Meraki
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí řídicího panelu Meraki pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v řídicím panelu Meraki.
 
@@ -91,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace řídicího panelu Meraki několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------- |
     | `https://dashboard.meraki.com/saml/attributes/username` | User. userPrincipalName |
     | `https://dashboard.meraki.com/saml/attributes/role` | User. assignedroles |
@@ -121,7 +124,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -147,15 +150,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte do **Organization**  ->  **Nastavení**organizace.
 
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Karta Nastavení řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure1.png)
 
 1. V části ověřování změňte **jednotné přihlašování SAML** na **SSO povoleno jednotného přihlašování SAML**.
 
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Ověřování řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure2.png)
 
 1. Klikněte na **Přidat IDP SAML**.
 
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Řídicí panel Meraki přidat IdP SAML](./media/meraki-dashboard-tutorial/configure3.png)
 
 1. Vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal do textového pole **otisku certifikátu SHA1 pro certifikát X. 590** . Potom klikněte na **Uložit**. Po uložení se adresa URL příjemce zobrazí. Zkopírujte hodnotu adresy URL příjemce a vložte ji do textového pole **Adresa URL odpovědi** v **části základní konfigurace SAML** v Azure Portal.
 
@@ -167,15 +170,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte ke **Organization**  ->  **Správci**organizace.
 
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/user1.png)
+    ![Správci řídicích panelů Meraki](./media/meraki-dashboard-tutorial/user1.png)
 
 1. V části role správce SAML klikněte na tlačítko **Přidat roli SAML** .
 
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/user2.png)
+    ![Tlačítko pro přidání role SAML v řídicím panelu Meraki](./media/meraki-dashboard-tutorial/user2.png)
 
 1. Zadejte **Meraki_full_admin**rolí, označte **přístup organizace** jako **úplný** a klikněte na **vytvořit roli**. Opakujte tento postup pro **meraki_readonly_admin**, tentokrát označí **přístup organizace** jako pole jen **pro čtení** .
  
-    ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/user3.png)
+    ![Řídicí panel meraki vytvořit uživatele](./media/meraki-dashboard-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -183,7 +186,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici řídicího panelu Meraki, měli byste být automaticky přihlášeni k řídicímu panelu Meraki, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -194,6 +197,3 @@ Když na přístupovém panelu kliknete na dlaždici řídicího panelu Meraki, 
 - [Vyzkoušejte si řídicí panel Meraki s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Postup ochrany řídicího panelu Meraki s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

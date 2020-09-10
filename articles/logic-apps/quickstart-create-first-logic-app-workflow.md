@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/23/2020
-ms.openlocfilehash: 980e3e036257bbf5aa9743025bbfb55065176a39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133295"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658298"
 ---
 # <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu automatizované integrace pomocí Azure Logic Apps-Azure Portal
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se seznámíte se základními obecnými koncepty, jak v
 
 ![Koncepční obrázek znázorňující ukázkovou pracovní postup aplikace logiky vysoké úrovně.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Pro tento scénář potřebujete předplatné Azure, nebo si [Zaregistrujte bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), e-mailový účet ze služby, kterou podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Další podporované e-mailové služby najdete [v seznamu konektorů](/connectors/). V tomto příkladu aplikace logiky používá účet Office 365 Outlook. Pokud používáte jinou e-mailovou službu, je celkový obecný postup stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+Pro tento scénář potřebujete předplatné Azure, nebo si [Zaregistrujte bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), e-mailový účet ze služby, kterou podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Další podporované e-mailové služby najdete [v seznamu konektorů](/connectors/). V tomto příkladu aplikace logiky používá pracovní nebo školní účet. Pokud používáte jinou e-mailovou službu, je celkový obecný postup stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
 > [!IMPORTANT]
 > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).

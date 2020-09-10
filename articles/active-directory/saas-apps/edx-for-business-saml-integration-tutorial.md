@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1e1ec1dc4d6982194fc10a8701629adba2c8b24c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31e8533da91fdab86313e21c20c2ebb107eef848
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544308"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660602"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s integrací SAML pro firmy edX for Business
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat integraci edX for Business SAML s Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,6 +43,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Jakmile nakonfigurujete integraci edX for Business SAML, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-edx-for-business-saml-integration-from-the-gallery"></a>Přidání integrace edX for Business SAML z Galerie
 
 Pokud chcete nakonfigurovat integraci integrace edX for Business SAML do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat integraci edX for Business SAML z galerie.
@@ -55,7 +58,7 @@ Pokud chcete nakonfigurovat integraci integrace edX for Business SAML do služby
 1. Na panelu výsledků vyberte **integrace EDX for Business SAML** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-edx-for-business-saml-integration"></a>Konfigurace a testování jednotného přihlašování Azure AD pro integraci edX for Business SAML
+## <a name="configure-and-test-azure-ad-sso-for-edx-for-business-saml-integration"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro integraci služby edX for Business SAML
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s integrací SAML pro edX for Business pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v integraci služby edX for Business SAML.
 
@@ -91,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace pro integraci edX for Business SAML několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------- |
     | country | uživatel. Country  |
 
@@ -108,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -142,7 +145,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici integrace edX for Business SAML na přístupovém panelu byste měli být automaticky přihlášeni k integraci služby edX for Business SAML, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

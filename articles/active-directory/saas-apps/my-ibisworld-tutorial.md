@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 92eecc419128b593dced0f9679dd02eb273cbb62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7081babb66cc91a0d904bf46a31843b663c016e7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518216"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k mému IBISWorld
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat IBISWorld s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,6 +43,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Můj IBISWorld podporuje zřizování uživatelů **jenom v čase**
 * Po nakonfigurování IBISWorld můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-my-ibisworld-from-the-gallery"></a>Přidání IBISWorld z Galerie
 
 Pokud chcete nakonfigurovat integraci my IBISWorld do služby Azure AD, musíte přidat my IBISWorld z Galerie do svého seznamu spravovaných aplikací SaaS.
@@ -55,7 +58,7 @@ Pokud chcete nakonfigurovat integraci my IBISWorld do služby Azure AD, musíte 
 1. Z panelu výsledků vyberte **Moje IBISWorld** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-my-ibisworld"></a>Konfigurace a testování jednotného přihlašování Azure AD pro moje IBISWorld
+## <a name="configure-and-test-azure-ad-sso-for-my-ibisworld"></a>Konfigurace a testování jednotného přihlašování Azure AD pro moje IBISWorld
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí My IBISWorld pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v IBISWorld vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem.
 
@@ -92,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává moje aplikace IBISWorld několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | --------------- | --------- |
     | Oddělení | User. Department |
     | language | User. preferredlanguage |
@@ -114,7 +117,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -148,7 +151,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici IBISWorld, měli byste se automaticky přihlásit k mému IBISWorld, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

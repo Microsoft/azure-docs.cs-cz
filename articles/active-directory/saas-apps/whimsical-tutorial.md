@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 443cd6ce3805dbd5ebc250556c6d8ec28161f50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523272"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Whimsical
 
@@ -28,15 +28,12 @@ V tomto kurzu se dozvíte, jak integrovat Whimsical s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Pracovní prostor týmu Whimsical
-
-> [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -45,6 +42,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Whimsical podporuje jednotné přihlašování (SSO) **a IDP** .
 * Whimsical podporuje zřizování uživatelů **jenom v čase** .
 * Po nakonfigurování Whimsical můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-whimsical-from-the-gallery"></a>Přidání Whimsical z Galerie
 
@@ -57,7 +57,7 @@ Pokud chcete nakonfigurovat integraci Whimsical do služby Azure AD, musíte př
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Whimsical** .
 1. Na panelu výsledků vyberte **Whimsical** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-whimsical"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Whimsical
+## <a name="configure-and-test-azure-ad-sso-for-whimsical"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Whimsical
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Whimsical pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Whimsical.
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Whimsical několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | --------- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -158,7 +158,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Whimsical, měli byste se automaticky přihlásit k Whimsical, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -169,5 +169,3 @@ Když na přístupovém panelu kliknete na dlaždici Whimsical, měli byste se a
 - [Vyzkoušejte si Whimsical s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit Whimsical pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

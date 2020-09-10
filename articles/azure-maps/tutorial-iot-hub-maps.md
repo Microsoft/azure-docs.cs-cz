@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4150464b5c59b631afea0c788b1e351dee5185f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 86ae186d3d8b131955be7d9fa2c305316dea9f00
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299361"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658450"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -176,7 +176,7 @@ Kód skriptu jazyka C#, který bude obsahovat naše funkce, se [tady](https://gi
 
 Teď nastavíme naši funkci Azure Functions.
 
-1. Na řídicím panelu Azure Portal klikněte na **vytvořit prostředek**. Do textového pole hledání zadejte **Function App** . Klikněte na **Function App**. Klikněte na možnost **Vytvořit**.
+1. Na řídicím panelu Azure Portal klikněte na **vytvořit prostředek**. Do textového pole hledání zadejte **Function App** . Klikněte na **Function App**. Klikněte na **Vytvořit**.
 
 2. Na stránce vytváření **Function App** název své aplikace Function App. V části **Skupina prostředků**v rozevíracím seznamu vyberte *ContosoRental* .  Jako **zásobník modulu runtime**vyberte *.NET Core* . Klikněte na **Další: hostování >** v dolní části stránky.
 
@@ -204,7 +204,7 @@ Teď nastavíme naši funkci Azure Functions.
     * Nahraďte **UDIDi** `udid` geografickou ochranou, kterou jste nahráli v rámci [nahrávání geografického](#upload-a-geofence)plotu.
     * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat nahraďte **ACCESS_KEY**, **ACCOUNT_NAME**a **STORAGE_CONTAINER_NAME** . Tyto hodnoty se vygenerovaly při vytvoření účtu úložiště v [Vytvoření účtu úložiště Azure](#create-an-azure-storage-account).
 
-9. V nabídce na levé straně klikněte na okno **integrace** . V diagramu klikněte na **Trigger Event Grid** . Zadejte název triggeru, jako je *eventCarTelemetry*, a klikněte na **vytvořit Event Grid předplatné**.
+9. V nabídce na levé straně klikněte na okno **integrace** . V diagramu klikněte na **Trigger Event Grid** . Zadejte název triggeru *eventGridEvent*a klikněte na **vytvořit Event Grid předplatné**.
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Přidání odběru události":::
 
@@ -212,7 +212,7 @@ Teď nastavíme naši funkci Azure Functions.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Vytvořit odběr události":::
 
-11. Zkontrolujte nastavení. Ujistěte se, že koncový bod Určuje funkci, kterou jste vytvořili na začátku této části. Klikněte na možnost **Vytvořit**.
+11. Zkontrolujte nastavení. Ujistěte se, že koncový bod Určuje funkci, kterou jste vytvořili na začátku této části. Klikněte na **Vytvořit**.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Vytvořit potvrzení odběru události":::
 

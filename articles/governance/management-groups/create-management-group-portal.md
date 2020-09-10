@@ -3,12 +3,12 @@ title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí portálu'
 description: V tomto rychlém startu použijete Azure Portal k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
 ms.date: 08/31/2020
 ms.topic: quickstart
-ms.openlocfilehash: 28b530e1da6b75dcc20e4a5dfebc494a959040b3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237235"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661744"
 ---
 # <a name="quickstart-create-a-management-group"></a>Rychlý Start: Vytvoření skupiny pro správu
 
@@ -32,14 +32,14 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 
 1. Vyberte **+ Přidat skupinu pro správu**.
 
-   :::image type="content" source="./media/main.png" alt-text="Stránka pro práci se skupinami pro správu" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Snímek obrazovky se stránkou skupiny pro správu, která zobrazuje podřízené skupiny pro správu a odběry." border="false":::
 
 1. Nechejte možnost **vytvořit nové** a vyplnit pole ID skupiny pro správu.
 
    - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odesílání příkazů v této skupině pro správu. Tento identifikátor není po vytvoření upravitelný, protože se používá v systému Azure k identifikaci této skupiny. [Kořenová skupina pro správu](./overview.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je Azure Active Directory ID. U všech ostatních skupin pro správu přiřaďte jedinečné ID.
    - Pole Zobrazovaný název je název, který se zobrazí v Azure Portal. Samostatné zobrazované jméno je volitelné pole při vytváření skupiny pro správu a může být kdykoli změněno.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Podokno možnosti pro vytvoření nové skupiny pro správu":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Snímek obrazovky s možnostmi Přidat skupinu pro správu pro vytvoření nové skupiny pro správu.":::
 
 1. Vyberte **Uložit**.
 

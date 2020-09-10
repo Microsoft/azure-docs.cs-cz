@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: cbeb37599d28241dac3829af3891b2810cca4dce
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812933"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662116"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning (Preview)
 
@@ -67,8 +67,8 @@ Prozkoumejte tyto integrované regresní ukázky.
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| [Ukázka 1: regrese-automobilová předpověď ceny (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
-| [Ukázka 2: regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
+| [Regrese – předpověď ceny automobilu (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
+| [Regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
 
 ## <a name="classification"></a>Classification
 
@@ -76,11 +76,19 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| [Ukázka 3: binární klasifikace s výběrem funkce – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
-| [Ukázka 4: binární klasifikace pomocí vlastního skriptu Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
-| [Ukázka 5: klasifikace binárních hodnot – předpověď vztahů se zákazníky](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Předpověď změn zákazníků pomocí dvou vyrovnaných rozhodovacích stromů se dvěma třídami Pomocí SMOTE můžete vzorkovat data s posunutím.
-| [Ukázka 7: klasifikace textu – Wikipedii SP 500 – datová sada](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Klasifikujte typy společností z článků Wikipedii s využitím více tříd logistické regrese. |
-| Ukázka 12: více tříd – rozpoznávání písmen | Vytvořte soubor se souborem sady binárních klasifikátorů pro klasifikaci psaných písmen. |
+| [Binární klasifikace s výběrem funkcí – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
+| [Binární klasifikace s vlastním skriptem Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
+| [Binární klasifikace – předpověď vztahů se zákazníky](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Předpověď změn zákazníků pomocí dvou vyrovnaných rozhodovacích stromů se dvěma třídami Pomocí SMOTE můžete vzorkovat data s posunutím.
+| [Klasifikace textu – Wikipedii sada dat SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Klasifikujte typy společností z článků Wikipedii s využitím více tříd logistické regrese. |
+| Více tříd – rozpoznávání písmen | Vytvořte soubor se souborem sady binárních klasifikátorů pro klasifikaci psaných písmen. |
+
+## <a name="computer-vision"></a>Počítačové zpracování obrazu
+
+Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
+
+| Ukázkový název | Popis | 
+| --- | --- |
+| Špičkové doporučení na hloubku & – předpověď hodnocení restaurace | Sestavte modul doporučených pro restaurace z možností restaurace/uživatel a hodnocení.|
 
 ## <a name="recommender"></a>Doporučovací systém
 
@@ -88,7 +96,7 @@ Prozkoumejte tyto integrované příklady doporučených kroků. Další informa
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| Ukázka 10: doporučení – hodnocení filmu tweety | Sestavte modul doporučený pro film z nadpisů a hodnocení filmů. |
+| Klasifikace obrázků pomocí DenseNet | Použijte moduly počítačového vidění k sestavení modelu klasifikace imagí založeného na PyTorch DenseNet.| 
 
 ## <a name="utility"></a>Nástroj
 
@@ -96,10 +104,11 @@ Přečtěte si další informace o ukázkách, které předvádějí nástroje a
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| [Ukázka 6: použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| Ukázka 8: křížové ověřování pro předpověď v případě binární klasifikace – pro příjem | Pro vytvoření binárního klasifikátoru pro příjem z dospělého použijte vzájemné ověřování.
-| Ukázka 9: důležitost funkce permutace | Použijte funkci permutace důležitost k výpočtu skóre důležitosti pro testovací datovou sadu. 
-| Ukázka 11: ladění parametrů pro binární klasifikaci – předpověď příjmů za dospělé | K nalezení optimálních parametrů pro sestavení binárního klasifikátoru použijte parametry ladění modelu. |
+| Binární klasifikace pomocí pro dostupné modelu – předpověď příjmů za dospělé | Pro dostupné je systém strojového učení, který nabízí hranici strojového učení s technikami, jako je online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení. Tento příklad ukazuje, jak použít model pro dostupné k sestavení binárního klasifikačního modelu. 
+| [Použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Pomocí vlastního skriptu jazyka R můžete předpovědět, jestli se plánovaný osobní let bude zpozdit o více než 15 minut.
+| Křížové ověření pro předpověď v případě binární klasifikace – pro příjem | Pro vytvoření binárního klasifikátoru pro příjem z dospělého použijte vzájemné ověřování.
+| Důležitost funkce permutací | Použijte funkci permutace důležitost k výpočtu skóre důležitosti pro testovací datovou sadu. 
+| Ladění parametrů pro binární klasifikaci – předpověď příjmů za dospělé | K nalezení optimálních parametrů pro sestavení binárního klasifikátoru použijte parametry ladění modelu. |
 
 ## <a name="datasets"></a>Datové sady
 

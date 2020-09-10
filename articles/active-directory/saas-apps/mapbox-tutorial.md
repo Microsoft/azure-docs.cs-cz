@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554766"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661911"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Mapbox
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Mapbox s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,6 +41,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Mapbox podporuje jednotné přihlašování **IDP** .
 * Po nakonfigurování Mapbox můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-mapbox-from-the-gallery"></a>Přidání Mapbox z Galerie
 
@@ -84,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Mapbox několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name   |  Zdrojový atribut|
+    | Název   |  Zdrojový atribut|
     | -----|--------- |
     | role | User. assignedroles |
     | | |
@@ -110,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -136,15 +139,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na kartu **Settings** (Nastavení).
 
-    ![Konfigurace Mapbox](./media/mapbox-tutorial/configure1.png)
+    ![Karta nastavení Mapbox](./media/mapbox-tutorial/configure1.png)
 
 1. V levém navigačním podokně klikněte na kartu **zabezpečení** .
 
-    ![Konfigurace Mapbox](./media/mapbox-tutorial/configure2.png)
+    ![Karta zabezpečení Mapbox](./media/mapbox-tutorial/configure2.png)
 
 1. Klikněte na **Upravit jednotné přihlašování**.
 
-    ![Konfigurace Mapbox](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox upravit jednotné přihlašování](./media/mapbox-tutorial/configure3.png)
 
 1. Přejděte dolů na **Krok 3: nastavení jednotného přihlašování SAML pro Mapbox** a provedení následujících kroků:
 
@@ -168,7 +171,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Mapbox, měli byste se automaticky přihlásit k Mapbox, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
