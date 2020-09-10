@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 949afc00b12b1238973f832270d57fff3c2db5f9
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255014"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669535"
 ---
 # <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a f
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
     1. V části **vybrat data Lake Storage Gen 2**klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
     1. V části **vybrat data Lake Storage obecné 2**klikněte na **systém souborů** a pojmenujte ho **Uživatelé**.
-1. MOŽNOST 2 viz **Příprava pokynů účtu úložiště** v dolní části tohoto dokumentu.
+1. MOŽNOST 2 použijte existující účet ADLSGEN2. Projděte si pokyny k **přípravě účtu úložiště ADLSGEN2** na konci tohoto dokumentu.
 1. Váš pracovní prostor Azure synapse použije tento účet úložiště jako primární účet úložiště a kontejner pro uložení dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
@@ -94,29 +94,23 @@ Na rozdíl od jiných druhů fondů je fakturace za SQL na vyžádání založen
 * SQL na vyžádání má vlastní databáze SQL na vyžádání, které existují nezávisle na jakémkoli fondu SQL na vyžádání.
 * Pracovní prostor má vždy přesně jeden fond SQL na vyžádání s názvem **SQL na vyžádání**.
 
-## <a name="prepare-a-storage-account"></a>Příprava účtu úložiště
+## <a name="preparing-a-adlsgen2-storage-account"></a>Příprava účtu úložiště ADLSGEN2
+
+### <a name="perform-the-following-steps-before-you-create-your-workspace"></a>PŘED vytvořením pracovního prostoru proveďte následující kroky.
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-1. Vytvořte nový účet úložiště s následujícími nastaveními:
-
-    |Karta|Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|---|
-    |Základy|**Název účtu úložiště**| Vyberte libovolný název.| V tomto dokumentu použijeme název **contosolake**.|
-    |Základy|**Druh účtu**| **StorageV2** ||
-    |Základy|**Umístění**|Vyberte libovolné umístění.| Doporučujeme, aby byl váš pracovní prostor Azure synapse Analytics a účet Azure Data Lake Storage Gen2 ve stejné oblasti.|
-    |Pokročilý|**Data Lake Storage Gen2**|**Povoleno**| Azure synapse funguje jenom s účty úložiště, které mají povolené toto nastavení.|
-    |||||
-
-1. Po vytvoření účtu úložiště v levém podokně vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny:
+1. Přejít na existující účet úložiště
+1. V levém podokně vyberte **řízení přístupu (IAM)** . 
+1. Přiřaďte následující role nebo se ujistěte, že jsou již přiřazeny:
     * Přiřaďte roli **vlastníka** sami sobě.
     * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** .
 1. V levém podokně vyberte **kontejnery** a vytvořte kontejner.
-1. Kontejneru můžete dát libovolný název. V tomto dokumentu budeme pojmenovat **uživatele**kontejneru.
+1. Kontejneru můžete dát název. V tomto dokumentu používáme jméno  **uživatele**.
 1. Přijměte výchozí nastavení **úroveň veřejného přístupu**a pak vyberte **vytvořit**.
 
-### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Konfigurace přístupu k účtu úložiště z vašeho pracovního prostoru
+### <a name="perform-the-following-steps-after-you-create-your-workspace"></a>Po vytvoření pracovního prostoru proveďte následující kroky.
 
-Spravované identity pro váš pracovní prostor Azure synapse už můžou mít přístup k účtu úložiště. Pomocí těchto kroků se ujistěte, že:
+Nakonfigurujte přístup k účtu úložiště z vašeho pracovního prostoru. Spravované identity pro váš pracovní prostor Azure synapse už můžou mít přístup k účtu úložiště. Pomocí těchto kroků se ujistěte, že:
 
 1. Otevřete [Azure Portal](https://portal.azure.com) a primární účet úložiště, který jste zvolili pro váš pracovní prostor.
 1. V levém podokně vyberte **řízení přístupu (IAM)** .

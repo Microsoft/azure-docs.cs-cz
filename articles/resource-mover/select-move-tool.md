@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8af5cd4f961a2138f09bb3e56fccf7aa8f726dd9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 36f4bb0c10e8346caa0c4ef8fd1ed69e4b2878a0
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653578"
+ms.locfileid: "89669365"
 ---
 # <a name="choose-a-tool-for-moving-azure-resources"></a>Volba nástroje pro přesunutí prostředků Azure
 
@@ -27,11 +27,11 @@ Prostředky můžete v rámci Azure přesunout následujícím způsobem:
 
 ## <a name="compare-move-tools"></a>Porovnat nástroje pro přesun
 
-**Nástroj** | **Kdy je použít**
+**Nástroj** | **Kdy je použít** | **Další informace**
 --- | --- 
-**Přesunout do skupiny prostředků** | Přesuňte prostředky do jiné skupiny prostředků nebo předplatného nebo napříč oblastmi.<br/><br/> Pokud přecházíte mezi oblastmi, ve skupině prostředků vyberte prostředky, které chcete přesunout, a pak se přesunete do centra pro podávání prostředků, abyste ověřili závislosti a přesunuli prostředky do cílové oblasti.
-**Přesun z centra pro postěhovací prostředky** | Přesunutí prostředků mezi oblasti. <br/><br/> Můžete přejít do cílové oblasti nebo do konkrétní zóny dostupnosti nebo do skupiny dostupnosti v rámci cílové oblasti.
-**Přesunutí virtuálních počítačů pomocí Site Recovery** | Slouží k přesunu virtuálních počítačů Azure mezi státní správou a privátními cloudy.<br/><br/> Použijte, pokud chcete přesunout virtuální počítače mezi zónami dostupnosti ve stejné oblasti.
+**Přesunout do skupiny prostředků** | Přesuňte prostředky do jiné skupiny prostředků nebo předplatného nebo napříč oblastmi.<br/><br/> Pokud přecházíte mezi oblastmi, ve skupině prostředků vyberte prostředky, které chcete přesunout, a pak se přesunete do centra pro podávání prostředků, abyste ověřili závislosti a přesunuli prostředky do cílové oblasti. | [Přesuňte prostředky do jiné skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).<br/><br/> [Přesune prostředky do jiné oblasti ze skupiny prostředků](../azure-resource-manager/management/move-region.md).
+**Přesun z centra pro postěhovací prostředky** | Přesunutí prostředků mezi oblasti. <br/><br/> Můžete přejít do cílové oblasti nebo do konkrétní zóny dostupnosti nebo do skupiny dostupnosti v rámci cílové oblasti. | [Přesuňte prostředky mezi oblasti v centru]()pro zpracování prostředků.
+**Přesunutí virtuálních počítačů pomocí Site Recovery** | Slouží k přesunu virtuálních počítačů Azure mezi státní správou a veřejnými cloudy.<br/><br/> Použijte, pokud chcete přesunout virtuální počítače mezi zónami dostupnosti ve stejné oblasti. |[Přesuňte prostředky mezi státními a veřejnými cloudy](../site-recovery/region-move-cross-geos.md), [přesuňte prostředky do zón dostupnosti ve stejné oblasti](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="next-steps"></a>Další kroky
 

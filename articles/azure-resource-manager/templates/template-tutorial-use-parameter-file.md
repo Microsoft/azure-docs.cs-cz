@@ -2,22 +2,22 @@
 title: Kurz – použití souboru parametrů k nasazení šablony
 description: Použijte soubory parametrů, které obsahují hodnoty, které se mají použít k nasazení šablony Azure Resource Manager.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff3ba6bdf93fd51b3b78fce2bc82404423c427ba
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502796"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667430"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: použití souborů parametrů k nasazení šablony ARM
 
-V tomto kurzu se naučíte používat [soubory parametrů](parameter-files.md) k uložení hodnot, které předáte během nasazování. V předchozích kurzech jste v příkazu nasazení použili vložené parametry. Tento přístup pracoval při testování šablony Azure Resource Manager (ARM), ale při automatizaci nasazení může být snazší předat sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují zabalení hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. Dokončení trvá přibližně **12 minut** .
+V tomto kurzu se naučíte používat [soubory parametrů](parameter-files.md) k uložení hodnot, které předáte během nasazování. V předchozích kurzech jste v příkazu nasazení použili vložené parametry. Tento přístup pracoval při testování šablony Azure Resource Manager (šablona ARM), ale když je automatizace nasazení snazší, můžete předat sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují zabalení hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se značek](template-tutorial-add-tags.md), ale není to nutné.
 
@@ -34,6 +34,12 @@ Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, kter�
 ## <a name="add-parameter-files"></a>Přidat soubory parametrů
 
 Soubory parametrů jsou soubory JSON se strukturou, která je podobná vaší šabloně. V souboru zadejte hodnoty parametrů, které chcete předat během nasazování.
+
+V rámci souboru parametrů zadáte hodnoty pro parametry v šabloně. Název každého parametru v souboru parametrů se musí shodovat s názvem parametru ve vaší šabloně. V názvu se nerozlišují malá a velká písmena, ale pokud chcete snadno zobrazit odpovídající hodnoty, doporučujeme, abyste se shodovali se zástěnami ze šablony.
+
+Nemusíte zadávat hodnotu pro každý parametr. Pokud má nespecifikovaný parametr výchozí hodnotu, použije se tato hodnota během nasazování. Pokud parametr nemá výchozí hodnotu a není zadán v souboru parametrů, budete vyzváni k zadání hodnoty během nasazování.
+
+V souboru parametrů nemůžete zadat název parametru, který se neshoduje s názvem parametru v šabloně. Pokud jsou k dispozici neznámé parametry, zobrazí se chyba.
 
 V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.dev.jsv**.
 

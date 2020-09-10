@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5e32a6a9817f2a3176e96e39c5e261875e8f4ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101481"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667478"
 ---
 # <a name="orchestrate-with-pipelines"></a>Orchestrace pomocí kanálů
 
@@ -26,7 +26,7 @@ V Azure synapse můžete orchestrovat širokou škálu úloh.
 
 1. V synapse studiu přejdete do centra **Orchestration** .
 1. Vyberte **+**  >  **kanál** a vytvořte nový kanál.
-1. Přejít do centra pro **vývoj** a vyhledat Poznámkový blok, který jste vytvořili dříve.
+1. Přejít do centra pro **vývoj** a vyberte jeden z poznámkových bloků, které jste vytvořili dříve.
 1. Přetáhněte tento poznámkový blok do kanálu.
 1. V kanálu vyberte **Přidat Trigger**  >  **Nový/upravit**.
 1. V části **zvolit aktivační událost**vyberte **Nový**a potom v části **opakování** nastavte spuštění triggeru každé 1 hodinu.

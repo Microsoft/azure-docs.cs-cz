@@ -1,6 +1,6 @@
 ---
-title: 'Poznámky k verzi: Azure synapse Analytics (pracovní prostory)'
-description: Poznámky k verzi pro Azure synapse Analytics (pracovní prostory)
+title: 'Poznámky k verzi: Azure synapse Analytics (Preview z pracovních prostorů)'
+description: Poznámky k verzi pro Azure synapse Analytics (verze Preview pracovních prostorů)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,22 +9,20 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: add5c89e83f33980803bf571239023859653c4f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8212af727a47ab05936c8b59c781cd49c5b0ba6
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059603"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669704"
 ---
-# <a name="azure-synapse-analytics-preview-release-notes"></a>Poznámky k verzi Azure synapse Analytics (Preview)
+# <a name="azure-synapse-analytics-workspaces-preview-release-notes"></a>Zpráva k vydání verze pro Azure synapse Analytics (pracovní prostory ve verzi Preview)
 
 Tento článek popisuje omezení a problémy s Azure synapse Analytics (pracovní prostory). Související informace najdete v tématu [co je Azure synapse Analytics (pracovní prostory)](overview-what-is.md) .
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="azure-synapse-workspaces"></a>Azure synapse (pracovní prostory) 
-
-### <a name="azure-synapse-cli"></a>Rozhraní příkazového řádku Azure synapse
+## <a name="azure-cli"></a>Azure CLI
 
 - Problém a dopad na zákazníky: pracovní prostory vytvořené sadou SDK nemůžou spustit synapse Studio.
 
@@ -36,8 +34,6 @@ Tento článek popisuje omezení a problémy s Azure synapse Analytics (pracovn�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-* [Použití synapse studia](quickstart-synapse-studio.md)
-* [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
-* [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-* [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md)
+* [Co je Azure synapse](overview-what-is.md)
+* [Začínáme](get-started.md)
+* [Nejčastější dotazy](overview-faq.md)
