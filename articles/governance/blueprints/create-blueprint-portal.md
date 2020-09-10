@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
 ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051518"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648647"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -28,7 +28,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    Nebo na stránce **Začínáme** vyberte **vytvořit** a pokračujte tak, že vytvoříte podrobný plán.
 
-   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Vytvořit podrobný plán ze stránky definice podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Snímek obrazovky s tlačítkem vytvořit podrobné plán na stránce definice podrobného plánu" border="false":::
 
 1. Na kartě v horní části seznamu předdefinovaných modrotisky vyberte **začít s prázdným plánem** .
 
@@ -48,7 +48,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Přiřazení role pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Snímek obrazovky možností artefaktu přiřazení role pro přidání do definice podrobného plánu" border="false":::
 
    > [!NOTE]
    > Většina artefaktů podporuje parametry. Parametr, kterému je přiřazena hodnota během vytváření podrobného plánu, je _statický parametr_. Pokud je parametr přiřazen během přiřazení podrobného plánu, jedná se o _dynamický parametr_. Další informace najdete v tématu [parametry](./concepts/parameters.md)podrobného plánu.
@@ -143,11 +143,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Šablona Správce prostředků pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Snímek obrazovky s možnostmi artefaktu šablony Správce prostředků pro přidání do definice podrobného plánu" border="false":::
 
 1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** ** _x_ naplněný parametr _y_ ** . Dynamické parametry se nastavují při každém přiřazení podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Dokončena definice podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Snímek obrazovky dokončené definice podrobného plánu s každým typem artefaktu" border="false":::
 
 1. Teď, když jste přidali všechny plánované artefakty, vyberte **Uložit koncept** ve spodní části stránky.
 
@@ -175,11 +175,11 @@ V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis ne
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Přiřazení druhé role pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Snímek obrazovky s možnostmi artefaktů přiřazení druhé role pro přidání do definice podrobného plánu" border="false":::
 
 1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že nově přidané přiřazení role zobrazuje **naplněný 1 z 1 parametrů**. To znamená, že se jedná o statický parametr.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Druhá definice pro dokončený podrobný plán" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Snímek obrazovky druhé dokončené definice podrobného plánu s artefaktem přiřazení další role" border="false":::
 
 1. Vyberte **Uložit koncept** nyní, že byl aktualizován.
 
@@ -206,7 +206,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. Na stránce **přiřadit podrobný plán** vyberte v rozevíracím seznamu **odběr** odběry, do kterých chcete nasadit tento plán.
 
-   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte následovně:
+   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte takto:
 
    1. Vyberte odkaz **vytvořit nový** pro vytvoření nového předplatného místo výběru stávajících.
 
@@ -218,7 +218,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
    1. V dolní části stránky vyberte **vytvořit** .
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Vytvoření odběru pro odběr přiřazení podrobného plánu" border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Snímek obrazovky okna Vytvořit předplatné a možnosti pro nové předplatné" border="false":::
 
       > [!IMPORTANT]
       > Nové předplatné se vytvoří ihned po výběru **vytvořit**.
@@ -234,7 +234,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. Pro **zámek přiřazení**, ponechte výchozí hodnotu na **bez zámku**. Další informace najdete v tématu [uzamykání prostředků v modrotisky](./concepts/resource-locking.md).
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Uzamykání a spravované identity pro přiřazení" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Snímek obrazovky s přiřazením zámku a spravovanými možnostmi identity pro přiřazení podrobného plánu" border="false":::
 
 1. V části **spravovaná identita**ponechte výchozí hodnotu **přiřazenou systému**.
 
@@ -265,7 +265,7 @@ Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
 1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste předtím přiřadili, a vyberte **Zobrazit podrobnosti přiřazení**.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Zobrazit podrobnosti o přiřazení z přiřazené stránky modrotisky" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Snímek obrazovky kontextové nabídky přiřazení podrobného plánu se zvolenou možností zobrazit podrobnosti přiřazení" border="false":::
 
 1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 

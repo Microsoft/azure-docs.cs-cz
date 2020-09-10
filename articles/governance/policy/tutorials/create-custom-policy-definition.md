@@ -3,12 +3,12 @@ title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86044613"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649827"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -73,7 +73,7 @@ Existuje několik způsobů, jak se podívat na [šablonu správce prostředků]
 Nejjednodušší způsob, jak najít vlastnosti, je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurované s nastavením, které chcete vyhodnotit, taky poskytují hodnotu pro porovnání.
 Podívejte se na stránku **Exportovat šablonu** (v části **nastavení**) v Azure Portal pro tento konkrétní prostředek.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Stránka pro export šablony na stávajícím prostředku" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Snímek stránky pro export šablony na existujícím prostředku v Azure Portal." border="false":::
 
 Když to uděláte, účet úložiště odhalí šablonu podobnou tomuto příkladu:
 

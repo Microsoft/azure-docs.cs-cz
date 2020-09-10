@@ -1,47 +1,53 @@
 ---
-title: Co je rozhraní API pro analýzu textu? Vestavěn
+title: Dolování a analýza textu pomocí rozhraní API pro analýzu textu – Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Použijte rozhraní API pro analýzu textu z Azure Cognitive Services pro analýzu mínění, extrakci klíčových frází, detekci jazyka a rozpoznávání entit.
+description: Přečtěte si o dolování textu pomocí rozhraní API pro analýzu textu. Slouží k mínění analýze, rozpoznávání jazyka a dalším formám zpracování přirozeného jazyka.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: dolování textu, analýza míněníí, analýza textu
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000953"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647473"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
-Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad nezpracovaným textem a zahrnuje čtyři hlavní funkce: analýzu míněníí, extrakci klíčových frází, detekci jazyka a rozpoznávání pojmenovaných entit.
+Rozhraní API pro analýzu textu je cloudová služba, která poskytuje funkce NLP (přirozený jazyk Processing) pro dolování textu a analýzu textu, včetně analýz mínění, dolování stanovisek, extrakce klíčových frází, rozpoznávání jazyka a rozpoznávání pojmenovaných entit.
 
-Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty.
+Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
-
 ## <a name="sentiment-analysis"></a>Analýza mínění
-Pomocí [analýzy mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) zjistíte, co si zákazníci myslí o vaší značce nebo tématu analýzou nezpracovaného textu pro poznámky o kladných nebo záporných mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace.
+
+Využijte [analýzu mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co lidé považují za vaši značku nebo téma, a to tak, že budou v textu popsány kladné nebo záporné mínění. Tato funkce rozhraní API vrací mínění skóre mezi 0 a 1 pro každý dokument, kde 1 je to nejvíc kladné.
+
+Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza mínění. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
-Automatické [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) pro rychlé určení hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
+
+Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
-Můžete [zjistit, který jazyk je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre.
+
+Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
 ## <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
-[Identifikujte a Kategorizujte entity](how-tos/text-analytics-how-to-entity-linking.md) v textu jako lidi, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu.
+
+Rozpoznávání pojmenovaných entit (NER) dokáže [identifikovat a kategorizovat entity](how-tos/text-analytics-how-to-entity-linking.md) ve vašem textu, protože uživatelé, místa, organizace, množství, známé entity jsou také rozpoznány a propojeny s dalšími informacemi na webu.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
-[Kontejnery analýza textu můžete použít](how-tos/text-analytics-how-to-install-containers.md) k extrakci klíčových frází, zjišťování jazyka a k analýze mínění místně, a to díky instalaci standardizovaných kontejnerů Docker blíž k vašim datům.
+[Použijte kontejnery analýza textu](how-tos/text-analytics-how-to-install-containers.md) jako místní řešení pro text dolování a používání rozhraní API. Tyto kontejnery Docker umožňují extrahovat klíčové fráze, detekovat jazyk a analyzovat mínění blíž k vašim datům.
 
 ## <a name="typical-workflow"></a>Typický pracovní postup
 

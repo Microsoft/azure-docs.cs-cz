@@ -2,16 +2,16 @@
 title: Kurz – Export šablony z Azure Portal
 description: Naučte se používat exportovanou šablonu k dokončení vývoje šablon.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497150"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650059"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
@@ -33,7 +33,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
 ## <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte **Vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
 1. Vyberte **Vytvořit**.
@@ -62,7 +62,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
    Funkce Exportovat šablonu převezme aktuální stav prostředku a vygeneruje šablonu, která ho nasadí. Export šablony může být užitečný způsob, jak rychle získat JSON, který potřebujete k nasazení prostředku.
 
-1. Zkopírujte definici **Microsoft. Web/serverových farem** a definici parametru do šablony.
+1. Podívejte se na definici **Microsoft. Web/serverových farem** a definici parametru v exportované šabloně. Tyto oddíly nemusíte kopírovat. Tuto exportovanou šablonu můžete použít jenom jako příklad, jak chcete tento prostředek přidat do šablony.
 
     ![Šablona exportu exportované šablony Správce prostředků šablony](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
 Vyexportovaná šablona vám poskytne většinu formátu JSON, který potřebujete, ale je nutné ji přizpůsobit pro šablonu. Věnujte zvláštní pozornost rozdílům v parametrech a proměnných mezi šablonou a exportovanou šablonou. Proces exportu neznáte parametry a proměnné, které jste již definovali v šabloně.
 
-Následující příklad zvýrazní přidání do šablony. Obsahuje exportovaný kód a některé změny. Nejprve změní název parametru tak, aby odpovídal vaší konvenci pojmenování. Za druhé používá parametr Location pro umístění plánu služby App Service. Třetí, odebere **název** uvnitř objektu **Properties** , protože tato hodnota je redundantní s vlastností **Name** na úrovni prostředku.
+Následující příklad zvýrazní přidání do šablony. Obsahuje exportovaný kód a některé změny. Nejprve změní název parametru tak, aby odpovídal vaší konvenci pojmenování. Za druhé používá parametr Location pro umístění plánu služby App Service. Třetí, odebere některé vlastnosti, kde je výchozí hodnota přesně.
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
@@ -117,7 +117,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Skupina prostředků obsahuje účet úložiště a plán App Service.

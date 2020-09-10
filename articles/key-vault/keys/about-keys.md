@@ -10,14 +10,14 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413719"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651308"
 ---
-# <a name="about-azure-key-vault-keys"></a>O Azure Key Vaultch klíčích
+# <a name="about-azure-key-vault-keys"></a>Informace o klíčích služby Azure Key Vault
 
 Azure Key Vault podporuje více typů klíčů a algoritmů a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokými hodnotami.
 
@@ -103,7 +103,7 @@ Další informace naleznete v tématu [klíčové operace v Key Vault REST API](
 
 Po vytvoření klíče v Key Vault můžou pomocí klíče provádět následující kryptografické operace:  
 
--   **Sign a Verify**: striktně Tato operace je "Sign hash" nebo "verify hash", protože Key Vault v rámci vytváření podpisu nepodporuje Hashování obsahu. Aplikace by měly vyhodnotit data, která se mají místně podepsat, a pak požadovat, Key Vault podepsat hodnotu hash. Ověřování podepsaných hodnot hash se podporuje jako pohodlná operace pro aplikace, které nemusí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací by se operace ověření měly provádět místně.  
+-   **Sign a Verify**: striktně Tato operace je "Sign hash" nebo "verify hash", protože Key Vault v rámci vytváření podpisu nepodporuje Hashování obsahu. Aplikace by měly vyhodnotit data, která se mají místně podepsat, a pak požadovat, Key Vault podepsat hodnotu hash. Ověřování podepsaných hodnot hash se podporuje jako pohodlná operace pro aplikace, které nemusí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací je třeba ověřit, zda operace proběhne místně.  
 -   **Šifrování a zabalení klíče**: klíč uložený v Key Vault může sloužit k ochraně jiného klíče, obvykle se jedná o šifrovací klíč symetrického obsahu (cek). Když je klíč v Key Vault asymetrická, použije se šifrování klíče. Například operace RSA-výplně OAEP a operace WRAPKEY/UNWRAPKEY jsou ekvivalentem šifrování/dešifrování. Když je klíč v Key Vault symetrický, používá se zalamování kláves. Například AES-KW. Operace WRAPKEY je podporována jako pohodlí pro aplikace, které nemusejí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací by se operace WRAPKEY měly provádět místně.  
 -   **Šifrování a dešifrování**: klíč uložený v Key Vault může sloužit k šifrování nebo dešifrování jednoho bloku dat. Velikost bloku je určena typem klíče a vybraným šifrovacím algoritmem. Operace šifrování je poskytována pro usnadnění pro aplikace, které nemusí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací by se operace šifrování měly provádět místně.  
 

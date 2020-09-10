@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s AWS
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419006"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651840"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
@@ -43,12 +43,17 @@ Proveďte vyhodnocení následujícím způsobem:
 1. Postupujte podle [kurzu](./tutorial-prepare-physical.md) a nastavte Azure a připravte si virtuální počítače s AWS pro posouzení. Poznámky:
 
     - Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
-        - U počítačů s Windows povolte port WinRM 5986 (HTTPS) a 5985 (HTTP). To umožňuje vzdálené volání rozhraní WMI. Pokud nastavíte 
+        - U počítačů s Windows povolte port WinRM 5985 (HTTP). To umožňuje vzdálené volání rozhraní WMI.
         - Pro počítače se systémem Linux:
             1. Přihlaste se ke každému počítači se systémem Linux.
             2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
             3. V souboru vyhledejte řádek **PasswordAuthentication** a změňte hodnotu na **Ano**.
             4. Uložte soubor a zavřete ho. Restartujte službu SSH.
+    - Pokud ke zjištění virtuálních počítačů se systémem Linux používáte uživatele root, ujistěte se, že se na virtuálních počítačích povoluje přihlašovací jméno uživatele root.
+        1. Přihlaste se ke každému počítači se systémem Linux
+        2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
+        3. V souboru vyhledejte řádek **PermitRootLogin** a změňte hodnotu na **Ano**.
+        4. Uložte soubor a zavřete ho. Restartujte službu SSH.
 
 2. Pak postupujte podle tohoto [kurzu](./tutorial-assess-physical.md) a nastavte Azure Migrate projekt a zařízení pro zjišťování a vyhodnocení vašich virtuálních počítačů s AWS.
 

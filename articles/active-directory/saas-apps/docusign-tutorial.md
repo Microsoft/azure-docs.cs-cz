@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536066"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650195"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
@@ -61,7 +61,7 @@ Pokud chcete nakonfigurovat integraci DocuSign do služby Azure AD, musíte při
 1. Na panelu výsledků vyberte **Docusign** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>Konfigurace a testování jednotného přihlašování Azure AD pro DocuSign
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>Konfigurace a testování jednotného přihlašování Azure AD pro DocuSign
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí DocuSign pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a odpovídajícím uživatelem v DocuSign.
 
@@ -94,9 +94,12 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    c. Do textového pole **Adresa URL odpovědi** zadejte kdokoli z následujících vzorů adresy URL:
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | Adresa URL odpovědi |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > Tyto hodnoty v závorkách jsou zástupné symboly. Nahraďte je hodnotami v poli vlastní přihlašovací adresa URL, identifikátor a adresa URL odpovědi. Tyto podrobnosti jsou vysvětleny v části "zobrazení koncových bodů SAML 2,0" dále v tomto kurzu.
@@ -237,7 +240,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se automaticky přihlásit k instanci DocuSign, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy týkající se integrace aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

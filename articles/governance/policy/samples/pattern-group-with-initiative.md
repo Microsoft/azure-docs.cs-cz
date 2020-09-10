@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: definice zásad skupiny s iniciativami'
-description: Tento model Azure Policy poskytuje příklad definice zásad skupiny v iniciativě.
+description: Tento model Azure Policy poskytuje příklad, jak seskupit definice zásad do iniciativy.
 ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 065e7632d76feccdd6d2d5a411ba7cdf50aeaf68
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: fc79775b79c9846ee435917731428627fc65549e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85565701"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649967"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Vzor Azure Policy: definice zásad skupiny
 

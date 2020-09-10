@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551298"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647974"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cisco Webex pro Automatické zřizování uživatelů
 
@@ -97,7 +97,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování Cisco Webex](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  Do pole **Adresa URL tenanta** zadejte hodnotu ve formátu `https://api.ciscoweb.com/v1/scim/[OrgId]` . Pokud se chcete získat `[OrgId]` , přihlaste se do [centra řízení Cisco Webex](https://admin.webex.com/login). V levém dolním rohu klikněte na název vaší organizace a zkopírujte hodnotu z **ID organizace**. 
+6.  Do pole **Adresa URL tenanta** zadejte hodnotu ve formátu `https://api.ciscospark.com/v1/scim/[OrgId]` . Pokud se chcete získat `[OrgId]` , přihlaste se do [centra řízení Cisco Webex](https://admin.webex.com/login). V levém dolním rohu klikněte na název vaší organizace a zkopírujte hodnotu z **ID organizace**. 
 
     * Pokud chcete získat hodnotu **tajného tokenu**, přejděte na tuto [adresu URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Na zobrazené stránce pro přihlášení k WebEx se přihlaste pomocí úplného účtu správce Cisco Webex pro vaši organizaci. Zobrazí se chybová stránka s informací o tom, že lokalita není dostupná, ale je normální.
 
@@ -148,7 +148,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Cisco Webex je v současné době ve fázi EFT pro testování v prvním poli společnosti Cisco. Pokud chcete získat další informace, obraťte se na [tým podpory společnosti Cisco](https://www.webex.co.in/support/support-overview.html). 
 * Další informace o konfiguraci Cisco Webex najdete [tady](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub)v dokumentaci k Cisco.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

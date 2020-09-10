@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399765"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648804"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 V tomto kurzu se dozvíte, jak do služby Front Door přidat vlastní doménu. Pokud používáte přední dveře Azure pro doručování aplikací, je potřeba vlastní doména, pokud chcete, aby se váš vlastní název domény zobrazoval v žádosti koncového uživatele. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
@@ -35,13 +35,13 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Přední dvířka **nepodporují vlastní** domény s [Punycode](https://en.wikipedia.org/wiki/Punycode) znaky. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
+* Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
 
-Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
-Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overview) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
+* Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overview) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>Vytvoření záznamu DNS CNAME
@@ -116,7 +116,7 @@ Po zaregistrování vlastní domény ji můžete přidat do služby Front Door.
 
 5. Do pole **Vlastní název hostitele** zadejte vlastní doménu (včetně subdomény), kterou chcete použít jako zdrojovou doménu záznamu CNAME. Například webová \. contoso.com nebo CDN.contoso.com. Nepoužívejte název subdomény afdverify.
 
-6. Vyberte **Add** (Přidat).
+6. Vyberte **Přidat**.
 
    Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří.
 
@@ -202,7 +202,11 @@ V předchozích krocích jste do služby Front Door přidali vlastní doménu. P
 
 V tomto kurzu jste se naučili:
 
-> [!div class="checklist"]
-> - Vytvořit záznam DNS CNAME.
-> - Přidružit vlastní doménu ke službě Front Door.
-> - Ověřit vlastní doménu.
+* Vytvořit záznam DNS CNAME.
+* Přidružit vlastní doménu ke službě Front Door.
+* Ověřit vlastní doménu.
+
+Pokud chcete zjistit, jak povolit protokol HTTPS pro vlastní doménu, přejděte k dalšímu kurzu.
+
+> [!div class="nextstepaction"]
+> [Povolení HTTPS pro vlastní doménu](front-door-custom-domain.md)

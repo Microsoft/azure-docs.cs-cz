@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651195"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647235"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ V tomto článku se seznámíte s následujícími úlohami:
 > 1. Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
 > 1. Zkontrolujte výsledky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>Vytvořit cíl výpočtů
 
-V Azure Machine Learning *výpočetní* prostředí (nebo *target COMPUTE*) odkazuje na počítače nebo clustery, které provádějí výpočetní kroky v kanálu Machine Learning. Spusťte následující kód, který vytvoří [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) cíl na základě procesoru.
+V Azure Machine Learning *výpočetní* prostředí (nebo *target COMPUTE*) odkazuje na počítače nebo clustery, které provádějí výpočetní kroky v kanálu Machine Learning. Spusťte následující kód, který vytvoří [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) cíl na základě procesoru.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>Vytvoření vstupních dat
 
-Vstupy pro odvození dávky jsou data, která chcete rozdělit na oddíly pro paralelní zpracování. Kanál odvození dávky přijímá datové vstupy prostřednictvím [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
+Vstupy pro odvození dávky jsou data, která chcete rozdělit na oddíly pro paralelní zpracování. Kanál odvození dávky přijímá datové vstupy prostřednictvím [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) .
 
-`Dataset` slouží k prozkoumávání, transformaci a správě dat v Azure Machine Learning. Existují dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . V tomto příkladu použijete `FileDataset` jako vstupy. `FileDataset` poskytuje možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat. Pokud jste pro datovou sadu použili jakékoli transformace podNastavení, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
+`Dataset` slouží k prozkoumávání, transformaci a správě dat v Azure Machine Learning. Existují dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) . V tomto příkladu použijete `FileDataset` jako vstupy. `FileDataset` poskytuje možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat. Pokud jste pro datovou sadu použili jakékoli transformace podNastavení, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
 
 Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-Aby bylo možné používat dynamické datové vstupy při spuštění kanálu odvození dávky, můžete zadat vstupy `Dataset` jako [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) . Můžete zadat datovou sadu vstupů pokaždé, když znovu odešlete běh kanálu pro odvození dávky.
+Aby bylo možné používat dynamické datové vstupy při spuštění kanálu odvození dávky, můžete zadat vstupy `Dataset` jako [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) . Můžete zadat datovou sadu vstupů pokaždé, když znovu odešlete běh kanálu pro odvození dávky.
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Vytvoření výstupu
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro výstup odvození.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro výstup odvození.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>Vytvoření a spuštění kanálu
 
-Teď kanál spusťte. Nejprve vytvořte [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps`Parametr je pole kroků. V tomto případě existuje pouze jeden krok pro odvození dávky. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
+Teď kanál spusťte. Nejprve vytvořte [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps`Parametr je pole kroků. V tomto případě existuje pouze jeden krok pro odvození dávky. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
 
 Dále pomocí `Experiment.submit()` funkce odešlete kanál ke spuštění.
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 Dokončení úlohy odvození dávky může trvat dlouhou dobu. Tento příklad sleduje průběh pomocí widgetu Jupyter. Průběh úlohy můžete také monitorovat pomocí:
 
 * Azure Machine Learning Studio. 
-* Výstup z objektu Console [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)
+* Výstup z objektu Console [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true)
 
 ```python
 from azureml.widgets import RunDetails

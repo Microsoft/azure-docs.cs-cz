@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu srovnávacího testu zabezpečení Azure
 description: Přehled ukázky podrobného plánu srovnávacího testu zabezpečení Azure. Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
 ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84740377"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651896"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Ukázka Azure Security test details
 
@@ -37,7 +37,7 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. V části _Další ukázky_ Najděte ukázku **Azure Security test** Details a vyberte tuto ukázku kliknutím na název.
+1. V části _Další ukázky_ Najděte ukázku **Azure Security test** Details a vyberte název pro výběr této ukázky.
 
 1. Zadejte _základy_ ukázky podrobného plánu:
 

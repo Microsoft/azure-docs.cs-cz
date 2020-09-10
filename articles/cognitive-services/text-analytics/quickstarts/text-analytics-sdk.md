@@ -1,34 +1,35 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Analýza textu V3 | Microsoft Docs'
+title: 'Rychlý Start: dolování textu pomocí klientské knihovny Analýza textu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete své aplikace připojit k rozhraní API pro analýzu textu z Azure Cognitive Services.
+description: Pomocí tohoto rychlého startu můžete provádět analýzy mínění a další informace pomocí rozhraní API pro analýzu textu z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: dolování textu, analýza míněníí, analýza textu
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 104ae91b59bc04fc3227585a55a744d500d6db29
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931178"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649001"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
-Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
+V tomto článku se naučíte, jak začít s klientskou knihovnou Analýza textu. Pomocí těchto kroků balíček nainstalujte a vyzkoušejte ukázkový kód pro text dolování.
 
 Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
 * Rozpoznávání jazyka
-* rozpoznávání entit,
-* extrakce klíčových frází,
+* Rozpoznávání entit
+* Extrakce klíčových frází
 
 ::: zone pivot="programming-language-csharp"
 
