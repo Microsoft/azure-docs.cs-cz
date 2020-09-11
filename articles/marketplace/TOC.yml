@@ -30,6 +30,8 @@
         - name: Průvodci publikováním podle typu nabídky
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: Naplánování nabídky SaaS
+              href: ./plan-saas-offer.md
             - name: Virtuální počítače
               href: ./marketplace-virtual-machines.md
             - name: 'Aplikace Azure: šablony řešení'

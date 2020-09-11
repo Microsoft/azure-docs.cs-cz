@@ -172,6 +172,8 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Inzerce vlastních tras pro klienty P2S
           href: vpn-gateway-p2s-advertise-custom-routes.md
+        - name: Vytváření vlastních zásad protokolu IPsec pro P2S
+          href: create-custom-policies-p2s-ps.md
     - name: 'Směrování, BGP a VNet Peering'
       items:
         - name: Konfigurace BGP pro bránu VPN

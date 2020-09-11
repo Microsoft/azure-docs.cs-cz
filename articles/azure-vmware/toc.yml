@@ -58,9 +58,11 @@
               href: set-up-mabs-for-avs.md
             - name: Zálohování virtuálních počítačů privátního cloudu s využitím Backup Serveru
               href: backup-avs-vms-with-mabs.md
+        - name: Správa životního cyklu virtuálních počítačů
+          href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
-        - name: Traffic Manager s využitím AVS
+        - name: Traffic Manager
           href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: Řešení VMware
       items:

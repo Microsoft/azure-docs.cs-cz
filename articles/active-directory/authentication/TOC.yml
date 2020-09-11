@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Řešení potíží
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Samoobslužné resetování hesla (SSPR)
+          href: troubleshoot-sspr.md
+        - name: Zpětný zápis SSPR
+          href: troubleshoot-sspr-writeback.md
         - name: Nejčastější dotazy k SSPR
           href: active-directory-passwords-faq.md
         - name: Nejčastější dotazy k MFA

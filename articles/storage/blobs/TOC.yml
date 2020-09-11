@@ -310,7 +310,7 @@
               href: storage-blobs-list.md
             - name: Správa metadat a vlastností objektů blob (.NET)
               href: storage-blob-properties-metadata.md
-            - name: Kopírování objektu blob (.NET)
+            - name: Kopírování objektu blob (SDK)
               href: storage-blob-copy.md
         - name: Autorizace přístupu k datům objektu blob
           items:

@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Vizualizace
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Text
+              href: platform/workbooks-text-visualizations.md
+            - name: Graf
+              href: platform/workbooks-chart-visualizations.md
+            - name: Mřížka
+              href: platform/workbooks-grid-visualizations.md
+            - name: dlaždici
+              href: platform/workbooks-tile-visualizations.md
+            - name: Strom
+              href: platform/workbooks-tree-visualizations.md
+            - name: Graph
+              href: platform/workbooks-graph-visualizations.md
+            - name: Složený pruhový
+              href: platform/workbooks-composite-bar.md
         - name: Zdroje dat
           href: platform/workbooks-data-sources.md
         - name: Parametry

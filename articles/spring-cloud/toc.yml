@@ -67,6 +67,8 @@
   items:
     - name: Příprava aplikace Java Spring pro nasazení
       href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: Spuštění aplikace v Javě ze zdrojového kódu
+      href: spring-cloud-howto-launch-from-source.md
     - name: Nastavení konfiguračního serveru
       href: spring-cloud-tutorial-config-server.md
     - name: Povolení registrace služeb

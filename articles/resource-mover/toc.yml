@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: Návody
   items:
-    - name: Odebrání prostředků z kolekce pro přesun
-      href: remove-move-resources.md
+    - name: Přesun mezi oblastmi
+      items:
+        - name: Přesun napříč oblastmi s využitím PowerShellu
+          href: move-region-powershell.md
+        - name: Přesun virtuálních počítačů Azure do zón dostupnosti
+          href: move-region-availability-zone.md
+        - name: Přesun napříč oblastmi (ze skupiny prostředků)
+          href: move-region-within-resource-group.md
+    - name: Správa přesunů do jiné oblasti
+      items:
+        - name: Úprava cílových nastavení pro přesun do jiné oblasti
+          href: modify-target-settings.md
+        - name: Odebrání prostředků z kolekce pro přesun do jiné oblasti
+          href: remove-move-resources.md
+        - name: Správa prostředků vytvořených v rámci procesu přesunu do jiné oblasti
+          href: manage-resources-created-move-process.md
 - name: Zdroje a prostředky
   items:
     - name: Migrace v architektuře přechodu na cloud

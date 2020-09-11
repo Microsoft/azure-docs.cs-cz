@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: Pracovní postup klasické architektury virtuálních počítačů
           href: cloud-services-workflow-process.md
+        - name: Podpora stavu prostředků pro Cloud Services
+          href: resource-health-for-cloud-services.md
         - name: Cloud Services – nejčastější dotazy
           items:
             - name: Dostupnost aplikací a služeb – nejčastější dotazy
