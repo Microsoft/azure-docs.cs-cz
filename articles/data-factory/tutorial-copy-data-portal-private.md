@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079451"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024413"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Bezpečné kopírování dat z úložiště objektů BLOB v Azure do databáze SQL pomocí privátních koncových bodů
 
@@ -57,7 +57,7 @@ Teď Připravte úložiště objektů BLOB a SQL Database pro kurz provedením n
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
-1. Použitím následujícího skriptu SQL si v databázi SQL Database vytvořte tabulku **emp**:
+Použitím následujícího skriptu SQL si v databázi SQL Database vytvořte tabulku **emp**:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ Teď Připravte úložiště objektů BLOB a SQL Database pro kurz provedením n
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. Povolte službám Azure přístup k SQL Serveru. Ujistěte se, že je pro váš SQL Server **zapnutá** možnost **Povolit přístup ke službám Azure** , aby data Factory mohl zapisovat data na SQL Server. Toto nastavení ověříte a zapnete tak, že přejdete na **Azure SQL Server**  >  **Přehled**  >  **nastavení brány firewall serveru**. Nastavte možnost **Povolení přístupu ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál.
