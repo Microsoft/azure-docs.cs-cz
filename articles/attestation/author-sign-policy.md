@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe901960c08c83484d9446c9030a273fa185b456
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237225"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006815"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Jak vytvářet a podepisovat zásady ověření identity
 
@@ -58,11 +58,13 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
 
   ```
   version=1.0;
-  authorizationrules={
+  authorizationrules
+  {
   =>deny();
   };
   
-  issuancerules={
+  issuancerules
+  {
   };
   ```
 
@@ -72,11 +74,13 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
 
   ```
   version=1.0;
-  authorizationrules={
+  authorizationrules
+  {
   [type=="secureBootEnabled", value==true, issuer=="AttestationService"]=>permit();
   };
   
-  issuancerules={
+  issuancerules
+  {
   };
   ```
 
@@ -86,11 +90,13 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
 
   ```
   version=1.0;
-  authorizationrules={
+  authorizationrules
+  {
   [type=="secureBootEnabled", value==true, issuer=="AttestationService"]=>permit();
   };
   
-  issuancerules={
+  issuancerules
+  {
   => issue(type="SecurityLevelValue", value=100);
   };
   ```
@@ -103,7 +109,7 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
 
   Složité zásady je možné vytvořit podobným způsobem. Další informace najdete v tématu [Příklady zásad ověření identity](policy-examples.md).
   
-6. Uložte soubor.
+6. Soubor uložte.
 
 ## <a name="creating-the-policy-file-in-json-web-signature-format"></a>Vytvoření souboru zásad ve formátu podpisu webu JSON
 

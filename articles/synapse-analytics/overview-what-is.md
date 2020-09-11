@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 653ad7e9b41e1c8a4708f2ab951676c144316192
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180775"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005850"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -38,7 +38,7 @@ Kromě toho Azure synapse usnadňuje vytváření prediktivních modelů a pokro
 
 * **Synapse SQL** je distribuovaný systém dotazů, který podnikům umožňuje implementovat scénáře datových skladů a virtualizace dat pomocí standardních prostředí T-SQL, které znají technici pro práci s daty. Rozšiřuje také možnosti scénářů SQL pro řešení streamování a strojového učení.
 
-* Synapse SQL nabízí jak **servery bez serveru** , tak i **zřízené** modely prostředků, což nabízí možnosti spotřeby a fakturace podle vašich potřeb. V případě předvídatelného výkonu a nákladů zřídí fondy, aby vyhradí výpočetní výkon pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy můžete použít koncový bod SQL bez serveru, který je k dispozici vždy.
+* Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků, které nabízejí možnosti spotřeby a fakturace podle vašich potřeb. Pro předvídatelný výkon a náklady Vytvořte vyhrazené fondy SQL pro rezervaci výkonu pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
 * Použití integrovaných funkcí **streamování** k obstání dat z cloudových zdrojů dat do tabulek SQL
 * Integrujte AI s SQL pomocí modelů **strojového učení** pro stanovení skóre dat pomocí [funkce prediktivního jazyka T-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) .
 

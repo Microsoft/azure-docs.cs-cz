@@ -1,5 +1,6 @@
 ---
 title: Přesun virtuálních počítačů do oblasti Azure se zónami dostupnosti pomocí Azure Site Recovery
+description: Přečtěte si, jak přesunout virtuální počítače do zóny dostupnosti v jiné oblasti s Site Recovery
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425468"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004506"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
+
+V tomto článku se dozvíte, jak přesunout virtuální počítače Azure do zóny dostupnosti v jiné oblasti. Pokud chcete přejít do jiné zóny ve stejné oblasti, [Přečtěte si tento článek](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+
+
 Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporovány ve vybraných oblastech, jak je uvedeno v [oblastech, které podporují zóny dostupnosti](../availability-zones/az-region.md).
 
 V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instance* do konkrétní oblasti a chcete zlepšit dostupnost tím, že tyto virtuální počítače přesunete do zóny dostupnosti, můžete to udělat pomocí Azure Site Recovery. Tuto akci je dále možné rozdělit do kategorií:
@@ -23,7 +28,15 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 - Přesun virtuálních počítačů ve skupině dostupnosti do Zóny dostupnosti v cílové oblasti
 
 > [!IMPORTANT]
-> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Přečtěte si další informace](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> K přesunu virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti oblasti teď doporučujeme použít [Azure Resource stěhovací](../resource-mover/move-region-availability-zone.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
+> - Jediné centrum pro přesouvání prostředků napříč oblastmi.
+> - Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
+> - Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.
+> - Snadný způsob, jak identifikovat závislosti mezi prostředky, které chcete přesunout. To vám pomůže přesunout související prostředky dohromady, takže vše funguje podle očekávání v cílové oblasti, a to po přesunutí.
+> - Automatické vyčištění prostředků ve zdrojové oblasti, pokud je chcete po přesunutí odstranit.
+> - Testování. Můžete si vyzkoušet přesunutí a pak ho zahodit, pokud nechcete provést úplné přesunutí.
+
+
 
 ## <a name="check-prerequisites"></a>Kontrola požadavků
 

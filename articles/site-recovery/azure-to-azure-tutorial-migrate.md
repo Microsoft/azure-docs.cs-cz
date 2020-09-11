@@ -1,6 +1,6 @@
 ---
-title: Přesun virtuálních počítačů Azure s IaaS do jiné oblasti pomocí Azure Site Recovery
-description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS z jedné oblasti Azure do jiné.
+title: Přesuňte virtuální počítače Azure do jiné oblasti Azure pomocí Azure Site Recovery
+description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure z jedné oblasti Azure do jiné.
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425921"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006410"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
+# <a name="move-vms-to-another-azure-region"></a>Přesun virtuálních počítačů do jiné oblasti Azure
 
-Existují různé scénáře, ve kterých byste chtěli přesunout stávající virtuální počítače Azure s IaaS z jedné oblasti do druhé. Například chcete zlepšit spolehlivost a dostupnost stávajících virtuálních počítačů, zlepšit spravovatelnost nebo je přesunout z důvodů správy. Další informace najdete v tématu věnovaném [Azure VM Move Overview](azure-to-azure-move-overview.md). 
+Existují situace, kdy byste chtěli přesunout stávající virtuální počítače Azure s IaaS z jedné oblasti do druhé. Například chcete zlepšit spolehlivost a dostupnost stávajících virtuálních počítačů, zlepšit spravovatelnost nebo je přesunout z důvodů správy. Další informace najdete v tématu věnovaném [Azure VM Move Overview](azure-to-azure-move-overview.md). 
 
-Službu [Azure Site Recovery](site-recovery-overview.md) můžete použít ke správě a orchestraci zotavení po havárii místních počítačů a virtuálních počítačů Azure pro zajištění kontinuity podnikových prostředí a zotavení po havárii (BCDR). Site Recovery můžete použít také ke správě přesunu virtuálních počítačů Azure do sekundární oblasti.
+Službu [Azure Site Recovery](site-recovery-overview.md) můžete použít k přesunu virtuálních počítačů Azure do sekundární oblasti.
 
-V tomto kurzu provedete následující:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > 
@@ -30,11 +30,23 @@ V tomto kurzu provedete následující:
 > * Zkopírujte data a Povolte replikaci.
 > * Otestování konfigurace a provedení přesunu
 > * Odstraní prostředky ve zdrojové oblasti.
-> 
+
+
+> [!IMPORTANT]
+> K přesunutí virtuálních počítačů Azure do jiné oblasti teď doporučujeme použít [Azure Resource stěhovací](../resource-mover/tutorial-move-region-virtual-machines.md). Resource stěhovací je ve verzi Public Preview a poskytuje:
+> - Jediné centrum pro přesouvání prostředků napříč oblastmi.
+> - Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
+> - Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.
+> - Snadný způsob, jak identifikovat závislosti mezi prostředky, které chcete přesunout. To vám pomůže přesunout související prostředky dohromady, takže vše funguje podle očekávání v cílové oblasti, a to po přesunutí.
+> - Automatické vyčištění prostředků ve zdrojové oblasti, pokud je chcete po přesunutí odstranit.
+> - Testování. Můžete si vyzkoušet přesunutí a pak ho zahodit, pokud nechcete provést úplné přesunutí.
+
+
+
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiné, jak je to. Pokud potřebujete zlepšit dostupnost tím, že přesunete virtuální počítače ve skupině dostupnosti na virtuální počítače připojené k zóně v jiné oblasti, přečtěte si [kurz přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že virtuální počítače Azure jsou v oblasti Azure, ze které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](./azure-to-azure-support-matrix.md#region-support)oblasti, a proveďte odpovídající rozhodnutí o cílové oblasti.

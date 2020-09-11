@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 86ae186d3d8b131955be7d9fa2c305316dea9f00
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 648feedfb82ad43af8f350bd25c9deb5d6ceec03
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658450"
+ms.locfileid: "90007277"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -32,7 +32,7 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete tyto kroky:
 
 4. [Vytvořte skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). V tomto kurzu pojmenujte naši skupinu prostředků *ContosoRental*, ale můžete si vybrat libovolný název.
 
-5. Stáhněte [projekt RentalCarSimulation C# ](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
+5. Stáhněte [projekt RentalCarSimulation C#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
 
 V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, ale můžete zvolit jiné vývojové prostředí API.
 

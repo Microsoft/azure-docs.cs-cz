@@ -9,24 +9,26 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: e2e1d0479b8edacaae8816d74db061eeedb805a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 363f2934bbeec266c16711572620e03e69785f94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325215"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007192"
 ---
 # <a name="analyze-data-with-sql-pools"></a>Analýza dat pomocí fondů SQL
 
 Azure synapse Analytics nabízí možnost analyzovat data pomocí fondu SQL. V tomto kurzu použijete ukázková data NYC taxislužby k prozkoumání možností analytického fondu SQL.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>Načtení ukázkových dat NYC taxislužby do databáze SQLDB1
+## <a name="link-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>Propojit ukázková data NYC taxislužby do databáze SQLDB1
 
-1. V synapse studiu v nabídce nejvyšší úrovně na modré nabídce vyberte ikonu otazníku (**?**).
-1. Vyberte **Začínáme**s  >  **úvodním startem**.
+1. V synapse studiu přejděte do centra **dat** vlevo.
+1. Klikněte na **+** a vyberte **Procházet ukázky**. Tím se otevře **ukázkové centrum** a otevřete kartu **datové sady** .
+1. Vyberte **NYC taxislužby & Limousine provize – žluté taxislužby**. Tato datová sada obsahuje více než 1 500 000 000 řádků.
+1. Klikněte na **Přidat datovou sadu**
+1. V **datovém** centru pod **odkazem** se zobrazí nová datová sada v tomto umístění **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow**   
 1. Na kartě s popisem **dotazu ukázková data**vyberte fond SQL s názvem **SQLDB1**.
-1. Vyberte **data dotazu**. Krátce se zobrazí oznámení "načtení ukázkových dat". Světle modrý stavový řádek v horní části synapse studia indikuje, že se data načítají do SQLDB1.
-1. Jakmile se stavový řádek změní na zelený, zavřete ho.
+
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Prozkoumejte data NYC taxislužby ve fondu SQL.
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688449"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006427"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -38,7 +38,7 @@ Virtuální síť, do které nasazujete instanci služby jarní cloudová služb
 * **Podsítě**: virtuální síť musí zahrnovat dvě podsítě vyhrazené pro instanci Azure jaře Cloud Service: 
     * Jeden pro modul runtime služby
     * Jednu pro aplikace mikroslužeb pro spouštění pomocí pružiny. 
-    * Mezi těmito podsítěmi a instancí Azure jaře Cloud Service existuje vztah 1:1. V rámci jedné podsítě nelze sdílet více instancí služby. Pro každou instanci služby, kterou nasazujete, musíte použít nové podsítě.
+    * Mezi těmito podsítěmi a instancí Azure jaře Cloud Service existuje vztah 1:1. Pro každou instanci služby, kterou nasazujete, musíte použít novou podsíť a Každá podsíť může zahrnovat jenom jednu instanci služby.
 * **Adresní prostor**: jeden blok CIDR až/28 pro podsíť modulu runtime služby a další blok CIDR až/24 pro podsíť aplikací mikroslužby pro jaře booting.
 * **Směrovací tabulka**: podsítě nesmí mít přidruženou stávající směrovací tabulku.
 
