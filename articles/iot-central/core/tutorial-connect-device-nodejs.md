@@ -7,13 +7,16 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom:
+- mqtt
+- device-developer
+- devx-track-javascript
+ms.openlocfilehash: c7717416e58e772bee4ec8bf655d1341187a96e6
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423518"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019389"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)
 
@@ -34,7 +37,7 @@ V tomto kurzu se naučíte:
 > * Pomocí zobrazení můžete spravovat vlastnosti zařízení.
 > * Pro řízení zařízení zavolejte synchronní a asynchronní příkazy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 

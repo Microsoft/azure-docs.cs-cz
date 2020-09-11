@@ -4,16 +4,16 @@ description: Naučte se používat knihovnu Azure V12 knihovny Java k vytvořen�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319367"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015020"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro jazyk Java
 
@@ -30,17 +30,17 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro jazyk Java:
 
 Další prostředky:
 
-* [Referenční dokumentace k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-queue-readme)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [ukázky](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
+* [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -161,10 +161,10 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 K interakci s těmito prostředky použijte následující třídy Java:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` Třída konfiguruje a vytvoří instanci `QueueClient` objektu.
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) ve frontě.
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` Třída konfiguruje a vytvoří instanci `QueueClient` objektu.
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
+* [QueueClient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -204,7 +204,7 @@ Určete název nové fronty. Následující kód připojí hodnotu identifikáto
 > Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/naming-queues-and-metadata).
 
 
-Vytvořte instanci třídy [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) . Pak zavolejte metodu [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) a vytvořte ve svém účtu úložiště frontu.
+Vytvořte instanci třídy [QueueClient](/java/api/com.azure.storage.queue.queueclient) . Pak zavolejte metodu [Create](/java/api/com.azure.storage.queue.queueclient.create) a vytvořte ve svém účtu úložiště frontu.
 
 Přidejte tento kód na konec `main` metody:
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>Přidání zpráv do fronty
 
-Následující fragment kódu přidá zprávy do fronty voláním metody [SendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) . Také ukládá [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) vrácené `sendMessage` voláním. Výsledek se používá k aktualizaci zprávy později v programu.
+Následující fragment kódu přidá zprávy do fronty voláním metody [SendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) . Také ukládá [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) vrácené `sendMessage` voláním. Výsledek se používá k aktualizaci zprávy později v programu.
 
 Přidejte tento kód na konec `main` metody:
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) . `peelkMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě voláním metody [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) . `peelkMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `main` metody:
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte ID zprávy a příjemku POP pomocí `SendMessageResult` , který byl uložen dříve v kódu. ID zprávy a příjemku pop identifikují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte ID zprávy a příjemku POP pomocí `SendMessageResult` , který byl uložen dříve v kódu. ID zprávy a příjemku pop identifikují, která zpráva se má aktualizovat.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>Přijímání a odstraňování zpráv z fronty
 
-Stáhněte dříve přidané zprávy voláním metody [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) . Vzorový kód také odstraní zprávy z fronty po jejich přijetí a zpracování. V tomto případě se zpracovává jenom zpráva v konzole nástroje.
+Stáhněte dříve přidané zprávy voláním metody [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) . Vzorový kód také odstraní zprávy z fronty po jejich přijetí a zpracování. V tomto případě se zpracovává jenom zpráva v konzole nástroje.
 
 Aplikace pozastaví vstup uživatele voláním `System.console().readLine();` , než přijme a odstraní zprávy. Před odstraněním ověřte ve svém [Azure Portal](https://portal.azure.com) , že se prostředky vytvořily správně. Všechny zprávy, které se explicitně neodstraní, se později stanou viditelnými ve frontě, aby se mohly zpracovat další šance na jejich zpracování.
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Odstranění fronty
 
-Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) .
+Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [Delete](/java/api/com.azure.storage.queue.queueclient.delete) .
 
 Přidejte tento kód na konec `main` metody:
 
@@ -372,6 +372,6 @@ V tomto rychlém startu jste zjistili, jak vytvořit frontu a přidat do ní zpr
 Výukové programy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Azure pro cloudové vývojáře v Javě](https://docs.microsoft.com/azure/developer/java/)
+> [Azure pro cloudové vývojáře v Javě](/azure/developer/java/)
 
 * Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte v [sadě SDK Azure Queue Storage SDK V12 na ukázky klientských knihoven Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Začínáme s analýzou Sparku'
-description: V tomto kurzu se naučíte základní kroky pro nastavení a používání Azure synapse Analytics.
+description: V tomto kurzu se naučíte analyzovat data pomocí Apache Spark
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,16 +9,30 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5c6b35c1d9f00cae8fc688569e3a491679900995
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101482"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017910"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>Analýza dat NYC taxislužby v BLOB Storage pomocí Sparku
+
 V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat pomocí Apache Spark pro Azure synapse.
+
+1. V **datovém** centru pod **odkazem**klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow** a vyberte **vybrat Nový Poznámkový blok** .
+1. Tím se vytvoří nový Poznámkový blok s následujícím kódem:
+    ```
+    from azureml.opendatasets import NycTlcYellow
+
+    data = NycTlcYellow()
+    data_df = data.to_spark_dataframe()
+    display(data_df.limit(10))
+    ```
+1. V poznámkovém bloku vyberte ve skupině **připojit se k** nabídce Spark.
+1. V buňce klikněte na **Spustit** .
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Načtení dat taxislužby NYC do databáze Spark nyctaxi
 

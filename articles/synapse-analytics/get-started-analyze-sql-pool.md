@@ -9,26 +9,67 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 363f2934bbeec266c16711572620e03e69785f94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007192"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015496"
 ---
 # <a name="analyze-data-with-sql-pools"></a>Analýza dat pomocí fondů SQL
 
 Azure synapse Analytics nabízí možnost analyzovat data pomocí fondu SQL. V tomto kurzu použijete ukázková data NYC taxislužby k prozkoumání možností analytického fondu SQL.
 
-## <a name="link-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>Propojit ukázková data NYC taxislužby do databáze SQLDB1
+## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Načtení dat taxislužby NYC do SQLDB1
 
-1. V synapse studiu přejděte do centra **dat** vlevo.
-1. Klikněte na **+** a vyberte **Procházet ukázky**. Tím se otevře **ukázkové centrum** a otevřete kartu **datové sady** .
-1. Vyberte **NYC taxislužby & Limousine provize – žluté taxislužby**. Tato datová sada obsahuje více než 1 500 000 000 řádků.
-1. Klikněte na **Přidat datovou sadu**
-1. V **datovém** centru pod **odkazem** se zobrazí nová datová sada v tomto umístění **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow**   
-1. Na kartě s popisem **dotazu ukázková data**vyberte fond SQL s názvem **SQLDB1**.
+1. V synapse studiu přejděte do centra pro **vývoj** a pak vytvořte nový skript SQL.
+1. Zadejte následující kód:
+    ```
+    CREATE TABLE [dbo].[Trip]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
 
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    WITH
+    (
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
+    )
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
+    ```
+1. Spuštění tohoto skriptu bude trvat přibližně 1 minutu. Načte 2 000 000 řádků taxislužby dat NYC do tabulky nazvané **dbo. Cesta**
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Prozkoumejte data NYC taxislužby ve fondu SQL.
 

@@ -1,6 +1,6 @@
 ---
 title: Co je Azure AD Connect a Connect Health. | Dokumentace Microsoftu
-description: Popisuje nástroje, které slouží k synchronizaci a monitorování místního prostředí s využitím Azure AD.
+description: Přečtěte si o nástrojích, které se používají k synchronizaci a monitorování místního prostředí s využitím Azure AD.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278832"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018607"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -35,7 +35,7 @@ Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit
 
 ## <a name="what-is-azure-ad-connect-health"></a>Co je Azure AD Connect Health?
 
-Služba Azure Active Directory (Azure AD) Connect Health poskytuje robustní monitorování místní infrastruktury identity. Umožňuje udržovat spolehlivé připojení k Office 365 a službám Microsoft Online Services.  Tato spolehlivost se dosahuje tím, že poskytuje možnosti monitorování pro klíčové komponenty identity. Také usnadňuje přístup klíčových datových bodů k těmto součástem.
+Služba Azure Active Directory (Azure AD) Connect Health poskytuje robustní monitorování místní infrastruktury identity. Umožňuje udržovat spolehlivé připojení k Microsoft 365 a službám Microsoft Online Services.  Tato spolehlivost se dosahuje tím, že poskytuje možnosti monitorování pro klíčové komponenty identity. Také usnadňuje přístup klíčových datových bodů k těmto součástem.
 
 Další informace najdete v článku [Portál služby Azure AD Connect Health](https://aka.ms/aadconnecthealth). Pomocí portálu Azure AD Connect Health můžete zobrazit výstrahy, monitorování výkonu, analýzu využití a další informace. Azure AD Connect Health umožňuje mít na jednom místě a v jediném přehledu informace o stavu klíčových komponent identity.
 
@@ -44,7 +44,7 @@ Další informace najdete v článku [Portál služby Azure AD Connect Health](h
 ## <a name="why-use-azure-ad-connect"></a>Proč používat Azure AD Connect?
 Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uživatelů tím, že jim poskytuje společnou identitu pro přístup ke cloudovým i místním prostředkům. Uživatelé a organizace můžou využít tyto možnosti:
 
-* Uživatelé můžou používat jedinou identitu pro přístup k místním aplikacím i ke cloudovým službám, jako je například Office 365.
+* Uživatelé můžou použít jedinou identitu pro přístup k místním aplikacím a cloudovým službám, jako je Microsoft 365.
 * Získáváte jeden nástroj, který umožňuje snadné nasazení pro synchronizaci a přihlašování.
 * Přináší nejnovější schopnosti pro vaše scénáře. Azure AD Connect nahrazuje starší verze nástrojů pro integraci identity, jako je DirSync a Azure AD Sync. Další informace najdete v tématu [porovnání nástrojů pro integraci adresářů hybridní identity](plan-hybrid-identity-design-considerations-tools-comparison.md).
 

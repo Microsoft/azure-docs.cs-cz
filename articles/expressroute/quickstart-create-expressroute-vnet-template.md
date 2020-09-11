@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: 2bc4c2a3ee7f1a1dbd85d46e49ec27e5276de159
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237249"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016550"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
 
@@ -76,9 +76,9 @@ Další šablony, které souvisejí s ExpressRoute, najdete v tématu [šablony 
 
     Název skupiny prostředků je název projektu s připojeným **RG** .
 
-Nasazení šablony trvá přibližně 20 minut. Výstup je po dokončení podobný tomuto:
+    Nasazení šablony trvá přibližně 20 minut. Výstup je po dokončení podobný tomuto:
 
-:::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
 
 Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
 
