@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193676"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441047"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat
 
@@ -78,7 +78,7 @@ Většina typů clusterů HDInsight (Hadoop, HBA, propamì) podporuje Data Lake 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místních nebo IaaS clusterech Hadoop
 Velké objemy dat může být uloženo v existujících clusterech Hadoop místně na počítačích se systémem HDFS. Clustery Hadoop můžou být v místním nasazení nebo se můžou nacházet v rámci clusteru IaaS v Azure. Můžou nastat požadavky na kopírování takových dat do Azure Data Lake Storage Gen1 pro jednorázový přístup nebo pro opakovaný pokus. Existují různé možnosti, které můžete použít k dosažení tohoto. Níže je uveden seznam alternativ a Spojených kompromisů.
 
-| Přístup | Podrobnosti | Výhody | Důležité informace |
+| Přístup | Podrobnosti | Výhody | Požadavky |
 | --- | --- | --- | --- |
 | Použití Azure Data Factory (ADF) ke kopírování dat přímo z clusterů Hadoop do Azure Data Lake Storage Gen1 |[ADF podporuje HDFS jako zdroj dat.](../data-factory/connector-hdfs.md) |ADF poskytuje okamžitou podporu pro HDFS a první třídu a komplexní správu a monitorování. |Vyžaduje, aby byla Správa datá brána nasazená místně nebo v clusteru IaaS. |
 | Exportujte data ze souborů Hadoop jako soubory. Pak zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí vhodného mechanismu. |Soubory můžete zkopírovat do Azure Data Lake Storage Gen1 pomocí: <ul><li>[Azure PowerShell pro operační systém Windows](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikace pomocí libovolné Data Lake Storage Gen1 sady SDK</li></ul> |Rychlé zahájení práce Může provádět přizpůsobená nahrávání |Proces s více kroky, který zahrnuje několik technologií. Správa a monitorování se budou po určitou dobu projevit jako výzvy s ohledem na vlastní povahu nástrojů. |
@@ -130,5 +130,5 @@ Pomocí kombinace služeb můžete vytvářet vizuální reprezentace dat ulože
 
 ![Vizualizovat data v Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Vizualizovat data v Data Lake Storage Gen1")
 
-* [K přesunu dat z Data Lake Storage Gen1 na Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
-* Potom můžete [integrovat Power BI s Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) a vytvořit tak vizuální reprezentaci dat.
+* [K přesunu dat z Data Lake Storage Gen1 do služby Azure synapse Analytics (dříve SQL Data Warehouse)](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
+* Potom můžete [integrovat Power BI s Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) a vytvořit tak vizuální reprezentaci dat.

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814412"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319232"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití pro analýzu téměř v reálném čase
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití analýz téměř v reálném čase
 
 [Odkaz na Azure synapse](synapse-link.md) pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
@@ -86,7 +86,7 @@ Následuje architektura, která využívá možnosti cloudového nativního HTAP
 
 Synapse odkaz pro případy použití Azure Cosmos DB:
 
-* **Příprava & prognózování výukového kanálu:** Historická provozní data ze senzorů zařízení IoT je možné využít ke školení prediktivních modelů, jako jsou detektory anomálií. Tyto detektory anomálií se pak nasadí zpátky na hranici monitorování v reálném čase. Tato smyčka virtuous umožňuje nepřetržité přeškolení prediktivních modelů.
+* **Příprava & prognózování výukového kanálu:** Historická provozní data ze senzorů zařízení IoT je možné využít ke školení prediktivních modelů, jako jsou detektory anomálií. Tyto detektory anomálií se pak zpětně nasadí na hranici kvůli monitorování v reálném čase. Tato smyčka virtuous umožňuje nepřetržité přeškolení prediktivních modelů.
 
 * **Provozní sestavy:** Díky nárůstu digitálních vlákenných iniciativ společnosti shromažďují velké množství provozních dat od velkého počtu senzorů a vytvářejí tak digitální kopii každého počítače. Tyto datové pravomoci musí aplikace BI pochopit trendy v historických datech kromě nedávných aktivních dat v aplikacích v reálném čase.
 
@@ -134,7 +134,7 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) 
 
-* [Azure Cosmos DB analytické úložiště](analytical-store-introduction.md)
+* [Analytické úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Práce s odkazem na Azure synapse pro Azure Cosmos DB](configure-synapse-link.md)
 
@@ -142,4 +142,4 @@ Další informace najdete v následujících dokumentech:
 
 * [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [SQL Server bez a na vyžádání v Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Podpora běhového prostředí bez SQL serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

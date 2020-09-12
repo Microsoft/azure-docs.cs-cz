@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696010"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319436"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Protokolování prostředků pro skupinu zabezpečení sítě
 
@@ -24,7 +24,7 @@ Skupina zabezpečení sítě (NSG) obsahuje pravidla, která povolují nebo zaka
 Pokud povolíte protokolování pro NSG, můžete shromáždit následující typy informací o protokolu prostředků:
 
 * **Událost:** Zaznamenávají se záznamy, pro které se pravidla NSG aplikují na virtuální počítače na základě adresy MAC.
-* **Čítač pravidla:** Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu. Stav těchto pravidel se shromáždí každých 60 sekund.
+* **Čítač pravidla:** Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu. Stav těchto pravidel se shromáždí každých 300 sekund.
 
 Protokoly prostředků jsou k dispozici pouze pro skupin zabezpečení sítě nasazené prostřednictvím modelu nasazení Azure Resource Manager. Nemůžete povolit protokolování prostředků pro skupin zabezpečení sítě nasazené prostřednictvím modelu nasazení Classic. Lepší porozumění těmto dvěma modelům najdete v tématu [Principy modelů nasazení Azure](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -201,8 +201,8 @@ Informace o tom, jak zobrazit data protokolu prostředku, najdete v tématu [Př
 - **Protokoly Azure monitor**: pro rozšířené přehledy můžete využít řešení pro [analýzu skupin zabezpečení sítě](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) . Řešení poskytuje vizualizace pro pravidla NSG, která povolují nebo zakazují provoz síťového rozhraní ve virtuálním počítači na adrese MAC.
 - **Azure Storage účet**: data jsou zapsána do PT1H.jsv souboru. Můžete najít:
-  - Protokol událostí v následující cestě:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Protokol čítače pravidla v následující cestě:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Protokol událostí v následující cestě: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Protokol čítače pravidla v následující cestě: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Další kroky
 

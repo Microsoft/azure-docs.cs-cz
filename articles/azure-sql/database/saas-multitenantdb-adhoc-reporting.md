@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042641"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441030"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Spouštění analytických dotazů ad hoc napříč více databázemi (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Aplikace SaaS můžou analyzovat obrovské množství dat tenantů, která se uk
 
 V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jedním z přístupů je použití [elastického dotazu](elastic-query-overview.md), který umožňuje dotazování napříč distribuovanou sadou databází se společným schématem. Tyto databáze je možné distribuovat v různých skupinách prostředků a předplatných. Ještě jedno společné přihlášení musí mít přístup k extrakci dat ze všech databází. Elastický dotaz používá jednu *hlavu* databáze, ve které jsou definovány externí tabulky, které zrcadlí tabulky nebo zobrazení v distribuovaných databázích (tenant). Dotazy odeslané do této hlavní databáze se kompilují a vzniká plán distribuovaného dotazu, který zajistí předávání částí dotazu potřebným tenantským databázím. Elastický dotaz používá k určení umístění všech databází tenanta mapu horizontálních oddílů v databázi katalogu. Nastavení a dotaz jsou jednoduché pomocí [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)Standard a podporují dotazování ad hoc z nástrojů, jako je Power BI a Excel.
 
-Díky distribuci dotazů napříč databázemi klientů poskytuje elastický dotaz okamžitý přehled o živých provozních datech. Jelikož však elastický dotaz vyžádá data z potenciálně velkého počtu databází, může být v některých případech vyšší latence než u ekvivalentních dotazů odeslaných do jediné víceklientské databáze. Nezapomeňte navrhnout dotazy pro minimalizaci vrácených dat. Elastický dotaz je často vhodný pro dotazování malých objemů dat v reálném čase, a to na rozdíl od vytváření často používaných nebo složitých analytických dotazů nebo sestav. Pokud dotazy nebudou dobře fungovat, podívejte se na [plán spuštění](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , kde zjistíte, jaká část dotazu byla do vzdálené databáze přesunuta. A vyhodnoťte, kolik dat je vráceno. Dotazy, které vyžadují složité analytické zpracování, mohou být lépe obsluhovány uložením extrahovaných dat tenanta do databáze optimalizované pro analytické dotazy. SQL Database a SQL Data Warehouse by mohli hostovat analytickou databázi.
+Díky distribuci dotazů napříč databázemi klientů poskytuje elastický dotaz okamžitý přehled o živých provozních datech. Jelikož však elastický dotaz vyžádá data z potenciálně velkého počtu databází, může být v některých případech vyšší latence než u ekvivalentních dotazů odeslaných do jediné víceklientské databáze. Nezapomeňte navrhnout dotazy pro minimalizaci vrácených dat. Elastický dotaz je často vhodný pro dotazování malých objemů dat v reálném čase, a to na rozdíl od vytváření často používaných nebo složitých analytických dotazů nebo sestav. Pokud dotazy nebudou dobře fungovat, podívejte se na [plán spuštění](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , kde zjistíte, jaká část dotazu byla do vzdálené databáze přesunuta. A vyhodnoťte, kolik dat je vráceno. Dotazy, které vyžadují složité analytické zpracování, mohou být lépe obsluhovány uložením extrahovaných dat tenanta do databáze optimalizované pro analytické dotazy. SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) by mohli hostovat analytickou databázi.
 
 Tento vzor analýzy je vysvětlen v [kurzu analýzy tenanta](saas-multitenantdb-tenant-analytics.md).
 

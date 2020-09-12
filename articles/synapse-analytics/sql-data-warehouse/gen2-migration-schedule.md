@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207715"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440996"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>Upgradujte svůj fond SQL na Gen2
 
@@ -30,9 +30,9 @@ Společnost Microsoft pomáhá snižovat náklady na úroveň vstupu na spuště
 
 Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici nižší výpočetní vrstva Gen2 a když se spustí automatické upgrady. Data se mohou změnit. Vraťte se zpět a podívejte se, jestli je vaše oblast k dispozici.
 
-\*indikuje, že konkrétní plán pro oblast není aktuálně k dispozici.
+\* indikuje, že konkrétní plán pro oblast není aktuálně k dispozici.
 
-| **Věřitel** | **Nižší Gen2 k dispozici** | **Začátek automatických upgradů** |
+| **Oblast** | **Nižší Gen2 k dispozici** | **Začátek automatických upgradů** |
 |:--- |:--- |:--- |
 | Kanada – východ |1\. června 2020 |Od 1. července 2020 |
 | Čína – východ |\* |\* |
@@ -133,4 +133,4 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 - [Upgrade na místě a upgrade z bodu obnovení](upgrade-to-latest-generation.md)
 - [Vytvoření bodu obnovení definovaného uživatelem](sql-data-warehouse-restore-points.md)
 - [Informace o tom, jak obnovit Gen2](sql-data-warehouse-restore-active-paused-dw.md)
-- [Otevřete žádost o podporu SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Otevřete žádost o podporu Azure synapse Analytics.](https://go.microsoft.com/fwlink/?linkid=857950)

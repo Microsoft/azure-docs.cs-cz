@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5a83a8ab608e685f43056debe45877965e0c53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06ae55dc48152c2c10183cc60cb098b6c3786fa
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203992"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433751"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -24,7 +24,7 @@ ms.locfileid: "85203992"
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele identity protokolu [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) . OpenID Connect 1,0 definuje vrstvu identity nad OAuth 2,0 a představuje stav kresby v moderních ověřovacích protokolech. S technickým profilem OpenID Connect můžete federovat pomocí poskytovatele identity založeného na OpenID připojení, jako je například Azure AD. Federování se zprostředkovatelem identity umožňuje uživatelům přihlašovat se pomocí jejich stávajících sociálních nebo podnikových identit.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `OpenIdConnect` . Například protokol pro technický profil **MSA-OIDC** je `OpenIdConnect` :
 
@@ -91,6 +91,21 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | MarkAsFailureOnStatusCode5xx | No | Určuje, zda má být požadavek na externí službu označený jako selhání, pokud je stavový kód HTTP v rozsahu 5xx. Výchozí formát je `false`. |
 | DiscoverMetadataByTokenIssuer | No | Určuje, zda mají být metadata OIDC zjištěna pomocí vystavitele v tokenu JWT. |
 | IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+|token_endpoint_auth_method| No| Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+
+
+```xml
+<Metadata>
+  <Item Key="ProviderName">https://login.live.com</Item>
+  <Item Key="METADATA">https://login.live.com/.well-known/openid-configuration</Item>
+  <Item Key="response_types">code</Item>
+  <Item Key="response_mode">form_post</Item>
+  <Item Key="scope">openid profile email</Item>
+  <Item Key="HttpBinding">POST</Item>
+  <Item Key="UsePolicyInRedirectUri">0</Item>
+  <Item Key="client_id">Your Microsoft application client ID</Item>
+</Metadata>
+```
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  

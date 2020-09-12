@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612380"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433924"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -36,12 +36,12 @@ Pomocí těchto nástrojů můžete:
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Free|
 |Požadované role a oprávnění:|**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
 |||
 
 
 
-## <a name="setting-up-a-continuous-export"></a>Nastavení průběžného exportu
+## <a name="set-up-a-continuous-export"></a>Nastavení průběžného exportu
 
 Následující postup je nezbytný, ať už nastavujete průběžný export do Log Analyticsho pracovního prostoru nebo Azure Event Hubs.
 
@@ -55,12 +55,24 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
 
 1. Vyberte datový typ, který chcete exportovat, a vyberte filtry u jednotlivých typů (například exportovat pouze upozornění s vysokou závažností).
 
+1. Pokud chcete, volitelně i když váš výběr obsahuje jedno z těchto čtyř doporučení, můžete do nich zahrnout výsledky posouzení ohrožení zabezpečení:
+
+    - U vašich databází SQL by se měly opravit výsledky posouzení ohrožení zabezpečení.
+    - Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení (Preview)
+    - Ohrožení zabezpečení v Azure Container Registry imagí by se mělo opravit (používá se Qualys).
+    - Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.
+
+    Chcete-li zahrnout zjištění s těmito doporučeními, povolte možnost **Zahrnout zjištění zabezpečení** .
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu" :::
+
+
 1. V oblasti exportovat cíl vyberte, kam chcete ukládat data. Data je možné uložit v cíli v jiném předplatném (například v centrální instanci centra událostí nebo v centrálním Log Analyticsm pracovním prostoru).
 
 1. Vyberte **Uložit**.
 
 
-## <a name="setting-up-continuous-export-via-the-rest-api"></a>Nastavení průběžného exportu prostřednictvím REST API
+## <a name="set-up-continuous-export-via-the-rest-api"></a>Nastavení průběžného exportu pomocí REST API
 
 Funkci průběžného exportu lze nakonfigurovat a spravovat prostřednictvím [rozhraní API pro automatizaci](https://docs.microsoft.com/rest/api/securitycenter/automations)Azure Security Center. Pomocí tohoto rozhraní API můžete vytvářet nebo aktualizovat automatizace pro export do libovolného z následujících možných cílů:
 
@@ -83,7 +95,7 @@ Další informace o rozhraní API pro automatizaci najdete v [dokumentaci k REST
 
 
 
-## <a name="configuring-siem-integration-via-azure-event-hubs"></a>Konfigurace integrace SIEM pomocí Azure Event Hubs
+## <a name="configure-siem-integration-via-azure-event-hubs"></a>Konfigurace integrace SIEM pomocí Azure Event Hubs
 
 Azure Event Hubs je skvělé řešení pro programově využívající všechna streamovaná data. Pro výstrahy a doporučení Azure Security Center se jedná o preferovaný způsob, jak integrovat s SIEM třetí strany.
 

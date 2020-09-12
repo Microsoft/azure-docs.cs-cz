@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869860"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437067"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamování dat do Azure SQL Database pomocí Integrace Azure Stream Analytics (Preview)
 
@@ -31,9 +31,9 @@ Uživatelé teď můžou ingestovat, zpracovávat, zobrazovat a analyzovat strea
 - Další snadné použití s daty verze Preview: náhled příchozích dat ze zdroje událostí (centrum událostí/IoT Hub) v kontextu vybrané tabulky
 
 > [!IMPORTANT]
-> Azure Stream Analytics úloha může mít výstup do Azure SQL Database, spravované instance Azure SQL nebo analýzy Azure synapse (dříve Azure SQL Data Warehouse). Další informace najdete v tématu [výstupy](../../stream-analytics/sql-database-output.md).
+> Azure Stream Analytics úloha může mít výstup do Azure SQL Database, spravované instance Azure SQL nebo analýzy Azure synapse (dříve SQL Data Warehouse). Další informace najdete v tématu [výstupy](../../stream-analytics/stream-analytics-define-outputs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto článku budete potřebovat následující:
 

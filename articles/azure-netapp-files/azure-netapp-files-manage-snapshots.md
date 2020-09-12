@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950336"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459057"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření snímků na vyžádání a použití zásad snímku k naplánování automatického vytváření snímků.  Snímek můžete také obnovit na nový svazek.  
+Azure NetApp Files podporuje vytváření snímků na vyžádání a použití zásad snímku k naplánování automatického vytváření snímků.  Můžete také obnovit snímek na nový svazek nebo obnovit jeden soubor pomocí klienta.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Vytvoření snímku na vyžádání pro svazek
 
@@ -122,7 +122,7 @@ Existující zásadu snímku můžete upravit tak, aby změnila stav zásad, če
  
 1.  V zobrazení účtu NetApp klikněte na **zásady snímku**.
 
-2.  Klikněte pravým tlačítkem myši na zásadu snímku, kterou chcete upravit, a pak vyberte **Upravit**.
+2.  Klikněte pravým tlačítkem na zásadu snímku, kterou chcete upravit, a pak vyberte **Upravit**.
 
     ![Zásada snímku – nabídka kliknutí pravým tlačítkem myši](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -134,7 +134,7 @@ Zásadu snímku, kterou už nechcete zachovat, můžete odstranit.
 
 1.  V zobrazení účtu NetApp klikněte na **zásady snímku**.
 
-2.  Klikněte pravým tlačítkem myši na zásadu snímku, kterou chcete upravit, a pak vyberte **Odstranit**.
+2.  Klikněte pravým tlačítkem na zásadu snímku, kterou chcete upravit, a pak vyberte **Odstranit**.
 
     ![Zásada snímku – nabídka kliknutí pravým tlačítkem myši](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -161,11 +161,66 @@ V současné době můžete snímek obnovit pouze na nový svazek.
 
     ![Obnovit na nový svazek](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Klikněte na tlačítko **zkontrolovat + vytvořit**.  Klikněte na možnost **Vytvořit**.   
+4. Klikněte na tlačítko **zkontrolovat + vytvořit**.  Klikněte na **Vytvořit**.   
     Nový svazek používá stejný protokol, jaký používá snímek.   
     Nový svazek, ke kterému se snímek obnoví, se zobrazí v okně svazky.
+
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>Obnovení souboru ze snímku pomocí klienta
+
+Pokud nechcete [obnovit celý snímek na svazek](#restore-a-snapshot-to-a-new-volume), máte možnost obnovit soubor ze snímku pomocí klienta s připojeným svazkem.  
+
+Připojený svazek obsahuje adresář snímků s názvem  `.snapshot` (v klientech NFS) nebo `~snapshot` (v klientech SMB), který je pro klienta přístupný. Adresář snímků obsahuje podadresáře odpovídající snímkům svazku. Každý podadresář obsahuje soubory snímku. Pokud omylem odstraníte nebo přepíšete soubor, můžete ho obnovit do nadřazeného adresáře pro čtení i zápis zkopírováním souboru z podadresáře Snapshot do adresáře pro čtení i zápis. 
+
+Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku, je adresář snímků skrytý. Výběrem svazku můžete zobrazit stav pro skrytí cesty snímku svazku. Možnost skrýt cestu snímku můžete upravit kliknutím na **Upravit** na stránce svazku.  
+
+![Upravit možnosti snímku svazku](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Obnovení souboru pomocí klienta systému Linux NFS 
+
+1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
+
+    Například:
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
+
+    Například: 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Obnovení souboru pomocí klienta Windows 
+
+1. Pokud `~snapshot` je adresář svazku skrytý, zobrazte [skryté položky](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) v nadřazeném adresáři, které chcete zobrazit `~snapshot` .
+
+    ![Zobrazit skryté položky](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. Přejděte do podadresáře v adresáři `~snapshot` a vyhledejte soubor, který chcete obnovit.  Klikněte na soubor pravým tlačítkem. Vyberte **Kopírovat**.  
+
+    ![Kopírovat soubor pro obnovení](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. Vraťte se do nadřazeného adresáře. Klikněte pravým tlačítkem na nadřazený adresář a vyberte možnost `Paste` vložení souboru do adresáře.
+
+    ![Vložit soubor pro obnovení](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. Můžete také kliknout pravým tlačítkem na nadřazený adresář, vybrat **vlastnosti**, kliknout na kartu **předchozí verze** a zobrazit tak seznam snímků a vybrat **obnovit** pro obnovení souboru.  
+
+    ![Vlastnosti předchozích verzí](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení hierarchie úložiště služby Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Video o Azure NetApp Files snímků 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

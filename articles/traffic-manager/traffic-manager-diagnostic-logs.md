@@ -2,20 +2,20 @@
 title: Povolení protokolování prostředků v Azure Traffic Manager
 description: Naučte se, jak povolit protokolování prostředků pro profil Traffic Manager a přistupovat k souborům protokolu, které se vytvoří v důsledku.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: rohink
-ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089052"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401312"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Povolení protokolování prostředků v Azure Traffic Manager
 
@@ -54,7 +54,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
       Zajistěte, aby se všechny kategorie protokolů přidružené k prostředku profilu Traffic Manager zobrazovaly jako povolené. Ověřte také, že je účet úložiště správně nastavený.
 
 ## <a name="access-log-files"></a>Přístup k souborům protokolu
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Na portálu přejděte na účet Azure Storage.
 2. Na stránce **Přehled** účtu úložiště Azure v části **služby** vyberte **objekty blob**.
 3. V části **kontejnery**vyberte **Insights-logs-probehealthstatusevents**a přejděte dolů na PT1H.jsv souboru a kliknutím na **Stáhnout** Stáhněte a uložte kopii tohoto souboru protokolu.
@@ -71,7 +71,7 @@ Následující tabulka obsahuje schéma protokolů specifické pro prostředek p
 |Název pole|Typ pole|Definice|Příklad|
 |----|----|---|---|
 |Koncový bod|Řetězec|Název koncového bodu Traffic Manager, jehož stav se zaznamenává.|*myPrimaryEndpoint*|
-|Status|Řetězec|Stav Traffic Managerho koncového bodu, ve kterém byl zjištěn test. Stav může být buď **nahoru** , nebo **nižší**.|**Nahoru**|
+|Stav|Řetězec|Stav Traffic Managerho koncového bodu, ve kterém byl zjištěn test. Stav může být buď **nahoru** , nebo **nižší**.|**Nahoru**|
 |||||
 
 ## <a name="next-steps"></a>Další kroky

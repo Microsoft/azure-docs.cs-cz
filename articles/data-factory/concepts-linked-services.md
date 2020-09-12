@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796404"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434108"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 
@@ -32,7 +32,7 @@ Pokud s Data Factory začínáte, přečtěte si téma [Úvod do Azure Data Fact
 
 ## <a name="overview"></a>Přehled
 
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Aktivitu kopírování můžete například použít ke kopírování dat z SQL Server do úložiště objektů BLOB v Azure. Pak můžete použít aktivitu podregistru, která spouští skript podregistru v clusteru Azure HDInsight ke zpracování dat z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec můžete použít druhou aktivitu kopírování ke zkopírování výstupních dat do Azure SQL Data Warehouse, nad tím, která řešení pro vytváření sestav business intelligence (BI) jsou sestavená. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) v Azure Data Factory.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provádět s daty. Aktivitu kopírování můžete například použít ke kopírování dat z SQL Server do úložiště objektů BLOB v Azure. Pak můžete použít aktivitu podregistru, která spouští skript podregistru v clusteru Azure HDInsight ke zpracování dat z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec můžete použít druhou aktivitu kopírování ke zkopírování výstupních dat do služby Azure synapse Analytics (dříve SQL Data Warehouse), a to nad tím, která řešení pro vytváření sestav business intelligence (BI) jsou sestavená. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) v Azure Data Factory.
 
 Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy.
 
@@ -68,10 +68,10 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 Vlastnost | Popis | Povinné |
 -------- | ----------- | -------- |
-name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
-typ | Typ propojené služby. Například: AzureBlobStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
-typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Ano |
-connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne
+name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
+typ | Typ propojené služby. Například: AzureBlobStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Yes |
+typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Yes |
+connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No
 
 ## <a name="linked-service-example"></a>Příklad propojené služby
 

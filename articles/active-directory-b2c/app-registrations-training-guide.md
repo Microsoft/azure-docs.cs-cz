@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116534"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433904"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Nové prostředí můžete oslovit tak, že přejdete na **Registrace aplikací*
 Prostředí Azure AD B2C Registrace aplikací vychází z obecného prostředí pro [registraci aplikací](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) pro libovolného TENANTA Azure AD, ale je přizpůsobené pro Azure AD B2C klienty.
 
 ## <a name="whats-not-changing"></a>Co se nemění?
-- Vaše aplikace a související konfigurace se dají najít tak, jak jsou, v novém prostředí. Nemusíte znovu registrovat aplikace a uživatelé vašich aplikací se nemusí znovu přihlašovat. 
+- Vaše aplikace a související konfigurace se dají najít tak, jak jsou, v novém prostředí. Nemusíte znovu registrovat aplikace a uživatelé vašich aplikací se nemusí znovu přihlašovat.
 
 > [!NOTE]
 > Pokud chcete zobrazit všechny dříve vytvořené aplikace, přejděte do okna **Registrace aplikací** a vyberte kartu **všechny aplikace** . Zobrazí se aplikace vytvořené ve starší verzi prostředí, nové prostředí a ty, které se vytvořily ve službě Azure AD.
@@ -43,7 +43,7 @@ Prostředí Azure AD B2C Registrace aplikací vychází z obecného prostředí 
 
 -   **Registrace kombinované aplikace** umožňuje rychlou registraci aplikace, ať už se jedná o zákaznickou aplikaci nebo aplikaci pro přístup k Microsoft Graph.
 
-- Podokno **koncové body** vám umožní rychle identifikovat relevantní koncové body pro váš scénář, včetně konfigurace OpenID Connect, metadat SAML, rozhraní Microsoft Graph API a [koncových bodů toku uživatele OAuth 2,0](tokens-overview.md#endpoints). 
+- Podokno **koncové body** vám umožní rychle identifikovat relevantní koncové body pro váš scénář, včetně konfigurace OpenID Connect, metadat SAML, rozhraní Microsoft Graph API a [koncových bodů toku uživatele OAuth 2,0](tokens-overview.md#endpoints).
 
 - **Oprávnění API** a **vystavení rozhraní API** poskytují rozsáhlejší správu rozsahu, oprávnění a souhlasu. Nyní můžete k aplikaci přiřadit také oprávnění MS Graph a Azure AD Graph.
 
@@ -57,7 +57,7 @@ V novém prostředí vyberete typ účtu podpory z následujících možností:
 - Účty v jakémkoli adresáři organizace (libovolný adresář služby Azure AD – víceklientské).
 - Účty v libovolném organizačním adresáři nebo jakémkoli zprostředkovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C.
 
-Chcete-li porozumět různým typům účtů, vyberte možnost **Potřebuji mi** vybrat v možnosti vytváření. 
+Chcete-li porozumět různým typům účtů, vyberte možnost **Potřebuji mi** vybrat v možnosti vytváření.
 
 Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s přístupem zákazníků. U těchto aplikací je typ účtu nastavený na **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C**.
 > [!NOTE]
@@ -68,9 +68,9 @@ Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatel
 ## <a name="applications-for-devops-scenarios"></a>Aplikace pro scénáře DevOps
 Další typy účtů můžete použít k vytvoření aplikace pro správu DevOpsch scénářů, jako je například použití Microsoft Graph k nahrání zásad architektury pro rozhraní identity nebo zřízení uživatelů. Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
 
-Možná se nezobrazí všechna Microsoft Graph oprávnění, protože mnohé z těchto oprávnění se nevztahují na uživatele Azure B2C Consumer. [Přečtěte si další informace o správě uživatelů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).  
+Možná se nezobrazí všechna Microsoft Graph oprávnění, protože mnohé z těchto oprávnění se nevztahují na uživatele Azure B2C Consumer. [Přečtěte si další informace o správě uživatelů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Souhlas správce a obory offline_access + OpenID  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Souhlas správce a obory offline_access + OpenID
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Obor **OpenID** je nezbytný, aby Azure AD B2C mohl podepisovat uživatele do aplikace. Pro vydávání tokenů aktualizace pro uživatele je potřeba **offline_access** rozsah. Tyto obory se ve výchozím nastavení dostaly do výše uvedeného souhlasu správce. Nyní můžete snadno přidat oprávnění pro tyto obory během procesu vytváření tím, že vyberete možnost **udělit souhlas správce oprávnění OpenID a offline_access** . Jinak se oprávnění Microsoft Graph dá přidat k souhlasu správce v nastavení **oprávnění API** pro existující aplikaci.
@@ -78,11 +78,11 @@ Obor **OpenID** je nezbytný, aby Azure AD B2C mohl podepisovat uživatele do ap
 Přečtěte si další informace o [oprávněních a souhlasu](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/ověřování: adresy URL odpovědí/identifikátory URI pro přesměrování
-Ve starší verzi prostředí byly různé typy platforem spravované v rámci **vlastností** jako adresy URL odpovědí pro webové aplikace/rozhraní API a identifikátor URI pro přesměrování pro nativní klienty. "Nativní klienti" se označují také jako "veřejné klienty" a zahrnují aplikace pro iOS, macOS, Android a další typy mobilních a desktopových aplikací. 
+Ve starší verzi prostředí byly různé typy platforem spravované v rámci **vlastností** jako adresy URL odpovědí pro webové aplikace/rozhraní API a identifikátor URI pro přesměrování pro nativní klienty. "Nativní klienti" se označují také jako "veřejné klienty" a zahrnují aplikace pro iOS, macOS, Android a další typy mobilních a desktopových aplikací.
 
-V novém prostředí se adresy URL odpovědí a identifikátory URI pro přesměrování označují jako identifikátory URI přesměrování a dají se najít v části **ověřování** aplikace. Registrace aplikací nejsou omezeny buď na webovou aplikaci, nebo na nativní aplikaci. Stejnou registraci aplikace můžete použít pro všechny tyto typy platforem tak, že zaregistrujete příslušné identifikátory URI pro přesměrování. 
+V novém prostředí se adresy URL odpovědí a identifikátory URI pro přesměrování označují jako identifikátory URI přesměrování a dají se najít v části **ověřování** aplikace. Registrace aplikací nejsou omezeny buď na webovou aplikaci, nebo na nativní aplikaci. Stejnou registraci aplikace můžete použít pro všechny tyto typy platforem tak, že zaregistrujete příslušné identifikátory URI pro přesměrování.
 
-Identifikátory URI pro přesměrování musí být přidružené k typu aplikace, a to buď web, nebo Public (mobilní zařízení a Desktop). [Další informace o identifikátorech URI pro přesměrování](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Identifikátory URI pro přesměrování musí být přidružené k typu aplikace, a to buď web, nebo Public (mobilní zařízení a Desktop). [Další informace o identifikátorech URI pro přesměrování](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri)
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 

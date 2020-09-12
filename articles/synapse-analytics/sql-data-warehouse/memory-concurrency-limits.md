@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210657"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441676"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro Azure synapse Analytics
 
@@ -55,9 +55,9 @@ Maximální úroveň služby je DW30000c, která má 60 výpočetních uzlů a j
 
 V rámci zavedení [skupin úloh](sql-data-warehouse-workload-isolation.md)už koncept již neplatí.  Prostředky na žádost se přiřazují podle procentuální hodnoty a zadané v definici skupiny úloh.  Nicméně i s odebráním slotů pro souběžnost jsou pro každý dotaz na základě úrovně služby požadovány minimální množství prostředků.  Níže uvedená tabulka definuje minimální množství potřebných prostředků na dotaz napříč úrovněmi služeb a související souběžnosti, které je možné dosáhnout.
 
-|Úroveň služby|Maximální počet souběžných dotazů|Minimální počet podporovaných pro REQUEST_MIN_RESOURCE_GRANT_PERCENT|
+|Úroveň služeb|Maximální počet souběžných dotazů|Minimální počet podporovaných pro REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
-|DW100c|4|25 %|
+|DW100c|4|25%|
 |DW200c|8|12,5%|
 |DW300c|12|8 %|
 |DW400c|16|6,25%|
@@ -83,7 +83,7 @@ Aby každý dotaz měl dostatek prostředků pro efektivní spuštění, synapse
 
 V následující tabulce je uveden maximální počet souběžných dotazů a slotů souběžnosti pro každou [třídu statických prostředků](resource-classes-for-workload-management.md).  
 
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v staticrc10 | Sloty používané v staticrc20 | Sloty používané v staticrc30 | Sloty používané v staticrc40 | Sloty používané v staticrc50 | Sloty používané v staticrc60 | Sloty používané v staticrc70 | Sloty používané v staticrc80 |
+| Úroveň služeb | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v staticrc10 | Sloty používané v staticrc20 | Sloty používané v staticrc30 | Sloty používané v staticrc40 | Sloty používané v staticrc50 | Sloty používané v staticrc60 | Sloty používané v staticrc70 | Sloty používané v staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -106,7 +106,7 @@ V následující tabulce je uveden maximální počet souběžných dotazů a sl
 
 Následující tabulka ukazuje maximální počet souběžných dotazů a slotů souběžnosti pro každou [třídu dynamického prostředku](resource-classes-for-workload-management.md). Dynamické třídy prostředků používají Přidělení procentuálních hodnot paměti 3-10-22-70 pro třídy prostředků malé střední a velké XLarge napříč všemi úrovněmi služeb.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v smallrc | Sloty používané v mediumrc | Sloty používané v largerc | Sloty používané v xlargerc |
+| Úroveň služeb | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v smallrc | Sloty používané v mediumrc | Sloty používané v largerc | Sloty používané v xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
@@ -125,7 +125,7 @@ Následující tabulka ukazuje maximální počet souběžných dotazů a slotů
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-Pokud není k dispozici dostatek slotů souběžnosti ke spuštění provádění dotazů, dotazy jsou zařazeny do fronty a provedeny na základě důležitosti.  Pokud je stejná důležitost, dotazy se spouštějí v prvním, prvním.  Až se dokončí dotazy a počet dotazů a slotů klesne pod limity, SQL Data Warehouse uvolní dotazy ve frontě.
+Pokud není k dispozici dostatek slotů souběžnosti ke spuštění provádění dotazů, dotazy jsou zařazeny do fronty a provedeny na základě důležitosti.  Pokud je stejná důležitost, dotazy se spouštějí v prvním, prvním.  Až se dokončí dotazy a počet dotazů a slotů klesne pod omezení, verze Azure synapse Analytics vyřadí dotazy ve frontě.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541715"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442101"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Tento dokument poskytuje pokyny, jak řešit běžné požadavky na zabezpečen�
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Nabídky nasazení, které nejsou zahrnuté v tomto průvodci
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (dříve SQL Data Warehouse)
 - Virtuální počítače Azure SQL (IaaS)
 - SQL Server
 
@@ -47,7 +47,7 @@ V této příručce jsou zamýšlení zákazníci, kteří čelí dotazům k zab
 - Úředníci ochrany osobních údajů
 - Technici zabezpečení
 
-### <a name="using-this-guide"></a><a id="using"></a>Pomocí této příručky
+### <a name="using-this-guide"></a><a id="using"></a> Pomocí této příručky
 
 Tento dokument je určený jako doprovodný průvodce pro naši stávající dokumentaci k [zabezpečení Azure SQL Database](security-overview.md) .
 
@@ -265,7 +265,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 - Mějte na paměti, že oprávnění v databázovém stroji se dají použít v následujících oborech (menším rozsahem je menší dopad udělených oprávnění):
   - Server (speciální role v hlavní databázi) v Azure
-  - Databáze
+  - Database
   - Schéma
     - Osvědčeným postupem je použití schémat k udělení oprávnění v rámci databáze. (viz také: [schéma – návrh: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, procedura atd.)
@@ -501,7 +501,7 @@ Osvědčené postupy, jak zabránit klientským počítačům a aplikacím s dob
 
 **Jak implementovat**:
 
-- Zajistěte, aby se klientské počítače připojující se Azure SQL Database a SQL Managed instance používaly protokol [TLS (Transport Layer Security)](security-overview.md#transport-layer-security-encryption-in-transit).
+- Zajistěte, aby se klientské počítače připojující se Azure SQL Database a SQL Managed instance používaly protokol  [TLS (Transport Layer Security)](security-overview.md#transport-layer-security-encryption-in-transit).
 
 **Osvědčené postupy**:
 
@@ -742,7 +742,7 @@ Monitor, který přistupuje k citlivým datům, a zachycuje dotazy na citlivá d
 
 **Jak implementovat**:
 
-- V kombinaci použijte audit SQL a klasifikaci dat.
+- Použijte kombinaci SQL Auditu a Klasifikace dat.
   - V protokolu [auditu SQL Database](../../azure-sql/database/auditing-overview.md) můžete sledovat přístup specificky pro citlivá data. Můžete také zobrazit informace, jako jsou data, ke kterým došlo, a popisek citlivosti. Další informace najdete v tématech [zjišťování a klasifikace dat](data-discovery-and-classification-overview.md) a [auditování přístupu k citlivým datům](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
 **Osvědčené postupy**:

@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290094"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441166"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 V tomto článku se dozvíte o:
 
-- Možnosti konfigurace Azure SQL Database, spravované instance Azure SQL a služby Azure synapse Analytics (dříve Azure SQL Data Warehouse), aby uživatelé mohli provádět úlohy správy a přistupovat k datům uloženým v těchto databázích.
+- Možnosti konfigurace Azure SQL Database, spravované instance Azure SQL a služby Azure synapse Analytics (dříve SQL Data Warehouse), aby uživatelé mohli provádět úlohy správy a přistupovat k datům uloženým v těchto databázích.
 - Konfigurace přístupu a autorizace po počátečním vytvoření nového serveru.
 - Přidání přihlašovacích údajů a uživatelských účtů do hlavní databáze a uživatelských účtů a udělení těchto účtů oprávnění správce.
 - Postup přidání uživatelských účtů v uživatelských databázích, a to buď přidružených k přihlašovacím jménům, nebo jako obsažené uživatelské účty.
@@ -48,8 +48,8 @@ Když se uživatel pokusí připojit k databázi, poskytne uživatelskému účt
 
 **Přihlášení a uživatelé**: uživatelský účet v databázi může být přidružen k přihlašovacímu jménu, které je uloženo v hlavní databázi, nebo může být uživatelské jméno, které je uloženo v individuální databázi.
 
-- **Přihlášení** je individuální účet v hlavní databázi, na který je možné propojit uživatelský účet v jedné nebo více databázích. Po přihlášení se přihlašovací údaje pro uživatelský účet uloží spolu s přihlašovacími údaji.
-- **Uživatelský účet** je individuální účet v jakékoli databázi, která může být, ale nemusí být propojená s přihlašovacími údaji. Pomocí uživatelského účtu, který není propojený s přihlašovacími údaji, se přihlašovací údaje uloží spolu s uživatelským účtem.
+- **Přihlášení** je individuální účet v hlavní databázi, na který je možné propojit uživatelský účet v jedné nebo více databázích. V případě přihlášení se informace o přihlašovacích údajích pro uživatelský účet ukládají společně s přihlášením.
+- **Uživatelský účet** je individuální účet v jakékoli databázi, která může být, ale nemusí být propojená s přihlašovacími údaji. V případě uživatelského účtu, který není propojený s přihlášením, se informace o přihlašovacích údajích ukládají společně s uživatelským účtem.
 
 [**Autorizace**](security-overview.md#authorization) pro přístup k datům a provádění různých akcí se spravuje pomocí databázových rolí a explicitních oprávnění. Autorizace odkazuje na oprávnění přiřazená uživateli a určuje, co může uživatel dělat. Autorizaci řídí členství v databázové [roli](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) vašeho uživatelského účtu a oprávnění na [úrovni objektů](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine). Doporučený postup je udělit uživatelům co nejmenší možná oprávnění.
 

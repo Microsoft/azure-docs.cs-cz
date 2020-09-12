@@ -3,20 +3,20 @@ title: Konfigurace směrování provozu v podsíti – Azure Traffic Manager
 description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu z konkrétních podsítí.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: rohink
-ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711778"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401363"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nakonfigurovat metodu směrování provozu podsít�
 
 Ve scénáři popsaném v tomto článku se používá směrování podsítí v závislosti na IP adrese dotazu uživatele. provoz se směruje buď na interní web, nebo na produkční Web.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
@@ -75,7 +75,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků | Vyberte **Nová** a zadejte *myResourceGroupTM2*.|
-    |Umístění|Západní Evropa|
+    |Umístění|West Europe|
     |Název virtuálního počítače | myIISVMWEurope|
     |Virtuální síť | Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet2* a jako podsíť zadejte *mySubnet*.|
     |||
@@ -176,7 +176,7 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
     | ---                     | ---                                                |
     | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Jako metodu směrování vyberte **Podsíť**.                                       |
-    | Předplatné            | Vyberte své předplatné.                          |
+    | Předplatné            | Vyberte předplatné.                          |
     | Skupina prostředků          | Vyberte **Existující** a zadejte *myResourceGroupTM1*. |
     | |                              |
     |
