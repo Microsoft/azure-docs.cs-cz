@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/02/2020
+ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006667"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400853"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -66,13 +66,15 @@ Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight. Nás
 
     Trvalé akce skriptu musí mít jedinečný název. Trvalé skripty se používají k přizpůsobení nových pracovních uzlů přidaných do clusteru prostřednictvím operací škálování. Trvalý skript může také při operacích škálování použít změny v jiném typu uzlu. Příkladem je hlavní uzel.
 
-    `Ad hoc`skripty nejsou trvalé. Akce skriptu použité při vytváření clusteru se automaticky uchovávají. Nejsou aplikovány na pracovní uzly přidané do clusteru po spuštění skriptu. Pak můžete přenést `ad hoc` skript na trvalý skript nebo snížit úroveň trvalého skriptu na `ad hoc` skript. Skripty, které selžou, nejsou trvalé, i když výslovně označíte, že by měly být.
+    `Ad hoc` skripty nejsou trvalé. Akce skriptu použité při vytváření clusteru se automaticky uchovávají. Nejsou aplikovány na pracovní uzly přidané do clusteru po spuštění skriptu. Pak můžete přenést `ad hoc` skript na trvalý skript nebo snížit úroveň trvalého skriptu na `ad hoc` skript. Skripty, které selžou, nejsou trvalé, i když výslovně označíte, že by měly být.
 
 * Může přijmout parametry, které skript používá během provádění.
 
 * Spusťte s oprávněními na úrovni root na uzlech clusteru.
 
 * Dá se použít prostřednictvím Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo sady HDInsight .NET SDK.
+
+* Akce skriptů, které odstraňují nebo upravují soubory služby na virtuálním počítači, můžou ovlivnit stav a dostupnost služby.
 
 Cluster uchovává historii všech skriptů, které byly spuštěny. Historie pomáhá v případě, že potřebujete najít ID skriptu pro operace zvýšení nebo snížení úrovně.
 
@@ -131,7 +133,7 @@ Skripty akcí skriptů lze použít prostřednictvím následujících nástroj�
 
 HDInsight poskytuje skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-| Název | Skript |
+| Name | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Nainstalovat odstín |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
@@ -156,7 +158,7 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte jeden ze zadaných skriptů. |
-    | Název |Zadejte název akce skriptu. |
+    | Name |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -230,7 +232,7 @@ V této části se dozvíte, jak aplikovat akce skriptů na běžící cluster.
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte poskytnutý skript. |
-    | Název |Zadejte název akce skriptu. |
+    | Name |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -330,7 +332,7 @@ Následující příklad skriptu ukazuje použití rutin pro povýšení a pak s
 
 ### <a name="hdinsight-net-sdk"></a>Sada HDInsight .NET SDK
 
-Příklad použití sady .NET SDK k načtení historie skriptu z clusteru, zvýšení úrovně nebo snížení úrovně skriptů najdete v tématu [použití akce skriptu proti běžícímu clusteru HDInsight](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)se systémem Linux.
+Příklad použití sady .NET SDK k načtení historie skriptu z clusteru, zvýšení úrovně nebo snížení úrovně skriptů najdete v tématu [ použití akce skriptu proti běžícímu clusteru HDInsight](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)se systémem Linux.
 
 > [!NOTE]  
 > Tento příklad také ukazuje, jak nainstalovat aplikaci HDInsight pomocí sady .NET SDK.

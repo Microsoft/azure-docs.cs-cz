@@ -2,18 +2,18 @@
 title: Řešení potíží s zotavením po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Popisuje, jak řešit potíže s zotavením po havárii pomocí replikace Hyper-V do Azure pomocí Azure Site Recovery
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132442"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426118"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s replikací a převzetím služeb při selhání Hyper-V do Azure
 
@@ -130,7 +130,7 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 
 2. Pokud chcete pro virtuální počítač vygenerovat snímky VSS, ověřte, že jsou na virtuálním počítači nainstalované integrační služby technologie Hyper-V a že je povolená služba Backup (VSS).
     - Zajistěte, aby na hostovi běžela služba nebo démony služby VSS integrační služby a jsou ve stavu **OK** .
-    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Přečtěte si další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ujistěte se, že na virtuálním počítači běží služby Backup/VSS Integration Services, a to v dobrém stavu. V takovém případě tyto služby restartujte a na hostitelském serveru technologie Hyper-V svazek služba žadatele stínové kopie svazku.
 
 ### <a name="common-errors"></a>Běžné chyby

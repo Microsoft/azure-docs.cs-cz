@@ -3,41 +3,39 @@ title: Osvědčené postupy pro Azure Maps Search Service | Mapy Microsoft Azure
 description: Naučte se, jak použít osvědčené postupy při použití Search Service ze Microsoft Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064264"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400700"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
 
 Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obsahuje rozhraní API, která nabízejí různé možnosti, které vývojářům umožňují hledat adresy, místa, obchodní výpisy podle názvu nebo kategorie a další geografické informace. [Rozhraní API pro vyhledávání s fuzzy logikou](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) například umožňuje uživatelům vyhledat adresu nebo bod zájmu (POI).
 
 Tento článek vysvětluje, jak použít zvukové postupy při volání dat z Azure Maps Search Service. Dozvíte se, jak provést tyto akce:
+> [!div class="checklist"]
+> * Sestavení dotazů pro vrácení odpovídajících shod
+> * Omezení výsledků hledání
+> * Informace o rozdílech mezi typy výsledků
+> * Přečíst strukturu hledání adres – odpověď
 
-* Sestavení dotazů pro vrácení odpovídajících shod
-* Omezení výsledků hledání
-* Informace o rozdílech mezi typy výsledků
-* Přečíst strukturu hledání adres – odpověď
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="prerequisites"></a>Předpoklady
+1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 
-Chcete-li volat rozhraní API služby Azure Maps, potřebujete účet Azure Maps a klíč. Další informace najdete v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
-
-Informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
-
-> [!TIP]
-> K dotazování Search Service můžete použít [aplikaci](https://www.getpostman.com/apps) pro vystavení REST API volání. Nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.
+V tomto článku se k sestavení volání REST používá [aplikace pro odesílání](https://www.postman.com/downloads/) , ale můžete zvolit prostředí pro vývoj rozhraní API.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Osvědčené postupy pro používání adres pro INCODE
 
-Když vyhledáte úplnou nebo částečnou adresu pomocí Azure Maps Search Service, rozhraní API přečte klíčová slova z vyhledávacího dotazu. Pak vrátí souřadnice délky a zeměpisné šířky adresy. Tento proces se nazývá *geografické kódování*. 
+Když vyhledáte úplnou nebo částečnou adresu pomocí Azure Maps Search Service, rozhraní API přečte klíčová slova z vyhledávacího dotazu. Pak vrátí souřadnice délky a zeměpisné šířky adresy. Tento proces se nazývá *geografické kódování*.
 
 Schopnost geografického kódu v zemi nebo oblasti závisí na dostupnosti dat o provozu a přesnosti služby geografického kódování. Další informace o Azure Maps možností geografického kódování podle země nebo oblasti najdete v tématu [pokrytí geografického kódování](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
@@ -79,9 +77,9 @@ Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní
 
 #### <a name="usage-examples"></a>Příklady použití
 
-* `idxSet=POI`-Prohledat pouze zájmu. 
+* `idxSet=POI` -Prohledat pouze zájmu. 
 
-* `idxSet=PAD,Addr`-Hledá pouze adresy. `PAD`označuje adresu bodu a `Addr` označuje rozsah adres.
+* `idxSet=PAD,Addr` -Hledá pouze adresy. `PAD` označuje adresu bodu a `Addr` označuje rozsah adres.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverzní a filtr pro typ geografických entit
 

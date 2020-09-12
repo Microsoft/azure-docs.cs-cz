@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 3c0b0f9f39620996245614b53c7ec274ec965d5b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921194"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400751"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Zásady koncového bodu služby virtuální sítě pro Azure Storage
 
@@ -122,7 +122,7 @@ Virtuální sítě a účty Azure Storage můžou být ve stejném nebo různýc
 - Virtuální sítě musí být ve stejné oblasti jako zásada koncového bodu služby.
 - Zásadu koncového bodu služby můžete v podsíti použít, jen když jsou koncové body služby nakonfigurované pro služby Azure uvedené v zásadě.
 - Zásady koncových bodů služeb nemůžete použít pro přenosy dat z místní sítě do služeb Azure.
-- Spravované služby Azure v současné době nepodporují zásady koncového bodu. To zahrnuje spravované služby nasazené do sdílených podsítí (např. *Azure HDInsight, Azure Batch, Azure přidává, Azure APplication Gateway, Azure VPN Gateway, Azure firewall*) nebo do vyhrazených podsítí (např. *Azure App Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasických spravovaných služeb*.
+- Spravované služby Azure v současné době nepodporují zásady koncového bodu. To zahrnuje spravované služby nasazené do sdílených podsítí (např. *Azure HDInsight, Azure Batch, Azure, azure Application Gateway, azure VPN Gateway, Azure firewall*) nebo do vyhrazených podsítí (např. *Azure App Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klasických spravovaných služeb*).
 
  > [!WARNING]
  > Služby Azure nasazené ve vaší virtuální síti, jako je Azure HDInsight, přistupují k jiným službám Azure, jako je Azure Storage, kvůli požadavkům na infrastrukturu. Pokud zásadou koncového bodu omezíte přístup jenom k určitým prostředkům, můžete u služeb Azure nasazených ve své virtuální síti rozdělit přístup k těmto prostředkům infrastruktury.

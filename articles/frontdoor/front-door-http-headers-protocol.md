@@ -3,20 +3,20 @@ title: Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure | Mic
 description: Tento článek popisuje protokoly protokolu HTTP, které front-Dvířk podporuje.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.author: duau
+ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799119"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399510"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure
 Tento článek popisuje protokol, který přední dveře podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP podporovaných předními dvířky.

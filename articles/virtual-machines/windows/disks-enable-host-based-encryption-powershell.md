@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6a352ecc2d2b02f03e2b55f7c5896ac905077921
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 804f26f27e9f2807b796daa03b045ab1b5948815
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814787"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421930"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití modulu Azure PowerShell k povolení kompletního šifrování pomocí šifrování na hostiteli
 
@@ -33,7 +33,7 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 Velikosti virtuálních počítačů můžete zjistit také programově. Informace o tom, jak je načíst programově, najdete v části [hledání podporovaných velikostí virtuálních počítačů](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Pokud chcete encryptionAtHost@microsoft funkci povolit pro vaše předplatná, odešlete e-mail na adresu. com s ID předplatného.
 
@@ -49,37 +49,223 @@ Jakmile je tato funkce povolená, budete muset nastavit Azure Key Vault a DiskEn
 
 `"securityProfile": { "encryptionAtHost": "true" }`
 
-## <a name="example-scripts"></a>Ukázkové skripty
+## <a name="examples"></a>Příklady
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>Povolení šifrování na hostiteli pro disky připojené k virtuálnímu počítači pomocí klíčů spravovaných zákazníkem
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Vytvořte virtuální počítač se šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných zákazníkem. 
 
-Vytvořte virtuální počítač se spravovanými disky pomocí identifikátoru URI prostředku DiskEncryptionSet, který jste vytvořili dříve.
+Vytvořte virtuální počítač se spravovanými disky pomocí identifikátoru URI prostředku DiskEncryptionSet vytvořeného dříve pro šifrování mezipaměti operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem. Dočasné disky se šifrují pomocí klíčů spravovaných platformou. 
 
-Nahraďte `<yourPassword>` , `<yourVMName>` , `<yourVMSize>` , `<yourDESName>` , `<yoursubscriptionID>` , a `<yourResourceGroupName>` a `<yourRegion>` potom spusťte skript.
+```powershell
+$VMLocalAdminUser = "yourVMLocalAdminUserName"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$LocationName = "yourRegion"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerName = "yourComputerName"
+$VMName = "yourVMName"
+$VMSize = "yourVMSize"
+$diskEncryptionSetName="yourdiskEncryptionSetName"
+    
+$NetworkName = "yourNetworkName"
+$NICName = "yourNICName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+    
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
-```PowerShell
-$password=ConvertTo-SecureString -String "<yourPassword>" -AsPlainText -Force
-New-AzResourceGroupDeployment -ResourceGroupName <yourResourceGroupName> `
--TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" `
--virtualMachineName "<yourVMName>" `
--adminPassword $password `
--vmSize "<yourVMSize>" `
--diskEncryptionSetId "/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" `
--region "<yourRegion>"
+# Enable encryption at host by specifying EncryptionAtHost parameter
+
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -EncryptionAtHost
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+# Enable encryption with a customer managed key for OS disk by setting DiskEncryptionSetId property 
+
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $($VMName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage
+
+# Add a data disk encrypted with a customer managed key by setting DiskEncryptionSetId property 
+
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDisk1") -DiskSizeInGB 128 -StorageAccountType Premium_LRS -CreateOption Empty -Lun 0 -DiskEncryptionSetId $diskEncryptionSet.Id 
+    
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>Povolit šifrování na hostiteli pro disky připojené k virtuálnímu počítači pomocí klíčů spravovaných platformou
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Vytvořte virtuální počítač se šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných platformou. 
 
-Nahraďte `<yourPassword>` , `<yourVMName>` ,, `<yourVMSize>` `<yourResourceGroupName>` a a `<yourRegion>` potom spusťte skript.
+Vytvořte virtuální počítač s povoleným šifrováním na hostiteli, aby se zašifroval mezipaměť s operačním systémem/datovými disky a dočasné disky pomocí klíčů spravovaných platformou. 
 
-```PowerShell
-$password=ConvertTo-SecureString -String "<yourPassword>" -AsPlainText -Force
-New-AzResourceGroupDeployment -ResourceGroupName <yourResourceGroupName> `
--TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" `
--virtualMachineName "<yourVMName>" `
--adminPassword $password `
--vmSize "<yourVMSize>" `
--region "<yourRegion>"
+```powershell
+$VMLocalAdminUser = "yourVMLocalAdminUserName"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$LocationName = "yourRegion"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerName = "yourComputerName"
+$VMName = "yourVMName"
+$VMSize = "yourVMSize"
+    
+$NetworkName = "yourNetworkName"
+$NICName = "yourNICName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+    
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+# Enable encryption at host by specifying EncryptionAtHost parameter
+
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -EncryptionAtHost
+
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $($VMName +"_OSDisk") -CreateOption FromImage
+
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDisk1") -DiskSizeInGB 128 -StorageAccountType Premium_LRS -CreateOption Empty -Lun 0
+    
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Aktualizujte virtuální počítač, aby se povolilo šifrování na hostiteli. 
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMName = "yourVMName"
+
+$VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+
+Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
+
+Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>Ověření stavu šifrování na hostiteli pro virtuální počítač
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMName = "yourVMName"
+
+$VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+
+$VM.SecurityProfile.EncryptionAtHost
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných zákazníkem. 
+
+Pomocí identifikátoru URI prostředku DiskEncryptionSet vytvořeného dříve vytvořte v sadě prostředků škálování virtuálního počítače se službou Managed disks a Zašifrujte mezipaměť operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem. Dočasné disky se šifrují pomocí klíčů spravovaných platformou. 
+
+```powershell
+$VMLocalAdminUser = "yourLocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString Password@123 -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerNamePrefix = "yourComputerNamePrefix"
+$VMScaleSetName = "yourVMSSName"
+$VMSize = "Standard_DS3_v2"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+    
+$NetworkName = "yourVNETName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+
+$ipConfig = New-AzVmssIpConfig -Name "myIPConfig" -SubnetId $Vnet.Subnets[0].Id 
+
+# Enable encryption at host by specifying EncryptionAtHost parameter
+
+$VMSS = New-AzVmssConfig -Location $LocationName -SkuCapacity 2 -SkuName $VMSize -UpgradePolicyMode 'Automatic' -EncryptionAtHost
+
+$VMSS = Add-AzVmssNetworkInterfaceConfiguration -Name "myVMSSNetworkConfig" -VirtualMachineScaleSet $VMSS -Primary $true -IpConfiguration $ipConfig
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+# Enable encryption with a customer managed key for the OS disk by setting DiskEncryptionSetId property 
+
+$VMSS = Set-AzVmssStorageProfile $VMSS -OsDiskCreateOption "FromImage" -DiskEncryptionSetId $diskEncryptionSet.Id -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2012-R2-Datacenter' -ImageReferenceVersion latest -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+$VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -AdminUsername $VMLocalAdminUser -AdminPassword $VMLocalAdminSecurePassword
+
+# Add a data disk encrypted with a customer managed key by setting DiskEncryptionSetId property 
+
+$VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS -DiskEncryptionSetId $diskEncryptionSet.Id
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli, který je povolený pomocí klíčů spravovaných platformou. 
+
+Vytvořte sadu škálování virtuálního počítače s šifrováním na hostiteli povoleno pro šifrování mezipaměti s operačním systémem/datovými disky a dočasné disky pomocí klíčů spravovaných platformou. 
+
+```powershell
+$VMLocalAdminUser = "yourLocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString Password@123 -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerNamePrefix = "yourComputerNamePrefix"
+$VMScaleSetName = "yourVMSSName"
+$VMSize = "Standard_DS3_v2"
+    
+$NetworkName = "yourVNETName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+
+$ipConfig = New-AzVmssIpConfig -Name "myIPConfig" -SubnetId $Vnet.Subnets[0].Id 
+
+# Enable encryption at host by specifying EncryptionAtHost parameter
+
+$VMSS = New-AzVmssConfig -Location $LocationName -SkuCapacity 2 -SkuName $VMSize -UpgradePolicyMode 'Automatic' -EncryptionAtHost
+
+$VMSS = Add-AzVmssNetworkInterfaceConfiguration -Name "myVMSSNetworkConfig" -VirtualMachineScaleSet $VMSS -Primary $true -IpConfiguration $ipConfig
+ 
+$VMSS = Set-AzVmssStorageProfile $VMSS -OsDiskCreateOption "FromImage" -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2012-R2-Datacenter' -ImageReferenceVersion latest -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+$VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -AdminUsername $VMLocalAdminUser -AdminPassword $VMLocalAdminSecurePassword
+
+$VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS 
+
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>Pokud chcete povolit šifrování na hostiteli, aktualizujte sadu škálování virtuálního počítače. 
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMScaleSetName = "yourVMSSName"
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
+
+Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>Ověřte stav šifrování na hostiteli pro sadu škálování virtuálního počítače.
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMScaleSetName = "yourVMSSName"
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
+
+$VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Hledání podporovaných velikostí virtuálních počítačů

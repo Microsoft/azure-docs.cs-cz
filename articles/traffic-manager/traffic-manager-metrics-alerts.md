@@ -2,20 +2,20 @@
 title: Metriky a výstrahy v Azure Traffic Manager
 description: V tomto článku se seznámíte s metrikami a upozorněními dostupnými pro Traffic Manager v Azure.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: rohink
-ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938590"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392846"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metriky a výstrahy
 

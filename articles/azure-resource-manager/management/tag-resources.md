@@ -4,12 +4,12 @@ description: Ukazuje, jak použít značky k uspořádání prostředků Azure k
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499989"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425989"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -579,7 +579,7 @@ Značky použité pro skupinu prostředků nebo odběr nejsou děděny prostřed
 
 Můžete je použít třeba k seskupení údajů o fakturaci. Pokud například používáte odlišný virtuální počítač pro každou organizační složku, můžete pomocí značek seskupit údaje o využití podle nákladových středisek. Značky lze použít také ke kategorizaci nákladů podle prostředí modulu spuštění, jako je například fakturované využití virtuálních počítačů běžících v produkčním prostředí.
 
-Můžete načíst informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a sazebních karet](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souboru hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
+Můžete načíst informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a sazebních karet](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souboru hodnot oddělených čárkami (CSV). Soubor využití si stáhnete z Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
 Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 
@@ -591,7 +591,7 @@ Na značky se vztahují následující omezení:
 * Každý prostředek, skupina prostředků a předplatné můžou mít maximálně 50 párů název/hodnota značky. Pokud potřebujete použít více značek, než je maximální povolený počet, použijte jako hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Skupina prostředků nebo předplatné můžou obsahovat spoustu prostředků, které mají každý z nich 50 páry název/hodnota značky.
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
 * Značky nelze použít u klasických prostředků, jako je například Cloud Services.
-* Názvy značek nesmí obsahovat tyto znaky: `<` , `>` , `%` , `&` , `\` , `?` ,`/`
+* Názvy značek nesmí obsahovat tyto znaky: `<` , `>` , `%` , `&` , `\` , `?` , `/`
 
    > [!NOTE]
    > V současné době Azure DNS zóny a služby Traffic Manager také nedovolují použití mezer ve značce.

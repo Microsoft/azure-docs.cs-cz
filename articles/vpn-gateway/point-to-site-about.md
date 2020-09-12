@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ad0ad7b1ff2f0b706595daf8b8c93f480f0e00b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80410489"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421709"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -122,7 +122,7 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 |AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256      | SHA256    | GROUP_2 |
 
-**Protokol IPsec**
+**IPsec**
 
 |**Šifr** | **Integrita** | **Skupina PFS** |
 |---        | ---           | ---       |

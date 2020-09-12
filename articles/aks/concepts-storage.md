@@ -3,13 +3,13 @@ title: Koncepty – úložiště v Azure Kubernetes Services (AKS)
 description: Seznamte se s úložištěm ve službě Azure Kubernetes (AKS), včetně svazků, trvalých svazků, tříd úložišť a deklarací identity.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406958"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421148"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -32,8 +32,6 @@ Tradiční svazky pro ukládání a načítání dat jsou vytvářeny jako Kuber
 
 - *Disky Azure* můžete použít k vytvoření prostředku Kubernetes *datadisk* . Disky můžou využívat službu Azure Premium Storage, která je zajištěná vysokým výkonem SSD nebo Azure Storage úrovně Standard, zajištěná pravidelným HDD. Pro většinu produkčních a vývojových úloh použijte Premium Storage. Disky Azure jsou připojené jako *ReadWriteOnce*, takže jsou dostupné jenom pro jeden pod. Pro svazky úložiště, ke kterým se dá současně přistupovat více lusků, použijte soubory Azure.
 - *Soubory Azure* můžete použít k připojení sdílené složky SMB 3,0 s účtem Azure Storage do lusků. Soubory umožňují sdílet data napříč více uzly a lusky. Soubory můžou používat úložiště Azure Standarded založené na běžných HDD nebo Azure Premium Storage založené na vysoce výkonném SSD.
-> [!NOTE] 
-> Služba soubory Azure podporuje Premium Storage v clusterech AKS se systémem Kubernetes 1,13 nebo vyšším.
 
 V Kubernetes můžou svazky reprezentovat více než jenom tradiční disk, kde se můžou informace ukládat a načítat. Svazky Kubernetes lze také použít jako způsob, jak vložit data do podseznamu pro použití kontejnery. Mezi běžné další typy svazků v Kubernetes patří:
 
@@ -55,12 +53,18 @@ PersistentVolume je možné *staticky* vytvořit správcem clusteru nebo *dynami
 
 Pokud chcete definovat různé úrovně úložiště, jako je například Premium a Standard, můžete vytvořit *StorageClass*. StorageClass také definuje *reclaimPolicy*. Tento reclaimPolicy řídí chování podkladového prostředku služby Azure Storage, když se odstraní pole pod a trvalý svazek už nemusí být potřeba. Základní prostředek úložiště je možné odstranit, případně uchovat pro použití s budoucím pod.
 
-V AKS se vytvoří 4 počáteční StorageClasses:
+V AKS se `StorageClasses` pro cluster s použitím modulů plug-in-treech modulů úložiště vytvoří čtyři iniciály:
 
-- *výchozí* – používá úložiště Azure StandardSSD k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
-- *Managed Premium* – využívá Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
-- *azurefile* – k vytvoření sdílené složky Azure používá službu Azure Storage úrovně Standard. Zásady opětovné deklarace označují, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
-- *azurefile – Premium* – využívá Azure Premium Storage k vytvoření sdílené složky Azure. Zásady opětovné deklarace označují, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- `default` – Používá úložiště Azure StandardSSD k vytvoření spravovaného disku. Zásady opětovné deklarace zajistí, že se při odstranění trvalého svazku, který ho použil, odstraní základní disk Azure.
+- `managed-premium` – Používá službu Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace zajistí, že se při odstranění trvalého svazku, který ho použil, odstraní základní disk Azure.
+- `azurefile` – Používá službu Azure Storage Standard k vytvoření sdílené složky Azure. Zásady opětovné deklarace zajistí, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- `azurefile-premium` – Využívá Azure Premium Storage k vytvoření sdílené složky Azure. Zásady opětovné deklarace zajistí, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
+
+V případě clusterů využívajících nové externí moduly plug-in (Container Storage Interface) (Preview) `StorageClasses` se vytvoří následující další:
+- `managed-csi` – Používá k vytvoření spravovaného disku místně redundantní úložiště (LRS) Azure StandardSSD. Zásady opětovné deklarace zajistí, že se při odstranění trvalého svazku, který ho použil, odstraní základní disk Azure. Třída úložiště také nakonfiguruje trvalé svazky tak, aby se rozšířily, stačí upravit deklaraci trvalého svazku s novou velikostí.
+- `managed-csi-premium` – Používá k vytvoření spravovaného disku místně redundantní úložiště (LRS) Azure Premium. Zásady opětovné deklarace zajistí, že se při odstranění trvalého svazku, který ho použil, odstraní základní disk Azure. Podobně tato třída úložiště umožňuje rozšířit trvalé svazky.
+- `azurefile-csi` – Používá službu Azure Storage Standard k vytvoření sdílené složky Azure. Zásady opětovné deklarace zajistí, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- `azurefile-csi-premium` – Využívá Azure Premium Storage k vytvoření sdílené složky Azure. Zásady opětovné deklarace zajistí, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
 
 Pokud pro trvalý svazek není zadána žádná StorageClass, použije se výchozí StorageClass. Při žádosti o trvalé svazky postupujte opatrně, aby používaly vhodné úložiště, které potřebujete. StorageClass můžete vytvořit pro další potřeby pomocí `kubectl` . Následující příklad používá prémiové Managed Disks a určuje, že základní disk Azure by měl být *zachován* při odstranění části pod.
 
