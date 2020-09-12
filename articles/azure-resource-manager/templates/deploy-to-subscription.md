@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002779"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468636"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -115,7 +115,7 @@ Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit
 
 ## <a name="deployment-scopes"></a>Obory nasazení
 
-Při nasazování do předplatného můžete cílit na předplatné nebo všechny skupiny prostředků v rámci předplatného. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
+Při nasazování do předplatného můžete cílit na jedno předplatné a všechny skupiny prostředků v rámci předplatného. Nemůžete nasadit do předplatného, které se liší od cílového předplatného. Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
 
 Prostředky definované v části Resources v šabloně se aplikují na předplatné.
 
@@ -145,7 +145,7 @@ Pokud chcete cílit na skupinu prostředků v rámci předplatného, přidejte v
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,19 @@ Pokud chcete cílit na skupinu prostředků v rámci předplatného, přidejte v
 }
 ```
 
+V tomto článku můžete najít šablony, které ukazují, jak nasadit prostředky do různých oborů. Šablonu, která vytvoří skupinu prostředků a nasadí do ní účet úložiště, najdete v tématu [Vytvoření skupiny prostředků a prostředků](#create-resource-group-and-resources). Pro šablonu, která vytvoří skupinu prostředků, aplikuje na ni zámek a přiřadí roli pro skupinu prostředků, viz [řízení přístupu](#access-control).
+
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 
 U nasazení na úrovni předplatného se při používání funkcí šablon vyskytly důležité předpoklady:
 
 * Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
 * Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
-* K získání ID prostředku pro prostředky, které jsou nasazeny na úrovni předplatného, použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
+* Nepoužívejte [ResourceID ()](template-functions-resource.md#resourceid) k získání ID prostředku pro prostředky, které jsou nasazeny na úrovni předplatného.
 
-  Pokud například chcete získat ID prostředku pro definici zásady, použijte:
+  Místo toho použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) .
+
+  Pokud například chcete získat ID prostředku pro definici zásady, která je nasazena v rámci předplatného, použijte:
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +424,7 @@ Definici zásady můžete [definovat](../../governance/policy/concepts/definitio
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]

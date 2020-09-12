@@ -6,24 +6,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/30/2020
-ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.date: 09/04/2020
+ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705873"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484863"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
 Možnost publikování, kterou si zvolíte pro vaši nabídku, se vztahuje přímo na požadavky na způsobilost i na GTM výhody pro komerční tržiště. Důležitější je, že výběr možnosti publikování a typu nabídky definuje způsob, jakým uživatelé budou pracovat s vaší nabídkou komerčního tržiště.
 
-Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a volání akce, která se řídí tím, jak a kde se vaše nabídka zobrazuje v online obchodech s komerčním Marketplace.
+Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a možnosti výpisu, které určují, jak a kde se nabídka zobrazuje v online obchodech s komerčním Marketplace.
 
 V tomto článku se dozvíte:
 
 - Jak určit odpovídající online obchod s vaším řešením.
-- Které možnosti publikování a volání akce jsou k dispozici v každém online obchodě.
+- Možnosti publikování a možnosti výpisu jsou dostupné v každém online obchodě.
 - Které typy nabídek jsou k dispozici pro jednotlivé možnosti publikování.
 
 ## <a name="commercial-marketplace-publishing-options"></a>Možnosti publikování na komerční web Marketplace
@@ -53,37 +53,37 @@ Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zák
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
-| **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím **kontaktních** hovorů. |
-| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnost volání na akci, která se používá pro možnost publikování zkušební verze, je buď **bezplatná zkušební verze** , nebo **testovací jednotka**. |
-| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Volání akce je **teď Get**.
-| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Volání akce je **teď Get**.|
+| **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím možností pro seznam **kontaktů** . |
+| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka**. |
+| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá**.
+| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá**.|
 
 > [!Note]
 > Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Pokud se chcete dozvědět víc, přečtěte si článek [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro obchod na webu.
 
 ## <a name="selecting-an-online-store"></a>Výběr online obchodu
 
-Každý online obchod slouží jako jedinečné požadavky zákazníků a cílí na konkrétní cílové skupiny. Typ vaší nabídky, možnosti jazyka Transact a kategorie určí, kde bude vaše nabídka publikována. Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny:
+Každý online obchod slouží pro obchodní a IT řešení různé požadavky zákazníků. Typ vaší nabídky, možnosti jazyka Transact a kategorie určí, kde bude vaše nabídka publikována. Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu publikovaného řešení:
 
-**Microsoft AppSource** cílí obchodním uživatelům, kteří hledají obchodní nebo Oborová řešení a konzultační služby pro Dynamics 365, Microsoft 365 a Power Platform.
+**Microsoft AppSource** nabízí podniková řešení, jako jsou například Oborová řešení a konzultační služby, pro Dynamics 365, Microsoft 365 a Power Platform.
 
-**Azure Marketplace** cílí na odborníky na IT a vývojáře, kteří hledají řešení vytvořená pro nebo v Azure, a také konzultační služby, které urychlují používání Azure.
+**Azure Marketplace** nabízí IT řešení vytvořená pro nebo v Azure, jakož i konzultační služby, které urychlují používání Azure vašimi zákazníky.
 
-Vyberte kategorii a podkategorii, které nejlépe zarovnejte s cílovou cílovou skupinou. Například Brána Firewall webových aplikací by měla být publikována do Azure Marketplace v kategorii zabezpečení jako zamýšlená cílová skupina odborníky na IT. Aplikace pro správu smluv by se měla místo toho publikovat do AppSource v kategorii prodej, protože zamýšlená cílová skupina je firemním uživatelům. Výběr nesprávné kategorie nebo podkategorie může mít za následek publikování vaší nabídky do nesprávného online obchodu.
+Vyberte kategorii a podkategorii, které nejlépe odpovídají vašemu typu řešení. Například firewall webových aplikací je řešení IT, které by mělo být Publikováno do Azure Marketplace pod kategorií zabezpečení. Aplikace pro správu smluv je obchodní řešení, které by se mělo publikovat do AppSource v kategorii Sales (prodej). Výběr nesprávné kategorie nebo podkategorie může mít za následek publikování vaší nabídky do nesprávného online obchodu.
 
 ### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Publikování do online obchodů (jenom SaaS nabídky)
 
-Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud je vaše nabídka SaaS určená pro technickou cílovou skupinu (Azure Marketplace *) i pro* obchodní cílovou skupinu (AppSource), vyberte kategorii a podkategorii, které platí pro každý online obchod. Nabídky publikované v online obchodech by měly mít hodnotu, která bude rozšířena na odborníky v oblasti IT *a* obchodní uživatele.
+Nabídky SaaS mohou být publikovány do Azure Marketplace nebo AppSource. Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* řešení (AppSource), vyberte kategorii a podkategorii, které platí pro každý online obchod. Nabídky publikované na obou obchodech online by měly mít jako řešení IT *a* obchodní řešení hodnotu Proposition.
 
 > [!IMPORTANT]
-> Nabídky SaaS s měřenou fakturací jsou k dispozici prostřednictvím Azure Marketplace a Azure Portal. SaaS nabízí pouze soukromé plány, které jsou k dispozici prostřednictvím Azure Portal.
+> Nabídky SaaS s [měřenou fakturací](partner-center-portal/saas-metered-billing.md) jsou k dispozici prostřednictvím Azure Marketplace a Azure Portal. SaaS nabízí pouze soukromé plány, které jsou k dispozici prostřednictvím Azure Portal.
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
-| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
-| Ano             | Ne          | Ano          | Pouze Azure Portal |
-| Ne              | Ne          | Ano          | Pouze Azure Portal |
+| Yes             | Yes         | No           | Azure Marketplace a Azure Portal |
+| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
+| Yes             | No          | Yes          | Pouze Azure Portal |
+| No              | No          | Yes          | Pouze Azure Portal |
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
 
@@ -91,15 +91,13 @@ Zákazníci v Azure Portal zakoupí například nabídku s měřením fakturace 
 
 ### <a name="categories"></a>Kategorie
 
-Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny. Vyberte kategorie a podkategorie, které nejlépe odpovídají vaší nabídce a zamýšlené cílové skupině. Můžete vybrat:
+Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. Vyberte kategorie a podkategorie, které nejlépe odpovídají vašemu řešení. Můžete vybrat:
 
-- Aspoň jedna a až dvě kategorie. Máte možnost zvolit primární a sekundární kategorii.
+- Aspoň jedna a až dvě kategorie. Můžete zvolit primární a sekundární kategorii.
 - Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud nevyberete žádnou podkategorii, vaše nabídka bude i nadále zjistitelná v rámci vybrané kategorie.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Jakmile se rozhodnete pro možnost publikování, budete připraveni [Vybrat typ nabídky](./publisher-guide-by-offer-type.md) , který se bude používat k prezentaci vaší nabídky.
-- Pokud chcete dokončit výběr a konfiguraci vaší nabídky, přečtěte si požadavky na způsobilost v části Možnosti publikování podle typu nabídky.
-- Seznamte se se vzorem publikování podle online obchodu s příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
+- Jakmile se rozhodnete pro možnost publikování, přečtěte si téma [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md).

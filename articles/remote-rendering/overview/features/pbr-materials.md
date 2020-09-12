@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021309"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613663"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
 
@@ -55,7 +55,7 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
   Pokud jsou dodána hodnota kovového a mapa kovu, bude konečná hodnota součinem těchto dvou.
 
-  ![kovové a hrubosti](./media/metalness-roughness.png)
+  ![Koule vykreslené s různou hodnotou kovu a hrubosti](./media/metalness-roughness.png)
 
   Ve výše uvedeném obrázku vypadá koule v pravém dolním rohu jako materiál reálného materiálu, vlevo dole vypadá jako keramické nebo plast. Barva albedo se také mění podle fyzických vlastností. Díky zvýšení hrubé hodnoty materiál ztratí ostrost reflexe.
 
@@ -63,13 +63,13 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
 * **occlusionMap** a **aoScale:** [ambientní překrytí](https://en.wikipedia.org/wiki/Ambient_occlusion) zpřístupňuje objekty s crevicesmi mnohem realisticky přidáním stínů do zastíněna oblastí. Překrytí rozsah hodnot od `0.0` do `1.0` , kde `0.0` znamená tmavost (zastíněna) a znamená, že `1.0` Occlusions. Pokud je 2D textura k dispozici jako mapa překrytí, je efekt povolen a *aoScale* funguje jako násobitel.
 
-  ![Mapa překrytí](./media/boom-box-ao2.gif)
+  ![Objekt vykreslený pomocí a bez ambientního překrytíu](./media/boom-box-ao2.gif)
 
 * **transparentní:** U materiálů PBR existuje jenom jedno nastavení transparentnosti: je povolené nebo ne. Neprůhlednost je definována alfa kanálem albedo Color. Pokud je povoleno, je vyvolán složitější kanál vykreslování pro kreslení částečně průhledných ploch. Vzdálené vykreslování Azure implementuje true [transparentnost nezávislého řádu](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT).
 
   Transparentní geometrie je nákladné pro vykreslování. Pokud potřebujete pouze otvory na povrchu, například pro listy stromu, je vhodnější místo toho použít alfa ořez.
 
-  ![Oznámení o transparentnosti na ](./media/transparency.png) obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
+  ![Koule vykreslené s nulovým oznámením o plné transparentnosti na ](./media/transparency.png) obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
 
   > [!IMPORTANT]
   > Pokud by měl být nějaký materiál přepnut z neprůhledných na transparentní za běhu, zobrazovací jednotka musí používat [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* . Toto omezení se nevztahuje na materiály, které jsou převáděny jako průhledné materiály na začátek.
@@ -80,6 +80,13 @@ Vzdálené vykreslování Azure používá Torrance mikroomezující BRDF s GGX 
 
  Alternativou k modelu *hrubých kovů* , který se používá při vzdáleném vykreslování Azure, je model *zrcadlové Glossiness* PBR. Tento model může představovat širší škálu materiálů. Je ale dražší a obvykle nefunguje dobře pro případy v reálném čase.
 Není vždy možné převést z *odlesk-Glossiness* na *kov –* protože existují páry hodnot *(difúze, odlesky)* , které se nedají převést na *(BaseColor, metaling)*. Převod v druhém směru je jednodušší a přesnější, protože všechny páry *(BaseColor, kov)* odpovídají dobře definovaným dvojicím *(difúzi, odleskům)* .
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# PbrMaterial](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [Třída C++ PbrMaterial](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299962"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu ke skupinám a aplikacím v prohlídekch Azure AD Access
 
@@ -33,7 +33,7 @@ Proces kontroly přístupu můžete spustit z oznamovacího e-mailu nebo přejí
 - **E-mail**:
 
 >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Přidejte azure-noreply@microsoft.com do seznamu bezpečných příjemců a ujistěte se, že přijímáte všechny e-maily.
 
 1. Vyhledejte e-mail od Microsoftu, který žádá o kontrolu přístupu. Tady je příklad e-mailu pro kontrolu přístupu pro skupinu.
 
@@ -129,7 +129,7 @@ K novému uživatelskému rozhraní v možnosti vlastní pohled můžete získat
 ### <a name="email"></a>E-mail
 
   >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Přidejte azure-noreply@microsoft.com do seznamu bezpečných příjemců a ujistěte se, že přijímáte všechny e-maily.
 
    1. Vyhledejte e-mail od Microsoftu, který žádá o kontrolu přístupu. Níže vidíte příklad e-mailové zprávy:
 
@@ -144,7 +144,7 @@ K novému uživatelskému rozhraní v možnosti vlastní pohled můžete získat
 
 Můžete také zobrazit své nedokončené kontroly přístupu pomocí prohlížeče a otevřít tak přístup.
 
-1. Přihlaste se k mému přístupu nahttps://myaccess.microsoft.com/
+1. Přihlaste se k mému přístupu na https://myaccess.microsoft.com/
 
 2. V nabídce na levém bočním panelu vyberte kontroly **přístupu** , abyste viděli seznam nedokončených kontrol přístupu, které jsou vám přiřazeny.
 
@@ -206,4 +206,3 @@ Pokud chcete přijmout doporučení pro všechny uživatele, ujistěte se, že n
 ## <a name="next-steps"></a>Další kroky
 
 - [Dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md)
-

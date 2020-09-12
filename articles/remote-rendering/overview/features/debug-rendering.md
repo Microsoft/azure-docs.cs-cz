@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013584"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613736"
 ---
 # <a name="debug-rendering"></a>Ladění vykreslování
 
@@ -19,7 +19,7 @@ Rozhraní API pro vykreslování ladění poskytuje řadu globálních možnost�
 
 ## <a name="available-debug-rendering-effects"></a>Dostupné efekty vykreslování ladění
 
-|Nastavení                          | Efekt                               |
+|Nastavení                          | Účinek                               |
 |---------------------------------|:-------------------------------------|
 |Čítač rámců                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuální ID rámce na straně serveru, které se průběžně zvětšuje podle toho, jak vykreslování pokračuje. |
 |Počet mnohoúhelníků                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuálně vykreslené množství mnohoúhelníků, stejnou hodnotu jako dotazování dotazů na výkon na [straně serveru](performance-queries.md) .| 
@@ -74,6 +74,10 @@ Poskytnuté účinky však neposkytují žádné podrobné introspekce stavu slu
 
 * Povolení překryvných textů se mírně nezvyšuje bez režie výkonu.
 * Povolení režimu drátěného modelu má za následek netriviální výkon, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles frekvence snímků pod cílovou 60 až Hz.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C++ RemoteManager::D ebugRenderingSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Další kroky
 
