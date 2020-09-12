@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080177"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276180"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
 
@@ -25,7 +25,7 @@ Tento článek popisuje požadavky na integraci hybridního prostředí s Micros
 > [!NOTE]
 > Pokud chcete integrovat místní prostředí Microsoft Azure Active Directory (Azure AD) s Azure Governmentm cloudem, budete muset upgradovat na nejnovější verzi [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-Úplný seznam USAch koncových bodů obrany najdete v [dokumentaci](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints).
+Úplný seznam USAch koncových bodů obrany najdete v [dokumentaci](/office365/enterprise/office-365-u-s-government-dod-endpoints).
 
 ## <a name="azure-ad-pass-through-authentication"></a>Předávací ověřování Azure AD
 

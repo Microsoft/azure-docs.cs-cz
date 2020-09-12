@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1e3579f79f9daa80c3d3f2206be7a76cc5505e80
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037015"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293995"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
@@ -26,9 +26,9 @@ V tomto článku získáte informace o těchto tématech:
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart-launch-app-cli.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
+Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
     
 ## <a name="add-dependencies"></a>Přidat závislosti
 

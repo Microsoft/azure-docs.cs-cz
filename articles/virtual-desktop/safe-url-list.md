@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135857"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291105"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -60,7 +60,7 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
 >2. Otevřete **Prohlížeč událostí**a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3701.
->3. Seznam povolených adres URL, které najdete v části ID události 3701. Adresy URL v rámci události s ID 3701 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
+>3. Odblokujte adresy URL, které najdete v části ID události 3701. Adresy URL v rámci události s ID 3701 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
 
 ## <a name="remote-desktop-clients"></a>Klienti služby Vzdálená plocha
 

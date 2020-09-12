@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cc3bc176798efda46f03c80fe9cce2edd7daf6b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262630"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291544"
 ---
 # <a name="filters"></a>Filtry
 
@@ -28,7 +28,7 @@ Při doručování obsahu zákazníkům (živé události streamování nebo vid
 
 Filtry jsou pravidla na straně serveru, která zákazníkům umožňují provádět například tyto akce: 
 
-- Přehrát jenom část videa (místo přehrávání celého videa) Příklad:
+- Přehrát jenom část videa (místo přehrávání celého videa) Například:
   - Snižte manifest pro zobrazení dílčího klipu živé události ("filtrování dílčích klipů") nebo
   - Ořízne začátek videa ("ořezávání videa").
 - Doručovat pouze zadané verze a/nebo zadané stopy jazyka podporované zařízením, které se používá k přehrání obsahu ("filtrování verzí"). 
@@ -79,7 +79,7 @@ Filtrovat podmínky vlastností sledování popisují typy sledování, hodnoty 
 |**Rychlostí**|Použijte přenosovou rychlost stopy pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosové rychlosti v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když můžete použít určitou hodnotu přenosové rychlosti, třeba 250000 (bity za sekundu), tento přístup se nedoporučuje, protože přesné přenosové rychlosti můžou kolísat od jednoho Assetu k druhému.|
 |**FourCC**|Použijte hodnotu FourCC stopy pro filtrování.<br/><br/>Hodnota je prvním prvkem formátu kodeků, jak je uvedeno v [dokumentu RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "avc1", "hev1", "hvc1"<br/>Pro zvuk: "mp4a", "ES-3"<br/><br/>Chcete-li určit hodnoty FourCC pro stopy v Assetu, Získejte a prověřte soubor manifestu.|
 |**Jazyk**|Použijte jazyk sledování pro filtrování.<br/><br/>Hodnota je značka jazyka, který chcete zahrnout, jak je uvedeno v dokumentu RFC 5646. Například "en".|
-|**Name**|Použijte název stopy pro filtrování.|
+|**Název**|Použijte název stopy pro filtrování.|
 |**Typ**|Použijte typ stopy pro filtrování.<br/><br/>Jsou povoleny následující hodnoty: "video", "audio" nebo "text".|
 
 ### <a name="example"></a>Příklad

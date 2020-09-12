@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356623"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277200"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu instalace služby Azure Active Directory (Azure AD) Connect na nejnovější verzi. Doporučujeme, abyste si zachovali aktuální verze Azure AD Connect. Při provádění podstatné změny konfigurace můžete také použít kroky v části kroková [migrace](#swing-migration) .
@@ -33,7 +33,7 @@ Pokud chcete upgradovat z DirSync, přečtěte si téma [upgrade z nástroje Azu
 
 K upgradu Azure AD Connect můžete použít několik různých strategií.
 
-| Metoda | Description |
+| Metoda | Popis |
 | --- | --- |
 | [Automatický upgrade](how-to-connect-install-automatic-upgrade.md) |Toto je nejjednodušší způsob pro zákazníky, kteří mají expresní instalaci. |
 | [Místní upgrade](#in-place-upgrade) |Pokud máte jeden server, můžete upgradovat instalaci na stejném serveru na místě. |
@@ -54,7 +54,7 @@ Pokud jste provedli změny v rámci předdefinovaných pravidel synchronizace, t
 
 Během místního upgradu můžou být zavedené změny, které vyžadují konkrétní synchronizační aktivity (včetně kroku úplného importu a úplné synchronizace), které se spustí po dokončení upgradu. Pokud chcete takové aktivity odložit, přečtěte si část [postup odložení úplné synchronizace po upgradu](#how-to-defer-full-synchronization-after-upgrade).
 
-Pokud používáte Azure AD Connect s nestandardním konektorem (například obecný konektor LDAP a obecný konektor SQL), musíte aktualizovat odpovídající konfiguraci konektoru v [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) po místním upgradu. Podrobnosti o tom, jak aktualizovat konfiguraci konektoru, najdete v části [konektor – Historie vydání verze – řešení potíží](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Pokud neaktualizujete kroky pro konfiguraci, import a export, nebudou pro konektor správně fungovat. V protokolu událostí aplikace se zobrazí následující chybová zpráva *verze sestavení v konfiguraci konektoru AAD ("X.X.xxx. X ") je starší než skutečná verze (" X.X.XXX. X ") adresáře" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Pokud používáte Azure AD Connect s nestandardním konektorem (například obecný konektor LDAP a obecný konektor SQL), musíte aktualizovat odpovídající konfiguraci konektoru v [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) po místním upgradu. Podrobnosti o tom, jak aktualizovat konfiguraci konektoru, najdete v části [konektor – Historie vydání verze – řešení potíží](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting). Pokud neaktualizujete kroky pro konfiguraci, import a export, nebudou pro konektor správně fungovat. V protokolu událostí aplikace se zobrazí následující chybová zpráva *verze sestavení v konfiguraci konektoru AAD ("X.X.xxx. X ") je starší než skutečná verze (" X.X.XXX. X ") adresáře" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
 
 ## <a name="swing-migration"></a>Postupná migrace
 Pokud máte složité nasazení nebo mnoho objektů, může být nepraktické provést místní upgrade v živém systému. Pro některé zákazníky může tento proces trvat několik dní – a během této doby se nezpracují žádné rozdílové změny. Tuto metodu můžete použít také v případě, že plánujete udělat podstatné změny v konfiguraci a chcete si je vyzkoušet před jejich odesláním do cloudu.
@@ -108,7 +108,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání byla provedena ihned po
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. Po dokončení upgradu spusťte následující rutinu, abyste zjistili, jaké přepsání bylo přidáno:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Po dokončení upgradu spusťte následující rutinu, abyste zjistili, jaké přepsání bylo přidáno: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > Přepsání jsou specifická pro konektor. V následujícím příkladu byl do místního konektoru služby AD i z konektoru služby Azure AD přidán úplný krok importu a krok úplné synchronizace.
@@ -117,7 +117,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání byla provedena ihned po
 
 3. Poznamenejte si existující přepsání, která byla přidána.
    
-4. Chcete-li odebrat přepsání pro úplné import i úplnou synchronizaci s libovolným konektorem, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Chcete-li odebrat přepsání pro úplné import i úplnou synchronizaci s libovolným konektorem, spusťte následující rutinu: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Chcete-li odebrat přepsání na všech konektorech, spusťte následující skript prostředí PowerShell:
 
@@ -128,12 +128,12 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání byla provedena ihned po
    }
    ```
 
-5. Chcete-li pokračovat v plánovači, spusťte následující rutinu:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Chcete-li pokračovat v plánovači, spusťte následující rutinu: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Nezapomeňte provést požadované kroky synchronizace při nejbližším pohodlí. Synchronization Service Manager pomocí rutiny Set-ADSyncSchedulerConnectorOverride můžete ručně provést tyto kroky a přidat přepsání zpět.
 
-Chcete-li přidat přepsání pro úplné import i úplnou synchronizaci s libovolným konektorem, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Chcete-li přidat přepsání pro úplné import i úplnou synchronizaci s libovolným konektorem, spusťte následující rutinu:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Následující část obsahuje řešení potíží a informace, které můžete použít, pokud dojde k potížím s upgradem Azure AD Connect.
@@ -144,7 +144,7 @@ Při upgradu Azure AD Connect z předchozí verze se může při zahájení upgr
 
 ![Chyba](./media/how-to-upgrade-previous-version/error1.png)
 
-K této chybě dochází, protože konektor Azure Active Directory s identifikátorem b891884f-051e-4A83-95af-2544101c9083 neexistuje v aktuální konfiguraci Azure AD Connect. Pokud chcete ověřit, že se jedná o tento případ, otevřete okno PowerShellu, spusťte rutinu.`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+K této chybě dochází, protože konektor Azure Active Directory s identifikátorem b891884f-051e-4A83-95af-2544101c9083 neexistuje v aktuální konfiguraci Azure AD Connect. Pokud chcete ověřit, že se jedná o tento případ, otevřete okno PowerShellu, spusťte rutinu. `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

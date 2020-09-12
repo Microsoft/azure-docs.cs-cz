@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269144"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295542"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
 
@@ -53,7 +53,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 | Název | Popis |
 | --- | --- |
-| **Name**<br />Vyžadováno |Název souboru assetu. <br /><br />Příklad: `"Name": "Ignite-short.mp4"` |
+| **Název**<br />Vyžadováno |Název souboru assetu. <br /><br />Příklad: `"Name": "Ignite-short.mp4"` |
 | **Identifikátor URI**<br />Vyžadováno |Adresa URL, kde se nachází vstupní Asset. Pokud chcete identifikovat vstupní Asset, do kterého patří výstupní Asset, použijte `Uri` místo ID pole.|
 | **Velikost**<br />Vyžadováno |Velikost souboru prostředků v bajtech  <br /><br />Příklad: `"Size": 75739259`|
 | **Doba trvání**<br />Vyžadováno |Doba přehrávání obsahu <br /><br />Příklad: `"Duration": "PT1M10.304S"`. |
@@ -71,8 +71,8 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | **Profil** |Profil stopy videa. <br /><br />Příklad: `"Profile": "Main"`|
 | **Obsah** |Úroveň stopy videa <br /><br />Příklad: `"Level": "3.2"`|
 | **PixelFormat** |Formát pixelu stopy videa <br /><br />Příklad: `"PixelFormat": "yuv420p"`|
-| **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|
-| **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
+| **Délk**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|
+| **Výška**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Vyžadováno |Čítač zobrazení poměru stran videa<br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Ukázka poměru stran videa – čitatel. <br /><br />Příklad: `"SampleAspectRatioNumerator": 1.0`|

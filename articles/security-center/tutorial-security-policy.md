@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519350"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277659"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -40,7 +40,7 @@ Security Center nabízí následující možnosti pro práci se zásadami zabezp
 * **Přidání zásad dodržování předpisů regulativního** úřadu – řídicí panel dodržování předpisů v Security Center zobrazuje stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení (například Azure SNS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Další informace najdete v tématu [zlepšení dodržování legislativních předpisů](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Správa zásad zabezpečení
+## <a name="manage-your-security-policies"></a>Správa zásad zabezpečení
 
 Zobrazení zásad zabezpečení ve službě Security Center:
 
@@ -54,7 +54,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Zobrazí se stránka zásady zabezpečení pro toto předplatné nebo skupinu pro správu. Zobrazuje dostupné a přiřazené zásady.
 
-   ![obrazovka zásady](./media/tutorial-security-policy/security-policy-page.png)
+   ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > Pokud je popisek "g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
@@ -111,11 +111,11 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
 1. Vyberte **Zobrazit efektivní zásady**.
 
-   ![zakázat zásadu](./media/tutorial-security-policy/view-effective-policy.png)
+   ![Zobrazit zásady](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Vyberte přiřazenou zásadu.
 
-   ![zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
+   ![vybrat zásadu](./media/tutorial-security-policy/security-policy.png)
 
 1. V části **parametry** vyhledejte zásadu, která vyvolá doporučení, které chcete zakázat, a v rozevíracím seznamu vyberte možnost **zakázáno** .
 

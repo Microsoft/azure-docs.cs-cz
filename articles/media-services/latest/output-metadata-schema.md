@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267199"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289365"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 
@@ -38,10 +38,10 @@ Kolekce záznamů AssetFile pro úlohu kódování.
 
 | Název | Popis |
 | --- | --- |
-| **zdroje** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. <br />Viz [VideoTracks](#videotracks). |
 | **AudioTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Toto je kolekce všech těchto zvukových stop.<br /> Další informace najdete v tématu [AudioTracks](#audiotracks). |
-| **Name**<br />Vyžadováno |Název souboru mediálního prostředku <br /><br />Příklad: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Název**<br />Vyžadováno |Název souboru mediálního prostředku <br /><br />Příklad: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **Velikost**<br />Vyžadováno |Velikost souboru prostředků v bajtech <br /><br />Příklad: `"Size": 32414631`|
 | **Doba trvání**<br />Vyžadováno |Doba přehrávání obsahu Další informace najdete v tématu formát [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) . <br /><br />Příklad: `"Duration": "PT1M10.315S"`|
 
@@ -55,8 +55,8 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 | **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1"`|
 | **Profil** |Profil H264 (platí jenom pro kodek H264).  <br /><br />Příklad: `"Profile": "High"` |
 | **Obsah** |Úroveň H264 (platí pouze pro kodek H264).  <br /><br />Příklad: `"Level": "3.2"`|
-| **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
-| **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
+| **Délk**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
+| **Výška**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vyžadováno|Čítač zobrazení poměru stran videa  <br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa  <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Vyžadováno |Měřená snímková frekvence videa ve formátu. 3F.  <br /><br />Příklad: `"Framerate": 29.970`|

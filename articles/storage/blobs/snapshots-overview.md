@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230328"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295392"
 ---
 # <a name="blob-snapshots"></a>Snímky objektů BLOB
 
@@ -128,6 +128,10 @@ Následující tabulka popisuje chování fakturace objektu BLOB nebo snímku p�
 | Snímek | Snímek v nové vrstvě a základní objekt BLOB v původní vrstvě a všechny jedinečné bloky na dalších snímcích. <sup>1</sup> |
 
 <sup>1</sup> Pokud jsou k dispozici jiné předchozí verze nebo snímky, které nebyly přesunuty z původní úrovně, jsou tyto verze nebo snímky účtovány na základě počtu jedinečných bloků, které obsahují, jak je popsáno v tématu [fakturace, pokud nebyla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Následující diagram znázorňuje, jak se účtují objekty, když se objekt BLOB s snímky přesune na jinou úroveň.
+
+:::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="Diagram znázorňující, jak se účtují objekty, když je objekt BLOB se snímky explicitně vrstvený":::
 
 Explicitní nastavení vrstvy pro objekt blob, verzi nebo snímek nelze vrátit zpět. Pokud objekt BLOB přesunete do nové úrovně a pak ho přesunete zpátky do původní úrovně, bude se vám účtovat úplná délka obsahu objektu, i když sdílí bloky s jinými objekty v původní úrovni.
 

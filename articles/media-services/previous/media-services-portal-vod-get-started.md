@@ -93,7 +93,7 @@ Kódování obsahu pomocí procesoru Media Encoder Standard na webu Azure Portal
    Pro usnadnění správy prostředků můžete upravit název výstupního prostředku a název úlohy.
    
    ![Kódování assetů](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.
 
 ### <a name="monitor-encoding-job-progress"></a>Monitorování průběhu úlohy kódování
 Pokud chcete monitorovat průběh úlohy kódování, vyberte v horní části stránky **Nastavení** a pak vyberte **Úlohy**.

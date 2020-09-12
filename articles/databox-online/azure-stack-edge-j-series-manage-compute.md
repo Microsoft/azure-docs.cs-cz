@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-triggers"></a>Spravovat triggery
 
-Události jsou věci, ke kterým dochází ve vašem cloudovém prostředí nebo na zařízení, na kterém může být vhodné provést akci. Například když je soubor vytvořen ve sdílené složce, jedná se o událost. Triggery vyvolávají události. U Azure Stackového okraje můžou být triggery v reakci na události souboru nebo plán.
+Události jsou něco, co se děje v rámci cloudového prostředí nebo na zařízení, na co byste mohli chtít reagovat určitou akcí. Událostí je například vytvoření souboru ve sdílené složce. Události vyvolávají triggery. Triggery Azure Stack Edge můžou reagovat na události souborů nebo být plánované.
 
 - **Soubor**: tyto triggery jsou v reakci na události souboru, jako je vytváření souboru, úprava souboru.
 - **Naplánované**: tyto triggery jsou v reakci na plán, který můžete definovat s počátečním datem, časem spuštění a intervalem opakování.

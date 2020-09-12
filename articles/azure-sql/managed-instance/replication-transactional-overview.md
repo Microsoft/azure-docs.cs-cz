@@ -1,7 +1,7 @@
 ---
 title: Transakční replikace
 titleSuffix: Azure SQL Managed Instance
-description: Přečtěte si o použití SQL Server transakční replikace se spravovanou instancí Azure SQL.
+description: Přečtěte si o použití SQL Server transakční replikace se službou Azure SQL Managed instance (Preview).
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920117"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290510"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transakční replikace se spravovanou instancí Azure SQL
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Transakční replikace je funkce spravované instance Azure SQL a SQL Server, která umožňuje replikovat data z tabulky ve spravované instanci Azure SQL nebo instance SQL Server do tabulek umístěných ve vzdálených databázích. Tato funkce umožňuje synchronizovat více tabulek v různých databázích. 
@@ -43,12 +43,12 @@ Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributo
 
 ![replikace s SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Spravovaná instance Azure SQL |
+| Role | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| **Publisher** | Ne | Ano |
-| **Rozdělovač** | Ne | Ano|
-| **Předplatitel pro vyžádání obsahu** | Ne | Ano|
-| **Předplatitel nabízených oznámení**| Ano | Ano|
+| **Publisher** | No | Yes |
+| **Rozdělovač** | No | Yes|
+| **Předplatitel pro vyžádání obsahu** | No | Yes|
+| **Předplatitel nabízených oznámení**| Yes | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Vydavatel** zveřejňuje změny provedené v některých tabulkách (články) odesláním aktualizací distributorovi. Vydavatelem může být spravovaná instance Azure SQL nebo instance SQL Server.
@@ -72,14 +72,14 @@ Spravovaná instance Azure SQL může podporovat předplatitele z následující
 
 Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
-| Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
+| Replikace | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano |
-| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
-| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
-| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
-| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
+| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Yes |
+| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|
+| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | No | No|
+| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | No | No|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | No | No|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Matice podpory

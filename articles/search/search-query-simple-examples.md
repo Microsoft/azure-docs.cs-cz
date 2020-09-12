@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918022"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294862"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Vytvoření jednoduchého dotazu ve službě Azure Kognitivní hledání
 
@@ -37,13 +37,13 @@ K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení 
 
 Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
-  ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-header.png)
+  ![Parametry nastavení hlavičky žádosti post](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>Nastavení adresy URL žádosti
 
 Request je příkaz GET spárováný s adresou URL, která obsahuje koncový bod Azure Kognitivní hledání a hledaný řetězec.
 
-  ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Hlavička žádosti post-GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Složení adresy URL má následující prvky:
 

@@ -170,8 +170,8 @@ Níže jsou doporučené hodnoty pro agregované nastavení okna a intervalu. Ag
 
 || Výchozí hodnoty: | Maximální počet (s) | Minimum (s) |
 |--- | --- | --- | --- |
-| **AggregateEmotionWindowMs** |0,5 |2 |0,25|
-| **AggregateEmotionIntervalMs** |0,5 |1 |0,25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0,25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0,25|
 
 ### <a name="json-output"></a>Výstup JSON
 Výstup JSON pro agregovaná emoce (zkrácený):

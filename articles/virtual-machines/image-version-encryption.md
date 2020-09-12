@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816486"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291921"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,7 +23,7 @@ Pro šifrování vašich imagí můžete spoléhat na klíče spravované platfo
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek vyžaduje, abyste už měli k dispozici sadu Encryption disk pro použití pro vaši image.
 
@@ -113,7 +113,7 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>Vytvořit virtuální počítač
+### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí klíčů spravovaných zákazníkem zašifrovat disky. Syntaxe je stejná jako vytvoření [zobecněného](vm-generalized-image-version-powershell.md) nebo [specializovaného](vm-specialized-image-version-powershell.md) virtuálního počítače z image, musíte použít rozšířenou sadu parametrů a přidat `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` ji do konfigurace virtuálního počítače.
 
@@ -149,7 +149,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-Pokud chcete pro verzi image zadat šifrování disku, použijte parametr  [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) `--target-region-encryption` . Formát pro `--target-region-encryption` je seznam klíčů oddělených mezerou pro šifrování operačního systému a datových disků. Mělo by to vypadat takto: `<encryption set for the OS disk>,<Lun number of the data disk>, <encryption set for the data disk>, <Lun number for the second data disk>, <encryption set for the second data disk>` . 
+Pokud chcete pro verzi image zadat šifrování disku, použijte parametr  [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) `--target-region-encryption` . Formát pro `--target-region-encryption` je čárkami oddělený seznam klíčů pro šifrování operačních systémů a datových disků. Mělo by to vypadat takto: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` . 
 
 Pokud je zdroj pro disk s operačním systémem spravovaným diskem nebo virtuálním počítačem, použijte `--managed-image` k určení zdroje verze image. V tomto příkladu je zdrojem spravovaná bitová kopie, která má disk s operačním systémem a také datový disk na logické jednotce (LUN) 0. Disk s operačním systémem se zašifruje pomocí DiskEncryptionSet1 a datový disk se zašifruje pomocí DiskEncryptionSet2.
 

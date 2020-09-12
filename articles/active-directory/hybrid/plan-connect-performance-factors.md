@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253490"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279580"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
@@ -30,7 +30,7 @@ Azure AD Connect synchronizuje vaši službu Active Directory s Azure AD. Tento 
 | Měřítko| Počet objektů, jako jsou uživatelé, skupiny a organizační jednotky, budou spravovány Azure AD Connect. |
 | Hardware| Hardware (fyzický nebo virtuální) pro Azure AD Connect a výkonnou kapacitu jednotlivých hardwarových součástí, včetně nastavení procesoru, paměti, sítě a pevného disku. |
 | Konfigurace| Jak Azure AD Connect zpracovávat adresáře a informace. |
-| Načtení| Frekvence změn objektu. Zatížení se může lišit v průběhu hodiny, dne nebo týdne. V závislosti na komponentě bude možná nutné navrhnout zatížení ve špičce nebo průměrné zatížení. |
+| Načítání| Frekvence změn objektu. Zatížení se může lišit v průběhu hodiny, dne nebo týdne. V závislosti na komponentě bude možná nutné navrhnout zatížení ve špičce nebo průměrné zatížení. |
 
 Účelem tohoto dokumentu je popsat faktory ovlivňující výkon modulu Azure AD Connect zřizování. Velká nebo složitá organizace (organizace, které zřizování více než 100 000 objektů) můžou použít doporučení k optimalizaci Azure AD Connect implementace, pokud se tady setkávají problémy s výkonem, které jsou zde popsané. Ostatní komponenty Azure AD Connect, jako jsou [Azure AD Connect stav](how-to-connect-health-agent-install.md) a agenti, zde nejsou pokryté.
 
@@ -43,7 +43,7 @@ Následující diagram znázorňuje architekturu zřizování modulu zřizován�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-Zřizovací modul se připojuje ke každé doménové struktuře služby Active Directory a ke službě Azure AD. Proces čtení informací z jednotlivých adresářů se nazývá import. Export odkazuje na aktualizaci adresářů z modulu zřizování. Synchronizace vyhodnocuje pravidla způsobu, jakým objekty budou procházet uvnitř modulu zřizování. Pro hlubší podrobně se můžete podívat na [Azure AD Connect synchronizace: Princip architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
+Zřizovací modul se připojuje ke každé doménové struktuře služby Active Directory a ke službě Azure AD. Proces čtení informací z jednotlivých adresářů se nazývá import. Export odkazuje na aktualizaci adresářů z modulu zřizování. Synchronizace vyhodnocuje pravidla způsobu, jakým objekty budou procházet uvnitř modulu zřizování. Pro hlubší podrobně se můžete podívat na [Azure AD Connect synchronizace: Princip architektury](./concept-azure-ad-connect-sync-architecture.md).
 
 Azure AD Connect používá následující pracovní oblasti, pravidla a procesy, aby bylo možné synchronizovat ze služby Active Directory do Azure AD:
 
@@ -52,7 +52,7 @@ Azure AD Connect používá následující pracovní oblasti, pravidla a procesy
 * **Pravidla synchronizace** – rozhodují o tom, které objekty budou vytvořeny (provedené) nebo připojené (připojené) k objektům v MV. Pravidla synchronizace také rozhodují, které hodnoty atributu budou zkopírovány nebo transformovány do a z adresářů.
 * **Spustit profily** – umožňuje seskupit kroky procesu kopírování objektů a jejich hodnot atributů podle pravidel synchronizace mezi pracovními oblastmi a připojenými adresáři.
 
-Existují různé spuštěné profily pro optimalizaci výkonu zřizovacího stroje. Většina organizací bude používat výchozí plány a profily spuštění pro běžné operace, ale některé organizace budou muset [plán změnit](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) nebo aktivovat jiné profily spuštění v rámci služby stravování pro neobvyklé situace. K dispozici jsou následující profily spuštění:
+Existují různé spuštěné profily pro optimalizaci výkonu zřizovacího stroje. Většina organizací bude používat výchozí plány a profily spuštění pro běžné operace, ale některé organizace budou muset [plán změnit](./how-to-connect-sync-feature-scheduler.md) nebo aktivovat jiné profily spuštění v rámci služby stravování pro neobvyklé situace. K dispozici jsou následující profily spuštění:
 
 ### <a name="initial-sync-profile"></a>Profil počáteční synchronizace
 
@@ -109,7 +109,7 @@ Runtime procesu synchronizace má následující charakteristiky výkonu:
 
 Velikost topologie služby Active Directory, kterou chcete importovat, je číslo jeden faktor ovlivňující výkon a celkovou dobu, po kterou budou interní součásti modulu zřizování přebírat.
 
-[Filtrování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) by mělo být použito ke zmenšování objektů do synchronizovaných. Zabrání v zpracování a exportu zbytečných objektů do služby Azure AD. V upřednostňovaném pořadí jsou k dispozici následující techniky filtrování:
+[Filtrování](./how-to-connect-sync-configure-filtering.md) by mělo být použito ke zmenšování objektů do synchronizovaných. Zabrání v zpracování a exportu zbytečných objektů do služby Azure AD. V upřednostňovaném pořadí jsou k dispozici následující techniky filtrování:
 
 
 
@@ -130,7 +130,7 @@ Mnoho trvalých [objektů odpojení](concept-azure-ad-connect-sync-architecture.
 
 ### <a name="attribute-flows"></a>Toky atributů
 
-Toky atributů jsou procesy pro kopírování nebo transformaci hodnot atributů objektů z jednoho připojeného adresáře do jiného připojeného adresáře. Jsou definovány jako součást pravidel synchronizace. Pokud se například ve službě Active Directory změní telefonní číslo uživatele, bude aktualizováno telefonní číslo ve službě Azure AD. Organizace můžou [upravovat toky atributů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) tak, aby vyhovovaly různým požadavkům. Předtím, než je změníte, doporučujeme zkopírovat toky stávajících atributů.
+Toky atributů jsou procesy pro kopírování nebo transformaci hodnot atributů objektů z jednoho připojeného adresáře do jiného připojeného adresáře. Jsou definovány jako součást pravidel synchronizace. Pokud se například ve službě Active Directory změní telefonní číslo uživatele, bude aktualizováno telefonní číslo ve službě Azure AD. Organizace můžou [upravovat toky atributů](./how-to-connect-sync-change-the-configuration.md) tak, aby vyhovovaly různým požadavkům. Předtím, než je změníte, doporučujeme zkopírovat toky stávajících atributů.
 
 Jednoduché přesměrování, jako je například přetečení hodnoty atributu na jiný atribut, nemá vliv na výkon. Příkladem přesměrování je přenos mobilního čísla ve službě Active Directory na telefonní číslo do kanceláře v Azure AD.
 
@@ -181,7 +181,7 @@ Pokud chcete optimalizovat výkon vaší Azure AD Connect implementace, vezměte
 
 
 - Použijte [doporučenou konfiguraci hardwaru](how-to-connect-install-prerequisites.md) založenou na velikosti vaší implementace serveru Azure AD Connect.
-- Při upgradu Azure AD Connect v rozsáhlých nasazeních zvažte použití [metody migrace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)za provozu, abyste se ujistili, že máte minimální výpadky a nejvyšší spolehlivost. 
+- Při upgradu Azure AD Connect v rozsáhlých nasazeních zvažte použití [metody migrace](./how-to-upgrade-previous-version.md#swing-migration)za provozu, abyste se ujistili, že máte minimální výpadky a nejvyšší spolehlivost. 
 - K dosažení nejlepšího výkonu použijte SSD pro SQL Database.
 - Vyfiltrujte obor služby Active Directory tak, aby zahrnoval jenom objekty, které se musí zřídit ve službě Azure AD, a to pomocí filtrování domén, organizačních jednotek nebo atributů.
 - Pokud potřebujete změnit výchozí pravidla toku atributů, nejdřív zkopírujte pravidlo a pak změňte kopii a zakažte původní pravidlo. Nezapomeňte znovu spustit úplnou synchronizaci.

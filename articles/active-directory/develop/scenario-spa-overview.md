@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885170"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291942"
 ---
 # <a name="scenario-single-page-application"></a>Scénář: jednostránkové aplikace
 
@@ -35,11 +35,17 @@ Svou první aplikaci můžete vytvořit pomocí rychlého startu pro JavaScript 
 
 ## <a name="overview"></a>Přehled
 
-Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlové, Vue.js a React.js. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. 
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. 
 
-Platforma Microsoft Identity Platform umožňuje používat jednostránkové aplikace k přihlašování uživatelů a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API pomocí [implicitního toku OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Implicitní tok umožňuje aplikaci získat tokeny ID, které reprezentují ověřeného uživatele a také přístup k tokenům potřebným pro volání chráněných rozhraní API.
+Platforma Microsoft Identity Platform nabízí **dvě** možnosti, jak přihlašovat jednostránkové aplikace uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API:
 
-![Jednostránkové aplikace](./media/scenarios/spa-app.svg)
+- [Tok autorizačního kódu OAuth 2,0 (s PKCE)](./v2-oauth2-auth-code-flow.md). Tok autorizačního kódu umožňuje aplikaci výměnu autorizačního kódu pro tokeny **ID** , které reprezentují ověřeného uživatele a **přístupové** tokeny potřebné pro volání chráněných rozhraní API. Kromě toho vrací **aktualizační** tokeny, které poskytují dlouhodobý přístup k prostředkům jménem uživatelů bez nutnosti interakce s těmito uživateli. Toto je **doporučený** postup.
+
+![Jednostránkové aplikace – ověřování](./media/scenarios/spa-app-auth.svg)
+
+- [Implicitní tok OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Tok implicitního udělení umožňuje aplikaci získat **ID** a **přístupové** tokeny. Na rozdíl od toku autorizačního kódu nevrátí tok implicitního udělení **obnovovací token**.
+
+![Jednostránkové aplikace – implicitní](./media/scenarios/spa-app.svg)
 
 Tento tok ověřování nezahrnuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagují – nativní. Vyžadují další možnosti pro interakci s nativními platformami.
 
@@ -47,9 +53,9 @@ Tento tok ověřování nezahrnuje scénáře aplikací, které používají roz
 
 Chcete-li povolit tento scénář pro vaši aplikaci, budete potřebovat:
 
-* Registrace aplikace s Azure Active Directory (Azure AD). Tato registrace zahrnuje povolení implicitního toku a nastavení identifikátoru URI přesměrování, ke kterému se tokeny vrátí.
-* Konfigurace aplikace s registrovanými vlastnostmi aplikace, jako je například ID aplikace
-* Použití knihovny Microsoft Authentication Library (MSAL) k tomu, aby tok ověřování se přihlásil a získal tokeny.
+* Registrace aplikace s Azure Active Directory (Azure AD). Registrační postup se liší mezi implicitním tokem udělení a tokem autorizačního kódu.
+* Konfigurace aplikace s registrovanými vlastnostmi aplikace, jako je ID aplikace
+* Použití knihovny ověřování Microsoft pro JavaScript (MSAL.js) k tomu, aby tok ověřování se přihlásil a získal tokeny.
 
 ## <a name="next-steps"></a>Další kroky
 

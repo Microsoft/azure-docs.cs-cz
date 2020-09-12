@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423146"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279495"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -116,7 +116,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: podle [doporučení pro zabezpečení](../../security-center/security-center-recommendations.md) v Security Center začínají s položkami s nejvyšší prioritou.
 
 **Osvědčený postup**: Integrujte výstrahy Security Center do řešení pro správu událostí a zabezpečení Siem (Security Information and Event Management).   
-**Podrobnosti**: většina organizací a Siem ji používá jako centrální službu Clearinghouse pro výstrahy zabezpečení, které vyžadují reakci analytika. Zpracované události vytvořené pomocí Security Center jsou publikovány v protokolu aktivit Azure, což je jeden z protokolů, který je k dispozici prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. Pokyny najdete v tématu [Export výstrah zabezpečení a doporučení](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) ... Pokud používáte Azure Sentinel, přečtěte si téma [připojení Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Podrobnosti**: většina organizací a Siem ji používá jako centrální službu Clearinghouse pro výstrahy zabezpečení, které vyžadují reakci analytika. Zpracované události vytvořené pomocí Security Center jsou publikovány v protokolu aktivit Azure, což je jeden z protokolů, který je k dispozici prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. Pokyny najdete v tématu [Export výstrah zabezpečení a doporučení](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) ... Pokud používáte Azure Sentinel, přečtěte si téma [připojení Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Osvědčený postup**: Integrujte protokoly Azure s Siem.   
 **Podrobnosti**: [k shromažďování a exportu dat použijte Azure monitor](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
@@ -149,7 +149,7 @@ Použijte následující osvědčené postupy DevOps, abyste měli jistotu, že 
 Můžete použít [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) ke zřízení aplikací pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu použijete k opakovanému nasazení aplikace v každé fázi životního cyklu aplikace.
 
 **Osvědčené postupy**: automatické sestavení a nasazení do služby Azure Web Apps nebo Cloud Services.  
-**Podrobnosti**: Azure DevOps Projects můžete nakonfigurovat tak, aby se [automaticky vytvořily a nasadily](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) do Azure Web Apps nebo Cloud Services. Azure DevOps po každém vrácení se změnami kódu automaticky nasadí binární soubory po sestavení do Azure. Proces sestavení balíčku je ekvivalentní příkazu Package v aplikaci Visual Studio a kroky publikování jsou ekvivalentní příkazu Publikovat v aplikaci Visual Studio.
+**Podrobnosti**: Azure DevOps Projects můžete nakonfigurovat tak, aby se  [automaticky vytvořily a nasadily](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) do Azure Web Apps nebo Cloud Services. Azure DevOps po každém vrácení se změnami kódu automaticky nasadí binární soubory po sestavení do Azure. Proces sestavení balíčku je ekvivalentní příkazu Package v aplikaci Visual Studio a kroky publikování jsou ekvivalentní příkazu Publikovat v aplikaci Visual Studio.
 
 **Osvědčený postup**: automatizace Release managementu.  
 **Podrobnosti**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) je řešení pro automatizaci nasazení s více fázemi a správu procesu vydávání verzí. Vytvářejte spravované kanály průběžného nasazování k rychlému, snadnému a často vydaným verzím. Pomocí Azure Pipelines můžete automatizovat proces vydávání verzí a můžete mít předdefinované schvalovací pracovní postupy. Nasaďte místně a do cloudu, podle potřeby rozšiřujete a přizpůsobte.
@@ -226,4 +226,4 @@ V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
 * [Blog týmu pro zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu.secure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu. secure@microsoft.com

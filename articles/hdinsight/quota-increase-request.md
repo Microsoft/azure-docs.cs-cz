@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079611"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291663"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Vyžádání zvýšení kvóty pro Azure HDInsight
 
@@ -28,13 +28,13 @@ Pokud jste obdrželi chybu s oznámením, že jste dosáhli limitu kvóty, použ
 1. Určete požadovanou velikost virtuálního počítače clusteru, škálování a typ.
 1. Ověřte aktuální limity kapacity kvót vašeho předplatného. Chcete-li zjistit dostupné jádra, proveďte následující kroky:
 
-    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
     1. Přejděte na stránku **Přehled** pro cluster HDInsight.
     1. V nabídce vlevo vyberte **omezení kvóty**. Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
 
 Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 
     ![tlačítko pro pomoc a podporu](./media/quota-increase-request/help-support-button.png)
@@ -65,7 +65,7 @@ Chcete-li požádat o zvýšení kvóty, proveďte následující kroky:
 1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
 
 > [!NOTE]  
-> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
+> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o schválení seznamu](https://aka.ms/canaryintwhitelist).
 
 Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 

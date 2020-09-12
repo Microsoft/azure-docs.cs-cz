@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177614"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276265"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -167,7 +167,7 @@ Můžete odebrat uživatele nebo skupinu přidanou do Azure AD Connect Health a 
 [//]: # (Konec oddílu RBAC)
 
 ## <a name="next-steps"></a>Další kroky
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta služby Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
 * [Použití Azure AD Connect Health k synchronizaci](how-to-connect-health-sync.md)

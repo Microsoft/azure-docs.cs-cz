@@ -40,7 +40,7 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 |Stav vydaných verzí:|Preview|
 |Stanov|Free|
 |Požadované role a oprávnění:|Všichni uživatelé|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 

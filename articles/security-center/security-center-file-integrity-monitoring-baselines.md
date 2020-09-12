@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73664415"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278078"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porovnání standardních hodnot s využitím monitorování integrity souborů
 
@@ -36,12 +36,12 @@ Mnoho standardů dodržování předpisů, jako je PCI-DSS & ISO 17799, ale vyž
 
 Výchozí nastavení podregistru služby FIM nabízí pohodlný způsob, jak monitorovat rekurzivní změny v rámci běžných oblastí zabezpečení.  Nežádoucí osoba může například nakonfigurovat skript, který se spustí v kontextu LOCAL_SYSTEM, nakonfigurováním spuštění při spuštění nebo vypnutí.  Chcete-li monitorovat změny tohoto typu, povolte vestavěnou kontrolu.  
 
-![Registr](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Registry](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Rekurzivní kontroly se vztahují jenom na Doporučené podregistry zabezpečení a ne na vlastní cesty registru.  
 
-## <a name="adding-a-custom-registry-check"></a>Přidání vlastní kontroly registru
+## <a name="add-a-custom-registry-check"></a>Přidat vlastní kontrolu registru
 
 Směrné plány FIM začínají určením vlastností známého stavu, který je pro operační systém a podporu aplikace v pořádku.  V tomto příkladu se zaměříme na konfigurace zásad hesel pro Windows Server 2008 a novější.
 
@@ -73,14 +73,14 @@ Směrné plány FIM začínají určením vlastností známého stavu, který je
 
       ![Povolení produktu FIM v registru](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Sledování změn souborů Windows
+## <a name="track-changes-to-windows-files"></a>Sledování změn souborů Windows
 
 1. V okně **Přidat soubor Windows pro Change Tracking** zadejte do textového pole **zadat cestu** složku obsahující soubory, které chcete sledovat. V příkladu na následujícím obrázku se **Webová aplikace Contoso** nachází v D:\. jednotka ve struktuře složek **ContosWebApp**  
 1. Vytvořte vlastní položku souboru systému Windows zadáním názvu třídy nastavení, povolením rekurze a zadáním horní složky se zástupnou příponou (*).
 
     ![Povolit FIM pro soubor](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Načítání dat změn
+## <a name="retrieve-change-data"></a>Načíst data změny
 
 Data monitorování integrity souborů se nacházejí v sadě tabulek Azure Log Analytics/ConfigurationChange.  
 

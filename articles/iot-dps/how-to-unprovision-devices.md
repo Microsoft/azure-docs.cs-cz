@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974832"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294386"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 
@@ -57,22 +57,10 @@ Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím s
 Pomocí skupin registrací je možné zvážit dva scénáře:
 
 - Zrušení zřízení všech zařízení, která byla zřízena prostřednictvím skupiny pro registraci:
-  1. Zakažte skupinu registrací, která má zakázaný podpisový certifikát. 
+  1. Zakažte skupinu registrací, která zakáže podpisový certifikát. 
   2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací zakažte nebo odstraňte jednotlivá zařízení z registru identit příslušného centra IoT Hub. 
   3. Po zakázání nebo odstranění všech zařízení ze svých příslušných hub IoT můžete případně odstranit skupinu registrací. Mějte ale na paměti, že pokud odstraníte skupinu registrací a v řetězu certifikátů jednoho nebo více zařízení je povolená skupina pro zápis podpisového certifikátu vyšší, můžou se tato zařízení znovu zaregistrovat. 
 
 - Zrušení zřízení jednoho zařízení ze skupiny pro registraci:
   1. Vytvořte zakázanou jednotlivou registraci pro svůj certifikát na listovém (zařízení). Tím odvoláte přístup ke službě zřizování pro toto zařízení a zároveň povolíte přístup pro jiná zařízení, která mají podpisový certifikát skupiny registrací ve svém řetězci. Neodstraňujte zakázanou jednotlivou registraci zařízení. Tím umožníte, aby se zařízení znovu zaregistrovalo prostřednictvím skupiny pro registraci. 
   2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte IoT Hub, ke kterému se zařízení zřídilo, a zakažte nebo odstraňte z registru identit tohoto centra. 
-  
-  
-
-
-
-
-
-
-
-
-
-

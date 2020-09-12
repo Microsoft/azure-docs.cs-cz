@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9401532964e984147436f664b366fd613f3f919f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359377"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276282"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
@@ -108,7 +108,7 @@ Graf obsahuje následující informace:
 
 Sestava obsahuje následující informace:
 
-| Položky sestavy | Description |
+| Položky sestavy | Popis |
 | --- | --- |
 | ID uživatele |Zobrazuje použité ID uživatele. Tato hodnota odpovídá hodnotě zadané uživatelem, což je v některých případech nesprávné ID uživatele, které bylo použito. |
 | Neúspěšné pokusy |Zobrazuje celkový počet neúspěšných pokusů s konkrétním ID uživatele. Tabulka je řazená podle největšího počtu neúspěšných pokusů v sestupném pořadí. |
@@ -119,7 +119,6 @@ Sestava obsahuje následující informace:
 > Sestava se každých 12 hodin automaticky aktualizuje novými informacemi, které se za tu dobu shromáždily. V důsledku tohoto postupu nemusí být v sestavě zahrnuté pokusy o přihlášení za posledních 12 hodin.
 
 ## <a name="related-links"></a>Související odkazy
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Sestava rizikových IP adres](how-to-connect-health-adfs-risky-ip.md)
-

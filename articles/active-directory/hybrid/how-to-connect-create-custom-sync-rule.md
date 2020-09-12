@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f33cbb8caaf81b862198d694b0562d461de8a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359989"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279274"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Přizpůsobení synchronizačního pravidla
 
@@ -43,13 +43,13 @@ K úpravám nebo vytváření nového pravidla synchronizace můžete použít E
 * Chcete-li upravit **odchozí** pravidlo, změňte filtr z editoru synchronizačního pravidla.
 
 ## <a name="recommended-documents"></a>**Doporučené dokumenty**
-* [Azure AD Connect synchronizace: technické koncepty](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect synchronizace: Principy architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect synchronizace: principy deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect Sync: atributy stínů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect synchronizace: technické koncepty](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect synchronizace: Principy architektury](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect synchronizace: principy deklarativního zřizování](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect Sync: atributy stínů](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>Další kroky
 - [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md).

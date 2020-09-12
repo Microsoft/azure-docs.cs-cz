@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268318"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290119"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Řešení potíží na zařízení GPU na Azure Stack hraničních zařízeních 
 
@@ -167,7 +167,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 2. Ověřte, že jsou nainstalované správné moduly PowerShellu, jak je uvedeno [tady](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
-3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Příklad:
+3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Například:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -189,14 +189,14 @@ Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hrani�
 |Nelze načíst podřízené prostředky. Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu.| V nabídce **Upravit** vyberte **cílová Azure Stack rozhraní API**. Pak restartujte Průzkumník služby Azure Storage.|
 |getaddrinfo ENOTFOUND <accountname> . blob. <serialnumber> . microsoftdatabox.com|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v této cestě: `C:\Windows\System32\drivers\etc\hosts` ve Windows nebo `/etc/hosts` v systému Linux.|
 |Nelze načíst podřízené prostředky.<br> Podrobnosti: certifikát podepsaný svým držitelem |Importujte certifikát SSL pro vaše zařízení do Průzkumník služby Azure Storage: <ol><li>Stáhněte si certifikát z Azure Portal. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).</li><li>V nabídce **Upravit** vyberte certifikáty SSL a pak vyberte **importovat certifikáty**.</li></ol>|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje minuta:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `C:\Windows\System32\drivers\etc\hosts` .|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje minuta:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje 20 minut:<br>`Error parsing source location… The SSL connection could not be established`. |Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby se zablokuje na 20 minut: `Error parsing source location… The SSL connection could not be established` .|Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na minutu:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `C:\Windows\System32\drivers\etc\hosts` .|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na minutu:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut:<br>`Error parsing source location… The SSL connection could not be established`. |Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut: `Error parsing source location… The SSL connection could not be established` .|Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
 |Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu.|Data Box není podporována nainstalovaná verze knihovny Microsoft Azure Storage pro Python. Podporované verze najdete v tématu Azure Data Box požadavky na úložiště objektů BLOB.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Například:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Vypršel časový limit připojení.|Přihlaste se k Azure Stack Edge a potom zkontrolujte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
 
 

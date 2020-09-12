@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179143"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278679"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -68,7 +68,7 @@ Postupujte podle kroků z Azure Portal pro zúžení podrobností o chybách syn
 V Azure Portal proveďte několik kroků k identifikaci konkrétních scénářů fixable:  
 1.  Zkontrolujte sloupec **stav diagnostiky** . Stav ukazuje, zda je možný způsob, jak opravit chybu synchronizace přímo z Azure Active Directory. Jinými slovy, existuje tok řešení potíží, který může zúžit velikost případu a potenciálně ho opravit.
 
-| Status | Co to znamená? |
+| Stav | Co to znamená? |
 | ------------------ | -----------------|
 | Nezahájeno | Tento proces diagnostiky jste nenavštívili. V závislosti na výsledku diagnostiky existuje potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
 | Vyžadována Ruční oprava | Chyba nevyhovuje kritériím dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživateli, nebo jste již provedli diagnostické kroky, a z portálu nebylo k dispozici žádné řešení pro opravu. V druhém případě je oprava z místní strany stále jedním z řešení. [Přečtěte si další informace o místních opravách](https://support.microsoft.com/help/2647098). | 
@@ -133,7 +133,7 @@ Po předchozích krocích může uživatel získat přístup k původnímu prost
 
 ## <a name="failures-and-error-messages"></a>Chyby a chybové zprávy
 **Uživatel s konfliktním atributem je v Azure Active Directory měkký. Před opakováním zajistěte, aby byl uživatel pevným smazán.**  
-Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předtím, než můžete použít opravu. Podívejte se, [jak trvale odstranit uživatele ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) , než zkusíte tuto opravu zkusit znovu. Uživatel se taky automaticky odstraní trvale po 30 dnech v tichém odstraněných stavech. 
+Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předtím, než můžete použít opravu. Podívejte se, [jak trvale odstranit uživatele ve službě Azure AD](../fundamentals/active-directory-users-restore.md) , než zkusíte tuto opravu zkusit znovu. Uživatel se taky automaticky odstraní trvale po 30 dnech v tichém odstraněných stavech. 
 
 **Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
 Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 

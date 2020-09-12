@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8e681b1f82086480541d08ae9f8ef9e5cf07b4df
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 85013ccc5c82cf1b9d1d40a4e10450838d5d3195
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268464"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289405"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 

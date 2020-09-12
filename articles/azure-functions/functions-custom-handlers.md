@@ -1,30 +1,29 @@
 ---
 title: Azure Functions vlastní obslužné rutiny (Preview)
 description: Naučte se používat Azure Functions s libovolným jazykem nebo verzí modulu runtime.
-author: craigshoemaker
-ms.author: cshoe
-ms.date: 3/18/2020
+author: anthonychu
+ms.author: antchu
+ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052571"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294590"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
 
-Každá aplikace Functions se spustí obslužnou rutinou specifickou pro konkrétní jazyk. I když Azure Functions podporuje mnoho [obslužných rutin jazyka](./supported-languages.md) ve výchozím nastavení, existují případy, kdy budete chtít mít větší kontrolu nad prostředím pro provádění aplikace. Vlastní obslužné rutiny poskytují tento další ovládací prvek.
+Každá aplikace Functions se spustí obslužnou rutinou specifickou pro konkrétní jazyk. I když Azure Functions podporuje mnoho [obslužných rutin jazyka](./supported-languages.md) ve výchozím nastavení, existují případy, kdy je vhodné použít jiné jazyky nebo moduly runtime.
 
 Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají události z hostitele Functions. Libovolný jazyk, který podporuje primitivní prvky HTTP, může implementovat vlastní obslužnou rutinu.
 
 Vlastní obslužné rutiny se nejlépe hodí pro situace, kdy chcete:
 
-- Implementujte aplikaci Function App v jazyce, který není oficiálně podporován.
-- Implementujte aplikaci Function App v jazykové verzi nebo modul runtime, který není ve výchozím nastavení podporován.
-- Poskytněte přesnější kontrolu nad spouštěcím prostředím aplikace Function App.
+- Implementujte aplikaci Function App v jazyce, který není aktuálně podporován, například přejít a Rust.
+- Implementujte aplikaci Function App v modulu runtime, který není aktuálně podporován, například deno.
 
-S vlastními obslužnými rutinami jsou všechny [triggery a vstupní a výstupní vazby](./functions-triggers-bindings.md) podporovány prostřednictvím [sad rozšíření](./functions-bindings-register.md).
+S vlastními obslužnými rutinami můžete použít [triggery a vstupní a výstupní vazby](./functions-triggers-bindings.md) prostřednictvím [sad rozšíření](./functions-bindings-register.md).
 
 ## <a name="overview"></a>Přehled
 
@@ -32,104 +31,105 @@ Následující diagram znázorňuje vztah mezi hostitelem funkcí a webovým ser
 
 ![Přehled Azure Functions vlastní obslužné rutiny](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- Události aktivují požadavek odeslaný na hostitele Functions. Událost uchovává buď nezpracovaná datová část HTTP (pro funkce aktivované protokolem HTTP bez vazeb), nebo datovou část, která obsahuje data vstupní vazby pro funkci.
-- Hostitel funkce potom proxy požadavek vystaví na webový server vyvoláním [datové části požadavku](#request-payload).
-- Webový server spustí jednotlivé funkce a vrátí [datovou část odpovědi](#response-payload) na hostitele Functions.
-- Služby Functions hostují odpověď jako výstupní datovou vazbu k cíli.
+1. Každá událost aktivuje požadavek odeslaný na hostitele Functions. Událost je jakákoli aktivační událost, která je podporována Azure Functions.
+1. Hostitel funkcí potom vydá [datovou část požadavku](#request-payload) webovému serveru. Datová část obsahuje aktivační událost a vstupní vazby dat a další metadata pro funkci.
+1. Webový server spustí jednotlivé funkce a vrátí [datovou část odpovědi](#response-payload) na hostitele Functions.
+1. Hostitel Functions předá data z odpovědi na výstupní vazby funkce pro zpracování.
 
-Azure Functions aplikace implementovaná jako vlastní obslužná rutina musí nakonfigurovat *host.jsna* souborech a *function.jsna* souborech podle několika konvencí.
+Azure Functions aplikace implementovaná jako vlastní obslužná rutina musí nakonfigurovat *host.jszapnutá*, *local.settings.jszapnutá*a *function.js* soubory podle několika konvencí.
 
 ## <a name="application-structure"></a>Struktura aplikace
 
 K implementaci vlastní obslužné rutiny potřebujete následující aspekty aplikace:
 
 - *host.jsv* souboru v kořenovém adresáři vaší aplikace
+- *local.settings.jsv* souboru v kořenovém adresáři vaší aplikace
 - *function.js* souboru pro jednotlivé funkce (uvnitř složky, která odpovídá názvu funkce)
 - Příkaz, skript nebo spustitelný soubor, který spouští webový server
 
-Následující diagram ukazuje, jak tyto soubory vypadají v systému souborů pro funkci s názvem "Order".
+Následující diagram ukazuje, jak tyto soubory vypadají v systému souborů pro funkci s názvem "MyQueueFunction" a vlastní spustitelný soubor obslužné rutiny s názvem *handler.exe*.
 
 ```bash
-| /order
+| /MyQueueFunction
 |   function.json
 |
 | host.json
+| local.settings.json
+| handler.exe
 ```
 
 ### <a name="configuration"></a>Konfigurace
 
-Aplikace je nakonfigurována prostřednictvím *host.jsv* souboru. Tento soubor oznamuje hostiteli Functions, kam odesílají požadavky, ukázáním na webový server schopný zpracovávat události HTTP.
+Aplikace se konfiguruje prostřednictvím *host.jsv* a *local.settings.jsna* souborech.
 
-Vlastní obslužná rutina je definována konfigurací *host.jsv* souboru s podrobnostmi o tom, jak spustit webový server prostřednictvím `httpWorker` části.
+#### <a name="hostjson"></a>host.jsna
 
-```json
-{
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "server.exe"
-        }
-    }
-}
-```
+*host.jsv systému* oznamuje hostiteli Functions, kam odesílají požadavky tak, že odkazují na webový server schopný zpracovávat události http.
 
-`httpWorker`Oddíl odkazuje na cíl definovaný v `defaultExecutablePath` . Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
-
-Pro skriptované aplikace `defaultExecutablePath` odkazují na modul runtime skriptovacího jazyka a `defaultWorkerPath` odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScriptu v Node.js nakonfigurovaná jako vlastní obslužná rutina.
+Vlastní obslužná rutina je definována konfigurací *host.jsv* souboru s podrobnostmi o tom, jak spustit webový server prostřednictvím `customHandler` části.
 
 ```json
 {
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "node",
-            "defaultWorkerPath": "server.js"
-        }
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "handler.exe"
     }
+  }
 }
 ```
 
-Argumenty můžete předat také pomocí `arguments` pole:
+`customHandler`Oddíl odkazuje na cíl definovaný v `defaultExecutablePath` . Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
+
+Použijte `arguments` pole k předání všech argumentů spustitelnému souboru. Argumenty podporují rozšíření proměnných prostředí (nastavení aplikace) pomocí `%%` notace Notation.
+
+Pracovní adresář používaný spustitelným souborem lze také změnit pomocí `workingDirectory` .
 
 ```json
 {
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "node",
-            "defaultWorkerPath": "server.js",
-            "arguments": [ "--argument1", "--argument2" ]
-        }
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "app/handler.exe",
+      "arguments": [
+        "--database-connection-string",
+        "%DATABASE_CONNECTION_STRING%"
+      ],
+      "workingDirectory": "app"
     }
+  }
 }
 ```
 
-Argumenty jsou nezbytné pro mnoho nastavení ladění. Další podrobnosti najdete v části [ladění](#debugging) .
-
-> [!NOTE]
-> *host.jsv* souboru musí být ve struktuře adresáře na stejné úrovni jako běžící webový server. Některé jazyky a sady nástrojů nemusí ve výchozím nastavení umístit tento soubor do kořenového adresáře aplikace.
-
-#### <a name="bindings-support"></a>Podpora vazeb
+##### <a name="bindings-support"></a>Podpora vazeb
 
 Standardní triggery spolu se vstupními a výstupními vazbami jsou k dispozici odkazem na [sady rozšíření](./functions-bindings-register.md) ve vašem *host.jsv* souboru.
+
+#### <a name="localsettingsjson"></a>local.settings.json
+
+*local.settings.js* definuje nastavení aplikace používané při místním spuštění aplikace Function App. Vzhledem k tomu, že mohou obsahovat tajné kódy, *local.settings.js* by měl být vyloučen ze správy zdrojového kódu. V Azure použijte místo toho nastavení aplikace.
+
+Pro vlastní obslužné rutiny nastavte `FUNCTIONS_WORKER_RUNTIME` na `Custom` in *local.settings.json*.
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "Custom"
+  }
+}
+```
+
+> [!NOTE]
+> `Custom` nemusí být rozpoznán jako platný modul runtime v plánech pro Linux Premium nebo App Service. Pokud je to váš cíl nasazení, nastavte `FUNCTIONS_WORKER_RUNTIME` na prázdný řetězec.
 
 ### <a name="function-metadata"></a>Metadata funkce
 
 Při použití s vlastní obslužnou rutinou se *function.js* obsahu neliší od toho, jak byste definovali funkci v jakémkoli jiném kontextu. Jediným požadavkem je, že *function.js* souborů musí být ve složce s názvem, aby odpovídala názvu funkce.
 
-### <a name="request-payload"></a>Datová část požadavku
+Následující *function.jsv* konfiguraci funkce, která má aktivační událost fronty a výstupní vazbu fronty. Protože je ve složce s názvem *MyQueueFunction*, definuje funkci s názvem *MyQueueFunction*.
 
-Datová část požadavku pro funkce čistého protokolu HTTP je nezpracované datové části požadavku HTTP. Funkce čistého protokolu HTTP jsou definovány jako funkce bez vstupních nebo výstupních vazeb, které vracejí odpověď HTTP.
-
-Všechny ostatní typy funkcí, které zahrnují vstupní, výstupní vazby nebo aktivované prostřednictvím jiného zdroje událostí než HTTP, mají vlastní datovou část požadavku.
-
-Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a `Metadata` .
-
-`Data`Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli vazeb v *function.jsv* souboru.
-
-`Metadata`Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
-
-S ohledem na vazby definované v následujících *function.js* souboru:
+**MyQueueFunction/function.jsna**
 
 ```json
 {
@@ -152,26 +152,34 @@ S ohledem na vazby definované v následujících *function.js* souboru:
 }
 ```
 
-Vrátí se datová část požadavku podobná tomuto příkladu:
+### <a name="request-payload"></a>Datová část požadavku
+
+Když je přijata zpráva fronty, hostitel Functions odešle požadavek HTTP POST do vlastní obslužné rutiny s datovou částí v těle.
+
+Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a `Metadata` .
+
+`Data`Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli vazeb v *function.jsv* souboru.
+
+`Metadata`Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
 
 ```json
 {
-    "Data": {
-        "myQueueItem": "{ message: \"Message sent\" }"
-    },
-    "Metadata": {
-        "DequeueCount": 1,
-        "ExpirationTime": "2019-10-16T17:58:31+00:00",
-        "Id": "800ae4b3-bdd2-4c08-badd-f08e5a34b865",
-        "InsertionTime": "2019-10-09T17:58:31+00:00",
-        "NextVisibleTime": "2019-10-09T18:08:32+00:00",
-        "PopReceipt": "AgAAAAMAAAAAAAAAAgtnj8x+1QE=",
-        "sys": {
-            "MethodName": "QueueTrigger",
-            "UtcNow": "2019-10-09T17:58:32.2205399Z",
-            "RandGuid": "24ad4c06-24ad-4e5b-8294-3da9714877e9"
-        }
+  "Data": {
+    "myQueueItem": "{ message: \"Message sent\" }"
+  },
+  "Metadata": {
+    "DequeueCount": 1,
+    "ExpirationTime": "2019-10-16T17:58:31+00:00",
+    "Id": "800ae4b3-bdd2-4c08-badd-f08e5a34b865",
+    "InsertionTime": "2019-10-09T17:58:31+00:00",
+    "NextVisibleTime": "2019-10-09T18:08:32+00:00",
+    "PopReceipt": "AgAAAAMAAAAAAAAAAgtnj8x+1QE=",
+    "sys": {
+      "MethodName": "QueueTrigger",
+      "UtcNow": "2019-10-09T17:58:32.2205399Z",
+      "RandGuid": "24ad4c06-24ad-4e5b-8294-3da9714877e9"
     }
+  }
 }
 ```
 
@@ -181,135 +189,52 @@ Podle konvencí jsou odpovědi na funkce naformátované jako páry klíč/hodno
 
 | <nobr>Klíč datové části</nobr>   | Datový typ | Poznámky                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem, které *function.jsv* souboru.<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob` , který je nastavený na hodnotu objektu BLOB. |
-| `Logs`        | pole     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Při spuštění v Azure se zprávy zobrazí v Application Insights. |
+| `Outputs`     | object    | Uchovává hodnoty odpovědí definované `bindings` polem v *function.js*.<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou fronty s názvem "myQueueOutput", pak `Outputs` obsahuje klíč s názvem `myQueueOutput` , který je nastavením vlastní obslužné rutiny na zprávy odesílané do fronty. |
+| `Logs`        | array     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Při spuštění v Azure se zprávy zobrazí v Application Insights. |
 | `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi, pokud je výstup nakonfigurován jako `$return` v *function.js* v souboru. |
 
-Podívejte se na [Příklad pro vzorovou datovou část](#bindings-implementation).
+Toto je příklad datové části odpovědi.
+
+```json
+{
+  "Outputs": {
+    "res": {
+      "body": "Message enqueued"
+    },
+    "myQueueOutput": [
+      "queue message 1",
+      "queue message 2"
+    ]
+  },
+  "Logs": [
+    "Log message 1",
+    "Log message 2"
+  ],
+  "ReturnValue": "{\"hello\":\"world\"}"
+}
+```
 
 ## <a name="examples"></a>Příklady
 
-Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který podporuje události HTTP. I když Azure Functions [plně podporuje JavaScript a Node.js](./functions-reference-node.md), následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí javascriptu v Node.js pro účely instrukcí.
+Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který podporuje přijímání událostí HTTP. Následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí programovacího jazyka na cestách.
 
-> [!TIP]
-> I když se naučíte, jak implementovat vlastní obslužnou rutinu v jiných jazycích, uvedené příklady založené na Node.js můžou být užitečné také v případě, že jste chtěli spustit aplikaci Functions v nepodporované verzi Node.js.
-
-## <a name="http-only-function"></a>Funkce pouze HTTP
-
-Následující příklad ukazuje, jak nakonfigurovat funkci aktivované protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `http` , která přijímá `GET` nebo `POST` .
-
-Následující fragment kódu představuje způsob, jakým se skládá požadavek na funkci.
-
-```http
-POST http://127.0.0.1:7071/api/hello HTTP/1.1
-content-type: application/json
-
-{
-  "message": "Hello World!"
-}
-```
-
-<a id="hello-implementation" name="hello-implementation"></a>
-
-### <a name="implementation"></a>Implementace
-
-Ve složce s názvem *http*nakonfiguruje *function.jsv* souboru funkce aktivované protokolem HTTP.
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": ["get", "post"]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ]
-}
-```
-
-Funkce je nakonfigurována tak, aby přijímala `GET` požadavky i i `POST` Výsledná hodnota je poskytnuta prostřednictvím argumentu s názvem `res` .
-
-V kořenovém adresáři aplikace je *host.js* pro soubor nakonfigurovaný tak, aby běžel Node.js a odkazoval na `server.js` soubor.
-
-```json
-{
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "node",
-            "defaultWorkerPath": "server.js"
-        }
-    }
-}
-```
-
-Soubor *server.js* souboru implementuje webový server a funkci http.
-
-```javascript
-const express = require("express");
-const app = express();
-
-app.use(express.json());
-
-const PORT = process.env.FUNCTIONS_HTTPWORKER_PORT;
-
-const server = app.listen(PORT, "localhost", () => {
-  console.log(`Your port is ${PORT}`);
-  const { address: host, port } = server.address();
-  console.log(`Example app listening at http://${host}:${port}`);
-});
-
-app.get("/hello", (req, res) => {
-  res.json("Hello World!");
-});
-
-app.post("/hello", (req, res) => {
-  res.json({ value: req.body });
-});
-```
-
-V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT` .
-
-Funkce je definována v cestě k `/hello` . `GET`požadavky jsou zpracovávány vrácením jednoduchého objektu JSON a `POST` požadavky mají přístup k textu žádosti prostřednictvím `req.body` .
-
-Trasa pro funkci Order tady je `/hello` a není, `/api/hello` protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
-
->[!NOTE]
->Nejedná se `FUNCTIONS_HTTPWORKER_PORT` o veřejný port, který se používá k volání funkce. Tento port je používán hostitelem Functions pro volání vlastní obslužné rutiny.
-
-## <a name="function-with-bindings"></a>Funkce s vazbami
+### <a name="function-with-bindings"></a>Funkce s vazbami
 
 Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `order` , která přijímá `POST` datovou část reprezentující produktovou objednávku. Při odeslání objednávky do funkce se vytvoří Queue Storage zpráva a vrátí se odpověď HTTP.
 
-```http
-POST http://127.0.0.1:7071/api/order HTTP/1.1
-content-type: application/json
-
-{
-  "id": 1005,
-  "quantity": 2,
-  "color": "black"
-}
-```
-
 <a id="bindings-implementation" name="bindings-implementation"></a>
 
-### <a name="implementation"></a>Implementace
+#### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *order*function.jsse *v* souboru NAkonfiguruje funkce aktivované protokolem HTTP.
+Ve složce s názvem *order*function.jsse * v* souboru NAkonfiguruje funkce aktivované protokolem HTTP.
+
+**pořadí/function.jsna**
 
 ```json
 {
   "bindings": [
     {
       "type": "httpTrigger",
-      "authLevel": "function",
       "direction": "in",
       "name": "req",
       "methods": ["post"]
@@ -328,135 +253,333 @@ Ve složce s názvem *order*function.jsse *v* souboru NAkonfiguruje funkce aktiv
     }
   ]
 }
-
 ```
 
 Tato funkce je definovaná jako [funkce aktivovaná protokolem HTTP](./functions-bindings-http-webhook-trigger.md) , která vrátí [odpověď HTTP](./functions-bindings-http-webhook-output.md) a vytvoří výstup zprávy [úložiště fronty](./functions-bindings-storage-queue-output.md) .
 
-V kořenovém adresáři aplikace je *host.js* pro soubor nakonfigurovaný tak, aby běžel Node.js a odkazoval na `server.js` soubor.
+V kořenovém adresáři aplikace je *host.jsv* souboru nakonfigurovaná tak, aby spouštěla spustitelný soubor s názvem `handler.exe` ( `handler` v systému Linux nebo MacOS).
 
 ```json
 {
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "node",
-            "defaultWorkerPath": "server.js"
-        }
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "handler.exe"
     }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[1.*, 2.0.0)"
+  }
 }
 ```
 
-Soubor *server.js* souboru implementuje webový server a funkci http.
+Toto je požadavek HTTP odeslaný do modulu runtime Functions.
 
-```javascript
-const express = require("express");
-const app = express();
+```http
+POST http://127.0.0.1:7071/api/order HTTP/1.1
+Content-Type: application/json
 
-app.use(express.json());
-
-const PORT = process.env.FUNCTIONS_HTTPWORKER_PORT;
-
-const server = app.listen(PORT, "localhost", () => {
-  console.log(`Your port is ${PORT}`);
-  const { address: host, port } = server.address();
-  console.log(`Example app listening at http://${host}:${port}`);
-});
-
-app.post("/order", (req, res) => {
-  const message = req.body.Data.req.Body;
-  const response = {
-    Outputs: {
-      message: message,
-      res: {
-        statusCode: 200,
-        body: "Order complete"
-      }
-    },
-    Logs: ["order processed"]
-  };
-  res.json(response);
-});
+{
+  "id": 1005,
+  "quantity": 2,
+  "color": "black"
+}
 ```
 
-V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT` .
+Modul runtime Functions pak pošle následující požadavek HTTP vlastní obslužné rutině:
 
-Funkce je definována v cestě k `/order` .  Trasa pro funkci Order tady je `/order` a není, `/api/order` protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
+```http
+POST http://127.0.0.1:<FUNCTIONS_CUSTOMHANDLER_PORT>/order HTTP/1.1
+Content-Type: application/json
 
-Po `POST` odeslání požadavků do této funkce jsou data zveřejněna prostřednictvím několika bodů:
-
-- Text žádosti je k dispozici prostřednictvím`req.body`
-- Data odeslaná do funkce jsou k dispozici prostřednictvím`req.body.Data.req.Body`
-
-Odpověď funkce je formátována na dvojici klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům, jak jsou definovány v *function.jsv* souboru.
-
-Když je nastavení `message` rovno zprávě, která byla součástí z požadavku, a `res` k očekávané odpovědi HTTP, tato funkce vypíše zprávu do Queue Storage a vrátí odpověď HTTP.
-
-## <a name="debugging"></a>Ladění
-
-Chcete-li ladit vlastní aplikaci obslužné rutiny Functions, je nutné přidat argumenty, které jsou vhodné pro jazyk a modul runtime pro povolení ladění.
-
-Například pro ladění aplikace Node.js `--inspect` je příznak předán jako argument v *host.js* v souboru.
-
-```json
 {
-    "version": "2.0",
-    "httpWorker": {
-        "description": {
-            "defaultExecutablePath": "node",
-            "defaultWorkerPath": "server.js",
-            "arguments": [ "--inspect" ]
-        }
+  "Data": {
+    "req": {
+      "Url": "http://localhost:7071/api/order",
+      "Method": "POST",
+      "Query": "{}",
+      "Headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "Params": {},
+      "Body": "{\"id\":1005,\"quantity\":2,\"color\":\"black\"}"
     }
+  },
+  "Metadata": {
+  }
 }
 ```
 
 > [!NOTE]
-> Konfigurace ladění je součástí *host.jsv* souboru. to znamená, že před nasazením do produkčního prostředí možná budete muset některé argumenty odebrat.
+> Některé části datové části se odebraly pro zkrácení.
 
-Pomocí této konfigurace můžete spustit hostitelský proces funkce pomocí následujícího příkazu:
+*handler.exe* je vlastní obslužný program obslužné rutiny, který spouští webový server a reaguje na žádosti o vyvolání funkcí od hostitele Functions.
 
-```bash
-func host start
+```go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+    "net/http"
+    "os"
+)
+
+type InvokeRequest struct {
+    Data     map[string]json.RawMessage
+    Metadata map[string]interface{}
+}
+
+type InvokeResponse struct {
+    Outputs     map[string]interface{}
+    Logs        []string
+    ReturnValue interface{}
+}
+
+func orderHandler(w http.ResponseWriter, r *http.Request) {
+    var invokeRequest InvokeRequest
+
+    d := json.NewDecoder(r.Body)
+    d.Decode(&invokeRequest)
+
+    var reqData map[string]interface{}
+    json.Unmarshal(invokeRequest.Data["req"], &reqData)
+
+    outputs := make(map[string]interface{})
+    outputs["message"] = reqData["Body"]
+
+    resData := make(map[string]interface{})
+    resData["body"] = "Order enqueued"
+    outputs["res"] = resData
+    invokeResponse := InvokeResponse{outputs, nil, nil}
+
+    responseJson, _ := json.Marshal(invokeResponse)
+
+    w.Header().Set("Content-Type", "application/json")
+    w.Write(responseJson)
+}
+
+func main() {
+    customHandlerPort, exists := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT")
+    if !exists {
+        customHandlerPort = "8080"
+    }
+    mux := http.NewServeMux()
+    mux.HandleFunc("/order", orderHandler)
+    fmt.Println("Go server Listening on: ", customHandlerPort)
+    log.Fatal(http.ListenAndServe(":"+customHandlerPort, mux))
+}
 ```
 
-Po spuštění procesu můžete připojit ladicí program a zarážky volání.
+V tomto příkladu vlastní obslužná rutina spustí webový server pro zpracování událostí HTTP a je nastavená na naslouchání požadavkům přes `FUNCTIONS_CUSTOMHANDLER_PORT` .
 
-### <a name="visual-studio-code"></a>Visual Studio Code
+I když hostitel funkce přijal původní požadavek HTTP na `/api/order` , vyvolá vlastní obslužnou rutinu pomocí názvu funkce (název složky). V tomto příkladu je funkce definována v cestě k `/order` . Hostitel odešle vlastní obslužnou rutinu požadavku HTTP na cestě `/order` .
 
-Následující příklad je Ukázková konfigurace, která předvádí, jak můžete nastavit *launch.js* pro připojení aplikace k ladicímu programu Visual Studio Code.
+`POST`Po odeslání požadavků do této funkce jsou data triggeru a metadata funkce k dispozici prostřednictvím textu požadavku HTTP. Původní text požadavku HTTP se dá použít v datové části `Data.req.Body` .
 
-Tento příklad je určen pro Node.js, takže možná budete muset změnit tento příklad pro jiné jazyky nebo moduly runtime.
+Odpověď funkce je naformátována na páry klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům definovaným v *function.jsv* souboru.
+
+Toto je ukázková datová část, kterou tato obslužná rutina vrátí do hostitele Functions.
 
 ```json
 {
-  "version": "0.2.0",
-  "configurations": [
+  "Outputs": {
+    "message": "{\"id\":1005,\"quantity\":2,\"color\":\"black\"}",
+    "res": {
+      "body": "Order enqueued"
+    }
+  },
+  "Logs": null,
+  "ReturnValue": null
+}
+```
+
+Nastavením výstupu, který `message` se rovná datům objednávky, které byly získány z požadavku, výstupy funkce, které přiřadí data do nakonfigurované fronty. Hostitel funkcí také vrátí odpověď HTTP nakonfigurovanou `res` pro volajícího.
+
+### <a name="http-only-function"></a>Funkce pouze HTTP
+
+Pro funkce aktivované protokolem HTTP bez dalších vazeb nebo výstupů můžete chtít, aby obslužná rutina pracovala přímo s požadavkem HTTP a odpovědí namísto vlastní [žádosti o](#request-payload) obslužnou rutinu a datové části [odpovědi](#response-payload) . Toto chování je možné nakonfigurovat v *host.js* pomocí `enableForwardingHttpRequest` nastavení.
+
+> [!IMPORTANT]
+> Hlavním účelem funkce vlastní obslužné rutiny je povolit jazyky a moduly runtime, které aktuálně nemají na Azure Functions podporu první třídy. I když může být možné spouštět webové aplikace pomocí vlastních obslužných rutin, Azure Functions není standardní reverzní proxy. Některé funkce, jako je třeba streamování odpovědí, HTTP/2 a WebSockets, nejsou k dispozici. Některé součásti požadavku HTTP, jako jsou například určité hlavičky a trasy, mohou být omezeny. Vaše aplikace může také docházet [k nadměrnému startu.](functions-scale.md#cold-start)
+>
+> Pokud chcete tyto okolnosti vyřešit, zvažte spuštění webových aplikací na [Azure App Service](../app-service/overview.md).
+
+Následující příklad ukazuje, jak nakonfigurovat funkci aktivované protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `hello` , která přijímá `GET` nebo `POST` .
+
+<a id="hello-implementation" name="hello-implementation"></a>
+
+#### <a name="implementation"></a>Implementace
+
+Ve složce s názvem *hello* *function.jsv* souboru nakonfiguruje funkci aktivovanou protokolem HTTP.
+
+**Hello/function.jsna**
+
+```json
+{
+  "bindings": [
     {
-      "name": "Attach to Node Functions",
-      "type": "node",
-      "request": "attach",
-      "port": 9229,
-      "preLaunchTask": "func: host start"
+      "type": "httpTrigger",
+      "authLevel": "anonymous",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
     }
   ]
 }
 ```
 
+Funkce je nakonfigurována tak, aby přijímala `GET` požadavky i i `POST` Výsledná hodnota je poskytnuta prostřednictvím argumentu s názvem `res` .
+
+V kořenovém adresáři aplikace je *host.js* pro soubor nakonfigurovaný tak, aby běžel `handler.exe` a `enableForwardingHttpRequest` byl nastavený na `true` .
+
+```json
+{
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "handler.exe"
+    },
+    "enableForwardingHttpRequest": true
+  }
+}
+```
+
+`enableForwardingHttpRequest` `true` V takovém případě se chování funkcí pouze http liší od výchozího chování vlastních obslužných rutin v těchto způsobech:
+
+* Požadavek HTTP neobsahuje datovou část [žádosti o](#request-payload) vlastní obslužnou rutinu. Místo toho hostitel Functions vyvolá obslužnou rutinu s kopií původního požadavku HTTP.
+* Hostitel Functions vyvolá obslužnou rutinu se stejnou cestou jako původní požadavek včetně parametrů řetězce dotazu.
+* Hostitel Functions vrátí kopii odpovědi HTTP obslužné rutiny jako odpověď na původní požadavek.
+
+Následuje požadavek POST na hostitele Functions. Hostitel funkcí pak pošle kopii žádosti do vlastní obslužné rutiny ve stejné cestě.
+
+```http
+POST http://127.0.0.1:7071/api/hello HTTP/1.1
+Content-Type: application/json
+
+{
+  "message": "Hello World!"
+}
+```
+
+Soubor *obslužných rutin souboru. přejít* implementuje webový server a funkci http.
+
+```go
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "net/http"
+    "os"
+)
+
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    if r.Method == "GET" {
+        w.Write([]byte("hello world"))
+    } else {
+        body, _ := ioutil.ReadAll(r.Body)
+        w.Write(body)
+    }
+}
+
+func main() {
+    customHandlerPort, exists := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT")
+    if !exists {
+        customHandlerPort = "8080"
+    }
+    mux := http.NewServeMux()
+    mux.HandleFunc("/api/hello", helloHandler)
+    fmt.Println("Go server Listening on: ", customHandlerPort)
+    log.Fatal(http.ListenAndServe(":"+customHandlerPort, mux))
+}
+```
+
+V tomto příkladu vlastní obslužná rutina vytvoří webový server pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům prostřednictvím `FUNCTIONS_CUSTOMHANDLER_PORT` .
+
+`GET` žádosti jsou zpracovávány vrácením řetězce a `POST` požadavky mají přístup k textu žádosti.
+
+Trasa pro funkci Order je tady shodná s `/api/hello` původní žádostí.
+
+>[!NOTE]
+>Nejedná se `FUNCTIONS_CUSTOMHANDLER_PORT` o veřejný port, který se používá k volání funkce. Tento port je používán hostitelem Functions pro volání vlastní obslužné rutiny.
+
 ## <a name="deploying"></a>Nasazení
 
-Vlastní obslužnou rutinu lze nasadit téměř každou možnost hostování Azure Functions (viz [omezení](#restrictions)). Pokud vaše obslužná rutina vyžaduje vlastní závislosti (například modul runtime jazyka), může být nutné použít [vlastní kontejner](./functions-create-function-linux-custom-image.md).
+Vlastní obslužnou rutinu lze nasadit do každé Azure Functions možnosti hostování. Pokud vaše obslužná rutina vyžaduje operační systém nebo závislosti platforem (například modul runtime), může být nutné použít [vlastní kontejner](./functions-create-function-linux-custom-image.md).
+
+Při vytváření aplikace Function App v Azure pro vlastní obslužné rutiny doporučujeme jako zásobník vybrat .NET Core. V budoucnu bude přidán vlastní zásobník pro vlastní obslužné rutiny.
 
 K nasazení vlastní aplikace obslužných rutin pomocí Azure Functions Core Tools spusťte následující příkaz.
 
 ```bash
-func azure functionapp publish $functionAppName --no-build --force
+func azure functionapp publish $functionAppName
 ```
+
+> [!NOTE]
+> Ujistěte se, že všechny soubory potřebné ke spuštění vlastní obslužné rutiny jsou ve složce a jsou součástí nasazení. Pokud je vlastní obslužná rutina binární spustitelný soubor nebo má závislé závislosti na platformě, zajistěte, aby tyto soubory odpovídaly cílové platformě nasazení.
 
 ## <a name="restrictions"></a>Omezení
 
-- Webový server musí být spuštěn do 60 sekund.
+- Webový server vlastní obslužné rutiny musí být spuštěn do 60 sekund.
 
 ## <a name="samples"></a>ukázky
 
 Příklady implementace funkcí v různých jazycích najdete v části [vlastní obslužné rutiny ukázky v úložišti GitHub](https://github.com/Azure-Samples/functions-custom-handlers) .
+
+## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
+
+### <a name="trace-logging"></a>Protokolování trasování
+
+Pokud se vlastní proces obslužné rutiny nepodaří spustit nebo pokud má problémy s komunikací s hostitelem Functions, můžete zvýšit úroveň protokolu aplikace Function App na, `Trace` aby se zobrazily další diagnostické zprávy od hostitele.
+
+Pokud chcete změnit výchozí úroveň protokolu aplikace Function App, nakonfigurujte `logLevel` nastavení v `logging` části *host.jsna*.
+
+```json
+{
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "handler.exe"
+    }
+  },
+  "logging": {
+    "logLevel": {
+      "default": "Trace"
+    }
+  }
+}
+```
+
+Hostitel Functions výstupuje další zprávy protokolu, včetně informací souvisejících s vlastním procesem obslužné rutiny. Použijte protokoly k prozkoumání problémů s spuštěním vlastního procesu obslužné rutiny nebo volání funkcí ve vlastní obslužné rutině.
+
+Místně se protokoly tisknou do konzoly.
+
+V Azure se [dotazuje Application Insights trasování](functions-monitoring.md#query-telemetry-data) , aby se zobrazily zprávy protokolu. Pokud vaše aplikace vytváří velký objem protokolů, pošle se Application Insights jenom podmnožina zpráv protokolu. [Zakáže vzorkování](functions-monitoring.md#configure-sampling) , aby bylo zajištěno, že budou protokolovány všechny zprávy.
+
+### <a name="test-custom-handler-in-isolation"></a>Test vlastní obslužné rutiny v izolaci
+
+Vlastní obslužné rutiny jsou procesy webového serveru, takže je možné ji spustit na svých vlastních a testovacích funkcích odesláním [nezpracovaných požadavků HTTP](#request-payload) pomocí nástroje, jako je například [kudrlinkou](https://curl.haxx.se/) nebo [post](https://www.postman.com/).
+
+Tuto strategii můžete použít také v kanálech CI/CD a spouštět automatizované testy vlastní obslužné rutiny.
+
+### <a name="execution-environment"></a>Spouštěcí prostředí
+
+Vlastní obslužné rutiny běží ve stejném prostředí jako typická aplikace Azure Functions. Otestujte obslužnou rutinu, abyste zajistili, že prostředí obsahuje všechny závislosti, které musí spustit. U aplikací, které vyžadují další závislosti, je možná budete muset spustit pomocí [vlastní image kontejneru](functions-create-function-linux-custom-image.md) hostované v plánu Azure Functions [Premium](functions-premium-plan.md).
+
+### <a name="get-support"></a>Získat podporu
+
+Pokud potřebujete pomoc s vlastními obslužnými rutinami aplikace Function App, můžete odeslat žádost prostřednictvím běžných kanálů podpory. Vzhledem k nejrůznějším jazykům, které se používají k vytváření vlastních obslužných rutin, ale podpora není neomezené.
+
+Podpora je k dispozici v případě, že hostitel Functions má potíže se spouštěním nebo komunikací s vlastním procesem obslužné rutiny. Pro problémy, které jsou specifické pro vnitřní pracovní procesy vlastní obslužné rutiny, jako jsou například problémy se zvoleným jazykem nebo architekturou, náš tým podpory nemůže v tomto kontextu poskytnout pomoc.

@@ -73,7 +73,7 @@ Po nasazení aplikace Function App ji můžete najít mezi **App Services** Azur
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klikněte na možnost **Vytvořit**. 
+4. Klikněte na **Vytvořit**. 
 
 ## <a name="files"></a>Soubory
 

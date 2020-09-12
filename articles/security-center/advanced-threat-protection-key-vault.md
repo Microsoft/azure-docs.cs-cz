@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7025b091b83a56b7b3df18c3f42cb84b163560bb
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77914802"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277761"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Ochrana před hrozbami pro Azure Key Vault (Preview)
 
@@ -21,7 +21,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Key Vault poskytuje 
 
 Když Security Center detekuje aktivitu neobvyklé, zobrazí výstrahy. Také pošle e-mailem správce předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak zjistit a opravit zjištěné hrozby.
 
-## <a name="configuring-threat-protection-from-security-center"></a>Konfigurace ochrany před hrozbami z Security Center
+## <a name="configure-threat-protection-from-security-center"></a>Konfigurace ochrany před hrozbami z Security Center
 
 Ve výchozím nastavení je rozšířená ochrana před internetovými útoky povolená pro všechny vaše Key Vault účty, když se přihlásíte k odběru standardní cenové úrovně Security Center. Další informace najdete v tématu [ceny](security-center-pricing.md).
 

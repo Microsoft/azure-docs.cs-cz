@@ -14,18 +14,18 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74213073"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279393"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies a cloudMsExchUserHoldPolicies
 Následující referenční dokument popisuje tyto atributy používané systémem Exchange a správný způsob, jak upravit výchozí pravidla synchronizace.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Co jsou msExchUserHoldPolicies a cloudMsExchUserHoldPolicies?
-Pro Exchange Server jsou k dispozici dva typy [blokování](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) pro soudní řízení a místní blokování. Pokud je povoleno blokování sporů, jsou všechny položky poštovních schránek blokovány.  Místní blokování se používá k zachování pouze těch položek, které splňují kritéria vyhledávacího dotazu, který jste definovali pomocí místního nástroje eDiscovery.
+Pro Exchange Server jsou k dispozici dva typy [blokování](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) pro soudní řízení a místní blokování. Pokud je povoleno blokování sporů, jsou všechny položky poštovních schránek blokovány.  Místní blokování se používá k zachování pouze těch položek, které splňují kritéria vyhledávacího dotazu, který jste definovali pomocí místního nástroje eDiscovery.
 
 Atributy MsExchUserHoldPolcies a cloudMsExchUserHoldPolicies umožňují místní službě AD a službě Azure AD určit, kteří uživatelé se budou držet v závislosti na tom, jestli používají místní Exchange nebo Exchange on-line.
 

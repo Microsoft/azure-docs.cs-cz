@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256493"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297191"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
@@ -63,16 +63,16 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="comparing-streaming-types"></a>Porovnávání typů streamování
 
-Funkce|Standard|Premium
+Příznak|Standard|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
 Fakturuje se poměrná hodnota| Každý den|Každý den
-Dynamické šifrování|Ano|Ano
-Dynamické balení|Ano|Ano
+Dynamické šifrování|Yes|Yes
+Dynamické balení|Yes|Yes
 Měřítko|Automatické škálování až na cílovou propustnost.|Další služba SUs
-Filtrování IP/G20/vlastní hostitel <sup>1</sup>|Ano|Ano
-Progresivní stahování|Ano|Ano
+Filtrování IP/G20/vlastní hostitel <sup>1</sup>|Yes|Yes
+Progresivní stahování|Yes|Yes
 Doporučené použití |Doporučuje se pro velká většina scénářů streamování.|Profesionální použití.
 
 <sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>

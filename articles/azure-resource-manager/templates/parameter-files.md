@@ -2,13 +2,13 @@
 title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/01/2020
+ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179619"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276639"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -147,6 +147,8 @@ Nakonec se podívejte na povolené hodnoty a libovolná omezení, jako je maxim�
   }
 }
 ```
+
+Soubor parametrů může obsahovat pouze hodnoty parametrů, které jsou definovány v šabloně. Pokud soubor parametrů obsahuje další parametry, které se neshodují s parametry v šabloně, zobrazí se chyba.
 
 ## <a name="parameter-type-formats"></a>Formáty typů parametrů
 

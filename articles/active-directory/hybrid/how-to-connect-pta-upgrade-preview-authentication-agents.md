@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358136"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279478"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory předávací ověřování: Upgrade agentů ověřování verze Preview
 
@@ -60,7 +60,7 @@ Pokud chcete ověřit verze vašich ověřovacích agentů, na každém serveru,
 
 Před upgradem se ujistěte, že máte následující položky:
 
-1. **Vytvořit účet globálního správce jenom pro Cloud**: neupgradovat bez použití cloudového globálního účtu správce, který by se měl používat v mimořádných situacích, kdy ověřovací agenti, kteří prošli ověřováním, nefungují správně. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Provedení tohoto kroku je kritické a zajistí, že se nezamknete ze svého tenanta.
+1. **Vytvořit účet globálního správce jenom pro Cloud**: neupgradovat bez použití cloudového globálního účtu správce, který by se měl používat v mimořádných situacích, kdy ověřovací agenti, kteří prošli ověřováním, nefungují správně. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Provedení tohoto kroku je kritické a zajistí, že se nezamknete ze svého tenanta.
 2.  **Zajištění vysoké dostupnosti**: Pokud není dřív dokončená, nainstalujte druhého samostatného ověřovacího agenta, který zajistí vysokou dostupnost žádostí o přihlášení, a to pomocí těchto [pokynů](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Upgrade ověřovacího agenta na serveru Azure AD Connect

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260182"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ Kvůli několika omezením, které jsou uvedené v následující části, se ro
 
 ### <a name="provision-the-extension"></a>Zřídit rozšíření 
 
-Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure s použitím `-Type` parametru rutiny [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
+Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure s použitím `-Type` parametru rutiny [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ Pokud chcete zřídit rozšíření sady škálování virtuálního počítače
 Zřizování rozšíření virtuálního počítače může selhat z důvodu selhání vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a zkuste to znovu. 
 
 ### <a name="remove-the-extension"></a>Odebrání rozšíření 
-Pokud chcete rozšíření odebrat, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` Přepněte (v závislosti na typu virtuálního počítače) pomocí [AZ VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)nebo [AZ VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) pro Virtual Machine Scale Sets pomocí Azure CLI nebo `Remove-AzVMExtension` PowerShellu:
+Pokud chcete rozšíření odebrat, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` Přepněte (v závislosti na typu virtuálního počítače) pomocí [AZ VM Extension Delete](/cli/azure/vm/)nebo [AZ VMSS Extension Delete](/cli/azure/vmss) pro Virtual Machine Scale Sets pomocí Azure CLI nebo `Remove-AzVMExtension` PowerShellu:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Pro používání rozšíření virtuálního počítače je k dispozici několi
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), ke které se dá získat přístup jenom z virtuálního počítače.
+[Azure instance metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), ke které se dá získat přístup jenom z virtuálního počítače.
 
 Použití Azure IMDS k vyžádání tokenů má několik výhod. 
 
@@ -212,4 +212,4 @@ Z těchto důvodů bude služba Azure IMDS ze seznamu odebraná způsob, jak vy�
 ## <a name="next-steps"></a>Další kroky
 
 * [Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md)
-* [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata Service](../../virtual-machines/windows/instance-metadata-service.md)

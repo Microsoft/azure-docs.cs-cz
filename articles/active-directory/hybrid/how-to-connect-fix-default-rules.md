@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359751"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279937"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava změněných výchozích pravidel v Azure AD Connect
 
@@ -89,7 +89,7 @@ Nechejte **Filtr oboru** prázdný. To znamená, že pravidlo se vztahuje na vš
 
 Nechejte **pravidla pro připojení** prázdná. To znamená, že toto pravidlo používá podmínku spojení definovanou ve standardním výchozím pravidle. Toto je další důvod, proč zakázat nebo odstranit standardní výchozí pravidlo. Pokud neexistuje žádná podmínka spojení, nebude tento atribut tok. 
 
-Přidejte vhodné transformace pro svůj atribut. Můžete přiřadit konstantu pro vytvoření konstantní hodnoty do cílového atributu. Můžete použít přímé mapování mezi zdrojovým nebo cílovým atributem. Nebo můžete použít výraz pro atribut. Tady jsou různé [funkce výrazů](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference) , které můžete použít.
+Přidejte vhodné transformace pro svůj atribut. Můžete přiřadit konstantu pro vytvoření konstantní hodnoty do cílového atributu. Můžete použít přímé mapování mezi zdrojovým nebo cílovým atributem. Nebo můžete použít výraz pro atribut. Tady jsou různé [funkce výrazů](./reference-connect-sync-functions-reference.md) , které můžete použít.
 
 #### <a name="add-an-outbound-sync-rule"></a>Přidat pravidlo odchozí synchronizace
 Chcete-li propojit atribut s cílovým adresářem, je třeba vytvořit odchozí pravidlo. To znamená, že zdrojem je úložiště metaverse a cíl je připojený systém. Chcete-li vytvořit odchozí pravidlo, spusťte **Editor pravidel synchronizace**, změňte **směr** na **odchozí**a vyberte **Přidat nové pravidlo**. 
@@ -102,7 +102,7 @@ Stejně jako u příchozího pravidla můžete pro pojmenování pravidla použ�
 
 Nechejte pravidla **filtru oboru** a **spojení** prázdné. Vyplňte transformaci jako konstantu, přímou nebo výraz. 
 
-Nyní se dozvíte, jak vytvořit nový atribut pro tok objektů uživatele ze služby Active Directory do Azure Active Directory. Pomocí těchto kroků lze namapovat libovolný atribut z libovolného objektu na zdroj a cíl. Další informace najdete v tématu [vytváření vlastních pravidel synchronizace](how-to-connect-create-custom-sync-rule.md) a [Příprava na zřízení uživatelů](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Nyní se dozvíte, jak vytvořit nový atribut pro tok objektů uživatele ze služby Active Directory do Azure Active Directory. Pomocí těchto kroků lze namapovat libovolný atribut z libovolného objektu na zdroj a cíl. Další informace najdete v tématu [vytváření vlastních pravidel synchronizace](how-to-connect-create-custom-sync-rule.md) a [Příprava na zřízení uživatelů](/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Přepsat hodnotu existujícího atributu
 Je možné, že budete chtít přepsat hodnotu atributu, který již byl namapován. Pokud třeba chcete nastavit hodnotu null jenom na atribut ve službě Azure AD, stačí jenom vytvořit příchozí pravidlo. Nastavte konstantní hodnotu, `AuthoritativeNull` tok do cílového atributu. 
@@ -194,6 +194,3 @@ Pokud chcete pravidla změnit tak, aby se změnila zpátky na výchozí nastaven
 - [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 
 - [Expresní nastavení](how-to-connect-install-express.md)
 - [Vlastní nastavení](how-to-connect-install-custom.md)
-
-
-

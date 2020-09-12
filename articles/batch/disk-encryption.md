@@ -36,7 +36,7 @@ Batch použije jednu z těchto technologií pro šifrování disků na výpočet
 
 Nebudete moci určit, která metoda šifrování bude použita pro uzly ve vašem fondu. Místo toho zadáte cílové disky, které chcete šifrovat na svých uzlech, a v dávce si můžete vybrat vhodnou metodu šifrování, která zajistí, že zadané disky budou na výpočetním uzlu šifrované.
  
-## <a name="azure-portal"></a>Azure Portal 
+## <a name="azure-portal"></a>portál Azure 
 
 Při vytváření fondu Batch v Azure Portal vyberte v části **Konfigurace šifrování disku**buď **TemporaryDisk** nebo **OsAndTemporaryDisk** .
 

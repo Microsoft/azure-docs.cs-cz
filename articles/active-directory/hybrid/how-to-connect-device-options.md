@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360023"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279223"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: možnosti zařízení
 
@@ -31,7 +31,7 @@ Následující dokumentace poskytuje informace o různých možnostech zařízen
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>Konfigurace možností zařízení v Azure AD Connect
 
-1.  Spusťte Azure AD Connect. Na stránce **další úlohy** vyberte **Konfigurovat možnosti zařízení**.  Klikněte na **Další**.
+1.  Spusťte Azure AD Connect. Na stránce **další úlohy** vyberte **Konfigurovat možnosti zařízení**.  Klikněte na **Next** (Další).
     ![Konfigurace možností zařízení](./media/how-to-connect-device-options/deviceoptions.png) 
 
     Zobrazí se stránka **Přehled** s podrobnostmi.
@@ -45,6 +45,5 @@ Následující dokumentace poskytuje informace o různých možnostech zařízen
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace hybridního připojení k Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Konfigurace hybridního připojení k Azure AD](../devices/hybrid-azuread-join-plan.md)
 * [Konfigurovat nebo zakázat zpětný zápis zařízení](how-to-connect-device-writeback.md)
-

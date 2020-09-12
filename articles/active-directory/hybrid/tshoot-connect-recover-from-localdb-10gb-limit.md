@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355994"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275898"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
 Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
@@ -55,7 +55,7 @@ Nejdřív Zjistěte, jestli je synchronizační služba pořád spuštěná, neb
 5. Pokud není spuštěný, zkuste službu spustit. Pokud se služba spustí úspěšně, přeskočte krok [databáze zmenšete](#shrink-the-database) a přejděte na krok [Odstranit data historie spuštění](#delete-run-history-data) . V opačném případě pokračujte v kroku [Zmenšení databáze](#shrink-the-database) .
 
 ### <a name="shrink-the-database"></a>Zmenšit databázi
-Pomocí operace zmenšení uvolněte dostatek místa v databázi pro spuštění synchronizační služby. Uvolní místo pro databáze odebráním prázdných znaků v databázi. Tento krok je nejlepší úsilí, protože není zaručeno, že můžete kdykoli obnovit místo. Pokud se chcete dozvědět víc o operaci zmenšení, přečtěte si článek [Zmenšení databáze](https://msdn.microsoft.com/library/ms189035.aspx).
+Pomocí operace zmenšení uvolněte dostatek místa v databázi pro spuštění synchronizační služby. Uvolní místo pro databáze odebráním prázdných znaků v databázi. Tento krok je nejlepší úsilí, protože není zaručeno, že můžete kdykoli obnovit místo. Pokud se chcete dozvědět víc o operaci zmenšení, přečtěte si článek [Zmenšení databáze](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15).
 
 > [!IMPORTANT]
 > Tento krok přeskočte, pokud můžete získat synchronizační službu, která se má spustit. Nedoporučuje se zmenšit databázi SQL, protože to může vést k špatnému výkonu kvůli zvýšené fragmentaci.
@@ -100,8 +100,8 @@ Tento krok umožňuje snížit pravděpodobnost spuštění limitu 10 GB po něk
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Dlouhodobé řešení – migrace na úplný SQL
 Obecně je problém informativní, že velikost databáze o velikosti 10 GB již není dostatečná, aby mohla Azure AD Connect synchronizovat místní službu Active Directory se službou Azure AD. Doporučuje se přepnout na používání plné verze systému SQL Server. Nemůžete LocalDB existujícího nasazení Azure AD Connect přímo nahradit databází plné verze SQL. Místo toho je nutné nasadit nový server Azure AD Connect s plnou verzí SQL. Doporučuje se provést postupnou migraci, kdy se nový server Azure AD Connect (s databází SQL) nasadí jako pracovní server vedle existujícího serveru Azure AD Connect (s LocalDB). 
-* Pokyny ke konfiguraci vzdáleného SQL se službou Azure AD Connect najdete v článku s popisem [vlastní instalace Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
-* Pokyny k postupné migraci kvůli upgradu Azure AD Connect najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
+* Pokyny ke konfiguraci vzdáleného SQL se službou Azure AD Connect najdete v článku s popisem [vlastní instalace Azure AD Connect](./how-to-connect-install-custom.md).
+* Pokyny k postupné migraci kvůli upgradu Azure AD Connect najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](./how-to-upgrade-previous-version.md#swing-migration).
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

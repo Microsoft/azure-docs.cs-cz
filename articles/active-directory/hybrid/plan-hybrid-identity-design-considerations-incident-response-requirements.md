@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109280"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278407"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na reakci na incidenty pro vaše řešení hybridní identity
-U velkých nebo středních organizací pravděpodobně dojde k [reakci na incidenty zabezpečení](https://technet.microsoft.com/library/cc700825.aspx) , která bude pomáhat při provádění akcí podle úrovně incidentu. Systém správy identit je důležitou součástí procesu reakce na incidenty, protože je možné ho použít k identifikaci toho, kdo provedl určitou akci s cílem. Řešení hybridní identity musí být schopné poskytovat funkce monitorování a vytváření sestav, které může využít IT k tomu, aby provedla akce k identifikaci a zmírnění potenciální hrozby. V typickém plánu odpovědí na incidenty budete mít jako součást plánu tyto fáze:
+U velkých nebo středních organizací pravděpodobně dojde k [reakci na incidenty zabezpečení](/previous-versions/tn-archive/cc700825(v=technet.10)) , která bude pomáhat při provádění akcí podle úrovně incidentu. Systém správy identit je důležitou součástí procesu reakce na incidenty, protože je možné ho použít k identifikaci toho, kdo provedl určitou akci s cílem. Řešení hybridní identity musí být schopné poskytovat funkce monitorování a vytváření sestav, které může využít IT k tomu, aby provedla akce k identifikaci a zmírnění potenciální hrozby. V typickém plánu odpovědí na incidenty budete mít jako součást plánu tyto fáze:
 
 1. Počáteční posouzení.
 2. Komunikace incidentu.
@@ -69,4 +69,3 @@ Během řízení škod a snižování rizik je důležité rychle snížit skute
 
 ## <a name="see-also"></a>Viz také
 [Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
-

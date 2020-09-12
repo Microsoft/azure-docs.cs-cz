@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691475"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276758"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -54,7 +54,7 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 |Stanov|Úroveň Standard|
 |Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](https://docs.microsoft.com/azure/azure-arc/)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -76,7 +76,7 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
     - **Doporučené** – skupiny počítačů, které konzistentně spouštějí stejné aplikace a nemají nakonfigurovaný seznam povolených aplikací. Pro tyto skupiny doporučujeme povolit Adaptivní řízení aplikací.
     
       > [!TIP]
-      > Pokud se zobrazí název skupiny s předponou "kontrolor", obsahuje počítače s částečně konzistentním seznamem aplikací. Security Center nemůže vidět vzor, ale doporučuje zkontrolovat tuto skupinu, abyste viděli, jestli můžete ručně definovat některá pravidla adaptivního řízení aplikací, jak _je_ popsáno v tématu [Úprava pravidla adaptivního řízení aplikací skupiny](#editing-a-groups-adaptive-application-controls-rule).
+      > Pokud se zobrazí název skupiny s předponou "kontrolor", obsahuje počítače s částečně konzistentním seznamem aplikací. Security Center nemůže vidět vzor, ale doporučuje zkontrolovat tuto skupinu, abyste viděli, jestli můžete ručně definovat některá pravidla adaptivního řízení aplikací, jak _je_ popsáno v tématu [Úprava pravidla adaptivního řízení aplikací skupiny](#edit-a-groups-adaptive-application-controls-rule).
       >
       > Počítače z této skupiny můžete také přesunout do jiných skupin, jak je popsáno v tématu [Přesun počítače z jedné skupiny do druhé](#move-a-machine-from-one-group-to-another).
 
@@ -115,7 +115,7 @@ Vyberte doporučení nebo otevřete stránku Adaptivní řízení aplikací, kde
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Úprava pravidla adaptivního řízení aplikací skupiny
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Upravit pravidlo adaptivních řízení aplikací pro skupinu
 
 Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu počítačů kvůli známým změnám ve vaší organizaci. 
 
@@ -150,7 +150,7 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reakce na pravidla povolených v zásadách Adaptivní řízení aplikací by se měla aktualizovat.
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reagovat na pravidla povolených v zásadách adaptivního řízení aplikací, která by se měla aktualizovat: doporučení
 
 Toto doporučení se zobrazí, když Security Center Machine Learning identifikuje potenciálně legitimní chování, které dříve nebylo povoleno. Doporučení navrhuje nová pravidla pro existující definice, aby se snížil počet falešně pozitivních výstrah.
 
@@ -167,7 +167,7 @@ Náprava problémů:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Výstrahy a porušení auditu
+## <a name="audit-alerts-and-violations"></a>Výstrahy a porušení auditu
 
 1. V nabídce Security Center vyberte **Adaptivní řízení aplikací**.
 
@@ -199,7 +199,7 @@ Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zása
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Správa ovládacích prvků aplikace pomocí REST API 
+## <a name="manage-application-controls-via-the-rest-api"></a>Správa ovládacích prvků aplikace pomocí REST API 
 
 Pro správu adaptivních řízení aplikací programově použijte naši REST API. 
 

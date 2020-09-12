@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446990"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275919"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
 Tento článek vám pomůže najít informace o řešení běžných problémů týkajících se předávacího ověřování Azure AD.
 
 >[!IMPORTANT]
->Pokud máte k problémům přihlašování uživatelů při předávacím ověřování, zakažte funkci nebo odinstalujte agenty předávacího ověřování, aniž byste měli účet globálního správce jenom pro Cloud, abyste se mohli vrátit. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Provedení tohoto kroku je kritické a zajistí, že se nezamknete ze svého tenanta.
+>Pokud máte k problémům přihlašování uživatelů při předávacím ověřování, zakažte funkci nebo odinstalujte agenty předávacího ověřování, aniž byste měli účet globálního správce jenom pro Cloud, abyste se mohli vrátit. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Provedení tohoto kroku je kritické a zajistí, že se nezamknete ze svého tenanta.
 
 ## <a name="general-issues"></a>Běžné problémy
 
@@ -72,10 +72,10 @@ Chcete-li ověřit, že se jedná o problém, nejprve otestujte správné fungov
  ``` 
 4. Když se zobrazí výzva k zadání přihlašovacích údajů, zadejte stejné uživatelské jméno a heslo, které se použijí k přihlášení k nástroji ( https://login.microsoftonline.com) .
 
-Pokud se zobrazí stejná chyba uživatelského jména a hesla, znamená to, že agent předávacího ověřování funguje správně a problém může být, že místní hlavní název uživatele (UPN) není směrovatelný. Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Pokud se zobrazí stejná chyba uživatelského jména a hesla, znamená to, že agent předávacího ověřování funguje správně a problém může být, že místní hlavní název uživatele (UPN) není směrovatelný. Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
 
 > [!IMPORTANT]
-> Pokud se Azure AD Connect Server nepřipojí k doméně, vyžaduje se požadavek uvedený v článku [Azure AD Connect: požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites), nejedná se o problém s platným uživatelským jménem nebo heslem.
+> Pokud se Azure AD Connect Server nepřipojí k doméně, vyžaduje se požadavek uvedený v článku [Azure AD Connect: požadavky](./how-to-connect-install-prerequisites.md#installation-prerequisites), nejedná se o problém s platným uživatelským jménem nebo heslem.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Důvody neúspěšného přihlášení v centru pro správu Azure Active Directory (potřebuje licenci Premium)
 
@@ -98,7 +98,7 @@ Přejděte na **Azure Active Directory**  ->  **přihlášení** v [centru pro s
 | 80011 | Ověřovací agent nebyl schopen získat dešifrovací klíč. | Pokud je problém stále reprodukovatelný, nainstalujte a zaregistrujte nového ověřovacího agenta. A odinstalujte stávající.
 
 >[!IMPORTANT]
->Agenti předávacího ověřování ověřují uživatele služby Azure AD tím, že ověřují jejich uživatelská jména a hesla proti službě Active Directory voláním [rozhraní Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx). Výsledkem je, že pokud jste v Active Directory nastavili nastavení přihlásit se ke službě Active Directory tak, aby se omezil přístup k přihlašování do pracovních stanic, budete muset přidat servery, které hostují agenty předávacího ověřování, do seznamu "přihlašování do" serverů. Nedaří se to provést, zablokuje uživatelům přihlášení k Azure AD.
+>Agenti předávacího ověřování ověřují uživatele služby Azure AD tím, že ověřují jejich uživatelská jména a hesla proti službě Active Directory voláním [rozhraní Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera). Výsledkem je, že pokud jste v Active Directory nastavili nastavení přihlásit se ke službě Active Directory tak, aby se omezil přístup k přihlašování do pracovních stanic, budete muset přidat servery, které hostují agenty předávacího ověřování, do seznamu "přihlašování do" serverů. Nedaří se to provést, zablokuje uživatelům přihlášení k Azure AD.
 
 ## <a name="authentication-agent-installation-issues"></a>Problémy s instalací ověřovacího agenta
 

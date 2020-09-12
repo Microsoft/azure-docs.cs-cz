@@ -1,7 +1,7 @@
 ---
 title: Experimenty při sledování a nasazování modelů
 titleSuffix: Azure Data Science Virtual Machine
-description: Přečtěte si, jak sledovat a protokolovat experimenty z DSVM pomocí Azure Machine Learning a/nebo MLFlow.
+description: Přečtěte si, jak sledovat a protokolovat experimenty z Data Science Virtual Machine pomocí Azure Machine Learning a/nebo MLFlow.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146891"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254761"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Sledovat experimenty a nasazovat modely v Azure Machine Learning
 
@@ -24,9 +24,9 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
 ![sledovat experimenty](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Bude nutné [zřídit pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* Musíte [zřídit pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Vytvoření nového poznámkového bloku
 
@@ -36,11 +36,11 @@ Sada Azure Machine Learning a sada MLFlow SDK jsou předem nainstalovány v Data
 
 ## <a name="set-up-the-workspace"></a>Nastavení pracovního prostoru
 
-Přejít na [Azure Portal](https://portal.azure.com) a vyberte pracovní prostor, který jste zřídili jako součást požadavků. Uvidíte, jak se __config.jsstáhnout__ (viz níže) – Stáhněte si konfiguraci a ujistěte se, že je uložená ve vašem pracovním adresáři na DSVM.
+Přejít na [Azure Portal](https://portal.azure.com) a vyberte pracovní prostor, který jste zřídili jako součást požadavků. Uvidíte, že je potřeba __stáhnout config.js__ (viz níže) – Stáhněte si konfiguraci a ujistěte se, že je uložená ve vašem pracovním adresáři na DSVM.
 
 ![Získat konfigurační soubor](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-Konfigurace obsahuje informace, jako je název pracovního prostoru, předplatné atd. to znamená, že nemusíte tyto parametry pevně nakódovat.
+Konfigurace obsahuje informace, jako je název pracovního prostoru, předplatné atd. a znamená, že nemusíte tyto parametry pevně nakódovat.
 
 ## <a name="track-dsvm-runs"></a>Sledování spuštění DSVM
 
@@ -131,11 +131,11 @@ V této části se naučíme, jak nasadit modely vyškolené na DSVM a Azure Mac
 
 ### <a name="step-1-create-inference-compute"></a>Krok 1: vytvoření odvození výpočetních prostředků
 
-V nabídce vlevo v části [AzureML Studio](https://ml.azure.com) klikněte na __výpočty__ a pak na kartu __odvození clustery__ . V dalším kroku klikněte na __+ Nový__ jako kloubový:
+V nabídce vlevo v části [AzureML Studio](https://ml.azure.com) klikněte na __výpočty__ a pak na kartu __odvození clustery__ . Potom klikněte na __+ Nový__ , jak je popsáno níže:
 
 ![Vytvořit odvozenou výpočetní prostředky](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-V podokně __nové odvození clusteru__ zadejte podrobnosti pro:
+V podokně __nové odvození clusterů__ zadejte podrobnosti pro:
 
 * Název výpočtu
 * Služba Kubernetes – vyberte vytvořit novou.
@@ -151,7 +151,7 @@ Potom klikněte na __vytvořit__.
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>Krok 2: nasazení neodvozené služby bez kódu
 
-Když jsme zaregistrovali model v našem kódu pomocí `register_model` jsme uvedli rozhraní jako skriptu sklearn. Azure Machine Learning nepodporuje žádná nasazení kódu pro následující architektury:
+Když jsme zaregistrovali model v našem kódu pomocí `register_model` , určili jsme rozhraní jako skriptu sklearn. Azure Machine Learning nepodporuje žádná nasazení kódu pro následující architektury:
 
 * scikit-learn
 * Formát Tensorflow SaveModel
@@ -167,7 +167,7 @@ Potom v podokně Podrobnosti modelu klikněte na tlačítko __nasadit__ :
 
 ![Nasazení](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-Tento model nasadíme do clusteru odvození (Azure Kubernetes Service), který jsme vytvořili v kroku 1. Vyplňte následující podrobnosti zadáním názvu služby a názvu AKS výpočetního clusteru (vytvořeného v kroku 1). Doporučujeme také zvýšit __kapacitu kapacity procesoru__ na 1 (od 0,1) a __rezervu paměti__ na 1 (od 0,5) – to můžete udělat kliknutím na __Upřesnit__ a vyplněním podrobností. Pak klikněte na __nasadit__.
+Tento model nasadíme do clusteru odvození (Azure Kubernetes Service), který jsme vytvořili v kroku 1. Vyplňte níže uvedené podrobnosti zadáním názvu služby a názvu AKS výpočetního clusteru (vytvořeného v kroku 1). Doporučujeme také zvýšit __kapacitu kapacity procesoru__ na 1 (od 0,1) a __rezervu paměti__ na 1 (od 0,5) – Toto zvýšení můžete udělat kliknutím na __Upřesnit__ a vyplněním podrobností. Pak klikněte na __nasadit__.
 
 ![Podrobnosti nasazení](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,9 +177,9 @@ Po úspěšném nasazení modelu byste měli vidět následující (pro získán
 
 ![Spotřebovat model](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Měli byste si všimnout, že stav nasazení přejde z __přechodu__ do __stavu v pořádku__. Kromě této části podrobností najdete koncový bod REST a adresy URL Swagger, které může vývojář aplikace použít k integraci modelu ML do svých aplikací.
+Měli byste vidět, že stav nasazení přejde z __přechodu__ do __stavu v pořádku__. Tato část podrobností navíc poskytuje koncovým bodem REST a adresám URL Swagger, které může vývojář aplikace použít k integraci modelu ML do svých aplikací.
 
-Koncový bod můžete otestovat pomocí [post](https://www.postman.com/), případně můžete použít sadu test SDK:
+Koncový bod můžete otestovat pomocí [post](https://www.postman.com/)nebo můžete použít sadu test SDK:
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>Krok 4: vyčištění
 
-Měli byste odstranit výpočet odvození, který jste vytvořili v kroku 1, abyste se neúčtují průběžné poplatky za výpočetní výkon. V nabídce na levé straně Azure Machine Learning Studio klikněte na výpočetní > odvození clusterů > vyberte COMPUTE > odstranit.
+Odstraňte výpočetní prostředky, které jste vytvořili v kroku 1, abyste se neúčtují průběžné poplatky za výpočetní výkon. V nabídce na levé straně Azure Machine Learning Studio klikněte na COMPUTE > odvození clusterů > vyberte výpočetní > odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

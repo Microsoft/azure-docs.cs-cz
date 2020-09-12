@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071427"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280158"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -29,7 +29,7 @@ Tento článek se zabývá nejčastějšími dotazy týkajícími se předávac�
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Kterou z metod pro přihlášení ke službě Azure AD, předávacímu ověřování, synchronizaci hodnot hash hesel a Active Directory Federation Services (AD FS) (AD FS) mám zvolit?
 
-Přečtěte si [tuto příručku](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) , kde najdete porovnání různých metod přihlášení do služby Azure AD a jak zvolit správnou metodu přihlašování pro vaši organizaci.
+Přečtěte si [tuto příručku](./choose-ad-authn.md) , kde najdete porovnání různých metod přihlášení do služby Azure AD a jak zvolit správnou metodu přihlašování pro vaši organizaci.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Používá předávací ověřování bezplatnou funkci?
 
@@ -39,7 +39,7 @@ Předávací ověřování je bezplatná funkce. Nepotřebujete žádné placen�
 
 No. Předávací ověřování je dostupné jenom v celosvětové instanci Azure AD.
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../active-directory-conditional-access-azure-portal.md) s předávacím ověřováním?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../conditional-access/overview.md) s předávacím ověřováním?
 
 Yes. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
@@ -148,7 +148,7 @@ Ne, tento scénář není _podporován._
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Proč potřebuji k povolení předávacího ověřování zadat jenom cloudový účet globálního správce?
 
-Doporučuje se povolit nebo zakázat předávací ověřování pomocí účtu globálního správce jenom pro Cloud. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Tím se zajistí, že se nezamknete z vašeho tenanta.
+Doporučuje se povolit nebo zakázat předávací ověřování pomocí účtu globálního správce jenom pro Cloud. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Tím se zajistí, že se nezamknete z vašeho tenanta.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Jak můžu zakázat předávací ověřování?
 
@@ -184,4 +184,3 @@ Klienti vytvoření po 15. června 2015 mají výchozí chování při synchroni
 - [Hloubkové podrobně zabezpečení](how-to-connect-pta-security-deep-dive.md): Získejte podrobné technické informace o funkci předávacího ověřování.
 - [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Přečtěte si další informace o této doplňkové funkci.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte Fórum Azure Active Directory k započetí nových požadavků na funkce.
-

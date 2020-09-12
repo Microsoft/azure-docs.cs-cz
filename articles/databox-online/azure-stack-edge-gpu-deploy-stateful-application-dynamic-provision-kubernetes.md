@@ -1,6 +1,6 @@
 ---
-title: Použití kubectl k nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky na zařízení Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak vytvořit a spravovat nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky pomocí kubectl na zařízení Microsoft Azure Stack Edge.
+title: Použití kubectl k nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky na zařízení GPU na Azure Stack hraničních zařízeních | Microsoft Docs
+description: Popisuje, jak vytvořit a spravovat nasazení stavové aplikace Kubernetes prostřednictvím dynamicky zřízené sdílené složky pomocí kubectl na zařízení GPU Microsoft Azure Stack Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: e83b2b1cb7013b9d72bd2c2de8c7636d5c9d8773
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084257"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254317"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení Azure Stack Edge
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení GPU Azure Stack Edge
 
 V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v Kubernetes pomocí StorageClass k dynamickému zřízení úložiště a nasazení. Nasazení používá `kubectl` příkazy v existujícím clusteru Kubernetes a nasadí aplikaci MySQL. 
 
 Tento postup je určený pro uživatele, kteří si prozkoumali [Kubernetes Storage na Azure Stack hraničním zařízení](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct nasadit stavovou aplikaci, ujistěte se, že jste na svém zařízení dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
 

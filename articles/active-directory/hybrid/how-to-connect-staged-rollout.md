@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053215"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278577"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -25,7 +25,7 @@ Příprava na přípravu umožňuje selektivně testovat skupiny uživatelů s m
 -  Pro ověřování používáte čipové karty. 
 -  Váš aktuální server nabízí určité jenom federační funkce.
 
-Než se pustíte do této funkce, doporučujeme, abyste si přečtěte náš průvodce pro výběr správné metody ověřování. Další informace najdete v tabulce "porovnání metod" v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods).
+Než se pustíte do této funkce, doporučujeme, abyste si přečtěte náš průvodce pro výběr správné metody ověřování. Další informace najdete v tabulce "porovnání metod" v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](./choose-ad-authn.md#comparing-methods).
 
 Přehled této funkce najdete v tomto tématu Azure Active Directory: co je postupné zavedení?. obrazový
 
@@ -91,7 +91,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 Pokud chcete otestovat přihlášení k *synchronizaci hodnot hash hesel* pomocí připraveného zavedení, postupujte podle pokynů v následující části.
 
-Informace o tom, které rutiny prostředí PowerShell použít, najdete v tématu [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Informace o tom, které rutiny prostředí PowerShell použít, najdete v tématu [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Předběžná práce pro synchronizaci hodnot hash hesel
 
@@ -207,7 +207,7 @@ Povolili jsme události auditu pro různé akce, které provedeme pro připraven
 
   ![Karta cíle v podokně Přidat uživatele do funkce – cíl (s)](./media/how-to-connect-staged-rollout/sr12.png)
 
-## <a name="validation"></a>Ověřování vstupů (validace)
+## <a name="validation"></a>Ověřování
 
 Pokud chcete otestovat přihlášení pomocí *synchronizace hodnot hash hesel* nebo *předávacího ověřování* (uživatelské jméno a heslo), udělejte toto:
 
@@ -225,7 +225,7 @@ Testování přihlášení pomocí *bezproblémového jednotného přihlašován
 
 1. Zajistěte, aby se přihlášení úspěšně zobrazilo v [sestavě aktivit přihlášení Azure AD](../reports-monitoring/concept-sign-ins.md) pomocí filtrování pomocí třídy userPrincipalName.
 
-   Pokud chcete sledovat přihlašování uživatelů, ke kterým stále dochází na Active Directory Federation Services (AD FS) (AD FS) pro vybrané uživatele se zahrnutými fázemi, postupujte podle pokynů v tématu [AD FS řešení potíží: události a protokolování](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Podívejte se na dokumentaci výrobce, kde najdete informace o tom, jak tuto kontrolu u poskytovatelů federačních třetích stran vyzkoušet.
+   Pokud chcete sledovat přihlašování uživatelů, ke kterým stále dochází na Active Directory Federation Services (AD FS) (AD FS) pro vybrané uživatele se zahrnutými fázemi, postupujte podle pokynů v tématu [AD FS řešení potíží: události a protokolování](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Podívejte se na dokumentaci výrobce, kde najdete informace o tom, jak tuto kontrolu u poskytovatelů federačních třetích stran vyzkoušet.
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Odebrání uživatele z připraveného zavedení
 
@@ -243,7 +243,7 @@ Odpověď: Ne, tato funkce je navržena pro migraci z federovaných do cloudové
 
 **Otázka: mohu použít PowerShell k provedení připraveného zavedení?**
 
-Odpověď: Ano. Další informace o tom, jak používat PowerShell k provádění připraveného zavedení, najdete v tématu [Azure AD Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Odpověď: Ano. Další informace o tom, jak používat PowerShell k provádění připraveného zavedení, najdete v tématu [Azure AD Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="next-steps"></a>Další kroky
-- [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

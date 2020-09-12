@@ -3,15 +3,15 @@ title: Správa skupin prostředků – Azure CLI
 description: Pomocí Azure CLI můžete spravovat skupiny prostředků prostřednictvím Azure Resource Manager. Ukazuje, jak vytvořit, vypsat a odstranit skupiny prostředků.
 author: mumian
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c64e7166d154d8f37af7a64777e2c36181b7195b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827108"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290493"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Správa skupin prostředků Azure Resource Manager pomocí Azure CLI
 
@@ -32,14 +32,10 @@ Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístěn
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-Následující skript rozhraní příkazového řádku vytvoří skupinu prostředků a pak zobrazí skupinu prostředků.
+Následující příkaz rozhraní příkazového řádku vytvoří skupinu prostředků.
 
 ```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-echo "Enter the location (i.e. centralus):" &&
-read location &&
-az group create --name $resourceGroupName --location $location
+az group create --name demoResourceGroup --location westus
 ```
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků

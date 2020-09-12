@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 09/01/2020
+ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529717"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279822"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z tabulky SAP. Další informace najdete v tématu [Přehled aktivit kopírování](copy-activity-overview.md).
@@ -48,6 +49,12 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 - Kopírování dat pomocí základního ověřování nebo zabezpečené síťové komunikace (SNC), pokud je nakonfigurován SNC.
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 - Načítání dat prostřednictvím výchozího nebo vlastního RFC.
+
+Verze 7,01 nebo novější odkazuje na verzi SAP NetWeaver namísto verze SAP ECC. Například SAP ECC 6,0 EHP 7 obecně má NetWeaver verzi >= 7,4. V případě, že si nejste jisti vaším prostředím, tady je postup, jak ověřit verzi ze systému SAP:
+1.  Pomocí grafického uživatelského rozhraní SAP se připojte k systému SAP. 
+2.  Přejít na **System**  ->  **stav**systému. 
+3.  Zkontrolujte vydání SAP_BASIS, ujistěte se, že je větší nebo rovno 701.  
+      ![Kontrolovat SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -221,7 +228,7 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 | `rfcTableFields`                 | Pole (sloupce), která se mají kopírovat z tabulky SAP Například, `column0, column1`. | No       |
 | `rfcTableOptions`                | Možnosti pro filtrování řádků v tabulce SAP Například, `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | No       |
 | `customRfcReadTableFunctionModule` | Vlastní modul funkcí RFC, který lze použít ke čtení dat z tabulky SAP.<br>Pomocí vlastního modulu funkce RFC můžete definovat, jak se data načítají z vašeho systému SAP a vrátit se do Data Factory. Vlastní modul funkcí musí mít implementované rozhraní (import, export, tabulky), které `/SAPDS/RFC_READ_TABLE2` je podobné, což je výchozí rozhraní používané Data Factory.<br>Data Factory | No       |
-| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt`(normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear`(4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth`(6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 číslic ve formátu "RRRRMMDD")</li></ul> | No       |
+| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt` (normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear` (4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth` (6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 číslic ve formátu "RRRRMMDD")</li></ul> | No       |
 | `partitionColumnName`              | Název sloupce, který se používá k vytvoření oddílů dat                | No       |
 | `partitionUpperBound`              | Maximální hodnota sloupce určeného v `partitionColumnName` , která bude použita pro pokračování v dělení. | No       |
 | `partitionLowerBound`              | Minimální hodnota sloupce zadaného v `partitionColumnName` , který bude použit pro pokračování v dělení. (Poznámka: `partitionLowerBound` při volbě oddílu nemůže být "0" `PartitionOnInt` ) | No       |
@@ -237,16 +244,16 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 
 V nástroji `rfcTableOptions` můžete použít následující běžné operátory dotazů SAP k filtrování řádků:
 
-| Operátor | Description |
+| Operátor | Popis |
 | :------- | :------- |
-| `EQ` | Je rovno |
+| `EQ` | Rovno |
 | `NE` | Není rovno |
 | `LT` | Menší než |
 | `LE` | Menší než nebo rovno |
 | `GT` | Větší než |
 | `GE` | Větší než nebo rovno |
-| `IN` | Jako v`TABCLASS IN ('TRANSP', 'INTTAB')` |
-| `LIKE` | Jako v`LIKE 'Emma%'` |
+| `IN` | Jako v `TABCLASS IN ('TRANSP', 'INTTAB')` |
+| `LIKE` | Jako v `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Příklad
 
@@ -293,14 +300,14 @@ Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použij�
 
 | Typ SAP ABAP | Data Factory pomocný datový typ |
 |:--- |:--- |
-| `C`Řetezce | `String` |
-| `I`Čísla | `Int32` |
-| `F`Plovák | `Double` |
-| `D`Datum | `String` |
-| `T`Interval | `String` |
-| `P`(Komprimovaná BCD, měna, desetinné číslo, množství) | `Decimal` |
-| `N`Číselné | `String` |
-| `X`(Binární a nezpracované) | `String` |
+| `C` Řetezce | `String` |
+| `I` Čísla | `Int32` |
+| `F` Plovák | `Double` |
+| `D` Datum | `String` |
+| `T` Interval | `String` |
+| `P` (Komprimovaná BCD, měna, desetinné číslo, množství) | `Decimal` |
+| `N` Číselné | `String` |
+| `X` (Binární a nezpracované) | `String` |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

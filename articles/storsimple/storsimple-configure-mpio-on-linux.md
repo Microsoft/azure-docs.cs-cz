@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183628"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294709"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek popisuje kroky potřebné ke konfiguraci funkce MPIO (CentOS) na hostitelském serveru s 6,6 v/v. Hostitelský server je připojený k vašemu zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátorů iSCSI. Podrobně popisuje automatické zjišťování zařízení s více cestami a konkrétní nastavení jenom pro StorSimple svazky.
@@ -60,7 +60,7 @@ Zařízení StorSimple připojené k hostiteli se systémem Linux je možné nak
 
 Následující postup popisuje, jak nakonfigurovat více cest, pokud je zařízení StorSimple se dvěma síťovými rozhraními připojeno k hostiteli se dvěma síťovými rozhraními.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a zařízení StorSimple.
 
 ### <a name="on-centos-host"></a>Na hostiteli CentOS
@@ -377,9 +377,9 @@ Tento příkaz opakujte pro všechna připojená síťová rozhraní v cíli iSC
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Otázka: Nejste si jistí, jestli je moje zařízení na seznamu povolených.
+Otázka: Nejste si jistí, jestli je moje zařízení povolené.
 
-A. Pokud chcete ověřit, jestli je zařízení na seznamu povolených, použijte následující řešení potíží s interaktivním příkazem:
+A. Pokud chcete ověřit, jestli je zařízení povolené, použijte následující řešení potíží s interaktivním příkazem:
 
 ```console
 multipathd -k
@@ -449,4 +449,3 @@ Když konfigurujete funkci MPIO pro hostitele se systémem Linux, může se tak�
 
 * [Nastavení funkce MPIO na CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Průvodce školením pro Linux](http://linux-training.be/linuxsys.pdf)
-

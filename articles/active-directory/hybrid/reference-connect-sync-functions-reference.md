@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550177"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279767"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
 V Azure AD Connect jsou funkce použity k manipulaci s hodnotou atributu během synchronizace.  
@@ -75,7 +75,7 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [CertThumbprint](#certthumbprint)
   * [CertVersion](#certversion)
   * [Certifikát](#iscert)
-* **Počtu**
+* **Převod**
   * [CBool](#cbool)
   * [CDate](#cdate)
   * [CGuid](#cguid)
@@ -117,14 +117,14 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [Výpočtu](#count)
   * [Položka](#item)
   * [ItemOrNull](#itemornull)
-  * [Připojit](#join)
+  * [Join](#join) (Spojení)
   * [RemoveDuplicates –](#removeduplicates)
   * [Rozdělení](#split)
 * **Tok programu**
   * [Chyba](#error)
   * [IIF](#iif)
   * [Výběr](#select)
-  * [Přepínač](#switch)
+  * [Přepnutí](#switch)
   * [,](#where)
   * [Řetězce](#with)
 * **Text**
@@ -426,9 +426,9 @@ Funkce CGuid převede řetězcovou reprezentaci identifikátoru GUID na jeho bin
 Funkce Contains vyhledá řetězec uvnitř vícehodnotového atributu.
 
 **Syntaktick**  
-`num Contains (mvstring attribute, str search)`– rozlišuje velká a malá písmena  
+`num Contains (mvstring attribute, str search)` – rozlišuje velká a malá písmena  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`– rozlišuje velká a malá písmena
+`num Contains (mvref attribute, str search)` – rozlišuje velká a malá písmena
 
 * atribut: vícehodnotový atribut, který má být hledán.
 * Search: řetězec, který se má najít v atributu.
@@ -450,7 +450,7 @@ Pokud má atribut proxyAddresses primární e-mailovou adresu (označenou jako v
 Funkce ConvertFromBase64 převede zadanou hodnotu v kódování Base64 na běžný řetězec.
 
 **Syntaktick**  
-`str ConvertFromBase64(str source)`– předpokládá kódování Unicode.  
+`str ConvertFromBase64(str source)` – předpokládá kódování Unicode.  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Zdroj: řetězec kódovaný v kódování Base64  
@@ -660,7 +660,7 @@ Funkce FormatDateTime slouží k formátování hodnoty DateTime na řetězec se
 * Format: řetězec představující formát, na který se má převést.
 
 **Mark**  
-Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času pro funkci Format](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času pro funkci Format](/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Příklad:**  
 
@@ -1130,7 +1130,7 @@ Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, z
 Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny duplicitní hodnoty.
 
 ---
-### <a name="replace"></a>Nahradit
+### <a name="replace"></a>Nahrazení
 **Popis:**  
 Funkce Replace nahradí všechny výskyty řetězce na jiný řetězec.
 
@@ -1393,7 +1393,7 @@ Vrátí "Brown"
 `Word("This,string!has&many separators",3,",!&#")`  
 Vrátí "has"
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
 * [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

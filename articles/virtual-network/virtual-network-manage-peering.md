@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416498"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290170"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě
 
@@ -126,11 +126,12 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
   - *Zahájeno:* Když vytváříte partnerský vztah k druhé virtuální síti z první virtuální sítě, stav partnerského vztahu je *zahájeno*. 
   - *Připojeno:* Při vytváření partnerského vztahu z druhé virtuální sítě k první virtuální síti je stav partnerského vztahu *připojen*. Pokud zobrazíte stav partnerského vztahu pro první virtuální síť, zobrazí se jeho stav změněno z *iniciované* na *připojeno*. Partnerský vztah není úspěšně navázán, dokud není *propojen*stav partnerského vztahu obou partnerských vztahů virtuálních sítí.
 - Při vytváření partnerských vztahů mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků s virtuální sítí vytvořenou prostřednictvím modelu nasazení Classic stačí nakonfigurovat partnerský vztah pro virtuální síť nasazenou prostřednictvím Správce prostředků. Nemůžete nakonfigurovat partnerský vztah pro virtuální síť (Classic) nebo mezi dvěma virtuálními sítěmi nasazenými prostřednictvím modelu nasazení Classic. Při vytváření partnerského vztahu z virtuální sítě (Správce prostředků) k virtuální síti (Classic) se stav partnerského vztahu *aktualizuje*a pak se v krátké době změní na *připojeno*.
-- Partnerský vztah je mezi dvěma virtuálními sítěmi vytvořen. Partnerské vztahy nejsou přenosné. Pokud vytvoříte partnerské vztahy mezi:
-  - VirtualNetwork1 & VirtualNetwork2
-  - VirtualNetwork2 & VirtualNetwork3
+- Partnerský vztah je mezi dvěma virtuálními sítěmi vytvořen. Partnerské vztahy samy o sobě nejsou přenosné. Pokud vytvoříte partnerské vztahy mezi:
+  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
 
-  Mezi VirtualNetwork1 a VirtualNetwork3 se nevztahují žádné partnerské vztahy prostřednictvím VirtualNetwork2. Pokud chcete vytvořit partnerský vztah virtuálních sítí mezi VirtualNetwork1 a VirtualNetwork3, je nutné vytvořit partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3.
+
+  Mezi VirtualNetwork1 a VirtualNetwork3 se nevztahují žádné partnerské vztahy prostřednictvím VirtualNetwork2. Pokud chcete vytvořit partnerský vztah virtuálních sítí mezi VirtualNetwork1 a VirtualNetwork3, je nutné vytvořit partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3. Mezi VirtualNetwork1 a VirtualNetwork3 se nevztahují žádné partnerské vztahy prostřednictvím VirtualNetwork2. Pokud chcete, aby VirtualNetwork1 a VirtualNetwork3 přímo komunikovaly, musíte vytvořit explicitní partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3 nebo projít síťové virtuální zařízení v síti rozbočovače.  
 - V partnerských virtuálních sítích s použitím výchozího překladu názvů Azure nemůžete překládat názvy. Chcete-li přeložit názvy v jiných virtuálních sítích, je nutné použít [Azure DNS pro privátní domény](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo vlastní server DNS. Informace o tom, jak nastavit vlastní server DNS, najdete v tématu [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Prostředky v partnerských virtuálních sítích ve stejné oblasti můžou vzájemně komunikovat se stejnou šířkou pásma a latencí, jako kdyby byly ve stejné virtuální síti. Velikost každého virtuálního počítače ale má svou vlastní maximální šířku pásma sítě. Další informace o maximální šířce pásma pro různé velikosti virtuálních počítačů najdete v tématu velikosti virtuálních počítačů se [systémem Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .
 - Virtuální síť může navázat partnerský vztah k jiné virtuální síti a taky se připojit k jiné virtuální síti s bránou virtuální sítě Azure. Když jsou virtuální sítě propojené prostřednictvím partnerského vztahu i brány, provoz mezi virtuálními sítěmi projde konfigurací partnerského vztahu, a ne bránou.
@@ -146,7 +147,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 
 Pokud váš účet není přiřazený k jedné z předchozích rolí, musí být přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce                                                          | Název |
+| Akce                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vyžaduje se vytvoření partnerského vztahu z virtuální sítě A do virtuální sítě B. virtuální síť musí být virtuální síť (Správce prostředků).          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | Vyžaduje se k vytvoření partnerského vztahu z virtuální sítě B (Správce prostředků) k virtuální síti.                                                       |

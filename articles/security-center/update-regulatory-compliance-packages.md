@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32ee0135d4d991a9afe229747f8cb66916a12e7f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522602"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277438"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -46,7 +46,7 @@ Kromě toho můžete přidat **srovnávací testy zabezpečení Azure**, které 
 Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici. 
 
 
-## <a name="adding-a-regulatory-standard-to-your-dashboard"></a>Přidání regulativního standardu na řídicí panel
+## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Přidání regulativního standardu na řídicí panel
 
 Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorovat vaše dodržování předpisů s jedním z podporovaných regulativních standardů.
 

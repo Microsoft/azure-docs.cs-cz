@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269117"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279699"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
@@ -53,7 +53,7 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
 * **Rozšíření virtuálního počítače**
   
   * Vložení součásti, kterou vytvořila Microsoft a partneři, do virtuálního počítače se systémem Linux (IaaS), aby bylo možné povolit automatizaci softwaru a konfigurace
-  * Implementace odkazu na rozšíření virtuálních počítačů na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Implementace odkazu na rozšíření virtuálních počítačů na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikace
 Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
@@ -92,6 +92,9 @@ Agent pro Linux závisí na některých systémových balíčcích, aby fungoval
 * Nástroje pro zpracování textu: sed, grep
 * Síťové nástroje: IP-Route
 * Podpora jádra pro připojení systémů souborů UDF.
+
+Ujistěte se, že váš virtuální počítač má přístup k IP adrese 168.63.129.16. Další informace najdete v tématu [co je IP adresa 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+
 
 ## <a name="installation"></a>Instalace
 Upřednostňovanou metodou instalace a upgrade agenta Azure Linux je instalace použití balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](../linux/endorsed-distros.md) integrují balíček agenta Azure Linux do svých imagí a úložišť.
