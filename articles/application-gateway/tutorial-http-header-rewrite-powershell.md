@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806441"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595899"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvořit Aplikační bránu a přepsat hlavičky HTTP
 
@@ -20,17 +20,15 @@ Pomocí Azure PowerShell můžete nakonfigurovat [pravidla pro přepis hlaviček
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
->
-> * Vytvoření virtuální sítě automatického škálování
-> * Vytvoření vyhrazené veřejné IP adresy
-> * Nastavení infrastruktury služby Application Gateway
-> * Zadejte konfiguraci pravidla přepisu hlaviček protokolu HTTP.
-> * Určení automatického škálování
-> * Vytvoření služby Application Gateway
-> * Testování brány Application Gateway
+* Vytvoření virtuální sítě automatického škálování
+* Vytvoření vyhrazené veřejné IP adresy
+* Nastavení infrastruktury služby Application Gateway
+* Zadejte konfiguraci pravidla přepisu hlaviček protokolu HTTP.
+* Určení automatického škálování
+* Vytvoření služby Application Gateway
+* Otestování aplikační brány
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -157,7 +155,7 @@ Vytvořte Aplikační bránu a zahrňte do ní záložní zóny a konfiguraci au
 $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -ResourceGroupName $rg -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $setting -GatewayIpConfigurations $ipconfig -FrontendIpConfigurations $fip -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway použijte příkaz Get-AzPublicIPAddress. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
 

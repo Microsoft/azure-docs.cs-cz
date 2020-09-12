@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524956"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595836"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 
@@ -22,17 +22,16 @@ Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření brány Application Gateway
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvoření záznamu CNAME v doméně
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit back-endové naslouchací procesy
+* Vytvořit pravidla směrování
+* Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+* Vytvoření záznamu CNAME v doméně
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Application Gateway více lokalit":::
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

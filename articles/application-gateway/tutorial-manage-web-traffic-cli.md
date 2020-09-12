@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502749"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595848"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Správa webového provozu pomocí aplikační brány a Azure CLI
 
@@ -21,10 +21,9 @@ Aplikační brána se používá ke správě a zabezpečení webového provozu s
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření brány Application Gateway
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
 

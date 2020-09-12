@@ -3,12 +3,12 @@ title: Použití parametrů k vytváření dynamických modrotisky
 description: Přečtěte si o statických a dynamických parametrech a jejich použití k vytváření zabezpečených a dynamických modrotisky.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051555"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651960"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -61,11 +61,11 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y naplněné** ve sloupci **Parameters** . Vyberte řádek artefaktu pro úpravu parametrů artefaktu.
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Parametry podrobného plánu v definici podrobného plánu" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Snímek obrazovky s definicí podrobného plánu a zvýrazněnými hodnotami X z parametrů Y" border="false":::
 
-1. Stránka **Upravit artefakt** zobrazuje možnosti hodnot odpovídající artefaktu, na který jste klikli. Každý parametr v artefaktu má název, pole hodnoty a zaškrtávací políčko. Nastavte políčko na nezaškrtnuté, aby se mu zajistil **statický parametr**. V následujícím příkladu je pouze _umístění_ **statický parametr** , protože není zaškrtnuto a je zaškrtnuto _pole název skupiny prostředků_ .
+1. Stránka **Upravit artefakt** zobrazuje možnosti hodnot odpovídající vybranému artefaktu. Každý parametr v artefaktu má název, pole hodnoty a zaškrtávací políčko. Nastavte políčko na nezaškrtnuté, aby se mu zajistil **statický parametr**. V následujícím příkladu je pouze _umístění_ **statický parametr** , protože není zaškrtnuto a je zaškrtnuto _pole název skupiny prostředků_ .
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Statické parametry podrobného plánu pro artefakt podrobného plánu" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Snímek obrazovky se statickými parametry pro artefakt podrobného plánu" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Nastavení statických parametrů z REST API
 
@@ -176,7 +176,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 1. Na stránce **přiřadit podrobný plán** Najděte oddíl **parametry artefaktů** . Každý artefakt s alespoň jedním **dynamickým parametrem** zobrazuje artefakt a možnosti konfigurace. Před přiřazením podrobného plánu poskytněte parametrům požadované hodnoty. V následujícím příkladu je _název_ **dynamickým parametrem** , který musí být definován k dokončení přiřazení podrobného plánu.
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Podrobný plán dynamického parametru během přiřazení podrobného plánu" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Snímek obrazovky s nastavením dynamických parametrů během přiřazení podrobného plánu" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z REST API
 

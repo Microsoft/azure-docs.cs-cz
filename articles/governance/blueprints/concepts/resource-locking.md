@@ -3,12 +3,12 @@ title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051498"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651938"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -103,7 +103,7 @@ Po odebrání přiřazení se odeberou zámky vytvořené v rámci Azure modroti
 
 Pokud přiřazení vybere možnost **jen pro čtení** nebo **neodstraní** , je u prostředků artefaktů při přiřazení podrobného plánu použita akce odepřít odmítnutí [přiřazení](../../../role-based-access-control/deny-assignments.md) . Akce odepřít je přidána spravovanou identitou přiřazení podrobného plánu a lze ji odebrat pouze z prostředků artefaktu pomocí stejné spravované identity. Tato míra zabezpečení vynutila blokovací mechanizmus a zabraňuje odebrání zámku podrobného plánu mimo plány Azure.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Přiřazení podrobného plánu k zamítnutí ve skupině prostředků" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Snímek obrazovky se stránkou řízení přístupu (I a M) a záložkou zamítnutí přiřazení pro skupinu prostředků." border="false":::
 
 [Vlastnosti přiřazení odepřít](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) pro každý režim jsou následující:
 

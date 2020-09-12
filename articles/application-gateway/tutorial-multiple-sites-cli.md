@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502748"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595833"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
@@ -22,13 +22,12 @@ Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření brány Application Gateway
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvoření záznamu CNAME v doméně
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit back-endové naslouchací procesy
+* Vytvořit pravidla směrování
+* Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+* Vytvoření záznamu CNAME v doméně
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway více lokalit":::
 

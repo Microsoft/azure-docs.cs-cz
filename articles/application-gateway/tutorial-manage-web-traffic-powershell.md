@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cb45f4a19cf36fe291ffe7299a46a44a245fbb8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806190"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595864"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Správa webového provozu vytvořením aplikační brány v Azure PowerShellu
 
@@ -21,14 +21,13 @@ Aplikační brána se používá ke správě a zabezpečení webového provozu s
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření služby Application Gateway
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 Pokud budete chtít, můžete tento postup provést pomocí [Azure CLI](tutorial-manage-web-traffic-cli.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -72,7 +71,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec vytvoříte bránu samotnou. K vytvořeným prostředkům patří:
 
@@ -238,7 +237,7 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 

@@ -4,21 +4,21 @@ description: Naučte se škálovat instance služby signalizace Azure za účele
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500483"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595763"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby signalizace Azure?
 V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure. Existují dva scénáře pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity.
 
 * [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte další jednotky, připojení, zprávy a další. Škálujte nahoru změnou cenové úrovně od bezplatné na standard.
-* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet jednotek signalizace. Můžete škálovat až na až 100 jednotek.
+* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet jednotek signalizace. Můžete škálovat až na až 100 jednotek. K dispozici jsou omezené možnosti jednotek pro škálování: 1, 2, 5, 10, 20, 50 a 100 jednotek pro jednu instanci služby signalizace.
 
 Použití nastavení škálování trvá několik minut. Ve výjimečných případech může trvat přibližně 30 minut, než se použije. Nevyžadují, abyste změnili kód nebo znovu nasadili serverovou aplikaci.
 

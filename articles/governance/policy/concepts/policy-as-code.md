@@ -3,12 +3,12 @@ title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047322"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651882"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -43,7 +43,9 @@ Příklady těchto formátů souborů jsou k dispozici v [Azure Policy úložiš
 
 Doporučený obecný pracovní postup zásad jako kódu vypadá jako v tomto diagramu:
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Přehled zásad jako kódu pracovní postup" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram znázorňující pole pro pracovní postup kódu z vytvořit k otestování pro nasazení." border="false":::
+   Diagram znázorňující pole zásad jako kód pracovního postupu. Vytvořit pokrývá vytváření definicí zásad a iniciativ. Test pokrývá přiřazení s povoleným režimem vynucení. Ověření brány pro stav dodržování předpisů je následováno přidělením oprávnění M S I a prostředků oprava.  Nasazení pokrývá aktualizaci přiřazení s povoleným režimem vynucení.
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Vytvoření a aktualizace definic zásad
 

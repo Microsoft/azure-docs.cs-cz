@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806497"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595940"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Řešení potíží s App Service v Application Gateway
 
@@ -23,9 +23,8 @@ Naučte se diagnostikovat a řešit problémy, se kterými se můžete setkat p�
 
 V tomto článku se dozvíte, jak řešit následující problémy:
 
-> [!div class="checklist"]
-> * Adresa URL služby App Service se zveřejňuje v prohlížeči, když dojde k přesměrování.
-> * Doména souborů cookie ARRAffinity App Service je nastavená na název hostitele App Service (example.azurewebsites.net) místo původního hostitele.
+* Adresa URL služby App Service se zveřejňuje v prohlížeči, když dojde k přesměrování.
+* Doména souborů cookie ARRAffinity App Service je nastavená na název hostitele App Service (example.azurewebsites.net) místo původního hostitele.
 
 Když aplikace back-end pošle odezvu přesměrování, může být vhodné přesměrovat klienta na jinou adresu URL, než která je určena v back-endové aplikaci. To může být vhodné, pokud je služba App Service hostována za aplikační bránou a vyžaduje, aby klient provedl přesměrování na jeho relativní cestu. Příkladem je přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2. 
 
