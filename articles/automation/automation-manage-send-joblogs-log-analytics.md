@@ -3,14 +3,14 @@ title: Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 description: V tomto článku se dozvíte, jak odesílat datové proudy úloh Runbooku a Azure Monitor protokoly.
 services: automation
 ms.subservice: process-automation
-ms.date: 05/22/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004745"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397422"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
@@ -22,37 +22,57 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 * Korelujte úlohy mezi účty Automation.
 * Pomocí vlastních zobrazení a vyhledávacích dotazů můžete vizualizovat výsledky Runbooku, stav úlohy Runbooku a další související klíčové ukazatele nebo metriky.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="prerequisites-and-deployment-considerations"></a>Předpoklady a požadavky na nasazení
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 
 * Nejnovější verzi [Azure PowerShell](/powershell/azure/).
-* Pracovní prostor služby Log Analytics. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
-* ID prostředku pro váš účet Azure Automation.
 
-Pomocí následujícího příkazu Najděte ID prostředku pro Azure Automation účet:
+* Log Analytics pracovní prostor a ID prostředku. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
 
-```powershell-interactive
-# Find the ResourceId for the Automation account
-Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
-```
+* ID prostředku vašeho účtu Azure Automation.
 
-Chcete-li najít ID prostředku pro Log Analytics pracovní prostor, spusťte následující příkaz prostředí PowerShell:
+## <a name="how-to-find-resource-ids"></a>Jak najít ID prostředků
 
-```powershell-interactive
-# Find the ResourceId for the Log Analytics workspace
-Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
-```
+1. Pomocí následujícího příkazu Najděte ID prostředku pro Azure Automation účet:
+
+    ```powershell-interactive
+    # Find the ResourceId for the Automation account
+    Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
+    ```
+
+2. Zkopírujte hodnotu pro **ResourceID**.
+
+3. Pomocí následujícího příkazu Najděte ID prostředku Log Analytics pracovního prostoru:
+
+    ```powershell-interactive
+    # Find the ResourceId for the Log Analytics workspace
+    Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+    ```
+
+4. Zkopírujte hodnotu pro **ResourceID**.
+
+Pokud chcete vrátit výsledky z konkrétní skupiny prostředků, zahrňte `-ResourceGroupName` parametr. Další informace najdete v tématu [Get-AzResource](/powershell/module/az.resources/get-azresource).
 
 Pokud máte ve výstupu předchozích příkazů více než jeden účet služby Automation nebo pracovní prostor, můžete najít název a další související vlastnosti, které jsou součástí úplného ID prostředku vašeho účtu Automation, a to následujícím způsobem:
 
-1. V Azure Portal na stránce **účty Automation** vyberte svůj účet Automation. 
-2. Na stránce vybraného účtu Automation v části **Nastavení účtu**vyberte **vlastnosti**.  
-3. Na stránce **vlastnosti** si všimněte níže uvedených podrobností.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. V Azure Portal na stránce **účty Automation** vyberte svůj účet Automation.
+1. Na stránce vybraného účtu Automation v části **Nastavení účtu**vyberte **vlastnosti**.
+1. Na stránce **vlastnosti** si všimněte níže uvedených podrobností.
 
     ![Vlastnosti účtu Automation](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+
+## <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
+
+Nastavení diagnostiky automatizace podporuje předávání následujících protokolů platforem a dat metrik:
+
+* JobLogs
+* JobStreams
+* DSCNodeStatus
+* Metriky – celkový počet úloh, celkový počet spuštěných počítačů pro nasazení aktualizací, celkový počet spuštění nasazení aktualizací
+
+Pokud chcete začít odesílat protokoly služby Automation do protokolů Azure Monitor, přečtěte si téma [Vytvoření nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) , které vám pomůže pochopit funkce a metody, které jsou k dispozici pro konfiguraci nastavení diagnostiky pro odesílání protokolů
 
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 
@@ -102,40 +122,11 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | ResourceProvider | Poskytovatel prostředků. Hodnota je MICROSOFT. Automation. |
 | ResourceType | Typ prostředku. Hodnota je AUTOMATIONACCOUNTS. |
 
-## <a name="set-up-integration-with-azure-monitor-logs"></a>Nastavení integrace s protokoly Azure Monitor
-
-1. V počítači spusťte prostředí Windows PowerShell z obrazovky **Start** .
-2. Spusťte následující příkazy prostředí PowerShell a upravte hodnoty pro `$automationAccountId` a `$workspaceId` s hodnotami z předchozí části.
-
-   ```powershell-interactive
-   $workspaceId = "resource ID of the log analytics workspace"
-   $automationAccountId = "resource ID of your Automation account"
-
-   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
-   ```
-
-Po spuštění tohoto skriptu může trvat hodinu, než začnete zobrazovat záznamy v Azure Monitor protokolu nových `JobLogs` nebo `JobStreams` zapsaných protokolů.
-
-Pokud chcete zobrazit protokoly, spusťte následující dotaz v hledání protokolu Log Analytics:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
-
-### <a name="verify-configuration"></a>Ověřit konfiguraci
-
-Pokud chcete potvrdit, že váš účet Automation odesílá protokoly do vašeho pracovního prostoru Log Analytics, zkontrolujte, jestli je na účtu Automation správně nakonfigurovaná diagnostika pomocí následujícího příkazu PowerShellu.
-
-```powershell-interactive
-Get-AzDiagnosticSetting -ResourceId $automationAccountId
-```
-
-Ve výstupu se ujistěte, že:
-
-* V části `Logs` `Enabled` je hodnota true.
-* `WorkspaceId`hodnota je nastavená na `ResourceId` hodnotu pro váš pracovní prostor Log Analytics.
-
 ## <a name="view-automation-logs-in-azure-monitor-logs"></a>Zobrazení protokolů automatizace v protokolech Azure Monitor
 
-Teď, když jste začali odesílat protokoly úloh služby Automation, abyste Azure Monitor protokoly, Podívejme se na to, co můžete s těmito protokoly dělat v protokolech Azure Monitor.
+Teď, když jste začali odesílat streamy úloh a protokoly automatizace, abyste Azure Monitor protokoly, Podívejme se na to, co můžete s těmito protokoly dělat v Azure Monitorch protokolech.
 
-Pokud chcete zobrazit protokoly, spusťte následující dotaz:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spusťte následující dotaz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Odeslání e-mailu, když dojde k chybě nebo pozastavení úlohy Runbooku
 
@@ -145,7 +136,7 @@ Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledán�
 
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **Zobrazit protokoly**.
 
-2. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>Můžete také seskupit podle názvu Runbooku pomocí:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>Můžete také seskupit podle názvu Runbooku pomocí: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. Název účtu Automation najdete v `Resource` poli hledání `JobLogs` .
 
@@ -163,26 +154,41 @@ Kromě upozorňování na chyby můžete zjistit, kdy má úloha Runbooku neukon
 
 ### <a name="view-job-streams-for-a-job"></a>Zobrazení datových proudů úloh pro úlohu
 
-Při ladění úlohy můžete také chtít vyhledat streamy úloh. Následující dotaz zobrazí všechny datové proudy pro jednu úlohu s identifikátorem GUID 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0:
+Při ladění úlohy můžete také chtít vyhledat streamy úloh. Následující dotaz zobrazí všechny datové proudy pro jednu úlohu s identifikátorem GUID `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` :
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0"
+| sort by TimeGenerated asc
+| project ResultDescription
+```
 
 ### <a name="view-historical-job-status"></a>Zobrazit historický stav úlohy
 
 Nakonec můžete chtít vizualizovat historii úloh v průběhu času. Pomocí tohoto dotazu můžete v průběhu času vyhledat stav svých úloh.
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
-<br> ![Graf stavu Log Analytics historické úlohy](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
-
-## <a name="remove-diagnostic-settings"></a>Odebrat nastavení diagnostiky
-
-Chcete-li odebrat nastavení diagnostiky z účtu Automation, spusťte následující příkaz:
-
-```powershell-interactive
-$automationAccountId = "[resource ID of your Automation account]"
-
-Remove-AzDiagnosticSetting -ResourceId $automationAccountId
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started"
+| summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)
 ```
+
+![Graf stavu Log Analytics historické úlohy](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)
+
+### <a name="filter-job-status-output-converted-into-a-json-object"></a>Filtrovat výstup stavu úlohy převedený na objekt JSON
+
+Nedávno jsme změnili chování způsobu, jakým jsou data protokolu automatizace zapsána do `AzureDiagnostics` tabulky ve službě Log Analytics, kde již nedělí vlastnosti JSON na samostatné pole. Pokud jste Runbook nakonfigurovali tak, aby naformátoval objekty ve formátu JSON jako samostatné sloupce, je nutné znovu nakonfigurovat vaše dotazy, aby toto pole analyzovalo na objekt JSON, aby bylo možné tyto vlastnosti přistupovat. To se provádí pomocí [parseJSON](../azure-monitor/log-query/json-data-structures.md#parsejson) pro přístup k určitému prvku JSON ve známé cestě.
+
+Sada Runbook například formátuje vlastnost *ResultDescription* ve výstupním datovém proudu ve formátu JSON s více poli. Pokud chcete vyhledat stav úloh, které jsou ve stavu selhání, jak je uvedeno v poli s názvem **stav**, použijte tento ukázkový dotaz k hledání *ResultDescription* se stavem **selhání**:
+
+```kusto
+AzureDiagnostics
+| where Category == 'JobStreams'
+| extend jsonResourceDescription = parse_json(ResultDescription)
+| where jsonResourceDescription.Status == 'Failed'
+```
+
+![Log Analytics formát JSON historických streamů úloh](media/automation-manage-send-joblogs-log-analytics/job-status-format-json.png)
 
 ## <a name="next-steps"></a>Další kroky
 

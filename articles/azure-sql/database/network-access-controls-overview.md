@@ -1,7 +1,7 @@
 ---
 title: Řízení přístupu k síti
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse).
+description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085459"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435367"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti
 
@@ -102,7 +102,7 @@ start          end
 13.86.216.192  13.86.216.223
 ```
 
-Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nastavit možnost **Povolení služeb Azure přístup k serveru** na off.
+Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nastavit možnost **Povolení služeb Azure přístup k serveru**  na off.
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
@@ -138,7 +138,7 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 > [!NOTE]
 > V podsíti ještě nemůžete mít SQL Database. Pokud byl váš server uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaším SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
 
-## <a name="private-link"></a>Privátní propojení
+## <a name="private-link"></a>Private Link
 
 Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privátního koncového bodu**. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
 

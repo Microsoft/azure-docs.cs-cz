@@ -3,17 +3,17 @@ title: Přepsání podsítě Azure Traffic Manager pomocí rozhraní příkazov�
 description: Tento článek vám pomůže porozumět tomu, jak Traffic Manager přepsání podsítě použít k přepsání metody směrování Traffic Manager profilu pro směrování provozu do koncového bodu na základě IP adresy koncového uživatele prostřednictvím předdefinovaného rozsahu IP adres pro mapování koncových bodů.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: rohink
-ms.openlocfilehash: 33fdc2875d8d766f212301ddfecf9dbb734b876a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b66f1f0061f697349afae21f5f9c63a4089c2794
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689686"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401703"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Přepsání podsítě Traffic Manager pomocí Azure CLI
 

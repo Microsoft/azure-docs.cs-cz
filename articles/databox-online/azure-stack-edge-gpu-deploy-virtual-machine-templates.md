@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268155"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419822"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge prostřednictvím šablon
 
@@ -167,7 +167,7 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
     ![Importovat certifikát koncového bodu služby Blob Storage](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/import-blob-storage-endpoint-certificate-1.png)
 
-    - Pokud používáte certifikáty vygenerované zařízením, Stáhněte a převeďte certifikát koncového bodu služby Blob Storage `.cer` do `.pem` formátu. Spusťte následující příkaz: 
+    - Pokud používáte certifikáty vygenerované zařízením, Stáhněte a převeďte certifikát koncového bodu služby Blob Storage `.cer` do `.pem` formátu. Spusťte následující příkaz. 
     
         ```powershell
         PS C:\windows\system32> Certutil -encode 'C:\myasegpu1_Blob storage (1).cer' .\blobstoragecert.pem
@@ -245,11 +245,14 @@ Soubor `CreateImageAndVnet.parameters.json` má následující parametry:
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -501,7 +504,7 @@ Nasaďte šablonu pro vytvoření virtuálního počítače `CreateVM.json` . Ta
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,7 +550,27 @@ Nasaďte šablonu pro vytvoření virtuálního počítače `CreateVM.json` . Ta
         
         PS C:\07-30-2020>
     ```   
- 
+Příkaz lze také spustit `New-AzureRmResourceGroupDeployment` asynchronně s `–AsJob` parametrem. Tady je ukázkový výstup, když je rutina spuštěná na pozadí. Pak můžete zadat dotaz na stav úlohy, která je vytvořena pomocí `Get-Job` rutiny.
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
 7. Ověřte, jestli se virtuální počítač úspěšně zřídil. Spusťte následující příkaz:
 
     `Get-AzureRmVm`
@@ -555,7 +578,19 @@ Nasaďte šablonu pro vytvoření virtuálního počítače `CreateVM.json` . Ta
 
 ## <a name="connect-to-a-vm"></a>Připojení k virtuálnímu počítači
 
+Postup pro připojení se může lišit v závislosti na tom, jestli jste vytvořili virtuální počítač se systémem Windows nebo Linux.
+
+### <a name="connect-to-windows-vm"></a>Připojení k virtuálnímu počítači s Windows
+
+Pomocí těchto kroků se připojte k virtuálnímu počítači s Windows.
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Připojení k virtuálnímu počítači se systémem Linux
+
+Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Linux.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 

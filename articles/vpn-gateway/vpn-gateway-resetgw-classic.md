@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c0313c74b046d4c93c8625eab8659df392041059
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033049"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419805"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -50,7 +50,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
    ![Resetovat okno VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. V okně Reset klikněte na tlačítko **obnovit** .
 
-## <a name="powershell"></a><a name="ps"></a>Prostředí
+## <a name="powershell"></a><a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 

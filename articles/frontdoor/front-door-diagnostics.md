@@ -3,20 +3,20 @@ title: Monitorování metrik a protokolů v dopředných dveřích Azure | Micro
 description: Tento článek popisuje různé metriky a protokoly přístupu, které podporuje přední dvířka Azure.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: sharadag
-ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056427"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399748"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -31,14 +31,14 @@ Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit 
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
 | --- | --- | --- | --- | --- |
-| RequestCount | Počet požadavků | Count | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
+| RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
 | ResponseSize | Velikost odpovědi | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpověď z front-dveří klientům. |
 | TotalLatency | Celková latence | Milisekund | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas vypočítaný z požadavku klienta obdrženého předními dvířky, dokud klient nepotvrdí poslední bajt odpovědi z předních dveří. |
-| BackendRequestCount | Počet požadavků back-endu | Count | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
+| BackendRequestCount | Počet požadavků back-endu | Počet | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
 | BackendRequestLatency | Latence žádosti back-endu | Milisekund | Back-end | Čas vypočítaný z doby, kdy byla žádost odeslána přes dvířka do back-endu, dokud přední dveře nedostaly poslední bajt odezvy z back-endu. |
 | BackendHealthPercentage | Procento stavu back-endu | Procento | Back-end</br>Problémových | Procento úspěšných sond stavu z předních dveří do back-endu. |
-| WebApplicationFirewallRequestCount | Počet požadavků firewallu webových aplikací | Count | PolicyName</br>RuleName</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy předních dveří. |
+| WebApplicationFirewallRequestCount | Počet požadavků firewallu webových aplikací | Počet | PolicyName</br>RuleName</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy předních dveří. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Protokoly aktivit
 
@@ -99,8 +99,8 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 
 | Scénáře | Počet položek protokolu | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Ne | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Ne | KLEPNUTÍ |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Nepravda | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Nepravda | KLEPNUTÍ |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni POP hraničních i nadřazených cache | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
 

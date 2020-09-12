@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816265"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420927"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -48,11 +48,11 @@ Kategorie a odvětví pro jiný online obchod budou platit pro různé typy nab�
 
 ### <a name="categories"></a>Kategorie
 
-Microsoft AppSource a Azure Marketplace jsou dva různé online obchody, které slouží jako jedinečné požadavky zákazníků. Azure Marketplace se zaměřuje na odborníky na IT a vývojáře, kteří vytvářejí řešení v Azure.  Microsoft AppSource cílení firemních uživatelů, kteří hledají obchodní a/nebo SaaS aplikace, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
+Microsoft AppSource a Azure Marketplace jsou online obchody, které nabízejí různé typy řešení. Azure Marketplace nabízí řešení IT založená na systému nebo pro Azure.  Microsoft AppSource nabízí podniková řešení, jako jsou SaaS aplikace pro odvětví, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
 
-Kategorie a podkategorie jsou namapovány na každý online obchod na základě cílové cílové skupiny. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
+Kategorie a podkategorie jsou namapovány na každý online obchod na základě typu řešení. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
 
-Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou a zamýšlenou cílovou skupinou. Můžete vybrat:
+Vyberte kategorie a podkategorie, které nejlépe odpovídají vašemu typu řešení. Můžete vybrat:
 
 * Až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
 * Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se vám nabídka jenom pro vybranou kategorii.

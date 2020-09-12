@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99985ba8540a347977b9eaf2e733a308fa777b97
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231397"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401618"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
 
@@ -890,9 +890,11 @@ Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/go
 
 Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Postup vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Postup vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.microsoft.com/azure/key-vault/managed-identity
+Ověření Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Jak přiřadit zásadu přístupu Key Vault: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Monitorování Azure Security Center**: Ano
 

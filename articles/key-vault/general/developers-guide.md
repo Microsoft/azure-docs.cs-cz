@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585861"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394750"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -67,7 +67,7 @@ Než budete pracovat s klíči, tajnými klíči a certifikáty ve vašem trezor
 - [Nastavení a načtení certifikátu pomocí rozhraní příkazového řádku](../certificates/quick-create-cli.md)
 - [Nastavení a načtení certifikátu pomocí PowerShellu](../certificates/quick-create-powershell.md)
 - [Nastavení a načtení certifikátu s Azure Portal](../certificates/quick-create-portal.md)
-- [Operace s klíči s REST](/rest/api/keyvault/#certificate-operations)
+- [Operace s certifikáty s REST](/rest/api/keyvault/#certificate-operations)
 - [Nastavení a načtení certifikátu pomocí Pythonu](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Kódování pomocí Key Vault
@@ -125,7 +125,7 @@ Následující články a scénáře poskytují pokyny pro práci s Azure Key Va
 - [Jak používat Key Vault pro rozšiřitelnou správu klíčů pomocí SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) – Konektor SQL Serveru pro Azure Key Vault umožňuje SQL Server a SQL-in-VM k využití služby Azure Key Vault jako poskytovatele technologie EKM (Extensible Key Management) k ochraně svých šifrovacích klíčů pro aplikace. Transparentní šifrování dat, šifrování záloh a šifrování na úrovni sloupce.
 - [Postup nasazení certifikátů do virtuálních počítačů z Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – cloudová aplikace spuštěná ve virtuálním počítači v Azure potřebuje certifikát. Jak tento certifikát do tohoto virtuálního počítače získat ještě dnes?
 - [Nasazení certifikátu webové aplikace Azure prostřednictvím Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) poskytuje podrobné pokyny pro nasazení certifikátů uložených v Key Vault jako součást nabídky [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) .
-- [Udělení oprávnění mnoha aplikacím pro přístup k trezoru klíčů](group-permissions-for-apps.md) Key Vault zásada řízení přístupu podporuje až 1024 záznamů. Můžete však vytvořit Azure Active Directory skupinu zabezpečení. Přidejte do této skupiny zabezpečení všechny přidružené objekty služby a pak udělte přístup k této skupině zabezpečení Key Vault.
+- Přiřaďte zásady přístupu ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [portál](assign-access-policy-portal.md)PowerShell CLI). Key Vault podporuje až 1024 položek zásad přístupu. Pokud chcete zachovat tento limit u uživatelů, vytvořte Azure Active Directory skupiny zabezpečení, přidejte do této skupiny všechny přidružené instanční objekty a pak skupině udělte přístup k Key Vault.
 - Další pokyny pro konkrétní úkoly týkající se integrace a používání trezorů klíčů s Azure najdete v tématu [Ryan Novák ' Azure Resource Manager příklady šablon pro Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [Postup použití Key Vaultho obnovitelného odstranění pomocí](soft-delete-cli.md) rozhraní příkazového řádku vás provede použitím a životního cyklu trezoru klíčů a různých objektů trezoru klíčů s povoleným obnovitelném odstraněním.
 - [Postup použití Key Vaultho obnovitelného odstranění pomocí prostředí PowerShell](soft-delete-powershell.md) vás provede použitím a životního cyklu trezoru klíčů a různých objektů trezoru klíčů s povoleným obnovitelném odstraněním.

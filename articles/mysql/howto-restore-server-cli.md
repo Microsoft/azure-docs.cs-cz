@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27d1841458e8c5e1854d6fcd0810c36d4272cc1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2116b5be4c5d40076aae10ecc2e81d73e7806e6d
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500534"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419465"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -26,7 +26,7 @@ K dokončení tohoto průvodce budete potřebovat:
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
@@ -79,6 +79,12 @@ Když obnovíte Server do dřívějšího bodu v čase, vytvoří se nový serve
 Hodnoty umístění a cenové úrovně obnoveného serveru zůstanou stejné jako u původního serveru. 
 
 Po dokončení procesu obnovení Najděte nový server a ověřte, že se data obnovila podle očekávání. Nový server má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
+
+Navíc po dokončení operace obnovení jsou k dispozici dva parametry serveru, u kterých se obnoví výchozí hodnoty (a po dokončení operace obnovení se nekopírují z primárního serveru).
+*   time_zone – tato hodnota se nastaví na **systém** výchozí hodnoty.
+*   event_scheduler – event_scheduler na obnoveném serveru je nastaven na **vypnuto**
+
+Budete muset zkopírovat hodnotu z primárního serveru a nastavit ji na obnovený server, a to tak, že znovu nakonfigurujete [parametr serveru](howto-server-parameters.md) .
 
 Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně. Obnoví se pravidla brány firewall z původního serveru.
 

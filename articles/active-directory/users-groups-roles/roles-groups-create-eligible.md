@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476034"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401669"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Vytvoření skupiny s přiřazením rolí v Azure Active Directory
 
-Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností ' isAssignableToRole ' nastavenou na hodnotu true nebo byla vytvořena na portálu Azure AD s **rolemi služby Azure AD, kterou je možné přiřadit do skupiny** zapnuté. Tento atribut skupiny vytvoří skupinu, která může být přiřazena roli v Azure Active Directory (Azure AD). Tento článek popisuje, jak vytvořit tento speciální druh skupiny.
+Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností ' isAssignableToRole ' nastavenou na hodnotu true nebo byla vytvořena na portálu Azure AD s **rolemi služby Azure AD, kterou je možné přiřadit do skupiny** zapnuté. Tento atribut skupiny vytvoří skupinu, která může být přiřazena roli v Azure Active Directory (Azure AD). Tento článek popisuje, jak vytvořit tento speciální druh skupiny. **Poznámka:** Skupina s vlastností isAssignableToRole nastavenou na hodnotu true nemůže být dynamickým typem členství. Další informace najdete v tématu [použití skupiny ke správě přiřazení rolí Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
 
 ## <a name="using-azure-ad-admin-center"></a>Použití centra pro správu Azure AD
 
@@ -128,4 +128,4 @@ Pro tento typ skupiny `isPublic` bude vždycky false a `isSecurityEnabled` bude 
 
 - [Přiřazení role ke skupině cloudu](roles-groups-assign-role.md)
 - [Použití skupin cloudů ke správě přiřazení rolí](roles-groups-concept.md)
-- [Řešení potíží s rolemi přiřazenými ke skupinám cloudu](roles-groups-faq-troubleshooting.md)
+- [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](roles-groups-faq-troubleshooting.md)

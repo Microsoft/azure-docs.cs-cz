@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: požadavky QoS'
 description: Tato stránka poskytuje podrobné požadavky pro konfiguraci a správu technologie QoS. Projednávají se Skype pro firmy/hlasové služby.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: cherylmc
-ms.openlocfilehash: 37c8b760ada12bd8f54c78ac6a0ea228d113b6c2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 871af5b767e8cfe10db3a0a1c15c47340e25581f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536982"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395022"
 ---
 # <a name="expressroute-qos-requirements"></a>Požadavky na technologii QoS služby ExpressRoute
 Skype pro firmy má úlohy, které vyžadují odlišné zacházení podle QoS. Pokud budete chtít využívat hlasové služby prostřednictvím ExpressRoute, měli byste dodržovat požadavky popsané dál.

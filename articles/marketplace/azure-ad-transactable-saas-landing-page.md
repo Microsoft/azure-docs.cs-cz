@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921262"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378793"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky pro SaaS nabídku s podporou transakcí na komerčním webu Marketplace
 
@@ -38,15 +38,15 @@ Cílová stránka obvykle obsahuje následující:
 Následující části vás provedou procesem vytvoření cílové stránky:
 
 1. [Vytvořte registraci aplikace Azure AD](#create-an-azure-ad-app-registration) pro cílovou stránku.
-2. [Jako výchozí bod pro aplikaci použijte ukázku kódu](#use-a-code-sample-as-a-starting-point) .
-3. Pomocí komerčního tržiště [vyřešte identifikační token nákupu pro Marketplace](#resolve-the-marketplace-purchase-identification-token) , který jste přidali k adrese URL.
-4. [Přečtěte si informace z deklarací identity kódovaných v tokenu ID](#read-information-from-claims-encoded-in-the-id-token), které byly přijaty z Azure AD po přihlášení, které se odeslaly spolu s požadavkem.
-5. [Použijte rozhraní Microsoft Graph API](#use-the-microsoft-graph-api) k získání dalších informací, podle potřeby.
-6. [Využijte dvě aplikace Azure AD ke zvýšení zabezpečení v produkčním](#use-two-azure-ad-apps-to-improve-security-in-production)prostředí.
+1. [Jako výchozí bod pro aplikaci použijte ukázku kódu](#use-a-code-sample-as-a-starting-point) .
+1. [Využijte dvě aplikace Azure AD ke zvýšení zabezpečení v produkčním](#use-two-azure-ad-apps-to-improve-security-in-production)prostředí.
+1. Pomocí komerčního tržiště [vyřešte identifikační token nákupu pro Marketplace](#resolve-the-marketplace-purchase-identification-token) , který jste přidali k adrese URL.
+1. [Přečtěte si informace z deklarací identity kódovaných v tokenu ID](#read-information-from-claims-encoded-in-the-id-token), který jste dostali z Azure AD po přihlášení, které se odeslaly s požadavkem.
+1. [Použijte rozhraní Microsoft Graph API](#use-the-microsoft-graph-api) k získání dalších informací, podle potřeby.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Vytvoření registrace aplikace Azure AD
 
-Obchod na komerčním webu je plně integrovaný s Azure AD. Nákupčí obdrží na webu Marketplace ověření pomocí [účtu Azure AD nebo účet Microsoft (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Po zakoupení kupující dostane z komerčního tržiště na adresu URL vaší cílové stránky, aby aktivoval a spravoval předplatné vaší aplikace SaaS. Je nutné, aby se nákupčí přihlásil do vaší aplikace pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na stránce [technické konfigurace](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) nabídky.
+Obchod na komerčním webu je plně integrovaný s Azure AD. Nákupčí obdrží na webu Marketplace ověření pomocí [účtu Azure AD nebo účet Microsoft (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Po zakoupení kupující dostane z komerčního tržiště na adresu URL vaší cílové stránky, aby aktivoval a spravoval předplatné vaší aplikace SaaS. Je nutné, aby se nákupčí přihlásil do vaší aplikace pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na stránce [technické konfigurace](plan-saas-offer.md#technical-information) nabídky.
 
 Prvním krokem k použití identity je, abyste se ujistili, že je vaše cílová stránka registrovaná jako aplikace Azure AD. Registrace aplikace vám umožní pomocí Azure AD ověřovat uživatele a žádat o přístup k prostředkům uživatele. Může být považována za definici aplikace, která umožňuje službě zjistit, jak vydávat tokeny aplikaci na základě nastavení aplikace.
 
@@ -82,7 +82,7 @@ To umožňuje řešení pracovat ve scénářích, které sledují princip [odd�
 Při odeslání kupujícího na cílovou stránku se do parametru URL přidá token. Tento token se liší od tokenu vydaného službou Azure AD a přístupového tokenu, který se používá pro ověřování služba-služba. používá se jako vstup pro volání [rozhraní API pro splnění SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) k získání podrobností o předplatném. Stejně jako u všech volání rozhraní API pro plnění SaaS se vaše žádost o služby na službu ověří pomocí přístupového tokenu, který je založený na uživateli ID aplikace Azure AD pro ověřování služba-služba.
 
 > [!NOTE]
-> Ve většině případů je vhodnější provést toto volání z druhé, jediné klientské aplikace. Viz [použití dvou aplikací Azure AD ke zvýšení zabezpečení v produkčním](#use-two-azure-ad-apps-to-improve-security-in-production) prostředí dále v tomto článku.
+> Ve většině případů je vhodnější provést toto volání z druhé, jediné klientské aplikace. Viz [použití dvou aplikací Azure AD ke zvýšení zabezpečení v produkčním](#use-two-azure-ad-apps-to-improve-security-in-production) prostředí výše v tomto článku.
 
 ### <a name="request-an-access-token"></a>Vyžádání přístupového tokenu
 
@@ -131,4 +131,4 @@ Většina aplikací zaregistrovaných ve službě Azure AD uděluje delegovaná 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření nabídky SaaS na komerčním webu Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Jak vytvořit nabídku SaaS na komerčním webu Marketplace](create-new-saas-offer.md)

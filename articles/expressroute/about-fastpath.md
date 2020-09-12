@@ -2,17 +2,17 @@
 title: Informace o službě Azure ExpressRoute FastPath
 description: Přečtěte si o Azure ExpressRoute FastPath pro odesílání síťového provozu obejít bránu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.author: cherylmc
-ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282847"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398048"
 ---
 # <a name="about-expressroute-fastpath"></a>Informace o službě ExpressRoute FastPath
 

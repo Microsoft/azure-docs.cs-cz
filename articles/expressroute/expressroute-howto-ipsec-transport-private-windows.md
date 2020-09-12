@@ -2,18 +2,18 @@
 title: 'Soukromý partnerský vztah Azure ExpressRoute: konfigurace režimu přenosu IPsec – hostitelé Windows'
 description: Jak povolit transportní režim protokolu IPsec mezi virtuálními počítači Azure a místními hostiteli Windows prostřednictvím privátního partnerského vztahu ExpressRoute pomocí objektů zásad skupiny a organizačních jednotek
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396484"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu IPsec pro privátní partnerské vztahy ExpressRoute
 
@@ -246,7 +246,7 @@ Přidejte do zásady protokolu IPsec **seznam filtrů IP** a **akci filtru** , k
 4. **Typ sítě** definuje, které síťové připojení přidruží k zásadám zabezpečení. Vyberte **všechna síťová připojení**a pak klikněte na **Další**.
 
    [![44]][44]
-5. Vyberte seznam filtrů IP, který jste předtím vytvořili, **Azure-premises-HTTP8080**, a pak klikněte na **Další**.
+5. Vyberte seznam filtrů IP, který jste předtím vytvořili,  **Azure-premises-HTTP8080**, a pak klikněte na **Další**.
 
    [![45]][45]
 6. Vyberte existující akci filtru **myEncryption** , kterou jste vytvořili dříve.

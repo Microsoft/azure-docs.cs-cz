@@ -3,12 +3,12 @@ title: Obnovení dat z Azure Backup Server
 description: Obnovte data, která jste chránili do trezoru Recovery Services, z jakéhokoli Azure Backup Server zaregistrovaného v tomto trezoru.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012003"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378062"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 
@@ -21,7 +21,7 @@ Pomocí Azure Backup Server můžete obnovit data, která jste zálohovali do tr
 
 Postup obnovení dat z Azure Backup Server:
 
-1. Na kartě **obnovení** v konzole pro správu Azure Backup Server klikněte na **Přidat externí DPM** (v levém horním rohu obrazovky).
+1. Na kartě **obnovení** v konzole pro správu Azure Backup server vyberte **Přidat externí DPM** (v levém horním rohu obrazovky).
 
     ![Přidat externí DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Stáhněte si nové **přihlašovací údaje trezoru** z trezoru přidruženého k **Azure Backup Server** , kde se mají data obnovovat, vyberte Azure Backup server ze seznamu Azure Backup serverů zaregistrovaných v úložišti Recovery Services a poskytněte **Šifrovací heslo** přidružené k serveru, jehož data se obnovují.
@@ -42,10 +42,10 @@ Postup obnovení dat z Azure Backup Server:
     V dolním podokně se zobrazí seznam souborů a složek, které se dají Procházet a obnovovat do libovolného umístění.
 
     ![Body obnovení externího serveru DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Pravým tlačítkem myši klikněte na příslušnou položku a klikněte na tlačítko **obnovit**.
+5. Klikněte pravým tlačítkem na příslušnou položku a vyberte **obnovit**.
 
     ![Externí obnovení DPM](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Zkontrolujte **Výběr obnovení**. Ověřte data a čas obnovení záložní kopie a také zdroj, ze kterého byla vytvořena záložní kopie. Pokud je výběr nesprávný, kliknutím na tlačítko **Storno** přejděte zpět na kartu obnovení a vyberte příslušný bod obnovení. Pokud je výběr správný, klikněte na tlačítko **Další**.
+6. Zkontrolujte **Výběr obnovení**. Ověřte data a čas obnovení záložní kopie a také zdroj, ze kterého byla vytvořena záložní kopie. Pokud je výběr nesprávný, kliknutím na **tlačítko Storno** přejděte zpět na kartu obnovení a vyberte příslušný bod obnovení. Pokud je výběr správný, vyberte **Další**.
 
     ![Souhrn obnovení externí aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. Vyberte **obnovit do alternativního umístění**. **Přejděte** do správného umístění pro obnovení.
@@ -62,7 +62,7 @@ Postup obnovení dat z Azure Backup Server:
      Určete, zda bude odesláno **oznámení** po úspěšném dokončení obnovení.
 
      ![Oznámení o externím obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po kliknutí na tlačítko **obnovit**se data obnoví do příslušného místního umístění.
+9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po výběru **obnovení**se data obnoví do příslušného místního umístění.
 
     ![Souhrn možností externích obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ Postup obnovení dat z Azure Backup Server:
    >
 
     ![Monitorování obnovení](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Kliknutím na **Vymazat externí DPM** na kartě **obnovení** na serveru DPM můžete odebrat zobrazení externího serveru DPM.
+10. Můžete vybrat možnost **Vymazat externí DPM** na kartě **obnovení** serveru DPM a odebrat tak zobrazení externího serveru DPM.
 
     ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

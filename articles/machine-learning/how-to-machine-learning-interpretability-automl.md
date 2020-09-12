@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306413"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419108"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení (Preview)
 
@@ -39,6 +39,14 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="interpretability-during-training-for-the-best-model"></a>Možnost interpretace během školení pro nejlepší model
 
 Načtěte vysvětlení z `best_run` , který obsahuje vysvětlení pro inženýrské funkce.
+
+> [!Warning]
+> Interpretace, nejlepší vysvětlení modelu, není k dispozici pro experimenty prognózy automatických ML, které doporučují následující algoritmy jako nejlepší model: 
+> * ForecastTCN
+> * Průměr 
+> * Naive
+> * Sezónní průměr 
+> * Sezónní Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Stažení důležitosti funkcí z úložiště artefaktů
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Výklad při odvozování
+## <a name="interpretability-during-inference"></a>Výklad při odvozování
 
 V této části se dozvíte, jak zprovoznění model automatizovaného ML s vysvětlením, který se použil k výpočtu vysvětlení v předchozí části.
 

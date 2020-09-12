@@ -2,17 +2,17 @@
 title: Vývoj a integrace rozhraní API Azure ExpressRoute CrossConnnections
 description: Tento článek poskytuje podrobný přehled pro partnery ExpressRoute o typu prostředku expressRouteCrossConnections.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.author: mialdrid
-ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: duau
+ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921618"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397844"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>Vývoj a integrace rozhraní ExpressRoute CrossConnnections API
 

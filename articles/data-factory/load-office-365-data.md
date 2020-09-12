@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415798"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435554"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *LoadFromOffice365Demo* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**LoadFromOffice365Demo**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-    * **Verze**: vyberte **v2**.
+    * **Verze**: Vyberte **V2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
@@ -63,7 +63,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
 2. V okně Nová datová sada vyberte možnost **Office 365**a potom vyberte **pokračovat**.
  
-3. Teď jste na kartě Konfigurace aktivity kopírování. Kliknutím na tlačítko **Upravit** vedle datové sady Office 365 můžete pokračovat v konfiguraci dat.
+3. Nyní jste na kartě Konfigurace aktivity kopírování. Pokud chcete pokračovat v konfiguraci dat, klikněte na tlačítko **Upravit** vedle datové sady Office 365.
 
     ![Obecná konfigurace Office 365 datová sada](./media/load-office-365-data/transition-to-edit-dataset.png)
  
@@ -147,7 +147,7 @@ Nyní přejdete do cílového Azure Blob Storage a ověříte, že data Office 3
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse: 
+V následujícím článku se dozvíte o podpoře Azure synapse Analytics (dříve SQL Data Warehouse): 
 
 > [!div class="nextstepaction"]
 >[Konektor Office 365](connector-office-365.md)

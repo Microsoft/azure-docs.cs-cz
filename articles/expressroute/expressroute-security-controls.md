@@ -3,16 +3,16 @@ title: 'Azure ExpressRoute: řízení zabezpečení'
 description: Seznamte se s ovládacími prvky zabezpečení ve službě Azure ExpressRoute, což jsou kvality nebo funkce, které umožňují zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 services: expressroute
 ms.service: expressroute
-author: msmbaldwin
+author: duongau
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 6a4589d1aa768548f2ae9ffa01f289c823c0b2e5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 24057de44f3d28df96bcb93e89af9c3afa6fa3c6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192422"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394903"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Ovládací prvky zabezpečení pro Azure ExpressRoute
 
@@ -26,23 +26,23 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Exp
 |---|---|--|
 | Podpora koncového bodu služby| – |  |
 | Podpora vkládání virtuální sítě| – | |
-| Izolace sítě a podpora brány firewall| Ano | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
+| Izolace sítě a podpora brány firewall| Yes | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
 | Podpora vynuceného tunelování| – | Přes Border Gateway Protocol (BGP). |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz [ExpressRoute monitoring, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md).|
-| Protokolování a audit roviny řízení a správy| Ano |  |
-| Protokolování a audit roviny dat| Ne |   |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Yes | Viz [ExpressRoute monitoring, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md).|
+| Protokolování a audit roviny řízení a správy| Yes |  |
+| Protokolování a audit roviny dat| No |   |
 
 ## <a name="identity"></a>Identita
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
-| Autorizace|  Ano |Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
+| Authentication| Yes | Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
+| Autorizace|  Yes |Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -51,15 +51,15 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Exp
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  – | ExpressRoute neukládá zákaznická data. |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | – |  |
 | Šifrování na úrovni sloupce (Azure Data Services)| – | |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ne | |
-| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| No | |
+| Zašifrovaná volání rozhraní API| Yes | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
 
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | Přes poskytovatele síťových prostředků (NRP). |
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Yes | Přes poskytovatele síťových prostředků (NRP). |
 
 ## <a name="next-steps"></a>Další kroky
 

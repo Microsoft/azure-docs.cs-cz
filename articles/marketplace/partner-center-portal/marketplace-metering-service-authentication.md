@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319962"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378725"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategie ověřování služby měření na Marketplace
 
@@ -44,7 +44,7 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 #### <a name="http-method"></a>HTTP – metoda
 
-**POST**
+**SPUŠTĚNÍ**
 
 #### <a name="request-url"></a>*Adresa URL požadavku*
 
@@ -54,24 +54,24 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 |  **Název parametru** |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   Ano         | ID tenanta registrované aplikace služby Azure AD   |
+|  `tenantId`         |   Pravda         | ID tenanta registrované aplikace služby Azure AD   |
 | | | |
 
 #### <a name="request-header"></a>*Hlavička žádosti*
 
 |  **Název hlavičky**    |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   Ano         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Pravda         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*Text žádosti*
 
 |  **Název vlastnosti**  |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   Ano         | Typ udělení Použijte `client_credentials`. |
-|  `Client_id`        |   Ano         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
-|  `client_secret`    |   Ano         | Tajný kód přidružený k aplikaci Azure AD.  |
-|  `Resource`         |   Ano         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
+|  `Grant_type`       |   Pravda         | Typ udělení Použijte `client_credentials`. |
+|  `Client_id`        |   Pravda         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
+|  `client_secret`    |   Pravda         | Tajný kód přidružený k aplikaci Azure AD.  |
+|  `Resource`         |   Pravda         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
 #### <a name="response"></a>*Response* (Odpověď)
@@ -114,7 +114,7 @@ Například použijte následující postup k ověření pomocí virtuálního p
     * [Azure Portal UI](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [Rozhraní příkazového řádku](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Sady Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -145,7 +145,7 @@ Například použijte následující postup k ověření pomocí virtuálního p
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,4 +156,4 @@ Například použijte následující postup k ověření pomocí virtuálního p
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření nabídky aplikací Azure](./create-new-azure-apps-offer.md)
-* [Vytvoření SaaS nabídky s podporou transakcí](./offer-creation-checklist.md)
+* [Naplánování nabídky SaaS](../plan-saas-offer.md)

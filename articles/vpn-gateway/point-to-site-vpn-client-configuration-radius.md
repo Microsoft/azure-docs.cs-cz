@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986562"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419907"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování RADIUS P2S
 
@@ -45,7 +45,7 @@ Ověřování uživatelského jména a hesla můžete nakonfigurovat buď tak, �
 
 Při konfiguraci ověřování uživatelského jména a hesla můžete vytvořit pouze konfiguraci pro protokol EAP-MSCHAPv2 uživatelského jména/hesla ověřování. V příkazech `-AuthenticationMethod` je `EapMSChapv2` .
 
-### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a>1. generování konfiguračních souborů klienta VPN
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. generování konfiguračních souborů klienta VPN
 
 Konfigurační soubory klienta VPN můžete vygenerovat pomocí Azure Portal nebo pomocí Azure PowerShell.
 
@@ -80,7 +80,7 @@ K načtení dříve generovaných konfiguračních souborů klienta použijte n�
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. konfigurace klientů VPN
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. konfigurace klientů VPN
 
 Můžete nakonfigurovat tyto klienty VPN:
 
@@ -184,11 +184,11 @@ Můžete vytvořit konfigurační soubory klienta VPN pro ověřování certifik
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-V příkazech `-AuthenticationMethod` je `EapTls` . Při ověřování certifikátu klient ověří server RADIUS ověřením jeho certifikátu. `-RadiusRootCert`je soubor. cer obsahující kořenový certifikát, který se používá k ověření serveru RADIUS.
+V příkazech `-AuthenticationMethod` je `EapTls` . Při ověřování certifikátu klient ověří server RADIUS ověřením jeho certifikátu. `-RadiusRootCert` je soubor. cer obsahující kořenový certifikát, který se používá k ověření serveru RADIUS.
 
 Každé klientské zařízení VPN vyžaduje nainstalovaný klientský certifikát. V některých případech má zařízení s Windows více klientských certifikátů. Při ověřování může to mít za následek místní dialogové okno, ve kterém jsou uvedené všechny certifikáty. Uživatel pak musí zvolit certifikát, který chcete použít. Správný certifikát lze odfiltrovat zadáním kořenového certifikátu, kterému má klientský certifikát zřetězit. 
 
-`-ClientRootCert`je soubor. CER, který obsahuje kořenový certifikát. Je to volitelný parametr. Pokud zařízení, ke kterému se chcete připojit, má jenom jeden certifikát klienta, nemusíte tento parametr zadávat.
+`-ClientRootCert` je soubor. CER, který obsahuje kořenový certifikát. Je to volitelný parametr. Pokud zařízení, ke kterému se chcete připojit, má jenom jeden certifikát klienta, nemusíte tento parametr zadávat.
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="certfiles"></a>1. generování konfiguračních souborů klienta VPN
 
@@ -211,7 +211,7 @@ K načtení dříve generovaných konfiguračních souborů klienta použijte n�
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a>2. konfigurace klientů VPN
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2. konfigurace klientů VPN
 
 Můžete nakonfigurovat tyto klienty VPN:
 

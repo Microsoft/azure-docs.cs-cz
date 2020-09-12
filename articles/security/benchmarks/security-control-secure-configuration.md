@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077224"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400088"
 ---
 # <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
 
@@ -174,7 +174,9 @@ K zjednodušení a zabezpečení správy tajných kódů pro cloudové aplikace 
 
 - [Vytvoření Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Ověření Key Vault](../../key-vault/general/authentication.md)
+
+- [Postup přiřazení zásady přístupu Key Vault](../../key-vault/general/assign-access-policy-portal.md)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 

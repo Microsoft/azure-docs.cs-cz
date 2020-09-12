@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553423"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400071"
 ---
 # <a name="scenario-any-to-any"></a>Scénář: Any-to-Any
 
@@ -29,7 +29,7 @@ Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénář
 | Virtuální sítě     | &#8594;|      X     |     X    |
 | Větve   | &#8594;|    X     |     X    |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (strana "do" toku, záhlaví sloupců v tabulce kurzívou) pro konkrétní tok přenosů, kde "X" znamená, že připojení je zajištěno službou Virtual WAN.
 
 Vzhledem k tomu, že všechna připojení z virtuální sítě i větví (VPN, ExpressRoute a User VPN) mají stejné požadavky na připojení, vyžaduje se jedna směrovací tabulka. V důsledku toho budou všechna připojení přidružená a šířena ke stejné směrovací tabulce, výchozí směrovací tabulce:
 

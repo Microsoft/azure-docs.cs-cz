@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285437"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418581"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -76,6 +76,13 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
 Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
+
+> [!NOTE]
+> K dispozici jsou dva parametry serveru, které se resetují na výchozí hodnoty (a po operaci obnovení se nekopírují přes primární server).
+> * time_zone – tato hodnota se nastaví na **systém** výchozí hodnoty.
+> * event_scheduler – event_scheduler na obnoveném serveru je nastaven na **vypnuto**
+>
+> Tyto parametry serveru budete muset nastavit tak, že znovu nakonfigurujete [parametr serveru](howto-server-parameters.md) .
 
 Obnovení k bodu v čase je užitečné ve více scénářích. Například když uživatel omylem odstraní data, ponechá důležitou tabulku nebo databázi, nebo pokud aplikace náhodně přepíše dobrá data s chybnými daty z důvodu vady aplikace.
 

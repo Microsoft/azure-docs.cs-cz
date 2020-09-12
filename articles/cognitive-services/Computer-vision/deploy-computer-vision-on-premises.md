@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2a017371ccb3cf70812aed5606c386746024884
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877965"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443156"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 
@@ -25,9 +25,9 @@ Jednou z možností, jak místně spravovat Počítačové zpracování obrazu k
 
 Před použitím Počítačové zpracování obrazu kontejnerů v místním prostředí použijte následující požadavky:
 
-| Požaduje se | Účel |
+| Vyžadováno | Účel |
 |----------|---------|
-| Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete. |
+| Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][free-azure-account]. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
 | Helm CLI | Nainstalujte rozhraní příkazového [řádku Helm][helm-install], které se používá k instalaci grafu Helm (definice balíčku kontejneru). |
 | Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
@@ -48,9 +48,9 @@ V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sdílení přihlašovacích údajů Docker s clusterem Kubernetes
 
-Pokud chcete, aby cluster `docker pull` Kubernetes nakonfigurovali bitové kopie z registru `containerpreview.azurecr.io` kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním následujícího [`kubectl create`][kubectl-create] příkazu vytvořte *tajný klíč registru Docker-Registry* na základě přihlašovacích údajů, které jste zadali v části požadavky na přístup k registru kontejneru.
+Pokud chcete, aby cluster Kubernetes `docker pull` nakonfigurovali bitové kopie z `containerpreview.azurecr.io` registru kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním [`kubectl create`][kubectl-create] následujícího příkazu vytvořte *tajný klíč registru Docker-Registry* na základě přihlašovacích údajů, které jste zadali v části požadavky na přístup k registru kontejneru.
 
-V rozhraní příkazového řádku, které zvolíte, spusťte následující příkaz. Nezapomeňte nahradit `<username>`, `<password>`a `<email-address>` s přihlašovacími údaji registru kontejneru.
+V rozhraní příkazového řádku, které zvolíte, spusťte následující příkaz. Nezapomeňte nahradit `<username>` , `<password>` a `<email-address>` s přihlašovacími údaji registru kontejneru.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,7 +61,7 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> Pokud již máte přístup k registru `containerpreview.azurecr.io` kontejneru, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
+> Pokud již máte přístup k `containerpreview.azurecr.io` registru kontejneru, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -74,13 +74,13 @@ Následující výstup je vytištěn do konzoly, pokud byl tajný kód úspěšn
 secret "containerpreview" created
 ```
 
-Chcete-li ověřit, zda byl tajný klíč vytvořen, [`kubectl get`][kubectl-get] spusťte s `secrets` příznakem.
+Chcete-li ověřit, zda byl tajný klíč vytvořen, spusťte [`kubectl get`][kubectl-get] s `secrets` příznakem.
 
 ```console
 kubectl get secrets
 ```
 
-Po spuštění `kubectl get secrets` se zobrazí všechna nakonfigurovaná tajná klíčová.
+Po spuštění se `kubectl get secrets` zobrazí všechna nakonfigurovaná tajná klíčová.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
@@ -89,16 +89,25 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurace hodnot grafu Helm pro nasazení
 
-Začněte tím, že vytvoříte složku s názvem *Read*a potom do nového souboru s názvem *Chart. yml*vložte následující YAML obsah.
+Začněte vytvořením složky s názvem *Read*. Pak vložte následující obsah YAML do nového souboru s názvem `chart.yaml` :
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 name: read
 version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+dependencies:
+- name: rabbitmq
+  condition: read.image.args.rabbitmq.enabled
+  version: ^6.12.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: redis
+  condition: read.image.args.redis.enabled
+  version: ^6.0.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Pokud chcete nakonfigurovat výchozí hodnoty grafu Helm, zkopírujte a vložte následující YAML do souboru s názvem `values.yaml`. Nahraďte `# {ENDPOINT_URI}` komentáře `# {API_KEY}` a vlastními hodnotami.
+Pokud chcete nakonfigurovat výchozí hodnoty grafu Helm, zkopírujte a vložte následující YAML do souboru s názvem `values.yaml` . Nahraďte `# {ENDPOINT_URI}` `# {API_KEY}` komentáře a vlastními hodnotami. V případě potřeby nakonfigurujte resultExpirationPeriod, Redis a RabbitMQ.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -107,7 +116,7 @@ read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry: containerpreview.azurecr.io/
+    registry:  containerpreview.azurecr.io/
     repository: microsoft/cognitive-services-read
     tag: latest
     pullSecret: containerpreview # Or an existing secret
@@ -115,25 +124,52 @@ read:
       eula: accept
       billing: # {ENDPOINT_URI}
       apikey: # {API_KEY}
+      
+      # Result expiration period setting. Specify when the system should clean up recognition results.
+      # For example, resultExpirationPeriod=1, the system will clear the recognition result 1hr after the process.
+      # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
+      resultExpirationPeriod: 1
+      
+      # Redis storage, if configured, will be used by read container to store result records.
+      # A cache is required if multiple read containers are placed behind load balancer.
+      redis:
+        enabled: false # {true/false}
+        password: password
+
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # placed behind load balancer.
+      rabbitmq:
+        enabled: false # {true/false}
+        rabbitmq:
+          username: user
+          password: password
 ```
 
 > [!IMPORTANT]
-> Pokud nejsou `billing` zadány hodnoty a `apikey` , vyprší platnost služeb po 15 minutách. Ověření se nezdaří, protože služby nebudou k dispozici.
+> - Pokud `billing` `apikey` nejsou zadány hodnoty a, vyprší platnost služeb po 15 minutách. Ověřování je také neúspěšné, protože služby nejsou k dispozici.
+> 
+> - Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+>
 
-Vytvořte složku *šablon* v adresáři *pro čtení* . Zkopírujte a vložte následující YAML do souboru s názvem `deployment.yaml`. `deployment.yaml` Soubor bude sloužit jako šablona Helm.
+Vytvořte složku *šablon* v adresáři *pro čtení* . Zkopírujte a vložte následující YAML do souboru s názvem `deployment.yaml` . `deployment.yaml`Soubor bude sloužit jako šablona Helm.
 
 > Šablony generují soubory manifestu, což jsou popisy prostředků ve formátu YAML, které Kubernetes může pochopit. [– Průvodce šablonou grafu Helm][chart-template-guide]
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: read
+  labels:
+    app: read-deployment
 spec:
+  selector:
+    matchLabels:
+      app: read-app
   template:
     metadata:
       labels:
-        app: read-app
+        app: read-app       
     spec:
       containers:
       - name: {{.Values.read.image.name}}
@@ -147,14 +183,23 @@ spec:
           value: {{.Values.read.image.args.billing}}
         - name: apikey
           value: {{.Values.read.image.args.apikey}}
+        args:        
+        - ReadEngineConfig:ResultExpirationPeriod={{ .Values.read.image.args.resultExpirationPeriod }}
+        {{- if .Values.read.image.args.rabbitmq.enabled }}
+        - Queue:RabbitMQ:HostName={{ include "rabbitmq.hostname" . }}
+        - Queue:RabbitMQ:Username={{ .Values.read.image.args.rabbitmq.rabbitmq.username }}
+        - Queue:RabbitMQ:Password={{ .Values.read.image.args.rabbitmq.rabbitmq.password }}
+        {{- end }}      
+        {{- if .Values.read.image.args.redis.enabled }}
+        - Cache:Redis:Configuration={{ include "redis.connStr" . }}
+        {{- end }}
       imagePullSecrets:
-      - name: {{.Values.read.image.pullSecret}}
-
+      - name: {{.Values.read.image.pullSecret}}      
 --- 
 apiVersion: v1
 kind: Service
 metadata:
-  name: read
+  name: read-service
 spec:
   type: LoadBalancer
   ports:
@@ -163,15 +208,30 @@ spec:
     app: read-app
 ```
 
+Ve stejné složce *šablon* zkopírujte a vložte do nástroje následující pomocné funkce `helpers.tpl` . `helpers.tpl` definuje užitečné funkce, které vám pomůžou generovat šablonu Helm.
+
+```yaml
+{{- define "rabbitmq.hostname" -}}
+{{- printf "%s-rabbitmq" .Release.Name -}}
+{{- end -}}
+
+{{- define "redis.connStr" -}}
+{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
+{{- $connTail := "ssl=False,abortConnect=False" -}}
+{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- end -}}
+```
 Šablona Určuje službu Vyrovnávání zatížení a nasazení kontejneru nebo obrázku pro čtení.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Balíček Kubernetes (Helm graf)
 
-*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z registru `containerpreview.azurecr.io` kontejneru.
+*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z `containerpreview.azurecr.io` registru kontejneru.
 
 > [Graf Helm][helm-charts] je kolekce souborů, které popisují související sadu prostředků Kubernetes. Jeden graf se dá použít k nasazení jednoduchého, podobného memcached nebo nějakého složitého, jako je úplný zásobník webových aplikací se servery HTTP, databázemi, mezipamětemi a tak dále.
 
-Zadané *grafy Helm* vyžádají image Docker služby počítačové zpracování obrazu a odpovídající službu z registru `containerpreview.azurecr.io` kontejneru.
+Zadané *grafy Helm* vyžádají image Docker služby počítačové zpracování obrazu a odpovídající službu z `containerpreview.azurecr.io` registru kontejneru.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalace grafu Helm v clusteru Kubernetes
 
@@ -235,7 +295,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kubernetes Service (AKS) [najdete tady][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Kontejnery Cognitive Services][cog-svcs-containers]
+> [Kontejnery služeb Cognitive Services][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

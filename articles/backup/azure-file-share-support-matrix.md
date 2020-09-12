@@ -4,12 +4,12 @@ description: Obsahuje souhrn nastavení podpory a omezení při zálohování sd
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289500"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378028"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -25,7 +25,7 @@ Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s v
 
 | Podrobnosti účtu úložiště | Podpora                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Druh účtu            | Azure Backup podporuje sdílené složky Azure, které jsou k dispozici v obecných účelech V1, pro obecné účely v2 a na typech úložiště souborů. |
+| Druh účtu            | Azure Backup podporuje sdílené složky Azure přítomné v účtech úložiště pro obecné účely V1, obecné verze V2 a souborové úložiště. |
 | Výkon              | Azure Backup podporuje sdílení souborů v účtech Standard a Premium Storage. |
 | Replikace              | Podpora sdílených složek Azure v účtech úložiště s jakýmkoli typem replikace je podporovaná. |
 | Povolená brána firewall         | Sdílené složky Azure v účtech úložiště s pravidly brány firewall, které umožňují Microsoft Azure služby pro přístup k účtu úložiště, jsou podporované.|
@@ -35,7 +35,7 @@ Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s v
 | Typ sdílené složky                                   | Podpora   |
 | -------------------------------------------------- | --------- |
 | Standard                                           | Podporováno |
-| Velká                                              | Podporováno |
+| Velký                                              | Podporováno |
 | Premium                                            | Podporováno |
 | Sdílené složky připojené ke službě Azure File Sync | Podporováno |
 

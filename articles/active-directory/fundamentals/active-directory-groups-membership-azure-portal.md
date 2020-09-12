@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797538"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565460"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupinu z jiné skupiny pomocí Azure Active Directory
 Tento článek vám pomůže přidat a odebrat skupinu z jiné skupiny pomocí Azure Active Directory.
@@ -30,7 +30,7 @@ Tento článek vám pomůže přidat a odebrat skupinu z jiné skupiny pomocí A
 Existující skupinu zabezpečení můžete přidat do jiné existující skupiny zabezpečení (označované také jako vnořené skupiny), vytvořením skupiny členů (podskupiny) a nadřazené skupiny. Skupina členů zdědí atributy a vlastnosti nadřazené skupiny a šetří čas konfigurace.
 
 >[!Important]
->Momentálně nepodporujeme:<ul><li>Přidání skupin do skupiny synchronizované s místní službou Active Directory.</li><li>Přidání skupin zabezpečení do skupin Office 365.</li><li>Přidávání skupin Office 365 do skupin zabezpečení nebo jiných skupin Office 365.</li><li>Přiřazují se aplikace do vnořených skupin.</li><li>Použití licencí pro vnořené skupiny.</li><li>Přidávání distribučních skupin ve scénářích vnořování.</li></ul>
+>Momentálně nepodporujeme:<ul><li>Přidání skupin do skupiny synchronizované s místní službou Active Directory.</li><li>Přidávání skupin zabezpečení do skupin Microsoft 365.</li><li>Přidávání skupin Microsoft 365 do skupin zabezpečení nebo jiných skupin Microsoft 365.</li><li>Přiřazují se aplikace do vnořených skupin.</li><li>Použití licencí pro vnořené skupiny.</li><li>Přidávání distribučních skupin ve scénářích vnořování.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Přidání skupiny jako člena jiné skupiny
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 080b5a224f3d4a720d8009933ddd9161f56dba0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270041"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393934"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu podmíněného přístupu v Azure Active Directory B2C vlastní zásady
 
@@ -47,13 +47,13 @@ Následující příklad ukazuje technický profil podmíněného přístupu:
 
 ## <a name="conditional-access-evaluation"></a>Vyhodnocení podmíněného přístupu
 
-Pro každé přihlášení Azure AD B2C vyhodnotí všechny zásady a před udělením přístupu uživatele zajistí splnění všech požadavků. Možnost blokovat přístup přepíše všechna ostatní nastavení konfigurace. Režim **vyhodnocení** technického profilu podmíněného přístupu vyhodnocuje signály shromážděné Azure AD B2C během přihlašování pomocí místního účtu. Výsledkem technického profilu podmíněného přístupu je sada deklarací identity, které jsou výsledkem vyhodnocení podmíněného přístupu. Zásady Azure AD B2C používají tyto deklarace v dalším kroku orchestrace k provedení akce, třeba blokování uživatele nebo výzvou k použití se službou Multi-Factor Authentication. Pro tento režim lze nakonfigurovat následující možnosti.
+Pro každé přihlášení Azure AD B2C vyhodnotí všechny zásady a před udělením přístupu uživatele zajistí splnění všech požadavků. Možnost blokovat přístup přepíše všechna ostatní nastavení konfigurace. Režim **vyhodnocení** technického profilu podmíněného přístupu vyhodnocuje signály shromážděné Azure AD B2C během přihlašování pomocí místního účtu. Výsledkem technického profilu podmíněného přístupu je sada deklarací identity, které jsou výsledkem vyhodnocení podmíněného přístupu. Zásady Azure AD B2C používají tyto deklarace v dalším kroku orchestrace k provedení akce, jako je například blokování uživatele nebo odvolání uživatele pomocí služby Multi-Factor Authentication. Pro tento režim lze nakonfigurovat následující možnosti.
 
 ### <a name="metadata"></a>Metadata
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Ano | Musí být **vyhodnocena**.  |
+| Typem operace OperationType | Yes | Musí být **vyhodnocena**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -61,10 +61,10 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do podmíněn�
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| UserId | Ano | řetězec | Identifikátor uživatele, který se přihlásí. |
-| AuthenticationMethodsUsed | Ano |Třída StringCollection | Seznam metod, které uživatel použil k přihlášení Možné hodnoty: `Password` , a `OneTimePasscode` . |
-| Federované | Ano |boolean | Označuje, jestli se uživatel přihlásil pomocí federovaného účtu. Hodnota musí být `false` . |
-| IsMfaRegistered | Ano |boolean | Označuje, zda již uživatel zaregistroval telefonní číslo pro službu Multi-Factor Authentication. |
+| UserId | Yes | řetězec | Identifikátor uživatele, který se přihlásí. |
+| AuthenticationMethodsUsed | Yes |Třída StringCollection | Seznam metod, které uživatel použil k přihlášení Možné hodnoty: `Password` , a `OneTimePasscode` . |
+| Federované | Yes |boolean | Označuje, jestli se uživatel přihlásil pomocí federovaného účtu. Hodnota musí být `false` . |
+| IsMfaRegistered | Yes |boolean | Označuje, zda již uživatel zaregistroval telefonní číslo pro službu Multi-Factor Authentication. |
 
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových objektů před jejich odesláním do služby podmíněného přístupu.
@@ -75,8 +75,8 @@ Element **OutputClaims** obsahuje seznam deklarací generovaných ConditionalAcc
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| Výzvy | Ano |Třída StringCollection | Seznam akcí pro nápravu identifikované hrozby. Možné hodnoty: `block` |
-| MultiConditionalAccessStatus | Ano | Třída StringCollection |  |
+| Výzvy | Yes |Třída StringCollection | Seznam akcí pro nápravu identifikované hrozby. Možné hodnoty: `block` |
+| MultiConditionalAccessStatus | Yes | Třída StringCollection |  |
 
 Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
@@ -115,7 +115,7 @@ Režim **oprav** pro technický profil podmíněného přístupu informuje Azure
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Ano | Je nutné provést **nápravu**.  |
+| Typem operace OperationType | Yes | Je nutné provést **nápravu**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -123,7 +123,7 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do podmíněn�
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | Ano | Třída StringCollection| Seznam uspokojivých výzev k nápravě identifikované hrozby jako návrat z režimu vyhodnocení, s nárokem na výzvy.|
+| ChallengesSatisfied | Yes | Třída StringCollection| Seznam uspokojivých výzev k nápravě identifikované hrozby jako návrat z režimu vyhodnocení, s nárokem na výzvy.|
 
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před voláním služby podmíněného přístupu.

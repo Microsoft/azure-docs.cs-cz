@@ -3,20 +3,20 @@ title: Přední dvířka Azure – přesměrování adresy URL | Microsoft Docs
 description: Tento článek vám pomůže porozumět tomu, jak přední dvířka Azure podporuje přesměrování adresy URL pro své trasy, pokud jsou nakonfigurované.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295479"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399034"
 ---
 # <a name="url-redirect"></a>Přesměrování adresy URL
 K přesměrování provozu můžete použít přední dvířka Azure. Přenosy dat můžete přesměrovat na více úrovní (protokol, název hostitele, cesta, řetězec dotazu) a všechny funkce se dají nakonfigurovat pro jednotlivé mikroslužby, protože přesměrování je založené na cestě. Tato funkce zjednodušuje konfiguraci aplikace, optimalizuje využití prostředků a podporuje nové scénáře přesměrování včetně globálního přesměrování a přesměrování na základě cest.
@@ -43,7 +43,7 @@ Můžete nastavit protokol, který se bude používat pro přesměrování. To u
 V rámci konfigurace směrování přesměrování můžete také změnit název hostitele nebo doménu pro požadavek na přesměrování. Nastavením tohoto pole můžete změnit název hostitele v adrese URL pro přesměrování nebo jinak zachovat název hostitele z příchozího požadavku. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/*` `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Cílová cesta
-V případě, že chcete jako součást přesměrování nahradit segment cesty adresy URL, můžete toto pole nastavit s novou hodnotou cesty. V opačném případě můžete zvolit zachování hodnoty cesty jako součást přesměrování. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site` .
+V případě, že chcete jako součást přesměrování nahradit segment cesty adresy URL, můžete toto pole nastavit s novou hodnotou cesty. V opačném případě můžete zvolit zachování hodnoty cesty jako součást přesměrování. Pomocí tohoto pole pak můžete přesměrovat všechny požadavky odeslané na `https://www.contoso.com/\*`  `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Parametry řetězce dotazu
 Můžete také nahradit parametry řetězce dotazu v přesměrované adrese URL. Chcete-li nahradit všechny existující řetězce dotazu z adresy URL příchozího požadavku, nastavte toto pole na hodnotu Replace a pak nastavte příslušnou hodnotu. V opačném případě můžete původní sadu řetězců dotazů zachovat nastavením pole na zachovat. Pomocí tohoto pole můžete například přesměrovat veškerý provoz odeslaný na `https://www.contoso.com/foo/bar` do `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 

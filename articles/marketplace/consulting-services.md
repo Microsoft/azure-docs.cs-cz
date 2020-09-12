@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814718"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419750"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -22,16 +22,16 @@ Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydav
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Online obchody, Microsoft AppSource a Azure Marketplace na webu Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý online obchod má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi dvěma online obchody najdete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
+Online obchody z komerčního tržiště, Microsoft AppSource a Azure Marketplace, jsou zarovnané na typy řešení a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý online obchod má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi dvěma online obchody najdete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 
 Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v tématech [publikování konzultační služby Azure](./partner-center-portal/create-consulting-service-offer.md) a [publikování nabídky spravované služby na Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
-> Konzultační služby v Azure Marketplace by se měly zaměřit na nabídky pro technickou cílovou skupinu a zdůraznit technická řešení a služby Azure.
+> Konzultační služby v Azure Marketplace by se měly soustředit na technická řešení a služby Azure.
 >
-> Konzultační služby v AppSource by se měly soustředit na nabídky pro uživatele, kteří mají zkušenosti s poskytováním kvalitních řešení pro Dynamics 365, Power BI nebo Power Apps.
+> Konzultační služby v AppSource by se měly soustředit na obchodní řešení pro Dynamics 365, Power BI nebo Power Apps.
  
 > [!TIP]
 > Pokud chcete publikovat na Azure Marketplace, v rozevíracím seznamu **primární produkt** partnerského centra vyberte **Azure**.
@@ -131,7 +131,7 @@ Nabídky musí mít alespoň jeden z následujících pěti typů služeb:
 > * **In person** – pracoviště v umístění zákazníka nebo v zařízení partnera.
 > * **Prakticky** – prostřednictvím konferencí, webových konferencí nebo vzdálených implementací.
 
-Po nakonfigurování výše uvedených požadovaných prvků ověří tým revize obsahu, že je popis vaší nabídky informativní a dokončený pro cílovou skupinu. 
+Po nakonfigurování výše uvedených požadovaných prvků ověří tým revize obsahu, že je popis vaší nabídky informativní a kompletní. 
 
 ### <a name="the-listing-title"></a>Název výpisu
 
@@ -171,9 +171,5 @@ Zde jsou některé tipy pro Markdownu:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, přečtěte si, jak [rozšířit cloudovou firmu pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
-
-Registrace a zahájení práce v partnerském centru:
-
-* [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
-* Další informace najdete v tématu [Vytvoření konzultační nabídky služby](./partner-center-portal/create-consulting-service-offer.md) .
+- [Rozšiřte svůj cloudový obchod pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- [Vytvoření nabídky konzultačních služeb](./partner-center-portal/create-consulting-service-offer.md)

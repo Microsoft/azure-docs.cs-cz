@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/03/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853292"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435146"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -29,7 +29,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -167,7 +167,7 @@ Když vytvoříte aplikaci logiky, můžete vybrat **korelujované doručení v 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Konektor Service Bus může současně ušetřit až 1 500 jedinečných relací ze sběrnice Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [relace zpráv](../service-bus-messaging/message-sessions.md).
+V rámci služby Service Bus může konektor Service Bus v čase ukládat do mezipaměti konektoru až 1 500 jedinečných relací, a to za [Service Bus entitu zasílání zpráv, jako je například předplatné nebo téma](../service-bus-messaging/service-bus-queues-topics-subscriptions.md). Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [relace zpráv](../service-bus-messaging/message-sessions.md).
 
 Další technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu Swagger tohoto konektoru, najdete na [referenční stránce konektoru](/connectors/servicebus/). Další informace o Azure Service Bus zasílání zpráv najdete v tématu [co je Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 

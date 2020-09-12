@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119221"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421080"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte server Azure Database for MySQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
@@ -73,6 +73,12 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 Nový server vytvořený nástrojem obnovení k bodu v čase má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době, kdy je zvolený časový okamžik. Heslo můžete změnit na stránce **Přehled** nového serveru.
 
+Navíc po dokončení operace obnovení jsou k dispozici dva parametry serveru, u kterých se obnoví výchozí hodnoty (a po dokončení operace obnovení se nekopírují z primárního serveru).
+*   time_zone – tato hodnota se nastaví na **systém** výchozí hodnoty.
+*   event_scheduler – event_scheduler na obnoveném serveru je nastaven na **vypnuto**
+
+Budete muset zkopírovat hodnotu z primárního serveru a nastavit ji na obnovený server, a to tak, že znovu nakonfigurujete [parametr serveru](howto-server-parameters.md) .
+
 Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně. Obnoví se pravidla brány firewall z původního serveru.
 
 ## <a name="geo-restore"></a>Geografické obnovení
@@ -100,7 +106,7 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
 
-6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **pokračovat**. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
 

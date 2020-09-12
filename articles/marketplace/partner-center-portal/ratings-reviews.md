@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304186"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419176"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Hodnocení & přezkoumání řídicího panelu Analytics v partnerském centru
 
@@ -33,7 +33,7 @@ Na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/das
 - Hodnocení & recenze  
 - Revidovat komentáře
 
-Pomocí karet **prezentace na webu Marketplace** můžete zobrazit nabídku Microsoft AppSource a Azure Marketplace metriky samostatně. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku v rozevíracím seznamu nabídky.
+Pomocí karet **přehledů Marketplace** můžete zobrazit nabídku Microsoft AppSource a Azure Marketplace metriky samostatně. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku v rozevíracím seznamu nabídky.
 
 ### <a name="ratings--reviews-summary"></a>Shrnutí hodnocení & recenze
 

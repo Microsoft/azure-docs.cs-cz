@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: tabulky ARP – řešení potíží'
 description: Tato stránka poskytuje pokyny k získání tabulek ARP pro okruh ExpressRoute.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 01/30/2017
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 5819717443de1d5742d46994dca2f23579e527a0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986452"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394852"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Správce prostředků
 > [!div class="op_single_selector"]

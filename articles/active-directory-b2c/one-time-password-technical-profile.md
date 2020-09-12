@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385718"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418904"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro správu generov�
 
 Technický profil pro jednorázové heslo může také při ověřování kódu vrátit chybovou zprávu. Navrhněte integraci s jednorázovým heslem pomocí **ověřovacího technického profilu**. Technický profil ověření volá technický profil pro jednorázové heslo pro ověření kódu. Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se na stránce s vlastním kontrolním jménem zobrazí chybová zpráva.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
@@ -77,6 +77,7 @@ Následující nastavení lze použít ke konfiguraci režimu generování kódu
 | CodeLength | No | Délka kódu. Výchozí hodnota je `6`. |
 | CharacterSet | No | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
 | NumRetryAttempts | No | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
+| NumCodeGenerationAttempts | No | Počet pokusů o generování kódu na identifikátor. Výchozí hodnota je 10, pokud není zadána. |
 | Operace | Yes | Operace, která má být provedena. Možná hodnota: `GenerateCode` . |
 | ReuseSameCode | No | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
 
@@ -94,6 +95,7 @@ Následující příklad `TechnicalProfile` slouží k vygenerování kódu:
     <Item Key="CodeLength">6</Item>
     <Item Key="CharacterSet">0-9</Item>
     <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="NumCodeGenerationAttempts">15</Item>
     <Item Key="ReuseSameCode">false</Item>
   </Metadata>
   <InputClaims>
@@ -143,6 +145,7 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | No | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
 | UserMessageIfMaxRetryAttempted | No | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | Zpráva, která se zobrazí uživateli, pokud generování kódu překročilo maximální povolený počet pokusů. |
 | UserMessageIfInvalidCode | No | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
 | UserMessageIfVerificationFailedRetryAllowed | No | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
 |UserMessageIfSessionConflict|No| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|

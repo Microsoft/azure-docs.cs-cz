@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167294"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378997"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
-Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a přístup k nim. Tajný klíč je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty. Trezor je logická skupina tajných kódů.
+Azure Key Vault je nástroj pro zabezpečené ukládání tajných kódů a přístup k nim. Tajný kód je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty. Trezor je logická skupina tajných kódů.
 
 Tady jsou další důležité výrazy:
 
@@ -33,7 +33,7 @@ Tady jsou další důležité výrazy:
 
 - **Skupina prostředků:** Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
 
-- **Instanční objekt**: instanční objekt Azure je identita zabezpečení, kterou uživatelsky vytvořené aplikace, služby a nástroje pro automatizaci používají pro přístup ke konkrétním prostředkům Azure. Můžete si ho představit jako identitu uživatele (uživatelské jméno a heslo nebo certifikát) s určitou rolí a přísně řízenými oprávněními. Na rozdíl od obecné identity uživatele instanční objekt potřebuje mít možnost provádět jenom určité akce. Zvyšuje zabezpečení, pokud mu udělíte jenom minimální úroveň oprávnění, kterou potřebuje k provádění úloh správy.
+- **Objekt zabezpečení**: objekt zabezpečení Azure je identita zabezpečení, kterou uživatelsky vytvořené aplikace, služby a nástroje pro automatizaci používají pro přístup ke konkrétním prostředkům Azure. Můžete si ho představit jako identitu uživatele (uživatelské jméno a heslo nebo certifikát) s určitou rolí a přísně řízenými oprávněními. Objekt zabezpečení by měl na rozdíl od obecné identity uživatele vyžadovat pouze konkrétní věci. Zvyšuje zabezpečení, pokud mu udělíte jenom minimální úroveň oprávnění, kterou potřebuje k provádění úloh správy. Objekt zabezpečení, který se používá u aplikace nebo služby, se konkrétně nazývá **instanční objekt**.
 
 - [Azure Active Directory (Azure AD):](../../active-directory/active-directory-whatis.md) Azure AD je služba Active Directory pro tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant.
 

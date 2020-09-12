@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962855"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435605"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Přístup Azure Storage jako sdílené síťové složky z kontejneru v App Service
 
@@ -27,7 +27,7 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ::: zone pivot="container-windows"
 
@@ -57,7 +57,7 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 - Azure Storage v App Service se v současné době **nepodporují** pro scénáře přináší vlastní kód (aplikace pro Windows bez kontejneru).
 - Azure Storage v App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
 - Azure Storage s App Service vám umožní zadat **až pět** přípojných bodů na jednu aplikaci.
-- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 - Azure Storage v App Service podporuje připojování **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů blob Azure** (jen pro čtení).
 - Azure Storage v App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
 - Azure Storage v App Service umožňuje zadat **až pět** přípojných bodů na jednu aplikaci.
-- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 ::: zone-end
 

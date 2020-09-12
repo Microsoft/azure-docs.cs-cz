@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f1e95c1244d327478862c3919481394d974ea42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270081"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419261"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
 
@@ -61,6 +61,10 @@ Další informace o definicích integrovaných rolí Azure najdete v tématu [p�
 Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k modelu oprávnění zásad přístupu trezoru. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault
+
+Během období Preview je nutné použít značku funkce Azure RBAC (Microsoft_Azure_KeyVault_RBACEnabled = true) a zobrazit tak nové možnosti modelu oprávnění.
+
+https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Nastavení modelu oprávnění Azure RBAC neověřuje všechna oprávnění zásad přístupu. Může to způsobit výpadky, když nejsou přiřazené ekvivalentní role Azure.
@@ -205,8 +209,6 @@ az role definition create --role-definition '{ \
 Další informace o tom, jak vytvářet vlastní role, najdete v těchto tématech:
 
 [Vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
-
-Další dostupné akce najdete v příloze: **Dostupné akce** .
 
 ## <a name="known-limits-and-performance"></a>Známá omezení a výkon
 

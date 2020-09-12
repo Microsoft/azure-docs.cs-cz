@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685710"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419125"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -112,7 +112,7 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-Následující uživatelem zadané informace jsou Mush správné:
+Následující informace, které jsou zadány uživatelem, musí být správné:
 
 - ID tenanta trezoru klíčů
 - Hodnota prostředku nastavená na https %3 A %2 F %2 F trezor. Azure. NET (s kódováním URL)

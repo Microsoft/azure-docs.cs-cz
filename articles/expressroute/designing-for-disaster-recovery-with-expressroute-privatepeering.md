@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: návrh pro zotavení po havárii'
 description: Tato stránka poskytuje doporučení pro architekturu pro zotavení po havárii při používání Azure ExpressRoute.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081164"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397997"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
@@ -45,7 +45,7 @@ Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paraleln
 
 Podívejme se na příklad sítě znázorněné v následujícím diagramu. V tomto příkladu je geograficky redundantní připojení ExpressRoute vytvořeno mezi místním umístěním společnosti Contoso a virtuální sítí contoso v oblasti Azure. V diagramu se plná zelená čára označuje jako upřednostňovaná cesta (přes ExpressRoute 1) a tečkovaná jedna představuje cestu k umístění (prostřednictvím ExpressRoute 2).
 
-[![první]][1]
+[![1]][1]
 
 Pokud navrhujete ExpressRoute konektivitu pro zotavení po havárii, je třeba vzít v úvahu:
 
@@ -114,7 +114,7 @@ V prvním scénáři navrhneme zotavení po havárii tak, aby veškerý provoz m
 
 Scénář 1 je znázorněný v následujícím diagramu. V diagramu zelené čáry označují cesty pro přenos toků mezi VNet1 a místními sítěmi. Modré čáry označují cesty pro přenos toků mezi VNet2 a místními sítěmi. Plné čáry označují požadovanou cestu v ustáleném stavu a přerušované čáry označují cestu provozu při selhání odpovídajícího okruhu ExpressRoute, který přenáší tok přenosů v ustáleném stavu. 
 
-[![7]][7]
+[![čl]][7]
 
 Scénář můžete rozpravit pomocí váhy připojení, aby se virtuální sítěy preferované připojení k umístění místních partnerských vztahů ExpressRoute pro provoz vázaný na místní síť. K dokončení řešení je potřeba zajistit symetrický tok zpětného provozu. V relaci iBGP můžete použít místní preference mezi směrovači BGP (na kterých jsou ExpressRoute okruhy ukončeny na místní straně) a upřednostnit okruh ExpressRoute. Řešení je znázorněno v následujícím diagramu. 
 

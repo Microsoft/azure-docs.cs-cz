@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496929"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424799"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Spouštění skriptů PowerShellu na VIRTUÁLNÍm počítači s Windows pomocí příkazu Spustit
 
@@ -40,6 +40,7 @@ Při použití příkazu Run platí následující omezení:
 * Běžící skript nemůžete zrušit.
 * Maximální doba, kterou může skript běžet, je 90 minut. Po uplynutí této doby dojde k vypršení časového limitu.
 * K vrácení výsledků skriptu se vyžaduje odchozí připojení z virtuálního počítače.
+* Nedoporučujeme spouštět skript, který způsobí zastavení nebo aktualizaci agenta virtuálního počítače. To může mít příponu ve stavu přechodu, což vede k vypršení časového limitu.
 
 > [!NOTE]
 > Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/security-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
@@ -52,7 +53,7 @@ Tato tabulka obsahuje seznam příkazů, které jsou k dispozici pro virtuální
 The entity was not found in this Azure location
 ```
 
-|**Název**|**Description**|
+|**Název**|**Popis**|
 |---|---|
 |**RunPowerShellScript**|Spustí skript prostředí PowerShell.|
 |**EnableRemotePS**|Nakonfiguruje počítač tak, aby povoloval vzdálené prostředí PowerShell.|

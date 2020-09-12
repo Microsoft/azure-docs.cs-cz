@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 3d39ad2016da1525658944f4f13185e9df9855af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007090"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378861"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte, jak snadno přidat všechno, co potřebujete, abyste
 
 Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby umožňovaly Key Vault, najdete v tématu [Key Vault připojené služby – co se stalo s mým projektem ASP.NET 4.7.1](#how-your-aspnet-framework-project-is-modified) nebo [Key Vault připojenou službou – co se stalo s mým ASP.NET corem projektem](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual Studio 2019 verze 16,3** nebo novější [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -148,7 +148,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
-| Typ | Referenční informace |
+| Typ | Reference |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
@@ -184,7 +184,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
-| Typ | Referenční informace |
+| Typ | Reference |
 | --- | --- |
 | Pohyby NuGet | Azure. identity |
 | Pohyby NuGet | Azure. Security. Keys – trezory. Keys |
@@ -201,6 +201,6 @@ Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste postupovali podle tohoto kurzu, vaše oprávnění Key Vault se nastaví tak, aby běžela s vlastním předplatným Azure, ale nemusí být žádoucí pro produkční scénář. Můžete vytvořit spravovanou identitu pro správu přístupu k Key Vault vaší aplikaci. Viz [poskytnutí Key Vault ověřování se spravovanou identitou](/azure/key-vault/managed-identity).
+Pokud jste postupovali podle tohoto kurzu, vaše oprávnění Key Vault se nastaví tak, aby běžela s vlastním předplatným Azure, ale nemusí být žádoucí pro produkční scénář. Můžete vytvořit spravovanou identitu pro správu přístupu k Key Vault vaší aplikaci. Další informace najdete v tématu [ověření Key Vault](/azure/key-vault/general/authentication) a [přiřazení zásad Key Vault přístupu](/azure/key-vault/general/assign-access-policy-portal).
 
 Další informace o vývoji Key Vault najdete v [příručce pro vývojáře Key Vault](developers-guide.md).

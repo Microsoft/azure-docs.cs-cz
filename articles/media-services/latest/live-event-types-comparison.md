@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397300"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
 
@@ -36,15 +36,15 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 * **LiveEventEncodingType. Standard** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Pokud je informační kanál příspěvku v rámci řešení 720p nebo vyšší, **Default720p** předvolba zakóduje sadu 6 párů rozlišení/přenosové rychlosti (podrobnosti následují dále v článku).
 * **LiveEventEncodingType. Premium1080p** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Předvolba Default1080p určuje výstupní sadu párů rozlišení/přenosové rychlosti (podrobnosti následují dále v článku). 
 
-| Funkce | Předávací živá událost | Událost Standard nebo Premium1080p Live |
+| Příznak | Předávací živá událost | Událost Standard nebo Premium1080p Live |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |Ne |Ano |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
 | Maximální rozlišení videa pro kanál příspěvků |4K (4096x2160 v 60 snímcích za sekundu) |1080p (1920x1088 v 30 snímcích/s)|
 | Doporučené maximum vrstev v kanálu příspěvků|Až 12|Jeden zvuk|
 | Maximální počet vrstev ve výstupu| Stejné jako vstup|Až 6 (viz Předvolby systému níže)|
 | Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|–|
 | Maximální přenosová rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
-| Podpora pro zvukové stopy ve více jazycích|Ano|Ne|
+| Podpora pro zvukové stopy ve více jazycích|Yes|No|
 | Podporované vstupní kodeky videa |H. 264/AVC a H. 265/HEVC|H. 264/AVC|
 | Podporované video kodeky pro výstup|Stejné jako vstup|H. 264/AVC|
 | Podporovaná bitová hloubka videa, vstup a výstup|Až 10 bitů včetně HDR 10/HLG|8 bitů|
@@ -55,15 +55,15 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Vstupní protokoly|RTMP, fragmentované – MP4 (Smooth Streaming)|RTMP, fragmentované – MP4 (Smooth Streaming)|
 | Cena|Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video.|Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video.|
 | Maximální doba běhu| 24 hodin × 365 dní, živý lineární | 24 hodin × 365 dní, živý lineární (Preview)|
-| Možnost předávání dat titulků Embedded CEA 608/708|Ano|Ano|
-| Možnost zapnout živý přepis|Ano|Ano|
-| Podpora pro vložení SLAT|Ne|Ne|
-| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| Ne|Ne|
-| Podpora pro signalizaci reklamy prostřednictvím zpráv SCTE-35 in-band|Ano|Ano|
-| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Ano|Částečné|
-| Podpora pro neuniformní vstupní GOPs|Ano|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
-| Podpora pro vstup variabilní frekvence snímků|Ano|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
-| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|Ne|Pokud není LiveOutput spuštěný, po 12 hodinách.|
+| Možnost předávání dat titulků Embedded CEA 608/708|Yes|Yes|
+| Možnost zapnout živý přepis|Yes|Yes|
+| Podpora pro vložení SLAT|No|No|
+| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| No|No|
+| Podpora pro signalizaci reklamy prostřednictvím zpráv SCTE-35 in-band|Yes|Yes|
+| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Yes|Částečné|
+| Podpora pro neuniformní vstupní GOPs|Yes|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
+| Podpora pro vstup variabilní frekvence snímků|Yes|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
+| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|No|Pokud není LiveOutput spuštěný, po 12 hodinách.|
 
 ## <a name="system-presets"></a>Předvolby systému
 
@@ -86,8 +86,7 @@ Pokud je informační kanál příspěvku z řešení 720p nebo vyšší, **Defa
 | 200 |340 |192 |30 |Vysoké |
 
 > [!NOTE]
-> Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva s rozlišením 720p a maximálně 6 vrstev celkem. Také zadejte, že požadujete předvolbu pro standardní Live Encoder.
-> Konkrétní hodnoty přenosů a rozlišení se můžou v průběhu času upravovat.
+> Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste zadat požadovanou tabulku pro rozlišení videa a přenosové rychlosti. Přizpůsobení přenosové rychlosti zvukového kódování se nepodporuje. Ověřte, že existuje pouze jedna vrstva s rozlišením 720p a maximálně 6 vrstev celkem. Také zadejte, že požadujete přednastavení.
 
 ### <a name="output-video-streams-for-default1080p"></a>Výstupní video proudy pro Default1080p
 
@@ -103,8 +102,7 @@ Pokud je informační kanál příspěvku z rozlišení 1080p, předvolba **Defa
 | 200 |320 |180 |30 |Vysoké |
 
 > [!NOTE]
-> Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, zda je v 1080p pouze jedna vrstva, a maximálně 6 vrstev. Také zadejte, že požadujete přednastavení pro Premium1080p Live Encoder.
-> Konkrétní hodnoty přenosových rychlostí a rozlišení se můžou v průběhu času upravovat.
+> Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, zda je v 1080p pouze jedna vrstva, a maximálně 6 vrstev. Také určete, že požadujete přednastavení pro Premium1080p Live Encoder. Konkrétní hodnoty přenosových rychlostí a rozlišení se můžou v průběhu času upravovat.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Výstupní zvukový stream pro Default720p a Default1080p
 

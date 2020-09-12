@@ -1,18 +1,18 @@
 ---
 title: Přidání sad Runbook Azure Automation do plánů obnovení Site Recovery
 description: Naučte se, jak pomocí Azure Site Recovery rozšíříte plány obnovení pomocí Azure Automation pro zotavení po havárii.
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: ramamill
+ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021575"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424867"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 

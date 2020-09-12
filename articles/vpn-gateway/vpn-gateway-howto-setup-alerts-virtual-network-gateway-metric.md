@@ -2,17 +2,17 @@
 title: Nastavení výstrah pro Azure VPN Gateway metriky
 description: Naučte se používat Azure Portal k nastavení výstrah Azure Monitor na základě metrik pro brány VPN virtuální sítě.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/22/2019
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033491"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435653"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavení výstrah pro VPN Gateway metriky
 
@@ -23,14 +23,14 @@ Tento článek vám pomůže nastavit výstrahy pro Azure VPN Gateway metriky. A
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bajty/s  | 5 minut| Průměrné využití šířky pásma pro všechna připojení typu Site-to-site v bráně.     |
 |**P2SBandwidth**| Bajty/s  | 1 min.  | Průměrné využití šířky pásma všech připojení typu Point-to-site v bráně    |
-|**P2SConnectionCount**| Count  | 1 min.  | Počet připojení typu Point-to-site v bráně   |
+|**P2SConnectionCount**| Počet  | 1 min.  | Počet připojení typu Point-to-site v bráně   |
 |**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma pro tunely vytvořené v bráně |
 |**TunnelEgressBytes** | Bajty | 5 minut | Odchozí provoz na tunelech vytvořených v bráně.   |
-|**TunnelEgressPackets** | Count | 5 minut | Počet odchozích paketů v tunelech vytvořených v bráně.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Počet zrušených odchozích paketů v tunelech způsobených neshodou výběrů provozu |
+|**TunnelEgressPackets** | Počet | 5 minut | Počet odchozích paketů v tunelech vytvořených v bráně.   |
+|**TunnelEgressPacketDropTSMismatch** | Počet | 5 minut | Počet zrušených odchozích paketů v tunelech způsobených neshodou výběrů provozu |
 |**TunnelIngressBytes** | Bajty | 5 minut | Příchozí provoz na tunelech vytvořených v bráně.   |
-|**TunnelIngressPackets** | Count | 5 minut | Počet příchozích paketů v tunelech vytvořených v bráně   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Počet vynechaných příchozích paketů v tunelech způsobených neshodou v selektoru provozu |
+|**TunnelIngressPackets** | Počet | 5 minut | Počet příchozích paketů v tunelech vytvořených v bráně   |
+|**TunnelIngressPacketDropTSMismatch** | Počet | 5 minut | Počet vynechaných příchozích paketů v tunelech způsobených neshodou v selektoru provozu |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Nastavení výstrah Azure Monitor na základě metrik pomocí Azure Portal
