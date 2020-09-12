@@ -3,12 +3,12 @@ title: Offline zálohování pro DPM a Azure Backup Server
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002007"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378453"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS)
 
@@ -36,7 +36,7 @@ Díky funkcím pro online osazení Azure Backup a službě Azure pro import/expo
 > * Jednotky SATA se pak odesílají do nejbližšího datacentra Azure.
 > * Po dokončení nahrávání zálohovaných dat do Azure Azure Backup zkopíruje zálohovaná data do trezoru záloh a naplánují se přírůstkové zálohy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -51,10 +51,10 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 * Vytvořte účet Azure Storage ve stejném předplatném jako Recovery Services trezor.
 * Ujistěte se, že máte [potřebná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md) k vytvoření Azure Active Directory aplikace. Pracovní postup offline zálohování vytvoří aplikaci Azure Active Directory v rámci předplatného přidruženého k účtu Azure Storage. Cílem aplikace je poskytnout Azure Backup se zabezpečeným a vymezeným přístupem ke službě Azure import, kterou vyžaduje pracovní postup offline zálohování.
 * Zaregistrujte poskytovatele prostředků Microsoft. ImportExport k předplatnému, které obsahuje účet Azure Storage. Registrace poskytovatele prostředků:
-    1. V hlavní nabídce klikněte na **odběry**.
+    1. V hlavní nabídce vyberte **předplatná**.
     2. Pokud jste přihlášeni k odběru více předplatných, vyberte předplatné, které používáte pro offline zálohování. Pokud použijete jenom jedno předplatné, zobrazí se vaše předplatné.
-    3. V nabídce Předplatné klikněte na **poskytovatelé prostředků** . zobrazí se seznam zprostředkovatelů.
-    4. V seznamu zprostředkovatelů přejděte dolů na Microsoft. ImportExport. Pokud je stav NotRegistered, klikněte na **zaregistrovat**.
+    3. V nabídce předplatné vyberte **poskytovatelé prostředků** , abyste zobrazili seznam zprostředkovatelů.
+    4. V seznamu zprostředkovatelů přejděte dolů na Microsoft. ImportExport. Pokud je stav NotRegistered, vyberte **zaregistrovat**.
 
        ![Registrace poskytovatele prostředků](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ Informace v této části vám pomůžou dokončit pracovní postup offline zál
 
 ## <a name="initiate-offline-backup"></a>Zahájit zálohování offline
 
-1. Když vytvoříte novou skupinu ochrany pomocí online ochrany nebo přidáte online ochranu do existující skupiny ochrany, zobrazí se následující obrazovka. Pokud chcete vybrat úvodní online metodu replikace, vyberte možnost **přenést pomocí vlastního disku** a klikněte na **Další**.
+1. Když vytvoříte novou skupinu ochrany pomocí online ochrany nebo přidáte online ochranu do existující skupiny ochrany, zobrazí se následující obrazovka. Pokud chcete vybrat úvodní online metodu replikace, vyberte možnost **přenést pomocí vlastního disku** a vyberte **Další**.
 
     ![Import obrazovky](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -160,7 +160,7 @@ Následující postup aktualizuje podrobnosti o expedici úlohy Azure import. Ty
 * vrátit informace o expedici pro vaše disky
 
    1. Přihlaste se ke svému předplatnému Azure.
-   2. V hlavní nabídce klikněte na **všechny služby** a v dialogovém okně všechny služby zadejte import. Až uvidíte **úlohy import/export**, klikněte na ni.
+   2. V hlavní nabídce vyberte **všechny služby** a v dialogovém okně všechny služby zadejte import. Až uvidíte **úlohy import/export**, vyberte je.
        ![Zadávání informací o expedici](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        Otevře se seznam **úloh import/export** a zobrazí se seznam všech úloh importu/exportu ve vybraném předplatném.
@@ -169,11 +169,11 @@ Následující postup aktualizuje podrobnosti o expedici úlohy Azure import. Ty
 
        ![Zkontrolovat informace o expedici](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. V nabídce nastavení úlohy Import klikněte na **Spravovat informace o expedici** a zadejte podrobnosti o zpětném odeslání.
+   4. V nabídce nastavení úlohy import vyberte **Spravovat informace o expedici** a zadejte podrobnosti o zpětném odeslání.
 
        ![Ukládání informací o expedici](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. Pokud máte sledovací číslo od přepravce, klikněte na banner na stránce Přehled úlohy importu Azure a zadejte následující podrobnosti:
+   5. Pokud máte sledovací číslo od přepravce, vyberte banner na stránce Přehled úlohy importu Azure a zadejte následující podrobnosti:
 
       > [!IMPORTANT]
       > Do dvou týdnů od vytvoření úlohy importu do Azure nezapomeňte aktualizovat informace o dopravci a sledovací číslo. Při ověřování těchto informací během dvou týdnů může dojít k odstranění úlohy a nezpracovávání jednotek.

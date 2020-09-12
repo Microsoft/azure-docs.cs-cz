@@ -2,13 +2,13 @@
 title: Funkce šablon
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/01/2020
+ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331402"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378402"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
@@ -38,20 +38,20 @@ Většina funkcí funguje při nasazení do skupiny prostředků, předplatného
 
 Správce prostředků poskytuje několik funkcí pro práci s poli.
 
-* [skupin](template-functions-array.md#array)
+* [array](template-functions-array.md#array)
 * [spojuje](template-functions-array.md#concat)
-* [zobrazí](template-functions-array.md#contains)
+* [obsahuje](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [první](template-functions-array.md#first)
 * [průnik](template-functions-array.md#intersection)
 * [posledního](template-functions-array.md#last)
-* [časový](template-functions-array.md#length)
-* [dlouhé](template-functions-array.md#min)
+* [length](template-functions-array.md#length)
+* [min](template-functions-array.md#min)
 * [počet](template-functions-array.md#max)
 * [oblasti](template-functions-array.md#range)
 * [přímo](template-functions-array.md#skip)
-* [nezbytná](template-functions-array.md#take)
+* [take](template-functions-array.md#take)
 * [sjednocovací](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -66,7 +66,7 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
 * [COALESCE](template-functions-comparison.md#coalesce)
-* [rovná se](template-functions-comparison.md#equals)
+* [equals](template-functions-comparison.md#equals)
 * [tolik](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
@@ -88,7 +88,7 @@ Správce prostředků poskytuje následující funkce pro práci s daty.
 Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
 * [prostředí](template-functions-deployment.md#deployment)
-* [hlediska](template-functions-deployment.md#environment)
+* [environment (prostředí)](template-functions-deployment.md#environment)
 * [ukazatelů](template-functions-deployment.md#parameters)
 * [proměnné](template-functions-deployment.md#variables)
 
@@ -102,9 +102,9 @@ Správce prostředků poskytuje následující funkce pro získání hodnot z č
 
 Správce prostředků poskytuje následující funkce pro práci s logickými podmínkami:
 
-* [a](template-functions-logical.md#and)
+* [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [Přestože](template-functions-logical.md#if)
+* [if](template-functions-logical.md#if)
 * [mění](template-functions-logical.md#not)
 * [nebo](template-functions-logical.md#or)
 
@@ -126,9 +126,9 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [add](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
-* [Plovák](template-functions-numeric.md#float)
+* [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [dlouhé](template-functions-numeric.md#min)
+* [min](template-functions-numeric.md#min)
 * [počet](template-functions-numeric.md#max)
 * [střední](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -140,11 +140,11 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 
 Správce prostředků poskytuje několik funkcí pro práci s objekty.
 
-* [zobrazí](template-functions-object.md#contains)
+* [obsahuje](template-functions-object.md#contains)
 * [empty](template-functions-object.md#empty)
 * [průnik](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
-* [časový](template-functions-object.md#length)
+* [length](template-functions-object.md#length)
 * [sjednocovací](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -167,6 +167,7 @@ Správce prostředků poskytuje následující funkce pro získání hodnot pros
 * [Klíče listkey](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
 * [seznamu](template-functions-resource.md#list)
+* [pickZones](template-functions-resource.md#pickzones)
 * [dodavateli](template-functions-resource.md#providers)
 * [odkaz](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
@@ -214,7 +215,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [spojuje](template-functions-string.md#concat)
-* [zobrazí](template-functions-string.md#contains)
+* [obsahuje](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [empty](template-functions-string.md#empty)
@@ -225,7 +226,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [indexOf](template-functions-string.md#indexof)
 * [posledního](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [časový](template-functions-string.md#length)
+* [length](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
 * [náhrady](template-functions-string.md#replace)
@@ -234,7 +235,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [startsWith](template-functions-string.md#startswith)
 * [řetězec](template-functions-string.md#string)
 * [podřetězec](template-functions-string.md#substring)
-* [nezbytná](template-functions-string.md#take)
+* [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [sklon](template-functions-string.md#trim)

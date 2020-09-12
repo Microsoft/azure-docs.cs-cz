@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204946"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320031"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
 
@@ -38,7 +38,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 
 V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom cloudové nebo hybridní identity. Nápovědu k výběru typu identity najdete v článku. [Zvolte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Existuje mnoho aspektů zabezpečené infrastruktury identity, ale tento kontrolní seznam se zaměřuje na bezpečnou a zabezpečenou infrastrukturu identity, která umožňuje uživatelům pracovat vzdáleně. Zabezpečení vaší identity je jenom součástí vašeho bezpečnostního scénáře, měli byste taky zvážit ochranu dat, aplikací a zařízení.
 
@@ -55,7 +55,7 @@ Existuje několik doporučení, která Azure AD Free nebo zákazníci aplikace O
 | --- | --- |
 | [Povolit výchozí nastavení zabezpečení](concept-fundamentals-security-defaults.md) | Chraňte všechny identity a aplikace uživatelů povolením MFA a blokováním starší verze ověřování. |
 | [Povolit synchronizaci hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) (Pokud používáte hybridní identity) | Poskytněte redundanci pro ověřování a zlepšení zabezpečení (včetně inteligentního uzamčení, uzamčení protokolu IP a možnosti zjišťování nevrácených přihlašovacích údajů). |
-| [Povolit inteligentní zámek ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
+| [Povolit inteligentní zámek ADFS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
 | [Povolit Azure Active Directory inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) (Pokud používáte spravované identity) | Inteligentní zamykání pomáhá uzamknout chybné aktéry, které se pokoušejí uhodnout hesla uživatelů, nebo používat metody hrubou silou k získání. |
 | [Zakázání souhlasu koncových uživatelů k aplikacím](../manage-apps/configure-user-consent.md) | Pracovní postup pro vyjádření souhlasu správce poskytuje správcům zabezpečený způsob, jak udělit přístup k aplikacím, které vyžadují schválení správcem, aby koncoví uživatelé nezveřejnili podniková data. Společnost Microsoft doporučuje zakázat budoucí operace souhlasu s uživatelem, aby se snížila plocha a zmírnila toto riziko. |
 | [Integrace podporovaných aplikací SaaS z Galerie do Azure AD a povolení jednotného přihlašování](../manage-apps/add-application-portal.md) | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací. Některé aplikace, které vaše organizace používá, jsou pravděpodobně v galerii přístupné přímo z Azure Portal. Zajištění vzdáleného a zabezpečeného přístupu k podnikovým aplikacím SaaS pomocí vylepšeného uživatelského prostředí (SSO) |
@@ -82,7 +82,7 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Implementace zpětného zápisu hesla](../authentication/tutorial-enable-sspr-writeback.md) (Pokud se používají hybridní identity) | Povolí zpětný zápis změn hesel v cloudu do místního prostředí Active Directory Windows serveru. |
 | Vytvoření a povolení zásad podmíněného přístupu | [MFA pro správce k ochraně účtů, kterým jsou přiřazena oprávnění správce.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Zablokuje starší protokoly ověřování z důvodu zvýšeného rizika spojeného se staršími protokoly ověřování.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Vícefaktorové ověřování pro všechny uživatele a aplikace pro vytváření vyrovnaných zásad vícefaktorového ověřování pro vaše prostředí, zabezpečení uživatelů a aplikací.](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) <br><br> [Vyžadovat VÍCEFAKTOROVÉ ověřování pro správu Azure, aby chránila vaše privilegované prostředky tím, že vyžaduje vícefaktorové ověřování pro všechny uživatele přistupující k prostředkům Azure.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Povolit synchronizaci hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) (Pokud používáte hybridní identity) | Poskytněte redundanci pro ověřování a zlepšení zabezpečení (včetně inteligentního uzamčení, uzamčení protokolu IP a možnosti zjišťování nevrácených přihlašovacích údajů). |
-| [Povolit inteligentní zámek ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
+| [Povolit inteligentní zámek ADFS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
 | [Povolit Azure Active Directory inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) (Pokud používáte spravované identity) | Inteligentní zamykání pomáhá uzamknout chybné aktéry, které se pokoušejí uhodnout hesla uživatelů, nebo používat metody hrubou silou k získání. |
 | [Zakázání souhlasu koncových uživatelů k aplikacím](../manage-apps/configure-user-consent.md) | Pracovní postup pro vyjádření souhlasu správce poskytuje správcům zabezpečený způsob, jak udělit přístup k aplikacím, které vyžadují schválení správcem, aby koncoví uživatelé nezveřejnili podniková data. Společnost Microsoft doporučuje zakázat budoucí operace souhlasu s uživatelem, aby se snížila plocha a zmírnila toto riziko. |
 | [Povolení vzdáleného přístupu k místním starším aplikacím pomocí proxy aplikací](../manage-apps/application-proxy-add-on-premises-application.md) | Povolte Azure Proxy aplikací služby AD a integrujte se staršími aplikacemi, aby uživatelé mohli zabezpečeně přistupovat k místním aplikacím přihlášením pomocí svého účtu Azure AD. |
@@ -94,7 +94,7 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
 | [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
 | [Povolit pokyny pro heslo Microsoftu](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadování uživatelů ke změně hesla podle nastaveného plánu, zakázání požadavků na složitost a vašim uživatelům je více apt, aby si zapamatovali hesla a zajistili, že jsou zabezpečená. |
-| [Vytvoření plánu pro přístup uživatele typu Host](../b2b/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
+| [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
 
 ### <a name="guidance-for-azure-ad-premium-plan-2-customers"></a>Pokyny pro zákazníky s Azure AD Premium Plan 2.
 
@@ -114,7 +114,7 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Povolení zásad pro uživatele a přihlašování k riziku Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Povolte zásady uživatele a přihlášení identity. Doporučené zásady přihlašování jsou cílené na středně rizikové přihlášení a vyžadují MFA. Pro zásady uživatele by se mělo zaměřit na uživatele s vysokým rizikem, který vyžaduje akci změny hesla. |
 | Vytvoření a povolení zásad podmíněného přístupu | [MFA pro správce k ochraně účtů, kterým jsou přiřazena oprávnění správce.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Zablokuje starší protokoly ověřování z důvodu zvýšeného rizika spojeného se staršími protokoly ověřování.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Vyžadovat VÍCEFAKTOROVÉ ověřování pro správu Azure, aby chránila vaše privilegované prostředky tím, že vyžaduje vícefaktorové ověřování pro všechny uživatele přistupující k prostředkům Azure.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Povolit synchronizaci hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) (Pokud používáte hybridní identity) | Poskytněte redundanci pro ověřování a zlepšení zabezpečení (včetně inteligentního uzamčení, uzamčení protokolu IP a možnosti zjišťování nevrácených přihlašovacích údajů). |
-| [Povolit inteligentní zámek ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
+| [Povolit inteligentní zámek ADFS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (Pokud je k dispozici) | Chrání uživatele před tím, než se zlými úmysly přestanou uzamknout extranet účtu. |
 | [Povolit Azure Active Directory inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) (Pokud používáte spravované identity) | Inteligentní zamykání pomáhá uzamknout chybné aktéry, které se pokoušejí uhodnout hesla uživatelů, nebo používat metody hrubou silou k získání. |
 | [Zakázání souhlasu koncových uživatelů k aplikacím](../manage-apps/configure-user-consent.md) | Pracovní postup pro vyjádření souhlasu správce poskytuje správcům zabezpečený způsob, jak udělit přístup k aplikacím, které vyžadují schválení správcem, aby koncoví uživatelé nezveřejnili podniková data. Společnost Microsoft doporučuje zakázat budoucí operace souhlasu s uživatelem, aby se snížila plocha a zmírnila toto riziko. |
 | [Povolení vzdáleného přístupu k místním starším aplikacím pomocí proxy aplikací](../manage-apps/application-proxy-add-on-premises-application.md) | Povolte Azure Proxy aplikací služby AD a integrujte se staršími aplikacemi, aby uživatelé mohli zabezpečeně přistupovat k místním aplikacím přihlášením pomocí svého účtu Azure AD. |
@@ -126,7 +126,7 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
 | [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
 | [Povolit pokyny pro heslo Microsoftu](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadování uživatelů ke změně hesla podle nastaveného plánu, zakázání požadavků na složitost a vašim uživatelům je více apt, aby si zapamatovali hesla a zajistili, že jsou zabezpečená. |
-| [Vytvoření plánu pro přístup uživatele typu Host](../b2b/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
+| [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
 | [Povolit Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci, takže správci mají přístup jenom v případě potřeby a se schválením. |
 
 ## <a name="next-steps"></a>Další kroky

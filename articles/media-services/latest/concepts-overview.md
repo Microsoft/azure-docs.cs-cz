@@ -9,16 +9,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269705"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297429"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologie a koncepty
 
@@ -43,7 +43,7 @@ Základní koncepty popsané v těchto tématech by měly být před zahájením
 
 ## <a name="media-services-v3-concepts"></a>Koncepty Media Services V3
 
-|Koncepty|Description|Odkazy|
+|Koncepty|Popis|Odkazy|
 |---|---|---|
 |Prostředky a nahrávání obsahu|Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát své digitální soubory do **assetů**.|[Nahrávání do cloudu a úložiště](storage-account-concept.md)<br/><br/>[Koncept prostředků](assets-concept.md)|
 |Kódování obsahu|Po nahrání vysoce kvalitních digitálních mediálních souborů do assetů je můžete kódovat do formátů, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. <br/><br/>Pro kódování pomocí Media Services V3 potřebujete vytvořit **transformace** a **úlohy**.|[Transformace a úlohy](transforms-jobs-concept.md)<br/><br/>[Kódování pomocí Media Services](encoding-concept.md)|

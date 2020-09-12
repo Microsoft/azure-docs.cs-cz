@@ -3,12 +3,12 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179976"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378045"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
@@ -22,7 +22,7 @@ Pro zjednodušení vytváření nastavení diagnostiky se škálováním (s LA j
 
 * Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, kterému se přiřadí zásada, musí mít přístup **vlastníka** k předplatnému, ke kterému je zásada přiřazená.
 
-* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup **čtenářů**, **přispěvatele** nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
+* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup pro **čtenáře**, **přispěvatele**nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
 
 * Obor skupiny pro správu se momentálně nepodporuje.
 

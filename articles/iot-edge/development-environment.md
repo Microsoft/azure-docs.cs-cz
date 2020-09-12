@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511089"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300370"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
 
@@ -82,10 +82,10 @@ Pro produkční nasazení se podporuje jenom modul runtime IoT Edge, ale násled
 
 | Nástroj | Označuje se také jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
-| Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení pro moduly ladění. |
-| IoT Edge kontejner pro vývoj | Microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalace závislostí. |
-| IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, MacOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
-| IoT Edge kontejner zařízení | toolboc/Azure – IoT-Edge-Device-Container | Windows, Linux, MacOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
+| Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, macOS | Simulace zařízení pro moduly ladění. |
+| IoT Edge kontejner pro vývoj | Microsoft/iotedgedev | Windows, Linux, macOS | Vývoj bez instalace závislostí. |
+| IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, macOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
+| IoT Edge kontejner zařízení | toolboc/Azure – IoT-Edge-Device-Container | Windows, Linux, macOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
 
 ### <a name="iot-edgehub-dev-tool"></a>Nástroj pro vývoj IoT EdgeHub
 
@@ -103,7 +103,7 @@ Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](htt
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge modul runtime v kontejneru
 
-Modul runtime IoT Edge v kontejneru poskytuje úplný modul runtime, který jako proměnnou prostředí převezme řetězec připojení zařízení. Tento kontejner umožňuje testovat IoT Edge moduly a scénáře v systému, který nemusí nativně podporovat modul runtime, jako je MacOS. Všechny moduly, které nasadíte, se spustí mimo kontejner modulu runtime. Pokud chcete, aby modul runtime a všechny nasazené moduly existovaly ve stejném kontejneru, zvažte místo toho IoT Edge kontejner zařízení.
+Modul runtime IoT Edge v kontejneru poskytuje úplný modul runtime, který jako proměnnou prostředí převezme řetězec připojení zařízení. Tento kontejner umožňuje testovat IoT Edge moduly a scénáře v systému, který nemusí nativně podporovat modul runtime, jako je macOS. Všechny moduly, které nasadíte, se spustí mimo kontejner modulu runtime. Pokud chcete, aby modul runtime a všechny nasazené moduly existovaly ve stejném kontejneru, zvažte místo toho IoT Edge kontejner zařízení.
 
 Další informace najdete v tématu [spuštění Azure IoT Edge v kontejneru](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
 
@@ -119,7 +119,7 @@ Až budete připraveni vyvíjet řešení v rozsáhlých produkčních scénář
 
 Další informace, doprovodné materiály a příklady najdete na následujících stránkách:
 
-* [Průběžná integrace a průběžné nasazování pro Azure IoT Edge](how-to-ci-cd.md)
-* [Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Projects](how-to-devops-project.md)
+* [Průběžná integrace a průběžné nasazování pro Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
+* [Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Starter](how-to-devops-starter.md)
 * [Modul plug-in Azure IoT Edge Jenkinse](https://plugins.jenkins.io/azure-iot-edge)
 * [Úložiště GitHub IoT Edge DevOps](https://github.com/toolboc/IoTEdge-DevOps)

@@ -10,17 +10,17 @@ tags: ''
 keywords: azure media services, stream, všesměrové vysílání, live, režim offline
 ms.service: media-services
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267560"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298942"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 

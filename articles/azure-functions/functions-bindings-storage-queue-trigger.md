@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761691"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376634"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -388,7 +388,7 @@ Algoritmus používá následující logiku:
 - Když se najde zpráva, modul runtime počká dvě sekundy a pak zkontroluje další zprávu.
 - Pokud se nenajde žádná zpráva, před opakováním počkejte přibližně čtyři sekundy.
 - Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta.
-- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [host.jsv souboru](functions-host-json.md#queues).
+- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [host.jsv souboru](functions-host-json-v1.md#queues).
 
 Pro místní vývoj je maximální interval cyklického dotazování ve výchozím nastavení na dvě sekundy.
 

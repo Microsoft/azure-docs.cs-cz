@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046744"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299605"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
 Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak řešení potíží v protokolech konzoly aplikací v reálném čase. Můžete také [analyzovat protokoly a metriky pomocí nastavení diagnostiky](./diagnostic-services.md).
@@ -20,7 +20,7 @@ Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [rozšíření Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) pro jarní Cloud a minimální verzi 0.2.0.
-* Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart-launch-app-cli.md).
+* Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart.md).
 
 > [!NOTE]
 >  Rozšíření ASC CLI je aktualizované z verze 0.2.0 na 0.2.1. Tato změna má vliv na syntaxi příkazu pro streamování protokolů: `az spring-cloud app log tail` , který je nahrazen: `az spring-cloud app logs` . Příkaz: `az spring-cloud app log tail` bude v budoucí verzi zastaralá. Pokud jste používali verzi 0.2.0, můžete upgradovat na 0.2.1. Nejdřív odeberte starou verzi pomocí příkazu: `az extension remove -n spring-cloud` .  Pak nainstalujte 0.2.1 pomocí příkazu: `az extension add -n spring-cloud` .

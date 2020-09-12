@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607277"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322071"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Prahové hodnoty, způsoby a časové rámce plateb
 
@@ -40,71 +40,71 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 
 | Země/oblast | Azure Marketplace | Ukládání, inzerce, míchání a Minecraftu | Office | Platby PayPal  |
 | --- | --- | --- | --- | --- |
-| Afghánistán | Yes | Ano | No | No |
+| Afghánistán | Yes | Yes | No | No |
 | Albánie | Yes | Yes | Yes | Yes |
 | Alžírsko | Yes | Yes | Yes | Yes |
 | Andorra | No | No | Yes | Yes |
-| Angola | Yes | Yes | Ano | No |
-| Antigua a Barbuda | Yes | Ano | No | Yes |
+| Angola | Yes | Yes | Yes | No |
+| Antigua a Barbuda | Yes | Yes | No | Yes |
 | Argentina | Yes | Yes | Yes | Yes |
-| Arménie | Yes | Ano | No | No |
+| Arménie | Yes | Yes | No | No |
 | Austrálie | Yes | Yes | Yes | Yes |
 | Rakousko | Yes | Yes | Yes | Yes |
-| Ázerbájdžán | Yes | Yes | Ano | No |
+| Ázerbájdžán | Yes | Yes | Yes | No |
 | Bahrajn | Yes | Yes | Yes | Yes |
-| Bangladéš | Yes | Yes | Ano | No |
-| Bělorusko | Yes | Yes | Ano | No |
+| Bangladéš | Yes | Yes | Yes | No |
+| Bělorusko | Yes | Yes | Yes | No |
 | Belgie | Yes | Yes | Yes | Yes |
-| Benin | Yes | Yes | Ano | No |
-| Bolívie | Yes | Yes | Ano | No |
+| Benin | Yes | Yes | Yes | No |
+| Bolívie | Yes | Yes | Yes | No |
 | Bosna a Hercegovina | Yes | Yes | Yes | Yes |
-| Botswana | Yes | Ano | No | Yes |
+| Botswana | Yes | Yes | No | Yes |
 | Brazílie | Yes | Yes | Yes | Yes |
 | Bulharsko | Yes | Yes | Yes | Yes |
-| Burkina Faso | Yes | Yes | Ano | No |
-| Burundi | Yes | Yes | Ano | No |
-| Kambodža | Yes | Yes | Ano | No |
-| Kamerun | Yes | Yes | Ano | No |
+| Burkina Faso | Yes | Yes | Yes | No |
+| Burundi | Yes | Yes | Yes | No |
+| Kambodža | Yes | Yes | Yes | No |
+| Kamerun | Yes | Yes | Yes | No |
 | Kanada | Yes | Yes | Yes | Yes |
-| Středoafrická republika | Yes | Yes | Ano | No |
-| Čad | Yes | Yes | Ano | No |
+| Středoafrická republika | Yes | Yes | Yes | No |
+| Čad | Yes | Yes | Yes | No |
 | Chile | Yes | Yes | Yes | Yes |
 | Čína | No | Yes | Yes | Yes |
 | Kolumbie | Yes | Yes | Yes | Yes |
-| Komory | Yes | Ano | No | No |
-| Konžská demokratická republika | Yes | Yes | Ano | No |
-| Konžská demokratická republika | Yes | Yes | Ano | No |
+| Komory | Yes | Yes | No | No |
+| Konžská demokratická republika | Yes | Yes | Yes | No |
+| Konžská demokratická republika | Yes | Yes | Yes | No |
 | Kostarika | Yes | Yes | Yes | Yes |
-| Pobřeží slonoviny | Yes | Yes | Ano | No |
-| Chorvatsko | Yes | Yes | Ano | No |
+| Pobřeží slonoviny | Yes | Yes | Yes | No |
+| Chorvatsko | Yes | Yes | Yes | No |
 | Kypr | Yes | Yes | Yes | Yes |
-| Česká republika | Yes | Yes | Yes | Yes |
+| Czechia | Yes | Yes | Yes | Yes |
 | Dánsko | Yes | Yes | Yes | Yes |
-| Dominika | Yes | Ano | No | Yes |
+| Dominika | Yes | Yes | No | Yes |
 | Dominikánská republika | Yes | Yes | Yes | Yes |
 | Ekvádor | Yes | Yes | Yes | Yes |
 | Egypt | Yes | Yes | Yes | Yes |
 | Salvador | Yes | Yes | Yes | Yes |
-| Eritrea | Yes | Yes | Ano | No |
+| Eritrea | Yes | Yes | Yes | No |
 | Estonsko | Yes | Yes | Yes | Yes |
-| Etiopie | Yes | Yes | Ano | No |
-| Fidži | Yes | Ano | No | No |
+| Etiopie | Yes | Yes | Yes | No |
+| Fidži | Yes | Yes | No | No |
 | Finsko | Yes | Yes | Yes | Yes |
 | Francie | Yes | Yes | Yes | Yes |
 | Gruzie | Yes | Yes | Yes | Yes |
 | Německo | Yes | Yes | Yes | Yes |
-| Ghana | Yes | Yes | Ano | No |
+| Ghana | Yes | Yes | Yes | No |
 | Řecko | Yes | Yes | Yes | Yes |
 | Guatemala | Yes | Yes | Yes | Yes |
-| Guinea | Yes | Yes | Ano | No |
-| Haiti | Yes | Yes | Ano | No |
+| Guinea | Yes | Yes | Yes | No |
+| Haiti | Yes | Yes | Yes | No |
 | Honduras | Yes | Yes | Yes | Yes |
 | Hongkong | Yes | Yes | Yes | Yes |
 | Maďarsko | Yes | Yes | Yes | Yes |
-| Island | Yes | Yes | Ano | No |
+| Island | Yes | Yes | Yes | No |
 | Indie | Yes | Yes | Yes | Yes |
 | Indonésie | Yes | Yes | Yes | Yes |
-| Irák | Yes | Ano | No | No |
+| Irák | Yes | Yes | No | No |
 | Irsko | Yes | Yes | Yes | Yes |
 | Izrael | Yes | Yes | Yes | Yes |
 | Itálie | Yes | Yes | Yes | Yes |
@@ -113,85 +113,85 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Jordánsko | Yes | Yes | Yes | Yes |
 | Kazachstán | Yes | Yes | Yes | Yes |
 | Keňa | Yes | Yes | Yes | Yes |
-| Korea (Jižní) | Yes | Yes | Ano | No |
+| Korea (Jižní) | Yes | Yes | Yes | No |
 | Kuvajt | Yes | Yes | Yes | Yes |
-| Kyrgyzstán | No | No | Ano | No |
-| Laos | Yes | Yes | Ano | No |
-| Lotyšsko | Yes | Yes | Ano | No |
-| Libanon | Yes | Ano | No | No |
-| Libérie | Yes | Yes | Ano | No |
+| Kyrgyzstán | No | No | Yes | No |
+| Laos | Yes | Yes | Yes | No |
+| Lotyšsko | Yes | Yes | Yes | No |
+| Libanon | Yes | Yes | No | No |
+| Libérie | Yes | Yes | Yes | No |
 | Lichtenštejnsko | Yes | Yes | Yes | Yes |
-| Litva | Yes | Yes | Ano | No |
+| Litva | Yes | Yes | Yes | No |
 | Lucembursko | Yes | Yes | Yes | Yes |
-| Makedonie | No | Yes | Ano | No |
-| Madagaskar | Yes | Yes | Ano | No |
+| Madagaskar | Yes | Yes | Yes | No |
 | Malawi | Yes | Yes | Yes | Yes |
 | Malajsie | Yes | Yes | Yes | Yes |
-| Mali | Yes | Yes | Ano | No |
+| Mali | Yes | Yes | Yes | No |
 | Malta | Yes | Yes | Yes | Yes |
-| Mauricius | Yes | Ano | No | Yes |
+| Mauricius | Yes | Yes | No | Yes |
 | Mexiko | Yes | Yes | Yes | Yes |
-| Monako | Yes | Ano | No | No |
-| Mongolsko | Yes | Yes | Ano | No |
-| Černá Hora | Yes | Yes | Ano | No |
-| Maroko | Yes | Yes | Ano | No |
+| Monako | Yes | Yes | No | No |
+| Mongolsko | Yes | Yes | Yes | No |
+| Černá Hora | Yes | Yes | Yes | No |
+| Maroko | Yes | Yes | Yes | No |
 | Mosambik | Yes | Yes | Yes | Yes |
-| Nepál | Yes | Yes | Ano | No |
+| Nepál | Yes | Yes | Yes | No |
 | Nizozemsko | Yes | Yes | Yes | Yes |
 | Nový Zéland | Yes | Yes | Yes | Yes |
 | Nikaragua | Yes | Yes | Yes | Yes |
-| Niger | Yes | Yes | Ano | No |
-| Nigérie | Yes | Yes | Ano | No |
+| Niger | Yes | Yes | Yes | No |
+| Nigérie | Yes | Yes | Yes | No |
+| Severní Makedonie | No | Yes | Yes | No |
 | Norsko | Yes | Yes | Yes | Yes |
 | Omán | Yes | Yes | Yes | Yes |
-| Pákistán | Yes | Yes | Ano | No |
+| Pákistán | Yes | Yes | Yes | No |
 | Panama | Yes | Yes | Yes | Yes |
-| Paraguay | Yes | Yes | Ano | No |
+| Paraguay | Yes | Yes | Yes | No |
 | Peru | Yes | Yes | Yes | Yes |
 | Filipíny | Yes | Yes | Yes | Yes |
 | Polsko | Yes | Yes | Yes | Yes |
 | Portugalsko | Yes | Yes | Yes | Yes |
-| Portoriko | No | No | Ano | No |
+| Portoriko | No | No | Yes | No |
 | Katar | Yes | Yes | Yes | Yes |
-| Rumunsko | Yes | Yes | Ano | No |
-| Rusko | Yes | Ano | No | Yes |
-| Rwanda | Yes | Yes | Ano | No |
-| Svatý Vincenc a Grenadiny | No | Ano | No | No |
+| Rumunsko | Yes | Yes | Yes | No |
+| Rusko | Yes | Yes | No | Yes |
+| Rwanda | Yes | Yes | Yes | No |
+| Svatý Vincenc a Grenadiny | No | Yes | No | No |
 | Saúdská Arábie | Yes | Yes | Yes | Yes |
-| Senegal | Yes | Yes | Ano | No |
-| Srbsko | Yes | Yes | Ano | No |
-| Sierra Leone | Yes | Yes | Ano | No |
+| Senegal | Yes | Yes | Yes | No |
+| Srbsko | Yes | Yes | Yes | No |
+| Sierra Leone | Yes | Yes | Yes | No |
 | Singapur | Yes | Yes | Yes | Yes |
 | Slovensko | Yes | Yes | Yes | Yes |
 | Slovinsko | Yes | Yes | Yes | Yes |
-| Somálsko | Yes | Yes | Ano | No |
+| Somálsko | Yes | Yes | Yes | No |
 | Jižní Afrika | Yes | Yes | Yes | Yes |
 | Španělsko | Yes | Yes | Yes | Yes |
-| Srí Lanka | Yes | Yes | Ano | No |
+| Srí Lanka | Yes | Yes | Yes | No |
 | Švédsko | Yes | Yes | Yes | Yes |
-| Švýcarsko | Yes | Yes | Ano | No |
+| Švýcarsko | Yes | Yes | Yes | No |
 | Tchaj-wan | No | Yes | Yes | Yes |
-| Tádžikistán | Yes | Ano | No | No |
-| Tanzanie | Yes | Yes | Ano | No |
+| Tádžikistán | Yes | Yes | No | No |
+| Tanzanie | Yes | Yes | Yes | No |
 | Thajsko | Yes | Yes | Yes | Yes |
-| Timor Leste | Yes | Yes | Ano | No |
-| Togo | Yes | Yes | Ano | No |
-| Tonga | Yes | Ano | No | No |
+| Timor Leste | Yes | Yes | Yes | No |
+| Togo | Yes | Yes | Yes | No |
+| Tonga | Yes | Yes | No | No |
 | Trinidad a Tobago | Yes | Yes | Yes | Yes |
-| Tunisko | Yes | Yes | Ano | No |
-| Turecko | Yes | Yes | Ano | No |
-| Turkmenistán | Yes | Ano | No | No |
-| Uganda | Yes | Yes | Ano | No |
-| Ukrajina | Yes | Ano | No | No |
+| Tunisko | Yes | Yes | Yes | No |
+| Turecko | Yes | Yes | Yes | No |
+| Turkmenistán | Yes | Yes | No | No |
+| Uganda | Yes | Yes | Yes | No |
+| Ukrajina | Yes | Yes | No | No |
 | Spojené arabské emiráty | Yes | Yes | Yes | Yes |
 | Spojené království | Yes | Yes | Yes | Yes |
 | USA | Yes | Yes | Yes | Yes |
 | Uruguay | Yes | Yes | Yes | Yes |
-| Uzbekistán | Yes | Ano | No | No |
+| Uzbekistán | Yes | Yes | No | No |
 | Venezuela | Yes | Yes | Yes | Yes |
 | Vietnam | Yes | Yes | Yes | Yes |
-| Zambie | Yes | Yes | Ano | No |
-| Zimbabwe | Yes | Yes | Ano | No |
+| Zambie | Yes | Yes | Yes | No |
+| Zimbabwe | Yes | Yes | Yes | No |
 | | |
 
 ## <a name="next-step"></a>Další krok

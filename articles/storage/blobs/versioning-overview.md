@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226258"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297658"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -138,7 +138,7 @@ Pokud chcete odebrat předchozí verzi objektu blob, explicitně ji odstraňte z
 
 Následující diagram ukazuje, co se stane, když odstraníte objekt BLOB nebo verzi objektu BLOB.
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram znázorňující odstranění verze s povoleným obnovitelnému odstranění":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram znázorňující odstranění verze s povoleným obnovitelném odstraněním":::
 
 Pokud je v účtu úložiště zapnutá jak Správa verzí, tak i obnovitelné odstranění, při úpravě nebo odstranění verze objektu BLOB nebo objektu BLOB se nevytvoří žádný snímek s odstraněným odstraněnou.
 
@@ -169,7 +169,7 @@ Při pořizování snímku objektu BLOB s verzí se vytvoří nová verze ve ste
 
 Následující diagram ukazuje, co se stane při pořizování snímku objektu BLOB s verzí. V diagramu verze a snímky objektů BLOB s ID verze 2 a 3 obsahují stejná data.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující snímky objektu BLOB s verzí ":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující snímky objektu BLOB s verzí":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Autorizovat operace s verzemi objektů BLOB
 
@@ -266,6 +266,10 @@ Následující tabulka popisuje chování fakturace objektu BLOB nebo verze při
 | Předchozí verze | Verze v nové vrstvě a základním objektu BLOB v původní vrstvě a všechny jedinečné bloky v jiných verzích. <sup>1</sup> |
 
 <sup>1</sup> Pokud jsou k dispozici jiné předchozí verze nebo snímky, které nebyly přesunuty z původní úrovně, jsou tyto verze nebo snímky účtovány na základě počtu jedinečných bloků, které obsahují, jak je popsáno v tématu [fakturace, pokud nebyla vrstva objektů BLOB explicitně nastavena](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Následující diagram znázorňuje, jak se účtují objekty při přesunu objektu BLOB s verzí do jiné úrovně.
+
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagram znázorňující, jakým způsobem se účtují objekty, když je explicitně vrstvená verze objektu BLOB":::
 
 Explicitní nastavení vrstvy pro objekt blob, verzi nebo snímek nelze vrátit zpět. Pokud objekt BLOB přesunete do nové úrovně a pak ho přesunete zpátky do původní úrovně, bude se vám účtovat úplná délka obsahu objektu, i když sdílí bloky s jinými objekty v původní úrovni.
 

@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045327"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322547"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Vytváření zobecněných imagí bez zřizovacího agenta
 
@@ -174,7 +174,7 @@ Pokud na vašem VIRTUÁLNÍm počítači není nainstalovaný Python nebo je k d
    </Health>
    ```
 
-3. Publikujte tato data do WireServer:`curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
+3. Publikujte tato data do WireServer: `curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
 
 ### <a name="automating-running-the-code-at-first-boot"></a>Automatizace spouštění kódu při prvním spuštění
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Tato služba systému poskytuje tři věci pro základní zřizování:
 
 1. Sestavy připravené k Azure (k indikaci úspěšného úspěšného dokončení)
-1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z IMDS.
+1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z [Azure instance metadata Service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service). **Poznámka:** IMDS také poskytuje další [metadata instance](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service), jako jsou například veřejné klíče SSH, takže můžete nastavit více než název hostitele.
 1. Zakáže sám sebe, aby se spouštěla jenom při prvním spuštění, a ne při následném restartování.
 
 S jednotkou v systému souborů spusťte následující příkaz pro povolení:

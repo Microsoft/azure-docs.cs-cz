@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716312"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377195"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -27,7 +27,7 @@ Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umož
 >
 > Pokud váš IT tým nepovolil možnost resetovat si vlastní heslo, obraťte se na helpdesk a získáte další pomoc.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Jak funguje portál pro resetování hesla?
+## <a name="how-does-the-password-reset-process-work"></a>Jak proces resetování hesla funguje?
 
 Uživatel může resetovat nebo změnit heslo pomocí [portálu SSPR](https://aka.ms/sspr). Musí nejdřív zaregistrovat požadované metody ověřování. Když uživatel přistupuje k portálu SSPR, platforma Azure bere v úvahu následující faktory:
 
@@ -58,6 +58,11 @@ Po zobrazení portálu SSPR v požadovaném jazyce se uživateli zobrazí výzva
   * Pokud není zpětný zápis SSPR nasazený a heslo uživatele je spravované místně, uživateli se zobrazí výzva, aby se obrátil na správce, aby resetoval heslo.
 
 Pokud se všechny předchozí kontroly úspěšně dokončí, uživatel se provede procesem resetování nebo změnou hesla.
+
+> [!NOTE]
+> SSPR může posílat e-mailová oznámení uživatelům v rámci procesu resetování hesla. Tyto e-maily se odesílají pomocí předávací služby SMTP, která funguje v režimu aktivní-aktivní napříč několika oblastmi.
+>
+> Služba SMTP relay přijímá a zpracovává tělo e-mailu, ale neukládá ji. Tělo SSPR e-mailu, které může potenciálně obsahovat informace poskytnuté zákazníkem, není uloženo v protokolech služby SMTP relay. Protokoly obsahují pouze metadata protokolu.
 
 Pokud chcete začít pracovat s SSPR, dokončete následující kurz:
 

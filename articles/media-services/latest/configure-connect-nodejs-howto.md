@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265588"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297344"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k rozhraní Media Services V3 API – Node.js
 
@@ -57,7 +57,7 @@ V tomto článku se dozvíte, jak se připojit ke službě Azure Media Services 
 
 Je třeba zadat následující balíčky:
 
-|Balíček|Description|
+|Balíček|Popis|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Pokud chcete mít jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [npm instalaci Azure-ARM-MediaServices](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Sada SDK pro úložiště Používá se při nahrávání souborů do assetů.|

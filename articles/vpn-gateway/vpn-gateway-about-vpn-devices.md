@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 09/01/2020
 ms.author: yushwang
-ms.openlocfilehash: 18eaf520c70b064f26cd1da5f50c023f42adb8ee
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021812"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318943"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -46,7 +46,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Cisco |ASR |PolicyBased: iOS 15.1<br>RouteBased: iOS 15.2 |Podporováno |Podporováno |
 | Cisco | MANAŽER | RouteBased: IOS – XE 16,10 | (netestováno) | [Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: iOS 15.0<br>RouteBased*: iOS 15.1 |Podporováno |Podporováno |
-| Cisco |Meraki |– |Není kompatibilní |Není kompatibilní |
+| Cisco |Meraki (MX) | MX v 15.12 |Není kompatibilní | [Průvodce konfigurací](https://documentation.meraki.com/MX/Site-to-site_VPN/Configuring_Site_to_Site_VPN_tunnels_to_Azure_VPN_Gateway) |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (aktivní/pasivní režim)<br><br>19,2 (aktivní/aktivní režim) | Není kompatibilní |  [Ruční konfigurace (aktivní/pasivní)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Konfigurace cloudu OnRamp (aktivní/aktivní)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 a vyšší |[Průvodce konfigurací](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Není kompatibilní |
 | F5 |Řada BIG-IP |12.0 |[Průvodce konfigurací](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Průvodce konfigurací](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -144,7 +144,7 @@ V následujících tabulkách:
 | Algoritmy šifrování a hash |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                               |
 | Životnost SA (bajty)           |102 400 000 kB |102 400 000 kB                               |
-| Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
+| Metoda Perfect Forward Secrecy (PFS) |No             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Detekce mrtvých partnerských zařízení (DPD)     |Nepodporováno  |Podporováno                                    |
 
 
@@ -154,7 +154,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-initiator"></a>Služba Azure Gateway jako iniciátor
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |
@@ -165,7 +165,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-responder"></a>Služba Azure Gateway jako respondér
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |

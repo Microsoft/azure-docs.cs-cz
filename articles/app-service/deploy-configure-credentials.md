@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223852"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300268"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -61,7 +61,7 @@ Pokud je nakonfigurované nasazení Git, na stránce se zobrazí **uživatelské
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Použití přihlašovacích údajů na úrovni uživatele s FTP/FTPS
 
-Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele requirers uživatelské jméno v následujícím formátu:`<app-name>\<user-name>`
+Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele requirers uživatelské jméno v následujícím formátu: `<app-name>\<user-name>`
 
 Vzhledem k tomu, že přihlašovací údaje na úrovni uživatele jsou propojené s uživatelem a ne konkrétním prostředkem, musí být uživatelské jméno v tomto formátu, aby se akce přihlášení nasměrovala do pravého koncového bodu aplikace.
 
@@ -73,6 +73,36 @@ Získání přihlašovacích údajů na úrovni aplikace:
 2. Vyberte možnost **přihlašovací údaje aplikace**a kliknutím na odkaz **Kopírovat** zkopírujte uživatelské jméno nebo heslo.
 
 Pokud chcete resetovat přihlašovací údaje na úrovni aplikace, vyberte **resetovat přihlašovací údaje** ve stejném dialogu.
+
+## <a name="disable-basic-authentication"></a>Zakázat základní ověřování
+
+Některé organizace potřebují splňovat požadavky na zabezpečení a místo toho mají přístup přes FTP nebo WebDeploy. Členové organizace tak můžou k tomuto App Services přistupovat jenom prostřednictvím rozhraní API, která jsou řízená Azure Active Directory (Azure AD).
+
+### <a name="ftp"></a>FTP
+
+Chcete-li zakázat přístup FTP k webu, spusťte následující příkaz CLI. Zástupné symboly nahraďte skupinou prostředků a názvem webu. 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Pokud chcete potvrdit, že je přístup k FTP blokovaný, můžete se pokusit ověřit pomocí klienta FTP, jako je FileZilly. Přihlašovací údaje pro publikování načtete tak, že přejdete do okna Přehled vaší lokality a kliknete na stáhnout profil publikování. K ověření použijte název hostitele FTP, uživatelské jméno a heslo souboru a zobrazí se chybová zpráva 401 s oznámením, že nemáte oprávnění.
+
+### <a name="webdeploy-and-scm"></a>WebDeploy a SCM
+
+Chcete-li zakázat základní přístup k ověřování na portu WebDeploy a na webu SCM, spusťte následující příkaz CLI. Zástupné symboly nahraďte skupinou prostředků a názvem webu. 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Pokud chcete potvrdit, že se přihlašovací údaje profilu publikování zablokují na webu WebDeploy, zkuste [publikovat webovou aplikaci pomocí sady Visual Studio 2019](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+
+### <a name="disable-access-to-the-api"></a>Zakázání přístupu k rozhraní API
+
+Rozhraní API v předchozí části se zálohuje Access Control na základě rolí v Azure (RBAC), což znamená, že můžete [vytvořit vlastní roli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) a přiřadit uživatelům méně priveldged k této roli, aby na všech webech nemohly povolit základní ověřování. Pokud chcete nakonfigurovat vlastní roli, [postupujte podle těchto pokynů](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+
+[Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) můžete použít také k auditování všech úspěšných žádostí o ověření a pomocí [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) vynutili tuto konfiguraci pro všechny weby v rámci vašeho předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 

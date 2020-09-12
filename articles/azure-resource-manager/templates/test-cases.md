@@ -2,15 +2,15 @@
 title: Testovací případy pro sadu nástrojů test Toolkit
 description: Popisuje testy, které jsou spuštěny pomocí sady nástrojů pro test šablon ARM.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255918"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378113"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
@@ -100,6 +100,37 @@ Následující příklad **projde** tímto testem:
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>Adresy URL prostředí nemůžou být pevně zakódované.
+
+Název testu: **DeploymentTemplate nesmí obsahovat identifikátor URI pevně zakódované**
+
+V šabloně nekódujte pevně adresy URL prostředí. Místo toho použijte [funkci prostředí](template-functions-deployment.md#environment) k dynamickému získání těchto adres URL během nasazování. Seznam hostitelských adres URL, které jsou blokovány, naleznete v [testovacím případu](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+
+Následující příklad tento test **neprojde** , protože adresa URL je pevně zakódované.
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+Test se také **nezdařil** při použití s [identifikátorem](template-functions-string.md#uri) [Concat](template-functions-string.md#concat) nebo URI.
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+Následující příklad **projde** tímto testem.
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>Umístění používá parametr
@@ -351,18 +382,18 @@ Toto upozornění se zobrazí také v případě, že zadáte minimální nebo m
 
 ## <a name="artifacts-parameter-defined-correctly"></a>Správně definovaný parametr artefaktů
 
-Název testu: **artefakty – parametr**
+Název testu: **parametr artefakty**
 
 Při zahrnutí parametrů pro `_artifactsLocation` a `_artifactsLocationSasToken` použijte správné výchozí hodnoty a typy. Aby bylo možné tento test předat, musí být splněny následující podmínky:
 
 * Pokud zadáte jeden parametr, je nutné zadat druhý.
-* `_artifactsLocation`musí být **řetězec**
-* `_artifactsLocation`musí mít výchozí hodnotu v hlavní šabloně.
-* `_artifactsLocation`ve vnořené šabloně nemůže být výchozí hodnota. 
-* `_artifactsLocation`musí mít buď `"[deployment().properties.templateLink.uri]"` nebo nezpracovaná adresa URL úložiště pro výchozí hodnotu.
-* `_artifactsLocationSasToken`musí se jednat o **secureString**
-* `_artifactsLocationSasToken`pro výchozí hodnotu může být jenom prázdný řetězec.
-* `_artifactsLocationSasToken`ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocation` musí být **řetězec**
+* `_artifactsLocation` musí mít výchozí hodnotu v hlavní šabloně.
+* `_artifactsLocation` ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocation` musí mít buď `"[deployment().properties.templateLink.uri]"` nebo nezpracovaná adresa URL úložiště pro výchozí hodnotu.
+* `_artifactsLocationSasToken` musí se jednat o **secureString**
+* `_artifactsLocationSasToken` pro výchozí hodnotu může být jenom prázdný řetězec.
+* `_artifactsLocationSasToken` ve vnořené šabloně nemůže být výchozí hodnota. 
 
 ## <a name="declared-variables-must-be-used"></a>Musí se použít deklarované proměnné.
 
@@ -514,9 +545,9 @@ Tento test platí pro:
 
 `reference`V případě a se `list*` Test **nezdařil** , pokud použijete `concat` k vytvoření ID prostředku.
 
-## <a name="dependson-cant-be-conditional"></a>dependsOn nemůže být podmíněný.
+## <a name="dependson-best-practices"></a>osvědčené postupy pro dependsOn
 
-Název testu: **DependsOn nesmí být podmíněný** .
+Název testu: **osvědčené postupy DependsOn**
 
 Při nastavování závislostí nasazení nepoužívejte funkci [if](template-functions-logical.md#if) k otestování podmínky. Pokud jeden prostředek závisí na prostředku, který je [podmíněně nasazený](conditional-resource-deployment.md), nastavte závislost jako u libovolného prostředku. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
@@ -572,7 +603,7 @@ Pokud vaše šablona obsahuje virtuální počítač s imagí, ujistěte se, že
 
 ## <a name="use-stable-vm-images"></a>Použití stabilních imagí virtuálních počítačů
 
-Název testu: **Virtual-Machines-by-NOT-Preview**
+Název testu: **Virtual Machines by neměl být ve verzi Preview**
 
 Virtuální počítače by neměly používat náhled imagí.
 

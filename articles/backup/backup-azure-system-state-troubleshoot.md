@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022356"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376277"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -40,7 +40,7 @@ Než začnete s odstraňováním potíží se zálohováním stavu systému, dop
 - Obnovení na jiný hardware pomocí obnovení stavu systému nedoporučuje Microsoft
 - Zálohování stavu systému aktuálně podporuje místní servery Windows. Tato funkce není k dispozici pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte následující kontrolu předpokladů.  
 
@@ -66,20 +66,20 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí PowerShellu, spu
 
 Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru, proveďte následující kroky:
 
-1. V nástroji **Správce serveru**klikněte na **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
+1. V nástroji **Správce serveru**vyberte **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
 
     ![Řídicí panel](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Vyberte **typ instalace** a klikněte na **Další**.
+2. Vyberte **typ instalace** a vyberte **Další**.
 
     ![Typ instalace](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Vyberte server z fondu serverů a klikněte na **Další**. V roli serveru ponechte výchozí výběr a klikněte na **Další**.
-4. Na kartě **funkce** vyberte **zálohování Windows serveru** a klikněte na **Další**.
+3. Vyberte server z fondu serverů a vyberte **Další**. V roli serveru ponechte výchozí výběr a vyberte **Další**.
+4. Na kartě **funkce** vyberte **zálohování Windows serveru** a vyberte **Další**.
 
     ![Okno pro výběr funkcí](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. Na kartě **potvrzení** kliknutím na **instalovat** spusťte proces instalace.
+5. Na kartě **potvrzení** vyberte **instalovat** a spusťte proces instalace.
 6. Na kartě **výsledky** se zobrazí funkce zálohování Windows serveru se úspěšně nainstalovala na Windows Server.
 
     ![Výsledky instalace](./media/backup-azure-system-state-troubleshoot/results.jpg)

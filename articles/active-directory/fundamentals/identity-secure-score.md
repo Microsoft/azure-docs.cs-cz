@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523100"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320643"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Jaké je bezpečné skóre identity v Azure Active Directory?
 
@@ -104,7 +104,7 @@ Pokud chcete zobrazit historii skóre, přejděte do [služby Microsoft 365 Secu
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Jak bezpečnostní skóre identity souvisí s bezpečnostním skóre Office 365?
 
-[Microsoft Secure skore](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) obsahuje pět kategorií různých ovládacích prvků a skóre:
+[Microsoft Secure skore](/office365/securitycompliance/microsoft-secure-score) obsahuje pět kategorií různých ovládacích prvků a skóre:
 
 - Identita
 - Data
@@ -116,4 +116,4 @@ Počet bezpečných identit identity představuje část identity Microsoft Secu
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si další informace o službě Microsoft Secure skore.](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Přečtěte si další informace o službě Microsoft Secure skore.](/office365/securitycompliance/microsoft-secure-score)

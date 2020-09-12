@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782324"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300217"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -155,6 +155,7 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 |Svahilština| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Korejština |`ko`   |
+|Kurdština (střed)  |`ku-Arab`  |
 |Lotyština|   `lv`    |
 |Litevština|    `lt`    |
 |Malajština| `ms`        |
@@ -283,10 +284,12 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
+|Afrikánština| `af`|
 | Arabština       | `ar`          |
 | Bengálština      | `bn`          |
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
+|Katalánština|   `ca`    |
 | Čínština (zjednodušená)      | `zh-Hans`          |
 |Čínština (tradiční)|   `zh-Hant`   |
 | Chorvatština      | `hr`          |
@@ -295,6 +298,8 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Nizozemština      | `nl`          |
 | Angličtina    | `en`     |
 | Estonština      | `et`          |
+|Fijian|    `fj`    |
+|Filipino|  `fil`   |
 | Finština      | `fi`          |
 | Francouzština      | `fr`          |
 | Němčina      | `de`          |
@@ -308,12 +313,14 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Irština | `ga`  |
 | Italština      | `it`          |
 | Japonština      | `ja`          |
+|Kannadština|`kn`|
 | Svahilština|    `sw`    |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
 | Malgašština| `mg`    |
 | Malajština|    `ms`        |
+|Maltština|   `mt`    |
 | Maorština| `mi`  |
 | Maráthština| `mr`  |
 | Norština      | `nb`          |
@@ -329,7 +336,9 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
 | Švédština      | `sv`          |
+|Tahitian|  `ty`    |
 | Thajština      | `th`          |
+|Tongánština|    `to`    |
 | Turečtina      | `tr`          |
 | Ukrajinština      | `uk`          |
 | Urdština| `ur`    |

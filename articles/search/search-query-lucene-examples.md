@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934969"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297990"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Kognitivní hledání)
 
@@ -40,13 +40,13 @@ K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení 
 
 Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
-  ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-header.png)
+  ![Parametry nastavení hlavičky žádosti post](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>Nastavení adresy URL žádosti
 
 Request je příkaz GET spárováný s adresou URL, která obsahuje koncový bod Azure Kognitivní hledání a hledaný řetězec.
 
-  ![Hlavička žádosti Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Hlavička žádosti post-GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Složení adresy URL má následující prvky:
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
 
-  ![Ukázková odpověď po ukázce](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Ukázková odpověď po ukázce s výsledky](media/search-query-lucene-examples/postman-sample-results.png)
 
 Možná jste si všimli skóre hledání v odpovědi. Rovnoměrné skóre 1 nastane, pokud není k dispozici žádný rozměr, protože hledání nevrátilo fulltextové vyhledávání, nebo vzhledem k tomu, že se nepoužila žádná kritéria. Pro prázdné vyhledávání bez kritérií se řádky vrátí v libovolném pořadí. Když zahrnete skutečná kritéria hledání, uvidíte výsledky hledání, které se budou vyvíjet na smysluplné hodnoty.
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Ukázková odpověď po ukázce](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Výraz pro hledání ukázkové odezvy po ukázce](media/search-query-lucene-examples/intrafieldfilter.png)
 
 Můžete definovat operaci vyhledávání pomocí pole s syntaxí **NázevPole: searchExpression** , kde výraz vyhledávání může být jedno slovo nebo fráze nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:
 

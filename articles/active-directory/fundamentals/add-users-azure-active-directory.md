@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797096"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321085"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -60,7 +60,7 @@ Uživatel se vytvoří a přidá do vaší organizace Azure AD.
 
 ## <a name="add-a-new-guest-user"></a>Přidat nového uživatele typu Host
 
-Můžete taky pozvat nového uživatele typu Host, aby spolupracovali s vaší organizací, a to tak, že na stránce **Nový uživatel** vybere možnost **pozvat uživatele** . Pokud jsou nastavení externích spolupráci vaší organizace nakonfigurovaná tak, aby bylo možné pozvat hosty, uživatel bude e-mailem poslat pozvánku, kterou musí přijmout, aby bylo možné začít spolupracovat. Další informace o tom, jak pozvat uživatele na spolupráci B2B, najdete v článku [pozvání uživatelů B2B k Azure Active Directory](../b2b/add-users-administrator.md)
+Můžete taky pozvat nového uživatele typu Host, aby spolupracovali s vaší organizací, a to tak, že na stránce **Nový uživatel** vybere možnost **pozvat uživatele** . Pokud jsou nastavení externích spolupráci vaší organizace nakonfigurovaná tak, aby bylo možné pozvat hosty, uživatel bude e-mailem poslat pozvánku, kterou musí přijmout, aby bylo možné začít spolupracovat. Další informace o tom, jak pozvat uživatele na spolupráci B2B, najdete v článku [pozvání uživatelů B2B k Azure Active Directory](../external-identities/add-users-administrator.md)
 
 ## <a name="add-a-consumer-user"></a>Přidat uživatele příjemce
 
@@ -105,4 +105,4 @@ Po přidání uživatelů můžete provádět následující základní procesy:
 
 - [Práce s dynamickými skupinami a uživateli](../users-groups-roles/groups-create-rule.md)
 
-Nebo můžete provádět další úlohy správy uživatelů, jako je například [Přidání uživatelů typu host z jiného adresáře](../b2b/what-is-b2b.md) nebo [Obnovení odstraněného uživatele](active-directory-users-restore.md). Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět další úlohy správy uživatelů, jako je například [Přidání uživatelů typu host z jiného adresáře](../external-identities/what-is-b2b.md) nebo [Obnovení odstraněného uživatele](active-directory-users-restore.md). Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).

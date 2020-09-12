@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení Azure Key Vault | Microsoft Docs
+title: Zabezpečení služby Azure Key Vault
 description: Spravujte přístupová oprávnění pro Azure Key Vault, klíče a tajné kódy. Popisuje model ověřování a autorizace Key Vault a způsob zabezpečení trezoru klíčů.
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870574"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377569"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
-Musíte chránit šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla v cloudu, takže používáte Azure Key Vault. Vzhledem k tomu, že ukládáte citlivá a důležitá firemní data, je nutné provést kroky k maximalizaci zabezpečení trezorů a dat, která jsou v nich uložená. Tento článek popisuje některé z konceptů, které byste měli vzít v úvahu při návrhu Azure Key Vault zabezpečení.
+Azure Key Vault slouží k ochraně šifrovacích klíčů a tajných kódů, jako jsou certifikáty, připojovací řetězce a hesla v cloudu. Při ukládání citlivých a důležitých podnikových dat je nutné provést kroky k maximalizaci zabezpečení trezorů a dat, která jsou v nich uložená.
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
@@ -65,7 +64,7 @@ Zásady přístupu Key Vault udělují oprávnění nezávisle na klíčích, ta
 > [!IMPORTANT]
 > Zásady přístupu Key Vault nepodporují podrobné oprávnění na úrovni objektu, jako je konkrétní klíč, tajný klíč nebo certifikát. Když je uživateli udělené oprávnění k vytváření a odstraňování klíčů, můžou tyto operace provádět u všech klíčů v tomto trezoru klíčů.
 
-K nastavení zásad přístupu pro Trezor klíčů použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)nebo [rozhraní REST API pro správu Key Vault](/rest/api/keyvault/).
+Zásady přístupu pro Trezor klíčů můžete nastavit pomocí [Azure Portal](assign-access-policy-portal.md), rozhraní příkazového [řádku Azure CLI](assign-access-policy-cli.md), [Azure PowerShell](assign-access-policy-powershell.md)nebo [rozhraní REST API pro správu Key Vault](/rest/api/keyvault/).
 
 Přístup k rovině dat můžete omezit pomocí [koncových bodů služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)). Můžete nakonfigurovat [brány firewall a pravidla virtuální sítě](network-security.md) pro další vrstvu zabezpečení.
 
@@ -93,7 +92,7 @@ K informacím o protokolování se dá získat pøístup během 10 minut od oper
 - Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
 - Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
 
-Doporučení na bezpečné správě účtů úložiště najdete v [Průvodci zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md) .
+Doporučení pro zabezpečenou správu účtů úložiště najdete v [Průvodci zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

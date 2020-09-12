@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826816"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319793"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -49,7 +49,7 @@ Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s K
 
 ## <a name="behavior-changes"></a>Změny chování
 ### <a name="ambari-stack-version-change"></a>Změna verze zásobníku Ambari
-Z této verze se verze Ambari změnila ze 2. x. x. x na 4,1. K získání verze Ambari z uživatelského rozhraní Ambari se dá získat >.
+V této verzi se verze Ambari mění z 2. x. x. x na 4,1. Můžete ověřit verzi zásobníku (HDInsight 4,1) v Ambari: Ambari > verze > uživatele.
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
@@ -75,4 +75,4 @@ Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](http
 
 ## <a name="known-issues"></a>Známé problémy
 
-Na webu Azure Portal byl opraven problém, ve kterém při vytváření clusteru Azure HDInsight pomocí typu ověřování SSH veřejného klíče došlo k chybě. Když uživatel klikne na **zkontrolovat + vytvořit**, zobrazí se mu chyba "nesmí obsahovat žádné tři po sobě jdoucí znaky od uživatelského jména SSH". Tento problém byl vyřešen, ale může vyžadovat, abyste si aktualizovali mezipaměť prohlížeče pomocí kombinace kláves CTRL + F5 pro načtení opraveného zobrazení. Alternativním řešením tohoto problému bylo vytvořit cluster se šablonou ARM. 
+Na webu Azure Portal se vyřešil problém, kdy u uživatelů docházelo k chybě při vytváření clusteru Azure HDInsight s využitím ověřování SSH pomocí veřejného klíče. Když uživatelé kliknuli na **Zkontrolovat a vytvořit**, zobrazila se jim chyba Nesmí obsahovat žádné tři po sobě jdoucí znaky z uživatelského jména SSH. Tento problém se již vyřešil, ale možná budete muset stisknutím CTRL + F5 aktualizovat mezipaměť prohlížeče, aby se načetlo opravené zobrazení. Alternativním řešením tohoto problému je vytvořit cluster pomocí šablony ARM. 

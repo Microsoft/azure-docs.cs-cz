@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322445"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží s tím, proč se data z vašich zařízení nezobrazuje v Azure IoT Central
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 K monitorování telemetrie, kterou vaše zařízení odesílá, použijte následující příkaz:
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud se zařízení úspěšně připojilo k IoT Central, zobrazí se výstup podobný následujícímu:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Pokud chcete monitorovat aktualizace vlastností, které zařízení vyměňuje pomocí IoT Central, použijte následující příkaz Preview:
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Pokud zařízení úspěšně odesílá aktualizace vlastností, zobrazí se výstup podobný následujícímu:
@@ -106,7 +106,7 @@ Pokud stále nevidíte žádná data v terminálu, je pravděpodobný, že vaše
 Pokud se data na monitoru nezobrazují, ověřte stav zřizování vašeho zařízení spuštěním následujícího příkazu:
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Následující výstup ukazuje příklad zařízení, u kterého se zablokuje připojení:
@@ -176,13 +176,13 @@ Chcete-li zjistit, na kterých kategoriích je váš problém, spusťte nejvhodn
 - K ověření telemetrie použijte příkaz Preview:
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Chcete-li ověřit aktualizace vlastností, použijte příkaz Preview
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 Při prvním spuštění příkazu se může zobrazit výzva k instalaci `uamqp` knihovny `validate` .

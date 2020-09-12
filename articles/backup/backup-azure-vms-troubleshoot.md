@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178007"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376175"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -198,7 +198,7 @@ Operace zálohování se nezdařila z důvodu nekonzistentního stavu záložní
 
 * Ujistěte se, že je agent hosta nainstalovaný a funkční.
 * Z Azure Portal přejít na **Virtual Machine**  >  **všechna nastavení**  >  **rozšíření** pro virtuální počítače
-* Vyberte rozšíření zálohování VmSnapshot nebo VmSnapshotLinux a klikněte na **Odinstalovat**.
+* Vyberte záložní rozšíření VmSnapshot nebo VmSnapshotLinux a vyberte **odinstalovat**.
 * Po odstranění rozšíření zálohování zkuste operaci zálohování znovu.
 * Další operace zálohování nainstaluje nové rozšíření v požadovaném stavu.
 
@@ -363,7 +363,7 @@ Ověření verze agenta virtuálního počítače ve virtuálních počítačíc
 1. Přihlaste se k virtuálnímu počítači Azure a přejděte do složky **C:\WindowsAzure\Packages**. Měli byste najít soubor **WaAppAgent.exe** .
 2. Klikněte na soubor pravým tlačítkem a přejděte na **vlastnosti**. Pak vyberte kartu **Podrobnosti** . Pole **verze produktu** by mělo být 2.6.1198.718 nebo vyšší.
 
-## <a name="troubleshoot-vm-snapshot-issues"></a>Řešení potíží s snímkem virtuálních počítačů
+## <a name="troubleshoot-vm-snapshot-issues"></a>Řešení potíží se snímky virtuálních počítačů
 
 Zálohování virtuálního počítače se spoléhá na vystavování příkazů snímků pro základní úložiště. Při spuštění úlohy snímku není nutné mít přístup k úložišti ani prodlevám. může dojít k selhání úlohy zálohování. Následující podmínky mohou způsobit selhání úlohy snímku:
 

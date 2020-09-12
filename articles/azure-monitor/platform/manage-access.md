@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925630"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300098"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -228,14 +228,14 @@ Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečt
 
     * Udělte uživatelům následující oprávnění k pracovnímu prostoru: 
 
-        * `Microsoft.OperationalInsights/workspaces/read`– požadováno, aby uživatel mohl vytvořit výčet pracovního prostoru a otevřít okno pracovního prostoru v Azure Portal
-        * `Microsoft.OperationalInsights/workspaces/query/read`– vyžaduje se pro každého uživatele, který může spouštět dotazy.
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`– aby bylo možné číst protokoly přihlášení k Azure AD
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read`– aby bylo možné číst Update Management protokoly řešení
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`– aby bylo možné číst Update Management protokoly řešení
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`– aby bylo možné číst protokoly správy aktualizací
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`– vyžaduje se, aby bylo možné používat Update Management řešení
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`– vyžaduje se, aby bylo možné používat Update Management řešení
+        * `Microsoft.OperationalInsights/workspaces/read` – požadováno, aby uživatel mohl vytvořit výčet pracovního prostoru a otevřít okno pracovního prostoru v Azure Portal
+        * `Microsoft.OperationalInsights/workspaces/query/read` – vyžaduje se pro každého uživatele, který může spouštět dotazy.
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` – aby bylo možné číst protokoly přihlášení k Azure AD
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` – aby bylo možné číst Update Management protokoly řešení
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` – aby bylo možné číst Update Management protokoly řešení
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` – aby bylo možné číst protokoly správy aktualizací
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` – vyžaduje se, aby bylo možné používat Update Management řešení
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` – vyžaduje se, aby bylo možné používat Update Management řešení
 
     * Udělte uživatelům následující oprávnění k prostředkům, která jsou `*/read` přiřazená k roli Čtenář, nebo `Microsoft.Insights/logs/*/read` . 
 
@@ -270,7 +270,7 @@ Chcete-li vytvořit roli s přístupem pouze k tabulce _SecurityBaseline_ , vytv
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-Výše uvedené příklady definují seznam povolených tabulek, které jsou povoleny. V tomto příkladu se zobrazí definice zakázané, když uživatel může získat přístup ke všem tabulkám, ale k tabulce _SecurityAlert_ :
+Výše uvedené příklady definují seznam povolených tabulek. Tento příklad ukazuje definici blokovaného seznamu, když má uživatel přístup ke všem tabulkám, ale k tabulce _SecurityAlert_ :
 
 ```
 "Actions":  [

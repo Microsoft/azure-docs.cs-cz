@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054708"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320252"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Nakonfigurovat možnost zůstat přihlášeni? vyzvat k zadání účtů Azure AD
 
@@ -57,7 +57,7 @@ Podrobnosti o chybě při přihlašování jsou následující a v příkladu js
 
 Uživatelům můžete zabránit v zobrazení přerušení nastavením **možnosti zobrazit možnost zůstat přihlášeni** na hodnotu **ne** v nastavení Pokročilé značky. Tím se zakáže výzva políčko zůstat přihlášeni pro všechny uživatele ve vašem adresáři služby Azure AD.
 
-Můžete také použít trvalé ovládací prvky relace prohlížeče v podmíněném přístupu a zabránit tak uživatelům zobrazit si políčko zůstat přihlášeni. Tato možnost umožňuje zakázat políčko zůstat přihlášeni výzvu pro výběr skupiny uživatelů (například globálních správců), aniž by to ovlivnilo chování přihlášení pro zbývající uživatele v adresáři. Další informace najdete v tématu [četnost přihlašování uživatelů](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+Můžete také použít trvalé ovládací prvky relace prohlížeče v podmíněném přístupu a zabránit tak uživatelům zobrazit si políčko zůstat přihlášeni. Tato možnost umožňuje zakázat políčko zůstat přihlášeni výzvu pro výběr skupiny uživatelů (například globálních správců), aniž by to ovlivnilo chování přihlášení pro zbývající uživatele v adresáři. Další informace najdete v tématu [četnost přihlašování uživatelů](../conditional-access/howto-conditional-access-session-lifetime.md). 
 
 Aby se zajistilo, že se výzva políčko zůstat přihlášeni zobrazí jenom v případě, že může uživatel těžit, políčko zůstat přihlášeni výzva se úmyslně nezobrazuje v následujících scénářích:
 
@@ -72,6 +72,6 @@ Aby se zajistilo, že se výzva políčko zůstat přihlášeni zobrazí jenom v
 
 Přečtěte si o dalších nastaveních, která mají vliv na časový limit relace přihlášení:
 
-* Microsoft 365 – [časový limit nečinné relace](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Podmíněný přístup Azure AD – [frekvence přihlašování uživatelů](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure Portal – [časový limit nečinnosti na úrovni adresáře](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365 – [časový limit nečinné relace](/sharepoint/sign-out-inactive-users)
+* Podmíněný přístup Azure AD – [frekvence přihlašování uživatelů](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure Portal – [časový limit nečinnosti na úrovni adresáře](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

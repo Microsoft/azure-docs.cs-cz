@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de232ab6c52afa45b40ef7863a0cb35d7b40531f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832538"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299112"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
 
@@ -42,7 +42,7 @@ Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami
 
 Při volání rozhraní API Bingu pro kontrolu pravopisu pomocí JavaScriptu vám integrované funkce zabezpečení prohlížeče můžou zabránit v přístupu k hodnotám těchto hlaviček.
 
-Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu pro kontrolu pravopisu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které obsahuje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
+Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu pro kontrolu pravopisu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového proxy serveru obsahuje `Access-Control-Expose-Headers` hlavičku, která filtruje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
 Je snadné nainstalovat proxy CORS, aby [aplikace tutorial](../tutorials/spellcheck.md) mohla získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 

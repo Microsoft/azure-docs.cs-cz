@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425540"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318926"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Novinky Azure Active Directory v Microsoft 365 státní správě
 
@@ -53,22 +53,22 @@ V následující tabulce jsou uvedeny koncové body pro všechny zákazníky:
 
 | Name | Podrobnosti koncového bodu |
 |------|------------------|
-| Portals |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 státní správy – RSZ – vysoká:https://portal.office365.us<p>Microsoft 365 státní správy – DoD:https://portal.apps.mil |
+| Portály |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 státní správy – RSZ – vysoká: https://portal.office365.us<p>Microsoft 365 státní správy – DoD: https://portal.apps.mil |
 | Koncový bod Azure Active Directory autority | https://login.microsoftonline.us |
 | Rozhraní API pro Microsoft Graph pro Microsoft 365 státní správu – RSZ – vysoká | https://graph.microsoft.us |
 | Microsoft Graph API pro Microsoft 365 vládu – DoD | https://dod-graph.microsoft.us |
-| Koncové body služby Azure Government Services | Podrobnosti najdete v tématu [Azure Government příručka pro vývojáře](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) . |
-| Microsoft 365 státní správy – horní koncové body pro RSZ | Podrobnosti najdete v části [Office 365 USA – vysoké koncové body pro RSZ](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) . |
-| Microsoft 365 státní správy – DoD | Podrobnosti najdete v tématu [koncové body DoD pro státní správu USA pro Office 365](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) . |
+| Koncové body služby Azure Government Services | Podrobnosti najdete v tématu [Azure Government příručka pro vývojáře](../../azure-government/documentation-government-developer-guide.md) . |
+| Microsoft 365 státní správy – horní koncové body pro RSZ | Podrobnosti najdete v části [Office 365 USA – vysoké koncové body pro RSZ](/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) . |
+| Microsoft 365 státní správy – DoD | Podrobnosti najdete v tématu [koncové body DoD pro státní správu USA pro Office 365](/office365/enterprise/office-365-u-s-government-dod-endpoints) . |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto článcích:
 
-- [Co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- [Co je Azure Government?](../../azure-government/documentation-government-welcome.md)
 
 - [Aktualizace koncového bodu autority AAD Azure Government](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
 - [Koncové body Microsoft Graph v cloudu pro státní správu USA](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 USA úrovně RSZ a DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 USA úrovně RSZ a DoD](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

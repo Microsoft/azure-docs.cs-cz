@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure
 description: Naučte se používat Azure Portal k obnovení celé sdílené složky nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762818"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376770"
 ---
 # <a name="restore-azure-file-shares"></a>Obnovení sdílených složek Azure
 
@@ -50,7 +50,7 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
 
    ![Vybrat obnovit sdílenou složku](./media/restore-afs/restore-share.png)
 
-1. Jakmile vyberete možnost **obnovit sdílenou složku**, otevře se podokno **obnovení** . Chcete-li vybrat bod obnovení, který chcete použít k provádění operace obnovení, klikněte na tlačítko **Vybrat** odkaz pod textovým polem **bod obnovení** .
+1. Jakmile vyberete možnost **obnovit sdílenou složku**, otevře se podokno **obnovení** . Chcete-li vybrat bod obnovení, který chcete použít k operaci obnovení, zvolte **text odkazu pod** textovým polem **bod obnovení** .
 
     ![Vyberte bod obnovení kliknutím na vybrat.](./media/restore-afs/select-restore-point.png)
 
@@ -93,9 +93,9 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
     ![Vybrat obnovení souboru](./media/restore-afs/file-recovery.png)
 
-1. Po výběru **obnovení souboru**se otevře podokno **obnovení** . Chcete-li vybrat bod obnovení, který chcete použít k provádění operace obnovení, klikněte na tlačítko **Vybrat** odkaz pod textovým polem **bod obnovení** .
+1. Po výběru **obnovení souboru**se otevře podokno **obnovení** . Chcete-li vybrat bod obnovení, který chcete použít k operaci obnovení **, vyberte text odkazu pod** textovým polem **bod obnovení** .
 
-    ![Vyberte bod obnovení kliknutím na vybrat.](./media/restore-afs/select-restore-point.png)
+    ![Vyberte možnost bod obnovení kliknutím na odkaz vybrat.](./media/restore-afs/select-restore-point.png)
 
 1. Na pravé straně se otevře místní podokno **Vybrat bod obnovení** , ve kterém se zobrazí seznam bodů obnovení dostupných pro vybranou sdílenou složku. Vyberte bod obnovení, který chcete použít k provedení operace obnovení, a vyberte **OK**.
 
@@ -112,7 +112,7 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
     ![Původní umístění pro obnovení na úrovni položek](./media/restore-afs/original-location-item-level.png)
 
-1. Chcete-li vybrat soubory nebo složky, které chcete obnovit, klikněte na tlačítko **Přidat soubor** . Tím se na pravé straně otevře podokno kontextu, ve kterém se zobrazí obsah bodu obnovení sdílené složky, který jste vybrali pro obnovení.
+1. Chcete-li vybrat soubory nebo složky, které chcete obnovit, vyberte tlačítko **Přidat soubor** . Tím se na pravé straně otevře podokno kontextu, ve kterém se zobrazí obsah bodu obnovení sdílené složky, který jste vybrali pro obnovení.
 
     ![Zvolit možnost Přidat soubor](./media/restore-afs/add-file.png)
 
@@ -132,7 +132,7 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 1. V rozevíracím seznamu **Vybrat sdílenou složku** se zobrazí sdílené složky, které jsou k dispozici v účtu úložiště, který jste vybrali v kroku 2. Vyberte sdílenou složku, ve které chcete obnovit zálohovaný obsah.
 1. V poli **název složky** zadejte název složky, kterou chcete vytvořit v cílové sdílené složce s obnoveným obsahem.
 1. Vyberte, jestli se mají přeskočit nebo přepsat, pokud dojde ke konfliktům.
-1. Chcete-li vybrat soubory nebo složky, které chcete obnovit, klikněte na tlačítko **Přidat soubor** . Tím se otevře kontextové podokno na pravé straně, kde se zobrazí obsah bodu obnovení sdílené složky, který jste zvolili pro obnovení.
+1. Chcete-li vybrat soubory nebo složky, které chcete obnovit, vyberte tlačítko **Přidat soubor** . Tím se otevře kontextové podokno na pravé straně, kde se zobrazí obsah bodu obnovení sdílené složky, který jste zvolili pro obnovení.
 
     ![Vyberte položky, které chcete obnovit do alternativního umístění.](./media/restore-afs/restore-to-alternate-location.png)
 

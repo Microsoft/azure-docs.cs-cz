@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387111"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318283"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -132,6 +132,11 @@ Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět onli
 - Pokud se přístup k klíči obnoví do 8 hodin, bude databáze automaticky zacelená během příští hodiny.
 
 - Pokud se přístup ke klíči obnoví za více než 8 hodin, automatická oprava není možná a vrácení databáze vyžaduje provedení dalších kroků na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
+
+Níže je uveden seznam dalších kroků požadovaných na portálu, které nepřístupné databáze vrátí zpět do online režimu.
+
+![Nepřístupná databáze TDE BYOK](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
+
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Odvolání přístupu k nechtěně TDE ochraně
 

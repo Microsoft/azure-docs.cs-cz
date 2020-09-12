@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180673"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297818"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Pomocí řídicího panelu Kubernetes monitorujte zařízení GPU Azure Stack Edge.
 
@@ -26,7 +26,6 @@ V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Přístup k řídicímu panelu Kubernetes na zařízení
-> * Stáhnout `aseuser` konfiguraci
 > * Zobrazit moduly nasazené na zařízení
 > * Získat IP adresu pro aplikace nasazené na zařízení
 > * Zobrazit protokoly kontejnerů pro moduly nasazené v zařízení
@@ -42,26 +41,18 @@ Na Azure Stack hraničním zařízení můžete pomocí řídicího panelu Kuber
 
 Řídicí panel Kubernetes je *jen pro čtení* a běží na hlavním uzlu Kubernetes na portu 31000. Pro přístup k řídicímu panelu použijte následující postup: 
 
-1. V místním uživatelském rozhraní zařízení, klikněte na **zařízení** a pak na **koncové body zařízení**. Výběrem adresy URL řídicího panelu Kubernetes otevřete řídicí panel v prohlížeči.
+1. V místním uživatelském rozhraní zařízení, klikněte na **zařízení** a pak na **koncové body zařízení**. 
+1. Vyberte **stáhnout config** a Stáhněte si tak `kubeconfig` , abyste měli přístup k řídicímu panelu. Uložte `config.json` soubor do místního systému.
+1. Výběrem adresy URL řídicího panelu Kubernetes otevřete řídicí panel v prohlížeči.
 
     ![Adresa URL řídicího panelu Kubernetes na stránce zařízení v místním uživatelském rozhraní](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. Na **přihlašovací stránce řídicího panelu Kubernetes** vyberte **token**. 
-1. Zadejte token. 
-    1. K získání tokenu se [připojte přes rozhraní PowerShell vašeho zařízení](azure-stack-edge-gpu-connect-powershell-interface.md).
-    1. Spusťte příkaz:  `Get-HcsKubernetesDashboardToken`
+1. Na **přihlašovací stránce řídicího panelu Kubernetes** :
     
-    1. Na příkazovém řádku zkopírujte řetězec tokenu, který vám byl nabídnut. Zde je ukázkový výstup:
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. Vyberte **Sign in** (Přihlásit se).
-
-    ![Přihlaste se k řídicímu panelu Kubernetes](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. Vyberte **kubeconfig**. 
+        ![Vybrat možnost kubeconfig](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. Vyberte tři tečky **...**. Přejděte do `kubeconfig` složky, kterou jste stáhli dříve v místním systému. Vyberte **Sign in** (Přihlásit se).
+        ![Přejít k souboru kubeconfig](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. Nyní můžete zobrazit řídicí panel Kubernetes pro zařízení Azure Stack Edge v režimu jen pro čtení.
 
@@ -110,6 +101,21 @@ Chcete-li zobrazit protokoly kontejnerů, postupujte podle těchto kroků na ř�
 
     ![Zobrazit protokoly kontejneru 2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
+
+## <a name="view-cpu-memory-usage"></a>Zobrazení CPU, využití paměti
+
+Řídicí panel Kubernetes pro Azure Stack hraniční zařízení má také [doplněk serveru metriky](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) , který AGREGUJE využití CPU a paměti napříč prostředky Kubernetes.
+ 
+Můžete například zobrazit procesor a paměť využívané napříč nasazeními ve všech oborech názvů. 
+
+![Zobrazení využití CPU a paměti napříč všemi nasazeními](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+Můžete také filtrovat podle konkrétního oboru názvů. V následujícím příkladu můžete zobrazit spotřebu CPU a paměti jenom pro nasazení ARC Azure.  
+
+![Zobrazení využití CPU a paměti pro nasazení ARC Azure](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+Server metriky Kubernetes poskytuje kanály automatického škálování podobně jako u [automatického horizontálního škálování pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001735"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376974"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -51,7 +51,7 @@ Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Po zrušení ochrany sdílené složky nejde odstranit Recovery Services trezor.
 
-V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště** infrastruktury zálohování trezoru a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
+V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování trezoru. Vyberte zrušit **registraci** pro odebrání účtů úložiště z Recovery Services trezoru.
 
 >[!NOTE]
 >Trezor Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.

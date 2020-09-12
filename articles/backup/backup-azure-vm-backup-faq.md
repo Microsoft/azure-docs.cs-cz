@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018106"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377314"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -197,6 +197,6 @@ Ano, existuje limit 100 virtuálních počítačů, které se dají přidružit 
 
 V současné době můžete nastavení uchování zobrazit na úrovni zálohované položky na základě zásady zálohování, která je přiřazená k virtuálnímu počítači.
 
-Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Kliknutím na odkaz na zásady zálohování můžete zobrazit dobu uchování všech denních, týdenních, měsíčních a ročních bodů uchovávání dat přidružených k virtuálnímu počítači.
+Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Když vyberete odkaz na zásady zálohování, můžete si prohlédnout dobu uchovávání všech denních, týdenních, měsíčních a ročních bodů uchování přidružených k virtuálnímu počítači.
 
 Pomocí [Průzkumníka služby Backup](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.

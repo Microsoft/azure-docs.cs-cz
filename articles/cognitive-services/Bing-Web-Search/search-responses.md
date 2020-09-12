@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202242"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297786"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
 
@@ -298,7 +298,7 @@ Matematický výraz může obsahovat následující symboly:
 |*|Násobení|
 |^|Napájení|
 |!|Faktoriál|
-|.|Desetinné číslo|
+|.|Decimal|
 |()|Seskupování priorit|
 |[]|Funkce|
 
@@ -435,7 +435,7 @@ Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď z
 
 Odpovědi z rozhraní API Bingu pro vyhledávání na webu mohou obsahovat následující hlavičky:
 
-| Hlavička | Popis |
+| Záhlaví | Popis |
 |-|-|
 |`X-MSEdge-ClientID`|Jedinečné ID, které Bingu přiřadilo uživateli|
 |`BingAPIs-Market`|Trh, který se použil ke splnění žádosti|
@@ -445,7 +445,7 @@ Je obzvláště důležité zachovat ID klienta a vrátit ho s následnými pož
 
 Když však zavoláte rozhraní API Bingu pro vyhledávání na webu z JavaScriptu, můžou vám integrované funkce zabezpečení (CORS) v prohlížeči bránit v přístupu k hodnotám těchto hlaviček.
 
-Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API Bingu pro vyhledávání na webu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pokud chcete získat přístup k hlavičkám, můžete žádost o rozhraní API Bingu pro vyhledávání na webu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které filtruje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
 Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](tutorial-bing-web-search-single-page-app.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 

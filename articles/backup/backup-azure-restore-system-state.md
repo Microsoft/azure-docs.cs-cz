@@ -3,12 +3,12 @@ title: Obnovení stavu systému na Windows Server
 description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178582"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377433"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -56,7 +56,7 @@ Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do p�
 
 8. Ověřte podrobnosti o obnovení v podokně **potvrzení** a vyberte možnost **obnovit**.
 
-   ![Kliknutím na tlačítko Obnovit potvrďte akci obnovení](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![Výběrem možnosti obnovit potvrďte akci obnovení.](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. Zkopírujte adresář *WindowsImageBackup* do umístění pro obnovení do nedůležitého svazku serveru. Nepostradatelným svazkem je obvykle svazek operačního systému Windows.
 

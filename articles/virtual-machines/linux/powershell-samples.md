@@ -1,20 +1,20 @@
 ---
-title: Ukázky PowerShellu pro virtuální počítače Azure
-description: Ukázky PowerShellu pro virtuální počítače Azure
+title: Ukázky pro PowerShell
+description: Seznam ukázek PowerShellu pro virtuální počítače
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 23dd47df33ef6571fefbf1c1964324bea5ca4488
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b1a154e562db9f8fdd74300bb8eb3d6839cb2ef4
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369930"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321918"
 ---
-# <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>Ukázky PowerShellu pro virtuální počítače Azure pro vytváření a správu virtuálních počítačů se systémem Linux
+# <a name="azure-vm-powershell-samples-for-creating-and-managing-linux-vms"></a>Ukázky PowerShellu pro virtuální počítače Azure pro vytváření a správu virtuálních počítačů se systémem Linux
 
 Následující tabulka obsahuje odkazy na ukázky skriptů PowerShellu pro vytváření a správu virtuálních počítačů se systémem Linux.
 
@@ -25,15 +25,15 @@ Následující tabulka obsahuje odkazy na ukázky skriptů PowerShellu pro vytv�
 | [Vytvoření virtuálního počítače s podporou Dockeru](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač, nakonfiguruje tento virtuální počítač jako hostitele Docker a spustí kontejner NGINX. |
 | [Vytvoření virtuálního počítače a spuštění konfiguračního skriptu](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů Azure nainstaluje NGINX. |
 | [Vytvoření virtuálního počítače s nainstalovaným WordPressem](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač a pomocí rozšíření Azure Custom Script Extension nainstaluje WordPress. |
-| [Vytvoření virtuálního počítače ze spravovaného disku s operačním systémem](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač připojením existujícího spravovaného disku jako disku s operačním systémem. |
+| [Vytvoření virtuálního počítače ze spravovaného disku s operačním systémem](./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač připojením existujícího spravovaného disku jako disku s operačním systémem. |
 | [Vytvoření virtuálního počítače ze snímku](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač ze snímku vytvořením spravovaného disku ze snímku a následným připojením nového spravovaného disku jako disku s operačním systémem. |
 |**Spravovat úložiště**||
-| [Vytvoření spravovaného disku z VHD ve stejném nebo jiném předplatném](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří spravovaný disk ze specializovaného VHD jako disku s operačním systémem nebo z datového virtuálního pevného disku jako datový disk ve stejném nebo jiném předplatném.  |
-| [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří ze snímku spravovaný disk. |
-| [Export snímku jako VHD do účtu úložiště](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Exportuje spravovaný snímek jako virtuální pevný disk do účtu úložiště v jiné oblasti. |
-| [Export VHD spravovaného disku do účtu úložiště](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště v jiné oblasti. |
-| [Vytvoření snímku z VHD](../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří snímek z VHD a pak pomocí tohoto snímku rychle vytvoří několik identických spravovaných disků.  |
-| [Kopírování snímku do stejného nebo jiného předplatného](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje snímek do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený snímek. |
+| [Vytvoření spravovaného disku z VHD ve stejném nebo jiném předplatném](../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří spravovaný disk ze specializovaného VHD jako disku s operačním systémem nebo z datového virtuálního pevného disku jako datový disk ve stejném nebo jiném předplatném.  |
+| [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří ze snímku spravovaný disk. |
+| [Export snímku jako VHD do účtu úložiště](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Exportuje spravovaný snímek jako virtuální pevný disk do účtu úložiště v jiné oblasti. |
+| [Export VHD spravovaného disku do účtu úložiště](../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště v jiné oblasti. |
+| [Vytvoření snímku z VHD](../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří snímek z VHD a pak pomocí tohoto snímku rychle vytvoří několik identických spravovaných disků.  |
+| [Kopírování snímku do stejného nebo jiného předplatného](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje snímek do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený snímek. |
 |**Monitorování virtuálních počítačů**||
 | [Monitorování virtuálního počítače s využitím protokolů Azure Monitoru](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta Log Analytics a zaregistruje virtuální počítač v pracovním prostoru Log Analytics.  |
 | [Kopírování spravovaného disku do stejného nebo jiného předplatného](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje spravovaný disk do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený spravovaný disk.

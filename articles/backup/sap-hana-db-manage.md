@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267475"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377450"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -61,9 +61,9 @@ Azure Backup usnadňuje správu zálohovaných SAP HANA databáze díky četnost
 
 Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na vyžádání následujícím způsobem:
 
-1. V nabídce trezoru klikněte na položku **zálohované položky**.
-2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak klikněte na **Zálohovat nyní**.
-3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak klikněte na **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
+1. V nabídce trezoru vyberte **zálohované položky**.
+2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak vyberte **Zálohovat nyní**.
+3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak vyberte **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
 4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 Ve výchozím nastavení je uchovávání záloh na vyžádání 45 dní.
@@ -114,7 +114,7 @@ U SAP HANA zálohované položky můžete změnit základní zásady.
   ![Výběr SAP HANA na virtuálním počítači Azure](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * Vyberte zálohovanou položku, jejíž základní zásady chcete změnit.
-* Klikněte na existující zásady zálohování.
+* Vyberte existující zásady zálohování.
 
   ![Vybrat existující zásady zálohování](./media/sap-hana-db-manage/existing-backup-policy.png)
 

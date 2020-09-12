@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091449"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299641"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud
 Spravované identity pro prostředky Azure poskytují automaticky spravovanou identitu v Azure Active Directory k prostředkům Azure, jako je například vaše aplikace pro jarní Cloud v Azure. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
 
 V tomto článku se dozvíte, jak povolit a zakázat spravované identity přiřazené systémem pro cloudovou aplikaci Azure pomocí Azure Portal a rozhraní příkazového řádku (dostupného z verze 0.2.4).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Budete potřebovat nasazenou instanci cloudu Azure pro jaře. Dokončete [nasazení pomocí Azure CLI pomocí rychlého](spring-cloud-quickstart-launch-app-cli.md)startu.
+Budete potřebovat nasazenou instanci cloudu Azure pro jaře. Dokončete [nasazení pomocí Azure CLI pomocí rychlého](spring-cloud-quickstart.md)startu.
 
 ## <a name="add-a-system-assigned-identity"></a>Přidat identitu přiřazenou systémem
 Vytvoření aplikace s identitou přiřazenou systémem vyžaduje nastavení další vlastnosti v aplikaci.
@@ -72,7 +72,7 @@ Pokud chcete odebrat spravovanou identitu přiřazenou systémem z aplikace, kte
 1. Přejděte k požadovanému virtuálnímu počítači a vyberte možnost **Identita**.
 1. V části stav **přiřazení systému** / **Status**vyberte **vypnuto** a potom klikněte na **Uložit**:
 
- ![Spravovaná identita na portálu](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![Spravovaná identita](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 Pokud chcete odebrat spravovanou identitu přiřazenou systémem z aplikace, která ji už nepotřebuje, použijte následující příkaz:

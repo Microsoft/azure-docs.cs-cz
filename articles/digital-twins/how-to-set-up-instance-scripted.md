@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181370"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298279"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -58,6 +58,13 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
     * Pro registraci aplikace: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Použijte `http://localhost`. Skript nastaví pro něj *veřejný klient/nativní (mobilní & Desktop)* .
 
 Skript vytvoří instanci digitálních vláken Azure, přiřadí uživatele Azure, aby k instanci používala roli *Azure Digital Realiass Owner (Preview)* , a nastavení registrace aplikace Azure AD pro vaši klientskou aplikaci.
+
+>[!NOTE]
+>V současné době se jedná o **známý problém** s instalačním programem, ve kterém někteří uživatelé (zejména uživatelé s osobními [účty Microsoft (účty spravované služby)](https://account.microsoft.com/account)) můžou najít **přiřazení role ke _vlastníkovi digitálních vláken Azure (Preview)_ se nevytvořilo**.
+>
+>Přiřazení role můžete ověřit v části [*přiřazení role uživatele*](#verify-user-role-assignment) dále v tomto článku, a pokud je to potřeba, nastavte přiřazení role ručně pomocí [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) nebo [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions).
+>
+>Další podrobnosti o tomto problému najdete v tématu [*řešení potíží: známé problémy v Azure Digital autovlákna*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup).
 
 Tady je ukázka výstupního protokolu ze skriptu:
 
@@ -127,5 +134,9 @@ Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure by
 
 ## <a name="next-steps"></a>Další kroky
 
-Napsání ověřovacího kódu klientské aplikace najdete v tématu Postup připojení klientské aplikace k instanci.
+Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů rozhraní příkazového řádku Azure Digital revlákens CLI: 
+* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
+
+Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci, napsáním ověřovacího kódu klientské aplikace:
 * [*Postupy: psaní kódu ověřování aplikace*](how-to-authenticate-client.md)

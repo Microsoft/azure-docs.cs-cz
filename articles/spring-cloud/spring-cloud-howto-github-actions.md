@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037555"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299678"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
 Akce GitHubu podporují automatizovaný pracovní postup pro životní cyklus vývoje softwaru. S akcemi GitHubu pro jarní cloud Azure můžete vytvářet pracovní postupy v úložišti pro vytváření, testování, balení, vydávání a nasazování do Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="set-up-github-repository-and-authenticate"></a>Nastavení úložiště GitHub a ověření
@@ -42,7 +42,7 @@ Příkaz by měl mít výstup objektu JSON:
 }
 ```
 
-V tomto příkladu se na GitHubu používá ukázka [metriky Piggy](https://github.com/Azure-Samples/piggymetrics) .  Rozvětvete ukázku, otevřete úložiště GitHub a klikněte na kartu **Nastavení** . Otevřete nabídku **tajné klíče** a klikněte na **Přidat nový tajný kód**:
+V tomto příkladu se na GitHubu používá ukázka [metriky Piggy](https://github.com/Azure-Samples/piggymetrics) .  Rozvětvete ukázku a otevřete stránku úložiště GitHub a klikněte na kartu **Nastavení** . Otevřete nabídku **tajné klíče** a klikněte na **Přidat nový tajný kód**:
 
  ![Přidat nový tajný klíč](./media/github-actions/actions1.png)
 
@@ -164,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Nasazení s modulem plug-in Maven
-Další možností je použít [modul plug-in Maven](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) k nasazení jar a aktualizaci nastavení aplikace. Příkaz `mvn azure-spring-cloud:deploy` je idempotentní a v případě potřeby vytvoří aplikace automaticky. Nemusíte vytvářet odpovídající aplikace předem.
+Další možností je použít [modul plug-in Maven](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) k nasazení jar a aktualizaci nastavení aplikace. Příkaz `mvn azure-spring-cloud:deploy` je idempotentní a v případě potřeby vytvoří aplikace automaticky. Nemusíte vytvářet odpovídající aplikace předem.
 
 ```
 name: AzureSpringCloud

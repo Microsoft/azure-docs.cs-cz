@@ -4,12 +4,12 @@ description: Pomocí Access Control na základě rolí můžete spravovat přís
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 1a4bb617511f5d5ccf882ccb11e7d88eb7a848ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017800"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376124"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 
@@ -56,7 +56,7 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 | Odstranit registrovaný místní Windows Server/klienta/SCDPM nebo Azure Backup Server | Přispěvatel zálohování | Trezor služby Recovery Services |
 
 > [!IMPORTANT]
-> Pokud zadáte Přispěvatel virtuálních počítačů do oboru prostředků virtuálních počítačů a kliknete na zálohovat jako součást nastavení virtuálního počítače, otevře se obrazovka povolit zálohování, i když je virtuální počítač už zálohovaný, protože volání pro ověření stavu zálohování funguje jenom na úrovni předplatného. Pokud tomu chcete předejít, buď si přečtěte do trezoru, otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte roli Přispěvatel virtuálních počítačů na úrovni předplatného.
+> Pokud zadáte Přispěvatel virtuálních počítačů v oboru prostředků virtuálního počítače a v rámci nastavení virtuálního počítače vyberete **zálohovat** , otevře se obrazovka **Povolit zálohování** , i když je virtuální počítač už zálohovaný. Důvodem je to, že volání pro ověření stavu zálohování funguje pouze na úrovni předplatného. Pokud tomu chcete předejít, buď si přečtěte do trezoru, otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte roli Přispěvatel virtuálních počítačů na úrovni předplatného.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Minimální požadavky na role pro zálohu sdílené složky Azure
 

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031281"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320966"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -97,9 +97,9 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 
 1. Otevřete šablonu Správce prostředků.
 
-1. Přidejte nový prostředek do hlavního souboru šablony. Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
+1. Přidejte do hlavního souboru šablony nový prostředek typu [Microsoft. Resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) . Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
-1. Zadejte hodnotu identifikátoru GUID za `pid-` předponou (například PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Jako název prostředku zadejte hodnotu GUID za `pid-` předponou. Pokud je například identifikátor GUID eb7927c8-dd66-43e1-b0cf-c346a422063, název prostředku bude _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
 1. V šabloně vyhledejte případné chyby.
 
@@ -112,11 +112,11 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 Chcete-li povolit sledování prostředků pro šablonu, je třeba přidat následující další prostředek do části prostředky. Nezapomeňte prosím, abyste při přidávání do hlavního souboru šablony upravili následující vzorový kód s vlastními vstupy.
 Prostředek se musí přidat do **mainTemplate.js** nebo **azuredeploy.jsjenom v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ Pro Python použijte atribut **config** . Atribut lze přidat pouze k vlastnosti
 
 > [!NOTE]
 > Přidejte atribut pro každého klienta. Neexistuje žádná globální statická konfigurace. Můžete označit objekt pro vytváření klienta, aby se ujistil, že každý klient sleduje sledování. Další informace najdete v tématu tato [Ukázka klienta v GitHubu](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="example-the-net-sdk"></a>Příklad: sada .NET SDK
+
+V případě .NET nezapomeňte nastavit agenta pro uživatele. Knihovna [Microsoft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) se dá použít k nastavení uživatelského agenta s následujícím kódem (příklad v jazyce C#):
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Označení nasazení pomocí Azure PowerShell
 
@@ -252,11 +266,11 @@ Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<PART
 
 Když nasadíte \<PARTNER> software, společnost Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Existují dva kanály podpory v závislosti na problémech, které máte k dispozici.
 
-Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![Snímek obrazovky se stránkou pro získání podpory](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -339,7 +353,7 @@ Nabídku virtuálních počítačů můžete na webu Marketplace vytvořit pomoc
 
 **Nepovedlo se aktualizovat vlastnost *contentversion –* pro hlavní šablonu?**
 
-V některých případech pravděpodobně dojde k chybě při nasazení šablony pomocí TemplateLink z jiné šablony, která z nějakého důvodu očekává starší Contentversion –. Alternativním řešením je použití vlastnosti metadata:
+To je nejspíš chyba v případech, kdy se šablona nasazuje pomocí TemplateLink z jiné šablony, která z nějakého důvodu očekává starší Contentversion –. Alternativním řešením je použití vlastnosti metadata:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

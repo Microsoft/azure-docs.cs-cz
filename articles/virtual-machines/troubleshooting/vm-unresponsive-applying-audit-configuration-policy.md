@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942082"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299520"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Při použití zásad konfigurace zásad auditu nereaguje virtuální počítač.
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, které virtuální poč�
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky ukazuje, že operační systém (OS) při spuštění přestal reagovat při použití zprávy s **použitím zásad konfigurace zásad auditu**.
+Při použití [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače se zobrazí obrazovka s oznámením, že operační systém (OS) přestal při spuštění reagovat pomocí zprávy s **použitím zásad konfigurace zásad auditu**.
 
   ![Spouštění operačního systému pomocí této zprávy: "použití zásad konfigurace zásad auditu"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 

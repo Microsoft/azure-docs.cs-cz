@@ -3,12 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892299"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377331"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -26,14 +26,14 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
 ## <a name="create-a-vm-with-backup-configured"></a>Vytvoření virtuálního počítače s nakonfigurovaným zálohováním
 
-1. V Azure Portal klikněte na **vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. V Azure Marketplace klikněte na **COMPUTE**a pak vyberte image virtuálního počítače.
+2. V Azure Marketplace vyberte **COMPUTE**a potom vyberte image virtuálního počítače.
 
 3. Nastavte virtuální počítač v souladu s pokyny pro [Windows](../virtual-machines/windows/quick-create-portal.md) nebo [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
-4. Na kartě **Správa** v části **Povolit zálohování**klikněte **na zapnuto**.
-5. Azure Backup zálohy do trezoru Recovery Services. Pokud nemáte existující trezor, klikněte na **vytvořit nový** .
+4. Na kartě **Správa** v části **Povolit zálohování**vyberte **zapnuto**.
+5. Azure Backup zálohy do trezoru Recovery Services. Vyberte **vytvořit novou** , pokud nemáte existující trezor.
 6. Přijměte navrhovaný název trezoru nebo zadejte vlastní.
 7. Zadejte nebo vytvořte skupinu prostředků, ve které bude uložený trezor. Úložiště skupin prostředků se může lišit od skupiny prostředků virtuálních počítačů.
 
@@ -76,8 +76,8 @@ Zálohování virtuálního počítače se spustí v souladu se zásadami záloh
 
 Po vytvoření virtuálního počítače postupujte takto:
 
-1. Ve vlastnostech virtuálního počítače klikněte na **zálohovat**. Stav virtuálního počítače čeká na počáteční zálohování, dokud se nespustí počáteční záloha.
-2. Pokud chcete spustit zálohování na vyžádání, klikněte na **Zálohovat nyní** .
+1. Ve vlastnostech virtuálního počítače vyberte **zálohovat**. Stav virtuálního počítače čeká na počáteční zálohování, dokud se nespustí počáteční záloha.
+2. Pokud chcete spustit zálohování na vyžádání, vyberte **Zálohovat nyní** .
 
     ![Spuštění zálohování na vyžádání](./media/backup-during-vm-creation/run-backup.png)
 

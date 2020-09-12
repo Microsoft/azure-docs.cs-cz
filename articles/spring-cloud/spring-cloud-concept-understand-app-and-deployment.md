@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263973"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297531"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Pochopení aplikace a nasazení v Azure jaře cloudu
 
-**Aplikace** a **nasazení** jsou dvě klíčové koncepty v modelu prostředků Azure jarního cloudu. V Azure jaře Cloud je *aplikace* abstrakcí jedné obchodní aplikace nebo jedné mikroslužby.  Jedna verze kódu nebo binárního souboru nasazeného jako *aplikace* běží v *nasazení*.
+**Aplikace** a **nasazení** jsou dvě klíčové koncepty v modelu prostředků Azure jarního cloudu. V Azure jaře Cloud je *aplikace* abstrakcí jedné obchodní aplikace nebo jedné mikroslužby.  Jedna verze kódu nebo binárního souboru nasazeného jako *aplikace* běží v *nasazení*.  Aplikace běží v *instanci služby jarní cloudová služba Azure*nebo jednoduše *instance služby*, jak je uvedeno dále.
 
  ![Aplikace a nasazení](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+V rámci jednoho předplatného Azure můžete mít několik instancí služby, ale pokud jsou všechny aplikace, které tvoří podnikovou aplikaci nebo mikroslužby, umístěné v rámci jedné instance služby, je nejjednodušší použít tuto službu jarní cloudová služba Azure.
 
 Standardní úroveň cloudu Azure umožňuje, aby jedna aplikace měla jedno výrobní nasazení a jedno pracovní nasazení, takže můžete snadno provádět Blue/zelená nasazení.
 
@@ -27,7 +29,7 @@ Na úrovni aplikace jsou definované následující funkce nebo vlastnosti.
 
 | Výčet | Definice |
 |:--|:----------------|
-| Veřejný</br>Koncový bod | Adresa URL pro přístup k aplikaci |
+| Public</br>Koncový bod | Adresa URL pro přístup k aplikaci |
 | Vlastní</br>Doména | Záznam CNAME, který zabezpečuje vlastní doménu |
 | Služba</br>Vazba | Vlastnosti konfigurace vazby nastavené v function.jspro soubor a atribut *ServiceBusTrigger* |
 | Spravované</br>Identita | Spravovaná identita pomocí Azure Active Directory umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným službou Azure AD, jako je například Azure Key Vault |
@@ -41,7 +43,7 @@ Následující funkce nebo vlastnosti jsou definovány na úrovni nasazení a bu
 |:--|:----------------|
 | Procesor | Počet virtuální jádra na instanci aplikace |
 | Paměť | Nastavení, které přiděluje paměť pro horizontální navýšení nebo navýšení kapacity nasazení |
-| Instance</br>Count | Počet instancí aplikace, nastavit ručně nebo automaticky |
+| Instance</br>Počet | Počet instancí aplikace, nastavit ručně nebo automaticky |
 | Automatické škálování | Automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů |
 | JVM</br>Možnosti | nastavení: JAVA_OPTS |
 | Prostředí</br>Proměnné | Nastavení, která se vztahují na celé jaře cloudové prostředí Azure |

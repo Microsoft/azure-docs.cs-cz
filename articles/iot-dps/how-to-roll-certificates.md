@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974883"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299253"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Postup nasazení certifikátů zařízení X. 509
 
@@ -51,7 +51,7 @@ Když se zařízení zpočátku zřídí prostřednictvím automatického zřizo
 
 Jakmile se nový listový certifikát převede do zařízení, už se nemůže připojit ke službě IoT Hub, protože se k připojení používá nový certifikát. Centrum IoT rozpoznává zařízení jenom se starým certifikátem. Výsledkem pokusu o připojení zařízení bude chyba neautorizovaného připojení. Pokud chcete tuto chybu vyřešit, musíte aktualizovat položku registrace pro zařízení na účet pro nový listový certifikát zařízení. Služba zřizování pak může podle potřeby aktualizovat informace registru IoT Hub zařízení, když se zařízení znovu zřídí. 
 
-Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud se tento scénář vyskytne jako reakce na porušení zabezpečení, měli byste aspoň zakázané konkrétní certifikáty zařízení ve skupině, které se považují za porušení. Další informace najdete v tématu [zakázaná zařízení specifická v rámci skupiny pro zápis](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Jednou z možných výjimek k této chybě připojení by byl scénář, ve kterém jste ve službě zřizování vytvořili [skupinu pro registraci](concepts-service.md#enrollment-group) zařízení. V takovém případě, pokud se v řetězu certifikátů zařízení neúčtují kořenové nebo zprostředkující certifikáty, bude zařízení rozpoznané, pokud je nový certifikát součástí řetězce důvěryhodnosti definovaného ve skupině pro registraci. Pokud k tomuto scénáři dojde v reakci na porušení zabezpečení, měli byste aspoň zakázat konkrétní certifikáty zařízení ve skupině, které jsou považovány za porušení. Další informace najdete v tématu [zákaz konkrétních zařízení ve skupině pro registraci](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
 
 Aktualizace položek registrace pro zahrnuté certifikáty se provádí na stránce **spravovat registrace** . Pro přístup k této stránce použijte následující postup:
 
@@ -116,7 +116,7 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 4. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-5. Klikněte na **certifikát certifikační autority**a vyberte nový certifikát kořenové certifikační autority. Pak klikněte na **Uložit**. 
+5. Klikněte na **certifikát certifikační autority**a vyberte nový certifikát kořenové certifikační autority. Potom klikněte na **Uložit**. 
 
     ![Vyberte certifikát nové kořenové certifikační autority.](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -162,7 +162,7 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 
 2. Klikněte na kartu **spravovat registrace** pro instanci služby Device Provisioning a pak klikněte na seznam **skupiny** registrací. V seznamu klikněte na název skupiny zápisu.
 
-3. Klikněte na **certifikát certifikační autority**a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Pak klikněte na **Uložit**. 
+3. Klikněte na **certifikát certifikační autority**a vyberte svůj nový kořenový certifikát certifikační autority pod konfigurací **sekundárního certifikátu** . Potom klikněte na **Uložit**. 
 
     ![Vyberte certifikát nové kořenové certifikační autority.](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
@@ -197,9 +197,9 @@ Další možností je, aby byly staré i nové certifikáty platné pro krátké
 Jakmile se opětovné zřízení dokončí, zařízení se budou moct připojit k IoT Hub pomocí jejich nových certifikátů.
 
 
-## <a name="blacklist-certificates"></a>Zakázané certifikáty
+## <a name="disallow-certificates"></a>Zakázat certifikáty
 
-V reakci na porušení zabezpečení budete možná muset vystavit certifikát zařízení. Pokud chcete povolit certifikát zařízení, zakažte položku registrace pro cílové zařízení nebo certifikát. Další informace najdete v článku o zakázaných zařízeních v článku [Správa zrušení registrace](how-to-revoke-device-access-portal.md) .
+V reakci na porušení zabezpečení budete možná muset zakázat certifikát zařízení. Pokud chcete zakázat certifikát zařízení, zakažte položku registrace pro cílové zařízení nebo certifikát. Další informace najdete v článku nepovolení zařízení v článku [Správa zrušení registrace](how-to-revoke-device-access-portal.md) .
 
 Jakmile je certifikát zahrnutý jako součást zakázané položky registrace, všechny pokusy o registraci ve službě IoT Hub pomocí těchto certifikátů selžou, i když budou povolené jako součást jiné položky registrace.
  
@@ -211,13 +211,3 @@ Jakmile je certifikát zahrnutý jako součást zakázané položky registrace, 
 - Další informace o certifikátech X. 509 ve službě Device Provisioning najdete v tématu [zabezpečení](concepts-security.md) . 
 - Další informace o tom, jak ověřit vlastnictví certifikátů CA X. 509 pomocí Azure IoT Hub Device Provisioning Service, najdete v tématu [ověření certifikátů](how-to-verify-certificates.md) .
 - Další informace o tom, jak pomocí portálu vytvořit skupinu registrací, najdete v tématu [Správa registrace zařízení pomocí Azure Portal](how-to-manage-enrollments.md).
-
-
-
-
-
-
-
-
-
-

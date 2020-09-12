@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004166"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377680"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -97,7 +97,7 @@ Je třeba počítat s následujícím:
 
 - Ve výchozím nastavení se název obnovené databáze naplní názvem zálohované položky. V tomto případě H21 (SDC).
 - Výběr cíle jako h11 nemění automaticky obnovený název databáze. **Měla by být upravena na H11 (SDC)**. V souvislosti s SDCem bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
-- Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné kliknout na zaškrtávací políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
+- Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné zaškrtnout políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
 - Linux rozlišuje velká a malá písmena. Buďte proto opatrní při zachování případu.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Vícenásobné obnovení databáze kontejnerů (MDC)
@@ -165,7 +165,7 @@ Upgrady z SDC na MDC, které nezpůsobují změnu SID, mohou být zpracovány n�
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spustit [skript před registrací](https://aka.ms/scriptforpermsonhana)
 - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
-- Klikněte na znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
+- Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít v souladu se zásadami zachována stará zálohovaná data.
 - Konfigurace zálohování pro tyto databáze
 
@@ -178,7 +178,7 @@ Upgrady z SDC na MDC, které způsobují změnu SID, mohou být zpracovány nás
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spusťte [skript před registrací](https://aka.ms/scriptforpermsonhana) se správnými podrobnostmi (nový identifikátor SID a MDC). Kvůli změně v identifikátoru SID může při úspěšném spuštění skriptu dorazit k problémům. Pokud čelíte problémům, kontaktujte podporu Azure Backup.
 - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
-- Klikněte na znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
+- Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít stará zálohovaná data uchovávaná podle zásad.
 - Konfigurace zálohování pro tyto databáze
 

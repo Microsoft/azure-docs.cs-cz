@@ -3,39 +3,25 @@ title: Použití klíče spravovaného zákazníkem k šifrování disků Azure 
 description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačního systému a datových disků.
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796880"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297752"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
-Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat [klíče spravované zákazníkem][customer-managed-keys] , které se použijí pro šifrování v klidovém prostředí pro AKS clustery i pro datové disky.
+Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které se použijí pro šifrování v klidovém prostředí pro AKS clustery i pro datové disky. Přečtěte si další informace o klíčích spravovaných zákazníkem v systémech [Linux][customer-managed-keys-linux] a [Windows][customer-managed-keys-windows].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="limitations"></a>Omezení
+* Podpora šifrování datových disků je omezená na AKS clustery se systémem Kubernetes verze 1,17 a vyšší.
+* Šifrování operačního systému a datového disku pomocí klíčů spravovaných zákazníkem se dá povolit jenom při vytváření clusteru AKS.
 
-* V tomto článku se předpokládá, že vytváříte *nový cluster AKS*.
-
+## <a name="prerequisites"></a>Požadavky
 * Pokud používáte Key Vault k šifrování spravovaných disků, musíte povolit ochranu pomocí obnovitelného odstranění a vyprázdnění pro *Azure Key Vault* .
-
-* Potřebujete Azure CLI verze 2.0.79 nebo novější a rozšíření 0.4.26 AKS-Preview.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>Nainstalovat nejnovější rozšíření AKS CLI Preview
-
-Pokud chcete používat klíče spravované zákazníkem, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.26 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* Potřebujete Azure CLI verze 2.11.1 nebo novější.
 
 ## <a name="create-an-azure-key-vault-instance"></a>Vytvoření instance Azure Key Vault
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>Omezení
-
-* Šifrování datových disků podporované s Kubernetes verzí 1,17 a vyšší
-* Šifrování pomocí klíčů spravovaných zákazníkem se momentálně používá jenom pro nové clustery AKS. stávající clustery nejde upgradovat.
-
 ## <a name="next-steps"></a>Další kroky
 
 Kontrola [osvědčených postupů pro zabezpečení clusteru AKS][best-practices-security]
@@ -171,6 +152,7 @@ Kontrola [osvědčených postupů pro zabezpečení clusteru AKS][best-practices
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

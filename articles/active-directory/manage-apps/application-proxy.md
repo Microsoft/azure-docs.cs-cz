@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164916"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377858"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Vzdálený přístup k místním aplikacím prostřednictvím Azure Proxy aplikací služby AD
 
@@ -57,6 +57,11 @@ Následující diagram ukazuje, jak služba Azure AD a proxy aplikací společn�
 4. Pokud jste nakonfigurovali jednotné přihlašování, konektor provede jakékoli další ověření vyžadované jménem uživatele.
 5. Konektor odešle požadavek do místní aplikace.
 6. Odpověď je odeslána prostřednictvím konektoru a služby proxy aplikací k uživateli.
+
+> [!NOTE]
+> Stejně jako u většiny hybridních agentů Azure AD konektor proxy aplikací nevyžaduje, abyste v bráně firewall otevírali příchozí připojení. Provoz uživatele v kroku 3 skončí na službě proxy aplikací (v Azure AD). Konektor proxy aplikací (místní) zodpovídá za zbytek komunikace.
+>
+
 
 | Komponenta | Popis |
 | --------- | ----------- |

@@ -3,12 +3,12 @@ title: Nastavení etických laboratoří pro hackery s Azure Lab Services | Micr
 description: Naučte se, jak nastavit testovací prostředí pomocí Azure Lab Services pro učení etických útoků.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443991"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297582"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
 V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
@@ -18,7 +18,7 @@ V etických třídách útoku Students se můžou seznámit s moderními technik
 Tento článek obsahuje dvě hlavní části. První část obsahuje informace o tom, jak vytvořit prostředí učebny. Druhá část obsahuje informace o tom, jak vytvořit počítač šablony s povolenou vnořenou virtualizací a s potřebnými nástroji a bitovými kopiemi. V tomto případě bitová kopie Metasploitable a image Kali Linux na počítači, který má povolenou technologii Hyper-V pro hostování imagí.
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a pak použijte následující nastavení:
 
@@ -74,7 +74,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
 1. Klikněte na tlačítko **Stáhnout Metasploitable nyní** .
 1. Po stažení souboru ZIP rozbalte soubor zip a zapamatujte si umístění.
 1. Převeďte extrahovaný soubor VMDK na soubor VHDX, abyste mohli používat technologii Hyper-V. Provedete to tak, že otevřete PowerShell s oprávněními správce a přejdete do složky, kde se nachází soubor VMDK, a pak postupujte podle těchto pokynů:
-    1. Stáhněte si [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497)a po zobrazení výzvy spusťte mvmc_setup.msi soubor.
+    1. Stáhněte si [Microsoft VM Converter](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)a po zobrazení výzvy spusťte mvmc_setup.msi soubor.
     1. Naimportujte modul PowerShellu.  Výchozí umístění, ve kterém je modul nainstalovaný, je C:\Program Files\Microsoft Virtual Machine Converter.
 
         ```powershell
@@ -117,7 +117,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
 Šablona se teď aktualizovala a obsahuje image pro etický testovací třídu průniku hackerů, image s nástroji pro testování průniku a další image s chybami zabezpečení ke zjišťování. Image šablony se teď dají publikovat do třídy. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.
   
 
-## <a name="cost"></a>Náklady  
+## <a name="cost"></a>Cost  
 Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete použít následující příklad: 
  
 Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí úlohy nebo přiřazení by cena za testovací prostředí byla: 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181931"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299741"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -91,13 +91,13 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Funkce Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano  **\***  |
+| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Yes |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Yes |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Yes |
+| Symantec v12.1.1100+| Řada Windows Serverů  | No | Yes |
+| McAfee v10+ | Řada Windows Serverů  | No | Yes |
+| McAfee v10+ | Řada Linux serverů  | No | Ano **\*** |
+| Sophos v9 +| Řada Linux serverů  | No | Ano  **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 

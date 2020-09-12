@@ -3,12 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826552"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377977"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -23,7 +23,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 - Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 - Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -98,7 +98,7 @@ Obnovte následujícím způsobem:
 
         ![Zadejte cílové cesty.](./media/backup-azure-sql-database/target-paths.png)
 
-1. Kliknutím na tlačítko **OK** spusťte obnovení. Sledujte průběh obnovy v **oznamovací** oblasti nebo ji Sledujte pod zobrazením **úlohy zálohování** v trezoru.
+1. Kliknutím na **tlačítko OK** spusťte obnovení. Sledujte průběh obnovy v **oznamovací** oblasti nebo ji Sledujte pod zobrazením **úlohy zálohování** v trezoru.
 
     > [!NOTE]
     > Obnovení k bodu v čase je k dispozici pouze pro zálohy protokolu pro databáze, které jsou v režimu úplného a hromadně protokolovaného obnovení.
@@ -161,7 +161,7 @@ Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte
     ![Zvolit úplný bod obnovení](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > Ve výchozím nastavení se zobrazí body obnovení za posledních 30 dní. Kliknutím na tlačítko **filtrovat** a vybrat vlastní rozsah můžete zobrazit body obnovení starší než 30 dní.
+    > Ve výchozím nastavení se zobrazí body obnovení za posledních 30 dní. Můžete zobrazit body obnovení starší než 30 dní, a to tak, že vyberete **filtrovat** a vyberete vlastní rozsah.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Obnovení databází s velkým počtem souborů
 

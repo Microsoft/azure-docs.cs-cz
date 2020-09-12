@@ -1,0 +1,268 @@
+---
+title: Podporované země a oblasti vydavatele
+description: Seznam zemí, ze kterých můžete publikovat nabídku na komerční tržiště Microsoftu.
+ms.reviewer: nanef
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.custom: references_regions
+ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 09/02/2020
+ms.openlocfilehash: 393b71e78c59d126b24da2f1fd354ccfadf6825a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322901"
+---
+# <a name="supported-publisher-countries-and-regions"></a>Podporované země a oblasti vydavatele
+
+Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, musíte mít bydliště v jedné z následujících zemí nebo oblastí.
+
+- Afghánistán
+- Ostrovy Aland
+- Albánie
+- Alžírsko
+- Americká Samoa
+- Andorra
+- Angola
+- Anguilla
+- Antarktida
+- Antigua a Barbuda
+- Argentina
+- Arménie
+- Aruba
+- Austrálie
+- Rakousko
+- Ázerbájdžán
+- Bahamy
+- Bahrajn
+- Bangladéš
+- Barbados
+- Bělorusko
+- Belgie
+- Belize
+- Benin
+- Bermudy
+- Bhútán
+- Bolívie
+- Bonaire, Sint Eustach a Saba
+- Bosna a Hercegovina
+- Botswana
+- Bouvetův ostrov
+- Brazílie
+- Britské indickooceánské území
+- Britské Panenské ostrovy
+- Brunej
+- Bulharsko
+- Burkina Faso
+- Burundi
+- Cabo Verde
+- Kambodža
+- Kamerun
+- Kanada
+- Kajmanské ostrovy
+- Středoafrická republika
+- Čad
+- Chile
+- Čína
+- Vánoční ostrov
+- Kokosové ostrovy
+- Kolumbie
+- Komory
+- Kongo
+- Konžská demokratická republika
+- Cookovy ostrovy
+- Kostarika
+- Chorvatsko
+- Curaçao
+- Kypr
+- Pobřeží slonoviny
+- Czechia
+- Dánsko
+- Džibutsko
+- Dominika
+- Dominikánská republika
+- Ekvádor
+- Egypt
+- Salvador
+- Rovníková Guinea
+- Eritrea
+- Estonsko
+- Etiopie
+- Falklandské ostrovy
+- Faerské ostrovy
+- Fidži
+- Finsko
+- Francie
+- Francouzská Guyana
+- Francouzská Polynésie
+- Francouzská jižní území
+- Gabon
+- Gambie
+- Gruzie
+- Německo
+- Ghana
+- Gibraltar
+- Řecko
+- Grónsko
+- Grenada
+- Guadeloupe
+- Guam
+- Guatemala
+- Guernsey
+- Guinea
+- Guinea-Bissau
+- Guyana
+- Haiti
+- Heardův ostrov a MacDonaldovy ostrovy
+- Honduras
+- Hongkong – zvláštní administrativní oblast
+- Maďarsko
+- Island
+- Indie
+- Indonésie
+- Irák
+- Irsko
+- Ostrov Man
+- Izrael
+- Itálie
+- Jamajka
+- Japonsko
+- Jersey
+- Jordánsko
+- Kazachstán
+- Keňa
+- Kiribati
+- Jižní Korea
+- Kosovo
+- Kuvajt
+- Kyrgyzstán
+- Laos
+- Lotyšsko
+- Libanon
+- Lesotho
+- Libérie
+- Libye
+- Lichtenštejnsko
+- Litva
+- Lucembursko
+- Macao – zvláštní administrativní oblast
+- Madagaskar
+- Malawi
+- Malajsie
+- Maledivy
+- Mali
+- Malta
+- Marshallovy ostrovy
+- Martinik
+- Mauritánie
+- Mauricius
+- Mayotte
+- Mexiko
+- Mikronésie
+- Moldavsko
+- Monako
+- Mongolsko
+- Černá Hora
+- Montserrat
+- Maroko
+- Mosambik
+- Myanmar
+- Namibie
+- Nauru
+- Nepál
+- Nizozemsko
+- Nová Kaledonie
+- Nový Zéland
+- Nikaragua
+- Niger
+- Nigérie
+- Niue
+- Norfolk
+- Severní Makedonie
+- Severní Mariany
+- Norsko
+- Omán
+- Pákistán
+- Palau
+- Palestinská samospráva
+- Panama
+- Papua-Nová Guinea
+- Paraguay
+- Peru
+- Filipíny
+- Pitcairnovy ostrovy
+- Polsko
+- Portugalsko
+- Portoriko
+- Katar
+- Rumunsko
+- Rusko
+- Rwanda
+- Réunion
+- Saba
+- Svatý Bartoloměj
+- Svatý Kryštof a Nevis
+- Svatá Lucie
+- Svatý Martin (Francie)
+- Saint-Pierre a Miquelon
+- Svatý Vincenc a Grenadiny
+- Samoa
+- San Marino
+- Saúdská Arábie
+- Senegal
+- Srbsko
+- Seychely
+- Sierra Leone
+- Singapur
+- Svatý Eustach
+- Svatý Martin (Nizozemsko)
+- Slovensko
+- Slovinsko
+- Šalamounovy ostrovy
+- Somálsko
+- Jižní Afrika
+- Jižní Georgie a Jižní Sandwichovy ostrovy
+- Jižní Súdán
+- Španělsko
+- Srí Lanka
+- Svatá Helena, Ascension a Tristan da Cunha
+- Surinam
+- Špicberky a Jan Mayen
+- Svazijsko
+- Švédsko
+- Švýcarsko
+- Svatý Tomáš a Princův ostrov
+- Tchaj-wan
+- Tádžikistán
+- Tanzanie
+- Thajsko
+- Timor Leste
+- Togo
+- Tokelau
+- Tonga
+- Trinidad a Tobago
+- Tunisko
+- Turecko
+- Turkmenistán
+- Ostrovy Turks a Caicos
+- Tuvalu
+- Menší odlehlé ostrovy USA
+- Americké Panenské ostrovy
+- Uganda
+- Ukrajina
+- Spojené arabské emiráty
+- Spojené království
+- USA
+- Uruguay
+- Uzbekistán
+- Vanuatu
+- Vatikán
+- Venezuela
+- Vietnam
+- Wallis a Futuna
+- Jemen
+- Zambie
+- Zimbabwe

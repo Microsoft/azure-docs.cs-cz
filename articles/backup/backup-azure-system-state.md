@@ -3,12 +3,12 @@ title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému počítačů s Windows serverem do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181625"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376486"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
@@ -62,7 +62,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
     ![Konfigurace souborů a složek](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Po kliknutí na tlačítko OK se vedle **cíle zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
+    Po výběru **OK**se vedle možnosti **cíl zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
 
     ![Cíl zálohování je nakonfigurovaný, teď se připraví infrastruktura](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
