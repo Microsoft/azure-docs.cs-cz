@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50926074c09ef8f438b0abb53a4eb5f1813871b3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81275377"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321007"
 ---
 Kontejner poskytuje [rozhraní API koncového bodu na bázi REST](../rest-text-to-speech.md). K dispozici je mnoho [ukázkových projektů zdrojového kódu](https://github.com/Azure-Samples/Cognitive-Speech-TTS) pro platformu, architekturu a jazykové variace.
 
-Se standardním kontejnerem *pro převod textu na řeč* byste měli spoléhat na národní prostředí a hlas značky obrázku, kterou jste stáhli. Například pokud jste stáhli `latest` značku výchozí národní prostředí `en-US` a `JessaRUS` hlas. `{VOICE_NAME}` Argument by pak byl [`en-US-JessaRUS`](../language-support.md#standard-voices). Podívejte se na příklad SSML níže:
+Pomocí standardních nebo neuronové kontejnerů pro převod textu na řeč byste měli spoléhat na národní prostředí a hlas značky obrázku, kterou jste stáhli. Například pokud jste stáhli `latest` značku výchozí národní prostředí `en-US` a `AriaRUS` hlas. `{VOICE_NAME}`Argument by pak byl [`en-US-AriaRUS`](../language-support.md#standard-voices) . Podívejte se na příklad SSML níže:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-JessaRUS">
+    <voice name="en-US-AriaRUS">
         This text will get converted into synthesized speech.
     </voice>
 </speak>
@@ -41,7 +41,7 @@ Podívejte se na příklad SSML níže:
 </speak>
 ```
 
-Pojďme sestavit požadavek HTTP POST, který poskytuje pár hlaviček a datovou část dat. `{VOICE_NAME}` Zástupný text nahraďte vlastní hodnotou.
+Pojďme sestavit požadavek HTTP POST, který poskytuje pár hlaviček a datovou část dat. `{VOICE_NAME}`Zástupný text nahraďte vlastní hodnotou.
 
 ```curl
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
@@ -54,7 +54,7 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 Tento příkaz:
 
 * Vytvoří požadavek HTTP POST pro `speech/synthesize/cognitiveservices/v1` koncový bod.
-* Určuje `Accept` hlavičku`audio/*`
-* Určuje `Content-Type` záhlaví `application/ssml+xml`. Další informace naleznete v části [Text žádosti](../rest-text-to-speech.md#request-body).
-* Určuje `X-Microsoft-OutputFormat` hlavičku `riff-16khz-16bit-mono-pcm`, pro další možnosti se zobrazí [zvukový výstup](../rest-text-to-speech.md#audio-outputs).
+* Určuje `Accept` hlavičku `audio/*`
+* Určuje `Content-Type` záhlaví `application/ssml+xml` . Další informace naleznete v části [Text žádosti](../rest-text-to-speech.md#request-body).
+* Určuje `X-Microsoft-OutputFormat` hlavičku `riff-16khz-16bit-mono-pcm` , pro další možnosti se zobrazí [zvukový výstup](../rest-text-to-speech.md#audio-outputs).
 * Odešle žádost [SSML (Speech syntézy Language)](../speech-synthesis-markup.md) danému `{VOICE_NAME}` koncovému bodu.

@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174970"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304003"
 ---
 ## <a name="update-resources"></a>Aktualizace prostředků
 
 Existují určitá omezení, která je možné aktualizovat. Následující položky lze aktualizovat: 
 
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:
@@ -65,6 +65,16 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
+Tento příklad ukazuje, jak použít [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) k zahrnutí této verze bitové kopie do brány pro *nejnovější* obrázek.
+
+```azurepowershell-interactive
+Update-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name `
+   -GalleryName $gallery.Name `
+   -Name $galleryVersion.Name `
+   -ResourceGroupName $resourceGroup.Name `
+   -PublishingProfileExcludeFromLatest:$false
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
