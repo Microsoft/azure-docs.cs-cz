@@ -9,18 +9,18 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056373"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500126"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Nasazení brány v místním prostředí v Kubernetes
 
 Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure API Management do clusteru Kubernetes.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 - Vytvořte cluster Kubernetes.
@@ -63,7 +63,7 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 ## <a name="production-deployment-considerations"></a>Požadavky na produkční nasazení
 
 ### <a name="access-token"></a>Přístupový token
-Bez platného přístupového tokenu nemůže místní brána získat přístup k datům konfigurace a stahovat je z koncového bodu přidružené služby API Management. Přístupový token může být platný po dobu maximálně 30 dnů. Je nutné ho znovu vygenerovat a cluster nakonfigurovaný s čerstvým tokenem, a to buď ručně, nebo prostřednictvím automatizace před tím, než vyprší jeho platnost. 
+Bez platného přístupového tokenu nemůže místní brána získat přístup k datům konfigurace a stahovat je z koncového bodu přidružené služby API Management. Přístupový token může být platný po dobu maximálně 30 dnů. Je nutné ho znovu vygenerovat a cluster nakonfigurovaný s čerstvým tokenem, a to buď ručně, nebo prostřednictvím automatizace před tím, než vyprší jeho platnost.
 
 Při automatizaci aktualizace tokenu použijte [tuto operaci rozhraní API pro správu](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) k vygenerování nového tokenu. Informace o správě Kubernetes tajných klíčů najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret).
 
@@ -106,6 +106,9 @@ Překlad názvů DNS hraje kritickou roli v možnosti brány v místním prostř
 Soubor YAML, který je součástí Azure Portal, používá výchozí zásady [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) . Tato zásada způsobuje, že se požadavky na překlad adres IP nevyřešily DNS clusteru, aby se předaly nadřazenému serveru DNS, který je zděděný z uzlu.
 
 Další informace o překladu názvů v Kubernetes najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). Zvažte přizpůsobení [zásad DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) nebo [Konfigurace DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) podle potřeby pro vaši instalaci.
+
+### <a name="external-traffic-policy"></a>Zásada externího provozu
+Soubor YAML, který je k dispozici v poli Azure Portal sady `externalTrafficPolicy` u objektu [Service](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) na `Local` . Tím se zachová IP adresa volajícího (přístupná v [kontextu požadavku](api-management-policy-expressions.md#ContextVariables)) a zakáže vyrovnávání zatížení mezi uzly, což eliminuje směrování v síti, které to způsobilo. Pamatujte, že toto nastavení může způsobit asymetrickou distribuci provozu v nasazeních s nestejným počtem lusků brány na jeden uzel.
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Vlastní názvy domén a certifikáty SSL
 

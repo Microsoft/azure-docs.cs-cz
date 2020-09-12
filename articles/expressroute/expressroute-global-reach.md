@@ -2,59 +2,42 @@
 title: 'Azure ExpressRoute: připojení k Microsoft Cloud pomocí Global Reach'
 description: Přečtěte si, jak může Azure ExpressRoute Global Reach propojit okruhy ExpressRoute a vytvořit tak soukromou síť mezi místními sítěmi.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.author: cherylmc
-ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190756"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651496"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Přístup k mnoha cloudovým službám Microsoftu, jako je Azure a Office 365, můžete získat z privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky můžou mít vysokou rychlost připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky ale nemůžou přímo navzájem měnit data. Jinými slovy, 10.0.1.0/24 může odesílat data do 10.0.3.0/24 a 10.0.4.0/24, ale ne do 10.0.2.0/24.
+ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. K mnoha cloudovým službám Microsoftu, jako je Azure a Microsoft 365, můžete přistupovat z vašeho privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky mají vysokorychlostní připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky se ale nemůžou připojit a odesílat data přímo z sebe. Jinými slovy 10.0.1.0/24 může odesílat data do sítě 10.0.3.0/24 a 10.0.4.0/24, ale ne do sítě 10.0.2.0/24.
 
-![nedotýkají][1]
+![Diagram, který zobrazuje okruhy, které nejsou propojené s Global Reach Express Route][1]
 
 Pomocí **ExpressRoute Global REACH**můžete propojit ExpressRoute okruhy a vytvořit tak soukromou síť mezi místními sítěmi. Ve výše uvedeném příkladu s přidáním ExpressRoute Global Reach vaše síť San Francisco Office (10.0.1.0/24) může přímo vyměňovat data s vaší aplikací v Londýně (10.0.2.0/24) prostřednictvím stávajících okruhů ExpressRoute a přes globální síť Microsoftu. 
 
-![řetězce][2]
+![Diagram, který zobrazuje okruhy propojené s Global Reach Express Route.][2]
 
 ## <a name="use-case"></a>Případ použití
 ExpressRoute Global Reach je navržená tak, aby doplnila implementaci sítě WAN poskytovatele služeb a připojila firemní pobočky po celém světě. Například pokud váš poskytovatel služeb primárně pracuje v USA a má propojení všech větví v USA, ale poskytovatel služeb nefunguje v Japonsku a Hongkong, s ExpressRoute Global Reach můžete pracovat s místním poskytovatelem služeb a společnost Microsoft bude připojit vaše pobočky k těm, které jsou v USA, pomocí ExpressRoute a naší globální sítě.
 
-![případ použití][3]
+![Diagram, který zobrazuje případ použití Global Reach Express Route.][3]
 
 ## <a name="availability"></a>Dostupnost 
-ExpressRoute Global Reach v současné době jsou podporovány na následujících místech.
+ExpressRoute Global Reach se podporují ve většině oblastí, kde se aktuálně podporuje ExpressRoute. Můžete se podívat na [poskytovatele připojení ExpressRoute](expressroute-locations-providers.md#partners) pro aktuální podporované oblasti. 
 
-* Austrálie
-* Kanada
-* Francie
-* Německo
-* Hongkong – zvláštní administrativní oblast
-* Irsko
-* Japonsko
-* Jižní Korea
-* Nizozemsko
-* Nový Zéland
-* Norsko
-* Singapur
-* Švédsko
-* Švýcarsko
-* Spojené království
-* USA
-
-Vaše okruhy ExpressRoute musí být vytvořené v [umístěních partnerských vztahů ExpressRoute](expressroute-locations.md) ve výše uvedených zemích nebo oblastech. Pokud chcete povolit ExpressRoute Global Reach mezi [různými geopolitickými oblastmi](expressroute-locations.md), vaše okruhy musí být SKU úrovně Premium.
+> [!NOTE] 
+> Pokud chcete povolit ExpressRoute Global Reach mezi [různými geopolitickými oblastmi](expressroute-locations-providers.md#locations), vaše okruhy musí být **SKU úrovně Premium**.
 
 ## <a name="next-steps"></a>Další kroky
-1. [Zobrazit nejčastější dotazy k Global Reach](expressroute-faqs.md#globalreach)
-2. [Informace o tom, jak povolit Global Reach](expressroute-howto-set-global-reach.md)
-3. [Přečtěte si, jak propojit okruh ExpressRoute s vaší virtuální sítí.](expressroute-howto-linkvnet-arm.md)
-
+- Prohlédněte si [Global REACH Nejčastější dotazy](expressroute-faqs.md#globalreach).
+- Naučte se, jak [povolit Global REACH](expressroute-howto-set-global-reach.md).
+- Přečtěte si, jak [propojit okruh ExpressRoute s vaší virtuální sítí](expressroute-howto-linkvnet-arm.md).
 
 <!--Image References-->
 [1]: ./media/expressroute-global-reach/1.png "diagram bez globálního dosahu"

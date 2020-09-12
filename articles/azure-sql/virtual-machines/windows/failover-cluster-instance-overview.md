@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653269"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611628"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Ano|Ne|Ano |
-|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
+|**Podporuje FileStream**|Yes|No|Yes |
+|**Mezipaměť objektů BLOB v Azure**|No|No|Yes|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -66,7 +66,7 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 **Výhody**: 
 - Užitečné pro aplikace, které se chtějí migrovat do Azure a současně zachovat jejich architekturu s vysokou dostupností a zotavení po havárii (HADR). 
 - Může migrovat clusterové aplikace do Azure, protože je to kvůli podpoře trvalých rezervací SCSI (SCSI PR). 
-- Podporuje sdílené SSD úrovně Premium Azure pro všechny verze SQL Server a sdílené Azure Ultra Disk Storage pro SQL Server 2019. 
+- Podporuje sdílené SSD úrovně Premium Azure a úložiště Azure Ultra disk.
 - Může použít jeden sdílený disk nebo rozkládat více sdílených disků k vytvoření sdíleného fondu úložiště. 
 - Podporuje FileStream.
 
@@ -153,10 +153,11 @@ V současné době se SQL Server instance clusterů s podporou převzetí služe
 
 Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Tyto funkce nebudou fungovat pro SQL Server virtuální počítače po přeinstalaci agenta v režimu zjednodušené správy.
 
-### <a name="msdtc"></a>NÁSTROJE   
-Azure Virtual Machines podporuje službu MSDTC v systému Windows Server 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
+### <a name="msdtc"></a>NÁSTROJE 
 
-V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší, protože:
+Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
+
+V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší se sdílenými svazky clusteru, protože:
 
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.

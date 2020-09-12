@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: pracovní postup konfigurace okruhu'
 description: Tato stránka zobrazuje pracovní postup pro konfiguraci okruhů ExpressRoute a partnerských vztahů.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814072"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565919"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 
@@ -86,7 +86,7 @@ Povolte privátní partnerské vztahy pro připojení k virtuálním počítač�
 
 #### <a name="for-microsoft-peering"></a>Pro partnerský vztah Microsoftu
 
-Tuto možnost povolte pro přístup k Microsoft online služby, jako je například Office 365. Kromě toho jsou všechny služby Azure PaaS přístupné prostřednictvím partnerského vztahu Microsoftu. Abyste se mohli připojit k Microsoftu, než je ten, který používáte pro Internet, musíte zajistit, abyste použili samostatný proxy server nebo Edge. Použití stejné hrany pro ExpressRoute i Internet způsobí asymetrické směrování a způsobí výpadky připojení pro vaši síť.
+Tuto možnost povolte pro přístup k Microsoft online služby, jako je například Microsoft 365. Kromě toho jsou všechny služby Azure PaaS přístupné prostřednictvím partnerského vztahu Microsoftu. Abyste se mohli připojit k Microsoftu, než je ten, který používáte pro Internet, musíte zajistit, abyste použili samostatný proxy server nebo Edge. Použití stejné hrany pro ExpressRoute i Internet způsobí asymetrické směrování a způsobí výpadky připojení pro vaši síť.
 
 * Podsíť partnerského vztahu pro cestu 1 (/30) – musí být veřejná IP adresa.
 * Podsíť partnerského vztahu pro cestu 2 (/30) – musí být veřejná IP adresa.

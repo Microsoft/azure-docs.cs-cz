@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830253"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458276"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -149,10 +149,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
--   `subscriptionId`– ID předplatného, které obsahuje službu API Management, na kterou se pokoušíte zálohovat
--   `resourceGroupName`– název skupiny prostředků služby Azure API Management
--   `serviceName`– název služby API Management, kterou vytváříte, v době jejího vytvoření jste zadali zálohu.
--   `api-version`-nahradit za`2018-06-01-preview`
+-   `subscriptionId` – ID předplatného, které obsahuje službu API Management, na kterou se pokoušíte zálohovat
+-   `resourceGroupName` – název skupiny prostředků služby Azure API Management
+-   `serviceName` – název služby API Management, kterou vytváříte, v době jejího vytvoření jste zadali zálohu.
+-   `api-version` -nahradit za `2018-06-01-preview`
 
 V těle žádosti zadejte název cílového účtu Azure Storage, přístupový klíč, název kontejneru objektů BLOB a název zálohy:
 
@@ -198,10 +198,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
--   `subscriptionId`– ID předplatného, které obsahuje službu API Management, do které obnovujete zálohu
--   `resourceGroupName`-název skupiny prostředků, která obsahuje službu Azure API Management, do které provádíte obnovení zálohy
--   `serviceName`– název služby API Management, která se obnovuje v době jejího vytvoření.
--   `api-version`-nahradit za`2018-06-01-preview`
+-   `subscriptionId` – ID předplatného, které obsahuje službu API Management, do které obnovujete zálohu
+-   `resourceGroupName` -název skupiny prostředků, která obsahuje službu Azure API Management, do které provádíte obnovení zálohy
+-   `serviceName` – název služby API Management, která se obnovuje v době jejího vytvoření.
+-   `api-version` -nahradit za `2018-06-01-preview`
 
 V těle žádosti zadejte umístění záložního souboru. To znamená, že přidejte název účtu Azure Storage, přístupový klíč, název kontejneru objektů BLOB a název zálohy:
 
@@ -234,7 +234,7 @@ V různých návodech k procesu zálohování a obnovení si Projděte následuj
 
 -   [Replikace účtů Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automatizace zálohování a obnovení služby API Management pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: zálohování a obnovení konfigurace](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) 
+-   [Azure API Management: zálohování a obnovení konfigurace](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
      _Metoda podrobná podle Stanislav se neshoduje s oficiálními pokyny, ale je zajímavá._
 
 [backup an api management service]: #step1

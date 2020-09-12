@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930039"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614010"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -25,7 +25,7 @@ Existují dva přístupy k ukázkovému kódu v tomto článku. Můžete použí
 
 Další informace o rozhraních API a sadách SDK pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Tím se zajistí, že máte instanci digitálního vlákna Azure, ke které má váš uživatel oprávnění pro přístup, a Vy jste nastavili oprávnění pro klientské aplikace. Po dokončení všech těchto nastavení jste připraveni k psaní kódu klientské aplikace.
 
@@ -34,7 +34,7 @@ Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve které
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Ověřování a vytváření klientů: sada SDK .NET (C#)
 
 Nejprve zahrňte do projektu následující balíčky, aby bylo možné použít sadu .NET SDK a nástroje ověřování pro tento postup:
-* `Azure.DigitalTwins.Core` (verze `1.0.0-preview.2` )
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 
 V závislosti na zvolených nástrojích můžete balíčky zahrnout pomocí Správce balíčků sady Visual Studio nebo `dotnet` nástroje příkazového řádku. 
@@ -104,7 +104,7 @@ Pokud nepoužíváte rozhraní .NET, můžete se rozhodnout vytvořit knihovnu S
 
 V této části se dozvíte, jak ověřit v takovém případě.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Nejdřív byste měli provést kroky pro vytvoření vlastní sady SDK s AutoRest pomocí kroků v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure*](how-to-create-custom-sdks.md)pomocí automatického REST.
 

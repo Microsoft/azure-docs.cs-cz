@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829590"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440673"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -110,7 +110,7 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 
 1. Ověřte, že účet úložiště není chráněný bránou firewall. Azure Portal potřebuje přístup k účtu úložiště, aby mohl načítat data metrik a vykreslovat grafy.
 
-1. Pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) ověřte, že se metriky přenášejí do účtu úložiště. Pokud se metriky neshromažďují, postupujte podle [Průvodce odstraňováním potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. Pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) ověříte, že se do účtu úložiště zanášejí metriky. Pokud se metriky neshromažďují, postupujte podle [Průvodce odstraňováním potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Další kroky
 

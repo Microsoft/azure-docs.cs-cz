@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195892"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442390"
 ---
 # <a name="use-case---product-recommendations"></a>Případ použití – doporučení pro produkty
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Podrobnosti o této sadě najdete na stránce [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) . V tomto dokumentu popisujeme běžný případ použití, který uživatelé Azure už vyřešili a implementovali pomocí Azure Data Factory a dalších služeb Cortana Intelligence komponent.
@@ -41,7 +41,7 @@ Maloobchodní prodejci si nakonec potřebují změřit účinnost jejich příst
 ## <a name="solution-overview"></a>Přehled řešení
 Tento ukázkový případ použití byl vyřešen a implementován skutečnými uživateli Azure pomocí Azure Data Factory a dalších Cortana Intelligence služeb komponent, včetně [HDInsight](https://azure.microsoft.com/services/hdinsight/) a [Power BI](https://powerbi.microsoft.com/).
 
-Online prodejce používá úložiště objektů BLOB v Azure, místní SQL Server, Azure SQL Database a relační datové tržiště jako své možnosti úložiště dat v celém pracovním postupu.  Úložiště objektů BLOB obsahuje informace o zákaznících, údaje o chování zákazníků a data informací o produktech. Údaje o produktu obsahují informace o značkách produktu a katalog produktů uložený místně ve službě SQL Data Warehouse. 
+Online prodejce používá úložiště objektů BLOB v Azure, místní SQL Server, Azure SQL Database a relační datové tržiště jako své možnosti úložiště dat v celém pracovním postupu.  Úložiště objektů BLOB obsahuje informace o zákaznících, údaje o chování zákazníků a data informací o produktech. Údaje o produktu obsahují informace o značkách produktu a katalog produktů uložený místně ve službě Azure synapse Analytics (dříve SQL Data Warehouse). 
 
 Všechna data jsou kombinována a podávána do systému doporučení produktu, aby mohla doručovat přizpůsobená doporučení na základě zájmů a akcí zákazníků, zatímco uživatel prochází produkty v katalogu na webu. Zákazníci také uvidí produkty, které souvisejí s produktem, na základě celkových vzorů používání webu, které se nevztahují k jednomu uživateli.
 

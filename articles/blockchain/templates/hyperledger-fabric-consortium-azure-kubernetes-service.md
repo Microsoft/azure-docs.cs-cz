@@ -1,17 +1,17 @@
 ---
-title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
+title: Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 description: Jak nasadit a nakonfigurovat síť konsorcia prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d23a0120aafb4dc3e6952b40959a20f9a3456614
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651555"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
+# <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 
 Pomocí šablony prostředků infrastruktury hlavní knihy v Azure Kubernetes Service (AKS) můžete nasadit a nakonfigurovat síť konsorcia prostředků infrastruktury pro hlavní knihu v Azure.
 
@@ -294,7 +294,7 @@ Z klienta partnerské organizace spusťte příkaz pro nastavení partnerských 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Příklad:
+`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Například:
 
   - Nastavte `<anchorPeersList>` , jako `"peer1"` kdybyste chtěli nastavit jenom uzel peer1 jako ukotvení partnerského uzlu.
   - Nastavte `<anchorPeersList>` , jak `"peer1" "peer3"` chcete jako kotvové partnery nastavit uzly peer1 i peer3.
@@ -334,7 +334,7 @@ Spusťte následující příkaz, který nainstaluje chaincode v partnerské org
 ```
 Příkaz nainstaluje chaincode do všech partnerských uzlů sady rovnocenných organizací v sadě s `ORGNAME` proměnnou prostředí. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte tento příkaz samostatně pro každou organizaci partnera.  
 
-Postupujte následovně:  
+Postupujte takto:  
 
 1.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg1` a spusťte `./azhlf chaincode install` příkaz.  
 2.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg2` a spusťte `./azhlf chaincode install` příkaz.  
@@ -351,7 +351,7 @@ Předejte název funkce vytváření instance a seznam argumentů oddělených m
 
 Konfigurační soubor JSON kolekce můžete také předat pomocí `--collections-config` příznaku. Nebo nastavte přechodné argumenty pomocí `-t` příznaku při vytváření instance chaincode používané pro privátní transakce.
 
-Příklad:
+Například:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
@@ -391,7 +391,7 @@ Pokud používáte *azhlfTool* k instalaci chaincode, předejte všechny názvy 
 
 Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Opětovné přijetí chaincode_example02. Chcete-li zadat dotaz na hodnotu "a" ve stavu World, nastavte  `<queryFunction>`   na hodnotu  `query` a  `<queryArgs>` na `"a"` .  
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 Spusťte následující příkazy, abyste našli verzi nasazení šablony.
 
