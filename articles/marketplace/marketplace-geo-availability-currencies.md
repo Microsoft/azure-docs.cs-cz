@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826765"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651000"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -57,7 +57,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Chorvatsko                             | HR        | EUR          |
 | Curaçao                             | Skupina        | USD          |
 | Kypr                              | CY        | EUR          |
-| Česká republika                      | CZ        | EUR          |
+| Czechia                      | CZ        | EUR          |
 | Dánsko                             | DK        | DKK          |
 | Dominikánská republika                  | DO        | USD          |
 | Ekvádor                             | EC        | USD          |
@@ -99,7 +99,6 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Litva                           | LT        | EUR          |
 | Lucembursko                          | LU        | EUR          |
 | Macao – zvláštní administrativní oblast                           | MO        | USD          |
-| Severní Makedonie                     | MK        | USD          |
 | Malajsie                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauricius                           | SAMOHLÁSK        | USD          |
@@ -115,6 +114,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Nový Zéland                         | NZ        | NZD          |
 | Nikaragua                           | NI        | USD          |
 | Nigérie                             | NG        | USD          |
+| Severní Makedonie                     | MK        | USD          |
 | Norsko                              | NO        | NOK          |
 | Omán                                | OM        | USD          |
 | Pákistán                            | PK        | USD          |
@@ -166,7 +166,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
+\* Pro zákazníky v Brazílii používá commcercial Marketplace prostřednictvím poskytovatelů cloudových řešení (CSP) USD.
 
 \** Jenom image virtuálních počítačů s bezplatným a BYOL.
 
@@ -177,20 +177,22 @@ U všech placených typů nabídek máte možnost zadat ceny v USD nebo odeslat 
 Pokud chcete upravit jakoukoli cenu před publikováním, stačí exportovat tabulku cen, upravit ji a nahrát ji se změnami.
 
 > [!NOTE]
-> Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
+> Po zveřejnění ceny na trhu v plánu se tato cena nedá změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
 
 Cena nabídky se vždycky zobrazuje zákazníkům v jejich místní měně. Cena, kterou vyberete v partnerském centru, se převede na místní měnu zákazníků podle směnného kurzu v době, kdy jste ceny v partnerském centru uložili. Cena zobrazená zákazníkům v online obchodech se nemění, pokud vaši nabídku znovu nepublikujete.
 
 Společnost Microsoft přijímá platby od zákazníků v jejich místní měně a zaplatí vám v místní měně. Microsoft převede zákaznickou zákaznickou měnu na svou místní měnu pomocí směnného kurzu pro daný den nákupu.
 
 > [!NOTE]
-> Microsoft převede ceny nabídek za použití pokladny od Microsoftu.
+> Microsoft převede ceny nabídek za použití multilicenčních kurzů Microsoftu.
+
+[![Tok převodu měny.](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>Načítání informací o měně pomocí rozhraní API
 
 Jednotlivé ceny (v závislosti na tom, jak byly nastaveny) mohou být ovlivněny směnnými sazbami v den, kdy byly uloženy), lze načíst pomocí rozhraní API. informace o měně se nedají.
 
-Podrobnosti o tom, jak zadat cenu za konkrétní typy nabídek, najdete v těchto článcích:
+Podrobnosti o tom, jak zadat ceny pro konkrétní typy nabídek, najdete v těchto článcích:
 
 - [Vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md)
 - [Vytvoření nabídky kontejneru Azure](partner-center-portal/create-azure-container-offer.md)

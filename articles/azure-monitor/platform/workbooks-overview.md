@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799561"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657953"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor sešity
 
@@ -43,12 +43,13 @@ Sešity jsou aktuálně kompatibilní s následujícími zdroji dat:
 
 Pracovní sešity poskytují bohatou sadu funkcí pro vizualizaci vašich dat. Podrobné příklady jednotlivých typů vizualizací najdete v ukázkových odkazech níže:
 
-* [Text](workbooks-visualizations.md#text)
-* [Grafy](workbooks-visualizations.md#charts)
-* [Mřížky](workbooks-visualizations.md#grids)
-* [Dlaždice](workbooks-visualizations.md#tiles)
-* [Předmětů](workbooks-visualizations.md#trees)
-* [Diagram](workbooks-visualizations.md#graphs)
+* [Text](workbooks-text-visualizations.md)
+* [Grafy](workbooks-chart-visualizations.md)
+* [Mřížky](workbooks-grid-visualizations.md)
+* [Dlaždice](workbooks-tile-visualizations.md)
+* [Předmětů](workbooks-tree-visualizations.md)
+* [Diagram](workbooks-graph-visualizations.md)
+* [Složený pruhový](workbooks-composite-bar.md)
 
 ![Ukázkové vizualizace sešitu](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ V případě tohoto konkrétního sešitu je prostředí interaktivní. Můžete
 
 ### <a name="editing-mode"></a>Režim úprav
 
-Chcete-li pochopit, jak je šablona sešitu seznáma, je nutné přepnout do režimu úprav výběrem možnosti **Upravit**. 
+Chcete-li pochopit, jak je šablona sešitu seznáma, je nutné přepnout do režimu úprav výběrem možnosti **Upravit**.
 
-![Snímek šablony analýzy selhání aplikace](./media/workbooks-overview/edit.png)
+![Snímek obrazovky s tlačítkem Upravit v sešitech](./media/workbooks-overview/edit.png)
 
 Po přepnutí do režimu úprav si všimněte, že se vpravo v jednotlivých aspektech vašeho sešitu zobrazí několik **textových polí.**
 
