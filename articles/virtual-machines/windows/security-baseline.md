@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef21412a045edba3a816193860fa21b755ef9c68
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227011"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400377"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -973,7 +973,9 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 * [Vytvoření Key Vault](../../key-vault/secrets/quick-create-portal.md)
 
-* [Jak zajistit Key Vault ověřování pomocí spravované identity](../../key-vault/general/managed-identity.md)
+* [Ověření Key Vault](../../key-vault/general/authentication.md)
+
+* [Postup přiřazení zásady přístupu Key Vault](../../key-vault/general/assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 

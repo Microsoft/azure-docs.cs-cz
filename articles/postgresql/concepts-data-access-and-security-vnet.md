@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837206"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433615"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for PostgreSQL-Single server
 
@@ -46,7 +46,7 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for PostgreSQL, ab
 
 Dokud neprovedete akci, virtuální počítače v podsítích nebudou moct komunikovat se serverem Azure Database for PostgreSQL. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
+### <a name="a-allow-access-to-azure-services"></a>A. Povolení přístupu ke službám Azure
 
 Podokno zabezpečení připojení má tlačítko **pro zapnutí/vypnutí** , které je označeno jako **povolený přístup ke službám Azure**. Nastavení **on** umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy nebo podsítě Azure možná nevlastníte. Toto **Nastavení** je pravděpodobně více otevřené, než požadujete, aby byla databáze Azure Database for PostgreSQL. Funkce pravidla virtuální sítě nabízí mnohem přesnější kontrolu.
 
@@ -106,7 +106,7 @@ Pro Azure Database for PostgreSQL funkce pravidla virtuální sítě má násled
 
 - Pravidla virtuální sítě se vztahují jenom na Azure Resource Manager virtuální sítě; a ne pro [model nasazení Classic][arm-deployment-model-568f] .
 
-- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
+- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for PostgreSQL pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse).
 
 - Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 

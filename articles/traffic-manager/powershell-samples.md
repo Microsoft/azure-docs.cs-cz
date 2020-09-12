@@ -3,7 +3,7 @@ title: Azure PowerShell ukázky pro Traffic Manager | Microsoft Docs
 description: V této ukázce použijte Azure PowerShell k nasazení a konfiguraci Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: rohink
-ms.openlocfilehash: 25864e3b419d86cbe1ec816bea4438958ca33124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 03b34312f168f49e65fd83f826b2ad9f5759226e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934535"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400241"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>Ukázky Azure PowerShell pro Traffic Manager
 

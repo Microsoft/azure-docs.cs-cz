@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723941"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400347"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -47,7 +47,7 @@ Tento článek popisuje, jak povolit a použít Git ke správě konfigurace slu�
 
 ## <a name="access-git-configuration-in-your-service"></a>Přístup ke konfiguraci Gitu ve vaší službě
 
-Pokud chcete zobrazit a nakonfigurovat nastavení konfigurace Gitu, můžete kliknout na nabídku **zabezpečení** a přejít na kartu **úložiště konfigurace** .
+Pokud chcete zobrazit a nakonfigurovat nastavení konfigurace Gitu, můžete kliknout na nabídku **nasazení a infrastruktura** a přejít na kartu **úložiště** .
 
 ![Povolit GIT][api-management-enable-git]
 
@@ -62,7 +62,7 @@ Informace o povolení nebo zakázání přístupu k Gitu pomocí REST API najdet
 
 Prvním krokem před klonováním úložiště je uložení aktuálního stavu konfigurace služby do úložiště. Klikněte na **Uložit do úložiště**.
 
-Proveďte požadované změny na obrazovce s potvrzením a kliknutím na tlačítko **OK** uložte.
+Proveďte požadované změny na obrazovce s potvrzením a kliknutím na **Uložit** uložte.
 
 Po chvíli se konfigurace uloží a zobrazí se stav konfigurace úložiště, včetně data a času poslední změny konfigurace a poslední synchronizace mezi konfigurací služby a úložištěm.
 
@@ -112,7 +112,7 @@ Po naklonování úložiště můžete v místním systému souborů zobrazit a 
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Aktualizace místního úložiště s nejaktuálnější konfigurací instance služby
 
-Pokud provedete změny v instanci služby API Management v Azure Portal nebo pomocí REST API, musíte tyto změny uložit do úložiště, aby bylo možné aktualizovat místní úložiště s nejnovějšími změnami. Provedete to tak, že kliknete na **Uložit konfiguraci do úložiště** na kartě **úložiště konfigurace** v Azure Portal a pak na svém místním úložišti vydáte následující příkaz.
+Pokud provedete změny v instanci služby API Management v Azure Portal nebo pomocí REST API, musíte tyto změny uložit do úložiště, aby bylo možné aktualizovat místní úložiště s nejnovějšími změnami. Provedete to tak, že na kartě **úložiště** v Azure Portal kliknete na **Uložit na úložiště** a pak na svém místním úložišti vydáte následující příkaz.
 
 ```
 git pull
@@ -198,7 +198,7 @@ Kořenová `api-management` Složka obsahuje `configuration.json` soubor, který
 }
 ```
 
-První čtyři nastavení ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` a) se `UserRegistrationTermsConsentRequired` mapují na následující nastavení na kartě **identity** v části **zabezpečení** .
+První čtyři nastavení ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` a) se `UserRegistrationTermsConsentRequired` mapují na následující nastavení na kartě **identity** v části **portál pro vývojáře** .
 
 | Nastavení identity | Mapuje na |
 | --- | --- |
@@ -208,7 +208,7 @@ První čtyři nastavení ( `RegistrationEnabled` , `UserRegistrationTerms` , `U
 | UserRegistrationTermsConsentRequired |Zaškrtávací políčko **vyžadovat souhlas** |
 | RequireUserSigninEnabled |Zaškrtávací políčko **pro přesměrování anonymních uživatelů na přihlašovací stránku** |
 
-Další čtyři nastavení ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` a) se `DelegationValidationKey` mapují na následující nastavení na kartě **delegování** v části **zabezpečení** .
+Další čtyři nastavení ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` a) se `DelegationValidationKey` mapují na následující nastavení na kartě **delegování** v části **portál pro vývojáře** .
 
 | Nastavení delegování | Mapuje na |
 | --- | --- |

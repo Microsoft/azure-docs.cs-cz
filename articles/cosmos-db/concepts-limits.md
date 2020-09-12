@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605769"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400309"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -118,6 +118,7 @@ V závislosti na tom, jaké rozhraní API používáte, může kontejner Azure C
 | Maximální počet cest v zásadách indexování| 100 <sup>*</sup>|
 | Maximální počet jedinečných klíčů na kontejner|10pruhový <sup>*</sup>|
 | Maximální počet cest na jedinečné omezení klíče|16bitovém <sup>*</sup>|
+| Maximální hodnota TTL |2147483647|
 
 <sup>*</sup> Můžete zvýšit množství těchto omezení na kontejner tím, že se obrátíte na podporu Azure.
 
@@ -136,6 +137,7 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 | Maximální délka hodnoty vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty řetězcové vlastnosti | Žádné praktické omezení |
 | Maximální délka číselné hodnoty vlastnosti | IEEE754 s dvojitou přesností 64-bit |
+| Maximální hodnota TTL |2147483647|
 
 Neexistují žádná omezení na datové části položky, jako je počet vlastností a hloubka vnořování, s výjimkou omezení délky pro klíče oddílu a hodnoty ID a omezení celkové velikosti 2 MB. Možná budete muset nakonfigurovat zásady indexování pro kontejnery s velkými nebo složitými strukturami položek a snížit tak spotřebu RU. V tématu [modelování položek v Cosmos DB](how-to-model-partition-example.md) najdete příklad reálného světa a vzory pro správu velkých položek.
 

@@ -4,12 +4,12 @@ description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 759111ee7e77ce00fec3762b1a20494c2771ef8f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 43c9ca244f02ffe1485fbd7316901d607d6e2479
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931195"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321221"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
@@ -86,14 +86,14 @@ Následující tabulka popisuje parametry, které jsou označeny složenými zá
 
 |Jazyk |Referenční dokumentace|Balíček|Rychlé starty|
 |--|--|--|--|
-|C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpovědi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-csharp)<br>[Prediktivní dotazování](quickstart-sdk.md?pivots=programming-language-csharp)|
-|Go|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
+|C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpovědi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Vytváření obsahu](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[Prediktivní dotazování](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|Přejít|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Vytváření a předpověď](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Vytváření Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Předpověď Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Vytváření obsahu](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Předpovědi](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Vytváření NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[Předpověď NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-javascript)<br>[Předpovědi](quickstart-sdk.md?pivots=programming-language-javascript)|
-|Python|[Vytváření a předpověď](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-python)<br>[Předpovědi](quickstart-sdk.md?pivots=programming-language-python)|
+|JavaScript|[Vytváření obsahu](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Předpovědi](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Vytváření NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[Předpověď NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Vytváření obsahu](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[Předpovědi](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
+|Python|[Vytváření a předpověď](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[Předpovědi](azure-sdk-quickstart.md?pivots=programming-language-python)|
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace.
 

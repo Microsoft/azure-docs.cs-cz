@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4a98007917e95b1880661fe35bfd3f85f633e9a3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230751"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321765"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -33,7 +33,7 @@ Tato image kontejneru má k dispozici následující značky:
 |-------------------------------|:------|
 | `latest`                      |       |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
 Bitovou kopii kontejneru rozpoznávání OCR [počítačové zpracování obrazu][cv-containers] najdete v `containerpreview.azurecr.io` registru kontejneru. Je uložený v `microsoft` úložišti a má název `cognitive-services-read` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
@@ -62,7 +62,7 @@ Tato image kontejneru má k dispozici následující značky:
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
-## <a name="face"></a>Tvář
+## <a name="face"></a>Rozpoznávání tváře
 
 Image kontejneru [Face][fa-containers] se dá najít v `containerpreview.azurecr.io` registru kontejnerů. Je uložený v `microsoft` úložišti a má název `cognitive-services-face` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-face` .
 
@@ -997,6 +997,32 @@ Tato image kontejneru má k dispozici následující značky:
 | `1.0.0-amd64-zh-cn-huihuirus-preview`       | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-HuihuiRUS` hlasem       |
 | `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Kangkang-Apollo` hlasem |
 | `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-Yaoyao-Apollo` hlasem   |
+
+## <a name="neural-text-to-speech"></a>Neuronové převodu textu na řeč
+
+Bitovou kopii kontejneru [neuronové text-to-Speech] [SP-NTTS] najdete v `containerpreview.azurecr.io` registru kontejneru. Je uložený v `microsoft` úložišti a má název `cognitive-services-neural-text-to-speech` . Plně kvalifikovaný název Image kontejneru je, `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` .
+
+Tato image kontejneru má k dispozici následující značky:
+
+| Značky obrázku                                  | Poznámky                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `1.1.0-amd64-de-de-katjaneural-preview`     | Obrázek kontejneru s `de-DE` národním prostředím a `de-DE-KatjaNeural` hlasem     |
+| `1.1.0-amd64-en-au-natashaneural-preview`   | Obrázek kontejneru s `en-AU` národním prostředím a `en-AU-NatashaNeural` hlasem   |
+| `1.1.0-amd64-en-ca-claraneural-preview`     | Obrázek kontejneru s `en-CA` národním prostředím a `en-CA-ClaraNeural` hlasem     |
+| `1.1.0-amd64-en-gb-libbyneural-preview`     | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-LibbyNeural` hlasem     |
+| `1.1.0-amd64-en-gb-mianeural-preview`       | Obrázek kontejneru s `en-GB` národním prostředím a `en-GB-MiaNeural` hlasem       |
+| `1.1.0-amd64-en-us-arianeural-preview`      | Obrázek kontejneru s `en-US` národním prostředím a `en-US-AriaNeural` hlasem      |
+| `1.1.0-amd64-en-us-guyneural-preview`       | Obrázek kontejneru s `en-US` národním prostředím a `en-US-GuyNeural` hlasem       |
+| `1.1.0-amd64-es-es-elviraneural-preview`    | Obrázek kontejneru s `es-ES` národním prostředím a `es-ES-ElviraNeural` hlasem    |
+| `1.1.0-amd64-es-mx-dalianeural-preview`     | Obrázek kontejneru s `es-MX` národním prostředím a `es-MX-DaliaNeural` hlasem     |
+| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | Obrázek kontejneru s `fr-CA` národním prostředím a `fr-CA-SylvieNeural` hlasem    |
+| `1.1.0-amd64-fr-fr-deniseneural-preview`    | Obrázek kontejneru s `fr-FR` národním prostředím a `fr-FR-DeniseNeural` hlasem    |
+| `1.1.0-amd64-it-it-elsaneural-preview`      | Obrázek kontejneru s `it-IT` národním prostředím a `it-IT-ElsaNeural` hlasem      |
+| `1.1.0-amd64-ja-jp-nanamineural-preview`    | Obrázek kontejneru s `ja-JP` národním prostředím a `ja-JP-NanamiNeural` hlasem    |
+| `1.1.0-amd64-ko-kr-sunhineural-preview`     | Obrázek kontejneru s `ko-KR` národním prostředím a `ko-KR-SunHiNeural` hlasem     |
+| `1.1.0-amd64-pt-br-franciscaneural-preview` | Obrázek kontejneru s `pt-BR` národním prostředím a `pt-BR-FranciscaNeural` hlasem |
+| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Obrázek kontejneru s `zh-CN` národním prostředím a `zh-CN-XiaoxiaoNeural` hlasem  |
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 

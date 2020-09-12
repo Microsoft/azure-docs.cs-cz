@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797079"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319521"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí na portálu Azure Active Directory
 
@@ -35,7 +35,7 @@ Pro službu Azure AD je k dispozici několik plánů licencí, mezi které patř
 
 - Azure AD Premium P2
 
-Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/). Pokud si chcete zaregistrovat licenční plány Azure AD Premium, najdete je [tady](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/). Pokud si chcete zaregistrovat licenční plány Azure AD Premium, najdete je [tady](./active-directory-get-started-premium.md).
 
 Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti ** &gt; &gt; &gt; nastavení profilu Azure Active Directory uživatelů** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
