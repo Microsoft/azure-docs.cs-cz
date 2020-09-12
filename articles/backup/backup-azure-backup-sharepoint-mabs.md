@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí MABS
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017426"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375393"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
 
@@ -30,7 +30,7 @@ Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit někol
 
 * MABS neposkytuje zálohu databází SharePoint SQL Server hostovaných ve sdílených složkách souborového serveru se škálováním na více systému (SOFS).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy pro požadavky patří: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace Azure Backup Server s trezorem.
 
@@ -74,7 +74,7 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
         Po spuštění ConfigureSharePoint.exe budete muset znovu spustit, pokud dojde ke změně přihlašovacích údajů správce farmy služby SharePoint.
 
-1. Chcete-li vytvořit skupinu ochrany, klikněte na možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** v konzole MABS.
+1. Chcete-li vytvořit skupinu ochrany, vyberte možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany** a v konzole MABS otevřete průvodce **Vytvoření nové skupiny ochrany** .
 
 1. V **Vyberte typ skupiny ochrany**vyberte **servery**.
 
@@ -102,7 +102,7 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
 1. V části **Zvolit online replikaci**určete, jak se bude provádět počáteční Úplná replikace dat. Replikaci můžete provést po síti nebo můžete provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. [Další informace](./backup-azure-backup-import-export.md).
 
-1. Na stránce  **Souhrn** zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**dojde k počáteční replikaci dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
+1. Na stránce **Souhrn** zkontrolujte nastavení. Po výběru **vytvořit skupinu**se spustí počáteční replikace dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
 
 ## <a name="monitoring"></a>Monitorování
 
@@ -114,17 +114,17 @@ Po vytvoření skupiny ochrany dojde k počáteční replikaci a MABS spustí z�
 
 ### <a name="set-up-monitoring-notifications"></a>Nastavení oznámení monitorování
 
-1. V konzole pro správu MABS klikněte na **sledování**  >  **Akce**  >  **Možnosti**.
+1. V konzole pro správu MABS vyberte **Monitoring**  >  **Action**  >  **Možnosti**akce monitorování.
 
-2. Klikněte na **Server SMTP** zadejte název serveru, port a e-mailovou adresu, ze které se budou odesílat oznámení. Adresa musí být platná.
+2. Vyberte **Server SMTP**, zadejte název serveru, port a e-mailovou adresu, ze které se budou odesílat oznámení. Adresa musí být platná.
 
 3. V případě **ověřeného serveru SMTP**zadejte uživatelské jméno a heslo. Uživatelské jméno a heslo musí být název doménového účtu osoby, jejíž adresa "od" je popsaná v předchozím kroku. V opačném případě se doručení oznámení nezdařilo.
 
-4. Pokud chcete otestovat nastavení serveru SMTP, klikněte na **Odeslat zkušební E-mail**, zadejte e-mailovou adresu, na kterou má MABS odeslat zkušební zprávu, a potom klikněte na **OK**. Klikněte na **Možnosti**  >  **oznámení** a vyberte typy výstrah, o kterých chcete příjemce informovat. Do pole **příjemci** zadejte e-mailové adresy všech příjemců, kterým chcete MABS posílat kopie oznámení.
+4. Pokud chcete otestovat nastavení serveru SMTP, vyberte **Odeslat zkušební E-mail**, zadejte e-mailovou adresu, na kterou má MABS odeslat zkušební zprávu, a pak vyberte **OK**. Vyberte **Možnosti**  >  **oznámení** a vyberte typy výstrah, o kterých chcete příjemce informovat. Do pole **příjemci** zadejte e-mailové adresy všech příjemců, kterým chcete MABS posílat kopie oznámení.
 
 ### <a name="publish-operations-manager-alerts"></a>Publikování výstrah Operations Manageru
 
-1. V konzole pro správu MABS klikněte na **sledování**  >  **Akce**  >  **Možnosti**  >  **Publikování výstrah**  >  **publikovat aktivní výstrahy** .
+1. V konzole pro správu MABS vyberte akce **monitorování**  >  **Action**  >  **Možnosti**akce  >  **Publikování výstrah**  >  **publikovat aktivní výstrahy** .
 
 2. Po povolení **Publikování výstrah**budou všechny existující výstrahy MABS, které mohou vyžadovat akci uživatele, publikovány do protokolu událostí **MABS Alerts** . Agent Operations Manager, který je nainstalovaný na serveru MABS, pak tyto výstrahy publikuje do Operations Manager a nadále aktualizuje konzolu, když se generují nové výstrahy.
 
@@ -146,10 +146,10 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 5. Můžete také procházet různými body obnovení a vybrat databázi nebo položku, kterou chcete obnovit. Vyberte **datum > čas obnovení**a pak vyberte správnou **> sharepointovou farmu > bod obnovení, > položka**.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Klikněte na položku pravým tlačítkem myši a pak výběrem tlačítka **obnovit** otevřete **Průvodce obnovením**. Klikněte na **Next** (Další).
+6. Klikněte na položku pravým tlačítkem myši a pak výběrem tlačítka **obnovit** otevřete **Průvodce obnovením**. Vyberte **Další**.
 
     ![Kontrola výběru obnovení](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Vyberte typ obnovení, který chcete provést, a potom klikněte na tlačítko **Další**.
+7. Vyberte typ obnovení, který chcete provést, a potom vyberte **Další**.
 
     ![Typ obnovení](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -170,7 +170,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     MABS připojuje databázi obsahu, která je hostitelem položky SharePoint, do dočasné instance SQL Server. Z databáze obsahu obnoví položku a umístí ji do pracovního umístění souboru na MABS. Obnovená položka, která je v pracovním umístění, se teď musí exportovat do pracovního umístění ve farmě služby SharePoint.
 
     ![Pracovní Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Vyberte možnost **zadat možnosti obnovení**a použít nastavení zabezpečení pro farmu služby SharePoint nebo použít nastavení zabezpečení bodu obnovení. Klikněte na **Next** (Další).
+10. Vyberte možnost **zadat možnosti obnovení**a použít nastavení zabezpečení pro farmu služby SharePoint nebo použít nastavení zabezpečení bodu obnovení. Vyberte **Další**.
 
     ![Možnosti obnovení](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -178,7 +178,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     > Můžete zvolit omezení využití šířky pásma sítě. Tím se minimalizuje dopad na provozní server během produkčních hodin.
     >
     >
-11. Zkontrolujte souhrnné informace a potom kliknutím na tlačítko **obnovit** zahajte obnovení souboru.
+11. Zkontrolujte souhrnné informace a pak vyberte **obnovit** a zahajte tak obnovení souboru.
 
     ![Souhrn obnovení](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Teď v **konzole pro správu MABS** vyberte kartu **monitorování** a zobrazte **stav** obnovení.
@@ -201,7 +201,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
    > Protože je farma služby SharePoint chráněná pro dlouhodobé uchovávání v Azure, na serveru MABS nejsou k dispozici žádné informace o katalogu (metadata). V důsledku toho je potřeba obnovit katalog farmy služby SharePoint, kdykoli bude nutné obnovit databázi obsahu služby SharePoint v čase.
    >
    >
-3. Klikněte na **znovu zařadit do katalogu**.
+3. Vyberte **znovu katalog**.
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -209,10 +209,10 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Po dokončení katalogu se stav změní na *úspěch*. Klikněte na **Zavřít**.
+    Po dokončení katalogu se stav změní na *úspěch*. Vyberte **Zavřít**.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Klikněte na objekt služby SharePoint zobrazený na kartě **obnovení** MABS a získejte strukturu databáze obsahu. Klikněte na položku pravým tlačítkem myši a pak klikněte na tlačítko **obnovit**.
+4. Vyberte objekt služby SharePoint zobrazený na kartě **obnovení** MABS a získejte strukturu databáze obsahu. Klikněte na položku pravým tlačítkem a pak vyberte **obnovit**.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. V tomto okamžiku postupujte podle kroků pro obnovení výše v tomto článku a obnovte databázi obsahu služby SharePoint z disku.
@@ -247,7 +247,7 @@ Následující postup využívá příklad serverové farmy se dvěma front-end 
 
 1. Na počítači *Server2*v příkazovém řádku změňte adresář na `_MABS installation location_\bin\` a spusťte **ConfigureSharePoint**. Další informace o ConfigureSharePoint najdete v tématu [Konfigurace zálohování](#configure-backup).
 
-1. Vyberte skupinu ochrany, do které patří serverová farma, a pak klikněte na **Upravit skupinu ochrany**.
+1. Vyberte skupinu ochrany, do které patří serverová farma, a pak vyberte **Upravit skupinu ochrany**.
 
 1. V průvodci úpravou skupiny rozbalte na stránce **Vybrat členy skupiny** položku *Server2* a vyberte serverovou farmu a potom průvodce dokončete.
 

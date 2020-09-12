@@ -8,16 +8,18 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 73d583cb371876cefc10c982dbe66f6e15bddf03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932606"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375223"
 ---
-# <a name="ncast4_v3-series"></a>Řada NCasT4_v3 
+# <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-Series (ve verzi Preview) 
 
 Virtuální počítače řady NCasT4_v3-Series využívají GPU a procesory AMD EPYC 7V12 (Řím) s technologií [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) . Virtuální počítače mají až 4 GPU T4 T4 s 16 GB paměti, a to až 64 procesorových jader AMD EPYC 7V12 (Řím) a 440 GiB systémové paměti. Tyto virtuální počítače jsou ideální pro spouštění úloh ML a AI s využitím CUDA, TensorFlow, Pytorch, Caffe a dalších platforem nebo grafických úloh pomocí technologie NVIDIA GRID. NCasT4_v3-Series jsou ideální pro spouštění odvozených úloh.
+
+Žádost můžete [Odeslat](https://aka.ms/NCT4v3Preview) jako součást programu Preview.
 
 <br>
 

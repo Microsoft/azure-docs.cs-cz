@@ -3,12 +3,12 @@ title: Obnovení databází SAP HANA na virtuálních počítačích Azure
 description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006308"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375308"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Obnovení databází SAP HANA na virtuálních počítačích Azure
 
@@ -24,7 +24,7 @@ Azure Backup může obnovit databáze SAP HANA, které běží na virtuálních 
 
 * Obnovení do konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -36,21 +36,21 @@ Před obnovením databáze mějte na paměti následující:
 
 * Pokud chcete mít jistotu, že je cílová instance SAP HANA připravená k obnovení, zkontrolujte její stav **připravenosti na zálohování** :
 
-  1. Otevřete trezor, ve kterém je instance cílového SAP HANA zaregistrovaná.
+  1. Otevřete trezor, ve kterém je instance cílového SAP HANA zaregistrována.
 
-  1. Na řídicím panelu trezoru v části **Začínáme**klikněte na **zálohování** .
+  1. Na řídicím panelu trezoru v části **Začínáme**klikněte na **zálohovat**.
 
       ![Zálohování na řídicím panelu trezoru](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. V části **zálohování**v části **co chcete zálohovat?** vyberte **SAP HANA na virtuálním počítači Azure** .
+  1. V části **zálohování**v části **co chcete zálohovat?** na **virtuálním počítači Azure vyberte SAP HANA**.
 
       ![Výběr SAP HANA na virtuálním počítači Azure](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. V části **zjišťování databáze na virtuálních počítačích**klikněte na **Zobrazit podrobnosti.**
+  1. V části **zjišťování databáze na virtuálních počítačích**vyberte **Zobrazit podrobnosti**.
 
       ![Zobrazit podrobnosti](media/sap-hana-db-restore/view-details.png)
 
-  1. Kontrola **připravenosti na zálohování** cílového virtuálního počítače
+  1. Zkontrolujte **připravenost na zálohování** cílového virtuálního počítače.
 
       ![Chráněné servery](media/sap-hana-db-restore/protected-servers.png)
 

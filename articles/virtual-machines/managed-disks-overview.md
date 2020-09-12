@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: contperfq1
+ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021431"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299928"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 

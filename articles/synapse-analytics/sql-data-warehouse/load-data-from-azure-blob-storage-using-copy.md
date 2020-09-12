@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261835"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442977"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 10. Teď, když jste dokončili formulář, vyberte **vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
 
-11. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
+11. Na panelu nástrojů vyberte **Oznámení**, abyste mohli sledovat proces nasazení.
   
      ![oznámení](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 Brána firewall na úrovni serveru, která zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo jakékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
 
 > [!NOTE]
-> SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
+> Azure synapse Analytics komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
 
 1. Po dokončení nasazení v nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte **mySampleDatabase** . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci.
 
@@ -139,7 +139,7 @@ Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. T
 
 V této části se k navázání připojení k serveru používá [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete sadu SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -153,7 +153,7 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
 
     ![Připojení k serveru](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Vyberte **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
+3. Vyberte **Connect** (Připojit). V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
 4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
@@ -204,7 +204,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 2. Zadejte plně kvalifikovaný název serveru a jako Účet zadejte **LoaderRC20**.  Zadejte své heslo k účtu LoaderRC20.
 
-3. Vyberte **Připojit**.
+3. Vyberte **Connect** (Připojit).
 
 4. Až bude vaše připojení připravené, v Průzkumníku objektů se zobrazí dvě připojení k serveru. Jedno připojení jako ServerAdmin a druhé jako MedRCLogin.
 
