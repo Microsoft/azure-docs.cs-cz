@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078414"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461234"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony Správce prostředků
 
@@ -27,7 +27,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště**: Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Storage](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template). Účet úložiště se používá pro diagnostická data.
+* **Účet úložiště**: Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal). Účet úložiště se používá pro diagnostická data.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -38,7 +38,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 V šabloně jsou definované následující prostředky:
 
 * [Microsoft. cache/Redis](/azure/templates/microsoft.cache/redis)
-* [Microsoft. Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft. Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 K dispozici jsou také šablony Správce prostředků pro novou [úroveň Premium](cache-overview.md#service-tiers) .
 
@@ -66,7 +66,7 @@ Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony pro
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Otevřete mezipaměť Redis, kterou jste vytvořili.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

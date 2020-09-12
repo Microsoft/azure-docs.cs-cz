@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: asymetrické směrování'
 description: Tento článek vás provede problémy, se kterými se můžete setkat s asymetrickým směrováním v síti s více odkazy na cíl.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072147"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566530"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymetrické směrování s několika síťovými cestami
 Tento článek vysvětluje, jak může dopředný a zpětný síťový provoz využívat různé trasy, pokud je mezi zdrojem a cílem v síti k dispozici více cest.
@@ -64,5 +64,5 @@ Jiný způsob řešení problémů asymetrického směrování je prostřednictv
 ![Konfigurace sítě s překladem adres na základě zdroje](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Detekce asymetrického směrování
-Nejlepším způsobem, jak zajistit, že provoz z vaší sítě prochází očekávanou cestou, je traceroute. Pokud budete chtít, aby provoz z vašeho místního serveru SMTP do Microsoftu procházel internetem, očekávané použití příkazu traceroute je ze serveru SMTP na Office 365. Výsledek ověří, že provoz skutečně opouští vaši síť směrem do internetu, a ne směrem do ExpressRoute.
+Nejlepším způsobem, jak zajistit, že provoz z vaší sítě prochází očekávanou cestou, je traceroute. Pokud očekáváte, že provoz z místního serveru SMTP do Microsoftu bude pořizovat internetovou cestu, očekává se, že se traceroute ze serveru SMTP na Microsoft 365. Výsledek ověří, že provoz skutečně opouští vaši síť směrem do internetu, a ne směrem do ExpressRoute.
 

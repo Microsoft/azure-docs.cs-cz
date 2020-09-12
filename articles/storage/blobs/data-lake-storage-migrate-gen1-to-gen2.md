@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 25879178930c80f1265470645808d9ee81acafa8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fcd59cb3bf42dc843387043d982e6c43d665784d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035123"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486837"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -97,13 +97,13 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |---|---|---|
 |Organizace dat|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Ověřování|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Autorizace|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data – [seznamy ACL](data-lake-storage-access-control.md)|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data- [seznamy řízení přístupu](data-lake-storage-access-control.md)( [RBAC](../../role-based-access-control/overview.md) ) |
 |Šifrování – neaktivní neaktivní data|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body](../common/storage-private-endpoints.md)|
 |Vývojářské prostředí|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Všeobecně dostupná – [REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Public Preview – [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Protokoly prostředků|Klasické protokoly<br>[Azure Monitor integrovaný](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasické protokoly](../common/storage-analytics-logging.md) – všeobecně dostupné<br>Integrace se službou Azure monitor – TBD časová osa|
-|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure synapse Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 

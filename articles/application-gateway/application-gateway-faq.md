@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236093"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646539"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -105,7 +105,7 @@ Jedna podsíť nepodporuje Application Gateway SKU v2 i v1.
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Podporuje Application Gateway v2 trasy definované uživatelem (UDR)?
 
-Ano, ale pouze konkrétní scénáře. Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).
+Ano, ale pouze konkrétní scénáře. Další informace najdete v tématu [Konfigurace infrastruktury Application Gateway](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Podporuje Application Gateway hlaviček předávaných přes x?
 
@@ -136,7 +136,7 @@ No. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM je
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Podporuje soubor cookie spřažení Application Gateway atribut SameSite?
 Ano, [v80](https://chromiumdash.appspot.com/schedule) v [prohlížeči chrom](https://www.chromium.org/Home) představila v souborech cookie protokolu HTTP pověření bez SameSite atributu, aby bylo považováno za SameSite = Lax. To znamená, že prohlížeč nebude odesílat soubory cookie spřažení Application Gateway v kontextu třetí strany. 
 
-Pro podporu tohoto scénáře Application Gateway vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* spolu s existujícím souborem cookie *ApplicationGatewayAffinity* .  Tyto soubory cookie jsou podobné, ale soubor cookie *ApplicationGatewayAffinityCORS* má přidané dva další atributy: *SameSite = None; Zabezpečení*. Tyto atributy udržují rychlé relace i pro žádosti o více zdrojů. Další informace najdete v [části spřažení na základě souborů cookie](configuration-overview.md#cookie-based-affinity) .
+Pro podporu tohoto scénáře Application Gateway vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* spolu s existujícím souborem cookie *ApplicationGatewayAffinity* .  Tyto soubory cookie jsou podobné, ale soubor cookie *ApplicationGatewayAffinityCORS* má přidané dva další atributy: *SameSite = None; Zabezpečení*. Tyto atributy udržují rychlé relace i pro žádosti o více zdrojů. Další informace najdete v [části spřažení na základě souborů cookie](configuration-http-settings.md#cookie-based-affinity) .
 
 ## <a name="performance"></a>Výkon
 
@@ -186,7 +186,7 @@ Viz téma [skupiny zabezpečení sítě v podsíti Application Gateway](https://
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Podporuje podsíť služby Application Gateway trasy definované uživatelem?
 
-Viz [trasy definované uživatelem podporované v Application Gateway podsíti](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet).
+Viz [trasy definované uživatelem podporované v Application Gateway podsíti](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jaká jsou omezení pro Application Gateway? Můžu tato omezení zvýšit?
 
@@ -404,7 +404,7 @@ V současné době může být jedna instance řadiče pro příchozí spojení 
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Proč můj cluster AKS s kubenet nepracuje s AGIC?
 
-AGIC se pokusí automaticky přidružit prostředek směrovací tabulky k podsíti Application Gateway, ale může to udělat, protože z AGIC chybí oprávnění. Pokud AGIC není schopen přidružit směrovací tabulku k podsíti Application Gateway, dojde k chybě v protokolech AGIC. v takovém případě budete muset ručně přidružit směrovací tabulku vytvořenou clusterem AKS k podsíti Application Gateway. Další informace najdete v [tématu pokyny.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)
+AGIC se pokusí automaticky přidružit prostředek směrovací tabulky k podsíti Application Gateway, ale může to udělat, protože z AGIC chybí oprávnění. Pokud AGIC není schopen přidružit směrovací tabulku k podsíti Application Gateway, dojde k chybě v protokolech AGIC. v takovém případě budete muset ručně přidružit směrovací tabulku vytvořenou clusterem AKS k podsíti Application Gateway. Další informace najdete v tématu [podporované uživatelsky definované trasy](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Můžu svůj cluster AKS a Application Gateway připojit k samostatným virtuálním sítím? 
 

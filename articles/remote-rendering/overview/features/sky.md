@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013635"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613747"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
 
@@ -26,10 +26,10 @@ Vzdálené vykreslování Azure využívá pro realistické výpočty světla *f
 
 Následující obrázky znázorňují výsledky osvětlení různých povrchů pouze s texturou nebe:
 
-| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
+| Hrubá  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Jiný než kov  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Jiný než kov  | ![Dielectric, hrubosti = 0](media/dielectric-0.png)   | ![Dielectric, hrubosti = 0,25](media/dielectric-0.25.png)  | ![Dielectric, hrubosti = 0.5](media/dielectric-0.5.png)  | ![Dielectric, hrubosti = 0,75](media/dielectric-0.75.png)  | ![Dielectric, hrubosti = 1](media/dielectric-1.png)  |
+| Metal      | ![Kov, Hrubost = 0](media/metallic-0.png)  | ![Kov, Hrubost = 0,25](media/metallic-0.25.png)    | ![Kov, Hrubost = 0,5](media/metallic-0.5.png)    | ![Kov, Hrubost = 0,75](media/metallic-0.75.png)    | ![Kov, Hrubost = 1](media/metallic-1.png)    |
 
 Další informace o modelu osvětlení naleznete v kapitole [materiály](../../concepts/materials.md) .
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -121,20 +121,25 @@ Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prost�
 
 |Identifikátor                         | Popis                                              | Obrázek                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Přikoupit](media/autoshop.png)
-|builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Proměnlivé barevné světla v případě středně světlého nastavení interiéru  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Středně jasné světlé prostředí okolí                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Tmavé nastavení vnitřního doběhu s kontrastem v tmavém světle              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Denní okolní místnost – světlá, světlá oblast okna     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Tmavě noční nebe a uzemnění s mnoha okolními kvadranty   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Světlé světlo a stínový kontrast                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Jasný Nebeský světlo se středním osvětlením            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Středně proměnlivý Sun a barevný stín                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Dusk večer pro lehké přístupu                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Světlé, Lush – zelená a bílá světla, ztlumená země | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Daytime s jasným okolním světlem                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | Stejné jako TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Skybox k osvětlení objektu pomocí technologie autoshop](media/autoshop.png)
+|builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom Skybox, který se používá k osvětlení objektu](media/boiler-room.png)
+|builtin://ColorfulStudio           | Proměnlivé barevné světla v případě středně světlého nastavení interiéru  | ![ColorfulStudio Skybox, který se používá k osvětlení objektu](media/colorful-studio.png)
+|builtin://Hangar                   | Středně jasné světlé prostředí okolí                     | ![SmallHangar Skybox, který se používá k osvětlení objektu](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Tmavé nastavení vnitřního doběhu s kontrastem v tmavém světle              | ![IndustrialPipeAndValve Skybox, který se používá k osvětlení objektu](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Denní okolní místnost – světlá, světlá oblast okna     | ![Lebombo Skybox, který se používá k osvětlení objektu](media/lebombo.png)
+|builtin://SataraNight              | Tmavě noční nebe a uzemnění s mnoha okolními kvadranty   | ![SataraNight Skybox, který se používá k osvětlení objektu](media/satara-night.png)
+|builtin://SunnyVondelpark          | Světlé světlo a stínový kontrast                      | ![SunnyVondelpark Skybox, který se používá k osvětlení objektu](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Jasný Nebeský světlo se středním osvětlením            | ![Syferfontein Skybox, který se používá k osvětlení objektu](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Středně proměnlivý Sun a barevný stín                         | ![TearsOfSteelBridge Skybox, který se používá k osvětlení objektu](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Dusk večer pro lehké přístupu                    | ![VeniceSunset Skybox, který se používá k osvětlení objektu](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Světlé, Lush – zelená a bílá světla, ztlumená země | ![WhippleCreekRegionalPark Skybox, který se používá k osvětlení objektu](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Daytime s jasným okolním světlem                 | ![WinterRiver Skybox, který se používá k osvětlení objektu](media/winter-river.png)
+|builtin://DefaultSky               | Stejné jako TearsOfSteelBridge                               | ![DefaultSky Skybox, který se používá k osvětlení objektu](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Vlastnost C# RemoteManager. SkyReflectionSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: SkyReflectionSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

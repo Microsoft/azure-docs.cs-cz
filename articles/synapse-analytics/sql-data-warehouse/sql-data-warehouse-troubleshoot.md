@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039020"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460503"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
 
@@ -32,12 +32,12 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 | Blokováno bránou firewall                                          | Fondy SQL jsou chráněné branami firewall, aby se zajistil přístup k databázi jenom známým IP adresám. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | Synapse fond SQL doporučuje používat [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure synapse najdete v tématu [ovladače pro Azure synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure synapse](sql-data-warehouse-connect-overview.md) articles. |
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
-| Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
+| Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure synapse Analytics Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro synapse fond SQL se nepovede, pokud je možnost "vygenerovat skript pro závislé objekty" nastavená na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na **nástroje-> možnosti->Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA** . |
 
 ## <a name="performance"></a>Výkon
@@ -58,7 +58,7 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: operaci nelze provést, protože server by překročil povolenou kvótu jednotky transakce databáze 45000. | Buď snižte [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) databáze, kterou se pokoušíte vytvořit, nebo [požádejte o zvýšení kvóty](sql-data-warehouse-get-started-create-support-ticket.md). |
 | Zkoumání využití prostoru                              | Informace o využití prostoru v systému najdete v tématu [velikosti tabulek](sql-data-warehouse-tables-overview.md#table-size-queries) . |
-| Pomáhat se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky](sql-data-warehouse-tables-overview.md) .  Tento článek také obsahuje odkazy na podrobnější témata, jako jsou [typy dat tabulky](sql-data-warehouse-tables-data-types.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [indexování tabulky](sql-data-warehouse-tables-index.md), [dělení tabulky](sql-data-warehouse-tables-partition.md), [Údržba statistik tabulek](sql-data-warehouse-tables-statistics.md) a [dočasné tabulky](sql-data-warehouse-tables-temporary.md). |
+| Pomáhat se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky](sql-data-warehouse-tables-overview.md) .  Tento článek také obsahuje odkazy na podrobnější témata, jako jsou [typy dat tabulky](sql-data-warehouse-tables-data-types.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [indexování tabulky](sql-data-warehouse-tables-index.md),  [dělení tabulky](sql-data-warehouse-tables-partition.md), [Údržba statistik tabulek](sql-data-warehouse-tables-statistics.md) a [dočasné tabulky](sql-data-warehouse-tables-temporary.md). |
 | Neprobíhá aktualizace indikátoru průběhu transparentního šifrování dat (TDE) v Azure Portal | Stav TDE můžete zobrazit přes [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
 ## <a name="differences-from-sql-database"></a>Rozdíly od SQL Database

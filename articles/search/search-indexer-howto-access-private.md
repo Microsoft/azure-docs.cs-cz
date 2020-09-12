@@ -1,0 +1,172 @@
+---
+title: Indexery přistupující k zabezpečeným prostředkům prostřednictvím privátních koncových bodů
+titleSuffix: Azure Cognitive Search
+description: Návod, který popisuje nastavení privátních koncových bodů pro indexery ke komunikaci se zabezpečenými prostředky
+manager: nitinme
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 09/07/2020
+ms.openlocfilehash: bdf3863ae4683c6ef0e8dd3dd67a952bebf62d52
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89463567"
+---
+# <a name="accessing-secure-resources-via-private-endpoints"></a>Přístup k zabezpečeným prostředkům prostřednictvím privátních koncových bodů
+
+Prostředky Azure (například účty úložiště, které se používají jako zdroje dat), je možné nakonfigurovat tak, aby mohly být dostupné jenom z konkrétního seznamu virtuálních sítí. Také je možné je nakonfigurovat tak, aby zakázaly přístup k veřejné síti.
+Zákazníci si můžou vyžádat službu Azure Kognitivní hledání k vytvoření (odchozímu) [připojení privátního koncového bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) za účelem bezpečného přístupu k datům z takových zdrojů dat prostřednictvím indexerů.
+
+## <a name="shared-private-link-resources-management-apis"></a>Rozhraní API pro správu sdílených prostředků privátního propojení
+
+Soukromé koncové body, které jsou vytvořené službou Azure Kognitivní hledání na žádost zákazníka o přístup k zabezpečeným prostředkům, se označují jako *sdílené prostředky privátního propojení*. Zákazník má "sdílení" přístup k prostředku (například k účtu úložiště), který se dokončí na [službu privátního propojení Azure](https://azure.microsoft.com/services/private-link/).
+
+Azure Kognitivní hledání nabízí prostřednictvím rozhraní API pro správu vyhledávání, schopnost [vytvářet nebo aktualizovat sdílené prostředky privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate). Toto rozhraní API budete používat společně s jinými sdílenými rozhraními API pro správu *privátních propojených prostředků* ke konfiguraci přístupu k zabezpečenému prostředku z Azure kognitivní hledání indexeru.
+
+Připojení privátního koncového bodu k některým prostředkům se dá vytvořit jenom prostřednictvím verze Preview rozhraní API pro správu vyhledávání ( `2020-08-01-Preview` ), které je uvedené v následující tabulce jako značka Preview. Prostředky bez značky Preview se dají vytvořit přes rozhraní API pro náhled i pro GA API ( `2020-08-01` ).
+
+Níže najdete seznam prostředků Azure, ve kterých je možné vytvořit odchozí privátní koncové body z Azure Kognitivní hledání. `groupId` uvedená v tabulce níže musí být v rozhraní API použita přesně (velká a malá písmena) pro vytvoření sdíleného prostředku privátního propojení.
+
+| Prostředek Azure | ID skupiny |
+| --- | --- |
+| Azure Storage – objekt BLOB (nebo) ADLS Gen 2 | `blob`|
+| Azure Storage – tabulky | `table`|
+| Azure Cosmos DB – rozhraní API SQL | `Sql`|
+| Azure SQL Database | `sqlServer`|
+| Azure Database for MySQL (Preview) | `mysqlServer`|
+| Azure Key Vault | `vault` |
+| Azure Functions (Preview) | `sites` |
+
+Seznam prostředků Azure, pro které se podporují odchozí připojení privátních koncových bodů, se taky dá dotazovat prostřednictvím [podporovaného rozhraní API seznamu](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported).
+
+Pro účely tohoto průvodce se k předvedení REST API volání používají kombinace [ARMClient](https://github.com/projectkudu/ARMClient) a [post](https://www.postman.com/) .
+
+> [!NOTE]
+> V této příručce se předpokládá, že název vyhledávací služby je __Contoso-Search__ , který existuje ve skupině prostředků __Contoso__ předplatného s id předplatného __00000000-0000-0000-0000-000000000000__. ID prostředku této vyhledávací služby bude `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+
+Ve zbývající části tohoto průvodce se dozvíte, jak se dá nakonfigurovat služba __společnosti Contoso-Search__ , aby její indexovací indexer mohl získat přístup k datům z zabezpečeného účtu úložiště. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
+
+## <a name="securing-your-storage-account"></a>Zabezpečení účtu úložiště
+
+Nakonfigurujte účet úložiště tak, aby [povoloval přístup jenom z konkrétních podsítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network). Pokud na Azure Portal zaškrtnete tuto možnost a necháte sadu prázdnou, znamená to, že není povolen žádný provoz z žádné virtuální sítě.
+
+   ![Přístup k Virtual Network](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "Přístup k Virtual Network")
+
+> [!NOTE]
+> [Přístup k důvěryhodné službě Microsoftu](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) se dá použít k obcházení omezení virtuální sítě nebo IP adresy na takovém účtu úložiště a umožňuje službě vyhledávání přístup k datům v účtu úložiště, jak je popsáno v [Průvodci postupy](search-indexer-howto-access-trusted-service-exception.md). Při použití tohoto přístupu ke komunikaci mezi Azure Kognitivní hledání a účtem úložiště se ale přes zabezpečenou páteřní síť Microsoftu stane přes veřejnou IP adresu účtu úložiště.
+
+## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Krok 1: vytvoření sdíleného prostředku privátního propojení s účtem úložiště
+
+Provést následující volání rozhraní API pro vyžádání služby Azure Kognitivní hledání k vytvoření odchozího připojení privátního koncového bodu k účtu úložiště
+
+`armclient PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 create-pe.json`
+
+Obsah `create-pe.json` souboru (který představuje tělo žádosti do rozhraní API):
+
+```json
+{
+      "name": "blob-pe",
+      "properties": {
+        "privateLinkResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage",
+        "groupId": "blob",
+        "requestMessage": "please approve"
+      }
+}
+```
+
+Po `202 Accepted` úspěchu se vrátí odpověď – proces vytvoření odchozího privátního koncového bodu je dlouhodobá operace (asynchronní). Zahrnuje nasazení následujících prostředků –
+
+1. Privátní koncový bod přidělený privátní IP adresou ve `"Pending"` stavu. Privátní IP adresa se získává z adresního prostoru, který je přidělen virtuální síti prostředí pro spuštění privátního indexeru specifického pro službu Search. Po schválení privátního koncového bodu pocházela jakákoli komunikace z Azure Kognitivní hledání k účtu úložiště z privátní IP adresy a zabezpečeného kanálu privátního propojení.
+2. Soukromá zóna DNS pro typ prostředku založená na `groupId` . Tím se zajistí, že jakékoli vyhledání DNS k soukromému prostředku využije IP adresu přidruženou k privátnímu koncovému bodu.
+
+Ujistěte se, že jste zadali správný `groupId` typ prostředku, pro který vytváříte soukromý koncový bod. Jakákoli neshoda bude mít za následek zprávu o neúspěšné odpovědi.
+
+Stejně jako všechny asynchronní operace Azure `PUT` vrátí volání `Azure-AsyncOperation` hodnotu hlavičky, která bude vypadat takto:
+
+`"Azure-AsyncOperation": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
+
+Tento identifikátor URI se dá pravidelně dotazovat, aby se získal stav operace. Než budete pokračovat, doporučujeme počkat, dokud stav operace prostředku sdíleného privátního propojení nedosáhne stavu terminálu (tj `succeeded` .).
+
+`armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
+
+```json
+{
+    "status": "running" | "succeeded" | "failed"
+}
+```
+
+## <a name="step-2a-approve-the-private-endpoint-connection-for-the-storage-account"></a>Krok 2a: schválení připojení privátního koncového bodu pro účet úložiště
+
+> [!NOTE]
+> Tato část používá Azure Portal k Projděte si tok schválení privátního koncového bodu do úložiště. Místo toho se dá použít taky [REST API](https://docs.microsoft.com/rest/api/storagerp/privateendpointconnections) k dispozici prostřednictvím poskytovatele prostředků úložiště (RP).
+>
+> Jiní poskytovatelé, jako je CosmosDB, Azure SQL Server atd., nabízejí také podobná rozhraní RP API pro správu připojení privátních koncových bodů.
+
+Přejděte na kartu**připojení privátního koncového bodu**účtu úložiště v Azure Portal. Měla by existovat žádost o připojení privátního koncového bodu se zprávou požadavku z předchozího volání rozhraní API (po __úspěšném__dokončení asynchronní operace).
+
+   ![Schválení privátního koncového bodu](media\search-indexer-howto-secure-access\storage-privateendpoint-approval.png "Schválení privátního koncového bodu")
+
+Vyberte privátní koncový bod, který vytvořila služba Azure Kognitivní hledání (pomocí sloupce "privátní koncový bod" Identifikujte připojení privátního koncového bodu pomocí názvu zadaného v předchozím rozhraní API) a zvolte schválit s odpovídající zprávou (zpráva není významná). Ujistěte se, že se připojení k privátnímu koncovému bodu zobrazuje takto (na portálu se může nacházet kdykoli od 1-2 minut, než se stav aktualizuje na portálu).
+
+![Soukromý koncový bod schválen](media\search-indexer-howto-secure-access\storage-privateendpoint-after-approval.png "Soukromý koncový bod schválen")
+
+Po schválení žádosti o připojení privátního koncového bodu to znamená, že provoz se *může* přesměrovat prostřednictvím privátního koncového bodu. Po schválení privátního koncového bodu Azure Kognitivní hledání vytvoří potřebná mapování zón DNS v zóně DNS, která je pro ni vytvořená.
+
+## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Krok 2b: dotaz na stav sdíleného prostředku privátního propojení
+
+ Pokud chcete ověřit, že se prostředek sdíleného privátního propojení aktualizoval po schválení, získejte jeho stav prostřednictvím [rozhraní Get API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get).
+
+`armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
+
+Pokud je v `properties.provisioningState` prostředku `Succeeded` a je to `properties.status` , znamená to, `Approved` že sdílený prostředek privátního propojení je funkční a indexery je možné nakonfigurovat tak, aby komunikovaly s privátním koncovým bodem.
+
+```json
+{
+      "name": "blob-pe",
+      "properties": {
+        "privateLinkResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage",
+        "groupId": "blob",
+        "requestMessage": "please approve",
+        "status": "Approved",
+        "resourceRegion": null,
+        "provisioningState": "Succeeded"
+      }
+}
+
+```
+
+## <a name="step-3-configure-indexer-to-run-in-the-private-environment"></a>Krok 3: Konfigurace indexeru pro spuštění v privátním prostředí
+
+> [!NOTE]
+> Tento krok lze provést dokonce ještě před schválením připojení privátního koncového bodu. Dokud nebude připojení privátního koncového bodu schváleno, bude se libovolný indexer, který se pokusí o komunikaci se zabezpečeným prostředkem (například s účtem úložiště), ukončit v přechodném stavu selhání. Nové indexery se nedaří vytvořit. Jakmile je připojení privátního koncového bodu schváleno, indexery budou moci získat přístup k účtu privátního úložiště.
+
+1. [Vytvořte zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , který odkazuje na účet zabezpečeného úložiště a příslušný kontejner v rámci účtu úložiště. Následující příklad ukazuje tuto žádost provedenou prostřednictvím post.
+![Vytvoření zdroje dat](media\search-indexer-howto-secure-access\create-ds.png "Vytvoření zdroje dat")
+
+2. Podobně [vytvořte index](https://docs.microsoft.com/rest/api/searchservice/create-index) a volitelně [vytvořte dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) pomocí REST API.
+
+3. [Vytvořte indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , který odkazuje na zdroj dat, index a dovednosti vytvořené výše. Kromě toho vynuťte, aby indexer běžel v prostředí pro privátní spouštění, nastavením vlastnosti konfigurace indexeru `executionEnvironment` na `"Private"` .
+![Vytvořit indexer](media\search-indexer-howto-secure-access\create-idr.png "Vytvoření indexeru")
+
+Indexer by měl být úspěšně vytvořen a měl by se vytvořit průběh – indexování obsahu z účtu úložiště přes připojení k privátnímu koncovému bodu. Stav indexeru se dá monitorovat prostřednictvím [rozhraní API stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+
+> [!NOTE]
+> Pokud již máte indexery, můžete je jednoduše aktualizovat prostřednictvím [rozhraní API Put](https://docs.microsoft.com/rest/api/searchservice/create-indexer) a nastavit na `executionEnvironment` `"Private"` .
+
+## <a name="troubleshooting-issues"></a>Řešení potíží
+
+- Pokud při vytváření indexeru dojde k chybě s chybovou zprávou podobnou "přihlašovací údaje zdroje dat jsou neplatné", znamená to, že buď připojení privátního koncového bodu nebylo *schváleno* , nebo není funkční.
+Získejte stav sdíleného prostředku privátního propojení pomocí [rozhraní Get API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get). Pokud byla *schválena* , Projděte si `properties.provisioningState` prostředek. Pokud tomu tak je `Incomplete` , znamená to, že některé základní závislosti prostředku se nepodařilo zřídit – znovu vydejte `PUT` požadavek na opětovné vytvoření sdíleného prostředku privátního propojení, který by měl problém vyřešit. Opětovné schválení může být nezbytné – zkontrolujte stav prostředku znovu a ověřte ho.
+- Pokud indexer vytvoříte bez nastavování `executionEnvironment` , může být vytvoření indexeru úspěšné, ale jeho historie spuštění bude zobrazovat, že indexery se neúspěšně spustí. Indexer byste měli [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-indexer) tak, aby určoval spouštěcí prostředí.
+- Pokud se indexer vytvoří bez nastavení `executionEnvironment` a úspěšně se spustí, znamená to, že Azure kognitivní hledání rozhodl, že jeho spouštěcí prostředí je konkrétní "soukromé" prostředí služby Search. To se ale může změnit v závislosti na nejrůznějších faktorech (prostředky spotřebované indexerem, zatížení služby vyhledávání atd.) a v pozdějších případech se může zdařit, ale důrazně doporučujeme, abyste si nastavili `executionEnvironment` jako, aby se `"Private"` zajistilo, že v budoucnu nebude chyba.
+- [Kvóty a omezení](search-limits-quotas-capacity.md) určují, kolik sdílených prostředků privátních propojení lze vytvořit a závisí na SKU vyhledávací služby.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o privátních koncových bodech:
+
+- [Co jsou privátní koncové body?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- [Konfigurace DNS nutné pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)

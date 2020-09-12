@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180095"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500330"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -72,7 +72,7 @@ No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesíl
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
-V nabídce **úloha zálohování** se zobrazí pouze úlohy zálohování na vyžádání. Pro naplánovaná úloha použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+V nabídce **úloha zálohování** se zobrazují všechny plánované operace a operace na vyžádání s výjimkou naplánovaných záloh protokolů, protože můžou být velmi časté. V případě naplánovaných úloh protokolu použijte [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Budou se automaticky zálohovat i budoucí databáze?
 
