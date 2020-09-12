@@ -4,12 +4,12 @@ description: Tento článek popisuje hostitele procesoru událostí v Azure Even
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010456"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319497"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
@@ -87,6 +87,8 @@ Dále vytvořte instanci instance [EventProcessorHost](/dotnet/api/microsoft.azu
 
 Nakonec budou spotřebitelé registrovat instanci [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) ve službě Event Hubs. Registrace třídy procesoru událostí s instancí EventProcessorHost spustí zpracování událostí. Registrace vydá pokyn službě Event Hubs k tomu, aby čekala, že aplikace příjemce spotřebovává události z některých jeho oddílů, a vyvolá implementační kód [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) pokaždé, když vloží události, které se mají spotřebovat. 
 
+> [!NOTE]
+> ConsumerGroupName rozlišuje velká a malá písmena.  Změny consumerGroupName můžou mít za následek čtení všech oddílů od začátku streamu.
 
 ### <a name="example"></a>Příklad
 

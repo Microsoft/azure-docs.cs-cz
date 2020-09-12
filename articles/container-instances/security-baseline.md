@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87421509326ef8837a9787ed01a70915c7c5aafa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230734"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393424"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Základní hodnoty zabezpečení Azure pro Container Instances
 
@@ -988,7 +988,9 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 * [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/managed-identity.md)
+* [Ověření Key Vault](../key-vault/general/authentication.md)
+
+* [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 * [Použití spravovaných identit se službou Azure Container Instances](./container-instances-managed-identity.md)
 

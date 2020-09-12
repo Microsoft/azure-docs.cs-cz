@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230496"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394087"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -541,7 +541,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Aplikace Azure Functions by měly být oddělené virtuální sítí (VNet)/Subnet a odpovídajícím způsobem označeny.
 
-K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se ke službě připojuje soukromě a bezpečně (například: Azure Functions App Endpoint HTTPs) využívajících privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Soukromé koncové body jsou v (Preview) pro aplikace Function App spuštěné v plánu Premium. Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
+K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se ke službě připojuje soukromě a bezpečně (například: Azure Functions App Endpoint HTTPs) využívajících privátní propojení Azure. Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě. Soukromé koncové body jsou v (Preview) pro aplikace Function App spuštěné v plánu Premium. Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
@@ -960,7 +960,9 @@ Postup vytvoření interního pomocného mechanismu řízení:
 
 - [Použití spravovaných identit pro App Service a Azure Functions](../app-service/overview-managed-identity.md)
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/managed-identity.md)
+* [Ověření Key Vault](../key-vault/general/authentication.md)
+
+* [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 - [Použití Key Vault odkazů pro App Service a Azure Functions](../app-service/app-service-key-vault-references.md)
 

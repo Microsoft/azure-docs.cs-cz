@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167687"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300064"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -91,7 +91,7 @@ Existuje několik způsobů, jak můžete nainstalovat a spustit kontejner.
 Azure [Web App for Containers](https://azure.microsoft.com/services/app-service/containers/) je prostředek Azure vyhrazený pro spouštění kontejnerů v cloudu. Přináší předem připravené funkce, jako je automatické škálování, podpora kontejnerů Docker a dokování Docker, podpora protokolu HTTPS a mnohem víc.
 
 > [!NOTE]
-> Pomocí Azure Web App se automaticky získá doména ve formě`<appservice_name>.azurewebsites.net`
+> Pomocí Azure Web App se automaticky získá doména ve formě `<appservice_name>.azurewebsites.net`
 
 Spuštěním tohoto skriptu PowerShellu pomocí Azure CLI vytvoříte Web App for Containers pomocí svého předplatného a image kontejneru přes HTTPS. Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).
 
@@ -161,11 +161,11 @@ Ve výchozím nastavení není k dispozici žádné zabezpečení při použití
 
 #### <a name="set-up-nginx-as-an-ingress-gateway"></a>Nastavení NGINX jako příchozí brány
 
-NGINX používá [konfigurační soubory](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) pro povolení funkcí za běhu. Chcete-li povolit ukončení protokolu TLS pro jinou službu, je nutné zadat certifikát SSL pro ukončení připojení TLS a `proxy_pass` zadat adresu služby. Ukázka je uvedena níže.
+NGINX používá [konfigurační soubory](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) pro povolení funkcí za běhu. Chcete-li povolit ukončení protokolu TLS pro jinou službu, je nutné zadat certifikát SSL pro ukončení připojení TLS a  `proxy_pass` zadat adresu služby. Ukázka je uvedena níže.
 
 
 > [!NOTE]
-> `ssl_certificate`očekává cestu, která se má zadat v místním systému souborů kontejneru NGINX. Adresa zadaná pro `proxy_pass` musí být dostupná v rámci sítě kontejneru Nginx.
+> `ssl_certificate` očekává cestu, která se má zadat v místním systému souborů kontejneru NGINX. Adresa zadaná pro `proxy_pass` musí být dostupná v rámci sítě kontejneru Nginx.
 
 Kontejner NGINX načte všechny soubory v `_.conf_` , které jsou připojeny `/etc/nginx/conf.d/` do cesty konfigurace protokolu HTTP.
 
@@ -399,22 +399,19 @@ Výstup extrakce vztahu obsahuje odkazy identifikátoru URI na *zdroj* vztahu a 
 
 ```json
 "relations": [
-  {
-      "relationType": "DosageOfMedication",
-      "score": 1.0,
-      "bidirectional": false,
-      "source": "#/documents/2/entities/0",
-      "target": "#/documents/2/entities/1",
-      "entities": [
-          {
-              "id": "0",
-              "role": "ATTRIBUTE"
-          },
-          {
-              "id": "1",
-              "role": "ENTITY"
-          }
-      ]
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
   },
 ...
 ]

@@ -1,6 +1,6 @@
 ---
 title: Publikování vzdálené plochy pomocí proxy serveru Aplikace Azure AD | Microsoft Docs
-description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
+description: Popisuje, jak nakonfigurovat proxy aplikace pomocí služby RDS.
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019518"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396756"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy pomocí Azure Proxy aplikací služby AD
 
@@ -101,7 +101,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Příklad:**
+   **Například:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -135,7 +135,7 @@ Konfigurace, která je popsaný v tomto článku, je určena pro přístup k VP 
 
 | Metoda ověřování | Podporovaná konfigurace klienta |
 | --------------------- | ------------------------------ |
-| Předběžné ověřování    | RD Web-Windows 7/10 použití doplňku ActiveX pro Internet Explorer + RDS |
+| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](https://docs.microsoft.com/deployedge/edge-ie-mode) + doplněk RDS ActiveX |
 | Předběžné ověřování    | Webový klient služby Vzdálená plocha – webový prohlížeč kompatibilní s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější) |
 | Předávací | Jakýkoli jiný operační systém, který podporuje aplikaci Vzdálená plocha Microsoft |
 

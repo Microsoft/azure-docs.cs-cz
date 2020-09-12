@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078040"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398318"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -693,7 +693,8 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 - [Konfigurace spravované identity pro nasazení Azure Resource Manager prostředí v DevTest Labs](use-managed-identities-environments.md)
 - [Konfigurace spravované identity pro nasazení virtuálních počítačů v DevTest Labs](enable-managed-identities-lab-vms.md)
 - [Vytvoření trezoru klíčů](../key-vault/quick-create-portal.md)
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/managed-identity.md)
+- [Ověření Key Vault](../key-vault/general/authentication.md)
+- [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center:** Ano
 

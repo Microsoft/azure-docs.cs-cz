@@ -8,60 +8,51 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142294"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375872"
 ---
-# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
+# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
-V tomto článku se dozvíte, jak pomocí partnerského centra odeslat nabídku do verze Preview, zobrazit náhled nabídky a potom ji publikovat na komerčním webu Microsoft Marketplace. Také pokryjeme, jak kontrolovat stav publikování během postupu publikování. Musíte již mít vytvořenou nabídku, kterou chcete publikovat.
+V tomto článku se dozvíte, jak pomocí partnerského centra Odeslat vaši nabídku k publikování, zobrazit náhled vaší nabídky a potom ji publikovat na komerčním webu Marketplace. Také pokryjeme, jak kontrolovat stav publikování během postupu publikování. Musíte již mít vytvořenou nabídku, kterou chcete publikovat.
 
-## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Přejít na nabídku na komerčním webu Marketplace
+## <a name="offer-status"></a>Stav nabídky
 
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Na kartě **Přehled** v části **nabídky**se ve sloupci **stav** u každé nabídky zobrazí jeden z následujících indikátorů stavu.
+Svůj stav nabídky si můžete prohlédnout na kartě **Přehled** na řídicím panelu komerčního tržiště v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Jeden z následujících indikátorů stavu se zobrazí ve sloupci **stav** u každé nabídky.
 
-    | Status | Popis |
-    | ------------ | ------------- |
-    | Koncept | Nabídka se vytvořila, ale není publikovaná. |
-    | Probíhá publikování. | Nabídka pracuje způsobem prostřednictvím procesu publikování. |
-    | Nutná pozornost | Zjistili jsme kritický problém během certifikace nebo v jiné fázi publikování. |
-    | Preview | Tuto nabídku jsme zaregistrovali, která teď čeká na konečné ověření vydavatelem. Pokud chcete publikovat nabídku živě, vyberte **Přejít na Live** . |
-    | Živě | Nabídka je na webu Marketplace živá a může ji zobrazit a získat zákazníci. |
-    | Čeká na zastavení prodeje | Vydavatel v nabídce nebo plánu vybral možnost ukončit prodej, ale akce ještě není dokončená. |
-    | Není k dispozici na webu Marketplace | Odebrali jsme dřív publikovanou nabídku na webu Marketplace. |
-    |||
+| Status | Popis |
+| ------------ | ------------- |
+| Koncept | Nabídka se vytvořila, ale není publikovaná. |
+| Probíhá publikování. | Nabídka pracuje způsobem prostřednictvím procesu publikování. |
+| Nutná pozornost | Zjistili jsme kritický problém během certifikace nebo v jiné fázi publikování. |
+| Preview | Tuto nabídku jsme zaregistrovali, která teď čeká na konečné ověření vydavatelem. Pokud chcete publikovat nabídku živě, vyberte **Přejít na Live** . |
+| Živě | Nabídka je na webu Marketplace živá a může ji zobrazit a získat zákazníci. |
+| Čeká na zastavení prodeje | Vydavatel v nabídce nebo plánu vybral možnost ukončit prodej, ale akce ještě není dokončená. |
+| Není k dispozici na webu Marketplace | Odebrali jsme dřív publikovanou nabídku na webu Marketplace. |
+|||
 
-4. Ve sloupci **alias nabídky** vyberte nabídku, kterou chcete zobrazit a publikovat.
+## <a name="validation-and-publishing-steps"></a>Postup ověření a publikování
 
-## <a name="submit-your-offer-to-preview"></a>Odeslání nabídky do verze Preview
-
-1. Pokud chcete odeslat nabídku do verze Preview, vyberte **zkontrolovat a publikovat** v pravém horním rohu portálu. Zobrazí se stránka **Kontrola a publikování** .
-1. Ujistěte se, že se sloupec **stav** pro každou stránku **dokončí**. Tři možné stavy jsou následující:
+Až budete připraveni odeslat nabídku k publikování, vyberte **zkontrolovat a publikovat** v pravém horním rohu portálu. Stránka **Kontrola a publikování** zobrazuje stav každé stránky pro vaši nabídku, což může být jedna z následujících:
 
    - **Nespuštěno** – stránka je neúplná.
    - **Nedokončeno** – stránka neobsahuje požadované informace nebo obsahuje chyby, které je třeba opravit. Budete se muset vrátit na stránku a aktualizovat ji.
    - **Dokončit** – stránka je dokončená. Byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby.
 
-1. Pokud má kterákoli z stránek stav jiný než **úplný**, ve sloupci **Stránka** vyberte název stránky, opravte problém, uložte stránku a pak znovu vyberte **zkontrolovat a publikovat** , aby se vrátila na tuto stránku.
-1. Až budou všechny stránky dokončené, poskytněte v poli **poznámky k certifikaci** pokyny k testování certifikačního týmu, aby se zajistilo správné testování vaší aplikace. Poskytněte jakékoli doplňkové poznámky užitečné pro porozumění vaší aplikaci.
-1. Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**. Zobrazí se stránka s **přehledem nabídky** a zobrazí se stav publikování.
+Pokud má kterákoli z stránek stav jiný než **úplný**, je třeba opravit problém na této stránce a pak se vrátit na stránku **Kontrola a publikování** a potvrdit stav nyní zobrazuje jako **dokončený**. Některé typy nabídek vyžadují testování. V takovém případě se zobrazí **poznámky k poli certifikace** , kde potřebujete poskytnout pokyny pro testování certifikačního týmu a všechny doplňkové poznámky užitečné pro porozumění vaší aplikaci.
 
-## <a name="validation-and-publishing-steps"></a>Postup ověření a publikování
-
-Po výběru **publikovat**budou procesy ověřování a publikování pokračovat v uvedeném pořadí. Nejběžnější proces publikování je zobrazen v této tabulce:
+Po dokončení všech stránek a zadání použitelných zkušebních poznámek vyberte **publikovat** a zahajte tak procesy ověřování a publikování. Fáze a celková sekvence se můžou lišit v závislosti na typu nabídky, kterou publikujete. Následující tabulka uvádí jeden možný postup publikování. Jednotlivé fáze jsou podrobněji vysvětleny v následujících oddílech.
 
 | Fáze | Změna |
 | ------------ | ------------- | ------------- |
-| Automatizované ověřování | Zpracováváme sadu automatizovaných ověření. |
-| Certifikace | Provádíme Ruční ověřování. |
-| Vytváření náhledu | Stránka výpisu pro vaši nabídku Preview je k dispozici všem uživatelům, kteří mají odkaz ve verzi Preview. Pokud bude vaše nabídka prodávána prostřednictvím Microsoft (s podporou transakcí), může koupit a získat přístup k této nabídce pro účely testování jenom ta cílová skupina, kterou jste zadali na stránce **verze Preview** vaší nabídky. |
-| Odhlášení vydavatele | Pošleme vám e-mail s žádostí o náhled a schválení vaší nabídky. |
-| Publikovat | Spuštěním série kroků ověříte, že nabídka Preview je publikovaná živě na komerčním webu Marketplace. |
+| [Automatizované ověřování](#automated-validation-phase) | Zpracováváme sadu automatizovaných ověření. |
+| [Certifikace](#certification-phase) | Provádíme Ruční ověřování. |
+| [Vytváření náhledu](#preview-creation-phase) | Stránka výpisu pro vaši nabídku Preview je k dispozici všem uživatelům, kteří mají odkaz ve verzi Preview. Pokud bude vaše nabídka prodávána prostřednictvím Microsoft (s podporou transakcí), může koupit a získat přístup k této nabídce pro účely testování jenom ta cílová skupina, kterou jste zadali na stránce **verze Preview** vaší nabídky. |
+| [Odhlášení vydavatele](#publisher-sign-off-phase) | Pošleme vám e-mail s žádostí o náhled a schválení vaší nabídky. |
+| [Publikovat](#publish-phase) | Spuštěním série kroků ověříte, že nabídka Preview je publikovaná živě na komerčním webu Marketplace. |
 |||
 
 ## <a name="automated-validation-phase"></a>Fáze automatizovaného ověřování
@@ -102,7 +93,7 @@ Každý typ nabídky zkontroluje sadu požadovaných kritérií základní podm�
 
 #### <a name="content-validation"></a>Ověření obsahu
 
-Informace, které jste zadali při vytváření vaší nabídky, jsou zkontrolovány z hlediska kvality a relevance. Tyto kontroly prověří vaše položky s podrobnostmi o seznamech na Marketplace, cenách, dostupnosti, přidružených plánech atd. Abychom splnili kritéria pro výpis Azure Marketplace a Microsoft AppSource, ověříme, že vaše nabídka zahrnuje:
+Informace, které jste zadali při vytváření vaší nabídky, jsou zkontrolovány z hlediska kvality a relevance. Tyto kontroly prověří vaše položky s podrobnostmi o seznamech na Marketplace, cenách, dostupnosti, přidružených plánech atd. Abychom splnili kritéria pro výpis Microsoft AppSource a Azure Marketplace, ověříme, že vaše nabídka zahrnuje:
 
 - Název, který přesně popisuje nabídku
 - Jasně psané popisy, které poskytují důkladný přehled a polohu hodnoty
@@ -128,7 +119,7 @@ Pokud vaše nabídka neselže u žádného ze seznamů, technických nebo zásad
 
 Tato sestava obsahuje popisy všech zásad, které se nezdařily, spolu s revizními zprávami. Přečtěte si tuto e-mailovou sestavu, vyřešte všechny problémy, v případě potřeby proveďte aktualizace svojí nabídky a znovu odešlete nabídku pomocí [komerčního portálu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru. Nabídku můžete znovu odeslat tolikrát, kolikrát je potřeba, dokud neprojdete certifikaci.
 
-## <a name="preview-creation-phase"></a>Fáze vytváření náhledu
+## <a name="preview-creation-phase"></a>Fáze vytváření verze Preview
 
 Během fáze vytváření verze Preview vytvoříme verzi vaší nabídky, která bude dostupná jenom pro cílovou skupinu, kterou jste zadali na stránce **Preview pro cílovou skupinu** vaší nabídky, pokud nějaké máte. Verze Preview vaší nabídky nebude k dispozici nikomu mimo cílovou skupinu Preview, dokud nepublikujete nabídku živě.
 
@@ -141,21 +132,18 @@ Když je nabídka připravená na kontrolu a její odhlášení, pošleme vám e
 
 Na následujícím snímku obrazovky vidíte stránku s **přehledem nabídky** pro SaaS nabídku. Postup ověření, který se zobrazí na této stránce, se liší v závislosti na typu nabídky a výběrech, které jste provedli při vytváření této nabídky.
 
-![Popisuje stránku s přehledem nabídky pro nabídku v partnerském centru. Zobrazí se odkazy na tlačítko Přejít živě a náhled.](./partner-center-portal/media/publish-status-publisher-signoff.png)
+![Popisuje stránku s přehledem nabídky pro nabídku v partnerském centru. Zobrazí se odkazy na tlačítko Přejít živě a náhled.](./media/publish-status-publisher-signoff.png)
 
-### <a name="to-preview-your-offer-and-sign-off"></a>Náhled nabídky a odhlášení
+### <a name="previewing-and-approving-your-offer"></a>Zobrazení náhledu a schválení nabídky
 
-1. Na stránce **Přehled nabídky** vyberte odkaz pod tlačítkem **Přejít do živého** zobrazení.
+> [!IMPORTANT]
+> Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky.
 
-   > [!NOTE]
-   > V závislosti na možnostech, které jste zvolili při vytváření vaší nabídky, se bude jednat o odkaz buď na AppSource Preview Azure Marketplace, ve verzi Preview, nebo v obou. Pokud jste se rozhodli prodat nabídku prostřednictvím Microsoftu, může kdokoli, kdo byl přidán do cílové skupiny Preview, otestovat pořízení a nasazení vaší nabídky, aby se zajistilo, že splní vaše požadavky v této fázi.
+Na stránce **Přehled nabídky** se zobrazí odkazy ve verzi Preview pod tlačítkem **Přejít na Live** . V závislosti na možnostech, které jste zvolili při vytváření vaší nabídky, se bude jednat o odkaz buď na AppSource Preview Azure Marketplace, ve verzi Preview, nebo v obou. Pokud jste se rozhodli prodat nabídku prostřednictvím Microsoftu, může kdokoli, kdo byl přidán do cílové skupiny Preview, otestovat pořízení a nasazení vaší nabídky, aby se zajistilo, že splní vaše požadavky v této fázi.
 
-1. Chcete-li provést změny po zobrazení náhledu nabídky, můžete upravit a znovu odeslat publikování nové verze Preview. Další informace najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](./partner-center-portal/update-existing-offer.md).
+Po schválení verze Preview vyberte možnost **Přejít na Live** a publikujte nabídku živě na komerčním webu Marketplace. 
 
-1. Po schválení verze Preview budete moct svou nabídku publikovat na komerčním webu Marketplace, a to výběrem možnosti **Přejít na Live**.
-
-   > [!TIP]
-   > Pokud je vaše nabídka už živá a dostupná pro veřejnost na webu Marketplace, jakékoli aktualizace, které provedete, se neprojeví, dokud nevyberete možnost **Přejít do provozu**.
+Chcete-li provést změny po zobrazení náhledu nabídky, můžete upravit a znovu odeslat žádost o publikování. Pokud je vaše nabídka už živá a dostupná pro veřejnost na webu Marketplace, jakékoli aktualizace, které provedete, se neprojeví, dokud nevyberete možnost **jít živě*. Další informace najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](./partner-center-portal/update-existing-offer.md) .
 
 ## <a name="publish-phase"></a>Fáze publikování
 
@@ -183,10 +171,6 @@ Teď, když jste se rozhodli začít pracovat s vaší nabídkou, která ji zpř
 
 Po dokončení těchto kontrol budou vaše nabídka na webu Marketplace živá.
 
-### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Vytváření sestav využití verze Preview a dalšího interního použití
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky.
-
-## <a name="next-step"></a>Další krok
-
-[Přístup k analytickým sestavám pro komerční tržiště v partnerském centru](./partner-center-portal/analytics.md)
+[Přístup k analytickým sestavám pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md)

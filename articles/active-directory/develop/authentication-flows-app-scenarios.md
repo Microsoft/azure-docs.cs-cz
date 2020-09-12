@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115641"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292890"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -93,13 +93,13 @@ Aplikace používají k přihlašování uživatelů různé toky ověřování 
 
 ### <a name="single-page-application"></a>Jednostránková aplikace
 
-Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Tyto aplikace používají jazyk JavaScript nebo rozhraní, jako je například úhlová, Vue.js a React.js. Tyto aplikace běží ve webovém prohlížeči.
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta. Tyto aplikace používají jazyk JavaScript nebo rozhraní, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči.
 
-Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API.
+Jednostránkové aplikace se liší od tradičních webových aplikací na straně serveru z hlediska charakteristik ověřování. Pomocí Microsoft Identity Platform se můžou jednostránkové aplikace přihlašovat uživatelům a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API. Platforma Microsoft Identity Platform nabízí dva typy udělení pro aplikace JavaScriptu: 
 
-![Jednostránkové aplikace](media/scenarios/spa-app.svg)
-
-Další informace najdete v tématu [jednostránkové aplikace](scenario-spa-overview.md).
+| MSAL.js (2. x) | MSAL.js (1. x) |
+|---|---|
+| ![Ověřování jednou stránkou aplikace](media/scenarios/spa-app-auth.svg) | ![Jedna stránková aplikace je implicitní.](media/scenarios/spa-app.svg) |
 
 ### <a name="web-app-that-signs-in-a-user"></a>Webová aplikace, která se podepisuje uživateli
 
@@ -109,7 +109,7 @@ Ochrana webové aplikace, která se podepisuje uživateli:
 
 - Pokud vyvíjíte v .NET, používáte ASP.NET nebo ASP.NET Core s middlewarem ASP.NET OpenID Connect. Ochrana prostředku zahrnuje ověření tokenu zabezpečení, který provádí [rozšíření IdentityModel pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , a ne knihovny MSAL.
 
-- Pokud vyvíjíte v Node.js, použijete Passport.js.
+- Pokud vyvíjíte v Node.js, použijete [Passport.js](https://github.com/AzureAD/passport-azure-ad).
 
 Další informace najdete v tématu [Webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md).
 
@@ -196,7 +196,14 @@ Scénáře, které zahrnují získání tokenů, jsou také mapovány na toky ov
  </thead>
  <tbody>
   <tr>
-   <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
+   <td><a href="scenario-spa-overview.md"><img alt="Single-Page App with Auth code" src="media/scenarios/spa-app-auth.svg"></a></td>
+   <td><a href="scenario-spa-overview.md">Jednostránková aplikace</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">Autorizační kód</a> s PKCE</td>
+   <td>Pracovní nebo školní účty, osobní účty a Azure Active Directory B2C (Azure AD B2C)</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-spa-overview.md"><img alt="Single-Page App with Implicit" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">Jednostránková aplikace</a></td>
    <td><a href="v2-oauth2-implicit-grant-flow.md">Implicitní</a></td>
    <td>Pracovní nebo školní účty, osobní účty a Azure Active Directory B2C (Azure AD B2C)</td>
@@ -293,11 +300,12 @@ Ve sloupci Windows v následující tabulce se pokaždé, když je uvedeno rozhr
 
 |Scénář  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
-| [Jednostránková aplikace](scenario-spa-overview.md) <br/>[![Jednostránkové aplikace](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
+| [Jednostránková aplikace](scenario-spa-overview.md) <br/>[![Ověřování jednostránkové aplikace](media/scenarios/spa-app-auth.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
+| [Jednostránková aplikace](scenario-spa-overview.md) <br/>[![Aplikace s jednou stránkou je implicitní](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Webová aplikace, která přihlašuje uživatele](scenario-web-app-sign-user-overview.md) <br/>[![Webová aplikace, která přihlásí uživatele](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET
 | [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md) <br/> <br/>[![Webová aplikace, která volá webová rozhraní API](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png) <br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python| ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python| ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python
 | [Desktopová aplikace, které volá webová rozhraní API](scenario-desktop-overview.md) <br/> <br/>[ ![ Aplikace klasické pracovní plochy, která volá webová rozhraní API](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![ Tok kódu zařízení](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc |
-| [Mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) <br/> [![Mobilní aplikace, která volá webová rozhraní API](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UPW](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Svém
+| [Mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) <br/> [![Mobilní aplikace, která volá webová rozhraní API](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Svém
 | [Aplikace démona](scenario-daemon-overview.md) <br/> [![Aplikace démona](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [Webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md) <br/><br/> [![Webové rozhraní API, které volá webová rozhraní API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 

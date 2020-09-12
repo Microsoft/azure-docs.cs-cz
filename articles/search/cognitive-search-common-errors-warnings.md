@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935547"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378351"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -349,3 +349,7 @@ Chcete-li toto upozornění obejít, určete, co je kódování textu tohoto obj
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Upozornění: Cosmos DB kolekce X má zásady opožděného indexování. Některá data mohou být ztracena.
 
 Kolekce s zásadami [opožděného](/azure/cosmos-db/index-policy#indexing-mode) indexování se nedají dotazovat konzistentně, takže v indexeru chybí data. Pokud chcete toto upozornění obejít, změňte zásady indexování na konzistentní.
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Upozornění: dokument obsahuje velmi dlouhá slova (delší než 64 znaků). Tato slova můžou být v důsledku zkrácení nebo nespolehlivého modelu předpovědi.
+
+Toto upozornění se předává z Analýza textu služby.  V některých případech je bezpečné ignorovat toto upozornění, například když váš dokument obsahuje dlouhou adresu URL (což nejspíš není klíčová fráze nebo mínění, atd.).  Počítejte s tím, že pokud je slovo delší než 64 znaků, bude zkráceno na 64 znaků, které mohou ovlivnit předpovědi modelu.  

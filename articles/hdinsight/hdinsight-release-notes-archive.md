@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036619"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292516"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
 
@@ -779,7 +779,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-17621*](https://issues.apache.org/jira/browse/HIVE-17621): nastavení webu v podregistru se při výpočtu HCatInputFormat rozdělení ignorují.
 
--   [*Podregistr-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: mají konfiguraci seznamu povolených nebo zakázaných adres, která umožňuje selektivní ukládání tabulek/oddílů do mezipaměti a povoluje čtení při zahřívání.
+-   [*Podregistr-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: má schválenou/neschválenou konfiguraci umožňující selektivní ukládání tabulek/oddílů do mezipaměti a povoluje čtení při zahřívání.
 
 -   [*Podregistr-17636*](https://issues.apache.org/jira/browse/HIVE-17636): přidejte více \_ AGG. q test pro BlobStores.
 
@@ -1167,7 +1167,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 Tato verze poskytuje Sqoop 1.4.6 bez dalších oprav Apache.
 
-#### <a name="storm"></a>Bouře
+#### <a name="storm"></a>Storm
 
 Tato verze poskytuje Zaplavu 1.1.1 a následující opravy Apache:
 
@@ -1692,7 +1692,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 
 |**Součást Apache**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
 |--|--|--|--|
-|**Spark 2,3** |**–** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování",https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3).https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**–** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**PODREGISTR-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku se úspěšně dokončí, ale dojde k úplné chybě kvóty disku HDFS. |**Scénář:** Pokud je nastavena kvóta ve složce odpadkového uživatele, který spouští příkaz, je spuštění příkazu **Vložit přepsat** .<br /><br />**Předchozí chování:** Úloha se zdaří i v případě, že se nepodaří přesunout data do koše. Výsledek může obsahovat chybná data, která dříve existovala v tabulce.<br /><br />**Nové chování:** Když přesun do složky odpadků dojde k chybě, soubory se trvale odstraní.|
 |**Kafka 1,0**|**–**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Podregistr/Ranger** | |Další zásady podregistru Ranger vyžadované pro přepsání INSERT |**Scénář:** Další zásady podregistru Ranger vyžadované pro **přepsání INSERT**<br /><br />**Předchozí chování:** Do podregistru **vložte** dotazy, které jsou obvykle úspěšné.<br /><br />**Nové chování:** Po upgradu na HDP-2.6. x dojde k neočekávanému selhání **vložení** podregistru do registru s chybou:<br /><br />Chyba při kompilování příkazu: SELHALo: HiveAccessControlException oprávnění odepřeno: uživatel pnovak nemá oprávnění k zápisu na/TMP/ \* (State = 42000, Code = 40 000).<br /><br />Od HDP-2.6.0 vyžaduje zásada pro **vložení přepisu** Ranger zásadu, která povoluje operace zápisu, a to i v případě, že má uživatel oprávnění k zápisu udělené prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:**<br /><br />1. v úložišti podregistru vytvořte novou zásadu.<br />2. v rozevíracím seznamu, kde vidíte databázi, vyberte možnost URI.<br />3. Aktualizujte cestu (příklad:/tmp/*)<br />4. přidejte uživatele a skupinu a uložte je.<br />5. znovu spusťte dotaz pro vložení.|

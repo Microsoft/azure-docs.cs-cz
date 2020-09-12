@@ -3,12 +3,12 @@ title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejn
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498895"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398377"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
@@ -34,11 +34,11 @@ Následující konfigurace jsou oficiálně podporované Azure Monitor for Conta
 
 - Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
-- [Log Analytics pracovní prostor](../platform/design-logs-deployment.md).
+- [Pracovní prostor služby Log Analytics](../platform/design-logs-deployment.md).
 
     Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -71,9 +71,11 @@ Než začnete, ujistěte se, že máte následující:
 
 Povolení Azure Monitor pro kontejnery pro cluster Hybrid Kubernetes se skládá z následujících kroků v uvedeném pořadí.
 
-1. Nakonfigurujte svůj pracovní prostor Log Analytics pomocí řešení Container Insights.
+1. Nakonfigurujte svůj pracovní prostor Log Analytics pomocí řešení Container Insights.   
 
 2. Povolte Azure Monitor pro kontejnery HELM s Log Analytics pracovním prostorem.
+
+Další informace o řešeních monitorování v Azure Monitor najdete [tady](../../azure-monitor/insights/solutions.md).
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>Postup přidání řešení Azure Monitor Containers
 
@@ -334,7 +336,7 @@ Po úspěšném nasazení grafu můžete zkontrolovat data pro svůj cluster Hyb
 
 Počínaje grafem verze 2.7.1 bude graf podporovat zadání koncového bodu proxy s `omsagent.proxy` parametrem grafu. To umožňuje komunikaci pomocí proxy server. Komunikace mezi Azure Monitor pro agenta kontejnerů a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
 
-Hodnota konfigurace proxy má následující syntaxi:`[protocol://][user:password@]proxyhost[:port]`
+Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Pokud vaše proxy server nevyžaduje ověřování, je stále nutné zadat uživatelské jméno nebo heslo psuedo. Může to být jakékoli uživatelské jméno nebo heslo.

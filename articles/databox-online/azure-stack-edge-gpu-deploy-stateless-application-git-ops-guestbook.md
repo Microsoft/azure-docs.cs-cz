@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace PHP v knize webkniha v Kubernetes s povoleným ARC na Azure Stack hraniční zařízení | Microsoft Docs
+title: Nasazení aplikace PHP kniha pro Kubernetes na zařízení GPU na Azure Stack hraničních zařízeních s povoleným obloukem | Microsoft Docs
 description: Popisuje, jak nasadit bezstavovou aplikaci PHP v programu pro vytváření souborů s Redis pomocí GitOps v clusteru Kubernetes s povoleným ARC pro vaše zařízení Azure Stack Edge.
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084287"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319288"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>Nasazení bezstavové aplikace v jazyce PHP s Redis na clusteru Kubernetes s povoleným obloukem na Azure Stack hraničních zařízeních
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Nasazení bezstavové aplikace v jazyce PHP v jazyce PHP s Redis na Kubernetes na Azure Stack hraničních PROCESORů s povoleným obloukem
 
 V tomto článku se dozvíte, jak sestavit a nasadit jednoduchou vícevrstvou webovou aplikaci s využitím Kubernetes a ARC Azure. Tento příklad se skládá z následujících součástí:
 
@@ -28,7 +28,7 @@ Nasazení se provádí pomocí GitOps na clusteru Kubernetes s povoleným ARC na
 Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct nasadit bezstavovou aplikaci, ujistěte se, že jste na svém zařízení dokončili následující požadavky a klienta, který budete používat pro přístup k zařízení:
 
@@ -57,7 +57,7 @@ Než budete moct nasadit bezstavovou aplikaci, ujistěte se, že jste na svém z
       - V místním uživatelském rozhraní zařízení Azure Stack Edge si přečtěte **Přehled** a poznamenejte si číslo Kubernetes softwaru. 
       - Ověřte, že tyto dvě verze mají kompatibilitu z mapování uvedeného v podporované verzi Kubernetes. <!--insert link-->.
 
-1. Máte [konfiguraci GitOps, kterou můžete použít ke spuštění nasazení ARC Azure](https://github.com/kagoyal/dbehaikudemo). `yaml`K nasazení na zařízení Azure Stack Edge budete používat následující soubory.
+1. Máte [konfiguraci GitOps, kterou můžete použít ke spuštění nasazení ARC Azure](https://github.com/kagoyal/dbehaikudemo). V tomto příkladu použijete následující `yaml` soubory k nasazení na zařízení Azure Stack Edge.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -132,7 +132,7 @@ Nasazení prostřednictvím konfigurace GitOps vytvoří `demotestguestbook` obo
     [10.128.44.240]: PS>
     ```  
 
-1. V tomto příkladu byla služba front-end nasazena jako typ: Vyrovnávání zatížení. Pokud chcete zobrazit knihu návštěv, budete muset najít IP adresu této služby. Spusťte následující příkaz:
+1. V tomto příkladu byla služba front-end nasazena jako typ: Vyrovnávání zatížení. Pokud chcete zobrazit knihu návštěv, budete muset najít IP adresu této služby. Spusťte následující příkaz.
 
     `kubectl get service -n <your-namespace>`
     

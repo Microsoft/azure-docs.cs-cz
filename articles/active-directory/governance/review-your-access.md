@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077920"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292720"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu pro vlastní skupiny nebo aplikace v prohlídekch služby Azure AD
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak zkontrolovat vlastní přístup ke skupině nebo ap
 Prvním krokem k provedení kontroly přístupu je vyhledání a otevření kontroly přístupu.
 
 >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Přidejte azure-noreply@microsoft.com do seznamu bezpečných příjemců a ujistěte se, že přijímáte všechny e-maily.
 
 1. Vyhledejte e-mail od Microsoftu, který vás vyzve ke kontrole přístupu. Tady je příklad e-mailu pro kontrolu přístupu ke skupině.
 
@@ -106,7 +106,7 @@ Můžete vyzkoušet nové prostředí s aktualizovaným uživatelským rozhraní
 ### <a name="email"></a>E-mail
 
 >[!IMPORTANT]
-> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Seznam povolených adres azure-noreply@microsoft.com , abyste měli jistotu, že přijímáte všechny e-maily.
+> Při přijímání e-mailu může dojít k prodlevám a v některých případech může trvat až 24 hodin. Přidejte azure-noreply@microsoft.com do seznamu bezpečných příjemců a ujistěte se, že přijímáte všechny e-maily.
 
 1. Vyhledejte e-mail od Microsoftu, který žádá o kontrolu přístupu. Níže vidíte příklad e-mailové zprávy:
 
@@ -123,7 +123,7 @@ Můžete vyzkoušet nové prostředí s aktualizovaným uživatelským rozhraní
 
 Můžete také zobrazit své nedokončené kontroly přístupu pomocí prohlížeče a otevřít tak přístup.
 
-1. Přihlaste se k mému přístupu nahttps://myaccess.microsoft.com/
+1. Přihlaste se k mému přístupu na https://myaccess.microsoft.com/
 
 2. V nabídce na levém bočním panelu vyberte kontroly **přístupu** , abyste viděli seznam nedokončených kontrol přístupu, které jsou vám přiřazeny.
 

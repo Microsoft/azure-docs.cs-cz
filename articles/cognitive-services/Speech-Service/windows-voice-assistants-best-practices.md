@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714776"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293638"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Prostředí pomocníka návrhů pro Windows 10
 
@@ -118,9 +118,9 @@ Mnoho počítačů je přenosné, ale ne vždy v rámci dosahu zákazníků. Moh
 
 Proto by asistenti měli postupovat podle pokynů v této části, aby se zajistila bezpečnost. Interakce nad zámkem nastane, pokud uživatel Windows není ověřený. To znamená, že obecně platí, že **vstup pro pomocníka by měl být také považován za Neověřeno**.
 
-- Asistenti by měli **implementovat seznam povolených dovedností k identifikaci dovedností, které jsou potvrzené zabezpečeně a bezpečné** pro přístup nad rámec zámku.
+- Asistenti by měli **implementovat seznam povolených dovedností k identifikaci dovedností, které jsou potvrzené zabezpečeně a bezpečné** pro přístup přes zámek.
 - Technologie ID mluvčího mohou hrát roli v důsledku zmírnění některých rizik, ale ID mluvčího není vhodná náhrada za ověřování systému Windows.
-- Seznam povolených dovedností by měl zvážit tři třídy akcí a dovedností:
+- Seznam povolených dovedností by měl vzít v úvahu tři třídy akcí a dovedností:
 
 | **Action – třída** | **Popis** | **Příklady (není úplný seznam)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Proto by asistenti měli postupovat podle pokynů v této části, aby se zajist
 
 V případě společnosti Contoso jsou obecné informace o veřejných informacích o zásobách bezpečné bez ověření. Informace specifické pro konkrétní zákazníky, jako je třeba počet vlastněných akcií, jsou nejspíš bezpečné s ID mluvčího. Nákup nebo prodej zásob by však nikdy neměl být povolen bez ověřování systému Windows.
 
-Za účelem dalšího zabezpečení prostředí **budou moci být funkce weblinks nebo jiné spuštění aplikace do aplikace blokovány systémem Windows, dokud se zákazník přihlásí.** Microsoft si vyhrazuje právo odebrat aplikaci z povolených pomocných pomocníků, pokud není včas vyřešeno závažné problémy se zabezpečením.
+Za účelem dalšího zabezpečení prostředí **budou moci být funkce weblinks nebo jiné spuštění aplikace do aplikace blokovány systémem Windows, dokud se zákazník přihlásí.** Microsoft si vyhrazuje právo odebrat aplikaci ze seznamu povolených asistentů, pokud není včas vyřešeno závažné problémy se zabezpečením.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Pokyny k návrhu pro ukázku aktivace hlasu
 

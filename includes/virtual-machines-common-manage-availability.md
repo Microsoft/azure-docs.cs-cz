@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760583"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89325363"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -33,7 +33,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 * [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]
 * [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
 * [Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače](../articles/virtual-machines/linux/scheduled-events.md)
-* [Konfigurace jednotlivých vrstev aplikace na samostatné skupiny dostupnosti]
+* [Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti]
 * [Použití zón dostupnosti k ochraně před chybami na úrovni datacentra]
 
@@ -82,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> Za určitých okolností by dva virtuální počítače ve stejné AvailabilitySet mohly sdílet stejný FaultDomain. Můžete to ověřit tak, že do své skupiny dostupnosti zavedete a zkontrolujete sloupec **Doména selhání** .
-> To může být způsobeno při nasazení virtuálních počítačů z následujícího pořadí:
-> - Nasazení prvního virtuálního počítače
-> - Zastavení nebo zrušení přidělení prvního virtuálního počítače
-> - Za těchto okolností nasaďte druhý virtuální počítač. disk s operačním systémem druhého virtuálního počítače se dá vytvořit ve stejné doméně selhání jako první virtuální počítač, takže druhý virtuální počítač se také bude nakládat na stejný FaultDomain. 
-> Chcete-li se tomuto problému vyhnout, doporučujeme zastavit nebo zrušit přidělení virtuálních počítačů mezi nasazeními.
+> Za určitých okolností může doména selhání sdílet dva virtuální počítače ve stejné skupině dostupnosti. Sdílenou doménu selhání můžete potvrdit tak, že na ni zadáte skupinu dostupnosti a zkontrolujete sloupec **Doména selhání** . Sdílená doména selhání může být způsobena dokončením následující sekvence při nasazení virtuálních počítačů:
+> 1. Nasaďte první virtuální počítač.
+> 1. Zastavte nebo zrušte přidělení prvního virtuálního počítače.
+> 1. Nasaďte druhý virtuální počítač.
+>
+> Za těchto okolností se může disk s operačním systémem druhého virtuálního počítače vytvořit ve stejné doméně selhání jako první virtuální počítač, takže tyto dva virtuální počítače budou ve stejné doméně selhání. Chcete-li se tomuto problému vyhnout, doporučujeme, abyste nezastavili nebo nastavili virtuální počítače mezi nasazeními.
 
 Pokud máte v úmyslu používat virtuální počítače s nespravovanými disky, postupujte podle osvědčených postupů pro účty úložiště, kde jsou virtuální pevné disky (VHD) virtuálních počítačů uložené jako [objekty blob stránky](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 

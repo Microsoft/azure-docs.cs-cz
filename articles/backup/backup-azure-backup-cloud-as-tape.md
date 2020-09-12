@@ -3,12 +3,12 @@ title: Postup nahrazení páskové infrastruktury
 description: Přečtěte si, jak Azure Backup poskytuje sémantiku podobnou pásce, která vám umožní zálohovat a obnovovat data v Azure.
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 695cc2644521384527ecd871f3613a078e987aa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757230"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378436"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Přesunutí dlouhodobého úložiště z pásky do cloudu Azure
 
@@ -62,7 +62,7 @@ Celkový počet bodů obnovení je 56.
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
-Když na předchozí obrazovce kliknete na **Upravit** , zákazníci mají větší flexibilitu při určování plánů uchovávání.
+Když na předchozí obrazovce vyberete **změnit** , zákazníci mají větší flexibilitu při určování plánů uchovávání.
 
 ![Úprava okna zásad](./media/backup-azure-backup-cloud-as-tape/modify.png)
 

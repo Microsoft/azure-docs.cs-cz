@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Konfigurace NPM pro okruhy'
 description: Nakonfigurujte cloudové monitorování sítě (NPM) pro okruhy Azure ExpressRoute. To pokrývá monitorování přes privátní partnerský vztah ExpressRoute a partnerské vztahy Microsoftu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738375"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393663"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -34,7 +34,7 @@ Další možnosti:
 
 * Zobrazit stav systému ExpressRoute z předchozího bodu v čase
 
-## <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
+## <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Agenti monitorování se instalují na víc serverech, a to v místním prostředí i v Azure. Agenti spolu komunikují, ale neodesílají data, odesílají pakety TCP handshake. Komunikace mezi agenty umožňuje službě Azure mapovat topologii sítě a cestu, kterou může provoz trvat.
 
@@ -107,7 +107,7 @@ Doporučujeme nainstalovat alespoň dva agenty na každou stranu připojení Exp
    * Pokud se rozhodnete připojit k **Operations Manager**, na stránce **Konfigurace skupiny pro správu** zadejte **název skupiny pro**správu, **Server pro správu**a **port serveru pro správu**. Pak klikněte na tlačítko **Další**.
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * Na stránce **účet akce agenta** vyberte účet **místní systém** nebo **účet domény nebo místního počítače**. Pak klikněte na tlačítko **Další**.
+   * Na stránce **účet akce agenta** vyberte účet **místní systém** nebo  **účet domény nebo místního počítače**. Pak klikněte na tlačítko **Další**.
 
      ![Účet](./media/how-to-npm/10.png)
 6. Na stránce **připraveno k instalaci** zkontrolujte volby a pak klikněte na **nainstalovat**.
