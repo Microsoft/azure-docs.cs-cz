@@ -3,16 +3,16 @@ title: Řešení potíží se službou Azure image Builder
 description: Řešení běžných problémů a chyb při použití služby Azure VM Image Builder Service
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068130"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459925"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Řešení potíží se službou Azure image Builder
 
@@ -209,7 +209,7 @@ Přizpůsobení. log zahrnuje tyto fáze:
     ```
 5. Fáze zrušení zřízení. Azure image Builder přidá skrytého úprav. Tento krok zrušení zřízení zodpovídá za přípravu virtuálního počítače na zrušení zřízení. Spustí nástroj Windows Sysprep (pomocí c:\DeprovisioningScript.ps1) nebo se v systému Linux waagent dezřizování (pomocí/tmp/DeprovisioningScript.sh). 
 
-    Příklad:
+    Například:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Přizpůsobení se nezdařilo.
 
 Přečtěte si protokol a vyhledejte chyby úprav. Hledání *(telemetrie)*. 
 
-Příklad:
+Například:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -502,6 +502,28 @@ Příčinou může být problém s časováním z důvodu velikosti virtuálníh
 
 Zvětšete velikost virtuálního počítače. Nebo můžete přidat 60 s PowerShellovým přizpůsobením v režimu spánku, abyste se vyhnuli problémům s časováním.
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>Zrušení tvůrce po zrušení kontextu kontextu zrušení
+
+#### <a name="error"></a>Chyba
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>Příčina
+Služba image Builder používá port 22 (Linux) nebo 5986 (Windows) pro připojení k virtuálnímu počítači sestavení, k tomu dochází, když je služba odpojená od virtuálního počítače sestavení během sestavení image. Důvody odpojení se můžou lišit, ale když povolíte nebo nakonfigurujete brány firewall ve skriptu, můžou se výše uvedené porty blokovat.
+
+#### <a name="solution"></a>Řešení
+Projděte si skripty pro změny nebo povolení brány firewall nebo změny v SSH nebo WinRM a zajistěte, aby všechny změny umožňovaly stálé připojení mezi službou a sestavení virtuálního počítače na výše uvedených portech. Další informace o sítích s tvůrcem imagí najdete v [požadavcích](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+
 ## <a name="devops-task"></a>Úloha DevOps 
 
 ### <a name="troubleshooting-the-task"></a>Řešení potíží s úlohou
@@ -633,9 +655,9 @@ Pokud jste odkazovali na doprovodné materiály a stále nemůžete vyřešit pr
 Výběr produktu případu:
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>Další kroky

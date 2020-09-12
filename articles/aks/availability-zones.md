@@ -4,13 +4,13 @@ description: Zjistěte, jak vytvořit cluster, který distribuuje uzly napříč
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 08/13/2020
-ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/04/2020
+ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871407"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489132"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -150,7 +150,8 @@ Name:       aks-nodepool1-28993262-vmss000004
 V zónách 1 a 2 teď máme dva další uzly. Můžete nasadit aplikaci, která se skládá ze tří replik. NGINX budeme používat jako příklad:
 
 ```console
-kubectl run nginx --image=nginx --replicas=3
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=3
 ```
 
 Zobrazením uzlů, kde jsou vaše lusky spuštěné, vidíte, že se na uzlech, které odpovídají třem různým zónám dostupnosti, spouštějí lusky. Například s příkazem `kubectl describe pod | grep -e "^Name:" -e "^Node:"` v prostředí bash byste získali výstup podobný tomuto:

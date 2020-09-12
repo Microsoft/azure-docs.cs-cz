@@ -3,18 +3,18 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684095"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439618"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
@@ -38,7 +38,7 @@ Pokud máte v úmyslu používat Live video Analytics k nepřetržitému nahráv
 
 Toto je volitelný krok. K tomu můžete použít tento příkaz Azure CLI:
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1
 ```
 
@@ -47,7 +47,7 @@ Pomocí tohoto příkazu můžete spustit koncový bod streamování.
 > [!IMPORTANT]
 > Vaše předplatné se začne účtovat v tomto okamžiku.
 
-```azure-cli
+```azurecli
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
@@ -217,7 +217,7 @@ Po vytvoření nasazení se vrátíte na stránku IoT Edge služby IoT Hub.
 Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 Stavový kód: 200 – OK znamená, že [modul runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) je v pořádku a pracuje správně.
 
-![Status](./media/deploy-iot-edge-device/status.png)
+![Stav](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Vyvolání přímé metody
 

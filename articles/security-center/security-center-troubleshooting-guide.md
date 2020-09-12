@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836001"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462390"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -29,7 +29,7 @@ Typy výstrah:
 
 * Analýza chování virtuálního počítače (VMBA)
 * Analýza sítě
-* Analýza SQL Database a SQL Data Warehouse
+* Analýza SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse)
 * Kontextové informace
 
 V závislosti na typech výstrahy mohou uživatelé shromáždit nezbytné informace k prošetření výstrahy pomocí následujících zdrojů:
@@ -77,11 +77,11 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 > [!NOTE]
 > Pokud se chcete vyhnout chování uvedenému v druhém scénáři, stáhněte si nejnovější verzi agenta.
 
-## <a name="monitoring-agent-health-issues"></a>Problémy s monitorováním stavu agentů<a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Problémy s monitorováním stavu agentů <a name="mon-agent"></a>
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Description | Postup řešení |
+| Stav monitorování | Popis | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
@@ -151,4 +151,4 @@ V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfiguro
 * [Možnosti detekce Azure Security Center](security-center-detection-capabilities.md)
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů
+* [Blog o zabezpečení Azure](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

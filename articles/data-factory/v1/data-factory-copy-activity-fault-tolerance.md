@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74926154"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436387"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnosti proti chybám v aktivitě kopírování přeskočením nekompatibilních řádků
 
@@ -48,7 +48,7 @@ Aktivita kopírování podporuje tři scénáře zjišťování, přeskočení a
     Příklad: kopírování dat z SQL serveru do databáze SQL. Primární klíč je definovaný v databázi SQL jímky, ale ve zdrojovém SQL serveru není definovaný žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji, nelze zkopírovat do jímky. Aktivita kopírování kopíruje do jímky pouze první řádek zdrojových dat. Následné zdrojové řádky, které obsahují duplicitní hodnotu primárního klíče, jsou zjištěny jako nekompatibilní a jsou vynechány.
 
 >[!NOTE]
->Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala mechanismus načítání externích dat, včetně [Azure SQL Data Warehouse báze](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) [RedShift nebo Amazon](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Pokud chcete načíst data do SQL Data Warehouse s využitím základny, použijte podporu nativní odolnosti proti chybám, a to zadáním "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" v aktivitě kopírování.
+>Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala mechanismus pro načítání externích dat, včetně služby [Azure synapse Analytics (dříve SQL Data Warehouse)](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) , kterou používáme jako základ nebo pro [uvolnění](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) Pokud chcete načíst data do Azure synapse Analytics pomocí základu, použijte pro aktivitu kopírování "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" nativní podporu odolné vůči chybám.
 
 ## <a name="configuration"></a>Konfigurace
 Následující příklad poskytuje definici JSON pro konfiguraci přeskočení nekompatibilních řádků v aktivitě kopírování:
@@ -71,7 +71,7 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | True<br/>False (výchozí) | No |
+| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | Pravda<br/>False (výchozí) | No |
 | **redirectIncompatibleRowSettings** | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No |
 | **linkedServiceName** | Propojená služba Azure Storage k uložení protokolu, který obsahuje vynechané řádky. | Název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou chcete použít k uložení souboru protokolu. | No |
 | **dílčí** | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu k úložišti objektů blob, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No |

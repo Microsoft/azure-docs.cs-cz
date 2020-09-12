@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526499"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436183"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 
@@ -83,7 +83,7 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
 
    > [!Note]
    > Další informace o používání sériové konzoly pro Linux najdete v těchto tématech:
-   > * [Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu](../linux/serial-console-grub-single-user-mode.md)
+   > * [Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md)
    > * [Použití sériové konzoly pro volání SysRq a NMI](./serial-console-nmi-sysrq.md)
 
 2. Vyberte tlačítko ikona napájení a pak vyberte restartovat virtuální počítač. (Pokud není sériová konzola povolená nebo není úspěšně připojená, tlačítko se nezobrazí.)

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eed9109416f434e2492d621f60b7ad6bf6e188e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269365"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437373"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -50,7 +50,12 @@ Pokud uživatelé přistupují ke sdílené složce Azure pomocí ověřování 
 
 ### <a name="solution-for-cause-3"></a>Řešení pro příčinu 3
 
-Pokud chcete aktualizovat oprávnění na úrovni sdílené složky, přečtěte si téma [Přiřazení přístupových oprávnění k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity).
+Ověřte, jestli jsou oprávnění nakonfigurovaná správně:
+
+- **Active Directory (AD)** viz [přiřazení oprávnění na úrovni sdílení k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+
+    Přiřazení oprávnění na úrovni sdílené složky jsou podporovaná u skupin a uživatelů synchronizovaných ze služby Active Directory (AD) na Azure Active Directory (AAD) pomocí Azure AD Connect.  Ověřte, že skupiny a uživatelé, kteří jsou přiřazená oprávnění na úrovni sdílené složky, nejsou nepodporované jenom pro cloudové skupiny.
+- **Azure Active Directory Domain Services (Azure služba AD DS)** najdete v tématu [Přiřazení přístupových oprávnění k identitě](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Při připojení nebo odpojení sdílené složky Azure došlo k chybě 53, chyba 67 nebo chyba 87.
@@ -316,18 +321,6 @@ K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování Azure 
 Povolte Azure služba AD DS v tenantovi Azure AD předplatného, na které je váš účet úložiště nasazený. K vytvoření spravované domény potřebujete oprávnění správce pro tenanta Azure AD. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
-
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Došlo k chybě "Systémová chyba 1359. Došlo k vnitřní chybě přijaté přes přístup SMB ke sdíleným složkám s povoleným ověřováním služby Azure Active Directory Domain Service (Azure služba AD DS).
-
-### <a name="cause"></a>Příčina
-
-Došlo k chybě "Systémová chyba 1359. K interní chybě dojde, když se pokusíte připojit ke sdílené složce s povoleným ověřováním Azure služba AD DS v Azure služba AD DS s názvem DNS domény počínaje číselným znakem. Pokud třeba název DNS pro doménu služba AD DS Azure je "1domain", tato chyba se zobrazí při pokusu o připojení sdílené složky pomocí přihlašovacích údajů Azure AD. 
-
-### <a name="solution"></a>Řešení
-
-V současné době můžete zvážit opětovné nasazení služba AD DS Azure pomocí nového názvu DNS domény, který platí pro následující pravidla:
-- Názvy nesmí začínat číselným znakem.
-- Název musí mít délku 3 až 63 znaků.
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nepovedlo se připojit soubory Azure s přihlašovacími údaji služby AD 
 

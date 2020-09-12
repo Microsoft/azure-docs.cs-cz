@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f12b4e1d64db097730494da746b44479a791f9d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 569bc54d262e8611679c8aa86ed4dbfbed61aa79
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268634"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442674"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -161,7 +161,7 @@ Pokud chcete spravovat identity zařízení pomocí portálu Azure AD, musí bý
 > [!NOTE]
 > **Vyžadovat použití vícefaktorového ověřování pro připojení zařízení** se vztahuje na zařízení, která jsou buď připojená k Azure AD, nebo v případě registrace Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
-- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **20**.
+- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**.
 
 > [!NOTE]
 > Nastavení **maximální počet zařízení** se vztahuje na zařízení, která jsou buď připojená ke službě Azure AD, nebo v zaregistrovaných Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.

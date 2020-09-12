@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019975"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440554"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -28,7 +28,7 @@ ms.locfileid: "84019975"
 
 Tento článek popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k lepšímu zabezpečení vašich dat. Prostředky správy Data Factory jsou postavené na infrastruktuře zabezpečení Azure a využívají všechny možné bezpečnostní míry, které nabízí Azure.
 
-V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály se nacházejí v oblasti, ve které byl vytvořen objekt pro vytváření dat. 
+V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které společně provádějí úlohu. Tyto kanály se nacházejí v oblasti, ve které byl vytvořen objekt pro vytváření dat. 
 
 I když je Data Factory k dispozici jenom v několika oblastech, služba přesunu dat je [dostupná globálně](concepts-integration-runtime.md#integration-runtime-location) , aby se zajistila kompatibilita dat, efektivita a snížení nákladů na výstup sítě. 
 
@@ -47,11 +47,11 @@ Data Factory bylo certifikováno pro:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure – https://aka.ms/AzureCompliance .
+Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure –  https://aka.ms/AzureCompliance .
 
 V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou scénářích přesunu dat: 
 
-- **Scénář cloudu**: v tomto scénáři jsou vaše zdrojová i cílová služba veřejně přístupná prostřednictvím Internetu. Mezi ně patří spravované služby cloudového úložiště, jako jsou Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, jako je Salesforce, a webové protokoly, jako jsou FTP a OData. V [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats)najdete úplný seznam podporovaných zdrojů dat.
+- **Scénář cloudu**: v tomto scénáři jsou vaše zdrojová i cílová služba veřejně přístupná prostřednictvím Internetu. Mezi tyto služby patří spravované cloudové úložiště, například Azure Storage, Azure synapse Analytics (dřív SQL Data Warehouse), Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, jako je například Salesforce, a webové protokoly, jako jsou FTP a OData. V  [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats)najdete úplný seznam podporovaných zdrojů dat.
 - **Hybridní scénář**: v tomto scénáři je buď zdroj nebo cíl za bránou firewall nebo místní podnikovou sítí. Nebo je úložiště dat v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupné. V tomto scénáři spadají i databázové servery hostované na virtuálních počítačích.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -67,7 +67,7 @@ V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou 
 Pokud cloudové úložiště dat podporuje protokol HTTPS nebo TLS, všechna přenosová data mezi službami přesunu dat v Data Factory a cloudovým úložištěm dat jsou prostřednictvím zabezpečeného kanálu HTTPS nebo TLS.
 
 > [!NOTE]
-> Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžadovat šifrování (SSL/TLS) při přenosu dat do a z databáze. Když vytváříte kanál pomocí formátu JSON, přidejte vlastnost šifrování a nastavte ji na **hodnotu true** v připojovacím řetězci. V případě Azure Storage můžete v připojovacím řetězci použít **https** .
+> Všechna připojení k Azure SQL Database a Azure synapse Analytics vyžadují šifrování (SSL/TLS) při přenosu dat do a z databáze. Když vytváříte kanál pomocí formátu JSON, přidejte vlastnost šifrování a nastavte ji na **hodnotu true** v připojovacím řetězci. V případě Azure Storage můžete v připojovacím řetězci použít **https** .
 
 > [!NOTE]
 > Pokud chcete povolit šifrování při přenosu při přesouvání dat ze systému Oracle, postupujte podle jedné z následujících možností:
@@ -80,8 +80,8 @@ Pokud cloudové úložiště dat podporuje protokol HTTPS nebo TLS, všechna př
 ### <a name="data-encryption-at-rest"></a>Šifrování v klidovém stavu
 Některá úložiště dat podporují šifrování neaktivních uložených dat. Pro tato úložiště dat doporučujeme povolit mechanismus šifrování dat. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparentní šifrování dat (TDE) v Azure SQL Data Warehouse pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování v reálném čase a dešifrování vašich dat v klidovém čase. Toto chování je pro klienta transparentní. Další informace najdete v tématu [zabezpečení databáze v SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Transparentní šifrování dat (TDE) ve službě Azure synapse Analytics pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování v reálném čase a dešifrování vašich dat v klidovém čase. Toto chování je pro klienta transparentní. Další informace najdete v tématu [zabezpečení databáze ve službě Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL Database také podporuje transparentní šifrování dat (TDE), které pomáhá chránit před hrozbou škodlivých aktivit pomocí šifrování a dešifrování dat v reálném čase, aniž by to vyžadovalo změny aplikace. Toto chování je pro klienta transparentní. Další informace najdete v tématu [transparentní šifrování dat pro SQL Database a datový sklad](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
@@ -153,10 +153,10 @@ Následující obrázky ukazují použití prostředí Integration runtime v mí
 
 ![IPSec VPN s bránou](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Nastavení konfigurace brány firewall a povolení seznamu povolených IP adres
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Nastavení konfigurace brány firewall a povolení seznamu povolených IP adres
 
 > [!NOTE] 
-> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.
+> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady jenom Azure SQL Database, Azure synapse Analytics a Azure Data Lake Store.
 
 > [!NOTE] 
 > Podrobnosti o strategiích přístupu k datům prostřednictvím Azure Data Factory najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory).
@@ -169,11 +169,11 @@ Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podni
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.   
+> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady jenom Azure SQL Database, Azure synapse Analytics a Azure Data Lake Store.   
 
 Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
-| Příchozí porty | Description                              |
+| Příchozí porty | Popis                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vyžadovaná rutinou šifrování PowerShellu, jak je popsáno v tématu [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikace Správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v místním prostředí Integration runtime. |
 
@@ -185,7 +185,7 @@ Některá úložiště dat v cloudu také vyžadují, abyste povolili IP adresu 
 Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu počítače místního prostředí Integration runtime. Některá z těchto úložišť dat nemusí ve výchozím nastavení vyžadovat seznam povolených. 
 
 - [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -194,11 +194,11 @@ Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu 
 
 **Je možné místní prostředí Integration runtime sdílet mezi různými datovými továrnami?**
 
-Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
+Yes. Další podrobnosti [najdete tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 
-Místní prostředí Integration runtime zpřístupňuje připojení založená na protokolu HTTP pro přístup k Internetu. Aby bylo možné vytvořit toto připojení, musí být otevřeny Odchozí porty 443 pro prostředí Integration runtime v místním prostředí. Pro aplikaci Správce přihlašovacích údajů otevřete příchozí port 8060 jenom na úrovni počítače (ne na úrovni firemní brány firewall). Je-li jako zdroj nebo cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, je nutné otevřít také port 1433. Další informace najdete v části [Konfigurace brány firewall a nastavení seznamu povolených IP adres](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) . 
+Místní prostředí Integration runtime zpřístupňuje připojení založená na protokolu HTTP pro přístup k Internetu. Aby bylo možné vytvořit toto připojení, musí být otevřeny Odchozí porty 443 pro prostředí Integration runtime v místním prostředí. Pro aplikaci Správce přihlašovacích údajů otevřete příchozí port 8060 jenom na úrovni počítače (ne na úrovni firemní brány firewall). Pokud se jako zdroj nebo cíl používá Azure SQL Database nebo Azure synapse Analytics, musíte otevřít taky port 1433. Další informace najdete v části [Konfigurace brány firewall a nastavení seznamu povolených IP adres](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) . 
 
 
 ## <a name="next-steps"></a>Další kroky

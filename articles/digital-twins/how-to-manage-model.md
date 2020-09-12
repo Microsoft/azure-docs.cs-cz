@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079772"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536451"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
 
 ```json
 [
@@ -168,13 +168,18 @@ Modely se nemusí nutně vracet přesně do formuláře dokumentu, ve kterém by
 
 ### <a name="update-models"></a>Aktualizovat modely
 
-Po nahrání modelu do instance je celé rozhraní modelu neměnné. To znamená, že neexistují tradiční "úpravy" modelů.
+Jakmile se model nahraje do instance digitálního vlákna Azure, celé rozhraní modelu je neměnné. To znamená, že neexistují tradiční "úpravy" modelů. Digitální vlákna Azure také neumožňují opakované nahrávání stejného modelu.
 
-Místo toho, abyste mohli provádět změny modelu v digitálních proobjektech Azure, jak to provést, je nahrát **novější verzi** stejného modelu. Během období Preview vám přechod verze modelu umožní jenom odebrat pole, nepřidávat nové (Pokud chcete přidat nová pole, měli byste jenom [vytvořit značku nového modelu](#create-models)).
+Místo toho, pokud chcete provádět změny modelu, jako je například aktualizace `displayName` nebo `description` – způsob, jak to provést, je nahrát **novější verzi** modelu. 
+
+#### <a name="model-versioning"></a>Správa verzí modelů
 
 Pokud chcete vytvořit novou verzi existujícího modelu, začněte s DTDL původního modelu. Aktualizujte pole, která chcete změnit.
 
-Pak tuto položku označte jako novější verzi modelu tím, že aktualizujete `id` pole modelu. Poslední část ID modelu, po `;` ,, představuje číslo modelu. Chcete-li označit, že se jedná o aktualizovanou verzi tohoto modelu, zvyšte číslo na konci `id` hodnoty na libovolné číslo vyšší, než je aktuální číslo verze.
+>[!NOTE]
+>Během období Preview bude přechod verze modelu umožňovat pouze přidávání nových polí a neodebírat stávající. Chcete-li odebrat pole, měli byste pouze [vytvořit značku nového modelu](#create-models).
+
+Pak tuto položku označte jako novější verzi modelu tak, že aktualizujete `id` pole modelu. Poslední část ID modelu, po `;` ,, představuje číslo modelu. Chcete-li označit, že se jedná o aktualizovanou verzi tohoto modelu, zvyšte číslo na konci `id` hodnoty na libovolné číslo vyšší, než je aktuální číslo verze.
 
 Například pokud vaše předchozí ID modelu vypadalo takto:
 
@@ -188,7 +193,17 @@ verze 2 tohoto modelu může vypadat takto:
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-Pak nahrajte novou verzi modelu do instance. Bude mít místo staré verze a nové vlákna, která vytvoříte pomocí tohoto modelu, bude používat aktualizovanou verzi.
+Pak nahrajte novou verzi modelu do instance. 
+
+Tato verze modelu pak bude k dispozici v instanci, která bude použita pro digitální vlákna. Nepřepisuje **starší** verze modelu, takže dokud je [neodeberete](#remove-models), bude v instanci existovat více verzí modelu.
+
+#### <a name="impact-on-twins"></a>Dopad na vlákna
+
+Když vytvoříte nové vlákny, protože verze nového modelu a stará verze modelu existují současně, může nový vlákn použít buď novou verzi modelu, nebo starší verzi.
+
+To také znamená, že nahrání nové verze modelu automaticky neovlivní stávající vlákna. Stávající vlákna budou jednoduše zachovány instance staré verze modelu.
+
+Tyto existující vlákna můžete aktualizovat na novou verzi modelu tím, že ji aktualizujete, jak je popsáno v části [*aktualizace modelu digitálního vlákna*](how-to-manage-twin.md#update-a-digital-twins-model) v tématu *Postupy: Správa digitálních vláken*. V rámci jedné opravy je nutné aktualizovat **ID modelu** (na novou verzi) a **všechna pole, která je nutné změnit na vlákna, aby odpovídala novému modelu**.
 
 ### <a name="remove-models"></a>Odebrat modely
 
@@ -273,6 +288,8 @@ Digitální vlákna Azure nebrání tomuto stavu, proto buďte opatrní na sprá
 ## <a name="manage-models-with-cli"></a>Správa modelů pomocí rozhraní příkazového řádku
 
 Modely je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

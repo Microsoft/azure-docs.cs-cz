@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837305"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505333"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,16 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="august-2020"></a>Srpen 2020
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Mobilní návrh pro Video Indexer Web
+
+Prostředí Video Indexer webu teď podporuje mobilní zařízení. Uživatelské prostředí reaguje na přizpůsobení velikosti mobilní obrazovky (kromě uživatelská rozhraní přizpůsobení). 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>Vylepšení usnadnění a opravy chyb 
+
+Jako součást WCAG (pokyny pro přístupnost webového obsahu) je Video Indexer webů v rámci standardů Microsoftu pro usnadnění práce zarovnána se stupněm C. Bylo vyřešeno několik chyb a vylepšení souvisejících s navigací klávesnice, programovým přístupem a čtečkou obrazovky. 
 
 ## <a name="july-2020"></a>Červenec 2020
 
@@ -129,7 +139,7 @@ Akce Odstranit účet nyní odstraní účet do 90 dnů, nikoli do 48 hodin.
  
 ### <a name="new-video-indexer-github-repository"></a>Nové úložiště GitHub Video Indexer
 
-K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu:https://github.com/Azure-Samples/media-services-video-indexer
+K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu: https://github.com/Azure-Samples/media-services-video-indexer
  
 ### <a name="swagger-update"></a>Aktualizace Swagger
 

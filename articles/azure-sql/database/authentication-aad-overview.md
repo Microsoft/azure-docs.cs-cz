@@ -1,5 +1,5 @@
 ---
-title: Ověřování pomocí Azure Active Directory
+title: Ověřování služby Azure Active Directory
 description: Přečtěte si, jak používat Azure Active Directory k ověřování pomocí Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics.
 services: sql-database
 ms.service: sql-db-mi
@@ -11,23 +11,23 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984771"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434278"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ověřování pomocí Azure Active Directory (Azure AD) je mechanismus pro připojení k [Azure SQL Database](sql-database-paas-overview.md), [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [azure synapse Analytics (dříve Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit ve službě Azure AD.
+Ověřování pomocí Azure Active Directory (Azure AD) je mechanismus pro připojení k [Azure SQL Database](sql-database-paas-overview.md), [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [azure synapse Analytics (dříve SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit ve službě Azure AD.
 
 > [!NOTE]
 > Tento článek se týká Azure SQL Database, spravované instance SQL a Azure synapse Analytics.
 
-Díky ověřování Azure AD můžete na jednom místě centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění. Mezi jeho výhody patří následující:
+Prostřednictvím ověřování služby Azure AD můžete centrálně spravovat identity uživatelů databází a další služby Microsoftu z jednoho umístění. Centrální správa ID poskytuje jediné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění. Mezi jeho výhody patří následující:
 
 - Nabízí alternativu k ověřování SQL Server.
 - Pomáhá zastavit šíření identit uživatelů napříč servery.
@@ -168,7 +168,7 @@ Pro objekty zabezpečení serveru Azure AD (přihlášení) se podporují násle
 - Přehled přihlašovacích údajů, uživatelů, databázových rolí a oprávnění v SQL Database najdete v tématu [přihlášení, uživatelé, databázové role a oprávnění](logins-create-manage.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](https://msdn.microsoft.com/library/ms189121.aspx).
-- Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL najdete v tématu [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)údajů.
+- Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL najdete v tématu  [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)údajů.
 - Další informace o pravidlech brány firewall pro SQL Database najdete v tématu [Pravidla brány firewall služby SQL Database](firewall-configure.md).
 
 <!--Image references-->

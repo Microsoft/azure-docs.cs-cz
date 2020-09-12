@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510969"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434635"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Řešení potíží se zřizováním virtuálních počítačů pomocí cloudu – init
 
@@ -21,7 +21,7 @@ Pokud jste vytvořili generalizované vlastní image pomocí Cloud-init k zřizo
 
 Některé příklady problémů se zřizováním:
 - Virtuální počítač se zablokuje při vytváření na 40 minut a vytvoření virtuálního počítače se označí jako neúspěšné.
-- `CustomData`nezpracovává se
+- `CustomData` nezpracovává se
 - Dočasný disk se nepodařilo připojit.
 - Uživatelé se nevytvoří nebo dojde k problémům s přístupem uživatele.
 - Sítě nejsou správně nastavené.
@@ -29,7 +29,7 @@ Některé příklady problémů se zřizováním:
 
 Tento článek popisuje, jak řešit potíže s Cloud-init. Podrobnější informace najdete v článku [Cloud-init hluboké podrobně](./cloud-init-deep-dive.md).
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>Krok 1: testování nasazení bez`customData`
+## <a name="step-1-test-the-deployment-without-customdata"></a>Krok 1: testování nasazení bez `customData`
 
 Cloud-init může přijmout `customData` , která je předána, když se virtuální počítač vytvoří. Nejdřív byste měli zajistit, že nezpůsobují žádné problémy s nasazeními. Zkuste zřídit virtuální počítač bez předání jakékoli konfigurace. Pokud zjistíte, že se virtuální počítač nepovede zřídit, pokračujte v následujících krocích, pokud najdete konfiguraci, kterou jste provedli. Projděte si [Krok 4](). 
 
@@ -56,7 +56,7 @@ Když se virtuální počítač nepovede zřídit, Azure zobrazí stav "vytvář
 
 I když je virtuální počítač spuštěný, budete potřebovat protokoly z virtuálního počítače, abyste zjistili, proč se zřizování nepovedlo.  Pokud chcete zjistit, proč se zřizování virtuálního počítače nepovedlo, nestavte virtuální počítač. Nechejte virtuální počítač spuštěný. Aby bylo možné shromažďovat protokoly, bude nutné, aby byl virtuální počítač v běžícím stavu spuštěný. Chcete-li shromáždit protokoly, použijte jednu z následujících metod:
 
-- [Sériová konzola](./serial-console-grub-single-user-mode.md)
+- [Sériová konzola](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - Před vytvořením virtuálního počítače [Povolte diagnostiku spouštění](./tutorial-monitor.md#enable-boot-diagnostics) a pak je [Zobrazte](./tutorial-monitor.md#view-boot-diagnostics) během spouštění.
 
@@ -89,7 +89,7 @@ Tady jsou další podrobnosti o tom, co se má hledat v každém protokolu Cloud
 
 Ve výchozím nastavení se všechny události Cloud-init s prioritou ladění nebo vyšší zapisují do `/var/log/cloud-init.log` . To poskytuje podrobné protokoly každé události, ke které došlo při inicializaci Cloud-init. 
 
-Příklad:
+Například:
 
 ```console
 2019-10-10 04:51:25,321 - util.py[DEBUG]: Failed mount of '/dev/sr0' as 'auto': Unexpected error while running command.
@@ -108,7 +108,7 @@ Po nalezení chyby nebo upozornění si přečtěte zpátky v protokolu Cloud-in
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Pokud máte přístup ke [konzole sériového portu](./serial-console-grub-single-user-mode.md), můžete se pokusit znovu spustit příkaz, který se snaží spustit Cloud-init.
+Pokud máte přístup ke [konzole sériového portu](../troubleshooting/serial-console-grub-single-user-mode.md), můžete se pokusit znovu spustit příkaz, který se snaží spustit Cloud-init.
 
 Protokolování `/var/log/cloud-init.log` lze také překonfigurovat v rámci/etc/cloud/cloud.cfg.d/05_logging. cfg. Další podrobnosti o protokolování Cloud-init najdete v dokumentaci ke službě [Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 
@@ -124,9 +124,9 @@ Pokud stále nemůžete izolovat příčinu, proč se Cloud-init nepodařilo zř
 
 
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>Krok 4: zjištění, proč se konfigurace nepoužívá
-Nejedná se o každé selhání v Cloud-init, které způsobí závažné selhání zřizování. Pokud například používáte `runcmd` modul v konfiguraci Cloud-init, nenulový ukončovací kód z příkazu, na kterém běží, způsobí, že se zřizování virtuálního počítače nezdaří. Důvodem je to, že se spustí po základních funkcích zřizování, ke kterým dochází v prvních třech fázích Cloud-init. Pokud chcete řešit potíže, proč se konfigurace nepoužila, zkontrolujte protokoly v kroku 3 a moduly Cloud-init ručně. Příklad:
+Nejedná se o každé selhání v Cloud-init, které způsobí závažné selhání zřizování. Pokud například používáte `runcmd` modul v konfiguraci Cloud-init, nenulový ukončovací kód z příkazu, na kterém běží, způsobí, že se zřizování virtuálního počítače nezdaří. Důvodem je to, že se spustí po základních funkcích zřizování, ke kterým dochází v prvních třech fázích Cloud-init. Pokud chcete řešit potíže, proč se konfigurace nepoužila, zkontrolujte protokoly v kroku 3 a moduly Cloud-init ručně. Například:
 
-- `runcmd`– spouští se skripty bez chyb? Spusťte konfiguraci ručně z terminálu, aby se zajistilo, že budou fungovat podle očekávání.
+- `runcmd` – spouští se skripty bez chyb? Spusťte konfiguraci ručně z terminálu, aby se zajistilo, že budou fungovat podle očekávání.
 - Instalují se balíčky – virtuální počítač má přístup k úložištím balíčků?
 - Měli byste taky ověřit `customData` konfiguraci dat, která byla k virtuálnímu počítači k dispozici, v umístění `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` .
 

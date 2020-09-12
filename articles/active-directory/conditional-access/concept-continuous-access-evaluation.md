@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39736f0a369064e1a825ba3f6975a01c5e9ecc40
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147429"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437237"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -108,7 +108,7 @@ Pokud nepoužíváte klienty podporující CAE, vaše výchozí doba platnosti p
 1. V takovém případě poskytovatel prostředků odepře přístup a pošle klientovi výzvu s deklarací 401 +.
 1. Klient podporující CAE rozumí výzvě 401 + Claim. Obchází mezipaměti a vrací se ke kroku 1, odesílá obnovovací token spolu s výzvou k deklaraci identity zpátky do služby Azure AD. Služba Azure AD potom znovu vyhodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
 
-### <a name="user-condition-change-flow-public-preview"></a>Tok změn stavu uživatele (veřejná verze Preview):
+### <a name="user-condition-change-flow-preview"></a>Tok změn stavu uživatele (Preview):
 
 V následujícím příkladu má správce podmíněného přístupu nakonfigurovanou zásadu podmíněného přístupu na základě umístění, aby povolovala přístup jenom z konkrétních rozsahů IP adres:
 
@@ -133,20 +133,24 @@ Na této stránce můžete volitelně omezit uživatele a skupiny, které budou 
 
 ![Povolení CAE ve verzi Preview v Azure Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="supported-location-policies"></a>Podporované zásady umístění
+
+V případě CAE máme přehledy o pojmenovaných umístěních založených na protokolu IP. Neposkytujeme žádné informace o dalších nastaveních umístění, jako jsou [důvěryhodné IP adresy MFA](../authentication/howto-mfa-mfasettings.md#trusted-ips) nebo umístění na bázi země. Když uživatel pochází z důvěryhodné IP adresy MFA nebo z důvěryhodných umístění, která zahrnují důvěryhodné IP adresy nebo umístění země, CAE se po přesunu uživatele do jiného umístění neuplatní. V těchto případech budeme vydávat 1 hodinový token CAE bez kontroly vynucení okamžité IP adresy.
+
+> [!IMPORTANT]
+> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte jenom [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md#preview-features) a NAKONFIGURUJTE všechny IP adresy, **včetně IPv4 i IPv6**, které může vidět poskytovatel identity a poskytovatel prostředků. Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure Multi-Factor Authentication.
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.
 - IP adresa, kterou poskytovatel identity uvidí, je součástí povoleného rozsahu IP adres v zásadě, ale IP adresa od poskytovatele prostředků není.
 
 Pokud tento scénář existuje ve vašem prostředí, aby se předešlo nekonečným smyčkám, Azure AD vydá jeden CAE token a nevyhodnotí změnu umístění klienta. I v tomto případě se zvyšuje zabezpečení v porovnání s tradičními tokeny hodin, protože stále ještě vyhodnocujeme [Další události](#critical-event-evaluation) kromě událostí změny umístění klienta.
-
-> [!IMPORTANT]
-> Při konfiguraci umístění pro vyhodnocení průběžného přístupu použijte pouze [podmínku umístění podmíněného přístupu na základě IP adresy](../conditional-access/location-condition.md). Nepoužívejte podmínky umístění země ani funkci důvěryhodných IP adres, která je k dispozici na stránce nastavení služby Azure Multi-Factor Authentication.
 
 ### <a name="office-and-web-account-manager-settings"></a>Nastavení správce účtů pro Office a Web
 

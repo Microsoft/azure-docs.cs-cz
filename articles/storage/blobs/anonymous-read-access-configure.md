@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7f3f71f11c741e5e9108d945b60c4465f9cec7da
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534307"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594777"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -52,7 +52,10 @@ Nepovolení veřejného přístupu pro účet úložiště zabraňuje anonymním
 
 Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
 
-Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud má vlastnost hodnotu **null** nebo je-li hodnota **true**.
+> [!NOTE]
+> Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud má vlastnost hodnotu **null** nebo je-li hodnota **true**.
+>
+> Vlastnost **AllowBlobPublicAccess** je v tuto chvíli dostupná jenom pro účty úložiště ve veřejném cloudu Azure.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 

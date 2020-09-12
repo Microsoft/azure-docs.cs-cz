@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926860"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462509"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -96,16 +96,32 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 <sup>4</sup> maximálně 30 dovedností na dovednosti.
 
-<sup>5</sup> rozšíření AI a analýza obrázků jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Čas spuštění těchto úloh byl zkrácen, aby bylo možné další úlohy ve frontě spustit více příležitostí.  
+<sup>5</sup> rozšíření AI a analýza obrázků jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Čas spuštění těchto úloh byl zkrácen, aby bylo možné další úlohy ve frontě spustit více příležitostí.
 
 > [!NOTE]
 > Jak je uvedeno v [omezeních indexu](#index-limits), indexery taky vyhodnotí horní limit 3000 prvků napříč všemi složitými kolekcemi na dokument počínaje nejnovější verzí rozhraní GA API, která podporuje komplexní typy ( `2019-05-06` ) a vyšší. To znamená, že pokud jste indexer vytvořili s předchozí verzí rozhraní API, nebudete platit od tohoto omezení. Aby se zachovala maximální kompatibilita, indexer, který byl vytvořen s předchozí verzí rozhraní API a který se pak aktualizuje pomocí verze rozhraní API `2019-05-06` nebo novější, bude v omezeních nadále **vyloučený** . Zákazníci by měli mít pozor na nepříznivý dopad na velmi velké komplexní kolekce (jak bylo uvedeno dříve) a důrazně doporučujeme vytvořit nové indexery s nejnovější verzí rozhraní GA API.
+
+### <a name="shared-private-link-resource-limits"></a>Omezení sdíleného prostředku privátního propojení
+
+> [!NOTE]
+> Indexery mají zabezpečený přístup k prostředkům přes soukromé koncové body spravované prostřednictvím [rozhraní API sdíleného privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) , jak je popsáno v [tomto průvodci](search-indexer-howto-access-private.md) .
+
+| Prostředek | Free | Basic | S1 | S2 | S3 | S3 HD | L1 | Paměť
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Podpora indexeru privátního koncového bodu | No | Yes | Yes | Yes | Yes | No | Yes | Yes |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Yes | Yes | No | Yes | Yes |
+| Maximální počet privátních koncových bodů | – | 10 nebo 30 | 100 | 400 | 400 | – | 20 | 20 |
+| Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
+
+<sup>1</sup> rozšíření pro obohacení a analýzu obrázků je náročné na výpočetní výkon a spotřebovává neúměrné objemy dostupného výpočetního výkonu, a proto u nižších úrovní služby vyhledávání, které je možné spouštět v privátním prostředí, můžou mít negativní dopad na výkon a stabilitu vyhledávací služby.
+
+<sup>2</sup> počet různých typů prostředků se vypočítává jako počet jedinečných `groupId` hodnot, které se používají ve všech sdílených prostředcích privátního propojení pro danou vyhledávací službu bez ohledu na stav prostředku.
 
 ## <a name="synonym-limits"></a>Omezení synonym
 
 Maximální počet mapování synonym se liší podle úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je ekvivalentní termín. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Prostředek | Free | Základní | S1 | S2 | S3 | S3-HD |L1 | Paměť |
+| Prostředek | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | Paměť |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -116,7 +132,7 @@ Odhady QPS musí být vyvíjeny nezávisle na každém zákazníkovi. Velikost i
 
 Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [výkon a optimalizace pro Azure kognitivní hledání](search-performance-optimization.md).
 
-Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard. 
+Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard.
 
 ## <a name="data-limits-ai-enrichment"></a>Omezení pro data (rozšíření AI)
 

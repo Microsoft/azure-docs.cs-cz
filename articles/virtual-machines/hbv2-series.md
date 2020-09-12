@@ -5,19 +5,21 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b7655f4cb13e80d6262c3d4871c1ab69f4a6a051
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf6828ff96f5bff8a65b5f62793df8bf0e65a309
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905463"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595151"
 ---
 # <a name="hbv2-series"></a>Řada HBv2
 
 Virtuální počítače řady HBv2-Series jsou optimalizované pro aplikace, které jsou založené na šířce pásma paměti, jako je například kapalinová dynamika, analýza omezeného prvku a simulace zásobníku. Virtuální počítače s HBv2 120 AMD EPYC 7742 procesory, 4 GB paměti RAM na jádro procesoru a žádné souběžné multithreadingy. Každý virtuální počítač HBv2 poskytuje šířku pásma až 340 GB/s a až 4 teraFLOPSy FP64 Compute.
+
+Virtuální počítače HBv2-Series funkce 200 GB/s Mellanox HDR InfiniBand. Tyto virtuální počítače jsou připojené v neblokujícím stromu FAT pro optimalizaci a konzistentní výkon RDMA. Tyto virtuální počítače podporují adaptivní směrování a dynamický přenos (DCT), a to v dalších až ke standardním RC a UD transportech. Tyto funkce zvyšují výkon, škálovatelnost a konzistenci aplikací a jejich využití se důrazně doporučuje.
 
 Premium Storage: podporováno
 

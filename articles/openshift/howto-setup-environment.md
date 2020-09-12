@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495314"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470030"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
@@ -37,9 +37,9 @@ az --version
 
 První řádek výstupu bude mít verzi rozhraní příkazového řádku (CLI), například `azure-cli (2.0.65)` .
 
-Tady jsou pokyny pro [instalaci Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud potřebujete novou instalaci nebo upgrade.
+Tady jsou pokyny pro [instalaci Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud potřebujete novou instalaci nebo upgrade.
 
-Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud používáte Azure Cloud Shell, nezapomeňte vybrat prostředí **bash** , pokud plánujete postupovat podle kurzu [Vytvoření a Správa řady Azure Red Hat OpenShift](tutorial-create-cluster.md) .
+Alternativně můžete použít [Azure Cloud Shell](../cloud-shell/overview.md). Pokud používáte Azure Cloud Shell, nezapomeňte vybrat prostředí **bash** , pokud plánujete postupovat podle kurzu [Vytvoření a Správa řady Azure Red Hat OpenShift](tutorial-create-cluster.md) .
 
 ## <a name="register-providers-and-features"></a>Registrovat poskytovatele a funkce
 
@@ -103,7 +103,7 @@ Pokud Azure AD nemáte k použití jako tenanta pro cluster Azure Red Hat OpenSh
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Vytvoření uživatele služby Azure AD, skupiny zabezpečení a objektu aplikace
 
-Azure Red Hat OpenShift vyžaduje oprávnění k provádění úloh v clusteru, jako je například konfigurace úložiště. Tato oprávnění jsou reprezentována prostřednictvím [instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Budete také chtít vytvořit nového uživatele služby Active Directory pro testování aplikací běžících ve vašem clusteru Azure Red Hat OpenShift.
+Azure Red Hat OpenShift vyžaduje oprávnění k provádění úloh v clusteru, jako je například konfigurace úložiště. Tato oprávnění jsou reprezentována prostřednictvím [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object). Budete také chtít vytvořit nového uživatele služby Active Directory pro testování aplikací běžících ve vašem clusteru Azure Red Hat OpenShift.
 
 Postupujte podle pokynů v části [vytvoření objektu aplikace služby Azure AD a uživatele](howto-aad-app-configuration.md) k vytvoření instančního objektu, VYGENERUJTE adresu URL tajného klíče klienta a zpětného volání ověřování pro vaši aplikaci a vytvořte novou skupinu zabezpečení Azure AD a uživatele pro přístup ke clusteru.
 
@@ -115,4 +115,4 @@ Vyzkoušejte si kurz:
 > [!div class="nextstepaction"]
 > [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli

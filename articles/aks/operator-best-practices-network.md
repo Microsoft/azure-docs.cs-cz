@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro používání virtuálníc
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542700"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482721"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Tento článek o osvědčených postupech se zaměřuje na připojení k síti a
 Virtuální sítě poskytují základní konektivitu pro uzly AKS a zákazníkům, kteří budou mít přístup k vašim aplikacím. Existují dva různé způsoby, jak nasadit clustery AKS do virtuálních sítí:
 
 * **Kubenet Networking** – Azure spravuje prostředky virtuální sítě při nasazení clusteru a používá modul plug-in [Kubenet][kubenet] Kubernetes.
-* **Azure CNI Networking** – nasazuje se do existující virtuální sítě a používá modul plug-in [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes. Lusky přijímají jednotlivé IP adresy, které se můžou směrovat na jiné síťové služby nebo místní prostředky.
+* **Azure CNI Networking** – nasazuje se do virtuální sítě a používá modul plug-in [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes. Lusky přijímají jednotlivé IP adresy, které se můžou směrovat na jiné síťové služby nebo místní prostředky.
 
 Rozhraní CNI (Container Network Interface) je nezávislý na dodavateli, který umožňuje modulu runtime kontejneru vydávat požadavky poskytovateli sítě. Azure CNI přiřazuje IP adresy do lusků a uzlů a poskytuje funkce správy IP adres (IPAM) jako připojení ke stávajícím virtuálním sítím Azure. Každý uzel a prostředek pod obdrží IP adresu ve virtuální síti Azure a žádné další směrování není potřeba ke komunikaci s dalšími prostředky a službami.
 
@@ -64,7 +64,7 @@ Kubenet je vhodný pro malé vývojové nebo testovací úlohy, protože nemusí
 
 **Doprovodné materiály k osvědčeným postupům** k distribuci přenosů http nebo https do aplikací, použijte prostředky a řadiče příchozího přenosu dat. Řadiče příchozího přenosu dat poskytují další funkce přes běžný nástroj pro vyrovnávání zatížení Azure a dají se spravovat jako nativní prostředky Kubernetes.
 
-Nástroj pro vyrovnávání zatížení Azure může distribuovat provoz zákazníků do aplikací v clusteru AKS, ale je omezený v tom, co tento provoz chápe. Prostředek nástroje pro vyrovnávání zatížení pracuje ve vrstvě 4 a distribuuje provoz na základě protokolu nebo portů. Většina webových aplikací, které používají protokol HTTP nebo HTTPS, by měly používat Kuberenetes prostředky a řadiče příchozího přenosu dat, které fungují ve vrstvě 7. Příchozí přenos dat může distribuovat provoz na základě adresy URL aplikace a zpracovat ukončení protokolu TLS/SSL. Tato možnost také snižuje počet IP adres, které zveřejňujete a namapujete. U nástroje pro vyrovnávání zatížení každá aplikace obvykle potřebuje veřejnou IP adresu přiřazenou a namapovanou na službu v clusteru AKS. Pomocí prostředku příchozího přenosu dat může jedna IP adresa distribuovat provoz do více aplikací.
+Nástroj pro vyrovnávání zatížení Azure může distribuovat provoz zákazníků do aplikací v clusteru AKS, ale je omezený v tom, co tento provoz chápe. Prostředek nástroje pro vyrovnávání zatížení pracuje ve vrstvě 4 a distribuuje provoz na základě protokolu nebo portů. Většina webových aplikací, které používají protokol HTTP nebo HTTPS, by měly používat Kubernetes prostředky a řadiče příchozího přenosu dat, které fungují ve vrstvě 7. Příchozí přenos dat může distribuovat provoz na základě adresy URL aplikace a zpracovat ukončení protokolu TLS/SSL. Tato možnost také snižuje počet IP adres, které zveřejňujete a namapujete. U nástroje pro vyrovnávání zatížení každá aplikace obvykle potřebuje veřejnou IP adresu přiřazenou a namapovanou na službu v clusteru AKS. Pomocí prostředku příchozího přenosu dat může jedna IP adresa distribuovat provoz do více aplikací.
 
 ![Diagram znázorňující tok příchozího provozu v clusteru AKS](media/operator-best-practices-network/aks-ingress.png)
 
