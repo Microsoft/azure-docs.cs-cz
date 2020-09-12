@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 07b82e166b0ec6f0d3a29de50584158b67750e8e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: b808038c9b973cbf4ba9e0b2e54d97bd41664297
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146551"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378249"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak:
 >**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
 >Pokud si chcete zaregistrovat verzi Preview, napište nám na [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [tom, co skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) pro předběžnou registraci zahrnuje oddíly k nastavení databáze pro zálohování.
 
@@ -65,7 +65,7 @@ Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *
 
 1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
-1. Kliknutím na **Přidat**  uložte nově vytvořené odchozí pravidlo zabezpečení.
+1. Vyberte **Přidat**  a uložte nově vytvořené odchozí pravidlo zabezpečení.
 
 Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](../virtual-network/service-tags-overview.md).
 
@@ -95,16 +95,16 @@ Při zálohování databáze SAP HANA běžící na virtuálním počítači Azu
 
 ## <a name="discover-the-databases"></a>Zjištění databází
 
-1. V trezoru v **Začínáme**klikněte na **zálohovat**. V aplikaci **kde je spuštěná vaše úloha?** vyberte **na virtuálním počítači Azure SAP HANA**.
-2. Klikněte na **Spustit zjišťování**. Tím se iniciuje zjišťování nechráněných virtuálních počítačů se systémem Linux v oblasti trezoru.
+1. V trezoru v **Začínáme**vyberte **zálohování**. V aplikaci **kde je spuštěná vaše úloha?** vyberte **na virtuálním počítači Azure SAP HANA**.
+2. Vyberte **Spustit zjišťování**. Tím se iniciuje zjišťování nechráněných virtuálních počítačů se systémem Linux v oblasti trezoru.
 
    * Po zjištění se na portálu zobrazí nechráněné virtuální počítače uvedené podle názvu a skupiny prostředků.
    * Pokud virtuální počítač není uvedený podle očekávání, ověřte, jestli je už zálohovaný v trezoru.
    * Několik virtuálních počítačů může mít stejný název, ale patří do různých skupin prostředků.
 
-3. V části **vybrat Virtual Machines**klikněte na odkaz pro stažení skriptu, který poskytuje oprávnění pro službu Azure Backup pro přístup k SAP HANA virtuálním počítačům pro zjištění databáze.
+3. V části **vybrat Virtual Machines**vyberte odkaz pro stažení skriptu, který poskytuje oprávnění pro službu Azure Backup pro přístup k SAP HANA virtuálním počítačům pro zjištění databáze.
 4. Spusťte skript na každém virtuálním počítači, který je hostitelem SAP HANA databází, které chcete zálohovat.
-5. Po spuštění skriptu na virtuálních počítačích vyberte v části **vybrat Virtual Machines**virtuální počítače. Pak klikněte na **Vyhledat databáze**.
+5. Po spuštění skriptu na virtuálních počítačích vyberte v části **vybrat Virtual Machines**virtuální počítače. Pak vyberte **Vyhledat databáze**.
 6. Azure Backup zjistí všechny databáze SAP HANA na virtuálním počítači. Během zjišťování Azure Backup registruje virtuální počítač s trezorem a na virtuálním počítači nainstaluje rozšíření. V databázi není nainstalován žádný agent.
 
     ![Zjišťování SAP HANAch databází](./media/backup-azure-sap-hana-database/hana-discover.png)
@@ -113,7 +113,7 @@ Při zálohování databáze SAP HANA běžící na virtuálním počítači Azu
 
 Nyní povolte zálohování.
 
-1. V kroku 2 klikněte na **Konfigurovat zálohu**.
+1. V kroku 2 vyberte **Konfigurovat zálohu**.
 
     ![Konfigurace zálohování](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. V části **Vyberte položky, které chcete zálohovat**vyberte všechny databáze, které chcete chránit > **OK**.
@@ -122,7 +122,7 @@ Nyní povolte zálohování.
 3. V části **zásady zálohování**  >  **vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze, a to v souladu s pokyny uvedenými níže.
 
     ![Zvolit zásady zálohování](./media/backup-azure-sap-hana-database/backup-policy.png)
-4. Po vytvoření zásady klikněte v nabídce **zálohování** na **Povolit zálohování**.
+4. Po vytvoření zásady v nabídce **zálohování** vyberte **Povolit zálohování**.
 
     ![Povolit zálohování](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
@@ -147,7 +147,7 @@ Nastavení zásad určete následujícím způsobem:
 2. V **zásadách úplného zálohování**vyberte **četnost záloh**, zvolte **denně** nebo **týdně**.
    * **Denně**: vyberte hodinu a časové pásmo, ve kterém se spustí úloha zálohování.
        * Musíte spustit úplnou zálohu. Tuto možnost nemůžete vypnout.
-       * Zásadu zobrazíte kliknutím na **úplné zálohování** .
+       * Pro zobrazení zásady vyberte **úplné zálohování** .
        * Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
    * **Týdně**: vyberte den v týdnu, hodinu a časové pásmo, ve kterém se úloha zálohování spustí.
 
@@ -160,7 +160,7 @@ Nastavení zásad určete následujícím způsobem:
     * Záloha pro určitý den je označená a zachovaná na základě rozsahu a nastavení týdenního uchování.
     * Měsíční a roční rozsah uchování se chová podobným způsobem.
 
-4. V nabídce **zásady úplného zálohování** klikněte na **OK** , aby se nastavení přijímalo.
+4. V nabídce **zásady úplného zálohování** vyberte **OK** a přijměte nastavení.
 5. Pokud chcete přidat rozdílové zásady, vyberte **rozdílové zálohování** .
 6. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
     * Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.
@@ -171,7 +171,7 @@ Nastavení zásad určete následujícím způsobem:
     > [!NOTE]
     > Přírůstkové zálohování není aktuálně podporováno.
 
-7. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
+7. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
 8. Vyberte **zálohování protokolu** a přidejte zásady zálohování transakčního protokolu.
     * V případě **zálohování protokolu**vyberte **Povolit**.  Toto nejde zakázat, protože SAP HANA spravuje všechny zálohy protokolů.
     * Nastavte četnost a ovládací prvky uchování.
@@ -179,8 +179,8 @@ Nastavení zásad určete následujícím způsobem:
     > [!NOTE]
     > Zálohy protokolu se začnou přesměrovat až po úspěšném úplném zálohování.
 
-9. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
-10. Až dokončíte definování zásad zálohování, klikněte na **OK**.
+9. Výběrem **OK** zásadu uložíte a vrátíte se do nabídky hlavní **zásady zálohování** .
+10. Po dokončení definování zásad zálohování vyberte **OK**.
 
 > [!NOTE]
 > Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Řekněme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden plný může být skutečně vyčištěn nebo odstraněn až po nejbližším úplném zálohování, tj. po dobu 30 až 7 dnů. Například týdenní úplné zálohování nastane na 16. listopadu. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.
@@ -189,9 +189,9 @@ Nastavení zásad určete následujícím způsobem:
 
 Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na vyžádání následujícím způsobem:
 
-1. V nabídce trezoru klikněte na položku **zálohované položky**.
-2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak klikněte na **Zálohovat nyní**.
-3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak klikněte na **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
+1. V nabídce trezoru vyberte **zálohované položky**.
+2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak vyberte **Zálohovat nyní**.
+3. V části **Zálohovat nyní**vyberte typ zálohy, kterou chcete provést. Pak vyberte **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
 4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 Ve výchozím nastavení je uchovávání záloh na vyžádání 45 dní.

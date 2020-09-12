@@ -3,16 +3,16 @@ title: Vytvoření technických prostředků virtuálního počítače Azure
 description: Naučte se vytvářet a konfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 496cd4aeb96ca1849e950331658014d91dc6d6ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143869"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646799"
 ---
 # <a name="create-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
 
@@ -51,7 +51,7 @@ Zvažte použití jednoho z následujících skriptovacích prostředí, které 
 
 Kromě toho zvažte přidání následujících nástrojů do vývojového prostředí:
 
-- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="create-a-vm-image-using-an-approved-base"></a>Vytvoření image virtuálního počítače pomocí schválené základní třídy
@@ -123,7 +123,7 @@ Vytvořte virtuální počítač 2. generace (Gen2) v Azure Portal.
 2. Vyberte **Vytvořit prostředek**.
 3. Na levé straně vyberte **Zobrazit vše** z Azure Marketplace.
 4. Vyberte bitovou kopii, která podporuje Gen2.
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.
 6. Na kartě **Upřesnit** v části **generování virtuálního počítače** vyberte možnost **Obecné 2** .
 7. Na kartě **základy** klikněte v části **Podrobnosti instance**na **Velikost** a otevřete okno **Vybrat velikost virtuálního počítače** .
 8. Vyberte doporučenou velikost [podporovaného virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) a velikosti 2. generace.

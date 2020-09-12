@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265707"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461710"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge přes Azure PowerShell
 
@@ -220,8 +220,8 @@ Z nahraného virtuálního pevného disku vytvořte spravovaný disk.
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
 Ukázkový výstup je uveden níže: 
-
-$DiskConfig = New-AzureRmDiskConfig-Location DBELocal-CreateOption import – SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -408,24 +408,39 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>Připojení k virtuálnímu počítači
 
-Připojte se k virtuálnímu počítači pomocí privátní IP adresy, kterou jste předali během vytváření virtuálního počítače.
+Postup pro připojení se může lišit v závislosti na tom, jestli jste vytvořili virtuální počítač se systémem Windows nebo Linux.
 
-Otevřete relaci SSH pro připojení k IP adrese.
+### <a name="connect-to-linux-vm"></a>Připojení k virtuálnímu počítači se systémem Linux
+
+Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Linux.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>Připojení k virtuálnímu počítači s Windows
+
+Pomocí těchto kroků se připojte k virtuálnímu počítači s Windows.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-Po zobrazení výzvy zadejte heslo, které jste použili při vytváření virtuálního počítače.
+When prompted, provide the password that you used when creating the VM.
 
-Pokud potřebujete zadat klíč SSH, použijte tento příkaz.
+If you need to provide the SSH key, use this command.
 
-SSH-i c:/uživatelé/správce/. ssh/id_rsa Administrator@5.5.41.236
+ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-Pokud jste při vytváření virtuálního počítače použili veřejnou IP adresu, můžete k ní připojit virtuální počítač pomocí této IP adresy. Získání veřejné IP adresy: 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Veřejná IP adresa v tomto případě bude stejná jako soukromá IP adresa, kterou jste předali během vytváření virtuálního síťového rozhraní.
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>Správa virtuálního počítače

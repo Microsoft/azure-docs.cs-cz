@@ -3,16 +3,16 @@ title: Vytvoření nabídky kontejneru Azure – Azure Marketplace
 description: Naučte se, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649261"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejnerů Azure na Azure Marketplace
 
@@ -50,7 +50,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .

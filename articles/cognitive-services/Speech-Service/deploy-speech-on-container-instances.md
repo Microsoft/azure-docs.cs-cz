@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 610d5ce095097a31ee92c67f0112d1657424858e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a85086ea8d969dc70f4cd24b25a00765da285eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878744"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425802"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Nasaďte kontejner služby Speech Service do Azure Container Instances
 
@@ -25,7 +25,7 @@ Přečtěte si, jak nasadit kontejner [služby Cognitive Services Speech Service
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokončit a odeslat [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/) . 
+Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokončit a odeslat [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/csgate/) . 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869197"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378367"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -142,7 +142,7 @@ Další informace o nasazení této funkce najdete v tématu [Konfigurace spravo
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-Nástroj image Builder v současné době podporuje jenom image a virtuální počítače Hyper-generace 1, `source` část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
+`source`Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí. Nástroj image Builder aktuálně nativně podporuje vytváření imagí technologie Hyper-V Generation (Gen1) 1 do galerie sdílených imagí Azure (SIG) nebo spravované image. Pokud chcete vytvořit image Gen2, musíte použít zdrojovou image Gen2 a distribuovat ji na VHD. Potom budete muset vytvořit spravovanou bitovou kopii z virtuálního pevného disku a vložit ji do souboru SIG jako Gen2 image.
 
 Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
 - PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
@@ -571,7 +571,7 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192518"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433666"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže při řešení potíží s [kompresí souborů CDN](cdn-improve-performance.md).
@@ -111,8 +111,8 @@ Pomocí vývojářských nástrojů v prohlížeči zkontrolujte hlavičky odpov
 
 Aby měl soubor nárok na kompresi, musí splňovat následující požadavky na velikost:
 
-* Větší než 128 bajtů.
-* Menší než 1 MB.
+* Větší než 128 bajtů (Content-Length: 128)
+* Menší než 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Ověřte požadavek na zdrojovém serveru **přes hlavičku Via** .
 Hlavička **Via** protokolu HTTP indikuje webovému serveru, že požadavek předává proxy server.  Webové servery Microsoft IIS ve výchozím nastavení nekomprimuje odpovědi, pokud požadavek obsahuje hlavičku **Via** .  Chcete-li toto chování přepsat, postupujte následovně:

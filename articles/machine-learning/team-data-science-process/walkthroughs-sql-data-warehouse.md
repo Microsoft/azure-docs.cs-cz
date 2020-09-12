@@ -1,6 +1,6 @@
 ---
-title: Analýzy SQL Data Warehouse s využitím T-SQL, Pythonu a vědeckého zpracování týmových dat
-description: Příklady, které vás provedou použitím SQL Data Warehouse k provádění prediktivní analýzy.
+title: Analýzy ve službě Azure synapse Analytics s využitím T-SQL, Pythonu a vědeckého zpracování týmových dat
+description: Příklady, které vás provedou použitím analýzy Azure Synapse k provádění prediktivní analýzy.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92cd3a9cc82a38cae6a56b7796e22d035979f2d5
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128167"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439846"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>SQL Data Warehouse návody pro datové vědy pomocí T-SQL a Pythonu v Azure
+# <a name="azure-synapse-analytics-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Návody pro datové vědy pro Azure synapse Analytics pomocí T-SQL a Pythonu v Azure
 
-Tyto návody používají SQL Data Warehouse k provádění prediktivní analýzy. Postupuje podle kroků popsaných v rámci vědeckého procesu týmového zpracování dat. Přehled vědeckého zpracování týmových dat najdete v tématu věnovaném [zpracování datových věd](overview.md). Úvod do SQL Data Warehouse najdete v tématu [co je Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Tyto návody využívají Azure synapse Analytics k provádění prediktivních analýz. Postupuje podle kroků popsaných v rámci vědeckého procesu týmového zpracování dat. Přehled vědeckého zpracování týmových dat najdete v tématu věnovaném [zpracování datových věd](overview.md). Úvod do Azure synapse Analytics najdete v tématu [co je Azure synapse Analytics?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Další návody pro datové vědy, které spouštějí vědecké zpracování týmových dat, jsou seskupeny podle **platformy** , kterou používají. Projděte si [návody, které spouštějí vědecký procesní tým](walkthroughs.md) pro vydaný rozpis těchto příkladů.
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Předpovídání tipů taxislužby pomocí poznámkových bloků T-SQL a IPython s SQL Data Warehouse
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-azure-synapse-analytics"></a>Předpověď tipů taxislužby pomocí poznámkových bloků T-SQL a IPython s využitím Azure synapse Analytics
 
-[Návod k použití SQL Data Warehouse](sqldw-walkthrough.md) ukazuje, jak sestavit a nasadit modely klasifikace a regrese Machine learning pomocí SQL Data Warehouse (SQL DW).  Tato data jsou veřejně dostupnou datovou sadou NYC taxislužby Trip a jízdné.
+[Návod k používání Azure synapse Analytics](sqldw-walkthrough.md) vám ukáže, jak vytvořit a nasadit klasifikaci a regresní modely služby Machine Learning pomocí Azure synapse Analytics.  Tato data jsou veřejně dostupnou datovou sadou NYC taxislužby Trip a jízdné.
 
 
 ## <a name="next-steps"></a>Další kroky

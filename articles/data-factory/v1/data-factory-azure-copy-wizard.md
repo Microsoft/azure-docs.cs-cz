@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086836"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439006"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
 > [!NOTE]
@@ -49,7 +49,7 @@ Můžete zobrazit náhled části dat z vybraného zdroje dat a ověřit tak, zd
 Schéma vstupních dat nemusí v některých případech odpovídat schématu výstupních dat. V tomto scénáři je nutné mapovat sloupce ze zdrojového schématu na sloupce z cílového schématu.
 
 > [!TIP]
-> Při kopírování dat z SQL Server nebo Azure SQL Database do Azure SQL Data Warehouse, pokud tabulka v cílovém úložišti neexistuje, Data Factory podpora automatického vytváření tabulek pomocí schématu zdroje. Přečtěte si další informace z [přesunu dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> Při kopírování dat z SQL Server nebo Azure SQL Database do služby Azure synapse Analytics (dříve SQL Data Warehouse), pokud tabulka v cílovém úložišti neexistuje, Data Factory podpora automatického vytváření tabulek pomocí schématu zdroje. Přečtěte si další informace z [přesunu dat do a z Azure synapse Analytics pomocí Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 >
 
 Pomocí rozevíracího seznamu vyberte sloupec ze zdrojového schématu, který chcete namapovat na sloupec v cílovém schématu. Průvodce kopírováním se pokusí pochopit vzor pro mapování sloupců. Aplikuje stejný vzor na zbytek sloupců, takže nemusíte jednotlivě vybírat jednotlivé sloupce pro dokončení mapování schématu. Pokud chcete, můžete tato mapování přepsat pomocí rozevíracích seznamů a namapovat sloupce jeden po jedné. Vzor je přesnější při mapování více sloupců. Průvodce kopírováním průběžně aktualizuje vzor a nakonec dosáhne správného vzoru mapování sloupců, které chcete dosáhnout.     

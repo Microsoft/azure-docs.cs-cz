@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67bb77777ee1052a5429dc4599ed30593b9ae2ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324449"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436557"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,7 +35,7 @@ Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 mi
 Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po napadené reakci na incidenty:
 
 - Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
-- Aby databáze v Azure SQL Database/Azure SQL Data Warehouse **nepřístupné**.
+- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné**.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) se pořád podporuje, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Informace o instalaci najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -81,7 +81,7 @@ Alternativně můžete použít PowerShell nebo rozhraní příkazového řádku
 
 Příkaz PowerShellu **Get-AzureRmSqlServerKeyVaultKey**   poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Příkaz PowerShellu **AZ SQL Server Key show**   poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
@@ -132,7 +132,7 @@ Příkaz PowerShellu **AZ SQL Server Key show**   poskytuje kryptografický ot
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Referenční informace k příkazům najdete v [trezoru klíčů Azure CLI](/cli/azure/keyvault/key).
 

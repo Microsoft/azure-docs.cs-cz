@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009507"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433700"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -93,7 +93,7 @@ Zakázání automatických aktualizací prostřednictvím místních Zásady sku
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
@@ -101,7 +101,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 Spusťte tento příkaz a určete tak počáteční rozložení počítačů s Windows 10.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
@@ -119,7 +119,7 @@ Postup přesměrování časových pásem:
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
@@ -132,7 +132,7 @@ Pro hostitele relací virtuálních počítačů s Windows, kteří používají
 
 Nastavení registru můžete změnit také spuštěním následujícího příkazu:
 
-```batch
+```cmd
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
@@ -153,19 +153,19 @@ Tato část se zabývá konfigurací aplikace a operačního systému. Veškerá
 
 Pro shromažďování dat v centru Feedback v rámci více relací Windows 10 Enterprise můžete spustit tento příkaz:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 Spusťte následující příkaz, který vyřeší chyby programu Watson:
 
-```batch
+```cmd
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
 Zadáním následujících příkazů do editoru registru opravíte podporu řešení 5k. Aby bylo možné povolit souběžný zásobník, je nutné spustit tyto příkazy.
 
-```batch
+```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267494"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425632"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -38,13 +38,25 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+
+## <a name="august-2020"></a>Srpen 2020
+
+### <a name="dynamic-encryption"></a>Dynamické šifrování
+V dynamickém balíčku je teď k dispozici podpora starší verze formátu souboru s podporou technologie PlayReady Protected (PIFF 1,1). To poskytuje podporu pro starší sady inteligentních televizních pořadů od společnosti Samsung a LG, které implementovaly počáteční koncepty služby Common Encryption Standard (CENC) publikované Microsoftem.  Formát PIFF 1,1 se označuje také jako formát šifrování, který byl dříve podporován knihovnou klienta Silverlight. V současné době platí, že jediným scénářem použití tohoto formátu šifrování je zacílení na starší verzi inteligentního televizního vysílání, kde v některých oblastech zůstane netriviální počet inteligentních televizních pořadů, které podporují jenom Smooth Streaming šifrování PIFF 1,1. 
+
+Pokud chcete použít novou podporu šifrování PIFF 1,1, změňte hodnotu šifrování na PIFF v cestě URL lokátoru streamování. Další podrobnosti najdete v [přehledu Content Protection.](content-protection-overview.md)
+Například: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> Podpora PIFF 1,1 je poskytována jako zpětně kompatibilní řešení pro inteligentní TV (Samsung, LG), které implementovalo úvodní verzi programu Common Encryption. Doporučuje se používat jenom formát PIFF, pokud je to potřeba pro podporu starších nebo LG inteligentních televizí dodaných mezi 2009-2015, které podporovaly verzi PIFF 1,1 šifrování PlayReady. 
+
 ## <a name="july-2020"></a>Červenec 2020
 
 ### <a name="live-transcriptions"></a>Živá Přepisy
 
 Živý přepis teď podporuje 19 jazyků a 8 oblastí.
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Ochrana obsahu pomocí Media Services a Azure AD
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Ochrana obsahu pomocí Media Services a Azure AD
 
 Publikovali jsme kurz nazvaný [kompletní ochrana obsahu pomocí Azure AD](./azure-ad-content-protection.md).
 

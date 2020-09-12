@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815908"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440452"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Datové vědy s Data Science Virtual Machine Windows
 
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datov
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Potřebujete předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Pokyny pro zřízení Data Science Virtual Machine v Azure Portal jsou k dispozici v [tématu Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
@@ -156,7 +156,7 @@ Další informace o tom, jak pomocí Gitu pracovat s úložištěm GitHubu, najd
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložiště pro velké a malé objemy dat. Tato část popisuje, jak můžete přesouvat data do úložiště objektů BLOB a přistupovat k datům uloženým v objektu blob Azure.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com).
 
@@ -255,7 +255,7 @@ Data jsou čtena jako datový rámec:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure synapse Analytics (dříve SQL DW) a databáze
 Azure synapse Analytics (dřív SQL DW) je Elastický datový sklad jako služba s využitím SQL Server na podnikové úrovni.
 
-Analýzy Azure synapse můžete zřídit podle pokynů v [tomto článku](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení služby SQL Data Warehouse můžete pomocí [tohoto návodu](../team-data-science-process/sqldw-walkthrough.md) provádět nahrávání, zkoumání a modelování dat pomocí dat v rámci SQL Data Warehouse.
+Analýzy Azure synapse můžete zřídit podle pokynů v [tomto článku](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení Azure synapse Analytics můžete pomocí [tohoto návodu](../team-data-science-process/sqldw-walkthrough.md) provádět nahrávání, zkoumání a modelování dat pomocí dat v rámci služby Azure synapse Analytics.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB je databáze NoSQL v cloudu. Můžete ji použít k práci s dokumenty, jako je JSON, a k ukládání a dotazování dokumentů.

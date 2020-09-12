@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 97119f3ec370894183c4aee44ff8a5bd6e5ea93b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650821"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647136"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
 
@@ -49,8 +49,8 @@ Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abys
  
  - Váš vlastní server Jupyter Notebook
 
-    - Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - Spusťte [Poznámkový blok instalace](https://aka.ms/azure-rl-env-setup) virtuální sítě a otevřete tak síťové porty, které se používají pro distribuované výztuže při výuce.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Vytvořit výztužný experiment při výuce
 
-Vytvořte [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) , který sleduje školicí běh. V Azure Machine Learning experimenty jsou logické kolekce souvisejících zkušebních verzí, které slouží k uspořádání protokolů spuštění, historie, výstupů a dalších.
+Vytvořte [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) , který sleduje školicí běh. V Azure Machine Learning experimenty jsou logické kolekce souvisejících zkušebních verzí, které slouží k uspořádání protokolů spuštění, historie, výstupů a dalších.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Vytvoření posílení výukového Estimator
 
-V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) odeslat školicí úlohu Azure Machine Learning.
+V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) odeslat školicí úlohu Azure Machine Learning.
 
 Azure Machine Learning používá třídy Estimator k zapouzdření informací o konfiguraci spuštění. To vám umožní snadno určit, jak se má nakonfigurovat provádění skriptu. Další informace o modelu Azure Machine Learning Estimator najdete v tématu [výuka modelů pomocí odhady](how-to-train-ml-models.md).
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Odeslat běh
 
-[Spustit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) zpracovává historii spuštění probíhajících nebo dokončených úloh. 
+[Spustit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) zpracovává historii spuštění probíhajících nebo dokončených úloh. 
 
 ```python
 run = exp.submit(config=rl_estimator)

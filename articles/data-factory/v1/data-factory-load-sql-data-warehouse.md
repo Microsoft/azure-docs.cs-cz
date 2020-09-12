@@ -1,6 +1,6 @@
 ---
-title: Načtení terabajtů dat do SQL Data Warehouse
-description: Ukazuje, jak může být 1 TB dat načteno do Azure SQL Data Warehouse za 15 minut s Azure Data Factory
+title: Načtení terabajtů dat do služby Azure synapse Analytics
+description: Ukazuje, jak se 1 TB dat dá načíst do Azure synapse Analytics za 15 minut a Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5ce0cba68d4374d6a0403af28ec3f03920acf6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537594"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442475"
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtěte 1 TB do Azure SQL Data Warehouse za 15 minut s Data Factory
+# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure synapse Analytics za 15 minut s Data Factory
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [kopírování dat do nebo z Azure SQL Data Warehouse pomocí Data Factory](../connector-azure-sql-data-warehouse.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [kopírování dat do nebo z analýzy Azure synapse Analytics (dřív SQL Data Warehouse) pomocí Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
-[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, jak relační, tak i nerelační.  SQL Data Warehouse je pro úlohy podnikového datového skladu postavená na architektuře MPP (hromadně paralelní zpracování).  Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
+[Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, a to jak v relačních, tak i i v nerelačních.  Azure synapse Analytics je postavená na výkonné paralelní zpracování (MPP) a je optimalizovaná pro úlohy podnikového datového skladu.  Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
 
-Seznámení s Azure SQL Data Warehouse je teď v **Azure Data Factory**jednodušší než kdy dřív.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, která se dá použít k naplnění SQL Data Warehouse s daty ze stávajícího systému a šetří vám tak cenné časy při vyhodnocování SQL Data Warehouse a vytváření analytických řešení. Tady jsou klíčové výhody načítání dat do Azure SQL Data Warehouse pomocí Azure Data Factory:
+Začínáme se službou Azure synapse Analytics je teď snazší než kdykoli dřív, pomocí **Azure Data Factory**.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, která se dá použít k naplnění Azure synapse Analytics daty z vašeho stávajícího systému a šetří vám tak cenné časy při vyhodnocování Azure synapse Analytics a vytváření analytických řešení. Tady jsou klíčové výhody načítání dat do služby Azure synapse Analytics pomocí Azure Data Factory:
 
 * **Snadné nastavení**: 5 – intuitivní průvodce bez nutnosti skriptování.
 * **Bohatá Podpora úložiště dat**: Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat.
 * **Zabezpečení a dodržování předpisů**: data se přenáší přes protokol HTTPS nebo ExpressRoute a přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
-* **Neparalelní výkon pomocí základu** použití základny je nejúčinnější způsob, jak přesunout data do Azure SQL Data Warehouse. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti načítání ze všech typů úložišť dat kromě úložiště objektů BLOB v Azure, které základem podporuje standardně.
+* **Neparalelní výkon pomocí základny** – základem je nejúčinnější způsob, jak přesouvat data do Azure synapse Analytics. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti načítání ze všech typů úložišť dat kromě úložiště objektů BLOB v Azure, které základem podporuje standardně.
 
-V tomto článku se dozvíte, jak pomocí Průvodce kopírováním Data Factory načíst data o 1 TB z Azure Blob Storage do Azure SQL Data Warehouse během 15 minut při překročení propustnosti 1,2 GB/s.
+V tomto článku se dozvíte, jak pomocí Průvodce kopírováním Data Factory načíst data z Azure Blob Storage do Azure synapse Analytics za méně než 15 minut při překročení propustnosti 1,2 GB/s.
 
-Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Data Warehouse pomocí Průvodce kopírováním.
+Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure synapse Analytics pomocí Průvodce kopírováním.
 
 > [!NOTE]
->  Obecné informace o funkcích Data Factory při přesunu dat do a z Azure SQL Data Warehouse najdete v tématu [přesun dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) článku.
+>  Obecné informace o schopnostech Data Factory při přesouvání dat do a z Azure synapse Analytics najdete v tématu [přesun dat do a z Azure synapse Analytics pomocí Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) článku.
 >
 > Kanály můžete vytvářet také pomocí sady Visual Studio, PowerShellu atd. Podrobný návod k použití aktivity kopírování v Azure Data Factory najdete v tématu [kurz: kopírování dat z objektu blob Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .  
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Azure Blob Storage: Tento experiment používá Azure Blob Storage (GRS) pro ukládání testovací datové sady TPC-H.  Pokud nemáte účet úložiště Azure, přečtěte si, [jak vytvořit účet úložiště](../../storage/common/storage-account-create.md).
 * [TPC-h](http://www.tpc.org/tpch/) data: používáme TPC-H jako testovací datovou sadu.  K tomu je nutné použít `dbgen` z TPC-H Toolkit, který vám pomůže vygenerovat datovou sadu.  Můžete si buď stáhnout zdrojový kód `dbgen` z [nástrojů TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp) a zkompilovat ho sami, nebo stáhnout zkompilovaný binární soubor z [GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Spusťte dbgen.exe s následujícími příkazy pro vygenerování plochého souboru 1 TB pro `lineitem` rozložení tabulky mezi 10 soubory:
 
@@ -54,18 +54,18 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     Nyní zkopírujte generované soubory do objektu blob Azure.  Informace o tom, jak to udělat pomocí kopírování ADF, najdete [v tématu přesun dat do a z místního systému souborů pomocí Azure Data Factory](data-factory-onprem-file-system-connector.md) .    
-* Azure SQL Data Warehouse: Tento experiment načte data do Azure SQL Data Warehouse vytvořených pomocí 6 000 DWU
+* Azure synapse Analytics: Tento experiment načte data do Azure synapse Analytics vytvořená pomocí 6 000 DWU
 
-    Podrobné pokyny k vytvoření databáze SQL Data Warehouse najdete v tématu věnovaném [vytvoření Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) .  Abychom dosáhli nejlepšího možného zatížení při SQL Data Warehouse používáním základny, zvolíme v nastavení výkonu maximální počet jednotek datového skladu (DWU), což je 6 000 DWU.
+    Podrobné pokyny k vytvoření databáze Azure synapse Analytics najdete v tématu [Vytvoření služby Azure synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) .  Pokud chcete dosáhnout nejlepšího možného zatížení Azure synapse Analytics pomocí základu, v nastavení výkonu vyberte maximální počet jednotek datového skladu (DWU), což je 6 000 DWU.
 
   > [!NOTE]
-  > Při načítání z objektu blob Azure je výkon načítání dat přímo úměrný počtu DWU, které nakonfigurujete na SQL Data Warehouse:
+  > Při načítání z Azure Blob je výkon načítání dat přímo úměrný počtu DWU nakonfigurovaných pro Azure synapse Analytics:
   >
-  > Načtení 1 TB do 1 000 DWU SQL Data Warehouse trvá 87 minut (~ 200 MB/s propustnost) načítání 1 TB do 2 000 DWU SQL Data Warehouse trvá 46 minut (přibližně MB/s propustnost) načítání 1 TB do 380 DWU SQL Data Warehouse trvá 14 minut (propustnost 6 000 GB/s).
+  > Načtení 1 TB do 1 000 DWU Azure synapse Analytics trvá 87 minut (~ 200 MB/s propustnost). načítání 1 TB do 2 000 DWU Azure synapse Analytics trvá 46 minut (MB/s propustnost) načítání 1 TB do 380 DWU Azure synapse Analytics trvá 14 minut (propustnost GB/s).
   >
   >
 
-    Chcete-li vytvořit SQL Data Warehouse s 6 000 DWU, přesuňte posuvník výkon úplně vpravo:
+    Chcete-li vytvořit synapse fond SQL s 6 000 DWU, přesuňte posuvník výkon napravo:
 
     ![Posuvník výkonu](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -77,10 +77,10 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
 
     ![Dialogové okno škála](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Tento experiment načte data do Azure SQL Data Warehouse pomocí `xlargerc` třídy prostředků.
+    Tento experiment načte data do Azure synapse Analytics pomocí `xlargerc` třídy prostředků.
 
-    Chcete-li dosáhnout nejlepší možné propustnosti, je třeba provést kopírování pomocí SQL Data Warehouse uživatele, který patří do `xlargerc` třídy prostředků.  Přečtěte si, jak postupovat podle následujícího postupu: [Změna třídy prostředků uživatele](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
-* Spuštěním následujícího příkazu DDL vytvořte v databázi Azure SQL Data Warehouse schéma cílové tabulky:
+    Aby bylo možné dosáhnout co nejlepší propustnosti, je třeba provést kopírování pomocí uživatele Azure synapse Analytics, který patří do `xlargerc` třídy prostředků.  Přečtěte si, jak postupovat podle následujícího postupu: [Změna třídy prostředků uživatele](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
+* Spuštěním následujícího příkazu DDL vytvořte v databázi Azure synapse Analytics schéma cílové tabulky:
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -165,13 +165,13 @@ V této části se dozvíte, jak nakonfigurovat zdroj: Azure BLOB obsahující s
     ![Průvodce kopírováním – nastavení formátu souboru](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>Krok 3: Konfigurace cíle
-V této části se dozvíte, jak nakonfigurovat cíl: `lineitem` tabulka v databázi Azure SQL Data Warehouse.
+V této části se dozvíte, jak nakonfigurovat cíl: `lineitem` tabulka v databázi Azure synapse Analytics.
 
-1. Jako cílové úložiště vyberte **Azure SQL Data Warehouse** a klikněte na **Další**.
+1. Jako cílové úložiště vyberte **Azure synapse Analytics** a klikněte na **Další**.
 
     ![Průvodce kopírováním – výběr cílového úložiště dat](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Zadejte informace o připojení pro Azure SQL Data Warehouse.  Ujistěte se, že jste zadali uživatele, který je členem role `xlargerc` (podrobné pokyny najdete v části **požadavky** ), a klikněte na **Další**.
+2. Vyplňte informace o připojení pro Azure synapse Analytics.  Ujistěte se, že jste zadali uživatele, který je členem role `xlargerc` (podrobné pokyny najdete v části **požadavky** ), a klikněte na **Další**.
 
     ![Průvodce kopírováním – informace o cílovém připojení](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -190,27 +190,27 @@ Ve výchozím nastavení je zaškrtnuto políčko **povoleno** .  Klikněte na *
 ## <a name="step-5-deploy-and-monitor-load-results"></a>Krok 5: nasazení a sledování výsledků načítání
 1. Kliknutím na tlačítko **Dokončit** nasadíte.
 
-    ![Průvodce kopírováním – stránka souhrnu](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Průvodce kopírováním – stránka souhrnu 1](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
 2. Po dokončení nasazení kliknutím `Click here to monitor copy pipeline` můžete monitorovat průběh kopírování. Vyberte kanál pro kopírování, který jste vytvořili v seznamu **okna aktivit** .
 
-    ![Průvodce kopírováním – stránka souhrnu](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![Průvodce kopírováním – stránka souhrnu 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
     Podrobnosti o spuštění kopírování můžete zobrazit v **Průzkumníku okna aktivity** v pravém panelu, včetně objemu dat načtených ze zdroje a zapsaných do cíle, doby trvání a průměrné propustnosti pro běh.
 
-    Jak vidíte na následujícím snímku obrazovky, kopírováním 1 TB z Azure Blob Storage do SQL Data Warehouse trvalo 14 minut a efektivně dosáhnete propustnosti 1,22 GB/s.
+    Jak vidíte na následujícím snímku obrazovky, zkopírování 1 TB z Azure Blob Storage do služby Azure synapse Analytics trvalo 14 minut a efektivně dosahuje propustnosti 1,22 GB/s.
 
     ![Průvodce kopírováním – dialogové okno úspěšné](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Tady je několik osvědčených postupů pro spuštění databáze Azure SQL Data Warehouse:
+Tady je několik osvědčených postupů pro spuštění databáze Azure synapse Analytics:
 
 * Při načítání do CLUSTEROVANÉHO indexu COLUMNSTORE použijte větší třídu prostředků.
 * Pro efektivnější spojení zvažte použití distribuce algoritmu hash pomocí sloupce Select namísto výchozí distribuce kruhové dotazování.
 * Pro rychlejší rychlost zatížení zvažte použití haldy pro přechodná data.
-* Po dokončení načítání Azure SQL Data Warehouse vytvořit statistiku.
+* Po dokončení načítání do Azure synapse Analytics vytvořte statistiku.
 
-Podrobnosti najdete v tématu [osvědčené postupy pro Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
+Podrobnosti najdete v tématu [osvědčené postupy pro Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
 
 ## <a name="next-steps"></a>Další kroky
 * [Průvodce kopírováním Data Factory](data-factory-copy-wizard.md) – Tento článek poskytuje podrobné informace o Průvodci kopírováním.

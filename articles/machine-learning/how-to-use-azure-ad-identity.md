@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319469"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647325"
 ---
-# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Použití identity Azure AD s webovou službou Machine Learning ve službě Azure Kubernetes
+# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Použití identity Azure AD s webovou službou strojového učení ve službě Azure Kubernetes Service
 
 V tomto postupu se dozvíte, jak přiřadit identitu služby Azure Active Directory (AAD) k nasazenému modelu Machine Learning ve službě Azure Kubernetes. Projekt [AAD pod identitou](https://github.com/Azure/aad-pod-identity) umožňuje aplikacím zabezpečeně přistupovat ke cloudovým prostředkům pomocí AAD pomocí [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Kubernetes primitiv. Díky tomu může vaše webová služba zabezpečeně přistupovat k prostředkům Azure bez nutnosti vkládat přihlašovací údaje nebo spravovat tokeny přímo ve vašem `score.py` skriptu. Tento článek popisuje kroky pro vytvoření a instalaci identity Azure v clusteru služby Azure Kubernetes a přiřazení identity k nasazené webové službě.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
+- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 - Přístup ke clusteru AKS pomocí `kubectl` příkazu. Další informace najdete v tématu [připojení ke clusteru](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster) .
 
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> V tomto příkladu se používá DefaultAzureCredential. Pokud chcete přístup k identitě udělit pomocí specifických zásad přístupu, přečtěte si [část 4: načtení tajného kódu z Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
+> V tomto příkladu se používá DefaultAzureCredential. Pokud chcete přístup k identitě udělit pomocí konkrétní zásady přístupu, přečtěte si téma [přiřazení zásad Key Vault přístupu pomocí Azure CLI](/azure/key-vault/general/assign-access-policy-cli).
 
 ### <a name="access-blob-from-your-web-service"></a>Přístup k objektu BLOB z webové služby
 

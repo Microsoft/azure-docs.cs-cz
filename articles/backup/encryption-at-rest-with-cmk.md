@@ -3,12 +3,12 @@ title: Šifrování zálohovaných dat pomocí klíčů spravovaných zákazník
 description: Přečtěte si, jak Azure Backup umožňuje šifrovat zálohovaná data pomocí klíčů spravovaných zákazníkem (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022407"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378283"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
 
@@ -66,7 +66,7 @@ Azure Backup používá spravovanou identitu přiřazenou systémem k ověření
 
     ![Nastavení identity](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Změňte **stav** na **zapnuto** a klikněte na **Uložit**.
+1. Změňte **stav** na **zapnuto** a vyberte **Uložit**.
 
 1. Generuje se ID objektu, což je spravovaná identita trezoru přiřazená systémem.
 
@@ -82,13 +82,13 @@ Pro přístup k Azure Key Vault, který obsahuje šifrovací klíč, teď musít
 
     ![Přiřadit klíčová oprávnění](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Ve vyhledávacím poli **Vyberte objekt zabezpečení** a vyhledejte svůj trezor pomocí jeho názvu nebo spravované identity. Po zobrazení vyberte trezor a v dolní části podokna klikněte na **Vybrat** .
+1. Ve vyhledávacím poli **Vyberte objekt zabezpečení** a vyhledejte svůj trezor pomocí jeho názvu nebo spravované identity. Po zobrazení vyberte trezor a zvolte **Vybrat** v dolní části podokna.
 
     ![Vybrat objekt zabezpečení](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. Po dokončení klikněte na **Přidat** a přidejte nové zásady přístupu.
+1. Po dokončení vyberte **Přidat** a přidejte nové zásady přístupu.
 
-1. Kliknutím na **Uložit** uložte změny provedené v zásadách přístupu Azure Key Vault.
+1. Vyberte **Uložit** a uložte změny provedené v zásadách přístupu Azure Key Vault.
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
 
@@ -148,7 +148,7 @@ Přiřazení klíče:
 
     ![Nastavení šifrování](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. V **nastavení šifrování**klikněte na **aktualizovat** .
+1. V **nastavení šifrování**vyberte **aktualizovat** .
 
 1. V podokně nastavení šifrování vyberte **použít vlastní klíč** a pokračujte v zadávání klíče jedním z následujících způsobů. **Ujistěte se, že klíč, který chcete použít, je klíč RSA 2048, který je v povoleném stavu.**
 
@@ -160,7 +160,7 @@ Přiřazení klíče:
 
         ![Vyberte klíč z trezoru klíčů.](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
 1. **Sledování průběhu aktualizace šifrovacího klíče:** Průběh přiřazení klíče můžete sledovat pomocí **protokolu aktivit** v úložišti Recovery Services. Stav by se brzy změnil na **úspěšný**. Váš trezor teď bude šifrovat všechna data se zadaným klíčem jako KEK.
 

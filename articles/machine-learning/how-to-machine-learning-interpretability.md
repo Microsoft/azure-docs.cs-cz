@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306396"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649444"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Povolení funkce vysvětlení modelu strojového učení je důležité během d
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
+Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
 * `azureml.interpret`, hlavní balíček obsahující funkce podporované Microsoftem.
 
@@ -69,7 +69,7 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
 ## <a name="supported-interpretability-techniques"></a>Podporované techniky interpretace
 
- `azureml-interpret`používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
+ `azureml-interpret` používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
 
 |Technika interpretace|Popis|Typ|
 |--|--|--------------------|
@@ -90,7 +90,7 @@ Kromě metod interpretace popsaných výše podporujeme jiný vysvětlující SH
 * LinearExplainer pro lineární modely
 * KernelExplainer pro všechny ostatní modely
 
-`TabularExplainer`má také významná vylepšení funkcí a výkonu prostřednictvím přímých SHAPch vysvětlení:
+`TabularExplainer` má také významná vylepšení funkcí a výkonu prostřednictvím přímých SHAPch vysvětlení:
 
 * **Sumarizace inicializační sady dat**. V případech, kdy je rychlost vysvětlení nejdůležitější, shrnujeme inicializační datovou sadu a vygenerujeme malou sadu reprezentativních vzorků, které urychlují generování celkových a individuálních hodnot důležitosti funkcí.
 * **Vzorkování sady dat pro vyhodnocení**. Pokud uživatel projde velkou sadou zkušebních vzorů, ale nepotřebuje vyhodnotit všechny z nich, je možné nastavit parametr vzorkování na hodnotu true, aby se urychlil výpočet celkového vysvětlení modelu.
@@ -121,4 +121,4 @@ Vysvětlení můžete spustit vzdáleně na Azure Machine Learning COMPUTE a pro
 
 - Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. 
 - Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 
-- Pokud se zajímáte o výklad pro textové scénáře, přečtěte si téma [interpretace textu](https://github.com/interpretml/interpret-text), související Open Source úložiště pro [interpretaci komunit](https://github.com/interpretml/interpret-community/)pro techniky interpretace pro NLP. `azureml.interpret`balíček v současné době nepodporuje tyto techniky, ale můžete začít s [ukázkovým poznámkovým blokem při klasifikaci textu](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).
+- Pokud se zajímáte o výklad pro textové scénáře, přečtěte si téma [interpretace textu](https://github.com/interpretml/interpret-text), související Open Source úložiště pro [interpretaci komunit](https://github.com/interpretml/interpret-community/)pro techniky interpretace pro NLP. `azureml.interpret` balíček v současné době nepodporuje tyto techniky, ale můžete začít s [ukázkovým poznámkovým blokem při klasifikaci textu](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).
